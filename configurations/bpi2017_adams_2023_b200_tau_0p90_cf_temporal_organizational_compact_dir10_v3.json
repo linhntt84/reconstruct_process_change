@@ -1,0 +1,61 @@
+{
+  "dataset": "BPI Challenge 2017",
+  "source": "/Users/linh/Documents/Workspace/ACIIDS paper/Data/BPI2017/BPI Challenge 2017.csv",
+  "candidate_source": "/Users/linh/Documents/Workspace/ACIIDS paper/Experiments/IEEE_ACCESS/artifacts/reference/bpi2017_adams_2023_change_points.csv",
+  "candidate_count": 4,
+  "boundary_source_label": "Adams et al. (2023) BPI 2017 reference change points",
+  "boundary_semantics": "zero-based index of first post-change trace",
+  "event_filter": "lifecycle:transition == complete",
+  "window_size_cases_per_side": 200,
+  "tau": 0.9,
+  "reference_pairs_per_stable_state": 100,
+  "total_reference_pairs": 200,
+  "random_seed": 20260913,
+  "activity_labels": "original BPI 2017 labels retained",
+  "minimum_change_by_indicator": {
+    "CF_OCC": 0.0,
+    "CF_DIR": 0.0,
+    "CF_POS": 0.0,
+    "CF_REL": 0.1,
+    "CF_LAG": 0.0,
+    "T_CASE": 0.0,
+    "T_WAIT": 0.1,
+    "O_ASSIGN": 0.1,
+    "O_HAND": 0.1
+  },
+  "rel_gate_tau": 0.9,
+  "rel_gate_minimum_edge_change": 0.1,
+  "directly_follows_gate": {
+    "minimum_source_transitions_in_either_window": 10,
+    "semantics": "retain appearance/disappearance when one window has sufficient support"
+  },
+  "pos_gate": "activities incident to qualified DIR edges",
+  "rel_gate": "pairs among activities incident to qualified DIR edges",
+  "lag_gate": "both endpoints incident to qualified DIR edges",
+  "temporal_indicators": {
+    "T_CASE": "end-to-end duration from first to last event, in hours",
+    "T_WAIT": "time between consecutive complete events for an ordered directly-follows pair, in hours",
+    "T_WAIT_minimum_observations_per_window": 10,
+    "T_WAIT_minimum_wasserstein_hours": 0.1
+  },
+  "organizational_indicators": {
+    "O_ASSIGN": "per-activity resource-assignment probability distribution",
+    "O_HAND": "resource-to-resource handover probability distribution per directly-follows activity pair",
+    "minimum_observations_per_window": 50,
+    "self_handovers_excluded": true,
+    "resource_identifiers": "stable pseudonyms; private mapping stored separately",
+    "minimum_cosine_dissimilarity": 0.1,
+    "explanatory_components": "top 10 probabilities plus OTHER; qualification uses full profile"
+  },
+  "indicator_change_functions": {
+    "CF_OCC": "absolute_difference",
+    "CF_DIR": "cosine_dissimilarity",
+    "CF_POS": "wasserstein_1d",
+    "CF_REL": "max_component_absolute_difference",
+    "CF_LAG": "normalized_wasserstein_1d",
+    "T_CASE": "wasserstein_1d_hours",
+    "T_WAIT": "wasserstein_1d_hours",
+    "O_ASSIGN": "cosine_dissimilarity",
+    "O_HAND": "cosine_dissimilarity"
+  }
+}

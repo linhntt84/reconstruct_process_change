@@ -1,0 +1,68 @@
+{
+  "run_id": "ieee_access_cdlg_deepseek_noise_0_integrated100_repeats_v1_repeat_2",
+  "paper_scope": "IEEE_ACCESS",
+  "case_id": "case_75265db7bdf56c30",
+  "condition": "ALGORITHM_1_2_E_STAR",
+  "manifest_path": "Experiments/IEEE_ACCESS/manifests/cdlg_deepseek_noise_0_integrated100_repeats_v1/repeat_2.csv",
+  "evidence_hash": "37bde96361fe57075acf8bbc8e7b3479d3d33b7428c3a68b03697731aefc494f",
+  "prompt_hash": "9a0bbd7730eeedc40e0bd90b98daf48506cc106a19b0f7c42ef7727200c7255a",
+  "model": "deepseek-v4-flash",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0.0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": false
+  },
+  "started_at_utc": "2026-09-23T23:15:46.611643+00:00",
+  "finished_at_utc": "2026-09-23T23:37:51.732985+00:00",
+  "status": "success_complete",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1402,
+    "prompt_tokens": 2090,
+    "total_tokens": 3492,
+    "completion_tokens_details": {
+      "reasoning_tokens": 996
+    }
+  },
+  "visible_text": "### Điều gì đã thay đổi\n\n- Hoạt động A01 trước đây hầu như không xuất hiện (khoảng 5 trên 1000 trường hợp), nay xuất hiện trong mọi trường hợp, mỗi trường hợp đúng một lần. [OCC001]\n- Hoạt động A03 trước đây luôn nằm ở vị trí cuối cùng của quy trình (vị trí tương đối ≈ 1.0), nay chuyển lên vị trí sớm hơn, khoảng 85% chiều dài quy trình (trung vị ≈ 0.86). [POS001]\n- Trước đây, A03 thường xuất hiện một mình (khoảng 995 trên 1000 trường hợp) và hiếm khi đi cùng A01; nay A01 và A03 luôn xuất hiện cùng nhau, và A03 luôn đứng trước A01. [REL001]\n\n### Điều gì được giữ nguyên\n\nA01 không bao giờ xuất hiện trước A03, và không có hiện tượng lặp lại hoặc đan xen giữa hai hoạt động này trong cả hai giai đoạn. [REL001]\n\n### Suy luận\n\nCó thể quy trình đã được thêm một bước A01 luôn đi sau A03, đồng thời A03 không còn là hoạt động kết thúc mà được chuyển lên sớm hơn trong luồng xử lý. Tuy nhiên, chưa đủ dữ liệu để xác định vị trí chính xác của A03 so với các hoạt động khác ngoài A01.",
+  "parse_error": null,
+  "raw_response": {
+    "id": "chatcmpl-b3b30b185eebb11b",
+    "created": 1790206666,
+    "model": "deepseek-v4-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "vllm-0.28.0-tp2-ep-b3976021",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "### Điều gì đã thay đổi\n\n- Hoạt động A01 trước đây hầu như không xuất hiện (khoảng 5 trên 1000 trường hợp), nay xuất hiện trong mọi trường hợp, mỗi trường hợp đúng một lần. [OCC001]\n- Hoạt động A03 trước đây luôn nằm ở vị trí cuối cùng của quy trình (vị trí tương đối ≈ 1.0), nay chuyển lên vị trí sớm hơn, khoảng 85% chiều dài quy trình (trung vị ≈ 0.86). [POS001]\n- Trước đây, A03 thường xuất hiện một mình (khoảng 995 trên 1000 trường hợp) và hiếm khi đi cùng A01; nay A01 và A03 luôn xuất hiện cùng nhau, và A03 luôn đứng trước A01. [REL001]\n\n### Điều gì được giữ nguyên\n\nA01 không bao giờ xuất hiện trước A03, và không có hiện tượng lặp lại hoặc đan xen giữa hai hoạt động này trong cả hai giai đoạn. [REL001]\n\n### Suy luận\n\nCó thể quy trình đã được thêm một bước A01 luôn đi sau A03, đồng thời A03 không còn là hoạt động kết thúc mà được chuyển lên sớm hơn trong luồng xử lý. Tuy nhiên, chưa đủ dữ liệu để xác định vị trí chính xác của A03 so với các hoạt động khác ngoài A01.",
+          "role": "assistant",
+          "reasoning_content": "We need to produce the answer in the required format. The evidence shows changes in occurrence of activity A01, position of A03, and relation between A01 and A03. Let's interpret.\n\nEvidence OCC001: Activity A01 occurrences per trace increased from 0.005 to 1.0, trace participation from 0.005 to 1.0. So before, almost no traces had A01; after, every trace has A01 exactly once (mean=1, recurrence support 0 means no repeats). So change: A01 now appears in every case, previously almost never.\n\nEvidence POS001: Position of A03 (relative position? The indicator is CF_POS, likely relative position within trace). Before: mean position ~0.999, median 1.0, q25=1, q75=1, so A03 was always at the end (position 1.0). After: mean ~0.856, median ~0.857, q25=0.833, q75=0.875, so A03 now occurs earlier, around 85% of the trace length. So A03 moved from the end to earlier in the process.\n\nEvidence REL001: Relation between A01 and A03. Before: cooccurrence 0.005, B_only (A03 only) 0.995, B_before_A (A03 before A01) 0.005. So almost always A03 appeared without A01, and when both appeared, A03 was before A01. After: cooccurrence 1.0, B_before_A 1.0, so both always appear together and A03 always before A01. So now A01 and A03 always co-occur, with A03 before A01.\n\nSo the main changes: A01 now appears in every case, previously almost never. A03 now appears earlier in the trace (not at the end). And A01 and A03 now always co-occur with A03 before A01.\n\nWe need to write \"Điều gì đã thay đổi\" with bullet points, each ending with evidence IDs. Also \"Điều gì được giữ nguyên\" - what stayed the same? Possibly recurrence support for A01 is 0 both before and after, meaning A01 never repeats. Also for relation, interleaved_or_repeated is 0 both, so no interleaving. But we should only mention if helpful. Also A_only is 0 both, so A01 never appears without A03? Actually before A_only=0, after A_only=0, so A01 never appears alone. That is a constant. But we can mention that A01 never appears without A03, and A03 never appears without A01 after, but before A03 appeared alone. So that changed. The constant is that A01 never appears alone, and also A03 never appears after A01? Actually before B_before_A was 0.005, after 1.0, so that changed. The constant is that A01 never appears before A03? A_before_B is 0 both, so A01 never appears before A03. That is a constant. Also interleaved_or_repeated is 0 both, so no interleaving or repetition. So we can mention that A01 never appears before A03, and there is no interleaving or repetition.\n\nBut the instruction says: \"Chỉ đề cập một đại lượng không thay đổi khi điều đó giúp loại trừ một cách diễn giải khác\". So we can mention that A01 never appears before A03, which helps rule out that the order changed. Also that A01 never repeats (recurrence support 0) both before and after, but that might be less useful. We'll include a sentence.\n\nNow write the answer in Vietnamese.\n\nStructure:\n\n### Điều gì đã thay đổi\n\n- Bullet points describing structural changes.\n\n### Điều gì được giữ nguyên\n\nOne sentence.\n\n### Suy luận\n\nWe can infer that A01 and A03 are now always executed together, with A03 before A01, and A01 now appears in every case. Possibly A03 was previously the last activity, now it occurs earlier. We can hypothesize that the process now includes a new activity A01 that always precedes A03? Actually A03 before A01, so A03 happens first, then A01. But A03 moved earlier, so maybe A03 now happens before some other activities? We don't have other activities. We can say that the process now always includes A01 and A03 in a fixed order, whereas before A03 was often alone and at the end. We'll keep it cautious.\n\nLet's write.",
+          "provider_specific_fields": {
+            "reasoning": "We need to produce the answer in the required format. The evidence shows changes in occurrence of activity A01, position of A03, and relation between A01 and A03. Let's interpret.\n\nEvidence OCC001: Activity A01 occurrences per trace increased from 0.005 to 1.0, trace participation from 0.005 to 1.0. So before, almost no traces had A01; after, every trace has A01 exactly once (mean=1, recurrence support 0 means no repeats). So change: A01 now appears in every case, previously almost never.\n\nEvidence POS001: Position of A03 (relative position? The indicator is CF_POS, likely relative position within trace). Before: mean position ~0.999, median 1.0, q25=1, q75=1, so A03 was always at the end (position 1.0). After: mean ~0.856, median ~0.857, q25=0.833, q75=0.875, so A03 now occurs earlier, around 85% of the trace length. So A03 moved from the end to earlier in the process.\n\nEvidence REL001: Relation between A01 and A03. Before: cooccurrence 0.005, B_only (A03 only) 0.995, B_before_A (A03 before A01) 0.005. So almost always A03 appeared without A01, and when both appeared, A03 was before A01. After: cooccurrence 1.0, B_before_A 1.0, so both always appear together and A03 always before A01. So now A01 and A03 always co-occur, with A03 before A01.\n\nSo the main changes: A01 now appears in every case, previously almost never. A03 now appears earlier in the trace (not at the end). And A01 and A03 now always co-occur with A03 before A01.\n\nWe need to write \"Điều gì đã thay đổi\" with bullet points, each ending with evidence IDs. Also \"Điều gì được giữ nguyên\" - what stayed the same? Possibly recurrence support for A01 is 0 both before and after, meaning A01 never repeats. Also for relation, interleaved_or_repeated is 0 both, so no interleaving. But we should only mention if helpful. Also A_only is 0 both, so A01 never appears without A03? Actually before A_only=0, after A_only=0, so A01 never appears alone. That is a constant. But we can mention that A01 never appears without A03, and A03 never appears without A01 after, but before A03 appeared alone. So that changed. The constant is that A01 never appears alone, and also A03 never appears after A01? Actually before B_before_A was 0.005, after 1.0, so that changed. The constant is that A01 never appears before A03? A_before_B is 0 both, so A01 never appears before A03. That is a constant. Also interleaved_or_repeated is 0 both, so no interleaving or repetition. So we can mention that A01 never appears before A03, and there is no interleaving or repetition.\n\nBut the instruction says: \"Chỉ đề cập một đại lượng không thay đổi khi điều đó giúp loại trừ một cách diễn giải khác\". So we can mention that A01 never appears before A03, which helps rule out that the order changed. Also that A01 never repeats (recurrence support 0) both before and after, but that might be less useful. We'll include a sentence.\n\nNow write the answer in Vietnamese.\n\nStructure:\n\n### Điều gì đã thay đổi\n\n- Bullet points describing structural changes.\n\n### Điều gì được giữ nguyên\n\nOne sentence.\n\n### Suy luận\n\nWe can infer that A01 and A03 are now always executed together, with A03 before A01, and A01 now appears in every case. Possibly A03 was previously the last activity, now it occurs earlier. We can hypothesize that the process now includes a new activity A01 that always precedes A03? Actually A03 before A01, so A03 happens first, then A01. But A03 moved earlier, so maybe A03 now happens before some other activities? We don't have other activities. We can say that the process now always includes A01 and A03 in a fixed order, whereas before A03 was often alone and at the end. We'll keep it cautious.\n\nLet's write.",
+            "refusal": null
+          }
+        },
+        "provider_specific_fields": {
+          "stop_reason": null,
+          "routed_experts": null,
+          "token_ids": null
+        }
+      }
+    ],
+    "usage": {
+      "completion_tokens": 1402,
+      "prompt_tokens": 2090,
+      "total_tokens": 3492,
+      "completion_tokens_details": {
+        "reasoning_tokens": 996
+      }
+    }
+  }
+}
