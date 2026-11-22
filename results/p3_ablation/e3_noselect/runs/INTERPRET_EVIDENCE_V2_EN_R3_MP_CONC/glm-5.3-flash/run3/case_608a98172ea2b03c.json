@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_608a98172ea2b03c.json",
+  "evidence_sha256": "97b18e0a1661f6e84e2c28201783aad3a9a86b24911ce18a31fd212e87ba85f1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:41:48.347897+00:00",
+  "finished_at_utc": "2026-11-15T13:46:53.801304+00:00",
+  "latency_seconds": 305.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 42832,
+    "prompt_tokens": 15580,
+    "total_tokens": 58412,
+    "completion_tokens_details": {
+      "reasoning_tokens": 40713,
+      "text_tokens": 2119
+    },
+    "cost": 0.023753
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 129361,
+  "text": "### Observed differences\n\n- **Routing out of A01 collapsed to a single successor.** In the earlier window, A01's observed outgoing transitions went to A04 in about 50 in 100 cases, to A03 in about 29 and to A02 in about 22; in the later window, essentially all of A01's outgoing transitions go to A04. [DIR001]\n- **The direct return A04 → A01 disappeared.** Earlier, A04 led back to A01 in about 50 in 100 of its outgoing transitions (A02 about 26, A03 about 23); in the later window A04 never leads to A01, leading instead to A03 in about 53 and A02 in about 47 of its outgoing transitions. [DIR002]\n- **The order between A01 and A04 became fixed.** Earlier there was no fixed order — A01 came first in about 25 in 100 traces, A04 first in about 28, and the two interleaved or repeated in about 47; in the later window A01 comes first in about 58 in 100 traces, they interleave or repeat in about 42, and A04 never comes first. [REL003]\n- **Relative positions shifted.** A01's median relative position fell from about 0.45 to 0 (it now typically opens the trace), while A04 moved later, its first-quartile position rising from 0 to about 0.27 and its mean from about 0.39 to 0.50. [POS001, POS003]\n- **Pair distances became uniform.** A01→A03 is now always two steps apart (earlier about 55 in 100 pairs at one step, 45 at two), A04→A03 always one step (earlier about 45 at one, 55 at two), A01→A04 pairs now sit one step apart where they earlier spread over one, four and five steps, and A04→A01 pairs — earlier often immediate (about 30 in 100 at one step) — now occur only about four steps apart and in about 84 of 200 traces versus about 150 earlier. [LAG003, LAG004, LAG008, LAG010]\n- **A06 was rerouted.** Earlier, A06 led to A04 in about half of its outgoing transitions and to A01 in about half; in the later window it always leads to A01 one step later, with A04 following two steps after A06. [DIR003, LAG013, LAG014]\n- **Presence and repetition changed only slightly.** A01, A03 and A04 still appear in every trace in both windows (A01 and A04 about 1.9 occurrences per trace), while A02, A05 and A06 each appear in about 47 in 100 traces earlier and about 42 in 100 later, and A01/A04 repetition fell from about 47 to about 42 in 100 — differences well within the range random re-splits produce. [OCC001, OCC002, OCC003, OCC004, OCC005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the sequencing between A01 and A04 was restructured from a repeating, order-free cycle into a fixed forward hand-off. In the earlier window, A01 and A04 repeatedly passed control to each other: about half of A04's outgoing transitions returned directly to A01, A01 spread its exits across A04, A03 and A02, and the two appeared in either order across traces. In the later window, A01 opens the trace and always hands over to A04; A04 no longer returns to A01 and instead leads to A03 (about 53 in 100) or A02 (about 47); A06, which earlier split its output between A04 and A01, now always feeds A01 and starts the second A01→A04 pass in the traces that also contain A02 and A06. [DIR001, DIR002, DIR003, REL003, POS001, POS003, LAG003, LAG004, LAG008, LAG013]\n\nThe judgement rests on direct relational and positional evidence rather than frequency shifts alone: the successor profiles of A01, A04 and A06 changed wholesale, the A04-before-A01 order fell from about 28 in 100 traces to none, and position and gap distributions became deterministic where they were previously mixed. Twenty of the 36 evidence items show differences larger than about 995 in 1000 random re-splits of the pooled traces — a level random re-splits reach only about once in 200 comparisons, so this many items is far beyond what an unchanged process typically produces — although the routing, order, position and gap items describe one underlying difference from different angles rather than independent confirmations. [DIR001, DIR002, DIR003, REL003, POS001, POS003, LAG003, LAG004, LAG008, LAG010]\n\nLimitations: an unobserved edge is not a proven removal — A04→A01, A01→A02 and A01→A03 may still exist but were simply not taken in the 200 later traces — so a competing explanation is that a loop variant dropped out of the sample while a fixed variant came to dominate, rather than the routing itself having been edited; the evidence also cannot show whether the change occurred at the window boundary or earlier. [DIR002, LAG008]\n\nOther differences: the share of traces containing A02, A05 and A06 (A02 and A06 still always occur together) and the share of traces in which A01 and A04 repeat each fell by about 5 in 100 (about 47 to 42), and the fixed-order share between A01 and A03 and between A04 and A03 rose by about 5 in 100 (about 53 to 58); these shifts are small and within the range random re-splits produce (empirical strength about 0.03 to 0.67), so they may be sampling noise rather than part of the restructuring. [OCC001, OCC002, OCC003, OCC004, OCC005, REL001, REL002, REL004, REL005, REL006, REL007, REL008, REL009, REL010]",
+  "case_id": "case_608a98172ea2b03c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

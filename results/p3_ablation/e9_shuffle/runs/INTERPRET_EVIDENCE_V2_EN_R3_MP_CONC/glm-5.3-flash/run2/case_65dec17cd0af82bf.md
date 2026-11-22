@@ -1,0 +1,23 @@
+### Observed differences
+
+- Neither A02 nor A01 was observed in any of the 200 earlier traces; in the later window A02 appears in about 57 in 100 traces (exactly once per trace) and A01 in about 15 in 100. [OCC002, OCC001]
+- In the later window A02 is the final event of every trace that contains it (mean relative position 1.0, no spread), whereas A19 and A16, which were final events in the earlier window (mean position 1.0), now sit just before the end (mean positions about 0.86 and 0.85). [POS002, POS008, POS007]
+- In the earlier window no outgoing transitions were observed from A01, A16 or A19; in the later window all observed outgoing transitions of A01 go to A16 (about 30 traces), of A16 to A02 (about 30 traces) and of A19 to A02 (about 44 traces). [DIR001, DIR006, DIR008]
+- Routing into this tail is new: about half of the observed outgoing transitions of A17 now go to A01 (before, about 69 in 100 went to A15 and 31 to A16), and about 42 in 100 of A10's transitions now go to A01 (before, A15 about 48 and A16 about 52). [DIR007, DIR005]
+- A09 now leads to A02 in about half of its observed outgoing transitions (before it split between A13, about 48 in 100, and A14, about 52 in 100); A09 also occurs in fewer traces (about 37 in 100 before vs 20 in 100 after), appears later within them (mean relative position about 0.26 vs 0.59) and repeats less often (in about 26 vs 9 in 100 of traces). [DIR004, OCC003, POS003]
+- A02 now co-occurs with, and typically follows, several established activities: with A14 co-occurrence rises from 0 to about 39 in 100 traces (A14 before A02 about 27), with A19 from 0 to about 22 (A19 first about 22), with A03 from 0 to about 35 (A03 first about 20), and with A07 from 0 to about 28 (A07 first about 15). [REL008, REL010, REL003, REL004]
+- A09 and A14 are now less often in the same trace (co-occurrence about 37 in 100 before vs 13 in 100 after, with A14 alone in about 27 in 100 after), and A13 occurs in fewer traces (about 23 in 100 vs 9 in 100) and later within them (mean position about 0.28 vs 0.54). [REL011, OCC004, POS005]
+- A14 keeps a similar trace share (about 37–39 in 100) but appears earlier (mean position about 0.39 vs 0.20); A07 now sends about half of its outgoing transitions to A14 instead of A09, and A03 now sends about 19 in 100 of its transitions to A09, which previously went to A08. [POS006, DIR003, DIR002]
+- Typical distances between consecutive events also shifted for several pairs, for example A07–A09 moved from mostly 1 step apart to 2 and 4 steps, and A03–A14 from 3 and 5 steps to 2 and 4. [LAG003, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new closing segment was introduced: in the later window, traces commonly end with the previously unobserved A02 (about 57 in 100 traces, always last), reached directly from A19, A16 and A09, with A16 in turn fed by the new A01, which receives about half of the outgoing transitions of A17 and A10; before, A19 and A16 appeared as final events and A09 led to A13 or A14. [OCC002, OCC001, DIR008, DIR006, DIR004, DIR001, DIR007, DIR005, POS002, POS008, POS007]
+
+The hypothesis is direct and consistent: participation rises from zero for A01 and A02, three source activities gain outgoing edges into the new tail while two more reroute into it, relation profiles show A02 co-occurring with and following its predecessors, and position profiles place A02 last with A19 and A16 immediately before it. In total 42 control-flow items qualified, against fewer than 0.5 expected by chance for the 88 units tested, and every item's difference exceeds about 995 in 1000 random re-splits of the pooled data. [OCC001, OCC002, DIR001, DIR006, DIR008, DIR004, DIR007, DIR005, REL003, REL008, REL010, POS002, POS007, POS008]
+
+The evidence cannot show whether this new tail replaced an earlier closing behaviour or reflects a shift in which pre-existing process variants enter the log (for example a previously rare variant becoming dominant); also, the empty outgoing profiles before the change mean only that no outgoing transitions were observed for A01, A16 or A19, not that none existed. [DIR001, DIR006, DIR008]
+
+Other differences: A09 and A13 occur in fewer traces and later within them, and repeat less often; A14 appears earlier and now receives about half of A07's outgoing transitions; A03 routes about 19 in 100 of its transitions to A09 instead of A08; and typical gaps between several activity pairs (for example A07–A09, A03–A14 and A14–A14) shifted by one to two positions. [OCC003, OCC004, POS003, POS005, POS006, DIR003, DIR002, LAG003, LAG002, LAG009]

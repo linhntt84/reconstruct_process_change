@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "89ffe6b2f826b37b8c085ee5dfa1bf5b536727cdd69aeeec0be76a03afd7a28d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:24:59.016165+00:00",
+  "finished_at_utc": "2026-11-16T01:27:42.688583+00:00",
+  "latency_seconds": 163.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20410,
+    "prompt_tokens": 15930,
+    "total_tokens": 36340,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18861,
+      "text_tokens": 1549
+    },
+    "cost": 0.012594499999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61371,
+  "text": "### Observed differences\n\n- The order of A02 and A04 changed from fixed to mixed: in the earlier window A02 came before A04 in 100 in 100 traces, while in the later window A02 came first in about 54 in 100 traces and A04 first in about 46 in 100. [REL006]\n- Entry into this segment changed: before, about 87 in 100 of A01's outgoing transitions went to A02 and only about 6 to A04; in the later window the split is about 50 to A02 and 42 to A04 (about 8 to A03). [DIR001]\n- Successors changed at both middle activities: before, about 94 in 100 of A02's outgoing transitions went to A04 (A03 received none of 200 observed outgoing transitions) and about 96 in 100 of A04's outgoing transitions went to A03 (A02 received none); in the later window A02 sends about 50 in 100 to A04 and about 44 directly to A03, and A04 sends about 49 in 100 to A03 and about 40 back to A02. [DIR002, DIR004]\n- Distances shifted accordingly: A01→A04, previously two steps apart in about 94 in 100 cases, is now immediate in about 49 in 100; A02→A03, previously two steps away in about 90 in 100, is now immediate in about 44; A04→A03, previously immediate in about 96 in 100, now sits two steps away in about 43; A01→A02, previously always immediate, is now two steps away in about 43. The A02→A04 pair within five steps appears in 108 of 200 later-window traces versus 200 of 200 before. [LAG001, LAG003, LAG007, LAG008, LAG015]\n- Event positions moved as this predicts: A02's mean event position shifted later (about 0.17 to 0.27) and A04's earlier (about 0.39 to 0.28), both converging on the same mid-position. [POS002, POS004]\n- Downstream distances moved by roughly one step: from A04 to A05 and A06 later (mainly three to four steps instead of two to three), and from A02 to A05 and A06 earlier (a two-step distance now appears). [LAG009, LAG010, LAG016, LAG017]\n- A secondary shift: transitions from A04 to A01 rose from about 4 to about 10 in 100 of A04's outgoing transitions (the pair appears in 27 versus 14 traces — few observations). [DIR004, LAG014, REL003]\n- The remainder is stable: A03's split between A05 and A06, the alternating A05/A06 pair, and the positions of A03, A05 and A06 show no meaningful differences. [DIR003, DIR005, DIR006, POS003, POS005, POS006, REL007, LAG018, LAG019]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window the fixed ordering between A02 and A04 gave way to a mixed order: the earlier chain A01→A02→A04→A03 now also runs in reverse, with A01 passing directly to A04 in about 42 in 100 of its transitions (up from about 6), A04 passing back to A02 in about 40 in 100 (previously not observed among its outgoing transitions), and A02 continuing straight to A03 in about 44 in 100, so that roughly 46 in 100 traces traverse the segment as A01→A04→A02→A03. The change is shown directly by the order relation between A02 and A04 (from 100 in 100 to a 54/46 split) and is consistently mirrored by the successor redistributions at A01, A02 and A04, the lag shifts at one and two steps, the drop of the A02→A04 pair from 200 to 108 of 200 traces, and the convergence of the two activities' mean positions; the main redistribution and order items exceed about 99 in 100 random re-splits, and every involved activity occurs in essentially all traces in both windows, so this is a reordering of existing activities rather than activities appearing or disappearing. A competing explanation the evidence cannot rule out is that the reverse order existed at a low, undetected rate before and only became frequent; the data also cannot distinguish one flexible segment from two coexisting variants that traverse it in opposite orders. [REL006, DIR001, DIR002, DIR004, LAG001, LAG003, LAG007, LAG015, POS002, POS004]\n\nOther differences: exits from A04 to A01 became more frequent (about 4 to about 10 in 100 of A04's outgoing transitions; 27 versus 14 traces contain the pair within five steps, so this rests on few observations), and A01→A03 rose slightly (about 4 to 8 in 100); A03's routing to A05/A06 and the A05/A06 alternation are unchanged. [DIR001, DIR004, LAG014, DIR003, DIR005, DIR006, REL007]",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

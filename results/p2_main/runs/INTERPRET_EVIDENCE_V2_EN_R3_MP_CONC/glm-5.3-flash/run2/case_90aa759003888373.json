@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "9938569540ed765829504b10776c70f9b55fa2a93ce5a8466cc1ea3f5bfc4d20",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:31:08.033332+00:00",
+  "finished_at_utc": "2026-11-15T00:32:30.057304+00:00",
+  "latency_seconds": 82.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11467,
+    "prompt_tokens": 7667,
+    "total_tokens": 19134,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10574,
+      "text_tokens": 893
+    },
+    "cost": 0.0068835499999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40130,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each occurred exactly once in every trace (participation 100 in 100, no repetitions). In the later window, each of them occurs in only about 53 in 100 traces (106 of 200), still once per trace where present. [OCC001, OCC002, OCC003]\n- The three activities behave as one block: in the later window they co-occur in about 53 in 100 traces and are jointly absent in about 47 in 100, with no trace containing only part of the block; their internal order (A14 before A20 before A15) is unchanged. [REL001, REL002, REL005]\n- A36's routing changed: earlier, all of its observed outgoing transitions led to A14; in the later window about 53 in 100 still lead to A14, while about 47 in 100 lead directly to A21, a transition not observed earlier. [DIR001]\n- The distance from A36 to A21, previously always 4 steps, is 1 step in about 47 in 100 later cases and 4 steps in about 53 in 100. [LAG001]\n- A21 and A36 still occur in every trace; in the later window about 47 in 100 traces contain them without the A14/A15/A20 block (earlier: none), and wherever the block does run, all earlier order relations hold (A36 before the block, the block before A21). [REL003, REL004, REL006, REL007, REL008, REL009]\n- A21's relative position in the trace shifted slightly earlier (mean about 0.43 to 0.40) with slightly more spread, consistent with mixing the two routing behaviours; this is an event-position shift, not a clock-time change. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, roughly 47 in 100 traces take a bypass in which A36 leads directly to A21 and the block A14 → A20 → A15 is skipped entirely, while the remaining about 53 in 100 traces keep the original full sequence A36 → A14 → A20 → A15 → A21 with unchanged internal order. Supporting signs: participation in A14, A15 and A20 fell from 100 in 100 traces to about 53 in 100 while A21 and A36 stayed at 100 in 100; a new direct A36→A21 transition appears at about 47 in 100; the A36→A21 distance splits into 1 step (about 47 in 100) and 4 steps (about 53 in 100); every relational item shows the same 47/53 split with no reverse orders, so the retained variant matches the earlier behaviour; and the block is skipped as a unit, since the three activities are always jointly present or jointly absent. Screening found 15 qualifying items against roughly 0.35 expected by chance among 71 tested units, so the ensemble is unlikely to be a sampling artefact. [OCC001, OCC002, OCC003, DIR001, LAG001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nLimitations: all items come from the single control-flow family and several indicators describe the same trace-level behaviour, so they are not independent confirmations. The evidence also cannot show whether a very rare bypass variant already existed in the earlier window below the resolution of 200 traces — it establishes only that the bypass now covers about 47 in 100 traces, and it cannot show whether that share is stable within the later window. [DIR001, LAG001, REL003, REL004, POS001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

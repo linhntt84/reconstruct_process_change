@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_500d58a2f6b1a780.json",
+  "evidence_sha256": "3d82567792b21d8cc460229e0c7b81520366b007696e53bceee52d856cbd77c4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:49:24.693069+00:00",
+  "finished_at_utc": "2026-11-14T11:50:14.329645+00:00",
+  "latency_seconds": 49.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6535,
+    "prompt_tokens": 4954,
+    "total_tokens": 11489,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5810,
+      "text_tokens": 725
+    },
+    "cost": 0.0040106
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24096,
+  "text": "### Observed differences\n\n- In the earlier window, activities A25, A26 and A31 each occurred in every trace, on average about 3.4 times per trace, and each activity recurred within a trace in about 75 in 100 traces. In the later window they still occur in every trace, but on average only about 1.0 time per trace, and repeats remain in only about 1 in 200 traces. [OCC001, OCC002, OCC003]\n- The typical position of A25 and A31 within the trace barely moved (median about 0.43 and 0.48 before versus about 0.40 and 0.48 after), but their spread halved (standard deviation from about 0.12 to about 0.06), consistent with each activity now occurring once at a fixed spot instead of several times at varying spots; these are event positions, not clock times. [POS001, POS002]\n- Before, A25 and A31 always occurred in the same traces but without a fixed order: in about 75 in 100 traces they were interleaved or repeated, with A25 first in about 25 in 100. In the later window, A25 precedes A31 in about 199 of 200 traces and interleaving has nearly disappeared. [REL001]\n- The A25→A31 pair at a distance of two event positions accounts for about 92 in 100 observations in the later window, up from about 12 in 100 before, while the reverse pair A31→A25 within five steps, present in 150 of 200 traces earlier, appears in only 1 of 200 traces afterwards. [LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeated, interleaved execution of A25, A26 and A31 was dropped: earlier, these three activities each ran about three to four times per trace and overlapped without a fixed order, whereas in the later window each runs once per trace and A25 is followed by A31 about two positions later in a fixed sequence. Participation stayed at 100 in 100 traces in both windows, so the activities did not disappear — only their repetition stopped [OCC001, OCC002, OCC003]. The ordering change is shown directly: co-occurring A25 and A31 shifted from mostly interleaved to a fixed A25-before-A31 order [REL001], the pair became concentrated at a distance of two positions [LAG001], and the reverse pair within five steps all but vanished [LAG002]. Eight items qualified where fewer than one (0.18) would be expected by chance in a stable process, so sampling variation cannot account for the set as a whole.\n\nLimitations: A26 shows the same repetition change, but no relational evidence covers it, so its place relative to A25 and A31 is unknown [OCC002]; the fixed A25→A31 order may be a by-product of the repetition removal rather than an independently introduced ordering constraint [REL001, OCC001]; and the indicators largely describe the same underlying trace behaviour, so they are not independent confirmations.\n\nOther differences: none — all qualifying items concern A25, A26 and A31 [OCC001, OCC002, OCC003, POS001, POS002, REL001, LAG001, LAG002].",
+  "case_id": "case_500d58a2f6b1a780",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

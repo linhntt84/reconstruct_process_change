@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_59a78a1e31d99895.json",
+  "evidence_sha256": "689e82093c0b06f373794410ed63342a362880cce1ba8ff969e654a7a2e0cc59",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:07:24.263198+00:00",
+  "finished_at_utc": "2026-11-15T10:09:44.361040+00:00",
+  "latency_seconds": 140.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20467,
+    "prompt_tokens": 20832,
+    "total_tokens": 41299,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19018,
+      "text_tokens": 1449
+    },
+    "cost": 0.0133583
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64846,
+  "text": "### Observed differences\n\n- The largest change concerns a block of three branch activities. In the earlier window, A04 ran in about 50 of 100 traces, and A06 and A10 each ran in about 50 of 100 traces (always together); in the later window, each of the three runs in only about 20 of 100 traces. [OCC001, OCC002, OCC003]\n- Earlier, these branches were strict alternatives covering every trace: every trace contained exactly one of A04 or A06 (A04 never together with A06 or A10; A06 never without A10). In the later window, about two thirds of traces contain none of A04, A06 or A10, and A04 and A06 now occasionally run in the same trace (about 8 in 100). [REL007, REL010, REL013]\n- The entry into the block moved. Earlier, about half of A02's outgoing steps went to A04 (about 25%), A06 (about 13%) or A10 (about 13%), usually immediately (A02 then A04 at a distance of one step in about 60 of 100 pair occurrences); in the later window, no such steps are observed, and A02 continues mostly to A05 (about 46%, up from about 23%), A03 (about 21%) or A09 (about 21%). [DIR001, LAG001, LAG002, LAG004]\n- The block is now fed from A03 and A09, which earlier led almost only to A08 (about 47% and about 62% of their outgoing steps) with no observed steps into the block; in the later window, no A03→A08 or A09→A08 steps are observed, while A03 leads to A04, A06 and A10 (about 23%, 14% and 8% of its outgoing steps) and A09 leads to A04, A06 and A10 (about 21%, 14% and 14%), typically one to two steps away. [DIR002, DIR005, LAG006, LAG007, LAG008, LAG009, LAG013, LAG014, LAG015, LAG016]\n- The block no longer ends the case. Earlier, A04 was the final event of its trace (median position 1.0) with almost no observed successor (1 outgoing step in the whole window), and A06/A10 led only to each other; in the later window, A04 occurs around 60% of the way through the trace and all 47 of its observed outgoing steps lead to A08, while A06 and A10 lead to A08 in about 44–56% of their outgoing steps instead of only to each other. [POS002, POS003, POS005, DIR003, DIR004, DIR006]\n- A08 kept a stable participation (about 33 of 100 traces in both windows) but now occurs later in the trace (mean event position about 0.57 to about 0.72). [POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative branch block — A04 on one branch, A06 together with A10 on the other — which previously ran in every case, usually shortly after A02 and at the end of the trace, is now skipped in about two of three cases; when it does run, it is entered from A03 or A09 rather than from A02, and it flows on to A08 instead of terminating the trace, so A08 now typically takes place later. [OCC001, OCC002, OCC003, REL007, REL010, REL013, DIR001, DIR002, DIR005, DIR003, DIR004, DIR006, POS002, POS004]\n\nThis judgement rests on 45 qualifying control-flow items against roughly 0.34 expected for an unchanged process (69 units tested), so the ensemble cannot be explained by random re-splits; each item's difference also exceeds about 199 of 200 reference comparisons. Occurrence, relation, direction, distance and position indicators describe one coherent rewiring, although several items reflect the same traces and are not independent confirmations. [OCC001, OCC002, OCC003, REL007, DIR001, DIR003]\n\nLimitations: the evidence cannot show whether the skipping of the block and the rewired entry/exit are one modification or two independent ones, nor why traces now skip the block. The earlier successor profile of A04 rests on a single outgoing step, so the reading that A04 ended the case leans mainly on its end-of-trace position. All items are control-flow, so timing and resource aspects cannot be assessed. [DIR003, POS002]\n\nOther differences: A02, still present in every trace, now occurs later in the trace (median position about 0.5 to about 0.73), and A04, A06 and A10 now repeat within a trace in about 3–4 of 100 traces, which was not observed earlier; both are consistent with, but not required by, the main hypothesis. [POS001, OCC001, OCC002, OCC003]",
+  "case_id": "case_59a78a1e31d99895",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

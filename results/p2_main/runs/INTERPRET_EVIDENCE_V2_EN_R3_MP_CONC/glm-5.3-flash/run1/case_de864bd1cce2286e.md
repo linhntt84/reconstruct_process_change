@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A15, A16, A25, A26 and A27 each executed exactly once in every trace (200 of 200 traces); in the later window none of them appears in any trace (0 of 200). [OCC002, OCC003, OCC008, OCC009, OCC010]
+- Conversely, A14, A17, A18, A19 and A20 were absent from all earlier traces and now each appears in roughly 16–24 in 100 traces (31–47 of 200), once per trace where it occurs. No two of these five ever occur in the same trace, and their participation shares sum to about 100 in 100 traces, so in the later window exactly one of the five runs in each trace. [OCC001, OCC004, OCC005, OCC006, OCC007, REL003, REL029, REL037, REL044]
+- A43's successors changed completely: earlier its outgoing transitions were spread over the five old activities (about 14–25% each), later over the five new activities (about 16–24% each). [DIR011]
+- Each new activity's only observed outgoing transition leads to A28, whereas earlier the old activities led both to one another and to A28 in roughly equal shares (about 15–25% each). [DIR001, DIR004, DIR005, DIR006, DIR007, DIR002, DIR008]
+- Earlier, every old activity co-occurred with A43 and A28 in all traces, always after A43 and before A28; later, A43 and A28 occur without any of them. [REL018, REL019, REL027, REL028, REL055, REL058, REL060, REL061]
+- A28 now appears earlier in the trace (mean relative event position about 0.39 versus about 0.46 before) and A43 slightly later (about 0.33 versus about 0.28), consistent with a shorter segment between them; these are event positions, not clock times. [POS011, POS012]
+- Inside the old block there was no fixed order: for each pair of the five old activities, either order occurred in roughly 45–55% of traces. [REL010, REL015, REL024, REL053]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A43 and A28 was restructured: in the earlier window this segment consisted of five activities (A15, A16, A25, A26, A27) that all executed once in every trace in varying order, whereas in the later window it consists of exactly one activity chosen exclusively from a set of five (A14, A17, A18, A19, A20), which then leads directly to A28. This is shown directly by the replacement of A43's successor set and by the old activities' consistent placement between A43 and A28 before the change, and it is consistent across the occurrence, direction, relation and position indicators — though these items largely describe one underlying difference rather than independent confirmations. The screening comparison also supports a change: 94 control-flow items qualified against roughly 0.7 expected if nothing had changed, a count chance cannot plausibly produce, and every item's difference exceeds those seen in about 995 of 1,000 random re-splits. [DIR011, DIR001, DIR004, REL018, REL019, OCC002, OCC008, OCC001, OCC004]
+
+Limitations: zero participation only means an activity was not observed in that window, so the evidence cannot rule out that the old five-activity block still occurs at a very low rate (0 of 200 later traces puts this below roughly 1–2 in 100 traces). It also cannot show what determines which of the five new activities is chosen in a given trace. [OCC002, OCC003, OCC008, OCC009, OCC010]

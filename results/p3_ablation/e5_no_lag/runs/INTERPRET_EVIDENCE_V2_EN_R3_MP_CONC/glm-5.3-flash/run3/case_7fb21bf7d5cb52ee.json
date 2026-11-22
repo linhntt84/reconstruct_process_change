@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7fb21bf7d5cb52ee.json",
+  "evidence_sha256": "0c18487c8cecf647f2c028b3933b2084c7eadb80255188284c8c1de5ce44892b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:38:23.616731+00:00",
+  "finished_at_utc": "2026-11-15T12:39:59.503736+00:00",
+  "latency_seconds": 95.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13943,
+    "prompt_tokens": 24591,
+    "total_tokens": 38534,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12280,
+      "text_tokens": 1663
+    },
+    "cost": 0.01066015
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42655,
+  "text": "### Observed differences\n\n- In the earlier window, A10 appeared in about 19 in 100 traces (mean 0.21 occurrences per trace); in the later window it appears in about 70 in 100 (mean 0.78), and it now occurs much earlier in the trace — median position about 0.15 of the trace versus about 0.34 before. [OCC003, POS001]\n- Control now often flows A14 → A10 → A15: about 66 in 100 of A14's outgoing transitions go to A10 (earlier about 1 in 100, with about 86 in 100 going to A15), and about 85 in 100 of A10's outgoing transitions go to A15 (earlier they were spread over A46, A16, A48 and A21 at roughly 13–20 in 100 each). [DIR002, DIR003]\n- A10 now runs together with activities it previously rarely met: co-occurrence with A14, A15, A20, A22–A26, A31, A32, A47 and A48 rose from about 16–19 in 100 traces to about 70 in 100 (with A45 and A46, from about 16 in 100 to about 48 in 100). A10 typically comes first — before A20, A22–A26, A31, A32, A47 and A48 in about 60 in 100 such traces (up from about 9–17 in 100); with A14 the order is reversed (A14 first in about 61 in 100), and with A15 A10 precedes it in about 38 in 100 with about 30 in 100 interleaved. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]\n- The strict order between the A20/A22/A23 group and the A24/A25/A26 group dissolved: earlier A20, A22 or A23 preceded A24, A25 or A26 in about 96–99 in 100 traces; in the later window the orders are mixed or reversed (A24 precedes A20 in about 74 in 100 and A23 in about 85 in 100, while A23/A25 and A20/A26 are close to even). Event positions moved the same way: A20, A22 and A23 shifted later (A23 mean 0.62 → 0.68) while A24, A25 and A26 shifted earlier (A24 mean 0.65 → 0.60). [REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, POS003, POS004, POS005, POS006, POS007, POS008]\n- Successors around this block were redistributed: A23, which earlier led almost always to A24 (about 99 in 100), now leads most often to A32 (about 47 in 100) with A24 at about 15 in 100; A25's transitions to A32 fell from about 88 in 100 to about 41 in 100, with new transitions to A20 (about 20 in 100) and A23 (about 19 in 100); A31 now leads about half the time to A24 instead of almost always to A22. [DIR006, DIR008, DIR010]\n- Two activities became rarer: A04 appears in about 11 in 100 later-window traces versus about 21 in 100 earlier, and A08 in about 4 in 100 versus about 20 in 100; A08's outgoing profile also changed, but only 8 later-window traces back it. [OCC001, OCC002, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A10 changed from a rare, late, loosely connected activity into a frequent, early step in the main flow: in the later window it appears in about 70 in 100 traces near the start of the trace, is reached mainly from A14 and hands control mainly to A15, and it now typically executes before A20, A22–A26, A31, A32 and A45–A48, with which it previously rarely co-occurred. [OCC003, POS001, DIR002, DIR003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]\n\nThe change is shown directly by participation, positional, successor and relational indicators that all move consistently, with strong backing (140 of 200 traces contain A10 in the later window), and the number of qualifying items (45 against roughly 0.62 expected if nothing had changed) makes sampling noise unlikely as an explanation of the pattern as a whole. [OCC003, POS001, DIR002, DIR003, REL003] Limitations: the indicators overlap heavily (OCC003, POS001 and the REL items largely describe the same traces), so they are not independent confirmations; and the evidence cannot distinguish whether A10 became a step on a single modified main path or whether the later window blends the earlier behaviour — still visible in the about 30 in 100 of traces where A20–A26 run without A10 — with a new routing through A10. [REL003, REL005, REL008]\n\nOther differences: The breakdown of the fixed order between the A20/A22/A23 group and the A24/A25/A26 group into mixed or reversed orders, the redistribution of A23's, A25's and A31's successors toward A32 and A24, and the reduced participation of A04 (about 21 → 11 in 100 traces) and A08 (about 20 → 4 in 100) are further differences; whether they are consequences of the same restructuring around A10 or independent changes cannot be decided from this evidence, and the A08 successor change rests on only 8 traces. [REL015, REL018, REL020, REL021, DIR006, DIR008, DIR010, OCC001, OCC002, DIR001]",
+  "case_id": "case_7fb21bf7d5cb52ee",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

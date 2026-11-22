@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "53979683e604bc22a3e644c6475f1fcc042031b60572f7a6854cf713d48e39d6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:40:33.185775+00:00",
+  "finished_at_utc": "2026-11-15T10:42:45.251238+00:00",
+  "latency_seconds": 132.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19200,
+    "prompt_tokens": 19697,
+    "total_tokens": 38897,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17479,
+      "text_tokens": 1721
+    },
+    "cost": 0.01255455
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58314,
+  "text": "### Observed differences\n\n- **Participation.** In the earlier window every trace contained all eight profiled activities. In the later window A20, A21, A23 and A26 still appear in every trace, but A22 appears in only about 54 in 100 traces, and each of A31, A32 and A37 in about 47 in 100. [POS003, POS006, POS007, POS008]\n\n- **A20 now bypasses the group.** Earlier, A20's outgoing transitions split almost evenly over A31, A32 and A37 (about 31–35 in 100 each); later, about 995 in 1,000 go directly to A23, and A20 is immediately followed by A23 (one position apart) in about 995 in 100 traces, where the distance had previously been a constant 4 positions. [DIR001, LAG001]\n\n- **The group A31/A32/A37 relocated.** Earlier it always ran before both A21 and A23 (in 100 in 100 traces); later, in the roughly 47 in 100 traces where it occurs, it runs after A21 and after A23 and before A26, and its members now hand over to A26 (about 29–36 in 100 of their outgoing transitions) instead of to A23 (about 1 in 100). [REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019, DIR003, DIR004, DIR005]\n\n- **Old adjacencies disappeared.** Pairs that were a few steps apart before — A20 with each group member, and each group member with A23 — occur within five steps in only about 1 in 200 later traces, even though the activities still co-occur in about 47 in 100 traces; they are now far apart within the trace. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, REL002]\n\n- **A22 and the group became mutually exclusive.** Earlier, A22 co-occurred with each of A31, A32 and A37 in every trace; later they share a trace in only about 1 in 200 cases — a trace contains either A22 (about 53 in 100) or the three-activity group (about 47 in 100), practically never both. [REL011, REL012, REL013, REL020, REL021, REL022]\n\n- **A21's routing.** Earlier A21 was always followed by A22; later about 54 in 100 of its outgoing transitions go to A22 and about 46 in 100 enter the group (about 14–17 in 100 to each member). Accordingly, the A21→A26 distance, previously always 2 positions, is now 2 in about 54 in 100 traces and 4 in about 47 in 100. [DIR002, LAG005]\n\n- **Positions.** Mean event positions moved consistently with this: A31/A32/A37 from about 0.39 to about 0.58, A23 from about 0.45 to about 0.39, A21 from about 0.60 to about 0.54 (event positions, not clock time). [POS002, POS004, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the control flow was restructured around A20, A23, A21, A22 and the group A31/A32/A37: in the earlier window every trace ran A20, then the group in varying internal order, then A23, A21, A22, A26; in the later window A20 leads directly to A23, and after A21 the trace takes one of two mutually exclusive branches — A22 alone (about 54 in 100 traces) or the three-activity group A31/A32/A37 (about 47 in 100) — before A26, with the group now exiting to A26 rather than to A23. [DIR001, DIR002, DIR003, REL006, REL011, REL014, REL017, LAG001, LAG005, POS002, POS003, POS004]\n\nScreening qualified 43 items where about 0.36 would be expected without a change, so the pattern as a whole cannot be a sampling artefact. The relocation is shown directly by order reversals between the group and A21/A23 and by the successor changes at A20 and A21, and the two new paths match the observed distances exactly (A20→A23 one position apart; A21→A26 two positions on the A22 branch, four on the group branch). [DIR001, DIR002, REL006, REL014, LAG001, LAG005]\n\nLimitations: the connection between A23 and A21 is not directly profiled, so how they link in the later window is inferred from their positions and their relations with the group, and the LAG items about the group's former neighbours each rest on a single later-window trace. An important competing explanation the evidence cannot rule out is what determines the choice between the A22 branch and the group branch, and whether unprofiled activities between A23 and A21 changed as well. [POS002, POS004, REL014, LAG002, DIR002]\n\nOther differences: minor residuals remain — A20's mean event position moved slightly later (about 0.34 to 0.36) and A26's slightly earlier (about 0.66 to 0.63), about 1 in 200 traces still shows the group before A21, and about 1 in 200 of A20's outgoing transitions still go to A31. [POS001, POS005, REL006, DIR001]",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

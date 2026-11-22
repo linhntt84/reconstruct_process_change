@@ -1,0 +1,23 @@
+### Observed differences
+
+- A15: A18 changes from 0.620 to 0.995. [DIR001]
+- A17: A15 changes from 0.560 to 0.995. [DIR002]
+- A18: A19 changes from 0.120 to 0.995. [DIR003]
+- A19: A21 changes from 0.555 to 0.995. [DIR004]
+- A20: A27 changes from 0.470 to 0.995. [DIR005]
+- 50 evidence items qualified; about 0.47 would be expected without any change.
+
+### Inference
+
+Support level: Supported hypothesis
+
+- A15 and A19 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL001]
+- A15 and A20 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL002]
+- A15 and A21 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL003]
+- A17 and A19 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL004]
+- A17 and A21 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL005]
+- A18 and A20 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL007]
+- A18 and A21 change from mixed_order behavior to forward behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL008]
+- The order of A18 and A19 reverses. The evidence does not determine which activity moved or whether this is a swap. [REL006]
+
+Rule matches are hypotheses based on the qualified evidence, not proof of the underlying process edit; several matches may reflect one change.

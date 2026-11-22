@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "a838c1906b6c57ee28cfa4e1a72cb11898e06f285a5454f3fc15b0e67c9cdb2e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:34:22.500859+00:00",
+  "finished_at_utc": "2026-11-15T08:36:27.938415+00:00",
+  "latency_seconds": 125.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18161,
+    "prompt_tokens": 13298,
+    "total_tokens": 31459,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17056,
+      "text_tokens": 1105
+    },
+    "cost": 0.011075199999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55897,
+  "text": "### Observed differences\n\n- The dominant change is that one activity has taken over another's role at the same point in the flow. In the earlier window, A05 ran exactly once in every case (200 in 200 traces, one occurrence per trace, always halfway through the case at normalized position about 0.5); in the later window A05 was not observed in any case (0 in 200). [OCC003, POS003]\n- A01 shows the mirror image: not observed earlier (0 in 200 traces), it runs exactly once in every case in the later window (200 in 200), also halfway through the case (mean position about 0.5). [OCC001, POS001]\n- The edges around the replaced activity were redirected one-for-one. Earlier, A02 led to A05 in about 72 of 100 of its outgoing transitions (the rest to A06) and A07 led to A05 in about 71 of 100; later, A02 leads to A01 in about 75 of 100 and A07 to A01 in about 66 of 100, with the A06 share roughly unchanged. A06, which earlier went to A05 in about 29 of 100 transitions, now goes to A01 in about 30 of 100. Earlier A05 always led to A03; later A01 always leads to A03. [DIR002, DIR005, DIR004, DIR003, DIR001]\n- The relational pattern mirrors the swap: earlier A05 co-occurred with A06 in every case with A06 first, and A02/A07 preceded A05 whenever they occurred; later A01 co-occurs with A06 in every case, again with A06 first, and A02/A07 (about 50 in 100 cases each) precede A01, which in turn precedes A03 in every case. A01 and A05 never occur in the same window — A05 alone earlier, A01 alone later. [REL012, REL004, REL001, REL005, REL002, REL003]\n- All other observed behaviour is stable within sampling noise: A02 participation moved only from about 47 to 50 in 100 cases and A07 from about 53 to 50; A06 still occurs in every case at an early position (about 0.07); A02 and A07 remain mutually exclusive; and the step distances from A02, A06 and A07 to A03 stay at 2–3 steps with similar shares (e.g., A02 reaches A03 within 2 steps in about 72 vs 75 in 100). [OCC002, OCC004, POS002, POS004, POS005, LAG001, LAG002, LAG003, REL009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A05 was replaced by A01: an activity that was mandatory, executed once per case halfway through the process, fed by A02, A06 and A07 and leading to A03, is exchanged for A01 with the same participation, the same position, the same three predecessors and the same successor, while A05 is no longer observed. The support is direct (full 0-to-200 and 200-to-200 participation flips, edge-by-edge redirection, identical mid-case positions) and consistent across occurrence, direction, position and relation indicators, and the unchanged step distances from A02/A06/A07 to A03 argue against any broader re-routing of the flow around the swap. [OCC001, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS003, REL002, REL003, REL004, LAG001, LAG002, LAG003]\n\nLimitations: no screening baseline was provided, so the comparison against what an unchanged process produces rests on the empirical strengths (each strong item exceeds about 199 of 200 random re-splits of the pooled data); and the evidence cannot distinguish a genuine substitution from two independent changes (A01 added, A05 dropped) or a relabelling of A05 as A01, since the two activities never co-occur. [REL003]\n\nOther differences: none beyond sampling-level wobble — the small shifts in A02/A07 participation and in the lag shares remain within the range of random re-splits (empirical strength at most about 0.5). [OCC002, OCC004, POS005, LAG001, LAG002, LAG003]",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

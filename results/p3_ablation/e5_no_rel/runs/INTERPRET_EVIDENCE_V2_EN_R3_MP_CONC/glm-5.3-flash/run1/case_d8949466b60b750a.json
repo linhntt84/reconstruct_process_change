@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "26693d23da8014219860388f992d604c3322524781ed150005d6b6f0bdf11ec7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:44:26.665218+00:00",
+  "finished_at_utc": "2026-11-14T12:45:14.113972+00:00",
+  "latency_seconds": 47.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6203,
+    "prompt_tokens": 10264,
+    "total_tokens": 16467,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5361,
+      "text_tokens": 842
+    },
+    "cost": 0.0046410999999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20938,
+  "text": "### Observed differences\n\n- A27 was executed in about 52 in 100 traces in the earlier window and in essentially all traces in the later window (about 199 in 200), with roughly one occurrence per trace where present [OCC001].\n- A32, A33 and A38 each appeared in about 48–49 in 100 traces earlier, but in only about 1 in 200 traces later; their mean occurrences per trace fell from roughly 0.49 to about 0.01 [OCC002, OCC003, OCC004].\n- Outgoing flows from A26 changed sharply: earlier, about 51 in 100 went to A27 while about 48 in 100 were split across A38 (about 18 in 100), A33 (about 16) and A32 (about 14); later, about 97 in 100 went to A27, with only residual flows elsewhere [DIR001].\n- The distance from A26 to A28 concentrated: earlier, about half the cases reached A28 two steps after A26 and about 47 in 100 four steps later; later, about 97 in 100 reached it in two steps [LAG001].\n- A27's own routing is essentially unchanged: A28 follows A27 immediately in about 97 in 100 cases earlier and in all observed cases later [DIR002, LAG004].\n- The remaining qualified items about A32, A33 and A38 (their successors, positions and pairwise lags) each rest on a single later trace and describe only that residual case [DIR003, DIR004, POS002, POS003, POS004, LAG002, LAG003, LAG005, LAG006, LAG007, LAG008, LAG009].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, the alternative route from A26 through A32, A33 and A38 is effectively no longer executed: these three activities dropped from roughly half of all cases to about 1 in 200 traces, and A26 now leads almost exclusively to A27, which is immediately followed by A28. At the same time A27 became near-mandatory, rising from about half of cases to nearly all. This is a participation and routing change — a branch becoming skipped — supported directly by the participation items for all four activities, the collapse of A26's outgoing distribution onto A27, and the A26→A28 distance concentrating at two steps; the 21 qualified control-flow items far exceed the roughly 0.5 expected without change, and all items point the same way [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001].\n\nLimitations: A32, A33 and A38 still occur in one later trace, so the evidence shows near-disappearance rather than a confirmed removal of the branch, and the internal routing of that residual case is documented only by single-trace profiles [OCC002, OCC003, OCC004, DIR003, DIR004]. An important competing explanation the evidence cannot rule out is that the branch still exists but was chosen in almost no later cases, versus being structurally removed.\n\nOther differences: A28 was present in all traces in both windows and its mean event position shifted only slightly earlier (about 0.55 to 0.53 of normalized position), consistent with the shorter route but on its own not evidence that the activity was moved [POS001].",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

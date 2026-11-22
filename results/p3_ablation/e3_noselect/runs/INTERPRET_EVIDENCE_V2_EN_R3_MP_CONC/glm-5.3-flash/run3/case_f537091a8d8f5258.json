@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f537091a8d8f5258.json",
+  "evidence_sha256": "1c1dca0b245ed35d3a28225a55581bca0a9d357825be2d327490d24c162c332a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:55:22.444104+00:00",
+  "finished_at_utc": "2026-11-15T13:57:38.939087+00:00",
+  "latency_seconds": 136.49,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18788,
+    "prompt_tokens": 26180,
+    "total_tokens": 44968,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17249,
+      "text_tokens": 1539
+    },
+    "cost": 0.013321
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55490,
+  "text": "### Observed differences\n\n- **The tail of the main sequence was reordered.** In the earlier window the chain ran A01 → A04 → A07 → A09, and A09 was then followed by A05 or A06 (roughly half the cases each), with A05 and A06 adjacent at the end in either order (A05 first in about 25 in 100 traces, A06 first in about 23). In the later window the order is fixed: A05 precedes A06 whenever both occur (about 55 in 100 vs 0), and the pair now runs before A07 and A09 — A07 preceded A05 in about 48 in 100 traces before and never after, and A09 likewise never precedes A05 or A06 anymore. [REL010, REL011, REL012, REL013, REL014]\n\n- **Successors were redistributed accordingly.** After A04, continuation to A07 fell from about 80 in 100 outgoing transitions to about 9, while continuation to A05 rose from about 1 to about 51; after A06 the return edge to A05 disappeared (about 96 in 100 to 0), replaced mainly by A07 (about 76 in 100); after A01 the flow now splits evenly between A04 and A05 (about 45 each) where it previously went mostly to A04 (about 76). [DIR001, DIR003, DIR004, DIR005]\n\n- **A09 became the closing activity.** Before, every occurrence of A09 had a successor (96 outgoing transitions, about half to A05 and half to A06); in the later window it had one in only about 12 of the roughly 109 traces containing it, and its median event position moved from 0.6 to 1.0, while A05 and A06 moved earlier (median about 0.8 → 0.4 and 1.0 → 0.6) and A07 moved later (0.4 → 0.8). [DIR008, POS003, POS004, POS005, POS006]\n\n- **Pairwise distances moved with the new order.** A01→A05 and A04→A05 shrank from typically 3–5 steps to 1–2 steps, A01→A09 and A04→A09 stretched from 2–3 steps to 4–5, and A04→A07 is no longer immediate (distance 1 in about 89 in 100 cases before, 2–4 steps after). [LAG002, LAG003, LAG005, LAG007, LAG009, LAG010]\n\n- **Participation shifted between two activity groups.** A01, A04, A05, A06, A07 and A09 each appear in about 55 in 100 later traces versus about 48 before, while A03, A08, A10 and A11 each fell from about 28 to about 21 in 100 (A02 stable at about 25); the internal routing of the A03/A08/A10/A11 group is essentially unchanged. [OCC001, OCC003, OCC008, OCC010, OCC011, OCC002, DIR002, DIR007, DIR009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence directly and consistently supports the hypothesis that the placement of the A05–A06 segment changed relative to A07–A09: in the earlier window A05 and A06 ran after A09 near the end of the trace in no fixed mutual order (A01 → A04 → A07 → A09 → A05/A06), whereas in the later window they run before A07 in the fixed order A05 then A06, giving a typical sequence A01 → A04 (or directly A05) → A05 → A06 → A07 → A09 with A09 now ending the trace. The relational, positional, successor and distance views all show the same change — every A05/A06-versus-A07/A09 relation reversed or became fixed by large margins, and nearly all of these items show differences larger than in about 995 of 1000 random re-splits of the pooled data. [REL010, REL011, REL012, REL013, REL014, DIR001, DIR003, DIR004, DIR005, DIR008, POS003, POS004, POS005, POS006, LAG002, LAG005, LAG007, LAG009, LAG010]\n\nOther differences: the six main-chain activities occur in more traces (about 48 → 55 in 100) while A03, A08, A10 and A11 occur in fewer (about 28 → 21 in 100), a participation shift the evidence records but cannot attribute to the reordering; back-transitions such as A04→A01 and A05→A04 also became more frequent (A04→A01 from about 10 to about 23 in 100 of A04's outgoing transitions). [OCC001, OCC003, OCC008, OCC010, OCC011, DIR002, DIR007, DIR009, DIR003, LAG006]\n\nAn important competing explanation the evidence cannot rule out is that a new variant covering the old tail sequence appeared in the later window rather than the existing path being rewired; the indicators also rely on event positions, so nothing can be said about clock-time timing. [DIR001, DIR003, DIR005]",
+  "case_id": "case_f537091a8d8f5258",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

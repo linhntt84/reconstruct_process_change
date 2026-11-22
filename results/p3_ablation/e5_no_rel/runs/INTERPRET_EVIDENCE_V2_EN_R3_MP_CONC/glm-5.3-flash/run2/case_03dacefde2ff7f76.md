@@ -1,0 +1,19 @@
+### Observed differences
+
+- **A45 now reaches A26 directly.** In the earlier window, A45's outgoing transitions spread over three alternative activities — about 31 in 100 went to A19, 28 to A25 and 26 to A20 — and A45 reached A26 only two to three steps later (about 84 in 100 at distance 2). In the later window, about 89 in 100 of A45's outgoing transitions go to A26, now immediately (distance 1 in 89 of 100 cases). [DIR006, LAG008]
+
+- **A19, A20 and A25 changed their successors.** In the earlier window each led almost exclusively to A26 (about 97, 89 and 98 in 100 of their outgoing transitions respectively), and A25 was immediately followed by A26 in all 63 observed cases. In the later window that adjacency has practically disappeared (1 case), and A19, A20 and A25 instead lead to A28 and A32 (A19 about 51/46, A20 about 51/43, A25 about 38/58 in 100). [DIR001, DIR002, DIR003, LAG003]
+
+- **The three activities kept their participation but moved much later in the trace.** The share of traces containing them stayed similar (A19 about 38→31 in 100, A20 32→34, A25 32→38), while their mean event position shifted from about 0.31–0.34 to about 0.58–0.59. A26, present in every trace in both windows, sits slightly earlier (mean about 0.35→0.32). [POS001, POS002, POS003, POS004]
+
+- **The later segment changed from a fixed chain to an interleaved one.** In the earlier window A27 was followed immediately by A28 (about 98 in 100 of its outgoing transitions) and A28 immediately by A32 (about 94), so A27 reached A32 in two steps (about 96 in 100). In the later window A27 sends about 18/15/14 in 100 of its outgoing transitions to A20/A19/A25 and A28 sends about 22/15/14 to A25/A20/A19; immediate adjacencies A20→A28 (36 cases, 97 in 100 at distance 1), A28→A20 (30 cases, all at distance 1) and A20→A32 (66 cases) appeared. As a result, A27→A28 is now two steps apart in about 49 of 100 cases, A28→A32 in about 51, and A27→A32 in three steps in about 97. [DIR004, DIR005, LAG001, LAG002, LAG004, LAG005, LAG006, LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative block A19–A20–A25 was relocated: in the earlier window it sat between A45 and A26 at about one third of the trace, whereas in the later window A45 bypasses it straight to A26 and the block now lies in the later segment, inserted between A27 and A28/A32, with occasional immediate back-and-forth between A28 and A20. This rests on direct relational evidence: the A25→A26 adjacency fell from 63 observed cases to 1, A45→A26 became immediate, the successors of A19/A20/A25 switched from A26 to A28/A32 while A27 and A28 now lead into them, and the block's event position moved from about 0.32 to about 0.59 with little change in how often its activities occur. The 19 qualifying control-flow items far exceed the roughly 0.6 expected by chance in an unchanged process, so the set of differences is unlikely to be a sampling artifact, and each item's difference also exceeds about 995 in 1000 random re-splits. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, POS001, POS002, POS003, POS004]
+
+Limitations: three of the new adjacencies (A20→A28, A20→A32, A28→A20) had only one observation in the earlier window, so their newness is inferred from the later window's frequencies together with the successor changes; the evidence also cannot fully rule out that the A45 bypass and the later-segment insertion are two separate changes rather than one relocation, nor fix the exact internal order of the later segment (for example whether A28→A20→A28 forms a short loop). [LAG001, LAG002, LAG006, DIR004, DIR005]
+
+Other differences: A27 occurs slightly earlier in the trace in the later window (mean event position about 0.58→0.55); this small shift is not further explained by the evidence. [POS005]

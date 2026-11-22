@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_3e135c8ad53638a4.json",
+  "evidence_sha256": "3f0310bec93fac22bceed56c5cf83a1f65651e752c047f0e2bf62f671f9de26d",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:06:22.198234+00:00",
+  "finished_at_utc": "2026-11-15T03:06:43.332960+00:00",
+  "latency_seconds": 21.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2850,
+    "prompt_tokens": 21104,
+    "total_tokens": 23954,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2182
+    },
+    "cost": 0.003591736
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 7945,
+  "text": "### Observed differences\n\n- In the earlier window, activities A22, A31, A32 and A37 occurred in every trace; in the later window they occur in about half of the traces (A22: 53.5%, the others: 47%). [OCC001, OCC002, OCC003, OCC004]\n- A20's outgoing transitions changed: before it went to A37, A31 and A32 in roughly equal shares (about 35%, 34%, 31%); after it goes almost exclusively to A23 (99.5%). [DIR001]\n- A21's outgoing transitions changed: before it always went to A22; after it goes to A22 in 53.5% of cases and to A32, A37 and A31 in smaller shares (about 16%, 16.5%, 14%). [DIR002]\n- A31, A32 and A37 now have a new successor A26 (about 36%, 29% and 34% of their outgoing transitions respectively) and less often go to A23. [DIR003, DIR004, DIR005]\n- The order between A23 and the group A31/A32/A37 reversed: before, the group always came before A23; after, when they co-occur (47% of traces), A23 comes before them in about 46.5% of traces. [REL014, REL015, REL016]\n- A20 and A23 became directly adjacent: before, A23 was 4 steps after A20; after, it is 1 step after A20. [LAG001]\n- The group A31/A32/A37 moved later in the trace: their mean relative position increased from about 0.39 to 0.58 (among traces where they occur). [POS006, POS007, POS008]\n- The elapsed time between A23 and A24 increased from about 1.0 hour to 1.95 hours (mean), and the median from 1.02 to 1.94 hours. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a restructuring of the process: A20 now leads directly to A23, bypassing a group of activities (A31, A32, A37) that previously occurred between A20 and A23. Those activities, together with A22, became optional (occurring in about half the traces) and now occur after A23, with a new successor A26. This is supported by the direct successor change from A20 to A23, the adjacency change between A20 and A23, the reversal of order between A23 and the group, and the drop in participation of the group. The large number of control-flow items (47 vs 0.51 expected by chance) rules out chance as an explanation.\n\nOther differences: The elapsed time between A23 and A24 roughly doubled, indicating a separate change in timing. [TWAIT001]\n\nA competing explanation that cannot be fully ruled out is that the group activities were not simply skipped but moved to a different branch of the process; however, the direct A20→A23 path and the order reversal strongly support the bypass interpretation.",
+  "case_id": "e4a_3e135c8ad53638a4",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

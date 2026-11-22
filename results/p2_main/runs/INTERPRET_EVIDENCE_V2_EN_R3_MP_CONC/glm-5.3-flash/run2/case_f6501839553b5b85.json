@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f6501839553b5b85.json",
+  "evidence_sha256": "8236902567f26e90f968591c42f1b29ca49fe94e57692a416231e3f20ea651b2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:27:36.163006+00:00",
+  "finished_at_utc": "2026-11-15T01:28:36.642111+00:00",
+  "latency_seconds": 60.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8664,
+    "prompt_tokens": 6450,
+    "total_tokens": 15114,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7664,
+      "text_tokens": 1000
+    },
+    "cost": 0.0052994999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29105,
+  "text": "### Observed differences\n\n- Activity A01 is completely absent from the earlier window (0 of 200 traces), while in the later window it appears in about 30 in 100 traces (59 of 200), with about 0.66 occurrences per trace on average; it repeats in about 14 in 100 traces overall, i.e. in roughly half of the traces that contain it. [OCC001]\n- In the later window, A01 occurs around 40% of the way through the trace by event position (median about 0.41 of the trace). [POS001]\n- The routing out of A12 changed: in the earlier window its observed outgoing transitions went to A04 in about 52 of 100 cases and to A13 in about 48 of 100; in the later window, all of its observed outgoing transitions go to A01. [DIR002]\n- In the later window, A01's observed outgoing transitions split between A04 (about 53 in 100) and A13 (about 47 in 100). [DIR001]\n- Before, A01 never co-occurred with A04 or with A13 (each of those appeared without A01 in about 50 in 100 traces); in the later window A01 co-occurs with each of them in about 30 in 100 traces, and in every such trace the order is interleaved or repeated rather than fixed. [REL001, REL003]\n- A01 and A12 were never together in the earlier window (A12 appeared without A01 in about 33 in 100 traces); in the later window they occur together in about 30 in 100 traces, with A12 before A01 in about 16 in 100 and interleaved or repeated in about 14 in 100. [REL002]\n- The step distance from A12 to A04 and from A12 to A13 moved from mostly 1–2 steps to 2–3 steps. [LAG002, LAG004]\n- Self-repeat distances shifted slightly later: A04→A04 and A13→A13 moved from lags 3–5 to lags 4–5, and A12→A12 from lag 4 to lag 5 (the latter based on few observations: 39 before, 26 after). [LAG001, LAG005, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was added as a new step between A12 and its former successors A04 and A13. In the earlier window, A12 led directly to A04 or A13 in roughly equal shares; in the later window, A12 leads to A01, and A01 leads on to A04 (about 53%) or A13 (about 47%). A01 runs in about 30 in 100 later-window traces, often repeats within a trace, and sits around 40% into the trace. Supporting signs: the rerouting at A12 is observed directly in the direction profiles; A01's co-occurrence with A12, A04 and A13 appears only in the later window; and the A12→A04/A13 distances grew by about one step, which is what inserting an activity between them would produce. In total 12 items qualified, against roughly 0.17 expected by chance in a stable process, so sampling variation cannot account for the set as a whole, and every item's difference is larger than in about 995 of 1000 random re-splits. [OCC001, DIR001, DIR002, POS001, REL001, REL002, REL003, LAG002, LAG004]\n\nLimitations: zero participation in the earlier window only means A01 was not observed there, so a very rare pre-existing variant missed by the 200 earlier traces cannot be fully excluded — although such a variant would not explain the complete rerouting of A12 away from A04/A13. The evidence also cannot determine whether A01 occupies a single fixed slot, since its order relative to A04 and A13 is interleaved or repeated in every co-occurring trace. [DIR002, REL001, REL003]\n\nOther differences: the self-repeat distances of A04→A04, A13→A13 and A12→A12 shifted slightly to larger lags; these may be side effects of the insertion but are not part of the main hypothesis, and the A12→A12 item rests on few observations. [LAG001, LAG003, LAG005]",
+  "case_id": "case_f6501839553b5b85",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

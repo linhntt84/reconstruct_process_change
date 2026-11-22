@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f06f89677b98cdca.json",
+  "evidence_sha256": "0b8e051db72c37bccc785fcdcec5812f73c4ce047d579fca00b859cb15a9f63e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:43:34.048663+00:00",
+  "finished_at_utc": "2026-11-15T08:46:37.109604+00:00",
+  "latency_seconds": 183.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26971,
+    "prompt_tokens": 22982,
+    "total_tokens": 49953,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25334,
+      "text_tokens": 1637
+    },
+    "cost": 0.016932799999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 83959,
+  "text": "### Observed differences\n\n- In the earlier window, A01 was not observed at all (0 of 200 traces); in the later window it runs in about 95 of 200 traces (48 in 100), always in the late part of the trace (median relative position about 0.85). [OCC001, POS001]\n- A01 and A18 went from never occurring together to always occurring together: earlier, A18 appeared in about 81 of 200 traces, always without A01; in the later window, every trace containing A18 (about 95 of 200) also contains A01, and A18 is always executed before A01. [REL001, OCC001, OCC018]\n- A18's hand-over changed: about 65 in 100 of its observed outgoing transitions now go to A01 — an edge not observed earlier — whereas earlier nearly all of its outgoing flow went directly to A10, A06, A12, A19, A16, A07, A17, A11, A13 and A09, a target set that now receives only about a third of A18's outgoing transitions. A01 in turn passes flow on almost entirely to that same target set (about 17 in 100 of A01's outgoing transitions to A10, 15 to A07, 14 to A12, 12 each to A16 and A17, 10 to A06). [DIR017, DIR001]\n- A18's relative position moved slightly earlier, from a median of about 0.86 to 0.75 of the trace length. [POS002]\n- A02 is now repeated: mean occurrences per trace rose from 0.48 to 1.01 while participation stayed near half of the traces (48 → 54 in 100); about 26 in 100 traces now contain A02 at least twice, none did earlier. More flow also reaches A02: A09→A02 rose from 38 to 65 in 100 of A09's outgoing transitions, A04→A02 from 13 to 23 and A05→A02 from 7 to 15. [OCC002, DIR008, DIR003, DIR004]\n- A08 stopped repeating: mean occurrences per trace fell from 0.87 to 0.48 at essentially unchanged participation (about 47 in 100 traces); earlier about 20 in 100 traces contained A08 more than once, in the later window none did. Its outgoing flow shifted toward A14 (26 → 33 in 100) and A15 (16 → 23). [OCC008, DIR007]\n- A14 now appears in more traces (20 → 48 in 100) but no longer repeats (recurrence 0.125 → 0); its outgoing flow moved away from A08 (63 → 24 in 100) toward A06 (5 → 21) and a new edge to A15 (19 in 100). [OCC014, DIR013]\n- Routing shares around the A07–A12–A19 cycle rose: A07→A12 from 20 to 30 in 100, A12→A19 from 62 to 78 and A19→A07 from 56 to 77 in 100 of the respective outgoing transitions. [DIR006, DIR011, DIR018]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was added to the process between A18 and the activities that previously followed it. In the earlier window A01 was not observed in any of 200 traces, and A18 appeared in about 81 of 200 traces always without A01; in the later window every trace containing A18 (about 95 of 200) also contains A01, with A18 always executed first — immediately before A01 in about two-thirds of A18's executions. A18's outgoing flow now runs mainly to A01 (about 65 in 100 of its observed outgoing transitions, an edge not seen earlier), and A01 leads on almost exclusively to the targets that previously followed A18 directly, while A18's direct edges to those targets shrank to about a third; A18's relative position also moved slightly earlier, consistent with an activity added after it. [REL001, OCC001, DIR017, DIR001, POS001, POS002]\n\nLimitations: the earlier window cannot distinguish a genuinely new activity from one present at a rate too low to be sampled (below roughly 2 in 100 traces, given 0 occurrences in 200 traces), and A01's exact placement varies, since in about a third of A18's later executions A01 does not immediately follow A18; the occurrence, position and relation items also describe the same traces and are not independent confirmations. [OCC001, REL001, DIR017]\n\nOther differences: A02 now repeats within traces (about 26 in 100 of its traces contain it at least twice, none earlier) and receives more inflow, above all from A09 (38 → 65 in 100 of A09's outgoing transitions); A08 stopped repeating (recurrence 0.20 → 0, mean per trace 0.87 → 0.48 at unchanged participation) and sends more of its outgoing flow to A14 and A15; A14 occurs in more traces (20 → 48 in 100) without repeats and reroutes from A08 to A06 and a new edge to A15; and the shares of the A07→A12→A19→A07 cycle all rose. A09 appeared in fewer traces (48 → 26 in 100), but this difference is within the range produced by random re-splits. [OCC002, DIR008, OCC008, DIR007, OCC014, DIR013, DIR006, DIR011, DIR018, OCC009]",
+  "case_id": "case_f06f89677b98cdca",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

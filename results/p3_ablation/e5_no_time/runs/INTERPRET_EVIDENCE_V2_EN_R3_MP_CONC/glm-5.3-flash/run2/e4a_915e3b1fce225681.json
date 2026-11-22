@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_915e3b1fce225681.json",
+  "evidence_sha256": "f97fd06028241e390dd689ea64cf4172bcbf7438e2c204bc8e58bc63a17953ca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:23:45.258882+00:00",
+  "finished_at_utc": "2026-11-15T07:25:23.090609+00:00",
+  "latency_seconds": 97.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14719,
+    "prompt_tokens": 15464,
+    "total_tokens": 30183,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13639,
+      "text_tokens": 1080
+    },
+    "cost": 0.0096791
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47515,
+  "text": "### Observed differences\n\n- In the earlier window, the five activities A30, A31, A36, A37 and A38 ran before A21 in 200 of 200 traces and before A22 in 200 of 200 traces. In the later window, this is reversed: A21 ran before each of the five in about 199 of 200 traces, and A22 did so in about 199 of 200. All ten pairs still co-occur in every trace in both windows, so participation did not change — only the order did. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]\n- The routing around these activities was rewired consistently. A20 previously led to each of the five group activities with roughly 19–23 in 100 of its outgoing transitions each; in the later window, about 995 in 1000 of its outgoing transitions go to A22. A21 previously always led to A25; in the later window, roughly 16–23 in 100 of its outgoing transitions go to each of the five group activities, and almost none to A25. Each group activity, which previously sent about 18–22 in 100 of its outgoing transitions to A22, now sends essentially none there and about 16–23 in 100 to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- Event positions moved in the same direction: A22's mean relative position moved earlier (about 0.52 to 0.39), A21's earlier (about 0.65 to 0.52), and the five group activities' later (about 0.44 to 0.60). [POS001, POS002, POS003, POS004, POS005, POS006, POS007]\n- Step distances from A20 to the group activities and from the group activities to A22 were spread over 1–5 steps in the earlier window but collapse to a single distance in the later window; each later-window profile, however, rests on a single trace, so these items carry little weight. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the five-activity group A30, A31, A36, A37, A38 and the segment A22 → A21 exchanged their order: in the earlier window a trace ran A20 into the group, which cycled internally and exited to A22, then A21, then A25; in the later window it runs A20 → A22 → A21 into the group, which now exits to A25. The order flip is shown directly and near-completely for all ten group-versus-A21/A22 pairs (200 of 200 traces before versus about 199 of 200 after, all in the same direction), the position shifts of all seven activities agree, and the successor changes at A20, A21 and the group's exit match the reversal exactly. With 34 qualifying control-flow items against roughly 0.55 expected if nothing had changed, sampling variation cannot explain the pattern as a whole. Limitations: the items largely reflect one underlying difference in ordering rather than independent confirmations; the evidence cannot show whether the group moved later or the pair A22/A21 moved earlier (the two framings are equivalent), and the internal sequencing of the group is not resolved. A competing explanation the evidence cannot rule out is that unobserved activities sit between these steps, so the exact splice points of the new sequence remain uncertain. [REL001, REL006, DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\nOther differences: minor share shifts within the group's internal transitions (for example, A37's transitions to A38 rising from about 13 to about 26 in 100) are small and may reflect sampling variation, and the step-distance items rest on one later-window trace each. [DIR006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]",
+  "case_id": "e4a_915e3b1fce225681",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

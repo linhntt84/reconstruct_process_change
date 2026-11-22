@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "47824114307d36e86a38e852724a3af74136faefe16cbd3c028bffb67d02a117",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:35:15.148949+00:00",
+  "finished_at_utc": "2026-11-15T06:36:14.036628+00:00",
+  "latency_seconds": 58.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8176,
+    "prompt_tokens": 9218,
+    "total_tokens": 17394,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7270,
+      "text_tokens": 906
+    },
+    "cost": 0.005470699999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28836,
+  "text": "### Observed differences\n\n- A22 was executed in about 52 of 100 traces in the earlier window and in essentially every trace in the later window (199 of 200), still at most once per trace. [OCC001]\n- A27, A28 and A33 were each present in about 49 of 100 traces earlier, but in only 1 of 200 traces in the later window; all three are nearly absent afterwards. [OCC002, OCC003, OCC004]\n- The observed outgoing transitions of A21 were split before between A22 (about 52%), A33 (about 18%), A28 (about 17%) and A27 (about 14%); in the later window A22 accounts for essentially all of them (about 995 in 1000) and the transitions to the other three are effectively unobserved. [DIR001]\n- A23 followed A21 within two steps in about half of the earlier traces (gap 2 in about 52 of 100, gap 4 in about 48 of 100) and does so in essentially all later traces; its relative position also shifted slightly earlier (mean about 0.55 to 0.53 of the trace). [LAG001, POS001]\n- The remaining qualified items mirror the same near-disappearance of A27, A28 and A33 in the direction, position and distance profiles, but their later-window profiles rest on a single trace each. [DIR002, DIR003, DIR004, POS002, POS003, POS004, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the choice following A21 collapsed onto the A22 path: earlier, a trace continued from A21 to A22 in about half the cases and otherwise to A27, A28 or A33 (roughly 14–18% of A21's observed transitions each), whereas in the later window execution proceeds from A21 to A22 in essentially every trace, A23 consistently follows two steps after A21, and A27, A28 and A33 are nearly no longer executed — consistent with these three branch activities being skipped and A22 having become effectively mandatory. [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001]\n\nSupporting signs: the participation changes are directly observed with substantial support in both windows for A22 (103 vs 199 traces) and a 97-vs-1 contrast out of 200 traces for each disappearing activity; the occurrence, direction and distance indicators all describe the same underlying difference; and screening qualified 20 control-flow items where about 0.38 would be expected without a change, so the pattern as a whole is not what an unchanged process typically produces. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\nLimitations: the later-window profiles of A27, A28 and A33 rest on one trace each, so the evidence shows they are almost unobserved rather than that they were removed from the process; whether the three branches were deleted, are now taken extremely rarely, or were replaced by a direct connection cannot be distinguished, and the agreeing items are not independent confirmations. [OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

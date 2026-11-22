@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_b0cdcfe8a339633b.json",
+  "evidence_sha256": "cdde9677638734f9ae10d171ac3b1f3b040fe854a2fb0066f89a7c5c0851a2bc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:42:40.006084+00:00",
+  "finished_at_utc": "2026-11-15T03:44:49.631728+00:00",
+  "latency_seconds": 129.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18897,
+    "prompt_tokens": 24695,
+    "total_tokens": 43592,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17041,
+      "text_tokens": 1856
+    },
+    "cost": 0.01315275
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60122,
+  "text": "### Observed differences\n\n- Six activities became near-universal: A28, A30 and A31 ran in about 49 of 100 traces in the earlier window and about 99 of 100 in the later window; A32, A33 and A34 rose from about 52 of 100 to essentially every trace. None of the six repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- Earlier, the six formed two alternative blocks: A28, A30 and A31 always ran together (in about 49 of 100 traces, absent together otherwise), A32, A33 and A34 likewise (about 52 of 100), and no trace contained activities from both blocks — each case executed exactly one block. In the later window both blocks run in almost every case: cross-block pairs that never co-occurred earlier now co-occur in about 98 of 100 traces, always with the A28/A30/A31 activity before the A32/A33/A34 activity, and within-block pairs co-occur in about 98–100 of 100 traces. [REL013, REL014, REL018, REL025, REL026, REL027, REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]\n- The order inside each block stays unfixed in both windows; for example A28 and A30 appear in both orders in similar shares earlier (about 24 vs 25 of 100) and later (about 49 vs 50 of 100). [REL013, REL014, REL018, REL025, REL026, REL027]\n- Routing changed at both ends of the segment: A25 earlier spread its outgoing flow almost evenly over all six activities (shares about 0.15–0.19) and in the later window leads almost only to A28, A30 and A31 (about 0.30–0.38 each); A28, A30 and A31 earlier sent about 0.30–0.36 of their outgoing transitions to A26, and in the later window that edge has all but disappeared (about 0.005 or unobserved) while new edges to A32, A33 and A34 (about 0.08–0.13 each) carry the flow onward. [DIR001, DIR002, DIR003, DIR004]\n- Step distances and relative event positions are consistent with this: A25 to A32/A33/A34 and A28/A30/A31 to A26 were 1–3 steps apart earlier and are 4–5 steps apart in the later window; A25 sits slightly earlier (mean relative position about 0.67 to 0.62), A26 slightly later (about 0.80 to 0.83), the first-group activities earlier (about 0.74 to 0.68) and the second-group activities later (about 0.73 to 0.77). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- On two transitions into A27, the elapsed time between consecutive completion events roughly doubled: from A20 the mean rose from about 0.9 to about 1.8 hours, and from A29 from about 0.2 to about 0.4 hours. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nChance alone cannot explain the volume of flagged evidence: 51 control-flow items and 2 timing items qualified, where an unchanged process would produce about 0.6 and about 0.01 respectively, and every item exceeds at least about 99.5% of random reference splits. [OCC001–OCC006, DIR001–DIR004, POS001–POS008, REL001–REL027, LAG001–LAG006, TWAIT001–TWAIT002]\n\nMain hypothesis: the evidence supports the possibility that the segment between A25 and A26, which earlier executed exactly one of two alternative three-activity groups per case (skipping the other), now executes both groups in sequence in almost every case — first A28, A30 and A31 in no fixed internal order, then A32, A33 and A34 in no fixed internal order — so that A26 is reached only after the second group. The direct routes A25 to A32/A33/A34 and A28/A30/A31 to A26 have practically vanished. This is shown directly: participation of all six activities rose from about half to nearly all traces, cross-group pairs went from never co-occurring to co-occurring in about 98 of 100 traces in a fixed cross-group order, and the successor profiles and step distances show the rewiring at both ends of the segment. [OCC001, OCC004, REL015, REL019, REL022, DIR001, DIR002, DIR003, DIR004, LAG001, LAG004, POS001, POS002]\n\nLimitations: many flagged items describe the same underlying difference and are not independent confirmations; the outgoing transitions of A32, A33 and A34 were not profiled, so the final hand-back to A26 is inferred from order and co-occurrence rather than observed edges; and about 1–2 of 100 later traces still miss part of a group, so a small residue of the earlier single-group behaviour cannot be ruled out. [OCC001, OCC004, REL010]\n\nOther differences: the doubling of elapsed time between consecutive completion events on the transitions A20→A27 (mean about 0.93 to 1.85 hours, median about 0.93 to 1.84) and A29→A27 (mean about 0.19 to 0.40 hours, median about 0.14 to 0.33) is a timing difference in its own right; the evidence shows no structural link between A20, A29 or A27 and the rerouting above, so it is reported separately. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_b0cdcfe8a339633b",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

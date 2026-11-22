@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_c20f0115c62d65b0.json",
+  "evidence_sha256": "77c6b069a08534eae3ab1f7720c28b630e5b3d51081eb73b1b452ae0d5503de7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:44:05.926706+00:00",
+  "finished_at_utc": "2026-11-15T06:44:58.180471+00:00",
+  "latency_seconds": 52.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7473,
+    "prompt_tokens": 8116,
+    "total_tokens": 15589,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6456,
+      "text_tokens": 1017
+    },
+    "cost": 0.0049539
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23502,
+  "text": "### Observed differences\n\n- The clearest difference is participation. Before, A19, A20 and A25 each occurred at most once per trace and appeared in about 32, 28 and 40 in 100 traces respectively (64, 56 and 80 of 200 traces); in the later window each appears in only 1 of 200 traces (about 0.5 in 100). [OCC001, OCC002, OCC003]\n- Routing into these activities changed accordingly. Before, about 53 in 100 outgoing transitions of A27 went to A28, while roughly 44 in 100 went to A25, A19 or A20 (about 20, 13 and 10 in 100); in the later window about 97 in 100 go to A28, and transitions from A27 to the three activities are no longer observed. [DIR004]\n- Routing out of A28 changed the same way. Before, about 45 in 100 of A28's outgoing transitions went directly to A29 and about 54 in 100 went to A19, A20 or A25; in the later window about 99 in 100 go directly to A29. [DIR005]\n- Distances tightened consistently with this: A27 is immediately followed by A28 in about 98 of 100 later traces (about 54 in 100 before), A28 is immediately followed by A29 in about 98 of 100 (about 45 in 100 before), and the typical distance from A27 to A29 shrank from 3 steps to 2. [LAG001, LAG002, LAG003]\n- A29 itself is stable: it appears in all traces in both windows, with only a slight forward shift in mean position (about 0.56 to 0.55 of trace length). [POS004]\n- The single later occurrences of A19, A20 and A25 point to new successors (A44, A08, A42) and different positions, but each of these profiles rests on one trace and is weak evidence. [DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the activities A19, A20 and A25 — previously an optional, once-per-case block around the middle of the trace, each executed in roughly 30–40 in 100 cases — are almost never executed any more, and that as a direct consequence the flow from A28 to A29 became immediate while A27 now routes almost exclusively to A28, shortening the path from A27 to A29 from typically 3 steps to 2. The participation drops are large (64, 56 and 80 traces down to 1 each out of 200), and the relational items showing the successor and distance changes directly are each based on about 200 observations per window, so the structural consequence is well documented rather than inferred from the participation drop alone. Screening also qualifies 15 control-flow items against roughly 0.5 expected if nothing had changed, so the set of differences is far larger than an unchanged process typically produces. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nLimitations: the evidence cannot distinguish a full removal of A19, A20 and A25 from these activities still running at a very low rate (1 of 200 traces each); the apparent new successors of their single later occurrences rest on one trace each and should not be read as new standard behaviour. The occurrence, routing and distance items partly describe the same underlying traces, so they are consistent but not independent confirmations. A competing explanation the evidence cannot fully rule out is that the three activities remain part of the process at a very low frequency that the later sample barely captured — unlikely given all three dropped simultaneously, but not excluded. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003]\n\nOther differences: A29 shows a small forward shift in mean position while remaining in every trace, plausibly a side effect of the shortened traces rather than a separate change; the single later occurrences of A19, A20 and A25 show deviant positions and successors, but these are too weak to support any claim. [POS004, POS001, POS002, POS003, DIR001, DIR002, DIR003]",
+  "case_id": "case_c20f0115c62d65b0",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

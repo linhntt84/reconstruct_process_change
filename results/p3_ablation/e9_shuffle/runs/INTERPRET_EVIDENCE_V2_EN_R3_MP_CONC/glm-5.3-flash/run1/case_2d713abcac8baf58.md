@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 were not observed in any of the 200 traces, while A19, A20 and A21 each ran in about 30–36 in 100 traces (60–72 of 200) as strict alternatives: a trace contained exactly one of them, and two of them co-occurred in at most about 0.5 in 100 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL008]
+- In the later window the roles flipped: A26, A27 and A28 each ran in essentially every trace (about 200 of 200, roughly one occurrence per case), while A19, A20 and A21 each remained in only about 1 in 100 traces (1–2 of 200). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- A44's routing changed accordingly. Earlier, its observed outgoing transitions went mainly to A19 (about 31 in 100), A21 (about 30) and A20 (about 25), and each of those led almost always on to A29 (about 95–99 in 100 of their observed transitions). Later, A44's outgoing transitions go to A26 (about 31 in 100), A27 (about 27) and A28 (about 26), and A44 precedes each of the three in about 99 in 100 of the traces containing both. [DIR007, DIR001, DIR002, DIR003, REL007, REL013, REL018, REL022, REL025, REL027]
+- The three new activities behave as an unordered block: A26, A27 and A28 co-occur in every later trace, in both orders in similar proportions (for example A26 before A27 in about 51 in 100 traces and A27 before A26 in about 48 in 100), and each of the three precedes A29 in about 98–99 in 100 traces. [REL019, REL020, REL023, REL021, REL024, REL026]
+- The span between A44 and A29 grew: earlier A29 followed A44 about 2 steps later in about 84 in 100 cases; later it follows about 4–5 steps later (about 82 in 100 at 4 steps). A29 itself stayed in every trace in both windows, its mean relative position shifting only slightly later (about 0.40 to 0.44). [LAG001, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural restructuring of the segment between A44 and A29. In the earlier window, A44 was followed by exactly one of the three alternatives A19, A20 or A21, which then led to A29; in the later window, that single intermediate step is replaced by a block of three activities — A26, A27 and A28 — executed in every case, in no fixed order among themselves, with A44 preceding the block and the block preceding A29. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL019, REL020, REL023, REL021, REL024, REL026, LAG001]
+
+Supporting signs: the participation flips are near-total in both directions (0 to about 100 in 100 for A26/A27/A28; about 30–36 in 100 down to about 1 in 100 for A19/A20/A21); A44's successor profile changed directly from the old alternatives to the new block, and A44 precedes each new activity in about 99 in 100 shared traces; each of the three precedes A29 in about 98–99 in 100 traces; and the A44→A29 step distance doubled from about 2 to about 4 steps, consistent with one intermediate activity being replaced by three. With 48 control-flow items qualifying against fewer than 1 expected for an unchanged process, chance sampling cannot explain the evidence as a whole. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL022, REL025, REL027, LAG001]
+
+Limitations: zero participation only means an activity was not observed, so the evidence cannot show whether A26, A27 and A28 are genuinely new to the process or were previously executed in other segments and newly routed into this one; and the mixed order inside the block is consistent with either concurrent execution or merely unfixed ordering, which positional evidence cannot separate. [OCC004, OCC005, OCC006, REL019, REL020, REL023]
+
+Other differences: about 1 in 100 later traces still contain A19, A20 or A21; the successor and position profiles observed for them there rest on only 1–2 traces each and are too weak to characterise a residual pattern. [DIR001, DIR002, DIR003, POS001, POS002, POS003]

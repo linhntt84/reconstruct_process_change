@@ -1,0 +1,16 @@
+### Observed differences
+
+- The branch choice after A02 reversed. In the earlier window, A02 was followed by A04 in about 56 in 100 transitions and by A03 in about 44; in the later window A03 led in about 53 and A04 in about 47 — roughly 18 of 200 cases moved from the A04 branch to the A03 branch. This was the largest routing difference and exceeded about 94 in 100 random re-splits of the same data [DIR001].
+- Participation mirrored this shift. A03 appeared in 44% of traces before and 53% in the later window (mean occurrences per trace 0.96 to 1.21), while A04 fell from 56% to 47% of traces (mean 0.56 to 0.47; A04 never repeats in either window) [OCC001, OCC002].
+- The activities downstream of A03 all became more frequent: A06, A07 and A10 each rose from about 44% to about 53% of traces, A09 from about 23% to about 29%, and A05 from about 27% to about 29%; mean occurrences per trace rose in step (A06 0.95 to 1.17, A09 0.51 to 0.64, A05 0.52 to 0.68) [OCC003, OCC004, OCC005, OCC006, OCC007].
+- Inside the A03-led cluster the wiring showed no meaningful change: A03 still went mainly to A05 (about 54% to 56%) and A07 (about 42% to 39%), A06 mainly to A09 (about 53% to 54%) and A10 (about 44% to 43%), A07 led back to A06 in about 93%, and A09 to A06 in nearly all cases in both windows. These small shifts were not unusual for random re-splits (strength 0.07 to 0.37) [DIR002, DIR003, DIR004, DIR005].
+
+### Inference
+
+Support level: Supported hypothesis
+
+Main hypothesis: in the later window the choice after A02 favours A03 over A04, where it previously favoured A04, so the existing A03-led path — A03, then typically A05 or A07, with A06, A09 and A10 connected through repeating transitions — is entered more often, while the A04 path is entered less often. The routing change at A02 is observed directly, the participation changes mirror it almost exactly (A03 up 9 points, A04 down 9 points, the cluster activities up 2 to 9 points), and the cluster's internal transition shares stayed stable, which fits a pure shift in how often an existing path is taken rather than activities appearing, disappearing or being bypassed [DIR001, DIR002, DIR003, DIR004, DIR005, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007].
+
+Limitations: the occurrence increases are downstream consequences of the same routing change, so they corroborate but do not independently confirm it; the evidence contains no outgoing profile for A04, so the internal shape of the A04 path cannot be compared; and no screening expectation is provided, so the chance comparison rests on the per-item empirical strengths (0.70 to 0.94), which makes an unusually large sampling fluctuation unlikely but not impossible [DIR001, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007].
+
+Other differences: mean occurrences for A03 and A06 rose slightly more than participation alone explains (A03 0.96 to 1.21 on a 9-point participation rise; A06 0.95 to 1.17), suggesting a small increase in repeated executions inside the loop; this is minor next to the participation shift [OCC001, OCC004].

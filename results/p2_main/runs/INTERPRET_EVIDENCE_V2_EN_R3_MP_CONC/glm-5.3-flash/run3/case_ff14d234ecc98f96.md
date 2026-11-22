@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 each ran in essentially every trace (100 in 100); in the later window each appears in only about 1 in 100 traces. Conversely, A19, A20 and A21 were absent before (0–1 of 200 traces) and now each run in about 31–37 in 100 traces. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- In the later window, A19, A20 and A21 act as alternatives: any pair of them shares a trace in at most about 1–2 in 100 cases, and together they cover nearly every later trace. [REL013, REL014, REL020, OCC001, OCC002, OCC003]
+- The new activities sit where the old ones did: A19, A20 and A21 lead to A29 in about 97 in 100 of their observed outgoing transitions, A44 precedes them in about 30–37 in 100 traces, and they precede A29 in about 31–37 in 100 traces. [DIR001, DIR002, DIR003, REL018, REL019, REL024, REL025, REL029, REL030]
+- A44's successor mix flipped accordingly: before, about 94 in 100 of its outgoing transitions went to A26, A27 or A28; in the later window about 93 in 100 go to A19, A20 or A21. [DIR007]
+- The old block's relations vanished: A26, A27 and A28 co-occurred with each other, with A44 and with A29 in 100 in 100 earlier traces, but in at most about 1 in 100 later traces; A29 and A44 themselves still run in every trace in both windows. [REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039, POS007, POS008]
+- The event distance from A44 to A29 shrank from about 4–5 positions (93 in 100 at distance 4 before) to about 2–3 positions (92 in 100 at distance 2 after); A29's mean position moved slightly earlier (about 0.43 to 0.40 of the trace) and A44's slightly later (about 0.31 to 0.33). [LAG010, POS007, POS008]
+- A11 and A12 (about 47 in 100 traces before, about 56 in 100 after) were previously always followed by the A26/A27/A28 block; in the later window each precedes one of A19/A20/A21 in about 17–20 in 100 traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the reading that, in the later window, the segment between A44 and A29 is executed differently: instead of the three activities A26, A27 and A28, which previously ran in every trace between A44 and A29 (in varying order), traces now run exactly one of the three activities A19, A20 or A21 — each in roughly 31–37 in 100 traces, rarely together — with A44 preceding it and A29 following it. This rests on direct relational evidence placing the new activities in that segment (A44 before them, them before A29, and their dominant outgoing edge to A29), on the matching shift in A44's successor profile, and on the shortened A44-to-A29 distance, which fits one activity standing where three used to; A29 and A44 themselves continue unchanged in every trace. The screening comparison also rules out sampling noise for the ensemble: 70 items qualified where only about 0.78 would be expected without a change. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR007, REL018, REL019, REL024, REL025, REL029, REL030, REL031, REL036, LAG010]
+
+The evidence cannot fully rule out that the disappearance of A26/A27/A28 and the appearance of A19/A20/A21 are two independent changes located in the same segment rather than one coordinated substitution, and the residual routing of A26/A27/A28 in the later window rests on only 1–2 observations, so their remaining behaviour is weakly documented. [DIR004, DIR005, DIR006]
+
+Other differences: A11 and A12 now occur somewhat more often (about 56 vs 47 in 100 traces) and have switched from always preceding the old block to preceding the new activities; A29 and A44 show only small position shifts. [REL001, REL002, REL003, REL007, REL008, REL009, POS007, POS008]

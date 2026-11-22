@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "b7bcaaf1496851f7e01bd1edc814fc4ec204c27ff56932e2175cf66f8b131bc6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:38:47.563051+00:00",
+  "finished_at_utc": "2026-11-15T08:40:45.300687+00:00",
+  "latency_seconds": 117.74,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17000,
+    "prompt_tokens": 10298,
+    "total_tokens": 27298,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15696,
+      "text_tokens": 1304
+    },
+    "cost": 0.010044699999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53488,
+  "text": "### Observed differences\n\n- The relative order of A02 and A04 changed. In the earlier window, A02 preceded A04 in all 200 traces; in the later window, A02 still precedes A04 in about 54 in 100 traces, but A04 now precedes A02 in about 46 in 100. The two activities still occur together in every trace in both windows. [REL004]\n- Successor shares around this pair were redistributed. After A01, transitions to A02 fell from about 87 in 100 to about 50 in 100, while direct transitions to A04 rose from about 6 in 100 to about 43 in 100. [DIR001]\n- After A02, transitions to A04 fell from 94 in 100 to about 50 in 100, and A02 now leads directly to A03 in about 44 in 100 cases, which was not observed earlier. After A04, transitions to A03 fell from 96 in 100 to about 49 in 100, and A04 now leads back to A02 in about 40 in 100 cases, also not observed earlier. [DIR002, DIR004]\n- A02 now occurs later in the trace (mean event position about 0.17 before vs 0.27 after; upper quartile 0.2 vs 0.4) and A04 earlier (mean about 0.39 vs 0.28; median 0.4 vs 0.2). [POS002, POS004]\n- Distances shifted accordingly: A03 immediately follows A02 in about 44 in 100 later cases (never earlier, when it followed two positions later in 90 in 100); A04 to A03 is immediate in about 49 in 100 (down from 96 in 100), with one event between in about 43 in 100; A01 to A04 is immediate in about 49 in 100 (earlier about 6 in 100, usually two positions apart); A01 to A02 is immediate in about 57 in 100 (down from all cases). [LAG005, LAG009, LAG003, LAG001]\n- These key differences were larger than in about 199 of 200 random re-splits and rest on roughly 200 traces per window. [DIR001, DIR002, DIR004, POS002, POS004, REL004, LAG001, LAG003, LAG005, LAG009]\n- The rest of the control flow is essentially unchanged: A03's split between A05 and A06 (about 44/56), the A05–A06 alternation, and the orders of A01 with A02 and with A03 stay as before. [DIR003, DIR005, DIR006, REL001, REL002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the previously fixed execution order between A02 and A04 became flexible. In the earlier window essentially every trace ran A01 → A02 → A04 → A03; in the later window about 40–45 in 100 traces run the reverse order A01 → A04 → A02 → A03, so A01 is followed directly by A04, A03 directly follows A02, and A04 leads back to A02. Because A02 and A04 still co-occur in every trace and neither is bypassed, this is a change in ordering constraints rather than activities being added, removed or skipped. [REL004, DIR001, DIR002, DIR004, LAG003, LAG005, LAG009]\n\nThe support is direct and consistent: the relational item shows the order change itself, and the successor, position and lag items all shift in the direction this reordering predicts. The reversed order appears in about 92 of 200 later traces but in 0 of 200 earlier traces, and the key differences exceed about 199 of 200 random re-splits, so sampling variation or a rare one-window variant is unlikely. Note that the direction, position and lag items largely describe this same single reordering, so they corroborate one change rather than confirming several independent ones. [REL004, POS002, POS004, LAG001, LAG003, LAG005, LAG009]\n\nThe evidence cannot distinguish a genuinely loosened ordering constraint from a coexistence of two fixed variants, and because positions are event positions rather than clock times, no conclusion about timing is possible. [REL004, POS002]\n\nOther differences: A04 precedes A01 somewhat more often than before (about 14 vs 7 in 100 traces; A04→A01 transitions up from about 4 to about 11 in 100), a small shift not covered by the main hypothesis; the reverse-direction lag items for A02→A01 and A03→A01 rest on very few observations (about 26 and 6) and carry little weight. [REL003, DIR004, LAG008, LAG004, LAG007]",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

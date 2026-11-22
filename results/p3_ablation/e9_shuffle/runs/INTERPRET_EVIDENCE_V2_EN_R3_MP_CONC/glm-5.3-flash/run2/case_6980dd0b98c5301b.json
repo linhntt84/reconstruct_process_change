@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_6980dd0b98c5301b.json",
+  "evidence_sha256": "0f3197f2e0b44b936aa1d7a7d3b2398f847e9b3bec715c3da2805cf1c6489e9f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:32:15.174817+00:00",
+  "finished_at_utc": "2026-11-15T04:33:32.048611+00:00",
+  "latency_seconds": 76.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11024,
+    "prompt_tokens": 5661,
+    "total_tokens": 16685,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10083,
+      "text_tokens": 941
+    },
+    "cost": 0.0063611499999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37561,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces followed one fixed sequence around these activities: A08 → A06 → A07 → A01. Every observed outgoing transition of A08 went to A06, A06 preceded A01 and A07 preceded A01 in 100% of traces, A07's only observed successor was A01, and A01 sat at the final event position (mean relative position 1.0) with no outgoing transitions observed from it. [DIR003, REL001, REL002, DIR002, POS001, DIR001]\n- In the later window, the order of A01 versus A06 and A07 is reversed: every observed outgoing transition of A08 now goes to A01, A01 precedes both A06 and A07 in 100% of traces, A01's observed successor is now A06, and A07 ends the trace at the final position (mean 1.0) with no outgoing transitions observed from it. [DIR003, REL001, REL002, DIR001, DIR002, POS003]\n- Mean event positions shifted accordingly: A01 moved earlier from 1.0 to about 0.71, A06 moved later from about 0.71 to 0.86, and A07 moved later from about 0.86 to 1.0, with zero spread in both windows (each activity always at the same position). A06 remains before A07 in both windows. [POS001, POS002, POS003, LAG002, LAG003]\n- Step distances from A08 changed consistently: A08→A01 shortened from 3 steps to 1, A08→A06 lengthened from 1 to 2, and A08→A07 lengthened from 2 to 3, each uniformly across traces. [LAG001, LAG002, LAG003]\n- All four activities occur in all 200 of 200 traces in both windows, so this is a reordering of ever-present steps, not activities appearing or disappearing. [POS001, POS002, POS003, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the execution order of A01 relative to A06 and A07 was reversed: in the earlier window traces ran A08 → A06 → A07 → A01 with A01 last, while in the later window they run A08 → A01 → A06 → A07, with A01 directly after A08 and A06 and A07 following it in their original mutual order. [DIR003, REL001, REL002, DIR001, DIR002, POS001, POS002, POS003, LAG001, LAG002, LAG003]\n\nThe reversal is shown directly by relational evidence — the A01/A06 and A01/A07 orderings flip from 100% one way to 100% the other between windows — and by the successor changes at A08, A01 and A07, with positions and step distances consistent throughout. All 11 qualifying items describe this single restructuring, against about 0.05 expected by chance, and each item's difference exceeds about 995 of 1,000 random re-splits. [REL001, REL002, DIR001, DIR002, DIR003, POS001, POS002, POS003, LAG001, LAG002, LAG003]\n\nThe evidence cannot distinguish whether A01 moved earlier or the A06–A07 pair moved later — both descriptions fit the same observed reversal — and only the order of these four activities was tested, so additional changes among untested activities or segments cannot be ruled out. [REL001, REL002, POS001, POS002, POS003]\n\nOther differences: none — every qualifying item describes the same reordering of A01, A06, A07 and A08. [LAG002, DIR003, REL001, POS003, POS001, DIR001, REL002, LAG003, DIR002, POS002, LAG001]",
+  "case_id": "case_6980dd0b98c5301b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

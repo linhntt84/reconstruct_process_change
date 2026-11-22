@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_4e635c32e1ae04e5.json",
+  "evidence_sha256": "1f52cab466041c618f856690cdb76b3d2974bb96c493eeea53afaf3cb14bb515",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:26:46.564528+00:00",
+  "finished_at_utc": "2026-11-14T14:28:12.091541+00:00",
+  "latency_seconds": 85.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13518,
+    "prompt_tokens": 5598,
+    "total_tokens": 19116,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12637,
+      "text_tokens": 881
+    },
+    "cost": 0.007598699999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46876,
+  "text": "### Observed differences\n\n- In the earlier window, A02 was not observed in any of the 200 traces; in the later window it occurs exactly once in every trace (200 of 200), with no repetitions. [OCC001]\n- A05 appears in every trace in both windows, but its relation to A02 changed completely: earlier, A05 always occurred without A02 (100% of traces); in the later window, the two always occur together and A05 always executes before A02 (100% of traces). [REL001]\n- Earlier, A05 had no observed outgoing transitions and always sat at the same end position (1.0 on the event-position scale); in the later window, all of A05's observed outgoing transitions lead to A02. [DIR002, POS002]\n- In the later window, A02 always occupies that end position (1.0), while A05's position moved slightly earlier, from 1.0 to a mean of about 0.85 — consistent with A02 being appended directly after A05 at the close of each case. [POS001, POS002]\n- Smaller shifts away from this main change: participation of A06 rose from 44% to 50%, A07 fell from 56% to 50%, and A08 rose from 44% to 50%; A03's outgoing share to A06 rose from about 39% to 46% while its share to A04 fell from about 18% to 13%; A08's outgoing share to A04 rose from about 93% to 99% while its rare exit to A03 fell from about 7 in 100 to about 1 in 100. [OCC002, OCC003, OCC004, DIR001, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A02 was added as a mandatory final step, executed exactly once after A05 at the end of every case. In the earlier window A02 was not observed (0 of 200 traces) while A05 occurred in every trace without it; in the later window A02 occurs once in every trace, always preceded by A05, every observed outgoing transition of A05 leads to A02, and A05 moved from the end position (1.0) to a slightly earlier one (mean about 0.85) as A02 took over the fixed final position. [OCC001, DIR002, REL001, POS001, POS002]\n\nThis hypothesis rests on direct relational, successor and positional evidence that all describe the same structure, and each core item shows a difference larger than in about 199 of 200 random re-splits of the pooled data, which random re-splitting of an unchanged process rarely produces. The competing explanation the evidence cannot rule out is that A02 already existed earlier but was executed too rarely to appear in the 200 before-traces; even in that case, its rise to every trace would remain a real behavioural change. [OCC001, DIR002, REL001, POS001, POS002]\n\nOther differences: the mid-process activities A06, A07 and A08 each shifted about 6 percentage points toward equal participation (44%→50%, 56%→50%, 44%→50%), A03's routing moved mildly toward A06 (about 39%→46%) at the expense of A04 (about 18%→13%), and A08's rare exit to A03 nearly disappeared (about 7%→1%); these shifts are small relative to the main change and the evidence cannot separate them from sampling variation. [OCC002, OCC003, OCC004, DIR001, DIR005]",
+  "case_id": "case_4e635c32e1ae04e5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

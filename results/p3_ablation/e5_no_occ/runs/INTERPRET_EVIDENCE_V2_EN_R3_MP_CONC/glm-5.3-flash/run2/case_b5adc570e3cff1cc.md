@@ -1,0 +1,21 @@
+### Observed differences
+
+- **Early segment:** In the earlier window, every case ran A40 directly followed by A21 (lag 1 in 100 in 100 cases). In the later window, A40 is instead followed by exactly one of A14, A15 or A20 (about 34, 35 and 32 in 100 of its outgoing transitions respectively), and A21 then follows one step later (A40→A21 at lag 2 in 100 in 100 cases). [DIR006, LAG004, DIR001, DIR002, DIR003]
+
+- **Late segment:** In the earlier window the alternatives sat late in the case: A22 led directly to an alternative in about 52 in 100 of its outgoing transitions (A14 about 19, A15 about 18, A20 about 16) and to A23 in about 48; A23 led to an alternative in about 48 and to A27 in about 53. In the later window, A22 leads only to A23 and A23 only to A27 (100 in 100 observed transitions each), with A22→A23 and A23→A27 now always at lag 1, and A22→A27 at lag 2 where it was previously at lag 3 in all cases. [DIR004, DIR005, LAG001, LAG002, LAG003]
+
+- **Positions:** The mean event position of A14, A15 and A20 moved from about 0.60 before to about 0.32 in the later window, while A21, A22 and A23 barely moved (means about 0.33→0.35, 0.56→0.59, 0.61→0.62). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- **Order relations:** Before, A21 preceded A14 in all 38 in 100 cases containing both, and A22 preceded A14 in all 38; in the later window the order is fully reversed (A14 before A21 in all 34, and before A22 in all 34 co-occurrences). A15 and A20 show the same complete flip against A21 and A22. [REL001, REL002, REL003, REL004, REL005, REL006]
+
+- **Participation:** The share of cases containing each alternative stayed roughly stable (A14 about 38%→34%, A15 about 32%→35%, A20 about 30%→32%), and the three together still account for exactly one alternative per case, since their shares sum to about 100 in 100 in both windows and match the successor profiles of A40, A22 and A23. [POS001, POS002, POS003, DIR004, DIR005, DIR006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of mutually exclusive alternatives A14, A15 and A20 — exactly one of which executes in each case — was relocated from the late segment of the process (between A22 and A23/A27) to the start, between A40 and A21. In the earlier window a case ran roughly A40 → A21 → … → A22 → (alternative in about 52 in 100 cases) → A23 → (alternative in about 48 in 100) → A27; in the later window it runs A40 → alternative → A21 → … → A22 → A23 → A27. [DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003]
+
+The placement change is shown directly by relational evidence (complete order flips between each alternative and A21/A22), by successor replacement (A14/A15/A20 now lead only to A21, A40 leads only to alternatives, and A22/A23 lost all transitions to alternatives), by the positional shift of the alternatives while A21, A22 and A23 stayed in place, and by lag changes that match an insertion before A21 and a removal from the late segment. The 22 qualifying items far exceed the roughly 0.25 expected by chance among the 50 tested units, and the alternatives' participation is essentially unchanged, so this reads as a move of existing work rather than activities becoming optional, repeated, added or removed. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS004, POS005, POS006]
+
+Limitations: the items describe the same underlying traces from different angles, so they are not independent confirmations; positions are event positions rather than clock times; and the activities between A21 and A22 are not covered by this evidence, so that part of the path is unobserved. An important competing explanation the evidence cannot rule out is that the late placement was removed and a separate early insertion appeared, rather than one block genuinely being moved. [REL001, REL002, DIR001, DIR004, DIR005, DIR006]

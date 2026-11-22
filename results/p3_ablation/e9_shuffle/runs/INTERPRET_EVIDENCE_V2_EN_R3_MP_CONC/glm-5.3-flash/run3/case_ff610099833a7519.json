@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_ff610099833a7519.json",
+  "evidence_sha256": "d5912bc17e607a5d20678b4d606d1ab87bb99fa67d7b4f9fbb60d3416fa83fa8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:02:20.214292+00:00",
+  "finished_at_utc": "2026-11-15T10:03:01.303085+00:00",
+  "latency_seconds": 41.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5951,
+    "prompt_tokens": 6154,
+    "total_tokens": 12105,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5161,
+      "text_tokens": 790
+    },
+    "cost": 0.0038986
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 19260,
+  "text": "### Observed differences\n\n- In the earlier window, A01 appeared in about 46 in 100 traces (92 of 200), with roughly 2 occurrences per trace that contained it, at a median relative position of about 0.7 of the trace; in the later window A01 was not observed at all (0 of 200). [OCC001, POS001]\n- A13 shows the mirror image: absent from the earlier window, it appears in about 53 in 100 later traces (106 of 200), again with about 2 occurrences per containing trace and a median relative position of about 0.7 — essentially the position profile A01 had before. [OCC002, POS002]\n- The flow around A10 changed: in the earlier window all observed outgoing transitions of A10 (184) led to A01, and A01's transitions led to A03; in the later window all outgoing transitions of A10 (221) lead to A13, and A13's lead to A03. [DIR002, DIR001, DIR003]\n- The pairwise relationships flipped accordingly: A01 and A03 occurred together in about 46 in 100 earlier traces but never later; A03 and A13 never co-occurred earlier but do so in about 53 in 100 later traces; A10 moved from co-occurring only with A01 (about 46 in 100) to co-occurring only with A13 (about 53 in 100). A03 itself is present in every trace in both windows. [REL001, REL002, REL003, REL004, REL005]\n- Ordering within the fragment is similar across windows: A10 precedes its partner or is interleaved with it without a fixed order (earlier: A10 before A01 in about 25 in 100 traces, interleaved in about 21; later: A10 before A13 in about 23, interleaved in about 31), and both A01/A03 earlier and A13/A03 later show no fixed order between them. [REL002, REL005, REL001, REL004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the fragment A10 → A01 → A03, executed in about 46 in 100 earlier traces, was replaced by a fragment A10 → A13 → A03, executed in about 53 in 100 later traces: A01 is no longer observed anywhere, while A13 appears exactly in the role A01 previously held — fed by A10, flowing into A03, at the same relative trace position (median about 0.7) and with a similar repetition rate (about 2 occurrences per containing trace). The support is direct — the successor of A10 changed from A01 to A13, and the step before A03 changed from A01 to A13 — and consistent across all twelve qualifying items, far more than the 0.16 items expected by chance for the 32 units tested. [DIR002, DIR001, DIR003, REL001, REL002, REL003, REL004, REL005, OCC001, OCC002, POS001, POS002]\n\nLimitations: the evidence cannot distinguish a genuine replacement of A01 by a new activity A13 from a relabelling of the same activity under a new code, and it cannot determine whether the modest rise in how often the fragment runs (from about 46 to about 53 in 100 traces) is a real frequency change or sampling variation between the two windows. [OCC001, OCC002, POS001, POS002]",
+  "case_id": "case_ff610099833a7519",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

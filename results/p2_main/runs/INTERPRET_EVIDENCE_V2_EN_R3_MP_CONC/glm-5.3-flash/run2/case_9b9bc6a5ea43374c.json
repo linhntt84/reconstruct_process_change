@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_9b9bc6a5ea43374c.json",
+  "evidence_sha256": "49aca67cf9566e6a05e85b518fccbe4e7a5eb8df0d82b34ed489700d2c65876c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:29:59.119627+00:00",
+  "finished_at_utc": "2026-11-15T01:31:12.978464+00:00",
+  "latency_seconds": 73.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10286,
+    "prompt_tokens": 8533,
+    "total_tokens": 18819,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9180,
+      "text_tokens": 1106
+    },
+    "cost": 0.006422949999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33128,
+  "text": "### Observed differences\n\n- In the earlier window, activity A03 was not observed at all (0 of 200 traces); in the later window it appears in about 103 of 200 traces (roughly 52 in 100), once per trace, at around a third of the trace's length (median position ~0.38). [OCC001, POS001]\n- In the later window, A03's outgoing transitions split almost evenly across A12 (~36%), A11 (~35%) and A08 (~29%); earlier, A03 had no observed outgoing transitions. [DIR001]\n- The neighbouring activities now route into A03: A08's outgoing transitions changed from only A11 (~51%) and A12 (~49%) to A03 (~38%), A11 (~31%) and A12 (~31%); A12's changed from A08 (~51%) and A11 (~49%) to A11 (~34%), A03 (~33%) and A08 (~33%); A05 gained an edge to A03 (~16% of its outgoing transitions) while its share towards A07 fell from about 58% to about 45%. [DIR003, DIR004, DIR002]\n- A03 went from never co-occurring with A05, A08, A11 or A12 (each of these appeared without A03 in about 51 in 100 traces) to co-occurring with each of them in about 52 in 100 traces, while the roughly 48–49 in 100 traces containing none of these activities stayed the same. In the later window A03 always runs before A11; with A08 and with A12 both orders occur in similar shares (~23–29% each way); with A05, A05 runs first (~28%) or the two interleave (~24%), never A03 first. [REL001, REL002, REL003, REL004]\n- Step distances grew in a way consistent with an inserted step: A08→A11 spread from 1–2 steps apart to 1–3 steps (3 steps in ~38%); A12→A11 is now often 3 steps (~33%); A08 and A12 are no longer always adjacent in either direction (2 steps apart in ~32–40% of cases); A05 and A11, previously mostly 3 (~43%) or 5 (~19%) steps apart, are now always exactly 4 steps apart. [LAG002, LAG005, LAG003, LAG004, LAG001]\n- Participation of A05, A08, A11 and A12 was essentially unchanged (each in about 102–103 of 200 traces in both windows), and A11's position stayed stable; A05's position moved slightly earlier (mean ~0.18 to ~0.11 of the trace). [POS002, POS003, DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A03 was added to the process — or became executed — in about half of the cases, inserted between the A08/A12 stage and A11: it is entered from A05, A08 or A12, always completes before A11, and is followed by A11, A12 or A08 in roughly equal shares. The change is shown directly by A03's participation rising from zero to about 52 in 100 traces, by the new successor relations into and out of A03, and by co-occurrence with A05, A08, A11 and A12 appearing from zero with a consistent ordering; the increased step distances between A08/A12 and A11 match an activity sitting between them. The unchanged participation of the surrounding activities fits an insertion rather than a replacement of an existing path. Limitations: zero participation in the earlier window strictly shows only that A03 was not observed then, so a relabelled or previously dormant activity cannot be excluded; and because A03's order relative to A08 and A12 is mixed, the evidence does not pin down a single insertion point. The qualifying items largely restate this one underlying difference and are not independent confirmations. [OCC001, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG005]\n\nOther differences: A05's routing towards A07 dropped (about 58% to about 45% of its outgoing transitions) as the new edge to A03 appeared, and A05 now sits slightly earlier in the trace (mean ~0.18 to ~0.11); A11's position was essentially stable. [DIR002, POS002, POS003]",
+  "case_id": "case_9b9bc6a5ea43374c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

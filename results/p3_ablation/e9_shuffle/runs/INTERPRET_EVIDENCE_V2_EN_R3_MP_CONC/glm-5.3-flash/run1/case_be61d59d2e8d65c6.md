@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 were mutually exclusive variants: A19 ran in 65 of 200 traces (about 33%), A20 in 57 (about 29%) and A25 in 81 (about 41%), and no two of them shared a trace, so essentially every case ran exactly one of the three. In the later window, each was observed in only 1 of 200 traces (about 0.5%). A27 and A29, by contrast, occurred in every trace in both windows. [OCC001, OCC002, OCC003, REL001, REL002, REL006, POS004, POS005]
+- The variants were embedded in the flow around A27/A28 before: each co-occurred with A27, with A28 and with A29 in about 29–41% of traces, and each was a direct successor of both A27 and A28; in the later window these co-occurrences are practically zero (about 0.5%). [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, DIR005, DIR006]
+- Routing collapsed onto a direct chain: before, about 52% of A27's outgoing transitions went to A28 and about 44% to A25, A19 or A20, while about 43% of A28's transitions went to A29 and about 52% to A25, A19 or A20; in the later window, about 98% of A27's transitions go to A28 and about 97% of A28's go to A29. [DIR005, DIR006]
+- The remaining steps became consecutive: A27 followed by A28 one step later rose from about 52% to about 99%, A28 followed by A29 one step later from about 43% to about 96%, and the A27-to-A29 distance shortened from typically three steps (about 91%) to two steps (about 96%); the previously immediate A28→A25 pair (always one step apart, 38 traces) was seen in only one later trace. [LAG001, LAG004, LAG002, LAG003]
+- Separately, A10's outgoing routing became far more dispersed: before, about 20% of its transitions went to A15 and about 17% each to A47 and A16; in the later window they spread over many activities with no dominant target (largest about 17% to A26), across more transitions (35 before, 53 after). [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the three-way variant group A19, A20 and A25 — which in the earlier window supplied exactly one variant per case, directly after A27 or directly after A28 — is skipped in the later window, so that the mandatory segment between A27 and A29 now runs as an immediate chain A27 → A28 → A29. [OCC001, OCC002, OCC003, DIR005, DIR006, LAG001, LAG004, LAG002]
+
+This hypothesis is direct and consistent rather than merely numerous: the participation of all three activities fell from 65, 57 and 81 to 1 of 200 traces, their co-occurrence with A27, A28 and A29 disappeared, the successor profiles of A27 and A28 became single-target, and the screening produced 30 qualifying items against roughly 0.56 expected for an unchanged process, so the pattern as a whole is not what random re-splits produce. The evidence cannot distinguish a complete removal of the group from it still executing in a very small share of cases, it cannot pin down whether a variant previously sat directly after A27 or directly after A28, and the later-window successor profiles of A19, A20 and A25 rest on a single trace each and cannot be interpreted. [OCC001, OCC002, OCC003, REL003, REL010, DIR005, DIR006, LAG003]
+
+Other differences: the dispersal of A10's outgoing routing described above, which is not part of the main hypothesis. [DIR001]

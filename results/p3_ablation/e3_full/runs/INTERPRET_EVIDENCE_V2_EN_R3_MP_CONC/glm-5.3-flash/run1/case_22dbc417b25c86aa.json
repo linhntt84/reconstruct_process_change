@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_22dbc417b25c86aa.json",
+  "evidence_sha256": "36dfa6e11d38620c09fcdc23952f371501b6b088e7e01c1c8b29e60016e7e13a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:33:44.653177+00:00",
+  "finished_at_utc": "2026-11-16T01:34:51.396697+00:00",
+  "latency_seconds": 66.74,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8595,
+    "prompt_tokens": 9446,
+    "total_tokens": 18041,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7563,
+      "text_tokens": 1032
+    },
+    "cost": 0.0057144
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27325,
+  "text": "### Observed differences\n\n- In the earlier window, A06 was executed exactly once in every trace (200 of 200 traces, mean 1.0 occurrence per trace); in the later window it appears in no trace at all (0 of 200). [OCC001, POS005]\n- A05's routing changed completely: earlier, all of its outgoing transitions went to A06; in the later window, all go to A01. A06's own outgoing transition to A01 is no longer observed, consistent with A06 no longer occurring. [DIR001, DIR002]\n- Earlier, A06 co-occurred with each of A01, A02, A03, A04, A05 and A07 in 100% of traces — always after A02 and A05 and before A01, A03, A04 and A07. In the later window, A06 co-occurs with none of them; each partner appears without A06 in every trace, including A07, which now runs without A06 before it. [REL001, REL002, REL003, REL004, REL005, REL006]\n- All measured step distances between the remaining activities shortened by exactly one step: A05→A01 from 2 to 1, A05→A03 from 3 to 2, A05→A04 from 4 to 3, A05→A07 from 5 to 4, A02→A01 from 3 to 2, A02→A03 from 4 to 3, A02→A04 from 5 to 4. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]\n- The surviving activities sit slightly earlier in the event sequence (mean relative position: A01 0.50→0.40, A03 0.67→0.60, A04 0.83→0.80) while A05 sits slightly later (0.17→0.20); these are event positions, not clock times. [POS001, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A06 was removed from the process, or is no longer executed in any case. In the earlier window every case followed the same fixed chain, A02 → A05 → A06 → A01 → A03 → A04 → A07, with A06 running once between A05 and A01; in the later window no case contains A06, A05 leads directly to A01, and A01, A03, A04 and A07 each run one event position earlier, while A02 and A05 keep their places at the start. The support is direct and mutually consistent: A06's participation fell from 100% to 0% of traces [OCC001]; the A05→A06 edge was replaced by A05→A01 [DIR001, DIR002]; all six relations involving A06 changed from universal co-occurrence in a fixed order to no co-occurrence [REL001, REL002, REL003, REL004, REL005, REL006]; and every measured gap and downstream position shifted by exactly the one step that dropping A06 from the chain would produce [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, POS001, POS002, POS003, POS004]. All 19 items, each with empirical strength near 0.995, describe this single structural difference; because A06 is fully present in one window and absent in the other, this is a removal rather than a shift in how often existing paths are taken. An important competing explanation remains: zero participation only shows A06 was not observed in the later window, so the evidence cannot distinguish complete removal from A06 still being defined but skipped in every case, and a very small residual occurrence frequency cannot be ruled out with 200 traces per window.\n\nOther differences: none — the position and distance shifts above are consequences of the same removal, and no item points to an independent second change. [OCC001, DIR001, DIR002, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]",
+  "case_id": "case_22dbc417b25c86aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

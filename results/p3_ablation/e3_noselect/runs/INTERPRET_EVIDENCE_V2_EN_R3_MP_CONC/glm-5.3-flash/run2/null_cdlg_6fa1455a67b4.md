@@ -1,0 +1,11 @@
+### Observed differences
+
+- Participation and frequency of the five covered activities moved only marginally. A01 appeared in every trace in both windows, with a mean of about 2.0 occurrences per trace in each. A02 and A07 each appeared in about 50 in 100 traces before and about 52 in 100 after, with mean occurrences slipping from about 1.04 to about 0.97 per trace. A05 appeared in about 50 in 100 traces before and about 52 in 100 after, with mean occurrences falling from about 2.0 to about 1.9. A06 appeared in about 33 in 100 traces before and about 36 in 100 after, with mean occurrences of about 1.0 versus about 0.9. [OCC001, OCC002, OCC003, OCC004, OCC005]
+- None of these shifts stands out against random variation: the empirical strengths lie between about 0.32 and 0.40, meaning that in roughly 60 to 70 in 100 random re-splits of the pooled traces the difference between the two halves is at least as large as what was observed. [OCC001, OCC002, OCC003, OCC004, OCC005]
+- Branching behaviour is effectively unchanged. From A01, the outgoing split between A02 and A03 was about 51/49 before and about 49/51 after; from A05, the split between A06 and A07 was about 51/49 before and about 52/48 after. Both are shifts of one to two percentage points, and the A05 shift is smaller than typical random variation (strength about 0.08, i.e. about 92 in 100 random re-splits differ more). [DIR001, DIR002]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. Every observed difference is small — participation shifts of a few percentage points, occurrence shifts of well under 0.2 per trace, routing shifts of one to two points — and each is matched or exceeded in the majority of random re-splits of the pooled data, so sampling variation between the two 200-trace windows accounts for the whole picture; no relational or positional evidence is present that could point to a structural change either. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001, DIR002]

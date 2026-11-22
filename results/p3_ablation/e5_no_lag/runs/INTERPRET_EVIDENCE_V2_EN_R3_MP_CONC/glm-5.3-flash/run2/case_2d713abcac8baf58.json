@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_2d713abcac8baf58.json",
+  "evidence_sha256": "17fd4c070f482e68303372eab067f287f090019c995a76eae9b80d4f8aa715b3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:15:30.605561+00:00",
+  "finished_at_utc": "2026-11-15T07:16:45.196474+00:00",
+  "latency_seconds": 74.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10413,
+    "prompt_tokens": 21685,
+    "total_tokens": 32098,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9286,
+      "text_tokens": 1127
+    },
+    "cost": 0.00845925
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33743,
+  "text": "### Observed differences\n\n- A19, A20 and A21 nearly disappeared. In the earlier window each ran in roughly a third of the cases (about 70, 60 and 72 of 200 traces); in the later window they appear in only 2, 1 and 1 traces respectively. [OCC001, OCC002, OCC003]\n- A26, A27 and A28 appeared. None of them occurred in the earlier window; in the later window each runs in all 200 traces, essentially once per case. [OCC004, OCC005, OCC006]\n- The successors of A44 changed completely. Earlier, its outgoing transitions went mainly to A19 (about 31 in 100), A21 (30) and A20 (25); in the later window they go to A26 (about 31 in 100), A27 (27) and A28 (26). [DIR007]\n- Earlier, A19, A20 and A21 were mutually exclusive alternatives — pairs of them co-occurred in at most about 0.5 in 100 cases — and each led almost always to A29 (about 95–99 in 100 of their outgoing transitions). [REL001, REL002, REL008, DIR001, DIR002, DIR003]\n- In the later window, A26, A27 and A28 run together in every case with no fixed order among themselves (each pair appears in both orders in roughly 50/50 shares); each follows A44 in about 98–99 in 100 cases and precedes A29 in about 98–99 in 100 cases. [REL019, REL020, REL023, REL022, REL025, REL027, REL021, REL024, REL026]\n- Old and new activities never run together: pairs of one old and one new activity show \"only the old one\" or \"neither\" earlier, and \"only the new one\" in about 99 in 100 cases later. [REL003, REL009, REL014]\n- A29 occurs in every case in both windows; its mean position moved slightly later, from about 0.40 to 0.44 of the trace length. [POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A44 and A29 was restructured: earlier, A44 was followed by exactly one of the mutually exclusive activities A19, A20 or A21 (each in roughly a quarter to a third of cases), each then leading to A29; in the later window, this one-of-three choice gives way to a block in which A26, A27 and A28 all execute in every case between A44 and A29, in no fixed order. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL019, REL021, REL022]\n\nSupporting signs: 47 evidence items qualified, far more than the roughly 0.65 expected for an unchanged process, so the differences as a whole cannot be explained by random sampling; the decisive items rest on all 200 traces in both windows (A44's successor change, the co-occurrence and ordering of the new block, and the 0-of-200 versus 200-of-200 participation flips); and occurrence, successor and relation indicators consistently describe the same shift, with A29 itself unchanged in participation but sitting slightly later in the trace, consistent with three activities now running before it instead of one. [DIR007, REL019, REL021, REL022, OCC004, POS007]\n\nLimitations: the later-window behaviour of A19, A20 and A21 rests on only 1–2 traces, so the evidence cannot distinguish whether they were removed entirely or only became very rare; likewise, A26, A27 and A28 may have existed earlier at rates too low to appear in 200 traces rather than being entirely new. Zero participation only means the activity was not observed in that window. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003]\n\nOther differences: in the 1–2 later traces where A19, A20 or A21 still occur, their outgoing transitions go to other activities (such as A10, A45 and A34) instead of mainly to A29 as before; this is based on 1–2 observations and is weakly supported. [DIR001, DIR002, DIR003]",
+  "case_id": "case_2d713abcac8baf58",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

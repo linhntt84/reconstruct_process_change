@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9b9bc6a5ea43374c.json",
+  "evidence_sha256": "a98baa886e8010e22255c3bf231f390d945a4a0d15552402ebefbfbd548876c4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:14:23.453781+00:00",
+  "finished_at_utc": "2026-11-14T14:15:43.155646+00:00",
+  "latency_seconds": 79.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12965,
+    "prompt_tokens": 17109,
+    "total_tokens": 30074,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11709,
+      "text_tokens": 1256
+    },
+    "cost": 0.009048849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40081,
+  "text": "### Observed differences\n\n- Activity A03 is completely absent from the earlier window (0 of 200 traces) but runs in about 103 of 200 cases (roughly half) in the later window, typically about a third of the way into the trace; its observed outgoing transitions split roughly evenly to A12 (~36%), A11 (~35%) and A08 (~29%). [OCC003, POS001, DIR001]\n- In the earlier window, A05, A08, A11 and A12 formed a block that always ran together (about 51 in 100 traces) without A03. In the later window, A03 co-occurs with each of them in about 52 of 100 traces — exactly the traces in which they run. A03 always executes before A11 (no reverse order observed), in mixed order with A08 and A12 (each direction roughly 23–29 in 100 co-occurrences), and after or interleaved with A05 (A05 first ~28, interleaved ~24, never A03 first). [REL001, REL002, REL003, REL004]\n- The block's internal spacing loosened: A08→A11 and A12→A11 previously took only 1–2 steps, while in the later window a distance of 3 steps accounts for about 33–38 in 100 observations. A08 and A12, previously always immediately adjacent in both directions, are now 2 steps apart in about 32–40 in 100 cases, and both now lead directly to A03 (~38% and ~33% of their outgoing transitions). [LAG005, LAG006, LAG007, LAG008, DIR004, DIR005]\n- A05 repeats less often: mean occurrences per trace fell from about 1.23 to 0.93 and traces with repeats from about 31 to 24 in 100, while participation stayed near 51 in 100; its position moved earlier (median event position from about 0.18 to 0), its distance to A11 became fixed at 4 steps (previously 3 or 5), and it gained a new outgoing transition to A03 (~16% of its outgoing). [OCC005, POS002, LAG003, DIR003]\n- A07 participates in fewer traces (about 31 in 100 before, 24 after) and repeats less (mean occurrences about 0.72 to 0.42). [OCC007]\n- Among A04's observed outgoing transitions, the share leading to A09 rose from about 37% to 53%, while the share to A13 fell from about 63% to 47%; both successors remain in use. [DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A03 was added to the process and now executes inside the block formed by A05, A08, A12 and A11, in the region between the A08/A12 pair and A11. In the earlier window A03 was never observed; in the later window it appears in about half of the cases, exclusively together with that block, always before A11, after or interleaved with A05, and in varying order relative to A08 and A12. The placement is shown directly by the new relations (A03 leading to A11, A12 and A08; A08, A12 and A05 leading to A03) and by the increased step distances A08→A11 and A12→A11; occurrence, direction, position, relation and lag indicators all describe the same picture consistently, and an activity appearing in 0 of 200 versus 103 of 200 traces is not what rare-variant sampling produces. Limitations: the placement is not a single fixed slot — A03 mixes in order with both A08 and A12 — and the evidence cannot establish which activity precedes A03 in every case; the agreeing items reflect one underlying difference rather than independent confirmations. A competing explanation the evidence cannot rule out is that the A08/A12 pair lost its strict adjacency independently of A03's appearance rather than as a consequence of it. [OCC003, REL002, REL003, REL004, DIR001, LAG005, LAG008]\n\nOther differences:\n- Beyond its new connection to A03, A05 repeats less per trace and starts earlier in the trace (by event position), with its distance to A11 now fixed at 4 steps. [OCC005, POS002, LAG003]\n- A07 is executed in fewer traces and repeated less often than before. [OCC007]\n- A04's existing choice between A09 and A13 shifted toward A09 (roughly 37%→53% versus 63%→47% of its outgoing transitions); both paths remain in use, so this is a shift in shares between alternatives, though with only moderate strength (~88 of 100 reference comparisons showed smaller differences). [DIR002]",
+  "case_id": "case_9b9bc6a5ea43374c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

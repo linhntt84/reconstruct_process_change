@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f06f89677b98cdca.json",
+  "evidence_sha256": "d8e7069cad227fb72afb8bb1da3cc2316e83f32b77f7e3e7193cad9819b4d922",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:41:05.009844+00:00",
+  "finished_at_utc": "2026-11-16T02:44:19.819619+00:00",
+  "latency_seconds": 194.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28822,
+    "prompt_tokens": 194330,
+    "total_tokens": 223152,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26998,
+      "text_tokens": 1824
+    },
+    "cost": 0.043560499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 88839,
+  "text": "### Observed differences\n\n- A01 did not appear in any of the 200 earlier traces; in the later window it runs exactly once in about 48 in 100 traces, late in the case (mean relative position about 0.77, median about 0.85). [OCC001, POS001]\n- A18 now sends about 65 in 100 of its outgoing transitions to A01 — a transition that did not exist before, when A18's outgoing traffic was spread over A10, A06, A12, A19 and A16. A01 itself is followed by a varied tail (A10 about 17%, A07 about 15%, A12 about 14%, A16 and A17 about 12% each of A01's outgoing transitions). [DIR017, DIR001]\n- A01 co-occurs with A08, A14, A15 and A18 in essentially every case where it appears (about 48 in 100 traces, up from 0) and always follows them. A15 already preceded A18 in a fixed order in both windows, but earlier A08 preceded A15/A18 in only about 23 in 100 traces (interleaved in about 18) and A14 co-occurred with them in only about 18 in 100; now A08 and A14 each precede A15 and A18 in all shared cases with no interleaving. [REL016, REL146, REL094, REL097, REL139, REL142]\n- The run feeding A01 became tight and non-repeating: A08→A14 pairs at a distance of one step rose from about 17% to about 66%; A08 fell from about 0.87 to 0.48 occurrences per trace (repeated in about 20 in 100 traces before, never after); A14 rose from about 20 to 48 in 100 traces and no longer repeats; A08 and A14 now co-occur in every case where either appears, in either order. [LAG084, OCC008, OCC014, REL093]\n- A02 now repeats in about 26 in 100 traces (mean 0.48 → 1.01 per trace) and occurs slightly later; A09 appears in fewer cases (about 26 in 100, was 48) at a later position (mean 0.09 → 0.26) and sometimes repeats; A02–A09 and A04–A09, which previously almost always co-occurred (about 48 in 100), now co-occur in only about 26 in 100. [OCC002, POS002, OCC009, POS008, REL023, REL038]\n- A14's outgoing traffic, previously dominated by A08 (about 63%), now also feeds A06 (about 21%) and A15 (about 19%); A19 sends about 77% of its outgoing transitions to A07 (was about 56%); A13 and A07 occur later in the case (A13 median 0.63 → 0.87), while A04, A05, A14, A15 and A18 occur somewhat earlier. [DIR013, DIR018, POS012, POS013, POS003, POS004, POS014, POS017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the late stage of the process was restructured around a new activity: A01, not observed in the earlier window, now executes once in about half of the cases, placed directly after A18, which follows A15, with A08 and A14 running before them as a fixed, non-interleaved sequence in which A14 newly takes part (participation about 20 → 48 in 100) and repetitions were removed. The signs are direct and consistent across indicator families: the participation jump rests on 95 of 200 traces, the A18→A01 transition carries about two thirds of A18's outgoing traffic, the relation items show A01 following A08/A14/A15/A18 in every shared case, and the lag and position items match the tightened, non-repeating run. Limitations: the evidence shows where A01 sits but not what determines whether it runs, positions are measured in event order rather than clock time, and the order of A08 versus A14 within the run remains free. [OCC001, DIR017, REL016, LAG084, OCC008, OCC014, POS001]\n\nOther differences: A02 repeats in about a quarter of cases and occurs slightly later; A09 occurs in fewer cases at a later position and sometimes repeats, and A02–A09 and A04–A09 now often appear without each other; A19 routes more of its outgoing traffic to A07. [OCC002, OCC009, POS002, POS008, REL023, REL038, DIR018]\n\nA competing explanation the evidence cannot rule out is that some of the smaller share and position shifts reflect a changed mix of cases between the windows rather than altered routing; the emergence of A01 itself, however, at 0 versus 95 of 200 traces, is too large to be a sampling artefact. [OCC001]",
+  "case_id": "case_f06f89677b98cdca",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

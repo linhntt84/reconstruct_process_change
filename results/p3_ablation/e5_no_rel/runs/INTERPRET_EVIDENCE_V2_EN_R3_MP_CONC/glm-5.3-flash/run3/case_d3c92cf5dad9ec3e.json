@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_d3c92cf5dad9ec3e.json",
+  "evidence_sha256": "abbb75c1ce1b256bfeb2c406570a908ceefd4539118fe9e6888bd445ebfea9a0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:12:00.203778+00:00",
+  "finished_at_utc": "2026-11-15T12:14:13.875052+00:00",
+  "latency_seconds": 133.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18526,
+    "prompt_tokens": 12880,
+    "total_tokens": 31406,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16935,
+      "text_tokens": 1591
+    },
+    "cost": 0.011194999999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60821,
+  "text": "### Observed differences\n\n- Two groups of activities sit in opposite parts of the trace in the two windows. In the earlier window, A19, A21 and A24 occurred around the first third of the trace (mean relative position about 0.34–0.36) while A20, A22 and A23 occurred around the last third (about 0.63–0.64); in the later window this is reversed, with A19/A21/A24 around 0.66–0.68 and A20/A22/A23 around 0.38. The shifts are about one third of the trace length and move the whole distribution (medians shift by about 0.26–0.36), not only a tail. [POS001, POS002, POS003, POS004, POS005, POS006]\n- Participation is essentially unchanged: A20, A22, A23, A25 and A29 appear in all 200 traces of both windows, and A19, A21, A24 each appear in roughly 30–40 of 100 traces in both windows (A19 in 60 of 200 before and 66 of 200 after; A21 in 70 vs 59; A24 in 73 vs about 80). [POS002, POS004, POS005, POS007, POS008, DIR001, DIR003, DIR006]\n- Hand-over targets swapped: earlier, A19, A21 and A24 led almost exclusively to A25 (97–98 in 100 outgoing transitions) while A20, A22 and A23 sent about 29–37 in 100 of their outgoing transitions to A30; in the later window A19/A21/A24 lead almost exclusively to A30 (95–97 in 100) and A25 has taken over the share A30 previously held for A20/A22/A23 (about 27–37 in 100), with the transitions among A20/A22/A23 themselves continuing. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n- The two anchor activities switched groups: A29's outgoing transitions moved from A20/A23/A22 (about 30–37 in 100 each) to A24/A21/A19 (about 29–38 in 100 each), and A40's moved from A21/A19/A24 to A22/A20/A23 in comparable three-way splits. [DIR007, DIR008]\n- Typical step distances changed accordingly: A29 to A30 was 4 steps apart in about 93 of 100 earlier cases and is 2 steps apart in about 98 of 100 later cases; A40 to A25 was 2 steps apart in about 95 of 100 earlier cases and is 4 steps apart in about 92 of 100 later cases. [LAG005, LAG009]\n- A25 and A29 each moved modestly later (mean relative position about 0.38 to 0.45, and 0.57 to 0.64). [POS007, POS008]\n- Several pair-distance items flip in the same direction but rest on only 1–2 observations in one window (for instance A21→A25 at lag 1 in about 99 of 100 earlier cases against 1 later observation, and A23→A25 at lag 4 in 1 earlier observation against a spread over lags 1–3 in 200 later cases), so they carry little weight alone. [LAG001, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the two activity groups exchanged their placement in the trace: the group A19, A21, A24, earlier executed around the first third and handing over almost exclusively to A25, is in the later window executed around the last third and hands over almost exclusively to A30, while the group A20, A22, A23, earlier in the last third and partly handing over to A30, now runs in the first third and hands over to A25; A29 and A40 each now precede the other group, and the typical A29→A30 and A40→A25 distances exchanged their values (about 4 and 2 steps). Since participation of every involved activity stayed essentially unchanged and successor profiles were replaced rather than merely shifted between alternatives, this is a reordering of the sequence, not activities becoming optional or paths being taken at different frequencies. [POS001-POS008, DIR001-DIR008, LAG005, LAG009]\n\nThe screening context supports treating this as more than sampling noise: 25 control-flow items qualified where fewer than 1 (0.59) would be expected if nothing had changed, and the qualifying items agree on one coherent rearrangement; they should be read as one body of evidence rather than independent confirmations. [DIR001-DIR008, POS001-POS008, LAG001-LAG009]\n\nLimitations: positions and lags are measured in event order, not clock time; A30's own position is not directly measured, so its role is inferred from successor and distance items; and several pair-distance items rest on 1–2 observations, leaving the fine-grained distance structure uncertain. [LAG001, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, DIR001, DIR003, DIR006]\n\nCompeting explanation: the evidence cannot fully distinguish a rigid exchange of the two three-activity blocks from independent repositioning of the six activities (or a re-routing in which A29 and A40 switched groups while the groups shifted for their own reasons); the near-total successor replacements and the distribution-wide position shifts make a pure routing change unlikely, but the exact block structure remains an interpretation. [DIR007, DIR008, POS001, POS002, POS003, POS004, POS005, POS006]\n\nOther differences: only minor tail transitions with shares of at most about 2–3 in 100 appear or disappear at a few activities; they are small components of the profiles above and are not interpreted separately. [DIR002, DIR004, DIR005, DIR008]",
+  "case_id": "case_d3c92cf5dad9ec3e",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

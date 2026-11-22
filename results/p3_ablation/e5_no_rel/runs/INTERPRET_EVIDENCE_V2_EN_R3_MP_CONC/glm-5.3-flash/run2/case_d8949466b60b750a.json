@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "26693d23da8014219860388f992d604c3322524781ed150005d6b6f0bdf11ec7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:40:43.990385+00:00",
+  "finished_at_utc": "2026-11-15T06:41:46.697051+00:00",
+  "latency_seconds": 62.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9224,
+    "prompt_tokens": 10264,
+    "total_tokens": 19488,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8224,
+      "text_tokens": 1000
+    },
+    "cost": 0.0061516
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31337,
+  "text": "### Observed differences\n\n- In the earlier window, A27 appeared in about 52 in 100 traces (roughly once per trace where present); in the later window it appeared in about 99 in 100 traces, almost always exactly once. [OCC001]\n- A32, A33 and A38 each appeared in about 48–49 in 100 traces in the earlier window, but in only about 1 in 200 traces in the later window. [OCC002, OCC003, OCC004]\n- Earlier, about 51 in 100 of A26's outgoing transitions went to A27, with most of the rest going to A38 (about 18 in 100), A33 (about 16 in 100) and A32 (about 14 in 100); in the later window about 97 in 100 go to A27. [DIR001]\n- The distance from A26 to A28 changed from a mix of two steps (about 50 in 100 cases) and four steps (about 47 in 100) to two steps in about 97 in 100 cases, matching a direct A26→A27→A28 chain. [LAG001]\n- The A27→A28 edge dominated in both windows (about 97% of A27's outgoing transitions earlier, about 99% later, at a distance of one step in both), so the link from A27 to A28 is essentially unchanged. [DIR002, LAG004]\n- A28 occurred in every trace in both windows; its mean relative position moved only slightly earlier (about 0.55 to 0.53), and a shift this small does not by itself show that the activity was moved. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the route from A26 to A28 no longer passes through A32, A33 and A38: in the later window A26 leads almost always directly to A27, A27 then leads to A28 exactly as before, A32, A33 and A38 are observed in only about 1 in 200 traces each, and A27 has become part of nearly every trace instead of about half of them. Because A32, A33 and A38 are nearly absent in the later window, this reads as a branch being dropped or no longer taken rather than a shift of shares between surviving alternatives. [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001, LAG004]\n\nSupporting signs: 21 control-flow items qualified against about 0.53 expected if nothing had changed, so chance alone cannot account for the set; the occurrence, routing and distance indicators all describe the same rerouting in the same direction, and the key items rest on roughly 200 traces per window with large shifts (for example A32 falling from about 98 to 1 traces). [OCC001, OCC002, DIR001, LAG001]\n\nThe remaining qualified items largely restate this same disappearance from different angles rather than adding independent confirmation, and several of them — the later-window profiles of A32, A33 and A38 — rest on a single observation each. [LAG002, LAG003, LAG005, LAG006, LAG007, LAG008, LAG009, POS002, POS003, POS004, DIR003, DIR004]\n\nLimitations and competing explanation: the evidence cannot distinguish whether the A32/A33/A38 branch was removed from the process or still exists but is almost never executed, since each of the three activities still occurs in one later-window trace; the later-window routing out of A32 and A38 is based on single observations and carries little weight. [OCC002, OCC003, OCC004, DIR003, DIR004]\n\nOther differences: A28's mean relative position moved slightly earlier (about 0.55 to 0.53) while it stayed in every trace; this is consistent with the shorter route but is not established as an independent change. [POS001]",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

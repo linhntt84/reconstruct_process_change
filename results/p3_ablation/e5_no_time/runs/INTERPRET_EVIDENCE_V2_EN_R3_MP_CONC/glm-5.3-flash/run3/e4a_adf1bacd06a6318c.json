@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_adf1bacd06a6318c.json",
+  "evidence_sha256": "72de3335a3ed08431a0cd16cbf42183d1aee88727cfa0bf66333b793d965da9a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:44:10.494156+00:00",
+  "finished_at_utc": "2026-11-15T12:45:31.711296+00:00",
+  "latency_seconds": 81.22,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11706,
+    "prompt_tokens": 16124,
+    "total_tokens": 27830,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10501,
+      "text_tokens": 1205
+    },
+    "cost": 0.0082716
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39792,
+  "text": "### Observed differences\n\n- Two three-activity blocks swapped how often they run. In the earlier window, A16, A17 and A18 each appeared in about 75 in 100 traces, while A19, A20 and A21 each appeared in about 25 in 100; in the later window, A16–A18 each dropped to about 25 in 100 while A19–A21 each rose to about 76 in 100. Each activity still occurred at most once per trace in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The branch point A15 redirected accordingly. Before, about 75 in 100 of A15's outgoing transitions went to A16, A17 or A18 (roughly 27, 23 and 26 in 100) and about 25 in 100 to A19, A20 or A21; in the later window this reversed, with about 8–9 in 100 to each of A16–A18 and about 22–29 in 100 to each of A19–A21. All six transitions were observed in both windows, and A15 kept preceding whichever block ran (before A16–A18 in about 75 in 100 traces, after A19–A21 in about 76 in 100). [DIR001, REL001, REL004]\n- The block structure itself did not change; only its usage flipped. Pairs spanning the two blocks, such as A16 with A19, never occurred in the same trace in either window, while the three members of the active block ran together: A16–A18 co-occurred in about 75 in 100 traces before versus about 25 in 100 after, and A19–A21 co-occurred in about 25 in 100 before versus about 76 in 100 after, in both cases in no fixed order among the members. [REL007, REL009, REL013, REL022, REL025]\n- A25 travelled with whichever block was active. Before, it co-occurred with A16, A17 or A18 in about 75 in 100 traces (interleaved in about 32 in 100) and appeared without A19–A21 in about 75 in 100; after, it co-occurred with A19, A20 or A21 in about 76 in 100 traces (interleaved in about 36 in 100) and appeared without A16–A18 in about 76 in 100. [REL012, REL024]\n- The positional distance from A15 to A19 spread out: before, about 54 in 100 of these pairs were one step apart; after, the distances spread over one to three steps (about 33, 28 and 39 in 100). This measures event positions, not clock time. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the routing choice after A15 between two existing alternative blocks reversed its frequencies: before, roughly three of four cases ran A16, A17 and A18 together after A15 (with A25 alongside), and about one of four ran A19, A20 and A21 instead; in the later window the shares swapped to about one of four and three of four. All six block activities and A25 remained present at substantial rates in both windows, the blocks stayed mutually exclusive, and A15 kept preceding the active block, so this reads as the same two paths being taken with different frequencies rather than activities being added, removed, bypassed or repositioned. [OCC001, OCC004, DIR001, REL009, REL022]\n\nThe signs are direct and consistent: participation moved by about 50 percentage points in opposite directions on large supports (150 vs 49 traces for A16–A18; 50 vs 151 for A19–A21), A15's outgoing distribution shifted in step with all six edges observed in both windows, and the relational items agree with the occurrence items. Screening also produced 35 qualifying control-flow items where about 0.53 would be expected if nothing had changed, far beyond what an unchanged process typically yields. [OCC001, OCC006, DIR001, REL001, REL004]\n\nA competing explanation the evidence cannot rule out is a change in the mix of cases reaching this routing point (case types that prefer different branches), which would look identical on these indicators.\n\nOther differences: the A15→A19 positional gap widened from mostly one step to one-to-three steps; this is consistent with A25 now interleaving around the active block more often and does not by itself show that A19 was moved. [LAG001, REL024]",
+  "case_id": "e4a_adf1bacd06a6318c",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

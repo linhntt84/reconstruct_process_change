@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_d9fc1e9651422cbc.json",
+  "evidence_sha256": "e6d1ca1784603221f83f3c2f2a7a5d373bf26f3c153bdb95dde22b514f31b115",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:21:28.164689+00:00",
+  "finished_at_utc": "2026-11-15T07:24:01.390453+00:00",
+  "latency_seconds": 153.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22110,
+    "prompt_tokens": 31727,
+    "total_tokens": 53837,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20172,
+      "text_tokens": 1938
+    },
+    "cost": 0.01581405
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 70601,
+  "text": "### Observed differences\n\n- Earlier, A22 and each of A31, A32, A37, A38 and A39 were executed exactly once in every trace (200 of 200). In the later window, A22 appears in about 45 in 100 traces (91 of 200) and each of the five others in about 55 in 100 (110 of 200); none of the six repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- Earlier, A22 co-occurred with each of the five in every trace; in the later window they co-occur in only about 1 in 200 traces — about 45 in 100 traces contain A22 without the five, and about 55 in 100 contain the five without A22. The five still move as one group: every pair among them co-occurs in 110 traces and is jointly absent in the other 90. [REL015, REL016, REL017, REL018, REL019, REL030, REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039]\n- Earlier, A20's observed outgoing transitions spread over the five (roughly 17–24% each) and A21 always led to A22. In the later window, about 99.5% of A20's outgoing transitions go to A23, and A21 leads to A22 in about 45% of its outgoing transitions and to one of the five in about 55%. The five's successors shifted from A23 (about 17–26% earlier, at most about 1% later) to A26 (about 14–25% later, not observed earlier). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- Earlier, the five ran before A21 and before A23 in every trace; in the later window, A21 precedes them in about 55 in 100 traces and A23 precedes them in about 55 in 100, with the earlier order remaining in about 1 in 200. [REL008, REL009, REL010, REL011, REL012, REL020, REL021, REL022, REL023, REL024]\n- The group's mean event position moved from about 0.40 to about 0.57–0.59 of the trace; A23 moved earlier (mean about 0.48 to 0.38) and A21 earlier (about 0.62 to 0.53). Within the group, both orders still occur in similar proportions for every member pair, so its internal order stays unfixed in both windows. A20, A21, A23 and A26 continue to appear in every trace in both windows. [POS006, POS007, POS008, POS009, POS010, POS004, POS002, POS001, POS005, REL030, REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039]\n- The ordered pairs \"A20 then one of the five\" and \"one of the five then A23\" within five steps, present in all 200 earlier traces, each appear in only about 1 later trace; each later profile rests on a single observation, so these items are treated as weak. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A22 and the five-activity group A31/A32/A37/A38/A39 became mutually exclusive alternatives and that the group was relocated. Earlier, every trace ran A20, then the five in unfixed order, then A23, A21, A22 and A26. In the later window, A20 leads almost always directly to A23, and the segment between A21 and A26 contains either A22 (about 45 in 100 traces) or the whole five-activity group (about 55 in 100), with both together in only about 1 in 200 traces; A21's outgoing transitions follow the branch (about 45% to A22, about 55% into the group). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL015, REL016, REL017, REL018, REL019, REL030, REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039, DIR001, DIR002, REL008, REL009, REL010, REL011, REL012, REL020, REL021, REL022, REL023, REL024]\n\nThe reading rests on direct evidence: participation and co-occurrence changes computed on 91–200 traces per item, successor changes at A20, A21 and the group members, and consistent order reversals; every item's difference exceeds about 99.5 in 100 random re-splits, and 72 items qualified where roughly 0.7 would be expected if nothing had changed, so chance cannot account for the evidence as a whole — though the many items largely describe one restructuring rather than independent confirmations. [OCC001, REL015, DIR001, DIR002, REL008, REL020]\n\nLimitations: the exclusivity is not perfectly absolute (one co-occurrence in 200 traces), the exact 45/55 split carries sampling uncertainty, and the LAG profiles rest on single later observations. An important competing explanation the evidence cannot rule out is that the branch is governed by an unobserved routing element: the data show only that A21's outgoing transitions track the choice, not where or how it is made. [REL015, DIR002]\n\nOther differences: small position drifts for A20 (mean about 0.32 to 0.35) and A26 (about 0.67 to 0.65), plausibly consequences of the changed trace composition rather than independent moves. [POS001, POS005]",
+  "case_id": "e4a_d9fc1e9651422cbc",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

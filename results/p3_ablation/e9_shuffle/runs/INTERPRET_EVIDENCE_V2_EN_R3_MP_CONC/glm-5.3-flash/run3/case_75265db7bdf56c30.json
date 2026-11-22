@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_75265db7bdf56c30.json",
+  "evidence_sha256": "17dd550ff8ebfb63fde16798f2cf95634dbfe72448ddc6f088c5ebcaef5e4434",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:59:56.775986+00:00",
+  "finished_at_utc": "2026-11-15T10:00:40.098415+00:00",
+  "latency_seconds": 43.32,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5909,
+    "prompt_tokens": 3632,
+    "total_tokens": 9541,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5334,
+      "text_tokens": 575
+    },
+    "cost": 0.0034992999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21502,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in the earlier window (0 of 200 traces), but in the later window it occurs exactly once in every trace (200 of 200, mean 1.0 occurrence per trace), always at the very end of the trace (relative position 1.0 throughout). [OCC001, POS001]\n- A03's outgoing behaviour changed: in the earlier window A03 occurred in all 200 traces but was never observed to be followed by another activity, while in the later window every observed outgoing transition of A03 leads to A01. [DIR001, POS002]\n- The relationship between the two activities flipped: earlier, A03 appeared without A01 in 100% of traces and the two never co-occurred; later, they co-occur in 100% of traces, always in the order A03 before A01. [REL001]\n- As a consequence, A03's own placement shifted: it was the last event of every earlier trace (relative position 1.0) and now sits slightly before the end (mean relative position about 0.86, i.e. roughly one step before the final event). [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added as a new mandatory closing step at the end of the process: in the earlier window traces ended with A03 and A01 was not observed, whereas in the later window every trace executes A01 exactly once, directly after A03, as the final event. [OCC001, POS001, DIR001, REL001]\n\nThe support is direct and consistent: A01 moves from zero to full participation, A03 now always leads to A01, the pair always co-occurs in a fixed order, and A03's move from last position to just before last matches the same appended step. All items have full support in both windows (200 of 200 traces each). The screening count also far exceeds what an unchanged process produces (5 control-flow items versus roughly 0.09 expected from 19 tested units), so the set of differences cannot be explained as random sampling. [DIR001, POS001, REL001, POS002, OCC001]\n\nLimitations: the five items largely describe one underlying trace-level difference rather than independent confirmations; zero participation in the earlier window strictly means A01 was not observed there rather than proven absent, and the evidence cannot show whether A01 has other predecessors besides A03. Positions reflect event order, not clock time, so no conclusion about timing is implied. [OCC001, POS001]\n\nOther differences: none beyond the main hypothesis; A03's position shift is a direct consequence of A01 being executed after it. [POS002]",
+  "case_id": "case_75265db7bdf56c30",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

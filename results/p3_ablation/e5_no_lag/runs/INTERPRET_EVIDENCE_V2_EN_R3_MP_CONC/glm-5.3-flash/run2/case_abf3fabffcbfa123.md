@@ -1,0 +1,17 @@
+### Observed differences
+
+- The starkest difference concerns two earlier alternatives. In the earlier window, A27 ran in about 52% of cases (103 of 200) while A32, A33 and A38 each ran in about 48–49% (97–98 of 200); the three always appeared together as a set in varying internal order and never together with A27 (co-occurrence 0 to 0.5 in 100). In the later window, A32, A33 and A38 each appear in only about 1 in 200 cases, while A27 appears in about 995 in 1,000 cases (199 of 200), roughly once per case. [OCC004, OCC005, OCC006, OCC007, REL022, REL023, REL024, REL028, REL029, REL030]
+
+- Both earlier alternatives fed into A28: A32, A33 and A38 each preceded A28 in about 48 in 100 earlier cases, and A27 preceded A28 in about 51 in 100. In the later window, A27 precedes A28 in about 96–97 in 100 cases and follows A26 in about 98–99 in 100; A26's outgoing transitions to A27 rose from about 50% to 98%. [REL025, REL026, REL027, REL021, REL017, DIR006]
+
+- A04 is largely bypassed in the later window: it appeared in about 68% of earlier cases (136 of 200) but only about 22% later (43 of 200). Earlier, A14 led to A04 in about 63% of its outgoing transitions and A04 then led to A15 in about 90%; later, A14 leads directly to A15 in about 82% of its outgoing transitions (A04 only about 10%), and the remaining A04 executions sit later in the trace (mean relative position about 0.21 vs 0.40). [OCC002, DIR004, DIR002, POS001, REL001, REL002]
+
+- Smaller shifts: A02 (5% → 15% of cases) and A08 (5% → 21%) occur more often and now lead to largely different sets of successors, though on small bases (10→30 and 8→40 outgoing observations); A14 occurs slightly later and A28 slightly earlier within traces; the dominant A15→A16 edge remained dominant (about 98% vs 92% of A15's outgoing transitions). [OCC001, OCC003, DIR001, DIR003, POS002, POS003, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the later window executes a simplified variant in which the branch formed by A32, A33 and A38 — earlier an alternative to A27, each taken in about half of the cases and never together — is practically no longer executed, while A27 has become part of essentially every case, running after A26 and before A28. The support is direct and consistent: relational items show the earlier mutual exclusivity flipping to A27-only coverage, participation items show the near-disappearance of the three branch activities alongside the near-universality of A27, and A26's successor profile concentrates almost entirely on A27; with 52 qualifying items against roughly 0.65 expected without change, sampling noise cannot explain the pattern as a whole. Limitations: the later outgoing profiles of A32, A33 and A38 rest on a single observed execution each, and near-zero participation strictly shows only that the branch was not observed later; a shift in the mix of case types between the windows cannot be ruled out. [OCC004, OCC005, OCC006, OCC007, REL022, REL023, REL024, REL028, REL029, REL030, REL017, REL021, DIR006]
+
+Other differences: A04 became skippable — earlier it followed A14 in about 65 in 100 cases and usually led on to A15, whereas later A14 typically proceeds straight to A15 and A04 appears in only about 21 in 100 cases; A02 and A08 also participate more often with redirected successors, on small observation bases. [OCC002, DIR004, DIR002, REL001, OCC001, OCC003, DIR001, DIR003]

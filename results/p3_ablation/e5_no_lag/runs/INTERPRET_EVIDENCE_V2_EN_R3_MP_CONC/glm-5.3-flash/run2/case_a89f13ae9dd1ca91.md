@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran exactly once in every trace (200 of 200), with no fixed order among them — for each pair, either order occurred in roughly half of the traces (e.g., A21 before A22 in about 52 in 100). In the later window, each of the three appears in only about 1 in 200 traces, all three together in that single trace. [OCC004, OCC005, OCC006, REL025, REL026, REL031]
+- A14, A15 and A16 were not observed at all in the earlier window. In the later window, A14 runs in about 30 in 100 traces, A15 in about 33 and A16 in about 37; no two of them ever share a trace, and together they cover essentially every trace (shares sum to about 99.5 in 100). [OCC001, OCC002, OCC003, REL001, REL002, REL010]
+- Routing around this segment changed: earlier, A39 led into A21, A22 or A23 in roughly equal shares (about 35, 31 and 34 in 100 of its outgoing transitions), and each block member could lead either to A24 or to another block member; later, A39 leads to A14, A15 or A16 (about 30, 33 and 37 in 100), and each of these three leads on to A24 in all of its occurrences. [DIR007, DIR004, DIR005, DIR006, DIR001, DIR002, DIR003]
+- The new activities sit between A39 and A24: A39 precedes each of them, and each precedes A24, in every trace where both occur; their mean event positions (about 0.35–0.37 of the trace) fall between A39's (about 0.33) and A24's (about 0.39). [REL006, REL007, REL014, REL015, REL021, REL022, POS001, POS002, POS003, POS008]
+- A24, A39 and A40 still occur in every trace in both windows; A24's mean event position moved slightly earlier (about 0.43 to 0.39) and A39's slightly later (about 0.31 to 0.33). [POS007, POS008, POS009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural replacement of the segment between A39 and A24. In the earlier window, every trace ran A39, then the three activities A21, A22 and A23 (each exactly once, in varying order), then A24; in the later window, that block has effectively disappeared (about 1 in 200 traces) and each trace instead runs exactly one of three mutually exclusive activities — A14, A15 or A16 — between A39 and A24. This is a replacement of activities, not a re-weighting of paths present in both windows: the new activities were absent earlier and the old ones are nearly absent later. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL001, REL010, REL025]
+
+The support is direct and consistent: 61 evidence items qualified where fewer than 1 (about 0.57) would be expected by chance in an unchanged process, so the volume of qualifying items cannot be explained by sampling; and occurrence, routing, relation and position indicators all describe the same replacement, including A39's rerouted outgoing transitions and the new activities' uniform edge to A24. [DIR001, DIR002, DIR003, DIR007, REL001, REL002, REL010, POS001, POS002, POS003]
+
+Limitations: zero participation in the earlier window means only that A14, A15 and A16 were not observed there, not that they are new; and with the old block seen in only one later trace, removal and extreme rarefaction cannot be distinguished. A competing reading the evidence cannot rule out is that the three new activities occupy the same step previously filled by the block (a one-for-one substitution of the segment) rather than being genuinely different work, since the anonymous activity codes carry no information to separate these readings; the evidence also cannot show what determines which of the three alternatives runs. [OCC001, OCC004, REL001]
+
+Other differences: A41 became more common — it ran in about 59 in 100 traces earlier and about 69 in 100 later; earlier it appeared only alongside A21, whereas later it co-occurs with A14, A15 or A16 in roughly 21–26 in 100 traces. [REL009, REL024, REL030] A40's mean event position shifted slightly earlier (about 0.85 to 0.84) with no change in its participation. [POS009]

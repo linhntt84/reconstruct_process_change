@@ -1,0 +1,12 @@
+### Observed differences
+
+- A02, A07: count changes from 30.000 to 22.000. [TWAIT001]
+- A06, A07: count changes from 35.000 to 34.000. [TWAIT002]
+- control flow: 0 items qualified; about 0.270 expected without any change.
+- time: 2 items qualified; about 0.008 expected without any change.
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process.

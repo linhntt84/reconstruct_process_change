@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "b6a68605954ae395b3f26cb8ad3c8d7f0160ba1167c9dd5cb97440296aeb0e42",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:16:05.431089+00:00",
+  "finished_at_utc": "2026-11-15T13:19:58.931742+00:00",
+  "latency_seconds": 233.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33594,
+    "prompt_tokens": 71404,
+    "total_tokens": 104998,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30870,
+      "text_tokens": 2724
+    },
+    "cost": 0.0275076
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 98529,
+  "text": "### Observed differences\n\n- The clearest difference concerns six activities in the middle of the process. Before, A33, A35, A36, A37, A38 and A39 each appeared in all 200 earlier traces; in the later window each appears in only about 93–113 of 200 traces (roughly 47–57 in 100), while A30 and A31 still appear in every trace in both windows. Each of the six drops is larger than in 199 of 200 random re-splits of the pooled data (empirical strength about 0.995). [OCC026, OCC027, OCC029, OCC031, OCC032, OCC033, OCC034, OCC035]\n- In the later window the six activities run as two mutually exclusive groups: A33, A35 and A36 still occur together in essentially every case where one of them occurs (co-occurrence about 47 in 100 later traces, both absent in about 53 in 100), and A37, A38 and A39 likewise (together about 56 in 100, both absent about 44 in 100). Cross-group pairs that co-occurred in 100 in 100 traces before now co-occur in only about 2–4 in 100; usually one group runs without the other (A33 without A37 about 44 in 100, A37 without A33 about 53 in 100), and almost no case runs neither group. [REL014, REL019, REL026, REL027, REL028, REL016, REL020, REL023]\n- The surrounding order is preserved. Before, A30 preceded all six (A30 before A33 in more than 99 in 100 traces) and all six preceded A31 (A33 before A31 in 99 in 100), with no fixed order inside each half (A33 before A35 in about 51 in 100; A37 before A38 in about 45 in 100). In the later window each group still lies between A30 and A31 — A33 and A37 never occur without A30 or without A31 — and the internal order stays mixed (A33 before A35 in about 22 in 100 later traces, A35 before A33 in about 24 in 100). [REL001, REL002, REL005, REL008, REL011, REL014, REL026]\n- Directly-follows behaviour matches: before, A30 led only to A33, A35 or A36 (about 34, 36 and 29 in 100 of its outgoing transitions), whereas in the later window A30 also leads to A37, A38 and A39 (about 16, 18 and 20 in 100). A33, A35 and A36, which previously led on to A37, A38 or A39 in about 30–37 in 100 of their outgoing transitions, now lead directly to A31 in about 24–34 in 100 and to the other group in only about 1–2 in 100. [DIR030, DIR033, DIR035, DIR036]\n- Gaps and positions compressed accordingly: A37, A38 and A39 now follow A30 within 1–3 event positions (before, 4–5 positions in essentially all cases), and A33, A35 and A36 now sit 1–3 positions before A31 (before, 4–5); mean relative positions of A33, A35 and A36 moved about 0.05–0.06 later (to roughly 0.73–0.74 of the trace) and those of A37, A38 and A39 about 0.02–0.03 earlier (to roughly 0.74). [LAG004, LAG005, LAG006, LAG007, LAG013, LAG019, POS003, POS004, POS005, POS006, POS007, POS008]\n- Smaller shifts elsewhere: A21 and A23 now appear in fewer traces (about 53 to 47 in 100 and 54 to 47 in 100) while A22 and A24 appear in more (about 48 to 54 and 47 to 54 in 100); around A43 and A44 execution increased (A43 mean occurrences per trace about 1.56 to 1.71; A44 participation about 63 to 68 in 100 traces, with more repetition). [OCC019, OCC020, OCC021, OCC022, OCC039, OCC040]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the section between A30 and A31 is no longer executed in full: in the later window a case typically runs exactly one of two alternative halves — A33 with A35 and A36 (about 44 in 100 cases), or A37 with A38 and A39 (about 53 in 100) — where before every case ran both halves in sequence between A30 and A31; only about 2–4 in 100 cases still run both and almost none run neither. A30 and A31 themselves are unchanged, and each half keeps its mixed internal order and its placement, so this is a participation change (each of the six activities is now skipped in roughly half of the cases) rather than a reordering or an exchange of positions. [OCC029, OCC031, OCC032, OCC033, OCC034, OCC035, REL016, REL020, REL023, DIR030, DIR033]\n\nThe hypothesis is supported directly and consistently: the co-occurrence collapse is observed for all nine cross-group activity pairs, the six participation drops all exceed every one of the 200 random re-splits, and the directly-follows, lag and position items point the same way (A30 now feeds both halves, half-final activities now lead straight to A31, and cross-half gaps shrank from 4–5 to 1–3 positions). Because these items are computed from the same traces, they corroborate one picture rather than adding independent confirmations. [REL016, REL017, REL018, REL020, REL021, REL022, REL023, REL024, REL025, OCC029, OCC035, DIR030, LAG004, POS003]\n\nThe evidence cannot show what determines which half a case runs, and it cannot rule out that the two windows sample a different case mix — for example two case types that always differed — rather than a change in per-case behaviour; the residual 2–4 in 100 cases running both halves, and cross-group lag items resting on only 4–5 observations, also mean the exclusivity between the halves is not absolute. [REL016, LAG010, LAG011]\n\nOther differences: A21 and A23 participate less in the later window (about 53 to 47 in 100 and 54 to 47 in 100 traces) while A22 and A24 participate more (about 48 to 54 and 47 to 54 in 100), with A29 leading to A24 more often and to A23 less often; separately, execution around A43 and A44 increased (A43 mean occurrences per trace about 1.56 to 1.71; A44 participation about 63 to 68 in 100 with more repetition). The evidence does not connect these shifts to the alternative-halves change. [OCC019, OCC020, OCC021, OCC022, DIR029, OCC039, OCC040, DIR043, DIR046]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

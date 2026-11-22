@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_dfdaac706f50a2ea.json",
+  "evidence_sha256": "5dc9143b842fc4bedc5724afa64c540bcf9ba66c552372da9fa029050e835381",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:44:59.425120+00:00",
+  "finished_at_utc": "2026-11-14T10:47:44.127659+00:00",
+  "latency_seconds": 164.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24316,
+    "prompt_tokens": 23500,
+    "total_tokens": 47816,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22245,
+      "text_tokens": 2071
+    },
+    "cost": 0.015683
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69814,
+  "text": "### Observed differences\n\n- **Four activities now run in only about half of the cases.** Before, A27, A36, A37 and A42 each ran in every trace (100% participation, about one occurrence per trace); in the later window they each run in about 47–54 in 100 traces, and in about 52 in 100 traces neither member of a block pair such as A37–A42 appears at all. [OCC001, OCC002, OCC003, OCC004, REL020, REL021, REL022]\n\n- **A25 now connects directly to A28.** Before, A25's outgoing transitions went to A42, A36 and A37 (about 35%, 34% and 31%); in the later window about 98 in 100 go to A28, and A28 follows A25 one position later in about 98 in 100 traces instead of about four positions later. [DIR001, LAG001]\n\n- **The A36–A37–A42 block no longer sits between A25 and A28.** Before, A25 preceded each block activity in about 99–100 in 100 traces, and each block activity led to A28 in roughly a third of its transitions; in the later window A25 co-occurs with each block activity in only about 47 in 100 traces, the block-to-A28 transitions have (nearly) disappeared, and each block activity instead leads to A31 in about 28–36 in 100 of its transitions. [REL002, REL003, REL004, LAG002, LAG003, LAG004, DIR003, DIR004, DIR005, LAG009, LAG010, LAG011, REL014, REL015, REL016, REL017, REL018, REL019]\n\n- **The block now runs after A26.** Before, A26 led to A27 in about 97 in 100 of its transitions and the block activities preceded A26; in the later window A26 leads to A27 in about 52 in 100 and to A36, A37 and A42 in about 14–17 in 100 each, precedes each block activity in about 46–47 in 100 traces, and the block activities appear one to three positions after A26. [DIR002, REL005, REL006, REL007, REL008, LAG006, LAG007, LAG008]\n\n- **A27 and the block have become mutually exclusive.** Before, A27 co-occurred with A36, A37 and A42 in 100 in 100 traces, with the block running before A27; in the later window they co-occur in only about 1 in 100 traces, with A27 alone in about 52–53 in 100 and each block activity alone in about 46–47 in 100, while A27 still precedes A31 when both run. [REL001, REL010, REL011, REL012, REL013]\n\n- **Two routes from A26 to A31.** In the later window A31 comes two positions after A26 in about 51 in 100 traces (via A27) and four positions later in about 46 in 100 (via the three-activity block); before, it consistently came two positions later (about 96 in 100). [LAG005]\n\n- **Positions shifted accordingly.** The block activities moved from about 0.40 to about 0.58 of the trace, A28 from about 0.45 to about 0.39, A26 from about 0.60 to about 0.54 and A27 from about 0.62 to about 0.58; A25, A26, A28 and A31 still appear in every trace in both windows. [POS002, POS003, POS004, POS006, POS007, POS008, POS001, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the flow was rerouted around the A36–A37–A42 block. Before, every case ran A25, then the three block activities in varying order exiting to A28, and later A26, A27 and A31. In the later window, A25 leads directly to A28, and the block runs after A26 and exits to A31, so cases take either A26 → A27 → A31 (about 53 in 100) or A26 → A36/A37/A42 → A31 (about 47 in 100); A27 and the block have become mutually exclusive alternatives, while A25, A26, A28 and A31 remain mandatory. [DIR001, DIR002, DIR003, DIR004, DIR005, REL011, REL012, REL013, LAG001, LAG005, OCC001, OCC002, OCC003, OCC004]\n\nThe hypothesis is shown directly and consistently: the successor profiles change exactly at A25, A26 and the block activities; relations move from always-together to almost-never-together for A27 versus each block activity; lags show A25→A28 contracting from about four positions to one and the A26→A31 distance splitting into two routes (2 and 4 positions); participation and position shifts match the relocation. With 50 qualifying items against 0.72 expected without change, chance cannot account for the evidence as a whole. [DIR001, DIR002, DIR003, REL011, REL012, REL013, LAG001, LAG005, POS004, POS006]\n\nThe evidence cannot rule out that the later window mixes two coexisting case variants rather than reflecting a single routing choice, since only aggregate shares are observed; the segment between A28 and A26 is not covered by any evidence item, so changes there would go unnoticed, and a few sparse lag profiles rest on a single observation on one side. [LAG002, LAG006, LAG007]\n\nOther differences: minor ripples — A25's mean position moved slightly later (about 0.34 to 0.36) and A31's slightly earlier (about 0.65 to 0.63), A27 repeats in about 1 in 100 later traces, and a few rare transitions of about 1 in 100 appeared (for example A36 → A12 and A42 → A08). [POS001, POS005, OCC001, DIR003, DIR005]",
+  "case_id": "case_dfdaac706f50a2ea",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

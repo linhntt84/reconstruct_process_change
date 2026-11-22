@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "45119538402d2bd9b1ec6d7d8319d7b6c477355474201b0813c2d081b9b1089b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:32:30.058927+00:00",
+  "finished_at_utc": "2026-11-15T00:35:16.029411+00:00",
+  "latency_seconds": 165.98,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23482,
+    "prompt_tokens": 18026,
+    "total_tokens": 41508,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21778,
+      "text_tokens": 1704
+    },
+    "cost": 0.0144449
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 73602,
+  "text": "### Observed differences\n\n- The two halves of the case exchanged their order. In the earlier window, the three activities A15, A17 and A18 always ran together in the first half of a case (mean relative position about 0.39, i.e. roughly 39% of the way through), while exactly one of A14, A16, A19 ran late, at about 0.68. In the later window this is reversed: one of A14/A16/A19 runs early, at about 0.34, and A15/A17/A18 run late, at about 0.64. A20 moved slightly earlier (about 0.46 to 0.38) and A24 as well (about 0.65 to 0.57). [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- All 21 tested activity pairs spanning the two groups reversed their order completely. For example, A15 ran before A20 in 100% of cases before and after A20 in 100% of cases after; A15 ran before A14 in about 31 in 100 cases before, whereas A14 runs before A15 in about 44 in 100 cases after; the same complete reversal holds against A24 and for every combination of A14/A16/A19 with A15/A17/A18. [REL001, REL004, REL006, REL008, REL009, REL015, REL019]\n- Successor relations changed accordingly. A35, which previously led into A15, A17 or A18 (about 29%, 38% and 33% of its outgoing transitions), now leads into A14, A16 or A19 (about 44%, 29% and 28%). A24 previously led into A14/A16/A19 (about 31%, 38%, 32%) and now leads into A15/A17/A18 (about 32%, 35%, 34%). Whichever of A14/A16/A19 ran always exited to A25 before and now always exits to A20; the last activity of the A15/A17/A18 group exited to A20 before (roughly a third of cases each) and now exits to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- Event distances match an exchange of a three-activity block with a single activity: the gap from A35 to A20 shrank from 4 steps to 2, and the gap from A24 to A25 grew from 2 steps to 4. [LAG001, LAG002]\n- Participation was stable: A15, A17, A18, A20 and A24 occurred in every case in both windows, and the shares of A14/A16/A19 sum to 1.0 in each window, i.e. exactly one of the three runs per case. No activity was added, removed or made optional. [OCC001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, DIR007, DIR008]\n- Within the alternatives, the choice shifted toward A14: about 31 in 100 cases before versus about 44 in 100 after, while A16 fell from about 38 to 29 and A19 from about 32 to 28. The preferred internal sequence of the A15/A17/A18 group also flipped (A15 was followed by A18 more often than by A17 before, and by A17 more often than by A18 after). [OCC001, POS003, POS006, DIR002, DIR004, DIR005, DIR007, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two segments of the process exchanged their positions around an unchanged core. In the earlier window a case ran A35, then the segment A15–A17–A18 (all three, in varying internal order), then A20 and later A24, then exactly one of A14/A16/A19, then A25. In the later window a case runs A35, then exactly one of A14/A16/A19, then A20 and later A24, then the A15–A17–A18 segment, then A25. A35, A20, A24 and A25 kept their roles and all participation levels stayed the same; the placement of the single-choice segment (one of A14/A16/A19) and the three-activity segment (A15, A17, A18) is what changed. [DIR007, DIR008, LAG001, LAG002, REL008, POS001, POS002]\n\nThe hypothesis is shown directly by relational and positional evidence: every one of the 21 cross-group order relations reversed completely, including against the stable activities A20 and A24, which indicates a placement change rather than a shift in how often existing paths are taken. The successor changes at A35, A24 and at the segment exits match the exchange exactly, and the step-distance changes (4 to 2 and 2 to 4 steps) are what swapping a three-activity block with a single activity predicts. Unchanged participation rules out activities being added, removed or becoming optional, and the screening produced 40 qualifying control-flow items where fewer than 0.5 would be expected without a change, so this body of evidence cannot be a chance artefact of the window split. [REL008, DIR002, DIR007, LAG001, LAG002, POS002]\n\nOther differences: the routing share between the three alternatives moved toward A14 (about 31 to about 44 in 100 cases, with A16 about 38 to 29 and A19 about 32 to 28), and the preferred internal order within the A15–A17–A18 segment flipped; both are changes in existing, well-observed paths and are not part of the placement hypothesis. [OCC001, DIR002, DIR004, DIR005, DIR007, DIR008]\n\nA competing explanation the evidence cannot rule out is that the new order did not apply to all cases from a single point in time: the two windows are aggregates, so a gradual transition inside the later window would look identical. The placement is also established in terms of event positions within cases, not clock time. [POS001, LAG001]",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

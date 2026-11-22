@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_1ed70f47ec8b0ce2.json",
+  "evidence_sha256": "c494d2a3039686a7aba4d19674a81f4b036e9b69216319a4b2ddf7f3bea9c3a7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:39:57.403114+00:00",
+  "finished_at_utc": "2026-11-15T06:41:41.662587+00:00",
+  "latency_seconds": 104.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15420,
+    "prompt_tokens": 8658,
+    "total_tokens": 24078,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14134,
+      "text_tokens": 1286
+    },
+    "cost": 0.0090087
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49325,
+  "text": "### Observed differences\n\n- Two blocks of three activities sit in opposite places in the two windows. In the earlier window, A14, A16 and A19 each occurred in roughly 3 in 10 cases, about a third of the way through the case (mean position ≈ 0.34–0.35); in the later window they occur in a similar share of cases (about 3 in 10) but around two-thirds through (mean ≈ 0.67–0.68). [POS001, POS003, POS006]\n- The mirror movement for A15, A17 and A18: in the earlier window they ran in every case, about two-thirds through (mean ≈ 0.64); in the later window they still run in every case, but around 0.38 of the way through — a shift of about a quarter of the trace length earlier. [POS002, POS004, POS005]\n- The blocks' exits swapped with them. Earlier, every observed outgoing transition of A14, A16 and A19 went to A20; in the later window, all go to A25. [DIR001, DIR003, DIR006]\n- Earlier, A15, A17 and A18 each sent roughly 30–38 in 100 of their outgoing transitions to A25, with the rest cycling within the block; in the later window the A25 share is gone and roughly 28–37 in 100 go to A20 instead, while the cycling within the block is essentially unchanged. [DIR002, DIR004, DIR005]\n- The entry points swapped as well: A24 earlier fed A15/A17/A18 (about 37/33/30 in 100 transitions) and now feeds A19/A16/A14 (about 38/29/33 in 100); A35 earlier fed A14/A16/A19 (about 30–36 in 100 each) and now feeds A17/A15/A18. [DIR007, DIR008]\n- Step distances match this exchange: the gap from A24 to A25 shrank from 4 steps to 2 steps (in all observed cases in each window), and the gap from A35 to A20 grew from 2 steps to 4. [LAG001, LAG002]\n- Two smaller accompanying shifts: A20 and A24 each sit about 0.07 of the trace length later in the later window (mean ≈ 0.38 → 0.44 and 0.57 → 0.64); both occur in every case in both windows. [POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the two three-activity blocks — A14, A16, A19 and A15, A17, A18 — exchanged their places in the flow. In the earlier window, A35 fed A14/A16/A19, which ran early and passed control exclusively to A20, while A24 fed A15/A17/A18, which ran late and exited (about 3 in 10 transitions each) to A25; in the later window these roles are reversed, with A35 feeding A15/A17/A18 early toward A20 and A24 feeding A14/A16/A19 late toward A25, while the internal cycling of each block stayed essentially unchanged. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002]\n\nThe placement change is shown directly, not inferred from shares alone: each block's mean position moved by about a quarter to a third of the trace length in opposite directions, the successor sets of six activities were replaced in a matching way, and the step-distance changes fit the relocation. Every item's difference is larger than in about 995 of 1,000 random re-splits of the pooled data, and participation remained substantial for all involved activities in both windows (the A15/A17/A18 block, A20 and A24 in all cases; A14/A16/A19 in roughly 3 in 10 cases), so this is not a rare variant surfacing in one window only. The screening comparison also exceeds what an unchanged process produces: 18 control-flow items qualified where about 0.36 (fewer than one) were expected by chance — roughly 50 times that expectation. [DIR001, DIR003, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002]\n\nLimitations: all 18 items describe one underlying relocation, so they corroborate rather than independently confirm it; positions are measured in event order rather than clock time, so the evidence establishes a change in ordering and placement, not in timing; and A25's own position was not flagged, so its placement is inferred only from the transitions into it and its distance from A24. A competing explanation the evidence cannot fully exclude is that a minority of individual cases kept the earlier arrangement while the window-level profiles shifted; the tight position spreads (standard deviations around 0.05–0.07) make a large mixed-order share unlikely but do not rule out a small one. [POS001, POS002, POS003, POS004, POS005, POS006, LAG001]",
+  "case_id": "case_1ed70f47ec8b0ce2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

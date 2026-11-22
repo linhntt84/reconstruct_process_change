@@ -1,0 +1,19 @@
+### Observed differences
+
+- Three activities all but disappear. In the earlier window, A19, A20 and A25 each took part in roughly a third of the cases (about 73, 62 and 70 of 200 traces); in the later window, A20 and A25 appear in none of the 200 traces and A19 in only 1. [OCC001, OCC002, OCC003]
+- Before, these three behaved as alternatives rather than companions: each pair of them rarely occurred in the same case (about 1 in 100 cases), so nearly every case contained exactly one of the three. In the later window, almost every case contains none of them. [REL001, REL003, REL008]
+- Before, each of the three was followed by A26 in about 95 in 100 of its occurrences, and A41 led to one of the three in about 87 in 100 of its occurrences. In the later window, A41 leads directly to A26 in about 86 in 100 of its occurrences. [DIR001, DIR002, DIR004, DIR005]
+- The earlier co-occurrences collapse: A41 used to appear together with A19, A20 or A25 in about 31–37 in 100 cases (always with A41 first), and A24 followed one of the three in about 17 in 100 cases; in the later window, A26, A31 and A24 still occur (A26 and A31 in essentially every case) but no longer together with any of the three. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, REL002, REL007, REL012]
+- The distance between A41 and A26 shrank: before, A26 typically followed A41 two positions later (about 85 in 100 cases, the rest three); in the later window, it follows immediately (about 86 in 100 cases). [LAG001]
+- A26 and A41 still occur in every case in both windows; A26's average position moved slightly earlier (about 0.39 to 0.37 of the trace) and A41's slightly later (about 0.32 to 0.33), consistent with the trace becoming shorter. [POS004, POS005]
+- A secondary difference: A21's outgoing routing shifted, with A24 rising from about 14% to about 35% of A21's outgoing transitions while A31 fell from about 54% to about 38%. [DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Screening flagged 29 control-flow items where about 0.57 would be expected if nothing had changed, so the volume of differences is far beyond what an unchanged process typically produces. The evidence directly and consistently supports the hypothesis that, in the later window, the alternative intermediate steps A19, A20 and A25 between A41 and A26 are no longer executed: earlier, roughly 87 in 100 cases ran A41, then exactly one of A19, A20 or A25, which in turn led to A26, whereas in the later window A41 is followed directly by A26 in about 86 in 100 cases and the three intermediate activities are essentially unobserved. The participation collapse, the redirection of A41's outgoing transitions from the three activities to A26, the disappearance of the three activities' outgoing edge to A26, the loss of their co-occurrence with A41, A26, A31 and A24, and the shrinkage of the A41–A26 distance from two positions to one all describe the same structural difference. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR004, DIR005, REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, REL002, REL007, REL012, LAG001]
+
+A competing explanation the evidence cannot fully rule out is that A19, A20 and A25 were relocated to another part of the process rather than removed altogether, since zero participation only means they were not observed in this sample; the single remaining A19 event, now followed by A12, rests on one trace and carries little weight. The relational and positional evidence does show, however, that they no longer sit between A41 and A26. [OCC001, DIR001, LAG001]
+
+Other differences: A21's outgoing shares were redistributed (A24 up from about 14% to about 35%, A31 down from about 54% to about 38%, with a few new successors at about 1% each), a routing shift the evidence does not tie to the removed segment. [DIR003]

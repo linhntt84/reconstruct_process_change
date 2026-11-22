@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_2c2a0b5a6c47d351.json",
+  "evidence_sha256": "027f1628e5a48e3c58eecd7f7e1160c93e2e8416dc1466cd97bb8c653e15054c",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:48:48.420613+00:00",
+  "finished_at_utc": "2026-11-15T01:49:07.501259+00:00",
+  "latency_seconds": 19.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2634,
+    "prompt_tokens": 21427,
+    "total_tokens": 24061,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2065
+    },
+    "cost": 0.00357713
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 7158,
+  "text": "### Observed differences\n\n- In the earlier window, about 35% of traces contained A14, 30% A15, and 36% A16, each followed by A24; A39 preceded one of these three. In the later window, A14, A15, and A16 are absent, while A21, A22, and A23 each appear in every trace, with A39 preceding them and A24 following them. [OCC001-003, OCC004-006, DIR001-003, DIR004-006, DIR007, REL001-002, REL008, REL003-005, REL009-011, REL014-016, REL019-020, REL023, REL021-022, REL024-027]\n- The distance from A39 to A24 increased from 2 steps to 4 steps. [LAG001]\n- The relative position of A24 shifted later in the trace (mean from about 0.39 to 0.44). [POS007]\n- The elapsed time between A24 and A31 decreased from about 0.90 hours to 0.46 hours (median from 0.91 to 0.46). [TWAIT001]\n- The elapsed time between A32 and A31 decreased from about 0.18 hours to 0.10 hours (median from 0.15 to 0.08). [TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe process likely changed from executing exactly one of A14/A15/A16 between A39 and A24 to executing all three of A21/A22/A23 (in any order) between A39 and A24. This is supported by the complete disappearance of A14/A15/A16, the appearance of A21/A22/A23 in every trace, the shift in A39's outgoing edges from the former set to the latter, and the increase in the A39-to-A24 lag from 2 to 4 steps. The order among A21/A22/A23 is mixed (about half A-before-B, half B-before-A), so no fixed ordering is introduced. The timing between A24–A31 and A32–A31 also shortened, which is a separate change.\n\nOther differences: The inter-event times between A24 and A31, and between A32 and A31, both decreased substantially.\n\nA competing explanation that cannot be fully ruled out is that the activities were renamed (e.g., A14/A15/A16 replaced by A21/A22/A23) rather than genuinely added or removed, but the evidence of all three new activities co-occurring in every trace, while the old ones were mutually exclusive, makes a simple renaming unlikely.",
+  "case_id": "e4a_2c2a0b5a6c47d351",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

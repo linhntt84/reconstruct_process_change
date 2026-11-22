@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_45451fa650a0116c.json",
+  "evidence_sha256": "979a14f255633309535de61d9ae724c0c4c1bbc14dbe321482a3639f89cca63f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:00:06.650366+00:00",
+  "finished_at_utc": "2026-11-14T14:03:00.726967+00:00",
+  "latency_seconds": 174.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27702,
+    "prompt_tokens": 83304,
+    "total_tokens": 111006,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25458,
+      "text_tokens": 2244
+    },
+    "cost": 0.026346599999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 86459,
+  "text": "### Observed differences\n\n- The choice of branch after A20 flipped. In the earlier window, about 82 in 100 traces continued from A20 into A24, A25 and A26 — the three always ran together, with A20 preceding each of them in about 80–82 in 100 traces — while A21, A22 and A23 each appeared in only about 19–20 in 100 traces. In the later window, about 79–80 in 100 traces continue from A20 into A21, A22 and A23, while A24, A25 and A26 each appear in only about 21–22 in 100 traces. A20 itself remains in every trace in both windows. [OCC018, OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, REL011, REL014, REL015, REL016]\n\n- A20's own outgoing transitions mirror this flip: earlier, about 29 in 100 led to A24, 29 to A26 and 24 to A25, with only about 3–9 in 100 to A21, A22 and A23; in the later window, about 29 led to A23, 28 to A21 and 21 to A22, with only about 6–8 in 100 to A24, A25 and A26. [DIR020]\n\n- The internal shape of both branches stayed the same; only their frequencies changed. A21, A22 and A23 still occur together when their branch runs (co-occurrence about 79 in 100 traces versus about 19 earlier) and in no fixed order between them (A21 precedes A22 in about 41 in 100 traces and follows it in about 38); A24, A25 and A26 likewise still occur only together (about 21 in 100 traces versus about 82 earlier). The spacing between A20 and each member of the now-dominant branch stays within one to three steps in both windows. [REL020, REL021, REL028, REL041, LAG008, LAG009, LAG010]\n\n- A06 became much rarer: about 46 in 100 traces contained it earlier versus about 12 in 100 in the later window. Earlier it typically ran after A20 (about 42 in 100 traces) and received about 45 in 100 of A34's outgoing transitions, usually followed immediately by A35; in the later window A34 leads almost always straight to A35 (about 90 in 100 of its outgoing transitions, immediately adjacent in about 92 in 100 cases versus about 56 earlier), and A06 is rarely seen in this segment. [OCC005, REL001, REL009, DIR034, LAG007, LAG052]\n\n- A15, A16 and A30 still occur in every trace in both windows but repeat more often in the later window: mean occurrences per trace rose from about 1.7 to about 1.9 for A15 and A16, and from about 1.6 to about 1.75 for A30. [OCC014, OCC015, OCC028]\n\n- Several occasionally executed activities occur somewhat more often: A02 from about 8 to about 17 in 100 traces, A04 from about 5 to about 19, A08 from about 5 to about 11, A10 from about 3 to about 10, and A32 and A33 from about 61 to about 69–70. [OCC002, OCC004, OCC007, OCC009, OCC030, OCC031]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two existing alternative continuations after A20 swapped how often they are taken: in the earlier window the block A24–A25–A26 was the typical path (about 82 in 100 traces, always together, A20 before them) and A21–A22–A23 the rare alternative (about 19–20 in 100), while in the later window A21–A22–A23 is the typical continuation (about 79–80 in 100, again together and in no fixed order among its members) and A24–A25–A26 is rare (about 21–22 in 100). [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024]\n\nThe flip is shown directly in A20's successor profile and in the co-occurrence and order relations between A20 and each branch member; each of these relations shows a difference larger than about 199 of 200 random re-splits of the pooled windows. [DIR020, REL011, REL012, REL013, REL014, REL015, REL016] Because both blocks were observed at substantial shares in both windows and keep their internal togetherness and mixed ordering, this reads as a change in how often existing paths are taken rather than as paths being added, removed or reordered. An important competing explanation the evidence cannot rule out is that the two windows sample different mixes of case types that always offered both branches, which would produce the same aggregate flip; the evidence also includes no screening baseline, so the number of qualifying items cannot be checked against a chance expectation. [REL020, REL021, REL028, REL041, LAG008, LAG009, LAG010]\n\nOther differences:\n- A06 nearly disappeared (about 46 to about 12 in 100 traces) while A34 now flows almost always directly to A35, so the earlier route through A06 after A34 is rarely observed; the evidence cannot establish whether this belongs to the same rerouting as the branch swap. [OCC005, REL001, REL009, DIR034, LAG007, LAG052]\n- A15, A16 and A30 occur in every trace in both windows but repeat more often (mean occurrences per trace about 1.7 to 1.9 for A15 and A16, about 1.6 to 1.75 for A30). [OCC014, OCC015, OCC028]\n- A02, A04, A08, A10, A32 and A33 occur somewhat more often (for example A04 from about 5 to about 19 in 100 traces, A32 from about 61 to about 69). [OCC002, OCC004, OCC007, OCC009, OCC030, OCC031]",
+  "case_id": "case_45451fa650a0116c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

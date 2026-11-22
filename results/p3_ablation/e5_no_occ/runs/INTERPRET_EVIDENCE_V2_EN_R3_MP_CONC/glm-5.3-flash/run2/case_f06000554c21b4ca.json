@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_f06000554c21b4ca.json",
+  "evidence_sha256": "b4b744d78f6f18a03acc3efc873ac2dce27d1377c27342eb3137e83394fa8619",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:31:26.925078+00:00",
+  "finished_at_utc": "2026-11-15T05:32:39.773013+00:00",
+  "latency_seconds": 72.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10772,
+    "prompt_tokens": 13267,
+    "total_tokens": 24039,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9469,
+      "text_tokens": 1303
+    },
+    "cost": 0.00737605
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31983,
+  "text": "### Observed differences\n\n- The relative order of two groups of activities reversed. In the earlier window, A26 and A27 came before A35, A36 and A41 in about 98–100 of 100 traces for every one of the six cross-pairs; in the later window, A35, A36 and A41 came before A26 and A27 in about 98–100 of 100 traces for all six pairs. Both groups still occur together in every trace in both windows. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Successors were rewired accordingly. A25 led almost always to A27 before (about 99 in 100 outgoing transitions) and now leads roughly equally often to A35, A36 and A41 (about 33 in 100 each). A26 previously led to A41, A35 or A36 (about 37, 34 and 28 in 100) and now leads almost always to A30 (about 98 in 100). A35, A36 and A41 each lost A30 as a main successor (from about 28–37 in 100 to under 1 in 100) and gained A27 (about 30–34 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Positions shifted consistently: A35, A36 and A41 now appear earlier in the trace (mean relative position about 0.59 before vs about 0.41 after), while A27 (about 0.38 vs 0.47) and A26 (about 0.53 vs 0.62) appear later. [POS001, POS002, POS003, POS004, POS005]\n- Distances match a three-activity block changing sides: A27 followed A25 immediately before (gap of 1 in about 99 of 100 cases) and now follows about 4 steps later (about 93 in 100); A30 followed A26 about 4 steps later before (about 93 in 100) and now follows immediately (about 98 in 100). [LAG001, LAG003]\n- Several other distance items point in the same direction but rest on only 1–2 observations in one window and are weak on their own. [LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of activities A35, A36 and A41 was relocated: in the earlier window it executed after A26 and before A30, while in the later window it executes between A25 and A27. In the earlier window the flow ran roughly A25 → A27 → … → A26 → {A35/A36/A41} → A30; in the later window it runs A25 → {A35/A36/A41} → A27 → … → A26 → A30. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005, LAG001, LAG003]\n\nThe order flip is observed directly on all six cross-pairs at near-deterministic strength, the successor changes at A25, A26, A35, A36 and A41 match it, and the position and distance shifts (A25→A27 gap 1→4, A26→A30 gap 4→1) fit a block of about three activities moving across the A27–A26 segment. All involved activities still occur in essentially every trace in both windows, so this is a reordering of existing behaviour rather than activities becoming optional or one path replacing another. Screening also supports this reading: 26 control-flow items qualified against roughly 0.41 expected by chance without a change, far beyond what an unchanged process typically produces. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG003, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: the evidence covers nothing about the segment between A27 and A26, so a competing explanation that this segment also changed (for example activities added or removed there) cannot be ruled out; the order inside the A35/A36/A41 block is flexible in both windows, and the exact number of block executions per trace is not pinned down (about 6 in 100 later traces show a gap of 5 between A25 and A27). Several indicators describe the same traces, so they corroborate but are not independent confirmations. [LAG001, DIR003, DIR004, DIR005]\n\nOther differences: the spread of relative positions increased slightly for A26, A27, A35, A36 and A41 (standard deviation up by roughly 0.005–0.009), and the weakly supported distance items noted above; both fit the same relocation rather than an independent change. [POS001, POS002, POS003, POS004, POS005, LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]",
+  "case_id": "case_f06000554c21b4ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

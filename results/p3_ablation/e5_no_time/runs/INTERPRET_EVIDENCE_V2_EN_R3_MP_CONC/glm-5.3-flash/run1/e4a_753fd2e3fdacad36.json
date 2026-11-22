@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_753fd2e3fdacad36.json",
+  "evidence_sha256": "9ab8125d4f5906b84558df8aeb308a0ea1a7b61291fb1dd0add70aa2c89dcae3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:24:13.469704+00:00",
+  "finished_at_utc": "2026-11-14T13:26:28.423353+00:00",
+  "latency_seconds": 134.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21728,
+    "prompt_tokens": 12846,
+    "total_tokens": 34574,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20236,
+      "text_tokens": 1492
+    },
+    "cost": 0.012790900000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 70644,
+  "text": "### Observed differences\n\n- In the earlier window the flow ran A42 → one of five activities (A14, A15, A20, A21, A22) → A23 → A24 → A25 → A29: all of A42's outgoing transitions went to one of the five (about 18–23 in 100 each), each of the five always exited to A23, A24 always led to A25, and A25 always led to A29. In the later window, A42 leads directly to A23. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG004]\n\n- The five activities now run late in the flow: in the earlier window each of them preceded A23 and A24 in every trace where they co-occurred (about 18–23 in 100 traces), whereas in the later window A23 and A24 always precede them, consistently across all eight activity pairs. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- New detours appear around A24 and A25: in the later window about 51 in 100 of A24's outgoing transitions and about 49 in 100 of A25's go to the five activities (previously none did), and the five activities now exit to A25 (about 37–68 in 100, depending on the activity) or A29 (about 33–63 in 100) instead of to A23. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- Positions and distances shifted accordingly: the five activities' mean relative position moved from about 0.30–0.33 to about 0.58–0.61 of the trace, while A23, A24 and A25 each shifted slightly earlier (about 0.02–0.04); the A42→A23 distance shortened from 2 to 1 steps, the A24→A29 distance lengthened from 2 to 3 steps in every trace, and the A24→A25 and A25→A29 distances, previously always 1 step, now split roughly half at 1 and half at 2 steps — the extra step falls between A24 and A25 in about 51 in 100 later-window cases and between A25 and A29 in about 49 in 100. [LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- Participation is stable: each of the five activities appears in about 15–22 of 100 traces in both windows (the five shares sum to about 100 in 100 in each window, consistent with exactly one of them running per case), and A23, A24 and A25 appear in all traces in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the single activity chosen per case from the five alternatives A14, A15, A20, A21, A22 is now executed later in the flow: in the earlier window it ran between A42 and A23, while in the later window A42 connects directly to A23 and the chosen activity runs between A24 and A29, inserted after A24 in about half of the cases and after A25 in the other half. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG001, LAG002, LAG003, LAG004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\nThe hypothesis is shown directly and consistently: successor profiles changed at A42, at the five activities and at A24/A25; all eight order relations with A23/A24 reversed completely; and the distance and position shifts match the same rewiring. Participation of every involved activity is stable, so this is a change in where an existing step executes, not activities becoming optional, repeated or more frequent. Screening expected about 0.43 qualifying items if nothing had changed, but 28 qualified — roughly 65 times that expectation — and most items describe this one underlying difference rather than independent changes, with each difference exceeding about 995 in 1,000 random re-splits of the pooled traces. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\nLimitations: the evidence cannot show whether the choice among the five activities, or between the two insertion points after A24 and after A25, follows a rule or is random, nor can it distinguish a moved step from the early execution being removed and a separate late execution introduced; small shifts in the mix among the five (for example A15 appearing in about 19 of 100 traces before and about 15 of 100 after) may be sampling noise in these finite windows. [DIR006, DIR007, POS001, POS002, POS003, POS004, POS005]",
+  "case_id": "e4a_753fd2e3fdacad36",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

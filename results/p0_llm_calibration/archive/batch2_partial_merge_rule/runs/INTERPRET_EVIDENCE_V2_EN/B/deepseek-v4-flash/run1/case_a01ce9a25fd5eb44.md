@@ -1,0 +1,13 @@
+### Observed differences
+
+- In the later window, activities A14, A15, A20 and A21 appear in about 24, 20, 30 and 25 out of 100 traces respectively, while they were absent from all traces in the earlier window. They occur about once per trace and are positioned near the middle of the trace (mean relative position around 0.5). [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, POS004]
+- The outgoing transitions of A23 changed: before, every observed transition went to A24; in the later window, about half still go to A24 and the rest are split among A14, A15, A20 and A21. Similarly, A24 previously always went to A25; in the later window, about half go to A25 and the rest go to A14, A15, A20 and A21. [DIR005, DIR006]
+- The new activities A14, A15, A20 and A21, when they occur, are followed by A24 or A25 in roughly equal proportions. [DIR001, DIR002, DIR003, DIR004]
+- The relative order of existing activities shifted: A23–A24 changed from always one step apart to about half one step and half two steps; A23–A25 changed from always two steps to almost always three steps; A24–A25 changed from always one step to about half one step and half two steps. [LAG001, LAG002, LAG003]
+- The new activities co-occur with A23, A24, A25, A38 and A39 in the later window, with the new activity preceding the existing one in many of those cases. [REL004, REL005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, a set of new activities (A14, A15, A20, A21) was introduced into the process, inserted between the existing activities A23/A24/A25 and also interacting with A38/A39. The appearance of these activities, the redistribution of outgoing transitions from A23 and A24 toward them, and the consistent one-step increase in the lag between A23–A24–A25 all point to an additional step being executed in a substantial share of cases. The number of distinct differences (appearance of new activities, routing changes, and order shifts) is well above the number expected by chance alone. A competing explanation is that these are rare variants that happened to appear only in the later sample, but the consistency across occurrence, routing, position and lag indicators makes that unlikely. The evidence does not establish the exact position or purpose of the new activities, only that they are executed and affect the order of existing activities.

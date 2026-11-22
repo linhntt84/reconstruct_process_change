@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7f08b700b5dd4317.json",
+  "evidence_sha256": "120ca4c17726f3d5d4ae5257a646aa326de2d21d7bfa165b6fae05a602eec023",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:59:47.660054+00:00",
+  "finished_at_utc": "2026-11-14T14:02:34.684992+00:00",
+  "latency_seconds": 167.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24785,
+    "prompt_tokens": 78174,
+    "total_tokens": 102959,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22615,
+      "text_tokens": 2170
+    },
+    "cost": 0.0241186
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 74602,
+  "text": "### Observed differences\n\n- The block between A30 and A31 changed most. In the earlier window, every trace contained all six activities A33, A35, A36, A37, A38 and A39 (200 of 200 traces each). In the later window, A33, A35 and A36 each appear in about 46–47 in 100 traces, and A37, A38 and A39 in about 56 in 100. [OCC031, OCC033, OCC034, OCC035, OCC036, OCC037]\n\n- Earlier, these six activities formed one fixed sequence between A30 and A31: A30 preceded A33 in all traces, A33 preceded A31 in about 99 in 100 traces, and each of A33/A35/A36 preceded each of A37/A38/A39 in about 99 in 100 traces, while the order within each trio was mixed. [REL002, REL008, REL016, REL020, REL023, REL014]\n\n- In the later window the two trios became mutually exclusive: cross-trio co-occurrence fell from essentially every trace to about 3 in 100, while within-trio co-occurrence persists (A33 with A35 in about 46 in 100 traces, A37 with A38 in about 56 in 100). Almost every trace now contains exactly one of the two trios (about 97 in 100), about 3 in 100 contain both. [REL014, REL016, REL019, REL023, REL026]\n\n- The bypass shows in direct successions: A30's outgoing transitions, earlier going about 97 in 100 to A33/A35/A36, now go about 52 in 100 directly to A37/A38/A39; and A33, A35 and A36, which earlier never led directly to A31, now do so in about 26–34 in 100 of their outgoing transitions. [DIR030, DIR033, DIR035, DIR036]\n\n- Accordingly, the positional gap from A30 to A37/A38/A39 and from A33/A35/A36 to A31 shrank from 4–5 steps to 1–3 steps, and the trios' mean relative positions moved only slightly (A33/A35/A36 about 0.68 → 0.74; A37/A38/A39 about 0.77 → 0.73). [LAG004, LAG005, LAG006, LAG007, LAG013, LAG019, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- A30 and A31 themselves are stable: both occur in every trace in both windows, A30 still precedes A31 in about 99 in 100 traces, and their mean relative positions shifted only slightly (A30 0.62 → 0.67, A31 0.82 → 0.80), consistent with traces now containing about three fewer block events. [OCC029, REL001, POS001, POS002]\n\n- Elsewhere the differences are moderate: A43 recurs more within traces (mean occurrences per trace about 1.55 → 1.72), A44 participates more (about 63 → 68 in 100 traces), and participation shifted by roughly 5–7 in 100 traces for A22 and A24 (up), A21 and A23 (down), A02 (down to about 13 in 100) and A06 (up to about 21 in 100). [OCC041, OCC042, OCC021, OCC022, OCC023, OCC024, OCC002, OCC006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A30 and A31, previously always executed as two consecutive trios — first A33/A35/A36, then A37/A38/A39 — is in the later window executed as a choice between the two trios: about 46 in 100 traces run only A33/A35/A36, about 56 in 100 run only A37/A38/A39, and about 3 in 100 run both, so each trio is bypassed in roughly half of the executions. The hypothesis rests on direct relational evidence — within-trio co-occurrence preserved while cross-trio co-occurrence collapsed, and new direct successions A30→A37/A38/A39 and A33/A35/A36→A31 — corroborated by the participation drops (from 200/200 to 93–113 of 200 traces per activity) and by the positional gaps implied by those successions shrinking from 4–5 to 1–3 steps; the many agreeing items largely describe this one underlying composition change rather than independent phenomena. [OCC031, OCC035, OCC037, REL014, REL016, REL026, DIR030, DIR033, DIR035, DIR036, LAG004, LAG007]\n\nThe evidence cannot show what determines which trio a trace runs, since no case attributes are available, and no screening baseline is included, so the exclusion of chance rests on the size and coherence of the differences (supports of 200 versus about 93–113 traces per activity) rather than a formal comparison; a change in the mixture of pre-existing variants cannot be fully ruled out, although the earlier window's 100% participation makes a purely sampling-based explanation implausible. [OCC031, OCC035]\n\nOther differences:\n- A43 now recurs more often within traces (mean occurrences per trace about 1.55 → 1.72; recurrence in about 34 → 38 in 100 traces) while still appearing in every trace. [OCC041]\n- A44 now appears in about 68 in 100 traces (was about 63) and recurs more when present (mean occurrences per trace 0.80 → 0.94). [OCC042]\n- Participation shifted moderately around A21–A24: A22 and A24 up about 7 in 100 traces, A21 and A23 down about 6 in 100. [OCC021, OCC022, OCC023, OCC024]\n- A02 now appears in about 13 in 100 traces (was about 20) and A06 in about 21 (was about 16). [OCC002, OCC006]\n- A few direction-profile changes rest on very few observations, for example A48 with 8 versus 5 outgoing transitions, and cannot be interpreted. [DIR048]",
+  "case_id": "case_7f08b700b5dd4317",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

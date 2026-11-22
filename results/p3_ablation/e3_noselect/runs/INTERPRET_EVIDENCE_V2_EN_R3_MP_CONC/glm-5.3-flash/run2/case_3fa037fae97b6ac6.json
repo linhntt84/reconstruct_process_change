@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_3fa037fae97b6ac6.json",
+  "evidence_sha256": "64be7f27ba52bee1c200aad2ca5c8f8d72c03f58c69fd16da1facc9637fcffce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:20:00.179507+00:00",
+  "finished_at_utc": "2026-11-15T08:21:49.094607+00:00",
+  "latency_seconds": 108.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15270,
+    "prompt_tokens": 24609,
+    "total_tokens": 39879,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13700,
+      "text_tokens": 1570
+    },
+    "cost": 0.011326349999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47396,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 cases). In the later window it appears in every case — 200 of 200 — exactly once per case (no repeats), typically early in the case (median position about 0.2, i.e. around the first fifth of the trace). [OCC001, POS001]\n\n- A01's placement varies from case to case: it always comes before A04 and A05 (100 of 100 later cases each), but it precedes A02 in about 50 of 100 cases and follows it in the other 50, and precedes A12 in about 46 of 100 while A12 comes first in about 54. It also appears both together with A06 (about 59 of 100 cases) and without it (about 41 of 100). In the earlier window A02, A04, A05 and A12 already ran in every case, so these pairs never co-occurred simply because A01 was absent. [REL001, REL002, REL003, REL004, REL005]\n\n- In the later window A01 also appears in routing: roughly 32% of A02's outgoing transitions, 30% of A12's and 26% of A06's now go to A01 (all zero before), while A01 in turn leads mostly to A02 (about 30%), A12 (about 27%), A04 (about 14%) and A05 (about 11%). [DIR001, DIR002, DIR006, DIR012]\n\n- Distances between the surrounding activities grew by roughly one step, consistent with an extra event inserted between them: A02 followed by A12 within one step fell from about 82 to about 53 in 100 cases (two-step gaps rose from about 15 to about 35), A12→A02 shows the same pattern (about 77 to 51 in 100), and distances from A06 to A02, A04, A05 and A12 shifted clearly larger (e.g. A06→A05 at distance 5 rose from 0 to about 37 in 100). Positions of A02, A04, A05 and A12 also shifted slightly later (e.g. A05 mean position from about 0.63 to 0.73 of the trace). [LAG004, LAG009, LAG010, LAG011, LAG013, POS002, POS003, POS004, POS006]\n\n- The share of cases taking two existing alternative paths shifted: the path containing A06 was taken in about 59 of 100 later cases versus about 48 of 100 earlier (95 → 118 of 200 cases), while the alternative path containing A03 — together with A08 and A10, and partly A07, A09 and A11 — fell from about 53 to about 41 of 100 (105 → 82 of 200 for each of A03, A08, A10; A07/A11 about 29 → 24; A09 about 28 → 20). All these activities remain common in both windows, so only the shares between the alternatives moved. [OCC002, OCC003, OCC005, OCC006, OCC007, OCC008, REL006, REL009, REL010, REL011]\n\n- The relative order of A04 and A05 tilted: A04 came before A05 in about 59 of 100 later cases versus about 50 of 100 before, and A05's share of A04's outgoing transitions rose from about 50% to about 65%. [REL008, DIR004, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new activity, A01, was added to the process and is now executed exactly once in every case, at a varying early position: it always precedes A04 and A05, stands before A02 in about half the cases and after it in the other half (similarly around A12), and it now receives transitions from A02, A12 and A06. This is shown directly and consistently by occurrence (0 of 200 → 200 of 200 cases, once per case), direction, position and relation indicators, and the one-step growth of distances between surrounding pairs (e.g. A02→A12 within one step falling from about 82 to 53 in 100) fits an inserted event; an activity appearing in 200 of 200 later cases after 0 of 200 earlier ones cannot be explained as a rare-variant sampling effect. [OCC001, DIR001, DIR002, DIR006, DIR012, POS001, REL001, REL002, REL003, REL005, LAG004, LAG013]\n\nLimitations: the evidence cannot rule out that A01 replaced a step that was previously not recorded rather than being a net addition, and because its order against A02 and A12 is mixed, no single fixed insertion point can be inferred; position and distance evidence uses event positions, not clock time. [REL001, REL005, POS001]\n\nOther differences: the routing share between two existing alternative paths shifted — the A06 path rose from about 48 to 59 of 100 cases while the A03/A08/A10 path fell from about 53 to 41 of 100; both paths are well observed in both windows, so this looks like a genuine shift in how often existing paths are taken, though sampling variation between two 200-case windows cannot be fully excluded. Separately, the mixed order of A04 and A05 tilted toward A04 first (about 50 → 59 of 100). [OCC002, OCC003, OCC005, OCC007, OCC008, REL006, REL008, REL009, REL010, REL011, DIR004]",
+  "case_id": "case_3fa037fae97b6ac6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

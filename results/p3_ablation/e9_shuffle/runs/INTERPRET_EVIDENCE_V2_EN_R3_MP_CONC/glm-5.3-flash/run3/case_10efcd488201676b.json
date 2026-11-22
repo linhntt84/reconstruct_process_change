@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_10efcd488201676b.json",
+  "evidence_sha256": "dc20bcbe46eed8bac6a94e8d0beacdb48a26bfa9bbc90d146c96733cb4e9ebca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:56:20.858759+00:00",
+  "finished_at_utc": "2026-11-15T09:59:58.833031+00:00",
+  "latency_seconds": 217.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 32521,
+    "prompt_tokens": 72462,
+    "total_tokens": 104983,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30176,
+      "text_tokens": 2345
+    },
+    "cost": 0.027129799999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 101769,
+  "text": "### Observed differences\n\n- In the later window, A01 and A17 are no longer observed at all. A01 appeared in about 64 in 100 earlier traces (about 0.9 times per trace) and A17 in every earlier trace, once and near the end (median relative position about 0.95); both drop to zero participation afterwards, and their outgoing edges (A01 to A09, A17 to A10) disappear with them. [OCC001, OCC008, POS001, POS012, DIR001, DIR012]\n\n- In the later window, A07 appears as a new activity: absent before, it occurs in about 68 in 100 later traces, about once per trace, very early in the case (median relative position about 0.06), and its observed successors are A03 or A04 in roughly equal shares; A03's outgoing traffic, previously split between A05 and A02, now goes to A07 and A05. [OCC004, POS005, DIR006, DIR003]\n\n- In the later window, A06 and A16 behave as a mandatory closing pair. Before, each appeared in about 40 in 100 traces, about twice per trace, around the middle (mean relative position about 0.44); afterwards each occurs exactly once in every trace (recurrence near zero) at the very end (median relative position about 1.0), the two always together and in either order (about 48 versus 52 in 100), preceded by A04 and A10 — A04 now always leads to A10, and A10 leads to A06/A16 where it previously led only to A17. [OCC003, OCC007, POS004, POS011, REL045, REL031, REL039, DIR004, DIR007]\n\n- In the later window, A02 is repeated far more heavily: about 9.0 occurrences per trace versus about 2.0 before, with participation stable at about 70 in 100 and recurrence up from about 44 to 66 in 100; it now interleaves with A04, A10, A06, A16, A12, A13 and A09 in about two-thirds of the traces containing them. [OCC002, REL015, REL019, REL016, REL021, REL022, REL018]\n\n- In the later window, A14 and A15 also become much more frequent and repeated: A14 rises from about 1.0 to about 4.5 occurrences per trace (participation 28 to 55 in 100) and A15 from about 1.1 to about 4.6 (participation 40 to 63 in 100), and both now co-occur with most other activities (for example A13–A14 co-occurrence 13 to 55 in 100, A12–A15 20 to 63 in 100). [OCC005, OCC006, LAG047, LAG057, REL072, REL069]\n\n- Several direct successions and positions change in the later window: A13 now leads to A02 in all observed cases (previously split between A11 and A12, with A02 typically about five positions later), A12 now leads to A09 and A08 instead of A01 and A08 (A09 immediately after A12 in about two-thirds of observed pairs, previously about two positions later), A02's own successors shift from A03/A04/A06/A16 to A11/A12/A14/A15, and relative positions move slightly (A10 earlier, mean 0.95 to 0.81; A09, A11 and A12 later; A04 earlier and more variable). [DIR009, LAG041, DIR008, LAG035, DIR002, POS007, POS006, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural change in the later window: A01 and A17 are no longer executed, A07 appears as a new early activity whose observed successors are A03 and A04, and A06 and A16 — previously optional, repeated and mid-trace — now occur exactly once in every trace as a closing pair after A04 and A10. [OCC001, OCC008, OCC004, OCC003, OCC007, POS004, POS011, REL045, DIR004, DIR007]\n\nThe support is direct and consistent: the participation changes are all-or-nothing with full support behind them (A17 in 200 of 200 earlier traces and none later; A07 in none earlier and about 68 in 100 later), successor profiles are replaced outright rather than reweighted, every relation involving A01 or A17 flips in the same direction, and screening qualified 171 control-flow items where fewer than one would be expected in an unchanged process, so sampling variation cannot account for the pattern as a whole. [OCC001, OCC008, OCC004, DIR001, DIR012, REL014, REL063]\n\nLimitations: the qualifying items overlap heavily — the many relation items for pairs involving A01 or A17, and those describing A02's interleaving, reflect the same trace behaviour from different angles and are not independent confirmations — and the evidence cannot show whether the added, removed and newly mandatory activities are functionally connected or independent changes. An important competing explanation is a non-random difference in case mix between the windows, for instance the later window drawing mostly on a variant that was rare before; random re-splits of the pooled data virtually never produce differences of this size, but a systematic sampling difference cannot be excluded. [OCC001, OCC008, REL045, OCC002]\n\nOther differences: A02, A14 and A15 are executed far more often per trace in the later window (about 2 to 9, 1 to 4.5 and 1.1 to 4.6 occurrences respectively) and now co-occur and interleave widely with other activities; A13 now leads to A02 in all observed cases and A12 to A09/A08 instead of A01/A08; and several activities occupy different relative positions (A10 earlier, A09/A11/A12 later, A04 more variable). These fit the same restructuring but are not needed for the main hypothesis. [OCC002, OCC005, OCC006, REL015, DIR009, DIR008, LAG035, POS007]",
+  "case_id": "case_10efcd488201676b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

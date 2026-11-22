@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_a97528041cc8aaad.json",
+  "evidence_sha256": "0a48d8b6e2153a0efa885bc9d97e0f3bd3d0e84084836893fb650f4bb7bf6b58",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:49:28.329062+00:00",
+  "finished_at_utc": "2026-11-15T00:52:02.245657+00:00",
+  "latency_seconds": 153.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21826,
+    "prompt_tokens": 42343,
+    "total_tokens": 64169,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19926,
+      "text_tokens": 1900
+    },
+    "cost": 0.01726445
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61201,
+  "text": "### Observed differences\n\n- The two halves of the mid-process section exchanged their order. Before, A20, A22 and A23 ran early (mean event position about 0.40) and preceded A25 and A29 in about 98 of 100 traces (each pair co-occurs in all traces), while A19, A21 and A24 ran late (about 0.67–0.69) and each led to A30 in about 95–97 in 100 of their outgoing transitions. In the later window, A19, A21 and A24 run early (about 0.36–0.38) and lead to A25 (about 97–98 in 100), while A20, A22 and A23 run late (about 0.64–0.65), A29 precedes them (about 97 in 100), and they lead to A30 (about 31–33 in 100) with no observed transitions to A25. [REL015, REL020, REL022, REL024, REL029, REL032, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, POS002, POS003, POS004, POS005, POS006, POS007]\n- The handovers flipped accordingly: A29 now passes to A20, A22 and A23 (about 31–33 in 100 each) where it previously passed to A21, A19 and A24 (about 31–36 in 100), and the spacing from A29 to A30 grew from about two steps (95 in 100) to about four steps (94 in 100). A40 now feeds A19, A21 and A24 (about 27–40 in 100) where it fed A20, A22 and A23 (about 25–33 in 100). A25 and A29 stayed between the two groups, both shifting slightly earlier (mean positions 0.46 → 0.39 and 0.65 → 0.58). [DIR011, LAG019, DIR012, LAG025, POS008, POS009]\n- Participation shifted mildly alongside the reversal: A19 now appears in about 44 of 100 traces (before 32), A21 in about 29 (before 38) and A24 in about 28 (before 32), while A20, A22, A23, A25, A29 and A40 appear in essentially all traces in both windows. [POS002, POS004, POS007, POS003, POS005, POS006, POS008, POS009]\n- A02 became a frequent early step: it appears in about 65 of 100 later traces (before 15 in 100; 30 vs 129 traces), typically one step after A14 (A14 → A02 now about 60 in 100 of A14's outgoing transitions, before about 1 in 100, with a one-step gap in about 98 of 100 co-occurrences) and followed by A15 (about 87 in 100 of A02's outgoing transitions, before about 9, when they were spread over many targets). A14 → A15 fell from about 84 to 37 in 100, A02's mean position moved from about 0.53 to 0.20, A14 precedes A02 in about 59 of 100 co-occurrences, and A02 precedes A20, A22, A23, A25, A29, A30, A40 and A45 in about 57–60 of 100 (before, it co-occurred with them in only about 15 of 100 traces). [OCC001, DIR004, DIR001, POS001, LAG005, REL001, REL002, REL004, REL006, REL007, REL009, REL010, REL011, REL012, REL013, REL014]\n- A06 and A10 became rarer: A06 appears in about 5 of 100 later traces (before about 22; 43 vs 10 traces) and A10 in about 6 of 100 (before about 17; 33 vs 12 traces). [OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe 87 qualifying control-flow items are far more than the roughly 1 expected if nothing had changed, so chance sampling cannot account for the pattern as a whole. The evidence supports a structural reordering in the middle of the process: the group A19, A21, A24, which previously ran after A25 and A29 and closed into A30, now runs before A25 and A29 and closes into A25, while the group A20, A22, A23, which previously ran before A25/A29, now runs after them and closes into A30; A29 now hands over to A20/A22/A23 instead of A19/A21/A24, and A40 now feeds A19/A21/A24 instead of A20/A22/A23. The reversal is shown directly on every cross-group pair (for example, A20 preceded A25 in about 98 of 100 traces before, whereas A25 precedes A20 in about 97 of 100 after, with 100% co-occurrence in both windows) and is consistent across the position shifts, the successor changes and the changed handovers. [REL020, REL022, REL024, REL029, REL032, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, POS002, POS003, POS004, POS005, POS006, POS007, LAG019]\n\nLimitations: the evidence establishes the reversed orders and retargeted edges but not the underlying flow model, so a broader rewiring producing the same order statistics cannot be excluded; about 2–3 in 100 later traces still follow the old order; and several lag-level details rest on very few observations in one window (often 1–10 traces), so they are indicative only. A competing explanation the evidence cannot rule out is that the two windows sample different mixtures of coexisting variants rather than a single modified flow. [REL022, REL032, LAG021, LAG022, LAG024, LAG013, LAG016]\n\nOther differences: A02 became a frequent early step inserted between A14 and A15 (A14 → A02 → A15 in the later window, where A14 led to A15 directly before), and A06 and A10 are now executed in only about 5–6 of 100 traces (previously about 17–22). [OCC001, DIR004, DIR001, POS001, LAG005, OCC002, OCC003]",
+  "case_id": "case_a97528041cc8aaad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

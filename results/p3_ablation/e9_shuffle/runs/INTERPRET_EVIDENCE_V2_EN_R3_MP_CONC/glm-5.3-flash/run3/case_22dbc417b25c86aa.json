@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_22dbc417b25c86aa.json",
+  "evidence_sha256": "e83f980ef0c92dc76399493bb74b55ae4b44b7ddf636639f6eb5933c291657ed",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:14:25.282073+00:00",
+  "finished_at_utc": "2026-11-15T10:14:58.757524+00:00",
+  "latency_seconds": 33.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4957,
+    "prompt_tokens": 5012,
+    "total_tokens": 9969,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4335,
+      "text_tokens": 622
+    },
+    "cost": 0.0032302999999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16701,
+  "text": "### Observed differences\n\n- In the earlier window, A06 occurred exactly once in every trace (200 in 200 cases); in the later window it was not observed at all (0 in 200 cases). [OCC001, POS003]\n- In the earlier window, every observed execution of A05 was followed by A06 (100% of A05's outgoing transitions), and A06 was in turn always followed by A01 (100%). In the later window, A05 is followed directly by A01 in 100% of its executions, and A06 has no observed outgoing transitions because it never occurs. [DIR001, DIR002]\n- In the earlier window, A06 co-occurred with A01 in all traces (always before A01) and with A05 in all traces (always after A05). In the later window, A01 and A05 each appear in all traces without A06. [REL001, REL002]\n- The distance from A05 to A01 shrank from two positions in all earlier traces to one position in all later traces, i.e. A01 now immediately follows A05. [LAG001]\n- Relative positions shifted accordingly: A01's mean position moved from 0.5 to 0.4 and A05's from about 0.17 to 0.2, consistent with traces containing one event fewer; A06's former position (mean about 0.33) disappeared. [POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A06 is no longer executed in the later window, so traces that previously ran A05 → A06 → A01 now run A05 → A01 directly: A06 fell from occurring in every trace to not being observed, A05's outgoing flow shifted entirely from A06 to A01, and A01 moved from two positions after A05 to immediately after it. [OCC001, DIR001, DIR002, REL001, REL002, LAG001]\n\nThis reading is direct and consistent: all nine qualifying control-flow items describe this one underlying difference (about 9 items versus roughly 0.04 expected by chance if nothing had changed), each difference exceeds about 995 in 1000 random re-splits of the pooled traces, and the participation, routing, relation, lag and position indicators all agree rather than pointing in different directions. [OCC001, DIR001, DIR002, REL001, REL002, LAG001, POS001, POS002, POS003]\n\nLimitation: zero participation in the later window means only that A06 was not observed in the 200 sampled traces, so the evidence cannot distinguish a complete removal of A06 from A06 becoming optional and being skipped in every sampled case. [OCC001, POS003]\n\nOther differences: none beyond the above; the small position shifts of A01 and A05 follow from traces being one event shorter once A06 is gone. [POS001, POS002, POS003]",
+  "case_id": "case_22dbc417b25c86aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

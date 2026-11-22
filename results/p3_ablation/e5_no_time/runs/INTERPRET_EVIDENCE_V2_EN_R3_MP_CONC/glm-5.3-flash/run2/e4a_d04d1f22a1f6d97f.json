@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_d04d1f22a1f6d97f.json",
+  "evidence_sha256": "919b58e75370a9adf1cb1dab2200c64d9487e19e8a4ec971e69b0ac479ca192f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:18:43.235339+00:00",
+  "finished_at_utc": "2026-11-15T07:19:52.397301+00:00",
+  "latency_seconds": 69.16,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9673,
+    "prompt_tokens": 11821,
+    "total_tokens": 21494,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8741,
+      "text_tokens": 932
+    },
+    "cost": 0.00660965
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33009,
+  "text": "### Observed differences\n\n- A22 ran in every trace in the earlier window (200 of 200, once per trace); in the later window it appears in only about 51 in 100 traces (about 102 of 200), still once per trace when present [OCC001].\n- Three activities not observed at all in the earlier window — A27, A28 and A33 — each now run once in about 49 in 100 traces (about 98 of 200 each) [OCC002, OCC003, OCC004].\n- The outgoing transitions of A21 were redistributed: before, all observed outgoing transitions of A21 led to A22; in the later window about half lead to A22 and the rest split almost evenly among A27, A28 and A33 (roughly 15–18 in 100 each) [DIR001].\n- A22 and each of the three new activities never occur in the same trace in the later window: about 51 in 100 traces contain only A22, and about 49 in 100 contain only the respective new activity [REL006, REL007, REL008].\n- The new activities sit between A21 and A23: A21 precedes each of them in about 49 in 100 traces, and each of them precedes A23 in about 49 in 100 traces; when A22 runs, it still follows A21 and precedes A23 as before [REL001, REL002, REL003, REL004, REL005, REL009, REL010, REL011].\n- Within the new block there is no fixed order: each pair among A27, A28 and A33 co-occurs in about 49 in 100 traces and appears in both orders in similar shares (roughly 22–27 in 100 each way), and from each of the three, observed transitions lead to the other two and to A23 [REL012, REL013, REL014, DIR002, DIR003, DIR004].\n- The step distance from A21 to A23 changed accordingly: before, A23 always followed A21 two steps later; in the later window it does so in about 51 in 100 traces, while in about 49 in 100 it follows four steps later, consistent with three activities running in between [LAG001].\n- The new activities occur around the middle of the trace (median relative position about 0.48–0.50) [POS001, POS002, POS003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, about half of the executions no longer run A22 between A21 and A23 and instead run a block of three activities — A27, A28 and A33, each executed once and in no fixed order — while the other half still execute A21, A22 and A23 in the earlier sequence. The participation changes are large and reciprocal (A22 from 100 to about 51 in 100 traces; each new activity from 0 to about 49 in 100), the new activities are mutually exclusive with A22, and the relational and step-distance evidence places the new block directly between A21 and A23; the many qualifying items largely describe this single shift rather than separate changes [OCC001, OCC002, OCC003, OCC004, REL006, REL007, REL008, LAG001]. The volume of qualifying evidence (26 items against roughly 0.4 expected for an unchanged process) cannot be explained by chance as a whole.\n\nLimitations: the two windows are finite samples, and because A27, A28 and A33 are absent from all 200 earlier traces, the evidence cannot show whether this path is entirely new or existed at a very low rate before and is now taken far more often; it also cannot show where the choice between the two paths is made [OCC002, OCC003, OCC004].",
+  "case_id": "e4a_d04d1f22a1f6d97f",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

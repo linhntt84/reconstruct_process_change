@@ -1,0 +1,13 @@
+### Observed differences
+
+- A03 and A05 appear together in every trace in both windows, and both execution orders remain in use throughout: in the earlier window A03 ran before A05 in about 50 in 100 traces and A05 before A03 in about 50 in 100, while in the later window the split is about 42.5 vs 57.5 in 100, favouring A05 first. [REL001]
+- The outgoing transition shares of three activities moved by the same margin. From A02, the share of outgoing transitions leading directly to A05 rose from 50% to about 57.5%, while the share leading to A03 fell to about 42.5% [DIR001]. From A03, the share leading to A04 rose from 50% to about 57.5% while the share to A05 fell [DIR002]. From A05, the share leading to A03 rose from 50% to about 57.5% while the share to A04 fell [DIR003].
+- Event-step gaps moved consistently with that order shift: in the later window A03 tends to occur one step later after A01 and after A02 (e.g., three steps after A01 in about 57.5 in 100 pair occurrences vs 50 before), A05 one step earlier (two steps after A01 in about 57.5 vs 50), A04 follows A03 immediately slightly more often, and A04 follows A05 two steps later slightly more often (about 57.5 vs 50 in each case). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]
+- On the event-position scale, A05's typical position moved slightly earlier in the later window (median from 0.75 to 0.5, mean from 0.625 to about 0.61) and A03's slightly later (mean from 0.625 to about 0.64), with the quartiles otherwise unchanged. [POS001, POS002]
+- Every one of these differences is small — about 7.5 percentage points on the order and routing shares — and all activities and transitions involved remain in use in a substantial share of traces in both windows (each profile rests on all 200 traces per window), so the windows differ only in how often existing paths are taken. [REL001, DIR001, DIR002, DIR003]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. All twelve items express a single underlying difference of about 7.5 percentage points in the relative order of A03 and A05, and a difference of that size is matched or exceeded in roughly 1 in 5 random re-splits of unchanged data (empirical strength about 0.81 on every item), so sampling variation in a stable process — where all these indicators move together because they reflect the same ordering — fully accounts for the pattern. [DIR001, DIR002, DIR003, POS001, POS002, REL001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]

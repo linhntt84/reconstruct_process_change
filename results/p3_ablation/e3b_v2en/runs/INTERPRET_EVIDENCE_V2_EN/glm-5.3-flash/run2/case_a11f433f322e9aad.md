@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the later window, A26 and A28 still appear in essentially every trace, but A27 no longer does: it runs in about 51 in 100 traces (about 102 of 200), down from all 200, with mean occurrences per trace falling from 1.0 to about 0.52. [OCC001, REL001, REL005]
+- Three activities that were absent from all 200 earlier traces — A32, A33 and A38 — each now appear in about 49–50 in 100 later-window traces (about 98–99 of 200), around the middle of the trace (median normalised position about 0.48–0.50). [OCC002, OCC003, OCC004, POS001, POS002, POS003]
+- Routing out of A26 split: earlier about 99 in 100 of A26's outgoing transitions went to A27; in the later window about 50 in 100 go to A27 and about 49 in 100 go to the new activities (A33 about 17, A38 about 16, A32 about 15 in 100). [DIR001]
+- The new activities' observed outgoing transitions lead to one another and into A28 (for example, from A32: about 35 in 100 to A38, 34 to A33 and 28 to A28; A33 and A38 show similar mixes). [DIR003, DIR004, DIR005]
+- Relationally, A26 precedes each new activity in about 49 in 100 traces and each new activity precedes A28 in about 49 in 100 traces; the three new activities co-occur with each other in about 49 in 100 traces (i.e., they run together as a group) but essentially never co-occur with A27. [REL002, REL003, REL004, REL009, REL010, REL011, REL012, REL013, REL014, REL006, REL007, REL008]
+- The step distance from A26 to A28, previously 2 in about 98 in 100 cases, is now 2 in about 50 in 100 cases and 4 in about 48 in 100 cases. [LAG001]
+- When A27 does run, its behaviour is nearly unchanged: about 96 in 100 of its outgoing transitions still go to A28, with only small new edges (about 1–2 in 100 each to A09, A34 and A25). [DIR002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+One possibility supported by the evidence is that a new fragment consisting of A32, A33 and A38 was inserted between A26 and A28 as an alternative to the earlier A26 → A27 → A28 route, with roughly half of the later-window executions taking the new fragment instead of A27. [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001]
+
+The support is direct and consistent: relational evidence places each new activity after A26 and before A28 in about half the traces, the new activities co-occur with one another but essentially never with A27 (marking them as an alternative route rather than an addition), and the A26–A28 distance widens from 2 to 4 steps in about 48 in 100 cases — exactly what replacing the single intervening A27 with a three-activity group would produce. Occurrence, direction, position, relation and lag indicators all tell the same story, and the 27 qualifying items far exceed the fewer than one expected without any change, so chance alone cannot account for the evidence as a whole. [REL002, REL003, REL004, REL009, REL010, REL011, REL006, REL007, REL008, LAG001, OCC001, DIR001, POS001]
+
+Limitations remain: the internal order of A32, A33 and A38 varies from trace to trace (each pairwise direction about 45–55 in 100 of their joint appearances), so the evidence shows a group of three activities rather than a fixed sequence; the roughly 50/50 routing split is a sample estimate from 200 traces per window; and small new edges (from A27 to A09/A34/A25 and from the new activities to A06/A25/A02, about 1–2 in 100 each) are not explained by this hypothesis. [REL012, REL013, REL014, DIR002, DIR003, DIR004, DIR005]
+
+The main competing explanation the evidence cannot fully rule out is sampling variation in variant frequencies between the two finite windows; however, three activities appearing in about 99 of 200 later traces after appearing in none of 200 earlier traces makes a pure sampling explanation implausible. Note also that the many relation items partly restate the same underlying rerouting rather than serving as independent confirmations. [OCC002, OCC003, OCC004, REL012, REL013, REL014]

@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity participation moved only slightly and in both directions: in the later window, A01, A03, A04 and A05 each appear in about 48 in 100 traces (about 52 in 100 in the earlier window), while A02, A06, A07 and A08 each appear in about 53 in 100 (about 49 earlier); A27 and A28 rise from about 51 to 55 in 100, A29 and A30 fall from about 50 to 45 in 100, A35 rises from about 57 to 62 in 100, and A36 and A37 fall from about 59 to 57 in 100. [OCC001, OCC002, OCC017, OCC018, OCC019, OCC020, OCC024, OCC025, OCC026]
+
+- No reported activity switches between presence and absence — the smallest participation is A31 at about 14 in 100 traces in both windows — and A10, A11 and A34 still occur in every trace in both windows; every participation difference is within the range of random re-splits, the largest empirical strength among them being about 0.60, i.e. at least 40 in 100 random re-splits of the pooled traces look this different or more. [OCC021, OCC009, OCC023, OCC024]
+
+- The largest directly-follows changes are successor-preference shifts of roughly 10–15 percentage points (shares over each source activity's observed outgoing transitions, about 90–200 per window): after A15, A23 falls from about 58 to 43 in 100 while A17 rises from about 24 to 37; after A17, A23 rises from about 47 to 60 while A15 falls from about 29 to 18; after A18, A25 rises from about 47 to 57 in 100 while A26 falls from 53 to 43, with matching reversals after A25 and A26; around A01–A05, A01→A04 falls from about 41 to 29 in 100 while A01→A05 rises from about 32 to 42, with matching shifts after A03, A04 and A05; and around A02/A08 the preference between A06 and A07 reverses (A02→A06 about 40→29 in 100, A02→A07 about 28→39). In both windows both successor choices remain common in each pair, so these are shifts in which of two mixed orders predominates, not a replacement of one order by another. [DIR011, DIR013, DIR014, DIR017, DIR018, DIR001, DIR003, DIR004, DIR005, DIR002, DIR008]
+
+- These order shifts are not unusual for random re-splits of the pooled traces: the strongest item (A15's successor profile) is exceeded in about 6 in 100 reference comparisons and the A25/A26 items in about 10 in 100, so flips of this size occur in a non-negligible share of splits of unchanged data. [DIR011, DIR014, DIR017, DIR018]
+
+- Repetition rose slightly for three always-present activities: A10 and A11 average about 1.46 occurrences per trace in the later window versus about 1.41 earlier (repeated in about 35 versus 30 in 100 traces), and A34 averages about 1.39 versus 1.35 (repeated in about 30 versus 27 in 100 traces); the empirical strengths are about 0.46–0.48. [OCC009, OCC010, OCC023]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest shifts — successor preferences moving by about 10–15 percentage points, e.g. between A25 and A26 after A18 or between A15 and A17 before A23 — are of a size that random re-splits of these same windows also produce, and with many activity pairs tested a few such shifts are expected even without a change, while the participation counts show no corroborating shift. [DIR011, DIR014, DIR017, DIR018, OCC001, OCC024]

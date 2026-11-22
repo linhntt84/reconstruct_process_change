@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A03 appeared in every case — about 2 occurrences per case on average, with repeats in about 44 in 100 cases — while in the later window A03 is not observed at all. [OCC003, POS003, DIR003]
+- A01 and A02 show the opposite pattern: neither was observed earlier, while in the later window each occurs exactly once in every case, A02 at the very start of the trace (median position 0, mean about 0.02) and A01 in the late part (mean position about 0.64). [OCC001, OCC002, POS001, POS002]
+- Successors were rerouted. Earlier, A06 always led to A03, and A03's outgoing transitions split about evenly between A04 and A05 (about 50 in 100 each). In the later window, A02 leads to A04 in about 51 in 100 transitions and directly to A01 in about 48 in 100; A06 leads to A01 in about 53 in 100 and back to A04 in about 46 in 100; and A01 leads to A05 in all but about 1 of 200 observed transitions. [DIR004, DIR003, DIR002, DIR001]
+- Ordering relations flipped accordingly. Earlier, A03 and A05 always co-occurred (A03 first in 56 in 100 cases, interleaved or repeated in 44 in 100) and A01/A02 were never present; later, A05 always occurs without A03, A01 precedes A05 in every case, A02 precedes A01 in about 98 in 100 cases, and A02 precedes A04 and A06 (strictly before in about 28 in 100 cases each, interleaved or repeated in about 22 in 100), which in turn precede A01. [REL011, REL004, REL001, REL008, REL007, REL009, REL003, REL005]
+- The repetition loop tightened. Earlier, consecutive repeats of A04 and of A06 sat about 3 events apart and A06 reached A04 at a distance of about 2, consistent with the loop passing through A03; in the later window the same repeats are 1–2 events apart (A06→A04 mostly at distance 1), and the distance from A06 to A05 in cases with an extra loop pass shortened from about 5 to about 4 events. [LAG001, LAG005, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Screening tested 34 control-flow units and 29 items qualified, against roughly 0.17 expected if nothing had changed; a count many times that expectation cannot be explained by random re-splits of a stable process. [screening]
+
+Main hypothesis: the control flow was restructured so that A03 — which previously framed every case, repeated in about 44 in 100 of them, mediated the A04–A06 repetition loop (A06 → A03 → A04) and exited to A05 — is no longer executed, while the newly observed A02 and A01 took over entry and exit routing: A02 opens the case and either enters a direct A04–A06 alternation (about 51 in 100 cases) or hands over straight to A01 (about 48 in 100), A06 exits the loop to A01, and A01 precedes A05 in every case. This is supported directly by the presence/absence flips of A03, A01 and A02, the successor changes at A06, A02 and A01, the flipped co-occurrence and order relations, and the shortening of repetition distances by about one event, all of which fit one consistent rewiring. [OCC003, OCC001, OCC002, DIR003, DIR004, DIR001, DIR002, REL011, REL004, REL001, LAG001, LAG003, LAG004]
+
+A competing explanation the evidence cannot rule out is substitution rather than addition: with anonymous activity codes, "A03 removed and A01 introduced" is observationally identical to A03 being relabelled as A01, and the finite 200-case windows leave the rare later-window transitions (about 1 in 200) uncertain. [OCC003, OCC001, DIR001, DIR002]
+
+Other differences: the share of cases containing A04 and A06 rose modestly from about 44 to about 50 in 100, and A04's typical position moved slightly earlier (mean about 0.38 to about 0.34); both are consistent with the rerouting but are small on their own. [POS004, POS005, REL010, REL012]

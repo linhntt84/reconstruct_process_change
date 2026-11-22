@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "9d8755348e910761dc49cf7438e26e417b6353e58fd7dda0662a3bd3c7638937",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:22:42.152570+00:00",
+  "finished_at_utc": "2026-11-15T05:24:02.918812+00:00",
+  "latency_seconds": 80.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11845,
+    "prompt_tokens": 18668,
+    "total_tokens": 30513,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10589,
+      "text_tokens": 1256
+    },
+    "cost": 0.0087227
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38314,
+  "text": "### Observed differences\n\n- Before, the measured activities formed one fixed sequence: all eight measured activity pairs co-occurred in 100 in 100 traces and always appeared in the same order (for example A15 before A19, A18 before A19 and A21). In the later window these orders are mixed: A18 precedes A19 in only about 15 in 100 traces (before: 100 in 100), A15 precedes A19 in about 26 in 100 (before: 100 in 100), and A15 precedes A21 in about 50 in 100 (before: 100 in 100), while some pairs keep the original order in most traces (A17 before A21 in about 77 in 100). [REL001, REL003, REL004, REL005, REL006, REL008]\n\n- Before, every measured source activity had a single observed successor (A26→A17, A17→A15, A15→A18, A18→A19, A19→A21, A21→A20, A20→A27, each carrying 100 in 100 outgoing transitions). In the later window these shares are redistributed: A18 now leads directly to A27 in about 52 in 100 transitions (an edge not observed before) while its transition to A19 falls to about 15 in 100; A26 splits about 53/47 between A17 and A19; A15 keeps A18 at about 68 in 100 and sends roughly 11 in 100 each to A19, A20 and A21. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- Before, the distance in event positions between pairs was constant (A15 to A18 always 1 step, A18 to A27 always 4 steps, A15 to A27 always 5 steps). In the later window these distances spread: A18 to A27 is now 1 step in about half the cases, and A15 to A27 ranges over 2 to 5 steps with no majority (about 32 in 100 at 2 steps, 26 in 100 at 5 steps). [LAG001, LAG005, LAG013]\n\n- Typical event positions shifted accordingly: A19 now occurs earlier in the trace (mean position about 0.65 to 0.59 of the trace), A15 and A18 occur later (about 0.59 to 0.64 and 0.62 to 0.68), and A20 and A21 moved slightly earlier. These are positions among events, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n- Participation did not change: every measured pair still co-occurs in 100 in 100 traces in both windows, so no activity appeared, disappeared or became optional. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- The overall signal is far larger than sampling variation produces: 45 control-flow items qualified where roughly 0.35 would be expected without a change, and each item's difference exceeds about 199 of 200 random re-splits of the pooled traces. [DIR003, LAG005, LAG013, REL001, REL006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the strict sequential ordering among A15, A17, A18, A19, A20 and A21 (between the endpoints A26 and A27) was relaxed in the later window: traces that previously always ran A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 now execute these activities in variable orders and at variable distances, with the A19–A21–A20 group frequently running ahead of A15/A17/A18 (A19 precedes A18 in about 85 in 100 later traces, versus never before) and A18 frequently connecting straight to A27 (about 52 in 100 of its outgoing transitions, versus none observed before). The support is direct — the order between pairs changed from fixed to mixed in all eight measured pairs, which is relational evidence of the ordering change itself — and consistent across all 24 lag items and all 7 direction items, on 200 traces per window (the thinnest lag item still rests on about 52 after-window observations), with an item count (45 versus about 0.35 expected) that chance cannot account for. [REL001, REL006, DIR003, LAG005, LAG013]\n\nAn important competing explanation remains: the mixed orders could also come from a mixture of a few different fixed sequences across cases (a subset of cases following a different fixed order) rather than free reordering within each case; the pair-level aggregates cannot separate these two readings. [REL004, REL007]\n\nOther differences: none — co-occurrence of all measured activities stayed at 100 in 100 traces in both windows, so the difference is confined to ordering and spacing, not to which activities run. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

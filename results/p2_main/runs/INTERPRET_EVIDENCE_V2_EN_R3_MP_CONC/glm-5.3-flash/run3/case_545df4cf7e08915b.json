@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_545df4cf7e08915b.json",
+  "evidence_sha256": "2bda81ae27d104fab980183ad6b98c061e092c2ad3bb4c2cec1cbea951568762",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:11:40.905556+00:00",
+  "finished_at_utc": "2026-11-15T03:13:59.850810+00:00",
+  "latency_seconds": 138.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20544,
+    "prompt_tokens": 23555,
+    "total_tokens": 44099,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18790,
+      "text_tokens": 1754
+    },
+    "cost": 0.013805249999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63023,
+  "text": "### Observed differences\n\n- In the earlier window, A01 appeared in about 48 in 100 traces (roughly one occurrence per affected trace, around 57% of the way through the trace); in the later window it is not observed at all (0 of 200 traces). [OCC001, POS001]\n- A08 shows the mirror image: unobserved in all 200 earlier traces, it appears in about 48 in 100 later traces (about 1.1 occurrences per affected trace) at around 55% of the trace's length. [OCC002, POS002]\n- The two activities connect to the same neighbours. Before, A01's observed outgoing transitions went to A09 (~51%), A10 (~24%) and A16 (~24%); in the later window A08's go to the same three activities (A09 ~56%, A10 ~25%, A16 ~19%). Upstream, A03 sent about 21% of its outgoing transitions to A01 before and about 26% to A08 after, A17 led exclusively to A01 before and exclusively to A08 after, and A02's small edge to A01 (~4%) became a small edge to A08 (~2%). [DIR001, DIR005, DIR003, DIR008, DIR002]\n- The relational pattern around this step is preserved: A03 co-occurred with A01 in 48% of earlier traces and co-occurs with A08 in 48% of later traces (in both cases usually A03 first, otherwise interleaved); A01 and A05 never appeared together before (A01-only 48%, A05-only 52%) and A08 and A05 never appear together now (48% vs 52%); A08 co-occurs with A09, A10, A16 and A17 in about 29–32% of traces, close to A01's earlier 27–33%, while those four activities' overall participation stayed roughly stable. [REL001, REL011, REL002, REL014, REL004, REL005, REL008, REL009, REL017, REL018, REL021, REL022]\n- A second, distinct shift: A11 and A15 exchanged their placements. Before, A11 ran in about 52 in 100 traces, always as the final event, reached from A05 (about 52% of A05's outgoing transitions); A15 ran in about 32 in 100 traces mid-trace (relative position ~0.49), reached from A18 and followed by A03. After, A15 runs in about 52 in 100 traces, always as the final event and reached from A05, while A11 runs in about 29 in 100 traces mid-trace, reached from A18 and leading to A03. [POS003, POS004, DIR004, DIR006, DIR007, DIR009]\n- Co-occurrence and step distances moved with this exchange: A05–A11 joint occurrence fell from 52% to about 16% while A05–A15 rose from about 17% to 52%; A03–A11 fell from 52% to 29% while A03–A15 rose from 32% to 52%. A03→A11 gaps shifted from mostly 2 steps (~70% of cases) to mostly 3 steps (~77%), A03→A15 gaps from mostly 3 steps (~84%) to mostly 2 (~61%) or 4 (~32%), and A18's distances to the two activities flipped accordingly (on more moderate support). [REL015, REL016, REL012, REL013, LAG001, LAG002, LAG003, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the mid-process step carried out by A01 in the earlier window is carried out by A08 in the later window. A01 fell from about 48 in 100 traces to none, A08 rose from none to about 48 in 100, and A08 reproduces A01's behavioural profile almost exactly: the same relative position (~0.55 vs ~0.57), the same predecessors (A03 at ~26% vs ~21% of its outgoing transitions, A17 exclusively, A02 marginally) and the same successors (A09, A10, A16) with similar shares, plus matching relations with A03 (48% co-occurrence in both windows), A05 (mutual exclusivity in both windows) and the downstream activities A09/A10/A16/A17. This is unlikely to be a sampling artefact: 53 control-flow items qualified against fewer than 1 expected for an unchanged process, and every item's difference exceeds about 99.5 in 100 random re-splits of the pooled traces. The main competing explanation the evidence cannot rule out is that A08 is the same step under a different anonymous code rather than a different activity taking over the slot; zero participation for A01 also strictly means only that it was not exercised in the later sample. [OCC001, OCC002, POS001, POS002, DIR001, DIR003, DIR005, DIR008, REL001, REL011, REL002, REL014]\n\nOther differences: A11 and A15 exchanged their placements — A11 from the final, post-A05 position (about 52 in 100 traces) to a mid-trace position reached from A18 and leading to A03 (about 29 in 100), and A15 from that mid-trace position (about 32 in 100) to the final, post-A05 position (about 52 in 100) — a second structural difference independent of the A01/A08 substitution, accompanied by small redistributions of outgoing shares at A02 and A18. [POS003, POS004, DIR004, DIR006, DIR007, DIR009, REL012, REL013, REL015, REL016, LAG001, LAG002, LAG003, LAG004]",
+  "case_id": "case_545df4cf7e08915b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

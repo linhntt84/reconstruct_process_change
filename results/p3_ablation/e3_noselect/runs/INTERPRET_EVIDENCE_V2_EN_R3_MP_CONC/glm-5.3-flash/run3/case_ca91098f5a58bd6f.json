@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ca91098f5a58bd6f.json",
+  "evidence_sha256": "d6c3af7aa62d50855af81dbbcad6230f7e497c2ecf8be0c2b0001563bc2a6017",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:11:28.627006+00:00",
+  "finished_at_utc": "2026-11-15T13:13:31.952955+00:00",
+  "latency_seconds": 123.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17312,
+    "prompt_tokens": 31259,
+    "total_tokens": 48571,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15618,
+      "text_tokens": 1694
+    },
+    "cost": 0.01334485
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53708,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each ran exactly once in roughly a third of the traces (about 70, 60 and 70 of 200 cases); in the later window, none of the three appears in any of the 200 traces. [OCC013, OCC014, OCC019]\n- Before, every trace went from A36 to exactly one of A14, A15 and A20 (A36's outgoing transitions split about 35/30/35 in 100 between them), and each of the three led exclusively on to A21. In the later window, A36 leads to A21 in all traces and to none of the three, while A36 and A21 themselves still occur in every trace. [DIR027, DIR010, DIR011, DIR016, POS005, POS007]\n- Accordingly, the distance from A36 to A21 changed from always two steps (one activity in between) to always one step (directly adjacent). [LAG002]\n- Relations confirm the disappearance: pairs such as A14 with A21, A15 with A21, A20 with A21, A14 with A26 and A14 with A36 previously co-occurred in about 30–35 in 100 traces (with A14/A15/A20 always after A36 and before A21/A26); in the later window they never co-occur and only the partner activity is present. [REL004, REL005, REL006, REL009, REL010, REL011, REL016, REL017, REL018]\n- Positions agree: A14, A15 and A20 sat at about 0.35 of the trace length before and have no position after; A21's mean position moved earlier (about 0.39 to 0.37) and A36's later (about 0.32 to 0.33), consistent with the stretch between them becoming one step shorter. [POS001, POS002, POS004, POS005, POS007]\n- Away from this segment, several routing shares between existing alternatives shifted by roughly 8–20 percentage points: A07 now leads to A09 in about 43 of 100 outgoing transitions (about 27 before) and to A06 in about 23 (about 41 before), with smaller redistributions at A02, A04, A05, A06 and A08; A16 leads to A19 in about 35 of 100 (about 16 before) and A19 leads to A26 in about 60 (about 41 before), with the A19→A26 pair now adjacent in about 60 of 100 cases (about 41 before); A30 and A31 each lead to A27 in about 49 of 100 (about 38 before); A21, A28 and A29 show 8-point shifts toward A29, A22 and A28 respectively. [DIR007, DIR002, DIR004, DIR005, DIR006, DIR008, DIR012, DIR015, LAG001, DIR022, DIR023, DIR017, DIR020, DIR021]\n- A10 and A11 repeat slightly more often (repeats in about 32 of 100 traces vs about 27; mean 1.47 vs 1.38 occurrences per trace), and A12 now appears in about 28 of 100 traces vs about 21. [OCC009, OCC010, OCC011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative three-activity segment between A36 and A21 — A14, A15 and A20, exactly one of which was executed in every case between A36 and A21 — is no longer executed, so that in the later window A36 leads directly to A21. The change is described directly and consistently by all five indicator families: occurrence (three activities at about 60–70 of 200 traces falling to 0 of 200), outgoing edges (A36's flow moves from a roughly 35/30/35 split across the three to A21 in 100 of 100 cases, and the three activities' only outgoing edge, to A21, disappears), relations (co-occurrence of the three with A21, A26 and A36 drops to zero), distance (A36→A21 always two steps before, always one step after) and position (A21 earlier, A36 later, the three in-between positions gone). [OCC013, OCC014, OCC019, DIR027, DIR010, DIR011, DIR016, LAG002, REL004, REL016, POS005, POS007]\n\nZero participation establishes only that A14, A15 and A20 were not observed in the later window; the evidence cannot exclude that they still execute in a very small share of cases, nor distinguish removal from a renaming or replacement — although no new or substitute activity appears anywhere in the evidence. [OCC013, OCC014, OCC019]\n\nOther differences: participation of A19 rose from about 49 to 56 in 100 traces, with flow shifting from A16→A26 and A19→A16 toward A16→A19 and A19→A26; A10 and A11 repeat slightly more often and A12 participates more often; several routing shares around A02–A09, A21/A28/A29 and A30/A31 moved by 8–20 percentage points. These shifts are smaller and could partly reflect sampling variation between two 200-trace windows. [OCC018, DIR012, DIR015, LAG001, OCC009, OCC010, OCC011, DIR007, DIR017, DIR020, DIR021, DIR022, DIR023, DIR002, DIR004, DIR005, DIR006, DIR008]",
+  "case_id": "case_ca91098f5a58bd6f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

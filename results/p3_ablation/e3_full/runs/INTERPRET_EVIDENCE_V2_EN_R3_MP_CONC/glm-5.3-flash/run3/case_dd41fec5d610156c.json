@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_dd41fec5d610156c.json",
+  "evidence_sha256": "5d8d86694ab1a4d94c92292d59b678c385f2534b23de4c0fc910ba246cde4423",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:22:56.194624+00:00",
+  "finished_at_utc": "2026-11-16T03:25:28.051978+00:00",
+  "latency_seconds": 151.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20497,
+    "prompt_tokens": 16017,
+    "total_tokens": 36514,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19275,
+      "text_tokens": 1222
+    },
+    "cost": 0.01265105
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65213,
+  "text": "### Observed differences\n\n- A03 ran in every earlier trace — about twice per trace on average, repeated in roughly 44 in 100 traces, positioned early to middle — and is not observed in any later trace. [OCC003, POS003]\n- A01 and A02 were not observed earlier; in the later window each runs in all 200 traces, A02 at the very start of the trace (median relative position 0) and A01 in the later middle (median about 0.75). [OCC001, OCC002, POS001, POS002]\n- Routing around the A04/A06 block was rewired: earlier, A03's outgoing transitions split roughly equally between A04 and A05 (about 50 in 100 each) and A06 always led back to A03; later, A02 leads to A04 in about 51 in 100 of its outgoing transitions and to A01 in about 48 in 100, A06 leads to A01 (about 53 in 100) or back to A04 (about 46 in 100), and A01 leads to A05 in essentially all of its outgoing transitions. [DIR003, DIR005, DIR002, DIR001]\n- The new backbone runs A02 → A01 → A05: A02 precedes A01 in about 98 in 100 later traces, A01 precedes A05 in 100 in 100, and A02 precedes A05 in about 98 in 100. A05 itself is unchanged as the closing step (present in all traces in both windows at relative position about 1.0), whereas earlier it always co-occurred with A03 instead, which preceded it in 56 in 100 traces and interleaved with it in 44 in 100. [REL001, REL004, REL008, POS005, REL011]\n- The A04+A06 pair still only occurs together and in about half of the traces (44 in 100 earlier, 50 in 100 later), but it now sits between A02 and A01 (A02 before A04 in 28 in 100 traces, A04 before A01 in 28 in 100, interleaved with A01 in about 22 in 100), and its repetition gaps shortened: repeated A04 (and A06) pairs that earlier sat almost exclusively three events apart now sit mostly two events apart, and A04-to-A05 distances that were always three events earlier now split between three (most pairs) and five events (a minority). [REL014, REL007, REL003, LAG001, LAG006, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a restructuring of the control flow around the A04/A06 loop: A03, which earlier ran about twice per trace, fed the A04→A06 loop and routed out to A05, is gone; in the later window A02 opens every trace and routes either into the A04/A06 block or straight to A01, the loop returns from A06 to A04 (or exits to A01) instead of returning through A03, and the newly observed A01 closes every trace into the unchanged final A05. This is supported directly and consistently: the participation flips (0 of 200 vs 200 of 200 traces for A01 and A02, and the reverse for A03) are far outside what randomly re-splitting stable traces produces, the new edges and orders are shown directly by the direction, relation and lag indicators, and the shortened repetition gaps match the same restructure rather than an unrelated shift. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR005, REL001, REL004, REL008, LAG001, LAG006]\n\nBecause the activity codes are anonymous, the evidence cannot show whether A01 and A02 are genuinely new steps or a re-labelled takeover of A03's routing role — this competing reading leaves the described behaviour the same. The few observed A05→A02 transitions rest on only four observations, and the rise in A04/A06 participation from 44 to 50 in 100 traces is small enough that window sampling could produce it. [DIR004, OCC004, OCC005]\n\nOther differences: A04 and A06 appear in slightly more traces in the later window (about 50 vs 44 in 100) with minor shifts in their positions within the trace, and a handful of later traces show A05 leading back to A02, which was not observed earlier; both are minor and the latter rests on very few observations. [OCC004, OCC005, POS004, POS006, DIR004]",
+  "case_id": "case_dd41fec5d610156c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

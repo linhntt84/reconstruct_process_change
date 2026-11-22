@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_8855ca0ed90e75cf.json",
+  "evidence_sha256": "476deb51065830465b261f3e5f0b9d3a28113674e78efe2b77b504289796dbeb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:54:23.715978+00:00",
+  "finished_at_utc": "2026-11-15T08:59:46.570724+00:00",
+  "latency_seconds": 322.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 46954,
+    "prompt_tokens": 38832,
+    "total_tokens": 85786,
+    "completion_tokens_details": {
+      "reasoning_tokens": 44357,
+      "text_tokens": 2597
+    },
+    "cost": 0.029301800000000003
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 146702,
+  "text": "### Observed differences\n\n- Two large alternative branches exchanged share. In the earlier window, the branch containing A01, A05, A07 and A09 ran in about 48–49 in 100 traces (97 of 200) and the branch containing A03, A11, A12 and A13 in about 51–52 in 100 (103); in the later window this is about 55 in 100 (109–110) versus about 45–46 (91). The two blocks together cover essentially every trace in both windows, and both continue into A14. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, DIR005, DIR011]\n- Inside these branches, several successor shares shifted by about 9–15 percentage points: after A05, continuations to A09 rose from about 32% to 42% while continuations to A07 fell from about 33% to 19%; after A07, continuations to A05 rose from about 30% to 43%; after A13, continuations to A12 rose from about 33% to 42% and continuations to A11 fell from about 41% to 25%; after A12, continuations to A11 rose from about 28% to 40%. [DIR005, DIR007, DIR009, DIR012, DIR013]\n- After A28, which appears in every trace, the sub-path through A32 and A33 was taken in about 47–48 in 100 traces before (95) and about 54–55 after (109), while the sub-path through A34 and A35 fell from about 52–53 (105) to about 45–46 (91–92); the branch edges move the same way: A28→A32 about 20%→29%, A28→A35 about 29%→22%, A32→A33 about 42%→53%, A33→A29 about 41%→54%. [OCC026, OCC029, OCC030, OCC031, OCC032, DIR028, DIR032, DIR033, DIR034, DIR035]\n- In the cycle around A40–A44, A42 and A43 now appear in about 65–66 in 100 traces (up from about 60) while A41 falls from about 62 to 55; after A41, continuations to A40 rose from about 34% to 46% and continuations to A44 fell from about 64% to 53%. [OCC038, OCC039, OCC040, DIR040, DIR041, DIR043]\n- A37 and A38 occur somewhat more often per trace (means about 0.29→0.38 and 0.79→0.89) with almost unchanged participation, i.e., slightly more repetition. [OCC034, OCC035]\n- Several rare activities (A02, A04, A06, A08, A10, A45) show large successor-profile differences, but these rest on only about 4–25 observed outgoing transitions and carry little weight. [DIR002, DIR004, DIR006, DIR008, DIR010, DIR045]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that existing alternative paths are taken with different frequencies in the later window. The main instance is the choice between the branch A01/A05/A07/A09 and the branch A03/A11/A12/A13, whose shares moved from about 48.5/51.5 to about 55/45.5 per 100 traces, together with shifted successor shares inside both branches (A05→A09 up about 10 points with A05→A07 down about 14; A13→A12 up about 9 with A13→A11 down about 15; A12→A11 up about 11). The same pattern appears after A28, where the sub-path A32/A33 gained about 7 points over A34/A35 with matching edge shifts (A28→A32 up, A28→A35 down, A32→A33 up, A33→A29 up). Every activity involved was observed in roughly 45–55 in 100 traces in both windows and repetition inside the blocks did not change, so this is a redistribution of shares between existing alternatives rather than paths being added, removed or bypassed. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, OCC026, OCC029, OCC030, OCC031, OCC032, DIR005, DIR007, DIR012, DIR013, DIR028, DIR032, DIR033]\n\nThe successor-share changes are direct relational evidence with high empirical strength (about 0.81–0.96, i.e., larger differences in only about 4–19 of 100 random re-splits) and stand on roughly 90–200 observed outgoing transitions per profile; the edge-level shifts agree in direction and size with the block-level participation changes. Limitations: the evidence carries no screening baseline against chance, the shifts are moderate (about 6–15 percentage points on 200-trace windows), and items within one branch describe the same underlying behaviour, so they are not independent confirmations. [DIR005, DIR007, DIR012, DIR013, DIR028, DIR032, DIR033, DIR041, OCC001, OCC029]\n\nAn important competing explanation the evidence cannot rule out is sampling variability of the two finite windows: taken one at a time, each shift lies within the range that random re-splits occasionally produce, so without a chance baseline the coordinated pattern cannot be formally separated from an unfavourable pair of samples. [OCC001, DIR005, DIR013]\n\nOther differences: In the cycle around A40–A44, A42 and A43 rose from about 60 to about 65–66 in 100 traces while A41 fell from about 62 to 55, with A41→A40 up about 12 points and A43→A40 down about 6 — a similar share shift, accompanied by slightly more occurrences of A42/A43 per trace (means up about 0.08) on fewer repeating traces. A37 and A38 also repeat slightly more often per trace. The large successor-profile changes for the rare activities A02, A04, A06, A08, A10 and A45 are unreliable. [OCC034, OCC035, OCC038, OCC039, OCC040, DIR041, DIR043, DIR002, DIR004, DIR006, DIR008, DIR010, DIR045]",
+  "case_id": "null_8855ca0ed90e75cf",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

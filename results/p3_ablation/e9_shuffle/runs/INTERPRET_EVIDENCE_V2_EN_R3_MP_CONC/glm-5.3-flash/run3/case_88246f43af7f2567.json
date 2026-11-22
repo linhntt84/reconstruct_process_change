@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_88246f43af7f2567.json",
+  "evidence_sha256": "2f73d748aed6b0189066500a08eb756154117961b85a2e07bbc1eec7249276b4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:06:03.986612+00:00",
+  "finished_at_utc": "2026-11-15T10:08:14.604726+00:00",
+  "latency_seconds": 130.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19106,
+    "prompt_tokens": 8524,
+    "total_tokens": 27630,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17668,
+      "text_tokens": 1438
+    },
+    "cost": 0.010831599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64170,
+  "text": "### Observed differences\n\n- The entry into A12 changed completely. In the earlier window, A02 and A04 led mainly to A03 (about 91 and 67 in 100 of their observed outgoing transitions) and only rarely to A12 (about 6 and 20 in 100); in the later window, every observed outgoing transition of both activities goes to A12, and A12 immediately follows them — a one-step gap in all observed pairs, where before the gap was usually two to four steps. [DIR001, DIR003, LAG001, LAG002]\n\n- A03's continuation changed. Before, A03 was followed mainly by A11 and A12 (about 45 in 100 each of its outgoing transitions); in the later window it is followed by A11 (about 55 in 100) and A10 (about 45 in 100), with no observed continuation to A12. [DIR002]\n\n- A03 and A12 went from inseparable to mutually exclusive. Before, they co-occurred in about 49 in 100 traces — whenever one appeared, the other did too (A03 before A12 in about 26 in 100, interleaved or repeated in about 24); in the later window they never share a trace: A03 appears without A12 in about 30 in 100 traces, and A12 without A03 in about 45 in 100. [REL004]\n\n- A03's inbound side moved from A02/A04 to A16. Before, A02 and A04 each shared traces with A03 (about 25 and 23 in 100) while A16 never did; in the later window A02 and A04 never share a trace with A03, A16 co-occurs with A03 in about 30 in 100 traces, and about half of A16's outgoing transitions now go to A03 (before they went to A10, about 52 in 100, or A09, about 48 in 100). [REL001, REL002, REL005, DIR004]\n\n- The direct A16→A10 succession disappeared. Before, A10 followed A16 within one step in about 85 in 100 of observed pairs; in the later window it never does, appearing two to five steps after A16 instead, while A03 precedes A10 in about 13 in 100 traces (interleaved or repeated in about 17). [LAG003, REL003]\n\n- Positions shifted with these routing changes. A03 now appears in fewer traces (about 30 in 100, down from 49) and later within them (median relative position about 0.73, up from 0.50); A12 changed from sitting consistently at the end of traces (mean relative position about 0.97) to appearing early and variably — at least a quarter of its occurrences are now the first event of the trace (mean about 0.71). [POS001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the flow around A03 and A12 was rerouted. In the earlier window, A02 and A04 fed into A03, which continued to A11 or A12 (with A12 at the trace end), while A16 headed a separate branch that continued directly to A10 or A09. In the later window, A02 and A04 lead directly and immediately to A12, bypassing A03; A03 is no longer followed by A12 and is instead reached from A16, after which the flow reaches A10 — a continuation that previously ran straight from A16. A03 and A12 changed from being executed together in about half of the traces to never sharing one. [DIR001, DIR002, DIR003, DIR004, REL004, REL005, LAG001, LAG002, LAG003]\n\nThe hypothesis is supported directly and consistently: the rerouting is observed in the successor profiles of A02, A03, A04 and A16 themselves rather than inferred from frequencies alone, the co-occurrence flips match it on every affected pair, the step-distance changes agree (A02/A04 to A12 now always one step; A16 to A10 no longer one step), and the position shifts of A03 and A12 point the same way. Sixteen control-flow items qualified against about 0.21 expected if nothing had changed — roughly 75 times that expectation — and each difference exceeds about 199 of 200 random re-splits. Participation shares of A12, A16 and A10 stayed similar (about 44–45 and 27–30 in 100 traces), so the difference lies in the wiring rather than in how often these activities run. [DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, LAG001, LAG002, LAG003, POS001, POS002, POS003, POS004]\n\nLimitations: each window is a 200-trace sample, the after-window successor profiles of A02 and A04 rest on only about 28 and 35 outgoing transitions, and several items describe the same underlying rerouting from different angles rather than independent confirmations. A competing explanation the evidence cannot fully exclude is that the two windows capture different mixes of pre-existing variants; this is weakened because the later-window patterns (A02 and A04 exclusively and immediately to A12, A16 to A03) were rare or unobserved earlier, but a rare variant dominating the later sample cannot be excluded with certainty. [DIR001, DIR003, LAG001, DIR004]\n\nOther differences: minor position drifts outside the main hypothesis — A16 now tends to sit slightly earlier and A10 slightly later within traces (median relative position about 0.52 to 0.43 and 0.89 to 0.92) — while their participation shares stayed nearly unchanged. [POS002, POS004]",
+  "case_id": "case_88246f43af7f2567",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

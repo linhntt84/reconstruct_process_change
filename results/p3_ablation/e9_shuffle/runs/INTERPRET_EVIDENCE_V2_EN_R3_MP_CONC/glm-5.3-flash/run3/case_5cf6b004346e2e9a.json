@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5cf6b004346e2e9a.json",
+  "evidence_sha256": "3890a078bf61ff542b9ff4fad090fcf6668f849d595ca6212df78ced2ae71c8c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:02:28.569012+00:00",
+  "finished_at_utc": "2026-11-15T10:04:31.252584+00:00",
+  "latency_seconds": 122.68,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17799,
+    "prompt_tokens": 9824,
+    "total_tokens": 27623,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16411,
+      "text_tokens": 1388
+    },
+    "cost": 0.0103731
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57075,
+  "text": "### Observed differences\n\n- The activities that follow A10 and A11 changed completely. In the earlier window, A10's observed outgoing transitions went to A07 (about 49 in 100) and A06 (about 51 in 100), and A11's went to A06 (about 58) and A07 (about 42); in the later window, every observed outgoing transition of A10 (55 transitions) and of A11 (39) goes to A08. [DIR002, DIR003]\n- A08's own successor mix broadened: earlier it was followed almost only by A10 (about 50 in 100) and A11 (about 48), with A04 rare; in the later window it is followed by A06 (about 29), A10 (about 27), A07 (about 24) and A11 (about 19), and its observed outgoing transitions rose from 123 to 203. [DIR001]\n- Immediate precedence between A08 and A10/A11 flipped direction. Earlier, A08 immediately preceded A10 (lag 1, about 37 in 100 of measured pairs) and A11 (about 47) and essentially never followed them; in the later window, A10→A08 and A11→A08 show lag-1 mass (about 13 and 21 in 100) while A08→A10 and A08→A11 lag-1 shares fell to about 13 and 24. [LAG010, LAG011, LAG014, LAG016]\n- Distances from A10/A11 to A06/A07 grew by one step, as if A08 now sits between them: A10→A06, A10→A07 and A11→A06 were mostly immediate before (lag 1, about 29–58 in 100) and are now mostly two positions apart (lag 2, about 33–47 in 100). Conversely, A08→A06 and A08→A07 shifted towards shorter lags (A08→A07's lag-2 share of about 41 in 100 collapsed in favour of lag 1 and a spread over lags 3–5). [LAG012, LAG013, LAG015, LAG007, LAG008]\n- A08 recurs more often within traces: traces containing A08 followed by A08 within five steps doubled from 21 to 42 out of 200. [LAG009]\n- Smaller distance shifts involve A06 and A07 (for example A06→A07 moving from a lag-3 peak of about 74 in 100 to a flatter spread including lag 2), but several of these rest on fewer than about 25 observations per window. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a reordering of the control flow around A08, A10 and A11: in the earlier window the flow typically ran A08 → A10 or A11 → A06 or A07, whereas in the later window A10 and A11 lead to A08 and A08 leads on to A06 or A07 — A08 now typically executes after A10 and A11 and directly before A06 and A07, where previously it executed before A10/A11, which then led to A06/A07. This rests on direct successor changes on substantial supports (A10 and A11 now lead only to A08 after leading only to A06/A07; A08 gained A06 and A07 as successors), on the flipped immediate precedence between A08 and A10/A11, and on lag shifts that match an insertion of A08 between the two groups (A10/A11→A06/A07 moving from lag 1 to lag 2, the adjacent pairs becoming immediate). Screening found 20 qualifying control-flow items where roughly 0.24 would be expected if nothing had changed, so chance sampling cannot account for the pattern as a whole; each item's difference also exceeds about 995 in 1,000 random re-splits, though the lag items largely mirror the same reordering rather than confirming it independently. [DIR002, DIR003, DIR001, LAG010, LAG011, LAG014, LAG016, LAG012, LAG013, LAG015, LAG007, LAG008]\n\nLimitations: the evidence shows only pairwise order and successors, so it cannot establish the complete sequence nor distinguish \"A08 moved later\" from \"A10/A11 moved earlier\" as an absolute placement; A08 still precedes A10/A11 in about 46 in 100 of its later-window outgoing transitions, and its roughly doubled self-repetition could contribute to some lag shifts, so a repositioning cannot be fully separated from a change in how often A08 recurs. [DIR001, LAG009]\n\nOther differences: distances within the downstream pair A06/A07 changed (A06→A06 from a lag-3 peak to a spread including lag 2; A06→A07 from a lag-3 peak to a flatter spread), and several low-support pairs around A07 (A07→A06, A07→A07, A07→A08, A11→A10) also shifted; these may be knock-on effects of the reordering but rest on few observations. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG017]",
+  "case_id": "case_5cf6b004346e2e9a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

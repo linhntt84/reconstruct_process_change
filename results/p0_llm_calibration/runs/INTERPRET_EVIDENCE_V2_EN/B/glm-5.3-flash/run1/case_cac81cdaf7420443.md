@@ -1,0 +1,15 @@
+### Observed differences
+
+- Participation swapped between two pairs of activities. In the later window, A16 and A17 each appear in about 80 in 100 traces (about 160 of 200), up from about 23 in 100 (about 45 of 200) before; A18 and A19 each drop to about 20 in 100 (about 40 of 200) from about 78 in 100 (about 155 of 200). [OCC001, OCC002, OCC003, OCC004]
+- The flow out of A15, which runs in all traces in both windows, flipped: before, about 78 of A15's observed outgoing transitions went to A18 and about 23 to A16; in the later window, about 80 go to A16 and about 20 to A18. [DIR001]
+- The order around A15 reversed accordingly: A15 comes before A16, and before A17, in about 80 in 100 later-window traces (up from about 23), while A15 before A18 and A15 before A19 fall to about 20 in 100 (from about 78). [REL001, REL002, REL003, REL004]
+- Within the branches, A16 precedes A17 in about 80 in 100 traces (up from about 23), while A18 and A19, which co-occurred in about 78 in 100 before-traces, now appear together in only about 20 in 100 and are both absent in about 80 in 100. [REL005, REL012]
+- A23 still runs in all traces in both windows but changed company: before it co-occurred with A18 and with A19 in about 78 in 100 traces and ran without A16/A17 in about 78 in 100; in the later window it co-occurs with A16 and with A17 in about 80 in 100 and runs without A18/A19 in about 80 in 100. The ordering against A23 remains partly interleaved in both windows (A18 before A23 in about 52 in 100 before; A16 before A23 in about 48 in 100 after). [REL006, REL007, REL008, REL009, REL010, REL011, REL013, REL014]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the main route after A15 was redirected from the A18–A19 branch to the A16–A17 branch: in the later window about 80 in 100 traces run A15 → A16 → A17, whereas before about 78 in 100 ran A15 → A18 → A19, with A23 executing alongside whichever branch is taken. The change is observed directly in A15's successor profile, and consistently in the opposite, equal-sized participation shifts (about 57 in 100 traces) of the two branches and in all fourteen relation items; with 18 qualifying items against roughly 0.32 expected if nothing had changed, chance alone cannot explain the pattern as a whole. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]
+
+The main limitation is that both branches are observed in both windows — A16/A17 at about 23 in 100 before-traces and A18/A19 at about 20 in 100 after-traces — so the evidence shows a shift in how often two existing branches execute, not the addition or removal of a path. A change in the mix of pre-existing variants, for example a different case composition reaching this part of the process, would look the same and cannot be ruled out, although a swing from about 23 to about 80 in 100 traces with 200 traces per window, where every item exceeds about 995 of 1,000 random re-splits, is far beyond ordinary sampling variation. [OCC001, OCC003, DIR001]

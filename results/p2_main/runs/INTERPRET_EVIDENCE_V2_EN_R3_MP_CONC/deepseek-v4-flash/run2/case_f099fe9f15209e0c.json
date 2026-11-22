@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f099fe9f15209e0c.json",
+  "evidence_sha256": "acaa323a3a6a7a390c00243d75cb1c05b18c450ef72db01cbf8ebd16e99b7958",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:13:21.805437+00:00",
+  "finished_at_utc": "2026-11-15T01:13:32.575040+00:00",
+  "latency_seconds": 10.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1575,
+    "prompt_tokens": 6291,
+    "total_tokens": 7866,
+    "completion_tokens_details": {
+      "reasoning_tokens": 917
+    },
+    "cost": 0.001265094
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 3364,
+  "text": "### Observed differences\n\n- Activity A02 disappears completely: in the earlier window it occurred in every trace (mean 1.0 per trace, 100% participation); in the later window it occurs in none (0% participation, mean 0.0). [OCC001, POS001]\n- A02's outgoing transitions vanish: before, A02 led to A01 (18%), A03 (40%), A04 (30%), A05 (12%); after, A02 has no observed outgoing transitions. [DIR001]\n- A03's outgoing transitions no longer include A02: before, 38% of A03's outgoing transitions went to A02; after, that share is 0%, with increases to A01 (from 17.5% to 30.5%), A04 (18% to 28%), and A05 (23% to 35%). [DIR002]\n- A01 and A02, A02 and A03, A02 and A04, and A02 and A05 all co-occurred in most or all traces before; after, A02 is absent, so these pairs no longer co-occur, and A01, A03, A04, A05 appear alone (or, for A05, sometimes not at all). [REL001, REL002, REL003, REL004]\n- A03 and A04 occur earlier in the trace: A03's mean position drops from 0.109 to 0.041, and A04's from 0.600 to 0.525. [POS002, POS003]\n- The gap between A03 and A04 narrows: before, about 60% of their co-occurrences had a lag of 3–5 steps; after, about 65% have a lag of 1–2 steps. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that activity A02 is no longer executed in the later window. In the earlier window A02 was present in every trace and had a stable set of outgoing transitions to A01, A03, A04, and A05; in the later window it is completely absent, and the activities that previously followed it now occur without it. This is directly shown by the disappearance of A02's occurrences, its outgoing transitions, and the loss of co-occurrence with all four neighbours. The earlier positions of A03 and A04 and the shorter A03–A04 lag are consistent with the removal of an intermediate step (A02) from the sequence. The evidence is strong: 11 control-flow items, all pointing to the same change, far exceed the 0.15 items expected by chance. A competing explanation that A02 became a rare variant is implausible because it was present in 100% of traces before and 0% after, but the sample cannot prove that A02 is permanently removed from the process rather than simply not observed in this window.\n\nOther differences: A03 and A04 shifted to earlier positions, and the A03–A04 lag decreased; these are likely consequences of A02's removal but could also reflect a separate reordering of the remaining activities.",
+  "case_id": "case_f099fe9f15209e0c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

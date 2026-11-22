@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_8bdcb14ca001cfe7.json",
+  "evidence_sha256": "b6990fc24c51eb2685ded1e713fda2e2dbbfdd7d1e0582dfdecbab2eedc30d12",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:29:04.616598+00:00",
+  "finished_at_utc": "2026-11-16T02:33:08.619393+00:00",
+  "latency_seconds": 244.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 35496,
+    "prompt_tokens": 146259,
+    "total_tokens": 181755,
+    "completion_tokens_details": {
+      "reasoning_tokens": 33157,
+      "text_tokens": 2339
+    },
+    "cost": 0.039686849999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 109547,
+  "text": "### Observed differences\n\n- In the later window, A09 is executed about 4.3 times per trace on average, up from about 1.9; among the traces containing it, executions rose from roughly 3 to roughly 6 per trace, about 60 in 100 of its traces now contain repeats (about 39 in 100 before), and its self-lags shifted to shorter gaps. [OCC009, LAG098]\n- The repetition around A09 became more A09-centred: A13 now leads to A09 in about 70 in 100 of A13's outgoing transitions (about 35 in 100 before) and A15 leads to A09 in about 95 in 100 (about 40 in 100 before), while the A15 → A01 transition (about 38 in 100 of A15's outgoing transitions before) is no longer observed and A01–A15 co-occurrence fell from about 62 to 53 in 100 traces; A15 itself now appears in about 53 in 100 traces (about 62 before) while averaging about 2.2 occurrences per trace (about 1.9 before). [DIR013, DIR015, DIR001, REL014, OCC015]\n- A03 and A14 stopped repeating: both fell from about 1.1 to about 0.5 occurrences per trace while participation stayed at about 50 in 100 traces in both windows, recurrence support dropped from about 27 in 100 to zero, both now appear earlier by event position (A03 median 0.36 → 0.17, A14 0.32 → 0.20), and A03 is immediately followed by A14 in about 57 in 100 of their within-five-step pairs (about 18 before). [OCC003, OCC014, POS003, POS014, LAG040, REL038, DIR003, DIR014]\n- A11 became more widespread and earlier: present in about 47 in 100 traces (about 28 before), no longer repeating, median position 0.40 → 0.11, now immediately after A02 in about 39 in 100 of their within-five-step pairs (previously only at lags 3–5), and preceding A07 in about 46 in 100 of their shared traces (about 12 before), A12 in about 47 in 100 (about 11) and A14 in about 39 in 100 (never before). [OCC011, POS011, LAG024, REL073, REL096, REL098]\n- A07 is now executed in every trace (about 95 in 100 before) and almost always as the final event (mean position 0.95 → 0.99, spread 0.16 → 0.06). [OCC007, POS007, REL006]\n- A12 moved earlier (median position 0.71 → 0.33), and the orders A14 → A12 and A03 → A12 became fixed, with interleaving falling from about 25 in 100 traces to zero. [POS012, REL101, REL036]\n- A06 now leads to A01 in about 99 in 100 of its outgoing transitions (about 86 in 100 before); its other outgoing transitions are no longer observed. [DIR006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the repetition structure of the process changed. In the later window, A09 repeats far more often (about 4.3 executions per trace versus about 1.9) within a cycle that A13 and A15 now feed back into almost exclusively (A13 → A09 in about 70 in 100 and A15 → A09 in about 95 in 100 of their outgoing transitions, up from about 35 and 40), while A03 and A14 no longer repeat: each occurs at most once per trace (recurrence support about 27 in 100 → 0) at essentially unchanged participation of about 50 in 100 traces, earlier in the trace, with A03 immediately followed by A14 in about 57 in 100 of ordered pairs. [OCC009, OCC003, OCC014, DIR013, DIR015, LAG098, LAG040, POS003, POS014, REL038]\n\nThe supporting signs are direct and consistent across the occurrence, direction, position, relation and lag indicators, with the key items exceeding the differences seen in about 199 of 200 random re-splits of the pooled windows. The evidence cannot show that the A09 change and the A03/A14 change stem from a single underlying modification rather than two, and no screening baseline is included, so the number of items an unchanged process would produce cannot be checked; positions and lags are event indices, not clock times. [OCC009, OCC003, DIR015, POS003]\n\nA competing explanation that cannot be ruled out is that the later window simply contains more traces running an existing A09-heavy path several times rather than a modified cycle; participation rose only from about 62 to 68 in 100 traces, so the per-trace repetition increase is not explained by participation alone, but the evidence cannot separate the two. [OCC009]\n\nOther differences: A11 appears in about 47 in 100 traces (about 28 before), no longer repeats and now sits early, directly preceding A07, A12 and A14; A07 is executed in every trace and almost always last; A12 moved earlier and A14 → A12 and A03 → A12 became fixed orders; A06 now leads to A01 in about 99 in 100 of its outgoing transitions. [OCC011, POS011, REL073, REL096, REL098, OCC007, POS007, POS012, REL101, REL036, DIR006]",
+  "case_id": "case_8bdcb14ca001cfe7",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

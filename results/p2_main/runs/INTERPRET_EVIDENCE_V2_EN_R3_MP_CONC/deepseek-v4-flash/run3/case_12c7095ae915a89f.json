@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "d8a15b5bf5f575ef3cd0e60e3ff75866b9cd281ff2144450912a3fbcf88c0ce6",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:44:28.150994+00:00",
+  "finished_at_utc": "2026-11-15T02:44:42.976308+00:00",
+  "latency_seconds": 14.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2667,
+    "prompt_tokens": 5456,
+    "total_tokens": 8123,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2013
+    },
+    "cost": 0.00144586
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 6598,
+  "text": "### Observed differences\n\n- In the later window, A01's outgoing transitions shifted from mostly A02 (about 87 in 100) to a split between A02 (about 50) and A04 (about 43). [DIR001]\n- A02's outgoing transitions shifted from mostly A04 (94 in 100) to a split between A04 (about 50) and A03 (about 44). [DIR002]\n- A04's outgoing transitions shifted from mostly A03 (96 in 100) to a split between A03 (about 49) and A02 (about 41). [DIR003]\n- The order between A02 and A04 changed from always A02 before A04 to about half A02 before A04 and half A04 before A02. [REL001]\n- A02 now occurs later in traces (mean position from 0.17 to 0.27), while A04 occurs earlier (mean from 0.39 to 0.28). [POS001, POS002]\n- The lag between A01 and A02 changed: before A02 always immediately followed A01 (lag 1), now about 43% of cases have lag 2. [LAG001]\n- The lag between A01 and A04 changed: before A04 usually came two steps after A01 (94%), now it is about equally likely to be one or two steps. [LAG002]\n- The lag between A02 and A03 changed: before A03 usually came two steps after A02 (90%), now it is about equally likely to be one or two steps. [LAG003]\n- The lag between A04 and A03 changed: before A03 usually immediately followed A04 (96%), now it is about equally likely to be one or two steps. [LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the control-flow structure: the previously fixed sequential order A01 → A02 → A04 → A03 has become more flexible. In the later window, A02 and A04 can appear in either order, and new direct transitions (A01→A04, A02→A03, A04→A02) allow bypassing or reordering of the original sequence. The consistent shifts in outgoing transitions, positions, and lags all point to this relaxation of ordering constraints and the introduction of alternative paths. The number of qualifying items (10) far exceeds the 0.1 expected by chance, and the changes are large and mutually consistent. A competing explanation that the process simply switched to a different fixed order is ruled out by the mixed order between A02 and A04 (about half each direction) and by the simultaneous shifts in lags that show both one-step and two-step gaps. The main limitation is that the evidence is based on 200 traces per window, but the magnitude and consistency of the changes make a real behavioural shift highly likely.\n\nOther differences: The direct transition from A01 to A04 and from A02 to A03 are part of the same hypothesis, as they enable the reordering and bypassing. No other independent differences are present.",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

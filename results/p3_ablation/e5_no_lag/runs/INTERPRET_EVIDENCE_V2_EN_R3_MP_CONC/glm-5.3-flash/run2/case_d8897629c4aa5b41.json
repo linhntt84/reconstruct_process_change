@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "f038d922f224b1c8cfb784cd33abbd3009708dcff398e4a91735d5c3611413a0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:59:33.325879+00:00",
+  "finished_at_utc": "2026-11-15T07:00:53.368011+00:00",
+  "latency_seconds": 80.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11865,
+    "prompt_tokens": 11119,
+    "total_tokens": 22984,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10699,
+      "text_tokens": 1166
+    },
+    "cost": 0.0076003500000000005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37805,
+  "text": "### Observed differences\n\n- In the earlier window, A22, A23 and A24 each appeared in all 200 traces and formed a fixed chain: A22 was always followed by A23, and A23 always by A24. A14, A15 and A20 were not observed at all (0 of 200 traces). [DIR004, DIR005, REL003, REL004, REL005]\n- In the later window, A14 appears in about 29 in 100 traces, A15 in about 41 in 100 and A20 in about 30 in 100, each at most once per trace. [OCC001, OCC002, OCC003]\n- The three newer activities never occur together: co-occurrence is zero for every pair, and together they cover about 199 of 200 later traces, so virtually every later trace contains exactly one of them. Earlier, all three pairs were \"neither present\" in 100% of traces. [REL001, REL002, REL006]\n- The previously fixed edges became choices: A22 now leads to A23 in about 44 in 100 of its outgoing transitions and to A15, A20 or A14 in about 24, 17 and 16 in 100; A23 now leads to A24 in about 57 in 100 and to A15, A14 or A20 in about 18, 14 and 13 in 100. [DIR004, DIR005]\n- Each newer activity is followed by A23 or A24 in roughly equal shares (A14 about 53/47, A15 about 57/43, A20 about 58/42). A22 always precedes the newer activity when both occur, the newer activity always precedes A24, and relative to A23 both orders occur (e.g. A14 before A23 in about 16 in 100 traces, after it in about 14 in 100). [DIR001, DIR002, DIR003, REL003, REL007, REL010, REL005, REL009, REL012, REL004, REL008, REL011]\n- The newer activities sit around the middle of the trace (mean position about 0.51 of trace length), and A22's mean position moved slightly earlier, from about 0.48 to about 0.46, consistent with events being inserted after it. [POS001, POS002, POS003, POS004]\n- Screening flagged 24 of 78 tested control-flow units, against fewer than 1 expected without a change; every item also showed a difference larger than in about 995 of 1000 random re-splits. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, a new mutually exclusive choice among three activities — A14, A15 and A20 — was inserted into the previously fixed sequence A22 → A23 → A24: earlier every trace ran A22 → A23 → A24, while in the later window virtually every trace contains exactly one of A14, A15 or A20, placed directly after A22 (before A23) in roughly 56 in 100 traces and directly after A23 (before A24) in roughly 44 in 100. [OCC001, OCC002, OCC003, DIR004, DIR005, REL001, REL002, REL006, REL003, REL005, REL009, REL012]\n\nSupporting signs: the number of qualifying items (24) is many times the number expected without a change (about 0.39), so chance sampling cannot account for the evidence as a whole; occurrence, direction, relation and position items all describe the same structure — the newer activities are entered only from A22 or A23, always exit to A23 or A24, always precede A24, and never co-occur with one another. [screening, DIR001, DIR002, DIR003, REL004, REL008, REL011, POS001, POS002, POS003]\n\nLimitations and competing explanation: zero participation in the earlier window only means A14, A15 and A20 were not observed there; the evidence cannot distinguish activities newly added to the process from activities that existed but were never executed or recorded in the earlier sample. It also cannot show what determines the choice among the three activities or the placement before versus after A23. [OCC001, OCC002, OCC003]\n\nOther differences: none beyond this hypothesis; A22's slight forward position shift and the mid-trace placement of the newer activities read as by-products of the same insertions rather than independent changes. [POS004, POS001, POS002, POS003]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

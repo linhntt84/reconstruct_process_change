@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "d95a3a43d16f0073ee7734958aa4d9737c55571e1100a68b3629e3552781d69a",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:59:53.336581+00:00",
+  "finished_at_utc": "2026-11-15T02:00:12.164065+00:00",
+  "latency_seconds": 18.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3388,
+    "prompt_tokens": 10152,
+    "total_tokens": 13540,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2791
+    },
+    "cost": 0.002268352
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 8915,
+  "text": "### Observed differences\n\n- In the later window, A20's outgoing transitions shift from A30/A31/A36 (about 40%, 33%, 28% before) to A22 (99% after). [DIR001]\n- A21's outgoing transitions shift from A25 (100% before) to A30/A31/A36 (about 36%, 33%, 31% after). [DIR002]\n- A30, A31, and A36 no longer lead to A22 (previously about 29%, 38%, 34% respectively); instead they lead to A25 (about 36%, 31%, 33% after). [DIR003, DIR004, DIR005]\n- A21 and A22 occur earlier in traces (mean position drops by about 0.09), while A30, A31, A36 occur later (mean position rises by about 0.17–0.18). [POS001–POS005]\n- The order between A21/A22 and A30/A31/A36 flips: before, A30/A31/A36 preceded A21/A22 in all cases; after, A21/A22 precede them in about 99% of cases. [REL001–REL006]\n- A20 now leads to A22 with a lag of 1 step (99% after vs 0% before, where it was 4 steps). [LAG001]\n- A21 to A25 lag changes from 1 step to 4 steps. [LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in control flow in which A20 now connects directly to A22, while A22 is no longer a successor of A30, A31, or A36; instead A25 becomes a successor of those activities, and A21 no longer connects to A25 but to A30, A31, and A36. This is accompanied by a reordering: A21 and A22 now occur before A30, A31, and A36, whereas before they occurred after them. The supporting signs are direct and consistent across routing (DIR001–DIR005), ordering (REL001–REL006), positions (POS001–POS005), and lags (LAG001, LAG004), all with high empirical strength and full support in both windows. The screening expected 0.42 items by chance, but 22 were observed, far exceeding chance. A limitation is that some lag items (LAG002, LAG003, LAG005, LAG006) have only 2 traces in the later window, so their exact lag distributions are uncertain, but they are not needed for the main hypothesis. The evidence cannot rule out that a rare variant contributed to some of the observed differences, but the consistency across many indicators makes that unlikely.\n\nOther differences: None beyond the main hypothesis.",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

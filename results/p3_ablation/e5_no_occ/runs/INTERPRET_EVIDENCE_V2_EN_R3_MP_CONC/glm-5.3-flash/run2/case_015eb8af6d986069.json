@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_015eb8af6d986069.json",
+  "evidence_sha256": "2fc141303fe2bcd8ea2a0e283d1d72d79b6283a0a4eed61222384270da7aec34",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:39:07.454234+00:00",
+  "finished_at_utc": "2026-11-15T05:42:34.311265+00:00",
+  "latency_seconds": 206.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28326,
+    "prompt_tokens": 39677,
+    "total_tokens": 68003,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26157,
+      "text_tokens": 2169
+    },
+    "cost": 0.020114550000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 89566,
+  "text": "### Observed differences\n\n- The seven activities A31, A22, A20, A23, A24, A25 and A26 occur in every trace in both windows, but their execution order changed from variable to fixed. In the earlier window A20 preceded A24 in only about 26 in 100 of their shared traces (A24 first in about 73), A20 and A26 preceded each other about equally often (49 vs 50 in 100), and A23 preceded A24 in about 12 in 100; in the later window A20, A22 and A23 come before A24, A25 and A26 in about 96–99 in 100 traces [REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021].\n- Successor choices collapsed in the same direction. Earlier, A20 was followed by A23 in about 62 in 100 of its outgoing transitions but also by A24, A25 or A26 (about 12–13 each), A22 by A20 (56), A24 (24) or A26 (14), A23 by A32 (48), A26 (19), A25 (17) or A24 (12), and A31 split evenly between A24 and A22; in the later window each has essentially one successor — A20→A23 (99), A22→A20 (98), A23→A24 (98), A24→A26 (99), A26→A25 (99), A25→A32 (90) and A31→A22 (99) [DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013].\n- The gaps between these activities became constant and match a single chain A31→A22→A20→A23→A24→A26→A25→A32: A22 reaches A20 one step later in about 100 in 100 later-window cases (about 56 in 100 before), A20 reaches A25 four steps later (previously spread over one to four steps), A23 reaches A25 three steps later (previously one to three), and A31 reaches A24 four steps later (previously one step in about half the cases) [LAG008, LAG011, LAG016, LAG034].\n- Within traces, A20, A22 and A23 now sit slightly earlier (mean event position about 0.64, 0.60 and 0.69 before vs 0.59, 0.57 and 0.62 after) and A24 and A26 slightly later (about 0.60 and 0.64 before vs 0.65 and 0.67 after) [POS002, POS003, POS004, POS005, POS006].\n- A08 is executed far less often: about 72 in 100 traces contained it in the earlier window vs about 29 in 100 in the later one, and its co-occurrence with A14–A16, A20–A26, A31, A32, A47 and A48 fell accordingly from about 72 to 29 in 100 in every pair. When it occurs it sits later and more variably (mean position about 0.24 vs 0.41; upper quartile 0.24 vs 0.69) and no longer immediately precedes A16 (one-step gap in about 99 in 100 observed pairs before vs about 43 in 100 after) [POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, LAG001].\n- After A15, the next activity is now almost always A16 (about 87 in 100 outgoing transitions, up from 58) rather than A08 (down from about 42 to 7); A08's own outgoing transitions spread from 90 in 100 leading to A16 to a mix of A16 (39), A48 (16) and A15 (15), on a reduced base of about 62 later-window transitions [DIR003, DIR006].\n- The successor sets of A02, A04 and A10 also spread across more targets in the later window, but each profile rests on only about 15–50 outgoing transitions per window, so these specific shifts are weakly supported [DIR001, DIR002, DIR004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints among the mid-process activities changed: A31, A22, A20, A23, A24, A25 and A26, which in the earlier window were executed in variable and partly mixed orders before the process continued to A32, now run as one fixed sequence, A31→A22→A20→A23→A24→A26→A25→A32. About 80 items qualified against fewer than 1 expected if nothing had changed, and every item's difference exceeds roughly 995 of 1000 random re-splits, so the pattern as a whole is not what an unchanged process typically produces. The change is shown directly and consistently: pair-order shares moved from mixed to about 96–99 in 100 in one direction while both activities of each pair still co-occur in all traces; outgoing transitions concentrated on a single successor (about 90–99 in 100, from 12–65 in 100 before); and the inter-activity gaps became constant at exactly the distances the chain implies. Limitations: positions and gaps are counted in event positions, not clock time, so this is a claim about order rather than timing, and it describes aggregate behaviour over 200 traces per window [REL014, REL016, REL019, DIR009, DIR011, DIR013, LAG008, LAG011, LAG016, POS002, POS005].\n\nA competing explanation the evidence cannot rule out is a changed case mix: the earlier window could contain several fixed orderings blended together — which would also produce mixed pair-order shares — where the later window contains essentially one; the aggregate evidence cannot separate re-routing within individual cases from such a substitution of variants [REL016, REL017, REL019, REL021].\n\nOther differences:\n- A08 is executed far less often (about 72 in 100 traces earlier vs about 29 in 100 later), sits later and more variably when it occurs, and its tight one-step link into A16 loosened; A15 now continues almost always to A16 instead of splitting between A16 and A08. Because A08 appears in only about 58 later-window traces, its detailed successor profile is weakly grounded [POS001, LAG001, DIR003, DIR006].\n- The successor sets of A02, A04 and A10 spread across more targets in the later window, but with about 15–50 outgoing transitions per window these shifts are weak [DIR001, DIR002, DIR004].",
+  "case_id": "case_015eb8af6d986069",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

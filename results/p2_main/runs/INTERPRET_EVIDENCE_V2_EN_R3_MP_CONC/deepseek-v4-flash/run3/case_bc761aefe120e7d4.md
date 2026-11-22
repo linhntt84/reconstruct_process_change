@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, activities A30, A31 and A36 each occurred on average about 3.45 times per trace, and in about 75 in 100 traces they occurred more than once. In the later window, each occurs on average about 1.05 times per trace, and recurrence drops to about 1–2 in 100 traces; participation remains 100% in both windows. [OCC001, OCC002, OCC003]
+- The outgoing routing of A36 changed markedly: in the earlier window, about 70% of its outgoing transitions went to A30 and about 29% to A25; in the later window, about 93% go to A25 and only about 4% to A30. [DIR003]
+- The relation between A30 and A36 changed from a mixed order with repetition to a fixed order: in the earlier window, A30 appeared before A36 in 25% of traces and the two were interleaved or repeated in 75%; in the later window, A30 appears before A36 in 98% of traces and interleaving/repetition drops to 2%. [REL001]
+- The lag between A30 and A36 shifted: in the earlier window, the most common lag was 2 steps (about 12%) and 5 steps (about 5%); in the later window, a lag of 2 steps occurs in about 89% of traces. [LAG002]
+- Minor redistributions appear in the outgoing edges of A30 and A31 (small increases to several other activities), but these are proportionally small and occur alongside the large drop in the number of transitions. [DIR001, DIR002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a hypothesis that the process changed from a repeated loop involving A30, A31 and A36 to a single execution of these activities, with A36 no longer routing back to A30 but instead exiting to A25. In the earlier window, A30, A31 and A36 each occurred about 3.5 times per trace, A36 returned to A30 in about 70% of its transitions, and A30 and A36 were interleaved or repeated in 75% of traces. In the later window, each activity occurs about once per trace, A36 routes to A25 in about 93% of transitions, and A30 precedes A36 in 98% of traces. The chain A30 → A31 → A36 remains, but the loop back from A36 to A30 is effectively removed. The evidence is consistent across occurrence counts, routing, ordering and lag indicators, and the number of qualifying items (13) far exceeds the 0.46 expected by chance for control-flow indicators. A limitation is that the lag items for A30–A30 and A36–A36 have very low support in the later window (only 2 traces), so those specific lag distributions are not reliable, but they are not needed for the main conclusion.
+
+Other differences: The small increases in outgoing edges from A30 and A31 to activities such as A04, A06, A10, A11, A19 and A36 are minor and likely reflect the reduced number of transitions per trace rather than a separate structural change. The evidence cannot rule out that some of these minor edges became slightly more common, but they are not part of the main hypothesis.

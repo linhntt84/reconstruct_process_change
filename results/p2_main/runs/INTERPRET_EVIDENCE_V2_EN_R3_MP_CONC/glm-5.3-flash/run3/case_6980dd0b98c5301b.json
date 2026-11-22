@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_6980dd0b98c5301b.json",
+  "evidence_sha256": "823a78cf12ae11bce3042195606df246879c4c54874abb1d9e17019d7a06f983",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:15:08.804259+00:00",
+  "finished_at_utc": "2026-11-15T03:15:54.192493+00:00",
+  "latency_seconds": 45.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6328,
+    "prompt_tokens": 5661,
+    "total_tokens": 11989,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5405,
+      "text_tokens": 923
+    },
+    "cost": 0.00401315
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20592,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traced cases contained the activities A01, A06, A07 and A08 in a fixed tail sequence A08 → A06 → A07 → A01: A08 was followed by A06 after one step, by A07 after two steps and by A01 after three steps, and A01 showed no observed outgoing transitions, consistent with it being the final activity. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003]\n\n- In the later window, the tail sequence is A08 → A01 → A06 → A07: A08 is now followed immediately by A01, A06 follows after two steps and A07 after three; A01 now leads to A06 in all 200 cases, while A07 shows no observed outgoing transitions. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003]\n\n- The pairwise order of A01 with the other two activities flipped completely: before, A06 preceded A01 and A07 preceded A01 in all 200 cases; after, A01 precedes A06 and A01 precedes A07 in all 200 cases, while each pair still co-occurs in every trace in both windows. [REL001, REL002]\n\n- Mean relative event positions shifted accordingly: A01 moved from the last position (1.0) to about 0.71 of the trace, A06 from about 0.71 to about 0.86, and A07 from about 0.86 to the last position (1.0). [POS001, POS002, POS003]\n\n- Participation did not change: each of the four activities appears in 100 in 100 traces in both windows, so the difference lies purely in their ordering, not in whether they run. [POS001, POS002, POS003, REL001, REL002]\n\n- The signal is far beyond chance level: 11 control-flow items qualified where about 0.05 would be expected if nothing had changed, and each item's difference exceeds that seen in about 995 of 1,000 random re-splits of the pooled traces. [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a reordering of the closing segment involving A01, A06, A07 and A08: in the later window A01 is executed directly after A08 and before A06 and A07, whereas in the earlier window A01 came last, after both A06 and A07 — the observed sequence around these activities changing from A08 → A06 → A07 → A01 to A08 → A01 → A06 → A07. [REL001, REL002, DIR001, DIR002, DIR003, POS001, POS002, POS003, LAG001, LAG002, LAG003]\n\nThe supporting signs are direct and consistent: the order reversal is observed relationally for both pairs (A01, A06) and (A01, A07) in every traced case; the successor changes, position shifts and step-distance changes each match exactly what this single reordering predicts; participation and co-occurrence are unchanged, which rules out activities being added, removed or becoming optional; and 11 qualifying items against about 0.05 expected without change makes sampling variability implausible as an overall explanation. [REL001, REL002, DIR003, POS001, LAG001]\n\nLimitations: positions and lags are event positions, not clock time, so the evidence establishes a change in execution order, not in timing; only the tested pairs and successors were observed, so any further reordering among untested activities would not be visible; and the evidence cannot distinguish whether A01 moved earlier or the block A06–A07 moved later, as both describe the same observed reversal. [POS001, POS002, POS003, LAG001, LAG002, LAG003]",
+  "case_id": "case_6980dd0b98c5301b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

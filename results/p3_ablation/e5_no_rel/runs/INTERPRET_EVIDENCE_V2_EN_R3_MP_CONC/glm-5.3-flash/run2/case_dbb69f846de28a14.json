@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_dbb69f846de28a14.json",
+  "evidence_sha256": "1f32f47b9d3642021da7b6db976c1e395c05daa4ca73a9dd959d78cc6d986df4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:47:28.880053+00:00",
+  "finished_at_utc": "2026-11-15T06:49:48.357823+00:00",
+  "latency_seconds": 139.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20309,
+    "prompt_tokens": 13489,
+    "total_tokens": 33798,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18803,
+      "text_tokens": 1506
+    },
+    "cost": 0.01217785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63178,
+  "text": "### Observed differences\n\n- Four activities became far less frequent. In the earlier window A36, A37 and A42 each ran in every one of the 200 traces (about 1 occurrence per trace); in the later window each runs in only about 47–48 in 100 traces (about 0.5 per trace). A27 fell from every trace to about 54 in 100. Each of the four occurs at most once per trace in both windows. [OCC001, OCC002, OCC003, OCC004]\n- A25 was rerouted: earlier its outgoing transitions went to A42 (about 34 in 100), A36 (about 32) and A37 (about 30); in the later window about 97 in 100 go straight to A28. [DIR001]\n- A26 was rerouted: earlier about 99 in 100 of its outgoing transitions led to A27; later about 52 in 100 lead to A27 and about 44 in 100 lead to A36, A37 or A42 (roughly 13–16 in 100 each). [DIR002]\n- The block's exit changed: earlier A36, A37 and A42 each led to A28 in about 31–35 in 100 of their outgoing transitions (otherwise to one of the other two block activities); later their edges to A28 nearly vanish (about 1 in 100) and each leads to A31 in about 26–35 in 100 of its transitions. The variable internal order among the three looks similar in both windows. [DIR003, DIR004, DIR005]\n- The A25→A28 distance collapsed: earlier A28 followed A25 four positions later in about 91 in 100 cases (five later in the rest); later it immediately follows A25 in about 98 in 100 cases. [LAG001]\n- The A26→A31 distance diversified: earlier A31 followed A26 two positions later in about 98 in 100 cases; later the gap is two positions in about 53 in 100 cases and four positions in about 43 in 100. [LAG005]\n- A37 and A31 went from almost never co-occurring within five steps (1 case) to being observed together in 93 cases, typically one to three positions apart. [LAG008]\n- When they occur, A36, A37 and A42 now sit later in the trace (mean relative position about 0.57 versus about 0.40 before), while A28 sits earlier (about 0.39 versus 0.46); these are event positions, not clock times. [POS004, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block formed by A36, A37 and A42 — executed in a variable order in both windows — became optional and was rewired. In the earlier window every trace ran A25, then the A36/A37/A42 block, then A28, and separately A26, A27 and A31. In the later window A25 leads directly to A28, and after A26 the process either runs A27 and then A31 (about half the traces) or runs the A36/A37/A42 block, which now ends in A31 (about 45 in 100 traces); A27 and the block appear in essentially disjoint traces, so they behave as alternatives after A26. In short, the block became skippable, its entry moved from A25 to A26, and its exit moved from A28 to A31. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG005, LAG008]\n\nThe hypothesis rests on direct relational evidence — the successor changes at A25, A26, A36, A37 and A42, the collapsed A25→A28 gap and the split A26→A31 gap — together with consistent participation and position changes; 26 control-flow items qualified against roughly 0.6 expected for an unchanged process, so the pattern as a whole is not explainable by random re-splits of a stable process. A competing explanation the evidence cannot rule out is that the later window is a mixture of two distinct case populations rather than a single per-case routing choice between A27 and the block. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG005, OCC001, OCC002, OCC003, OCC004]\n\nOther differences: small position drifts for A25 (slightly later) and for A26, A27 and A31 (slightly earlier), plus a few rare outgoing edges from A26 (about 0.5 in 100 each) and former pairs such as A25→A36 or A36→A28 now seen in only 1–2 traces, whose gap profiles are too thinly supported to interpret. [POS001, POS002, POS003, POS005, DIR002, LAG002, LAG003, LAG004, LAG006, LAG007, LAG009]",
+  "case_id": "case_dbb69f846de28a14",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

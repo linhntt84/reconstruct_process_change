@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A01 occurred exactly once in every trace (200 of 200) at a relative event position of about 0.2; in the later window, A01 is not observed in any trace (0 of 200) [OCC001, POS001].
+- A03 shows the mirror image: it was not observed in the earlier window, while in the later window it occurs exactly once in every trace (200 of 200), always at relative position 0.2 — the position A01 previously held [OCC002, POS002].
+- Direct successions were rewired around this slot: earlier, A02 led directly to A01 and A01 led directly to A07 in essentially all observed outgoing transitions; in the later window, A02 leads directly to A03 and A03 leads directly to A07 [DIR001, DIR002, DIR003].
+- A06, never observed earlier, appears in about 46 in 100 later traces (93 of 200), always as the final event after A05. Correspondingly, A05's observed outgoing transitions — earlier always to A08, and observed in only 101 of 200 traces because about half of the earlier traces ended at A05 with nothing after — now go to A06 in about 46 in 100 cases and to A08 in about 54 in 100; A06 and A08 never occur in the same trace [OCC003, POS005, DIR004, REL021].
+- A08's participation is essentially unchanged (about 51 in 100 traces earlier, about 54 in 100 later), a difference well within random-sampling variation [OCC004, REL010].
+- Because every later trace now has the same length, A07, A04 and A05 sit at fixed relative positions (about 0.4, 0.6 and 0.8, with no spread), whereas earlier their positions varied with trace length (for example A05 ranged between 0.8 and 1.0) [POS003, POS004, POS006].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, A03 executes in the slot A01 used to occupy: the earlier every-trace sequence A02 → A01 → A07 now runs A02 → A03 → A07, with A01 no longer observed and A03 present in every trace at A01's former position, while the downstream path A07 → A04 → A05 continues unchanged. The support is direct — the participation figures reverse completely (200 of 200 to 0 of 200, and 0 of 200 to 200 of 200) and the direct-succession profiles of A02, A01 and A03 show the rewiring explicitly — and consistent, since A03's relations with A02, A04, A05 and A07 reproduce, in the same order, the relations A01 had earlier; nearly all of these differences exceed those seen in about 199 of 200 random re-splits of the pooled data [OCC001, OCC002, DIR001, DIR002, DIR003, REL003, REL008, REL014].
+
+Limitations: the many relation and position items largely re-express the same trace-level change rather than forming independent confirmations, and the evidence cannot distinguish a genuine replacement of A01 by a new activity from a relabelling of the same step; no screening baseline is included, so the expected number of chance findings could not be compared formally, although participation swings of this size over 200 traces per window are not plausibly sampling noise [OCC001, OCC002].
+
+Other differences: A06 acts as a new closing activity — earlier, about 50 in 100 traces ended at A05 with nothing after, whereas later every trace ends with either A06 (about 46 in 100) or A08 (about 54 in 100), never both — and the now-fixed relative positions of A07, A04 and A05 follow from the uniform later trace length [OCC003, POS005, DIR004, REL021, POS003, POS004, POS006].

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_224f2535ec137d05.json",
+  "evidence_sha256": "49098a0227b0206ee56e24c0db2ad9f8377de72f242dd96dc6edbba91f93ef49",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:21:17.869288+00:00",
+  "finished_at_utc": "2026-11-16T03:23:16.518390+00:00",
+  "latency_seconds": 118.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16400,
+    "prompt_tokens": 96657,
+    "total_tokens": 113057,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15178,
+      "text_tokens": 1222
+    },
+    "cost": 0.022698549999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52490,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces), while in the later window it appears in every one of the 200 traces, exactly once per case, never repeated, and always at the final position of the trace; this difference is larger than in about 199 of 200 random re-splits. [OCC001, POS001]\n- Before, A16 was the closing event of every trace (normalized position 1.0 in all before-traces) and showed no observed outgoing transitions; in the later window A16 sits slightly earlier (mean position about 0.92) and all 200 of its observed outgoing transitions lead to A01. [POS016, DIR009]\n- A01 now co-occurs with every other activity in proportion to their participation (for example with A02 in 100 of 100 later traces), and the once-per-case activities A04, A13 and A16 run before A01 in 100 of 100 later traces; before, A01 never appeared together with any of them. [REL001, REL003, REL012, REL015]\n- Normalized positions of late activities shifted slightly earlier (A04 mean about 0.83 to about 0.77; A13 about 0.91 to about 0.85), which is consistent with one event being appended at the end of each trace rather than with those activities being relocated. [POS004, POS013]\n- Other, smaller differences: A10 occurs slightly more often per trace (about 1.9 to about 2.1) but in slightly fewer cases (about 66 to about 64 in 100) and slightly later, with gaps to A02 and to later activities shifted somewhat toward larger distances; at A03 the split between successors A05 and A06 moved from roughly 47/53 to 52/48, and at A08 the share continuing to A02 rose from about 10 to about 16 in 100. [OCC009, POS010, LAG007, LAG052, LAG057, DIR002, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window a new activity, A01, is executed once as the final step of every case, immediately after A16, which was the closing activity before. The signs are direct and consistent across indicator families: participation rises from 0 of 200 to 200 of 200 traces with exactly one occurrence at the last position, A16 — previously terminal, with no observed outgoing transitions — now leads exclusively to A01, and A01 co-occurs with all other activities, which complete before it in every case. The main limitation is that zero participation in the earlier window strictly shows only that A01 was not observed then, so a recording change that previously suppressed A01 cannot be fully excluded; the fixed final position and the exclusive A16→A01 edge make a newly added closing step the reading the evidence best supports. [OCC001, POS001, DIR009, POS016, REL003, REL012, REL015]\n\nOther differences: there are hints of small additional shifts — A10 runs slightly more often per trace but in slightly fewer cases and slightly later, with somewhat longer gaps to A02 and to later activities, and the successor shares at A03 (A05 versus A06) and at A08 (toward A02) moved by a few percentage points [OCC009, POS010, LAG007, LAG052, LAG057, DIR002, DIR004]. The evidence cannot separate these from ordinary sampling variation or from knock-on effects of the appended final event.",
+  "case_id": "case_224f2535ec137d05",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

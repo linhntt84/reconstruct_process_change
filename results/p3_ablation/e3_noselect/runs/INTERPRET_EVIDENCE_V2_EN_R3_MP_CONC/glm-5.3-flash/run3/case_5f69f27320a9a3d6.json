@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_5f69f27320a9a3d6.json",
+  "evidence_sha256": "999f4e83a3c507e89601d486cfc572e976040cd9474a0de0a16d94b0468e28d0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:14:39.434875+00:00",
+  "finished_at_utc": "2026-11-15T14:16:43.018776+00:00",
+  "latency_seconds": 123.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17242,
+    "prompt_tokens": 14314,
+    "total_tokens": 31556,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15747,
+      "text_tokens": 1495
+    },
+    "cost": 0.0107681
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51939,
+  "text": "### Observed differences\n\n- A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it runs exactly once in every case (200 of 200, mean 1.0 per trace, never repeated), around the middle of the flow (median position 0.4, middle 50% of cases between 0.2 and 0.6). [OCC001, POS001]\n- A04 ran exactly once in every earlier case (200 of 200, fixed near the end at position 0.8) and is not observed in any later case (0 of 200). [OCC002, POS003]\n- A03's successor changed completely: earlier every A03 execution was followed by A04 (100% of its outgoing transitions); in the later window it is always followed directly by A07 (100%). [DIR003, DIR004]\n- A01 sits inside the segment between A02 and A03: A02 precedes A01, and A01 precedes A03 and A07, in 100 in 100 later cases; against A05 and A06 the order is mixed, with A01 first in about 55 and 49 in 100 cases respectively. A02 now leads directly to A01 in about 38 in 100 cases (never earlier), and A05 and A06 lead to A01 in about 26 and 36 in 100 of their outgoing transitions; A01 in turn leads to A05 (about 39 in 100), A03 (34) or A06 (28). [REL001, REL002, REL004, REL005, REL006, DIR001, DIR002, DIR005, DIR006]\n- Positions spread accordingly: A03 moved from a fixed position of 0.6 to a fixed 0.8, while A05 and A06 became more variable (standard deviation about 0.10 to about 0.16; mean positions 0.30 to 0.41 and 0.30 to 0.40). [POS002, POS004, POS005]\n- Event-position distances shifted consistently with one step inserted before A03 and one removed after it: A02→A03 is now always 4 steps apart (was always 3) and A03→A07 always 1 (was 2); pairs spanning the middle block (A02→A05, A02→A06, A05/A06→A03, A05/A06→A07) now spread over three lags instead of two; and A05 and A06, previously always adjacent when ordered, are two steps apart in about 21 in 100 (A05→A06) and 35 in 100 (A06→A05) of their ordered co-occurrences. [LAG001, LAG004, LAG002, LAG003, LAG005, LAG008, LAG007, LAG010, LAG006, LAG009]\n- A04's former relations disappeared: it co-occurred with A02, A03, A05, A06 and A07 in 100 in 100 earlier cases (each in a fixed order) and in 0 in 100 later cases, which now show only the surviving partner. [REL003, REL007, REL008, REL009, REL010, REL011]\n- The relative order of A05 and A06 itself did not change measurably (A05 first in about 50 in 100 cases in both windows; the small difference is within chance variation, strength 0.08). [REL012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the flow between A02 and A07 was restructured: A01 was added as a new step that runs in every case inside the segment between A02 and A03 — always after A02 and before A03 and A07, but in no fixed order relative to A05 and A06 (both orders occur in similar proportions) — while A04 was dropped, so that A03 now leads directly to A07. [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL006]\n\nThe hypothesis is shown directly and consistently: participation flips from 0 to 200 of 200 traces for A01 and from 200 to 0 for A04, a swing that sampling variation between 200-trace windows does not produce; A03's entire successor profile switches from A04 to A07; A02, A05 and A06 gain A01 as a successor (26–38 in 100 of their transitions) where none existed before; and the position and lag shifts match inserting one step before A03 and deleting one after it. All qualifying items reach an empirical strength of about 0.995. [OCC001, OCC002, DIR003, DIR002, DIR005, DIR006, POS001, POS002, LAG001, LAG004]\n\nLimitations: the many agreeing items largely describe the same two underlying movements (the insertion of A01 and the disappearance of A04) rather than independent confirmations; the evidence cannot rule out that A01 already existed in the process but was simply not executed in the earlier window, and A04 not in the later one, since zero participation only means an activity was not observed; nor can it establish whether the addition and the removal were one coordinated modification or two separate ones. No screening baseline is included in the evidence, so the judgement rests on the directness and consistency of the items rather than a comparison with a chance expectation for their count. [OCC001, OCC002]\n\nOther differences: none beyond the restructuring above; in particular, the relative order of A05 and A06 is essentially unchanged, with A05 first in about 50 in 100 cases in both windows. [REL012]",
+  "case_id": "case_5f69f27320a9a3d6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

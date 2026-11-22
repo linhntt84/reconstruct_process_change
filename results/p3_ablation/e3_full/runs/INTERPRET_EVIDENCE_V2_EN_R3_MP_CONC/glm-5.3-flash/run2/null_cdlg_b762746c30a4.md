@@ -1,0 +1,19 @@
+### Observed differences
+
+- The split between two existing branches moved. In the later window, about 52 in 100 traces run A05 → A01 → A07, up from about 46 in 100, while the complementary route via A10 and A11 fell to about 48 in 100 from about 54. The two options remain strict alternatives in both windows: A01 never occurs together with A10 or A11, and A10/A11 always occur together, in either order (about 24 vs 30 in 100 earlier, about 24 vs 24 later). Of A05's directly observed successions, A01 accounts for about 49 in 100 in the later window versus about 39 before. [OCC001, OCC008, OCC009, REL004, REL009, REL010, REL055, DIR002]
+
+- The choice following A07 kept its structure but its mix moved. In both windows every trace contains exactly one of six activities after A07 (their shares sum to 100), yet in the later window A02 appears in about 9 in 100 traces versus about 4.5 before (9 vs 18 traces), A06 in about 9.5 versus about 14.5 (29 vs 19 traces), A03 in about 26.5 versus 29.5, A04 in about 24 versus 21.5, A08 in about 26 versus 24.5, and A09 stays near 5. [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, DIR003]
+
+- Order constraints themselves moved only slightly: A05 opens the trace in both windows and precedes A07 in about 97 in 100 later traces (about 92.5 before), A01 still directly precedes A07 in about 95 in 100 of its traces, and the six post-A07 activities still follow A07 immediately in roughly 9 or more of 10 cases. [REL036, LAG006, LAG017, LAG018, REL055]
+
+- Smaller movements: A01 and A02 now co-occur in about 5.5 in 100 traces versus about 1.5, so most of A02's growth sits inside A01-route traces; A05's and A07's typical event positions shifted slightly earlier, which is consistent with the larger share of shorter A01-route traces rather than with any activity being relocated. [REL001, REL018, POS001, POS002, POS003]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests a shift in how often existing alternative paths are taken, with the structure unchanged: the A01 route (A05 → A01 → A07, without A10 and A11) was used in about 52.5 in 100 later-window cases versus about 46 in 100 earlier, and among the activities that follow A07, A02 was chosen about twice as often (about 9 vs 4.5 in 100 traces) while A06 was chosen less often (about 9.5 vs 14.5 in 100). The skeleton — A05 first, then either A01 or the pair A10/A11, then A07, then exactly one of six activities — is intact in both windows, which is the pattern expected when only the shares between existing alternatives move. [OCC001, OCC002, OCC005, OCC008, OCC009, REL004, REL006, REL009, REL013, REL015, REL035, DIR002, DIR003]
+
+Supporting signs: the same directional shifts recur across occurrence, direct-succession and relation indicators, and the exclusivity and co-occurrence patterns that define the alternatives are preserved, arguing against activities being added, removed or reordered. What is missing: the movements are modest — for most qualifying items, random re-splits of the pooled traces reach differences of this size in roughly 10 to 40 of 100 cases — A02's doubling rests on only 9 earlier-window traces, and no screening baseline is provided to compare the number of qualifying items against chance. Sampling variation between two 200-trace windows therefore remains a credible competing explanation, particularly for the smaller movements of A03, A04, A08 and A09. [OCC002, OCC003, OCC004, OCC006, OCC007, DIR003]
+
+Other differences: A05 precedes A07 slightly more consistently in the later window (about 97 in 100 traces versus about 92.5), and A03 and A04 follow A07 directly a bit more often than before; these are small changes in ordering consistency, not repositionings. [REL036, LAG017, LAG018]

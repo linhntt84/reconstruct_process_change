@@ -1,0 +1,20 @@
+### Observed differences
+
+- A27, A28 and A29 were present in every trace in the earlier window (200 of 200); in the later window they became partial, with A27 in about 46 in 100 traces and A28 and A29 each in about 55 in 100. None of the three repeats within a trace in either window. [OCC001, OCC002, OCC003]
+- In the earlier window A27 always co-occurred with A28 and with A29; in the later window A27 never co-occurs with either (co-occurrence fell to zero in 200 traces). The later window splits into two exclusive shapes: about 46 in 100 traces contain A27 without the pair, about 55 in 100 contain A28 and A29 together without A27. A28 and A29 still always appear together and in either order. [REL013, REL014, REL015]
+- The A28/A29 pair sits in a different place: earlier it followed A20 within 1–2 steps and always preceded A21, which came three steps after A20; in the later window A20 leads to A21 immediately in every trace, and the pair instead appears 4–5 steps after A20, after A23 and directly before A24 (1–2 steps). The order relations reversed: A28/A29 ran before A21 and A23 in the earlier window and after them in the later one. [LAG001, LAG003, LAG004, LAG007, LAG008, DIR001, REL005, REL006, REL008, REL009]
+- Outgoing routing changed accordingly: earlier A20 led only to A28 or A29 (about 47 and 53 in 100) and A23 always to A27; in the later window A20 always leads to A21, A23 leads to A27 in about 46 in 100 of its outgoing transitions and to A28 or A29 in the remainder (about 30 and 25 in 100), and A28/A29 now lead to A24 in about 45–55 in 100 of cases instead of towards A21. [DIR001, DIR002, DIR003, DIR004]
+- Positions shifted consistently with this: A21 and A23 occur earlier in the trace (mean relative position about 0.48 to 0.43 and 0.54 to 0.50), while A28 and A29 occur later (about 0.43 to 0.55). A20, A21, A23 and A24 themselves still appear in every trace in both windows. [POS001, POS002, POS003, POS004, POS006, POS007]
+- The elapsed time between consecutive completion events from A14 to A20 and from A15 to A20 roughly doubled, from about 1.0 hour to about 2.0 hours on average. [TWAIT001, TWAIT002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the A28/A29 pair, previously a mandatory block executed together in either order between A20 and A21, now runs as an alternative to A27 between A23 and A24. In the earlier window every trace ran A20, then the A28/A29 pair, then A21, A23, A27 and A24; in the later window a trace either contains A27 (about 46 in 100) or the A28/A29 pair (about 55 in 100), never both, and A20 leads directly to A21. A27 and the pair were both mandatory before and each now appears in only about half of the traces. [OCC001, OCC002, OCC003, REL013, REL014, REL015, LAG001, LAG003, LAG007, DIR001, DIR002]
+
+This is supported directly and consistently: 39 qualifying items against roughly 0.49 expected without change, so chance can hardly explain the pattern as a whole; the exclusivity and the reversed order are shown by relational evidence rather than inferred from frequencies; and the participation, routing, distance and position indicators all describe the same rewiring, with the participation shifts backed by 91–109 traces per activity. [REL005, REL006, REL008, REL009, DIR003, DIR004, LAG004, LAG008, POS002, POS003, POS006, POS007]
+
+Limitations: the evidence cannot show what determines which branch a case takes (for example case attributes versus a random choice), and with 200 traces per window rare forms could go unobserved; the exact zero co-occurrence of A27 with A28/A29 across 200 later traces makes a surviving old structure unlikely but does not exclude it entirely. [REL013, REL014]
+
+Other differences: the elapsed time between consecutive completion events into A20 (from A14 and from A15) roughly doubled from about 1.0 to about 2.0 hours; this timing change upstream of A20 is not part of the routing hypothesis above. [TWAIT001, TWAIT002]

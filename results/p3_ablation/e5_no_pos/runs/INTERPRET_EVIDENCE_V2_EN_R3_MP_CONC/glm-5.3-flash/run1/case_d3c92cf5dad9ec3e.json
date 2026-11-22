@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_d3c92cf5dad9ec3e.json",
+  "evidence_sha256": "79565cec84f834aecf120ddf38867ef62efe8970b7c88fb81db30495333aca77",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:25:55.368187+00:00",
+  "finished_at_utc": "2026-11-14T12:29:55.659194+00:00",
+  "latency_seconds": 240.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33541,
+    "prompt_tokens": 18288,
+    "total_tokens": 51829,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31593,
+      "text_tokens": 1948
+    },
+    "cost": 0.0195137
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 99094,
+  "text": "### Observed differences\n\n- The order of two blocks is reversed in the later window. In the earlier window, the single choice activity that runs in a trace — one of A19, A21, A24, present in about 30, 35 and 37 of 100 traces respectively — always executed before A25, A29 and before the A20/A22/A23 group: A24 preceded A25 in about 37 of 100 traces, A21 preceded A20 in about 34 of 100, and A25 preceded A20 in virtually every trace (about 995 in 1,000). In the later window this is inverted: A25 preceded A24 in about 38 of 100, A20 preceded A21 in about 29 of 100, and A20 preceded A25 in virtually every trace. All 21 tested pairs spanning the two blocks reversed in this way. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021]\n- The handovers at the block boundaries moved with them. Earlier, A40 passed almost always to one of A19/A21/A24 (about 28–34% of its outgoing transitions each) and A29 passed into the A20/A22/A23 group (about 30–37% each); in the later window A40 passes to A20/A22/A23 (about 28–35% each) and A29 passes to one of A19/A21/A24 (about 29–38% each). [DIR007, DIR008]\n- The exits of both blocks changed accordingly. Earlier, the choice activity led to A25 in about 95–98% of its outgoing transitions (A19 98%, A21 97%, A24 97%) and the A20/A22/A23 group exited to A30 (about 29–37% each); later, the choice activity leads to A30 (about 95–99%) and the group exits to A25 (about 27–37%). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n- Event distances moved as this rearrangement predicts. A29 reached A30 four event positions later in about 93 of 100 traces earlier but two positions later in about 99 of 100 later (three group activities in between earlier versus one choice activity later). A40 reached A25 two positions later in about 95 of 100 earlier versus four to five positions later in essentially all traces. Pairs almost unobserved earlier — A40 before A20/A22/A23, A29 before A21, A23 before A25 (one observation each) — occur in nearly all 200 later traces at short lags, while A21→A25 and A24→A25 at distance 1 (69 and 71 traces) are almost absent later. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]\n- Participation is essentially unchanged: A20, A22, A23, A25 and A29 co-occur in every trace in both windows, and the choice activities together still account for about one execution per trace (combined about 102 per 100 traces in both windows). The difference lies in ordering, not in how often activities run. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL008, REL009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks exchanged their sequence positions around the unchanged A25/A29 segment. In the earlier window the sequence ran A40 → (one of A19, A21, A24) → A25 → A29 → (A20, A22, A23, which follow one another in varying order) → A30; in the later window it runs A40 → (A20/A22/A23 in varying order) → A25 → A29 → (one of A19, A21, A24) → A30. The choice block (still exactly one of A19/A21/A24 per trace) and the A20/A22/A23 group swapped sides around the middle segment, while participation of every involved activity stayed substantial in both windows. [DIR001, DIR007, DIR008, REL004, REL008, REL020, LAG005, LAG009]\n\nSupporting signs: 38 items qualified where roughly 0.64 would be expected by chance for the 129 tested control-flow units, so sampling alone cannot explain the volume; all 38 items (8 DIR, 21 REL, 9 LAG) fit this one rearrangement with no contradictions; the order reversal is shown directly by relational evidence for every cross-block pair, and the distance changes match its prediction (A29→A30 shortens from four to two positions, A40→A25 lengthens from two to four–five). Support bases are large: about 200 traces per window for the group activities and 59–80 for the choice activities. [DIR001, DIR002, DIR004, DIR005, DIR007, DIR008, LAG002, LAG005, LAG009]\n\nLimitations: the evidence uses event positions within five steps, not clock time, and the end-to-end sequence is a reconstruction from pairwise relations; the relative order of A25 and A29 within the middle segment is not directly observed. An important competing description the evidence cannot rule out is which of the two blocks \"moved\" — pairwise order shows only that their relative position reversed, not which side shifted past the other. [REL008, REL020, LAG005]\n\nOther differences: minor share shifts inside the blocks — within the A20/A22/A23 group (e.g., A22 → A20 about 30% earlier versus about 35% later) and in the choice among A19/A21/A24 (A21 about 35% → 30%, A24 about 37% → 40% of traces) — plus a few rare edges at about 1–3% (e.g., A24 to A36/A40/A32/A04 and A19 to A02 in the later window); these are small enough to reflect sampling variation and do not change which activities run. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]",
+  "case_id": "case_d3c92cf5dad9ec3e",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,20 @@
+### Observed differences
+
+- Repetition collapsed: in the earlier window each of A25, A26, A31, A32 and A33 occurred about 3.6 times per trace and repeated within a trace in about 70 in 100 traces; in the later window each occurred about once per trace and repeated in only about 1 in 100 traces. Every trace still contained all five activities in both windows (200 traces each). [OCC001, OCC002, OCC003, OCC004, OCC005]
+- The flow out of A33 flipped: earlier about 72 in 100 of A33's observed outgoing transitions went to A25 and about 28 in 100 to A20; in the later window about 98 in 100 go to A20 and only about 2 in 100 to A25. The number of observed outgoing transitions of A33 also fell from about 713 to about 204, matching the drop in repetitions. [DIR001, OCC005]
+- Ordering tightened: earlier, each pair among the five activities was interleaved or repeated in about 70 in 100 traces; in the later window this fell to about 1 in 100 while the five still always co-occurred. Pairs involving A25 or A33 became fixed (A25 before the others in about 99 in 100 traces, A33 after them), whereas pairs among A26, A31 and A32 now appear in both orders in roughly equal shares (about 50 vs 48 in 100), i.e., with no fixed order between them. [REL001, REL005, REL007, REL008, REL010]
+- Consecutive occurrences became adjacent: for example, A26 followed by A31 within five steps now sits 1–2 events apart in about 95 in 100 observed cases (about 63 at distance 1, 32 at distance 2), whereas earlier the distances were spread thinly across 1–5 with no dominant value; similar shifts hold for the other pairs among A26, A31 and A32 in both directions. [LAG001, LAG002, LAG004, LAG005, LAG007, LAG008]
+- Placement became more uniform: the spread of event positions of the five activities shrank (standard deviation about 0.15 earlier vs about 0.06 later) while their average positions stayed near the middle of the trace (for example A25 mean 0.43 vs 0.38). [POS001, POS002, POS003, POS004, POS005]
+- A few distance items on backward pairs (A31→A25, A32→A25, A33→A26, A33→A31, A33→A32) rest on only 2 later-window traces against 139 earlier; their distributions are too thin to interpret, though the near-disappearance of these ordered pairs fits the end of repetition. [LAG003, LAG006, LAG009, LAG010, LAG011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repetition of the block of activities A25, A26, A31, A32 and A33 was largely removed. Earlier, every trace ran this group about three to four times, with the five activities interleaved across cycles and A33 returning to A25 in most of its outgoing transitions; in the later window the group runs once per trace — A25 first, A33 last, with A26, A31 and A32 in between in no fixed order and back-to-back — and A33 now leads to A20 in about 98 in 100 transitions instead of back to A25, so the return edge that would start a new cycle has nearly vanished. [OCC001, DIR001, REL001, REL005, LAG001]
+
+Supporting signs: the repetition drop is measured directly on all 200 traces in both windows for all five activities; the routing change at A33 is observed on the outgoing transitions themselves; and 32 control-flow items qualified against roughly 0.5 expected for an unchanged process, so chance cannot account for the set as a whole. The occurrence, routing, relational, distance and positional items all describe one coherent picture rather than unrelated shifts. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001, REL001, LAG001, POS001]
+
+Limitations: the indicators draw on the same traces, so they are not independent confirmations; only A33's outgoing transitions are observed, so an additional or alternative cut of the cycle at another activity cannot be ruled out; and about 1 in 100 later traces still show repetition, so the change need not be complete. [DIR001, OCC001]
+
+Other differences: none beyond components of the picture above. [OCC001, DIR001, POS001]

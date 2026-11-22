@@ -1,0 +1,19 @@
+### Observed differences
+
+- Three activities that appear in none of the 200 earlier traces run in the later window, each at most once per case: A19 in about 29 in 100 traces (58 of 200), A20 in about 41 in 100 (82 of 200) and A25 in about 31 in 100 (61 of 200). [OCC001, OCC002, OCC003]
+- The three are mutually exclusive: A19 and A20 never share a trace, and A19/A25 as well as A20/A25 share one in only about 1 in 200 cases; their participation shares sum to roughly 100 in 100 traces with negligible overlap, so a later case typically contains exactly one of them. [REL001, REL002, REL006, OCC001, OCC002, OCC003]
+- Each new activity sits about halfway through the trace (mean event position about 0.51–0.52). A27 precedes it in essentially every case where both occur, and it precedes A29 in essentially every such case; against A28 the order is mixed — for example A19 runs before A28 in about 15 in 100 traces and after it in about 14 in 100, and A20 and A25 show the same mixed pattern. [POS001, POS002, POS003, REL003, REL007, REL010, REL005, REL009, REL012, REL004, REL008, REL011]
+- The surrounding routing shifted accordingly: A27's outgoing flow to A28 fell from about 97 in 100 earlier to about 43 in 100 later, while about 52 in 100 now goes to A20, A25 or A19; A28's outgoing flow to A29 fell from about 98 in 100 to about 57 in 100, while about 41 in 100 now goes to A20, A19 or A25. The new activities themselves lead mainly to A28 or A29 (A19, for example: about 53 in 100 to A28, 47 in 100 to A29). [DIR004, DIR005, DIR001, DIR002, DIR003]
+- Two small positional shifts accompany this: A27's mean position moved slightly earlier (about 0.48 to 0.46) and A29's slightly later (about 0.55 to 0.57). [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window every case runs exactly one of three mutually exclusive activities — A19, A20 or A25 — placed in the mid-trace segment between A27 and A29: A27 comes before the chosen activity, the chosen activity comes before A29, and it runs before or after A28 with no fixed order. Correspondingly, the formerly near-mandatory chain A27 → A28 → A29 now carries only part of the flow (A27 to A28 about 43 in 100, A28 to A29 about 57 in 100). In the earlier window none of the three was observed in 200 traces and the segment ran almost exclusively A27 → A28 → A29. [OCC001, OCC002, OCC003, REL001, REL003, REL005, REL007, REL009, REL010, REL012, REL004, DIR004, DIR005, POS001, POS002, POS003]
+
+The screening produced 25 qualifying items against well under one (about 0.55) expected without a change, and the items agree across occurrence, direction, position and relation indicators; participation of 58–82 of 200 traces per activity, against 0 of 200 earlier, is far beyond what a rare variant appearing in one window would produce. [OCC001, OCC002, OCC003, DIR004, DIR005, REL003, REL005, REL007, REL009, REL010, REL012, screening]
+
+Limitations: the evidence cannot distinguish a modification that introduced these activities from a path that existed earlier but was never exercised in the before sample, and the empty earlier direction profiles for A19, A20 and A25 reflect non-occurrence rather than observed edges; the mixed order around A28 also leaves open whether the new activities sit before A28, after it, or both. [OCC001, DIR001, REL004, REL008, REL011]
+
+Other differences: only scattered trace-level edges remain, each carrying about 0.5–2 in 100 of the source's outgoing transitions (for example A20 to A18, A25 to A27/A32/A44, and a spread of single-trace edges out of A27), consistent with sampling noise. [DIR002, DIR003, DIR004]

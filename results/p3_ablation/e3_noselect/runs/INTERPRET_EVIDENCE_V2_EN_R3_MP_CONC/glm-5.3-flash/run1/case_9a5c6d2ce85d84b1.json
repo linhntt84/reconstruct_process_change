@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9a5c6d2ce85d84b1.json",
+  "evidence_sha256": "be9b7a19271b0e10d9406b80d6a63a0c7f85adcfbd2bca92bef0c9f60fc7f782",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:32:23.289503+00:00",
+  "finished_at_utc": "2026-11-14T14:33:02.311954+00:00",
+  "latency_seconds": 39.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5995,
+    "prompt_tokens": 3500,
+    "total_tokens": 9495,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5471,
+      "text_tokens": 524
+    },
+    "cost": 0.0035225
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22179,
+  "text": "### Observed differences\n\n- In the later window, activity A01 occurs exactly once in every trace (200 of 200 traces, mean 1.0 occurrence per trace); in the earlier window it was not observed at all (0 of 200 traces). [OCC001]\n- Activity A04 is present in every trace in both windows, but its position shifted: in the earlier window it sat at the end of the trace (mean event position 1.0), while in the later window it sits about three-quarters of the way through (0.75) and A01 now occupies the end position (1.0). [POS001, POS002]\n- The relationship between the two activities flipped completely: earlier, A04 occurred without A01 in 100 in 100 traces (never together); later, they co-occur in 100 in 100 traces, with A04 executing before A01 every time. [REL001]\n- A04's outgoing transitions also changed: none were observed in the earlier window, whereas in the later window every observed outgoing transition of A04 (200 of 200) leads to A01. [DIR001]\n- All five items show differences larger than in about 199 of 200 random re-splits of the pooled data (empirical strength ≈ 0.995 each). [OCC001, DIR001, POS001, POS002, REL001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a step A01 was appended at the end of the process: A01 now executes once in every case, directly after A04, which previously appeared as the final observed step with no observed successors. The support is direct and consistent — the participation flip for A01 (0 to 200 of 200 traces), the relational flip from never co-occurring to always A04 before A01, the successor change at A04, and the matching position shifts all describe one and the same underlying difference, and each item exceeds about 199 of 200 random re-splits. [OCC001, REL001, DIR001, POS001, POS002]\n\nThe evidence covers only A01 and A04, so it cannot show whether other end-of-process behaviour elsewhere was affected or replaced. Strictly speaking, A01's absence in the earlier window means only that it was not observed there; a complete 0-of-200 versus 200-of-200 flip makes a pure sampling explanation implausible, but the evidence cannot fully exclude that A01 belonged to an extremely rare path before. [OCC001, REL001]",
+  "case_id": "case_9a5c6d2ce85d84b1",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

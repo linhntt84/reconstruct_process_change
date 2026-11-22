@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f42ea5a21bff96f8.json",
+  "evidence_sha256": "00bcd42de71718e810f71dc12c26ee3736c4a60628ac32602d3702bd9ef9fba8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:18:49.394826+00:00",
+  "finished_at_utc": "2026-11-15T04:21:09.440846+00:00",
+  "latency_seconds": 140.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21282,
+    "prompt_tokens": 42694,
+    "total_tokens": 63976,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19481,
+      "text_tokens": 1801
+    },
+    "cost": 0.0170451
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61925,
+  "text": "### Observed differences\n\n- The dominant difference is a flip between two mutually exclusive activity groups. In the earlier window, A21, A22 and A23 each ran in about 75 in 100 traces (and always together), while A24, A25 and A26 each ran in only about 26 in 100; in the later window the shares reversed, with A24–A26 at about 76–77 in 100 and A21–A23 at about 25 in 100. The two groups practically never share a trace in either window (co-occurrence at most ~2 in 100), and from A20 the outgoing flow moved from the old group (about 75 in 100) to the new group (about 75 in 100). [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, REL025, REL027, REL049, DIR002]\n- Activities that run in nearly every trace in both windows (A19, A20, A29, A34, A35) switched partners accordingly: co-occurrence with the old group fell from about 75 to about 25 in 100 traces, and with the new group rose from about 26 to about 76 in 100. The group keeps its neighbours: A29 precedes it (about 73 in 100) and A34/A35 follow it (about 73–76 in 100) in both windows. [REL013, REL016, REL030, REL032, REL051, REL053]\n- A06 tripled its presence, from about 17 to about 53 in 100 traces, and moved from mid-trace (median position about 0.48) to the end of the trace (median about 0.96). [OCC002, POS001]\n- The A34-to-A35 connection changed: earlier, about 89 in 100 of A34's outgoing transitions went straight to A35 and about 2 in 100 to A06; in the later window this is an even split (about 48 to A35, 50 to A06), A06's own outgoing transitions go to A35 in about 90 in 100 cases (within one step in about 97 in 100 of observed pairs), and the A34→A35 spacing shifted from one step (90 in 100) to an even split between one and two steps. [DIR005, DIR001, LAG001, LAG013, REL012]\n- Smaller shifts: A02 and A08 became rarer (about 17 to 8 and 14 to 5 in 100 traces), A32's small branches to A02/A08/A06 (about 3–4 in 100 each) disappeared in favour of A33 (about 82 to 96 in 100), and typical event distances to the new group shifted by roughly one step (later after A19/A20/A29, earlier after A29 for A25). [OCC001, OCC003, DIR004, LAG002, LAG009, LAG010]\n- Overall, 92 of 220 tested units qualified, against roughly 1 expected by chance if nothing had changed, and every item's difference is larger than in about 199 of 200 random re-splits of the pooled data. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the choice between two existing alternative activity groups flipped: traces that previously executed A21, A22 and A23 together (about 75 in 100) now execute A24, A25 and A26 together instead (about 76 in 100), while both groups remain in the process, remain all-or-nothing within themselves, and remain mutually exclusive with each other. Because both groups are observed in substantial shares in both windows (roughly 25 and 75 in 100) and only the shares between them moved, this is a change in how often existing paths are taken, not a replacement of one path by another. The signs are direct and consistent — participation counts for all six activities, within-group co-occurrence, cross-group exclusivity, and flipped co-occurrence and order with the ever-present neighbours A19/A20, A29 and A34/A35 — and the volume of qualifying items (92 against roughly 1 expected without change) cannot be explained by sampling variation. The evidence cannot rule out that the two windows draw different case mixes rather than a modified routing decision, and it cannot show whether the flip is one decision point or several. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, REL025, REL027, REL013, REL016, REL030, REL032, REL051, REL053, DIR002, screening]\n\nOther differences: A06 shows a second, structurally distinct change — it runs in about 53 in 100 later-window traces (previously about 17), sits near the trace end, and is now typically placed between A34 and A35 (about 50 in 100 of A34's outgoing transitions go to A06, A06 leads to A35 in about 90 in 100 of its outgoing transitions, and the A34→A35 spacing moved from one step to one or two steps); this is direct relational and positional evidence of an inserted step, though the evidence cannot tell whether it belongs to the same redesign as the group flip. In addition, A02 and A08 occur in fewer traces (about 8 and 5 in 100, previously 17 and 14), with A32's minor branches to them largely replaced by A33. [OCC002, POS001, DIR005, DIR001, LAG001, LAG013, REL012, OCC001, OCC003, DIR004]",
+  "case_id": "case_f42ea5a21bff96f8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

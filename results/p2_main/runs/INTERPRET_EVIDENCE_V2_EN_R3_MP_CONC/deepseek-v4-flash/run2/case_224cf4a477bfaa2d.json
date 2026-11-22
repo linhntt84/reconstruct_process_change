@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_224cf4a477bfaa2d.json",
+  "evidence_sha256": "b7bc00ee5d237ab86c4d2091b29849dcdb03d435cc9b9b3a4521a9ceea4a1d2d",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:18:50.980758+00:00",
+  "finished_at_utc": "2026-11-15T01:19:12.877002+00:00",
+  "latency_seconds": 21.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3463,
+    "prompt_tokens": 15731,
+    "total_tokens": 19194,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2948
+    },
+    "cost": 0.003036038
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 10475,
+  "text": "### Observed differences\n\n- In the later window, activity A01 appears in every trace (100% vs 0% before), while A09 disappears (0% vs 45% before). [OCC001, OCC002]\n- A02's outgoing transitions shift: before, about 87% went to A04; after, about 54% go to A01 and 44% to A04. [DIR002]\n- A04's outgoing transitions also shift: before, A07 (37%), A10 (24%), A03 (20%), A05 (15%); after, A01 (39%), A07 (23%), A10 (17%), A03 (8%), A05 (10%). [DIR003]\n- A06's outgoing transitions: before all to A09; after to A01 (67%) and A04 (33%). [DIR004]\n- A01 appears early (mean position ~0.29) and precedes A03, A04, A06, A07, A10 in most cases; A09 was last (position ~1.0) and is gone. [POS001, POS006, REL002-REL007, REL013]\n- The lag between A02 and later activities (A03, A04, A06, A07, A10) increases by about one step, consistent with A01 inserted between them. [LAG001-LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change: a new activity A01 is added early in the process (after A02) and becomes mandatory, while A09 is removed. The routing from A02 and A04 changes to include A01. Specifically, in the earlier window, A02 led mostly to A04, and A06 led to A09; in the later window, A02 often leads to A01, which then leads to A04 and other activities, and A09 is no longer executed. The evidence is direct: OCC shows A01 appears and A09 disappears; DIR shows new outgoing edges from A01 and changed outgoing from A02, A04, A06; REL shows A01 co-occurs with many activities and precedes them; LAG shows increased distance between A02 and later activities. Limitations: The evidence is all control flow, no time or resource changes. Also, we cannot rule out that A01 existed but was not recorded in the earlier window, but the data show it is now present in all traces.",
+  "case_id": "case_224cf4a477bfaa2d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

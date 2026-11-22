@@ -1,0 +1,16 @@
+### Observed differences
+
+- Work on the offer-handling activities moved from one group of resources to another. In the earlier window, assignments for A01, A03, A13, A14, A17 and A22 were each led by a single resource (User_105) with roughly 10–16 assignments in 100, the remainder spread thinly over many others; in the later window that resource no longer appears among the top assignees, a different group led by User_72 (about 7–13 in 100) heads every profile, and a few resources keep similar shares (about 5–9 in 100) in both windows. Each profile rests on roughly 120–260 assignments per window. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN006, ASSIGN007]
+- A16 changed from widely shared to single-resource handling: in the earlier window it was spread over about 20 distinct resources with the busiest taking about 21 in 100; in the later window one resource (User_17) handled all of them, at a similar volume (135 vs 136 assignments). [ASSIGN005, CONC001]
+- The elapsed time between consecutive completions of A07 and A13 fell sharply: a median of about 20 hours in the earlier window versus about 1.7 hours in the later one (mean about 16.5 vs 3.5 hours), while the number of observed intervals rose from 6 to 17. This rests on few observations. [TWAIT001]
+- Screening flagged no control-flow differences (0 items against roughly 0.17 expected without change). [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the allocation of work to resources changed: the offer-handling activities (A01, A03, A13, A14, A17, A22), previously led by User_105 with the remainder spread over a broad set of resources, are in the later window led by a different group headed by User_72, and A16, previously shared across about 20 resources, is now handled exclusively by User_17. Supporting signs: all seven assignment profiles shifted in the same direction, each difference larger than in all but about 1 in 2,000 random re-splits and based on roughly 120–260 assignments per window; the concentration of A16 rose from an index of about 0.09 to 1.0 as distinct resources fell from 20 to 1; and the resource family produced 8 qualifying items where an unchanged process would produce about 0.005 — far more than chance can explain. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+Limitations: the resource codes are anonymous, so the evidence cannot distinguish a reallocation of work within the same pool from a change in which resources were available in each window; the seven assignment profiles also partly describe one underlying reassignment rather than independent confirmations. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007]
+
+Other differences: The elapsed time between consecutive completions of A07 and A13 dropped from a median of about 20 hours to about 1.7 hours while such intervals became more frequent (6 vs 17); as a timing change this is a hypothesis in its own right, but with only 6 and 17 observed intervals the evidence cannot rule out sampling variation. [TWAIT001]

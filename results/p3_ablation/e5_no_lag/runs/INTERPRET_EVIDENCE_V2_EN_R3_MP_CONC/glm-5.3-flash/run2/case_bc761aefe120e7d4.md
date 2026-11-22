@@ -1,0 +1,17 @@
+### Observed differences
+
+- The activities A30, A31 and A36 each occurred about 3.4 times per case in the earlier window, with repeated occurrences in about 75 in 100 cases; in the later window each occurs about once per case (about 1.05), and repeats remain in only about 1–2 in 100 cases. All three activities still appear in every case in both windows. [OCC001, OCC002, OCC003]
+- The routing out of A36 changed accordingly: earlier, about 70 in 100 of A36's outgoing transitions returned to A30 and about 29 in 100 went to A25; later, about 93 in 100 go to A25 and only about 4 in 100 return to A30. [DIR003]
+- The links A30→A31 and A31→A36 remain dominant in both windows (about 98–99 in 100 outgoing transitions earlier, about 97 in 100 later); the total number of observed outgoing transitions from these activities fell from about 690 to about 210, matching the drop in occurrences. [DIR001, DIR002]
+- A30 and A36 co-occur in every case in both windows, but their relation changed: earlier, 75 in 100 cases showed them interleaved or repeated and 25 in 100 a fixed A30-before-A36 order; later, 98 in 100 cases show the fixed A30-before-A36 order and only 2 in 100 show interleaving or repetition. [REL001]
+- The positions of A30 and A36 within the case became more tightly concentrated (spread fell from about 0.12 to about 0.06–0.07 on the relative-position scale) while their average positions stayed roughly unchanged (about 0.42 for A30, about 0.49 for A36). [POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeating cycle through A30, A31 and A36 stopped repeating: earlier, the sequence A30 → A31 → A36 typically ran about three to four passes per case before A36 exited to A25, whereas in the later window it typically runs a single pass and A36 then proceeds to A25, with the loop back to A30 surviving only rarely (about 4 in 100 of A36's outgoing transitions). The screening found 9 qualifying items where only about 0.44 would be expected if nothing had changed — roughly 20 times the chance expectation — and the items agree: the occurrence counts of all three activities fell in lockstep, the loop-back edge at A36 gave way to the exit to A25, and the A30/A36 relation collapsed from mostly interleaved or repeated to a fixed order. [OCC001, OCC002, OCC003, DIR003, REL001]
+
+Limitations: the loop is strongly reduced but not eliminated, and the evidence cannot show whether the cycle is now capped at exactly one pass or only strongly discouraged; the residual loop frequency rests on few observations. An important competing reading — that only the choice at A36 shifted between the existing exit to A25 and the loop back to A30, without any change to repetition itself — cannot be fully ruled out, although the coordinated drop in occurrences of all three activities fits the repetition reading better. [DIR003, OCC001, OCC002, OCC003]
+
+Other differences: minor redistributions among the rare successors of A30 and A31 (each a few in 100 outgoing transitions) appear in the later window, but their dominant successors are unchanged; the tighter position spread of A30 and A36 is consistent with the single-pass cycle rather than a separate relocation of these activities. [DIR001, DIR002, POS001, POS002]

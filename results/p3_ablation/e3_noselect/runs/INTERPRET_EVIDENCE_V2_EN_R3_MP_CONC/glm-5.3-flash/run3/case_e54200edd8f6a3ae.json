@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_e54200edd8f6a3ae.json",
+  "evidence_sha256": "a3d5139ab70e3f2889458b858a83e807cb5a4e32aa054c66a65d9c6f8c44bf60",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:43:03.763286+00:00",
+  "finished_at_utc": "2026-11-15T13:44:06.018261+00:00",
+  "latency_seconds": 62.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9271,
+    "prompt_tokens": 11974,
+    "total_tokens": 21245,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7877,
+      "text_tokens": 1394
+    },
+    "cost": 0.0064316
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28338,
+  "text": "### Observed differences\n\n- In the earlier window, A03 is not observed at all (0 of 200 traces); in the later window it occurs exactly once in every trace (100% participation, mean 1.0 occurrence per trace) at a fixed normalized position of about 0.22. [OCC001, POS002]\n- In the earlier window, A07 (present in every trace, fixed early position ~0.125) is followed directly by A02 in about 33 of 100 of its outgoing transitions, by A06 in about 32, and by A10 in about 36; in the later window, A07 leads only to A03 (100% of its outgoing transitions). [DIR004, POS004]\n- In the later window, A03's outgoing transitions go to A02 in about 39 of 100 cases, to A06 in about 33 and to A10 in about 29 — shares close to those A07 previously distributed directly to the same three activities. [DIR002]\n- Every observed A03 relation flips from \"never together\" to \"always together in one fixed order\": A07 before A03, and A03 before A02, before A06 and before A10, each in 100 of 100 later-window traces (earlier window: A02, A06, A07 and A10 all ran without A03). [REL001, REL004, REL005, REL006]\n- The step distance from A07 to A02, A06 and A10 shifts one step later (lags 1–3 before, 2–4 after), and the positions of A02, A06 and A10 move later (mean about 0.37–0.38 to about 0.44–0.45) while A07 keeps its early slot (0.125 to 0.111, consistent with traces being one event longer). [LAG005, LAG006, LAG007, POS001, POS003, POS004, POS005]\n- Smaller shifts also appear: the outgoing shares of A02, A06 and A10 move by a few points, the mixed order of the pairs A02/A06, A02/A10 and A06/A10 shifts by about 4–8 points (e.g., A02 before A10 from about 49 to 55 in 100), and lag mixes between these activities change slightly; most of these differences are not unusual for random re-splits (empirical strength 0.35–0.82). [DIR001, DIR003, DIR005, REL002, REL003, REL007, LAG001, LAG002, LAG003, LAG004, LAG008, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A03 was added to the execution of the process and placed between A07 and the group A02/A06/A10: in the later window every case runs A07 → A03, and A03 then routes to A02 (about 39 in 100), A06 (about 33) or A10 (about 29), closely matching the shares with which A07 previously reached these activities directly (about 33/32/36 in 100). The support is direct and consistent: A03's participation jumps from 0 to 200 of 200 traces; A07's successors collapse to A03 alone; all four A03 relations change from never co-occurring to always co-occurring with a single fixed order (A07 before A03; A03 before A02, A06 and A10); the A07→A02/A06/A10 distances shift exactly one step later; and downstream positions move later while A07 barely moves — each of these items has empirical strength about 0.995, i.e., larger than in about 995 of 1,000 random re-splits. [OCC001, DIR002, DIR004, REL001, REL004, REL005, REL006, LAG005, LAG006, LAG007, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: zero participation in the earlier window strictly shows only that A03 was not executed there, so the evidence cannot distinguish a newly added activity from one that existed but was never triggered before; the evidence set also provides no screening baseline of items expected without change, so the judgement rests on the directness and consistency of the relational and positional items rather than a chance-count comparison. A competing explanation the evidence cannot fully exclude is a broader re-routing around A07, but the preserved always-together co-occurrence and mixed order among A02, A06 and A10, together with the matching successor shares, make the insertion reading the one best supported by the data. [OCC001, DIR002, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n\nOther differences: small redistributions of the outgoing shares of A02, A06 and A10 (a few points each), small shifts in the mixed relative order of A02/A06, A02/A10 and A06/A10 (about 4–8 points), and small lag changes among these activities; these are consistent with sampling variation or secondary effects of the insertion and are not part of the main hypothesis. [DIR001, DIR003, DIR005, REL002, REL003, REL007, LAG001, LAG002, LAG003, LAG004, LAG008, LAG009]",
+  "case_id": "case_e54200edd8f6a3ae",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_6d3b1a39e446ce7d.json",
+  "evidence_sha256": "d788e60dca69fb442d58a2b1ce1def06db9e8968281747df2b79a12eb2e564fe",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:34:13.401957+00:00",
+  "finished_at_utc": "2026-11-15T12:36:13.308964+00:00",
+  "latency_seconds": 119.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17317,
+    "prompt_tokens": 20182,
+    "total_tokens": 37499,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15629,
+      "text_tokens": 1688
+    },
+    "cost": 0.0116858
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52154,
+  "text": "### Observed differences\n\n- In the earlier window, A27, A36, A37 and A42 each appeared in only about half of the traces (roughly 46–55 in 100), about once per trace, and A27 co-occurred with any of A36, A37, A42 in only about 1–2 in 100 traces — they were mutually exclusive. In the later window, all four activities run in essentially every trace (about 99–100 in 100), about once per trace. [OCC001, OCC002, OCC003, OCC004, REL011, REL012, REL013]\n- The routing was rewired: in the earlier window A25 led almost exclusively to A28 (about 97 in 100 of its outgoing transitions) and A26 split between A27 (about 54 in 100) and A36/A37/A42 (together about 45 in 100); in the later window A25 leads about equally often to A36, A37 and A42 (about 31–34 in 100 each, A28 almost unobserved) and A26 leads almost only to A27 (about 98 in 100). [DIR001, DIR002]\n- The exit of the A36/A37/A42 cluster changed: in the earlier window A36, A37 and A42 each led most often to A31 (about 29–34 in 100 of their outgoing transitions); in the later window they lead to A28 instead (about 31–34 in 100), while the three still follow one another in both orders, i.e. without a fixed order among themselves, in both windows. [DIR003, DIR004, DIR005, REL020, REL021, REL022]\n- Several order relations flipped: A36, A37 and A42 moved from after A26 (A26 first in about 46 in 100) to before it (each first in about 98–99 in 100 later traces); A28 moved from before the cluster to after it (about 97–99 in 100); and A31, which previously followed the cluster directly, now follows A27 (A27 before A31 in about 97 in 100). [REL006, REL007, REL008, REL014, REL015, REL016, REL010, REL017, REL018, REL019]\n- Event positions shifted accordingly: the median position of A36, A37 and A42 moved earlier (about 0.59 to about 0.41 of the trace), while A27, A28 and A26 moved later (about 0.59 to 0.64, 0.38 to 0.46, and 0.55 to 0.61). [POS006, POS007, POS008, POS003, POS004, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the control flow around A25, A26, A27, A28, A31 and the A36/A37/A42 cluster was restructured. In the earlier window, A25 led to A28, after which A26 routed to either A27 (followed by A31) or to the A36/A37/A42 cluster — traversed in both orders — which exited to A31; these were alternatives, each taken in about half of the traces. In the later window, A25 enters the A36/A37/A42 cluster directly, the cluster exits to A28, and the trace continues through A26 and A27 to A31, so that A27, A36, A37 and A42 became mandatory and run in a fixed overall sequence in essentially every trace. [REL011, REL012, REL013, REL010, REL017, REL018, REL019, REL006, REL007, REL008, REL009, REL014, REL015, REL016, DIR001, DIR002, DIR003, DIR004, DIR005, OCC001, OCC002, OCC003, OCC004]\n\nThe screening produced 39 qualifying items against roughly 0.64 expected for an unchanged process, so the ensemble is far beyond what a stable process produces. The change is shown directly: the co-occurrence of A27 with A36/A37/A42 rose from about 1–2 in 100 to about 99 in 100 with a stable order, and the rewiring is observed in the transitions at A25, A26 and the cluster exit, with participation, direction and position indicators agreeing. Note that most items describe one underlying restructuring, so they are not independent confirmations of it. [REL011, REL012, REL013, DIR001, DIR002, DIR003, DIR004, DIR005, OCC001, OCC002, OCC003, OCC004]\n\nLimitations: positions are event ranks, not clock times, so the hypothesis concerns order and participation, not timing. An important competing explanation the evidence cannot fully rule out is that the later window reflects a pre-existing rare variant (present in about 1–2 in 100 earlier traces) that became dominant, rather than a modification of the main flow, since the windows are finite samples. [REL011, REL001, DIR001]\n\nOther differences: A25's event position moved slightly earlier (mean about 0.37 to 0.35), and in the later window a small share of traces (about 2–3 in 100) shows these activities interleaved or repeated, with recurrence support of up to about 2–3 in 100 for A27. [POS001, REL001, REL005, OCC001]",
+  "case_id": "case_6d3b1a39e446ce7d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

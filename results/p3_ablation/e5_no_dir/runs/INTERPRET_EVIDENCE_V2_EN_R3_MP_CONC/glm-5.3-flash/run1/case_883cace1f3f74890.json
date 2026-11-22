@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_883cace1f3f74890.json",
+  "evidence_sha256": "71d1870a05bc68eb95902f589ce9e2a842d957f562bd55844246171e2dcd8b7b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:56:12.291516+00:00",
+  "finished_at_utc": "2026-11-14T11:57:13.838595+00:00",
+  "latency_seconds": 61.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9048,
+    "prompt_tokens": 11755,
+    "total_tokens": 20803,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7969,
+      "text_tokens": 1079
+    },
+    "cost": 0.00628725
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26438,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 are never observed (0 of 200 traces each). In the later window they appear in about 30, 41 and 30 in 100 traces respectively, and they almost never occur together (co-occurrence at most 0.5 in 100 for any pair); their shares cover essentially all later traces, so each later trace contains exactly one of the three. [OCC002, OCC003, OCC004, REL001, REL002, REL006]\n- Each of the three new activities co-occurs with A27 in every trace in which it appears and follows it (e.g., A27 precedes A20 in 40 in 100 traces, the reverse never), and each precedes A29 in essentially all of its occurrences (e.g., A19 precedes A29 in 30 in 100 traces, which is every A19 trace). Relative to A28 the order is mixed: A19 precedes A28 in about 16 in 100 traces and follows it in about 13, with similar splits for A20 and A25. [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011]\n- Step distances shift accordingly: A27–A28 are adjacent in about 99 in 100 earlier traces but only about 44 in 100 later traces (two steps apart in about 55); A28–A29 are adjacent in about 99 in 100 earlier traces versus about 56 in 100 later traces; A27–A29 span two steps in about 98 in 100 earlier traces and three steps in about 97 in 100 later traces. [LAG001, LAG002, LAG003]\n- The new activities sit at a mean relative position of about 0.51 in later traces, between A27 (mean position 0.48 before, 0.46 after) and A29 (0.55 before, 0.57 after); both established activities shift only slightly. [POS001, POS002, POS003, POS004, POS005]\n- A10 becomes more common: from about 5 in 100 traces to about 13–14 in 100 traces (10 versus 27 supporting traces). [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window every trace executes a step between A27 and A29 that the earlier window did not contain: one of three mutually exclusive activities — A19 (about 30 in 100 traces), A20 (about 41 in 100) or A25 (about 30 in 100) — always executed after A27 and before A29, sitting between A27 and A28 in a bit more than half of the cases and between A28 and A29 otherwise. In the earlier window the flow ran directly from A27 via A28 to A29 in nearly all traces. Screening produced 24 qualifying control-flow items where about 0.31 would be expected without a change, and the four indicator families agree quantitatively: the share of traces in which the new activity precedes A28 (roughly 55 in 100) matches the share in which the A27–A28 distance becomes two, the complementary share matches the A28–A29 distance becoming two, and the A27–A29 distance grows from two to three in nearly all traces. Limitations: zero participation in the earlier window strictly means A19, A20 and A25 were not observed there rather than proven absent, and the evidence cannot show why the new step's position relative to A28 varies from case to case. [OCC002, OCC003, OCC004, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003, POS001, POS002, POS003]\n\nOther differences: A10 occurs in more traces in the later window (about 5 in 100 before versus 13–14 in 100 after); this difference is not part of the main hypothesis. [OCC001]",
+  "case_id": "case_883cace1f3f74890",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

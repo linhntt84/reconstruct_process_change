@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A02 occurred in all 200 traces and was always the final event. About 101 of 200 traces (about 50%) began with A01, whose only observed successor was A02; the remaining about 99 of 200 (about 50%) contained A04 at a fixed position about two-thirds through the trace, again passing directly to A02. A01 and A04 never occurred in the same trace, and A05 was not observed at all. [OCC001, DIR001, DIR002, POS001, POS002, POS003, REL001, REL002, REL005]
+- In the later window, A01 was not observed in any trace (0 of 200), while A05 appeared in about 92 of 200 traces (about 46%), exactly once per trace. [OCC001, OCC002, POS001, POS004, REL003]
+- In the later window, the A04 branch gained a step: A04 (about 92 of 200 traces) now passes all of its observed outgoing flow to A05 instead of to A02, A05's only observed successor is A02, and A02 now follows A04 two steps later instead of one. A04 and A05 always occur together with A04 first, and A05 always precedes A02. [DIR002, DIR003, LAG001, REL004, REL005]
+- In the later window, A02 still occurs in every trace but changed place: it is now the first event in about 108 of 200 traces (about 54%) and the final event in the remaining about 92, whereas it previously ended every trace; A04 now sits about halfway through its traces rather than about two-thirds. [POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, A05 runs between A04 and A02 in the branch containing A04. Earlier, traces with A04 went directly from A04 to A02 in one step (about 99 of 200 traces); in the later window they run A04, then A05, then A02, with A05 at the intermediate relative position — about three-quarters through the trace, between A04 (about halfway) and A02 (at the end). The supporting signs are direct and consistent: the successor change at A04 is total, the new edge from A05 into A02 is observed, the A04-to-A02 distance moved from one step to two, and the ordered co-occurrences A04-before-A05 and A05-before-A02 each appear in about 46% of traces. [DIR002, DIR003, LAG001, REL004, REL005, OCC002, POS004]
+
+Chance is implausible as an explanation of the ensemble: 15 control-flow items qualified out of 18 tested units, where fewer than one item (about 0.09) would be expected without a change, and every item's difference exceeded about 995 of 1,000 random re-splits of the pooled traces. The evidence covers only the reported activities, so the change is pinned down between A04 and A02 and cannot exclude additional differences elsewhere in the traces; the slight drop in A04's trace share (about 50% to about 46%) could also reflect sampling. [screening, POS003]
+
+An important competing explanation the evidence cannot rule out is that the two windows draw different mixes of pre-existing process variants rather than reflecting a modified process; the items establish that the windows behave differently, not what produced the difference. [OCC001, OCC002]
+
+Other differences: A01 is no longer observed — it previously appeared in about 101 of 200 traces (about 50%), always as the first event and always passing directly to A02 — and consequently A02, which previously ended every trace, now opens about 54% of traces with none of the tracked activities before it. This behaves like a branch disappearing rather than a re-routing, since no new edge into A02 appears for those traces; strictly, zero participation means only that A01 was not observed in the later window. [OCC001, DIR001, POS001, POS002, REL001, REL004]

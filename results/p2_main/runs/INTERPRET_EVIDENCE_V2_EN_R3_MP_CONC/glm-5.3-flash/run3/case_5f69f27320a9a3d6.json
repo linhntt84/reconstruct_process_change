@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_5f69f27320a9a3d6.json",
+  "evidence_sha256": "119b1891de306411419cadd81d68a78428bcc7519b8bc76f65adc3218daf63d4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:32:05.875641+00:00",
+  "finished_at_utc": "2026-11-15T03:33:24.758915+00:00",
+  "latency_seconds": 78.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11790,
+    "prompt_tokens": 13954,
+    "total_tokens": 25744,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10759,
+      "text_tokens": 1031
+    },
+    "cost": 0.0079881
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35989,
+  "text": "### Observed differences\n\n- In the earlier window every case had the same shape: A02, then A05 and A06 in either order, then A03, A04, A07, with each of these activities running in 200 of 200 traces. In the later window, A01 appears in every trace (200 of 200, exactly once per case) at varying positions between A02 and A03 (median position 0.4, middle half between 0.2 and 0.6), while A04 is not observed at all (0 of 200 traces). [OCC001, OCC002, POS001, POS003]\n- In the later window, A03 is always followed directly by A07, whereas earlier A03 was always followed by A04 and A04 by A07; the gap from A03 to A07 shrank from two steps to one. [DIR003, DIR004, LAG004]\n- A01 is wired into the middle segment in the later window: A01 leads to A05 in about 39 of 100 cases, to A03 in about 34, and to A06 in about 28; A02 now routes to A01 in about 38 of 100 cases (earlier it split only between A05 and A06, roughly 50/50); A05 and A06 each route to A01 in roughly a quarter to a third of their outgoing cases. [DIR001, DIR002, DIR005, DIR006]\n- A01 has no fixed position among the middle activities: in the later window it co-occurs with A05 in all traces, coming first in about 55 of 100 cases and after A05 in about 45; with A06 the split is about 49 to 51. Earlier, A01 never co-occurred with any activity. [REL001, REL002, REL004, REL005, REL006]\n- Downstream shifts: A03's position moved from a constant 0.6 to a constant 0.8; A05 and A06 moved from mean positions near 0.30 to near 0.40 with more spread; the gap from A02 to A03 grew from three steps to four; and A05 and A06, previously always adjacent, are now separated by one extra step in roughly 20–35 of 100 cases. [POS002, POS004, POS005, LAG001, LAG006, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural change in which A01 was added to the process and A04 was dropped from it. Earlier, every case ran A02, then A05 and A06 in either order, then A03, A04 and A07; in the later window every case runs A02, then A01 together with A05 and A06 in varying order, then A03 directly followed by A07. The participation changes are categorical (0 vs 200 of 200 traces), the routing, positional, relational and lag items all agree with this single picture, and 34 control-flow items qualified where fewer than one would be expected by chance in a stable process, each difference larger than in about 995 of 1,000 random re-splits [OCC001, OCC002, DIR002, DIR003, REL004, LAG004].\n\nLimitations: the evidence shows execution behaviour, so it cannot distinguish a genuine addition of A01 or removal of A04 from A01 becoming always executed and A04 becoming never executed; positions are event positions, not clock times, so no movement in time is implied. A competing explanation the evidence cannot rule out is that A01 already existed in the process without ever being triggered before, and A04 still exists but is never taken — behaviourally indistinguishable here. The evidence also shows only that A01 joined the A05/A06 segment: its order relative to A05 and A06 varies from case to case, so no single fixed placement can be inferred [REL004, REL005].",
+  "case_id": "case_5f69f27320a9a3d6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

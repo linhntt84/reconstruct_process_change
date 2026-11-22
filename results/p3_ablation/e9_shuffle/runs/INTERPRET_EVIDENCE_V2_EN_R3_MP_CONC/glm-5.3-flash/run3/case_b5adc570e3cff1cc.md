@@ -1,0 +1,19 @@
+### Observed differences
+
+- The optional block A14/A15/A20 changed its place in the sequence: in the earlier window each of the three appeared in roughly a third of traces (38, 32 and 31 in 100) at about 60% of the trace's event positions; in the later window they appear at similar rates (34, 35 and 32 in 100) but at about 32% of positions, i.e. in the first third of the trace. Together the three still sum to about one occurrence per trace in both windows. [POS001, POS002, POS003]
+- The order between this block and A21/A22 flipped: earlier, A21 and A22 came before A14, A15 and A20 in every trace where they co-occurred (31–38 in 100 traces); in the later window, A14, A15 and A20 come before A21 and A22 (32–35 in 100), with co-occurrence rates essentially unchanged. [REL001, REL002, REL003, REL004, REL005, REL006]
+- The block's successors changed: earlier, A14, A15 and A20 each split their outgoing transitions about evenly between A23 and A27; in the later window all three lead exclusively to A21. [DIR001, DIR002, DIR003]
+- A40's successor changed: earlier it led only to A21; in the later window it leads to A15, A14 or A20, about a third of transitions each. [DIR006]
+- The side branches around A22 and A23 disappeared: earlier, A22 led to A23 in about 48 of 100 transitions and to A14/A15/A20 in about 52, and A23 led to A27 in about 53 and back to A14/A15/A20 in about 47; in the later window A22 leads only to A23 and A23 only to A27. [DIR004, DIR005]
+- Pairwise distances match this rewiring: A40 to A21 went from always adjacent to always two steps apart; A22 to A23 and A23 to A27 became always directly adjacent (earlier each was split between one and two steps); and A22 to A27 shortened from always three steps to always two. [LAG001, LAG002, LAG003, LAG004]
+- A10 and A11 still occur in every trace but repeat less: mean occurrences per trace fell from about 1.9 to about 1.6, and traces containing a repeat fell from about 47 to 38 in 100. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the optional block A14/A15/A20 — about one of the three per case — was moved from the late stage of the process to an early stage between A40 and A21: earlier the block sat after A22 and around A23, entered from A22 or A23 and leading on to A23 or A27, while in the later window A40 leads into the block and the block leads directly to A21. The 24 qualifying control-flow items are roughly sixty times the 0.39 expected if nothing had changed, so sampling variation cannot account for the pattern as a whole. [POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004]
+
+The order flip is shown directly for all six combinations of block activity with A21 and A22, the block's position moved by roughly 28–29 percentage points of trace position while A21, A22 and A23 shifted only slightly later, and the successor and distance changes all point to the same rewiring. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005, POS006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004] Limitations: positions are event positions, so the move is established in sequence order rather than clock time [POS001, POS002, POS003]; the successor shares rest on about 60–76 outgoing transitions per window [DIR001, DIR002, DIR003]; and the earlier shape of the block's late-stage involvement — a simple branch or a rework loop returning to A23 — cannot be determined, which is the main competing reading this evidence cannot rule out. [DIR004, DIR005, LAG001, LAG003]
+
+Other differences: A10 and A11 now repeat less often (mean occurrences per trace about 1.9 to 1.6; traces with a repeat about 47 to 38 in 100), a reduction in repetition that is not part of the relocation hypothesis. [OCC001, OCC002]

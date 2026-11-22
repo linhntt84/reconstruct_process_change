@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_96cbe658a1ec3300.json",
+  "evidence_sha256": "b6bf0bedaca62d3b1bbaa50fe028afbb33fc7ddb5449fe8530fded6ff3873bd4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:14:47.417560+00:00",
+  "finished_at_utc": "2026-11-14T11:16:31.507529+00:00",
+  "latency_seconds": 104.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17018,
+    "prompt_tokens": 13843,
+    "total_tokens": 30861,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15745,
+      "text_tokens": 1273
+    },
+    "cost": 0.01058545
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55641,
+  "text": "### Observed differences\n\n- Participation itself is unchanged: A26, A27, A35, A36 and A41 occur in all 200 traces of both windows, and the ordered pairs A25→A27 and A26→A30 are observed in all 200 traces in each window, so the differences below concern order and routing, not activities appearing or disappearing. [POS001, POS002, POS003, POS004, POS005, LAG001, LAG003]\n- Routing around the three activities A35, A36 and A41 is rewired. Before, A25 led almost exclusively to A27 (about 98 in 100 of A25's outgoing transitions) and A26 fed the three activities (about 38, 33 and 28 in 100 to A41, A35 and A36), which in turn exited to A30 (about 28–34 in 100 of each of their outgoing transitions). In the later window, A25 feeds the three activities (about 31–33 in 100 each), they exit to A27 (about 31–33 in 100 each) rather than to A30 (now under 1 in 100), and A26 leads almost exclusively to A30 (about 98 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- The order of A26 and A27 relative to A35/A36/A41 reversed almost completely: before, A26 preceded each of the three in about 98–99 in 100 shared traces and A27 in about 99 in 100 or more; in the later window the three precede A26 in about 98 in 100 and A27 in about 97–98 in 100, while co-occurrence remains 100%. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Event positions shifted accordingly: A26 and A27 now occur later in the trace (mean relative position about 0.53 to 0.62 and 0.38 to 0.47), while A35, A36 and A41 occur earlier (about 0.58 to 0.42 each). [POS001, POS002, POS003, POS004, POS005]\n- Adjacency changed in step: A25 reached A27 in a single step in about 99 in 100 traces before but now sits 4–5 steps away in about 99 in 100, while A26 reached A30 only 4–5 steps later before but now immediately precedes it in about 99 in 100. [LAG001, LAG003]\n- For scale: 26 control-flow items qualified overall, far above the roughly 0.63 expected if nothing had changed, each with empirical strength of about 0.995; most items describe this one reordering rather than separate differences, and several lag items rest on only 1–2 observations in one window. [DIR001, POS001, REL001, LAG001, LAG002, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment A35–A36–A41 was repositioned within the flow: before, it ran between A26 and A30 while A25 passed directly on to A27; in the later window it runs between A25 and A27, now leading to A27 instead of A30, and A26 passes directly to A30. This is shown directly by relational evidence — six activity pairs reverse from about 98–99 in 100 one way to about 97–98 in 100 the other, with co-occurrence unchanged at 100% — by successor changes on all five routing profiles, and by the two lag items with full support, with the positional shifts agreeing in direction. The item count (26 against roughly 0.63 expected without change) cannot be explained by chance as a whole, though the items largely reflect one underlying difference rather than independent confirmations. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG003, POS001, POS002, POS003, POS004, POS005]\n\nA competing explanation the evidence cannot rule out is that both orderings existed as variants in both windows and only their mix flipped; sampling differences in variant frequencies can move such shares by a few percentage points, but a reversal of this size at 200 traces per window makes pure sampling an unlikely complete explanation. Also unresolved is the segment's internal sequencing: A35, A36 and A41 route to one another in roughly equal shares in both windows, consistent with a varying or repeated internal order, and the ten remaining lag items (1–2 observations in one window) were not relied upon. [DIR003, DIR004, DIR005, LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]",
+  "case_id": "case_96cbe658a1ec3300",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

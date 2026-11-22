@@ -1,0 +1,20 @@
+### Observed differences
+
+- **A06 disappeared from execution.** In the earlier window, A06 ran exactly once in every one of the 200 traces (100% participation, mean 1.0 occurrence per trace, at about one-third of the trace's relative position); in the later window it appears in 0 of 200 traces. [OCC001, POS005]
+- **A05 now bypasses A06.** Earlier, all observed outgoing transitions of A05 went to A06, and A06's outgoing transitions all went to A01; in the later window, all outgoing transitions of A05 go directly to A01, while A06 shows no observed outgoing transitions (it was not observed at all). [DIR001, DIR002]
+- **Relations with A06 changed from "always together" to "A06 absent".** Earlier, A06 co-occurred with each of A01, A02, A03, A04, A05 and A07 in 100% of traces, always in the same order — after A02 and A05, before A01, A03, A04 and A07; in the later window, only the non-A06 activity of each pair is observed. [REL001, REL002, REL003, REL004, REL005, REL006]
+- **The remaining activities kept their relative order but sit one step closer together.** All seven measured pair distances shrank by exactly one step: A05→A01 from 2 to 1, A02→A01 from 3 to 2, A05→A03 from 3 to 2, A02→A03 from 4 to 3, A05→A04 from 4 to 3, A02→A04 from 5 to 4, and A05→A07 from 5 to 4. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]
+- **Relative positions shifted as expected when one event is dropped from a fixed sequence.** A01 moved from a median relative position of 0.50 to 0.40, A03 from 0.67 to 0.60, A04 from 0.83 to 0.80, and A05 from 0.17 to 0.20 (slightly later within a shorter trace); in both windows each measured activity occupied a single fixed relative position in every trace, with no spread. [POS001, POS002, POS003, POS004]
+- All 21 evidence items show differences larger than in about 995 of 1,000 random re-splits of the pooled data, and each is based on 200 traces per window (except A06's later profile, which has no observations). [OCC001, DIR001, DIR002, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the A06 step is no longer executed: in the earlier window every case ran A06 once, between A05 and A01 (the earlier window is consistent with one fixed sequence A02 → A05 → A06 → A01 → A03 → A04 → A07), while in the later window A06 is not observed in any of 200 cases and A05 leads directly to A01, consistent with the same sequence without A06. [OCC001, DIR001, DIR002, POS005, REL005, LAG004]
+
+The change is shown directly in the routing (A05's successor switched from A06 to A01 in all observed transitions) and is consistent across all five indicator families with no contradicting item: A06's participation fell from 200 of 200 traces to 0 of 200 — far beyond a rare-variant pattern — every remaining pair moved exactly one step closer, every relation involving A06 collapsed from guaranteed co-occurrence to A06's absence, and the positional shifts match the loss of one event per trace. [DIR001, OCC001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, REL005, REL006]
+
+Limitation: zero participation in the later window establishes only that A06 was not observed there; the evidence cannot distinguish a permanent removal from the A06 step being skipped in all 200 later cases (for example, a condition that always routes around it), and the many agreeing items largely describe one underlying difference rather than independent confirmations. [OCC001, DIR001, REL001]
+
+Other differences: none — the positional and distance shifts are consequences of the same disappearance of A06 rather than separate changes. [POS001, LAG001]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "328b18b27995708cbe00ab2ec04e8331e59e3ebe081f0d995496bbbde1b0d450",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:15:44.193887+00:00",
+  "finished_at_utc": "2026-11-15T04:19:56.218394+00:00",
+  "latency_seconds": 252.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 37220,
+    "prompt_tokens": 28127,
+    "total_tokens": 65347,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34784,
+      "text_tokens": 2436
+    },
+    "cost": 0.022829049999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 113755,
+  "text": "### Observed differences\n\n- **Choice block A19/A21/A24.** In the earlier window essentially every case contained one of A19, A21 and A24 (about 31, 38 and 32 of 100 traces; the shares sum to roughly 100), late in the trace (mean relative position about 0.65–0.69), and each led to A30 in about 97–99 of 100 outgoing transitions. In the later window the three appear early (mean position about 0.35), A19's participation rose to about 44 of 100 traces while A21's fell to about 29 and A24's stayed near 29, and each now leads to A25 in about 95–100 of 100 outgoing transitions. [DIR002, DIR004, DIR007, DIR008, POS002, POS004, POS007]\n\n- **Unordered trio A20/A22/A23.** These three occurred in essentially every trace in both windows, in no fixed order among themselves. Earlier they sat early in the trace (mean position about 0.39–0.40) and each led to A25 in roughly 30–39 of 100 outgoing transitions; in the later window they sit late (mean position about 0.64) and each leads to A30 in about 28–34 of 100, with transitions to A25 gone. [DIR003, DIR005, DIR006, POS003, POS005, POS006]\n\n- **Order reversals around A25 and A29.** The pairs of A25 and A29 with A20, A22 and A23 co-occur in every trace in both windows, and their order flipped: earlier the trio preceded A25 in about 98–100 of 100 co-occurrences and preceded A29 in about 99–100 of 100; in the later window A25 preceded the trio in about 99–100 of 100 and A29 preceded it in about 98 of 100. A25 and A29 kept their own relative order (A25 earlier by mean position in both windows) and moved only slightly earlier (about 0.45 to 0.39 and 0.65 to 0.58). [REL017, REL024, REL027, REL018, REL025, REL028, POS008, POS009]\n\n- **Order reversals for the choice block.** Earlier, A29 preceded A19, A21 or A24 in almost every trace containing both (about 31–38 of 100, matching their participation shares); in the later window A19 preceded A29 in about 44 of 100 traces, and A21 and A24 preceded A29, A25, A20, A22 and A23 in about 28 of 100. [REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL019, REL020, REL021, REL022, REL023, REL026, REL029, REL030]\n\n- **Rerouted successors and lags.** A29's outgoing transitions moved from A21, A19 and A24 (about 38, 31 and 31 per 100) to A22, A23 and A20 (about 33, 33 and 30); A40's moved from A22, A23 and A20 (about 37, 30 and 27) to A02, A19, A21 and A24 (about 31, 29, 20 and 18). In the later window A29 preceded A20 within one to three steps in almost every case, where earlier the ordered pair was observed only once; the lag from A29 to A30 grew from about 2 steps (97 of 100 cases) to about 4 steps (94 of 100), and from A40 to A25 it shrank from about 4–5 steps to 2–3 steps. [DIR008, DIR009, LAG003, LAG004, LAG007]\n\n- **A02 and A41.** A02 was rare earlier (about 8 of 100 traces, very spread-out positions, outgoing mainly to A44 and A15) and became frequent in the later window (about 34 of 100 traces, mean position about 0.35): it now follows A40 within about one step (62 traces) and reaches A25 within about two steps (63 traces). A41, present in every trace throughout, is executed more often (mean about 1.5 vs 1.8 occurrences per trace; repeated in about 33 vs 40 of 100 traces). [OCC001, POS001, DIR001, REL009, LAG005, LAG001, OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening tested 151 control-flow units and 58 items qualified, against fewer than one (0.75) expected without change in that family; a volume many times this expectation cannot be explained by random re-splitting, and every item's difference exceeded those of about 995 of 1000 reference comparisons. [DIR002, DIR008, REL017, POS003, LAG004, OCC001]\n\nMain hypothesis: the evidence supports the possibility that, in the later window, the two groups flanking the A25–A29 segment exchanged their places. Earlier a case ran from A40 through the unordered trio A20/A22/A23, then A25, then A29, then one of A19/A21/A24, reaching A30 from there; in the later window it runs from A40 to one of A19/A21/A24 (about two-thirds of A40's outgoing transitions go directly to one of the three), then to A25, then A29, then the unordered trio, which now leads to A30. Supporting signs: complete order reversals in pairs that co-occur in 100 of 100 traces in both windows, which a participation change cannot produce; matching successor changes at A19, A21, A24, A20, A22, A23, A29 and A40; opposite position shifts of the two groups; and lag changes (A29 to A30 from about 2 to about 4 steps, A40 to A25 from about 4–5 to 2–3 steps) that fit the same picture. [REL017, REL027, REL028, REL014, REL022, DIR002, DIR003, DIR008, DIR009, POS002, POS003, LAG004, LAG007]\n\nLimitations: the relative order of A25 and A29 itself rests on position means rather than a direct relational item, and activities possibly sitting between them are not covered by these items, so the evidence cannot rule out that further unobserved parts of this segment also moved. The shift inside the choice block (A19 up from about 31 to 44 of 100, A21 down from about 38 to 29) could be sampling variation rather than part of the change. The many agreeing items largely mirror this one underlying reordering and are not independent confirmations; all positional and lag evidence uses event positions, not clock time. [POS008, POS009, POS002, POS004]\n\nOther differences: A02 grew from about 8 to 34 of 100 traces and now acts as a step between A40 and the A19/A21/A24 choice, reaching A25 within about two steps — an insertion accompanying the rerouting rather than part of the exchange itself. A41, present in every trace in both windows, is repeated more often in the later window (mean about 1.5 vs 1.8 occurrences per trace). [OCC001, DIR001, POS001, LAG001, LAG005, REL009, OCC002]",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_6e134634720305a2.json",
+  "evidence_sha256": "cc4296dea22ad7190c6d15d9588b92ded0bf03220c7ba0d0d381b7efe339a295",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:37:46.386463+00:00",
+  "finished_at_utc": "2026-11-15T05:40:04.937554+00:00",
+  "latency_seconds": 138.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19191,
+    "prompt_tokens": 6342,
+    "total_tokens": 25533,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18057,
+      "text_tokens": 1134
+    },
+    "cost": 0.0105468
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 73539,
+  "text": "### Observed differences\n\n- A30 and A36 co-occur in every trace in both windows, but their mutual order changed: earlier, A30 came before A36 in about 25 in 100 traces while the two were interleaved or repeated in about 75 in 100; in the later window, A30 comes before A36 in 98 in 100 traces and the interleaved/repeated pattern remains in only 2 in 100. [REL001]\n- Both activities repeated far less often: earlier, A30 and A36 each show about 690 observed outgoing transitions over 200 traces (roughly 3.5 occurrences per trace), and A36 followed itself within five steps in 150 of 200 traces; in the later window, each shows about 210 outgoing transitions (about 1 occurrence per trace) and A36 self-repetition appears in only 2 of 200 traces. [DIR001, DIR002, LAG003]\n- The forward pair became tight: the share of observed A30-then-A36 pairs at a distance of two steps rose from about 12 in 100 (about 5 in 100 at five steps) earlier to about 89 in 100 in the later window. [LAG001]\n- The link from A36 back to A30 largely disappeared: earlier, about 70 in 100 of A36's outgoing transitions went to A30 and about 28 in 100 to A25; in the later window, about 92 in 100 go to A25 and about 4 in 100 to A30, and the reverse pair A36 then A30 within five steps appears in only 1 of 200 traces, against 150 of 200 earlier. [DIR002, LAG002]\n- A30's own routing stayed essentially the same — A31 remains the successor in about 99 in 100 of its outgoing transitions earlier and about 97 in 100 later — and the within-trace positions of A30 and A36 kept about the same mean (roughly 0.42–0.44 and 0.49 of the trace) while their spread roughly halved (about 0.12 to about 0.07). [DIR001, POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nEight control-flow items qualified against fewer than one expected for an unchanged process, and each item's difference is larger than in about 995 of 1,000 random re-splits of the pooled data, so chance is an unlikely explanation for the set as a whole. [DIR001, DIR002, POS001, POS002, REL001, LAG001, LAG002, LAG003]\n\nThe evidence supports the hypothesis that the repeated, interleaved execution of A30 and A36 gave way to a single ordered pass. Earlier, both activities ran about 3.5 times per trace, were interleaved or repeated in about 75 in 100 traces, and A36 frequently led back to A30 (about 70 in 100 of its transitions); in the later window, each activity runs about once per trace, A30 first and A36 about two steps later (about 89 in 100 observed pairs at that distance, versus about 12 in 100 earlier), after which A36 leads to A25 (about 92 in 100 of its transitions) instead of back to A30 (about 4 in 100). The order change is observed directly between the two activities, which co-occur in every trace in both windows; the tightening of the forward pair, the near-disappearance of the reverse pair and of A36 self-repetition, the successor shift of A36, the drop to about one occurrence per trace, and the marked regularisation of both activities' positions all describe the same underlying behaviour rather than independent confirmations of separate changes. [REL001, LAG001, LAG002, LAG003, DIR001, DIR002, POS001, POS002]\n\nAn important competing explanation cannot be ruled out: the fixed A30-before-A36 order may simply be a by-product of each activity now occurring only once, since a single occurrence of each permits only one order, so the evidence cannot show whether a new ordering constraint was imposed; in addition, the after-profiles of the reverse and self-repetition pairs rest on only 1 and 2 observations, so only their near-absence, not their exact form, is supported. [REL001, LAG001, LAG002, LAG003]\n\nOther differences: in the later window, A30 shows a few minor additional successors beside its still-dominant edge to A31 (A02, A06, A08, A25, A33 and A42, each at about 0.5 in 100 of A30's outgoing transitions, with A31 itself essentially unchanged at about 99 in 100 earlier and 97 in 100 later). [DIR001]",
+  "case_id": "case_6e134634720305a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

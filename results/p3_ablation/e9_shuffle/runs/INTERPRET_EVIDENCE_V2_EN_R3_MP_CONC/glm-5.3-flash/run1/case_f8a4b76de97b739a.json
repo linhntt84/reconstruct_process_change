@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f8a4b76de97b739a.json",
+  "evidence_sha256": "dd50a10d46e4ab21e80cba2f46e655236671c2425f9e4a70b0b5f157093c12c1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:52:11.754581+00:00",
+  "finished_at_utc": "2026-11-14T10:53:48.773788+00:00",
+  "latency_seconds": 97.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16603,
+    "prompt_tokens": 33681,
+    "total_tokens": 50284,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14862,
+      "text_tokens": 1741
+    },
+    "cost": 0.01335365
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50647,
+  "text": "### Observed differences\n\n- Two activities appear only in the later window. A01 runs in about 59 in 100 cases (averaging about 1.5 occurrences per case, repeated in about 39 in 100 cases) around the middle of the case (median position about 0.5); A02 runs in about 87 in 100 cases, essentially once per case, early in the case (median position about 0.2). In the earlier window neither was observed in any of the 200 cases. [OCC001, OCC002, POS001, POS002]\n- A09 disappears: earlier it ran in about 54 in 100 cases (about 1.5 occurrences per case on average), in the later window it is not observed at all. Earlier, about 82 in 100 of A09's outgoing transitions led to A03; later it has no observed outgoing transitions. [OCC003, POS004, DIR006]\n- A14 expands and now repeats: participation rises from about 39 to about 89 in 100 cases and mean occurrences from about 0.4 to about 1.7, with repeats in about 42 in 100 cases, while staying near the end of the case (median position about 1.0 earlier, about 0.95 later). A17's participation is stable (about 44 to about 42 in 100 cases) but its occurrences per case roughly double (about 0.44 to about 0.84). [OCC004, OCC005, POS005]\n- Routing around these activities changed. About 83 in 100 of A01's outgoing transitions now go to A03, and about 63 in 100 of A02's go to A12 (about 19 in 100 to A03); these edges were not observed earlier. A14 now leads mainly to A17 (about 68 in 100 of its outgoing transitions, previously A08 at about 56 in 100), and A17 leads mainly to A14 (about 89 in 100, previously A08 at about 54 in 100). A16's outgoing traffic switched from A09 (about 45 in 100) to A01 (about 43 in 100). [DIR001, DIR002, DIR008, DIR010, DIR009]\n- Co-occurrence follows the same pattern: A14 now co-occurs with A03, A07, A08 and A16 in about 89 in 100 cases (earlier about 22–39 in 100), often interleaved or repeated; A02 precedes A07 and A08 in about 69 in 100 cases and A12 in about 87 in 100; the two new activities A01 and A02 co-occur in about 51 in 100 later cases. A09's former partners now typically run without it (A03 without A09 in all cases; A16 without A09 in about 95 in 100). [REL023, REL027, REL029, REL037, REL014, REL015, REL017, REL001, REL022, REL033]\n- Positional gaps between consecutive activity pairs widened: A08 to A14 within one step in about 68 in 100 earlier observations versus about 33 in 100 later; A16 to A17 moved from mostly four steps to mostly five; A05 to A12 is no longer at one step (about 45 in 100 earlier) and now sits mostly two steps apart. [LAG004, LAG007, LAG001]\n- Overall signal size: 67 control-flow items qualified out of 153 tested units, against fewer than 1 expected if nothing had changed. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural restructuring in the later window: A02 and A01 were added to the executed flow — A02 early in about 87 in 100 cases leading mainly to A12 and A03, A01 mid-case in about 59 in 100 cases leading mainly to A03 — while A09, which previously fed mainly into A03, is no longer executed, and A14 became a near-always-executed, repeating activity that alternates with A17 near the end of the case. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001, DIR002, DIR006, DIR008, DIR010, REL038]\n\nThe support is direct and consistent: the appearances and the disappearance are observed in the participation counts themselves (0 versus about 59 and 87 in 100; about 54 versus 0, on 200 cases per window), which random sampling between equally sized windows cannot plausibly produce; the new successor edges are observed directly in the directional profiles, including A16 switching from A09 to A01; and the relation and lag changes (A14 co-occurring with its partners in about 89 in 100 cases, widened positional gaps) are consistent with the new activities occupying positions between existing steps. The volume of qualifying items (67 versus fewer than 1 expected without change) rules out chance as an explanation of the evidence as a whole. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR009, REL023, LAG004, screening]\n\nLimitations: zero participation only establishes that an activity was not observed, and many relation items describe the same underlying traces, so they are not independent confirmations. An important competing explanation the evidence cannot rule out is substitution rather than pure addition and removal: A01 now holds a successor relation to A03 similar to the one A09 had, so the data cannot distinguish A09 being dropped from A09 being effectively replaced by A01/A02. [DIR001, DIR006, DIR009]\n\nOther differences: A08 and A17 now sit slightly earlier in the case (A08 median about 0.95 to about 0.92 with a lower quartile drop from about 0.91 to about 0.79; A17 median about 1.0 to about 0.92) while their participation stayed roughly stable; A16's own participation and position are essentially unchanged (about 91 to 95 in 100 cases; median about 0.57 to 0.51) even though its outgoing transitions changed. [POS003, POS007, POS006]",
+  "case_id": "case_f8a4b76de97b739a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

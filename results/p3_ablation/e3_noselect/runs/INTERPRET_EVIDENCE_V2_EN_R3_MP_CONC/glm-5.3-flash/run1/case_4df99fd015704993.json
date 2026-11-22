@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_4df99fd015704993.json",
+  "evidence_sha256": "16dc06bebaabc9757be29f1151d55f6a3724129d07631b8db99c672884f11c3f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:09:28.058842+00:00",
+  "finished_at_utc": "2026-11-14T14:11:42.641623+00:00",
+  "latency_seconds": 134.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21065,
+    "prompt_tokens": 29212,
+    "total_tokens": 50277,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19337,
+      "text_tokens": 1728
+    },
+    "cost": 0.0149143
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69229,
+  "text": "### Observed differences\n\n- A02 is new: it appears in no trace in the earlier window (0 of 200) and in about 39 in 100 traces in the later window (78 of 200). In the later window, A03 leads directly to A02 in about 54 in 100 of its observed outgoing moves and to A12 in about 46 in 100, while the direct move from A03 to A13, which earlier carried about 49 in 100 of A03's outgoing moves (A12 about 51 in 100), is no longer observed; all 78 observed outgoing moves of A02 now go to A13. [OCC002, DIR001, DIR002]\n- A02 sits between A03 and A13: observed A03-to-A13 pairs within five steps moved from about half at one step apart in the earlier window to about half at two steps apart in the later window, and A02 now co-occurs with A03 in about 39 in 100 traces (A03 before A02 in about 21, interleaved or repeated in about 18) and with A13 in about 39 in 100 traces, always with A02 first. [LAG003, REL001, REL006]\n- A14 disappeared: it ran in about 26 in 100 traces before (51 of 200) and is not observed in the later window. A12, which previously always led to A14 whose next step was always A03, now leads directly back to A03; the distance between successive A03 executions moved from mostly three steps to mostly two, and A12-to-A03 from two steps to one (the A12 self-pair rests on fewer observations). [OCC014, DIR010, DIR011, LAG001, LAG009, LAG010]\n- All earlier co-occurrence with A14 is gone: it shared traces with A03, A12 or A13 in about 26 in 100 traces and with A07, A09 or A10 in about 25 in 100 before; in the later window none of these pairs co-occur. [REL013, REL018, REL022, REL025, REL027, REL028]\n- The branch as a whole runs less often: participation fell for every activity in it, for example A05, A07, A09, A10 and A11 from about 50 to about 34 in 100 traces, A03 and A13 from about 51 to 39, A08 from 34 to 24 and A12 from 26 to 19, and A04's repetitions dropped (mean about 2.0 to about 1.5 occurrences per trace). Before, every trace contained exactly one of A03 or A07; in the later window about 28 in 100 traces contain neither. [OCC003, OCC004, OCC005, OCC007, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013, REL008, REL017]\n- A01 is also new (0 to about 28 in 100 traces), but no relational or positional evidence shows where it fits. [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the branch around A03 was restructured in the later window, in two related ways. First, A02 now runs between A03 and A13: the earlier direct move A03 → A13 is replaced by A03 → A02 → A13, shown directly by the successor changes at A03 and A02 and by the A03-to-A13 gap moving from one step to two. Second, A14 no longer runs in the repetition loop around A03: before, A12 always led to A14 and A14 back to A03, giving three steps between successive A03 executions; in the later window A12 leads directly back to A03 (two steps) and A14 is not observed at all. [OCC002, OCC014, DIR001, DIR002, DIR010, DIR011, LAG001, LAG003, LAG009, REL001, REL006]\n\nThe hypothesis is shown directly and consistently: successor changes, lag shifts and co-occurrence/order relations each demonstrate the insertion and the removal on their own, and the occurrence, position, direction and relation indicators agree; the sizes involved (A02 from 0 to 78 of 200 traces; A14 from 51 to 0) are far larger than the differences produced by random re-splits of the pooled data (empirical strengths about 0.995 for the key items). The change also looks localised rather than a global redistribution: routing shares elsewhere, such as A04's split between A08 and A09 (about 48/47 in both windows), are essentially stable. An important competing explanation the evidence cannot fully rule out is that A02 was a rare, unsampled path in the earlier window and A14 became too rare to sample rather than being added or removed; 0 observations in 200 traces makes a substantial earlier participation for A02 implausible, but the windows are finite. No screening expectation was provided, so the number of qualifying items could not be compared against a chance baseline. [DIR001, DIR002, LAG003, LAG009, DIR003]\n\nOther differences: The branch is entered less often — before, every trace contained exactly one of A03 or A07, while in the later window about 28 in 100 traces contain neither, with participation across the branch falling from about half to about a third of traces and A04 also repeating less. A01 newly appears in about 28 in 100 traces, the same share as the traces containing neither A03 nor A07, but no relational or positional evidence shows its role, so a possible new alternative path cannot be verified. [OCC001, OCC003, OCC004, OCC005, OCC007, OCC009, OCC010, OCC011, REL008, REL017]",
+  "case_id": "case_4df99fd015704993",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

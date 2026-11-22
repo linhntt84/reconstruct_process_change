@@ -1,0 +1,19 @@
+### Observed differences
+
+- Two groups of activities exchanged their places along the trace. In the earlier window, A14, A16 and A19 — each present in about 30–36 of 100 traces — sat about a third of the way through the case (mean relative position about 0.34), while A15, A17 and A18, present in every trace, sat about two-thirds through (mean about 0.64). In the later window this is reversed: A15/A17/A18 sit at about 0.38 and A14/A16/A19 at about 0.67. [POS001, POS002, POS003, POS004, POS005, POS006]
+- Every order relation between the two groups flipped completely. A20 came before A15, A17 and A18 in all 200 earlier traces and after them in all 200 later traces; A14, A16 and A19 preceded A20 and A24 in every co-occurring earlier trace and follow them in the later window; likewise A24 preceded A15/A17/A18 earlier and precedes A14/A16/A19 later. [REL001, REL004, REL008, REL012, REL015, REL016, REL018, REL019]
+- Successors changed accordingly: A14, A16 and A19 led exclusively to A20 in the earlier window and exclusively to A25 in the later one; A15, A17 and A18 dropped A25 as a successor and gained A20 (for A15, A25 fell from about 30 in 100 outgoing transitions to none, while A20 rose from none to about 37); A35 now feeds A15/A17/A18 (about 31–36 in 100 transitions each) instead of A14/A16/A19, and A24 now feeds A14/A16/A19 instead of A15/A17/A18. [DIR001, DIR002, DIR003, DIR005, DIR006, DIR007, DIR008]
+- Step distances match the swap: A35 reached A20 within 2 steps in every earlier trace and within 4 steps in every later trace, while A24 reached A25 within 4 steps earlier and 2 steps later. [LAG001, LAG002]
+- Participation barely moved: A14, A16 and A19 appeared in about 30–39 of 100 traces in both windows (A16 in 69 of 200 earlier vs 58 of 200 later), and A15, A17, A18, A20 and A24 in all traces in both windows; the fixed middle activities shifted only slightly later (A20 mean position 0.38→0.44, A24 0.57→0.64), as expected when a longer block now precedes them. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two activity groups exchanged their positions around the stable segment A20–A24: in the earlier window the flow ran from A35 through one of the alternatives A14/A16/A19 to A20 and A24, with the always-executed trio A15/A17/A18 after A24 and before A25; in the later window A15/A17/A18 run directly after A35 and before A20/A24, while one of A14/A16/A19 runs between A24 and A25. [POS001, POS002, POS004, POS005, REL001, REL015, REL018, DIR001, DIR002, DIR007, LAG001, LAG002]
+
+The swap is shown directly and consistently by positional, relational, successor and distance evidence that all point the same way, with complete reversals in 100% of traces rather than partial shifts; participation of every involved activity is essentially unchanged, so the activities were not added, removed or made optional. The number of qualifying items (39, against fewer than 1 expected if nothing had changed) also rules out sampling noise as an explanation for the evidence as a whole. [POS001, POS002, POS003, POS004, POS005, POS006, DIR001, DIR003, DIR006, LAG001, LAG002]
+
+Limitations: the many relation items all describe one underlying swap and are not independent confirmations, and because the windows are aggregates the evidence cannot distinguish a reordering within one process from a wholesale switch between two fixed routings that each happen to be internally homogeneous — both would look identical here. [REL001, REL015, POS002, POS004]
+
+Other differences: the shares of the three alternatives moved by a few percentage points (A16 present in about 35 of 100 traces earlier vs 29 later; A19 about 36 vs 39), a small shift consistent with sampling variation rather than a separate change. [POS001, POS003, POS006]

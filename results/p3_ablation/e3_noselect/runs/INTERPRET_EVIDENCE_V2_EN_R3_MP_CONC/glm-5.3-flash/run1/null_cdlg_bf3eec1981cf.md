@@ -1,0 +1,17 @@
+### Observed differences
+
+- The clearest difference is in what follows A02. In the earlier window, A02 was followed by A04 in about 56 of 100 cases and by A03 in about 44; in the later window this flipped, with A03 following in about 53 of 100 cases and A04 in about 47. [DIR001]
+- A04 was executed in about 56 of 100 traces before and about 47 of 100 after (roughly 112 vs 94 of 200 traces), always once per trace; its mean occurrences per trace fell from 0.56 to 0.47. [OCC002]
+- A03, A06, A07 and A10 each appeared in about 44 of 100 traces before and about 53 of 100 after (88 vs 106 of 200 traces each). A03 and A06 also occur more often per trace (means about 0.95 to 1.21 and 0.95 to 1.17), but each participating trace contains them about twice in both windows, so the increase comes from more traces entering this group, not from more repetitions. [OCC001, OCC004, OCC005, OCC007]
+- A05 and A09, which are reached inside the group opened by A03, also became more frequent (A05 mean about 0.52 to 0.68; A09 mean about 0.51 to 0.64), consistent with the group being traversed more often. [OCC003, OCC006]
+- Routing inside the group barely moved: from A03 the share continuing to A07 fell only from about 42% to 39%; from A06 the share to A10 fell from about 44% to 43%; from A07 about 93 in 100 transitions still return to A06; from A09 almost all transitions still go to A06. These differences fall within the range random splits produce (empirical strengths about 0.07 to 0.37). [DIR002, DIR003, DIR004, DIR005]
+
+### Inference
+
+Support level: Weak hypothesis
+
+Main hypothesis: in the later window, the alternative chosen after A02 shifted — the branch through A03, which opens a cyclic block containing A05, A06, A07, A09 and A10, is now taken in about 9 more of 100 cases, while the branch through A04 is taken correspondingly less often; as a result the block's activities run in more traces and A04 in fewer. Both alternatives and all block activities are observed in substantial shares in both windows, and only the shares between them shift, while the block's internal successor shares stay essentially unchanged. [DIR001, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, DIR002, DIR003, DIR004, DIR005]
+
+The supporting signs are the directly observed flip in A02's successor shares and the near-exact mirror image between A04's decline and A03's rise. What is missing: the routing difference is only moderately unusual for an unchanged process (larger than about 94 of 100 random re-splits, so about 6 of 100 unchanged splits reach this size), the occurrence increases of the block activities follow from the same traces and are not independent confirmations, and no screening baseline is provided to compare the number of qualifying items against the chance expectation. A sampling fluctuation between the two windows therefore cannot be ruled out. [DIR001, OCC001, OCC002]
+
+Other differences: the small internal redistributions within the block (A03 to A07 down about 3 points, A06 to A10 down about 1.5 points, and a single A09 to A07 transition appearing in the later window) have low empirical strength and are consistent with an unchanged internal structure; A05's increase sits mostly in repetitions per participating trace (participation nearly flat at about 27 to 29 of 100, on roughly 55 traces per window), which is only weakly supported. [DIR002, DIR003, DIR004, DIR005, OCC003]

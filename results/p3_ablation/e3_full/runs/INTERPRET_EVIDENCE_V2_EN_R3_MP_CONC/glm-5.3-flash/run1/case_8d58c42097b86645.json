@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_8d58c42097b86645.json",
+  "evidence_sha256": "ea3191c37cc0e8298443218cef47c1945f9947e8c3618df845c9c8353088dd3c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:08:26.550016+00:00",
+  "finished_at_utc": "2026-11-16T01:16:03.840254+00:00",
+  "latency_seconds": 457.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 60740,
+    "prompt_tokens": 73727,
+    "total_tokens": 134467,
+    "completion_tokens_details": {
+      "reasoning_tokens": 57638,
+      "text_tokens": 3102
+    },
+    "cost": 0.041429049999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 174993,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in the earlier window (0 of 200 traces); in the later window it runs in about 21 in 100 traces (42 of 200), typically around the middle of the trace (median relative position about 0.5). [OCC001, POS001]\n\n- In the later window, all 51 observed outgoing transitions of A01 lead to A10, and among A08's observed outgoing transitions the share leading to A10 before (about 55 in 100) is replaced by a share leading to A01 (about 55 in 100), with the share to A09 steady at about 45 in 100; A08 and A10 still run in about 21 in 100 traces each, A01 appears in exactly those traces, and it runs before A10 in about 18 in 100 traces (interleaving or repetition accounts for the rest). The gap from A08 to the next A10 grows from mostly 1 step (sometimes 3) to mostly 2 steps (sometimes 4). [DIR001, DIR004, OCC007, OCC009, REL007, REL009, LAG048]\n\n- In those A01-traces, activities after the new step follow their predecessors about one event later than before: A10 follows A02 mostly at 3 steps instead of 2, A10 follows A05 at 4 instead of 3, A02 follows A08 at 4 instead of 3, A05 follows A08 at 3 instead of 2, and the pairs from A09 to A02, A05 and A10 each shift about one step later; distances early in the trace (A04 after A02, A02 after A05 or A06) are essentially unchanged. [LAG003, LAG009, LAG017, LAG019, LAG025, LAG040, LAG042, LAG043, LAG050, LAG051, LAG054]\n\n- A03 becomes rarer and stops repeating: it runs in 25 of 200 traces before and 18 of 200 after, its mean occurrences per trace fall from about 0.24 to 0.10 (roughly twice per affected trace before, once after), and repeated occurrences within a trace drop from about 6 to about 1 in 100 traces. [OCC003]\n\n- The wiring around A03, A12 and A13 changes: before, A03 led to A13 in about two thirds of its outgoing transitions and to A12 in the remaining third, while A12 always led back to A03; in the later window A03 always leads to A13, A12 always leads to A13, and A02 gains a direct transition to A12 (about 4 in 100 of A02's outgoing transitions, previously unobserved, while its share to A03 falls from about 8 to 5 in 100). A03 and A12 now rarely share traces (about 1.5 in 100 versus 5.5 before), and A13 now also runs without A03 (about 6.5 in 100 traces, previously never observed). [DIR002, DIR003, DIR005, REL030, REL031]\n\n- A12 and A13 occur earlier and closer to their neighbours: A12's mean relative position moves from about 0.37 to 0.24 and A13's from about 0.50 to 0.38; A13 typically follows A03 or A12 about 1 step after them (previously about 2), A12 follows A02 about 1 step after (previously about 2), and A02 or A05 follow A12 about one step sooner; transitions between A03 and A12 in either direction are almost unobserved in the later window. [POS011, POS012, LAG011, LAG015, LAG016, LAG063, LAG064, LAG066, LAG069]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, a new step A01 is executed between A08 and A10 in about 21 in 100 cases: traces that reach A08 now run A08, then A01, then A10, where they previously ran from A08 straight to A10, and the activities after that point in those traces (further occurrences of A02, A04, A05, A06, A07, A09, A10) each occur about one event later. The support is direct and consistent: A01 rises from zero participation to 42 of 200 traces at a mid-trace position, all of its observed exits go to A10, A08's transition share to A10 is replaced by one to A01, the A08-to-A10 distance moves from about one step to about two, and the one-step delays appear exactly on the pairs observed in the A01-traces while earlier distances are unchanged. An important competing explanation the evidence cannot rule out is that A01 is a rare pre-existing variant that the earlier 200-trace sample simply did not capture; a few of the corroborating distance items also rest on few observations (about 6 to 17 traces). [OCC001, POS001, DIR001, DIR004, REL007, REL009, LAG009, LAG025, LAG040, LAG043, LAG048, LAG050, LAG051, LAG054]\n\nOther differences: A second, largely separate difference affects A03, A12 and A13 (A01 and A03 share traces in only about 4 in 100 cases). Before, A03 alternated with A12 — A03 led to A12 in about a third of its outgoing transitions and A12 always returned to A03 — and exited to A13; in the later window that alternation is no longer observed, A03 always exits to A13 and typically runs only once instead of about twice, A02 reaches A12 directly (about 4 in 100 of A02's outgoing transitions, previously unobserved), A12 leads to A13, and A12 and A13 occur earlier and about one step closer to A02 and to each other. Because A12 and A13 remain rare (about 8 and 16 in 100 traces), these shares rest on few observations, and the after-profiles for the A03–A12 distances rest on only 1–2 observations. [DIR002, DIR003, DIR005, OCC003, POS011, POS012, LAG011, LAG015, LAG016, LAG063, LAG064, LAG066, LAG069, REL002, REL030, REL031]",
+  "case_id": "case_8d58c42097b86645",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

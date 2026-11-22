@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A03 appeared in about 45 in 100 traces (just under one occurrence per trace); in the later window it is not observed at all (0 of 200 traces). [OCC003, POS003]
+- A01 shows the mirror image: not observed at all earlier, it appears in the later window in about 50 in 100 traces, roughly once per trace on average. [OCC001, POS001]
+- A01's outgoing transitions in the later window closely match A03's earlier ones: A01 now leads mainly to A11 (about 46% of its outgoing transitions) and to A12, A09 and A10 (about 15–16% each), whereas A03 previously led to A11 (about 45%), A10 and A09 (about 18% each) and A12 (about 14%). [DIR001, DIR003]
+- Predecessors switched from A03 to A01: A09's dominant successor changed from A03 (about 52% of A09's outgoing transitions) to A01 (about 55%); A11's edge to A03 (about 22%) was replaced by an edge to A01 (about 18%); A02, A05, A07, A10 and A14 likewise gained edges to A01 where they previously pointed to A03. [DIR006, DIR008, DIR002, DIR004, DIR005, DIR007, DIR010]
+- Co-occurrence relations transferred: earlier, A03 always occurred together with A09 and with A11 (co-occurrence in 45 in 100 traces, never separately); later, A01 always occurs together with them (about 50 in 100 traces). The A01–A03 pair itself flipped from "A03 without A01" (45 in 100 traces) to "A01 without A03" (about 50 in 100). [REL033, REL035, REL008, REL010, REL002]
+- A01 now occurs at a similar relative position in the trace (mean about 0.41) to the one A03 had earlier (mean about 0.42). [POS001, POS003]
+- Away from this swap, participation shifted moderately: A05 rose from about 64 to 75 in 100 traces, A06 from about 49 to 56, and A12 and A15 from about 28 to 35, while A07 fell from about 43 to 36 and A08 from about 28 to 22; A13 and A07 now occur at later relative positions (medians moving from 0 to about 0.4) and A02 at earlier ones (median about 0.26 to 0). [OCC005, OCC006, OCC012, OCC015, OCC007, OCC008, POS010, POS005, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 has taken over the role previously played by A03: an activity present in about 45 in 100 traces earlier is no longer observed, while a previously unobserved activity now appears in about half of the traces with the same connections and placement. The signs are direct and consistent across indicator families: A01's successor profile in the later window is nearly identical to A03's earlier profile (dominated by A11, then A09, A10 and A12), the main predecessors A09 and A11 — and several secondary ones — now lead to A01 instead of A03, A01 co-occurs with exactly the partners A03 used to (always together with A09 and A11), and A01 sits at a similar relative position to the one A03 occupied. [OCC001, OCC003, DIR001, DIR003, DIR006, DIR008, REL008, REL010, REL002, POS001, POS003]
+
+Limitations: the many agreeing items largely describe one underlying difference rather than independent confirmations, and the evidence shows only that A01 took over A03's structural position and connections, not that it performs the same function. A competing explanation the evidence cannot rule out is that the two windows sample different process variants in which A01 and A03 are distinct activities that happen to occupy the same slot, rather than one being substituted for the other. [OCC001, OCC003, DIR001, DIR003, REL008, REL010]
+
+Other differences: A05 is executed in about 11 more traces in 100 than before (about 64 to 75), A06 about 6 more (about 49 to 56), and A12 and A15 about 6–7 more (about 28 to 35), while A07 (about 43 to 36) and A08 (about 28 to 22) are executed less often; A13 and A07 occur at later relative positions than before and A02 at earlier ones. These shifts are not explained by the main hypothesis. [OCC005, OCC006, OCC012, OCC015, OCC007, OCC008, POS010, POS005, POS002]

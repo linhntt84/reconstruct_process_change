@@ -1,0 +1,18 @@
+### Observed differences
+
+- Activity A02 was not observed at all in the earlier window (0 of 200 traces). In the later window it occurs in about 58 in 100 traces, about 2.4 times per trace on average, and appears more than once in roughly 43 in 100 of the traces containing it. [OCC001]
+- In the later window, the observed outgoing transitions of A02 go to A07 (about 52%), A08 (about 27%) and A12 (about 21%); in the earlier window A02 had no observed outgoing transitions because it never occurred. [DIR001]
+- The successors of A15 changed: earlier, its observed outgoing transitions went to A07 (about 52%), A08 (about 25%) and A12 (about 23%); in the later window essentially all of them go to A02. [DIR002]
+- Before, A02 never co-occurred with A07, A08, A12 or A15 (for example, about 35 in 100 traces contained A07 but not A02, and about 66 in 100 contained neither). In the later window A02 co-occurs with A15 in about 58 in 100 traces and with A07, A08 or A12 in about 35–42 in 100, mostly as interleaved or repeated occurrences (about 30–43 in 100) rather than in one fixed order. [REL001, REL002, REL003, REL004]
+- Distances within the repeating A15–A07/A08/A12 cycle shifted by one event position: from A15 to A07, A08 and A12 the dominant distance moved from 1 step to 2 steps (for A15→A08, from about 51 in 100 observed pairs at distance 1 to about 66 in 100 at distance 2); from A07 to A07, A08 and A12, and from A15 to A15, it moved from 4 to 5 steps (A15→A15: about 32 in 100 at distance 4 before, about 65 in 100 at distance 5 after). The distance from A07 to A15 stayed at 3 steps and concentrated there (about 31 in 100 before, about 45 in 100 after). Several of these rest on few observations (8–19 pairs before). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]
+- When present, A02 sits around 60% of the way through the trace (median position about 0.60). [POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a step A02 was inserted into a repeating cycle between A15 and the block of activities A07, A08 and A12: A15, which previously led directly to A07, A08 and A12, now leads to A02, and A02 leads on to those three activities. [DIR001, DIR002, OCC001]
+
+Supporting signs: the rerouting is shown directly by the successor change at A15, not inferred from frequencies alone; A02's appearance is large and structured (from 0 to about 58 in 100 traces, about 2.4 occurrences per trace, at a stable mid-trace position); and every measured distance inside the cycle shifted by exactly one position while the A07→A15 distance stayed at 3 steps — the pattern expected if a single event was inserted on the path from A15 to the block rather than elsewhere. [DIR002, POS001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008] The screening also produced 16 qualifying control-flow items where only about 0.2 would be expected if nothing had changed, so the set of items as a whole is unlikely for an unchanged process. [OCC001, DIR001, DIR002, POS001, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]
+
+Limitations: zero participation in the earlier window only shows A02 was not observed there; the evidence cannot rule out that A02 already existed as a rare path that became frequent, rather than being entirely new. Some lag items rest on few observations (for example 8–13 pairs for A07→A12), and many items describe the same underlying rerouting, so they are not independent confirmations. [OCC001, LAG003]

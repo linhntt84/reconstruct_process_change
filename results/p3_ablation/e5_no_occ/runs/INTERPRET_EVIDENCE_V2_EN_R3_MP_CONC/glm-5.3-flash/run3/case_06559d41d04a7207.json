@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_06559d41d04a7207.json",
+  "evidence_sha256": "a2404b05f8b6466bb49c3a0bf9d496b8957f746e1a9f64a25a7c3a547beedbbf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:53:50.777081+00:00",
+  "finished_at_utc": "2026-11-15T10:56:46.968014+00:00",
+  "latency_seconds": 176.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25366,
+    "prompt_tokens": 32021,
+    "total_tokens": 57387,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23495,
+      "text_tokens": 1871
+    },
+    "cost": 0.01748615
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 79739,
+  "text": "### Observed differences\n\n- In the earlier window, essentially every trace contained exactly one of the three activities A19, A20 and A21 (70, 60 and 71 of 200 traces; the three practically never co-occurred), and each of them led almost always to A29 (about 97 in 100 or more of their outgoing flows). In the later window, each of A19, A20 and A21 appears in only about 1 of 200 traces. [POS002, POS003, POS004, REL007, REL008, REL016, DIR003, DIR004, DIR005]\n- In the later window, A26, A27 and A28 appear in all 200 traces (earlier: 0, 0 and 1 of 200), clustered around position 0.38 of the trace; each pair of them co-occurs in 100 of 100 later traces in both orders (roughly 50/50, no fixed internal order), and each of the three leads mostly to the other two and to A29. [POS005, POS006, POS007, DIR006, DIR007, DIR008, REL031, REL032, REL037, LAG003]\n- A44, present in all traces in both windows, changed its successors: earlier its outgoing flows went to A19, A20, A21 and A10 (about 27, 24, 24 and 23 in 100); later they go to A26, A28 and A27 (about 33, 32 and 30 in 100), with A10 down to about 3 in 100. [DIR009, REL013, REL021, REL028, REL034, REL039, REL043]\n- A29 and A45 changed predecessors: A29, present throughout in both windows, was earlier preceded by whichever of A19/A20/A21 ran (together covering about all traces) and is now preceded by A26, A27 and A28 in about 99 of 100 traces, its mean position shifting from 0.40 to 0.44; A45 is now preceded by the trio in about 63 of 100 traces, whereas earlier one of A19/A20/A21 preceded it in about 19 of 100. The typical gap from A44 to A29 grew from 2 steps (about 75 in 100 cases) to 4 steps (about 90 in 100). [REL012, REL020, REL027, REL033, REL038, REL042, POS008, REL014, REL022, REL029, REL035, REL040, REL044, LAG005]\n- A10 became rarer, appearing in 22 of 200 later traces against 51 earlier, and its outgoing flows moved from A21, A19 and A20 (about 40, 26 and 19 in 100) to a spread over A27, A15 and several other activities; in the few traces where it remains, its distance to A29 lengthened from about 2 to about 4 steps. [POS001, DIR001, LAG001, LAG004]\n- A46 occurs in about 69 of 100 traces before and about 57 of 100 after; in both windows it almost always accompanies the between-segment activities — earlier one of A19/A20/A21, now the trio whenever it appears. [REL015, REL023, REL030, REL036, REL041, REL045]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe number of qualified items alone exceeds what an unchanged process produces: 67 control-flow items qualified where about 0.6 would be expected by chance across 118 tested units, so the ensemble cannot be a sampling artefact. Beyond that count, the evidence supports one specific structural hypothesis: the segment between A44 and A29 changed its content — in the earlier window, traces executed exactly one of the three alternatives A19, A20 or A21 between A44 and A29, while in the later window A19/A20/A21 are observed in only about 1 of 200 traces each and the trio A26, A27 and A28 runs together in every trace in varying order, with A44 leading into it and A29 (and A45) following it. The support is direct and consistent: the successor change at A44 and the predecessor changes at A29 and A45 were observed relationally, the participation swap is near-complete (0 to 200 of 200 traces for the newcomers; about 30–36 down to about 0.5 in 100 for the old alternatives), and the A44→A29 distance growing from about 2 to about 4 steps matches one activity being replaced by three. Limitations: only two finite windows are compared, and zero participation means A19/A20/A21 were not observed later rather than provably removed; an important competing explanation the evidence cannot rule out is that they persist at a very low rate (about 1 in 200 traces each) and that the two windows capture the end point of a gradual transition rather than a single switch. [DIR009, REL033, REL035, POS005, POS002, LAG005, REL031]\n\nOther differences: A10 declined in frequency (51 → 22 of 200 traces) and retargeted from A21/A19/A20 to A27, A15 and other activities, which is consistent with the disappearance of its earlier targets but is a separate participation change [POS001, DIR001]; A46 now accompanies the trio in every trace where it appears, while its overall presence fell from about 69 to about 57 in 100 traces [REL036, REL015].",
+  "case_id": "case_06559d41d04a7207",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

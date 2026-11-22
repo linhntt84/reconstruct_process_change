@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_a2913df8d9dd482b.json",
+  "evidence_sha256": "d07931fc5ba2e334a2523086066cd278af9131a9de0f795ad3c466d51bcb0e45",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:56:09.394824+00:00",
+  "finished_at_utc": "2026-11-14T14:58:33.424460+00:00",
+  "latency_seconds": 144.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24422,
+    "prompt_tokens": 47238,
+    "total_tokens": 71660,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22369,
+      "text_tokens": 2053
+    },
+    "cost": 0.0192967
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 71927,
+  "text": "### Observed differences\n\n- The relative order of A05 and A07 shifted. In the earlier window the two activities co-occurred in about 50 in 100 traces and appeared in both orders roughly equally (A05 first in about 22, A07 first in about 28); in the later window co-occurrence was similar (about 52 in 100), but A05 came first in about 34 in 100 traces and A07 first in only about 18. [REL001]\n- Routing around this pair moved in the same direction. From A01, the share of outgoing transitions leading to A05 rose from about 28% to 45%, while those to A09 fell from 37% to 26% and to A07 from 32% to 25% [DIR001]. From A05, transitions to A07 rose from about 27% to 44% and those to A14 fell from 37% to 21% [DIR005]. From A07, transitions to A05 fell from about 39% to 18%, while those to A09 rose from 26% to 39% and to A14 from 32% to 39% [DIR007]. From A09, transitions to A14 rose from 28% to 38% and those to A07 fell from 38% to 27% [DIR009].\n- Event distances and positions agree: A07-then-A05 pairs one step apart fell from about 71% to 54%, with more pairs at two or three steps [LAG002]; A05-then-A07 pairs one step apart rose from 61% to 68% [LAG001]; A05's typical event position moved slightly earlier while A07's moved slightly later [POS001, POS002].\n- Participation also shifted in three other regions. A22 appears in about 44 vs 54 in 100 traces (before vs after) while A23 falls from about 57 to 47, with A25 routing more to A22 (16% to 28%) and A22 routing more to A31 (43% to 51%) and less to A24 (31% to 17%) [OCC020, OCC021, DIR022, DIR024, DIR025]. A35 and A36 each rise from about 46 to 54–55 in 100 traces while A37 and A38 fall to about 47, with A31 routing more to A35 (19% to 26%) and A35 routing more to A36 (41% to 50%) [OCC031, OCC032, OCC033, OCC034, DIR031, DIR035]. A43 rises from about 60 to 70 in 100 traces while A44 and A45 each fall from about 69 to 59, with A42 routing more to A43 (44% to 52%) and less to A44 (52% to 44%) [OCC038, OCC039, OCC040, DIR042].\n- The repeated A15/A16 block ran slightly less often: both activities still appear in every trace, but the share of traces with repeats fell from about 43 in 100 to about 37 (A15) and 35 (A16) [OCC015, OCC016].\n- A04, present in only about 13–17 in 100 traces, now sends about 24% of its few observed outgoing transitions to A45 (none before, based on roughly 26–38 transitions), and A44 now sends about 6% of its outgoing transitions to A04 (none before) [OCC004, DIR004, DIR044].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the branch around A05 and A07 was re-routed and their mutual order shifted: in the later window A05 precedes A07 in about 34 in 100 traces (about 22 before) while A07 precedes A05 in about 18 (about 28 before); A01 feeds A05 more often (about 28% to 45% of its outgoing transitions), A05 passes on to A07 more often (27% to 44%), and A07 goes to A05 far less often (39% to 18%), turning to A09 and A14 instead. The order change is shown directly by the relational item, whose difference exceeds about 97 of 100 random re-splits, and by the successor profiles of A05 and A07, the sharpest routing shifts in the whole evidence set (each larger than in about 98–100 of 100 random re-splits); lag and position items point the same way. Every activity and path involved was observed in a substantial share of traces in both windows, so this is a reallocation between existing alternatives rather than a replaced path. The main limitation is that the agreeing items describe one underlying re-routing rather than independent confirmations, and the evidence provides no expected-by-chance baseline for the number of qualifying items; a competing explanation it cannot rule out is that some small-share movements reflect sampling noise, for instance the new outgoing shares of A04, which rest on only a few dozen observed transitions. [REL001, DIR001, DIR005, DIR007, DIR009, LAG001, LAG002, POS001, POS002, OCC004, DIR004]\n\nOther differences:\n- A22 is executed in about 10 more traces per 100 and A23 in about 10 fewer, with A25 routing more to A22 and A22 routing more to A31 and less to A24; only participation and successor shares back this, with no relational or positional items for these pairs. [OCC020, OCC021, DIR022, DIR024, DIR025]\n- A35 and A36 are executed more often and A37 and A38 less often, with A31 routing more to A35 and A35 routing more to A36; likewise shown only by participation and successor shares. [OCC031, OCC032, OCC033, OCC034, DIR031, DIR035]\n- A43 is executed in about 10 more traces per 100 while A44 and A45 each appear in about 10 fewer, with A42 routing more to A43, plus the minor new A44→A04 and A04→A45 transitions noted above. [OCC038, OCC039, OCC040, DIR042, DIR044, DIR004]\n- The A15/A16 repetition became slightly less frequent, though both activities remain in every trace. [OCC015, OCC016]",
+  "case_id": "null_a2913df8d9dd482b",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A21 were one-of-three alternatives: each ran in roughly a third of the traces (about 35, 30 and 36 in 100 cases, exactly once when present, never repeated), so together they covered essentially every trace. In the later window all three nearly disappeared, each appearing in only 1–2 of 200 traces. [OCC001, OCC002, OCC003]
+- In the earlier window, when A19, A20 or A21 ran, the flow went almost directly on to A29 (about 99%, 95% and 97% of their outgoing transitions). In the later window their few residual occurrences left towards other activities instead. [DIR001, DIR002, DIR003]
+- A26, A27 and A28 were not observed at all in the earlier window (0 of 200 traces); in the later window each runs exactly once in every trace (200 of 200), about 38% of the way through the trace — the same region where A19/A20/A21 used to sit (about 37%). Each of the three sends roughly a third of its outgoing flow to each of the other two and to A29, consistent with the trio running in varying order before A29. [OCC004, OCC005, OCC006, POS004, POS005, POS006, DIR004, DIR005, DIR006]
+- A44, present in all traces in both windows, changed its routing: before, about 31%, 30% and 25% of its outgoing transitions led to A19, A21 and A20; after, about 31%, 27% and 26% led to A26, A27 and A28. [DIR007]
+- The flow distance from A44 to A29 grew: before, A29 followed A44 within 2 steps in about 84 of 100 cases (16% at 3 steps); after, it followed at 4 steps in about 82 of 100 cases (18% at 5 steps). A29 itself still ran in every trace in both windows, but slightly later (mean relative position about 0.40 vs 0.44). [LAG001, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the branch after A44 was restructured: previously exactly one of A19, A20 or A21 executed (mutually exclusive alternatives, each in about a third of cases) and the flow then continued to A29, whereas in the later window that single-activity branch is gone and the trio A26, A27 and A28 executes once per case, in varying order, before A29. The participation flips are observed with near-complete support on both sides (0 of 200 vs 200 of 200 for the new trio; 70/60/72 vs 1–2 of 200 for the old alternatives), A44's rerouting is observed directly with full support in both windows, and the growth of the A44→A29 distance from about 2 to about 4 steps matches a one-activity branch being replaced by a three-activity block. 21 evidence items qualified against only about 0.52 expected without change, so chance sampling cannot account for the pattern as a whole, although the indicators partly reflect the same underlying rerouting and are not independent confirmations. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, LAG001, POS004, POS005, POS006, POS007]
+
+Limitations: the evidence shows that A26/A27/A28 took over the old branch's place in the flow but cannot establish that they perform the same work as A19/A20/A21; nor can it distinguish a sharp cutover from a rapid transition that happens to fall at the window boundary. [DIR007, LAG001]
+
+Other differences: in the later window, the residual occurrences of A19, A20 and A21 (1–2 traces each) routed to A09/A10, A45 and A34 respectively, and A19 appeared much earlier in its trace (about 11% of the way through, versus about 37% before); these observations rest on only 1–2 traces and are weak. [DIR001, DIR002, DIR003, POS001, POS002, POS003]

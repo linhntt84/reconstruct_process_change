@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "9d8755348e910761dc49cf7438e26e417b6353e58fd7dda0662a3bd3c7638937",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:24:26.153497+00:00",
+  "finished_at_utc": "2026-11-14T11:29:58.944344+00:00",
+  "latency_seconds": 332.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16799,
+    "prompt_tokens": 18668,
+    "total_tokens": 35467,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15332,
+      "text_tokens": 1467
+    },
+    "cost": 0.0111997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51656,
+  "text": "### Observed differences\n\n- In the earlier window the observed control flow was a single fixed chain, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27: every source activity sent all of its outgoing transitions to exactly one successor, and consecutive activities were exactly one event position apart [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG001, LAG006, LAG015, LAG017, LAG018, LAG021].\n\n- In the later window each of these activities has several successors. A26 now opens with A17 in about 53 in 100 of its outgoing transitions and goes directly to A19 in about 47; A18 is followed by A27 in about 52 in 100 (previously never) and by A19, A20 or A21 in about 15–17 each; A15 still leads mostly to A18 (about 68) but also jumps to A19, A20 or A21 in about 10–11 each [DIR001, DIR003, DIR007].\n\n- The later-stage activities now also lead back into the earlier stage: A19 goes to A17 in about 24 and to A15 in about 11 of its outgoing transitions, A20 to A15, A17 or A18 in about 12–20 each, and A21 to A15, A17 or A18 in about 9–13 each; before, each had only its single chain successor [DIR004, DIR005, DIR006].\n\n- Pairwise order changed from strictly fixed to mixed. All eight tested activity pairs still co-occur in every trace in both windows, but pairs that previously ran in one order only now appear in both: A19 precedes A18 in about 85 in 100 later-window traces (before: 0), A19 precedes A15 in about 74 (before: 0), A21 precedes A18 in about 68 (before: 0), A19 precedes A17 in about 47 (before: 0), while A15 still precedes A20 in about 68 and A17 precedes A21 in about 76 [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].\n\n- Event distances spread out: A15 to A18, previously always 1 step apart, is now 1 step in about 68 in 100 cases and up to 4 steps in the remainder; A18 to A27, previously always 4 steps, is now immediately consecutive in about 52 in 100 cases; A15 to A27, previously always 5 steps, now falls at 2–5 steps [LAG001, LAG005, LAG013].\n\n- Relative event positions shifted accordingly: A18 moved later (mean position from about 0.62 to 0.68 of the trace), A15 from about 0.59 to 0.64 and A17 from about 0.56 to 0.59, while A19 moved earlier (about 0.65 to 0.59), A21 from about 0.68 to 0.64 and A20 from about 0.71 to 0.68; these are event positions, not clock times [POS001, POS002, POS003, POS004, POS005, POS006].\n\n- Participation itself did not change: every tested pair of activities still occurs together in all traces in both windows, and no interleaving or repetition between the paired activities was observed in either window [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints between the two stages of the process were relaxed. In the earlier window the activities A15, A17 and A18 (early stage) always ran before A19, A20 and A21 (late stage) within one fixed sequence from A26 to A27; in the later window the late-stage activities frequently execute first — A19 precedes A18 in about 85 in 100 traces and A15 in about 74, neither of which occurred before — and most tested pairs now appear in both orders, indicating a mixed order rather than an exchange of positions [REL001, REL003, REL004, REL006, REL007, REL008]. The routing change is visible directly in the transition profiles: A26 now enters the sequence at A19 in about 47 in 100 of its outgoing transitions, A18 passes directly on to A27 in about 52, and A19, A20 and A21 frequently lead back to A15, A17 or A18 [DIR003, DIR004, DIR005, DIR006, DIR007].\n\nThe hypothesis is corroborated across indicator types: transition shares (DIR), pairwise order (REL) and event distances (LAG) all changed together, and relative positions shifted in the expected directions (A19 earlier, A18 later) [LAG001, LAG013, LAG023, POS003, POS004]. Screening tested 71 control-flow units and flagged 45 items, against roughly 0.35 expected if nothing had changed, so the overall volume of differences cannot be explained by random re-splits of a stable process [DIR001, POS001, REL001, LAG001].\n\nLimitations: the evidence shows aggregate ordering shares, not the exact new routing structure — it cannot establish how many distinct orders individual traces follow, and the DIR shares are over outgoing transitions rather than cases. A mixture of unchanged traces and traces following one new fixed order cannot be fully ruled out, although the wide spread of event distances in the later window (for example, A15 to A18 at 1–4 steps) points to genuinely varying orders [LAG001, LAG003, DIR001].",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

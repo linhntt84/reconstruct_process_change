@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c970eeadeab7c20e.json",
+  "evidence_sha256": "bddec6e4ddcf73a3e28786ae0eef2c51fbc857afbd2a8467b78c7b541ace4dad",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:25:42.055337+00:00",
+  "finished_at_utc": "2026-11-14T14:26:47.114468+00:00",
+  "latency_seconds": 65.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10694,
+    "prompt_tokens": 8219,
+    "total_tokens": 18913,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9633,
+      "text_tokens": 1061
+    },
+    "cost": 0.006579849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35137,
+  "text": "### Observed differences\n\n- **A06 is no longer executed.** In the earlier window, A06 appeared exactly once in every trace (participation 100%, mean 1.0 occurrence per trace, 200 of 200 traces); in the later window it is not observed in any of the 200 traces. [OCC005, POS003]\n- **The A03–A06 ending pair is gone.** Earlier, A03's only observed outgoing transition led to A06 (100% of about 106 outgoing transitions) and A06's only observed outgoing transition led back to A03 (100% of about 94); the two always shared a trace, with A03 first in about 53 in 100 cases and A06 first in about 47 in 100. In the later window, A03 and A06 never occur together (A03 appears without A06 in every trace) and neither directed edge is observed. [DIR002, DIR004, REL002]\n- **A03 became the fixed final step.** Earlier, A03 sat near the end of traces with some variation (mean relative position about 0.94); in the later window it is the last event of every trace (position 1.0 in all cases, no spread) and shows no observed outgoing transitions. [POS001, DIR002]\n- **A04's routing changed.** Earlier, A04's observed outgoing transitions went to A02 in about 52 in 100 cases, to A03 in about 26 in 100 and to A06 in about 23 in 100; in the later window only A03 (about 50 in 100) and A02 (about 50 in 100) remain. The A04-to-A03 gap is now one step in 100% of traces, versus a mix of one step (about 53 in 100) and two steps (about 47 in 100) earlier, and A04 sits later in the trace (median relative position about 0.60 vs 0.75). A04, which always co-occurred with A06 before (A04 first in about 44 in 100 traces), now occurs without A06 in every trace. [DIR003, LAG001, POS002, REL003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A06 was removed from the process (or is no longer executed), eliminating the alternating A03–A06 ending. In the earlier window, traces finished with A03 and A06 adjacent in either order; in the later window, A06 is unobserved in all 200 traces, A03 is the last event of every trace with no observed successor, and A04 now leads straight to A03 (immediately, in all cases) or to A02 in roughly equal shares instead of routing to A06. [OCC005, DIR002, DIR004, POS001, POS003, REL002, REL003, DIR003, LAG001]\n\nThe main items all show differences larger than about 99.5 in 100 random re-splits, and occurrence, direction, position, relation and lag indicators consistently describe the same structural change rather than isolated fluctuations. Limitations: no chance-expectation baseline for the number of qualifying items was provided, so the judgement rests on the directness and consistency of the items; and the evidence cannot distinguish a complete removal of A06 from A06 becoming an optional step that was skipped in every later trace, or a change in how A06 events are recorded — zero participation only means the activity was not observed. Positions are event ranks, not clock times, so A03's new role is a statement about order, not timing. [OCC005, POS001, POS003]\n\nOther differences: several activities show small decreases in recurrence and participation — A02 (participation about 57% vs 53%), A04, A05 and A08 (mean occurrences about 2.07 vs 2.0, recurrence support about 57% vs 53%), A07 and A09 (participation about 52% vs 47–48%) — plus a minor shift in A03–A04 order (A04 before A03 in about 44% vs 47% of traces). Their empirical strength is low (roughly 2–43 in 100), so they are consistent with sampling variation and with traces becoming shorter once the A03–A06 ending disappeared. [OCC002, OCC003, OCC004, OCC006, OCC007, OCC008, REL001]",
+  "case_id": "case_c970eeadeab7c20e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

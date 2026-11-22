@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_e73af4b6228f3807.json",
+  "evidence_sha256": "051e430315bdb36b0b8c55e7bc640c5ca5598de11869ff7b8e4754a208a14632",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:11:48.594988+00:00",
+  "finished_at_utc": "2026-11-15T03:13:05.262210+00:00",
+  "latency_seconds": 76.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11122,
+    "prompt_tokens": 7706,
+    "total_tokens": 18828,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10141,
+      "text_tokens": 981
+    },
+    "cost": 0.006716899999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36889,
+  "text": "### Observed differences\n\n- Activity A10 was not observed at all in the earlier window (0 of 200 traces), while in the later window it runs in about 47 in 100 traces (94 of 200), fairly early in each trace (median about a quarter of the way through). [OCC003, POS002]\n- In the later window, existing steps route through A10: from A05, about 20 in 100 observed outgoing transitions now go to A10, while transitions to A11 fall from about 49 in 100 to about 23 in 100; A10's own outgoing transitions lead to A07 (about 53 in 100) and A11 (about 45 in 100); and from A11, about 52 in 100 of outgoing transitions now go to A10, where previously about 96 in 100 went straight to A07. [DIR001, DIR002, DIR003]\n- Ordering changed accordingly: earlier, A05 and A07 always ran without A10; in the later window A05 precedes A10 in about 43 in 100 traces (the reverse in about 5 in 100), A10 runs before A07 in about 47 in 100 traces, and A10 and A11 co-occur in about 47 in 100 traces with no fixed order between them (about 22 vs 26 in 100). [REL001, REL002, REL003]\n- Distances between consecutive steps grew where A10 sits: A05→A07 was about 2 positions apart in roughly 94 in 100 pairs and is now split between 2 (about 53 in 100) and 3 (about 44 in 100) positions; A11→A07 was adjacent in about 96 in 100 pairs and is now about 2 positions apart in about 53 in 100; A05→A11 was always adjacent and is now about 2 positions apart in about 45 in 100. [LAG001, LAG002, LAG003]\n- Smaller changes: A06 and A09, also unobserved earlier, appear in about 11 and 6 in 100 later-window traces respectively; A07's and A11's typical positions and A11's participation (about half of traces in both windows) moved only slightly. [OCC001, OCC002, DIR001, POS001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A10 became part of the execution in the later window, running in roughly half of the cases typically after A05 and before A07, sometimes between A11 and A07 or between A05 and A11. Earlier, the flow ran from A05 mainly to A11 or A01, with A11 leading directly to A07; in the later window A05 sends about one fifth of its outgoing transitions to A10 and A11 about one half, A10 leads on to A07 or A11, and the A05→A07 and A11→A07 gaps lengthen by about one position — consistent with an extra step sitting between them. The pattern is direct (participation, successor and relation items all show A10's own behaviour), consistent across all five indicator families, and 15 qualifying items against roughly 0.12 expected by chance for the 25 tested units cannot be explained as sampling variation. An important competing explanation remains: zero participation in the earlier window only shows A10 was not executed then, so the evidence cannot distinguish a genuinely new activity from one that existed but was never sampled, nor show whether all cases or only a subset follow the new routing. [OCC003, DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002, LAG003, POS002]\n\nOther differences: A06 and A09 appear rarely in the later window (about 11 and 6 in 100 traces) with no relational evidence tying them into the flow beyond a small A05→A06 share (about 2 in 100 of A05's outgoing transitions), and A07's position distribution narrowed slightly (spread about 0.16 to 0.08 of trace length). [OCC001, OCC002, DIR001, POS001]",
+  "case_id": "case_e73af4b6228f3807",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

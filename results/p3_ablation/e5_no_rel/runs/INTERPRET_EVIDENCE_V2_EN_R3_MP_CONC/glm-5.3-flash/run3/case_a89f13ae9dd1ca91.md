@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran exactly once in every one of the 200 cases; in the later window each appears in only about 1 in 200 cases. [OCC004, OCC005, OCC006]
+- A14, A15 and A16 were not observed at all in the earlier window; in the later window A14 runs in about 30 in 100 cases, A15 in about 33 in 100 and A16 in about 37 in 100, once per case where present. Their combined participation (about 99.5 in 100) is consistent with exactly one of the three running in nearly every case. [OCC001, OCC002, OCC003]
+- A39's outgoing transitions moved from a roughly even split over A23, A22 and A21 (about 35, 30 and 35 in 100) to A16 (about 37 in 100), A15 (about 33 in 100) and A14 (about 30 in 100); this comparison is backed by all 200 traces in both windows. [DIR007]
+- When they occur, A14, A15 and A16 lead exclusively to A24. [DIR001, DIR002, DIR003]
+- The distance from A39 to A24 was always 4 steps in the earlier window and is 2 steps in about 199 of 200 later cases, so two fewer events now sit between them. [LAG010]
+- A24 now occurs slightly earlier in the case (mean position about 0.43 to about 0.39) and A39 slightly later (about 0.31 to about 0.33); A40's position is essentially unchanged (about 0.85 in both windows). [POS007, POS008, POS009]
+- The after-window routing and lag profiles of A21, A22 and A23 each rest on a single trace and are too weak to characterise any remaining behaviour of the old block. [DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment between A39 and A24 was restructured: earlier it consisted of the three activities A21, A22 and A23, each executed once per case in varying order, while in the later window it consists of exactly one activity chosen per case from A14, A15 and A16 (roughly 30, 33 and 37 in 100), which then leads on to A24. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR007, LAG010] Supporting signs: the participation swap is near-complete (200 of 200 to about 1 of 200, and 0 to 60–74 of 200); A39 now routes into the new trio and the trio routes exclusively to A24, with full support on the A39 comparison; the A39-to-A24 distance shortened from 4 to 2 steps in almost all cases, confirming the segment shrank by two events; and 32 qualifying items against roughly 0.44 expected without change means the set of differences is far beyond what random re-splits of stable traces produce. [DIR007, LAG010, OCC001, OCC002, OCC003] Because the new activities were absent earlier and the old ones are nearly absent later, this is a replacement of one block by another, not a re-weighting of shares between existing paths. [OCC001, OCC004]
+
+Limitations: the anonymous activity codes cannot show whether A14, A15 and A16 are genuinely new activities or relabelled successors of A21, A22 and A23; the single later trace still containing A21, A22 and A23 leaves open whether the old block can still run occasionally; and the mutual exclusivity of the new trio is inferred from their shares summing to about one rather than observed through a direct relation indicator. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]

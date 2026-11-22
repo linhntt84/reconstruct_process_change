@@ -1,0 +1,17 @@
+### Observed differences
+
+- Three activities — A19, A20 and A25 — each appeared in roughly 3–4 in 10 traces in the earlier window (about 65, 57 and 81 of 200 traces, at most once per trace) but in only 1 of 200 traces each in the later window. [OCC001, OCC002, OCC003]
+- In the earlier window, A27's outgoing transitions split between A28 (about 52 in 100) and the three disappearing activities (A25 about 20, A19 about 13, A20 about 10 in 100); in the later window, about 98 in 100 of A27's outgoing transitions go to A28. [DIR005]
+- Similarly, A28's outgoing transitions previously split between A29 (about 43 in 100) and A25, A19 and A20 (together about 53 in 100); in the later window, about 97 in 100 go directly to A29. [DIR006]
+- Step distances along the remaining backbone shortened: A27–A28 was adjacent in about half of the earlier traces (two steps apart in about 45 in 100) and is adjacent in about 99 in 100 of later traces; A28–A29 moved from typically two steps apart (about 52 in 100) to adjacent (about 96 in 100); A27–A29 moved from typically three steps (about 90 in 100) to two steps (about 96 in 100). [LAG001, LAG002, LAG004]
+- A27 and A29 themselves appeared in every trace in both windows, so the backbone around the disappearing activities was stable. [POS004, POS005]
+- The after-window routing and position profiles of A19, A20 and A25 rest on a single observation each and should not be read as new routing behaviour. [DIR002, DIR003, DIR004, POS001, POS002, POS003, LAG003]
+- Separately, A10's outgoing transitions were redistributed: earlier they concentrated on A15 (about 20 in 100), A47 and A16 (about 17 each) and A45 (about 14); later they spread over roughly twenty targets, the largest being A26 (about 17) and A45 (about 15). [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the optional intermediate activities A19, A20 and A25 — detours between A27/A28 and A28/A29 that were executed in roughly 30–40% of traces in the earlier window — were essentially no longer executed in the later window, so that control runs directly from A27 to A28 and from A28 to A29. This is shown directly and consistently: participation collapsed from 57–81 traces to 1 trace for each of the three activities, the outgoing transitions of A27 and A28 consolidated almost entirely onto A28 and A29, and the A27–A28, A28–A29 and A27–A29 step distances each shortened by about one step in pairs observed in all 200 traces of both windows. The screening context makes a chance explanation of the ensemble implausible: 18 items qualified against roughly 0.5 expected if nothing had changed, and every item's difference exceeds about 995 of 1,000 random re-splits. The main limitation is that 200 traces per window cannot distinguish a genuine removal of these activities from a routing option that is now almost never chosen — one trace each still contains them — and the apparent new successors of A19, A20 and A25 in the later window rest on single observations and carry no weight. [OCC001, OCC002, OCC003, DIR005, DIR006, LAG001, LAG002, LAG004]
+
+Other differences: A10's successor distribution broadened and shifted (largest shares moving from A15/A47/A16 towards A26/A45), a difference not covered by the hypothesis above, and A27 and A29 shifted only marginally in average trace position (about +0.015 and −0.02), which on its own does not indicate a move. [DIR001, POS004, POS005]

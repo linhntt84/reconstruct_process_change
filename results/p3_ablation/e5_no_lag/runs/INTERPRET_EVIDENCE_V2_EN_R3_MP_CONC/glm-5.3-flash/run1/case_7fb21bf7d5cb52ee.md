@@ -1,0 +1,23 @@
+### Observed differences
+
+- A10 became much more frequent: in the earlier window it appears in about 19 in 100 traces (roughly 0.2 occurrences per trace), in the later window in about 70 in 100 (about 0.8 occurrences per trace, with a few traces repeating it). [OCC003]
+- In the later window A10 also sits much earlier and more consistently in the trace: its median event position falls from about 0.34 to about 0.15 (mean 0.55 to 0.19) and its spread shrinks markedly. [POS001]
+- A10's successors changed: earlier its observed outgoing transitions were spread over many activities (A16 and A46 about 20 in 100 each, A48 about 17, A21 about 13); in the later window about 85 in 100 go to A15. [DIR002]
+- A10 now typically runs before the mid-process block: before, A10 shared a trace with A20, A22, A23, A24, A25, A26, A31, A32, A47 or A48 in only about 19 in 100 traces (usually the block activity ran without A10); in the later window they co-occur in about 70 in 100 traces, with A10 first in about 60 in 100 (before, co-occurrence was rare and without a fixed direction, about 9–17 in 100). The same shift, weaker, holds for A45 and A46 (co-occurrence about 16 → 48 in 100). [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]
+- A14 now often leads into A10: before, about 86 in 100 of A14's observed outgoing transitions went to A15; in the later window about 65 in 100 go to A10 and about 33 in 100 to A15, and A14 precedes A10 in about 60 in 100 traces (before about 17 in 100). [DIR003, REL001]
+- The block's internal fixed sequence largely dissolved: before, A22→A20, A20→A23, A23→A24, A24→A26 and A31→A22 each held in about 98–100 in 100 traces; in the later window A24 precedes A20 in about 73 in 100 traces (before essentially never), A24 precedes A23 in about 85 in 100 (before essentially never), A20/A26 and A22/A24 now occur in both orders in near-equal shares, and A23's dominant successor is now A32 (about 47 in 100) rather than A24. [REL015, REL017, REL018, REL020, REL021, REL022, DIR004, DIR005, DIR006, DIR007, DIR008, DIR010]
+- Matching this reordering, A20, A22 and A23 sit slightly later in the trace (mean position up about 0.04–0.06) while A24, A25 and A26 sit slightly earlier (down about 0.02–0.05). [POS003, POS004, POS005, POS006, POS007, POS008]
+- A04 and A08 became rarer: A04 appears in about 21 → 11 in 100 traces and A08 in about 20 → 4 in 100 (39 → 8 traces); A08's outgoing transitions also redistributed, but the later profile rests on only 8 traces. [OCC001, OCC002, DIR001]
+- Smaller shifts: A45 and A47 now lead almost exclusively to A46 and A48 respectively (about 98 in 100, versus about 78–86 before), and A15 sits slightly later (mean 0.17 → 0.19). [DIR011, DIR012, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the control flow around A10 and the mid-process block (A20, A22, A23, A24, A25, A26) was restructured: A10 changed from a rare, late and mostly isolated activity into a frequent, early one that typically precedes the block; A14 now often leads into A10 instead of directly into A15; and the block's previously fixed order (A22 → A20 → A23 → A24 → A26) largely dissolved into mixed or reversed orders, with A24 now typically preceding A20 and A23, and A23's main successor now A32. [OCC003, POS001, DIR002, DIR003, DIR005, DIR006, REL001, REL002, REL003, REL015, REL018, REL020, REL022]
+
+This is unlikely to be a sampling artifact: the control-flow family produced 45 qualifying items against about 0.62 expected if nothing had changed, and the ordering changes are shown directly by relation items in which both activities occur in every trace in both windows (for example A20 before A24 falls from about 99 to 25 in 100 while A24 before A20 rises from 0 to about 73 in 100), with the successor profiles and position shifts pointing the same way. [REL015, REL017, DIR004, DIR006, POS003, POS006]
+
+Limitations: the many A10 relation items largely describe one underlying trace behaviour rather than independent confirmations; the evidence cannot rule out that the later window simply contains a different mix of case variants rather than a modified process; and positions are event positions, not clock times, so no conclusion about timing is supported. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, POS001]
+
+Other differences: A04 and A08 participate much less often (about 21 → 11 and 20 → 4 in 100 traces), with A08's later successor profile based on only 8 traces; A45 and A47 now lead almost exclusively to A46 and A48. [OCC001, OCC002, DIR001, DIR011, DIR012]

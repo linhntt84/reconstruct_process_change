@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_580c3bdc13426125.json",
+  "evidence_sha256": "3909ffd0c0a923b497666bb27c2ae8f5469ed3e3833042b748b928346dc875cc",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:21:00.219579+00:00",
+  "finished_at_utc": "2026-11-15T01:21:15.759680+00:00",
+  "latency_seconds": 15.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2779,
+    "prompt_tokens": 9902,
+    "total_tokens": 12681,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2142
+    },
+    "cost": 0.0020716400000000005
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 7387,
+  "text": "### Observed differences\n\n- In the later window, activity A02 is completely absent (0 of 200 traces), whereas it appeared in all 200 earlier traces with on average 2.2 occurrences per trace and was repeated in about 59% of traces. [OCC001, POS001, DIR001]\n- Activity A03, absent in the earlier window, appears in all 200 later traces exactly once per trace. [OCC002, POS002]\n- The outgoing edges of A05 and A06 changed: A05 previously always went to A02, now goes to A03 in about 97% of cases; A06 previously always went to A02, now goes to A07 in about 51% and to A06 in about 48% of cases. [DIR003, DIR004]\n- A03 now leads to A06 and A07 (about 50% each), and A03 always precedes A07 in the later window. [DIR002, REL007]\n- The relative position of A03 in the later window (median 0.75) matches the position A02 had in the earlier window (median 0.7). [POS001, POS002]\n- A05 and A06 no longer co-occur with A02; instead A05 precedes A03 in all later traces, and A03 co-occurs with A06 in about half the later traces. [REL002, REL003, REL005, REL006]\n- The lag between A06 and A07 shifted: in the earlier window they were typically 2 or 4 steps apart, in the later window they are adjacent (lag 1) in about 35% of cases. [LAG004]\n- A06 now repeats consecutively (lag 1) in about 26% of traces where it appears, whereas earlier it repeated with lag 2. [LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which activity A02 was replaced by activity A03 as a central step. In the earlier window, A02 was executed (often repeatedly) after A05 and A06, and then led to A06/A07. In the later window, A02 is absent, A03 is executed once after A05 (and sometimes after A06), and then leads to A06/A07. The change is directly shown by the disappearance of A02, the appearance of A03 at the same relative position, and the corresponding shifts in predecessor and successor relations. The screening count (21 items vs 0.12 expected by chance) rules out random variation.\n\nOther differences: A06 now sometimes repeats consecutively and A06–A07 become adjacent more often, which may be a consequence of the changed routing (A06 now sometimes loops to itself) but is reported separately.\n\nA competing explanation that cannot be fully ruled out is that A02 was simply renamed to A03, but the repetition pattern changed (A02 was repeated, A03 is not), and A06 gained a self-loop, so the change is more than a label swap.",
+  "case_id": "case_580c3bdc13426125",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

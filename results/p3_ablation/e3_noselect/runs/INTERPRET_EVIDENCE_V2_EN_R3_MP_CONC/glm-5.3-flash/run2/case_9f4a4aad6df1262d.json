@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9f4a4aad6df1262d.json",
+  "evidence_sha256": "365f7c3f05548faff11c0c47a989d042766e1028bef80dfd24c9ecaa2c8f8030",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:53:50.893611+00:00",
+  "finished_at_utc": "2026-11-15T07:56:58.172900+00:00",
+  "latency_seconds": 187.28,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26219,
+    "prompt_tokens": 65099,
+    "total_tokens": 91318,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23844,
+      "text_tokens": 2375
+    },
+    "cost": 0.02287435
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 72084,
+  "text": "### Observed differences\n\n- In the earlier window, A20, A22, A23, A24, A25 and A26 appeared together in every trace and always in one fixed order, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32; each of these orderings held in at least about 98 in 100 traces, and adjacent steps followed within one event position in about 93–100 in 100 traces. [REL001, REL007, REL013, REL018, REL019, REL022, LAG008, LAG002, LAG023]\n- In the later window, the chain A24 → A26 → A25 typically starts earlier: A24 precedes A20 in about 73 in 100 traces (about 2 in 100 before) and precedes A23 in about 84 in 100 (about 2 in 100 before); A26 precedes A23 in about 68 in 100 (about 2 in 100 before). Order between the chains became partly unfixed: A20/A26 now split about 49 vs 51, A22/A24 about 53 vs 47, A23/A25 about 48 vs 52, and A25 precedes A20 in about 32 in 100 (about 2 in 100 before). [REL002, REL003, REL004, REL008, REL010, REL013, REL014, REL015]\n- What did not change: within-chain order (A22 before A20, A24 before A26 and before A25, A26 before A25, each ≥99 in 100 in both windows), A31 still first and A32 last, co-occurrence at 100 in 100, and participation of all these activities at essentially every trace in both windows. [REL001, REL018, REL019, REL022, REL005, REL006, REL011, REL012, OCC020, OCC021, OCC023, OCC025, OCC026, OCC027]\n- Mean event positions shifted accordingly: A24, A25 and A26 moved earlier (0.65→0.59, 0.70→0.68, 0.67→0.64) and A20, A22 and A23 later (0.59→0.63, 0.56→0.59, 0.62→0.68). [POS001, POS002, POS003, POS004, POS005, POS006]\n- Gaps widened and successors changed: A22→A20 within one step fell from all traces to about 56 in 100; A31 now leads directly to A24 in about 47 in 100 of its outgoing transitions (before ~0) and A22 leads directly to A24/A25/A26 in about 44 in 100 combined (before ~0); A23 now leads to A32 in about 49 in 100 (before always to A24), A25 leads to A32 in about 43 in 100 (before about 93), and A24/A25/A26 also lead back to A20/A22/A23 (roughly a third to a half of their transitions, before ~0). [LAG008, LAG002, LAG030, DIR020, DIR022, DIR023, DIR024, DIR025, DIR026, DIR031]\n- Separately, participation shifted by roughly 8 in 100 traces from the group A03/A11/A12/A13 (each about 60%→52%) to the group A01/A05/A07/A09 (each about 40%→48%); A44 became less frequent (participation about 66%→60%, mean occurrences 0.91→0.79); A08's successor mix changed (e.g. A46 35%→11%, A48 0→22%) but rests on only about 17–18 outgoing transitions per window. [OCC001, OCC003, OCC005, OCC007, OCC008, OCC010, OCC011, OCC012, OCC035, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the relative placement of two sub-sequences between A31 and A32: in the earlier window A22, A20, A23, A24, A26 and A25 always ran in the single order A22 → A20 → A23 → A24 → A26 → A25, whereas in the later window the chain A24 → A26 → A25 typically starts before A20 and A23 (A24 before A20 in about 73 in 100 traces versus about 2 in 100 before), the order between the chains is partly unfixed (A20/A26, A22/A24 and A23/A25 now occur in both orders), and the step into A32 can now start from A23 (about 49 in 100 of A23's outgoing transitions) as well as from A25 (about 43 in 100, down from about 93). [REL002, REL004, REL008, REL013, REL014, REL015, DIR023, DIR025]\n\nThe change is shown directly and consistently: order reversals on pairs that co-occur in every trace in both windows, each larger than about 995 in 1000 random re-splits of unchanged data; agreeing position shifts (A24/A25/A26 earlier, A20/A22/A23 later); widened gaps between formerly adjacent steps; and matching new direct successors (A31→A24, A22→A24/A25/A26, A24→A22/A20, A25/A26→A20/A22/A23). Because participation and co-occurrence of all six activities stayed at essentially every trace in both windows, this is a change of ordering, not of activities being added, removed or executed more or less often. [REL002, REL013, POS001, POS004, POS006, LAG008, LAG030, DIR022, DIR023, DIR024, DIR026, DIR031, OCC020, OCC021, OCC025, OCC026]\n\nLimitations: the graded reversals (A24, A26 and A25 precede A20 in about 73, 51 and 32 in 100 traces) are also consistent with a changed mix of execution patterns in which a minority of traces keeps the old order, rather than one new fixed sequence; the evidence cannot separate these, and it shows event order within traces, not clock time. [REL002, REL004, REL003]\n\nOther differences: participation moved by roughly 8 in 100 traces from routes through A03/A11/A12/A13 (each about 60% to about 52%) to routes through A01/A05/A07/A09 (each about 40% to about 48%), a moderate-strength shift whose branch point is not directly observed; A44 participation fell from about 66% to 60% with fewer repeats; A08's successor mix changed but is based on very few transitions. None of these involves the activities of the main hypothesis. [OCC001, OCC003, OCC005, OCC007, OCC008, OCC010, OCC011, OCC012, OCC035, DIR008]",
+  "case_id": "case_9f4a4aad6df1262d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

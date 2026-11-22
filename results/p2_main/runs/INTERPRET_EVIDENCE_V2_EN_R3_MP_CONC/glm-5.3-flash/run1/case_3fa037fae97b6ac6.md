@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A01 does not appear in any of the 200 traces; in the later window it occurs exactly once in every trace (participation 0 → 100 in 100 cases, mean 1.0 occurrence per trace, never repeated within a case) [OCC001].
+- In the later window, A01 runs early in the case: its median relative position is about 0.2, with the middle half of its occurrences between roughly 0.11 and 0.4 of the trace [POS001].
+- A01 is now wired into the flow. A02, A12 and A06, which show no transitions to A01 earlier, send about 32%, 30% and 26% of their observed outgoing transitions to A01 in the later window; A01 in turn passes control mainly to A02 (about 30%) and A12 (about 27%), with smaller shares to A04 (~14%), A05 (~11%), A03 (~9%) and A06 (~7%) [DIR001, DIR002, DIR003, DIR004].
+- The relationship with A01 flipped from "never together" to "together": earlier, A02, A04, A05 and A12 each appeared in every trace while A01 appeared in none; in the later window A01 co-occurs with each of them in 100 in 100 traces — always before A04 and A05, but in mixed order with A02 (about half each way) and with A12 (46% vs 54%). With A06 (present in about 47 in 100 earlier traces and about 59 in 100 later ones), the two co-occur in 59 in 100 later traces, with A01 alone in 41, again in mixed order [REL001, REL002, REL003, REL004, REL005].
+- Previously tight activity pairs are stretched apart: A02→A12 within one step fell from about 82% to 53% of cases, A12→A02 from 77% to 51%, and A06→A02 from 61% to 36%; A06→A05 moved from lags 3–4 to lags 4–5 (lag 5 rose from 0% to about 37%), A06→A04 and A12→A05 shifted to longer distances, and milder stretches appear for A02–A04, A02–A05, A12–A04 and A06–A12 [LAG003, LAG008, LAG004, LAG006, LAG005, LAG010, LAG009, LAG001, LAG002, LAG007].
+- A05 and A12 now occur slightly later in the case: mean relative position 0.63 → 0.73 for A05 and 0.20 → 0.24 for A12 [POS002, POS003].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A01 was added as a mandatory, once-per-case step in the early phase of the process: in the later window A01 runs in every case exactly once, around the first fifth of the trace, receives handovers from A02, A12 and A06 (each now routing roughly a quarter to a third of its outgoing transitions to A01), passes control mainly back to A02 and A12, and always completes before A04 and A05 [OCC001, POS001, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL005].
+
+This reading fits the relational evidence consistently: pairs that were immediate neighbours before (A02–A12, A12–A02, A06–A02, A06–A05, A06–A04, A12–A05) now show longer distances throughout, and A05 and A12 finish slightly later in the case, as expected if A01 is executed between them. The 23 qualifying items are about 100 times the 0.23 expected by chance in the control-flow family, so the pattern as a whole is not what an unchanged process typically produces, and the occurrence change itself is direct (0 of 200 vs 200 of 200 traces), which rules out a rare-variant sampling fluke [LAG003, LAG004, LAG005, LAG006, LAG008, LAG010, POS002, POS003, screening].
+
+Limitations: the items largely re-describe one underlying difference rather than independent confirmations, and A01's exact slot is not fixed — it can fall before or after A02, A12 and A06 (mixed orders), so the evidence shows an early-phase placement rather than one precise position. An important competing explanation the evidence cannot rule out is that A01 already existed in the process but was simply never executed in the earlier window; zero participation only means the activity was not observed there [OCC001, REL001, REL004, REL005].

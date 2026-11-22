@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "6c3a7379f649eabb219c2b45172379713ca602978805093166d82aea9fd5eb87",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:56:56.404809+00:00",
+  "finished_at_utc": "2026-11-15T04:58:25.581086+00:00",
+  "latency_seconds": 89.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12812,
+    "prompt_tokens": 18197,
+    "total_tokens": 31009,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11647,
+      "text_tokens": 1165
+    },
+    "cost": 0.00913555
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42647,
+  "text": "### Observed differences\n\n- In the earlier window the traced activities formed one fixed sequence, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27: each of these activities had exactly one observed successor (100% of its outgoing transitions), every traced pair co-occurred in 100 in 100 traces, and the gaps were constant (A15 was always immediately followed by A18, and A15 reached A20 in exactly 4 steps). [DIR001, DIR003, DIR005, REL001, LAG001, LAG003]\n- In the later window this chain is no longer enforced. A15 still leads to A18 in about 68 in 100 of its outgoing transitions but also to A19, A20 and A21 in about 11 in 100 each; A18 leads to A27 in about 52 in 100 and to A19, A20 or A21 in about 15–17 in 100 each; A26 splits roughly 53/47 between A17 and A19 instead of always feeding A17. [DIR001, DIR003, DIR007]\n- The order between the two halves of the chain largely reversed. Where A15 and A18 previously always came before A19, A20 and A21, in the later window A19 precedes A18 in about 85 in 100 traces and A15 in about 74 in 100, A21 precedes A18 in about 68 in 100, and A20 precedes A18 in about 52 in 100, while A15 and A21 are now close to even. All these activities still co-occur in every trace, so participation itself did not change — only their relative order. [REL006, REL001, REL008, REL007, REL003]\n- Event positions moved consistently with that reversal: A15, A17 and A18 now appear later in the trace (mean relative position up by about 0.03–0.06, e.g. A18 from about 0.62 to 0.68), while A19, A20 and A21 appear earlier (A19 from about 0.65 to 0.59). [POS001, POS002, POS003, POS004, POS005, POS006]\n- Gaps between activities, previously single fixed values, are now spread over 1–5 steps: A18 reaches A27 within 1 step in about 52 in 100 cases (previously always 4), A26 reaches A19 within 1 step in about 47 in 100 (previously always 4), and A15 followed by A20 within five steps now occurs in only about 136 of 200 later traces, spread over 1–4 steps (previously always exactly 4). [LAG013, LAG023, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the strict sequencing between the two groups of activities was relaxed and partly reversed: A19, A21 and A20, which in the earlier window always executed after A17, A15 and A18, now frequently execute before them (in roughly a quarter up to 85 in 100 traces depending on the pair), and the fixed chain A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 is no longer enforced in the later window, with A26 also able to enter at A19. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\nThe support rests on direct relational evidence pointing one way in all eight traced cross-group pairs, corroborated by the position shifts (A19/A20/A21 earlier, A15/A17/A18 later), by single successors being replaced by several, and by the volume of qualifying items (45 against roughly 0.5 expected by chance for 95 tested units), so the pattern as a whole is not what random re-splits of an unchanged process produce; each item's difference also exceeded about 199 of 200 reference comparisons. [REL006, POS003, POS004, DIR003, LAG013]\n\nLimitations: the evidence shows that the executed order changed but not which structural form it now takes — a reversal of the two groups, a loosening into several allowed orders, or case-by-case variation would produce similar profiles; within-group order is mostly preserved but also loosened (A15 still immediately precedes A18 in about 68 in 100 later cases). A competing explanation the evidence cannot rule out is that the later window draws a different mix of process variants — for example an alternative ordering that was too rare to appear in the 200 earlier traces — rather than a modification within one variant, although the strictly uniform order across all 200 earlier traces makes pure sampling variation unlikely. [LAG001, LAG006, LAG015, REL006]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

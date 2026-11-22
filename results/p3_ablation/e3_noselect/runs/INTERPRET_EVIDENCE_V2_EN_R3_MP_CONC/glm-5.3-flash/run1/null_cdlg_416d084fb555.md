@@ -1,0 +1,21 @@
+### Observed differences
+
+- Participation shifted on four activities. In the later window, A01 appears in about 47 in 100 traces (down from about 54) and A04 in about 23 in 100 (down from about 27), while A06 appears in about 54 in 100 (up from about 47) and A12 in about 32 in 100 (up from about 25). The A01 and A06 counts mirror each other exactly: 107 vs 93 traces before, 93 vs 107 after. [OCC001, OCC004, OCC006, OCC012]
+
+- The largest single change is in where A12 leads. Before, about 24 in 100 of A12's outgoing transitions went to A03 and about 2 in 100 to A06; in the later window this is about 43 in 100 to A03 and about 17 in 100 to A06, while transitions to A01 (about 14→3), A10 (about 20→11) and A09 (about 16→8) became rarer. This profile difference (0.18) exceeds about 98 in 100 random re-splits, and rests on 49 vs 63 outgoing transitions. [DIR012]
+
+- Downstream shares moved in the same direction: from A01, the share of outgoing transitions to A04 fell from about 13 in 100 to about 4 in 100; from A04, the share to A03 fell from about 41 to about 24 while the share to A06 rose from about 7 to about 16; from A06, the shares to A03 and A09 each rose from about 8 to about 13 while the share to A02 fell from about 32 to about 25; from A10, the share to A12 rose from about 4 to about 11. [DIR001, DIR004, DIR006, DIR010]
+
+- The rest of the control flow is stable: A02 occurs in every trace in both windows (about 2 occurrences per trace, repeated in about half), A03, A11, A13 and A14 stay near 97–98 in 100 traces, and their outgoing profiles barely move (A03→A13 about 85→88 in 100; A14→A11 about 91→98 in 100, an absolute change of only 0.001). A05 shows a small decrease (mean occurrences 1.0→0.94; participation about 48.5→46 in 100) with low empirical strength. [OCC002, OCC003, OCC005, OCC010, OCC011, OCC013, OCC014, DIR002, DIR003, DIR005, DIR013, DIR014]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that existing alternative paths are taken with different frequencies in the later window: the route through A01 and onward via A04 toward A03 carries fewer traces (A01 down about 7 in 100 traces, A04 down about 4–5; A01→A04 down from about 13 to about 4 in 100 of A01's outgoing transitions; A04→A03 down from about 41 to about 24), while A12 and A06 carry more (each up about 7 in 100 traces), and A12's outgoing flow is redirected toward A03 (about 24→43 in 100) and A06 (about 2→17 in 100). All four activities occur in a substantial share of traces in both windows and repetition levels are unchanged, so this is consistent with a shift between existing alternatives rather than activities being added, removed, bypassed or repeated differently. [OCC001, OCC004, OCC006, OCC012, DIR001, DIR004, DIR006, DIR012]
+
+What is missing: no screening baseline is provided to compare the number of qualifying items with the number expected by chance; apart from A12's outgoing profile, the empirical strengths are moderate (0.63–0.87, meaning random re-splits of these same windows produce differences this large in roughly 1–4 of 10 cases), and there is no relational evidence (REL/LAG) showing that the same traces actually replaced the A01/A04 route with the A12/A06 route — the substitution is inferred from mirrored participation counts and consistent outgoing shares. [OCC001, OCC004, OCC006, OCC012, DIR012]
+
+An important competing explanation the evidence cannot rule out is sampling variation between the two 200-trace windows: the evidence itself shows that a near-maximal empirical strength can accompany a trivial difference (A14→A11, change of 0.001), so the moderate strengths of the participation shifts leave room for chance. [DIR014]
+
+Other differences: A05 occurs slightly less often in the later window (mean occurrences 1.0→0.94; participation about 48.5→46 in 100 traces); A11's outgoing distribution shifted from A02 toward A09 and A10, but this rests on only 19 vs 18 outgoing transitions; A09's outgoing share to A02 rose from about 67 to about 71 in 100. [OCC005, DIR009, DIR011]

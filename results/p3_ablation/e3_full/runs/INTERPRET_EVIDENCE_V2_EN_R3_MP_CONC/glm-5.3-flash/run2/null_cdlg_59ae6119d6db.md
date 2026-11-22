@@ -1,0 +1,13 @@
+### Observed differences
+
+- Participation is essentially unchanged: A03 occurs in every trace in both windows (about 2.0–2.1 occurrences per trace), while A04, A05 and A07 each appear in roughly half of the traces before and after (A05: about 52 in 100 traces in the earlier window vs 50 in 100 in the later window); no activity appears or disappears. [OCC001, OCC002, OCC003, OCC004]
+- Outgoing routing shares barely move: from A03, about 46 in 100 observed outgoing transitions went to A05 before vs about 49 in 100 in the later window; from A04, transitions to A01 rose from about 20 in 100 to 26 in 100 while those to A06 fell from about 16 in 100 to 10 in 100. The largest shift is at A06, where transitions to A07 rose from about 27 in 100 to 43 in 100, but it rests on only about 22 and 21 outgoing transitions in the two windows. [DIR003, DIR004, DIR006]
+- Event positions shift only slightly: in the later window A04's median relative position moves earlier, from about halfway through the trace to about a third of the way, and A07's upper quartile moves later (0.67 to 0.75), while A01 moves slightly later and A02 slightly earlier. [POS001, POS002, POS004, POS007]
+- Relations between activities are stable: A01 and A02 co-occur in all traces in both windows, A04 and A07 never co-occur in either window (strict alternatives in both), and no order or co-occurrence share moves by more than about 5 in 100 (e.g., A04 before A03: about 13 in 100 before vs 18 in 100 after). [REL001, REL011, REL017]
+- Pairwise lags (in event steps) show small, mixed shifts: A01–A04 pairs within 1–2 steps rise from about 56 in 100 to 68 in 100, while A02–A05 pairs at 4 steps fall from about 44 in 100 to 35 in 100 and A07–A03 pairs within 1–2 steps fall from about 48 in 100 to 37 in 100. [LAG003, LAG010, LAG030]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. Across all 70 evidence items the differences are small and scattered — participation within about 2 in 100 traces, routing and order shares within about 5 in 100, and lag shifts of a few percentage points in inconsistent directions — and only about 6 of the 70 items exceed an empirical strength of 0.7, which is no more than (in fact less than) what random re-splits of two 200-trace windows typically produce across this many tests; several lag items also rest on very few observations (e.g., A05→A02 with 6 vs 5), so sampling variation remains a competing explanation the evidence cannot rule out. [OCC003, DIR006, POS004, LAG003, LAG010, LAG023, LAG022]

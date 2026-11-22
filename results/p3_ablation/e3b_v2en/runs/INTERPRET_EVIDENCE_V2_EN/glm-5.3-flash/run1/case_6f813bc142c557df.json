@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "8c5cbe702b47b90c679bb16de604ad4abdb67244dd668c0cb865b4196e4222b8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:07:32.761296+00:00",
+  "finished_at_utc": "2026-11-14T11:09:08.655295+00:00",
+  "latency_seconds": 95.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16001,
+    "prompt_tokens": 25750,
+    "total_tokens": 41751,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14490,
+      "text_tokens": 1511
+    },
+    "cost": 0.011862999999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47496,
+  "text": "### Observed differences\n\n- The relative order of two activity groups flipped. Before, A24 preceded A20 in about 75 in 100 traces and A24 preceded A23 in about 88 in 100; in the later window A20 precedes A24 in about 99 in 100 and A23 precedes A24 in about 98 in 100. The same flip appears for A25 and A26 (for example, A23 before A26 rose from about 30 to 98 in 100, and the A22/A24 pair went from an even split to about 99 in 100 with A22 first). [REL002, REL004, REL005, REL007, REL009]\n\n- Routing inside this group consolidated onto single successors. In the later window, A31→A22, A22→A20, A20→A23, A23→A24, A24→A26, A26→A25 and A25→A32 each carry roughly 93–100 in 100 of the source activity's observed outgoing transitions, against mixed shares before (for example A20→A23 up from about 62 to 99 in 100, A23→A24 up from about 12 to 98 in 100, A24→A26 up from about 56 to 99 in 100). [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009]\n\n- Distances between these activities collapsed to fixed spacings. A20→A24 now occurs at exactly 2 steps in all 199 observed later cases (before, split roughly 53/47 between 1 and 2 steps); A22→A24 and A23→A25 sit at 3 steps in essentially all later cases; A20→A32 sits at 5 steps in about 995 in 1,000. Reverse-direction successions largely disappeared: A24 followed by A20 within five steps fell from about 149 traces to 1, and A24 followed by A23 from about 176 to 1. [LAG007, LAG010, LAG013, LAG016, LAG017]\n\n- Event positions moved consistently with this: A20, A22 and A23 now occur earlier in the trace (median position lower by roughly 0.02–0.07 of trace length), while A24, A25 and A26 occur later (median higher by roughly 0.03–0.06). [POS002, POS003, POS004, POS005, POS006, POS007]\n\n- A08 occurs in far fewer cases: about 13 in 100 later traces versus about 32 in 100 before. Its routing also changed: the share going to A15 fell from about 91 to 48 in 100 of its observed outgoing transitions, with A16 (about 15 in 100) and A46 (about 11 in 100) appearing as new successors; A14→A08 fell from about 29 to 7 in 100, A08 now precedes A32 in about 11 in 100 of their co-occurrences versus about 31 in 100 before, and its occurrences sit later and more variably in the trace (median event position about 0.14 to 0.18, upper quartile about 0.15 to 0.44). [OCC001, DIR001, DIR002, REL001, POS001]\n\n- A10 appears in more cases: about 13 in 100 later traces versus about 3 in 100 before (25 versus 6 traces). [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the segment formed by A31, A22, A20, A23, A24, A26 and A25 runs in one fixed order with fixed spacings — approximately A31 → A22 → A20 → A23 → A24 → A26 → A25, with A32 following about one step after A25 — whereas before, these activities appeared in varying relative orders, with A24/A25/A26 frequently preceding A20/A22/A23 and several alternative successors per activity. The support is direct and consistent: relational items show the order reversal on all eight tested pairs, lag items show the later window collapsing to a single spacing per pair, and the routing and position items agree with the same reading, though these families describe one underlying difference rather than independent confirmations. The number of qualifying items (58, against roughly 0.76 expected if nothing had changed) also cannot be explained by chance as a whole. [REL002, REL005, REL007, REL009, LAG003, LAG004, LAG008, LAG010, DIR003, DIR005, DIR006, POS002, POS005]\n\nLimitations: the evidence describes executed traces, not the process definition, so a shift in the mix of already-existing behaviour variants — for example a fixed-order variant that was previously in the minority becoming dominant — would look the same, and sampling differences in variant frequencies between two 200-trace windows cannot be ruled out, even though the uniform magnitude across many pairs makes pure chance unlikely. The A08 decrease and A10 increase are additional participation changes that the evidence does not tie to the same modification; A08's later routing profile rests on 27 observed outgoing transitions, A10's increase on 25 traces, and a few reversed-direction lag items in the later window rest on a single trace. [OCC001, OCC002, DIR001, LAG016, LAG030]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_ab76b69eb0973ca8.json",
+  "evidence_sha256": "38c25cfe2946b4a353f12df705b5a59630655121296175eb74cb523c3c31716d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:14:03.019672+00:00",
+  "finished_at_utc": "2026-11-15T03:15:03.677031+00:00",
+  "latency_seconds": 60.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8888,
+    "prompt_tokens": 7257,
+    "total_tokens": 16145,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8003,
+      "text_tokens": 885
+    },
+    "cost": 0.00553255
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30731,
+  "text": "### Observed differences\n\n- Activity A08 disappeared in the later window: before, it appeared in about 70 in 100 traces (roughly 1.1 occurrences per trace, repeated within the same trace in about a quarter of cases); afterwards it is not observed at all (0 of 200 traces). [OCC001]\n- Before, A08 typically occurred as the second event of a trace (median position 1); in the later window it has no observed positions. [POS001]\n- Routing out of A07 changed completely: earlier, all 219 observed outgoing transitions of A07 went to A08; in the later window, its 97 observed transitions go to A05 (about 39 in 100), A03 (about 27), A04 (about 22) and A02 (about 12), and never to A08. [DIR001]\n- A08's own outgoing transitions (earlier: about 36 in 100 to A05, 35 to A03, 19 to A04, 10 to A02) are no longer observed, since A08 itself no longer occurs. [DIR002]\n- A07 and A08 were executed together in about 70 in 100 traces before (A07 before A08 in about 46 in 100); afterwards A07 still occurs in about 67 in 100 traces but never together with A08. [REL004]\n- A08's co-occurrence with A03, A04 and A05 (about 29–33 in 100 traces before) also dropped to zero; those activities now appear only without A08. [REL001, REL002, REL003]\n- Distances between consecutive activities shortened by roughly one step: A07 to A03, A04 or A05 was typically 2 positions apart before and is typically 1 apart afterwards, consistent with A08 no longer lying between them. [LAG002, LAG003, LAG004]\n- Repetition distances also shortened: A07-to-A07 moved from typically 4–5 steps to 3–4, and A04-to-A04 from typically 4–5 steps to 2–3. [LAG005, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A08 was removed from the process, or is no longer executed, and that A07 now bypasses it: before, A07 was always followed by A08, which in turn handed over to A02, A03, A04 and A05; in the later window A08 is not observed in any of 200 traces, while A07 leads directly to those same four activities. The change is shown directly (participation falling from about 70 in 100 traces to zero, with 141 against 0 supporting traces, and A07's routing shifting from 100% to A08 to a spread over A02–A05) and consistently across the occurrence, position, direction and relation indicators. [OCC001, DIR001, DIR002, POS001, REL004]\n\nThe roughly one-step shortening of the distances from A07 to A03, A04 and A05 fits the removal of one intermediate activity, and the screening context reinforces the picture: 13 items qualified where about 0.21 would be expected by chance in a stable process, a gap chance sampling cannot explain. Two limitations remain: many items describe the same underlying difference and are not independent confirmations, and zero participation only means A08 was not observed — the evidence cannot distinguish a structural removal from A08 becoming an optional branch that is now always skipped, nor can it show why. [LAG002, LAG003, LAG004]\n\nOther differences: the self-repetition distances shortened by more than removing a single activity would explain — A04-to-A04 moved from typically 4–5 steps to 2–3 — so some additional restructuring of the repeated part cannot be ruled out, although the evidence points to no further activities involved. [LAG001, LAG005]",
+  "case_id": "case_ab76b69eb0973ca8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

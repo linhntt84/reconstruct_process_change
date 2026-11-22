@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_8bdcb14ca001cfe7.json",
+  "evidence_sha256": "b6990fc24c51eb2685ded1e713fda2e2dbbfdd7d1e0582dfdecbab2eedc30d12",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:38:42.641421+00:00",
+  "finished_at_utc": "2026-11-16T03:41:55.896690+00:00",
+  "latency_seconds": 193.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25509,
+    "prompt_tokens": 146259,
+    "total_tokens": 171768,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23260,
+      "text_tokens": 2249
+    },
+    "cost": 0.03469335
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 76130,
+  "text": "### Observed differences\n\n- In the later window, A09 is executed far more often: about 4.3 occurrences per trace on average versus about 1.9 earlier, and among the traces that contain it about 6 executions per trace versus about 3 before. Participation rose only from about 62 to 68 in 100 traces, while the share of A09 traces containing repeats rose from about 40 to 60 in 100; this is the largest occurrence shift in the sample and ranks at the top of the reference comparisons (strength about 0.995). [OCC009]\n- Routing around A09 shifted accordingly: in the later window about 71 in 100 of A13's outgoing transitions lead to A09 (about 35 in 100 before), about 95 in 100 of A15's transitions lead back to A09 (about 41 before), and A09 itself leads to A15 more often (about 48 in 100 versus 37). A09 and A13 now interleave in about 60 in 100 of their shared traces (about 39 before), A09 and A10 in about 64 in 100 (about 45 before), and repeated A09 events now sit about two steps apart rather than three to five. [DIR013, DIR015, DIR009, REL088, REL085, LAG098]\n- In the later window, A03 and A14 no longer repeat: each averages about 0.5 occurrences per trace (about 1.1 before), with two executions per containing trace before versus a single one after (repeats in about 28 in 100 of their traces before, none after), at roughly unchanged participation of about 47–51 in 100 traces; both also appear earlier in the trace (mean relative position about 0.25 versus about 0.40). [OCC003, OCC014, POS003, POS014]\n- A11 became more widespread and earlier: it appears in about 47 in 100 traces (about 28 before) at a mean relative position of about 0.18 (about 0.43 before) and no longer recurs; it now co-occurs with A01 in about 47 in 100 traces (about 28 before), A02 leads to it in about 13 in 100 of A02's transitions (unobserved before), and it precedes A07, A12 and A14 in mostly fixed order (about 46, 47 and 39 in 100 of shared traces, versus about 12, 11 and 0 before). [OCC011, POS011, REL010, DIR002, LAG024, REL073, REL096, REL098]\n- A07 now appears in every trace at the end (mean relative position about 0.99) and is preceded in fixed order by A03 (about 46 in 100 versus 18 before), A12 (44 versus 28) and A14 (45 versus 17); A12 itself appears earlier (mean relative position about 0.43 versus 0.68) and now follows A03 or A14 in fixed order (about 47 in 100 each, versus about 21 before with the remainder interleaved). [OCC007, POS007, REL031, REL074, REL076, POS012, REL036, REL101]\n- A15 participates in fewer traces (about 53 in 100 versus 62) and lost incoming edges: A01 no longer leads to A15 (about 9 in 100 of A01's transitions before, unobserved after) and A13 leads to it in only about 8 in 100 (about 36 before). [OCC015, DIR001, DIR013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeating A09–A15 sequence, entered from A13, is executed far more often in the later window: A09 runs about 4.3 times per trace on average (about 1.9 before) and repeats in about 60 in 100 of its traces (about 40 before), A13 now routes into A09 in about 71 in 100 of its transitions (about 35 before), and A15 routes back to A09 in about 95 in 100 (about 41 before), so the A09–A15 alternation carries many more executions per trace. The change is measured directly on occurrence counts and is consistent across routing, co-occurrence and step-distance evidence, with the key items at the top of their reference comparisons (strength about 0.995). Limitations: each window covers 200 traces, no screening baseline is reported so the volume of qualifying items cannot be weighed against a chance expectation, and the A09, A13 and A15 items likely describe one underlying behaviour rather than independent confirmations. A competing reading the evidence cannot fully rule out is that part of the rerouting reflects A15 losing its exit to A01 rather than more cycling itself, although the direct rise in A13-to-A09 routing and in A09's occurrence count speaks against this being the whole explanation. [OCC009, DIR009, DIR013, DIR015, REL088, LAG098]\n\nOther differences: A03 and A14 no longer repeat and appear earlier in the trace; A11 occurs in about 47 in 100 traces (about 28 before), earlier and without repetition, in fixed order before A07, A12 and A14; A07 appears in every trace at the end and A12 appears earlier, after A03 or A14 in fixed order; A10 now appears in every trace and slightly more often (about 2.1 versus 1.9 occurrences per trace); A15 participates in fewer traces and is no longer reached from A01. These differences are not part of the main hypothesis above. [OCC003, OCC014, POS003, POS014, OCC011, POS011, REL073, REL096, REL098, OCC007, POS007, POS012, REL036, REL101, OCC010, OCC015, DIR001]",
+  "case_id": "case_8bdcb14ca001cfe7",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

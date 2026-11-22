@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "2906924fca9b7fc0c29d6654ec3cf9f22761b83199683e1008a87c1f62f46881",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:04:52.417788+00:00",
+  "finished_at_utc": "2026-11-14T11:05:32.822672+00:00",
+  "latency_seconds": 40.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6727,
+    "prompt_tokens": 12216,
+    "total_tokens": 18943,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5671,
+      "text_tokens": 1056
+    },
+    "cost": 0.0051959
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20625,
+  "text": "### Observed differences\n\n- Activity A27 ran in every trace in the earlier window (participation 100%, one occurrence per trace); in the later window it appears in only about 51 in 100 traces [OCC001].\n- Three activities that were not observed at all earlier — A32, A33 and A38 (0 in 200 traces) — each appear in roughly 49–50 in 100 later-window traces (about 98–99 of 200), once per trace where present [OCC002, OCC003, OCC004].\n- Routing out of A26 changed sharply: earlier, about 98.5 in 100 of A26's outgoing transitions went to A27; in the later window only about 50 in 100 do, with the rest split across A33 (~17), A38 (~16) and A32 (~15) [DIR001].\n- The new activities sit between A26 and A28: A26 precedes each of them in about 49 in 100 traces, each of them precedes A28 in about 49 in 100 traces, and they co-occur with one another in about 49 in 100 traces with no fixed internal order (each pair appears in both orders, roughly 22–27 in 100 each way). Direct transitions exist from each new activity to A28 and between the new activities [REL002, REL003, REL004, REL009, REL010, REL011, REL012, REL013, REL014, DIR003, DIR004, DIR005].\n- A27 and the new activities are near-mutually exclusive: A27 co-occurs with A32, A33 or A38 in at most about 0.5 in 100 traces, so later-window traces split into roughly half containing A27 and half containing the new activities instead [REL006, REL007, REL008].\n- The event distance from A26 to A28 grew: earlier it was 2 steps in about 98 in 100 traces; in the later window it is 2 steps in about 50 in 100 and 4 steps in about 48 in 100 [LAG001].\n- The new activities occur around the middle of the trace (mean relative position about 0.49–0.50, with a narrow spread of about 0.05–0.06) [POS001, POS002, POS003].\n- A26 and A28 still occur in essentially all traces in both windows; in the later window A28 occurs without A27 in about 49 in 100 traces, and A27's outgoing flow remains dominated by A28 (about 96 in 100, versus 99.5 earlier) [REL001, REL005, DIR002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the segment between A26 and A28 has an alternative routing: in about half the traces the original path A26 → A27 → A28 is taken, while in the other half A27 is skipped and A26 is followed by A32, A33 and A38 — which run together in varying order — before A28. This placement is shown directly by relational and distance evidence (A26 before each new activity, each new activity before A28, A27 mutually exclusive with them, and the A26-to-A28 distance stretching from 2 to 4 steps), and it is consistent across the occurrence, routing, position and relation indicators [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001, REL001, REL006, REL009].\n\nWith 27 qualifying items against roughly 0.57 expected for an unchanged process, the volume of differences is far beyond what random re-splits of these windows produce, and the changes rest on large supports (about 98–99 traces per new activity, 200 per relation) [OCC002, DIR001, REL002]. Limitations remain: the earlier-window absence of A32, A33 and A38 rests on zero observations, and zero participation only means the activities were not observed, so a rare variant surfacing between windows cannot be excluded by a single indicator — though the coherent structure across all indicators makes plain sampling variation unlikely. In addition, the varying internal order of the three new activities means the evidence cannot establish whether they follow a fixed sequence or an unordered grouping, and the roughly 50/50 split between the two paths is a sample estimate that may differ from the underlying shares [REL012, REL013, REL014, OCC001].",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

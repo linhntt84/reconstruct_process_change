@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_cb094c7321bbcbe9.json",
+  "evidence_sha256": "4c19d30bc6385acfa25226e3eb310d392cd2b63f15ac22a5a632526ea5224a6a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:51:33.297962+00:00",
+  "finished_at_utc": "2026-11-15T13:52:23.922762+00:00",
+  "latency_seconds": 50.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6807,
+    "prompt_tokens": 3503,
+    "total_tokens": 10310,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6214,
+      "text_tokens": 593
+    },
+    "cost": 0.00392895
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25062,
+  "text": "### Observed differences\n\n- In the earlier window, A04 was executed exactly once in every trace — it appeared in 200 of 200 traces, with a mean of 1.0 occurrence per trace. In the later window, A04 was not observed at all (0 of 200 traces). [OCC001, POS002]\n- In the earlier window, A04 always occupied the final event position (1.0 in every trace), while A02 sat at position 0.8 with no spread; in the later window, A02 occupies the final position (1.0 in every trace). [POS001, POS002]\n- In the earlier window, every observed outgoing transition of A02 led to A04; in the later window, no outgoing transition from A02 was observed at all, even though A02 itself still occurs in every trace. [DIR001, POS001]\n- The A02–A04 relationship changed from always co-occurring in a fixed order (both activities in the same trace, A02 before A04, in 100% of traces) to never co-occurring: in the later window, A02 appears without A04 in 100% of traces. [REL001]\n\nAll five items show differences larger than in about 199 of 200 random re-splits of the pooled traces, but they describe one underlying change at the end of the process rather than independent differences. [OCC001, DIR001, POS001, POS002, REL001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the closing sequence A02 → A04 was dropped: A04, which was previously executed once in every case, is no longer observed, and A02 — which previously always led into A04 — now ends the trace with no observed successor. Before, the tail of every trace read A02 then A04; afterwards it ends at A02. [OCC001, DIR001, REL001, POS001, POS002]\n\nThe change is shown directly by relational and routing evidence — co-occurrence of A02 and A04 fell from 100% to 0% while A02-only traces rose from 0% to 100%, and the A02→A04 transition disappeared — with the participation and positional items consistent with the same story rather than independent confirmations. [REL001, DIR001, OCC001, POS001]\n\nA competing explanation the evidence cannot fully rule out is that A04 still occurs but has become rare enough that 200 later traces missed it; zero participation strictly means only \"not observed\". Likewise, the empty outgoing profile for A02 shows that no successor was observed rather than proving A02 is terminal, although its constant final position in every later trace supports that reading. [OCC001, DIR001, POS001]\n\nOther differences: none — all items reflect this single change at the end of the process. [OCC001, DIR001, POS001, POS002, REL001]",
+  "case_id": "case_cb094c7321bbcbe9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

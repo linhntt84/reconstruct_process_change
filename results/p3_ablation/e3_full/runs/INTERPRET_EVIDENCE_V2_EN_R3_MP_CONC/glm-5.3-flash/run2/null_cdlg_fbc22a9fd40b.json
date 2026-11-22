@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_fbc22a9fd40b.json",
+  "evidence_sha256": "977678f47e50b86866081ca67f641e0654cbba70570765e550182caa86e5651d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:07:20.336397+00:00",
+  "finished_at_utc": "2026-11-16T03:11:47.044550+00:00",
+  "latency_seconds": 266.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 40360,
+    "prompt_tokens": 93796,
+    "total_tokens": 134156,
+    "completion_tokens_details": {
+      "reasoning_tokens": 38038,
+      "text_tokens": 2322
+    },
+    "cost": 0.0342494
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 137072,
+  "text": "### Observed differences\n\n- In the later window, every monitored activity occurs fewer times per trace. A08 drops from about 7.8 to 6.9 occurrences per trace (about 12% fewer), A11 from about 4.0 to 3.4 (about 15% fewer), the group A01/A09/A10/A12/A13 from about 3.9 to 3.5 (about 9% fewer), and A03, A05 and A06 by about 0.1–0.3 occurrences. Recurrence support barely moves (for A01, about 75% of traces before and 73% after), so the activities still recur — they simply repeat fewer times. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- Participation is nearly unchanged: A01, A06, A08, A09, A10, A12 and A13 still appear in every trace, A04 and A07 keep a constant once-per-trace volume (200 outgoing transitions in both windows), and A02 still follows A04 in essentially every trace. Only the optional activities participate less often: A03 in about 47 in 100 traces (from 52), A05 in about 65 (from 69), A11 in about 78 (from 82). [OCC002, OCC003, OCC008, DIR003, DIR006, LAG020]\n- Matching the occurrence drops, the observed transition volume behind every routing profile fell by about 5–14% for the recurring activities (A08: about 1570→1380; A01/A09/A10/A12/A13: 775→702; A05: 386→333; A11: 794→679), while A04 and A07 stayed at 200. [DIR001, DIR004, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012]\n- After A03, continuations concentrate on A01: about 88 in 100 of A03's outgoing transitions go to A01, up from about 73, while continuations to A10, A09 and A08 become rarer; A03 is immediately followed by A01 in about 49 in 100 of their observed successions, up from about 40. [DIR002, LAG013]\n- The two alternative orders between A04 and A07 swap in frequency: before, A07 preceded A04 in about 55 in 100 traces; in the later window, A04 precedes A07 in about 53 in 100. Accordingly, from A04 the direct move to A02 falls from about 55% to 47% of outgoing transitions, and from A07 the direct move to A02 rises from about 46% to 53%. [REL034, DIR003, DIR006, LAG020, LAG029, LAG030, LAG036]\n- Relative positions and pairwise gaps shift only slightly (a few percent of trace position, e.g., A06 followed by A01 within two steps in about 49 in 100 pairs, from 40), consistent with slightly shorter traces rather than relocated activities. [POS001, POS003, POS007, POS009, LAG028, LAG033, LAG061]\n\n### Inference\n\nSupport level: Weak hypothesis\n\nThe evidence suggests that the activities which recur within a case are executed fewer times per case in the later window: all ten monitored activities (A01, A03, A05, A06, A08, A09, A10, A11, A12, A13) show fewer occurrences per trace — most strongly A08 (about 7.8→6.9) and A11 (about 4.0→3.4) — while once-per-case activities (A02, A04, A07) keep their volume, and the optional A03, A05 and A11 are skipped slightly more often. The supporting signs are the uniform direction of all ten occurrence indicators, the 5–14% drop in transition volume behind every routing profile, and the decrease being largest for the most frequently recurring activities. What is missing: each individual difference is of a size that random re-splits of an unchanged process produce in roughly 16–42 of 100 cases, and no screening baseline is provided, so a chance difference in case mix — the later window containing more short, low-repetition cases — cannot be clearly ruled out. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, DIR003, DIR006, LAG020]\n\nOther differences:\n\n- After A03, control flows directly to A01 much more often (about 88 in 100 outgoing transitions, up from 73; immediate succession in about 49 in 100 pairs, up from 40) — the most distinctive single shift, with differences this large arising in only about 1 in 100 random re-splits; it may be a by-product of the same case-mix shift rather than an independent routing change. [DIR002, LAG013]\n- The alternative orders between A04 and A07 swapped in frequency (about 7–8 in 100 traces), with matching handover shifts towards A02; all involved activities still run in every trace, so existing orders are taken with different frequencies, but a shift of this size is also reached by about 16 in 100 random re-splits. [REL034, DIR003, DIR006, LAG020, LAG029, LAG030, LAG036]\n- Several handover shares between the recurring activities moved by a few points (from A09 more continuations to A10 and fewer to A08; from A10 more to A08 and fewer to A01), and some pairwise gaps lengthened (A10 to A01 at a distance of five steps: about 15%→26%). [DIR008, DIR009, LAG061]",
+  "case_id": "null_cdlg_fbc22a9fd40b",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "weak hypothesis"
+}

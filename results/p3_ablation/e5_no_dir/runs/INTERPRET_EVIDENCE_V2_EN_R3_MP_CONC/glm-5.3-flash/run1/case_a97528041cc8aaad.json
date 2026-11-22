@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_a97528041cc8aaad.json",
+  "evidence_sha256": "ff14dae8be656d0545cf90bc3b4ab55b6507d8ef8b2eaefaef2cf57ca89b694d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:08:44.304624+00:00",
+  "finished_at_utc": "2026-11-14T12:11:45.239323+00:00",
+  "latency_seconds": 180.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 30315,
+    "prompt_tokens": 32344,
+    "total_tokens": 62659,
+    "completion_tokens_details": {
+      "reasoning_tokens": 28357,
+      "text_tokens": 1958
+    },
+    "cost": 0.020009100000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 93212,
+  "text": "### Observed differences\n\n- **Two groups of activities exchanged their relative order.** In the earlier window, A20, A22 and A23 ran before A25 and A29, which in turn ran before A19, A21 and A24: A20 preceded A25 in about 99 in 100 traces, and A25 preceded A19 in about 31 in 100. In the later window this is inverted: A19, A21 and A24 run first (A19 before A20 in about 43 in 100; A21 before A22 in about 28 in 100), A25 and A29 remain in between, and A20, A22 and A23 run last (A25 before A20 in about 98 in 100). All 21 tested pairs between the groups flipped in the same direction, with the earlier dominant order shrinking to roughly 0–3 in 100. [REL015–REL035]\n\n- **Positions within the case shifted accordingly.** A20, A22 and A23 moved from a mean relative position of about 0.40 to about 0.64–0.65, while A19 (0.69→0.36), A21 (0.67→0.38) and A24 (0.68→0.37) moved earlier; A25 (0.46→0.39) and A29 (0.65→0.58) shifted only slightly and stayed between the groups. A20, A22, A23, A25 and A29 occurred in every trace in both windows; A19, A21 and A24 in about 28–44 in 100. [POS002–POS009]\n\n- **Close successions flipped with the order.** In the later window, A21 and A24 typically reach A25 within one step (57 and 56 observations), and A40 typically immediately precedes A19, A21 and A24 (56–87 observations); earlier, A40 reached A25 only after about four steps (about 82 in 100). The former close successions A22→A25 and A23→A25, previously seen within five steps in essentially all 200 traces, are now almost unobserved, while A29 now precedes A22 within one to four steps in essentially all 200 traces; the A29→A30 distance grew from about two to about four steps. [LAG013, LAG014, LAG015, LAG016, LAG018, LAG019, LAG021, LAG022, LAG024, LAG025]\n\n- **A02 became a frequent, early activity.** It appeared in 15 in 100 traces before (30 of 200) versus about 65 in 100 after (129 of 200); mean occurrences per trace rose from 0.17 to 0.69 and its mean relative position fell from 0.53 to about 0.20. A14 now usually co-occurs with A02 (about 65 vs 15 in 100) and typically immediately precedes it (lag 1 in about 98 in 100 of 121 observations); A02 in turn precedes A15 (often within one step) and A40 (within about four steps), precedes A20, A22, A23, A25, A29, A30, A45 and A46 in about 57–60 in 100 cases each, and co-occurs far more often with A19, A21 and A24 (about 17–27 vs 5–7 in 100). [OCC001, POS001, REL001–REL014, LAG001, LAG004, LAG005]\n\n- **A06 and A10 became rare.** A06 fell from about 22 in 100 traces (43 of 200) to 5 in 100 (10 of 200); A10 from about 17 in 100 (33 of 200) to 6 in 100 (12 of 200). [OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the execution order between two groups of activities is reversed relative to the earlier window: A19, A21 and A24 — previously running after A25/A29 and after A20/A22/A23 — now run before them, while A20, A22 and A23 — previously first — now run last, with A25 and A29 between the groups in both windows. This rests on direct relational evidence (all 21 tested pairs between the groups flipped consistently) and is corroborated by the positional shifts and by flipped close successions such as A21/A24→A25 and A29→A22. Because A20, A22, A23, A25 and A29 occur in all traces in both windows and A19/A21/A24 in a substantial minority, this is a reordering of existing behaviour rather than a replacement of one path by another; the flagged items also number about 95 times the chance expectation for an unchanged process. [REL015–REL035, POS002–POS009, LAG013, LAG014, LAG015, LAG016, LAG018]\n\nLimitations: the evidence cannot distinguish a changed ordering constraint within individual cases from a changed mix of process variants in which each group order dominates one window; the mutual order of A25 versus A29 is not directly tested (positions suggest A25 first in both windows), and the pairs involving A21 and A24 rest on roughly 55–80 joint occurrences per window. [REL020, REL024, POS008, POS009]\n\nOther differences: A02 became a frequent early step — from 15 to about 65 in 100 traces, mean relative position 0.53→0.20 — usually immediately after A14 and preceding A15 and most of the reordered activities; A06 and A10 became rare (about 22→5 and 17→6 in 100 traces). These participation changes are not part of the ordering hypothesis above. [OCC001, POS001, REL001–REL014, LAG001, LAG005, OCC002, OCC003]",
+  "case_id": "case_a97528041cc8aaad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_1ed70f47ec8b0ce2.json",
+  "evidence_sha256": "1833aff35d44457b2e1f79ea72f994e51cb0336c47db4ff6990165957d3d69af",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:21:42.775147+00:00",
+  "finished_at_utc": "2026-11-15T02:23:36.372471+00:00",
+  "latency_seconds": 113.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16617,
+    "prompt_tokens": 17775,
+    "total_tokens": 34392,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14955,
+      "text_tokens": 1662
+    },
+    "cost": 0.01097475
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47253,
+  "text": "### Observed differences\n\n- Participation is essentially unchanged. A15, A17, A18, A20 and A24 occur in every trace in both windows, and A35 likewise; each of A14, A16, A19 occurs in roughly 30–35 in 100 traces in both windows, and together the three sum to exactly 200 of 200 traces before (60+69+71) and after (65+58+77), i.e. exactly one of the three per case throughout. No activity was added, removed or became optional [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, DIR001, DIR003, DIR006, DIR008, LAG002].\n\n- The relative order of two groups of activities reversed completely. In the earlier window, A20 came before A15, A17 and A18 in 100 in 100 of their joint occurrences, and A24 also came before them in 100 in 100; A14, A16 and A19 came before A20 and before A24 in essentially all traces where they co-occur (about 30–35 in 100 traces). In the later window every one of these relations is flipped: A15, A17 and A18 come before A20 and A24 in 100 in 100, and A20 and A24 come before A14, A16 and A19. Cross-pairs between the two groups reversed as well (e.g. A14 before A15 in 30 in 100 traces before; A15 before A14 in 32.5 in 100 after) [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021].\n\n- The successor sets of the two anchor activities swapped wholesale. A24 led to A15 (about 37 in 100 of its outgoing transitions), A18 (33) and A17 (30) before, and now leads to A19 (38.5), A16 (29) and A14 (32.5); A35 led to A16 (34.5), A19 (35.5) and A14 (30) before, and now leads to A17 (36), A15 (33) and A18 (31). A14, A16 and A19 led exclusively to A20 before and lead exclusively to A25 after; A15, A17 and A18 previously exited to A25 (about 30–37 each, alongside transitions among themselves) and now exit to A20 (about 28–37 each), with transitions within the group preserved [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008].\n\n- Event positions moved by about a third of the case length in opposite directions: A14, A16 and A19 shifted from a mean position of about 0.34 to about 0.67, while A15, A17 and A18 shifted from about 0.64 to about 0.38; A20 (0.38 → 0.44) and A24 (0.57 → 0.64) shifted slightly later [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008].\n\n- Step distances between the anchors changed exactly in line with the segment sizes: the gap from A24 to A25 was 4 steps in 100 in 100 cases before and is 2 steps after; the gap from A35 to A20 was 2 steps before and is 4 steps after [LAG001, LAG002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports that two segments of the process exchanged their places between the anchors A35/A20 and A24/A25. In the earlier window, a case ran A35 → one of {A14, A16, A19} → A20 → … → A24 → the three-step block {A15, A17, A18} (executed in varying internal order) → A25. In the later window, it runs A35 → the block {A15, A17, A18} → A20 → … → A24 → one of {A14, A16, A19} → A25. In other words, the three-step block moved from after A24 to before A20, and the single-step choice among A14, A16 and A19 moved from before A20 to after A24 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL001, REL008, REL009, REL015, REL016, REL018, REL019, REL020, REL021, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002].\n\nThis is supported directly and consistently: 39 control-flow items qualified against roughly 0.46 expected for an unchanged process, so the ensemble cannot be a sampling artefact; the order relations flip completely (100 in 100 before to 100 in 100 after) rather than partially; the successor sets at A24 and A35 swap as a whole; the position shifts match the order reversals; and the gap changes (4↔2 and 2↔4 steps) match the exchanged segment lengths of three versus one activity. Unchanged participation shares rule out addition, removal or a shift in how often a branch is taken — this is a change in placement, not in path frequencies [DIR007, DIR008, REL008, REL009, REL015, REL016, REL018, REL019, POS001, POS003, POS006, LAG001, LAG002].\n\nLimitations: the positional indicators use event positions, not clock time, so the claim concerns order within the case, not timing; the evidence covers only the listed activities, so changes to unobserved activities between A20 and A24 cannot be excluded; and the many relation items re-describe one underlying restructuring from different activity pairs rather than constituting independent confirmations. A competing reading the evidence cannot separate is that the routing at A24 and A35 was re-wired to the other group of activities rather than the segments themselves being moved — the two descriptions are observationally identical here [REL001, REL006, REL010, LAG001, LAG002].\n\nOther differences: only minor shifts in which of A14, A16 and A19 is chosen in the single-step branch (A16 down from about 34.5 to 29 in 100 traces, A19 up from about 35.5 to 38.5, A14 up from 30 to 32.5), which are small enough to be consistent with sampling variation between the two windows [POS001, POS003, POS006, DIR007].",
+  "case_id": "case_1ed70f47ec8b0ce2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

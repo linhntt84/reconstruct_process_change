@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_b8164526e50ae952.json",
+  "evidence_sha256": "c9b38b8f8b236ba64a1dd17eedd05bb34d386ffd3c15e782c65823cb803c645f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:56:08.508723+00:00",
+  "finished_at_utc": "2026-11-15T01:56:44.339319+00:00",
+  "latency_seconds": 35.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5055,
+    "prompt_tokens": 3022,
+    "total_tokens": 8077,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4458,
+      "text_tokens": 597
+    },
+    "cost": 0.0029808
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 18266,
+  "text": "### Observed differences\n\n- The elapsed time between the consecutive completions of A27 and A33 roughly halved: in the earlier window these gaps averaged about 0.88 hours (median 0.87, middle half 0.78–0.96 h), while in the later window they averaged about 0.47 hours (median 0.48, middle half 0.42–0.53 h) — a reduction of about 0.41 hours, with the intervals also becoming more uniform (spread 0.11 → 0.07 h). The pair was observed as consecutive completions 35 times before and 54 times after (200 traces per window, i.e. about 18 vs 27 in 100 traces). The difference exceeded those seen in about 999 of 1,000 random re-splits of the pooled data. [TWAIT001]\n- The elapsed time between the consecutive completions of A34 and A33 also shortened: about 0.20 hours on average before (median 0.15, widely spread, 0.15 h std) versus about 0.08 hours after (median 0.07, much tighter, 0.06 h std) — about 0.12 hours shorter and more consistent. The pair's frequency was similar in both windows (54 vs 48 observations), and the difference again exceeded those in about 999 of 1,000 random re-splits. [TWAIT002]\n- Both qualifying items concern gaps that end at A33; no other behaviour reached the configured thresholds. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing hypothesis: in the later window, A33 is completed sooner after the preceding completions of A27 and A34 — the A27→A33 gap fell from about 0.88 to about 0.47 hours and the A34→A33 gap from about 0.20 to about 0.08 hours, with both distributions also becoming tighter. Two time items qualified where only about 0.02 would be expected if nothing had changed, both point in the same direction toward the same activity, and both differences are larger than in essentially all 2,000 reference re-splits, while no control-flow item qualified (0 against about 0.28 expected). The main limitation is that these figures measure elapsed time between consecutive completion events, so the evidence cannot distinguish shorter idle time from faster handling or a changed set of intervening steps; moreover, both items share A33 and may reflect a single underlying difference, and the increased frequency of the A27→A33 consecutive pair (about 18 to 27 in 100 traces) could indicate a structural shift that the control-flow screening did not detect. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_b8164526e50ae952",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

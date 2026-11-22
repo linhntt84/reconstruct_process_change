@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "08b295764147d8aebe18bdb251c1a10e2087929514df0e91373c15eb77b96fb6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:52:32.843026+00:00",
+  "finished_at_utc": "2026-11-14T11:54:07.021616+00:00",
+  "latency_seconds": 94.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13338,
+    "prompt_tokens": 15799,
+    "total_tokens": 29137,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12109,
+      "text_tokens": 1229
+    },
+    "cost": 0.00903885
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43281,
+  "text": "### Observed differences\n\n- The execution order between two groups of activities is reversed in the later window. Earlier, A15, A17 and A18 (each present in every trace) sat early, at about 39% of the trace's length, while A14, A16 and A19 (present in roughly 28–44 of 100 traces) sat late, at about 68–69%. In the later window, A14, A16 and A19 sit at about 34–35% and A15, A17 and A18 at about 64% [POS001, POS002, POS003, POS004, POS005, POS006].\n- Every one of the 21 pairwise relations spanning these groups flipped from one fixed order to the opposite fixed order. For example, A15 preceded A20 in 100% of traces earlier and followed it in 100% later; A14 followed A15, A17, A18, A20 and A24 in every co-occurrence earlier (about 31 in 100 traces) and preceded all of them in every co-occurrence later (about 43 in 100); A16 and A19 likewise switched from running after A17, A18, A20 and A24 to running before them [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021].\n- A20 and A24 kept their place between the two groups: A20 shifted from about 46% to about 38% of the trace and A24 from about 65% to about 57%, still with A20 before A24 in both windows [POS007, POS008].\n- Spacing around this stable middle changed: A25 now follows A24 after 4 positions instead of 2, and A20 now follows A35 after 2 positions instead of 4, each consistently across all 200 traces per window [LAG001, LAG002].\n- Participation also shifted: A14 appeared in about 31 of 100 traces earlier versus about 43–44 later (62 vs 87 of 200 traces), while A16 fell from about 37–38 to about 28–29 (75 vs 57) and A19 from about 31–32 to 28 (63 vs 56) [OCC001, POS003, POS006].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA specific ordering hypothesis is supported: in the later window, A14, A16 and A19, which previously executed after A20 and A24 near the end of the trace, now execute before A20 near the start, while A15, A17 and A18 moved from before A20 to after A24, leaving A20 and A24 between the two groups. The relational evidence shows this directly — all 21 cross-group pairs reversed from a fixed order to the opposite fixed order (for example, A15 before A20 in 200 of 200 earlier traces versus A20 before A15 in 200 of 200 later traces) — and the positional shifts of all six activities plus the changed gaps around A24 and A20 are consistent with the same reordering [REL001, REL008, POS001, POS002, POS007, POS008, LAG001, LAG002]. The volume of evidence also far exceeds what an unchanged process produces: 32 qualifying items against roughly 0.32 expected by chance for 64 tested units, with each item's difference exceeding about 995 of 1,000 random re-splits; note, however, that the many pair items describe one underlying reordering rather than independent confirmations [OCC001, POS002, REL008, LAG001].\n\nLimitations: positions are event positions, not clock times, so no claim is made about wall-clock timing; the evidence shows the reversal itself but cannot distinguish a relocation of one block from a broader rebuild of the sequence around A20 and A24, and with no direct-successor evidence the immediate edges remain unobserved. An important competing explanation the evidence cannot rule out is a shift in the mix of trace variants (one ordering dominating earlier, the other later) rather than a reordering within unchanged traces [REL008, REL015].\n\nOther differences: the participation shifts — A14 up from about 31 to about 43 in 100 traces, A16 down from about 37–38 to about 28–29, A19 down from about 31–32 to 28 — are separate from the ordering hypothesis and modest enough that sampling could contribute to them [OCC001, POS003, POS006].",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

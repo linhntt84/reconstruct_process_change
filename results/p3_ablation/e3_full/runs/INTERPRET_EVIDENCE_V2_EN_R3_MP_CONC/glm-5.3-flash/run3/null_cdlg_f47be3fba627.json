@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_f47be3fba627.json",
+  "evidence_sha256": "2651c5c9190babb02cfcc019b1065802ef9e73ceb52da2ffe6fd920c32bf7f8c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T04:11:57.421859+00:00",
+  "finished_at_utc": "2026-11-16T04:22:21.767004+00:00",
+  "latency_seconds": 624.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 79734,
+    "prompt_tokens": 70557,
+    "total_tokens": 150291,
+    "completion_tokens_details": {
+      "reasoning_tokens": 75514,
+      "text_tokens": 4220
+    },
+    "cost": 0.05045055
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 210097,
+  "text": "### Observed differences\n\n- Participation and repetition are essentially unchanged: each activity keeps roughly its earlier share of traces (A01 about 51 vs 50 in 100 traces, A03 49 vs 50, A05 23 vs 24, A09 49 vs 50, A10 26 vs 27, A11 51 vs 50), and no activity repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The coarse structure is also unchanged: A04, A06, A07 and A08 still occur in every trace in the same dominant order (A06 before A04 in about 91 vs 90 in 100 traces, A06 before A08 in 99 vs 96), and A01/A09, A03/A11 and A05/A10 remain mutually exclusive pairs in both windows. [REL025, REL038, REL008, REL023, REL035]\n- In the later window, A09 happens later inside its traces: its median relative position moved from about 0.29 to about 0.43 (mean 0.31 to 0.37), roughly one event position later, while its participation stayed at about half of the traces. [POS008, OCC004]\n- The ordering between A09 and the surrounding mid-process activities shifted toward \"other activity first\": A07 preceded A09 in about 31 vs 37 in 100 traces, A08 before A09 10 vs 15, A11 before A09 9 vs 13, A10 before A09 5 vs 8, A05 before A09 4 vs 7 and A03 before A09 8 vs 9; conversely, A09 preceded A08, A10, A03, A05 and A11 less often (each down about 2–4 in 100 traces). [REL043, REL046, REL050, REL049, REL034, REL021]\n- Distances moved the same way: A06 was immediately followed by A09 in about 38 vs 23 in 100 such runs; A09 reached A02 mostly five steps apart earlier versus three to four steps later; A09 reached A04 immediately in about 11 vs 20 in 100 runs and A05 immediately in about 40 vs 53; A09 reached A08 within four to five steps in about 56 vs 40 in 100 runs. [LAG037, LAG058, LAG060, LAG061, LAG064]\n- Outgoing transitions were redistributed accordingly: A04 now receives about 20 in 100 of A09's outgoing transitions (vs 11) and A05 about 18 (vs 15), while A10 receives about 21 (vs 29); A05 reaches A09 directly in about 19 vs 4 in 100 of its transitions, and A10 reaches A04 directly in only about 53 vs 73 (with more transitions to A09, A06 and A11). [DIR008, DIR004, DIR009]\n- Smaller separate shifts: A05's median position moved earlier (about 0.57 vs 0.43) and A10's later (0.43 vs 0.57); A06 was immediately followed by A07 in about 52 vs 59 in 100 runs; A04 preceded A08 in about 63 vs 59 in 100 traces; and A08's distances to A02, A04 and A05 increased (e.g., A08 immediately followed by A02 in about 62 vs 56 in 100 runs). [POS004, POS009, LAG035, REL027, LAG051, LAG052, LAG053]\n\n### Inference\n\nSupport level: Weak hypothesis\n\nIn the later window, A09 tends to be executed at a later position within its traces (median relative position about 0.29 to 0.43, roughly one event later) without occurring more or less often (about 49 vs 50 in 100 traces); consequently the activities around it — A03, A05, A07, A08, A10 and A11 — more often precede it, A09 runs closer to A02, A04, A05 and A08, and A05 and A10 reach A09 directly more often while reaching A04 directly less often. [POS008, OCC004, REL021, REL034, REL043, REL046, REL049, REL050, LAG037, LAG058, LAG060, LAG061, LAG064, DIR004, DIR008, DIR009]\n\nThe supporting signs are a directly observed positional change that is unusual for random re-splits (strength about 0.96), six ordering relations involving A09 that all moved in the same direction, and lag and transition changes that agree with it. What is missing: the evidence contains no screening baseline, so the number of qualifying items cannot be compared with the count an unchanged process would produce; the per-relation shifts are only a few percentage points; three lag relations around A09 (to A03, A10 and A11) do not follow the pattern; and positions measure event order, not clock time, so nothing can be said about actual timing. [POS008, LAG059, LAG065, LAG066]\n\nThe main competing explanation is ordinary sampling variation between the two 200-trace windows: many activity pairs were tested, several qualifying items rest on very few observations (some lag profiles on fewer than about 15 runs), and without a chance baseline such a cluster of small same-direction differences cannot be separated from noise. [LAG012, LAG026, LAG070]\n\nOther differences: A05's median position moved earlier (about 0.57 to 0.43) and A10's later (about 0.43 to 0.57), with A11's slightly earlier; A06 became more tightly coupled to A07; the A04-before-A08 order became slightly less fixed (about 63 vs 59 in 100 traces, with the reverse order appearing in about 1 vs 4); and A08's distances to A02, A04 and A05 increased. These shifts are not explained by the A09 hypothesis. [POS004, POS009, POS010, LAG035, REL027, REL038, LAG051, LAG052, LAG053]",
+  "case_id": "null_cdlg_f47be3fba627",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "weak hypothesis"
+}

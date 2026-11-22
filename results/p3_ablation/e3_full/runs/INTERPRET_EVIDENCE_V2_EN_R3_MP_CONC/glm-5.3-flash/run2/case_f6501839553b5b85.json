@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f6501839553b5b85.json",
+  "evidence_sha256": "7381c7714e133888c97cb3b8b9682b5d660c1564e848a0802818fe315a9adb23",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:05:18.300486+00:00",
+  "finished_at_utc": "2026-11-16T02:09:25.041246+00:00",
+  "latency_seconds": 246.74,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28281,
+    "prompt_tokens": 70632,
+    "total_tokens": 98913,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26711,
+      "text_tokens": 1570
+    },
+    "cost": 0.024735299999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 87957,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces). In the later window it runs in about 30 in 100 traces (59 of 200), about 0.66 times per trace, typically around 40% of the way through the trace. [OCC001, POS001]\n- The handover out of A12 changed completely: in the earlier window A12's outgoing transitions went to A04 (about 52 in 100) and A13 (about 48 in 100); in the later window all 131 observed outgoing transitions of A12 go to A01, and A12 no longer reaches A04 or A13 in one step. [DIR007, LAG050]\n- A01's outgoing transitions go to A04 (about 53 in 100) and A13 (about 47 in 100) — almost exactly the split A12 showed before — so the routing choice formerly made at A12 is now made one step later, at A01. [DIR001]\n- In the later window A01 never occurs without A12 and A07: the three co-occur in exactly the 29.5% of traces where A01 runs, whereas in the earlier window A07 and A12 ran together in about 33 in 100 traces, always without A01. A01 also co-occurs with the activities present in every trace (A02, A03, A05, A06, A11) in exactly that same 29.5% of traces. [REL011, REL006, REL001]\n- Paths out of the A12/A07 segment became one step longer: A12 to A04 and A12 to A13 moved from typically 1–2 steps to 2–3 steps, A07 to A04/A13 from 2–3 to 3–4 steps, A07/A12 to A08/A09 from about 4–5 to 5 steps, and the repeat distances A07→A07 and A12→A12 from about 4 to about 5 steps. [LAG050, LAG055, LAG023, LAG025, LAG024, LAG054]\n- The repeating segment also ran somewhat less: A04 and A13 averaged 1.53 vs 1.84 occurrences per trace (participation steady at about 50 in 100 traces), A07 and A12 averaged 0.66 vs 0.88 (participation 29.5 vs 32.5 in 100), and A10 ran in 46 vs 52 in 100 traces. [OCC004, OCC005, OCC009, OCC010, POS010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a step, A01, was added between A12 and its successors A04 and A13, on the segment that A12 executes together with A07. In the earlier window the segment ran A12 directly into A04 or A13 (52/48); in the later window every observed A12 execution is followed by A01, which then routes to A04 or A13 with nearly the same split, while A01 runs only in traces that also run A12 and A07, at a mid-trace position. The successor change is observed directly at both endpoints, and the occurrence, co-occurrence, position and distance items all describe this one underlying shift rather than independent findings. [DIR007, DIR001, OCC001, REL011, POS001, LAG050]\n\nLimitations: the evidence contains no screening baseline, so the number of qualifying items cannot be compared with what an unchanged process would produce; and with two finite samples it cannot be excluded that A01 existed before but was simply not exercised, rather than being genuinely added — although a previously unseen activity with 131 occurrences that captures all of A12's outgoing traffic is hard to explain as sampling noise. [OCC001, DIR007]\n\nOther differences: the repeating part of the process ran somewhat less in the later window — A04 and A13 averaged 1.53 vs 1.84 occurrences per trace, A07 and A12 averaged 0.66 vs 0.88, and A10's trace participation fell from 52 to 46 in 100. The added step does not by itself explain these reductions, and they may partly reflect sampling variation. [OCC004, OCC005, OCC009, OCC010, POS010]",
+  "case_id": "case_f6501839553b5b85",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

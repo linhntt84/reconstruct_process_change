@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "4da05b9f9106699cbc5878ca605b4d16e28e7012f60b60b97b2621d9b344bf80",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:28:50.282683+00:00",
+  "finished_at_utc": "2026-11-16T02:30:10.872146+00:00",
+  "latency_seconds": 80.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11947,
+    "prompt_tokens": 16074,
+    "total_tokens": 28021,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10673,
+      "text_tokens": 1274
+    },
+    "cost": 0.008384599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35546,
+  "text": "### Observed differences\n\n- The mandatory mid-process step changed identity. In the earlier window, A05 was executed exactly once in 200 of 200 traces, always at the same mid-trace position (median 0.5, no spread) and always followed by A03; in the later window, A05 appears in 0 of 200 traces. [OCC003, POS003, DIR003]\n- A01 shows the mirror image: it was absent from all 200 earlier traces, and in the later window it is executed exactly once in every trace, at the same mid-trace position (median 0.5, no spread). The pair A01–A05 flips from \"only A05\" in every earlier trace to \"only A01\" in every later trace. [OCC001, POS001, REL004]\n- A01 inherited A05's relations. Earlier, A06 always preceded A05, and A05 always preceded both A03 and A04; later, A06 always precedes A01, and A01 always precedes both A03 and A04. [REL012, REL014, REL016, REL005, REL002, REL003]\n- The incoming branches transferred too. Earlier, about 72% of A02's outgoing transitions went to A05 and about 71% of A07's; later, 75% of A02's go to A01 and 66% of A07's. A06's branch to the mid-trace step stayed at roughly 29% in both windows (to A05 earlier, to A01 later). When the optional activities run, they now precede A01 (in the 50 in 100 traces containing each), just as they preceded A05 earlier. [DIR002, DIR005, DIR004, REL001, REL006, REL009, REL017]\n- Downstream distances are essentially unchanged: A03 follows A02 exactly 2 steps later in about 72% of cases earlier and 75% later, and follows A07 2 steps later in about 71% earlier and 66% later; the shifts are a few percentage points. [LAG001, LAG002, LAG005, LAG006]\n- The rest of the behaviour is stable: A02 (47% to 50% of traces) and A07 (53% to 50%) remain optional early activities, their back-edges to A06 persist (about 28% to 25% and 29% to 34% of their outgoing transitions), A06 keeps the same early position in every trace, and A03 and A04 remain in every trace. [OCC002, OCC004, POS004, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 took over the role previously played by A05: the mandatory mid-process step between the A06/A02/A07 block and A03/A04 was A05 in the earlier window (200 of 200 traces) and is A01 in the later window (200 of 200 traces), with A05 no longer observed and A01 inheriting A05's predecessors (A06, or A02/A07 when they run), its successor (A03, with A01 also before A04) and its exact mid-trace position. The support is direct — participation flips from 0% to 100% and from 100% to 0%, the edge to A03 transfers from A05 to A01, and every co-occurrence and order relation with A02, A03, A04, A06 and A07 transfers accordingly — and about twenty items reach the top empirical strength (differences larger than in roughly 995 of 1,000 random re-splits), although many of them describe the same underlying traces rather than independent confirmations. Limitations: zero participation only shows A05 was not observed in the later sample, and the evidence cannot fully rule out that A05's disappearance and A01's appearance are two independent changes that happen to align, though the exact match of position and relations makes plain coincidence unlikely; the evidence contains no timing or resource items, so nothing can be said about clock-time behaviour or allocation. [OCC001, OCC003, POS001, POS003, DIR001, DIR002, DIR003, DIR004, DIR005, REL002, REL003, REL004, REL005, REL012, REL014, REL016]\n\nOther differences: A02's and A07's participation moved by about 3 percentage points (47% to 50% and 53% to 50%), and A07's lag to A03/A04 shifted by about 4–5 percentage points; all of these have low empirical strength (about 0.32–0.50) and are consistent with sampling variation between two 200-trace windows. [OCC002, OCC004, POS005, LAG005, LAG006]",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

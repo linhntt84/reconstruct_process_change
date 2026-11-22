@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_e52d0b1b850c8d51.json",
+  "evidence_sha256": "8c0688c48c55397d4ba43422d5dcf10b5e9c353592da4cdda4b7fe306b144908",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:06:51.331616+00:00",
+  "finished_at_utc": "2026-11-14T14:09:28.056516+00:00",
+  "latency_seconds": 156.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22824,
+    "prompt_tokens": 85939,
+    "total_tokens": 108763,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20741,
+      "text_tokens": 2083
+    },
+    "cost": 0.024302849999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65786,
+  "text": "### Observed differences\n\n- In the earlier window the fixed sequence A41 → A19 → A25 → A20 → A26 ran in every trace. In the later window, A19, A20 and A25 each appear in only about 53 in 100 traces, and in about 46 in 100 traces none of the three appears at all; when they do run, their order and spacing are unchanged (A19→A25 and A25→A20 one step apart, A20 directly before A26). [OCC018, OCC019, OCC024, REL024, REL025, REL030, LAG021, LAG031, LAG026]\n- A41's outgoing transitions mirror this: before, about 96 in 100 led to A19; in the later window about 47 in 100 lead to A19 and about 39 in 100 lead directly to A26. The A41→A26 distance, previously four steps in about 91 in 100 cases, is now split between about 40 in 100 at one step and about 44 in 100 at four steps — the signature of the intervening block being skipped or executed. [DIR041, LAG041, LAG038]\n- A06 fell from about 71 in 100 traces (mean 0.75 occurrences per trace) to about 26 in 100 (mean 0.33), and when present now sits much later in the trace (median position about 0.16 → 0.30 of the trace, upper quartile about 0.17 → 0.83). Before, A14 led to A06 in about 69 in 100 of its outgoing transitions and A06 led to A15 in about 92 in 100; in the later window A14 leads directly to A15 in about 78 in 100 transitions and to A06 in only about 12 in 100, while A06's outgoing transitions are spread thinly over many different successors. [OCC006, POS001, DIR014, DIR006, REL001, REL002]\n- The typical distance from A14 to A41 shortened by about one position (most commonly five steps in about 71 in 100 earlier traces versus four steps in about 67 in 100 later traces), consistent with A06 rarely sitting between them any more. [LAG011]\n- Several rare activities occur more often: A08 in about 20 in 100 later traces versus about 4 earlier, A10 about 15 versus 5, A04 about 15 versus 5, A02 about 18 versus 9; they appear as new weak outgoing transitions of A44, A46, A40 and A41, and the previously near-exclusive transitions A44→A45 and A46→A47 each lost about 10 points (about 96→86 and 97→87 per 100). [OCC002, OCC004, OCC008, OCC010, DIR044, DIR046, DIR040, DIR041]\n- Smaller, roughly 10-point shifts in branch shares: A35 and A36 each rose from about 42 to 52 in 100 traces while A37 and A38 each fell from about 59 to 49; A43 fell from about 71 to 61 and A24 from about 55 to 47; A43's outgoing share moved toward A46 (about 53→64 in 100) and A42's toward A44 (about 43→50 in 100). [OCC031, OCC032, OCC033, OCC034, OCC039, OCC023, DIR042, DIR043]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, two segments that previously ran in (almost) every case became optional. First, the fixed chain A19 → A25 → A20 between A41 and A26 — executed in every earlier trace — is skipped as a whole in about 46 in 100 later traces: the three activities either all occur (about 53 in 100 traces, with unchanged order and spacing) or are all absent, and A41 then connects directly to A26. Second, A06, which previously ran between A14 and A15 in about 69 in 100 traces, is now observed in only about 26 in 100, later in the trace, making A14 → A15 the dominant direct route. The change is shown directly by the successor profiles of A14 and A41, by the co-occurrence collapse with a large \"neither\" share, and by the newly bimodal A41→A26 distance, and it agrees across the occurrence, direction, relation and position indicators. [OCC006, OCC018, OCC019, OCC024, DIR014, DIR041, REL001, REL024, REL025, REL030, LAG041, POS001]\n\nThe evidence cannot distinguish a change in routing (the segments becoming skippable) from a shift in the mix of case types between the windows, such as a new case variant without these segments; and positions are measured in event order, not clock time, so A06's later placement is not evidence about timing. [POS001, REL024]\n\nOther differences: the rare activities A02, A04, A08 and A10 appear in roughly two to four times as many traces (A08 from about 4 to 20 in 100) with new weak outgoing edges from A44, A46, A40 and A41, but this rests on few observations (for example A08 in 8 traces before versus 40 after) and is a tentative reading; branch shares around A35–A38, A42–A44, A24 and A43 shifted by about 10 points; A14 now occurs slightly later and more variably and A26 slightly earlier. These are not part of the main hypothesis. [OCC002, OCC004, OCC008, OCC010, DIR044, DIR046, DIR040, OCC031, OCC032, OCC033, OCC034, OCC039, OCC023, DIR042, DIR043, POS002, POS007]",
+  "case_id": "case_e52d0b1b850c8d51",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

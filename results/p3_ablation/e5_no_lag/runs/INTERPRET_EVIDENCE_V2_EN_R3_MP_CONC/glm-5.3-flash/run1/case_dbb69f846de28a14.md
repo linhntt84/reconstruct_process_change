@@ -1,0 +1,21 @@
+### Observed differences
+
+- Four activities became intermittent in the later window: A36, A37 and A42 each ran in 100 in 100 traces before but in only about 47–48 in 100 afterwards, and A27 fell from every trace to about 54 in 100. A25, A26, A28 and A31 still appear in every trace in both windows. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS004, POS005]
+- Before, A25 fed a three-activity group: its outgoing transitions split roughly in thirds between A42 (about 34 in 100), A36 (about 32) and A37 (about 30), and each group member then passed on to A28 in roughly 25–35 in 100 of its transitions. In the later window, about 97 in 100 of A25's transitions go straight to A28, so the group no longer sits between them. [DIR001, DIR003, DIR004, DIR005]
+- The group reappears late in the process: A26, which earlier led to A27 in about 99 in 100 of its transitions, now leads to A27 in about 52 in 100 and to A36, A37 or A42 in about 44 in 100 combined; the group in turn now hands over to A31 (about 26–35 in 100 of each member's transitions) instead of to A28 (about 1 in 100 or less). [DIR002, DIR003, DIR004, DIR005]
+- The order around the group flipped: earlier, A36/A37/A42 always preceded A26 (100 in 100 traces) and A28 (about 99 in 100); afterwards, A26 precedes them in about 45–46 in 100 traces and A28 precedes them in about 46 in 100, while the earlier orders have almost disappeared. [REL006, REL007, REL008, REL014, REL015, REL016]
+- A27 and the group became mutually exclusive alternatives: earlier they always shared a trace (co-occurrence 1.0, with the group before A27); afterwards they share one in only about 1 in 100 traces, with A27 alone in about 52–53 in 100 and the group alone in about 47 in 100. Both still precede A31 whenever they run. [REL011, REL012, REL013, REL010, REL017, REL018, REL019]
+- Event positions moved consistently with this: the group's mean position shifted from about 0.40 to about 0.57 of the trace, A28's from about 0.46 to 0.39 and A26's from about 0.60 to 0.54; these are event positions, not clock times. [POS006, POS007, POS008, POS004, POS002]
+- Inside the group nothing changed: A36, A37 and A42 still occur together in the same traces and in either order in similar proportions in both windows. [REL020, REL021, REL022]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the three-activity group A36/A37/A42 — still executed together and in no fixed internal order — now runs in a later part of the process, after A26 and before A31, where it alternates with A27: in the later window roughly half of the cases run the group and not A27, the other half run A27 and not the group, while A25 proceeds directly to A28 and the group hands over to A31 rather than to A28. Before, the same group always ran early, between A25 and A28, alongside a late A27 in every case. [DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, OCC001, OCC002, OCC003, OCC004]
+
+Supporting signs: the successor changes at A25, A26 and the group members are observed directly; the order reversals against A26 and A28, the near-zero co-occurrence with A27, the participation drop and the position shifts all point the same way; and screening produced 39 qualifying items where fewer than 1 would be expected without a change, so the ensemble is unlikely to be a sampling artefact. Many items describe one underlying shift rather than independent confirmations. [DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, OCC001, OCC002, OCC003, OCC004, POS004, POS006, POS007, POS008]
+
+Limitations: the evidence cannot rule out that the later window blends two coexisting case behaviours (cases with the group and cases without it as separate variants) rather than a single within-case routing choice, and it shows only that the group is absent in about half of the later traces, not why. [REL011, REL012, REL013, OCC002, OCC003, OCC004]
+
+Other differences: A25 now sits slightly later in the trace (mean position about 0.34 to 0.37) and A31 slightly earlier (about 0.65 to 0.63), and a few new low-frequency outgoing edges (about 1–2 in 100 transitions each) appear from A25, A36, A37 and A42. [POS001, POS005, DIR001, DIR003, DIR004, DIR005]

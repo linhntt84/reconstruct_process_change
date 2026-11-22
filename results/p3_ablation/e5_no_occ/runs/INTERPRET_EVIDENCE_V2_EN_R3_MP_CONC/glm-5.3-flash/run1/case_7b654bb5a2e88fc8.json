@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_7b654bb5a2e88fc8.json",
+  "evidence_sha256": "cb7e55c82f550747a851c611db80645368a33e2979096c1ee3d51b4cf90a2f1c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:22:40.318994+00:00",
+  "finished_at_utc": "2026-11-14T11:24:36.916575+00:00",
+  "latency_seconds": 116.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16843,
+    "prompt_tokens": 11194,
+    "total_tokens": 28037,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15361,
+      "text_tokens": 1482
+    },
+    "cost": 0.0101006
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49079,
+  "text": "### Observed differences\n\n- **Routing out of A40.** In the earlier window, every observed outgoing transition of A40 went to one of three activities — A14 (about 38%), A15 (about 31%) or A20 (about 32%) — and A40 never led directly to A21. In the later window, A40 leads directly to A21 in all observed transitions, and the three activities no longer follow A40. [DIR001, DIR002, DIR003, DIR006, LAG004]\n\n- **The three activities changed position.** Before, A14, A15 and A20 sat at about 31–33% of the trace (mean event positions 0.31–0.33), before A21 (mean 0.35) and well before A22 (0.58). In the later window they sit at about 59–60%, level with A23 (0.59) and after A22 (0.55). Their participation is essentially unchanged: A14 appears in about 38 in 100 cases before and 31 in 100 after, A15 about 31→33, A20 about 32→37; together they still account for one occurrence per case (supports sum to 200 of 200 traces in both windows). [POS001, POS002, POS003]\n\n- **Order flips with A21 and A22.** Before, each of the three always ran before A21 and before A22 (e.g., A14 before A21 in 38% of cases, never the reverse). In the later window the order is reversed: A21 precedes each of A14, A15 and A20 in about 31–37% of cases (never the reverse), and A22 likewise precedes each of them in about 31–37% of cases. [REL001, REL002, REL004, REL005, REL006, REL007]\n\n- **New surroundings around A23.** Before, A22 led only to A23 and A23 only to A27. In the later window, A22 leads to A23 in about 52% of its outgoing transitions and to one of A14/A15/A20 in about 48%; A23 leads to A27 in about 48% and to one of the three in about 52%; the three themselves now lead to A23 or A27 (roughly 39–61% each) instead of to A21. The moved activities and A23 appear in both orders (A14 before A23 in about 16% of cases, A23 before A14 in about 15%; A20 before A23 about 15%, A23 before A20 about 23%), so there is no fixed order between them. [DIR001, DIR002, DIR003, DIR004, DIR005, REL003, REL008]\n\n- **Step distances.** The gap from A40 to A21 shrank from always 2 steps to always 1 step; the gap from A22 to A27 grew from always 2 steps to always 3 steps; A22→A23 is now 1 step in about 52% of cases and 2 steps in about 48% (previously always 1), and A23→A27 is 1 step in about 48% and 2 steps in about 52% (previously always 1). [LAG001, LAG002, LAG003, LAG004]\n\n- A21, A22 and A23 occur in every case in both windows and shifted only slightly earlier (mean positions about 0.35→0.32, 0.58→0.55, 0.61→0.59). [POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nOne possibility supported by the evidence is that the block of three alternative activities A14, A15 and A20 — exactly one of which executed per case — moved: in the earlier window it ran between A40 and A21, followed by the fixed segment A22→A23→A27; in the later window A40 connects directly to A21, and the block runs after A22 around A23, with A22 handing over to one of the three in about 48 of 100 outgoing transitions, A23 doing so in about 52 of 100, and the block and A23 executing in either order before the segment closes at A27. The change is shown directly and consistently by successor changes at A40, A22, A23 and the three activities, by the order flips with A21 and A22, by the position shift from about 0.31–0.33 to about 0.59–0.60, and by the step-distance changes; 24 items qualified against fewer than 0.3 expected by chance, so the pattern as a whole is not what random re-splits of stable behaviour produce. A competing explanation the evidence cannot rule out is that the block was removed from its old position and separate new occurrences were added after A22 rather than the same steps moved; the data also cannot distinguish a variable-order sequence between the block and A23 from parallel execution, since both orders occur with no recorded interleaving. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\nOther differences: the choice among the three alternatives shifted by a few percentage points (A14 down from about 38% to 31% of cases, A20 up from about 32% to 37%), which may be sampling variation or a small separate routing change; A21, A22 and A23 each shifted slightly earlier in the trace, consistent with the block no longer sitting before A21. [POS001, POS002, POS003, POS004, POS005, POS006]",
+  "case_id": "case_7b654bb5a2e88fc8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

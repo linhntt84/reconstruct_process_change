@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "a838c1906b6c57ee28cfa4e1a72cb11898e06f285a5454f3fc15b0e67c9cdb2e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:01:15.126222+00:00",
+  "finished_at_utc": "2026-11-15T14:02:45.993020+00:00",
+  "latency_seconds": 90.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13505,
+    "prompt_tokens": 13298,
+    "total_tokens": 26803,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12230,
+      "text_tokens": 1275
+    },
+    "cost": 0.0087472
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40092,
+  "text": "### Observed differences\n\n- In the earlier window, A05 ran exactly once in every case (200 of 200 traces, always at the same relative position, halfway through the case sequence); in the later window, A05 is not observed in any case. [OCC003, POS003]\n- In the earlier window, A01 was not observed at all; in the later window, A01 runs exactly once in every case (100% participation) at the same relative mid-sequence position A05 used to occupy (normalized position 0.5 with no spread in both windows). [OCC001, POS001, POS003]\n- The successor relation is preserved: earlier, A05's only observed outgoing transition led to A03 (100% of its outgoing edges); in the later window, A01's only observed outgoing transition leads to A03 (100%), and A01 precedes A03 in every case, just as A05 did. [DIR001, DIR003, REL002, REL010]\n- The predecessors redirected their flow from A05 to A01 with almost unchanged shares: A02's outgoing transitions moved from about 72% to A05 / 28% to A06 to about 75% to A01 / 25% to A06; A07's from about 71% to A05 to about 66% to A01; A06's from about 29% to A05 to about 30% to A01. [DIR002, DIR004, DIR005]\n- The relational pattern mirrors the earlier one: A06 co-occurred with A05 in every case and always preceded it; now A06 co-occurs with A01 in every case and always precedes it. A02 and A07 each precede A01 in about 50 in 100 cases, matching the roughly 47 and 53 in 100 cases in which they used to precede A05. [REL004, REL012, REL001, REL005, REL007, REL013]\n- The rest of the control flow is stable: A06 and A03 still appear in every case in both windows, the choice between the alternatives A02 and A07 shifted only from about 47/53 to 50/50, and the position lags from A02, A06 and A07 to A03 are nearly unchanged. [POS004, REL009, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 has taken over the position in the flow that A05 held before: in the later window A01 executes once per case at exactly the relative position A05 used to occupy, A05 is no longer observed, A01's only observed successor is A03 (previously A05's), and all three former predecessors of A05 — A02, A06 and A07 — now lead to A01 with nearly the same transition shares, while order relations and position lags among the remaining activities are preserved. [OCC001, OCC003, POS001, POS003, DIR001, DIR002, DIR004, DIR005, REL002, REL004, REL010, REL012, LAG001, LAG002]\n\nSupporting signs: 18 of the 31 evidence items reach the maximum empirical strength (about 0.995, meaning larger differences arise in fewer than 1 in 200 random re-splits of unchanged behaviour), and they all describe one coherent substitution across participation, position, direction and relation indicators rather than isolated fluctuations; the remaining items concern shares that stayed essentially flat. [OCC001, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS003, REL001, REL002, REL003, REL004, REL005, REL007, REL010, REL012, REL013]\n\nLimitations: the windows are finite samples, and the evidence cannot distinguish a genuine takeover by a new activity from a relabelling of the same step in the event log, since both would leave identical control-flow signatures; no chance-expectation baseline was included in the evidence, so the judgement rests on the directness and consistency of the items rather than on a count-versus-chance comparison. [OCC001, OCC003, POS001, POS003]\n\nOther differences: the split between the alternatives A02 and A07 moved from about 47/53 to 50/50, and A07's position lag to A03 shifted slightly (about 71% to 66% at distance 2); none of these differences is unusual for random re-splits of an unchanged process (empirical strengths about 0.32–0.50), so they are consistent with sampling variation. [OCC002, OCC004, POS005, LAG003, REL009]",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

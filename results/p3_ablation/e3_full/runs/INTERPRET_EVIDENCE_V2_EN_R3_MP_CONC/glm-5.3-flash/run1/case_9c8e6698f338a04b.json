@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_9c8e6698f338a04b.json",
+  "evidence_sha256": "edc4b1e454992d9ce8d32ead799fda427fa7403e7ad993ed3446e6853bb695b5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:21:51.272484+00:00",
+  "finished_at_utc": "2026-11-16T01:24:39.907785+00:00",
+  "latency_seconds": 168.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21544,
+    "prompt_tokens": 148993,
+    "total_tokens": 170537,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19950,
+      "text_tokens": 1594
+    },
+    "cost": 0.033120949999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67063,
+  "text": "### Observed differences\n\n- **A01 appears.** In the earlier window A01 is never observed; in the later window it occurs exactly once in about 38 in 100 traces (77 of 200), around the middle of the trace (median position about 0.45 of trace length), and its outgoing transitions lead most often to A09 (about 27 in 100), A07 (23) and A12 (19). [OCC001, POS001, DIR001]\n- **A17 disappears.** Earlier, A17 ran in about 52 in 100 traces (105 of 200), nearly four times in each such trace, in the later part of the trace (median position about 0.64), followed by A15 (about 53 in 100 of its outgoing transitions) and A14 (46); in the later window it is not observed at all. [OCC013, POS017, DIR017]\n- **A12 is rerouted.** Earlier, A12's outgoing transitions went to A17 (about 52 in 100) and A16 (47); in the later window they go to A16 (44), A15 (29) and A14 (22), with no transition to A17. [DIR012]\n- **A01 is integrated into the main flow.** It now co-occurs with the activities that run in every trace (A02, A03, A04, A07, A09, A11) in about 38 in 100 traces, and it runs before A13 in about 35 in 100 traces; earlier it never co-occurred with any activity. [REL001, REL012]\n- **A06 and A08 are skipped more often.** A06 now runs in about 31 in 100 traces (previously 52) and A08 in about 30 (previously 46); traces containing neither rose from about 2 in 100 to 40 in 100. [OCC004, OCC005, REL068]\n- **Repetitions ease somewhat.** A12's mean occurrences per trace fell from about 3.7 to 3.2 and A16's from about 1.8 to 1.4; A10 now appears in about 27 in 100 traces instead of 32. [OCC008, OCC012, OCC007]\n- **Gaps between late activities shrink by about one step.** The dominant distance moved from 4 events to 3 for A12→A13, A16→A09 and A15→A14, and from 3 to 2–4 for A09→A15. [LAG127, LAG154, LAG148, LAG091]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the set of executed activities changed: A01 was added as a new optional activity — run once in roughly 38 in 100 later-window traces, placed around the middle of the trace and leading mainly to A09, A07 and A12 — while A17 was removed from execution; it previously ran several times in about half of the traces, typically directly after A12 and before A14 and A15, and A12 now continues to A15 or A14 instead of A17. The support is direct and consistent rather than merely cumulative: occurrence, position and directly-follows profiles all flip for these two activities, the relation pairs containing A01 or A17 each show the matching co-occurrence change, and the successor change at A12 shows the rerouting around the removed activity itself. The limitation is that the two windows are finite samples of 200 traces each, so this establishes a behavioural difference between the windows, not a confirmed or permanent modification, and it cannot show what produced it. [OCC001, OCC013, POS001, POS017, DIR001, DIR012, DIR017, REL001, REL012, REL031]\n\nAn important competing explanation the evidence cannot rule out is that the two windows draw different case mixes — for example a variant without A17 and with A01 becoming dominant — rather than the process itself having changed; the breadth and consistency of the shifts make pure sampling noise implausible, but the design cannot separate a changed process from a changed population of cases. [OCC001, OCC013, DIR012]\n\nOther differences: A06 and A08 are executed in fewer traces and are therefore skipped more often (A06 about 52→31 in 100, A08 about 46→30 in 100, with neither present in 40 in 100 of later-window traces); A12, A16 and A10 repeat or appear somewhat less often; and the shorter gaps between the late activities (A09, A12, A14, A15, A16) look like a by-product of the removals and reduced repetitions rather than an independent reordering. A13's outgoing transitions also shifted from mostly A02 (about 42 in 100) to a mix including A01, A06 and A10, but this rests on only about 19 outgoing transitions per window. [OCC004, OCC005, OCC007, OCC008, OCC012, REL068, LAG127, LAG154, DIR013]",
+  "case_id": "case_9c8e6698f338a04b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

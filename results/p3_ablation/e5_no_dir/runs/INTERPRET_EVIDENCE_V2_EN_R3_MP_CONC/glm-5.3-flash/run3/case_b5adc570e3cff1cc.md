@@ -1,0 +1,19 @@
+### Observed differences
+
+- **Order flip between two groups of activities.** In the earlier window, A21 and A22 always came *before* the optional activities A14, A15 and A20: A21 preceded A14 in all 38 of 100 traces containing both, and A22 preceded A15 in all 32 of 100. In the later window the order is reversed in every co-occurring trace — A14 before A21 in 34 of 100, A15 before A22 in 35 of 100 — and the same complete reversal holds for A20 against A21 and A22 (31–32 of 100). [REL001, REL002, REL003, REL004, REL005, REL006]
+
+- **Position shift confined to A14/A15/A20.** Each of A14, A15 and A20 occurs in roughly a third of traces in both windows (about 38, 32 and 31 in 100 before; about 34, 35 and 32 in 100 after), but its typical position moved from about 60% to about 32% of the way through the trace. A21, A22 and A23 occur in every trace in both windows and drifted only slightly later (medians about 0.31→0.33, 0.57→0.60, 0.61→0.63). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- **Adjacency changes around the shifted step.** A23 now immediately follows A22 in 100 of 100 traces (about 48 before), and A27 immediately follows A23 in 100 of 100 (about 53 before); the distance from A22 to A27 shortened from always 3 steps to always 2, while the distance from A40 to A21 lengthened from always 1 step to always 2. [LAG001, LAG002, LAG003, LAG004]
+
+- **Less repetition of A10 and A11.** Both activities still appear in every trace, but mean occurrences per trace fell from about 1.9 to about 1.6, and the share of traces containing repeats dropped from about 47 to 38 in 100. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Main hypothesis: in the later window, the optional activities A14, A15 and A20 — each occurring in roughly a third of traces — run *before* the mandatory activities A21 and A22, whereas they previously ran *after* them; the step consisting of one of A14/A15/A20 is now executed earlier, between A40 and A21, instead of in the region after A22/A23 and before A27. The order flip is shown directly within traces for all six activity pairs and is categorical (from 100% one order to 100% the other), the large position shift is confined to A14/A15/A20 while A21–A23 stay near their old positions, and the four gap changes match this reading exactly (one step inserted before A21, one removed between A22/A23 and A27). Participation of every involved activity is essentially unchanged, so this is a change in ordering, not in whether the activities run. Chance is also an unlikely account of the evidence set: 18 control-flow items qualified where fewer than one (about 0.23) would be expected without change, and every item's difference exceeded about 995 of 1,000 random re-splits [OCC001, OCC002, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004].
+
+Limitations and competing explanation: order and position evidence cannot establish which side of the relation moved; the reading that A14/A15/A20 moved earlier, rather than the A21–A23 block moving later, rests on the latter's near-static positions (shifts of only about 0.01–0.03) [POS001, POS002, POS003, POS004, POS005, POS006]. A broader restructuring of the segment between A40 and A27 that produces the same order relations without the alternative step itself moving cannot be fully excluded, and whether exactly one of the three alternatives runs per trace is inferred from their supports summing to about 100 in 100 rather than directly observed.
+
+Other differences: A10 and A11 now repeat less often (about 1.9 → 1.6 occurrences per trace; traces with repeats down from about 47 to 38 in 100) while remaining in every trace — a reduction in repetition frequency that is not part of the ordering hypothesis [OCC001, OCC002].

@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A32, A33 and A38 each appeared in about 49 of 100 traces and usually together (any pair of them co-occurred in about 49 of 100 traces); in the later window, each appeared in only 1 of 200 traces. [OCC005, OCC006, OCC007, REL028, REL029, REL030]
+- In the earlier window, a trace contained either A27 or that cluster, essentially never both (A27 co-occurred with each of the three in at most about 0.5 of 100 traces); in the later window, A27 appeared in about 199 of 200 traces while the cluster was absent. [REL022, REL023, REL024, OCC004]
+- Routing out of A26 moved accordingly: A27 received about 50% of A26's outgoing transitions before and about 98% in the later window, while transitions into A32, A33 and A38 (about 48% before) disappeared; the spacing from A26 to A28 consolidated at about 2 steps in 95 of 100 cases, against a roughly even split between 2 and 4 steps before. [DIR006, LAG003]
+- In the later window, A27 co-occurs with A14, A15, A26 and A28 in about 995 of 1,000 traces, follows A14 in about 97 of 100 traces and A26 in about 98 of 100, and precedes A28 in about 96 or 97 of 100. [REL009, REL013, REL017, REL021]
+- A04 dropped from about 68 to about 22 of 100 traces; A14's outgoing flow shifted from mostly A04 (about 63%) to mostly A15 (about 82%), A04's own share of transitions to A15 fell from about 90% to about 48% on a much smaller base, and A04, when present, now sits at a later relative position (mean about 0.21 vs 0.40). [OCC002, DIR004, DIR002, POS001, REL001]
+- Participation rose modestly for A08 (about 5 to 21 of 100 traces) and A02 (about 5 to 15 of 100), with more varied outgoing profiles; A15's dominant successor A16 was largely unchanged (about 98% vs 92% of outgoing transitions). [OCC003, OCC001, DIR003, DIR001, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports, as a possibility rather than a confirmed modification, that in the later window the choice point after A26 is resolved almost exclusively through A27 (A26, then A27, then A28 in most traces) instead of the earlier split between A27 and the A32/A33/A38 cluster, and that the A04 step between A14 and A15 is largely skipped, with A14 leading directly to A15 in most cases. [DIR004, DIR006, REL021, REL022, REL023, REL024]
+
+The pattern is consistent across the occurrence, routing, position, relation and lag indicators, and the main shifts rest on substantial support in both windows (A27: 103 vs 199 traces; A26 outgoing transitions: 201 vs 200; A32/A33/A38: 97–98 vs 1 trace each; A14 outgoing transitions: 201 vs 202); with 62 qualifying items against roughly 0.79 expected without a change, the pattern as a whole is far beyond what an unchanged process typically produces. [OCC004, OCC005, OCC006, OCC007, DIR004, DIR006, REL021, REL022, REL023, REL024]
+
+Limitations: every after-window profile of A32, A33 and A38 (outgoing transitions, positions, pairwise lags) rests on a single trace, so only their near-disappearance is established, and zero participation means only that they were not observed; the many relation items about these activities and A27 describe the same underlying trace behaviour and are not independent confirmations; the evidence also cannot distinguish removal of the A32/A33/A38 branch from a routing decision that now always selects A27; and while sampling differences in variant frequencies can make a variant appear in one window only, a simultaneous drop from about 49 to about 0.5 of 100 traces for three activities, with A27 rising to nearly all traces, is hard to attribute to sampling alone with 200 traces per window. [DIR007, DIR008, DIR009, POS004, POS005, POS006, REL028, REL029, REL030]

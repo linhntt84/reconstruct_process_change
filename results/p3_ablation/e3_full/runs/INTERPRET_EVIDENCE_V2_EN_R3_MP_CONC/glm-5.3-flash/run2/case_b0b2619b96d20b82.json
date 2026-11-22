@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_b0b2619b96d20b82.json",
+  "evidence_sha256": "6ca49987d6d3aba8b0f81c8aa709272e42f099b99e3af20b27327a1abffd18a6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:06:28.772261+00:00",
+  "finished_at_utc": "2026-11-16T02:09:16.758452+00:00",
+  "latency_seconds": 167.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19840,
+    "prompt_tokens": 16975,
+    "total_tokens": 36815,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18495,
+      "text_tokens": 1345
+    },
+    "cost": 0.012466249999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58186,
+  "text": "### Observed differences\n\n- In the earlier window the process had two path families: about 52 in 100 traces ran a cycle over A01, A06 and A04 — A01 (typically the first event of the trace, median position 0) always led to A06, A06 led to A05 in about 54 of 100 of its outgoing transitions or to A04 in about 46, and A04 always led back to A01, so the cycle could repeat (A01 averaged ~0.96 occurrences per trace and appeared more than once in about 24 in 100 traces). The other ~48 in 100 traces contained A03 and none of the cycle activities, the two being strict alternatives. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, REL002]\n\n- In the later window the same cycle is carried by the two activities in exchanged roles: about 52 in 100 traces now start with A04 (median position 0), which always leads to A06; A06 now leads to A05 in about 57 of 100 outgoing transitions and to A01 in about 43, and A01 always leads back to A04. A01 fell to about 20 in 100 traces (~0.39 occurrences per trace) while A04 rose to about 52 in 100 (~0.91 per trace) — each activity's later profile matches the other's earlier one. [OCC001, OCC003, DIR001, DIR002, DIR003, POS001, POS002]\n\n- Positions and spacings shifted in opposite directions for the two activities: A01 moved from the trace start to clearly later (median event position 0 → ~0.33), A04 from ~0.33 to the start, and every lag to the unchanged activities moved by exactly one step (A01→A06 from 1 to 2 steps but A04→A06 from 2 to 1; A01→A02 from 3 to 4 but A04→A02 from 4 to 3; A01→A05 from 2 to 3 but A04→A05 from 3 to 2). [POS001, POS002, LAG001, LAG003, LAG004, LAG006, LAG007, LAG008]\n\n- Co-occurrence flipped accordingly: earlier, A01 always co-occurred with A05 and A06 while A04 never appeared without A01; later, A04 always co-occurs with A05 and A06 while A01 never appears without A04. A03 and the cycle entry also became strict alternatives: earlier about 28 in 100 traces had neither A03 nor A04 (they had A01 only), later every trace contains exactly one of A03 or A04. [REL003, REL004, REL005, REL010, REL013, REL014]\n\n- Unchanged: A02 appears in every trace in both windows and keeps its relations, and A03 (~48 in 100 traces), A05 and A06 (~52 in 100) show differences no larger than ~0.055 that random re-splits produce routinely (empirical strength 0.00–0.74). [OCC002, OCC004, OCC005, REL006, REL008, REL011, REL012, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 and A04 exchanged their positions in the cyclic fragment of the process: earlier the cycle ran A01 → A06 → A04 → back to A01, with A01 opening the trace and A04 as the repeating, lower-frequency activity exiting via A05; in the later window it runs A04 → A06 → A01 → back to A04, with A04 taking over the trace-initial, high-frequency role and A01 the repeating role. This is shown directly by the successor changes (A01 now leads to A04 instead of A06, A04 to A06 instead of A01, A06 feeds A01 instead of A04), and it is consistent across occurrence profiles (each activity's later profile matches the other's earlier one), event positions, lags and co-occurrence, with all strong items at empirical strength ~0.995. Limitations: no screening baseline is included, so the number of qualifying items cannot be compared against a chance expectation, and only outgoing transitions and event positions are observed — what precedes A01/A04 at the start of the trace is not, so a more complex rewiring of the same edges cannot be fully excluded, although the symmetric one-step lag shifts fit a simple exchange best. [DIR001, DIR002, DIR003, OCC001, OCC003, POS001, POS002, LAG001, LAG004, LAG006, LAG008]\n\nOther differences: none of substance. The share of cycle exits via A05 moved only from about 54% to about 57% of A06's outgoing transitions, and A02, A03, A05 and A06 keep their frequencies, positions and mutual relations; fluctuations of this size arise routinely without a change. [DIR003, OCC005, REL015, LAG012, POS003, POS004]",
+  "case_id": "case_b0b2619b96d20b82",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

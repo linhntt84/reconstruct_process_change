@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "991c572821318aadf5389afe2c115561aa4583cb55e2ba7814ee7bc8d4022f81",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:15:56.748623+00:00",
+  "finished_at_utc": "2026-11-14T12:17:27.123392+00:00",
+  "latency_seconds": 90.37,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12204,
+    "prompt_tokens": 15837,
+    "total_tokens": 28041,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11184,
+      "text_tokens": 1020
+    },
+    "cost": 0.00847755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40730,
+  "text": "### Observed differences\n\n- In the earlier window, each of the activities A26, A17, A15, A18, A19, A21, A20 and A27 sent all of its observed outgoing transitions to exactly one successor, forming a single strict chain A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- In the earlier window, every monitored pair also co-occurred in 100 in 100 traces in one fixed direction and at one fixed position gap — for example A15 always preceded A19 and A18 always preceded A19, and A15 to A18 was always one step apart while A15 to A27 was always five. [REL001, REL006, LAG001, LAG005]\n- In the later window, these fixed orders are gone: pairs now occur in both directions across traces. A15 precedes A19 in only about 26 in 100 traces (A19 comes first in about 74), A18 precedes A19 in about 15 in 100, A15 and A21 split roughly 50/50, while A17 still precedes A21 in about 76 in 100. [REL001, REL003, REL005, REL006]\n- In the later window, successors are diversified: A15's transitions go to A18 in about 68 in 100 cases and to A19, A20 or A21 in about 11 each; A18 now leads most often to A27 (about 52 in 100) instead of always to A19; A26 splits about 53/47 between A17 and A19. [DIR001, DIR003, DIR007]\n- Position gaps spread out as well: A15 to A27, always five positions apart before, now occurs at gaps of two to five (about 32 in 100 at gap two), and A17 to A20, always five apart, now spreads over gaps one to five. [LAG005, LAG009]\n- Participation did not change: every monitored pair still co-occurs in 100 in 100 traces in both windows, so no activity was added, removed or became optional — the difference is confined to ordering and spacing. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the fixed sequencing between A26, A17, A15, A18, A19, A21, A20 and A27 was relaxed in the later window: traces still contain all of these activities, but the single strict order of the earlier window gave way to varying orders, with pairs appearing in both directions, each activity reaching several successors, and position gaps spreading over several values. [REL001, REL003, REL006, DIR001, DIR003, LAG005]\n\nSupporting signs: the control-flow family produced 39 qualifying items where fewer than 1 would be expected by chance in an unchanged process, so the volume of differences cannot be explained by random re-splits of the data; the relational items show the order change directly, and the directional and gap items agree with it; each difference is larger than in about 199 of 200 random re-splits, and most profiles rest on all 200 traces per window (a few gap profiles on 52–176 later-window traces). The three indicator families describe the same underlying trace behaviour, so they corroborate rather than independently confirm one another. [REL001, DIR001, LAG002]\n\nLimitations: the evidence cannot show whether every later-window trace is flexibly ordered or whether the later window mixes traces that keep the old sequence with reordered traces — for example A17 still precedes A21 in about 76 in 100 later traces and A15 precedes A20 in about 68 in 100. The gap indicator uses event positions rather than clock time, so no conclusion about timing is drawn. [REL005, REL002]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

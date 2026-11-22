@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, every trace executed exactly one of three mutually exclusive activities between A36 and A21: A14 in about 35 in 100 traces, A15 in about 30 in 100 and A20 in about 35 in 100, and each of the three led only to A21 among its observed outgoing transitions. In the later window, none of the 200 traces contains A14, A15 or A20; their trace participation fell from about 35, 30 and 35 in 100 to zero. [OCC001, OCC002, OCC003, REL001, REL003, REL008, DIR001, DIR002, DIR003]
+- A36's successors changed accordingly: before, its observed outgoing transitions were split roughly 35% to A20, 30% to A15 and 35% to A14; in the later window, A36 leads to A21 in all observed cases, and the position gap from A36 to A21 shrank from 2 event positions (one activity in between) to 1 (immediately consecutive) in essentially all traces. [DIR004, LAG001]
+- A21, A36 and A26 still occur in every trace in both windows. A21's mean event position moved slightly earlier (about 0.39 to 0.37 of the trace) and A36's slightly later (about 0.32 to 0.33), consistent with the intermediate step between them disappearing; the co-occurrence of A21 and of A26 with the three removed activities (30–35 in 100 traces before) fell to zero. [POS004, POS005, REL004, REL009, REL013, REL005, REL010, REL014]
+- A19 appeared in about 49 in 100 traces before and about 56 in 100 after, and it no longer co-occurs with A14, A15 or A20 — a change that follows from those activities no longer being observed. [REL002, REL007, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative intermediate step between A36 and A21 — one of the three mutually exclusive activities A14, A15 and A20 — is no longer executed, so that A36 now leads directly to A21. Previously each trace ran exactly one of the three (about 35/30/35 in 100 traces for A14/A15/A20) between A36 and A21; in the later window none of the 200 traces contains any of them, A36's outgoing transitions go to A21 in all observed cases, and the A36→A21 distance fell from 2 to 1. This is unlikely to be a sampling artefact: 28 control-flow items qualified against roughly 0.41 expected for an unchanged process, and the participation, direction, relation, position and lag items all describe one consistent structural difference, while A21, A36 and A26 themselves remain present in every trace. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG001, POS004, POS005, REL003, REL004, REL013]
+
+The main limitation is that zero participation strictly means only "not observed in the later sample": the evidence cannot distinguish a removal of the branch from the three activities now being skipped in every observed case or still occurring at a very low, unsampled rate — although 0 occurrences in 200 traces against a prior rate of 30–35 in 100 makes pure sampling fluctuation implausible. The evidence also cannot show why the branch disappeared. [OCC001, OCC002, OCC003]
+
+Other differences: A19's participation rose modestly, from about 49 to about 56 in 100 traces; this rise is not explained by the removal of the branch and may partly reflect sampling, whereas the loss of its co-occurrence with A14, A15 and A20 follows directly from their disappearance. [REL002, REL007, REL012]

@@ -1,0 +1,23 @@
+### Observed differences
+
+- The traces split between two mutually exclusive alternatives, and the split reversed. In the earlier window, about 47 in 100 traces contained A03 together with A05 (the two always occur together) and about 54 in 100 contained A04 instead; in the later window this became about 54 versus 46. The relational structure itself is unchanged — A03 and A05 still never appear without each other and never appear with A04 in either window, and every trace still contains exactly one of the two — so only the frequency of choosing between the existing alternatives moved, by roughly 7–8 cases in 100. [OCC002, OCC003, OCC004, REL021, REL022, REL030]
+
+- A02 still ran in every trace, but it repeated less often in the later window: it recurred in about 48 of 100 traces before versus about 41 after (mean occurrences per trace 2.0 versus 1.9). The A09/A12 pair, which occurs only in exactly those traces where A02 repeats, dropped by the same amount (about 48 to 41 in 100). In step with this, the strictly ordered A01→A02 and A08→A02 relations rose from about 52 to 59 in 100 (less interleaving, mirroring the lower repetition rate), and A02's outgoing transitions moved from an even split between A09 and A10 to about 53 in 100 towards A10. [OCC001, OCC007, OCC009, REL061, REL017, REL001, REL016, REL018, DIR002]
+
+- A11 became more frequent: about 21 of 100 traces before, about 30 after. Its embedding is unchanged — it still occurs only alongside A03/A05, never with A04, always after A01/A08 and before A05/A10 — but within the A03/A05 traces its share rose from roughly 46 to 56 in 100. [OCC008, REL028, REL036, REL043, REL057, REL062]
+
+- Routing after A04 changed: among A04's observed outgoing transitions, the share leading to A08 fell from about 36 to 23 in 100, while shares to A01 (about 27 to 36) and A02 (about 37 to 41) grew; A04 was followed one position later by A01 in about 55 of 100 observed pairs before, about 72 after. [DIR004, LAG025, LAG027, REL033]
+
+- Positional distances between the early activities and later ones were redistributed — for example A01 to A05 shifted from mostly 4–5 positions apart to mostly 3–4, while A08 to A05 shifted the opposite way towards 4–5 — and several of these are the strongest single items in the evidence (up to about 99 of 100 reference comparisons). A few striking lag items rest on only one to six observations (for example A07 to A08) and should be given no weight. [LAG004, LAG008, LAG050, LAG044, LAG034]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the choice between two existing alternative paths shifted: in the later window the path executing A03 and A05 together was taken in about 54 of 100 cases (about 47 before), while the alternative containing A04 was taken in about 46 of 100 cases (about 54 before). This rests on direct participation counts over the full 200-trace windows, with all three activities present in 46–54% of traces in both windows, and on an unchanged co-occurrence structure (A03 always with A05, never with A04), so only the shares between existing alternatives moved rather than paths being added, removed or bypassed; the same ±7–8 point shift recurs consistently across occurrence, relation and direction indicators, with empirical strengths around 0.74–0.82, i.e. differences larger than in about three quarters of random re-splits. The main competing explanation the evidence cannot rule out is ordinary sampling variation between two finite 200-trace windows: the evidence contains no chance-expectation baseline, the shift is modest in size, and individual indicator strengths, while high, are not extreme on their own. [OCC002, OCC003, OCC004, REL021, REL022, REL030, REL042]
+
+Other differences:
+- A02 repeated less often in the later window (about 48 to 41 of 100 traces), together with the A09/A12 block that occurs only in those repeating traces; this is a repetition change in its own right, with somewhat weaker indicator strengths (roughly 0.6–0.88), and is not part of the branch hypothesis. [OCC001, OCC007, OCC009, REL061, DIR002]
+- A11 rose from about 21 to 30 of 100 traces — more than the branch shift alone would explain — while remaining confined to the A03/A05 path. [OCC008, REL028, REL036, REL043]
+- After A04, outgoing transitions redistributed from A08 towards A01 and A02. [DIR004, LAG025, LAG027]
+- Positional distances between early and later activities redistributed without one common direction. [LAG004, LAG008, LAG050]

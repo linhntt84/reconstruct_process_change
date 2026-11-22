@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_7f08b700b5dd4317.json",
+  "evidence_sha256": "b2ac6536f1090c7e0eb380d7c1964fa207e85b7f7bf462a406977bf392289005",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:22:42.955616+00:00",
+  "finished_at_utc": "2026-11-15T11:24:39.185440+00:00",
+  "latency_seconds": 116.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15947,
+    "prompt_tokens": 23255,
+    "total_tokens": 39202,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14310,
+      "text_tokens": 1637
+    },
+    "cost": 0.01146175
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49990,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained the same middle activities: A33, A35, A36, A37, A38 and A39 each appeared exactly once in all 200 traces. In the later window, each of these appears in only a subset — A33, A35 and A36 in about 47 in 100 traces (93–94 of 200) and A37, A38 and A39 in about 56 in 100 (112–115 of 200) — still once per trace when present, with no repetition in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The two groups still behave as blocks. In the later window, A33, A35 and A36 occur together whenever any of them occurs (jointly in about 47 in 100 traces, all absent in about 53), with no fixed internal order in either window (roughly 50/50); A37, A38 and A39 likewise still occur together (jointly in about 56 in 100 later traces, all absent in about 43), also in mixed order. [REL013, REL014, REL018, REL025, REL026, REL027]\n- The two blocks became mutually exclusive. Pairs spanning the blocks (for example A33 with A37, A35 with A39, A36 with A38) co-occurred in all 200 earlier traces, with the first block preceding the second in about 99 in 100; in the later window, such pairs co-occur in only about 3 in 100 traces, while about 44 in 100 traces contain only the A33/A35/A36 block and about 53 in 100 only the A37/A38/A39 block — essentially no trace contains neither block. [REL015, REL017, REL020, REL022, REL024]\n- The endpoints are unchanged in participation and relative order: A30 and A31 still occur in every trace in both windows, A30 still precedes the first block whenever both are present, and the second block still precedes A31 whenever both are present. [POS001, POS002, REL001, REL007]\n- Distances collapsed accordingly: the gap from A30 to A37 was 4–5 event positions in the earlier window (about 46% at lag 4, 54% at lag 5) and is 1–3 positions in the later window (about 28%, 32% and 34% at lags 1–3, under 7% beyond); the same collapse appears between the first-block activities and A31 (for A33, from lags 4–5 to lags 1–3). [LAG001, LAG002, LAG003, LAG004, LAG006, LAG009]\n- Smaller positional drifts accompany this: A30's mean relative position moved from about 0.62 to 0.67 of the trace, A31's from about 0.82 to 0.80, and A33/A35/A36 now sit slightly later within traces when present (mean about 0.68 to 0.74). [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a specific structural hypothesis: the fixed chain through two always-executed middle blocks became a choice between them. In the earlier window, every case ran A30, then the block A33/A35/A36, then the block A37/A38/A39, then A31; in the later window, every case still runs A30 and A31, but runs either the A33/A35/A36 block (about 44 in 100 cases) or the A37/A38/A39 block (about 53 in 100), with both blocks in only about 3 in 100 cases, each block still executed complete and once. [REL015, REL022, OCC001, OCC004, OCC006]\n\nThe support is direct and consistent: the relational items show cross-block co-occurrence collapsing from all traces to about 3 in 100 while each block's internal cohesion is fully preserved; the occurrence items show all six activities dropping from mandatory to roughly half-participation without changed repetition; and the lag items show inter-block distances shrinking from 4–5 positions to 1–3, exactly what follows when one block no longer sits between an endpoint and the other block. The volume of qualified evidence (50 control-flow items against roughly 0.6 expected for an unchanged process) and the uniform empirical strength (about 0.995 for every item) make sampling variation implausible as an explanation of the evidence as a whole. [REL015, REL019, REL024, OCC001, OCC006, LAG001, LAG004]\n\nLimitations: the evidence cannot show what determines the choice between the two blocks, and the roughly 3 in 100 cases containing both blocks could be a retained rare both-block path or sampling noise; the lag items for cross-block pairs rest on only 4–5 later-window observations and were not relied on; positions are event indices, so no claim about clock-time timing is possible. [LAG005, LAG007, LAG008, LAG010, LAG011]\n\nOther differences: only minor positional drifts beyond the main hypothesis — A30's mean relative position moved later (about 0.62 to 0.67) and A31's slightly earlier (about 0.82 to 0.80), and A39 sits slightly earlier within traces (about 0.77 to 0.73) — consistent with fewer middle activities per case rather than an independent change. [POS001, POS002, POS006]",
+  "case_id": "case_7f08b700b5dd4317",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

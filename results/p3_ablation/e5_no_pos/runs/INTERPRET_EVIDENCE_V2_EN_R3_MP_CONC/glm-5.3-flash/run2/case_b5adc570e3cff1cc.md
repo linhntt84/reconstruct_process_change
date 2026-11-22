@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A40 was always followed by A21. In the later window, A40 leads to A15 in about 35 of 100 observed outgoing transitions, to A14 in about 34 and to A20 in about 32, and no handover to A21 is observed. [DIR006]
+- In the earlier window, A14, A15 and A20 each split their outgoing transitions between A23 and A27 (A14 about 50/50, A15 about 56/44, A20 about 52/48). In the later window, all three lead exclusively to A21. [DIR001, DIR002, DIR003]
+- The order between A21/A22 and the group A14/A15/A20 reversed. Earlier, in the roughly 3–4 of 10 traces where a group activity co-occurred with A21 or A22, A21/A22 always came first; in the later window the group activity always comes first, at similar co-occurrence levels. [REL001, REL002, REL003, REL004, REL005, REL006]
+- The route through A22 and A23 became direct. Earlier, A22 led to A23 in about 48 of 100 outgoing transitions and into one of A14/A15/A20 in about 52, and A23 led to A27 in about 53 and back into the group in about 47. In the later window, A22 leads only to A23 and A23 only to A27. [DIR004, DIR005]
+- Event-position distances match this: A40→A21 went from adjacent in all cases to two positions apart in all cases, A22→A27 from three positions apart to two, and A22→A23 and A23→A27, previously split between one and two positions apart (roughly half each), are now always adjacent. These are positions in the trace, not clock times. [LAG001, LAG002, LAG003, LAG004]
+- A10 and A11 repeat less often: mean occurrences per trace fell from about 1.9 to about 1.6, and traces with repeated occurrences fell from about 47 to about 38 in 100, while both still occur in every trace. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the sequence was reorganised around A21 and A22 so that the alternative activities A14, A15 and A20 now run before them instead of after them: in the earlier window, A40 handed over to A21, A21/A22 preceded the group, A22 and A23 led into it directly, and it exited to A23 or A27; in the later window, A40 hands over to one of the three, all three lead to A21, and A22 → A23 → A27 forms a direct chain without them. The signs are direct and consistent: every observed successor set among A40, A14, A15, A20, A22 and A23 changed completely (earlier exits no longer observed, new ones carrying all transitions), all six activity-pair relations flipped from "A21/A22 first" to "group first" at stable co-occurrence levels, and the position distances fit the new arrangement. Screening tested 71 control-flow units and 18 items qualified, roughly 50 times the 0.35 expected for an unchanged process, so sampling variation cannot account for the pattern as a whole; the DIR, REL and LAG items are facets of one reorganisation rather than independent confirmations, but they agree in every detail. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004]
+
+The evidence shows the resulting edges and orders but cannot establish that the change was one coordinated relocation of the three activities; several independent re-routings, or a shift of A21/A22 relative to a stationary group, would leave the same observable traces. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+Other differences: A10 and A11 now occur fewer times per trace (about 1.9 down to about 1.6) and repeat in fewer traces (about 47 down to 38 in 100) while still appearing in every trace; no relational evidence covers them, so this decreased repetition cannot be tied to the reorganisation above. [OCC001, OCC002]

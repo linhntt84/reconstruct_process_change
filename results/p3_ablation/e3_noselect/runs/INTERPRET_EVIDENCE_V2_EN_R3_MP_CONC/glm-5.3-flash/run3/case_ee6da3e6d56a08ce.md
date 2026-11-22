@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A02 was not observed at all (0 of 200 traces); in the later window it runs in about 58 in 100 traces (116 of 200), roughly 2.4 times per trace on average, first appearing around the middle of each trace (median relative position about 0.60). [OCC001, POS001]
+- A15's handovers changed completely: before, its outgoing transitions went to A07 (about 52 in 100), A08 (about 25) and A12 (about 23); in the later window essentially all of them (474 of 474) go to A02. [DIR011]
+- A02's outgoing transitions in the later window go to A07 (about 52 in 100), A08 (about 27) and A12 (about 21) — almost exactly the split A15 showed before. [DIR002]
+- Step distances shifted by one: pairs A15→A07, A15→A08 and A15→A12 were typically 1 event step apart and are now typically 2; loop-closure distances of about 4 steps (A07 back to itself, A07 to A08, A07 to A12, A15 back to itself) became about 5, while the distance from A07 forward to A15 (typically 3 steps) stayed the same. [LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG008, LAG004]
+- A02 now occurs together with the loop activities: it co-occurs with A15 in 58 in 100 later-window traces (0 before, and A15 is never seen without A02), with A07 in about 39 (0 before), with A08 in about 42 (0 before) and with A12 in about 35 (0 before). [REL004, REL001, REL002, REL003]
+- Smaller movements: participation in the loop activities rose a few points (A05, A11 and A15 from about 50 to 58 in 100 traces; A10 and A13 from about 40 to 48), A12 now occurs somewhat later within traces (mean relative position about 0.66 vs 0.73), and two rare edges changed on a single observation each (A06→A01 appears, A09→A03 disappears). [OCC003, OCC009, OCC013, OCC008, OCC011, POS004, DIR006, DIR007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, a new step (A02) sits between A15 and the branch A15 previously fed directly: before, A15 passed control straight to A07, A08 or A12; afterwards A15 always leads to A02, and A02 branches to A07, A08 and A12 with nearly the same shares. The change is shown directly by the successor profiles of A15 and A02, and corroborated consistently from several angles: A02 appears from zero participation at a mid-trace position; every downstream step distance grows by exactly one event step while the upstream A07→A15 distance is unchanged, localising the new step to the transitions out of A15; and A02 co-occurs with A15, A07, A08 and A12 in the later window after never doing so before. [DIR011, DIR002, OCC001, POS001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, REL001, REL002, REL003, REL004]
+
+A wholesale replacement of A07, A08 or A12 by A02 is largely ruled out, because all three still occur and are now reached through A02 at exactly one extra step. What the evidence cannot rule out is that A02 existed before but too rarely to appear in 200 traces (zero participation only means "not observed"), and, since positions and distances are measured in event steps rather than clock time, nothing can be said about any timing effect. [OCC001, DIR002, LAG005, LAG006, LAG007]
+
+Other differences: the few-point rise in loop participation (A05, A11 and A15 from about 50 to 58 in 100 traces; A10 and A13 from about 40 to 48) and the single-observation edge changes (A06→A01 appearing, A09→A03 disappearing) are weak on their own, are not explained by the main hypothesis, and may reflect sampling variation between the two windows. [OCC003, OCC009, OCC013, OCC008, OCC011, DIR006, DIR007]

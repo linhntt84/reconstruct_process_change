@@ -1,0 +1,21 @@
+### Observed differences
+
+- A14 and A15 do not appear in any of the 200 earlier-window traces; in the later window A14 occurs in about 48 in 100 traces and A15 in about 52 in 100, in each case exactly once per trace and never repeated. [OCC001, OCC002]
+- In the later window the two are mutually exclusive: about 199 in 200 traces contain exactly one of them, and they never occur together. [REL001]
+- Routing around the previously fixed block changed: earlier, every observed outgoing transition of A21 went to A22 and every observed transition of A22 went to A23; in the later window about 48 in 100 of A21's transitions go to A22 and about 52 in 100 go to A14 or A15, while about 53 in 100 of A22's transitions go to A23 and about 47 in 100 go to A14 or A15. [DIR003, DIR004]
+- The new activities exit towards A22 or A23 in near-equal shares (A14 about 51 versus 49 in 100; A15 about 53 versus 47 in 100), and these exit shares almost exactly match how often each was reached from A21 versus from A22. [DIR001, DIR002, DIR003, DIR004]
+- Order and step-distance evidence places the new activities inside the old block: A21 precedes A14/A15 in every co-occurrence, A14/A15 precede A23 in every co-occurrence, and each precedes A22 about as often as it follows it; the step distance from A21 to A23 grows from always 2 to 3 in 199 of 200 later traces, while the A21→A22 and A22→A23 distances split between 1 and 2 in shares that mirror the routing change. [REL002, REL003, REL004, REL007, REL008, REL009, LAG001, LAG002, LAG003]
+- The existing activities barely move: the mean relative position (by event order, not clock time) of A21 and A23 shifts by only about 0.02, while A14 and A15 sit near mid-trace (mean relative position about 0.51). [POS001, POS002, POS003, POS004]
+- A secondary, unexplained shift: A37 appears in about 58 in 100 later traces versus about 72 in 100 earlier, and now co-occurs with A14 or A15 in roughly 27 to 31 in 100 traces. [REL006, REL011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a new step — either A14 or A15, never both — is inserted into the previously fixed A21 → A22 → A23 sequence, in roughly half of the traces directly after A21 and in roughly half directly after A22; this is a possibility supported by the evidence, not a confirmed modification. [REL002, REL004, REL007, REL009, LAG002]
+
+- The placement claim rests on direct relational and distance evidence rather than frequency shifts alone: A21 always precedes the new activities, the new activities always precede A23, and the A21→A23 distance increases by exactly one step in 199 of 200 later traces. [REL002, REL004, LAG002]
+- The routing redistribution fits the same single pattern: the shares of A21 and A22 transitions to A14/A15 (about 52 and 47 in 100) match the split of the A21→A22 and A22→A23 step distances, and together they account for the observed participation of A14 and A15. [DIR003, DIR004, LAG001, LAG003, OCC001, OCC002]
+- The overall volume of qualifying items (22, against roughly 0.39 expected if nothing had changed) cannot be explained by chance, and the shift is too large for sampling: the new activities appear in about 199 of 200 later traces in the exact one-per-trace pattern described above. [REL001, LAG002]
+
+Limitations: the evidence shows only aggregate shares, so it cannot show whether the choice between A14 and A15, or between the two insertion points, follows case-specific conditions, and the near even splits (about 48/52 between the activities, about 52/47 between the insertion points) may differ from the underlying shares because each window is a finite sample. [OCC001, OCC002, DIR003, DIR004] Zero participation earlier means only that A14 and A15 were not observed in that window, although 0 of 200 traces makes a pure sampling explanation implausible. [OCC001, OCC002] The agreement across occurrence, routing, relation and distance indicators largely describes the same traces and should be read as one coherent pattern rather than independent confirmations. [OCC001, REL004, LAG002] The reduced presence of A37 (about 72 to about 58 in 100 traces) is not accounted for by this hypothesis. [REL006, REL011]

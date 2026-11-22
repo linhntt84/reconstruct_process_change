@@ -1,0 +1,17 @@
+### Observed differences
+
+- A27 was executed once in every trace in the earlier window (participation 100%, mean 1.0 occurrence per trace); in the later window it appears in only about 51 in 100 traces (mean about 0.5). [OCC001]
+- A32, A33 and A38 were not observed in any of the 200 earlier traces; in the later window each occurs in about 49–50 in 100 traces, positioned around the middle of the trace (median normalized position about 0.5). [OCC002, OCC003, OCC004, POS001, POS002, POS003]
+- In the later window, A27 and each of A32, A33 and A38 behave as alternatives: they practically never share a trace (co-occurrence at most about 1 in 200), while about 51 in 100 later traces contain A27 only and about 49 in 100 contain only the respective new activity. [REL006, REL007, REL008]
+- The three newer activities are executed together: each pair among A32, A33 and A38 co-occurs in about 49 in 100 later traces (never in the earlier window), and their mutual order is mixed — for example A32 precedes A33 in about 23 in 100 traces and A33 precedes A32 in about 27 in 100 — so there is no fixed order among them. [REL012, REL013, REL014]
+- The new block sits between A26 and A28: earlier, A26 preceded A27 and A27 preceded A28 in about 995 in 1000 traces each; later, A26 precedes each of A32, A33 and A38 in about 49 in 100 traces, and each of them precedes A28 in about 49 in 100 traces. [REL001, REL002, REL003, REL004, REL005, REL009, REL010, REL011]
+- The distance from A26 to A28 was 2 steps in about 98 in 100 earlier traces; in the later window it is 2 steps in about 50 in 100 and 4 steps in about 48 in 100, consistent with three extra events inserted between them in the traces without A27. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+- Hypothesis: in the later window, about half of the executions no longer contain A27 between A26 and A28; in those executions A32, A33 and A38 all run between A26 and A28 in no fixed order, while the other half retain the original A26 → A27 → A28 sequence. [OCC001, OCC002, OCC003, OCC004, REL006, REL007, REL008, LAG001]
+- The support is direct and consistent: A27 excludes each new activity while A26 precedes and A28 follows the block, the three co-occur with one another in mixed order, and the A26–A28 distance doubles to 4 steps in exactly the traces without A27. The volume of qualifying items (22 against roughly 0.34 expected for an unchanged process over the same 68 units) is far beyond what random re-splits of these windows produce. [REL001, REL002, REL003, REL004, REL005, REL009, REL010, REL011, REL012, REL013, REL014, LAG001, OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, REL006, REL007, REL008]
+- Limitations: zero participation in the earlier window strictly shows only that A32, A33 and A38 were not observed then, so a previously much rarer use of them that later grew cannot be excluded; the mixed order among the three could reflect concurrency or merely unfixed sequencing, which this evidence does not separate; and the many items largely re-describe one underlying difference rather than confirming it independently. [OCC002, OCC003, OCC004, REL012, REL013, REL014]
+- Other differences: none of substance beyond small fluctuations, such as A27 recurring twice in about 1 in 200 later traces and residual interleaving of A26/A27 and A27/A28 in about 1 in 100 later traces. [OCC001, REL001, REL005]

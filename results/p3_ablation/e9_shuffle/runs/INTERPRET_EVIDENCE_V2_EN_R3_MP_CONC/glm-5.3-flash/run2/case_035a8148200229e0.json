@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_035a8148200229e0.json",
+  "evidence_sha256": "8de414f7c3e5168edf23c083e3fa148c567617eba6b22ec2b0e7e187f5b16e29",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:30:05.342873+00:00",
+  "finished_at_utc": "2026-11-15T04:31:06.220448+00:00",
+  "latency_seconds": 60.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8670,
+    "prompt_tokens": 5638,
+    "total_tokens": 14308,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7671,
+      "text_tokens": 999
+    },
+    "cost": 0.0051807
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29099,
+  "text": "### Observed differences\n\n- In the earlier window, A04 opened 98 of 200 traces (about 49 in 100), always as the first event of those traces and always followed by A03; A01 was not observed at all. In the later window, A04 is not observed in any of the 200 traces, while A01 opens 99 of 200 traces (about 50 in 100), again always first and always followed by A03. [POS001, POS002, OCC001, OCC002, DIR001, DIR002]\n- The relation profiles mirror this exchange: earlier, A04 preceded A03 in about 49 in 100 traces (never the reverse) and A03 ran alone in the remaining 51 in 100; later, A01 precedes A03 in about 50 in 100 traces (never the reverse) and A03 runs alone in the other half. A01 and A04 never occur in the same trace in either window. [REL001, REL002, REL003]\n- A03 itself is unchanged in participation: it appears in essentially every trace in both windows; only its optional, trace-initial predecessor changed from A04 to A01. [REL001, REL003]\n- Further downstream, the outgoing routing of A07 and A13 was redistributed: A07 led almost exclusively to A13 before (about 92 in 100 of its outgoing transitions, 48 traces) but later splits between A13 (about 56 in 100), A03 (about 29 in 100, previously unobserved) and A05 (about 10 in 100, 59 traces); A13 led mainly directly to A03 before (about 77 in 100, 48 traces) but later also to A07 (about 32 in 100, previously unobserved), with the direct share to A03 down to about 47 in 100 (59 traces). [DIR003, DIR004]\n- In total 11 evidence items qualified against roughly 0.14 expected for an unchanged process (control-flow family, 28 units tested), and each difference is larger than in about 995 of 1,000 random re-splits of the pooled traces — far beyond what sampling variation in a stable process typically produces. [POS001, POS002, OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the optional, trace-initial step before A03 was carried out by a different activity in the later window: A04, which earlier opened about half of all traces and always led into A03, is no longer observed, while A01 now opens about half of the traces and, like A04 before, always leads into A03. The signs are direct and consistent across four indicator types: both activities occupy the first position whenever observed, both have A03 as their only observed successor, participation swapped at nearly the same share (about 49 in 100 to about 50 in 100), and the relation profiles flip from A04-before-A03 to A01-before-A03 with A01 and A04 never co-occurring. [POS001, POS002, OCC001, OCC002, DIR001, DIR002, REL001, REL002, REL003]\n\nThe volume of qualified evidence (11 items against about 0.14 expected without change) cannot be explained by chance as a whole, so sampling variation does not account for the pattern. One competing explanation remains: the evidence shows A04 disappearing and A01 appearing in the same optional, trace-initial, A03-preceding role, but it cannot distinguish a substitution within one branch from two independent events (a removal and a separate addition), and the predecessors of A01 and A04 are not observed. [POS001, POS002, OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003]\n\nOther differences: the outgoing transitions of A07 and A13 were redistributed, with previously unobserved edges A07→A03 and A13→A07 appearing while the direct shares A07→A13 and A13→A03 shrank; with 48–59 traces behind each profile this suggests additional routing or repetition around A07 and A13 before reaching A03, but it is not part of the entry-activity hypothesis and outgoing profiles alone cannot show how these edges arose. [DIR003, DIR004]",
+  "case_id": "case_035a8148200229e0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

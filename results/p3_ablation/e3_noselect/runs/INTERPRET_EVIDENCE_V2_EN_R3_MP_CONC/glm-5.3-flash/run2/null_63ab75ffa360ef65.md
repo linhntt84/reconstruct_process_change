@@ -1,0 +1,13 @@
+### Observed differences
+
+- In the earlier window, A15 and A16 each occurred about 1.7 times per case, running a second time in about 40 in 100 cases; in the later window they occurred about 1.55 times per case, with a second run in about 33 in 100 cases. The forward edge A15 → A16 itself stayed nearly universal (about 98–99 in 100 transitions in both windows), while of the transitions observed out of A16, the share returning to A15 fell from about 40 in 100 to about 35 in 100 and the share exiting to A41 rose from about 30 to about 34 in 100. [OCC015, OCC016, DIR015, DIR016]
+- Movement between A43 and A44 became somewhat more common relative to the forward path: A43's transitions to A44 rose from about 43 to 49 in 100 (transitions to A45 fell from about 55 to 49), and A44's returns to A43 rose from about 35 to 40 in 100 (moves on to A47 fell from about 63 to 56). A44 appeared in about 65 in 100 later cases versus about 59 earlier (about 0.9 versus 0.8 occurrences per case), while A45 and A46 each appeared in about 62 in 100 later cases versus about 66 earlier. [DIR043, DIR044, OCC043, OCC044, OCC045]
+- After A14, the next activity was A15 in about 43 in 100 later transitions versus about 35 earlier, and A04 in about 57 versus about 64 earlier; A04 itself appeared in about 59 in 100 later cases versus about 66 earlier. [DIR014, OCC004]
+- Several other points show small routing shifts of roughly 5–11 in 100 transitions — after A01 towards A05 instead of A07, after A03 towards A11, after A12 towards A13 instead of A11, after A23 towards A21 instead of A22, and after A38 towards A37 instead of A39 — alongside participation changes of about 2–4 in 100 cases for individual activities. [DIR001, DIR003, DIR012, DIR023, DIR038, OCC001, OCC018]
+- A few successor profiles changed completely (A02, A06, A08, A10, A48), but they rest on only about 1–18 observed outgoing transitions per window (for A48, a single transition before versus seven after), so they do not establish that edges were gained or lost. [DIR002, DIR006, DIR008, DIR010, DIR048]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest movements — the reduced A15–A16 repetition and the more frequent A43–A44 back-and-forth — are each described by mutually dependent indicators (the paired activities share the same traces, so they do not confirm one another independently) and are of a size that random re-splits of a stable process reach across the roughly 90 tested activities and edges, while this evidence carries no screening expectation against which the number of qualifying items could be judged. [OCC015, OCC016, DIR016, DIR043, DIR044]

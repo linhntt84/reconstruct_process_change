@@ -1,0 +1,19 @@
+### Observed differences
+
+- The order of A30 and A31 in the segment between A26 and A27 flipped. In the earlier window, A31 typically came first: A31 followed A26 one position later in about 60 in 100 of the traces containing that pair, A30 followed A26 two positions later in about 60 in 100, A27 followed A30 one position later in about 60 in 100, and A27 followed A31 two positions later in about 60 in 100 — together the sequence A26 → A31 → A30 → A27. [LAG001, LAG002, LAG003, LAG004]
+- In the later window the mirror image holds: A30 followed A26 one position later in about 62 in 100 cases and A31 two positions later in about 62 in 100, while A27 followed A31 one position later in about 62 in 100 and A30 two positions later in about 62 in 100 — together A26 → A30 → A31 → A27. Both orders still occur in both windows (roughly 60/40 earlier, roughly 62/38 later). [LAG001, LAG002, LAG003, LAG004]
+- Successor shares flip accordingly. In the earlier window, about 60% of A30's observed outgoing transitions went to A27 and about 40% to A31; in the later window about 62% go to A31 and about 38% to A27. From A31 the mirror image holds: about 60% went to A30 earlier, whereas about 62% now go directly to A27. [DIR002, DIR003]
+- At A26, the outgoing share to A31 fell from about 31% to about 17%, while the shares to A30 (about 21% to 27%) and to A32 (about 22% to 30%) rose; A33 stayed at about 27%. The A26–A27 segment containing both A30 and A31 appeared in about 103 of 200 traces earlier and about 87 of 200 in the later window. [DIR001, LAG001, LAG002]
+- The elapsed time between consecutive completions of A01 and A03 roughly doubled, from a mean of about 0.9 hours (median about 0.8) to about 1.7 hours (median about 1.7), with every quartile about 0.7–0.9 hours higher; this rests on 39 vs 41 occurrences. [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the preferred execution order of A30 and A31 between A26 and A27 reversed: in the earlier window A31 typically ran directly after A26, followed by A30 and then A27, while in the later window A30 typically ran directly after A26, followed by A31 and then A27. The change is shown directly by positional and relational evidence — four lag distributions and two successor distributions flipped in a mirrored, mutually consistent way, each difference larger than in about 995 of 1,000 random re-splits — and the control-flow family produced 7 qualifying items against roughly 0.3 expected if nothing had changed, so chance alone cannot account for the pattern as a whole. The pairs involved are observed in about half of the traces in both windows (about 103 of 200 earlier, 87 of 200 later), which rules out a rare variant appearing in only one window. [DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]
+
+A limitation is that both orders occur in both windows (about 60/40 earlier, about 62/38 later): the evidence establishes a reversal of the majority order but cannot distinguish a true re-sequencing of the two activities from a shift in how often two pre-existing orderings are chosen; the change also concerns only the roughly half of traces that contain this segment. [LAG001, LAG002, LAG003, LAG004]
+
+Other differences:
+- The share of A26's outgoing transitions going to A32 rose from about 22% to about 30%, and the A30/A31 segment became less frequent overall (about 103 to about 87 of 200 traces); this is not explained by the ordering reversal. [DIR001, LAG001]
+- The elapsed time between consecutive completions of A01 and A03 roughly doubled (mean about 0.9 to about 1.7 hours, based on 39 vs 41 occurrences). This is a timing hypothesis in its own right, but with only about 40 observations per window it remains suggestive and is not part of the main hypothesis. [TWAIT001]

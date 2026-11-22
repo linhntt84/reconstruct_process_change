@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_a05d26f4c244e66a.json",
+  "evidence_sha256": "2a8f0794e186ddfb589c981213566aaac33f3ba8b576f2bdcc0eebf8c113d612",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:22:03.917526+00:00",
+  "finished_at_utc": "2026-11-15T14:25:37.644205+00:00",
+  "latency_seconds": 213.73,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28788,
+    "prompt_tokens": 30554,
+    "total_tokens": 59342,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26486,
+      "text_tokens": 2302
+    },
+    "cost": 0.018977099999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 85110,
+  "text": "### Observed differences\n\n- The clearest difference lies in the routing of the section after A20. In the later window, about 13 in 100 of A20's outgoing transitions went to A24, versus about 5 in 100 in the earlier window, while only about 4 in 100 went to A25 versus about 10 in 100 earlier; in total, about 25 in 100 of A20's continuations entered the A24–A26 group versus about 21 in 100 earlier. [DIR020]\n- Inside the A24–A26 cycle the dominant traversal changed. Earlier, A24 led most often to A25 (34 in 100) and A26 led most often back to A24 (49 in 100), giving a dominant sequence A24→A25→A26; in the later window A24 led most often to A26 (41 in 100) and A26 most often to A25 (46 in 100, up from 18 in 100), with A26's returns to A24 falling to 26 in 100. The exit to A30 moved from A24 (20 in 100 of A24's transitions, versus 39 in 100 earlier) to A25 (51 in 100, versus 30 in 100 earlier). These are the largest well-supported differences in the evidence (empirical strengths 0.90–0.98, based on 44–51 transitions per window). [DIR024, DIR025, DIR026]\n- Traffic shifted slightly between the two parallel cycles: A21, A22 and A23 each appeared in about 75 in 100 traces (about 78–79 in 100 earlier), while A24, A25 and A26 each appeared in about 25 in 100 traces (about 22 in 100 earlier). Within the first cycle, A23 led to A21 in about 26 in 100 of its transitions versus about 37 in 100 earlier. [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, DIR023]\n- Downstream, A30 was executed about 1.7 times per trace versus about 1.6 earlier and recurred in about 40 in 100 traces versus about 36 in 100; A32 and A33 each appeared in about 64 in 100 traces versus about 60 in 100 earlier. [OCC028, OCC030, OCC031]\n- Smaller shifts elsewhere: the A01/A05/A07/A09 branch appeared in about 52 in 100 traces (about 56 in 100 earlier) while A03/A11/A12/A13 rose to about 48–49 in 100 (about 44–45 earlier); A15 and A16 occurred about 1.73 times per trace versus about 1.66 earlier. Several rarely observed activities (A02, A04, A06, A08, A10, A35) show large-looking changes in their outgoing transitions, but these rest on only 1–19 transitions per window and are weak. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, OCC015, OCC016, DIR002, DIR004, DIR006, DIR008, DIR010, DIR035]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that routing through the section following A20 changed. In the later window, more traces passed through the A24–A26 cycle (about 25 in 100 traces versus about 22 in 100) at the expense of the parallel A21–A23 cycle (about 75 in 100 versus about 78–79 in 100); the A24–A26 cycle was entered from A20 mainly via A24 rather than A25, was traversed in the changed order (A26 continuing mainly to A25 instead of back to A24), and exited to A30 mainly from A25 rather than from A24, with A30 and the downstream A32/A33 executed somewhat more often as a consistent consequence. [DIR020, DIR023, DIR024, DIR025, DIR026, OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, OCC028, OCC030, OCC031]\n\nThe supporting signs are direct and consistent: five direction items on A20, A23, A24, A25 and A26 agree in direction, are individually unusual under random re-splits of the same windows (empirical strengths 0.82–0.98), and stand on adequate observation counts (44–201 transitions per window); the participation and occurrence changes corroborate them in the expected direction. [DIR020, DIR023, DIR024, DIR025, DIR026, OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, OCC028]\n\nLimitations: the participation shifts are small (about 3 in 100 traces) and would be unremarkable on their own; the three cycle activities' profiles may reflect one underlying difference rather than independent confirmations, so the evidence cannot show whether the entry shift, the changed traversal order or a different loop length is the primary modification; and no screening baseline was provided to check the flagged items against a chance expectation. [DIR020, DIR024, DIR025, DIR026]\n\nOther differences: a small shift between the two early branches (A01/A05/A07/A09 down from about 56 to 52 in 100 traces; A03/A11/A12/A13 up from about 44–45 to 48–49 in 100) and slightly more repetitions of the A15–A16 pair (about 1.73 versus 1.66 occurrences per trace); both are modest and not part of the main hypothesis. The large-looking rerouting around rarely observed activities (A02, A04, A06, A08, A10, and A35's apparent complete successor change) rests on 1–19 transitions per window and is consistent with sampling noise. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, OCC015, OCC016, DIR002, DIR004, DIR006, DIR008, DIR010, DIR035]",
+  "case_id": "null_a05d26f4c244e66a",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

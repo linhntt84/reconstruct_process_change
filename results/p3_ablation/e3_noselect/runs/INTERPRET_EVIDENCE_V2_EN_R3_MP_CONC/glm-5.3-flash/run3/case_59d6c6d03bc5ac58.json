@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_59d6c6d03bc5ac58.json",
+  "evidence_sha256": "3cc9f7f5dcfde2b9e3a73c1052fe1a67df0271ed7636ac2ea1386292b7b037ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:12:54.354998+00:00",
+  "finished_at_utc": "2026-11-15T14:14:55.505884+00:00",
+  "latency_seconds": 121.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15778,
+    "prompt_tokens": 8368,
+    "total_tokens": 24146,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14739,
+      "text_tokens": 1039
+    },
+    "cost": 0.0091442
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50904,
+  "text": "### Observed differences\n\n- In the earlier window, A01 appeared in about 101 of 200 traces (about 50 in 100), always exactly once and always immediately before A02; in the later window, A01 does not appear at all (0 of 200 traces), and no outgoing transition from A01 is observed. A difference of this size is larger than in about 995 of 1000 random re-splits. [OCC001, DIR001, POS001]\n- A05 shows the reverse pattern: it was absent from the earlier window and appears in about 92 of 200 traces (about 46 in 100) in the later window, always exactly once per trace. [OCC004, POS004]\n- The route from A04 into A02 gained one step. Earlier, A04's only observed outgoing transition led directly to A02 and the pair A04→A02 was always adjacent (distance one); in the later window, A04's observed outgoing transitions go to A05, A05's go to A02, and A04 and A02 are always two steps apart. A04 and A05, which never co-occurred earlier, now co-occur in about 46 in 100 traces with A04 first, and A05 precedes A02 in the same share of traces. [DIR002, DIR003, LAG001, REL005, REL006]\n- A02 runs once in every trace in both windows, but earlier it was always the second event, whereas in the later window it is the first event in about 54 in 100 traces and the second in about 46 in 100 — matching the share of traces without the A04 route. [POS002, REL001]\n- Smaller shifts: A03, A04 and A06 each fell from about 99 to about 92 of 200 traces (roughly 50 down to 46 in 100), a difference no larger than typical random re-splits; A04's mean relative position moved from about 0.67 to 0.5, consistent with its traces containing one more event rather than with A04 being relocated. [OCC002, OCC003, OCC005, REL004, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reorganisation of the paths leading into A02. In the earlier window, traces split into two routes: about half ran A01→A02, and about half reached A02 directly from A04. In the later window, A01 is no longer observed, and the A04 route passes through the newly observed A05, i.e. A04→A05→A02. The participation changes are near-total (A01 from about 50 in 100 traces to none; A05 from none to about 46 in 100), and the insertion is shown directly by relational evidence: A04's observed successor changed from A02 to A05, A05's observed successor is A02, and the A04→A02 distance moved from one step to two. The occurrence, direction, position and relation items all reflect these same two trace-level changes, so they should be read as one coherent picture rather than as independent confirmations. [OCC001, OCC004, DIR001, DIR002, DIR003, LAG001, REL001, REL005, REL006, POS002]\n\nLimitations: zero participation shows only that A01 was not observed in the later window, not that it was removed from the underlying process, and aggregate indicators cannot rule out that the two windows draw different mixes of cases rather than reflecting a modified process. [OCC001, OCC004]\n\nOther differences: the share of traces taking the A04 route slipped slightly (A03, A04 and A06 each from about 99 to 92 of 200 traces, with A02 co-occurring with A04 in about 50 down to 46 in 100), a shift within the range random re-splits produce and not individually remarkable. [OCC002, OCC003, OCC005, REL004]",
+  "case_id": "case_59d6c6d03bc5ac58",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

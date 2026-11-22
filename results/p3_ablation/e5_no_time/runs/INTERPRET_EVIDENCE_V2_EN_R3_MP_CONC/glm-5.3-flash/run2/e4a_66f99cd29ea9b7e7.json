@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_66f99cd29ea9b7e7.json",
+  "evidence_sha256": "f2c0d07d4cf694efe37f826c484efc73ce31da2183a82e28fb3c09776756fd59",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:19:54.771418+00:00",
+  "finished_at_utc": "2026-11-15T07:21:44.963322+00:00",
+  "latency_seconds": 110.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16049,
+    "prompt_tokens": 10312,
+    "total_tokens": 26361,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14811,
+      "text_tokens": 1238
+    },
+    "cost": 0.0095713
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49423,
+  "text": "### Observed differences\n\n- The relative order of two groups of activities flipped. In the earlier window, A30, A31 and A36 ran before both A22 and A21 in 100 in 100 traces; in the later window, A22 and A21 ran before A30, A31 and A36 in about 99 in 100 traces. All six activity pairs still co-occur in every trace in both windows, so participation itself did not change — only the order. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Routing at the boundaries of these groups changed accordingly. A20 previously split its outgoing transitions roughly equally to A30, A31 and A36 (about 40, 33 and 28 in 100) and now leads almost always to A22 (about 99 in 100). A21 previously always led to A25 and now leads into the trio (about 36, 33 and 31 in 100 to A30, A31 and A36). The trio members, which previously exited to A22, now exit to A25 in about 31–36 in 100 of their outgoing transitions and almost never to A22. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Step gaps match this rerouting: the distance from A20 to A22 shrank from always 4 steps to 1 step in about 99 in 100 traces, and the distance from A21 to A25 grew from adjacent (1 step) to 4 steps in about 99 in 100 traces. [LAG001, LAG004]\n- Positions shifted in the same direction: A22 and A21 now appear earlier in the trace (mean relative position from about 0.47 to 0.38 and from about 0.62 to 0.53), while A30, A31 and A36 appear later (from about 0.41 to about 0.59 each). [POS001, POS002, POS003, POS004, POS005]\n- A few further distance items (A20–A31, A20–A36, A31–A22, A36–A22) also show changed gaps, but each rests on only about 2 later-window traces and is too weak to rely on. [LAG002, LAG003, LAG005, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks swapped their order: the block of A30, A31 and A36 — whose internal order remains variable in both windows — previously ran between A20 and the sequence A22 → A21, and in the later window it runs after A21 and before A25. In the earlier window the flow was A20 → [A30/A31/A36] → A22 → A21 → A25; in the later window it is A20 → A22 → A21 → [A30/A31/A36] → A25. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG004]\n\nThe order change is shown directly by the relational items for all six cross-pairs (from 100 in 100 \"trio first\" to about 99 in 100 \"A22/A21 first\") and is corroborated by the successor changes at A20, A21 and the trio members, by the gap changes and by the position shifts. All activities still occur in essentially every trace in both windows, so this is a reordering of existing activities rather than activities being added, removed or made optional. With 22 qualifying items against roughly 0.42 expected by chance among the 84 tested units, the volume of flagged behaviour far exceeds what an unchanged process typically produces. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: each window is a finite sample of 200 traces, so the evidence cannot rule out that both orderings already coexisted as variants whose mix shifted between the windows, although the relations are near-deterministic within each window; the positional and distance indicators use event positions rather than clock time, so no statement about calendar timing is implied. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005]",
+  "case_id": "e4a_66f99cd29ea9b7e7",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

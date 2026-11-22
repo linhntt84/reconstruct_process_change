@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "e855318abe1aa51f3926e098cd985ce5b48a00c8f4d026d4d5ed6f7d42d053a0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:25:02.596767+00:00",
+  "finished_at_utc": "2026-11-14T11:25:54.098943+00:00",
+  "latency_seconds": 51.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7591,
+    "prompt_tokens": 8793,
+    "total_tokens": 16384,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6641,
+      "text_tokens": 950
+    },
+    "cost": 0.0051144499999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24942,
+  "text": "### Observed differences\n\n- In the earlier window, A36 was followed directly by A21 in every case: A36's outgoing transitions went to A21 100% of the time, and A21 came exactly one step after A36 in all 200 traces. In the later window, A36 leads to A14 in about 37 in 100 cases, to A20 in about 34, to A15 in about 29, and directly to A21 in only about 1 in 100; the distance from A36 to A21 is now two steps in 99 in 100 cases. [DIR004, LAG001]\n- In the earlier window, A14, A15 and A20 were not observed in any of the 200 traces. In the later window, A14 appears in about 37 in 100 traces, A20 in about 34 and A15 in about 29, each at roughly 35% of the trace's length. [POS001, POS002, POS003]\n- Whenever one of these three activities runs in the later window, it sits between A36 and A21: A36 precedes it and A21 follows it (for example, A36 before A14 and A14 before A21, each in 37% of traces; the same pattern holds for A15 at about 29% and A20 at about 34%). In the earlier window, none of the three ever co-occurred with A36 or A21. [REL003, REL004, REL006, REL007, REL008, REL009]\n- The three activities are mutually exclusive alternatives: A14, A15 and A20 never occur in the same trace in either window, and in the later window each appears without the others. [REL001, REL002, REL005]\n- In the later window, the only observed successor of A14, A15 and A20 is A21 (in 74, 67 and 57 traces respectively), whereas in the earlier window none of the three had any observed outgoing transitions. [DIR001, DIR002, DIR003]\n- A21 itself remains in all traces in both windows; its mean position shifts only slightly later (about 0.37 to 0.39 of the trace length) and its spread narrows a little. [POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a step is inserted between A36 and A21: after A36, exactly one of three mutually exclusive activities — A14 (about 37 in 100 cases), A20 (about 34) or A15 (about 29) — is executed and is in turn always followed by A21, whereas in the earlier window A36 was followed directly by A21 in every observed case and A14, A15 and A20 were not executed. This is shown directly by A36's successor profile flipping from exclusively A21 to mostly A14/A20/A15 [DIR004], by the A36-to-A21 distance growing from one to two steps [LAG001], and by each of the three activities lying between A36 and A21 in every trace where it occurs [REL003, REL004, REL006, REL007, REL008, REL009]. The picture is consistent across direction, position and relation indicators, and 18 control-flow items qualified against roughly 0.22 expected for an unchanged process, far beyond what random re-splits of stable behaviour produce.\n\nLimitations: since A14, A15 and A20 were not observed at all in the earlier window, the evidence shows they were not executed then but cannot distinguish a newly added activity from one that existed without being triggered; the choice among the three alternatives is not explained by this evidence; and the indicators partly describe the same traces, so they are not independent confirmations. The slight later position of A21 is consistent with the insertion rather than a separate change to A21's participation [POS004].",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

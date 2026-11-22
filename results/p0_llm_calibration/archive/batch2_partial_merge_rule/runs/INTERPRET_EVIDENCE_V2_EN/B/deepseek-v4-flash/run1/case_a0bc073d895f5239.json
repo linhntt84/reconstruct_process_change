@@ -1,0 +1,74 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "0699b58e09da09650333cce51ba90bb8547dd4ba1c3a1acb86f218e9a9b2e284",
+  "sent_prompt_sha256": "48e14479c1071fbe0287ad12acf421a744cc81ed5f62a273f8b271998ff8cc98",
+  "evidence_path": "results/p0_llm_calibration/evidence/B/case_a0bc073d895f5239.json",
+  "evidence_sha256": "ea9add9acade96442689c664b89580c5367c22070326ab40eddc21641befd8b7",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": false
+  },
+  "started_at_utc": "2026-11-11T12:54:52.038141+00:00",
+  "finished_at_utc": "2026-11-11T12:55:14.835334+00:00",
+  "latency_seconds": 22.8,
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1563,
+    "prompt_tokens": 10136,
+    "total_tokens": 11699,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1174
+    }
+  },
+  "response_model": "deepseek-v4-flash",
+  "transport": "curl",
+  "text": "### Observed differences\n\n- In the later window, activities A21 and A22 appear in about 22% of traces instead of about 78% before; activities A23 and A24 appear in about 80% of traces instead of about 22% before. [OCC001, OCC002, OCC003, OCC004]\n- The outgoing transition from A20 changed: before, about 78% of its occurrences went to A21 and 22% to A23; after, about 79% go to A23 and 21% to A21. [DIR001]\n- Co-occurrence and ordering relations shift accordingly: A20 with A21 drops from 78% to 22% co-occurrence, while A20 with A23 rises from 22% to 80%; A21 with A22 drops from 78% to 21% co-occurrence, while A23 with A24 rises from 22% to 79%. [REL001, REL003, REL005, REL012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a hypothesis that the process now routes from A20 to the A23–A24 path instead of the A21–A22 path. The routing change at A20 is directly shown by the successor distribution, and the participation, co-occurrence, and ordering indicators consistently reflect the same switch. The differences are large (about 56–57 percentage points) and appear across multiple indicators tied to the same activities. The main limitation is that the evidence comes from two samples of 200 traces each, but the consistency and size of the changes make sampling variation an unlikely explanation. A competing explanation that cannot be fully excluded is that both branches still exist and the observed shift reflects a major change in branch frequency rather than a removal of one branch, but the evidence points to a structural re-routing at A20.",
+  "raw_response": {
+    "id": "chatcmpl-83ee39dd63c86e56",
+    "created": 1794401692,
+    "model": "deepseek-v4-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "vllm-0.28.0-tp2-ep-b3976021",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "### Observed differences\n\n- In the later window, activities A21 and A22 appear in about 22% of traces instead of about 78% before; activities A23 and A24 appear in about 80% of traces instead of about 22% before. [OCC001, OCC002, OCC003, OCC004]\n- The outgoing transition from A20 changed: before, about 78% of its occurrences went to A21 and 22% to A23; after, about 79% go to A23 and 21% to A21. [DIR001]\n- Co-occurrence and ordering relations shift accordingly: A20 with A21 drops from 78% to 22% co-occurrence, while A20 with A23 rises from 22% to 80%; A21 with A22 drops from 78% to 21% co-occurrence, while A23 with A24 rises from 22% to 79%. [REL001, REL003, REL005, REL012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a hypothesis that the process now routes from A20 to the A23–A24 path instead of the A21–A22 path. The routing change at A20 is directly shown by the successor distribution, and the participation, co-occurrence, and ordering indicators consistently reflect the same switch. The differences are large (about 56–57 percentage points) and appear across multiple indicators tied to the same activities. The main limitation is that the evidence comes from two samples of 200 traces each, but the consistency and size of the changes make sampling variation an unlikely explanation. A competing explanation that cannot be fully excluded is that both branches still exist and the observed shift reflects a major change in branch frequency rather than a removal of one branch, but the evidence points to a structural re-routing at A20.",
+          "role": "assistant",
+          "reasoning_content": "We need to produce the answer with sections. Let's analyze.\n\nWe have 200 traces before and after. Screening: 91 units tested, expected 0.45 items by chance. We have many evidence items (24 items). But many are about the same underlying change: activities A21/A22 decreased, A23/A24 increased, and relations among them. The core difference: A20 (start?) leads to A21/A22 in before, but to A23/A24 in after. Actually DIR001: A20's outgoing transitions: before A21 0.78, A23 0.22; after A21 0.209, A23 0.786, A05 0.005. So A20 now goes mostly to A23 instead of A21. Then A21's outgoing: before A22 0.994, A29 0.006; after A22 0.955, A12 0.023, A20 0.023. A23's outgoing: before A24 0.978, A20 0.022; after A24 0.988, A14 0.013. A24's outgoing: before A28 0.978, A19 0.022; after A28 1.0. So the main change: A20 now routes to A23 instead of A21. Then A21 and A22 become rare (OCC001, OCC002 decreased from 0.78 to 0.22/0.21). A23 and A24 increase from 0.225 to 0.8/0.79. So the process switched from a branch A20->A21->A22 to A20->A23->A24. Also relations confirm: REL001 (A20,A21) cooccurrence drops from 0.78 to 0.22, A_only increases; REL003 (A20,A23) cooccurrence increases from 0.225 to 0.795, A_before_B increases. REL005 (A21,A22) cooccurrence drops, neither increases. REL012 (A23,A24) cooccurrence increases, neither decreases. So it's a clear switch of a branch.\n\nNow, screening expected 0.45 items by chance. We have many items, but they are all about the same underlying difference: the switch from A21/A22 to A23/A24. So distinct differences: one main difference (the routing change at A20). That is clearly more than 0.45. So we can consider a hypothesis.\n\nBut we need to judge support level. The evidence is direct: DIR001 shows the routing change at A20. OCC and REL confirm. So it's a supported hypothesis that the process now routes from A20 to A23/A24 instead of A21/A22. However, we must be careful: the hypothesis is about a structural change. The evidence is strong and consistent. But we should note that it's a possibility supported, not confirmed. Also note that the change is a switch in branch selection. There is no time or resource evidence. So we can say supported.\n\nBut we need to consider if there are competing explanations. Sampling differences? The differences are large (0.78 vs 0.22) and consistent across many indicators. So sampling is unlikely. Also the empirical strength is high (0.995) for each item. So supported.\n\nWe should write observed differences: In the later window, activity A21 and A22 occur in about 22% of traces instead of 78%; A23 and A24 occur in about 80% instead of 22%. The outgoing transition from A20 goes to A23 in about 79% of cases instead of A21 in 78% before. Relations: A20 co-occurs with A21 in 22% instead of 78%, and with A23 in 80% instead of 22%. A21 and A22 co-occur in 21% instead of 78%, and A23 and A24 co-occur in 79% instead of 22%. So the process switched from a path A20->A21->A22 to A20->A23->A24.\n\nInference: Support level: Supported hypothesis. State: The evidence supports a hypothesis that the process now routes from A20 to A23/A24 instead of A21/A22. The supporting signs: DIR001 shows A20's successor changed from A21 (78%) to A23 (79%). OCC001-004 show the participation of A21/A22 dropped from 78% to 22%, and A23/A24 rose from 22% to 80%. REL001-014 consistently show the co-occurrence and ordering changes. The limitation: this is based on a sample of 200 traces per window; but the differences are large and consistent. Also note that the change could be a rare variant? No, it's a major shift. But we should mention that we cannot rule out that the process still has both branches but the frequency changed drastically; however, the evidence supports a structural change in routing.\n\nWe need to be careful: The hypothesis is about a structural change. We can say \"The evidence supports a hypothesis that the process has changed its routing at A20, preferring A23/A24 over A21/A22.\" Also mention that the change is not just a frequency change but a switch in the main path.\n\nWe should also note that the screening expected 0.45 items, and we have many items but they are all about the same difference, so it's one distinct difference, which is clearly more than expected.\n\nThus answer.\n\nLet's write.",
+          "provider_specific_fields": {
+            "refusal": null,
+            "reasoning": "We need to produce the answer with sections. Let's analyze.\n\nWe have 200 traces before and after. Screening: 91 units tested, expected 0.45 items by chance. We have many evidence items (24 items). But many are about the same underlying change: activities A21/A22 decreased, A23/A24 increased, and relations among them. The core difference: A20 (start?) leads to A21/A22 in before, but to A23/A24 in after. Actually DIR001: A20's outgoing transitions: before A21 0.78, A23 0.22; after A21 0.209, A23 0.786, A05 0.005. So A20 now goes mostly to A23 instead of A21. Then A21's outgoing: before A22 0.994, A29 0.006; after A22 0.955, A12 0.023, A20 0.023. A23's outgoing: before A24 0.978, A20 0.022; after A24 0.988, A14 0.013. A24's outgoing: before A28 0.978, A19 0.022; after A28 1.0. So the main change: A20 now routes to A23 instead of A21. Then A21 and A22 become rare (OCC001, OCC002 decreased from 0.78 to 0.22/0.21). A23 and A24 increase from 0.225 to 0.8/0.79. So the process switched from a branch A20->A21->A22 to A20->A23->A24. Also relations confirm: REL001 (A20,A21) cooccurrence drops from 0.78 to 0.22, A_only increases; REL003 (A20,A23) cooccurrence increases from 0.225 to 0.795, A_before_B increases. REL005 (A21,A22) cooccurrence drops, neither increases. REL012 (A23,A24) cooccurrence increases, neither decreases. So it's a clear switch of a branch.\n\nNow, screening expected 0.45 items by chance. We have many items, but they are all about the same underlying difference: the switch from A21/A22 to A23/A24. So distinct differences: one main difference (the routing change at A20). That is clearly more than 0.45. So we can consider a hypothesis.\n\nBut we need to judge support level. The evidence is direct: DIR001 shows the routing change at A20. OCC and REL confirm. So it's a supported hypothesis that the process now routes from A20 to A23/A24 instead of A21/A22. However, we must be careful: the hypothesis is about a structural change. The evidence is strong and consistent. But we should note that it's a possibility supported, not confirmed. Also note that the change is a switch in branch selection. There is no time or resource evidence. So we can say supported.\n\nBut we need to consider if there are competing explanations. Sampling differences? The differences are large (0.78 vs 0.22) and consistent across many indicators. So sampling is unlikely. Also the empirical strength is high (0.995) for each item. So supported.\n\nWe should write observed differences: In the later window, activity A21 and A22 occur in about 22% of traces instead of 78%; A23 and A24 occur in about 80% instead of 22%. The outgoing transition from A20 goes to A23 in about 79% of cases instead of A21 in 78% before. Relations: A20 co-occurs with A21 in 22% instead of 78%, and with A23 in 80% instead of 22%. A21 and A22 co-occur in 21% instead of 78%, and A23 and A24 co-occur in 79% instead of 22%. So the process switched from a path A20->A21->A22 to A20->A23->A24.\n\nInference: Support level: Supported hypothesis. State: The evidence supports a hypothesis that the process now routes from A20 to A23/A24 instead of A21/A22. The supporting signs: DIR001 shows A20's successor changed from A21 (78%) to A23 (79%). OCC001-004 show the participation of A21/A22 dropped from 78% to 22%, and A23/A24 rose from 22% to 80%. REL001-014 consistently show the co-occurrence and ordering changes. The limitation: this is based on a sample of 200 traces per window; but the differences are large and consistent. Also note that the change could be a rare variant? No, it's a major shift. But we should mention that we cannot rule out that the process still has both branches but the frequency changed drastically; however, the evidence supports a structural change in routing.\n\nWe need to be careful: The hypothesis is about a structural change. We can say \"The evidence supports a hypothesis that the process has changed its routing at A20, preferring A23/A24 over A21/A22.\" Also mention that the change is not just a frequency change but a switch in the main path.\n\nWe should also note that the screening expected 0.45 items, and we have many items but they are all about the same difference, so it's one distinct difference, which is clearly more than expected.\n\nThus answer.\n\nLet's write."
+          }
+        },
+        "provider_specific_fields": {
+          "routed_experts": null,
+          "token_ids": null,
+          "stop_reason": null
+        }
+      }
+    ],
+    "usage": {
+      "completion_tokens": 1563,
+      "prompt_tokens": 10136,
+      "total_tokens": 11699,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1174
+      }
+    }
+  },
+  "case_id": "case_a0bc073d895f5239",
+  "kind": "drift",
+  "config": "B",
+  "run_index": 1,
+  "support_level": "supported hypothesis"
+}

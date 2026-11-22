@@ -1,0 +1,19 @@
+### Observed differences
+
+- The main difference is a flip in how often two groups of activities run. In the later window, A16, A17 and A18 each appear in about 25 in 100 traces, down from about 75 in 100 before; A19, A20 and A21 each rise from about 25 in 100 to about 75 in 100. None of the six repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- Routing out of A15 flipped in the same way. Before, about three quarters of A15's observed outgoing transitions went to A16, A17 or A18 (roughly 23–27% each) and about a quarter to A19, A20 or A21; in the later window the split is reversed, with A19, A20 and A21 at roughly 22–29% each and the A16–A18 group at roughly 8% each. A15 itself shows outgoing transitions in all 200 traces of both windows. [DIR001]
+- The relational profiles agree: A15 followed by A16, A17 or A18 falls from about 75 in 100 traces to about 25 in 100 (A15 now usually appears without them), while A15 followed by A19, A20 or A21 rises from about 25 to about 75 in 100. [REL001, REL002, REL003, REL004, REL005, REL006]
+- Each group behaves as a block. A16, A17 and A18 appeared together in about 75 in 100 traces before and are jointly absent in about 75 in 100 after; A19, A20 and A21 were jointly absent in about 75 in 100 before and appear together in about 75 in 100 after. Cross-group pairs are mutually exclusive in both windows, only the favoured side changes (for example, A16 without A19 in about 75 in 100 traces before, A19 without A16 in about 75 in 100 after). [REL007, REL013, REL022, REL025, REL009, REL014]
+- A25 is present in essentially every trace in both windows, but its companions change: before it co-occurs with A16, A17 or A18 in about 75 in 100 traces; in the later window it appears without them in about 75 in 100 and instead co-occurs with A19, A20 or A21 in about 75 in 100. [REL012, REL017, REL021, REL024, REL026, REL027]
+- The positional gap from A15 to A20 shortens somewhat: a three-step gap drops from about half of cases to about a third, while one- and two-step gaps grow. [LAG001]
+- Every qualifying item shows a difference larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, DIR001, REL001, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the routing after A15 changed: in the later window, the route through A19, A20 and A21 (running alongside A25) is taken in about three quarters of cases, whereas before the route through A16, A17 and A18 was taken in about three quarters; A25 continues to appear in essentially all traces but now accompanies the A19–A21 route. [DIR001, OCC001, OCC004, REL004, REL012, REL024]
+
+The support is direct and consistent: the successor shares of A15 themselves flipped, and the participation and co-occurrence/order profiles of all six branch activities and A25 move together; the 35 qualifying items far exceed the roughly 0.5 expected by chance if nothing had changed, every difference exceeds about 199 of 200 random re-splits, and the profiles rest on large supports (about 150 vs 49 traces and 50 vs 151 traces for the two groups). [DIR001, OCC001, OCC006, REL022, REL027]
+
+Limitations: the items very likely reflect one underlying difference rather than independent confirmations; the evidence cannot distinguish a change in the branch choice at A15 from a shift in the mix of two pre-existing variants between the sampled windows, since a sampling difference in variant frequencies would look the same; and the within-group order is roughly balanced in both directions, so whether the activities of a route run in sequence or in parallel, and any clock-time reading of the gap change, remain undetermined. [REL007, REL022, LAG001]

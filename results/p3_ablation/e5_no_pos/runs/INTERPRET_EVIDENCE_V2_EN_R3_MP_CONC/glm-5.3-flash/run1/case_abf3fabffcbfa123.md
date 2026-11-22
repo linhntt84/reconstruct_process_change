@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, cases split into two mutually exclusive routes: about 52 in 100 traces ran A27, while the remaining ~49 in 100 ran A32, A33 and A38 together — the three always co-occurred as a group and never co-occurred with A27. In the later window, A27 runs in about 199 of 200 traces, and A32, A33 and A38 each appear in only 1 of 200 traces. [OCC004, OCC005, OCC006, OCC007, REL022, REL023, REL024, REL028, REL029, REL030]
+- Both routes previously sat between A26 and A28: A26 preceded A27 or the group in about half of the traces, and the group members preceded A28. In the later window, A26 precedes A27 in about 98 in 100 traces and A27 precedes A28 in about 97 in 100; the A26→A28 distance collapsed to two steps in about 95 in 100 traces (before: roughly half at two steps, half at four). [REL017, REL018, REL021, REL025, DIR006, LAG003]
+- A04 fell from about 68 in 100 traces to about 21 in 100. Earlier, A14 led to A04 in about 63 in 100 of its observed continuations and directly to A15 in about 36; in the later window A14 leads directly to A15 in about 82 in 100 and to A04 in about 10, and A14 occurs without A04 in about 79 in 100 traces. [OCC002, DIR004, REL001, LAG001, LAG002]
+- A02 and A08 occur in a larger share of traces (A02: 5% to 15%, i.e., 10 to 30 traces; A08: 5% to about 21%, 10 to 41 traces), with visibly reshuffled outgoing transitions; these profiles rest on modest observation counts. [OCC001, OCC003, DIR001, DIR003]
+- A14, A15, A26 and A28 occurred in essentially every trace in both windows. [REL009, REL013, REL017, REL021, DIR004, DIR005, DIR006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the choice between two routes was eliminated in the later window: the branch in which A32, A33 and A38 ran together — previously taken in about half of the cases, always as a group and never alongside A27 — is no longer executed, while A27, which already existed, now runs in virtually every case between A26 and A28. Fifty-six control-flow items qualified against fewer than 1 expected if nothing had changed, and the qualifying items converge on the same picture from participation, relational and directional evidence: A27's participation rose from about 52 in 100 traces to essentially all, A32/A33/A38 fell from about 49 in 100 each to about 1 in 200, the earlier exclusivity and within-group co-occurrence are replaced by near-universal A26→A27→A28 ordering, and the A26→A28 distance collapsed from a two-/four-step mix to two steps. [OCC004, OCC005, OCC006, OCC007, REL017, REL021, REL022, REL028, DIR006, LAG003]
+
+Limitations: the later-window routing out of A32, A33 and A38 rests on a single trace each, so only their near-disappearance is reliable, not the transitions that replaced them; and the evidence cannot rule out that the two windows sample different case mixes (e.g., different variant populations) rather than a modified process. [OCC005, OCC006, OCC007, DIR007, DIR008, DIR009]
+
+Other differences: A04, previously executed after A14 in about two-thirds of cases and before A15, is now mostly skipped — A14 leads directly to A15 in most later traces, with A04 retained in about 21 in 100 cases. A02 and A08 also occur in a larger share of traces (5% to 15% and 5% to about 21%), though on modest counts. [OCC002, DIR004, LAG001, LAG002, OCC001, OCC003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_a861c8e586471d84.json",
+  "evidence_sha256": "977dd3a511e5d1835163d69bd6c8d46518b42107f56025183c665bd2db6add57",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:07:19.136700+00:00",
+  "finished_at_utc": "2026-11-15T07:09:05.029026+00:00",
+  "latency_seconds": 105.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15208,
+    "prompt_tokens": 16392,
+    "total_tokens": 31600,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13668,
+      "text_tokens": 1540
+    },
+    "cost": 0.0100628
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50474,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 each ran in roughly a third of the cases (about 35, 31 and 35 in 100 traces) and were mutually exclusive alternatives, almost never appearing in the same trace; in the later window they have practically disappeared, occurring in 0, 1 and 0 of 200 traces respectively. [OCC001, OCC002, OCC003, REL007, REL009, REL014]\n- In the earlier window, about 93 in 100 of A41's outgoing transitions went to one of the three (roughly a third each to A19, A25 and A20); in the later window, about 92 in 100 of A41's outgoing edges lead directly to A26. [DIR004]\n- In the earlier window, A19, A20 and A25 led almost exclusively to A26 (about 97–99 in 100 of their outgoing edges); in the later window A19 and A25 show no observed outgoing transitions because they no longer occur, and A20's single occurrence is followed by A30 at a later event position. [DIR001, DIR002, DIR003, POS003]\n- In the earlier window, A19, A20 and A25 co-occurred with A41, A26 and A31 in about 30–36 of 100 traces, typically after A41 and before A26; in the later window these co-occurrences are at or near zero, while A41, A26 and A31 themselves still occur in essentially every trace. [REL010, REL011, REL012, REL015, REL016, REL017, REL019, REL020, REL021]\n- The same collapse appears against A12, A14 and A24: A14 preceded one of the three in about 30–36 of 100 traces before and never does in the later window, and co-occurrence with A12 and A24 likewise drops to about zero, with A12, A14 and A24 continuing to occur throughout. [REL001, REL002, REL003, REL004, REL005, REL006, REL008, REL013, REL018]\n- Small positional shifts accompany this: A26's mean event position moved slightly earlier (about 0.39 to 0.37 of trace length) while A41's and A14's moved slightly later (about 0.32 to 0.33 and 0.14 to 0.15); these are event positions, not clock times. [POS001, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the three-way alternative block formed by A19, A20 and A25, which in the earlier window executed between A41 and A26, is no longer executed in the later window, with A41 proceeding directly to A26. Before, A41 led to one of the three in about 93 of 100 of its outgoing edges and each of the three led on to A26; the three each ran in roughly 30–36 of 100 traces as mutually exclusive alternatives. In the later window they appear in 0–1 of 200 traces and A41 proceeds directly to A26 in about 92 of 100 cases. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL007, REL009, REL014]\n\nThe support is direct and consistent: 34 control-flow items qualified in screening against fewer than one (0.58) expected without change, so chance alone cannot account for the set; the participation drop is backed by about 61–71 traces before versus 0–1 after; A41's successor distribution flips from the three alternatives to A26; and every co-occurrence or ordering relation between the block and A12, A14, A24, A26, A31 or A41 collapses to about zero while those activities keep occurring in essentially all traces. [OCC001, OCC002, OCC003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL008, REL010, REL011, REL012, REL013, REL015, REL016, REL017, REL018, REL019, REL020, REL021]\n\nLimitations: zero participation only means the activities were not observed, so a complete removal of the block cannot be distinguished from it having become extremely rare (well under 1 in 100 cases); the later profile of A20 rests on a single trace; and the evidence shows nothing about why the block disappeared. [OCC001, OCC002, OCC003, DIR002, POS003]\n\nOther differences: the small positional shifts of A14, A26 and A41 noted above are consistent with a block of events being removed between them, but on their own they do not show that these activities were moved. [POS001, POS005, POS006]",
+  "case_id": "case_a861c8e586471d84",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

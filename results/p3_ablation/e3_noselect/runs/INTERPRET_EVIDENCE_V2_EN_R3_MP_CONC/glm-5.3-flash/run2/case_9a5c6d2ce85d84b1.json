@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9a5c6d2ce85d84b1.json",
+  "evidence_sha256": "be9b7a19271b0e10d9406b80d6a63a0c7f85adcfbd2bca92bef0c9f60fc7f782",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:41:15.939212+00:00",
+  "finished_at_utc": "2026-11-15T08:42:27.550813+00:00",
+  "latency_seconds": 71.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9812,
+    "prompt_tokens": 3500,
+    "total_tokens": 13312,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9195,
+      "text_tokens": 617
+    },
+    "cost": 0.005431
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36191,
+  "text": "### Observed differences\n\n- Activity A01 is absent from the earlier window — it appears in 0 of 200 traces — while in the later window it occurs exactly once in every trace (mean 1.0 occurrence per trace, participation 100 in 100 cases). [OCC001]\n- In the later window, A01 always sits at the same event position (mean position 1.0 with no variation across traces); in the earlier window there were no observations of it at all. [POS001]\n- The relation between A01 and A04 changed completely: earlier, A04 occurred without A01 in all 200 traces (the two never appeared together); later, both occur together in every trace, with A04 before A01 in 100 in 100 cases. [REL001]\n- A04's outgoing flow changed: earlier, no outgoing transitions from A04 were observed; later, all 200 observed outgoing transitions of A04 lead to A01. [DIR001]\n- A04's own mean event position moved earlier, from 1.0 to 0.75, a pattern consistent with a step having been added after it (positions are event positions, not clock times). [POS002]\n- All five items describe one underlying difference rather than independent changes, and each difference is larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, DIR001, POS001, POS002, REL001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that activity A01 was added as a new, mandatory step executed after A04: in the earlier window, traces contained A04 but never A01, whereas in the later window every trace runs A04 and then A01 exactly once, in that order. The support is direct and consistent: the pair changed from never co-occurring to co-occurring in every trace with a fixed A04-before-A01 order [REL001]; the edge A04 → A01 now carries all of A04's observed outgoing flow [DIR001]; A01's participation rose from 0 to 100 in 100 traces at a constant position [OCC001, POS001]; and A04's position shift is consistent with a step inserted after it [POS002]. Because A01 appears in every after trace and in no before trace, sampling fluctuation or a rare one-window variant is not a plausible explanation, and the pattern is an addition of a step rather than a redistribution of shares between existing paths.\n\nLimitations: zero participation in the earlier window only means A01 was not observed then, so the evidence cannot distinguish a genuinely new activity from a pre-existing optional one that was previously always skipped and is now always executed; and whether A01 is the final step of the trace, rather than merely following A04, rests on event-position evidence, which does not measure clock time.\n\nOther differences: none — the five items all describe the same underlying change and should not be read as independent confirmations of it. [OCC001, DIR001, POS001, POS002, REL001]",
+  "case_id": "case_9a5c6d2ce85d84b1",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

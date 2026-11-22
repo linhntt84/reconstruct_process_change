@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_e07b405df3bcc38d.json",
+  "evidence_sha256": "61c330029e912abe52ef6f720cf2fca782451211fcdf24a9e139107f330129cd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:27:11.470037+00:00",
+  "finished_at_utc": "2026-11-15T07:27:44.418734+00:00",
+  "latency_seconds": 32.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4741,
+    "prompt_tokens": 2978,
+    "total_tokens": 7719,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4075,
+      "text_tokens": 666
+    },
+    "cost": 0.0028171999999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16885,
+  "text": "### Observed differences\n\n- In the earlier window, the elapsed time between a completion of A14 and the next completion of A20 was typically about 1.0 hour (median 1.01 h; middle half between 0.90 and 1.12 h). In the later window it was typically about 0.49 h (middle half between 0.42 and 0.55 h) — about 0.53 h lower on average, roughly a halving. How often this consecutive pair occurred barely changed (89 intervals before vs 93 after, in windows of 200 traces each). [TWAIT001]\n- The interval from A15 to A20 shows the same shift: typically about 0.99 h before (middle half 0.91–1.10 h) versus about 0.51 h after (middle half 0.45–0.57 h), about 0.49 h lower, again with an essentially unchanged frequency (111 vs 107 intervals). [TWAIT002]\n- In both intervals the spread narrowed as well (standard deviation from about 0.16 h to about 0.08 h for A14–A20, and from about 0.17 h to about 0.09 h for A15–A20), so the times became shorter and more uniform. [TWAIT001, TWAIT002]\n- Both differences are larger than about 1999 of 2000 random re-splits of the pooled data, and the two flagged items far exceed the roughly 0.03 items expected by chance across the 52 tested time units. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completions leading into A20 — from both A14 and A15 — is about half of what it was, dropping from roughly 1.0 hour to roughly 0.5 hours, while the intervals became more uniform and the frequency of these consecutive pairs stayed essentially the same. [TWAIT001, TWAIT002]\n\nSupporting signs: both measured intervals move in the same direction with similar magnitude (about 0.49–0.53 h lower), each rests on substantial support (89–111 intervals per window), each exceeds about 1999 of 2000 random re-splits, and the number of flagged items (2) is far above the chance expectation for the time family (about 0.03). [TWAIT001, TWAIT002]\n\nLimitations: TWAIT measures elapsed time between consecutive completion events, so the evidence cannot distinguish whether the reduction reflects less waiting, faster handling, or fewer or shorter steps between the two completions; the evidence contains no structural or positional items, so any accompanying change in the sequence itself cannot be assessed. Both intervals end at A20, so the two items may reflect a single underlying difference around A20 rather than two independent changes. A competing explanation the evidence cannot rule out is a shift in the mix of cases reaching A20 (for example, case types with naturally shorter intervals becoming more common), which could produce the same pattern. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_e07b405df3bcc38d",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

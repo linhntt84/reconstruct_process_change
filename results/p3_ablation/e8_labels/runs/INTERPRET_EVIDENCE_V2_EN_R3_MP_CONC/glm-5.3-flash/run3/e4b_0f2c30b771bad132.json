@@ -1,0 +1,57 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e8_labels/evidence/e4b_0f2c30b771bad132.json",
+  "evidence_sha256": "1032453e604675352dbf92ecabfad2fec5f3a4b05d0440054b23af7b7ac074d8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:56:32.201339+00:00",
+  "finished_at_utc": "2026-11-15T12:57:51.976456+00:00",
+  "latency_seconds": 79.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11383,
+    "prompt_tokens": 5230,
+    "total_tokens": 16613,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10508,
+      "text_tokens": 875
+    },
+    "cost": 0.006476
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43155,
+  "text": "### Observed differences\n\n- Resource allocation for A11 changed completely. In the earlier window, its assignments were spread across 21 different resources, with the busiest handling about 14 in 100 of its events; in the later window, a single resource, User_123, handled every observed A11 event (concentration index 0.08 → 1.0, distinct resources 21 → 1). The activity itself did not become rarer — it appeared in about 48 in 100 traces before and about 57 in 100 after. [ASSIGN002, CONC001]\n- Assignments were also reshuffled on two other activities. For A03 (present in nearly all traces in both windows), User_3's share rose from about 8 to about 19 in 100 assignments and User_32's from about 4 to about 8 in 100, while several previously active resources lost share or dropped out and the residual \"other\" share fell from about 45 to about 39 in 100. For A21 (about 66 and 62 in 100 traces), User_3 rose from about 11 to about 30 in 100 and User_32 from about 5 to about 10 in 100, with the \"other\" share falling from about 35 to about 27 in 100. [ASSIGN001, ASSIGN003]\n- The elapsed time between consecutive A04 and A01 completions shortened markedly: the median fell from about 70 hours to about 13 hours, the mean from about 53 to about 23 hours, and the upper quartile from about 92 to about 43 hours, while the fastest quarter of intervals stayed near-instant (about 0.1–0.2 hours) in both windows; 200 intervals were observed in each window. [TWAIT001]\n- All five qualifying differences are larger than in about 999.5 of 1000 random re-splits of the pooled data, and they sit only in the time and resource families; no control-flow item qualified (0 against about 0.17 expected by chance). [TWAIT001, ASSIGN001, ASSIGN002, ASSIGN003, CONC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a change in resource allocation. In the later window, A11 is assigned exclusively to User_123, where earlier about 20 resources shared this activity with the busiest handling about 14 in 100 of its events; at the same time, assignment shares for A03 and A21 shifted toward User_3 (roughly doubling to about 19 and about 30 in 100 of assignments respectively) and User_32, away from a broader group of previously active resources. The concentration change is measured directly by two indicators that agree, the reallocation appears consistently on both other activities, the four resource items are hundreds of times the number expected without a change (about 0.006), and each rests on substantial support (96–200 traces). Limitations: the resource codes are anonymous, so no roles or reasons can be inferred; the two A11 indicators describe the same underlying behaviour and are not independent confirmations; and the evidence cannot rule out that the concentration on a single resource is specific to the later window rather than a lasting allocation. [ASSIGN001, ASSIGN002, ASSIGN003, CONC001]\n\nOther differences: the shortening of the elapsed time between consecutive A04 and A01 completions (median about 70 → about 13 hours, 200 intervals per window) is a consistent change in timing in its own right, against about 0.017 time items expected by chance; the evidence cannot show whether it shares a cause with the reallocation or reflects a different mix of cases between the windows. No control-flow item qualified, so no structural change accompanies these differences. [TWAIT001, ASSIGN001, ASSIGN002, ASSIGN003, CONC001]",
+  "case_id": "e4b_0f2c30b771bad132",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis",
+  "text_original": "### Observed differences\n\n- Resource allocation for O_Accepted changed completely. In the earlier window, its assignments were spread across 21 different resources, with the busiest handling about 14 in 100 of its events; in the later window, a single resource, User_123, handled every observed O_Accepted event (concentration index 0.08 → 1.0, distinct resources 21 → 1). The activity itself did not become rarer — it appeared in about 48 in 100 traces before and about 57 in 100 after. [ASSIGN002, CONC001]\n- Assignments were also reshuffled on two other activities. For A_Complete (present in nearly all traces in both windows), User_3's share rose from about 8 to about 19 in 100 assignments and User_32's from about 4 to about 8 in 100, while several previously active resources lost share or dropped out and the residual \"other\" share fell from about 45 to about 39 in 100. For W_Complete application (about 66 and 62 in 100 traces), User_3 rose from about 11 to about 30 in 100 and User_32 from about 5 to about 10 in 100, with the \"other\" share falling from about 35 to about 27 in 100. [ASSIGN001, ASSIGN003]\n- The elapsed time between consecutive A_Concept and A_Accepted completions shortened markedly: the median fell from about 70 hours to about 13 hours, the mean from about 53 to about 23 hours, and the upper quartile from about 92 to about 43 hours, while the fastest quarter of intervals stayed near-instant (about 0.1–0.2 hours) in both windows; 200 intervals were observed in each window. [TWAIT001]\n- All five qualifying differences are larger than in about 999.5 of 1000 random re-splits of the pooled data, and they sit only in the time and resource families; no control-flow item qualified (0 against about 0.17 expected by chance). [TWAIT001, ASSIGN001, ASSIGN002, ASSIGN003, CONC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a change in resource allocation. In the later window, O_Accepted is assigned exclusively to User_123, where earlier about 20 resources shared this activity with the busiest handling about 14 in 100 of its events; at the same time, assignment shares for A_Complete and W_Complete application shifted toward User_3 (roughly doubling to about 19 and about 30 in 100 of assignments respectively) and User_32, away from a broader group of previously active resources. The concentration change is measured directly by two indicators that agree, the reallocation appears consistently on both other activities, the four resource items are hundreds of times the number expected without a change (about 0.006), and each rests on substantial support (96–200 traces). Limitations: the resource codes are anonymous, so no roles or reasons can be inferred; the two O_Accepted indicators describe the same underlying behaviour and are not independent confirmations; and the evidence cannot rule out that the concentration on a single resource is specific to the later window rather than a lasting allocation. [ASSIGN001, ASSIGN002, ASSIGN003, CONC001]\n\nOther differences: the shortening of the elapsed time between consecutive A_Concept and A_Accepted completions (median about 70 → about 13 hours, 200 intervals per window) is a consistent change in timing in its own right, against about 0.017 time items expected by chance; the evidence cannot show whether it shares a cause with the reallocation or reflects a different mix of cases between the windows. No control-flow item qualified, so no structural change accompanies these differences. [TWAIT001, ASSIGN001, ASSIGN002, ASSIGN003, CONC001]",
+  "label_replacements": {
+    "W_Complete application": 2,
+    "A_Accepted": 2,
+    "A_Complete": 2,
+    "O_Accepted": 4,
+    "A_Concept": 2
+  },
+  "label_leftovers": []
+}

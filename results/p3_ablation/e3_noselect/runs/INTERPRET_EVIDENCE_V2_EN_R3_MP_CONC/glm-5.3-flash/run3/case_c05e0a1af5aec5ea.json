@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c05e0a1af5aec5ea.json",
+  "evidence_sha256": "22fc5a5bcdbb329e65753b21033047e38a5856f5aff76aa8ac0294075a123c2b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:08:43.975287+00:00",
+  "finished_at_utc": "2026-11-15T14:12:47.326374+00:00",
+  "latency_seconds": 243.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 32475,
+    "prompt_tokens": 38909,
+    "total_tokens": 71384,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30273,
+      "text_tokens": 2202
+    },
+    "cost": 0.02207385
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 103952,
+  "text": "### Observed differences\n\n- A01 changed context completely. In the earlier window it appeared in about 21 in 100 traces (about 1.8 occurrences per trace where it occurred), always together with A09, A04, A05 and A13 (co-occurrence 0.21 with each, equal to its own participation), at a mid-trace position (median about 0.7), and all 74 of its observed outgoing transitions went to A09. In the later window it appears in about 34 in 100 traces, exactly once per trace, never together with A04, A05, A08, A09, A13, A16 or A17 (co-occurrence 0 in all seven pairs), at a single fixed position (mean relative position 0.0 with no spread, versus 0.63), and no outgoing transitions from it were observed. [OCC001, DIR001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n\n- A17 is new to the later window: unobserved before (0 of 200 traces), it now occurs in about 13 in 100 traces (51 occurrences), always followed directly by A09, and always in traces that also contain A04, A08, A09 and A13, and in every trace containing A16. [OCC017, DIR012, POS008, REL013, REL022, REL025, REL027, REL028]\n\n- The wiring inside this recurring group changed. A08's outgoing transitions went about 53% to A13 and 47% to A04 before, and about 51% to A16 and 49% to A17 after; A16 led only to A05 before and only to A08 after; A05 led to A01 (about 54%) and A16 (about 46%) before, and to A13 (about 54%) and A04 (about 46%) after; A09 led mainly to A06 (about 47%) and A08 (about 43%) before, and to A05 (about 51%) and A06 (about 33%) after; A04 and A13 each dropped A05 as a successor (about 28% of outgoing transitions before, none after) and gained A08 (about 23–24% after). [DIR002, DIR003, DIR006, DIR007, DIR009, DIR011]\n\n- The lag distributions match this rewiring: formerly close pairs moved apart or thinned out (A08→A04 and A08→A13 from lags 1–2 to 4–5; A09→A08 from lag 1 to 4; A05→A16 and A16→A05 from lag 1 to 4; A04→A05 and A13→A05 from short lags to 4–5), while short-lag occurrences appeared for the new adjacencies (A09→A05, A05→A04, A05→A13, A04→A08, A13→A08, A16→A08). [LAG002, LAG003, LAG007, LAG010, LAG012, LAG015, LAG018, LAG019, LAG022, LAG023, LAG027, LAG028]\n\n- The group now runs in fewer traces but with more repetition around A08: traces containing A04, A09 or A13 fell from about 21 to about 13 in 100, and A05 from about 21 to about 6 in 100, while A08 rose from about 0.16 to 0.52 occurrences per trace (about 8 to 13 in 100 traces containing it, recurrence support 0.035 to 0.10) — roughly four occurrences per trace where it appears, versus two before — consistent with the new A08→A16→A08 repetition; A16's median position also moved earlier (about 0.60 to 0.40). [OCC004, OCC005, OCC008, OCC009, OCC013, DIR006, POS007, LAG016]\n\n- Outside this group, several activities became less common: A02 from 50 to 38 in 100 traces, A03 from 29 to 16, A06 from 21 to 13, A12 from about 11 to 7 and A18 from about 11 to 6; the routing shares at A06 and A07 stayed essentially unchanged. [OCC002, OCC003, OCC006, OCC012, OCC018, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the recurring group in the middle of the process was restructured and its membership changed. In the earlier window, A01 belonged to a group that always also contained A09, A04, A05 and A13, repeatedly handed over directly to A09, and received the flow back from A05; in the later window A01 has left this group — it occurs once per trace in about a third of traces, never together with any former partner, at one fixed position and with no observed outgoing transitions — while A17, previously unobserved, has taken over the role of directly preceding A09 inside the group. The internal edges were rewired: A08 now leads to A16 and A17 instead of A13 and A04, A16 leads to A08 instead of A05, A05 leads to A04 and A13 instead of A01 and A16, and A09 leads to A05 instead of A08; the group appears in fewer traces (about 21 to about 13 in 100) and A08 now repeats about four times per trace where it occurs. [OCC001, OCC005, OCC008, OCC017, DIR001, DIR003, DIR006, DIR011, DIR012, REL001, REL004, REL025]\n\nThe signs are direct and consistent: four source activities swapped essentially their entire outgoing profiles, A01's co-occurrence with its former partners flipped from every shared trace to none, A17's arrival shows in occurrence, position, relation and successor data, and the lag shifts line up with the lost and new adjacencies — nearly all at the top of the reference distribution (empirical strength about 0.995). Limitations: these indicator families partly describe the same traces, so their agreement is consistency rather than independent confirmation; an empty outgoing profile does not prove A01's edge to A09 is gone, only that it was not observed; the evidence cannot distinguish a rewiring of one group from a shift in the mixture of complete trace variants that would produce the same aggregates, and no screening baseline is included to compare item counts against chance. [DIR001, DIR006, DIR011, POS001, REL001, LAG018]\n\nOther differences: participation fell for A02 (50 to 38 in 100 traces), A03 (29 to 16), A06 (21 to 13), A12 (about 11 to 7) and A18 (about 11 to 6), while routing at A06 and A07 stayed stable; these drops are not part of the group hypothesis above, although A06, A12 and A18 lie downstream of A09, whose group now appears in fewer traces. [OCC002, OCC003, OCC006, OCC012, OCC018, DIR004, DIR005, DIR007]",
+  "case_id": "case_c05e0a1af5aec5ea",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_4df99fd015704993.json",
+  "evidence_sha256": "18a36ffc76a32435bc9363886681b198fc8551c4d62d64a388c13b6d46f48d24",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:48:21.356130+00:00",
+  "finished_at_utc": "2026-11-15T09:49:35.377868+00:00",
+  "latency_seconds": 74.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10480,
+    "prompt_tokens": 17166,
+    "total_tokens": 27646,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9323,
+      "text_tokens": 1157
+    },
+    "cost": 0.0078149
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32899,
+  "text": "### Observed differences\n\n- Two activities that were absent from all 200 earlier traces appear in the later window: A02 in about 39 in 100 traces and A01 in about 28 in 100 traces. [OCC001, OCC002, POS001]\n- A14 shows the reverse pattern: it ran in about 26 in 100 earlier traces (occasionally repeated within a trace) and is not observed in any of the 200 later traces; its co-occurrence with A03, A12 and A13 (about 26 in 100 traces earlier) also disappears. [OCC007, POS002, REL011, REL021, REL022]\n- Direct successors were rewired. Earlier, A03's outgoing transitions split about evenly between A12 (about 51%) and A13 (about 49%); later they go to A02 (about 54%) and A12 (about 46%), with A13 no longer observed as a successor of A03. [DIR002]\n- Earlier, A12 led exclusively to A14 and A14 led back to A03; in the later window A12 leads exclusively to A03, the newly appearing A02 leads exclusively to A13, and A14 has no observed outgoing transitions. [DIR001, DIR003, DIR004]\n- Positional gaps match an insertion of A02: A13 followed A03 about one position later in about half of the earlier cases but about two positions later in about half of the later cases, and A03 now follows A12 directly (one position) where it previously followed about two positions later. [LAG002, LAG003]\n- Relation profiles agree: A02 and A13, never in the same trace earlier (A13 alone in about 51 in 100), later co-occur in about 39 in 100 traces, always with A02 first; A02 and A03, also never together earlier, co-occur in about 39 in 100 later traces (A03 first in about 21 in 100). [REL006, REL001]\n- Several other activities became less frequent: A05, A07, A09, A10 and A11 each ran in about 50 in 100 traces earlier and about 33–34 in 100 later, so pairs of them that previously always had exactly one member present now show neither in roughly 27–48 in 100 traces. [OCC003, OCC004, OCC005, OCC006, REL012, REL013]\n- The self-repetition spacing of A03 and A12 changed from a fixed three-position gap to gaps of two or four positions. [LAG001, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reworking of the segment around A03, A12, A13 and A14: in the later window A14 is no longer executed, A12 returns directly to A03 instead of passing through A14, and the new activity A02 is placed between A03 and A13 (A03 → A02 → A13), with A01 also newly appearing. This rests on direct successor changes at A03, A12, A02 and A14, on the shift of A13 from one to two positions after A03, and on order profiles that match the placement (A02 before A13 in all shared traces). With 40 qualifying items against roughly 0.32 expected for an unchanged process, the pattern as a whole is far beyond what random re-splits of a stable process produce. [DIR001, DIR002, DIR003, DIR004, LAG002, LAG003, REL001, REL006, OCC001, OCC002, OCC007]\n\nLimitations: zero participation only establishes non-observation, so the evidence cannot distinguish A14 being removed from it merely not being executed in the later sample, and no relational or successor item shows where A01 fits into the flow. [OCC001, OCC007]\n\nOther differences: the participation drops of A05, A07, A09, A10 and A11 (from about 50 to about 33–34 in 100 traces) and the changed self-repeat gaps of A03 and A12 are observed but the evidence does not tie them to the reworked segment. [OCC003, OCC004, OCC005, OCC006, LAG001, LAG004]\n\nAn important competing explanation the evidence cannot rule out is low-frequency occurrence below sampling detection: A14 could still occur rarely and A01/A02 could have existed earlier at rates too low to appear in 200 traces, although the consistent successor and order changes make a pure sampling artefact unlikely. [DIR002, DIR003]",
+  "case_id": "case_4df99fd015704993",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

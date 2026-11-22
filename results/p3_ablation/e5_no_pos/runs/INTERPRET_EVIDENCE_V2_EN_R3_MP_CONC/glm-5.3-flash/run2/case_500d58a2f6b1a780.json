@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_500d58a2f6b1a780.json",
+  "evidence_sha256": "9e3e50a09b739a7187747239a3349ac6ff9821948400c0ae36e1b4fbc05f5946",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:11:56.857698+00:00",
+  "finished_at_utc": "2026-11-15T06:12:45.107843+00:00",
+  "latency_seconds": 48.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6746,
+    "prompt_tokens": 4318,
+    "total_tokens": 11064,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6056,
+      "text_tokens": 690
+    },
+    "cost": 0.0040206999999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25094,
+  "text": "### Observed differences\n\n- Three activities — A25, A26 and A31 — stopped repeating. In the earlier window each appeared in every case, averaging about 3.4 occurrences per case, with repeated executions in about 75 in 100 cases; in the later window each still appears in every case but averages about 1 occurrence, with repeats in only about 1 in 200 cases. [OCC001, OCC002, OCC003]\n- A31's outgoing transitions shifted from looping back to moving forward: earlier, about 70 in 100 of its outgoing transitions went to A25 and about 30 to A20; in the later window about 96 in 100 go to A20 and only about 4 to A25. [DIR001]\n- The relation between A25 and A31 changed from mixed to fixed: earlier the two always co-occurred but were interleaved or repeated in about 75 in 100 cases, with A25 before A31 in the remaining 25; in the later window A25 comes before A31 in about 995 in 1000 cases and interleaving has practically disappeared. [REL001]\n- The typical gap from A25 to A31 tightened: earlier the pair was spread over gaps of two and five positions (weights about 0.12 and 0.05); in the later window a gap of two positions dominates (weight about 0.92, gap five about 0.002). [LAG001]\n- The reverse order A31 before A25, still seen in about 150 cases in the earlier window, was observed in only 1 case in the later window. [LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a repetition loop around A25, A26 and A31 stopped being executed: earlier, all three activities were re-run several times per case (about 3.4 occurrences each, interleaved with one another, with A31 typically returning to A25), whereas in the later window each runs once per case, A25 is followed by A31 about two positions later, and A31 proceeds to A20 instead of returning to A25. This is a change in repetition — the activities stopped repeating — not a shift in how often alternative existing paths are taken. [OCC001, OCC002, OCC003, DIR001, REL001, LAG001, LAG002]\n\nThe hypothesis rests on direct and mutually consistent relational, directional and lag evidence (fixed A25→A31 order, collapsed loop-back edge, tightened gap), and the seven qualifying items far exceed the roughly 0.29 expected by chance among the 59 tested control-flow units, so chance sampling cannot explain the set as a whole. [OCC001, DIR001, REL001, LAG001]\n\nLimitations: A26's place in the loop is inferred only from its occurrence pattern, since no relational evidence names it, and the near-disappearance of the reverse order in the later window rests on a single observation. A competing explanation the evidence cannot rule out is that the later window simply contains cases that never required repetition (a difference in the case mix) rather than a change in the process itself. [OCC002, LAG002]",
+  "case_id": "case_500d58a2f6b1a780",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

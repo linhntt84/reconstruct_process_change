@@ -1,0 +1,15 @@
+### Observed differences
+
+- Activity A02 disappeared while A01 appeared, in near mirror image: in the earlier window A02 ran in 92 of 200 traces (about 46 in 100) and A01 in none; in the later window A02 runs in none of 200 traces and A01 in 101 of 200 (about 50 in 100). Neither activity repeats within a trace in either window. [OCC001, OCC002]
+- Both activities sit early in the trace when they occur: A02 at a median normalized position of about 0.11 in the earlier window, A01 at about 0.14 in the later window (means about 0.15 vs 0.19). [POS001, POS002]
+- Each activity fans out to a similar, broad set of successors. Earlier, A02's outgoing transitions went most often to A03 (about 32%), A06 (about 22%) and A11 (about 14%); later, A01's go most often to A06 (about 24%), A03 (about 19%), and A10 and A11 (about 15% each). [DIR001, DIR002]
+- The two activities never share a trace in either window: earlier, A02 appeared without A01 in about 46 in 100 traces (neither in 54); later, A01 appears without A02 in about 50 in 100 (neither in 50). [REL001]
+- The swap propagates to neighbouring activities. Earlier, A02 co-occurred with A03 in 46 in 100 traces; later, A03 (present in every trace) always runs without A02, while A01 now co-occurs with A03 in about 50 in 100 traces in mixed order (A03 first about 20, interleaved about 26, A01 first about 5 in 100). A06 shows the same pattern: it co-occurred with A02 in about 26 in 100 traces earlier and now co-occurs with A01 in about 26 in 100. [REL002, REL003, REL004, REL005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A01 took over the role previously played by A02. In the earlier window, A02 ran in about 46 in 100 cases, early in the trace, followed by a broad set of activities (most often A03, then A06 and A11). In the later window, A02 is never observed, and A01 runs in about 50 in 100 cases at a similar early position with a similar fan-out of successors (A06, A03, A10, A11, among others). The two activities never occur together, and their exclusive appearances exchange almost one-for-one between the windows. Supporting signs: the occurrence, direction, position and relation items all describe the same consistent picture, and 12 items qualified against roughly 0.21 expected if nothing had changed — far more than an unchanged process typically produces. Limitations: the evidence cannot distinguish a genuinely new activity from a relabelling of the same step, and the successor mix is not identical (A02 favoured A03 at about 32%, whereas A01 favours A06 at about 24%), so the routing out of this early step may also have shifted somewhat; most items describe one underlying swap and are not independent confirmations.
+
+Other differences: A03's own outgoing transitions were slightly redistributed (cosine dissimilarity about 0.05): A01 now receives about 8% of A03's outgoing transitions where A02 previously received about 7%, and A10's share rose from about 32% to about 37%. [DIR003]

@@ -1,0 +1,21 @@
+### Observed differences
+
+- Out of A45, the flow was redirected: in the earlier window about 31, 26 and 28 in 100 of A45's outgoing transitions went to A19, A20 and A25 respectively, while in the later window about 89 in 100 go to A26, and A26 now immediately follows A45 (gap 1 in about 89 of 100 cases, versus two to three steps earlier). [DIR006, LAG008]
+- The handovers of A19, A20 and A25 were redirected: earlier, about 89–98 in 100 of each activity's outgoing transitions went to A26; in the later window they go to A28 and A32 instead (roughly 38–58 in 100 each), and A26 is no longer a visible successor of any of the three. [DIR001, DIR002, DIR003]
+- The order between the trio A19/A20/A25 and A26 flipped: earlier the trio ran before A26 in about 30–37 of 100 co-occurring traces and never after it; later A26 runs before the trio in about 30–36 of 100 and the trio never runs before A26. The same flip occurred against A27 (trio first in about 31–38 of 100 earlier; A27 first in about 31–36 of 100 later), while co-occurrence levels stayed similar (about 30–38 of 100 traces). [REL001, REL002, REL004, REL005, REL006, REL007]
+- Positions shifted accordingly: the trio's mean position moved from about 0.31–0.34 to about 0.58–0.59 of the trace, while A26 moved slightly earlier (0.35 to 0.32) and A27 slightly earlier (0.58 to 0.55); A26 and A27 still occur in every trace, and the trio's presence stayed at about 30–38 of 100 traces in both windows. [POS001, POS002, POS003, POS004, POS005]
+- The immediate succession A25 → A26, observed adjacent in about 63 traces earlier, is essentially gone later (1 observation, 5 steps apart). [LAG003]
+- A27 and A28 now sometimes lead back into the trio: earlier about 98 of 100 of A27's outgoing transitions went to A28 and about 94 of 100 of A28's went to A32; later about 14–17 in 100 of A27's go to each of A19/A20/A25 and about 14–22 in 100 of A28's go to the trio. The order between the trio and A28 is now mixed (both orders about 15–22 in 100), and gaps stretched: A27→A28 and A28→A32 now split between 1 and 2 steps (previously about 1), A27→A32 now typically 3 (previously 2). [DIR004, DIR005, REL003, REL008, LAG004, LAG005, LAG007]
+- New close successions A20 → A28, A28 → A20 and A20 → A32 (gaps 1–2) appear in the later window with 30–66 supporting observations; the corresponding earlier profiles rest on a single observation each and are weak. [LAG001, LAG002, LAG006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the activities A19, A20 and A25 are executed after A26 (and largely after A27) rather than between A45 and A26, with the surrounding flow rerouted: A45 now leads almost directly into A26, and A19, A20 and A25 no longer hand over to A26 but into A28 and A32, while A27 and A28 sometimes route back into the trio. Earlier the pattern was A45 → one of A19/A20/A25 → A26, with A27 → A28 → A32 later in the trace; in the later window A26 sits early (mean position about 0.32) and the trio late (about 0.58–0.59). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL004, REL005, REL006, REL007, LAG003, LAG008]
+
+The order reversal is shown directly by the relational items and is complete (the old order is no longer observed in any of the pairs), the positional shifts agree in direction and magnitude, and the successor replacements match them; 27 items qualified in total, far above the fewer than 1 expected by chance for 126 tested units. [REL001, REL004, REL006, POS001, POS002, POS003, DIR001, DIR002, DIR003, DIR006]
+
+What the evidence cannot rule out is whether the trio was relocated as a block or whether its old occurrences were dropped and re-executed later, possibly repeated, given the A27/A28 back-edges and the now mixed order with A28; the before-profiles of the new adjacencies rest on one observation each, so those adjacency details rest mainly on the directional and relational items. [DIR004, DIR005, REL003, REL008, LAG001, LAG002, LAG006]
+
+Other differences: small participation shifts — A19 appears in about 38 of 100 traces earlier versus about 31 later, and A25 in about 32 versus about 38 — are within what two 200-trace samples can differ by chance and are not part of the main hypothesis. [POS001, POS003]

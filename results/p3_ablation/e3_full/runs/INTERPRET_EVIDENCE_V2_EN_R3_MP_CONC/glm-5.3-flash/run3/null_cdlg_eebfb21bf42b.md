@@ -1,0 +1,13 @@
+### Observed differences
+
+- Participation in the five optional middle activities moved only slightly between the windows: A05 ran in about 52 of 100 traces earlier and 50 in the later window, A06 in 48 earlier and 50 later, A07 in 50 earlier and 54 later, A08 in 51 earlier and 46 later, and A10 in 48 earlier and 51 later. These shifts of 2.5–4.5 in 100 cases have empirical strengths of only 0.32–0.61, i.e., differences of this size are common when unchanged traces are re-split at random [OCC001, OCC002, OCC003, OCC004, OCC005].
+- The qualitative control-flow structure looks the same in both windows: A05 still never occurs in the same trace as A06 or A10, A06 and A10 still always occur together (jointly in 48 of 100 traces earlier, 50 later), A07 and A08 remain mutually exclusive, and the always-present pairs A02/A04 and A03/A09 still appear in both orders in near-equal shares (A02 before A04: about 51 vs 47 in 100; A03 before A09: about 53 vs 50 in 100) [REL023, REL027, REL031, REL032, REL006, REL016].
+- The largest single control-flow difference is in A02's successors: A05's share of A02's outgoing transitions fell from about 17 in 100 earlier to 8 in the later window, while A07 rose from about 20 to 25 and A08 from about 21 to 26; this item has the highest routing strength (0.93) but stands alone [DIR002].
+- Lag distributions between the early activities and the middle activities shifted by roughly 10–20 in 100 ordered pairs, but in conflicting directions: A04→A05 became more often immediate (about 39% vs 51% of pairs), A02→A05 less often immediate (about 39% vs 21%), and A02→A08 more often immediate (about 41% vs 57%); several related items rest on very few observations (A06→A02: 6 vs 10 traces; A05→A08: 32 vs 21; A10→A08: 10 vs 12) [LAG018, LAG010, LAG013, LAG028, LAG026, LAG046].
+- Event positions are essentially stable: mean positions stay at about 0.25–0.27 for A02/A04, 0.51–0.54 for A05–A08 and about 0.92 for A03/A09 in both windows, and the largest median wobbles (A02 about 0.17→0.29, A04 about 0.29→0.17 of the trace) come with strengths of at most 0.78 [POS001, POS003, POS004, POS008].
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The few eye-catching differences — the halving of A05's share among A02's successors and the opposite-direction lag shifts around A05 and A08 — are isolated, do not combine into one consistent behavioural change, and several rest on fewer than about 40 observed pairs, while the participation shifts behind most items are only 2.5–4.5 in 100 traces with strengths no higher than 0.61, which random re-splits of an unchanged process routinely produce [DIR002, LAG010, LAG013, LAG018, LAG026, LAG028, OCC001, OCC004].

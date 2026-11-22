@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_dfdaac706f50a2ea.json",
+  "evidence_sha256": "7bc1eb885d4de3aa713651fd78300eec28d9a6a66cbbc4c3be32cb75d30195eb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:37:45.030728+00:00",
+  "finished_at_utc": "2026-11-15T11:40:08.298914+00:00",
+  "latency_seconds": 143.27,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19897,
+    "prompt_tokens": 19637,
+    "total_tokens": 39534,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18112,
+      "text_tokens": 1785
+    },
+    "cost": 0.012894049999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60732,
+  "text": "### Observed differences\n\n- In the earlier window, A27, A36, A37 and A42 each appeared in every trace (participation 100 in 100, about one occurrence per trace); in the later window each appears in only about half of the traces — A27 in about 54 in 100, A36 in 47, A37 in 48 and A42 in 48 — while repeats stay negligible in both windows. [OCC001, OCC002, OCC003, OCC004]\n- In the later window A36, A37 and A42 occur only together (co-occurrence about 47 in 100 traces, neither present in about 52 in 100) and essentially never share a trace with A27: A27–A36 co-occurrence fell from all 200 traces to about 1, leaving A27 alone in about 53 in 100 traces and the trio alone in about 47 in 100. Before, every one of these pairs co-occurred in all traces. [REL011, REL012, REL013, REL020, REL021, REL022]\n- A25's successors changed completely: before, its outgoing transitions split almost evenly over A42 (about 35 in 100), A36 (34) and A37 (31); in the later window about 99 in 100 lead directly to A28. [DIR001]\n- A26's successors split: before, about 98 in 100 of its outgoing transitions led to A27; in the later window about 53 in 100 lead to A27 and about 47 in 100 lead into A36, A37 or A42 (about 14–17 in 100 each). [DIR002]\n- The trio's exits moved from A28 to A31: before, A36, A37 and A42 each led to A28 in about 32–33 in 100 of their outgoing transitions; in the later window A28 is nearly absent from these profiles (at most about 1 in 100) and A31 appears at about 28–36 in 100. [DIR003, DIR004, DIR005]\n- Order relations reversed: before, the trio preceded A28 and preceded A26 in 98–100 in 100 of their shared traces; in the later window A28 precedes the trio and A26 precedes the trio in about 46–47 in 100 of shared traces, the trio being absent from the remaining traces. [REL006, REL007, REL008, REL014, REL015, REL016]\n- Event distances match this: A28 followed A25 typically 4 positions later before (94 in 100 of pairs) and 1 position later in the later window (98 in 100); the A26→A31 distance, previously almost always 2 positions, now splits between 2 (51 in 100) and 4 (46 in 100). A31 itself still occurs in every trace in both windows, following A27 in about 53 in 100 later-window traces and following the trio in about 47 in 100. [LAG001, LAG005, REL010, REL017, REL018, REL019]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment formed by A36, A37 and A42 — which always execute together, in mixed internal order — changed from a mandatory block between A25 and A28 into an optional alternative to A27 after A26. In the earlier window every trace ran A25 → (A36/A37/A42) → A28 → … → A26 → A27 → A31; in the later window about 53 in 100 traces skip the trio entirely (A25 directly to A28, then A26 → A27 → A31), while about 47 in 100 run A26 → (A36/A37/A42) → A31 with A27 absent, the two alternatives never occurring in the same trace. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, REL020, REL021, REL022, LAG001]\n\nThe hypothesis is shown directly by relational and routing evidence, not by frequency shifts alone: the routing changes at A25 and A26, the trio's exit shift from A28 to A31, the reversed before/after relations with A28 and A26, and the collapse of the A25→A28 distance from 4 to 1 positions all describe the same relocation, and the participation drops from all traces to about half show the new optionality. With 42 qualifying control-flow items against well under 1 expected without change, chance cannot account for the pattern as a whole, and the 100-in-100 participation of all four activities in the earlier window rules out that the exclusive-alternative pattern existed before at a low rate. The evidence cannot show whether this is one coordinated restructuring or two separate adjustments (removing the trio from between A25 and A28 and adding it after A26), nor what determines which alternative a trace takes.\n\nOther differences: a few new weak edges appear in the later window (A25→A12, A25→A24, A36→A12, A37→A22, A37→A33, A42→A08), each at about 0.5–1 in 100 of the source activity's outgoing transitions. [DIR001, DIR003, DIR004, DIR005] Several lag profiles (A25 and A26 versus the trio, and the trio versus A28) rest on a single observation in one window and were therefore not used as support. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011]",
+  "case_id": "case_dfdaac706f50a2ea",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

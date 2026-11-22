@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_5cf6b004346e2e9a.json",
+  "evidence_sha256": "9d54dd592504329eccfc64340bbd920a74d2d6967979dbf864ccfce633c8b8ac",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:59:15.543276+00:00",
+  "finished_at_utc": "2026-11-15T14:03:22.090673+00:00",
+  "latency_seconds": 246.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33089,
+    "prompt_tokens": 24767,
+    "total_tokens": 57856,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31200,
+      "text_tokens": 1889
+    },
+    "cost": 0.02025955
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 96263,
+  "text": "### Observed differences\n\n- The successors of A10 and A11 changed completely. In the earlier window, A10's outgoing transitions split about evenly between A06 (about 51 in 100) and A07 (about 49 in 100), and A11's went mainly to A06 (about 58 in 100) and A07 (about 42 in 100). In the later window, essentially all outgoing transitions of both activities lead to A08 (63→55 transitions for A10, 60→39 for A11; each difference larger than in about 995 of 1,000 random re-splits). [DIR009, DIR010]\n- A08's outgoing profile changed accordingly: before, about 50 in 100 of its transitions went to A10 and 48 to A11; in the later window about 29 go to A06, 27 to A10, 24 to A07 and 19 to A11 (123 vs 203 transitions). A08 thus now reaches A06/A07 directly, which it previously could only do through A10/A11. [DIR007]\n- A08 occurs more often and later in the trace: mean occurrences per trace rose from about 0.62 to about 1.02 while participation stayed near 25 in 100 traces (roughly 2–3 occurrences per affected trace before, about 4 after; self-repeats doubled from 21 to 42 observed pairs), and its mean relative position moved from about 0.45 to 0.50 of the trace. [OCC007, POS003, LAG011]\n- A10 and A11 appear in fewer traces: participation fell from about 19–20 in 100 to about 12–13 in 100 (clearer for A11), and A10 and A11 now rarely occur together (about 13 in 100 traces before, about 6 after). [OCC009, OCC010, POS004, POS005, REL010]\n- Distances moved as this reordering predicts: gaps from A10/A11 to A06/A07 lengthened (typically one step before, two or more in the later window), while gaps from A08 to A06/A07 and from A10/A11 to A08 shortened to a single step, and A11→A10 gaps shortened from about three to about two steps. [LAG009, LAG010, LAG014, LAG015, LAG016, LAG019, LAG020, LAG021, LAG022]\n- The strict A08-before-A10/A11 order disappeared (about 6–7 in 100 traces before, none after), with co-occurring cases now interleaved or repeated. [REL008, REL009]\n- Milder differences elsewhere: A04 and A05 each appear in somewhat more traces (about 45→52 and 30→40 in 100), A05 passes to A04 more often (about 21→31 in 100 of its transitions) and A04 back to A01 (about 10→18 in 100), while A02 and A09 occur slightly less often per trace (about 0.59→0.45). [OCC002, OCC003, OCC004, OCC008, DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a reordering of the control flow around A08, A10 and A11. In the earlier window the sequence ran A08 → (A10 or A11) → (A06 or A07), with A06 passing back to A08; in the later window, A10 and A11 feed into A08, and A08 leads directly on to A06 and A07 (while still returning to A10/A11 in about 46 in 100 of its transitions). A08 thereby sits later in the trace and repeats about twice as often within this cycle, and A10/A11 appear in fewer traces. [DIR007, DIR009, DIR010, OCC007, OCC009, OCC010, POS003]\n\nThe support is direct and consistent: the successor replacements are complete reversals backed by dozens of transitions and reference strengths of about 0.995, and roughly ten lag items shift in exactly the directions the reordering predicts, together with the position, participation and repetition changes. Note that many lag and relation items describe this one underlying difference rather than independent confirmations of it. [DIR009, DIR010, LAG009, LAG010, LAG014, LAG015, LAG016, LAG019, LAG020, LAG021, OCC007, POS003]\n\nLimitations: no screening baseline is provided, so the number of qualifying items cannot be checked against a chance expectation; some lag items rest on few observations (as few as about 5–15 pairs); and because A08 → A10/A11 transitions persist in the later window, a mixed routing in which some traces keep the old order — or A10/A11 becoming optional pre-steps of A08 rather than a strict exchange of order — cannot be ruled out. [DIR007, LAG006, LAG007, LAG017]\n\nOther differences: the somewhat higher participation of A04 and A05, the increased A05→A04 and A04→A01 shares, and the slight decline of A02/A09 per trace are milder shifts (reference strengths roughly 0.7–0.85) that are not clearly tied to the reordering and may partly reflect sampling. [OCC002, OCC003, OCC004, OCC008, DIR003, DIR004]",
+  "case_id": "case_5cf6b004346e2e9a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

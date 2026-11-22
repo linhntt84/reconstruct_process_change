@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_b7a69b3897fd559b.json",
+  "evidence_sha256": "1d3097d15d9b7aa5b0ce571ba44218e3802da844cff5d0064e9208de42012ca8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:54:55.028733+00:00",
+  "finished_at_utc": "2026-11-15T00:56:52.444466+00:00",
+  "latency_seconds": 117.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15484,
+    "prompt_tokens": 46894,
+    "total_tokens": 62378,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13870,
+      "text_tokens": 1614
+    },
+    "cost": 0.014776099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47822,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A30 and A31, and between them ran exactly one of two alternative groups of activities: A33, A34, A35, A37 and A38 appeared together in about 48 in 100 traces, or A39, A40, A41, A42 and A43 appeared together in about 52 in 100; activities from different groups practically never shared a trace (0 to about 1.5 in 100). [OCC001, OCC006, REL021, REL025, REL056]\n- In the later window, all ten of these activities ran in nearly every trace (about 196–199 of 200 traces, up from about 96–106), essentially once per trace (mean occurrences about 1.0, with repeats in at most about 1 in 100 traces). [OCC001, OCC003, OCC006, OCC010]\n- The two groups changed from mutually exclusive to sequential: cross-group pairs such as A33–A39 or A37–A43 went from co-occurring in about 0–1.5 in 100 traces to about 97–98 in 100, with a first-group activity before a second-group activity in about 96 in 100 of those traces. [REL025, REL033, REL046, REL051]\n- Routing changed accordingly: earlier, A30's observed outgoing transitions split roughly half to each group (about 48 in 100 to A33/A34/A35/A37/A38, about 51 in 100 to A39–A43), while later about 98 in 100 go to the first group only; direct adjacency from the first group to A31 largely disappeared (A34 within five steps before A31 in about 95 of 200 traces earlier versus 4 later, A30 before A40 in about 103 versus 1), and new adjacency appeared between the groups (A37 before A39 within five steps in 1 trace earlier versus about 121 later). [DIR001, DIR002, LAG001, LAG004, LAG005]\n- Relative event positions moved consistently with this: the first group's mean relative position moved earlier (about 0.72–0.73 to about 0.63), the second group's moved later (about 0.72 to about 0.76), A30 earlier (0.64 to 0.55) and A31 slightly later (0.82 to 0.84); these are position shifts corroborating the structural change, not clock-time moves. [POS001, POS002, POS003, POS006, POS008]\n- Within each group the internal order stayed unfixed in both windows (both orders in similar proportions, e.g. A33 before A34 in about 20 of 100 traces earlier and 50 later, A34 before A33 in about 28 and 49). [REL021, REL030, REL056]\n- For scale: 99 control-flow items qualified at these thresholds, against about 1.2 expected by chance alone if nothing had changed, so the volume of flagged differences is far beyond what an unchanged process typically produces. [OCC001, DIR001, POS003, REL025, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A30 and A31 changed from a choice between two alternative activity blocks to both blocks executed one after the other: in the earlier window a trace contained A30 and A31 plus either the block A33/A34/A35/A37/A38 (about 48 in 100 traces) or the block A39/A40/A41/A42/A43 (about 52 in 100), with A30 preceding and A31 following the chosen block; in the later window nearly every trace contains both blocks in sequence — A30 leads into the first block, the first block precedes the second in about 96 in 100 traces, and the second block precedes A31, while the old direct links from A30 to the second block and from the first block to A31 have largely disappeared. [OCC001, OCC006, REL025, REL011, DIR001, LAG004, LAG005]\n\nSupporting signs: the change is shown directly by relational evidence (cross-group pairs flipping from never co-occurring to co-occurring with a stable first-group-before-second-group order), corroborated by participation (about half to nearly all traces), redirection of A30's outgoing transitions, and lost and gained adjacencies; the pattern is consistent across all 99 qualified items, roughly 80 times the about 1.2 expected without change, and every item's difference exceeds about 995 of 1000 random re-splits of the pooled data. [REL025, DIR001, LAG005, OCC001, POS003]\n\nThe evidence cannot distinguish a change in how individual cases are routed from a shift in the mix of case types between the windows — for example, the later window could consist of a kind of case that always ran both blocks, which the earlier window's sample mixed with single-block cases; the aggregate windows do not separate these. [REL025, DIR001]\n\nOther differences: a few outgoing edges from first-block activities to A02, A08, A09, A10, A11, A13, A29 and A47 appear only in the later window, each at about 0.5 in 100 of the source's observed outgoing transitions (roughly one trace), and A30 retains a residual direct edge to A40 at a similar level; at 200 traces per window these rest on one or two observations. [DIR001, DIR002, DIR003, DIR004, DIR005]",
+  "case_id": "case_b7a69b3897fd559b",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

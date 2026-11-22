@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_1407619f4daba9b8.json",
+  "evidence_sha256": "afacfc2e054686e0cb4011525083fbba964c01b82f8e10573e513c52c2f96245",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:54:28.048609+00:00",
+  "finished_at_utc": "2026-11-15T04:56:06.875338+00:00",
+  "latency_seconds": 98.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14324,
+    "prompt_tokens": 18438,
+    "total_tokens": 32762,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12913,
+      "text_tokens": 1411
+    },
+    "cost": 0.0099277
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44406,
+  "text": "### Observed differences\n\n- In the later window, four activities that previously ran in only about half of the cases now run in essentially all of them: A22 rises from about 54 in 100 traces to all 200, and A31, A32 and A37 each rise from about 46 in 100 to about 995 in 1000; none of them repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004]\n- A20's routing changed completely: before, all of its observed outgoing transitions went to A23; in the later window they split almost evenly across A31 (about 36 in 100), A32 (about 32) and A37 (about 32), with a transition to A23 almost never observed, and A20 now precedes A31, A32 and A37 in about 995 in 1000 traces. [DIR001, REL002, REL003, REL004]\n- A21 now leads only to A22: before, about 54 in 100 of its outgoing transitions went to A22 and the rest to A31, A32 or A37; in the later window all go to A22. [DIR002]\n- A31, A32 and A37 now send roughly a third of their outgoing transitions each to A23 — a successor not observed before — and transitions from them to A26 are no longer observed. [DIR003, DIR004, DIR005]\n- A31, A32 and A37 occur much earlier in the trace (mean relative position about 0.59 before vs about 0.40 in the later window), while A21, A22, A23 and A26 shift slightly later (for example A23 from about 0.39 to about 0.46). [POS006, POS007, POS008, POS002, POS003, POS004]\n- Order relations reversed or appeared: A31, A32 and A37 now precede A21 in about 995 in 1000 traces (before, A21 preceded them in every trace containing both) and likewise precede A23 (previously A23 preceded them); they now co-occur with A22 in about 995 in 1000 traces, whereas before they never shared a trace with A22; and the three of them now co-occur with one another in nearly every trace (about 46 in 100 before). [REL006, REL007, REL008, REL014, REL015, REL016, REL011, REL012, REL013, REL020, REL021, REL022]\n- The distance from A20 to A23 grew from 1 step in all cases to 4 steps in about 995 in 1000 cases, consistent with three activities now lying between them. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block of activities A31, A32 and A37, which in the earlier window followed A21 in about 46 in 100 cases as an alternative to A22, is in the later window executed in nearly every case and placed earlier in the flow — after A20 and before A23 and A21 — while A21 now always leads to A22, so that the block and A22 occur in the same cases instead of excluding each other. [OCC002, OCC003, OCC004, DIR001, DIR002, REL011, LAG001]\n\nThe support is direct and consistent: the placement change is shown relationally (order relative to A21 and A23 reversed, co-occurrence with A22 appearing from zero), by successor changes at A20, A21, A31, A32 and A37, and by the A20–A23 distance growing from 1 to 4 steps, with every qualifying difference larger than in about 995 of 1000 random re-splits of the pooled data. [REL006, REL014, REL011, DIR001, DIR002, DIR003, LAG001] The orderings seen in the later window were not observed at all in the earlier window, so a re-weighting of the variants seen before does not explain them. [REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016] The number of qualifying items (41) is also far above the roughly 0.49 expected if nothing had changed, so chance alone cannot account for the set as a whole. [screening]\n\nLimitations remain: each window is a sample of 200 traces, so a rare pre-existing variant that already placed A31/A32/A37 before A21 could in principle have come to dominate the later sample — a sampling difference in variant frequencies that this evidence cannot rule out. In addition, many items describe the same underlying trace behaviour (the occurrence, position, direction and relation items involving A31, and similarly A32 and A37, all reflect one reordering), so they are not independent confirmations. [OCC002, POS006, DIR003, REL006, REL011]",
+  "case_id": "case_1407619f4daba9b8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

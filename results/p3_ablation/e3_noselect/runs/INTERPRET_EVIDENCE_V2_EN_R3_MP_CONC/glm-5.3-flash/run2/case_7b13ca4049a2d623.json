@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7b13ca4049a2d623.json",
+  "evidence_sha256": "a2666b5f70e514ec921785a36bd507a9ad9557f33e06d02c28e08bdcdd26c30d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:41:49.695046+00:00",
+  "finished_at_utc": "2026-11-15T08:42:30.841538+00:00",
+  "latency_seconds": 41.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5672,
+    "prompt_tokens": 4961,
+    "total_tokens": 10633,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4975,
+      "text_tokens": 697
+    },
+    "cost": 0.0035801499999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 18980,
+  "text": "### Observed differences\n\n- Activity A02 was not observed at all in the earlier window (0 of 200 traces, mean 0 occurrences per trace); in the later window it occurs exactly once in every trace (200 of 200, mean 1.0 per trace). [OCC001]\n- Before, A06 always led directly to A01: its only observed outgoing transition went to A01 (100% share) and the pair A06→A01 occurred at a distance of one step in all 200 traces. In the later window, A06 always leads to A02 (100% share), A02 always leads to A01 (100% share), and the A06→A01 distance is two steps in all cases. [DIR002, DIR001, LAG001]\n- The pair relations changed accordingly: A01–A02 went from \"A01 without A02\" in all earlier traces to co-occurring with A02 before A01 in all later traces, and A02–A06 went from \"A06 without A02\" to co-occurring with A06 before A02. [REL001, REL002]\n- Event positions are consistent with one step inserted between A06 and A01: A06 moved from position 0.60 to 0.50, A01 from 0.80 to 0.83, and A02 sits between them at 0.67, while A01 and A06 remain present in every trace in both windows. [POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a step A02 was inserted between A06 and A01: the previously direct transition A06 → A01 became A06 → A02 → A01, with A02 executed once per case in the later window. [OCC001, DIR001, DIR002, REL001, REL002, LAG001]\n\nThe change is shown directly by relational and positional evidence — the successor of A06 shifted entirely from A01 to A02, A02's only observed outgoing transition goes to A01, A06 precedes A02 precedes A01 in all later traces, and the A06→A01 step distance grew from one to two. All nine evidence items describe this single pattern with deterministic shares (100%/0%), and every difference is larger than in about 995 of 1000 random re-splits of the pooled traces. Since A02 was absent from the earlier window, this is an added step, not a shift of frequencies between existing alternatives. [OCC001, DIR002, LAG001, POS001, POS002, POS003]\n\nLimitations: zero participation in the earlier window only means A02 was not observed there, and the evidence contains no screening baseline, so the expected number of chance findings cannot be checked directly. An important competing explanation the evidence cannot fully rule out is that A02 was a rare path in the earlier window (below detection in 200 traces) that later became universal, rather than a genuinely new step. [OCC001]\n\nOther differences: none — every item fits the same insertion pattern. [OCC001, DIR001, DIR002, POS001, POS002, POS003, REL001, REL002, LAG001]",
+  "case_id": "case_7b13ca4049a2d623",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

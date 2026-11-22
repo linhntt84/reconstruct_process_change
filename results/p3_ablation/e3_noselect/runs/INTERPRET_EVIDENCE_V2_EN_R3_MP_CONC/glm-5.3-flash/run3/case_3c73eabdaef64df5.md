@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, every one of the 200 traces contained only two activities: A04 followed immediately by A07. A04's only observed outgoing transition was to A07 (100% of A04's outgoing transitions), and the pair A04–A07 occurred at a distance of one step in all traces. [DIR002, LAG001, POS003, POS006]
+- In the later window, every one of the 200 traces contains six activities in a single fixed sequence: A04 → A03 → A05 → A06 → A07 → A01. A04 now leads only to A03, and A03→A05, A05→A06, A06→A07 and A07→A01 are each the sole observed outgoing transition of their source, in all 200 traces. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Four activities were absent earlier and universal later: A01, A03, A05 and A06 appear in 0 of 200 earlier traces but in 200 of 200 later traces, exactly once per trace (no repetitions). [OCC001, OCC002, OCC003, OCC004]
+- Event positions (not clock time) are consistent with traces growing from two to six activities: A04's mean relative position moved from 0.5 to about 0.17 and A07's from 1.0 to about 0.83, while the new activities occupy the positions in between (A03 ≈ 0.33, A05 = 0.5, A06 ≈ 0.67, A01 = 1.0), each with no spread. [POS001, POS002, POS003, POS004, POS005, POS006]
+- Every pairwise relation among the six activities changed from "neither occurs" or "only one of the two present" to full co-occurrence with one fixed order in 100% of later traces (e.g., A04 before A03, A03 before A05, A05 before A06, A06 before A07, A07 before A01). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]
+- The distance between A04 and A07 grew from one step in all earlier traces to four steps in all later traces, i.e., three activities now run between them. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window the direct A04 → A07 transition seen in the earlier window is replaced by a chain in which A03, A05 and A06 run in sequence between A04 and A07, and A01 runs after A07, so that every case follows A04 → A03 → A05 → A06 → A07 → A01. The support is direct and consistent: participation in A01, A03, A05 and A06 rises from 0 to 200 of 200 traces [OCC001, OCC002, OCC003, OCC004]; A04's routing flips completely from A07 to A03 [DIR002]; the new edges and all fourteen pairwise relations agree with one fixed total order [DIR001, DIR003, DIR004, DIR005, REL001–REL014]; and the A04–A07 distance changes from 1 to 4 steps exactly as this structure implies [LAG001]. Because the four added activities were not observed at all in the earlier window, this is an addition of activities into the flow, not a shift in how often existing alternative paths are taken.
+
+Limitations: all items describe one underlying trace-level change, so they are not independent confirmations; zero participation earlier strictly means only that A01, A03, A05 and A06 were not observed in that window; and the evidence cannot show why the flow changed. An important competing explanation the evidence cannot rule out is a switch in which variant of the process the two windows sampled (two coexisting flows exchanging dominance), rather than a modification of a single flow, since each window shows one homogeneous behaviour in all 200 traces.

@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the later window, outgoing transitions from A15, A17, A18, A19, A20, A21 and A26 became almost deterministic to a single successor, whereas before they were split among several alternatives. For example, A15 went to A18 in 62% of cases before and 99.5% after; A18 went to A19 in 12% before and 99.5% after; A19 went to A21 in 55.5% before and 99.5% after; A21 went to A20 in 65.5% before and 100% after; A20 went to A27 in 47% before and 99.5% after; A17 went to A15 in 56% before and 99.5% after; A26 went to A17 in 50% before and 100% after. [DIR001–DIR007]
+- The relative order of many activity pairs became fixed. For instance, A15 before A19 changed from 25.5% to 99.5%, A15 before A20 from 69% to 100%, A15 before A21 from 49.5% to 100%, A17 before A19 from 50% to 100%, A18 before A19 from 12% to 99.5%, and A18 before A21 from 30.5% to 99.5%. [REL001–REL008]
+- Positions shifted: A15, A17 and A18 moved earlier in the trace (mean position decreased by about 0.05, 0.02 and 0.06 respectively), while A19, A20 and A21 moved later (mean position increased by about 0.06, 0.03 and 0.04). [POS001–POS006]
+- Distances between activities became concentrated at a single value, consistent with a fixed sequence. For example, A15 to A18 became 1 step apart in 99.5% of cases (was 62% at 1 step), A15 to A19 became 2 steps apart in 100% (was 52.9% at 1 step), A15 to A21 became 3 steps apart in 99.5%, A15 to A20 became 4 steps apart in 99.5%, and A15 to A27 became 5 steps apart in 99.5%. Similar concentration is seen for A17, A18, A19, A20, A21 and A26 pairs. [LAG001–LAG029]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change from a process with multiple alternative successors and variable ordering to a fixed linear sequence: A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. The supporting signs are the deterministic outgoing transitions, the fixed order relations, and the consistent lag distances, all observed in 200 traces per window. The number of qualifying items (50) far exceeds the 0.47 expected by chance, so the pattern is not a sampling artefact. A limitation is that all evidence is control-flow; no timing or resource changes were observed, and a few lag items (e.g., A19–A15, A20–A18) have very low support in the later window, but they are not needed for the conclusion.

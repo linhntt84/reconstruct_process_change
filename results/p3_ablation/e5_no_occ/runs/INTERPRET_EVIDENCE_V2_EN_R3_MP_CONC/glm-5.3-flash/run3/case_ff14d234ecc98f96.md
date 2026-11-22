@@ -1,0 +1,22 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 each ran in every case (200 of 200 traces) and always together — co-occurring in 100 in 100 traces, in varying order between them; in the later window each appears in only about 1 in 100 traces and they practically never co-occur. [POS004, POS005, POS006, REL031, REL032, REL035]
+- In the earlier window this trio sat between A44 and A29: A44 came before it in about 98–100 in 100 traces, and the trio came before A29 in about 99–100 in 100 traces. [REL033, REL034, REL036, REL037, REL038, REL039]
+- Three activities that were essentially absent earlier — A19, A20 and A21 (0–1 of 200 traces) — now each appear in about 31–37 in 100 traces, while pairwise co-occurrence between them is about 1 in 100 or less, so typically exactly one of them runs per case. [POS001, POS002, POS003, REL013, REL014, REL020]
+- A44 now feeds these new activities: its observed outgoing transitions moved from roughly 33% to A26, 32% to A28 and 28% to A27 to roughly 36% to A21, 30% to A20 and 27% to A19; A19, A20 and A21 in turn lead to A29 in about 97 in 100 of their observed outgoing transitions. [DIR007, DIR001, DIR002, DIR003]
+- The new activities occupy the old slot: A44 precedes A19, A20 or A21 in about 30–37 in 100 traces, and each of them precedes A29 in about 31–37 in 100 traces. [REL019, REL025, REL030, REL018, REL024, REL029]
+- The A44-to-A29 distance shrank: earlier, A29 followed A44 about 4 positions later in 93 in 100 traces (5 positions in most of the rest); later it follows about 2 positions later in 92 in 100 traces. [LAG010]
+- A11 and A12 changed partners: earlier they co-occurred with the A26/A27/A28 trio in 47 in 100 traces, usually before it; later they co-occur with A19/A20/A21 in about 16–20 in 100 traces, again preceding them. [REL001, REL002, REL003, REL004, REL005, REL006]
+- A29 and A44 still occur in every trace in both windows; A29's mean position moved slightly earlier (about 0.43 to 0.40 of the trace) and A44's slightly later (about 0.31 to 0.33). [POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was restructured by substitution: the block of three activities A26, A27 and A28, which executed together in every earlier case between A44 and A29, is no longer observed (about 1 in 100 later traces), and its place is now taken by one of three previously unseen activities — A19, A20 or A21 — chosen in roughly equal shares (about 31–37 in 100 traces each, rarely more than one per case), with A44 preceding and A29 following the chosen activity; A11 and A12 still frequently precede this segment, now alongside the new activities. [POS004, POS005, POS006, REL031, POS001, POS002, POS003, REL013, REL014, REL020, DIR007, DIR001, DIR002, DIR003, REL018, REL019, REL024, REL025, REL029, REL030, REL001, REL002, REL003]
+
+This is direct and consistent rather than a chance pattern: 64 evidence items qualified against fewer than 1 expected for an unchanged process, so chance sampling cannot explain the pattern as a whole, and the relational evidence (A44's successors switching to the new activities, the new activities leading to A29, A44 before them and them before A29) corroborates the participation and position shifts, including the shortened A44-to-A29 distance. [DIR007, DIR001, DIR002, DIR003, REL018, REL024, REL029, REL019, REL025, REL030, LAG010]
+
+Limitations: the evidence cannot distinguish whether A26, A27 and A28 were removed from the process or only became rare (they still appear in about 1–2 of 200 later traces), and it cannot establish that A19, A20 and A21 fulfil the same function as the old trio — only that they now fill the same position between A44 and A29. [POS004, POS005, POS006, REL018, REL024, REL029]
+
+Other differences: A29's mean position is slightly earlier and A44's slightly later in the later window, consistent with a shorter middle segment; the single earlier occurrence of A21 pointed to A07 rather than A29; and the after-window lag profiles for pairs among the old activities rest on only 1–2 observations and should not be interpreted. [POS007, POS008, DIR003, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_c75efafc7df6.json",
+  "evidence_sha256": "295be9407bfeaeda4e5e620120f66d078845c412290503189e74094fbdc5cae9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:53:52.629892+00:00",
+  "finished_at_utc": "2026-11-16T03:00:14.920208+00:00",
+  "latency_seconds": 382.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 56857,
+    "prompt_tokens": 71735,
+    "total_tokens": 128592,
+    "completion_tokens_details": {
+      "reasoning_tokens": 54455,
+      "text_tokens": 2402
+    },
+    "cost": 0.039188749999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 157265,
+  "text": "### Observed differences\n\n- The traces split into two exclusive families: A01 always occurs together with A09 (about 45 in 100 traces in the earlier window, 48 in 100 in the later), and A02 always together with A10 (about 55 in 100 earlier, 52 in 100 later); no trace contains activities from both families. The roughly 3-point shift is small, with empirical strengths near 0.5 — what random re-splits typically produce. [OCC001, OCC002, OCC009, OCC010, REL001, REL008, REL009, REL020, REL077]\n- The preferred relative order of A02 and A10 reversed. Earlier, A10 preceded A02 in about 55 of 100 traces containing both (0.305 vs 0.250 of all traces); in the later window, A02 preceded A10 in about 55 of 100 (0.285 vs 0.235). [REL021]\n- Successor shares flipped in mirror image. Of A02's observed outgoing transitions, the share to A10 rose from 45% to 55% while the share to A03 fell from 26% to 18%; of A10's outgoing transitions, the share to A02 fell from 55% to 45% and the share to A03 rose from 19% to 29%. [DIR001, DIR006]\n- Distances to downstream activities shifted by one step in opposite directions for the two activities. Earlier, A03 followed A02 after 1 step in about 58 of 100 pairs and A10 after 2 steps in about 58 of 100; in the later window, A03 followed A10 after 1 step in about 61 of 100 and A02 after 2 steps in about 61 of 100. The same mirrored one-step shift appears for A07, A08, A13 and A14 (e.g. A02→A13 moved from lag 4, 60 in 100, to lag 5, 65 in 100, while A10→A13 moved from lag 5 to lag 4), and the lag-3 concentration towards A05 and A11 switched from one of the two activities to the other; empirical strengths of these lag items reach about 0.95. [LAG001, LAG029, LAG005, LAG033, LAG006, LAG034, LAG008, LAG036, LAG009, LAG037, LAG003, LAG031, LAG007, LAG035]\n- The mean event positions of A02 and A10 crossed: A02's fell from 0.114 to 0.097 while A10's rose from 0.098 to 0.108. [POS002, POS009]\n- Downstream of the pair, distances became more concentrated at the shorter lag (A03→A08 at lag 2: 47→57 in 100; A07→A12 at lag 3: 59→73; A03→A14 at lag 3: 61→73; A07→A14 at lag 2: 59→73; A08→A12 at lag 2: 49→57; A08→A04 at lag 3: 53→64), and a few rare exits (A03→A08 about 6 in 100, A07→A13 about 4, A07→A14 about 2, A08→A07 about 3) were no longer observed in the later window; each of these profiles rests on only about 50 traces. Participation in A04 fell from 26 to 22 in 100 traces and in A06 from 31 to 28, both small changes of moderate strength. [LAG011, LAG019, LAG013, LAG021, LAG026, LAG022, DIR002, DIR004, DIR005, OCC004, OCC006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the preferred execution order of A02 and A10 reversed: in the earlier window, traces containing both typically ran A10 first and A02 second, with A03 following A02 directly; in the later window, A02 typically came first, followed by A10 and then A03. As a result, A03 and the activities following it (A07, A08, A13, A14) each lie one step farther from A02 and one step nearer to A10 in the later window. [REL021, DIR001, DIR006, LAG001, LAG029, LAG005, LAG033, LAG008, LAG036]\n\nThe support is direct and consistent: the order shares between A02 and A10 flipped [REL021]; the successors' shares flipped in mirror image [DIR001, DIR006]; the mean positions of the two activities crossed [POS002, POS009]; and fourteen lag indicators form mirrored pairs that each move one step in opposite directions for A02 versus A10 [LAG001, LAG029, LAG005, LAG033, LAG006, LAG034, LAG008, LAG036, LAG009, LAG037, LAG003, LAG031, LAG007, LAG035]. Opposite-direction shifts for the two activities argue against alternatives such as an activity being inserted or removed on the path, which would shift the distances in the same direction. Limitations: both orders still occur in both windows, so the observation is a reversal of which order dominates rather than a strict exchange of fixed positions; the evidence shows no predecessors of A02 or A10, so a changed entry into the pair cannot be distinguished from a repositioning of the two activities; and the evidence carries no screening expectations, so the role of chance is judged from the mirror structure and strengths of the items rather than from an expected item count. A competing explanation the evidence cannot rule out is a shift in the mix of two pre-existing trace shapes that differ in this order.\n\nOther differences: the A01/A09 family rose from about 45 to 48 in 100 traces while the A02/A10 family fell from about 55 to 52 — a shift whose empirical strengths (about 0.5) are typical of sampling variation in an unchanged process [OCC001, OCC002, OCC009, OCC010, REL001, REL009, REL020, REL077]. Distances between the activities downstream of the pair became more concentrated at the shorter lag, and a few rare exits from A03, A07 and A08 disappeared from the later sample, all on modest support [LAG011, LAG019, LAG013, LAG021, LAG026, LAG022, DIR002, DIR004, DIR005]. Participation in A04 and A06 slipped by about 3–4 points with only moderate strength [OCC004, OCC006].",
+  "case_id": "null_cdlg_c75efafc7df6",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

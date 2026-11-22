@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "2cd743bfa789ac9c3bfbc6cdaf4b8a056cc36447e430904e11f073b32ba6726d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:42:41.134913+00:00",
+  "finished_at_utc": "2026-11-15T07:45:05.800966+00:00",
+  "latency_seconds": 144.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21205,
+    "prompt_tokens": 28931,
+    "total_tokens": 50136,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19237,
+      "text_tokens": 1968
+    },
+    "cost": 0.014942150000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63533,
+  "text": "### Observed differences\n\n- In the earlier window, A22, A23 and A24 formed a fixed chain: A23 immediately followed A22 and A24 immediately followed A23 in all 200 traces, so A24 always fell exactly two positions after A22 [LAG001, LAG002, LAG003].\n- In the later window, three activities that occurred in none of the 200 earlier traces — A14, A15 and A20 — now run in almost every trace (about 58, 82 and 59 of 200 traces respectively), and never two of them in the same trace, so together they appear exactly once in about 995 of 1,000 later traces [OCC013, OCC014, OCC019, REL001, REL002, REL006].\n- The new step runs inside the former chain: A22 always precedes it and it always precedes A24, while its order against A23 is mixed — in a slight majority of traces containing both, the new activity comes before A23, in the rest after it — so it is placed either between A22 and A23 or between A23 and A24 [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012].\n- The transitions and distances match this placement: A22 now leads directly to A23 in only about 44 in 100 of its outgoing transitions and to one of the new activities in about 56; A23 leads directly to A24 in about 57 and to a new activity in about 43; the A22→A23 and A23→A24 gaps each split between adjacent and one-event-apart in complementary proportions (about 44/56 and 57/43); and A24 now falls exactly three positions after A22 in about 995 of 1,000 traces [DIR018, DIR019, LAG001, LAG002, LAG003].\n- The new activities sit mid-trace (mean position about 0.51, between A22 at about 0.46 and A24 at about 0.56) and each leads on to A23 (about 53–58% of its outgoing transitions) or A24 (about 42–47%) [POS001, POS002, POS003, POS004, POS006, DIR010, DIR011, DIR016].\n- Elsewhere, routing shifted modestly: A01 now routes less to A05 (about 0.42 → 0.23) and more to A03/A04, A03 routes more to A05 (about 0.26 → 0.44) and less to A04, and A05 routes less to A03; with this, participation in A01/A03/A04/A05 rose from about 48 to 54 in 100 traces while A02/A06/A07/A08 fell from about 53 to 47 [DIR001, DIR003, DIR005, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008].\n- After A37, transitions to A39 rose from about 0.46 to 0.56 at the expense of A38, and participation in A39/A40 rose from about 57 to 67 in 100 traces while A38 fell from about 62 to 56 [DIR029, OCC027, OCC028, OCC029].\n- Smaller share shifts: A21's split between A28 and A29 evened from 0.57/0.43 to 0.51/0.49, and A35's split between A34 and A36 moved from about 0.24/0.76 to 0.32/0.68 [DIR017, DIR022, DIR023, DIR028].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window an additional, essentially mandatory step is executed inside the formerly fixed A22 → A23 → A24 stretch: exactly one of three mutually exclusive activities — A14, A15 or A20 — is carried out between A22 and A24, placed between A22 and A23 in about 56 in 100 traces and between A23 and A24 in about 44. The placement is shown directly by agreeing relational, lag, positional and successor evidence: the three activities were absent from all 200 earlier traces and now appear in virtually every later trace, never together; A22 precedes and A24 follows the new step in every co-occurrence; the A22–A24 distance grew from exactly two to exactly three positions in virtually all traces, with the two sub-gaps splitting in complementary proportions that match the two insertion slots; and each new activity leads on to A23 or A24. For the key items, about 199 of 200 random re-splits of the pooled data produced smaller differences [OCC013, OCC014, OCC019, REL001, REL002, REL003, REL005, REL006, DIR010, DIR018, DIR019, LAG001, LAG002, LAG003].\n\nLimitations: zero participation in the earlier window strictly means only that A14, A15 and A20 were not observed there, so the evidence cannot distinguish a genuinely added step from behaviour that existed earlier but was not sampled, or from a change in how activities were recorded or labelled — although 0 of 200 earlier traces makes pure sampling variation implausible. The evidence also cannot show what determines which of the three alternatives runs in a given trace [OCC013, OCC014, OCC019].\n\nOther differences: modest routing changes not part of this hypothesis — shifted successor shares around A01, A03 and A05 with participation in A01/A03/A04/A05 up about 6 points and A02/A06/A07/A08 down about 6 points, a gain in the A37→A39 branch with higher participation in A39/A40, and small share shifts at A21/A28/A29 and A35/A36 [DIR001, DIR003, DIR005, OCC001, OCC006, DIR029, OCC027, OCC028, DIR017, DIR028].",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

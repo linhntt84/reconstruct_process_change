@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, two alternative activity blocks existed: {A33, A34, A35, A37, A38} ran together in about 49 in 100 cases and {A39, A40, A41, A42, A43} in about 52 in 100, while cross-block pairs shared a case in only about 1–2 in 100 cases and one of the two blocks was present in every case. In the later window, each of these ten activities appears in about 98–100 in 100 traces, and cross-block pairs now co-occur in about 97–98 in 100 cases. [OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013, OCC014, REL063, REL075, REL086, REL096, REL105]
+- Within each block, the activities already ran together whenever the block executed (co-occurrence about 48–53 in 100 before, matching the block's participation), and this stayed near-universal in the later window (about 98–100 in 100); mean occurrences are about 1.0 per trace when present in both windows, so the blocks run once rather than being repeated. [REL059, REL072, REL095, REL114, REL129, REL135, OCC005, OCC010]
+- In the later window the first block sits earlier in the trace (median relative position about 0.63 versus about 0.72 before) and the second block later (about 0.76 versus about 0.72); A30 now leads almost exclusively into the A33–A38 activities (about 96 in 100 of its outgoing transitions, versus a spread over both blocks before), A30 itself occurs earlier (median about 0.56 versus 0.63) and A31 later (about 0.86 versus 0.81). [POS004, POS005, POS006, POS008, POS011, POS015, DIR007]
+- A08 became much rarer and was bypassed: it appeared in about 62 in 100 traces before and about 21 in 100 after, and the earlier segment A49 → A08 → A50 now runs as a direct A49 → A50 (A49's outgoing share to A08 fell from about 71% to about 4% while its share to A50 rose from about 25% to about 80%; A08's outgoing share to A50 fell from about 87% to about 13%; the A49–A50 position gap shrank from mostly two steps to mostly one). [OCC003, DIR004, DIR013, LAG027, REL015, REL016]
+- Participation in A04, A06 and A10 roughly tripled from low levels, from about 6–8 in 100 traces to about 20–27 in 100. [OCC001, OCC002, OCC004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the exclusive choice between the two activity blocks was removed: where each case earlier executed exactly one of {A33, A34, A35, A37, A38} or {A39, A40, A41, A42, A43} in a roughly 49-versus-52-in-100 split, in the later window both blocks execute in the same case in about 97–98 in 100 cases, with the A33–A38 activities placed earlier and the A39–A43 activities later in the trace. The change is shown directly by relational evidence (cross-block co-occurrence rising from about 1–2 in 100 to about 97–98 in 100 while within-block co-occurrence was already high before) and consistently across participation, position and successor indicators; the screening found 219 qualifying control-flow items against about 2 expected for an unchanged process, so the body of evidence is not what random re-splits produce. [REL063, REL075, REL096, REL105, REL059, REL114, OCC005, OCC014, POS006, POS011, DIR007]
+
+Limitations: the evidence shows co-occurrence and relative event positions, not the exact internal order of the combined run, and in roughly 1–2 in 100 later cases one of the blocks is still absent; an important competing explanation the evidence cannot rule out is that the old either/or routing still exists but is now rarely taken, rather than having been removed. [REL059, REL114, OCC005, OCC010]
+
+Other differences:
+- A08 became rare and was bypassed: it dropped from about 62 to about 21 in 100 traces, occurs much earlier when present, and A49 now leads directly to A50 where it earlier led through A08. [OCC003, DIR004, DIR013, LAG027]
+- A04, A06 and A10 became more frequent, from about 6–8 to about 20–27 in 100 traces. [OCC001, OCC002, OCC004]

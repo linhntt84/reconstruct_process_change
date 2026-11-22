@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_e9d01e7c285d3084.json",
+  "evidence_sha256": "09b115e9f60f64f0c81f806642a785bafa932960ceab8f146daf32e855d7481c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:31:18.278448+00:00",
+  "finished_at_utc": "2026-11-15T13:36:24.450719+00:00",
+  "latency_seconds": 306.17,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 39863,
+    "prompt_tokens": 51078,
+    "total_tokens": 90941,
+    "completion_tokens_details": {
+      "reasoning_tokens": 37342,
+      "text_tokens": 2521
+    },
+    "cost": 0.027593200000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 122658,
+  "text": "### Observed differences\n\n- The largest difference is in how often A30, A31 and A36 execute. In the earlier window each ran exactly once in virtually every case (mean about 1.0 occurrence per case, present in 100 in 100 cases, repeats almost never); in the later window each runs about 3.5 times per case on average, still in every case, with repeats in about 68 in 100 cases. [OCC027, OCC028, OCC033]\n\n- The repetition forms a cycle around the former one-pass chain. Before, A36 led to A25 in about 97 in 100 of its outgoing transitions, completing the chain A30 → A31 → A36 → A25; in the later window about 70 in 100 of A36's outgoing transitions return to A30 (an edge not observed earlier) and about 28 in 100 still exit to A25 — roughly one exit per case in both windows (about 194 of 697 transitions later, about 196 of 203 earlier). The A30 → A31 and A31 → A36 edges keep their shares (about 98 and 97 in 100) while their transition volumes grow from about 200 to about 700. [DIR036, DIR030, DIR031]\n\n- Pairwise relations changed accordingly: A14 co-occurs with A30 and with A36 in 100 in 100 cases in both windows, but strict \"A14 first\" fell from about 99 in 100 to about 32 in 100, with interleaved-or-repeated rising to about 68 in 100; for A05 with A30 and A36, strict precedence fell from about 54 to about 16 in 100 of all cases (about 31 in 100 of co-occurring cases). [REL004, REL005, REL006, REL002, REL003]\n\n- Positions and gaps are consistent with repetition rather than relocation: A30 and A36 now occur across a wider band of the case (spread about 0.07 → 0.12 of case length; upper quartile about 0.45–0.52 → 0.52–0.57), while A14 and A05 sit slightly earlier relative to case length (A14 median about 0.14 → 0.11); the close-range A30→A36 gap profile also changed, with the near-universal two-step gap (about 98 in 100) dropping to about 12 in 100 in favour of longer gaps. [POS003, POS004, POS002, POS001, LAG002]\n\n- In the segment before the cycle, existing paths are taken with different frequencies: the direct A05 → A14 transition fell from about 36 to about 17 in 100 of A05's outgoing transitions, while A05 → A07 rose from about 21 to 38 in 100 and A07 → A14 from about 32 to 41 in 100; the A05-to-A14 distance grew (one-step gaps about 36 → 18 in 100, three-step gaps about 28 → 45 in 100). All involved activities appear in half or more of cases in both windows. [DIR005, DIR007, DIR009, LAG001]\n\n- Participation shifted modestly elsewhere: A08 and A02 each appear in about 23 in 100 cases (before about 17), A22 in about 55 (before 48), A21 in about 47 (before 54), A41 in about 65 (before 55, weaker signal), with small decreases for A38, A39, A42 and A43; the existing A15–A16 repeat also lengthened slightly (mean about 1.6 → 1.7 per case; repeats in about 37 → 45 in 100 cases). [OCC008, OCC002, OCC022, OCC021, OCC038, OCC035, OCC039, OCC040, OCC015, OCC016]\n\n- Two items are too thinly supported to interpret: A45's outgoing profile rests on only about 13 versus 7 transitions, and the A36–A05 lag item on 1–2 observations. [DIR045, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the once-per-case sequence A30 → A31 → A36 became a repeat cycle in the later window: A36 now returns to A30 for about 70 in 100 of its outgoing transitions (before, about 97 in 100 led to A25), so A30, A31 and A36 each execute about 3.5 times per case instead of once, with repeats in about 68 in 100 cases, and the exit to A25 is still taken about once per case. The change is shown directly and consistently: occurrence means rise from about 1.0 to about 3.5 with participation unchanged at 100 in 100 cases; the A30 → A31 and A31 → A36 shares hold while their volumes roughly triple; the A14–A30, A14–A36 and A30–A36 relations flip from strict precedence (about 99 in 100) to interleaved-or-repeated (about 68 in 100); and the position spread of A30 and A36 widens. Repeated re-entry from upstream is unlikely, since A19 and A20 each occur at most once per case and still lead to A30 in about 88–94 in 100 of their transitions, so the segment is entered about once per case in both windows. [OCC027, OCC028, OCC033, DIR036, DIR030, DIR031, REL004, REL005, REL006, POS003, POS004, DIR019, DIR020]\n\nLimitations: the evidence shows the average number of passes (about 3.5) and the share of cases with repeats (about 68 in 100) but not how passes are distributed across individual cases, and it cannot show whether the pass count is fixed or varies from case to case. An important competing explanation the evidence cannot rule out for the smaller differences is ordinary sampling variation between the two finite 200-case windows, since no screening baseline is provided against which to compare them. [OCC027, DIR005, OCC008]\n\nOther differences: In the segment before the cycle, path frequencies shifted — the direct A05 → A14 route lost about half its share to the A05 → A07 route (numbers above), a change in how often existing paths are taken that the evidence cannot fully separate from window sampling; participation shifts for A02, A08, A21, A22, A41 and small decreases for A38–A43, plus the slight lengthening of the A15–A16 repeat, also stand outside the main hypothesis. [DIR005, DIR007, LAG001, OCC008, OCC002, OCC022, OCC021, OCC038, OCC035, OCC039, OCC040, OCC015, OCC016]",
+  "case_id": "case_e9d01e7c285d3084",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

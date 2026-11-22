@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_759dc5348bdecf5d.json",
+  "evidence_sha256": "0c2da371f4f8a274b8e1c1dbceb53a5a51a92f790ea040919a2b887a9ba03303",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:33:24.760150+00:00",
+  "finished_at_utc": "2026-11-15T03:34:42.607067+00:00",
+  "latency_seconds": 77.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11011,
+    "prompt_tokens": 9232,
+    "total_tokens": 20243,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9953,
+      "text_tokens": 1058
+    },
+    "cost": 0.0068903
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36633,
+  "text": "### Observed differences\n\n- In the earlier window, A03 and A11 were regular activities: A03 appeared in about 29 in 100 traces (57 of 200, averaging roughly 1.2 occurrences per trace) and A11 in about 20 in 100 (39 of 200). In the later window, neither activity appears in any of the 200 traces, and neither has observed outgoing transitions or positions. [OCC001, OCC002, DIR001, DIR003, POS001, POS002]\n- A06 was rerouted. Before, about 86 in 100 of A06's observed outgoing transitions led to A03, with small shares to A11 (about 7), A12, A19 and A02 (about 2 each); in the later window, none lead to A03 or A11, while about 58 in 100 lead to A19 and 37 in 100 to A12. [DIR002]\n- A12 and A19 now occur earlier and in fewer traces: each appeared in about 29 in 100 traces before and about 21 in 100 after, with the median relative position moving from about 0.30 to 0.20 for A12 and from 0.30 to 0.16 for A19. [POS003, POS004]\n- A03's co-occurrences vanished. Before, A03 shared traces with A06, A12 and A19 in about 29 in 100 traces, mostly interleaved or repeated; after, co-occurrence is zero and those activities appear alone in about 21 in 100 traces. A03 and A11 no longer share traces with any activity (neither present in 100 in 100 traces). [REL001, REL002, REL003, REL004]\n- Repetitions sit at shorter distances. A06→A12 pairs within five steps moved from being spread over distances 2–5 (about 18 in 100 at distances 1–2) to mostly distances 1–2 (about 40 in 100); A06→A19 at distance 1 rose from about 2 to 24 in 100; self-repeats of A12 and A19 moved from mostly distance 5 (about 54 and 50 in 100) to distances 3–4 (about 42 and 49 in 100). These distance items rest on only about 20 pairs per window. [LAG001, LAG002, LAG003, LAG004, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening tested 44 control-flow units and 18 items qualified, against roughly 0.22 expected if nothing had changed — about 80 times the chance expectation — so the pattern as a whole is not what an unchanged process typically produces. [OCC001, OCC002, DIR001, DIR002, DIR003, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005]\n\nThe evidence supports the possibility that the repetitive cycle through A03 and A11 was removed. Before, A06 typically led to A03; A03 led to A11 (which led back to A03), A12 or A19; and A06, A12 and A19 repeated at longer trace distances. In the later window, A03 and A11 are no longer executed, A06 leads directly to A19 and A12, and A12 and A19 occur earlier, in fewer traces, and closer after A06. The support is direct — the complete disappearance of A03 and A11 across 200 traces and the successor change at A06 — and consistent across the co-occurrence, position and distance indicators. Limitations: zero participation only means the activities were not observed, so the evidence cannot distinguish full removal of the cycle from it becoming rare enough to miss in 200 traces, and the earlier positions of A12 and A19 (measured in event positions, not clock time) may simply reflect the missing A03/A11 segment rather than an independent move. A competing explanation the evidence cannot rule out is that the cycle still exists but was not triggered in the later sample. [OCC001, OCC002, DIR002, REL001, REL002, REL003, REL004, POS003, POS004, LAG002, LAG003, LAG004, LAG005]",
+  "case_id": "case_759dc5348bdecf5d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

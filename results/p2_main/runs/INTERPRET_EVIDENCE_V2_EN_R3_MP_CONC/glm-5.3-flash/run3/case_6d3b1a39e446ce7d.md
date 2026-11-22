@@ -1,0 +1,20 @@
+### Observed differences
+
+- Four activities became mandatory: A36, A37 and A42 each ran in about 47 in 100 cases before (roughly 0.5 occurrences per trace) and in nearly every case after (about 1.0 occurrence per trace); A27 shows the same jump, from about 55 in 100 cases to every case. [OCC001, OCC002, OCC003, OCC004]
+- A25's successor changed: before, A28 took about 97 in 100 of A25's outgoing transitions, usually immediately (gap of 1 step in about 96 in 100); in the later window A25 leads to A36, A37 or A42 (about 31–34 in 100 each), and A28 instead follows that block, typically 1–3 steps later, so A28 now sits about 4 steps after A25. [DIR001, LAG001, LAG007, LAG008, LAG009]
+- A26's routing collapsed onto A27: A27 took about 54 in 100 of A26's outgoing transitions before (A36 about 17, A42 about 15, A37 about 13), and about 98 in 100 in the later window. [DIR002]
+- The block's exit changed: before, A36, A37 and A42 each led to A31 in about 29–39 in 100 of their outgoing transitions; in the later window they lead to A28 (about 31–34 in 100) and no longer directly to A31. [DIR003, DIR004, DIR005]
+- Order reversals around the block: A28 preceded A36 in about 46 in 100 cases before, while A36 precedes A28 in about 98 in 100 after (likewise A37 and A42); A26 preceded A36/A37/A42 in about 46 in 100 before, whereas they precede A26 in about 98–99 in 100 after. [REL006, REL007, REL008, REL014, REL015, REL016]
+- From alternatives to always together: A27 co-occurred with each of A36/A37/A42 in only about 1 in 100 cases before (each usually appeared without the other) but in about 995 in 1000 after, with the block activity first in about 96–97 in 100; A36, A37 and A42 themselves co-occur in nearly every case after (about 46 in 100 before) while keeping their mixed internal order. [REL011, REL012, REL013, REL020, REL021, REL022]
+- Event positions shifted accordingly: A36/A37/A42 moved from a mean position of about 0.59 to about 0.41 of the trace, A26 from 0.54 to 0.60, A28 from 0.40 to 0.46, A27 from 0.58 to 0.63 and A31 from 0.63 to 0.66. [POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+- A31 still occurs in every case in both windows; in the later window it consistently follows A27 (about 98 in 100) and sits 2 steps after A26 in about 97 in 100, where before this gap was split between 2 and 4 steps. [REL010, REL017, REL018, REL019, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a structural reordering in which the branch A36–A37–A42 became a mandatory block placed directly after A25 and before A28, while A27 became a mandatory step after A26 and A31 remained a closing step in every case. Before, about half of the cases ran A25 immediately followed by A28, with A26 later branching either to A27 (followed by A31) or to the block A36/A37/A42, whose members ran in mixed order and then led to A31; in the later window essentially every case runs A25, then A36/A37/A42 in mixed order, then A28, with A26, A27 and A31 following in that order. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, POS006, POS007, POS008, LAG001, LAG007]
+
+The screening produced 48 qualifying control-flow items against roughly 0.74 expected if nothing had changed, so chance sampling cannot account for the pattern as a whole; the rerouting is shown directly by the successor changes at A25, A26 and the block activities, by the order reversals between the block and A28/A26, and by participation rising from about half of cases to all, with position and gap shifts pointing the same way. The evidence cannot rule out that the two windows capture different case mixes (for example two coexisting variants) rather than a modification over time, and a few lag items rest on only 1–2 observations and were not relied on here. [LAG002, LAG004, LAG005, LAG006]
+
+Other differences: A25 itself now appears slightly earlier in traces (mean relative position about 0.37 before versus 0.35 after). [POS001]

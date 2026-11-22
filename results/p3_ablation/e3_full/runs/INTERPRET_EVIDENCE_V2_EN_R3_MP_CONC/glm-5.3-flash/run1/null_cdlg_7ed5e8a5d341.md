@@ -1,0 +1,13 @@
+### Observed differences
+
+- Activity participation is essentially flat. A01 and A05 each appear in about 47 in 100 traces in the earlier window and about 48–49 in 100 in the later window; A02, A03, A04, A06, A09 and A10 drop from about 53 to about 51–52 in 100; A07 stays near 24 and A08 rises from about 23 to about 26 in 100. No shift exceeds roughly 2–3 traces in 100, and all are unremarkable against random re-splits (empirical strength at most 0.36). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]
+- Which activities belong together is stable. A01 and the group A02/A03/A04/A06/A09/A10 remain strict alternatives in both windows (never in the same trace, with one side present in every trace); A01 still always co-occurs with A05, and A07 and A08 still occur only alongside A01. Pairwise orders barely move, for example A02 precedes A03 in about 49 in 100 traces before and 48 after, and A03 precedes A09 in about 53 before and 51–52 after. [REL001, REL004, REL006, REL007, REL010, REL023]
+- The largest directional shifts are in successor shares, both on small observation bases. A07's outgoing transitions led exclusively back to A01 in the earlier window (13 of 13 observed transitions), while in the later window about 13 of 17 go to A01 and 4 of 17 go to A05. A09's transitions to A02 were 4 of about 40 earlier and 0 of 38 later, while its transitions to A04 grew from about 35 to about 53 in 100. [DIR007, DIR009]
+- Step distances within the A02–A10 group redistributed: A09 was followed by A04 at distance 1 in about 14 of 22 observed successions before and in all 20 after; A02 reached A09 five steps later in about 58 in 100 observed successions before and 48 after, with the difference moving to distances 2–4; A03 reached A09 immediately in about 67 in 100 cases before and 76 after. [LAG030, LAG007, LAG012]
+- Several of the larger lag shifts rest on very few observations, for example the direct A07→A05 succession (2 observed pairs before, 8 after) and A09→A02 (6 before, 2 after). [LAG027, LAG029]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The items that look unusual in isolation occur in numbers consistent with a stable process — about 12 of the 36 tested activity pairs show lag strength above 0.75 where roughly 9 would by chance, and 3 of 10 routing items exceed 0.7 where about 3 would — and the largest single effects rest on only about 20 observations [LAG007, LAG013, LAG024, LAG030, LAG031, DIR007, DIR009, LAG029].

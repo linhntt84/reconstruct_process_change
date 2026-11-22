@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_eb1ade11ddfbccc0.json",
+  "evidence_sha256": "dcb1ea3e1c269e9919842f3be1a74d66fd1a8af364e7675bc14552b15229977c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:15:39.154767+00:00",
+  "finished_at_utc": "2026-11-15T03:16:54.816347+00:00",
+  "latency_seconds": 75.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10681,
+    "prompt_tokens": 8779,
+    "total_tokens": 19460,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9763,
+      "text_tokens": 918
+    },
+    "cost": 0.006657349999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34326,
+  "text": "### Observed differences\n\n- Activity A03 dropped out of execution. In the earlier window it ran exactly once in every trace (200 in 200), usually as the first event (median position 0), and its outgoing transitions went mostly to A02 (about 86 in 100), with small shares to A06, A05, A04 and A01. In the later window A03 does not appear in a single one of the 200 traces. [OCC001, POS002, DIR001]\n- Activity A07 appeared. Before, it was not observed at all; in the later window it runs exactly once in every trace (200 in 200), about three quarters of the way through, always after A04 and always before A01. [OCC002, POS004, DIR002, DIR003, REL004, REL007]\n- A04 was rerouted: earlier, about 99 in 100 of its outgoing transitions went to A01 (about 1 in 100 to A03); in the later window all of them go to A07, and A07 in turn always leads to A01. The A04→A01 distance grew from one step (in about 199 of 200 traces) to two steps (in all traces), consistent with one activity inserted between them. [DIR002, DIR003, LAG003]\n- A03's ties to the rest of the flow dissolved: earlier it co-occurred with A01, A02 and A04 in every trace and preceded them (A03 before A01 in 199 of 200 traces, before A04 in about 197 of 200); in the later window A01 and A02 occur without A03 in all traces. [REL001, REL003, REL005]\n- The front of the trace shifted: A02 moved from about a fifth into the trace to the very start, and A04 from about three quarters in to halfway, while the A02→A04 distance stayed at two steps and the A02→A01 distance grew from mostly three to always four steps. [POS001, POS003, LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA specific structural reconfiguration is supported: A03, previously the opening activity executed once in every case, is no longer executed, and A07 now runs as a new step between A04 and A01 — the typical flow changed from A03 → A02 → A04 → A01 to A02 → A04 → A07 → A01. The participation flips are complete (200 of 200 traces to 0, and 0 to 200 of 200); the new edges A04→A07 and A07→A01 are observed directly; the A04→A01 distance grew by exactly one step, as an insertion would produce; and A03's co-occurrence with A01, A02 and A04 fell from every trace to none. This is not a relocation of A03, since A07 sits late in the trace where A03 never did. The volume of qualified items (19 against roughly 0.13 expected without change) means chance sampling cannot account for the evidence as a whole. [OCC001, OCC002, DIR002, DIR003, REL001, REL005, LAG003]\n\nLimitation: zero participation only shows that A03 was not observed, not why — removal from the process and a step now skipped in every case look identical here. Also, because A02 now sits at the very start of traces, a change in what the log captures at the beginning of a case (A03 falling outside the recorded window) cannot be ruled out. [OCC001, POS001]\n\nOther differences: the remaining positional shifts (A02 to the trace start, A04 about a quarter of a trace earlier) and the A02→A01 distance growing from three to four steps fit the same restructuring and were not counted as separate findings. [POS001, POS003, LAG001]",
+  "case_id": "case_eb1ade11ddfbccc0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

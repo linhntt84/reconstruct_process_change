@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_6980dd0b98c5301b.json",
+  "evidence_sha256": "823a78cf12ae11bce3042195606df246879c4c54874abb1d9e17019d7a06f983",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:31:41.830521+00:00",
+  "finished_at_utc": "2026-11-15T01:32:38.087529+00:00",
+  "latency_seconds": 56.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7194,
+    "prompt_tokens": 5661,
+    "total_tokens": 12855,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6343,
+      "text_tokens": 851
+    },
+    "cost": 0.00444615
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24723,
+  "text": "### Observed differences\n\n- The closing sequence of activities runs in a different order. In the earlier window the traced tail is A08 → A06 → A07 → A01, with A01 always the final event; in the later window it is A08 → A01 → A06 → A07, with A07 final. Each ordering holds in all 200 traced cases of its window [DIR001, DIR002, DIR003, REL001, REL002, LAG001, LAG002, LAG003].\n- Successors changed accordingly: earlier, A08 was always followed by A06 and A07 was always followed by A01, while A01 had no observed outgoing transition; in the later window, A08 is always followed by A01 and A01 by A06, while A07 has no observed outgoing transition [DIR001, DIR002, DIR003].\n- The pairwise order of A01 with A06 and with A07 flipped: earlier, A06 and A07 each came before A01 in 100 in 100 co-occurring cases; later, A01 comes before each of them in 100 in 100. Both pairs still always co-occur, so no activity became optional or disappeared [REL001, REL002].\n- Step distances changed consistently with the new order: A01 now follows A08 after 1 step instead of 3, A06 after 2 steps instead of 1, and A07 after 3 steps instead of 2 [LAG001, LAG002, LAG003].\n- Event positions shifted on a seven-event scale: A01 moved from the last position (mean 1.0) to about 5/7 of the trace, A06 from about 5/7 to 6/7, and A07 from 6/7 to the last position [POS001, POS002, POS003].\n- Participation is unchanged: A01, A06 and A07 each appear in all 200 traces in both windows, and the position scale (seven events) is the same in both windows, so trace length and activity set are unchanged [POS001, POS002, POS003, REL001, REL002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering of the closing activities changed: A01, which previously executed last, after A06 and A07, now executes directly after A08 and before A06 and A07, so A07 has become the final activity. All four activities involved (A01, A06, A07, A08) still occur in every trace and still always co-occur, so this is a change in ordering constraints, not in participation. The successor changes [DIR001, DIR002, DIR003], the flipped pairwise orders [REL001, REL002], the changed step distances [LAG001, LAG002, LAG003] and the position shifts [POS001, POS002, POS003] all show the same reordering directly, each in all 200 traces of both windows. The volume of qualifying evidence also far exceeds what a stable process produces: 11 control-flow items qualified where about 0.05 would be expected without a change, and each item's difference exceeded about 995 of 1,000 random re-splits [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, LAG001, LAG002, LAG003].\n\nLimitations: the 11 items describe one underlying difference rather than independent confirmations, and the indicators cover only the relative order of these four activities near the end of the trace. An important competing explanation the evidence cannot rule out is that the reordering is accompanied by, or is a side effect of, changes in the earlier part of the trace that these indicators do not test; the evidence also cannot show whether the new order applies uniformly across the whole later window.",
+  "case_id": "case_6980dd0b98c5301b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

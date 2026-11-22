@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_e859ee8fcb010f7c.json",
+  "evidence_sha256": "c12aa480d13e433b80bf3dc30ae38f6f6b9f42fbdb3ba13d3d769ef24f27932d",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:06:13.646670+00:00",
+  "finished_at_utc": "2026-11-15T01:06:38.827405+00:00",
+  "latency_seconds": 25.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3943,
+    "prompt_tokens": 44073,
+    "total_tokens": 48016,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3336
+    },
+    "cost": 0.006962506
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 9342,
+  "text": "### Observed differences\n\n- A01 and A02 are present in about half of the traces before (99 of 200) and disappear completely after (0 of 200); their outgoing edges and positions vanish. [OCC001, OCC002, DIR001, DIR002, POS001, POS002]\n- A06 drops from about 2 occurrences per trace to 0.48, participation from 50% to 36%, and its successors change from A13/A02 to A14 exclusively. [OCC003, DIR004]\n- A13 drops from 1.0 to 0.415 occurrences per trace, and its successors change from A06 to A14. [OCC007, DIR010]\n- A14's successors change from A01 to A08 (56%), A07 (35%), A12 (4%), A09 (4%), A04 (1%). [DIR011]\n- A09 appears in 24% of traces (47 of 200) with mean 0.395, and its successors are A11, A07, A12. [OCC005, DIR007]\n- A08 and A10 increase participation from 24% and 26% to 50% each, and their positions shift earlier (A08 mean position from 0.91 to 0.72; A10 from 0.91 to 0.86). [OCC004, OCC006, POS004, POS006]\n- A04 and A06 become adjacent (lag 1) in all co-occurring cases, whereas before they were often separated by 3 or 5 steps. [LAG001]\n- Many pairs involving A01 or A02 lose co-occurrence entirely. [REL001, REL012, etc.]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in process structure: the early activities A01 and A02 are removed, and the flow is re-routed so that A06 and A13 both lead to A14, which then leads to A08/A07/A12, with A09 introduced as a new activity. The number of control-flow items (107) far exceeds the expected 0.64, so this is not chance. The main hypothesis: the process changed from a path that started with A01/A02, went through A06/A13/A14, to a new path without A01/A02, where A06 and A13 converge on A14, and A14 leads to A08/A07/A12, with A09 appearing. Other differences: A08 and A10 become more frequent and earlier; A04 and A06 become directly adjacent. A competing explanation: the disappearance of A01/A02 could be due to a rare variant, but given the large number of items and the consistency, it's unlikely. Also, we cannot rule out that A01/A02 were renamed or replaced by A09, but that's speculation.",
+  "case_id": "case_e859ee8fcb010f7c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

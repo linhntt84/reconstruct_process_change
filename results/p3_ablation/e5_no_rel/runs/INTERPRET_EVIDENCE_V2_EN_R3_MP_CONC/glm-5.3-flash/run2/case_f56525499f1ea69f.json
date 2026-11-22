@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_f56525499f1ea69f.json",
+  "evidence_sha256": "d3f64c7f91191548a07d759f6c4563db03bc5384362b5de58f7b0141ffe20b15",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:41:41.664188+00:00",
+  "finished_at_utc": "2026-11-15T06:43:42.728333+00:00",
+  "latency_seconds": 121.07,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17641,
+    "prompt_tokens": 20252,
+    "total_tokens": 37893,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16116,
+      "text_tokens": 1525
+    },
+    "cost": 0.011858299999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53972,
+  "text": "### Observed differences\n\n- The main difference concerns six activities: A33, A35, A36, A37, A38 and A39. In the earlier window each appeared in only about half of the traces (roughly 49–52 in 100, about 0.5 occurrences per trace, i.e. about three of the six per trace); in the later window each appears in nearly every trace (about 99 in 100, about 1.0 occurrence per trace, i.e. all six). [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n\n- In the earlier window there were no transitions from A33, A35 or A36 to A37, A38 or A39, and A30 fed all six activities at similar shares (about 14–18 in 100 each). In the later window, A30's outgoing transitions concentrate on A35 (about 37 in 100) and A33/A36 (about 30 in 100 each), while A33, A35 and A36 now send roughly 8–12 in 100 of their outgoing transitions to each of A37, A38 and A39. A30 itself still occurs in every trace in both windows, slightly earlier in the later one (mean position about 0.67 vs 0.62). [DIR006, DIR007, DIR008, DIR009, POS004]\n\n- A31 moved behind the group. In the earlier window, A33, A35 and A36 each passed about 30–36 in 100 of their outgoing transitions directly to A31, and the ordered pairs reached A31 within 1–3 events in almost all cases; in the later window these direct transitions have nearly disappeared, yet the pairs still occur (in roughly 120–132 of 200 later traces) — now at gaps of 4–5 events. A31 still occurs in every trace in both windows, slightly later (mean position about 0.80 vs 0.82). [DIR007, DIR008, DIR009, LAG006, LAG007, LAG008, POS005]\n\n- The pairs A30→A37, A30→A38 and A30→A39 likewise shifted from gaps of 1–3 events (about 95–97 in 100 earlier) to gaps of 4–5 events (about 98–100 in 100 later), consistent with A37/A38/A39 now running after A33/A35/A36 rather than directly after A30. Within the group, A33/A35/A36 now occur slightly earlier (mean position about 0.75 vs 0.68) and A37/A38/A39 slightly later (about 0.73 vs 0.76). [LAG003, LAG004, LAG005, POS006, POS007, POS008, POS009, POS010, POS011]\n\nOther differences:\n\n- A04 became rarer and its routing changed: it appears in about 31 of 100 traces before but about 14 in 100 after; the share of A04→A16 among A04's outgoing transitions fell from about 81 to 36 in 100; the A04→A16 gap spread from almost always 1 event to often 2–5; and A04 occurs later and more unevenly (mean position about 0.27 vs 0.40). These rest on 61 vs 27 traces. [OCC001, DIR002, POS001, LAG001]\n- A06 and A10 occur more often, from about 3 to about 11–12 in 100 traces, but few observations back this (6 vs 22 and 5 vs 24 traces). [OCC002, OCC003]\n- The outgoing transitions of A02 and A08 were almost completely redistributed, but the profiles rest on very few outgoing transitions (13 vs 23 and 9 vs 28). [DIR001, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the two three-activity groups A33/A35/A36 and A37/A38/A39, which in the earlier window ran as alternatives (about one group, i.e. about three of the six activities, per trace, with no transitions between the groups), now both execute in nearly every trace in sequence: in the later window A30 leads into A33/A35/A36, these connect onward to A37/A38/A39, and A31 — which previously followed directly after the executing group — now occurs 4–5 event positions later, after the second group. The participation change is observed directly with large support in both windows (97–103 vs 197–199 traces per activity), the new cross-group transitions and the lost direct transitions to A31 agree with it, the lag shifts show the reordering relation directly, and the screening flagged 38 items where about 0.76 would be expected without a change, so the ensemble is not what an unchanged process typically produces. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, DIR006, DIR007, DIR008, DIR009, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\nLimitations: the exact sequence inside each group cannot be fixed (A33/A35/A36 and A37/A38/A39 each show several successors in both windows), and the evidence cannot rule out that the two windows sample different case mixes rather than a modified process. [DIR007, DIR008, DIR009]\n\nOther differences: A04's reduced participation and rerouting, and the more frequent occurrence of A06 and A10, are observed but are not part of this hypothesis. [OCC001, DIR002, POS001, LAG001, OCC002, OCC003]",
+  "case_id": "case_f56525499f1ea69f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

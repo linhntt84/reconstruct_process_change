@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "f038d922f224b1c8cfb784cd33abbd3009708dcff398e4a91735d5c3611413a0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:02:28.214671+00:00",
+  "finished_at_utc": "2026-11-14T13:03:58.407828+00:00",
+  "latency_seconds": 90.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15092,
+    "prompt_tokens": 11119,
+    "total_tokens": 26211,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13775,
+      "text_tokens": 1317
+    },
+    "cost": 0.009213849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49830,
+  "text": "### Observed differences\n\n- In the earlier window, A22, A23 and A24 each ran in all 200 traces as a fixed chain: every observed outgoing transition of A22 went to A23, and every observed outgoing transition of A23 went to A24. [DIR004, DIR005]\n- In the later window, three activities that were absent from the earlier sample — A14, A15 and A20 — each occur exactly once in the traces that contain them: A14 in about 29 in 100 traces (58 of 200), A15 in about 41 in 100 (82 of 200) and A20 in about 30 in 100 (59 of 200). [OCC001, OCC002, OCC003]\n- The three new activities are mutually exclusive and together cover virtually all later traces: no trace contains two of them, and the share of traces containing neither of any two matches the third activity's participation, so the three shares sum to about 100 in 100 later traces. [REL001, REL002, REL006, OCC001, OCC002, OCC003]\n- The insertions redirect existing edges: in the later window A22's outgoing transitions go to A23 in about 44 in 100 cases (down from all in the earlier window) and to A15, A20 or A14 in about 24, 17 and 16 in 100; A23's outgoing transitions go to A24 in about 57 in 100 cases (down from all) and to A15, A14 or A20 in about 18, 14 and 13 in 100. [DIR004, DIR005]\n- Each new activity always runs after A22 and before A24, but its order against A23 is mixed rather than fixed (A14 before A23 in about 16 in 100 traces and after it in about 14; A15 about 24 vs 18; A20 about 17 vs 13), and the new activities lead only to A23 or A24 — so the new step sits either between A22 and A23 or between A23 and A24. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, DIR001, DIR002, DIR003]\n- The new activities sit near the middle of the trace (mean relative position about 0.51 for all three), and A22 now sits slightly earlier (mean about 0.46 vs 0.48 earlier); these are event positions, not clock times. [POS001, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new step — executed as exactly one of three mutually exclusive activities, A14, A15 or A20 — was inserted into the A22 → A23 → A24 sequence: in the later window virtually every case runs exactly one of the three, once, either directly after A22 (before A23) or directly after A23 (before A24), whereas in the earlier window none of the three was observed and control always passed directly from A22 to A23 and from A23 to A24. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n\nSupporting signs: 24 control-flow items qualified where about 0.39 would be expected if nothing had changed (roughly 60 times the chance expectation), so chance alone cannot account for the set; occurrence, direction, position and relation indicators all agree, and their counts cross-check almost exactly — A22→A14 in about 31 traces plus A23→A14 in about 27 matches A14's 58 traces, and likewise for A15 (about 47 + 35 = 82) and A20 (about 34 + 25 = 59). [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n\nLimitations: zero participation in the earlier window shows only that A14, A15 and A20 were not observed then, and the evidence cannot rule out that the two windows draw on different case mixes rather than a modified flow for the same cases. [OCC001, OCC002, OCC003]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

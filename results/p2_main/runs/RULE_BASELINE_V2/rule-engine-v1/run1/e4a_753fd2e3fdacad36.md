@@ -1,0 +1,14 @@
+### Observed differences
+
+- A24: A25 changes from 1.000 to 0.490. [DIR006]
+- A25: A29 changes from 1.000 to 0.510. [DIR007]
+- A24, A25: 2 changes from 0.000 to 0.510. [LAG001]
+- A24, A29: 3 changes from 0.000 to 1.000. [LAG002]
+- A25, A29: 2 changes from 0.000 to 0.490. [LAG003]
+- 34 evidence items qualified; about 0.44 would be expected without any change.
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a structural change in the process.

@@ -1,0 +1,16 @@
+### Observed differences
+
+- The order of A30 and A31 between A26 and A27 flipped. In the earlier window the dominant sequence was A26 → A31 → A30 → A27: A31 immediately followed A26 in about 60 in 100 observed pairs, and A30 followed A31 in about 60 in 100. In the later window the dominant sequence was A26 → A30 → A31 → A27: A30 immediately followed A26 in about 62 in 100 pairs, and A31 followed A30 in about 62 in 100. Both orders occur in both windows, so only the shares between two existing alternative orders changed. [DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]
+- The step gaps match this flip: A26 reached A30 within two steps in about 60 in 100 pairs before but within one step in about 62 in 100 after, while A26→A31, A30→A27 and A31→A27 moved the opposite way (one step in about 60 in 100 before, two steps in about 62 in 100 after). [LAG001, LAG002, LAG003, LAG004]
+- A26's immediate-successor mix shifted accordingly: A31 fell from about 31% to about 17% of A26's outgoing transitions, while A30 rose from about 21% to about 27% and A33 held at about 27%. A32 also rose, from about 22% to about 30%, which the A30/A31 flip alone does not explain. [DIR001]
+- The elapsed time between consecutive completion events of A01 and A03 roughly doubled: the median went from about 0.84 hours (39 observations) to about 1.75 hours (41 observations), with every quartile about 0.7–0.95 hours higher. [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the preferred execution order of A30 and A31 — the two activities linking A26 to A27 — flipped: in the earlier window about 60 in 100 of the relevant traces ran A26 → A31 → A30 → A27, while in the later window about 62 in 100 ran A26 → A30 → A31 → A27. Both orders were already present in both windows, no activity was added, removed or bypassed, and the gaps stay at one or two steps, so this is a change in how often two existing alternative orders are taken rather than a replacement of paths. The control-flow family produced 7 qualifying items where about 0.31 would be expected if nothing had changed, and all seven describe the same flip from both the successor side and the gap side rather than unrelated differences; each difference is larger than in about 99.5 of 100 random re-splits, and every involved activity and both orders are observed in both windows, with the pairs present in roughly half of the traces (103 of 200 before, 87 of 200 after). An important limitation: the share of traces containing these pairs within five steps also fell from about 52% to about 44%, so the evidence cannot rule out that an additional participation change in this subset contributes to, or partly masks, the observed flip.
+
+Other differences:
+- A32's share of A26's outgoing transitions rose from about 22% to about 30%, a redistribution beyond what the A30/A31 order flip explains. [DIR001]
+- The elapsed time between consecutive completion events of A01 and A03 roughly doubled (median about 0.84 hours to about 1.75 hours, all quartiles up), which is a timing change in its own right; it rests on only about 40 observations per window. [TWAIT001]

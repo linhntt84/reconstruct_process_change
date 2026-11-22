@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_7a9abc9e2d2d.json",
+  "evidence_sha256": "d49a6a986d762d6a6751c8e5f3c8b8a1496162071b0c29f6851469d2c781cbce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:52:15.830003+00:00",
+  "finished_at_utc": "2026-11-16T01:55:15.338181+00:00",
+  "latency_seconds": 179.51,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27621,
+    "prompt_tokens": 78574,
+    "total_tokens": 106195,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25691,
+      "text_tokens": 1930
+    },
+    "cost": 0.025596599999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 90427,
+  "text": "### Observed differences\n\n- Two activities appear in fewer traces in the later window: A04 in about 30 in 100 traces (61 of 200) versus about 38 in 100 earlier (76 of 200), and A11 in about 18 in 100 (35 of 200) versus about 24 in 100 (47 of 200). [OCC003, OCC009]\n- A03 was executed less often and routed differently: about 1.9 executions per trace in the later window versus about 2.1 earlier, and among A03's outgoing transitions the share leading to A04 fell from about 28 to 22 in 100 while the share leading to A05 rose from about 48 to 53 in 100; A03→A05 stayed at roughly one per trace (about 200 per window), so the roughly 40 fewer A03 executions per 200 traces sit almost entirely on the A04 edge. [OCC002, DIR003]\n- The participation drops show up relationally: A04 occurred together with the ever-present A02/A03/A05 in about 31 in 100 traces versus about 38 in 100 earlier, A11 with A02/A03 in about 18 versus 24 in 100, and traces containing neither A04 nor A11 rose from about 46 to 58 in 100. [REL014, REL023, REL033, REL020, REL030, REL039]\n- Two alternative branch packages changed shares: the pair A01+A12 (the two always occur together, never together with A07/A09) ran in about 46 in 100 later traces versus 50 in 100 earlier, while the pair A07+A09 ran in about 54 versus 50 in 100; the mutual exclusivity of the two pairs held in both windows. [OCC001, OCC005, OCC007, OCC010, REL006, REL008, REL011, REL058, REL061, REL070]\n- Within the always-present core, the fixed order A02-before-A03 became somewhat more frequent (about 51 in 100 traces versus about 43 in 100) at the expense of interleaved-or-repeated execution (about 50 versus 58 in 100); both orders still occur, so this is a frequency shift within a mixed order, not a swap. The same pattern holds for A03 and A05. [REL013, REL024]\n- Minor redistributions accompany these changes: repeated A04 pairs at event distance 2 rose from about 34 to 67 in 100 of A04's repetition pairs, and A06, A09 and A13 sit at slightly later event positions; several lag items rest on only one to five observations and carry little weight. [LAG029, POS005, POS008, POS012, LAG039, LAG049]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the A04 branch and the activity A11 are skipped more often: A04 appears in about 30 in 100 traces (down from about 38 in 100), A11 in about 18 in 100 (down from about 24 in 100), and at A03 the continuation to A04 is taken less often relative to the path via A05 (about 22 versus 28 in 100 of A03's outgoing transitions), with A03 itself running about 1.9 instead of 2.1 times per trace and the lost executions falling almost entirely on the A04 edge. Supporting signs: the participation changes are measured directly on all 200 traces per window, the routing shift is observed directly on about 400 outgoing transitions per window, and occurrence, routing and relation indicators all move in the same direction, with the largest differences arising in fewer than about 5 in 100 random re-splits (strengths of roughly 0.97 for A04's occurrence change, 0.95 for the A03 routing shift and 0.98 for the joint A04/A11 absence). Both activities remain clearly observed in the later window, so the reading is reduced execution rather than removal. Limitations: many relation items re-express the same participation change rather than confirming it independently, the evidence contains no screening baseline, so the number of qualifying items cannot be compared with the number expected without change, and A11's own occurrence difference alone is modest (larger differences arose in about 36 in 100 random re-splits). An important competing explanation that cannot be ruled out is ordinary sampling variation between the two 200-trace windows, although the consistent direction across indicators makes a pure sampling artefact less plausible. [OCC002, OCC003, OCC009, DIR003, REL014, REL020, REL023, REL030, REL033, REL039]\n\nOther differences: The alternative branch packages shifted in frequency — A01+A12 down to about 46 in 100 traces and A07+A09 up to about 54 — a path-share change observed directly but with only moderate empirical strength (about 0.4 to 0.7), so sampling variation remains a live alternative for it. The fixed order A02-before-A03 became somewhat more frequent than interleaved execution. Small position and lag redistributions accompany these changes, some resting on very few observations. [OCC001, OCC005, OCC007, OCC010, REL006, REL011, REL058, REL061, REL070, REL013, LAG029, LAG039, LAG049]",
+  "case_id": "null_cdlg_7a9abc9e2d2d",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

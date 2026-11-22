@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the later window, the relative order of two groups of activities reversed. Before, A20, A21, A23, and A24 almost always occurred before A25, A26, A27, and A28 (e.g., A20 before A25 in 99% of cases, A24 before A25 in 99%); after, A25–A28 precede A20–A24 in most cases (e.g., A25 before A20 in 76%, A25 before A24 in 91.5%). [REL001, REL012, REL005, REL014]
+- Positions shifted accordingly: A20, A21, A23, and A24 moved later (mean position from about 0.57 to 0.63 for A20, 0.58 to 0.63 for A21, 0.53 to 0.56 for A23, 0.61 to 0.68 for A24); A25, A26, A27, and A28 moved earlier (A25 from 0.64 to 0.56, A27 from 0.68 to 0.62, A28 from 0.67 to 0.62). [POS001, POS002, POS003, POS004, POS005, POS007, POS008]
+- Outgoing transitions from A20, A21, A23, and A24 now include A25–A28, while transitions from A25–A28 now include A20–A24. For example, A20's successors changed from mostly A24/A21 to a mix including A25–A28; A24's successor changed from almost always A25 to A34, A26, A27, and A28. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+- Lags between these pairs shortened or reversed: e.g., A20–A25 lag changed from 2–3 steps to 1 step; A24–A25 from A before B to B before A; A33–A25 from lag 5 to lag 1. [LAG003, LAG012, LAG042, LAG022]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window, a group of activities (A25, A26, A27, A28) moved earlier relative to another group (A20, A21, A23, A24), effectively reversing their order. This is directly shown by relational and positional indicators: the share of cases where A25–A28 precede A20–A24 increased dramatically, while the reverse order decreased; positions of A20–A24 shifted later and A25–A28 earlier; and successor distributions changed accordingly. The number of qualifying evidence items (76) is far above the 0.89 expected by chance, and the pattern is consistent across DIR, POS, REL, and LAG. A competing explanation of sampling variation in variant frequencies is unlikely given the magnitude and consistency, though some individual LAG items are based on few observations (e.g., LAG023, LAG028, LAG030, LAG034) and should be interpreted cautiously. The evidence does not identify a cause or business event, only a change in the observed order.

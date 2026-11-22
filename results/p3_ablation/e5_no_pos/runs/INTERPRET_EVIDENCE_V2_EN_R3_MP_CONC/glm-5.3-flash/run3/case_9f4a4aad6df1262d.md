@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window the segment ran as one fixed chain, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: each activity's outgoing transitions went almost exclusively to its chain successor (A23 to A24 in all observed transitions, A24 to A26 and A26 to A25 in about 99 in 100, A20 to A23 in about 99 in 100, A25 to A32 in about 93 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- In the later window the successors are spread over several targets: A20 still leads mostly to A23 (about 67 in 100) but also to A24, A25 or A26 (about 10–11 in 100 each); A24 leads back to A22 (about 23 in 100) or A20 (about 11 in 100); A25 leads to A20, A23 or A22 in about half of its transitions; A26 leads to A20, A22 or A23 in about a third. [DIR001, DIR004, DIR005, DIR006]
+- Two direct transitions appear that were not observed before: A23 now leads straight to A32 in about 49 in 100 of its transitions (before, only A24 followed it), and A31 now leads to A24 in about 47 in 100 (before, always A22). [DIR003, DIR007]
+- The order between several pairs reversed or lost its fixed direction: A24 precedes A20 in about 73 in 100 traces (before 0 in 100, with A20 first in 98); A24 precedes A23 in about 84 in 100 (before 0); A26 precedes A23 in about 68 in 100 (before 0); the pairs A20/A26, A22/A24 and A23/A25 now occur in both orders in similar shares, i.e. without a fixed order. [REL001, REL003, REL004, REL006, REL007, REL008]
+- Position gaps spread accordingly: A23 to A32 typically took 4 steps before and now takes 1 step in about half the cases; A24 to A32 moved from typically 3 steps to typically 5; A31 to A24 went from always 4 steps to 1 step in about 47 in 100. [LAG013, LAG018, LAG027]
+- Every one of these activity pairs still co-occurs in all traces in both windows, so participation did not change — only order and routing did. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the ordering constraints in the segment containing A20, A22, A23, A24, A25 and A26 were relaxed: in the earlier window these activities always ran in the fixed sequence A20 → A23 → A24 → A26 → A25 (reached from A31 via A22 and followed by A32), whereas in the later window several pairs appear in both directions (A24 before A20 in about 73 in 100 traces, A24 before A23 in about 84 in 100), transitions lead back from A24, A25 and A26 to A20, A22 and A23, and A23 leads directly to A32 in about 49 in 100 of its transitions instead of always continuing to A24. [REL001, REL004, REL006, REL007, REL008, DIR003, DIR004, DIR005, DIR006, LAG013]
+
+Supporting signs: 43 control-flow items qualified against roughly 0.62 expected by chance in a stable process, so the set as a whole is not a sampling artefact; the order changes are shown directly by the relational items and are corroborated by the successor and gap shifts; co-occurrence stays at 100%, so the same activities still run in every case and only their order and routing changed. [screening, REL001, REL006, DIR003, LAG013]
+
+Limitations: the evidence cannot distinguish a change in one underlying process from a shift in the mix of trace variants (for example a flexible, repeat-heavy variant becoming dominant), and many items describe overlapping behaviour of the same traces, so they are not independent confirmations; a few gap items also rest on modest support (for example the A20-then-A24 ordered pair within five steps appears in only 52 of 200 later traces). [LAG002]
+
+Other differences: A31's routing changed — it led only to A22 before and now leads to A24 in about 47 in 100 of its transitions, with A20, A22 and A23 occurring later after it than before. [DIR007, LAG024, LAG025, LAG026, LAG027, LAG028]

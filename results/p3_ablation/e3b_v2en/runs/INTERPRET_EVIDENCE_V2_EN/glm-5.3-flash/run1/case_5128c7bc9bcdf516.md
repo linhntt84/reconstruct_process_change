@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the later window, each of the seven activities A15, A17, A18, A19, A20, A21 and A26 has essentially a single successor, where previously the outgoing transitions of each were spread over three or four targets. For example, from A15 about 62 in 100 transitions went to A18 before (the rest to A19, A20 or A21), and in the later window about 995 in 1000 go to A18; A26, previously split evenly between A19 and A17, now goes to A17 in all observed cases. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- The relative order of these activities changed. Before, A19 preceded A15 in about 75 in 100 traces and A18 in about 88 in 100, and A21 preceded A18 in about 70 in 100; in the later window A15 precedes A19, and A18 precedes A19 and A21, in about 995 in 1000 traces. Pairs that were near even splits, such as A15/A21 and A17/A19, now occur with A15 or A17 first in every trace. All these pairs still co-occur in 100% of traces in both windows, so participation itself did not change. [REL001, REL003, REL004, REL006, REL008]
+
+- Distances between the activities became fixed. In the later window, each ordered pair appears at one constant step distance in nearly every trace: A26→A17, A17→A15, A15→A18, A18→A19, A19→A21, A21→A20 and A20→A27 each occur immediately (about 995–1000 in 1000), and longer-range pairs likewise concentrate on a single distance (for example A15 reaches A19, A21, A20 and A27 at exactly 2, 3, 4 and 5 steps). Before, these distances were spread over one to five steps. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG024, LAG025, LAG026, LAG027, LAG029]
+
+- The reverse proximities disappeared: A19→A15, A19→A18, A20→A18, A21→A18 and A26→A20, previously observed in roughly 100–180 of 200 traces, are each supported by only a single later observation. [LAG014, LAG015, LAG019, LAG021, LAG028]
+
+- A15, A17 and A18 now occur earlier in the trace (mean relative position down by about 0.03–0.06; A18 from about 0.68 to about 0.62), while A19, A20 and A21 occur later (up by about 0.03–0.06; A19 from about 0.59 to about 0.65). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- Overall, the later window behaves as one fixed sequence, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27, whereas the earlier window showed the same activities in a mixed order with several alternative successors; for instance, A27 was previously reached from A18 in about 53 in 100 transitions and from A20 in about 47 in 100, and in the later window only via A20. [DIR003, DIR005, LAG013, LAG020, LAG024, LAG025, LAG029]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the ordering of this activity group was restructured from a mixed, partly parallel order — in which A19, A21 and A20 typically ran before A15 and A18 and each activity had several alternative successors — into a single fixed sequence A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 with immediate succession at each step. The order change is shown directly by the relational items, the fixed step distances match this sequence at every reachable pair, and the single-successor routing and position shifts agree with it; the number of qualifying items (50, against roughly 0.47 expected without change across 95 tested units) is far beyond what an unchanged process typically produces, and every item's difference exceeds about 199 of 200 random re-split references. [REL001, REL006, REL008, LAG024, LAG025, LAG026, LAG027, LAG029, DIR001, DIR007]
+
+The main competing explanation the evidence cannot rule out is that this fixed sequence is not newly introduced but a variant that already existed at low frequency and came to dominate the later window; with 200 traces per window, sampling differences in variant frequencies can make one window look far more uniform than the other, although the reversed order splits in the earlier window (for example A19 before A18 in about 88 in 100 traces) make pure sampling noise implausible. In addition, the five vanished reverse pairs rest on a single later observation each, and all items describe one underlying difference, so they are not independent confirmations. [LAG014, LAG015, LAG019, LAG021, LAG028, REL006]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_035a8148200229e0.json",
+  "evidence_sha256": "4b2c965d5eb27bed86e01245183769c5f7185133325daac3f2c04bbc21f05302",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:09:16.761694+00:00",
+  "finished_at_utc": "2026-11-16T02:12:11.639614+00:00",
+  "latency_seconds": 174.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23111,
+    "prompt_tokens": 88813,
+    "total_tokens": 111924,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21033,
+      "text_tokens": 2078
+    },
+    "cost": 0.02487745
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 71175,
+  "text": "### Observed differences\n\n- Opening step: in the earlier window, A04 was the first event in about 49 in 100 cases (98 of 200 traces) and always continued directly to A03; in the later window A04 is not observed in any case (0 of 200), and its precedence links to A03, A06 and A08 (each previously present in about 49 in 100 cases) are gone. [OCC003, POS004, DIR003, REL028, REL038, REL040]\n- In the later window, A01 appears in about 50 in 100 cases (99 of 200) after being absent before; it is always the first event, its only observed successor is A03 (100% of its outgoing transitions), and it co-occurs with A03, A06 and A08 only in an A01-first order. Like A04 before it, A01 never occurs together with the optional activities (for example A05), and the share of cases containing exactly one of A01/A04 stays near one half (A04-only 49% before, A01-only 49.5% after). [OCC001, POS001, DIR001, REL002, REL003, REL004, REL005, REL007, REL037]\n- The previously fixed order between A07 and A13 became flexible: before, A07 preceded A13 in every case containing both (24% of cases), A05 was always immediately followed by A07 (distance 1 in 20 of 20 pairs), and A13 led directly to A03 in about 77% of its outgoing transitions. In the later window, both orders occur (A07 first in about 18% of cases, A13 first in about 12%), A07 passes directly to A03 in about 29% of its outgoing transitions, A13's direct move to A03 falls to about 48%, A05 is now sometimes followed directly by A13 (about 21% of A05's outgoing; the A05–A13 distance was always 2 before, now 1 in half the pairs), and A05–A07 is consecutive in only about 59% of pairs (distance 2 in about 41%). A13's typical event position moved earlier (median 0.4 to 0.2) and A07's later (75th percentile 0.2 to 0.4). [REL069, DIR004, DIR005, DIR010, LAG013, LAG018, LAG021, LAG059, POS006, POS012]\n- Several other activity-pair distances shifted by about one step in both directions (for example A05→A08, A09→A02, A09→A10, A15→A09), each with moderate reference strength. [LAG014, LAG026, LAG031, LAG073]\n- Participation of the optional activities moved by a few percentage points: A02, A09, A10, A12, A14 and A15 each appear slightly less often (for example A10 27% to 21%, A09 15% to 10%; A02's mean occurrences per trace fell from 0.67 to 0.46), while A07 and A13 each rose from 24% to about 30%. A03, A06 and A08 occur in every case at essentially unchanged positions in both windows. [OCC002, OCC004, OCC005, OCC006, OCC008, OCC009, OCC010, OCC011, POS003, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the optional entry step of the process changed from A04 to A01: earlier, roughly half of the cases began with A04, which always passed directly to A03; in the later window A04 is not observed, and roughly half of the cases begin with A01, which likewise always passes directly to A03. This is shown directly and consistently across occurrence (participation 49% to 0% for A04, 0% to 50% for A01), position (both activities occur exclusively as the first event), successors (A03 as the sole observed successor of each), and relations (A01's new co-occurrences are always A01-first, A04's precedence links vanished, the two never co-occur, and the \"exactly one of the two\" share is stable at about one half). Limitations: the evidence cannot show whether A01 is a renamed A04 or a different activity taking over the same slot, and the evidence file contains no screening baseline, so the judgement rests on the size of the differences (98-to-0 and 0-to-99 of 200 cases, reference strength about 0.995) and their consistency across indicator families rather than on a formal chance comparison. [OCC001, OCC003, DIR001, DIR003, POS001, POS004, REL002, REL003, REL004, REL005, REL007, REL028, REL038, REL040]\n\nOther differences:\n- In the subset of cases without the entry step, the ordering constraint between A07 and A13 changed from a fixed order (A07 always first) to a mixed order in which both sequences occur, with A07 sometimes continuing directly to A03 and A05 sometimes followed directly by A13; this is a change in ordering constraints rather than a swap of positions, and it affects cases that never contain A01 or A04. [REL069, DIR004, DIR005, DIR010, LAG013, LAG018, LAG021, LAG059, POS006, POS012]\n- Pairwise event distances shifted by about one step for several other activity pairs, and participation decreased slightly for A02, A09, A10, A12, A14 and A15 while A07 and A13 increased; these shifts are individually moderate and may partly be knock-on effects of the two structural differences above. [LAG014, LAG026, LAG031, LAG073, OCC002, OCC004, OCC005, OCC006, OCC008, OCC009, OCC010, OCC011]\n\nA competing explanation the evidence cannot rule out is that A01 is a newly added start activity while A04 was independently removed: the data show that both occupy the same slot (first event, sole successor A03, never co-occurring, stable one-of-two share), but they cannot distinguish a substitution from two coinciding changes. [REL003, OCC001, OCC003]",
+  "case_id": "case_035a8148200229e0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f9c5c033408715af.json",
+  "evidence_sha256": "9d075137705ac5b7068981eda0e8c0632f6e94c9bc1b9bbae6e6e670bec0611c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:32:22.120398+00:00",
+  "finished_at_utc": "2026-11-15T03:33:28.487353+00:00",
+  "latency_seconds": 66.37,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9506,
+    "prompt_tokens": 4582,
+    "total_tokens": 14088,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8754,
+      "text_tokens": 752
+    },
+    "cost": 0.0054402999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34601,
+  "text": "### Observed differences\n\n- In the earlier window, A07 ran in about 23 in 100 traces (46 of 200), at most once per trace and typically about two-thirds of the way through the trace; in the later window, A07 was not observed in any of the 200 traces. [OCC001, POS001]\n- Before, A07's outgoing transitions went mainly to A03 (about half) and A13 (about three in ten), with small shares to A01 and A10; in the later window, no outgoing transitions from A07 were observed at all. [DIR001]\n- Before, A07 appeared only together with A10 (co-occurrence in 23 in 100 traces, A07 never without A10), in mixed order (A10 first in about 20 in 100, A07 first in about 4 in 100); in the later window, A10 appeared alone in all traces and never together with A07. [REL001]\n- A10's outgoing transitions shifted: the edge to A07 (about 13 in 100 of A10's outgoing transitions before) disappeared, with shares moving toward A01 (about 43% to 52%), A03 (about 2% to 8%) and A13 (about 1% to 5%), a new edge to A09 (about 2 in 100), and falls for A04 (16% to 9%), A08 (14% to 10%) and A06 (1% to 0). [DIR002]\n- Where A10 is followed by A03 within five steps (roughly a third of traces in both windows), the gap shortened: immediately adjacent occurrences rose from about 4 in 100 to about 22 in 100, while five-step gaps fell from about 13 in 100 to about 5 in 100; before, a three-step gap was most common (about 38 in 100). [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A07 was no longer executed in the later window: an activity that previously ran in about 23 in 100 traces — always alongside A10, late in the trace, and leading mainly to A03 and A13 — is absent from all 200 later traces. The change is shown directly: A07's participation, positions and outgoing transitions all fell to zero, its co-occurrence with A10 disappeared, and A10 no longer transitions to A07. [OCC001, DIR001, POS001, REL001, DIR002]\n\nThe volume of qualifying evidence also fits a real change rather than sampling noise: six items qualified against roughly 0.14 expected by chance for the control-flow family, and the items largely describe one underlying disappearance (A07's absence) rather than independent differences. The main limitation is that zero participation strictly means only that A07 was not observed, so the evidence cannot rule out that the later window's cases simply never reach A07 — although complete absence after 46 occurrences in 200 earlier traces is hard to explain by sampling alone. [OCC001, DIR001, POS001, REL001, DIR002, LAG001]\n\nOther differences: Beyond the loss of the A10→A07 edge itself, A10's remaining outgoing mix was redistributed (more to A01, A03 and A13, a new edge to A09, less to A04, A08 and A06), and the A10→A03 gap shifted toward shorter distances. These shifts are consistent with flow that used to pass through A07 now continuing directly from A10, but the evidence does not establish that link. [DIR002, LAG001]",
+  "case_id": "case_f9c5c033408715af",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

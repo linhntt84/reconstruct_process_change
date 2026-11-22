@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window the process was highly uniform: about 99 in 100 of A26's outgoing transitions went to A27, and about 99.5 in 100 of A27's went to A28; A26 preceded A27 and A27 preceded A28 in essentially every trace, with A28 typically two event positions after A26. [DIR001, DIR002, REL001, REL005, LAG001]
+- In the later window this sequence survives in only about half of the cases: A26's outgoing transitions split roughly 50/50 between A27 and the new activities A32/A33/A38, A27 appears in only about 103 of 200 traces, and A28 now occurs without A27 in about 49 in 100 traces. [DIR001, DIR002, REL001, REL005]
+- Three activities not observed at all in the earlier window — A32, A33 and A38 — each appear in about 49 in 100 later traces, positioned around the middle of the trace (median position about 0.5 of the trace length). [DIR003, DIR004, DIR005, POS001, POS002, POS003]
+- In the later window A27 and each of A32/A33/A38 behave as alternatives: they co-occur in at most about 1 in 200 traces, while in about half the traces A27 occurs without the new activity and in about half the new activity occurs without A27. [REL006, REL007, REL008]
+- A32, A33 and A38 occur together in about 49 in 100 later traces and in both orders in similar proportions (about 22–27 in 100 each way), so there is no fixed order among them; each of the three follows A26 (about 49 in 100 traces) and precedes A28 (about 49 in 100 traces). [REL002, REL003, REL004, REL009, REL010, REL011, REL012, REL013, REL014]
+- The event distance from A26 to A28, previously two steps in about 98 in 100 traces, is split in the later window between two steps (about 50 in 100) and four steps (about 48 in 100), consistent with three events being inserted between the two activities in roughly half the cases. [LAG001]
+- In the later window, the outgoing transitions of A32, A33 and A38 go almost entirely to each other and to A28. [DIR003, DIR004, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window roughly half of the cases skip A27 between A26 and A28 and instead run a fragment consisting of A32, A33 and A38 — executed together, in no fixed order — between A26 and A28, while the other half keep the original A26 → A27 → A28 sequence. The screening produced 23 qualifying items where fewer than 1 (0.35) would be expected without a change, so chance sampling cannot account for the pattern as a whole. The hypothesis is shown directly and consistently: relational evidence places each new activity after A26 and before A28, shows the three co-occurring with each other and being mutually exclusive with A27, directional evidence shows about half of A26's outgoing flow redirected from A27 to the three new activities, and the doubled A26–A28 event distance in about half the later traces corroborates an insertion between them. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, DIR001, DIR003, DIR004, DIR005, LAG001]
+
+Limitations: the three activities were only not observed in the earlier 200-trace window, so a very rare prior occurrence cannot be excluded; and because the fragment appears in both orders, it can only be described as an unordered group rather than a fixed sequence. A parallel-execution explanation (the fragment running alongside A27) is largely ruled out by their near-zero co-occurrence, but the evidence cannot establish whether the fragment is mandatory or optional within the cases where it appears. [REL006, REL007, REL008, REL012, REL013, REL014]
+
+Other differences: A27's outgoing transitions in the later window include small new edges to A09 (about 2 in 100) and to A34 and A25 (about 1 in 100 each). [DIR002]

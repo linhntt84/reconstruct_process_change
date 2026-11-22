@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_470e646749fcf1ee.json",
+  "evidence_sha256": "49138e9bc9ed72c58ad35c3e32fa66d3e2166456464edc8a52ca1ae14e30b812",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:36:57.720690+00:00",
+  "finished_at_utc": "2026-11-15T08:39:28.273657+00:00",
+  "latency_seconds": 150.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22164,
+    "prompt_tokens": 32681,
+    "total_tokens": 54845,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20417,
+      "text_tokens": 1747
+    },
+    "cost": 0.01598415
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67687,
+  "text": "### Observed differences\n\n- Four activities that never appeared in the earlier window occur in the later one: A02 and A13 in about 48 in 100 traces each, A09 and A12 in about 26 in 100 each. [OCC002, OCC007, OCC010, OCC011]\n- A01 shows the reverse: about 20 in 100 traces contained it in the earlier window (typically around two-thirds into the trace); it is not observed in the later window. [OCC001, POS001]\n- A03's handover changed: in the earlier window its outgoing transitions led to A08 in about 52 in 100 cases and directly to A04 in about 46 in 100; in the later window they lead to A08 in about 52 in 100 and to A02 in about 46 in 100, with a direct transition to A04 remaining in only about 1 in 100. [DIR003]\n- The new activities are wired in between A03 and A04: A02 leads to A12 (about 54 in 100 of its outgoing transitions) and to A13 (about 45 in 100); A12 leads back to A02 (about 99 in 100), forming a repeating A02 ↔ A12 loop; A13 leads on to A04 (about 99 in 100). A09 always leads back to A08. None of these transitions were observed in the earlier window. [DIR002, DIR009, DIR010, DIR007]\n- A08's self-repetition is replaced by a cycle through A09: earlier, about 29 in 100 repeated A08 pairs were adjacent (one step apart); later, none are adjacent and about 36 in 100 sit two steps apart, with A08 now handing over to A09 in about 44 in 100 of its outgoing transitions. [DIR006, DIR007, LAG008]\n- A01's removal reroutes A14: earlier, all of A14's observed outgoing transitions led to A01, which led on to A04 (A14-to-A04 distances of about two steps in 43 in 100 of observed pairs); later, A14 leads directly to A04, one step apart in about 41 in 100 of observed pairs. [DIR011, DIR001, LAG010]\n- In the later window the new and old routes are strict alternatives: every trace contains exactly one of A02 or A08 (about 48 vs 52 in 100, never both), A13 occurs only in A02 traces, and A09 never co-occurs with A02, A12 or A13. [REL011, REL014, REL029, REL012, REL031, REL032]\n- Positions further down the trace shifted accordingly: A04 still occurs in every trace but repeats less (about 2.1 vs 1.9 occurrences per trace) and sits later (median relative position about 0.58 vs 0.75); the A03-to-A04 distance moved from mostly one-to-two steps to three or five steps; A14 also sits later (median about 0.63 vs 0.78). A03 remains the first activity in every trace in both windows. [OCC003, POS004, LAG001, POS009, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the flow between A03 and A04 was restructured. In the earlier window, traces left A03 either directly to A04 (about 46 in 100 of A03's outgoing transitions) or to A08 (about 52 in 100, with A08 repeating itself directly), and about 20 in 100 traces later ran A14 → A01 → A04. In the later window, the direct A03 → A04 transition is replaced by a new segment A03 → A02 → A13 → A04 containing a repeating A02 ↔ A12 loop, the A08 self-repetition is replaced by a cycle through the new A09, and A01 no longer occurs, with A14 feeding A04 directly. [OCC001, OCC002, OCC007, OCC010, OCC011, DIR002, DIR003, DIR007, DIR009, DIR010, DIR011]\n\nThe signs are direct and mutually consistent, though several indicator families describe the same traces and are not independent confirmations: participation appears and disappears on a large scale (A02 and A13 from none to about 95 of 200 traces; A01 from 40 to 0), the successor profiles show the rewired handovers, and the relation, position and lag items agree with the new activities sitting between A03 and A04 (A13 occurs only alongside A03 and typically before A04; A02 and A08 became disjoint; A04's position and the A03–A04 distance moved later). Differences of this size cannot plausibly result from sampling a rare variant. [OCC001, OCC002, DIR003, DIR011, REL011, REL020, REL025, POS004, LAG001]\n\nThe evidence cannot rule out that the two windows sample different process variants rather than one modified process — the A02 route could in principle have existed before without appearing in the earlier 200 traces, although its complete absence there makes this unlikely. The internal order of the A02 ↔ A12 loop is also only partly resolved (the pair appears as interleaved-or-repeated in about 26 in 100 traces), and A12 occurs in only about half of the A02 traces, so whether that loop is optional cannot be settled. [OCC002, OCC010, REL009, REL013]\n\nOther differences: A04's outgoing shares shifted slightly (A06 up from about 47 to 53 in 100, A05 down from about 26 to 22 in 100), A08 sits slightly later in the trace (median relative position about 0.20 vs 0.25), and A05 and A07 participate somewhat less often (A05 in about 33 vs 30 in 100 traces); these shifts are small and consistent with side effects of the changes above. [DIR004, POS005, OCC004, OCC005]",
+  "case_id": "case_470e646749fcf1ee",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

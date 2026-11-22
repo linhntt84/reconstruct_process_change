@@ -1,0 +1,17 @@
+### Observed differences
+
+- A03 was executed exactly once in every earlier trace (200 of 200) but appears in no later trace (0 of 200); A07 shows the mirror image — not observed earlier (0 of 200), executed once in every later trace (200 of 200). [OCC001, OCC002]
+- Earlier, cases typically opened with A03 (median event position 0), which led mainly to A02 — about 86 in 100 of A03's outgoing transitions — with small shares to A06 (~6), A05 (~5), A04 (~2) and A01 (~1) in 100. In the later window A02 opens the flow at position 0, where it previously sat one step later (median 0.25). [DIR001, POS002, POS001]
+- A04 moved one step earlier (median position 0.75 to 0.5) and its routing changed completely: earlier about 99 in 100 of its outgoing transitions went to A01 (about 1 in 100 to A03), later all go to A07, and A07 in turn leads to A01 in every later case. [POS003, DIR002, DIR003]
+- Pairwise relations flip consistently: earlier A03 co-occurred with A01, A02 and A04 in every trace and preceded them (before A04 in about 197 of 200 traces, before A01 in 199 of 200); later A01, A02 and A04 always occur without A03, while A07 co-occurs with each of them in every trace — after A02 and A04, and before A01. [REL001, REL003, REL005, REL002, REL004, REL007]
+- Distances shift accordingly: A04 and A01 were 1 step apart in about 99 of 100 earlier traces and are 2 steps apart in every later trace, consistent with A07 now sitting between them; A02 to A01 stretched from mostly 3 steps (about 87 of 100) to consistently 4, and A02 to A04 became a fixed 2 steps. [LAG003, LAG001, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports one specific structural possibility: a reorganisation of the control flow in which A03, previously the first step of every case, is no longer executed; A02 has taken over the initial position; and A07 is now executed in every case as a step between A04 and A01, so that A04 leads to A07 and A07 to A01 where A04 previously led directly to A01. This is shown directly by successor changes (A04: A01 → A07; new edge A07 → A01), by the all-or-nothing participation flip for A03 and A07, and by relation and distance evidence that all describe the same restructuring. The volume of qualifying evidence (19 control-flow items against roughly 0.13 expected if nothing had changed) and its strength (every item exceeds the differences seen in about 995 of 1,000 random re-splits) make sampling variation an unlikely explanation. [OCC001, OCC002, DIR002, DIR003, REL005, REL002, LAG003, screening]
+
+Limitations: the OCC, POS, DIR, REL and LAG items overlap heavily — they largely describe the same trace changes, so they are not independent confirmations; positions are event positions, not clock times, so no timing claim is made. An important competing explanation the evidence cannot rule out is that each window contains a single different variant of an otherwise unchanged process (a complete switch from an A03-containing variant to an A07-containing one), which would look identical at this level. [OCC001, OCC002]
+
+Other differences: earlier, about 1 in 10 of A03's outgoing transitions went to A05 (about 5 in 100) or A06 (about 6 in 100); the later window yields no qualifying evidence about these activities, which does not show that they or their edges disappeared. [DIR001]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_c6bc0c31e2903278.json",
+  "evidence_sha256": "2cb4d1c4ca27eab80c9dc8e0a540a74974d60c12f9ab41e25f4048bbefd14dea",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:33:08.620922+00:00",
+  "finished_at_utc": "2026-11-16T02:35:17.577758+00:00",
+  "latency_seconds": 128.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18652,
+    "prompt_tokens": 52139,
+    "total_tokens": 70791,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17057,
+      "text_tokens": 1595
+    },
+    "cost": 0.017146849999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57662,
+  "text": "### Observed differences\n\n- The most clear-cut change concerns **A03 and A10**. In the earlier window both ran in every trace and always in the same trace (200 of 200 traces), in either order (A03 first in about 51 in 100 cases, A10 first in about 49 — no fixed order). In the later window each runs in about 50 in 100 traces and they never share a trace: every later trace contains exactly one of the two, and the direct successions A03→A10 and A10→A03 seen before are no longer observed. Differences of this size arose in fewer than about 1 in 200 random re-splits of the pooled data. [OCC003, OCC009, REL028, DIR002, DIR008]\n\n- **A07** is present in every trace in both windows and still precedes whichever of A03/A10 executes; in the later window the gap from A07 to A03 and to A10 is always 1 event, whereas before roughly half of these pairs were 2 events apart. Its median position shifts slightly later (about 0.4 to 0.5 of the trace). [REL025, REL054, LAG018, LAG020, POS004]\n\n- **A01** opened about 32 in 100 earlier traces (always as the first event) and is not observed at all in the later window; accordingly, A03 and A10 no longer lead to A01, and pairs involving A01 change from \"A01 alone\" or \"both present\" to \"the other activity alone\" or \"neither\". [OCC001, POS001, DIR002, DIR008, REL002, REL006, REL009]\n\n- Two activities appear only in the later window. **A09** occurs in about 18 in 100 traces at early positions (mean about 0.2 of the trace) and always precedes A07; **A06**, which earlier led mostly to A07 (about 73 in 100 of its outgoing transitions, plus A10 18% and A03 8%), now leads only to A09. **A08** occurs in about 48 in 100 traces at the very end of traces (median final position), only in traces that also contain A07, and every observed successor of A08 is A12. [OCC008, POS006, REL053, DIR004, LAG015, LAG016, OCC007, POS005, REL052, DIR006]\n\n- **A12** rises from about 15 to about 48 in 100 traces and is no longer strictly the last event (median position moves from the final position to about 0.8); it now always co-occurs with A08 (48 in 100 traces, in both orders) and never occurs without A04, whereas before A04 and A12 never shared a trace. **A04** grows from about 36.5 to 52 in 100 traces; A06 declines from about 24.5 to 18. A02 (28 to 29.5), A05 and A11 (47.5 to 52.5 each) are essentially stable. Many pairwise event gaps shrink by about one step (e.g., A02→A04 from 4 to 3; A07→A04 from 3 to 1–2; A11→A04 from 4–5 to 3–4), consistent with the restructured traces. [OCC011, POS009, REL060, REL038, OCC004, OCC006, OCC002, OCC005, OCC010, LAG002, LAG019, LAG026]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, A03 and A10 — previously executed together in every trace, in no fixed order — behave as mutually exclusive alternatives: about 50 in 100 traces contain A03 only, about 50 contain A10 only, and none contain both, while A07 remains mandatory and immediately precedes whichever of the two runs. This rests on direct relational evidence (co-occurrence falls from all 200 traces to none, each activity alone in half), and it is consistent across occurrence (participation 100% to 50% for both), direction (the mutual successions disappear), position (support halves at similar relative positions) and lag (A07 now always 1 event before whichever executes); the key differences exceed those seen in about 995 of 1000 random re-splits. Limitations: the evidence shows the exclusivity but not what selects between A03 and A10, and no screening expectation is provided, so the number of qualifying items cannot be formally compared with the number expected without a change — the judgement rests on the directness and consistency of the relational evidence. A competing explanation that cannot be ruled out is that the exclusive pattern reflects a mixture of two trace populations or an attribute-driven choice rather than a single routing point; the event-level evidence cannot separate these. [OCC003, OCC009, REL028, REL025, REL054, DIR002, DIR008, POS002, POS007, LAG018, LAG020]\n\nOther differences: A01, which opened about a third of the earlier traces, is not observed later; the previously unobserved A09 (early, before A07, reached from a rerouted A06) and A08 (late, always together with A12) appear; A12 roughly triples its participation, loses its strictly final position, and now never occurs without A04, whose share also grew. These changes are reported separately and are not folded into the main hypothesis. [OCC001, POS001, OCC008, POS006, DIR004, REL053, OCC007, POS005, REL060, OCC011, POS009, REL038, OCC004]",
+  "case_id": "case_c6bc0c31e2903278",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

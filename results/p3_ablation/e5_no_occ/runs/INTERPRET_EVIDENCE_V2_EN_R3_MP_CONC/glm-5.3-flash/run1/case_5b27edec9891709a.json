@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "53979683e604bc22a3e644c6475f1fcc042031b60572f7a6854cf713d48e39d6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:21:14.369131+00:00",
+  "finished_at_utc": "2026-11-14T11:23:46.959819+00:00",
+  "latency_seconds": 152.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22779,
+    "prompt_tokens": 19697,
+    "total_tokens": 42476,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20640,
+      "text_tokens": 2139
+    },
+    "cost": 0.014344049999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 68768,
+  "text": "### Observed differences\n\n- In the earlier window every trace contained all eight activities (A20, A21, A22, A23, A26, A31, A32, A37). In the later window A20, A21, A23 and A26 still occur in every trace, but A22 occurs in only about 54 in 100 traces, and A31, A32 and A37 in about 47 in 100 each. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- In the later window A20 leads almost always directly to A23: about 995 in 1000 of A20's outgoing transitions go to A23, and A23 follows A20 one event position later in about 995 in 1000 cases. In the earlier window A20's outgoing transitions split roughly equally among A37 (about 35 in 100), A31 (about 34) and A32 (about 31), and A23 always followed A20 exactly four positions later. [DIR001, LAG001]\n\n- A31, A32 and A37 became an all-or-nothing group that runs later in the trace. Earlier they co-occurred in every trace in mixed orders (e.g., A31 before A32 in about 53 in 100 traces, A32 before A31 in about 47); in the later window they occur in about 47 in 100 traces, and whenever one occurs all three occur, at a mean relative position of about 0.58 of the trace instead of about 0.39. [REL020, REL021, REL022, POS006, POS007, POS008]\n\n- The group changed sides relative to A23, A21 and A26. Earlier, A31/A32/A37 always ran before A23, before A21 and before A26; in the later window, in the traces where the group runs, A23 and A21 come first and the group precedes A26. A23 and A21 themselves now sit earlier (mean relative position about 0.45 to 0.39 for A23, about 0.60 to 0.54 for A21). [REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019, POS002, POS004]\n\n- The group's exits changed: earlier, roughly a third of each member's outgoing transitions went to A23 (about 31–39 in 100); in the later window A23 has practically disappeared as a successor and A26 receives about 29–36 in 100 of each member's outgoing transitions. [DIR003, DIR004, DIR005]\n\n- A22 and the group became mutually exclusive. Earlier, A22 co-occurred with A31/A32/A37 in every trace, always after the group; in the later window they share a trace in only about 1 in 200 cases — A22 runs alone in about 53 in 100 traces and the group alone in about 47 in 100. [REL009, REL011, REL012, REL013]\n\n- A21 now routes into either branch. Earlier A21 always led to A22 and reached A26 two positions later; in the later window about 54 in 100 of A21's outgoing transitions go to A22 and about 14–17 in 100 to each of A31/A32/A37, and the A21→A26 gap is two positions in about 54 in 100 cases and four positions in about 47 in 100. Minor positional shifts accompany this: A20 slightly later (mean about 0.34 to 0.36) and A26 slightly earlier (about 0.66 to 0.63). [DIR002, LAG005, REL005, REL010, POS001, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the mandatory block of A31, A32 and A37, which previously always ran between A20 and A23, was bypassed and reopened as an optional branch after A21: in the later window A20 leads almost always directly to A23, and the branch A21 → A31/A32/A37 (the three always executed together) → A26 runs in about 47 in 100 traces, mutually exclusive with A22, which runs in the remaining about 53 in 100 traces; in the earlier window the block ran in every trace before A23 and A22 always followed A21. [DIR001, LAG001, DIR002, REL006, REL007, REL008, REL011, REL012, REL013, REL020, REL021, REL022, POS003, POS006, POS007, POS008]\n\nThe hypothesis rests on direct relational and positional evidence, not on frequency shifts alone: the successor profile of A20 collapsed onto A23, the A20→A23 gap fell from four positions to one, the group's order relative to A23, A21 and A26 flipped, its exits moved from A23 to A26, and the two- versus four-position gap from A21 to A26 matches the two alternative branches. Screening qualified 43 control-flow items where fewer than one (about 0.36) would be expected by chance, so the pattern as a whole is not what an unchanged process typically produces; note, however, that many items describe the same underlying traces and are not independent confirmations. [DIR001, LAG001, DIR003, DIR004, DIR005, LAG005, REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022]\n\nAn important competing explanation cannot be ruled out: the skipping behaviour could have existed before at a frequency too low to appear in the 200 earlier traces (it was observed in 0 of 200), in which case the change would be a rise of a pre-existing rare path rather than newly added routing. In addition, several gap items about the group rest on a single after-window observation and were not used as support. [POS006, POS007, POS008, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008]",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

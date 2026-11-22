@@ -1,0 +1,14 @@
+### Observed differences
+
+- Routing out of **A36** flipped: before, about 64 in 100 of its observed outgoing transitions went to A33 and about 34 to A37 (about 90 transitions observed); in the later window, about 60 in 100 went to A37 and about 37 to A33 (about 93 transitions), with a few successors at about 1 in 100 each appearing only in the later window. [DIR001]
+- Routing out of **A37** flipped in the complementary direction: before, about 64 in 100 of its outgoing transitions returned to A36 and about 35 went to A33 (about 91 transitions); in the later window, about 58 went to A33 and about 38 returned to A36 (about 93 transitions). [DIR002]
+- The ordered pair "A37 within five steps after A36" occurred in about 56 of 200 traces in the later window versus about 32 of 200 before, and in the later window it was always immediately adjacent (distance 1 in event positions), versus about 97 in 100 before. [LAG001]
+- All three differences are larger than those seen in about 995 of 1,000 random re-splits of the pooled traces, and three items qualified in screening where roughly 0.48 would be expected if nothing had changed. [DIR001, DIR002, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that routing among A36, A37 and A33 was rerouted: in the later window the dominant route appears to run A36 → A37 → A33, whereas before, cases leaving A36 most often went directly to A33 while A37 most often handed back to A36. The two successor distributions flipped in mirror image by roughly 23–28 percentage points at both endpoints of the pair [DIR001, DIR002], and the A36→A37 link became markedly more frequent (about 32 vs about 56 of 200 traces) and uniformly immediate [LAG001]. With three qualifying items against about 0.48 expected by chance, this is more than an unchanged process typically produces, and the three items plausibly describe one underlying rerouting of the same edges rather than separate changes [DIR001, DIR002, LAG001].
+
+The main competing explanation the evidence cannot rule out is a shift in the mix of trace variants reaching A36 and A37 — including ordinary variant-frequency sampling differences between two 200-trace windows — which could move the aggregated successor shares without any single edge being rewired; the shares are also computed over observed outgoing transitions rather than over cases [DIR001, DIR002, LAG001]. The rarely used successors (about 1 in 100) seen only in the later window are consistent with rare variants in a finite sample, and the adjacency result concerns event order, not clock time [DIR001, DIR002, LAG001].

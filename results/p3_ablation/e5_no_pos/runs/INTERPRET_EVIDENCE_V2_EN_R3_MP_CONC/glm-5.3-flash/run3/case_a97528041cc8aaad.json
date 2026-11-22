@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_a97528041cc8aaad.json",
+  "evidence_sha256": "50d5da245f3eeff0fde14d0b2ae2cfa015e03faa00c404a041e2e50a722a3dd4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:55:22.279262+00:00",
+  "finished_at_utc": "2026-11-15T11:58:46.753341+00:00",
+  "latency_seconds": 204.47,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33019,
+    "prompt_tokens": 38034,
+    "total_tokens": 71053,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30740,
+      "text_tokens": 2279
+    },
+    "cost": 0.0222146
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 98427,
+  "text": "### Observed differences\n\n- The relative order of a block of activities inverted between the windows. In the earlier window, traces ran through A20, A22 and A23 (with no fixed order among themselves), then A25 and A29, then A19, A21 and A24, and then A30: A20 preceded A25 in about 99 in 100 traces, A22 preceded A21 in about 38 in 100, and A19 followed A20/A22/A23/A25/A29 (in about 31 in 100 traces) and never preceded them. In the later window these relations are inverted: A25 preceded A20 in about 97 in 100 traces (A20 before A25: 0), A21 preceded A22 in about 28 in 100, and A19 preceded A20/A22/A23 in about 42 in 100 while never following them. [REL015, REL016, REL017, REL020, REL022, REL024, REL029, REL032]\n\n- Outgoing transitions were rewired in the same direction. A19, A21 and A24 led to A30 in about 95–97 in 100 of their outgoing transitions earlier and now lead to A25 in about 97–98 in 100; A20, A22 and A23 lost A25 as a successor (about 30–38 in 100 earlier) and now lead to A30 (about 31–33 in 100); A29 now leads to A20/A22/A23 (about 97 in 100 of its outgoing) where earlier it led to A19/A21/A24; and A40 now leads to A19/A21/A24 (about 96 in 100) where earlier it led to A20/A22/A23 (about 84 in 100). [DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012]\n\n- Pairwise distances (event positions) moved consistently with this reversal: the gap from A29 to A30 grew from about 2 steps (95 in 100 of 200 traces) to about 4 steps (94 in 100); A40 reached A25 within about 2 steps in the later window (95 in 100) versus about 4 steps earlier (82 in 100); A29 reached A22 within 1–3 steps in about 98 in 100 of 200 later-window observations (a single earlier observation lay 5 steps away); A21 and A24 now reach A25 within 1 step (57 and 56 observations, against 1 each earlier); and A22/A23 now almost never precede A25 closely (1–3 observations, against about 200 earlier). [LAG019, LAG025, LAG018, LAG013, LAG016, LAG014, LAG015]\n\n- A02 became far more frequent and now sits between A14 and A15: it appeared in about 15 in 100 traces earlier versus about 65 in 100 in the later window (mean occurrences per trace 0.17 vs 0.69). A14 now leads to A02 in about 60 in 100 of its outgoing transitions (earlier about 1 in 100) while A14 → A15 fell from about 84 to about 37 in 100; A02 leads to A15 in about 87 in 100 of its outgoing transitions, A14 reaches A02 within 1 step in about 98 in 100 of later-window observations, and the most common A14→A15 distance shifted from 1 step (about 40 in 100) to 2 steps (about 35 in 100). [OCC001, DIR001, DIR004, REL001, LAG001, LAG005, LAG006]\n\n- A02 now co-occurs with A20, A22, A23, A25, A29, A30, A40, A45 and A46 in about 65 in 100 traces (earlier about 15 in 100) and precedes each of them in about 57–60 in 100 traces, where earlier it preceded them in at most about 13 in 100. [REL004, REL006, REL007, REL009, REL010, REL011, REL012, REL013, REL014]\n\n- A06 and A10 became rarer, appearing in about 22 → 5 and 17 → 6 in 100 traces; the apparent redistribution of outgoing transitions at A06 and A08 rests on only 10–34 traces per window and is not interpreted further. [OCC002, OCC003, DIR002, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the execution order of a segment was inverted. Earlier, the flow passed through A20, A22 and A23 first (in no fixed order among themselves), then A25 and A29, then A19, A21 and A24, before reaching A30; in the later window the same activities run in the opposite order — A19/A21/A24 first, then A25/A29, then A20/A22/A23 — with A30 still following, and A40 now feeding the segment from the opposite side. [REL015, REL020, REL022, REL024, REL029, REL032, REL034, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012]\n\nThis rests on direct order evidence: every measured order relation between the two groups flipped, each backed by about 200 traces in both windows, and for A20/A22/A23 versus A25/A29 the paired activities co-occur in 100 in 100 traces in both windows, so the flip is in order, not in participation. The successor rewiring at A19, A20, A21, A22, A23, A24, A29 and A40 and the distance shifts point to the same reordering rather than a shift in how often existing paths are taken, and screening produced 78 qualifying items (each difference larger than in about 99.5 in 100 random re-splits) where fewer than 1 would be expected without any change. [REL022, REL029, REL030, REL032, REL033, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, LAG018, LAG019]\n\nCompeting explanation the evidence cannot fully rule out: a shift in the mix of pre-existing variants, each with one fixed order, could mimic the flips; the near-complete reversals (about 98–99 in 100 earlier, 0 later) and the rewired successors argue for a genuine reordering, but a variant-mix shift remains possible. A few distance comparisons rest on 1–3 observations, and the reversal coincides with modest co-occurrence changes (for example A21 with A20/A22/A23/A25/A29 fell from about 38–39 to about 29 in 100 traces) that this hypothesis does not cover. [REL020, REL024, REL025, REL026, REL027, LAG013, LAG016, LAG017]\n\nOther differences: A02 became much more frequent (about 15 → 65 in 100 traces) and is now typically executed between A14 and A15, newly preceding A20, A22, A23, A25, A29, A30, A40, A45 and A46; A06 and A10 became rarer (about 22 → 5 and 17 → 6 in 100 traces). These participation changes are reported separately and are not part of the order-reversal hypothesis. [OCC001, OCC002, OCC003, DIR001, DIR004, REL001, REL002, REL004, REL006, REL014, LAG001, LAG005, LAG006]",
+  "case_id": "case_a97528041cc8aaad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

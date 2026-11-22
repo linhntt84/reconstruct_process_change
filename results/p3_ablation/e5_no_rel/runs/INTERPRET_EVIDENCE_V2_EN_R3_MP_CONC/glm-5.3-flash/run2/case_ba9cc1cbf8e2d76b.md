@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A27, A28 and A29 formed a tight sequence: A27 was followed by A28 after one step in about 98 in 100 traces, A28 was followed by A29 after one step in about 98 in 100, and A27 reached A29 in two steps in about 96 in 100. [LAG001, LAG002, LAG003]
+- In the later window, three activities that did not occur at all before — A19, A20 and A25 — take part in about 29 in 100, 41 in 100 and 31 in 100 traces respectively (58, 82 and 61 of 200 traces), essentially once each when present, so together they account for roughly one occurrence per trace. [OCC001, OCC002, OCC003]
+- In the later window, these new activities sit near the middle of the trace (mean relative position about 0.52 in all three cases) and their outgoing transitions go mainly to A28 (about 47–56%) and to A29 (about 41–53%). [POS001, POS002, POS003, DIR001, DIR002, DIR003]
+- In the later window, A27 hands over to the new activities in about half of its outgoing transitions (A20 about 22%, A25 about 16%, A19 about 14%), while its share going straight to A28 fell from about 97% to about 43%; A28 likewise now routes about 41% of its outgoing transitions to A19, A20 or A25, while its share to A29 fell from about 98% to about 57%. [DIR004, DIR005]
+- The distances shift accordingly: A27 now reaches A28 in one step in only about 43 in 100 cases (two steps in about 52 in 100), A28 reaches A29 in one step in about 57 in 100 (two steps in about 41 in 100), and A27 reaches A29 in three steps in about 92 in 100, where two steps had been the rule before. [LAG001, LAG002, LAG003]
+- Minor: A27's and A29's mean relative positions moved only slightly (about 0.48 to 0.46 and about 0.55 to 0.57), and all remaining routing changes are at the single-trace level (about 0.5% per edge). [POS004, POS005, DIR004, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a step not executed in the earlier window is now performed between A27 and A29: it runs as one of the three alternative activities A19, A20 or A25 (A20 most often, in about 41 in 100 traces), placed between A27 and A28 in roughly half of the affected traces and between A28 and A29 in roughly four in ten. This follows directly from the new activities' appearance and mid-trace position, from their successors (mostly A28 or A29), and from A27 and A28 each now routing about half and about four in ten of their outgoing transitions to them. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003]
+
+The screening context makes chance an unlikely explanation for the evidence set as a whole: 16 control-flow items qualified against roughly 0.5 expected for an unchanged process, and the relational items show the change directly, with the distance shifts backed by all 200 traces in both windows. Note that the appearance, successor, position and distance items partly reflect the same traces, so they corroborate one story rather than independently confirming it. [LAG001, LAG002, LAG003, DIR004, DIR005]
+
+What the evidence cannot establish is whether A19, A20 and A25 were newly added to the process or existed before as a path that simply was not exercised in the earlier 200 traces, since zero participation only means they were not observed; their appearance in 58–82 of 200 traces makes a pure rare-variant fluctuation unlikely but not impossible. The exact per-trace placement is also not fully resolved, as about 7 in 100 later traces show A27 reaching A29 in four steps. [OCC001, OCC002, OCC003, LAG002]
+
+Other differences: none beyond the behaviour above; the only remaining signals are small position drifts of A27 and A29 (about 0.02 in mean relative position) and single-trace-level routing changes, both consistent with the insertion itself. [POS004, POS005, DIR004, DIR005]

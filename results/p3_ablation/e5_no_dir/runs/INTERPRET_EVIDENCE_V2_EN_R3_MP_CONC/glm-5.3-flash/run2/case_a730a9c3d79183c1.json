@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_a730a9c3d79183c1.json",
+  "evidence_sha256": "45d8b67ffd43f67de9328d04523109e6e73914f5e5b7a1f408851fc186628440",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:02:04.210541+00:00",
+  "finished_at_utc": "2026-11-15T06:04:32.636906+00:00",
+  "latency_seconds": 148.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21736,
+    "prompt_tokens": 44527,
+    "total_tokens": 66263,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19802,
+      "text_tokens": 1934
+    },
+    "cost": 0.017547049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 66700,
+  "text": "### Observed differences\n\n- Two blocks of activities became near-universal. In the earlier window, A33, A35 and A36 each ran in about 49 in 100 traces and A37, A38 and A39 in about 51–53 in 100; in the later window, all six run in about 98–100 in 100 traces [OCC005, OCC006, OCC007, OCC008, OCC009, OCC010].\n- Earlier, the two blocks were alternatives: pairs within the first block (e.g., A33 with A35) co-occurred in about 48–49 in 100 traces and were jointly absent in about 50 in 100, pairs within the second block (e.g., A37 with A39) co-occurred in about 51–52 in 100, while cross-block pairs such as A33 with A37 shared a trace in only about 1 in 100 cases. In the later window, cross-block pairs co-occur in about 98 in 100 traces [REL037, REL044, REL055, REL059, REL039, REL041, REL047, REL050].\n- A fixed sequence now connects the blocks: A33/A35/A36 precede A37/A38/A39 in about 95–98 in 100 of the later traces containing both, whereas earlier no order between the blocks was observable because they rarely co-occurred. The combined flow sits between A14/A30 upstream, which precede A33/A35/A36 in about 96–97 in 100 later traces, and A31 downstream, which A37/A38/A39 precede in about 98–99 in 100 [REL039, REL045, REL050, REL013, REL025, REL034].\n- Placement shifted accordingly, in event positions: A37/A38/A39 now lie 4–5 positions after A30 (earlier 1–3), and A31 lies 4–5 positions after A33/A35/A36 (earlier 1–3); mean relative positions moved earlier for A33/A35/A36 (about 0.74 to 0.67) and later for A37/A38/A39 (about 0.73 to 0.76) and A31 (about 0.80 to 0.82) [LAG005, LAG006, LAG007, LAG008, LAG011, LAG013, POS003, POS004, POS005, POS006, POS007, POS008, POS009, POS010].\n- A04 became rarer and less firmly placed: about 59 in 100 traces earlier versus about 26 in 100 in the later window; earlier it often ran without the A33/A35/A36 block (about 31 in 100 traces), afterwards almost never (about 0–2 in 100), and its position became later and much more variable [OCC002, POS001, REL005, REL008].\n- Minor: A02, A08 and A10 rose from about 5–8 in 100 traces to about 18–23 in 100 [OCC001, OCC003, OCC004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two mutually exclusive blocks — A33 with A35 and A36, and A37 with A38 and A39 — changed from alternatives to one combined sequence: earlier a case executed one block or the other between A30 and A31 (each block in about half the traces, both together in about 1 in 100), while in the later window nearly every case executes both blocks in the order A33/A35/A36 before A37/A38/A39, with A14/A30 before and A31 after [OCC005, OCC008, REL039, REL041, REL047, REL050, REL013, REL025, REL034].\n\nThe signs are direct and consistent: occurrence items with substantial support in both windows (about 98–105 traces before, 197–199 after) show the blocks becoming near-mandatory [OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]; relation items show the alternatives-together flip and the new fixed order directly [REL039, REL045, REL050]; and the gap and position shifts match the second block now sitting between the first block and A31 [LAG005, LAG008, LAG011, LAG013, POS004, POS005, POS008]. The control-flow family produced 99 qualifying items against about 0.94 expected without a change, so the pattern as a whole is far beyond what random re-splits produce [OCC005, REL039].\n\nLimitations: the evidence contains no direct successor or direction data, so the exact edges linking A30, the two blocks and A31 remain unobserved; and it cannot rule out that traces running both blocks already existed earlier as a rare variant (about 1 in 100) that simply became dominant. A15's order relative to the blocks also remains mixed, with about 41 in 100 of later traces showing interleaving or repetition [REL019, REL022, REL039].\n\nOther differences: A04's participation fell from about 59 to about 26 in 100 traces, and it now appears almost only in traces that also run the A33/A35/A36 block (about 31 in 100 traces without it earlier, about 0–2 in 100 later), at a later and more variable position [OCC002, POS001, REL005, REL008]. A02, A08 and A10 became more frequent, from about 5–8 to about 18–23 in 100 traces [OCC001, OCC003, OCC004].",
+  "case_id": "case_a730a9c3d79183c1",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

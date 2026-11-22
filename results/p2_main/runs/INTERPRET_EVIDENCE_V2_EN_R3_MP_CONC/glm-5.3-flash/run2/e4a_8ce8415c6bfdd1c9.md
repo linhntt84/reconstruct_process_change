@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A22 ran exactly once in every case (200 of 200 traces); in the later window it runs in about 57 in 100 cases (113 of 200), still exactly once per case and never repeated. [OCC001]
+- Five activities that were not observed at all earlier — A27, A28, A33, A34 and A35 — each appear in about 44 in 100 later cases (87 of 200), exactly once per case, and they always appear together: every pair of them co-occurs in precisely those 87 cases and is jointly absent from the other 113. [OCC002, OCC003, OCC004, OCC005, OCC006, REL018-REL027]
+- Routing after A21 changed accordingly: earlier, every observed outgoing transition of A21 went to A22; in the later window about 57 in 100 still go to A22, while the remainder enter the new group of activities (A35 about 11 in 100, A27 about 10, A34 and A28 about 8 each, A33 about 7). [DIR001, REL001, REL002-REL006]
+- A22 and each of the five new activities are mutually exclusive in the later window: about 57 in 100 cases show A22 without any of them, about 43 in 100 show them without A22, and no case contains both. [REL008-REL012]
+- The new activities run in no fixed order: within the 87 block cases, both orders occur for every pair, in shares of roughly 40–60% (for example, A27 before A28 in about 47 cases and A28 before A27 in about 40), with no interleaving or repetition detected. [REL018-REL027]
+- The group rejoins the original flow at A23: A23 still occurs in every case, each new activity precedes A23 in all of its appearances, and the outgoing transitions of A27, A28, A33, A34 and A35 lead only to other group members or to A23. [REL007, REL013-REL017, DIR002-DIR006]
+- A21's relative position moved slightly earlier (median about 0.48 to about 0.46 of the trace length) and the new activities sit near the middle of the trace (medians about 0.52–0.53); these are event-position shifts, not clock-time evidence. [POS001-POS006]
+- The elapsed time between consecutive completions of A39 and A41 roughly doubled, from a median of about 1.0 hour to about 2.0 hours, on 157 versus 173 observed intervals. [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, an alternative route executes between A21 and A23: in about 43 in 100 cases the case no longer passes through A22 but instead runs once through A27, A28, A33, A34 and A35 in varying orders before reaching A23, while the original A21→A22→A23 route continues in the remaining about 57 in 100 cases. The participations of A22 and of the five new activities are exact complements (1.00 to 0.565 versus 0.00 to 0.435), A21's outgoing transitions split between the two routes, A22 and the new activities never co-occur, every new activity precedes A23, and the group shows both orders for every pair — the same picture across occurrence, direction, relation and position indicators. This is far beyond what chance produces: 45 control-flow items qualified where about 0.49 would be expected in an unchanged process. [OCC001-OCC006, DIR001-DIR006, REL001-REL027, POS001-POS006]
+
+An important competing explanation remains: the earlier window shows only that this route was not exercised, and zero participation means "not observed" — the evidence cannot distinguish a newly available route from a previously dormant one that started being taken, and the precise 57/43 split carries sampling uncertainty in windows of 200 traces. [OCC002-OCC006]
+
+Other differences: the elapsed time between consecutive completions of A39 and A41 rose from about 1.0 to about 2.0 hours. Taken alone this would be a timing hypothesis, but the time family produced only one qualifying item where about 0.01 would be expected without change — within what a stable process occasionally produces — and the evidence offers no link between A39/A41 and the routing difference above. [TWAIT001]

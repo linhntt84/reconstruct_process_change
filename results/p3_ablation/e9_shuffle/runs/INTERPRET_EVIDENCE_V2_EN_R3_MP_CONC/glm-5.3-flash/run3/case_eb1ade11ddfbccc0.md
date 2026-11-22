@@ -1,0 +1,18 @@
+### Observed differences
+
+- A03 was executed once in every earlier case (200 of 200 traces, typically the first event) but in no later case (0 of 200); A07 shows the mirror image, unobserved in the earlier window (0 of 200) and executed once in every later case at a late position (mean position 0.75). [OCC001, OCC002, POS002, POS004]
+- The handover out of A04 changed completely: in the earlier window about 99 in 100 of A04's outgoing transitions went directly to A01, one step away; in the later window A04 leads exclusively to A07, and A07 leads exclusively to A01. [DIR002, DIR003]
+- In the later window A07 sits between A04 and A01: A04 always precedes A07 and A07 always precedes A01, with both pairs co-occurring in every case; earlier, A07 co-occurred with neither activity, and the A04→A01 step distance grew from one step (99% of cases) to uniformly two steps. [REL007, REL002, REL004, LAG003]
+- A02 now opens the case: its position moved from a mean of about 0.22 (typically the second event, usually after A03) to 0 in every later case, and A04 also occurs earlier (mean position about 0.75 to 0.5). [POS001, POS003, REL003]
+- Downstream distances stretched accordingly: A02 reaches A01 in four steps in all later cases versus mostly three steps before (about 87 in 100), while the A02→A04 distance stayed at two steps. [LAG001, LAG002]
+- A03's outgoing routing disappeared with it: before, A03 led mostly to A02 (about 86 in 100) and rarely to A06, A05, A04 or A01; in the later window A03 has no observed outgoing transitions, and its former always-co-occurring pairs with A01, A02 and A04 now show only the partner without A03. [DIR001, REL001, REL003, REL005, REL006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a structural change in which A03 was removed from the case flow and A07 was inserted as a mandatory step between A04 and A01. In the earlier window every case ran A03 first (leading mostly to A02) and A04 later closed the case by leading almost always directly to A01; in the later window cases begin with A02, A04 leads exclusively to A07, and A07 leads exclusively to A01, while A03 is not executed at all. The support is direct and consistent: participation flips from 200 of 200 traces to 0 for A03 and from 0 to 200 of 200 for A07; the A04→A01 transition (about 99 in 100) is replaced by A04→A07 and A07→A01 (each 100%); and the step distances change exactly as inserting one activity between A04 and A01 predicts (A04→A01 from one to two steps, A02→A01 from about three to four, A02→A04 unchanged at two). With 19 qualifying items against roughly 0.13 expected without a change, and every item larger than in about 995 of 1,000 random re-splits, chance sampling cannot account for the ensemble. [OCC001, OCC002, DIR002, DIR003, REL002, REL007, LAG003, LAG001]
+
+The evidence cannot rule out that A07 is a re-labelled A03 relocated after A04 rather than a genuinely new activity, and it says nothing about the fate of A03's rare branches towards A05 and A06; several items also describe the same underlying rerouting and are not independent confirmations. [DIR001]
+
+Other differences: the distance from A02 to A04, previously two steps in about 88 of 100 cases and three in the rest, became uniformly two steps in the later window — a tightening of an existing relation rather than part of the insertion above. [LAG002]

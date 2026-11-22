@@ -1,0 +1,15 @@
+### Observed differences
+
+- **Timing between A01 and A03:** the elapsed time between consecutive completion events of A01 and A03 roughly doubled. In the earlier window the mean was about 0.87 hours (median about 0.86, middle half about 0.77–0.96 hours) across 42 such consecutive pairs; in the later window the mean was about 1.78 hours (median about 1.83, middle half about 1.61–1.94 hours) across 26 pairs. The number of consecutive A01→A03 pairs also fell from 42 to 26, and the difference is larger than in about 999.5 of 1,000 random re-splits. [TWAIT001]
+- **Routing out of A06:** in the earlier window, of about 90 observed outgoing transitions from A06, roughly half (about 52 in 100) went to A08, about 26 in 100 to A09 and about 22 in 100 to A07; in the later window (about 96 transitions), A08's share fell to about 26 in 100, while A07's rose to about 42 in 100 and A09's to about 32 in 100. [DIR001]
+- **Spacing of A07 after A06:** among traces where A07 follows A06 within five steps (47 before, 51 after), immediate succession (one step) rose from about 43 in 100 in the earlier window to about 78 in 100 in the later window, while succession two steps later fell from about 57 to about 22 in 100. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility of a change in timing between A01 and A03: in the later window, the elapsed time from the completion of A01 to the next completion of A03 is about twice as long as before (mean about 1.8 hours versus about 0.9 hours), with the whole distribution shifted up by roughly 0.8–1.0 hours and consecutive A01→A03 pairs becoming rarer (26 versus 42). The shift is consistent across the mean, median and both quartiles, the difference exceeds about 999.5 of 1,000 random re-splits, and the time family produced 1 qualifying item against roughly 0.01 expected without change — a many-fold excess that chance does not plausibly explain. [TWAIT001]
+
+Limitations: this indicator measures elapsed time between consecutive completion events, not pure waiting or processing time, and the later window rests on only 26 pairs. An important competing explanation the evidence cannot rule out is that events now intervene between the A01 and A03 completions and lengthen the measured gap; by itself, however, that would not explain why the surviving consecutive pairs are about twice as long as before. [TWAIT001]
+
+Other differences: the outgoing transitions of A06 shifted (A08 down from about 52 to about 26 in 100; A07 up from about 22 to about 42 in 100), and A07 now follows A06 immediately in about 78 of 100 within-five-step successions, up from about 43. The control-flow family produced 2 items where about 0.3 were expected without change — a count an unchanged process typically produces — so these observations do not establish a structural change on their own, and they may reflect one shared behaviour rather than two independent changes. [DIR001, LAG001]

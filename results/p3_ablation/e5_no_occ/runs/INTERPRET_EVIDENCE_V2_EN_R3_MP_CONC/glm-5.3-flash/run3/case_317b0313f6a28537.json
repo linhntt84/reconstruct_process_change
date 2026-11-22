@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_317b0313f6a28537.json",
+  "evidence_sha256": "b84ac1021a4a7ce6d271c08a77d2e174d8fa6e4779f6cc15264d606dab3215c6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:59:20.419323+00:00",
+  "finished_at_utc": "2026-11-15T11:01:29.462566+00:00",
+  "latency_seconds": 129.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18699,
+    "prompt_tokens": 14125,
+    "total_tokens": 32824,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17090,
+      "text_tokens": 1609
+    },
+    "cost": 0.01146825
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59311,
+  "text": "### Observed differences\n\n- The three activities A19, A20 and A25 changed their successors almost completely. In the earlier window, their observed outgoing transitions went almost entirely to A28 and A32 (A19: about 47% to A28 and 48% to A32; A20: about 56% to A28 and 43% to A32; A25: about 50% to A28 and 45% to A32). In the later window, they go almost entirely to A26 (about 92%, 94% and 88% respectively). [DIR001, DIR002, DIR003]\n- These three activities also sit much earlier in the trace: their mean relative position fell from about 0.60–0.61 to about 0.32–0.34, while their participation hardly moved (about 31–39 in 100 traces before, 32–36 in 100 after). [POS001, POS002, POS003]\n- Their order relative to A26 and A27 flipped. Earlier, A26/A27 came first in essentially every trace containing both (about 31–38 of 100 traces, never the reverse); in the later window, A19/A20/A25 come first in essentially every such trace (about 30–36 of 100). How often they share a trace at all stayed about the same. [REL001, REL002, REL003, REL004, REL005, REL006]\n- A45 was rerouted: earlier, about 85 in 100 of its observed outgoing transitions went to A26; in the later window they go to A19, A20 and A25 (about 29%, 29% and 27%), and A26 no longer appears among its observed successors. The observed distance from A45 to A26 grew from one step (about 86 in 100) to two or three steps. [DIR006, LAG007]\n- The chain A27 → A28 → A32 became direct. Earlier, A27 passed to A28 in about 47 in 100 transitions and to A19/A20/A25 in about 16–19 each, and A28 passed to A32 in about 50 in 100 and to A19/A20/A25 in about 14–19 each, with the observed A27→A28 and A28→A32 distances split between one and two steps and A27→A32 at three steps in about 96 in 100 observations. In the later window, A27 passes to A28 in about 98 in 100 and A28 to A32 in about 96 in 100, both at one step, with A27→A32 at two steps in about 95 in 100. [DIR004, DIR005, LAG004, LAG005, LAG006]\n- A26, A27 and A28 each shifted slightly later in the trace (mean position about 0.33 to 0.36, 0.56 to 0.59, and 0.61 to 0.62). [POS004, POS005, POS006]\n- Pairs between the moved activities and A28/A32, earlier adjacent at one to two steps, are no longer observed at short distance in the later window; these items rest on only one to three later-window observations and are weak on their own. [LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the activity group A19, A20 and A25 was relocated from the late stage to the early stage of the process. In the earlier window the group ran at about 60% of the trace, after A26 and A27, handing control mainly to A28 and A32, while A45 led straight to A26; in the later window the group runs at about a third of the trace, before A26 and A27, hands control mainly to A26, and A45 enters the group instead of A26. A27 and A28, which earlier often passed control into the group, now pass directly to one another and on to A32. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, LAG004, LAG005, LAG006, LAG007]\n\nThe signs are direct and consistent: all six relation items show the same order flip at unchanged co-occurrence, three direction items show the same successor change for the group, and the position shift comes with stable participation (about a third of traces in both windows), which fits a move rather than the group becoming optional, added or removed. Screening qualified 25 control-flow items out of 77 tested units against about 0.38 expected without change, far beyond what an unchanged process typically produces, and every item's difference exceeds about 995 of 1,000 random re-splits. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]\n\nLimitations: the evidence cannot show whether A19, A20 and A25 run together in the same traces or as alternatives one of the other; the later-window lag items linking the group to A28/A32 rest on one to three observations; and an important competing explanation — that A45's retargeting and the group's retargeting are independent reroutings rather than one coordinated relocation — cannot be fully ruled out, although the order flip and position shift connect both ends of the movement. [LAG001, LAG002, LAG003, DIR006, DIR001, DIR002, DIR003, REL001, REL002, REL003, REL004, REL005, REL006]",
+  "case_id": "case_317b0313f6a28537",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

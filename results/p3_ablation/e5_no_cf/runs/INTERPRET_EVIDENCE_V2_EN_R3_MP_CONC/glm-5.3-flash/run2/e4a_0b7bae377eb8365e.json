@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_0b7bae377eb8365e.json",
+  "evidence_sha256": "4029962282e0a78140481630507626983ed0c4998756eaf4f7c15a0ab2f594b5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:26:06.158596+00:00",
+  "finished_at_utc": "2026-11-15T07:27:14.807189+00:00",
+  "latency_seconds": 68.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9840,
+    "prompt_tokens": 2970,
+    "total_tokens": 12810,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9221,
+      "text_tokens": 619
+    },
+    "cost": 0.0053655
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38191,
+  "text": "### Observed differences\n\n- In the earlier window, the elapsed time between consecutive completions of A26 and A32 was about 0.9 hours on average (median about 0.9 h, middle half roughly 0.8–1.0 h). In the later window it is about 1.8 hours (median about 1.8 h, middle half roughly 1.6–2.0 h) — roughly double, an increase of about 0.9 hours. The pair itself occurs at a similar rate in both windows (about 21 in 100 traces before, about 23 in 100 after). [TWAIT001]\n- In the earlier window, the elapsed time between consecutive completions of A33 and A32 averaged about 0.17 hours (roughly 10 minutes; median about 0.15 h). In the later window it averages about 0.35 hours (roughly 20 minutes; median about 0.28 h) — also roughly double. This pair's frequency is essentially unchanged (about 24 in 100 traces before, about 23 in 100 after). [TWAIT002]\n- In both pairs the whole distribution shifted, not just the average: the quartiles rose in step with the medians and the spread roughly doubled (standard deviation about 0.14 to 0.29 hours for A26–A32 and about 0.13 to 0.26 hours for A33–A32); for A26–A32 the later middle half (1.6–2.0 h) lies entirely above the earlier one (0.8–1.0 h). [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing as a possibility: in the later window, the elapsed time between consecutive activity completions roughly doubled for transitions ending at A32, both from A26 (about 0.9 to 1.8 hours on average) and from A33 (about 0.17 to 0.35 hours). Supporting signs: both items point in the same direction toward the same target activity, with entire distributions shifted upward and more dispersed; the frequencies of both consecutive pairs stayed stable (42 to 46 and 48 to 46 of 200 traces), so this is not the pairs appearing or disappearing; and two time items qualified where about 0.01 would be expected by chance in an unchanged process, each difference exceeding about 1999 of 2000 random re-splits. [TWAIT001, TWAIT002]\n\nLimitations: the evidence contains only timing items, so nothing shows whether the structure around A32 changed as well, and TWAIT spans all elapsed time between the two completions, so the added time cannot be attributed to any particular step in between. An important competing explanation the evidence cannot rule out is a change in the mix of cases reaching A32 (different upstream contexts with longer elapsed times) rather than a slowdown of these transitions themselves; both items also share A32, so they may reflect one underlying difference rather than two independent ones. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_0b7bae377eb8365e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

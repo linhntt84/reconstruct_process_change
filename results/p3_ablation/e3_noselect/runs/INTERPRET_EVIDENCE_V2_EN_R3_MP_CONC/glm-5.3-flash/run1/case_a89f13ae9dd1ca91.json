@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_a89f13ae9dd1ca91.json",
+  "evidence_sha256": "7efe9d0a2c7d5df4b1b8e444732041838d471acb6798fb479dba2efe604740ea",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:46:24.858382+00:00",
+  "finished_at_utc": "2026-11-14T13:47:51.316502+00:00",
+  "latency_seconds": 86.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13772,
+    "prompt_tokens": 50413,
+    "total_tokens": 64185,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12104,
+      "text_tokens": 1668
+    },
+    "cost": 0.01444795
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40308,
+  "text": "### Observed differences\n\n- In the earlier window, the three activities A21, A22 and A23 each ran in every trace (200 of 200); in the later window each appears in only 1 of 200 traces. In the earlier window the three always ran together and without a fixed order among themselves (each pair occurs in both orders, roughly 50 in 100 each way); in the later window they no longer share traces at all. [OCC020, OCC021, OCC022, REL025, REL026, REL031]\n- Three activities A14, A15 and A16 were absent from the earlier window (0 of 200 traces) and appear in the later window in about 30, 33 and 37 of 100 traces respectively; they never occur in the same trace as one another. [OCC013, OCC014, OCC015, REL001, REL002, REL010]\n- The exchange happens at the same spot in the flow. In the earlier window, A39 led on to A21, A22 or A23 (about 35, 31 and 35 of its outgoing transitions), all three always ran between A39 and A24, and A24 followed A39 four event positions later. [DIR030, REL027, REL028, REL032, REL036, REL037, LAG010]\n- In the later window, A39 leads to A14, A15 or A16 (about 30, 33 and 37 of its outgoing transitions), each of these is followed by A24 in every one of its occurrences, and A24 follows A39 two positions later in all but about 1 of 200 traces. The new activities sit at roughly the same relative position in the trace as the old trio (about 0.35 versus 0.37 of the way through), and A24 now sits slightly earlier (mean position about 0.39 versus 0.43). [DIR030, DIR010, DIR011, DIR012, LAG010, POS001, POS002, POS003, POS004, POS005, POS006, POS007]\n- Outside this exchange, A40 and A41 are executed more: A40 rises from about 1.6 to 1.8 occurrences per trace and repeats within a trace in about 49 of 100 traces versus 37 before; A41 runs in about 69 of 100 traces versus 59, with about 0.96 occurrences per trace versus 0.75. A40 and A41 increasingly interleave or repeat around A24, A39 and each other (for example A40 with A24: interleaved or repeated in 49 of 100 traces versus 37). [OCC029, OCC030, REL040, REL041, REL042, REL043, REL044]\n- Smaller routing shifts among existing edges: after A02 the share continuing to A06 rises from about 25 to 37 in 100 while A07 falls from 40 to 29; after A18 the share to A29 rises from about 46 to 60 in 100; after A28 the share to A20 rises from about 24 to 32 in 100; after A33 the share going to A30 falls from about 60 to 49 in 100. [DIR002, DIR014, DIR021, DIR025]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A39 and A24 was restructured: the block of three activities A21, A22 and A23, which in the earlier window executed in every case between A39 and A24 in varying order, no longer runs, and instead exactly one of three previously unobserved activities, A14, A15 or A16, executes between A39 and A24 in the later window. The change is shown directly and consistently: A39's successors switch from the old trio to the new trio, each new activity is always followed by A24, the A39-to-A24 distance shortens from four to two positions, and the relation pattern flips from \"always together\" to \"essentially never together\". With 200 traces per window, participations moving from 200 of 200 to 1 of 200 and from 0 of 200 to 60–74 of 200 are not plausibly explained by rare-variant sampling. [OCC013, OCC014, OCC015, OCC020, OCC021, OCC022, DIR010, DIR011, DIR012, DIR030, LAG010, REL025, REL027]\n\nThe evidence cannot show whether the old block was removed entirely or only became optional: one later-window trace still contains A21, A22 and A23, so the old path may persist at a low rate. It also cannot distinguish genuinely new activities from relabelled ones; only the behavioural substitution is established. [OCC020, OCC021, OCC022, REL025]\n\nOther differences: A40 and A41 are executed more often, in more traces, and with more repetition and interleaving with A24, A39 and each other, and A41 takes a larger share of A40's outgoing transitions (about 48 to 53 in 100); several smaller routing-share shifts exist elsewhere, for example after A02, A18, A28 and A33. These differences are not part of the main hypothesis. [OCC029, OCC030, REL040, REL041, REL042, REL043, REL044, DIR031, DIR032, DIR002, DIR014, DIR021, DIR025]",
+  "case_id": "case_a89f13ae9dd1ca91",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_10efcd488201676b.json",
+  "evidence_sha256": "2736f222e94cccfda4882e1c4b9c65fa78b899fb4d22c75e61d092f93690c97b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:17:01.506125+00:00",
+  "finished_at_utc": "2026-11-14T14:18:56.537518+00:00",
+  "latency_seconds": 115.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18889,
+    "prompt_tokens": 88893,
+    "total_tokens": 107782,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16789,
+      "text_tokens": 2100
+    },
+    "cost": 0.02277845
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54166,
+  "text": "### Observed differences\n\n- Two activities are no longer observed in the later window: A01, which earlier appeared in about 64 in 100 traces and whose only observed outgoing edge led to A09, and A17, which earlier appeared in every trace near the end (mean relative position about 0.95) and alternated with A10 without a fixed order (A10→A17 and A17→A10 were each the only observed outgoing edges, taken in both orders in similar shares). [OCC001, OCC015, POS001, POS015, DIR001, DIR008, DIR013, REL083]\n\n- A new activity appears: in the later window A07 occurs in about 68 in 100 traces, mostly very early (median relative position about 0.06), and leads about equally often to A03 and A04; earlier it was not observed at all. [OCC006, POS006, DIR006]\n\n- The closing part of traces changes: earlier, A06 and A16 each appeared in about 40 in 100 traces with roughly two occurrences, around the middle of the trace (mean relative positions about 0.44); in the later window each occurs exactly once in every trace, at the end (mean relative positions about 0.96 and 0.94), and the two are adjacent — A06→A16 and A16→A06 each occur at distance 1 in essentially all observed pairs, in both orders (about 48 vs 52 in 100), and each now leads only to the other. A04 always co-occurs with and precedes both, and A10, which earlier led only to A17, now leads to A16 (about 52 in 100 of its outgoing transitions) or A06 (about 48). [OCC005, OCC014, POS005, POS014, LAG024, LAG064, REL040, REL048, REL052, REL058, DIR004, DIR005, DIR008, DIR012]\n\n- A02 becomes a repeated hub: about 2 occurrences per trace earlier versus about 9 in the later window, while its trace share stays around 70 in 100; its successors change completely from A16, A06, A03 and A04 to A15, A11, A14 and A12 (each roughly a quarter), A13 now always precedes it, and the pairs A02→A03 and A02→A04, previously adjacent, now sit about 3 steps apart. [OCC002, DIR002, DIR010, LAG002, LAG003]\n\n- Other routing and repetition shifts: A03 now leads to A07 (about half of its outgoing transitions) instead of A02; A12 leads to A09 and A08 instead of A01 and A08; A14 leads to A15 and itself instead of A06 and A16. Repetitions rise for A05 and A13 (about 3.4 to about 4.4 per trace), A14 (about 1.0 to about 4.5) and A15 (about 1.1 to about 4.6), and several ordered pairs sit at different distances, e.g. A15→A03 and A15→A04 from about 2 to 4 steps, while A12→A09 moves closer (about 2 to 1). [DIR003, DIR009, DIR011, OCC004, OCC011, OCC012, OCC013, LAG041, LAG056, LAG057]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the control flow was restructured at the start and the end of the process: the former closing block around A17 — executed in every earlier trace, alternating with A10 — is no longer observed, and in the later window a new closing block appears in which A06 and A16 are each executed exactly once per trace, adjacent in either order after A04 and A10; A01 is no longer observed, and a new activity A07 appears early in about two thirds of traces, leading to A03 or A04. Since activities appear and disappear rather than shares between unchanged paths shifting, this reads as addition and removal of process parts, not a re-weighting of existing alternatives. [OCC001, OCC005, OCC006, OCC014, OCC015, DIR004, DIR006, DIR008, REL040, REL048, REL052, REL058, LAG024, LAG064, POS005, POS014, POS015]\n\nThe signs are direct and consistent across occurrence, successor, position, relation and distance indicators: participation moves from 200 of 200 and 128 of 200 traces to 0 of 200 for A17 and A01, and from 0 of 200 to 136 of 200 for A07; successor profiles change outright (A10: only A17 earlier, only A16/A06 later; A04: an A17/A10 split earlier, A10 only later); and the new A06–A16 adjacency is shown relationally (co-occurrence in every later trace, both orders about half) and by distance 1 in both directions. These items describe overlapping aspects of the same trace behaviour rather than independent confirmations, but they all point the same way. [OCC001, OCC006, OCC015, DIR004, DIR008, REL058, LAG024, LAG064]\n\nLimitations: zero participation shows only that A01 and A17 were not exercised in the later sample of 200 traces, so complete removal cannot be distinguished from these activities becoming extremely rare; and no screening summary was provided, so the number of qualifying items could not be compared with a chance expectation — the judgement rests on the size, directness and consistency of the differences (for example 0 of 200 versus 200 of 200 traces). [OCC001, OCC015]\n\nOther differences: A02 became a heavily repeated hub (about 2 to about 9 occurrences per trace, trace share unchanged at about 70 in 100) with a new successor set (A15, A11, A14 and A12 instead of A16, A06, A03 and A04), with A13 now always preceding it; A03, A12 and A14 were rerouted as described above; repetitions of A05, A11, A12, A13, A14 and A15 increased; and several activity pairs now sit further apart in event positions (e.g. A15→A03/A04 from about 2 to 4 steps, A09→A02 from 2 to 4), consistent with the inserted A07 and the extra repetitions. [OCC002, OCC004, OCC009, OCC010, OCC011, OCC012, OCC013, DIR002, DIR003, DIR009, DIR010, DIR011, LAG025, LAG056, LAG057]",
+  "case_id": "case_10efcd488201676b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

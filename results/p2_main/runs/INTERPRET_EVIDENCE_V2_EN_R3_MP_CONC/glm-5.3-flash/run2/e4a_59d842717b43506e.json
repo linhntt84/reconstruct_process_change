@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_59d842717b43506e.json",
+  "evidence_sha256": "1ff53543c467109780aa583ae44e5481a57624ef42a22016513a623edfec380a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:03:49.046889+00:00",
+  "finished_at_utc": "2026-11-15T02:05:29.961674+00:00",
+  "latency_seconds": 100.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14817,
+    "prompt_tokens": 14973,
+    "total_tokens": 29790,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13441,
+      "text_tokens": 1376
+    },
+    "cost": 0.00965445
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47863,
+  "text": "### Observed differences\n\n- In the earlier window, none of the 200 traces contained A14, A15, A20, A21 or A22. In the later window, each of these five activities appears in about 17–22 in 100 traces (A14 about 22, A15 about 21, A20 about 22, A21 about 17, A22 about 18), and always exactly once when present. [OCC001, OCC002, OCC003, OCC004, OCC005]\n- The five behave as mutually exclusive alternatives: no tested pair of them ever occurs in the same trace, and their participation shares sum to about 99.5 in 100 traces, so in the later window essentially every trace contains exactly one of them, whereas in the earlier window no trace contained any. [REL001, REL002, REL003, REL007, REL008, REL012, OCC001, OCC002, OCC003, OCC004, OCC005]\n- Routing around A24, A25 and A26 changed. Earlier, all observed transitions out of A24 went to A25 and all out of A25 went to A26. In the later window, about 52 in 100 transitions out of A24 go to one of the five activities (about 9–12 each) and about 49 go to A25; about 48 in 100 transitions out of A25 go to one of the five (about 7–12 each) and about 52 go to A26. Each of the five activities leads to A25 in roughly half of its observed transitions (about 45–61 in 100) and to A26 in the remainder. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- Ordering shifted accordingly: in the later window each of the five always runs after A24 (A24 first in all co-occurring traces, about 21–22 in 100) and always before A26 (about 21–22 in 100), while relative to A25 both orders occur (each order in about 10–12 in 100 traces). The five sit around the middle of the trace (median relative position about 0.50–0.52). [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, POS001, POS002, POS003, POS004]\n- Step distances changed: earlier, A25 immediately followed A24 and A26 immediately followed A25 (lag 1 in 100 in 100 traces), so A26 came two positions after A24. In the later window, A24 and A25 are adjacent in about 49 in 100 traces and two positions apart in about 51; A25 and A26 are adjacent in about 52 and two apart in about 48; A24 and A26 are three positions apart in about 199 of 200 traces. [LAG001, LAG002, LAG003]\n- The elapsed time between consecutive completions of A10 and A11 fell from a median of about 1.0 hour to about 0.5 hour (mean about 1.00 to 0.50 hours; the middle 50% of cases narrowed from roughly 0.87–1.13 hours to roughly 0.45–0.56 hours; 319 vs 336 observations). [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a step drawn from five alternative activities — A14, A15, A20, A21 and A22 — runs in essentially every case and is inserted into the sequence between A24 and A26: in about half of the traces directly after A24 (before A25) and in the other half directly after A25 (before A26), whereas in the earlier window the flow ran directly from A24 to A25 to A26 with none of the five present. The change is shown directly and consistently across indicator types: the rerouting of A24 and A25, the successors of the five activities, their fixed order after A24 and before A26 with mixed order around A25, and the A24-to-A26 distance moving from two to three positions. The volume of qualifying evidence also far exceeds what an unchanged process produces (34 control-flow items against roughly 0.44 expected and 1 time item against roughly 0.01, each family compared with its own expectation). Limitations: because the five activities had zero participation in the earlier window, the evidence cannot distinguish a genuinely added step from one that existed but was not exercised before; and the \"exactly one of the five per trace\" reading rests on the six tested pairs together with the near-complete coverage of the shares. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL004, REL006, REL013, REL015, LAG001, LAG002, LAG003]\n\nOther differences: The elapsed time between consecutive completions of A10 and A11 halved (median about 1.0 hour to about 0.5 hour) and became markedly more consistent; this is a timing change in its own right, and the evidence provides no link between A10/A11 and the inserted step. [TWAIT001]",
+  "case_id": "e4a_59d842717b43506e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

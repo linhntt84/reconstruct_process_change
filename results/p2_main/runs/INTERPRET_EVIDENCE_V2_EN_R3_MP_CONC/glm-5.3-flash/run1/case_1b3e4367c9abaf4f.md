@@ -1,0 +1,20 @@
+### Observed differences
+
+- A01 was not observed in any of the 200 earlier traces; in the later window it occurs exactly once in every trace, near the end of the case (mean position about 0.93 of the trace length). [OCC001, POS001]
+- The closing alternation between A15 and A16 now includes A01. Earlier, A15 always passed to A16 and A16 always back to A15, always at a distance of one step; in the later window about half of A15's observed outgoing transitions go to A01 (the rest to A16), about half of A16's go to A01, and A01 leads back to A16 (~54%) or A15 (~46%). A05 also gained a transition to A01 (~17% of its outgoing transitions, previously unobserved). [DIR001, DIR003, DIR004, DIR005]
+- Consistent with A01 sitting inside the former A15–A16 alternation, the gap between A15 and A16 (in either direction) moved from always one step to about two thirds at one step and one third at two steps. [LAG007, LAG008]
+- A01 with A15, and A01 with A16, now co-occur in every case with no fixed order (A01 first in ~52–53% of cases, the partner first in ~47–48%), whereas earlier A15 and A16 always ran without A01. [REL008, REL009]
+- A02 became a fixed start: present in 48 of 100 earlier cases (always at the very beginning) versus all cases in the later window. Its outgoing transitions moved from A03 (~56%) and A07 (~44%) to A06 (~90%), with direct moves to A03/A07 almost gone; A03 and A07 now co-occur with A02 in every case (before ~48 in 100). [OCC002, POS002, DIR002, REL010, REL013]
+- A02 and A06 changed from mutually exclusive alternatives (earlier: only A02 in ~48% of cases, only A06 in ~52%, never both) to always executed together (A02 before A06 in ~41% of cases, interleaved or repeated in ~53%). A12 shows the same shift: from an alternative to A02 (52/48 split) to always present and following A02 in ~97% of cases, and A12 now always precedes A15 and A16 (before ~52%). [REL012, REL015, REL034, REL035]
+- A06 now runs in every case (before ~52 in 100) and about twice per case on average (mean ~1.1 → ~2.1; repeated in ~53% of cases versus ~26%); A11's participation roughly doubled (26 → 53 in 100 cases; mean occurrences ~0.6 → ~1.1). [OCC003, OCC004, OCC005]
+- A03 and A07 now occur later in the case (mean position ~0.41–0.42 → ~0.48) and lie 3–5 steps after A02 in about 90% of cases, where earlier they followed within 1–2 steps; the distance from A02 to A05 grew similarly (5 steps in ~84% of cases versus ~19%). [POS003, POS004, LAG001, LAG002, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+With 58 qualifying items against roughly half an item expected if nothing had changed, chance alone cannot account for the differences as a whole. The evidence supports the possibility that, in the later window, A01 is executed exactly once per case near the end and is woven into the closing A15–A16 alternation: A15 and A16, which previously only handed over to each other, now each pass to A01 about half the time, A01 returns to A15 or A16, and A05 also gained a direct transition to A01. This rests on direct edge evidence into and out of A01, on its occurrence and near-end position in every case, on co-occurrence with both orders between A01 and A15/A16, and on the A15/A16 gap shifting from one step to partly two. [DIR001, DIR003, DIR004, DIR005, OCC001, POS001, REL008, REL009, LAG007, LAG008]
+
+The evidence cannot rule out that A01 already existed earlier but was so rare that it never appeared in 200 traces, rather than being newly introduced; nor can it tell whether the routing changes below share the same origin as the A01 change. [OCC001]
+
+Other differences: A02 became a mandatory first activity and now routes to A06 instead of directly to A03/A07; A02 with A06, and A02 with A12, changed from alternatives to always executed together; A06 became mandatory and now recurs about twice per case; A12 became mandatory after A02; A11's participation roughly doubled; and A03/A07 occur later in the case and farther from A02 than before. [OCC002, OCC003, OCC004, OCC005, DIR002, POS003, POS004, LAG001, LAG002, LAG003, REL010, REL012, REL013, REL015]

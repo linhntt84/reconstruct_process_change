@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ab76b69eb0973ca8.json",
+  "evidence_sha256": "90e939e688c82f23cd96c067206363bcc0c8e6711cdf114d381acab274e814f6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:15:06.716049+00:00",
+  "finished_at_utc": "2026-11-14T14:16:08.628424+00:00",
+  "latency_seconds": 61.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9980,
+    "prompt_tokens": 21621,
+    "total_tokens": 31601,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8870,
+      "text_tokens": 1110
+    },
+    "cost": 0.00823315
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30969,
+  "text": "### Observed differences\n\n- Activity A08 disappears from the later window: it ran in about 70 in 100 traces before (roughly 1.1 times per trace on average) and in none of the 200 traces after. [OCC007, POS005]\n- Before, every observed outgoing transition of A07 (about 219 transitions) went to A08. In the later window, A07's outgoing transitions go instead to A05 (about 39 in 100), A03 (27), A04 (22) and A02 (12). [DIR007]\n- A08's own outgoing transitions, previously mainly to A05 (about 36 in 100), A03 (35), A04 (19) and A02 (10), are no longer observed at all. [DIR008]\n- Every checked pair involving A08 collapses from frequent co-occurrence to none: A07–A08 co-occurred in about 70 in 100 traces before (A07 first in 46, interleaved/repeated in 25) but never after, with A07 now running without A08 in about 67 in 100 traces; A03–A08, A04–A08 and A05–A08 likewise drop from roughly 29–33 in 100 co-occurring to zero. [REL010, REL004, REL007, REL009]\n- A07's former successors now follow it one step sooner: A07→A03 was usually 2 positions apart before (about 59 in 100) and is 1 apart after (about 43); A07→A04 and A07→A05 shorten from lags 2–3 to lags 1–2. [LAG013, LAG014, LAG015]\n- Smaller shifts: repeats of A03, A04, A05 and A07 itself now recur at shorter gaps (e.g. A04→A04 moved from mostly 4–5 positions apart to 2–3); most other activities' participation moves by only 2–3 points in either direction, and A04 and A05 appear slightly earlier in the trace (median position down about 0.05). [LAG001, LAG006, LAG011, LAG016, OCC001, OCC003, OCC006, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A08 was removed from, or bypassed in, the process in the later window: A08 ran in about 70 in 100 traces before and in none after, and A07, which previously always handed control to A08, now leads directly to A08's former successors A05, A04, A03 and A02, shortening the loop through A07 by one step. This rests on direct and mutually consistent relational and successor evidence — the complete successor change at A07, the disappearance of A08's outgoing edges, the collapse of all A08 pairs, and the lag shortening from 2 to 1 for A07→successor — and the A08 collapse (141 of 200 traces to 0 of 200) is far larger than differences that random re-splits of unchanged behaviour produce. [OCC007, DIR007, DIR008, REL004, REL007, REL009, REL010, LAG013, LAG014, LAG015]\n\nLimitations: zero participation strictly shows only that A08 was not recorded in the later window, so a drastic reduction or a relabelling of A08 cannot be distinguished from removal with these anonymous codes; the smaller frequency and position shifts could still be sampling variation. [OCC007, POS002, POS003]\n\nOther differences: the shorter repetition gaps for A03, A04, A05 and A07 (e.g. A04→A04 from mostly 4–5 positions apart to 2–3) are consistent with the shortened loop but are not themselves part of the removal hypothesis, and the small participation and position movements of the remaining activities stay within the range expected for unchanged behaviour. [LAG001, LAG006, LAG011, LAG016, OCC001, OCC003, OCC006, POS002, POS003, POS004]",
+  "case_id": "case_ab76b69eb0973ca8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

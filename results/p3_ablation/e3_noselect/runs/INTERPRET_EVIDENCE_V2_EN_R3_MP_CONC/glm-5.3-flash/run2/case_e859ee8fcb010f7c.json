@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_e859ee8fcb010f7c.json",
+  "evidence_sha256": "be34d8d0c8648a9d5f84566082f5092c36dc19be8a2b18a6a39495b586df877e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:20:41.668598+00:00",
+  "finished_at_utc": "2026-11-15T08:25:45.477842+00:00",
+  "latency_seconds": 303.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 42631,
+    "prompt_tokens": 66611,
+    "total_tokens": 109242,
+    "completion_tokens_details": {
+      "reasoning_tokens": 39938,
+      "text_tokens": 2693
+    },
+    "cost": 0.03130715
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 120536,
+  "text": "### Observed differences\n\n- A01 and A02 disappear. In the earlier window each took part in about 50 in 100 traces (99 of 200); A02 was always directly followed by A14, A14 was always directly followed by A01, and A01 passed control to A07 in about 45 in 100 of its outgoing transitions, to A10 in about 27, to A08 in about 24 and to A12 in about 4. In the later window neither activity appears in any of the 200 traces. [OCC001, OCC002, DIR001, DIR002, DIR011, POS001, POS002]\n- The A06–A13 repetition is largely gone, and both activities now lead to A14. Earlier, A06 appeared in about 50 in 100 traces with about 2 occurrences per trace overall (about 4 within the traces containing it, repeats in about 38 in 100), its outgoing transitions split about evenly between A13 (about 51 in 100) and A02 (about 49 in 100), and A13 led back to A06 in about 99 in 100 of its outgoing transitions. Later, A06 appears in about 36 in 100 traces with about 0.5 occurrences per trace (repeats in about 11 in 100) and always leads directly to A14; A13, now present in about 28 in 100 traces (down from about 35), also always leads to A14. [OCC006, OCC013, DIR004, DIR010, REL049, POS004, POS011]\n- A04 now routes a sizable share of cases straight to A13: earlier about 99 in 100 of A04's outgoing transitions went to A06 (about 1 in 100 to A02); later about 60 in 100 go to A06 and about 39 in 100 go to A13, which now typically follows A04 immediately rather than two positions later. [DIR003, LAG001, LAG006]\n- A09 is new. It was not observed earlier and now occurs in about 24 in 100 traces (47 of 200), around the middle of the trace; A07 leads to it in about 48 in 100 of its outgoing transitions (earlier about 92 in 100 led to A12), A12 leads to it in about 42 in 100 (earlier about 95 in 100 led to A11), and it leads mainly to A11 and A12 (about 46 and 44 in 100). [OCC009, POS007, DIR005, DIR007, DIR009, REL052, REL065, REL066]\n- A08 and A10 changed from mutually exclusive alternatives to a fixed sequence. Earlier they never occurred in the same trace (A08 in about 24 in 100 traces, A10 in about 26 in 100) and A08 always led to A05; later both occur in about 50 in 100 traces, always together and always A08 before A10, A08 leads to A10, and A05 now follows about two positions after A08 (via A10) instead of directly after it. [OCC008, OCC010, REL059, DIR006, LAG023, POS006, POS008]\n- Event distances between retained activities shifted accordingly: A13 to A14 shortened from typically 3 positions to 1, A14 to A08 from 2 to 1, A13 to A08 from 5 to 2, A06 to A07 from about 4 to 2, while A07 to A11 lengthened from about 2 to 3 positions. [LAG041, LAG043, LAG038, LAG009, LAG019]\n- The remaining activities kept their frequencies: A03, A04, A05 and A14 each appear in about 50 in 100 traces in both windows, and A07, A11 and A12 in about 23 in 100 in both. [OCC003, OCC004, OCC005, OCC007, OCC011, OCC012, OCC014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural rewiring hypothesis centred on the segment A02 → A14 → A01. In the earlier window, flow reaching A06 either looped with A13 or continued through A02 → A14 → A01, from which control returned to A06 via A07 → A12 → A11 or exited through A08 → A05 or A10 → A05. In the later window A01 and A02 are no longer observed, A06 and A13 lead directly to A14, A14 feeds A08, A07, A12 and A09 directly, a new activity A09 sits between A07/A12 and A11, the exit branch always runs A08 → A10 before A05, the A06–A13 repetition has largely stopped, and A04 routes about 39 in 100 of its cases directly to A13. [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, OCC001, OCC002, OCC009, REL059, LAG043]\n\nSupporting signs:\n- The successor profiles change directly, not only in frequency: A06 from an even split between A13 and A02 to always A14, A13 from A06 to A14, A08 from A05 to A10, and A14 from always A01 to A08 (about 56 in 100), A07 (about 35 in 100) and small shares of A12 and A09. [DIR004, DIR005, DIR006, DIR009, DIR010, DIR011]\n- Participation and relation profiles match: A01 and A02 fall from 99 to 0 of 200 traces while A09 rises from 0 to 47; pairs containing A01 or A02 move from near-universal co-occurrence to never occurring together; A08 and A10 move from mutual exclusivity to always co-occurring in a fixed order. [OCC001, OCC002, OCC009, REL012, REL059]\n- The differences are far larger than random re-splits of these windows produce (larger than in about 995 of 1000 reference comparisons on the key items), and the rewired activities were common in at least one window, so a rare-variant fluctuation does not plausibly explain the pattern as a whole. [OCC001, DIR004, REL059, LAG043]\n\nLimitations: the evidence establishes that the two windows behave differently, not how the difference came about; an important competing explanation it cannot rule out is a change in the mix of executed variants — a variant containing A01/A02 disappearing and another appearing — rather than an in-place rewiring of one process. The evidence also reports no chance-expectation figure, so the number of qualifying items cannot be checked against that baseline, and a few distance items rest on very few traces (for example A07 to A08, with 1 and 8 supporting traces) and were not relied on. [LAG016, LAG017, LAG018]\n\nOther differences: several activities now sit earlier in the trace than before — A14 (median event position about 0.57 to 0.40), A08 (about 0.92 to 0.60), A10 (about 0.92 to 0.80), A07 (about 0.44 to 0.27) and A06 (about 0.38 to 0.20) — and A07, A11 and A12 show slightly fewer occurrences per trace (mean about 0.48 to 0.40) at unchanged participation; these shifts are consistent with downstream effects of the rerouting rather than independent changes. [POS004, POS005, POS006, POS008, POS010, POS012, OCC007, OCC011, OCC012]",
+  "case_id": "case_e859ee8fcb010f7c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

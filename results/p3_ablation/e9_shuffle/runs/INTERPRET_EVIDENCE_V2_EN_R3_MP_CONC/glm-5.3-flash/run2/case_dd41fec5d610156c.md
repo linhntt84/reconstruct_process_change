@@ -1,0 +1,21 @@
+### Observed differences
+
+- A03 disappears from the sample: in the earlier window every one of the 200 traces contained A03 (about 2 occurrences per trace, repeated within the same trace in roughly 44 in 100 cases); in the later window A03 is not observed in any trace. [OCC003, POS003]
+- A01 and A02 appear: neither was observed in the earlier window, while in the later window each runs exactly once in every trace — A02 at the very beginning (mean position about 2% into the trace) and A01 late (median about three-quarters in). [OCC001, OCC002, POS001, POS002]
+- The route into A05 changed: earlier, A03 and A05 always co-occurred (A03 before A05 in 56 in 100 traces, interleaved or repeated in 44 in 100), and A03's outgoing transitions split about evenly between A05 (50%) and A04 (50%). In the later window A01 precedes A05 in 100 in 100 traces, A02 precedes A05 in 98 in 100, and A05 always occurs without A03. [REL011, DIR003, REL004, REL008]
+- A06 is re-routed: earlier, all of A06's outgoing transitions led to A03; in the later window they lead to A01 in about 53 in 100 and to A04 in about 46 in 100. [DIR004]
+- A new early chain appears: in the later window A02 precedes A01 in about 97 in 100 traces, and A02's outgoing transitions go to A04 (about 51 in 100) or A01 (about 48 in 100). [REL001, DIR002]
+- A04 and A06 remain optional but sit elsewhere: participation rose from about 44 to 50 in 100 traces for each; in the later window each co-occurs with A02 and A01 in about 50 in 100 traces, and each ordered pair A02-before-A04, A02-before-A06, A04-before-A01 and A06-before-A01 holds in about 28 in 100 traces. [POS004, POS005, REL003, REL005, REL007, REL009]
+- Step distances shifted accordingly: where A06 is followed by A04 the typical gap shortened from about 2 steps to about 1; repeated A04 or A06 executions, typically 3 steps apart earlier, are typically 2 steps apart in the later window; and A04-to-A05 gaps, uniformly about 3 steps earlier, now show a tail at about 5 steps in roughly 15 in 100 cases. [LAG003, LAG001, LAG005, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Screening context: 29 evidence items qualified from 34 tested control-flow units, against roughly 0.17 expected by chance in an unchanged process, and every item's difference exceeds about 995 in 1000 random re-splits — so the volume of flagged behaviour cannot be explained by random variation of a stable process. [OCC001–OCC003, POS001–POS005, DIR001–DIR004, REL001–REL012, LAG001–LAG005]
+
+Main hypothesis: the evidence supports the possibility that the per-case flow was rebuilt from an A03-centred middle — every case ran A03 about twice, fed by A06 and leading on to A05 or A04 — into a spine in which every case runs A02 once at the start and A01 once late, with A05 now following A01, and with A04 and A06 still executed in about half the cases, now reached from A02 and leading into A01 rather than into A03; A03 itself is no longer executed in any observed case. This rests on direct participation flips (100 in 100 traces to 0, and 0 to 100 in 100, on 200-trace samples), on relational profiles flipping from co-occurrence with A03 to ordered co-occurrence with A01/A02, and on direct successor changes at A01, A02 and A06. [OCC001, OCC002, OCC003, REL011, REL004, REL008, REL001, DIR001, DIR002, DIR004]
+
+An important competing explanation the evidence cannot rule out is a re-labelling or re-mapping of activity codes: work previously recorded as A03 could now be recorded under A01/A02, which would look identical in these control-flow indicators; zero participation also only means an activity was not observed in that window. [OCC003, OCC001]
+
+Other differences: the lag redistributions around A04 and A06 (shorter self-repetition gaps, a new long-distance tail for A04-to-A05) and the small position shifts of A04 (median from about 0.31 to 0.25 of the trace) and A06 (unchanged median, narrower spread) are consistent with the same restructuring rather than pointing to a separate change. [LAG001, LAG002, LAG003, LAG005, POS004, POS005]

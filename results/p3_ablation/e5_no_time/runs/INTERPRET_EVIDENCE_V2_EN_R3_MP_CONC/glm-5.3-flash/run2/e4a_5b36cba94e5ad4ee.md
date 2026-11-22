@@ -1,0 +1,21 @@
+### Observed differences
+
+- Participation itself did not change: in both windows, each tested pair among these activities occurred together in all 200 traces, so every activity still ran in essentially every case. The differences lie in order, spacing and routing. [REL001, REL010, REL018, REL022]
+
+- The order between two groups of activities became fixed. In the earlier window, the group A15, A16, A17, A19, A20 and the group A21–A25 ran in mixed order: A15 preceded A21 in only about 23 in 100 traces, A20 preceded A21 in about 3 in 100 (A21 usually came first), and A15 preceded A23 in about 58 in 100. In the later window, all 22 tested pairs across the two groups run in one direction only: the first-group activity comes first in 100 in 100 traces. [REL001, REL002, REL010, REL015, REL018, REL020]
+
+- Successor sets collapsed to fixed handovers. In the earlier window, A15, A16 and A17 each passed to about eight different activities including A21–A25, and A20's observed transitions went mainly to A31 (about 51 in 100) and A22 (about 18 in 100), with A21 chosen in about 3 in 100. In the later window, A15, A16 and A17 pass only to one another and to A20; A20 always passes to A21; A22 always passes to A31; A30, previously split about 54/46 between A21 and A19, always leads immediately to A19; and A21, A23, A24 and A25 pass only within the later group. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, LAG051]
+
+- Consecutive steps became adjacent, and cross-group gaps settled. Pairs such as A15→A16, A16→A17, A23→A24 and A24→A25, previously spread over one to five steps, now occur within one or two steps in essentially every case (A15→A16 within one step: about 31 in 100 before versus about 69 in 100 after). The pair A15 then A21 was within five steps in only 46 of 200 before-traces versus 200 of 200 after (now two to four steps, never adjacent), and A19 then A21 as well as A20 then A22 now always occur at exactly five steps. [LAG001, LAG004, LAG009, LAG026, LAG027, LAG037, LAG042]
+
+- Relative positions shifted accordingly: A15, A16, A17, A19 and A20 now appear earlier in the trace (A20's mean relative position fell from about 0.71 to 0.61), while A21–A25 appear later (A21 rose from about 0.53 to 0.63), and the position distributions are narrower in the later window. [POS001, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+A hypothesis supported by the evidence is that the ordering constraints between the two activity groups changed: in the earlier window, A15, A16, A17, A19 and A20 ran relative to A21, A22, A23, A24 and A25 in mixed or partly reversed order (A21 typically before A20) at widely varying distances, with A20 usually bypassing A21 towards A31 or A22; in the later window, the two groups execute in one fixed sequence — the first group, entered by an immediate A30 → A19 step, hands over directly via A20 → A21 into the second group, which closes with A22 → A31 — and consecutive activities run adjacently. Within the early triple A15/A16/A17 both mutual orders still occur in the later window, so the fixed order holds between the groups rather than inside that triple. [REL001, REL018, DIR004, DIR006, DIR010, LAG001, LAG026]
+
+The relational items show this change directly — all 22 tested cross-group pairs moved from mixed proportions to a single order — and the successor, lag and position items agree in direction. The 93 qualifying items compare with roughly 0.72 expected by chance in the control-flow family (144 units tested), so the pattern as a whole cannot be explained by random re-splits of a stable process; note, however, that the items largely describe one underlying shift in execution order rather than many independent changes. [REL001, REL002, REL010, REL015, REL018, REL020, DIR001, LAG001, POS005]
+
+An important competing explanation remains: the earlier mixed orders and longer gaps could still be possible but simply not exercised in the 200 later traces, since an unobserved transition or order does not prove it was removed; moreover, the position and lag measures reflect event order within the trace, not clock time. [DIR001, POS005]

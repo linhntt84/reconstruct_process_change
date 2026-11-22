@@ -1,0 +1,16 @@
+### Observed differences
+
+- On six activities (A01, A03, A13, A14, A17, A22), assignment work moved from one set of resources to a largely different set. In the earlier window, a stable group of resources each held roughly 4–12 in 100 assignments of these activities (for A01 the largest, User_49, held about 11 in 100); in the later window those resources have disappeared or shrunk to about 3 in 100, while new resources now hold the largest shares — for A01, User_3 holds about 9 in 100 and User_32 about 7 in 100. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- The same incoming and outgoing resource groups recur across all six activities, so this reads as one consistent reallocation pattern rather than six unrelated shifts. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- Work also spread more broadly: the share of assignments falling outside the ten most frequent resources rose for every activity, for example from about 38 to about 48 in 100 for A01 and from about 28 to about 39 in 100 for A22. [ASSIGN001, ASSIGN006]
+- The differences are large on the indicator's own scale (cosine dissimilarity about 0.39–0.49) and exceed about 999 of every 1000 random re-splits of the pooled data; each profile rests on roughly 130–270 observations per window. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- Screening context: the resource family produced 6 qualifying items where about 0.004 were expected if nothing had changed, while the control-flow and time families produced 0 items (about 0.16 and 0.02 expected). [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- A13 and A14 have identical profiles, so they most likely reflect the same underlying behaviour rather than two independent confirmations. [ASSIGN003, ASSIGN004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in resource allocation: on activities A01, A03, A13, A14, A17 and A22, execution shifted from a previously prominent group of resources (for example User_49) to a largely different group (for example User_3 and User_32), with work additionally spread across a broader tail of resources. Supporting signs: six items in the resource family against an expectation of about 0.004 without change, the same direction and near-identical resource sets in all six profiles, differences larger than about 999 of 1000 random re-splits, and substantial observation counts in both windows. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+
+Limitations: the identical A13/A14 profiles mean the six items are not fully independent, and the growth of the "other" share means much of the redistributed work is visible only in aggregate. An important competing explanation the evidence cannot rule out is a shift in case mix between the windows — if the later window contains different kinds of cases that are naturally handled by other resources, the profiles would change without any reallocation of the same work. [ASSIGN003, ASSIGN004]

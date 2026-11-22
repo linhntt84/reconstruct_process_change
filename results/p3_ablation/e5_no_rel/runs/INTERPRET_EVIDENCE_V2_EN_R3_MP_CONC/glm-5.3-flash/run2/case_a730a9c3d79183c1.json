@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_a730a9c3d79183c1.json",
+  "evidence_sha256": "23f4335be1a3942ea223c91a631c7ba3b8a33b879917c48ac1a3641fdf3b5c0c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:49:25.105756+00:00",
+  "finished_at_utc": "2026-11-15T06:52:16.038389+00:00",
+  "latency_seconds": 170.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24806,
+    "prompt_tokens": 24551,
+    "total_tokens": 49357,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22851,
+      "text_tokens": 1955
+    },
+    "cost": 0.01608565
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 77403,
+  "text": "### Observed differences\n\n- Six activities — A33, A35, A36, A37, A38 and A39 — each ran in only about half of the cases in the earlier window (49–53 in 100 traces), but in nearly every case in the later window (98–99+ in 100), typically once per case (mean occurrences per trace about 0.5 before, about 1.0 after). [OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- The wiring around this block changed. Earlier, A30's outgoing transitions were spread almost evenly over A33, A35, A36, A37, A38 and A39 (about 14–18% each); in the later window about 96% went to A35, A33 and A36 (roughly 36%, 31% and 29%), with A37, A38 and A39 each below about 1%. [DIR005]\n- A33, A35 and A36 lost A31 as a successor and gained A37–A39: transitions into A31 fell from about 27–34% of their outgoing transitions to under 1%, while roughly 30% combined now go to A37, A38 and A39. [DIR006, DIR007, DIR008]\n- Pairwise distances shifted coherently: A30→A37/A38/A39 pairs were mostly 1–3 steps apart earlier (about 94–98 in 100) and 4–5 steps apart later (about 97–99 in 100); A33/A35/A36→A31 pairs moved from 1–3 steps to almost always 4–5 steps. A33→A37 and A36→A37 within five steps, seen in only 1 earlier case each, occur in about 195 of 200 later cases. [LAG005, LAG006, LAG007, LAG008, LAG011, LAG013, LAG009, LAG014]\n- Positions are consistent with this: A33/A35/A36 sit slightly earlier (mean position about 0.74 → 0.68) and A37/A38/A39 slightly later (about 0.73 → 0.76), while A31 occurs in every case in both windows, marginally later (about 0.80 → 0.82). [POS005, POS006, POS007, POS008, POS009, POS010, POS004]\n- A04 ran in about 59 of 100 cases earlier versus about 26 of 100 later; A14 now leads directly to A15 in about 79% of its outgoing transitions (earlier about 43%) while A14→A04 fell from about 57% to about 12%; A04's own dominant move to A15 fell from about 90% to about 40% of its outgoing transitions, and A04 sits later in the trace when it occurs (mean position about 0.20 → 0.38). [OCC002, DIR004, DIR002, POS001, LAG002]\n- A02, A08 and A10 rose from about 5–8 to about 18–23 in 100 cases, alongside small new successor shares from A14, A45 and A47 towards these activities; their outgoing profiles rest on only about 11–50 observed transitions per window, so the routing detail is weak. [OCC001, OCC003, OCC004, DIR001, DIR003, DIR004, DIR009, DIR010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the six-activity block A33, A35, A36, A37, A38 and A39 was executed in nearly every case — earlier in only about half of the cases — and that the flow through it was rerouted: A30 now leads almost exclusively into A35, A33 and A36, which in turn lead on to A37, A38 and A39, while A31, previously a direct successor of A33, A35 and A36, now follows that group at a distance of four to five steps. The signs are direct and consistent: participation roughly doubled for all six activities (about 98–105 versus 197–199 of 200 traces), the direct A30→A37/A38/A39 and A33/A35/A36→A31 transitions collapsed to under 1% of outgoing transitions while transitions into A37–A39 appeared, and the pairwise distances moved from 1–3 to 4–5 steps. The overall yield also far exceeds what a stable process produces: 46 control-flow items qualified where fewer than one would be expected without change. [screening, OCC005, OCC010, DIR005, DIR006, DIR007, DIR008, LAG005, LAG008, LAG011, LAG013]\n\nLimitations: the evidence contains no relation (REL) items, so the exact new sequence inside the block cannot be pinned down, and a few qualifying lag items were too sparse in one window to carry weight on their own (for example A30→A31 with only 5 later observations, and pairs with 1–26 observations). [LAG004, LAG009, LAG010, LAG012, LAG014]\n\nAn important competing explanation the evidence cannot rule out: the same successor shares and pairwise distances could also arise from other internal arrangements of the block — for example, other activities inserted between A30 and A37–A39, or A31 placed elsewhere in the later part of the trace — so the rerouting is pinned down at the level of edges and distances, not as a unique full ordering. [DIR005, DIR006, DIR007, DIR008, LAG005, LAG008, LAG011, LAG013]\n\nOther differences:\n\n- A04 was largely bypassed: A14 now goes straight to A15 in most cases, A04 runs in only about a quarter of cases (earlier about six in ten) and later within the trace — a coherent second difference not covered by the main hypothesis. [OCC002, DIR002, DIR004, POS001, LAG002]\n- A02, A08 and A10 are executed more often (about 5–8 versus 18–23 in 100 cases), though on low support. [OCC001, OCC003, OCC004]",
+  "case_id": "case_a730a9c3d79183c1",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

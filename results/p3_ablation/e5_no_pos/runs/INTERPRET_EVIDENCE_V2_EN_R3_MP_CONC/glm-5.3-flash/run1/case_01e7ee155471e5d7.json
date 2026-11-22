@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_01e7ee155471e5d7.json",
+  "evidence_sha256": "ffe9922eddff66cd6556000fb204be4509438141299a1d4f994ce92cca8d2f65",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:16:23.222386+00:00",
+  "finished_at_utc": "2026-11-14T12:18:54.571650+00:00",
+  "latency_seconds": 151.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20979,
+    "prompt_tokens": 8680,
+    "total_tokens": 29659,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19617,
+      "text_tokens": 1362
+    },
+    "cost": 0.011791499999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67331,
+  "text": "### Observed differences\n\n- The order between A21 and each of A30, A31 and A36 reversed. Earlier, A21 came before each of them in 100% of traces; in the later window, each of them comes before A21 in about 99.5% of traces (about 199 in 200). Both activities still occur together in every trace in both windows. [REL001, REL002, REL003]\n- The same reversal holds between A22 and the block: earlier A22 came first in 100% of traces; in the later window it comes first in only about 0.5%, with A30, A31 and A36 each preceding A22 in about 99.5%. Co-occurrence remains total in both windows. [REL004, REL005, REL006]\n- A20's successor changed completely: earlier, all of its observed outgoing transitions went to A22; in the later window they split roughly one third each to A30, A31 and A36, with about 0.5% to A22. [DIR001]\n- A21's successor changed in the opposite direction: earlier its outgoing transitions spread over A36 (38%), A30 (34%) and A31 (28%); in the later window about 99.5% go to A25. [DIR002]\n- The block's exit changed: earlier, each of A30, A31 and A36 passed to A25 on roughly 29–37% of its outgoing transitions; in the later window that share is about 0.5%, while a transition to A22, not observed earlier, now carries about 32–34%. Transitions among the block members themselves look similar in both windows. [DIR003, DIR004, DIR005]\n- Distances changed accordingly: A20 to A22 went from adjacent (1 step, 100% of traces) to 4 steps apart (about 99.5%); A21 to A25 went from 4 steps apart (100%) to adjacent (about 99.5%). [LAG001, LAG002]\n- Six further lag items also qualify, but each rests on a single later-window trace (about 1 in 200), matching the small residue of traces that keep the earlier order; they carry little weight. [LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a reordering of the control flow around the three-activity block A30, A31, A36. In the earlier window the flow ran from A20 to A22, then A21 led into the block, and the block ended in A25 (A21 sat four positions before A25). In the later window, A20 leads directly into the block, the block is followed by A22, and A21 leads directly to A25 — that is, the block moved from after A21 to between A20 and A22, A22 moved from immediately after A20 to after the block, and A25 moved from after the block to immediately after A21. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002]\n\nSupporting signs: the order reversals are direct relational evidence — all six activity pairs flip from a 100% fixed order to the opposite fixed order in about 99.5% of traces while co-occurrence stays at 100%, so participation did not change, only order; the successor profiles match the new arrangement exactly; and the two well-supported lag items match the new distances. Overall, 19 items qualified where fewer than one (0.38) would be expected in the control-flow family if nothing had changed — roughly 50 times the chance expectation — and every item's difference exceeds about 99.5% of random re-splits. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\nLimitations: the mutual order of A21 and A22 is not observed, so whether A22 leads directly to A21 in either window cannot be confirmed; the six weak lag items add little; and several indicators describe the same trace-level reordering, so they are not independent confirmations. A competing reading the evidence cannot rule out is that the block stayed in place while A20 and A21 were re-routed around it, which is observationally equivalent. All evidence concerns event positions, not clock time, so no claim about timing is made. [REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002]\n\nOther differences: none — no participation change accompanies the reordering; A20, A21, A22, A25, A30, A31 and A36 each still occur in essentially every trace in both windows. [DIR001, DIR002, DIR003, DIR004, DIR005, REL004, LAG001, LAG002]",
+  "case_id": "case_01e7ee155471e5d7",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,15 @@
+### Observed differences
+
+- The elapsed time between consecutive completion events of A36 and A37 roughly halved. In the earlier window these intervals averaged about 1.0 hour (median about 1.0; middle 50% between about 0.89 and 1.11 hours); in the later window they averaged about 0.5 hour (median about 0.49; middle 50% between about 0.45 and 0.55 hours). The spread halved as well (standard deviation about 0.16 down to 0.08 hours), so intervals became shorter and more uniform. The number of observed intervals was similar in both windows (153 before, 163 after). A difference this large appeared in only about 1 of 2000 random re-splits of the pooled data. [TWAIT001]
+- A31 appeared in fewer traces in the later window: about 31 in 100 traces before versus about 21 in 100 after, with mean occurrences per trace falling from 0.54 to 0.31 (observed in 62 versus 42 traces). [OCC001]
+- A32 also appeared less often: about 60 in 100 traces before versus about 48 in 100 after, with mean occurrences per trace falling from 1.14 to 0.79 (observed in 119 versus 95 traces). [OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing between A36 and A37: in the later window, the elapsed time from the completion of A36 to the next consecutive completion of A37 is about half of what it was in the earlier window (mean about 1.0 hour down to about 0.5 hour), and the intervals have become more consistent, with their spread halved. This rests on a coherent shift of the whole distribution — mean, median and both quartiles each dropped by roughly 0.45–0.56 hours — on a substantial number of observations in both windows (153 and 163 intervals), and on the time family yielding 1 qualifying item where only about 0.008 would be expected if nothing had changed; a difference of this size arose in about 1 of 2000 random re-splits. [TWAIT001]
+
+The indicator measures elapsed time between consecutive completion events, so the evidence cannot distinguish whether the reduction reflects faster handling, less idle time between the two completions, or a change in the steps lying between them; there is no relational or positional evidence for A36 and A37 to check this, and the halving pattern is consistent with a uniform rescaling of the interval distribution. [TWAIT001]
+
+Other differences: A31 and A32 were observed in a smaller share of traces in the later window (participation down from about 31 to 21 in 100 traces for A31 and from about 60 to 48 in 100 for A32, with lower mean occurrences per trace and lower recurrence). Both items decreased in all components, but the control-flow family produced 2 items where about 0.25 would be expected without change — a level an unchanged process typically produces — so these decreases alone do not establish a change in how often these activities run. [OCC001, OCC002]

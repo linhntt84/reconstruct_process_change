@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_f06000554c21b4ca.json",
+  "evidence_sha256": "08ca23b29a88526a553f84e1409182b19254d3b17071fe0183fee75a900214a3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:32:04.208032+00:00",
+  "finished_at_utc": "2026-11-15T12:33:36.540186+00:00",
+  "latency_seconds": 92.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13095,
+    "prompt_tokens": 9592,
+    "total_tokens": 22687,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11857,
+      "text_tokens": 1238
+    },
+    "cost": 0.0079863
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43666,
+  "text": "### Observed differences\n\n- The execution order of two groups of activities reversed. In the earlier window, A26 came before A35, A36 and A41 in about 99–100 in 100 traces, and A27 came before them in about 98–100 in 100 traces; in the later window, A35, A36 and A41 come before A26 and A27 in about 98–100 in 100 traces for every one of the six observed pairs. The paired activities still occur together in essentially every trace in both windows (co-occurrence 1.0), so this is a reversal of execution order, not a change in whether the activities run. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Relative positions in the trace moved accordingly: in the later window the mean relative position of A26 rose from about 0.53 to 0.62 and of A27 from about 0.38 to 0.47, while A35, A36 and A41 moved earlier, from about 0.58–0.59 to about 0.41. Each item is backed by about 200 traces per window. [POS001, POS002, POS003, POS004, POS005]\n- Successor profiles rewired consistently with this reversal. In the earlier window A25 led almost exclusively to A27 (about 99% of its outgoing transitions); in the later window it leads to A35, A36 and A41 in roughly equal thirds (about 33% each). A26 previously led into the group (A41 about 37%, A35 about 34%, A36 about 28%); in the later window it leads almost exclusively to A30 (about 99%). A35, A36 and A41 previously each sent about 28–37% of their outgoing transitions to A30; in the later window A30 no longer receives from them and A27 receives about 31–34% instead. [DIR001, DIR002, DIR003, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two groups of activities exchanged their order: the pair A27–A26, which previously ran between A25 and the group A35/A36/A41, now runs after that group, so the observed flow changed from A25 → A27 → A26 → (A35/A36/A41) → A30 in the earlier window to A25 → (A35/A36/A41) → A27 → A26 → A30 in the later window. The direct signs are the near-deterministic reversal of all six pairwise orders with co-occurrence unchanged, and the matching position shifts of all five activities. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005]\n\nThe rewiring implied by this exchange is visible in every successor profile: A25 now feeds the A35/A36/A41 group instead of A27, the group now exits to A27 instead of A30, and A26 now exits directly to A30 instead of into the group. [DIR001, DIR002, DIR003, DIR004, DIR005]\n\nThe volume of flagged items also exceeds what chance produces: 16 control-flow items qualified where about 0.53 were expected if nothing had changed (107 units tested), roughly thirty times the expectation, and each item's difference exceeds about 995 of 1,000 random re-splits; compared unmerged, this count cannot be explained by sampling variation alone. [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006]\n\nLimitations: the end-to-end chain is reconstructed from pairwise order, relative positions and successor shares; there is no LAG or full-sequence evidence, so alternative wirings that produce the same pairwise orders cannot be excluded, and DIR shares are over outgoing transitions rather than cases. A competing explanation the evidence cannot fully rule out is that the two windows sample different mixtures of trace variants rather than a reordering within the same traces; the unchanged co-occurrence and the within-trace reversal make this unlikely but do not eliminate it. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006]\n\nOther differences: scattered successor shares of about 0.5% (roughly 1 in 200 transitions) appear for different activities in each window — for example A33, A02 and A10 after A26 in the earlier window and A09 after A25 in the later window; at this level they are consistent with sampling noise and are not part of the main hypothesis. [DIR001, DIR002]",
+  "case_id": "case_f06000554c21b4ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

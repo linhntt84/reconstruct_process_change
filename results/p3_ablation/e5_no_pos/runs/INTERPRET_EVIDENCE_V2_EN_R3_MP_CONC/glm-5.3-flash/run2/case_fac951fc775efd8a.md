@@ -1,0 +1,22 @@
+### Observed differences
+
+- A02 was rare in the earlier window, appearing in about 8 in 100 traces (~0.08 occurrences per trace); in the later window it appears in about 34 in 100 traces (~0.35 occurrences per trace). [OCC001]
+- A02's outgoing transitions changed almost completely: earlier they were spread over many activities (A44 and A15 about 19% each, A23 about 13%, the rest about 6% each); in the later window A02 leads mainly to A19 (about 37%), A24 (about 27%) and A21 (about 24%). [DIR001]
+- The successors of A19, A21 and A24 flipped from A30 to A25: earlier about 97–99% of their observed outgoing transitions went to A30; later about 95–100% go to A25. [DIR002, DIR004, DIR007]
+- The successors of A20, A22 and A23 flipped the other way: earlier each sent about 30–39% of its transitions to A25 (alongside transitions among themselves); later none do, and about 32–34% go to A30. [DIR003, DIR005, DIR006]
+- The order of the two groups reversed. Earlier, A20, A22 and A23 ran before A25 and before A29 in about 98–100% of the traces containing both; later, A25 and A29 run before A20/A22/A23 in about 97–100%. Both activities of each pair still co-occur in every trace, so the ordering constraint reversed rather than the relation disappearing. [REL017, REL018, REL024, REL025, REL027, REL028]
+- Earlier, A19, A21 and A24 ran after the A20/A22/A23 group (e.g., A20 before A19 in about 31% of co-occurrences, never the reverse); later they run before it (A19 before A20 in about 44%, A21 before A22 in about 28%, A24 before A20 in about 28%). [REL010, REL015, REL016, REL019]
+- A40 and A29 changed partners: A40 earlier led to A22 (about 37%), A23 (30%) and A20 (27%), later to A02 (31%), A19 (29%), A21 (20%) and A24 (18%); A29 earlier led to A21/A19/A24 (31–38%), later to A20/A22/A23 (30–33%). A02 in turn now precedes A20, A22, A23, A25, A29 and A30 in about 31–33% of their co-occurrences (earlier at most about 5%) and precedes A19 and A21 whenever they co-occur; A40 immediately precedes A02, one step apart in essentially all later observations. [DIR008, DIR009, REL002, REL004, REL005, REL008, LAG005]
+- Distances shifted accordingly: A29 to A30 moved from about 2 steps apart to about 4; A40 to A25 from 4–5 steps to 2–3; A29 to A20, earlier seen once at 5 steps, now occurs within 1–3 steps in nearly every trace; A02 to A25, earlier seen twice at 3–4 steps, now sits 2 steps apart in nearly all later observations. [LAG001, LAG003, LAG004, LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two blocks of activities exchanged their positions in the sequence. In the earlier window the block A20/A22/A23 ran before A25 and A29, while the block A19/A21/A24 ran after A29 and led on to A30, with A02 only occasionally present; in the later window A19/A21/A24 run first — commonly entered from A40 via A02, which now occurs in about a third of traces — and lead to A25, while A20/A22/A23 run after A29 and lead to A30. [OCC001, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, REL017, REL018, REL024, REL025, REL027, REL028]
+
+The order reversals are shown directly: the pairs still co-occur in essentially every trace in both windows, so only the order flipped, and the successor swaps are observed outright rather than inferred. The DIR, REL and LAG items agree on a single arrangement, and the screening produced 49 qualifying items against roughly 0.7 expected if nothing had changed, so the pattern as a whole is not what random re-splits of a stable process produce. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL017, REL018, REL024, REL025, REL027, REL028, LAG004, LAG007]
+
+A competing explanation the evidence cannot rule out is a shift in the mix of pre-existing case variants — for example two variants with the blocks in opposite orders — rather than a reordering within individual cases. The positional evidence for A19, A21 and A24 also rests only on the roughly 30–45% of traces that contain them. [REL010, REL015, REL016, DIR002, DIR004]
+
+Other differences: A41 occurs and repeats more often (about 1.5 vs 1.8 occurrences per trace; repetition in about 33% vs 40% of traces containing it); A43 appears in a larger share of traces with an essentially unchanged successor profile; A19 is observed in more traces in the later window (about 62 vs 88 outgoing-transition observations) and A21 in fewer (about 76 vs 57). [OCC002, DIR010, DIR002, DIR004]

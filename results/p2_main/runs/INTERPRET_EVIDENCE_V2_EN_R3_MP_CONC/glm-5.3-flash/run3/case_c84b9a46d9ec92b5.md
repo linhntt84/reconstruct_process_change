@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 each took part in roughly a third of cases — 73, 62 and 70 of 200 traces (about 31–37 in 100), once per trace with no repetitions. In the later window, A20 and A25 were not observed in any of the 200 traces, and A19 appeared in only 1. [OCC001, OCC002, OCC003]
+- Before, these three behaved as alternatives: each pair co-occurred in only about 1 in 100 traces, while exactly one of them ran alone in nearly every case (about 36, 30 and 34 in 100 for A19, A20 and A25). In the later window, for each pair, neither activity was present in 99–100 of 100 traces. [REL001, REL003, REL008]
+- Before, A41 fed into this block (A41 preceded A19, A20 or A25 in about 36, 31 and 35 of 100 traces), and the block led on to A26 or A31 (about 30–36 in 100). In the later window A41, A26 and A31 still occur in essentially every trace, but no longer together with A19, A20 or A25. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]
+- A41's successors changed completely: before, its outgoing transitions led to A25 (about 32 in 100), A19 (about 29) and A20 (about 26), with no direct transition to A26 observed; in the later window about 86 in 100 lead straight to A26, and the A41–A26 gap shrank from typically two positions apart (85 in 100 pairs) to immediate succession (86 in 100). [DIR005, LAG001]
+- Before, A19, A20 and A25 led almost exclusively to A26 (94–97 in 100 of their outgoing transitions); in the later window A20 and A25 show no observed outgoing transitions, and the single A19 execution leads to A12. [DIR001, DIR002, DIR004]
+- A24 now runs in about 56 of 100 traces without any of the three, whereas before it co-occurred with them in about 17 of 100 and typically followed them; its overall participation stayed similar (about 50 vs 56 in 100). [REL002, REL007, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural hypothesis: the block of three alternative activities A19, A20 and A25 — previously executed exactly once per case between A41 and A26, with A41 feeding into it and the block leading to A26 — is no longer executed in the later window, so that A41 now passes control directly to A26. This is a removal of activities rather than a re-weighting of surviving paths, since the three are (nearly) absent in the later window while A41 and A26 still run in every trace. The signs are direct and consistent across indicators: participation fell from 62–73 to 0–1 of 200 traces, A41's successor profile flipped from the three activities to A26, and the A41–A26 distance contracted from two positions to one; every item also exceeds all but about 1 in 200 random re-splits of the data. [OCC001, OCC002, OCC003, DIR005, LAG001, REL004, REL006, REL013]
+
+The main limitation is that zero participation only means the activities were not observed: the evidence cannot distinguish a complete removal from a drop to a rate below roughly 1 in 200 cases (one A19 execution remains), and it cannot show whether any unobserved activity took the block's place. The competing explanation that the block still executes but fell below the sample's visibility cannot be fully ruled out, although the new direct A41–A26 transition makes a pure sampling artefact unlikely. [OCC001, DIR001, DIR005]
+
+Other differences: A21's outgoing transitions were redistributed, with A24 rising from about 14 to about 35 in 100 and A31 falling from about 54 to about 38 in 100, all successors still observed in both windows; A26's typical event position moved slightly earlier and A41's slightly later, small shifts in position units rather than clock time. [DIR003, POS004, POS005]

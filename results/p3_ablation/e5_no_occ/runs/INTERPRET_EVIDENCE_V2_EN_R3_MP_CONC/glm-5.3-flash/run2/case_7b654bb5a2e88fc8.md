@@ -1,0 +1,21 @@
+### Observed differences
+
+- Early segment rerouted: in the earlier window, A40 split into three alternatives — A14 (about 38 in 100 of its outgoing transitions), A15 (about 31) and A20 (about 31) — and each of A14, A15 and A20 then always continued to A21. In the later window, A40 leads directly to A21 in all observed transitions, and none of A14, A15 or A20 is observed leading to A21 any more. [DIR001, DIR002, DIR003, DIR006, LAG004]
+
+- Late segment rerouted: in the earlier window, A22 always continued to A23 and A23 always to A27. In the later window, A22 leads to A23 in about half of its transitions and to one of A14/A15/A20 in the other half (about 16, 18 and 15 in 100 respectively), and A23 leads to A27 in about 48 in 100 transitions and to one of A14/A15/A20 in about 52 in 100. [DIR004, DIR005]
+
+- The trio now runs later in the trace: A14, A15 and A20 occurred at mean relative position about 0.31–0.33 (roughly the first third of the trace) in the earlier window and about 0.59–0.60 (about three-fifths through) in the later window, while their share of traces stayed broadly similar (A14 about 38% to 31%, A15 about 31% to 33%, A20 about 32% to 37%). [POS001, POS002, POS003]
+
+- Order relations flipped: in the earlier window, a trio member always preceded A21, A22 and A23 when they co-occurred (e.g., A14 before A21 in about 38 in 100 traces). In the later window, A21 and A22 come first (A21 before A14 in about 31 in 100; A22 before A14 in about 31 in 100), and around A23 the order is now mixed (A14 before A23 in about 16 in 100 versus A23 before A14 in about 15 in 100; for A20, A23 first in about 23 in 100 versus 15 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- Spacing changed accordingly: in the later window, A40 and A21 are always directly adjacent (previously one event apart), A22 and A27 are always three positions apart (previously two), and A22–A23 and A23–A27 are adjacent in roughly half of the traces and separated by one event in the other half (previously always adjacent). [LAG001, LAG002, LAG003, LAG004]
+
+- A21, A22 and A23 each shifted slightly earlier (mean position about 0.35 to 0.32, 0.58 to 0.55 and 0.61 to 0.59), consistent with the early segment losing one event. [POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the alternative block of activities A14, A15 and A20 no longer runs between A40 and A21: A40 now feeds directly into A21, and the block is instead executed in the late segment, inserted either between A22 and A23 or between A23 and A27, so that the route to A27 frequently passes through it. This is shown directly and consistently by the successor changes of A40, A14, A15, A20, A22 and A23, by the trio's position moving from the early third to about three-fifths of the trace while its participation stayed roughly stable, by the flipped order relations with A21 and A22 and the new mixed order around A23, and by the lag changes matching the same structure [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004]. The screening produced 24 qualifying items where about 0.26 would be expected without a change, so chance sampling cannot account for the set as a whole. Limitations: positions are event positions rather than clock times, and the evidence cannot distinguish a literal move of one block from the early branch being dropped and an equivalent block inserted late; it also cannot rule out that the later window mixes two routing behaviours in which the trio's insertion point varies per case rather than sitting at one fixed new position [DIR004, DIR005, REL003, REL008, POS001, POS002, POS003].
+
+Other differences: the trio's trace coverage shifted mildly (A14 about 38% to 31%, A20 about 32% to 37%); this is small, could reflect sampling, and is not part of the main hypothesis. [POS001, POS002, POS003]

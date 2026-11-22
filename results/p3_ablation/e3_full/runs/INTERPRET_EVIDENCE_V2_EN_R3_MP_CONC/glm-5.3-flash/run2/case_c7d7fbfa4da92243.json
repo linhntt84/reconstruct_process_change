@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_c7d7fbfa4da92243.json",
+  "evidence_sha256": "b058f376c2aaa4f12995da462127165134ff3ec3fbb30d79bd58f348431543d8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:05:18.330644+00:00",
+  "finished_at_utc": "2026-11-16T02:07:42.099397+00:00",
+  "latency_seconds": 143.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16812,
+    "prompt_tokens": 65719,
+    "total_tokens": 82531,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15495,
+      "text_tokens": 1317
+    },
+    "cost": 0.018263849999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53706,
+  "text": "### Observed differences\n\n- In the earlier window, A10 ran in about 44 in 100 traces (88 of 200), always together with A04 and A12, usually after A04 (about 32 in 100 traces) and before A12 (about 44 in 100 traces, and about 82 in 100 of A10's outgoing transitions led to A12). In the later window, A10 appears in 0 of 200 traces and has no observed outgoing transitions. [OCC010, POS010, DIR009, REL036, REL064]\n- The branch was rewired around A10: A04's outgoing transitions moved from A10 (about 55 in 100 before, based on 78 observed transitions) to A12 (about 73 in 100 after, up from about 10 in 100, based on 107), and the distance from A04 to A12 shrank from typically 2–3 positions (about 56 in 100 at distance 2) to typically 1 position (75 in 100). A01's route to A12 likewise shortened from typically 3 positions to typically 2, and A01's transitions to A10 (about 18 in 100) disappeared in favour of A04 and A12. [DIR004, LAG017, LAG002, DIR001, REL038]\n- In both windows every trace contains either A02 alone or the A04/A12 group, never both; this split moved from about 56 in 100 traces for A02 versus 44 for the A04/A12 group earlier to about 42.5 versus 57.5 in the later window. [REL013, REL021, REL038, OCC002, OCC004, OCC012]\n- Smaller shifts: A03 participation rose from about 8.5 to 12.5 in 100 traces and its few observed outgoing transitions switched from A10/A02 to A04/A12 (only 5 before and 10 after, so weak); A07 and A11 show the same successor switch on similarly few observations. A01 participation slipped from about 38.5 to 33 in 100. A05–A09 and A11 show only small participation changes within the range typical of random re-splits (empirical strength below about 0.7). [OCC003, DIR003, DIR007, DIR010, OCC001, OCC005, OCC007, OCC008, OCC009, OCC011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A10 was dropped from the branch sequence A04 → A10 → A12, which in the later window typically runs A04 → A12 directly. The change is shown directly on A10 itself (participation falling from 88 to 0 of 200 traces, with no outgoing transitions left) and relationally: A04's transitions moved from A10 to A12, the A04→A12 distance contracted from 2–3 positions to 1, and every activity pair involving A10 collapsed to joint non-occurrence. Occurrence, direction, position, relation and lag indicators all agree, and each of these differences is rated unusual for random re-splits of unchanged behaviour (empirical strength about 0.99). Limitations: zero participation strictly means A10 was not observed in the later sample — a change that merely stops A10 from being executed, rather than removing it from the process, would look identical — and no screening baseline is included, so the number of qualifying items cannot be compared with a chance expectation. [OCC010, POS010, DIR009, DIR004, LAG017, REL036, REL064, REL019]\n\nOther differences: The take-up of the two alternative branches shifted — A02 fell from about 56 to 42.5 in 100 traces while the A04/A12 branch rose from about 44 to 57.5, a routing-share change between alternatives that both exist substantially in both windows, though sampling variation cannot be fully excluded without a screening baseline. In addition, A03 — and, on very few observations, A07 and A11 — now appears to lead into the A04/A12 branch instead of to A10/A02, and A01 participation declined slightly (about 38.5 to 33 in 100). [REL013, REL021, OCC002, OCC004, OCC012, OCC003, DIR003, DIR007, DIR010, OCC001]",
+  "case_id": "case_c7d7fbfa4da92243",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

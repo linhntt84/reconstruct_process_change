@@ -1,0 +1,13 @@
+### Observed differences
+
+- A03 and A12, whose occurrence profiles are identical, ran about 2.2 times per trace on average in the earlier window (present in about 52 in 100 traces, roughly 435 executions each across 200 traces); in the later window this fell to about 1.8 times per trace (about 50 in 100 traces, roughly 370 executions). Trace participation barely moved, so the difference lies in how often they repeat within a trace; strength about 0.70. [OCC003, OCC009]
+- A06 and A11 (identical profiles) fell from about 1.2 to about 0.9 occurrences per trace, with participation slipping from about 35 to about 32–33 in 100 traces (roughly 230 down to 175 executions each); this is the highest strength in the set, about 0.79. [OCC004, OCC008]
+- Other occurrence counts are nearly flat: A07 and A08 ran about 1.0 times per trace in both windows (about 52 in 100 traces, roughly 205 vs 190 executions), A01 about 2.0 times per trace in both (present in every trace), while A02 rose slightly from about 1.9 to 2.0 and A09 from about 0.9 to 1.0 occurrences per trace (participation about 50 to 52 in 100). [OCC001, OCC002, OCC005, OCC006, OCC007]
+- Outgoing transitions of A03 shifted away from A06 (about 25 in 100 before vs about 21 in 100 after) with the A08 share rising from about 10 to 15 in 100; from A12 the A06 share also slipped (about 28 to 26 in 100) but the A08 share fell (about 14 to 9 in 100) while A07 gained (about 12 to 16 in 100); strengths about 0.78 and 0.67. [DIR003, DIR007]
+- Remaining routing shifts are small: A02's split between A10 and A09 moved from about 52/48 to about 49/51 in A09's favour; A07 and A08 each sent roughly half their transitions to A01 and half to each other in both windows, moving only about 3 in 100; the outgoing mixes of A01 and A11 are essentially unchanged (strengths about 0.27 and 0.08). [DIR001, DIR002, DIR004, DIR005, DIR006]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest differences — fewer within-trace repetitions of A03/A12 and A06/A11, and a lower share of A03/A12 transitions leading to A06 — reach empirical strengths of only about 0.7–0.8, meaning random re-splits of unchanged data produce differences this large in roughly one of four or five comparisons, and the identical profiles of A03/A12, A06/A11 and A07/A08 mean the agreeing items describe the same traces rather than independent confirmations. [OCC003, OCC004, OCC008, OCC009, DIR003]

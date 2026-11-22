@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A16, A17 and A18 each ran in about 75 in 100 traces, while A19, A20 and A21 each ran in about 25 in 100; in the later window these shares reversed, with A19–A21 at about 76 in 100 and A16–A18 at about 25 in 100 — a swing of roughly 50 percentage points per activity. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- The two groups behave as mutually exclusive alternatives: pairs such as A16–A19 or A17–A21 never occurred in the same trace in either window. Earlier, an A16/A17/A18 activity typically ran without an A19/A20/A21 activity (about 75 in 100 traces) and vice versa in about 25 in 100; in the later window these proportions swapped. [REL009, REL010, REL011, REL014, REL015, REL016, REL018, REL019, REL020]
+- Within the active group, the three activities ran together without a fixed order: earlier, A16, A17 and A18 co-occurred in about 75 in 100 traces, appearing in both orders in similar shares; in the later window A19, A20 and A21 co-occurred in about 76 in 100 traces, likewise in both orders. [REL007, REL008, REL013, REL022, REL023, REL025]
+- A15 and A25 ran in essentially all traces in both windows. Earlier, A15 preceded A16/A17/A18 in about 75 in 100 traces and about 75% of A15's observed outgoing transitions led to that group; in the later window, A15 preceded A19/A20/A21 in about 76 in 100 traces and about 76% of its outgoing transitions led to that group. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001]
+- The active group's relation to A25 stayed the same: earlier, A16/A17/A18 co-occurred with A25 in about 75 in 100 traces (preceding it in about 43 in 100, interleaved with it in about 32); in the later window, A19/A20/A21 co-occurred with A25 in about 76 in 100 (about 40 preceding, about 36 interleaved). [REL012, REL017, REL021, REL024, REL026, REL027]
+- A minor shift: among traces where A15 is followed by A20 within five steps, the gap shortened slightly (one-step share up from about 16% to about 29%; three-step share down from about 52% to about 34%), consistent with A20 now following A15 far more often; this alone does not show that A20 was repositioned. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the two alternative paths between A15 and A25 swapped execution frequencies: the path on which A16, A17 and A18 run together, in no fixed internal order, was taken in about 75 in 100 cases earlier and in about 25 in 100 in the later window, while the path on which A19, A20 and A21 run together rose from about 25 to about 76 in 100. A15 and A25 kept their roles around the chosen group, and the group's internal unordered behaviour and its relation to A25 are unchanged. [OCC001, OCC004, DIR001, REL001, REL004, REL012, REL024, REL022]
+
+Supporting signs: participation, the routing shares out of A15, and the co-occurrence profiles all show the same reversal consistently; every involved activity remains well observed in both windows (at least about 25 in 100 traces), and only the shares between the alternatives shifted — no activity disappeared, no group was bypassed, and no repetition appeared. The volume of qualifying items (35, against roughly 0.5 expected without a change in the control-flow family) also far exceeds what an unchanged process typically produces. [OCC001, OCC006, DIR001, REL009, REL022, REL025]
+
+Limitation: the evidence cannot distinguish a changed routing decision from a changed mix of case types entering the process, since both would produce the same reversal in path frequencies; it also observes only A15's first successors directly, so the exact divergence point beyond A15 is inferred from the groups' mutual exclusivity. [DIR001, REL009, REL020]
+
+Other differences: none beyond the slight shortening of the A15–A20 gap noted above. [LAG001]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_bc761aefe120e7d4.json",
+  "evidence_sha256": "f3adc140ff44f9813004e2857b50550463c9e90bc758d74b608b60aebea07fa0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:29:58.946605+00:00",
+  "finished_at_utc": "2026-11-14T11:31:35.150178+00:00",
+  "latency_seconds": 96.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12495,
+    "prompt_tokens": 7254,
+    "total_tokens": 19749,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11520,
+      "text_tokens": 975
+    },
+    "cost": 0.007335599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43517,
+  "text": "### Observed differences\n\n- The chain A30 → A31 → A36 was executed far less often per trace in the later window: A30, A31 and A36 each produced about 690 outgoing transitions across 200 traces in the earlier window (roughly 3–3.5 occurrences per trace) but only about 210 in the later window (about one occurrence per trace). [DIR001, DIR002, DIR003]\n- Routing out of A36 changed sharply: in the earlier window about 70 in 100 of A36's outgoing transitions went back to A30 and about 29 in 100 went to A25; in the later window about 93 in 100 go to A25 and only about 4 in 100 return to A30. [DIR003]\n- The relationship between A30 and A36 changed from mixed to fixed: the two always occurred in the same traces in both windows, but in the earlier window A30 came before A36 in only 25 in 100 traces (interleaved or repeated in 75 in 100), while in the later window A30 precedes A36 in 98 in 100 traces. [REL001]\n- Pair-level distances agree: in the earlier window, close A30→A36 pairs sat at variable gaps (mostly two or five positions), while in the later window about 89 in 100 observed pairs are two positions apart; self-repetitions of A30 and of A36, and the reverse pair A36→A30, each seen in about 150 traces earlier, appear in only 1–2 traces later. [LAG001, LAG002, LAG003, LAG004]\n- The positions of A30 and A36 became more consistent (spread shrinking from about 0.12 to about 0.06–0.07 of trace length); A30's typical position is slightly earlier (median about 0.43 → 0.41) while A36's is essentially unchanged. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeated execution of the A30 → A31 → A36 chain stopped: in the earlier window traces cycled through this chain about three to three and a half times, with A36 returning to A30 in about 70 in 100 transitions and the A30/A36 pair interleaved or repeated in 75 in 100 traces; in the later window the chain runs about once per trace in a fixed order (A30, then A31, then A36), and A36 continues to A25 in about 93 in 100 transitions instead of returning to A30. [DIR001, DIR002, DIR003, REL001]\n\nThe signs are direct and consistent: the successor change at A36, the move from a mixed/interleaved order to a fixed A30-before-A36 order, the near-disappearance of self-repeats and of the reverse pair, the matching drop in occurrences per trace, and the tighter position distributions all describe the same underlying behaviour; screening found 10 qualifying items where only about 0.26 would be expected without a change, and every item's difference exceeds about 995 of 1,000 random re-splits, so chance alone cannot account for the set — though the items are not independent confirmations since they largely reflect one trace behaviour. [DIR003, REL001, LAG001, LAG002, LAG003, LAG004, POS001, POS002]\n\nLimitations: the self-repeat and reverse-pair items rest on only 1–2 after-window observations, and the evidence cannot rule out the competing explanation that the return path A36 → A30 still exists but is now taken in only a small share of traces (about 4 in 100 later) rather than having disappeared entirely. [LAG001, LAG003, LAG004, DIR003]\n\nOther differences: a few new minority successors of A30 and A31 appear in the later window (e.g. A30→A10, A31→A15), each observed once and too rare to interpret separately. [DIR001, DIR002]",
+  "case_id": "case_bc761aefe120e7d4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

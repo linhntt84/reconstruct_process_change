@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_69d699ed5a04f79e.json",
+  "evidence_sha256": "5b957a1978951c015858a39654e3f48f510039248d50462d244bdf9b25050bd3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:34:52.136443+00:00",
+  "finished_at_utc": "2026-11-16T01:37:18.195155+00:00",
+  "latency_seconds": 146.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17569,
+    "prompt_tokens": 18706,
+    "total_tokens": 36275,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16092,
+      "text_tokens": 1477
+    },
+    "cost": 0.011590399999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56250,
+  "text": "### Observed differences\n\n- **New closing activity A01.** In the earlier window A01 appears in none of the 200 traces; in the later window it appears exactly once in every trace (200 of 200), always at the last position and always immediately after A07 — A07's outgoing transitions lead to A01 in 100 in 100 later cases, and A07 precedes A01 in every trace containing both. [OCC001, POS001, DIR005, REL006]\n- **A07 no longer ends the trace.** Earlier, A07 was the final event of every trace (mean relative position 1.0); in the later window it sits at about 0.83, one step before the new closing A01. [POS007, DIR005, REL006]\n- **A05 no longer observed.** Earlier, A05 appeared in about 47 in 100 traces (93 of 200; roughly 0.9 occurrences per trace, around mid-trace position 0.5); in the later window it appears in 0 of 200 traces. Earlier, A05 led back to A04 in about 99 in 100 of its outgoing transitions, and A04 led to A05 in about 46 in 100 of its outgoing transitions. [OCC003, POS005, DIR003, DIR004]\n- **A04's repetition became consecutive.** A04 occurs in every trace in both windows (about 1.9 vs 2.0 occurrences per trace). Earlier, a direct A04→A04 transition was not observed and repeated A04s were typically two positions apart, with A05 in between; in the later window about 49 in 100 of A04's outgoing transitions are direct A04→A04 repeats, with the rest going mainly to A06 (about 50 in 100), and repeated A04s are typically adjacent. [OCC002, DIR003, LAG009, REL012]\n- **Downstream positions moved earlier.** A06's mean relative position fell from about 0.80 to 0.65 and A04's median from 0.50 to 0.40, consistent with the middle of the trace shortening while an event was appended at the end. [POS004, POS006]\n- **Early routing stable.** A02 still led to A03 in about 74–75% of its outgoing transitions (vs ~75% earlier) and to A04 in about 26% (vs ~23%); A03 still led mainly to A04 (~76% vs ~78%); A02 preceded A03 in 74% vs 75% of traces. [DIR001, DIR002, REL007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the second half of the process was restructured in two direct ways: A05 no longer appears in any trace (previously about 47 in 100 traces, executed between two visits to A04), so A04's repetition, which previously wrapped around A05 (A04–A05–A04), now runs as consecutive A04–A04 repeats; and a new activity A01 closes every trace, executed exactly once after A07. The support is direct and consistent: both participation changes are all-or-nothing (A01 from 0 to 200 of 200 traces; A05 from 93 to 0 of 200) with empirical strength 0.995 on each item; the new A07→A01 edge is observed in 100 in 100 later A07 executions; A05's relations with A02, A03, A04, A06 and A07 all collapse from frequent co-occurrence to none; and the position shifts of A04, A06 and A07 match this restructuring. [OCC001, OCC003, POS001, POS004, POS006, POS007, DIR003, DIR004, DIR005, LAG009, REL004, REL006, REL012, REL015]\n\nOther differences: The lag distributions of several activity pairs (A02–A04, A02–A06, A02–A07, A03–A04, A03–A06, A03–A07, A04–A06, A04–A07) redistributed slightly, and A03 sits slightly earlier (mean relative position about 0.15 vs 0.13); these are small shifts consistent with the disappearance of A05 and the appended A01 rather than an independent reordering, and one item (A04 before A02) rests on only 6 versus 3 observations. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG010, LAG011, POS003]\n\nThe evidence cannot distinguish a genuine removal of A05 from an A05 branch that is simply never taken in the later sample, since zero participation only means the activity was not observed; positions reflect event order rather than clock time, so no timing claim is made; and many items describe the same underlying behaviour, so they are not independent confirmations. [OCC001, OCC003]",
+  "case_id": "case_69d699ed5a04f79e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

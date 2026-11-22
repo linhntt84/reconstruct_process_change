@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_1407619f4daba9b8.json",
+  "evidence_sha256": "718177a4ce17c81ed63af6c5c453f5ffb6d1fdb23a1c9dbe26d3ea65f3064ac3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:35:15.149527+00:00",
+  "finished_at_utc": "2026-11-15T06:36:35.784066+00:00",
+  "latency_seconds": 80.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11716,
+    "prompt_tokens": 9347,
+    "total_tokens": 21063,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10502,
+      "text_tokens": 1214
+    },
+    "cost": 0.00726005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35902,
+  "text": "### Observed differences\n\n- The three activities A31, A32 and A37 each appeared in about 46 in 100 traces in the earlier window (92 of 200) and in essentially every trace in the later window (199 of 200); A22 rose from about 54 in 100 traces (108 of 200) to all 200. None of these four activities repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004]\n- In the earlier window, A20 was followed by A23 in all of its outgoing transitions; in the later window A20 leads to A31 (about 36 in 100), A32 (about 32) and A37 (about 32), while A23 follows A20 directly in only about 1 in 200 transitions. Matching this, A23 moved from immediately after A20 (gap of one position in 100 in 100 traces) to four positions after A20 (in about 995 in 1000 traces). [DIR001, LAG001]\n- In the earlier window, A21 split its outgoing transitions between A22 (about 54 in 100) and A31, A32, A37 together (about 46 in 100); in the later window A21 leads to A22 in every observed transition. The distance from A21 to A26 changed accordingly: earlier, A26 came two positions after A21 in about 54 in 100 traces (via A22) and four positions in about 46 in 100 (via the three-activity group); later, the gap is two in all traces. [DIR002, LAG002]\n- The three-activity group changed its exit: earlier, A31, A32 and A37 each led on to A26 in roughly three in ten of their outgoing transitions (about 29–36 in 100); later, each leads to A23 (about 31–37 in 100) and A26 is no longer a successor of the group. [DIR003, DIR004, DIR005]\n- Relative positions moved consistently with this: A31, A32 and A37 shifted earlier (mean relative position about 0.59 to about 0.40), while A23 (about 0.39 to 0.46), A22 (about 0.59 to 0.63) and A21 (about 0.54 to 0.60) shifted later. All 19 qualifying items are far above the roughly 0.38 expected by chance for the 77 tested units, and each difference is larger than in about 995 of 1000 random re-splits. [POS002, POS003, POS004, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the group A31–A32–A37 was relocated and made mandatory: it previously ran in about 46 in 100 traces as an alternative to A22 between A21 and A26, and in the later window it runs in nearly every trace between A20 and A23. The successor change at A20 and the A20→A23 gap change show the insertion directly [DIR001, LAG001]; the group's participation rose from about 46 in 100 to essentially all traces [OCC002, OCC003, OCC004]; A21 now leads only to A22 and the A21→A26 distance is uniformly two positions, so the old branch no longer appears in this sample [DIR002, LAG002]; and the group now exits to A23 instead of A26 [DIR003, DIR004, DIR005]. As part of the same change, A22 became mandatory, rising from about 54 in 100 traces to all [OCC001]. The item count (19 versus about 0.38 expected) rules out sampling variation as a whole, and the relational evidence (successor and gap changes) pins down the placement rather than leaving it to position shifts alone.\n\nLimitations: each window holds only 200 traces, so behaviour rarer than about 1 in 200 could be missed — A20 still led directly to A23 in a small number of later traces [DIR001], and the evidence cannot exclude that the old optional branch survives at very low frequency outside the sample. Positions are relative to trace length, so the position shifts are read as consequences of the insertion, not clock-time moves; the internal order of A31, A32 and A37 varies in both windows, so no fixed sequence within the group can be inferred.\n\nOther differences: A26's relative position moved slightly later (mean about 0.63 to 0.66) and A20's slightly earlier (about 0.36 to 0.34), consistent with traces lengthening rather than a separate change. [POS001, POS005]",
+  "case_id": "case_1407619f4daba9b8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

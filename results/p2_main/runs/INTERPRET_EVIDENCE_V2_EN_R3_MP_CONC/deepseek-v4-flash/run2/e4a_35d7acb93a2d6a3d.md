@@ -1,0 +1,9 @@
+### Observed differences
+
+In the later window, the elapsed time between the completion of each of the activities A16, A17, A18, and A19 and the subsequent completion of A28 roughly doubled. For all four pairs, the mean interval rose from about 1.0–1.07 hours to about 2.02–2.10 hours, and the median and quartiles shifted upward by a similar amount (e.g., A16–A28 median from 1.07 to 2.01 hours; A17–A28 median from 1.03 to 2.05 hours). The spread of these intervals also increased, with the standard deviation roughly doubling in each pair. The number of observed intervals changed only slightly and inconsistently (e.g., A16–A28 from 55 to 47, A17–A28 from 44 to 53), so the main difference is in the timing, not in how often these activity pairs occur. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a hypothesis that the time between the completion of activities A16, A17, A18, and A19 and the completion of A28 increased from about one hour to about two hours. This is a change in timing, not in process structure or resource allocation. The four time items are far more numerous than the 0.011 expected by chance in the time family, and all show the same direction with very high empirical strength (0.9995). The main limitation is that this rests solely on time intervals; no control-flow or resource evidence accompanies it, and the slight changes in occurrence counts are not consistent enough to indicate a change in how often these paths are taken. A competing explanation that cannot be ruled out is a change in the overall pace or scheduling of the process that affects all these intervals together, rather than a change specific to the activities themselves.

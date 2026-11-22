@@ -1,0 +1,22 @@
+### Observed differences
+
+- In the later window, A15 and A16 still ran in every trace, but each averaged about 1.55 occurrences per trace instead of about 1.7, and recurrence support fell from about 0.40 to 0.33 for A15 and from about 0.40 to 0.33 for A16 — roughly 7 fewer traces in 100 showed repeated execution of this loop. [OCC014, OCC015]
+- Consistently with that, about 35 in 100 of A16's outgoing transitions went back to A15 in the later window (about 42 before), while its exits toward A41 rose from about 31 to 35 in 100 and toward A18 from about 12 to 15; A15's exits to A04 rose from about 13 to 17 in 100. [DIR015, DIR016]
+- After A43, the later window routed more traffic to A44: about 50 in 100 of A43's outgoing transitions went to A44 (about 44 before) and about 49 to A45 (about 54 before). A44 appeared in about 65 of 100 traces (about 58 before; 0.90 vs 0.79 mean occurrences), while A45 and A46 each appeared in about 62 of 100 traces (about 66 before); A44 also sent about 41 vs 35 in 100 of its outgoing transitions back to A43. [DIR043, DIR044, OCC042, OCC043, OCC044]
+- Within the A03–A11–A12–A13 loop, internal shares moved (A03 to A11 about 26 vs 37 in 100, A03 to A12 about 36 vs 27; A12 to A11 about 41 vs 30, A12 to A13 about 22 vs 33), and A11, A12 and A13 each appeared in about 4 fewer of 100 traces (about 55 before, about 51 later). [DIR003, DIR012, OCC010, OCC011, OCC012]
+- Two smaller routing shifts: A01's outgoing mix moved from A07 (about 35 vs 27 in 100) toward A05 (about 33 vs 44), and A38's moved from A39 (about 36 vs 30) toward A37 (about 25 vs 37). [DIR001, DIR038]
+- Rare activities show fully reshuffled successor mixes (A02, A06, A08, A10, A48), and A02 rose from about 2 to 6 of 100 traces, but these profiles rest on only about 2–13 outgoing transitions per window and have low empirical strength (0.0–0.53), so they are consistent with sampling noise. [OCC002, DIR002, DIR006, DIR008, DIR010, DIR048]
+- The remaining occurrence differences are small (at most about 5 in 100 traces) with empirical strength below about 0.7, the range that random re-splits of the pooled windows regularly produce. [OCC001, OCC005, OCC016, OCC019, OCC031]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence points to one specific possibility: in the later window, the loop between A15 and A16 iterated less often — both activities still ran in every case, but each averaged about 1.55 occurrences per trace (about 1.7 before), recurrence support fell to about 33 vs 40 in 100, and A16 sent about 35 vs 42 in 100 of its transitions back to A15 while exiting more often toward A41. Supporting signs: the occurrence measures are direct, come from activities present in all 200 traces of both windows, and sit near the top of the evidence set in empirical strength (0.86–0.88), with the direction shares agreeing (about 0.79 each). What is missing: the two occurrence items describe the same loop and are not independent confirmations, and no screening baseline is provided, so item counts cannot be checked against chance; a difference of this size arises in roughly 12–14 of 100 random re-splits, meaning one such cluster among the many tested activities can occur without any change. [OCC014, OCC015, DIR015, DIR016]
+
+Other differences:
+- The branch after A43 shifted toward A44 (A43→A44 about 44 vs 50 in 100 transitions; A44 in about 58 vs 65 of 100 traces; A45 and A46 each down about 4 in 100), a coherent six-item pattern suggesting the A43–A44 path is taken and repeated somewhat more often, but it rests on one direct relational item plus its downstream consequences and carries the same chance caveat. [DIR043, DIR044, DIR046, OCC042, OCC043, OCC044]
+- The A03/A11/A12/A13 loop shows shifted internal shares and about 4-in-100 lower participation for A11, A12 and A13. [DIR003, DIR012, OCC010, OCC011, OCC012]
+- A01's and A38's outgoing mixes shifted toward A05 and A37 respectively, and rare A02 became more frequent (about 2 vs 6 of 100 traces) with a completely changed successor profile based on only 4 vs 13 transitions. [DIR001, DIR038, OCC002, DIR002]
+
+An important competing explanation the evidence cannot rule out is sampling variation across the roughly 100 tested activity and edge units, which without any change regularly produces a few items of this strength; without a screening expectation, the number of qualifying items cannot be compared against the chance level. [OCC014, DIR043]

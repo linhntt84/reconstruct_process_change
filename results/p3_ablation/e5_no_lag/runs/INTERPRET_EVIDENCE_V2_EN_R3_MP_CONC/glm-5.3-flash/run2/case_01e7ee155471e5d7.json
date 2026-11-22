@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_01e7ee155471e5d7.json",
+  "evidence_sha256": "bbf28857341da30ca8bdd923fcd41b63770a0551a5b80d76dbca8ff48d7d17db",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:00:48.465657+00:00",
+  "finished_at_utc": "2026-11-15T07:02:59.438223+00:00",
+  "latency_seconds": 130.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18340,
+    "prompt_tokens": 8336,
+    "total_tokens": 26676,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17086,
+      "text_tokens": 1254
+    },
+    "cost": 0.010420400000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63151,
+  "text": "### Observed differences\n\n- Before, every outgoing transition of A20 went to A22 (100 in 100); in the later window, A20 hands over almost equally to A30, A31 and A36 (about 33 in 100 each) and to A22 in only about 1 in 200 cases. [DIR001]\n- Before, A21's outgoing transitions split across A36 (about 38 in 100), A30 (34) and A31 (28); in the later window, about 995 in 1000 of them go to A25. [DIR002]\n- Before, each of A30, A31 and A36 passed control to one of the other two or to A25, with A25 receiving roughly 28–37 in 100 of each one's outgoing transitions; in the later window the exits to A25 have all but vanished (about 1 in 200) and each of the three instead hands over to A22 in roughly 31–34 in 100 cases, while handovers within the trio continue. [DIR003, DIR004, DIR005]\n- The relative order of the two groups reversed: before, A21 and A22 each ran before A30, A31 and A36 in 100 of 100 traces; in the later window, each trio activity runs before A21 and before A22 in about 995 of 1000 traces, and all six pairs still occur together in every trace. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Relative positions (by event order) moved accordingly: A30, A31 and A36 shifted from a mean position of about 0.59 to about 0.41 of the trace, A22 from about 0.38 to about 0.47, and A21 from about 0.53 to about 0.62. [POS003, POS004, POS005, POS002, POS001]\n- Every item rests on all 200 traces per window, and each difference exceeds those seen in about 995 of 1000 random re-splits of the pooled data. [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the order of two parts of the flow reversed, together with the matching rewiring of entry and exit points: the block formed by A30, A31 and A36, which before ran after A21 and A22 and exited to A25, now runs before A22 and A21 — entered directly from A20 — and exits to A22, while A21 now leads to A25. Before, A20 fed A22, A21 fed into the trio and the trio exited to A25; in the later window, A20 feeds the trio, the trio feeds A22, and A21 feeds A25. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006]\n\nSupporting signs: the order reversal is shown directly for all six cross-pairs between {A21, A22} and {A30, A31, A36} and is near-total in both directions, with co-occurrence unchanged at 100 in 100 traces, so no step became optional, was added or was removed; the successor changes at the block's entry and exit match the same rewiring; the position shifts agree in direction and size; and sixteen control-flow items qualified where roughly 0.34 would be expected without a change, so chance sampling cannot account for the set as a whole. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, screening]\n\nLimitations: no change was flagged for the outgoing transitions of A22 or around A25, so the precise wiring between A22, A21 and A25 beyond the observed handovers is inferred from the order and position data rather than observed directly; and the window comparison cannot distinguish a reordering applied across the flow from a complete turnover between two pre-existing execution orders. [DIR001, DIR002, DIR003, DIR004, DIR005]\n\nOther differences: none beyond this reversal — the internal handovers among A30, A31 and A36 (each can follow either of the other two) and the presence of every involved activity in all traces persisted unchanged. [DIR003, DIR004, DIR005, REL001, REL006]",
+  "case_id": "case_01e7ee155471e5d7",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

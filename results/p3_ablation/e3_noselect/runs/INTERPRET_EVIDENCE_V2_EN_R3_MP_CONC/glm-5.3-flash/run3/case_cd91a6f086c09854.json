@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "26b20cc4e00223168d94d42b76a3372624270a1c1a7421b3cc63d3c6a786fe1e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:10:26.150246+00:00",
+  "finished_at_utc": "2026-11-15T13:12:24.108782+00:00",
+  "latency_seconds": 117.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17294,
+    "prompt_tokens": 31417,
+    "total_tokens": 48711,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15440,
+      "text_tokens": 1854
+    },
+    "cost": 0.01335955
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53887,
+  "text": "### Observed differences\n\n- Before, A20's outgoing transitions split across A30 (about 40 in 100), A31 (about 33) and A36 (about 28); in the later window, about 99 in 100 of them go to A22, and the transitions to A30, A31 and A36 have nearly vanished (about 1 in 200 each). [DIR014]\n- Before, A21 led exclusively to A25 (100 in 100 of its outgoing transitions); in the later window, A21 leads to A30 (about 36 in 100), A31 (about 33) and A36 (about 31), while A25 is almost unobserved as its successor (about 1 in 100). [DIR015]\n- Before, each of A30, A31 and A36 sent roughly 28–38 in 100 of its outgoing transitions to A22 and none to A25; in the later window, each sends about 31–36 in 100 to A25, and A22 is essentially unobserved as a successor (about 1 in 200). [DIR018, DIR019, DIR024]\n- The order relations flipped: before, A30, A31 and A36 each ran before A22, and before A21, in 100 in 100 traces; in the later window, A22 runs before each block member in 99 in 100, and A21 runs before each block member in 99 in 100. All these activities still occur together in every trace in both windows. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Distances in event positions swapped accordingly: A22 followed A20 by 4 positions in essentially all traces before and by 1 position in 99 in 100 after; A25 followed A21 by 1 position before and by 4 positions in 99 in 100 after. [LAG001, LAG005]\n- Event positions agree: A22's median position moved from about 0.47 to about 0.37 of the trace and A21's from about 0.63 to about 0.53, while A30, A31 and A36 moved later, from about 0.41 to about 0.59; A20 (median about 0.33) and A25 (about 0.65) kept their positions. [POS001, POS002, POS003, POS004, POS005, POS006, POS007]\n- The internal order of A30, A31 and A36 stays unfixed in both windows: each pair appears in both orders in similar proportions (for example A30 before A31 in about 56 of 100 traces before and about 49 of 100 after). [REL007, REL008, REL009]\n- After the change, pairs of A20 or A21 with block members are rarely within five steps of each other (2 of 200 traces, versus 200 of 200 before), consistent with the rerouting; these later-window lag profiles rest on very few observations. [LAG002, LAG003, LAG004, LAG006, LAG009, LAG012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of three activities A30, A31 and A36 — executed in varying order among themselves — and the activity A22 exchanged their places in the sequence, with A21 and A25 marking the block's new surroundings. Before, the flow ran from A20 into the A30/A31/A36 block and then to A22, while A21 was followed immediately by A25; in the later window, A20 is followed directly by A22, and the block sits between A21 and A25, which now follows the block instead of A21 directly. This is shown directly by the successor changes at A20, A21, A30, A31 and A36, by the near-complete order flips between the block and A22/A21 with co-occurrence unchanged at 100 in 100, by the opposite distance changes (A20→A22 from 4 to 1 positions, A21→A25 from 1 to 4), and by the matching position shifts, with differences larger than in about 995 of 1000 random re-splits of the same data. [DIR014, DIR015, DIR018, DIR019, DIR024, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG005, POS002, POS003, POS005, POS006, POS007]\n\nLimitations: the rerouting is observed only through the edges of A20, A21 and the block members; the outgoing edges of A22 and A25 are not part of the evidence, so their exact continuations are inferred rather than observed. The later-window lag profiles pairing A20 or A21 with block members rest on only 2 of 200 traces each, the several indicator families partly re-describe the same relocation (so their agreement is not independent confirmation), and the evidence cannot rule out that the two windows sample a shifted mix of pre-existing variants rather than a repositioning applied from the boundary onward. [LAG002, LAG003, LAG004, LAG006, LAG009, LAG012]\n\nOther differences: small, scattered fluctuations that do not reach the strength of the main pattern — participation of A01, A03, A04 and A05 fell by about 5 in 100 traces while A02, A06, A07 and A08 rose by about 5, with A01's outgoing mix shifting from A05 (about 38 to 21 in 100) toward A03 and A04; A37's participation fell from about 21 to 16 in 100 traces (few observations) and A38's mean occurrences per trace from about 0.86 to 0.76 with a slight shift from A37 toward A39; and A34 and A35 each shifted about 10 in 100 of their outgoing transitions (A34 toward A27, A35 toward A34). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR001, OCC023, OCC024, DIR025, DIR022, DIR023]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, routing after each activity was spread over several targets: of A18's observed outgoing transitions, about 53 in 100 went to A27, 19 to A21, 17 to A20 and 12 to A19; A26 split roughly 50/50 between A19 and A17; and A19 led back to A17 in about 28 in 100 of its transitions. In the later window, each of these activities has essentially one successor (99–100 in 100): A26→A17, A17→A15, A15→A18, A18→A19, A19→A21, A21→A20, A20→A27. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- Relative order between pairs changed from mixed or reversed to fixed. A18 came before A19 in only about 12 in 100 traces before, but in essentially all traces after; A15 before A19 rose from about 26 to 100 in 100; A15/A21 and A17/A19, previously about 50/50, are now fixed; A15 before A20 and A17 before A21, already dominant (about 69 and 78 in 100), became universal. Both activities of every pair still co-occur in all traces in both windows, so participation did not change — only order. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- Step distances became constant. A26 to A17 is now 1 step in all traces (before: 1 step in only about half); A26 to A15 is now 2 steps in nearly all (before: spread over 2–5 steps); A15 to A21 is now 3 steps in nearly all (before: 1–3); A17 to A20 is now 5 steps (before: spread over 1–5); A18 to A27 moved from typically 1 step (about 53 in 100) to 4 steps. [LAG025, LAG024, LAG004, LAG009, LAG013]
+- Event positions shifted consistently with a re-sequencing: A15, A17 and A18 now occur earlier in the trace (mean relative position fell, e.g., A18 from about 0.68 to 0.62), while A19, A20 and A21 occur later (e.g., A19 from about 0.59 to 0.65). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the block of activities A15, A17, A18, A19, A20 and A21 — entered from A26 and closing at A27 — changed from a variable order with several alternative successors to a single fixed sequence, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27, in the later window. The signs are direct and mutually consistent: successor profiles collapsed from three or four targets to one, pair orders that were mixed or reversed became fixed, step distances became constant, and the position shifts match the new sequence; the volume of evidence also far exceeds what an unchanged process produces (50 qualifying items against roughly 0.47 expected by chance for 95 tested units). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005, POS006]
+
+An important competing explanation remains: the evidence cannot show whether the earlier variety reflected parallel execution or alternative routings, nor can it exclude that the later window simply captures one dominant variant while other orders still occur rarely; positions and distances are event-based, not clock times. [LAG009, LAG013, POS003, POS004]
+
+Other differences: a few reversed or long-range pairs (A19→A15, A19→A18, A20→A18, A21→A18, A26→A20) appear in the later window, but each rests on a single trace and is best read as rare residual occurrence rather than a second behaviour. [LAG014, LAG015, LAG019, LAG021, LAG028]

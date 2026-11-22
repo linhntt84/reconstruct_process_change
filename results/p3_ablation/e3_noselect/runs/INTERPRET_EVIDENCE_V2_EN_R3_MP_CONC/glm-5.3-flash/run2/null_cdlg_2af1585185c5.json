@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_cdlg_2af1585185c5.json",
+  "evidence_sha256": "e977601806d9e16f85303efbc368d0ecdafeff08cadc39d2979752ecf020f66d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:13:35.936516+00:00",
+  "finished_at_utc": "2026-11-15T09:16:35.533004+00:00",
+  "latency_seconds": 179.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26212,
+    "prompt_tokens": 8333,
+    "total_tokens": 34545,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24669,
+      "text_tokens": 1543
+    },
+    "cost": 0.01435595
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 90398,
+  "text": "### Observed differences\n\n- The split between two paths shifted: in the earlier window, A01 ran in about 58 of 100 traces while A02 and A03 each ran in about 43 of 100; in the later window, A01 runs in about 51 of 100 and A02 and A03 in about 50 of 100 each. The two sides' shares sum to one in both windows, consistent with the same two alternatives dividing the traces in roughly a 57/43 versus 51/49 split. [OCC001, OCC002, OCC003]\n- The A04-centred branch is used more and repeated more: A04 runs in about 43 of 100 traces before versus about 50 of 100 after, its mean occurrences per trace rise from about 1.6 to about 2.1, and it recurs in about 34% versus 38% of traces; A11 rises from about 0.8 to about 1.0 occurrences per trace (participation about 28% to 34%, recurrence about 15% to 22%); A12 rises from about 0.8 to about 1.0 occurrences per trace (participation about 43% to 50%). [OCC004, OCC011, OCC012]\n- The cycle activities A05, A07, A09 and A10 keep a stable footprint (about 23 of 100 traces in both windows) but are executed somewhat more often per trace (mean occurrences about 0.4 to 0.5; recurrence in about 11% to 13% of traces). [OCC005, OCC007, OCC009, OCC010]\n- Routing within that cycle shifts in one consistent direction: from A05, the share of outgoing transitions to A10 rises from about 43% to 54% while those to A07 fall from 49% to 41%; from A07, transitions to A09 rise from 45% to 53% while those to A10 fall from 48% to 40%; from A10, transitions to A07 rise from 41% to 50% while those to A09 fall from 53% to 43%; from A09, the exit to A04 becomes nearly exclusive (about 95% to 99%). [DIR003, DIR004, DIR005, DIR006]\n- Routing at the edges of the branch is essentially stable: A02 still leads to A04 in nearly all of its outgoing transitions (100% before, about 97% after), A04's split between A11 and A12 stays near half-half (about 48/52 before, 51/49 after), and A12's mix of successors barely moves. [DIR001, DIR002, DIR008]\n- Smaller shifts: A06 participation rises from about 23 to 28 of 100 traces; A08 from about 20 to 22 (weak signal). [OCC006, OCC008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A04-centred branch is executed more heavily in the later window, in two facets of the same region: more traces take the A02/A03 route into A04 instead of the A01 route (about 43 to 50 of 100 traces versus about 58 to 51), and traces running the branch repeat its loops more often — A04 from about 1.6 to 2.1 occurrences per trace, A11 from about 0.8 to 1.0, and A12 from about 0.8 to 1.0. Supporting signs: the participation changes of A01, A02, A03, A04 and A12 are equal in size and complementary, every involved activity appears in a substantial share of traces in both windows, the occurrence increases come with higher recurrence rather than one-off appearances, and the routing at A02, A04 and A12 is unchanged, so the same paths appear to be taken with different frequencies rather than rewired. [OCC001, OCC002, OCC003, OCC004, OCC011, OCC012, DIR001, DIR002, DIR008]\n\nThe main competing explanation the evidence cannot rule out is sampling variation between two finite windows of 200 traces: for the core items, random re-splits of an unchanged process reach differences of this size in roughly one to three of ten comparisons, so the judgement rests on the coherence of the whole pattern rather than on any single indicator; the items also overlap heavily in the traces they describe (the four cycle-activity items are numerically identical) and are therefore not independent confirmations, and the reading of A01 versus the A02/A03 route as two alternative paths rests on their complementary shares, since no outgoing routing is reported for A01 or A03. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC007, OCC009, OCC010, OCC011, OCC012]\n\nOther differences: the A05/A07/A09/A10 cycle is traversed slightly more often per trace, and its internal routing shifted consistently — A05 now favours A10 over A07, A10 favours A07 over A09, A07 favours A09 over A10, and A09 exits to A04 almost always — a change in the shares of existing, well-observed transitions rather than a placement change; A06 participation rose moderately (about 23 to 28 of 100 traces) and A08 marginally. [DIR003, DIR004, DIR005, DIR006, OCC005, OCC007, OCC009, OCC010, OCC006, OCC008]",
+  "case_id": "null_cdlg_2af1585185c5",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

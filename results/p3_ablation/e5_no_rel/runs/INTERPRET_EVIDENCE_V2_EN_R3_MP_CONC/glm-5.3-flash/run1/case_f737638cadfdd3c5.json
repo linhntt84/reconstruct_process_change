@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_f737638cadfdd3c5.json",
+  "evidence_sha256": "a64bbec7f26846b0b5c99cd7949d4c3fc04991d60b1cf38546f5dc91886628f7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:48:41.657177+00:00",
+  "finished_at_utc": "2026-11-14T12:49:34.085699+00:00",
+  "latency_seconds": 52.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7273,
+    "prompt_tokens": 7542,
+    "total_tokens": 14815,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6275,
+      "text_tokens": 998
+    },
+    "cost": 0.004767799999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23046,
+  "text": "### Observed differences\n\n- Three activities that never appeared in the earlier window occur regularly in the later one: A19 in about 37 in 100 traces (74 of 200), A25 in about 34 in 100 (68 of 200) and A20 in about 29 in 100 (57 of 200), each occurring at most once per trace; the three shares together cover nearly every trace. [OCC001, OCC002, OCC003]\n- In the later window, each of the three leads almost invariably to A26: about 96 in 100 of A19's observed outgoing transitions go to A26, about 98 in 100 of A20's and about 97 in 100 of A25's. In the earlier window these activities had no observed occurrences and hence no observed outgoing transitions. [DIR001, DIR002, DIR003, OCC001, OCC002, OCC003]\n- A41's routing changed: in the earlier window about 93 in 100 of its outgoing transitions went to A26; in the later window only about 1 in 100 does, while about 92 in 100 go to the three new activities (roughly 34, 31 and 27 in 100 to A19, A25 and A20 respectively). [DIR004]\n- The distance from A41 to A26 changed accordingly: in the earlier window A26 followed A41 within one event in about 94 in 100 traces; in the later window this holds for about 1 in 100, and A26 instead follows two events later in about 90 in 100. [LAG002]\n- The new activities sit at roughly 0.35–0.36 of the trace position, immediately before A26, whose mean position moved slightly later (about 0.37 to 0.39); A31 also shifted slightly later (about 0.69 to 0.71), consistent with one extra event appearing earlier in the trace. [POS001, POS002, POS003, POS004, POS005]\n- Separately, the spacing between A31 and A35 shifted: the two were adjacent in about 55 in 100 traces in the earlier window versus about 37 in 100 in the later one, and two events apart in about 42 versus about 62 in 100. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nFourteen control-flow items qualified, roughly 28 times the 0.5 expected if nothing had changed, so chance sampling cannot account for the set as a whole, and every item's difference exceeds those seen in about 995 of 1000 random re-splits. The evidence supports a structural hypothesis: in the later window, a stage of three alternative activities — A19, A20 and A25 — is executed between A41 and A26. Previously A41 was typically followed immediately by A26; now A41 leads to one of the three in roughly equal shares, and each of the three leads almost invariably to A26, so A26 follows A41 two events later instead of immediately. The appearance of the three activities from zero participation, the redirection of A41's outgoing transitions, the near-invariant edges from each new activity to A26, the shift of the A41→A26 distance from one to two events, and the new activities' positions just before A26's slightly later position all describe the same insertion consistently. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, POS001, POS002, POS003, POS004]\n\nLimitations: the evidence cannot show how the choice among A19, A20 and A25 is made; their mutual exclusivity is inferred from the three participation shares summing to nearly every trace rather than observed directly; and a rare direct A41→A26 transition (about 1 in 100 of A41's outgoing transitions) may persist. [OCC001, OCC002, OCC003, DIR004, LAG002]\n\nOther differences: the A31→A35 spacing shifted from mostly adjacent to mostly one event apart; this is not explained by the insertion, which lies earlier in the trace, and the evidence does not identify what now separates the two activities in the traces where the gap grew. [LAG001]",
+  "case_id": "case_f737638cadfdd3c5",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

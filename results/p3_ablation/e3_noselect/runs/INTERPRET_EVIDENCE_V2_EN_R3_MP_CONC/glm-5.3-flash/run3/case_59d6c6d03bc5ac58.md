@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A01 appeared in about 101 of 200 traces (about 50 in 100), always exactly once and always immediately before A02; in the later window, A01 does not appear at all (0 of 200 traces), and no outgoing transition from A01 is observed. A difference of this size is larger than in about 995 of 1000 random re-splits. [OCC001, DIR001, POS001]
+- A05 shows the reverse pattern: it was absent from the earlier window and appears in about 92 of 200 traces (about 46 in 100) in the later window, always exactly once per trace. [OCC004, POS004]
+- The route from A04 into A02 gained one step. Earlier, A04's only observed outgoing transition led directly to A02 and the pair A04→A02 was always adjacent (distance one); in the later window, A04's observed outgoing transitions go to A05, A05's go to A02, and A04 and A02 are always two steps apart. A04 and A05, which never co-occurred earlier, now co-occur in about 46 in 100 traces with A04 first, and A05 precedes A02 in the same share of traces. [DIR002, DIR003, LAG001, REL005, REL006]
+- A02 runs once in every trace in both windows, but earlier it was always the second event, whereas in the later window it is the first event in about 54 in 100 traces and the second in about 46 in 100 — matching the share of traces without the A04 route. [POS002, REL001]
+- Smaller shifts: A03, A04 and A06 each fell from about 99 to about 92 of 200 traces (roughly 50 down to 46 in 100), a difference no larger than typical random re-splits; A04's mean relative position moved from about 0.67 to 0.5, consistent with its traces containing one more event rather than with A04 being relocated. [OCC002, OCC003, OCC005, REL004, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural reorganisation of the paths leading into A02. In the earlier window, traces split into two routes: about half ran A01→A02, and about half reached A02 directly from A04. In the later window, A01 is no longer observed, and the A04 route passes through the newly observed A05, i.e. A04→A05→A02. The participation changes are near-total (A01 from about 50 in 100 traces to none; A05 from none to about 46 in 100), and the insertion is shown directly by relational evidence: A04's observed successor changed from A02 to A05, A05's observed successor is A02, and the A04→A02 distance moved from one step to two. The occurrence, direction, position and relation items all reflect these same two trace-level changes, so they should be read as one coherent picture rather than as independent confirmations. [OCC001, OCC004, DIR001, DIR002, DIR003, LAG001, REL001, REL005, REL006, POS002]
+
+Limitations: zero participation shows only that A01 was not observed in the later window, not that it was removed from the underlying process, and aggregate indicators cannot rule out that the two windows draw different mixes of cases rather than reflecting a modified process. [OCC001, OCC004]
+
+Other differences: the share of traces taking the A04 route slipped slightly (A03, A04 and A06 each from about 99 to 92 of 200 traces, with A02 co-occurring with A04 in about 50 down to 46 in 100), a shift within the range random re-splits produce and not individually remarkable. [OCC002, OCC003, OCC005, REL004]

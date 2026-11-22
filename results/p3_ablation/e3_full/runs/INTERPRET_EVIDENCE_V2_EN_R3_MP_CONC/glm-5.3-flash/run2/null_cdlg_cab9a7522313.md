@@ -1,0 +1,13 @@
+### Observed differences
+
+- A04 appeared in fewer traces in the later window: about 24 in 100 traces versus about 28 in 100 earlier (48 vs 55 of 200), with mean occurrences per trace down from 0.53 to 0.45 and repetition down from about 13 to 10 in 100 traces. [OCC003]
+- The relational profile of A04 moved by the same margin: its co-occurrence with A01, A02, A05 or A06 each fell from about 28 to 24 in 100 traces, while one-sided combinations (for example A05 without A04, about 23 to 28 in 100) and traces containing neither A03 nor A04 rose correspondingly. [REL003, REL007, REL010, REL013, REL014]
+- After A06, the successor mix shifted: in the earlier window about 51 in 100 of A06's outgoing transitions led to A04 and about 49 to A05; in the later window about 46 led to A04 and about 54 to A05. [DIR001]
+- Among A01, A02, A05 and A06, execution shifted slightly from interleaved-or-repeated towards a fixed order: interleaved-or-repeated covered about 24 in 100 traces in the later window versus about 28 earlier, while fixed-order shares (for example A01 before A02, or A06 before A01) rose from about 23 to 28 in 100; matching this, A01 and A06 — each still present in about half of the traces in both windows — recurred in about 24 versus 28 in 100 traces, with mean occurrences per trace down from 1.03 to 0.96. [OCC001, OCC005, REL001, REL004, REL005, REL009, REL015]
+- Pair distances and positions shifted slightly earlier: for A01→A05, A06→A02 and A06→A05, the share occurring one to two steps apart rose from about 47 to 52 in 100 while the share four to five steps apart fell, and the median event positions of A01 and A05 moved earlier (A01 from about 0.17 to 0.0, A05 from about 0.83 to 0.67 of the trace). [LAG002, LAG003, LAG007, LAG009, POS001, POS003]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. All differences are small — the largest concerns about 7 traces in 200 (A04's participation, 55 vs 48) — and no item stands out against random re-splits of the pooled windows: even the strongest items (the small lag and position shifts around A01, A05 and A06) are exceeded in about 20 of 100 random re-splits, and most items in about 40 to 85 of 100, so sampling variation between the two 200-trace windows cannot be ruled out; the many agreeing relation items largely restate this single few-trace shift rather than confirming it independently. [OCC003, LAG003, REL003]

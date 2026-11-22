@@ -1,0 +1,19 @@
+### Observed differences
+
+- Five activities that are not observed at all in the earlier window — A19, A20, A25, A26 and A27 (0 of 200 traces each) — appear in the later window in about 17–23 in 100 traces each (34–46 of 200 traces), always exactly once per trace and around the middle of the trace (median position about 0.51–0.52). [OCC001, OCC002, OCC003, OCC004, OCC005, POS001, POS002, POS003, POS004]
+- In the later window these five behave as alternatives rather than a sequence: any pair of them co-occurs in at most about 1 in 100 traces, while each is present in about 17–23 in 100; taken together they cover essentially every later-window trace. [REL001, REL002, REL003, REL007, REL008, REL012, OCC001, OCC002, OCC003, OCC004, OCC005]
+- Routing around them changed. Earlier, A29 led to A30 in about 98 in 100 of its outgoing transitions and A30 led to A31 in about 96 in 100. In the later window, A29 leads to one of the five new activities in about 51 in 100 transitions (and directly to A30 in about 48 in 100), and A30 leads to a new activity in about 47 in 100 (and to A31 in about 51 in 100). The new activities themselves lead almost exclusively to A30 or A31 (about 91–98 in 100 of their outgoing transitions). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- Ordering: a new activity always follows A29 (A29 first in all of the roughly 21–23 in 100 co-occurring cases, the reverse essentially never) and always precedes A31 (about 21–23 in 100, reverse essentially never); relative to A30 both orders occur in similar shares (roughly 10–13 in 100 each), so the new step sits either directly after A29 or directly after A30. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]
+- Event distances shifted by exactly one step: A29→A30 and A30→A31 were immediate neighbours in about 96–99 in 100 cases earlier and are now split roughly half at distance 1 and half at distance 2 (about 47–51 vs 46–50 in 100); A29→A31 moved from distance 2 (95 in 100) to distance 3 (94 in 100). [LAG001, LAG002, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a new step was added to the process: in the later window essentially every case executes exactly one of five mutually alternative activities — A19, A20, A25, A26 or A27 — placed between A29 and A31, directly after A29 in about half the cases and directly after A30 in the other half, whereas in the earlier window the flow ran from A29 through A30 to A31 with no intervening activity and none of the five was observed. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR006, DIR007, REL006, LAG001, LAG002, LAG003]
+
+The signs are direct and mutually consistent: the five activities go from zero participation to 34–46 traces each; A29 and A30 reroute about half of their outgoing transitions into the new block, whose members lead back to A30/A31; the order relations bound the new step between A29 and A31; and all three inter-activity distances increase by exactly one step, matching a single inserted event. The 35 flagged items also far exceed the roughly 0.6 items expected by chance among the 121 tested units, so the pattern as a whole is not what an unchanged process typically produces — though the occurrence, direction, position, relation and lag items largely reflect this one underlying difference rather than independent confirmations. [OCC001, DIR006, DIR007, REL004, LAG001, LAG002, LAG003]
+
+A competing explanation the evidence cannot rule out is that these codes represent a renamed or split existing step rather than a genuinely new one, since only anonymous activity codes are compared.
+
+Other differences: A31 now occurs slightly later within traces (median position about 0.54 → 0.57), and the new activities show a few rare outgoing edges to other activities (about 2–9 in 100 of their transitions); both are minor and consistent with the inserted step. [POS005, DIR001, DIR002, DIR003, DIR004, DIR005]

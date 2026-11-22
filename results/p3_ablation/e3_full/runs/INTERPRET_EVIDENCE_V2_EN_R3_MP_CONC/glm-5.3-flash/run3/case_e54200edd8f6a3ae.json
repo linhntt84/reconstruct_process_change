@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_e54200edd8f6a3ae.json",
+  "evidence_sha256": "d2320ef82f2a8d5da80c0445492cefaaeb996e350d94e2a252785495e1ab5f06",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:14:33.569574+00:00",
+  "finished_at_utc": "2026-11-16T03:16:28.812139+00:00",
+  "latency_seconds": 115.24,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16404,
+    "prompt_tokens": 20917,
+    "total_tokens": 37321,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14674,
+      "text_tokens": 1730
+    },
+    "cost": 0.011339549999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45878,
+  "text": "### Observed differences\n\n- In the earlier window, A03 is not observed at all (0 of 200 traces, mean 0 occurrences per trace); in the later window, A03 runs exactly once in every trace (200 of 200 traces, mean 1.0, never repeated within a trace) [OCC001].\n- The handover after A07 changed completely: in the earlier window, A07 was followed by A02, A06 or A10 in roughly equal thirds (about 33, 32 and 36 in 100 outgoing transitions), while in the later window A07 is always followed by A03 (100 in 100) [DIR004]. In the later window, A03 is in turn followed by A02, A06 or A10 in roughly equal thirds (about 39, 33 and 29 in 100) [DIR002].\n- In the later window, A03 co-occurs with A01, A02 and A04 through A10 in every trace, always after A04 and A07 and always before A01, A02, A05, A06, A08, A09 and A10; in the earlier window these pairs never co-occurred, because A03 was absent [REL001, REL002, REL005, REL006, REL007, REL008, REL009, REL010, REL011].\n- Event positions (positions, not clock time) of the downstream activities moved about one slot later, while A07 kept its slot: A02 mean 0.38→0.44, A06 0.38→0.44, A10 0.37→0.45, A05 0.625→0.667, A08 0.75→0.778, A09 0.875→0.889, A07 0.125→0.111; A03 always sits at 0.222 (the third event) in the later window — together consistent with every trace gaining exactly one event [OCC001, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008].\n- Distances in event steps grew by one for pairs spanning the new slot: A07→A05 was always 4 steps before and is always 5 steps after; A04→A02/A06/A10 moved from lags of 2–4 steps to 3–5; A07→A02/A06/A10 moved from lags 1–3 to 2–4; A02→A08 and A02→A09 also shifted one step later [LAG017, LAG007, LAG008, LAG009, LAG016, LAG018, LAG019, LAG004, LAG005]. These structural differences exceed roughly 995 in 1000 random re-splits of the pooled data [DIR002, DIR004, OCC001].\n- Minor shifts of the size two 200-trace samples typically show: outgoing shares of A02, A06 and A10 moved by roughly 4–7 points (empirical strength 0.45–0.73), the mixed order inside the A02/A06/A10 group tilted by 4–8 points (strength 0.52–0.82), and some lag distributions wobbled slightly (strength 0.16–0.86) [DIR001, DIR003, DIR005, REL003, REL004, REL012, LAG002, LAG006, LAG012, LAG022, LAG024, LAG025].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A03 was added to the process as a new, always-executed activity, inserted directly after A07 and before the A02/A06/A10 group. In the earlier window A03 was never observed and A07 passed on directly to A02, A06 or A10 in equal shares; in the later window A07 always hands over to A03, A03 hands over to that same group in equal shares, and A03 runs after A04 and A07 and before A01, A02, A05, A06, A08, A09 and A10 in every trace [OCC001, DIR002, DIR004, REL001, REL002, REL005, REL006, REL007, REL008, REL009, REL010, REL011]. The one-step-later positions of all downstream activities, the one-step-longer distances from A04 and A07 with A07 itself unmoved, and A03's fixed third position all match a single insertion and appear consistently across the occurrence, direction, relation, position and lag indicators [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, LAG004, LAG005, LAG007, LAG008, LAG009, LAG016, LAG017, LAG018, LAG019]. Limitations: zero participation in the earlier window strictly shows only that A03 was not observed there, so a pre-existing but very rare A03 cannot be ruled out; the many agreeing items largely restate one underlying insertion rather than independent confirmations; and no screening expectation was supplied, so the number of flagged items cannot be compared against a chance baseline [OCC001].\n\nOther differences: the outgoing shares of A02, A06 and A10 and the relative order within the A02/A06/A10 group — which remains mixed, with no fixed order in either window — shifted by a few percentage points, and some lag distributions changed slightly; these are small and consistent with ordinary sampling variation between the windows [DIR001, DIR003, DIR005, REL003, REL004, REL012, LAG002, LAG006, LAG012, LAG022, LAG024, LAG025].",
+  "case_id": "case_e54200edd8f6a3ae",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

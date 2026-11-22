@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_a383e8d05880f209.json",
+  "evidence_sha256": "10a4562533a8aef476d49de1e5b7f817e45d0ab170c94cb6382f5bff54132355",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:21:09.195533+00:00",
+  "finished_at_utc": "2026-11-15T03:23:04.939901+00:00",
+  "latency_seconds": 115.74,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17758,
+    "prompt_tokens": 10618,
+    "total_tokens": 28376,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16221,
+      "text_tokens": 1537
+    },
+    "cost": 0.0104717
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54856,
+  "text": "### Observed differences\n\n- In the later window, A01 runs much later in each case: its mean relative position moved from about 0.26 (roughly a quarter into the trace) to about 0.65 (about two-thirds in), its median from about 0.17 to 0.67, and its position became less variable. [POS001]\n- The order between A01 and its neighbours reversed or tightened. Earlier, A01 came before A02 in about 55 of 100 co-occurrences, before A05 in about 80 and before A07 in about 68, while A01 and A04 had no fixed order (about 49 vs 52 in 100); in the later window A02 precedes A01 in about 81 of 100, A05 in about 63, and A04 and A07 each precede A01 in all 200 traces. All four pairs still co-occur in every trace in both windows, with no repetition. [REL001, REL002, REL003, REL004]\n- What follows A01 changed: in the later window A03 receives about 47 in 100 of A01's outgoing transitions (about 7 in 100 before), typically immediately after it (one-step gap in about 47 of 100 cases vs about 10 before; the pair A01 then A03 within five steps now appears in all 200 traces, 143 before), while A01's transitions to A02 fell from about 29 to 12 in 100 and those to A04 and A07 (about 25 in 100 combined before) are no longer observed. [DIR001, LAG001]\n- The route into A01 changed: A04's direct transition to A01 (about 16 in 100 of A04's outgoing transitions before) is no longer observed, A04→A07 rose from about 54 to 70 in 100 and A07→A01 from about 18 to 68 in 100; A04 still reaches A01 within five steps in all later traces but now usually two steps apart (about 48 in 100, vs one step in about 31 before and 0 after), and A07 reaches A01 within five steps in all 200 later traces (65 before), usually immediately. [DIR003, DIR004, LAG004, LAG007]\n- A02 and A05 still run before A01 but no longer directly adjacent to it: A02→A01 at one step fell from about 57 to 13 in 100 (five steps rose to about 36), A05→A01 at four steps rose from about 10 to 39 in 100, A02's direct transition to A01 fell from about 26 to 11 in 100 of its outgoing transitions, and the ordered pair A01 then A05 within five steps appears in only 74 of 200 later traces (161 before). [LAG003, LAG005, LAG002, DIR002]\n- A02, A05 and A07 each occur slightly earlier (mean positions about 0.31→0.23, 0.47→0.38, 0.52→0.42), and an immediate A07→A03 transition (about 28 in 100 of cases before) is no longer observed, consistent with A03 now following A01. [POS002, POS003, POS004, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was repositioned from an early to a late stage of the case. Earlier, A01 ran near the start and usually preceded A02, A05 and A07, with no fixed order against A04; in the later window A01 runs after all four — A04 and A07 before it in every trace, A02 in about 81 of 100 and A05 in about 63 of 100 co-occurrences — and is followed directly by A03, which now receives about 47 in 100 of A01's outgoing transitions. The approach to A01 also changed: A04 reaches A01 through A07 rather than directly. [POS001, REL001, REL002, REL003, REL004, DIR001, DIR003, DIR004, LAG001, LAG004, LAG007]\n\nSupporting signs: 21 control-flow items qualified where fewer than 0.2 would be expected by chance among the 37 tested units, and every item's difference exceeds about 995 of 1,000 random re-splits, so the pattern as a whole is not what an unchanged process typically produces. Positional, relational, successor and gap evidence all describe the same difference in the same direction, while co-occurrence of A01 with A02, A04, A05 and A07 remains at 100 in 100 traces in both windows — participation did not change, only order and routing. [DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]\n\nLimitations: the indicator families partly describe the same traces, so they are not independent confirmations, and the evidence shows that the relative order changed without being able to establish which side moved — A01 shifting later and the block A02/A04/A05/A07 consolidating before it fit the same traces equally well. Positions are event positions, not clock times, so nothing follows about timing in clock time. [POS001, REL001, REL002, REL003, REL004]\n\nOther differences: within the block preceding A01, A02's outgoing transitions to A05 rose from about 27 to 40 in 100, A07 reaches A05 immediately less often (about 48 to 24 in 100), and A05→A03 gaps lengthened (five steps about 12 to 32 in 100). [DIR002, LAG009, LAG006]",
+  "case_id": "case_a383e8d05880f209",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

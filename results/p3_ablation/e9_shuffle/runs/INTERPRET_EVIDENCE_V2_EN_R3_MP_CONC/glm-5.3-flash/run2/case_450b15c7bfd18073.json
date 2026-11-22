@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "1b9183f9717fc5f1ecb9f9e682b83794506b064a16aac1eaf30452aa66c1a951",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:00:54.813195+00:00",
+  "finished_at_utc": "2026-11-15T04:02:01.504100+00:00",
+  "latency_seconds": 66.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9132,
+    "prompt_tokens": 11815,
+    "total_tokens": 20947,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8102,
+      "text_tokens": 1030
+    },
+    "cost": 0.00633825
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30100,
+  "text": "### Observed differences\n\n- In the earlier window every trace followed a single route: A21, then A22, then A23. All observed outgoing transitions of A21 went to A22, A22 appeared in all 200 traces, A23 always followed A22, and the positional distance from A21 to A23 was always 2 steps. [DIR001, OCC001, REL001, REL005, LAG001]\n- In the later window the route split. In about 51 in 100 traces A21 still leads to A22 and on to A23; A22's participation fell from 100% to about 51% of traces. [DIR001, OCC001, REL001, REL005]\n- In the remaining about 49 in 100 traces A22 is not executed at all. Instead, three activities that were never observed in the earlier window — A27, A28 and A33 — each occur exactly once. The three always appear together in the same traces and never together with A22, so they act as alternatives to A22 rather than additions. [OCC001, OCC002, OCC003, OCC004, REL006, REL007, REL008, REL012, REL013, REL014]\n- The trio sits between A21 and A23: A21 precedes each of the three in every trace where they co-occur (about 49 in 100 traces each), and each of the three precedes A23. A21's outgoing transitions are now split: about 51% still to A22, and about 17% to A28, 17% to A33 and 15% to A27. [REL002, REL003, REL004, REL009, REL010, REL011, DIR001]\n- The three new activities have no fixed order among themselves: for each pair both orders occur in similar shares (for example, A27 before A28 in about 23 in 100 traces versus A28 before A27 in about 26 in 100). Their outgoing transitions lead either to one of the other two or on to A23. [REL012, REL013, REL014, DIR002, DIR003, DIR004]\n- The positional distance from A21 to A23, previously always 2, is now 2 in about 51 in 100 traces and 4 in about 49 in 100, consistent with three activities executed between them; the new activities appear around the middle of the trace (median position about 0.48–0.50 of the trace length). [LAG001, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, an alternative route between A21 and A23 is taken in roughly half of the cases: A22 is not executed, and A27, A28 and A33 — run in no fixed order between them — are executed between A21 and A23 instead, while the original A21 → A22 → A23 route continues in the other half of cases. [REL002, REL003, REL004, REL006, REL007, REL008, REL009, REL010, REL011, DIR001, OCC001, LAG001]\n\nThe signs are direct and consistent: A21 precedes each new activity and each new activity precedes A23 in every co-occurrence; the trio never co-occurs with A22, marking them as alternatives on the same stretch rather than additions; participation moved from 100% to about 51% for A22 and from 0% to about 49% for each of the trio; and the A21→A23 positional distance shifted from always 2 to 2 or 4. With 26 qualifying control-flow items against roughly 0.4 expected if nothing had changed, chance sampling cannot account for the pattern as a whole — though all items describe this one coherent behaviour and are not independent confirmations. [REL002, REL003, REL009, OCC001, OCC002, LAG001]\n\nA competing explanation the evidence cannot fully rule out is that A27, A28 and A33 already existed but were simply not exercised in the earlier window, since zero participation there only means they were not observed. The evidence is purely control-flow and says nothing beyond structure and ordering. [OCC002, OCC003, OCC004]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

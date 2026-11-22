@@ -1,0 +1,23 @@
+
+
+### Observed differences
+
+- In the earlier window, the dominant control flow was a fixed chain in the observed outgoing transitions: A31 to A22 in about 100 in 100, A22 to A20 in about 99 in 100, A20 to A23 in about 99 in 100, A23 to A24 in about 100 in 100, A24 to A26 in about 99 in 100, A26 to A25 in about 99 in 100, and A25 to A32 in about 93 in 100; in the later window, the same links remain but are split, with A31 to A22 about 52 and A31 to A24 about 47, A22 to A20 about 56 and A22 to A24/A25/A26 about 44, A20 to A23 about 67 and A20 to A24/A25/A26 about 32, A23 to A24 about 15, A23 to A25/A26 about 33, and A23 to A32 about 49, A24 to A26 about 60 and A24 to A22/A20/A23 about 39, A26 to A25 about 67 and A26 to A20/A22/A23 about 33, and A25 to A32 about 43 and A25 to A20/A23/A22 about 52. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- In the earlier window, A20, A22 and A23 almost always preceded A24, A25 and A26 in the tested pairs (about 98-99 in 100), while co-occurrence was about 100 in 100; in the later window, co-occurrence remained about 100 in 100 but the order was often reversed or mixed, for example A24 before A20 in about 73 in 100, A24 before A23 in about 84 in 100, A26 before A20 in about 51 in 100, A25 before A23 in about 52 in 100, and A24 before A22 in about 47 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- In the earlier window, the tested distances were mostly fixed, such as A22 immediately before A20, A20 immediately before A23, A24 immediately before A26, and A26 immediately before A25; in the later window, the same pairs show a spread of distances within five steps and reverse-order pairs become common, for example A20 after A24 in about 148 of 200 traces, A20 after A26 in about 101 of 200, A22 after A24 in about 94 of 200, and A20 after A25 in about 64 of 200. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014, LAG015, LAG016, LAG017, LAG018, LAG019, LAG020, LAG021, LAG022, LAG023, LAG024, LAG025, LAG026, LAG027, LAG028]
+
+- In the earlier window, the mean event positions were A20 about 59%, A22 about 56%, A23 about 62%, A24 about 65%, A25 about 70%, and A26 about 67%; in the later window, A20, A22 and A23 were recorded at later mean event positions of about 63%, 59% and 68%, while A24, A25 and A26 were recorded at earlier mean event positions of about 59%, 68% and 64%. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+- Main hypothesis: The evidence supports the possibility that, in the later window, the previously fixed A31-A22-A20-A23-A24-A26-A25-A32 chain became a less constrained segment in which A31 can enter at A22 or A24, A20, A22, A23, A24, A25 and A26 occur in multiple orders and variable distances, and A23 or A25 can exit to A32. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014, LAG015, LAG016, LAG017, LAG018, LAG019, LAG020, LAG021, LAG022, LAG023, LAG024, LAG025, LAG026, LAG027, LAG028, POS001, POS002, POS003, POS004, POS005, POS006]
+
+- The 49 control-flow items are far above the about 1 item expected without change, and each is unusual for random splits (about 99.5 in 100 reference comparisons); they point to the same middle activities: successor shares are split, fixed precedence is mixed or reversed, lags are variable, and event positions shift in the same direction. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014, LAG015, LAG016, LAG017, LAG018, LAG019, LAG020, LAG021, LAG022, LAG023, LAG024, LAG025, LAG026, LAG027, LAG028]
+
+- A competing explanation the evidence cannot rule out is that a new optional loop or bypass was introduced among A20-A26, rather than a uniform relaxation of the previous order; the evidence shows the resulting mixed order but not the cause. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL003, REL006, LAG014, LAG015, LAG019, LAG021]
+
+- Other differences: a few rare successor edges appear or disappear at about 0.5-1.5 in 100, such as A12/A30 after A20, A40 after A22, A45/A28 after A24, A35/A36 after A26, and A27/A47 after A31, but they are not part of the main ordering hypothesis. [DIR001, DIR002, DIR004, DIR005, DIR006, DIR007]

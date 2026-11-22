@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_d3a9fc57e4ac05cd.json",
+  "evidence_sha256": "0917defc9aa70b7f01db4cea5cd29947449df1cb8782e8baabf09b07c8be8213",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:54:01.633775+00:00",
+  "finished_at_utc": "2026-11-15T01:54:33.405651+00:00",
+  "latency_seconds": 31.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4553,
+    "prompt_tokens": 3007,
+    "total_tokens": 7560,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3979,
+      "text_tokens": 574
+    },
+    "cost": 0.00272755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16616,
+  "text": "### Observed differences\n\n- In the earlier window, the elapsed time between the completion of A20 and the completion of A31 was typically about 0.83 hours (middle half of cases roughly 0.70–0.94 hours); in the later window it was typically about 1.66 hours (roughly 1.50–1.82). The typical gap roughly doubled, and the whole distribution shifted upward, including its spread. This pair occurs in about 38 of 200 traces in each window. [TWAIT001]\n- The elapsed time from A37 to A31 was typically about 0.07 hours (about 4 minutes) before and about 0.17 hours (about 10 minutes) after — also roughly doubled, with the upper quartile rising from about 0.11 to about 0.26 hours. This pair occurs in about 43 of 200 traces before and 42 of 200 after. [TWAIT002]\n- Both timing differences are larger than in all but about 1 in 2000 random re-splits of the pooled data. [TWAIT001, TWAIT002]\n- No control-flow indicator passed the screening threshold (0 items against about 0.28 expected by chance), so no structural difference was flagged. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a timing change centred on A31: in the later window, the elapsed time between the completion of its predecessors A20 and A37 and the completion of A31 is consistently about twice as long as before (A20→A31 median about 0.83 → 1.66 hours; A37→A31 about 0.07 → 0.17 hours). Supporting signs: the time family produced 2 qualifying items where only about 0.02 would be expected if nothing had changed, both items point in the same direction at the same target activity, the shifts cover the entire distribution rather than only extreme cases, and the control-flow family produced no items, so a structural reorganisation is not indicated. Limitations: both items share A31 and may reflect a single underlying difference rather than two independent ones; T_WAIT measures elapsed time between consecutive completion events, so the evidence cannot show whether the extra time comes from longer durations of the activities themselves or from the interval between them; and each pair is observed in only about one in five traces, so the change is characterised on a subset of cases. A competing explanation the evidence cannot fully rule out is a changed mix of traces (for example, different paths into A31) that lengthens these gaps without any timing change on the individual transitions; the clean control-flow screening makes this less likely but does not exclude it.\n\nOther differences: none — no further indicators passed the screening thresholds. [screening]",
+  "case_id": "e4a_d3a9fc57e4ac05cd",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

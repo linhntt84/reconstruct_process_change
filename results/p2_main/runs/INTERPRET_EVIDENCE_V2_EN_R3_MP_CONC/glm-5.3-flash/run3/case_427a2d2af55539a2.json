@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_427a2d2af55539a2.json",
+  "evidence_sha256": "418e3663910a729f353af1a9f5b573668413737ea37ea6ae66e4ad29a85416c8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:21:10.702004+00:00",
+  "finished_at_utc": "2026-11-15T02:22:36.236859+00:00",
+  "latency_seconds": 85.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12076,
+    "prompt_tokens": 20266,
+    "total_tokens": 32342,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10924,
+      "text_tokens": 1152
+    },
+    "cost": 0.0090779
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41077,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A16 each ran exactly once in a minority of cases — about 35, 30 and 36 in 100 traces respectively — and the three never appeared together in one case; in the later window none of them is observed at all (0 of 200 traces). [OCC001, OCC002, OCC003, REL001, REL002, REL008]\n- A21, A22 and A23 show the mirror image: absent from the earlier window (0 of 200 traces), they appear exactly once in every later trace (200 of 200). [OCC004, OCC005, OCC006]\n- The routing at A39 changed completely. Earlier, A39 was always followed by exactly one of A14, A15 or A16 (about 35, 30 and 36 in 100 of its outgoing transitions), and each of the three was in turn always followed by A24. In the later window, A39 is instead always followed by one of A21, A22 or A23 (about 36, 33 and 32 in 100). [DIR007, DIR001, DIR002, DIR003]\n- In the later window, each of A21, A22 and A23 is followed by either of the other two or directly by A24, each option taking roughly a third of that activity's outgoing transitions. [DIR004, DIR005, DIR006]\n- Pairwise relations confirm this: A21, A22 and A23 co-occur in every later case with no fixed order (each pair appears in both orders at about 51/49), each always after A39 and always before A24; earlier, the old trio members were mutually exclusive, each appearing only between A39 and A24. [REL019, REL020, REL023, REL021, REL024, REL026, REL022, REL025, REL027, REL006, REL012]\n- The block between A39 and A24 lengthened: the A39→A24 distance was 2 steps in all earlier traces and 4 steps in all later traces, and A24 now occurs at later event positions (mean relative position about 0.39 before, about 0.44 after). [LAG001, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe screening qualified 48 control-flow items where about 0.5 would be expected without any change, and each item's difference is larger than in about 995 of 1,000 random re-splits, so this volume cannot be explained by sampling variation. The evidence supports the hypothesis of a structural replacement of the segment between A39 and A24: in the earlier window each case ran A39, then exactly one of A14, A15 or A16 (chosen per case in roughly equal shares), then A24; in the later window each case runs A39, then all three of A21, A22 and A23 once each in no fixed order, then A24. This is a replacement of activities — three removed, three added, and a one-of-three choice turned into an all-three block — not a shift in how often existing paths are taken, since every involved activity is wholly present in one window and wholly absent in the other. [OCC001, OCC003, OCC004, DIR007, DIR004, REL019, LAG001]\n\nThe hypothesis is direct and internally consistent: participation flips between 0 and 200 of 200 (with 59–71 earlier traces behind each old activity's share), A39's successor profile is fully redistributed, pairwise relations flip from mutual exclusivity to universal co-occurrence, and the widened A39→A24 gap matches A24's later positions. An important competing explanation the evidence cannot rule out is that the two windows capture two different pre-existing process variants whose case mix switched, which would look identical to a modification of one process; the indicators also cannot show whether A21–A23 are genuinely new steps or re-labelled replacements of A14–A16. [OCC001, OCC004, DIR007, REL019, LAG001, POS007]\n\nOther differences: none; A24's later position and the wider A39→A24 gap are consequences of the same replacement rather than separate changes. [POS007, LAG001]",
+  "case_id": "case_427a2d2af55539a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

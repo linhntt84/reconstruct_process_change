@@ -1,0 +1,16 @@
+### Observed differences
+
+- A03 occurred in about 48 in 100 traces in the earlier window and about 58 in 100 in the later window, while A15 fell from about 53 to about 42 in 100 traces. [OCC002, OCC013]
+- The successor choice after A13 moved toward A03: about 46 in 100 of A13's observed continuations went to A03 in the earlier window versus about 67 in 100 in the later window, while continuations to A15 fell from about 54 to 33 in 100. [DIR013]
+- The same redirection appears after A10 and A11: A10 led to A03 in about 38 in 100 continuations earlier and about 52 in 100 later (to A15: 58 down to 43), and A11 led to A03 in about 37 in 100 earlier and about 54 in 100 later (to A15: 63 down to 43). [DIR010, DIR011]
+- A02 and A10 themselves became somewhat more frequent, each appearing in about 23 in 100 traces earlier and about 28 in 100 later, and A02 led to A10 in about 95 in 100 of its continuations in the later window (about 87 in 100 earlier). [OCC001, OCC009, DIR002]
+- Within the A04/A05/A08 group the outgoing shares were redistributed: A05 continued to A08 in about 58 in 100 cases later (48 earlier) and to A04 in about 39 (51 earlier); A04 continued to A05 in about 24 in 100 later (17 earlier) and to A08 and A06 less often (about 49→43 and 16→11 in 100). [DIR004, DIR005]
+- Two weakly supported opposite shifts: after A09 and after A14, continuations moved mildly from A03 toward A15, but each rests on only about 10–15 observed continuations. [DIR009, DIR014]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the choice between the alternative successors A03 and A15 after activities A10, A11 and A13 shifted toward A03: in the later window these three activities were each followed by A03 in roughly half to two thirds of their continuations (about 52, 54 and 67 in 100) against about 37–46 in 100 earlier, with A15 as successor correspondingly rarer, and overall A03 appeared in about 58 in 100 traces (up from 48) while A15 fell to about 42 in 100 (from 53). This reads as existing alternative paths being taken with different frequencies rather than activities appearing or disappearing: every involved activity occurred in a non-trivial share of traces in both windows, and neither A03 nor A15 repeated within a trace in either window. The main competing explanation — ordinary sampling variation between the two 200-trace windows — is made unlikely by the same direction in three separate predecessor activities (empirical strengths about 0.80–0.97) and by the mirrored participation changes of A03 and A15, but it cannot be excluded completely; the rerouting at A11 also rests on only about 27–28 observed continuations, and the opposite shifts after A09 and A14 are too thinly supported to interpret. [OCC002, OCC013, DIR010, DIR011, DIR013, DIR009, DIR014]
+
+Other differences: A05's continuation shifted toward A08 and away from A04, and A04's continuation shifted toward A05 and away from A08 and A06 — a redistribution within the A04/A05/A08 group not covered by the main hypothesis; A02 and A10 each became more frequent (about 23→28 in 100 traces), with A02 leading to A10 in about 95 in 100 of its continuations. [DIR004, DIR005, OCC001, OCC009, DIR002]

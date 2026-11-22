@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 were not observed in any of the 200 traces; in the later window A19 runs in about 29 in 100 traces, A20 in about 41 in 100 and A25 in about 30 in 100. [POS001, POS002, POS003, REL001]
+- The three are mutually exclusive alternatives: the pairs A19/A20, A19/A25 and A20/A25 co-occur in only about 1 in 200 later traces, and their shares add up to essentially all traces, so nearly every later case executes exactly one of them. [REL001, REL002, REL006]
+- In the earlier window the affected segment was a tight chain: A27 (present in every trace) passed to A28 in about 97 in 100 of its outgoing transitions, A28 passed to A29 in about 98 in 100, and A27 reached A29 at a distance of two steps in about 96 in 100 traces. [DIR004, DIR005, LAG002]
+- In the later window this chain is interrupted: A27 now leads directly to A20, A25 or A19 in about 52 in 100 of its outgoing transitions and to A28 in about 43 in 100; A28 leads to A29 in about 57 in 100 and to one of the three new activities in about 41 in 100; each new activity in turn leads to A28 in roughly half of its outgoing transitions and directly to A29 in the other half. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Ordering in the later window: the new activity always runs after A27 and always before A29, while relative to A28 the order is mixed — before A28 in about 55 in 100 traces, after A28 in about 44 in 100 — so it is inserted either directly after A27 or directly after A28. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]
+- Event distances grew accordingly: A27 reaches A29 at three steps in about 92 in 100 later traces (two steps in about 96 in 100 earlier), and the A27–A28 and A28–A29 distances each move from one step to two steps in roughly half and about four in ten of the later traces. [LAG001, LAG002, LAG003]
+- The new activities sit around the middle of the trace (mean event position about 0.52); A27's median position shifts slightly earlier (0.48 to 0.46) and A29's slightly later (0.56 to 0.57), consistent with an insertion between them; A27 and A29 remain in every trace in both windows (positions, not clock time). [POS001, POS002, POS003, POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a new alternative step was inserted into the former A27 → A28 → A29 sequence: in the later window, every case executes exactly one of three mutually exclusive activities — A19, A20 or A25 — placed either directly after A27 (about 55 in 100 cases, before A28) or directly after A28 (about 44 in 100 cases), and always completed before A29. In the earlier window none of the three was observed, and A27 passed to A28, and A28 to A29, in about 97–98 in 100 of transitions. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003]
+
+The screening expected about 0.34 qualifying items by chance from 68 tested units, but 25 qualified — far beyond what an unchanged process produces — and the items agree on one structural picture: new outgoing edges from A27 and A28 to the new activities and from them onward to A28/A29, co-occurrence and order relations that appear only in the later window, a one-step growth of the A27–A29 distance, and mid-trace positions for the new activities. Because A19, A20 and A25 were absent earlier, this is an addition of activities with new paths, not a re-routing of shares between previously existing paths. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG002, POS001, POS002, POS003]
+
+Limitations: zero participation in the earlier window strictly means only that the activities were not observed there; the evidence cannot fully exclude that A19, A20 or A25 existed before at a very low rate missed by the 200-trace sample, though such a rate would have to lie far below the 29–41 in 100 now seen. The evidence locates the new step within the sequence but cannot show why it was introduced. [POS001, POS002, POS003]
+
+Other differences: a few rare outgoing edges appear in the later window (A20 to A18, and A25 to A27, A32 or A44, each about 1–2 in 100 of the source activity's outgoing transitions); at these sizes they may be sampling noise. [DIR002, DIR003]

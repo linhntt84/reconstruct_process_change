@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_e52d0b1b850c8d51.json",
+  "evidence_sha256": "e277ba538e896f2e0f028a498d252192c395c11bc67de43cffb3e2143e408a9b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:43:42.782495+00:00",
+  "finished_at_utc": "2026-11-14T11:47:17.245604+00:00",
+  "latency_seconds": 214.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31033,
+    "prompt_tokens": 28291,
+    "total_tokens": 59324,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29371,
+      "text_tokens": 1662
+    },
+    "cost": 0.019760149999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 100857,
+  "text": "### Observed differences\n\n- The block **A19 → A25 → A20 became optional**. In the earlier window the three activities ran in every trace, always together and in that fixed order; in the later window they still run together in the same order, but only in about 53 in 100 traces, and in about 46 in 100 traces none of the three appears. A20 still leads to A26 in about 97% of its outgoing transitions in both windows, so the block is skipped rather than reordered. [REL010, REL011, REL012, REL016, REL017, REL022, DIR007]\n- **A41 bypasses the skipped block**: transitions from A41 to A19 fell from about 96% to about 47% of A41's outgoing transitions, while transitions from A41 to A26 rose from about 1% to about 39%. Before, A41 reached A26 about four steps later in about 91 in 100 observations and never immediately; in the later window about 40 in 100 observed A41→A26 pairs are immediate. [DIR008, LAG008]\n- **A06 is executed far less often**: 71 in 100 traces before (142 of 200) versus 26 in 100 after (52 of 200). In both windows A06 never appears without A14 and never without A15. When it runs, it now appears at later and more variable event positions (median about 0.16 to 0.30 of the trace; a quarter of occurrences beyond 0.83). [POS001, REL001, REL002]\n- **A14 now usually skips A06 and continues directly to A15**: A14's outgoing transitions to A06 fell from about 69% to about 12%, and to A15 rose from about 31% to about 78%. Immediate A14→A15 successions rose from about 17% to about 41% of observed pairs, while observed A14→A06 pairs fell from 140 (about 98% immediate) to 32. [DIR005, LAG003, LAG004]\n- **A06's own routing dispersed**: transitions from A06 to A15 fell from about 92% to about 37%, with the remainder spread over many successors (about 12% to A45, 11% to A26, 8% to A47); this rests on 65 outgoing transitions after, down from 149. [DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, two segments are executed optionally and bypassed when skipped. One involves the early activity **A06**, which ran in about 71 in 100 cases before and about 26 in 100 after; when it is skipped, A14 continues directly to A15. The other involves the block **A19 → A25 → A20**, which previously ran in every case between A41 and A26 and is now skipped in about 46 in 100 cases; when it is skipped, A41 continues directly to A26. [POS001, REL001, REL002, DIR005, REL016, REL022, DIR008, LAG008]\n\nSupporting signs: the participation drops are measured over all 200 traces of each window (co-occurrence of A19, A20 and A25 with A14 fell from 1.00 to about 0.53; A06 from 0.71 to 0.26); the bypasses appear directly as changed successor profiles and new immediate successions; and when the block does run, its internal order and its neighbours are preserved (A41 before it, A26 after it), which points to optionalization rather than a reordering. In total 52 control-flow items qualified, far above the roughly 0.66 expected by chance at these thresholds, and every item's difference exceeds about 995 of 1000 random re-splits of the pooled data. [DIR005, DIR008, LAG003, LAG008, POS001, REL010, REL016, REL018, REL019]\n\nThe evidence cannot rule out that the two windows simply contain different case mixes — for example, that cases which never execute A06 or the block became more frequent — rather than the same cases skipping these segments; it also cannot show whether the two skips are linked. A few flagged items concern rarely observed activities (A02, A04, A08, with only 8–18 outgoing transitions before) and were not used for the hypothesis. [DIR001, DIR002, DIR004]\n\nOther differences: the dispersal of A06's outgoing transitions described above; immediate A46→A47 successions became somewhat less frequent (about 97% to 88%, with about 12% at two steps); A14 sits slightly later and more variably, and A26 slightly earlier, in event position. [DIR003, LAG009, POS002, POS003]",
+  "case_id": "case_e52d0b1b850c8d51",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

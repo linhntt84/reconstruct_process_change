@@ -1,0 +1,19 @@
+### Observed differences
+
+- A01 and A02 were not observed at all in the earlier window (0 of 200 traces) but are executed exactly once in every trace of the later window (200 of 200 traces, mean 1.0 occurrence per trace each). [OCC001, OCC002]
+- In the earlier window, A06 and A13 passed control directly to A04 (about 50 in 100 of each one's observed outgoing transitions, with the rest going between A06 and A13). In the later window these direct transitions to A04 have disappeared from both profiles; A06 and A13 now lead to A01 (about 48–52 in 100 of their outgoing transitions each), and A01's only observed successor is A04 (200 of 200 observed transitions). [DIR004, DIR007, DIR001]
+- In the earlier window, A12 ended every trace (position 1.0 in all 200 traces, no observed outgoing transitions). In the later window A12's only observed successor is A02 (200 of 200 transitions), A02 is the last event of every trace (position 1.0 throughout), and A12's mean position slipped to about 0.94. [POS012, DIR006, POS002]
+- The pairwise orders in the later window match this placement: A06 precedes A01, A13 precedes A01, A01 precedes A12, and A06, A13 and A12 each precede A02 in every trace in which the pair occurs (100 in 100), whereas earlier A01 co-occurred with none of them; A01's median position is about 0.75 of the trace, between A06 (about 0.67) and A04 (about 0.83). [REL005, REL012, REL011, REL001, REL017, REL023, POS001, POS006, POS004]
+- Distances between established activities shifted by roughly one step: A06→A04 and A13→A04 no longer occur at lag 1 (earlier about 21 in 100 of each pair's observations were at lag 1, now none are, with mass at lags 2–3), and A09→A11 and A09→A12 moved from lag 4 in all earlier observations to lag 5 in all later ones. [LAG014, LAG033, LAG024, LAG025]
+- Established activities sit slightly earlier within the trace in the later window (for example A06 mean 0.73→0.65 and A13 mean 0.72→0.65), consistent with the two added events lengthening every trace. [POS006, POS013]
+- Routing and repetition of the pre-existing activities are otherwise stable: the A03 split between A07 and A08 stays near 50/50, the A04 split between A11 and A12 stays near 50/50, and occurrence counts change only marginally (A03 4.06→4.24 per trace; A07 and A10 2.05→2.20). [DIR002, DIR003, OCC003, OCC006, OCC009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two activities were added to the process. A01 now runs once in every case between the A06/A13 stage and A04: in the earlier window A06 and A13 passed directly to A04, while in the later window both lead to A01, whose only observed successor is A04. A02 now runs once in every case as the final step after A12, which was previously the last activity of each trace. The support is direct and consistent across indicator families: both activities jump from 0 of 200 to 200 of 200 traces, the new transitions carry complete shares while the direct transitions to A04 vanish, the pairwise orders (A06/A13 before A01, A01 before A12, A12 before A02) hold in 100% of later traces, and downstream distances shift by about one step. [OCC001, OCC002, DIR001, DIR004, DIR007, DIR006, REL005, REL011, REL023, LAG014, LAG024]
+
+Limitations: the evidence covers event order and relative positions, not clock time, and it cannot fully rule out that A01 and A02 are relabelled rather than genuinely new activities; against a plain renaming speaks that no other activity lost participation between the windows. [OCC003, OCC007, OCC011]
+
+Other differences: A03 occurs slightly more often per trace (4.06→4.24), as do A07 and A10 (2.05→2.20), and A07 precedes A04 somewhat less often (about 14 in 100 earlier traces vs about 7 in 100 later ones); these shifts are small and the evidence cannot separate them from sampling variation or downstream effects of the added activities. [OCC003, OCC006, OCC009, REL038]

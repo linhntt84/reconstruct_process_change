@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "a55c14f8322d7e6146d22f83acdcd8172193d6a6d558f8fada2a3996a9aef7fd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:50:04.589111+00:00",
+  "finished_at_utc": "2026-11-14T11:51:09.679650+00:00",
+  "latency_seconds": 65.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9379,
+    "prompt_tokens": 10788,
+    "total_tokens": 20167,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8244,
+      "text_tokens": 1135
+    },
+    "cost": 0.0063077
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29307,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 are not observed at all (0 of 200 traces each). In the later window, A14 runs in about 29 in 100 traces, A15 in about 41 in 100 and A20 in about 30 in 100, each at most once per trace; together the three appear in essentially every later trace (about 995 in 1000). [OCC001, OCC002, OCC003]\n- The three never run in the same trace (co-occurrence 0 in all pairings), so they behave as mutually exclusive alternatives, and each of them always runs together with A22, A23 and A24 — it never appears without them. [REL001, REL002, REL006, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n- Ordering: A22 comes before the new activity in every co-occurrence, and the new activity comes before A24 in every co-occurrence. Relative to A23 both orders occur in similar proportions (e.g., A14 before A23 in about 16 in 100 traces and after it in about 14 in 100), i.e., there is no fixed order between the new activity and A23. [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011]\n- Event distances between the surrounding steps grew accordingly: A22→A24 went from always 2 steps apart to 3 steps apart in about 199 of 200 traces; A22→A23 went from always 1 step to 2 steps in about 56 in 100 traces; A23→A24 went from always 1 step to 2 steps in about 44 in 100 traces. [LAG001, LAG002, LAG003]\n- When they occur, the new activities sit around the middle of the trace (mean relative position about 0.51 with a tight spread). [POS001, POS002, POS003]\n- A22 occurs in every trace in both windows; its mean relative position moved slightly earlier, from about 0.48 to about 0.46. [POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window every case includes one additional step between A22 and A24: exactly one of three mutually exclusive activities — A14 (about 29 in 100 cases), A15 (about 41 in 100) or A20 (about 30 in 100) — is executed once, always after A22 and before A24, with no fixed order relative to A23 (before it in about 56 in 100 cases, after it in about 44). In the earlier window, traces moved from A22 to A23 to A24 with these steps one event apart, and A14, A15 and A20 were not observed in any of 200 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL006, REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011, LAG001, LAG002, LAG003]\n\nThe change is shown directly on three agreeing indicator types — occurrence (0 to substantial participation), relations (the new activities always co-occur with A22/A23/A24 and never with each other) and event distances (the A22→A24 gap grows from 2 to 3 in essentially all traces, with the 56/44 split of the A22→A23 and A23→A24 gaps matching the mixed order around A23). Screening also found 22 qualifying items where roughly 0.25 would be expected if nothing had changed, and all items describe this one coherent difference. [LAG001, LAG002, LAG003, POS001, POS002, POS003]\n\nLimitations: the evidence contains no direct transition/successor data, so the exact neighbours of the new step are inferred from order and event distance rather than observed edges; and it cannot rule out that these activities existed before but were simply not exercised (or were recorded under other labels) in the earlier sample, since zero participation only means they were not observed. [OCC001, OCC002, OCC003]\n\nOther differences: A22's mean relative position shifted slightly earlier (about 0.48 to about 0.46) while it remained in all traces, which is consistent with traces becoming longer rather than a separate change in A22's placement. [POS004]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

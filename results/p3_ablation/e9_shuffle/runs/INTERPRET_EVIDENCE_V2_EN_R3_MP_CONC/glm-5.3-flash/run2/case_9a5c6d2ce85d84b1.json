@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_9a5c6d2ce85d84b1.json",
+  "evidence_sha256": "05913b9e104edab70634f7e539e52f4a3e388345195760c6c857d206962c16fd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:48:05.929860+00:00",
+  "finished_at_utc": "2026-11-15T04:48:50.267658+00:00",
+  "latency_seconds": 44.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5976,
+    "prompt_tokens": 3571,
+    "total_tokens": 9547,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5451,
+      "text_tokens": 525
+    },
+    "cost": 0.00352365
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22442,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (participation about 100 in 100 cases, mean 1.0 occurrences per trace, at a consistent event position). [OCC001, POS001]\n- The relationship between A01 and A04 changed completely: in the earlier window A04 was present in all 200 traces while A01 never was (about 200 in 200 cases \"A04 only\"); in the later window both activities occur together in every trace, always in the order A04 before A01 (about 200 in 200 cases). [REL001]\n- The observed outgoing transitions of A04 changed: in the earlier window none were observed (0 of 200), while in the later window all observed transitions from A04 lead directly to A01 (100%). [DIR001]\n- A04 itself remained in every trace in both windows; its mean event position shifted slightly earlier, from 1.0 to 0.75, a small shift consistent with A01 being added directly after it. [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: a new step A01 was inserted immediately after A04 — in the later window every case executes A04 and then A01, with A01 occurring exactly once per trace, whereas in the earlier window A01 was never observed and A04 had no observed outgoing transition. [OCC001, POS001, REL001, DIR001]\n\nSupporting signs: A01's participation rose from 0 to all 200 traces; the A01–A04 relation moved from \"A04 only\" in every trace to co-occurrence with A04 before A01 in every trace; A04's successors moved from none observed to A01 in 100% of transitions; and A04's slight position shift fits an insertion right after it. The screening produced 5 qualifying control-flow items where about 0.02 would be expected if nothing had changed, so random sampling is an unlikely explanation for the pattern as a whole. [OCC001, POS001, POS002, REL001, DIR001]\n\nLimitations: all five items describe one underlying trace behaviour, so they are not independent confirmations; and the evidence cannot rule out that A01 already existed as a rare branch in the earlier window (zero participation only means it was not observed there) which then became universal. [OCC001, REL001]\n\nOther differences: none beyond the above; the small position shift of A04 is part of the same picture. [POS002]",
+  "case_id": "case_9a5c6d2ce85d84b1",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

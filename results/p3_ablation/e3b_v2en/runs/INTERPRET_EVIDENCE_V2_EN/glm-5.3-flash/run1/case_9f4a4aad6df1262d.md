@@ -1,0 +1,17 @@
+### Observed differences
+
+- Participation did not change: A20, A22, A23, A24, A25 and A26 still occur together in 100 of 100 traces in both windows. What changed is their order. Before, A20, A22 and A23 each preceded A24, A25 and A26 in about 98–99 of 100 traces; in the later window that strict order is gone — A24 now precedes A23 in about 84 of 100 cases (before: about 1–2), A24 precedes A20 in about 73, A26 precedes A23 in about 68, several pairs (e.g. A20–A26, A23–A25, A22–A24) are near even splits, and A22 still usually precedes A26 (about 77 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- Routing out of these activities was highly concentrated before and is spread in the later window. Before, each had essentially one successor (A23→A24 in 100 of 100 transitions; A20→A23, A24→A26 and A26→A25 in about 99; A22→A20 in about 99.5; A25→A32 in about 93; A31→A22 in 100). In the later window, A23 goes to A32 in about 49 of 100 transitions (a target not observed before) and to A24, A25 or A26 in about 15–17 each; A24 goes to A22 in about 23; A22 goes to A24 in about 27; A31 goes to A24 in about 47. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- Event positions moved consistently with the order shift: in the later window A20, A22 and A23 sit later in the trace (mean relative position up by roughly 0.03–0.06) while A24, A25 and A26 sit earlier (down by roughly 0.02–0.06). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- Pairwise distances changed in the same direction: A23→A32 pairs went from mostly four steps apart to about 49 in 100 only one step apart, and A20→A25 went from always four steps apart to spread over one to four. A few distance items rest on very few observations in one window (for example A24→A20 within five steps in only 1 before-window trace versus 148 after) and are weak on their own, though they point the same way. [LAG003, LAG005, LAG013, LAG014, LAG015, LAG019, LAG021]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the sequencing between the two activity groups changed: the block A24–A25–A26, which previously ran after A20–A22–A23 in nearly every case, now frequently runs before it or interleaved with it, and the hand-offs among the six activities became much more varied, including a new frequent A23→A32 transition. The support is direct and consistent: all eight tested activity pairs show the same order shift, the successor profiles show new edges pointing in the opposite direction, and the positional shifts agree; 49 items qualified where only about 0.66 would be expected for an unchanged process, and each item's difference exceeds all but about 1 in 200 random re-splits. [REL001, REL006, DIR003, DIR007, POS003, POS004]
+
+Limitations: the routing, position and distance items largely re-describe the same underlying order shift shown by the relation items, so they are not independent confirmations; and with 200 traces per window the evidence cannot distinguish a modified single flow from a shift in the mix of variants (for example, a rare reversed-order variant already present before becoming dominant), nor reconstruct the full new control flow beyond the six activities observed. [REL001, DIR001, POS001, LAG014]

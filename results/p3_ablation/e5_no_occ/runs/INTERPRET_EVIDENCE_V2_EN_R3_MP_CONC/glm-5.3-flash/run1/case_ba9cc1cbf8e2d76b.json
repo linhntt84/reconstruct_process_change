@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_ba9cc1cbf8e2d76b.json",
+  "evidence_sha256": "162495ecb99bedef46f7d4bb38541a13f5eeb1ad75c1d6ea16f0de54c8c9c9a9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:40:40.415390+00:00",
+  "finished_at_utc": "2026-11-14T11:42:31.728771+00:00",
+  "latency_seconds": 111.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15279,
+    "prompt_tokens": 13089,
+    "total_tokens": 28368,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13901,
+      "text_tokens": 1378
+    },
+    "cost": 0.00960285
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46989,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 were not observed in any of the 200 traces. In the later window, A19 appears in about 29% of traces (58 of 200), A20 in about 41% (82) and A25 in about 30% (61); the three almost never occur together (co-occurrence in 0 to about 1 in 200 traces), so exactly one of them runs in roughly 99 in 100 later traces. [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, REL006]\n- Routing around this segment changed: earlier, about 97% of A27's outgoing transitions went to A28 and about 98% of A28's went to A29. In the later window, A27 leads to A28 in about 43% of its transitions and to A20 (about 22%), A25 (about 16%) or A19 (about 14%) otherwise; A28 leads to A29 in about 57% and to A20 (about 16%), A19 (about 13%) or A25 (about 12%) otherwise. Each new activity leads back into the segment, going to A28 or A29 in roughly equal shares (A19 about 53% to A29; A20 about 56% and A25 about 54% to A28). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- The new step always sits after A27 and before A29: in every later trace containing both, A27 precedes the new activity (e.g., A27 before A19 in all 29%) and the new activity precedes A29 (A19 before A29 in all 29%). Relative to A28 both orders occur (A20 before A28 in about 23% of traces, A28 before A20 in about 18%). [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n- Direct successions became less immediate: A27 followed by A28 at distance 1 dropped from about 98% of earlier traces to about 43%, with one event between them in about 52%; A28 followed by A29 at distance 1 dropped from about 98% to about 56%, with one event between in about 41%; the A27–A29 distance grew from 2 steps (about 96% of traces) to 3 steps (about 92%). [LAG001, LAG002, LAG003]\n- A27 and A29 still occur in every trace in both windows; A27's mean relative position shifted slightly earlier (0.48 to 0.46) and A29's slightly later (0.55 to 0.57), while the new activities sit mid-trace (mean about 0.52). [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, nearly every case runs one additional step inside the A27–A28–A29 segment: exactly one of three mutually exclusive activities — A19 in about 29% of cases, A20 in about 41% or A25 in about 30% — executes either between A27 and A28 (about 55% of cases) or between A28 and A29 (about 44%), so the previously near-universal immediate successions A27→A28 and A28→A29 now occur in about 43% and about 56% of the respective transitions. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL006, LAG001, LAG002, LAG003]\n\nThe placement is shown directly and consistently: successor profiles of A27 and A28 now include the three new activities, which lead back to A28 or A29; the relational items show each new activity always following A27 and preceding A29 while never co-occurring with the other two; the lag items show a one-step shift on all three surrounding pairs; and each new activity is backed by 58–82 traces. In total 25 control-flow items qualified against about 0.34 expected without change, so the pattern as a whole is not what an unchanged process typically produces. [DIR001, DIR002, DIR003, DIR004, DIR005, REL003, REL005, REL007, REL009, REL010, REL012, LAG001, LAG002, LAG003]\n\nLimitation: the evidence cannot distinguish a genuinely new step from activities that existed before but were too rare to appear in 200 earlier traces — it only establishes that they were unobserved before and now run in nearly every case; the 29/41/30 split among the three alternatives rests on a single later-window sample. [DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\nOther differences: A20 occasionally leads to A18 (about 1% of its outgoing transitions) and A25 occasionally to A27, A32 or A44 (about 2% each); these marginal transitions are not part of the main hypothesis. [DIR002, DIR003]",
+  "case_id": "case_ba9cc1cbf8e2d76b",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

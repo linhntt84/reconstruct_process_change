@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_015eb8af6d986069.json",
+  "evidence_sha256": "dbd2c1bb748e24fce39b549e897a6da67991f6a9e8e443d037a37fb7fc490bc4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:11:57.869134+00:00",
+  "finished_at_utc": "2026-11-15T05:14:15.638821+00:00",
+  "latency_seconds": 137.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19991,
+    "prompt_tokens": 39793,
+    "total_tokens": 59784,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18047,
+      "text_tokens": 1944
+    },
+    "cost": 0.01596445
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58880,
+  "text": "### Observed differences\n\n- In the later window, A08 appears in about 29 in 100 traces, down from about 72 in 100 (mean occurrences per trace about 0.75 → 0.32), and when it does appear it sits later in the trace: mean relative position about 0.24 → 0.41, with the 75th percentile about 0.24 → 0.69. [OCC001, POS001]\n- Thirteen partner activities (A14, A15, A16, A20, A22, A23, A24, A25, A26, A31, A32, A47, A48) now occur without A08 in about 71 in 100 traces, versus about 28 in 100 before; cooccurrence with A08 fell from 72 to 29 in 100 for every one of these pairs. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013]\n- A08's remaining ties loosened: it reaches A16 within one step in about 43 in 100 of the observed pairs, down from about 99 in 100, with gaps of two to five steps appearing; A08's outgoing transitions to A16 fell from about 90% to about 39%; and A15 now leads to A16 in about 87% of its transitions (about 58% before) while leads to A08 fell from about 42% to about 7%. [LAG001, DIR003, DIR006]\n- The group A20, A22, A23, A24, A25, A26 still occurs in every trace, but its internal order changed from mixed to essentially fixed: A20 before A24 rose from about 26 to about 98 in 100, A23 before A24 from about 12 to about 97 in 100, A22 before A24 from about 49 to about 99 in 100, A20 before A26 from about 49 to about 98 in 100, and A23 before A25 from about 47 to about 97 in 100. [REL014, REL016, REL017, REL019, REL020]\n- Outgoing routing in this group became near single-target: A20 to A23 about 62% → 99%, A22 to A20 about 56% → 98%, A23 to A24 about 12% → 98% (while A23 to A32 fell from about 48% to under 1%), A24 to A26 about 55% → 99%, A26 to A25 about 65% → 99%, and A25 to A32 rose from about 42% to about 90%; successions also became immediate, e.g. A22 to A23 at two steps from about 32% to about 99.5% of pairs. [DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, LAG006, LAG011, LAG012, LAG021, LAG022, LAG029]\n- A31 previously split its outgoing transitions evenly between A24 and A22 (about 50% each); in the later window about 99% go to A22, and its lags into the group became fixed (A31 to A22 within one step 50% → 100%; A31 to A20 at two steps about 26% → 99.5%; A31 to A24 at four steps 50% → 99.5%). [DIR013, LAG031, LAG032, LAG033, LAG034, LAG036]\n- Event positions inside the group shifted accordingly: A20, A22 and A23 occur slightly earlier (mean relative position about 0.64 → 0.59, 0.60 → 0.57, 0.69 → 0.62) and A24 and A26 slightly later (about 0.60 → 0.65 and 0.64 → 0.67). [POS002, POS003, POS004, POS005, POS006]\n- A10 participation rose from about 8 to about 22 in 100 traces, though this rests on only 15 versus 44 traces. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, A08 is skipped in most cases where it previously ran, and the segment A20–A26 entered from A31 now executes in one dominant sequence (A31 → A22 → A20 → A23 → A24 → A26 → A25, then mostly to A32) instead of in varying orders. Both differences are shown directly: A08's participation fell by about 43 in 100 traces while its partners continue unchanged, and the ordering change rests on relational evidence — order shares flipped while all six activities still co-occur in every trace, lags concentrated at one to two steps, and routing became near-deterministic. Screening also weighs in: 82 items were flagged where about 1 would be expected for an unchanged process, and every item's difference exceeds 199 of 200 random re-splits, so sampling alone cannot account for the pattern as a whole. [OCC001, REL014, LAG006, DIR009, DIR013, LAG032]\n\nThe evidence cannot rule out that the later window simply runs pre-existing variants more often — for example an A08-free variant and a fixed-order variant — rather than that connections themselves were rewired. Some flagged details are weak and were not relied on: A10's increase rests on 15 versus 44 traces, several flagged lags (for example A24 to A20, A25 to A23, A26 to A22) have only one after-window observation, and the outgoing profiles of A02, A04 and A10 rest on only 14–40 transitions. Items describing the same traces, such as the thirteen A08 relations or the many lags within the A20–A26 group, are not independent confirmations. [OCC002, LAG019, LAG025, LAG027, DIR001, DIR002, DIR004, REL001]",
+  "case_id": "case_015eb8af6d986069",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

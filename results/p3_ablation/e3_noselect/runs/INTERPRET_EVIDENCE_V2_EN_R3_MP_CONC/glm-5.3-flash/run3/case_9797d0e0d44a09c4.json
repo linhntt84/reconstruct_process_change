@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9797d0e0d44a09c4.json",
+  "evidence_sha256": "3678823b590ecb4e2df3d0e513f660d1d4fa69eba372d98e3942d09c9f73affb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:24:22.425676+00:00",
+  "finished_at_utc": "2026-11-15T13:27:04.388070+00:00",
+  "latency_seconds": 161.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22355,
+    "prompt_tokens": 59914,
+    "total_tokens": 82269,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20173,
+      "text_tokens": 2182
+    },
+    "cost": 0.020164599999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69283,
+  "text": "### Observed differences\n\n- The largest difference concerns three activities that always executed together. In the earlier window, A19, A20 and A25 each appeared in about 47–48 in 100 traces, always jointly and once per trace; in the later window they appear in 199 of 200 traces, still about once per trace. [OCC018, OCC019, OCC024, REL001]\n- The routing around this block changed accordingly. In the earlier window, about 53 in 100 of A41's observed outgoing transitions went directly to A26 and about 45 in 100 went to A19; in the later window about 92 in 100 go to A19 and only about 1 in 200 to A26. [DIR041]\n- The adjacent pair \"A41 immediately followed by A26\" accordingly almost disappeared: it accounted for about 53 in 100 of observed A41→A26 pairs before and about 1 in 200 after, while pairs four positions apart rose from about 42 in 100 to about 89 in 100. [LAG010]\n- The block's internal structure is the same in both windows — A19 precedes A25 and A25 precedes A20, each one event position apart, with A41 before and A26 after (A41 → A19 → A25 → A20 → A26). Before, these relations held only within the roughly 47 in 100 traces that ran the block; in the later window they hold in about 96–99 in 100 traces. [REL001, REL002, REL003, REL004, REL007, REL008, REL009, REL012, REL013, LAG001, LAG002, LAG005, LAG007, LAG008, LAG009]\n- The event positions of A19, A20 and A25 are essentially unchanged; as a consequence of the block now always running, A26 sits later in the trace (median relative position about 0.40 → 0.42) and A41 earlier (about 0.31 → 0.29). [POS001, POS002, POS003, POS004, POS005]\n- A42, which occurs in every trace, is repeated more often: mean occurrences per trace rose from about 1.6 to 1.7 and the share of traces with repeats from about 37 to 46 in 100; its repeats are spaced further apart and it interleaves more with A41 and A26 instead of running strictly between them. [OCC040, LAG013, REL017, REL019]\n- A44 and A45 also occur and repeat more often (means about 0.76 → 0.89 per trace; repeat share about 12 → 21 in 100 traces), and A45 now leads to A42 in about 46 in 100 of its outgoing transitions, before about 35 in 100. [OCC042, OCC043, DIR045, LAG015]\n- Several routing shares moved by roughly 8–17 percentage points: A21 leads more often to A31 and less often to A24; A24 leads more to A21 and less to A31; A30 leads more to A24/A22 and less to A21; A35 and A36 swapped preferred successors; A40 leads more to A41. Scattered successor changes for rare activities (A02, A04, A06, A08, A10, A47) rest on only about 6–28 outgoing transitions per window. [DIR021, DIR024, DIR030, DIR035, DIR036, DIR040, DIR002, DIR004, DIR006, DIR008, DIR010, DIR047]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the three-activity block A19 → A25 → A20, executed between A41 and A26, changed from optional to essentially mandatory. In the earlier window about 47–48 in 100 traces ran this block, and in the remaining traces A41 passed directly to A26; in the later window 199 of 200 traces run the block, and the direct A41→A26 route survives in only about 1 in 200 of A41's outgoing transitions. This is a participation change — three activities previously skipped in about half of the traces are now almost always executed, each still about once per trace — not a repositioning: the internal order, the one-step distances and the positions of A19, A25 and A20 are unchanged between the windows. [OCC018, OCC019, OCC024, DIR041, LAG010, REL001, REL002, REL007, LAG001, LAG002, LAG005, POS001, POS002, POS003]\n\nThe reading is direct and coherent across indicator families: participation of all three activities rose from about 0.47 to about 0.995, the successor profile of A41 flipped from a roughly even split between A26 and A19 to almost always A19, the zero-distance A41→A26 pair was replaced by a four-position distance, and the surrounding order relations (A41 before the block, block before A26) now hold in about 96–99 in 100 traces. The many relation and lag items largely restate this one underlying difference rather than adding independent confirmations, but their agreement makes a sampling explanation implausible. [DIR041, LAG010, REL003, REL004, REL008, REL009, REL012, REL013]\n\nA competing explanation the evidence cannot rule out: the bypass route A41 → A26 may still exist but be chosen very rarely (about 1 in 200) rather than having been removed; the sample cannot separate these. No screening baseline is provided, so the expected number of chance qualifications cannot be checked; the judgement rests on the size, directness and coherence of the main change. [DIR041, LAG010]\n\nOther differences:\n\n- A42 is repeated more often, with wider spacing between repeats, and increasingly interleaves with A41 and A26. [OCC040, LAG013, REL017, REL019]\n- A44 and A45 occur and repeat more often, and A45 now leads to A42 more often. [OCC042, OCC043, DIR045]\n- Routing shares around A21/A24/A30/A31, between A35 and A36, and at A40 shifted moderately; some of these rest on modest support. [DIR021, DIR024, DIR030, DIR035, DIR036, DIR040]\n- A few low-frequency activities shifted in participation (A02 up to about 12 in 100 traces, A08 down to about 8 in 100, A18 down to about 25 in 100) on small supports, consistent with sampling variation. [OCC002, OCC008, OCC017]",
+  "case_id": "case_9797d0e0d44a09c4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

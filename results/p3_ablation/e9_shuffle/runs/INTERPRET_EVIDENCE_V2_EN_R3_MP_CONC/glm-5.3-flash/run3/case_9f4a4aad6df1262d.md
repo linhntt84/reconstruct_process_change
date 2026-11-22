@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window the core flow was a fixed chain, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: each of these activities chose a single successor in about 93–100 in 100 of its outgoing transitions (A23 → A24 in 100 in 100, A25 → A32 in 93 in 100, A31 → A22 and A20 → A23 in essentially all cases). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- In the later window these single-successor patterns dissolved: A31 now passes directly to A24 in about 47 in 100 cases (A22 52); A22 goes to A24 in 27 and A26 in 11 in 100 (A20 only 56); A23 leads directly to A32 in 49 in 100 while A24 receives it in only 15; A24 passes to A22 in 23 and A20 in 11 in 100; A25 goes to A20 and A23 in about 20 each and to A32 in 43 in 100. [DIR007, DIR002, DIR003, DIR004, DIR005]
+- The execution order of several pairs flipped: A23 before A24 fell from 98.5 in 100 traces to 15 (A24 first now 83.5); A20 before A24 fell from 98 to 25 (A24 first 73); A23 before A26 fell from 98.5 to 32 (A26 first 67.5). [REL006, REL001, REL008]
+- Other pairs lost their fixed order and now appear in both orders in similar proportions: A20/A26 about 48.5 vs 50.5 in 100 (previously 98 in 100 A20-first), A23/A25 about 48 vs 51.5, A22/A24 about 52.5 vs 46.5. Weaker partial flips remain for A20/A25 (67 in 100 A20-first, was 98.5) and A22/A26 (76.5, was 98.5). In every pair both activities still co-occur in 100 in 100 traces in both windows, so participation itself did not change. [REL003, REL007, REL004, REL002, REL005, REL001]
+- Relative trace positions moved consistently with this reordering: A24 occurs earlier (mean relative position 0.65 → 0.59), A20 and A23 later (0.59 → 0.63; 0.62 → 0.68), A25 and A26 slightly earlier (0.70 → 0.68; 0.67 → 0.64). [POS004, POS001, POS003, POS005, POS006]
+- Fixed distances between activities dissolved: A31→A24 was always 4 steps apart, now 47 in 100 at 1 step; A23→A32 was 94 in 100 at 4 steps, now 49 in 100 at 1 step; A20→A32 was 99 in 100 at 5 steps, now spread over 2–5 steps. [LAG027, LAG013, LAG005, LAG028]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a reordering of the sequential block A20 → A23 → A24 → A26 → A25 that previously sat between A31/A22 and A32. In the later window its strict ordering is largely relaxed into a variable order: A24 now usually executes before A20 and A23 (73 and 83.5 in 100, previously about 0), A23 usually executes late and leads directly to A32 in about half of its outgoing transitions, A31 and A22 often hand over directly to A24, and pairs such as A20/A26, A23/A25 and A22/A24 occur in both orders — a change in ordering constraints rather than a simple swap of two activities. [REL001, REL006, REL008, REL003, REL007, REL004, DIR003, DIR007, LAG013]
+
+The order changes are shown directly by the relational items, each backed by about 200 traces per window; the routing, distance and position indicators all shift in the same direction; all affected activities remain present and co-occurring in essentially every trace in both windows, so this is not an activity being added, removed or made optional; and the 49 qualifying control-flow items are roughly seventy times the number expected by chance (about 0.66), so the ensemble is not what an unchanged process typically produces. [REL006, DIR003, LAG027, POS004, POS003]
+
+Limitations: the evidence cannot rule out that the later window is a mixture of traces still following the old order and traces following a new one (residual old-order shares of 15–32 in 100 remain), and a few lag items (e.g., A24→A22, A25→A20, A26→A20) rest on a single before-window observation and corroborate only weakly. [REL006, REL002, LAG015, LAG019, LAG021]
+
+Other differences: a handful of new, low-frequency successions appear in the later window (about 0.5–1 in 100 of the source's outgoing transitions, e.g., A31→A27/A47, A23→A10/A19/A37/A42); they accompany the same redistribution and are not part of the main hypothesis. [DIR007, DIR003]

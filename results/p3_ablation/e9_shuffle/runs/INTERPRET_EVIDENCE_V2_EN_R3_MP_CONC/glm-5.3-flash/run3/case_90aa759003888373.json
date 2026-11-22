@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "76fa73ce195eb7a37cb43ac628a45c56224d62dbe441af425c075bda58e47932",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:29:44.691685+00:00",
+  "finished_at_utc": "2026-11-15T09:30:46.776236+00:00",
+  "latency_seconds": 62.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8615,
+    "prompt_tokens": 7667,
+    "total_tokens": 16282,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7721,
+      "text_tokens": 894
+    },
+    "cost": 0.005457549999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29956,
+  "text": "### Observed differences\n\n- Before, every trace ran one fixed sequence: all 200 earlier traces contained A36, A14, A20, A15 and A21 exactly once, always in the order A36 → A14 → A20 → A15 → A21, with every pair of these activities co-occurring in 100% of traces in a single consistent direction. [OCC001, OCC002, OCC003, REL001, REL003, REL004, REL005, REL008, REL009]\n- In the later window, A14, A15 and A20 each appear in only about 53 in 100 traces (mean occurrences per trace about 0.53, down from 1.0), while A36 and A21 still appear in essentially all traces in both windows. [OCC001, OCC002, OCC003, REL003, REL004]\n- The three activities drop out together and only together: pairs inside the block (A14–A15, A14–A20, A15–A20) show neither activity present in about 47 in 100 later traces, and pairs joining one of them with A21 or A36 show only A21/A36 present in about 47 in 100; when the block does run, its internal order is unchanged. [REL001, REL002, REL005, REL003, REL004, REL006, REL007, REL008, REL009]\n- The bypass is visible directly in the relations: before, every observed outgoing transition of A36 went to A14, whereas in the later window about 47% go straight to A21 (about 53% still to A14), and the gap from A36 to A21 shrinks from always four steps to one step in about 47 in 100 traces. [DIR001, LAG001]\n- A21's relative position within the trace moved slightly earlier (mean normalized position about 0.43 before versus about 0.40 in the later window), consistent with the preceding block being skipped in part of the cases. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the block of activities A14, A20 and A15 between A36 and A21 is skipped in roughly 47 in 100 cases — A36 leads directly to A21 — while the full original sequence A36 → A14 → A20 → A15 → A21 still runs, in the same order, in the remaining about 53 in 100 cases. The block appears to have become optional (skippable) rather than reordered or replaced. [OCC001, OCC002, OCC003, DIR001, LAG001, REL001, REL003, REL008]\n\nThe supporting signs are direct and consistent: the new A36-to-A21 transition and the collapsed A36–A21 distance show the skip relationally, not only through frequencies; the participation drop is all-or-nothing per trace, with the three activities always missing together and the order of the remaining activities unchanged; and the 15 qualifying control-flow items are many times the roughly 0.35 expected by chance in an unchanged process, with all items describing this one underlying difference. [DIR001, LAG001, REL001, REL002, REL005, OCC001, OCC002, OCC003]\n\nLimitations: the bypass path appears in none of the 200 earlier traces, so this is the emergence of a new path rather than a re-weighting of previously observed alternatives; the evidence cannot show whether the skip follows a per-case rule or reflects a mixture of case types in the later window, nor what distinguishes cases that skip the block. [DIR001, LAG001, REL003]\n\nOther differences: none — the slightly earlier relative position of A21 in the later window is a by-product of the same skip. [POS001, DIR001, LAG001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

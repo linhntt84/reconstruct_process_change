@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_45451fa650a0116c.json",
+  "evidence_sha256": "3c817ea45d6ac97fe9a5d06aa86448bd052ef241c3fd857b53de942cdf90a459",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:09:48.758715+00:00",
+  "finished_at_utc": "2026-11-15T05:11:11.991527+00:00",
+  "latency_seconds": 83.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12684,
+    "prompt_tokens": 33819,
+    "total_tokens": 46503,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11408,
+      "text_tokens": 1276
+    },
+    "cost": 0.011414849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37797,
+  "text": "### Observed differences\n\n- In the later window, the activities A21, A22 and A23 each appear in about 79 in 100 traces, up from about 19–20 in 100 before (A21: 39 → 158 of 200 traces). The three now occur together in about 79 in 100 traces (before: about 19 in 100), with A20 preceding them in about 77 in 100 cases and their internal order varying. [OCC004, OCC005, OCC006, REL011, REL012, REL013, REL017, REL025]\n- The counterpart block A24, A25 and A26 moves the other way: each appears in about 82 in 100 traces before but only about 21–22 in 100 in the later window (A24: 163 → 42 traces). They still appear together when they appear, but A20 now precedes them in only about 21 in 100 traces, down from about 81 in 100. [OCC007, OCC008, OCC009, REL014, REL015, REL016, REL038, REL043]\n- Outgoing transitions from A20 shifted accordingly: before, roughly 29 in 100 went to A24, 29 to A26 and 24 to A25; in the later window, roughly 29 go to A23, 28 to A21 and 21 to A22. [DIR005]\n- A06 participation fell from 46 to 12 in 100 traces (92 → 24 traces). A20, A30, A34 and A35 now typically occur without it (about 88 in 100 traces, before about 54), A34's transitions to A06 dropped from about 45 in 100 of its outgoing transitions to about 2 in 100, and A34 now passes directly to A35 as the immediate next step in about 92 in 100 cases (before: about 56). [OCC003, REL001, REL008, REL009, REL010, DIR006, LAG006]\n- When A06 does occur, it sits earlier in the trace (mean relative position about 0.52 versus 0.91) and its lag to A35 spreads over 3–5 steps instead of almost always 1; both observations rest on only 24 and 7 after-window traces. [POS001, LAG001]\n- A02 and A04 roughly doubled their participation but remain rare (A02: 16 → 33 traces; A04: 10 → 37 of 200). [OCC001, OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that routing after A20 changed: the route through A21, A22 and A23, previously taken in about 19 in 100 traces, is now the dominant route (about 79 in 100, with A20 preceding the trio), while the route through A24, A25 and A26 fell from about 82 to about 21 in 100 traces. A related possibility is that the A06 step between A34 and A35 is now usually skipped, with A34 proceeding straight to A35. [OCC004, OCC007, DIR005, REL011, REL014, OCC003, DIR006, LAG006]\n\nScreening flagged 73 items where roughly 1 would be expected by chance in an unchanged process, and the flagged items agree across occurrence, pairwise-order and direction indicators rather than pointing in different directions; the participation swings (about 60 in 100 traces, e.g. 39 versus 158 traces for A21) are far larger than random re-splits of 200-trace windows produce, and the rerouting is observed directly in the successor shares at A20 and A34. [OCC004, OCC007, REL011, REL014, DIR005, DIR006]\n\nLimitations: the items overlap heavily — occurrence, relation and direction items here describe the same trace behaviour — so they are not independent confirmations. The evidence cannot rule out that both routes already existed and only their frequencies swapped (REL017 and REL038 show each trio appearing as a block in both windows), i.e. a shift in the mix of process variants rather than a modified model, and sampling differences in variant frequencies between finite windows remain possible. The apparent repositioning of A06 rests on 24 and 7 after-window traces, and the increases in A02 and A04 on 33 and 37 traces, so these aspects are weakly supported. [REL017, REL038, POS001, LAG001, OCC001, OCC002]",
+  "case_id": "case_45451fa650a0116c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

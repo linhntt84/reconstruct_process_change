@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f983abbb2a75c49b.json",
+  "evidence_sha256": "e8137e7deca648703e05c15bbd9f3c829c62eac320e755a6cf9706d224998f98",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:07:05.586741+00:00",
+  "finished_at_utc": "2026-11-15T01:10:05.233221+00:00",
+  "latency_seconds": 179.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25260,
+    "prompt_tokens": 40993,
+    "total_tokens": 66253,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23546,
+      "text_tokens": 1714
+    },
+    "cost": 0.01877895
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 74916,
+  "text": "### Observed differences\n\n- Participation did not change: each of A15, A16, A17, A19, A20, A21, A22, A23, A24 and A25 occurs in all 200 traces in both windows, and every qualified activity pair co-occurs in 100% of traces in both windows. The differences below are therefore about ordering, not about activities appearing or disappearing. [POS001–POS010, REL001–REL022]\n\n- In the earlier window, the relative order of the two activity groups varied from case to case: for example, A15 preceded A21 in only about 23 in 100 traces, A20 preceded A21 in about 3 in 100, while A15 preceded A23 in about 58 in 100 — every cross-group pair took both orders. In the later window, all 22 qualified cross-group pairs run in a single direction in 100% of traces: the A15/A16/A17/A19/A20-side activity comes before the A21–A25-side activity in every trace. [REL001–REL022]\n\n- Outgoing transitions were re-focused within groups. Earlier, A15 sent about 49 in 100 of its outgoing transitions to A21–A25 and the rest to A15/A16/A17/A20; in the later window its transitions go only to A16 (about 36 in 100), A20 (about 32) and A17 (about 32). Three fixed bridges emerged: A20 now leads only to A21 (100% of its transitions, versus about 3 in 100 earlier), A22 only to A31 (100% versus about 50), and A30 only to A19 (100% versus about 54). [DIR001, DIR002, DIR004, DIR006, DIR010]\n\n- Distances collapsed. Within-group neighbours became adjacent: A15→A16 is now always 1–2 steps apart (about 69 in 100 at distance 1) against a spread over 1–5 earlier. Cross-group gaps became fixed: A19→A21 and A20→A22 are now always exactly 5 steps (earlier spread over 1–5), and A22→A31 and A30→A19 are always 1 step. Pairs that were rarely close earlier now always are: A20→A24 within five steps in about 28 of 200 traces earlier, in all 200 later. [LAG001, LAG026, LAG027, LAG029, LAG035, LAG051]\n\n- Event positions shifted consistently: A15, A16 and A17 moved earlier (mean position from about 0.61 to about 0.55), A20 from about 0.71 to about 0.61, while A21 moved later (about 0.53 to about 0.63), A23/A24/A25 from about 0.61 to about 0.68, and A22 to about 0.74; the case-to-case spread narrowed for all of them. [POS001–POS010]\n\n- In the later window the behaviour is consistent with one fixed chain — A30, A19, then A15/A16/A17 in varying order, then A20, A21, then A23/A24/A25 in varying order, then A22, A31 — while order inside each block still varies (e.g., A23→A24 and A24→A23 both occur at 1–2 steps). [LAG037, LAG041, LAG045, DIR004, DIR006, DIR010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports one main hypothesis: a reordering of the process — in the earlier window the group A15, A16, A17, A20 and the group A21, A22, A23, A24, A25 (with A30/A19 upstream and A31 downstream) were executed in case-specific, partly interleaved orders, whereas in the later window they follow one fixed block sequence (A30 → A19 → A15/A16/A17 in varying order → A20 → A21 → A23/A24/A25 in varying order → A22 → A31). This is a change in ordering constraints — from a mixed order to a fixed order — not an exchange of positions and not a change in participation, since every involved activity appears in all traces of both windows. [REL001–REL022, DIR001–DIR010, POS001–POS010]\n\nThe support is direct and consistent: the relational items show the change outright (mixed orders earlier, a single order in 100% of later traces for all 22 pairs), the successor profiles and inter-event distances change exactly as this reordering implies, and the screening flagged 93 control-flow items where fewer than one (about 0.72) would be expected without a change; each item's difference is also larger than in about 995 of 1000 random re-splits of the pooled data. [REL001–REL022, DIR001–DIR010, LAG001–LAG051]\n\nLimitations: the qualified items describe largely the same traces, so they represent one coherent difference rather than many independent confirmations; and the evidence cannot fully rule out that the earlier window mixed several coexisting ordering variants that later collapsed into one dominant sequence, although the pair-specific, broadly spread order shares (about 3 to about 80 in 100) fit flexible interleaving better than a small set of fixed variants. Positions and distances are event-position based, so no claim about clock-time timing is made. [REL001–REL022, POS001–POS010]\n\nOther differences: none outside this reordering — participation stayed at 100% for every tracked activity in both windows, and the position shifts and distance changes are facets of the same reordering. [POS001–POS010, LAG001–LAG051]",
+  "case_id": "case_f983abbb2a75c49b",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,19 @@
+### Observed differences
+
+- Four activities ran in every trace before but in only about half of the traces in the later window: A27 in roughly 54 in 100 traces (previously 200 of 200), A36 in 47, A37 in 48 and A42 in 48. [OCC001, OCC002, OCC003, OCC004]
+- A27 and the group A36/A37/A42 became mutually exclusive. Before, A27 co-occurred with each of A36, A37 and A42 in 100 in 100 traces; in the later window they share a trace in at most about 1 in 100, with A27 running alone in ~53 in 100 traces and the group activity running without A27 in ~46–47. [REL011, REL012, REL013]
+- The group itself still holds together: in the later window A36, A37 and A42 appear together in ~47 in 100 traces and none of them in ~52, a single member without the others is essentially unobserved, and their internal order remains mixed (no fixed sequence) in both windows. [REL020, REL021, REL022]
+- Successor relations changed around the group. Before, A25 led into the group (about 96% of its outgoing transitions went to A42/A36/A37), each group activity led mainly to A28 (~31–35% of its transitions), and A26 led to A27 in 99 in 100 transitions. In the later window A25 leads directly to A28 (~97%), A26 leads to A27 (~52%) or into the group (~44%), and the group activities lead to A31 (~26–35%) while A28 has nearly disappeared from their outputs (~1%). [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Positions and distances moved with this: the group's mean position shifted from about 0.40 to about 0.57 of the trace, A28's from 0.46 to 0.39 and A26's from 0.60 to 0.54; the A25→A28 distance shrank from typically 4 steps to 1 step (97.5 in 100 later traces), and the A26→A31 distance split between 2 steps (~53 in 100) and 4 steps (~43 in 100). [POS004, POS006, POS007, POS008, POS002, LAG001, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility of a structural change that made the activity group A36/A37/A42 and the activity A27 mutually exclusive alternatives and repositioned the group. Before, every trace executed both in a fixed sequence — A25, then the group in mixed order, then A28, then A26, A27 and A31. In the later window, about 47 in 100 traces run the group between A26 and A31 and skip A27, while the remaining ~53 run A27 after A26 and skip the group; A28 directly follows A25 on both routes. [REL011, REL012, REL013, DIR001, DIR002, DIR003, DIR004, DIR005, OCC001, OCC002, OCC003, OCC004]
+
+The support is direct and consistent: the participation drop is confined to exactly the four involved activities, the near-zero co-occurrence shares complement the participation shares almost perfectly, the group members never separate from each other, and the successor profiles of A25, A26 and the group members change precisely as this hypothesis requires, with position and distance shifts agreeing. Screening flagged 48 control-flow items against fewer than one (0.73) expected by chance, so sampling variation cannot account for the ensemble; the items span all control-flow indicator families (for example [OCC002, DIR001, REL011, POS006, LAG001]).
+
+Limitations: many items describe the same underlying trace behaviour and are not independent confirmations, and a few lag items rest on only 1–2 later-window observations and were not relied upon [LAG002, LAG003, LAG009]. The evidence cannot show what determines which of the two routes a trace takes (a plain branch versus trace-dependent routing), and positional indicators use event positions rather than clock time — though the repositioning rests on the direct successor changes, not on positions alone [DIR002, DIR003, DIR004, DIR005].
+
+Other differences: A25 and A31 ran in every trace in both windows and only drifted slightly (mean position about +0.03 for A25 and −0.02 for A31). [POS001, POS005]

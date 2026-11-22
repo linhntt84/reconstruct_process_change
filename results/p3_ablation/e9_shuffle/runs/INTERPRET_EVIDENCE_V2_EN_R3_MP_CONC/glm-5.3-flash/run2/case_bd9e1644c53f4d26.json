@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_bd9e1644c53f4d26.json",
+  "evidence_sha256": "d7558436b955f53bc9632097b9f6f95f70d666f4b7751f0786d156ebd92ac019",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:28:33.843965+00:00",
+  "finished_at_utc": "2026-11-15T04:29:30.201399+00:00",
+  "latency_seconds": 56.36,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8024,
+    "prompt_tokens": 7582,
+    "total_tokens": 15606,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7025,
+      "text_tokens": 999
+    },
+    "cost": 0.0051493
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26198,
+  "text": "### Observed differences\n\n- Activity A02 was not observed in the earlier window (0 of 200 traces, no outgoing transitions recorded), while in the later window it appears in every trace, exactly once per case on average, with no repetitions. [OCC001, DIR002]\n- In the later window, A02 sits early-to-middle in the case: its median event position is about one third into the trace (quartiles roughly 0.17–0.50 of the trace length). [POS001]\n- Before, A01, A03, A04 and A06 each occurred without A02 in essentially all traces; in the later window A02 co-occurs with each of them in all traces, and in both orders in similar proportions (A01–A02 about 56/44, A03–A02 about 45/55, A06–A02 about 51/49), i.e. without a fixed order. [REL001, REL002, REL004]\n- A02 precedes A04 in about 69 in 100 later traces (A04 first in about 31 in 100), so both orders occur but with a tendency for A02 to come first. [REL003]\n- In the later window A01, A03 and A06 each gained A02 as a frequent successor: A02 takes about 24% of A01's outgoing transitions (A01→A04 fell from about 36% to 19%), about 24% of A03's (A03→A01 fell from about 29% to 20%) and about 18% of A06's (A06→A01 fell from about 31% to 24%). A02's own outgoing transitions spread over A04 (~26%), A06 (~25%), A01 (~19%), A03 (~19%), A07 (~7%) and A05 (~4%). [DIR001, DIR003, DIR004, DIR002]\n- Distances between A01/A03/A06 and A04 shifted to larger gaps: A01–A04 one step apart fell from about 47% to 26% while a four-step gap appeared at about 23%; A03–A04 shows a four-step gap at about 15% and A06–A04 at about 20%, none of which existed before. [LAG001, LAG002, LAG003]\n- For context: 13 control-flow items qualified in screening, against roughly 0.14 expected by chance alone in an unchanged process. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that activity A02 was added to the process: in the later window it is executed exactly once in every case, at an early-to-middle position, without a fixed order relative to the existing activities A01, A03 and A06, and tending to precede A04. This rests on direct participation evidence (0 of 200 traces before versus 200 of 200 after, once per trace) [OCC001], relational evidence showing A02 now co-occurring with A01, A03, A04 and A06 in all traces with mixed ordering [REL001, REL002, REL003, REL004], successor changes in the routing of A01, A03 and A06 towards A02 [DIR001, DIR003, DIR004, DIR002], and growing distances from A01/A03/A06 to A04, consistent with A02 being interleaved between them [LAG001, LAG002, LAG003]. The number of qualifying items (13) is far above the roughly 0.14 expected without a change, so chance sampling of the two windows cannot explain the pattern as a whole [screening].\n\nLimitations: because A02 appears in both orders with A01, A03 and A06 in near-equal proportions, the evidence does not identify a single fixed insertion point; A02 may run in parallel with or be flexibly interleaved among these activities rather than occupy one fixed position. Positions and lags are event positions, not clock time, so no statement about timing in time is possible. The evidence also cannot rule out that A02 is a previously existing behaviour relabelled under a new code rather than a genuinely new activity.\n\nOther differences: beyond A02's appearance, the routing profiles show only small redistributions among the original successors (for example A03→A01 down about 9 percentage points, A06→A04 down about 4), and no previously observed activity disappeared from either window. [DIR001, DIR003, DIR004]",
+  "case_id": "case_bd9e1644c53f4d26",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

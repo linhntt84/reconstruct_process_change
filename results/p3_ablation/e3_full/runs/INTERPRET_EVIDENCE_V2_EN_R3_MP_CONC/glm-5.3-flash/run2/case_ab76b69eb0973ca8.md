@@ -1,0 +1,16 @@
+### Observed differences
+
+- Activity A08 was not observed in the later window at all: before, it appeared in about 70 in 100 traces (141 of 200, about 1.1 occurrences per trace) and always together with A07; after, it appears in 0 of 200 traces, and its co-occurrence with every other activity dropped to zero. [OCC007, POS008, DIR008, REL034, REL036]
+- Before, every observed outgoing transition of A07 went to A08 (219 of 219), and A08 led on to A05 (about 36 in 100), A03 (about 35), A04 (about 19) and A02 (about 10); in the later window A07 leads directly to A05 (about 39 in 100 of its 97 observed outgoing transitions), A03 (about 27), A04 (about 22) and A02 (about 12), while A07's own participation stayed similar (about 70 in 100 traces before, about 67 after). [DIR007, DIR008, OCC006, REL034]
+- The distance from A07 to its downstream activities shortened by about one step: A07→A05 moved from lag 2 (about 60 in 100) to lag 1 (about 42), A07→A03 from lag 2 (about 59) to lag 1 (about 43), A07→A02 from lag 3 (about 65) to lag 2 (about 49), and A07→A09 from lag 5 (about 74) to lags 3–5 — consistent with A08 no longer sitting between A07 and the next step. [LAG050, LAG051, LAG053, LAG056]
+- Knock-on effects of the same rearrangement: repetition gaps of A02, A03, A04, A05, A06 and A09 shortened by roughly one step, several activities shifted slightly in position (A06 later, mean about 0.55 to 0.62; A04 and A05 slightly earlier), and A02's outgoing share to A06 fell from about 94 to about 86 in 100 with small gains to A03 and A05. [LAG028, LAG037, LAG046, POS004, POS005, POS006, DIR002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the A08 step between A07 and its successors is no longer executed: before, A08 ran in about 70 in 100 traces, always together with A07 and between A07 and one of A05, A03, A04 or A02; in the later window A08 is not observed (0 of 200 traces), A07 continues at a similar rate (about 67 in 100 traces) and now leads directly to A05, A03, A04 and A02 with a successor mix close to A08's previous outgoing mix, and the A07-to-successor distances shortened by about one step. [OCC007, DIR007, DIR008, REL034, LAG050, LAG051, LAG053]
+
+The difference is direct and consistent across occurrence, direction, relation and lag indicators, and a fall from 141 to 0 of 200 traces is far beyond what random re-splits of a stable process produce (the A08 items reached the maximum empirical strength, about 199 of 200 reference comparisons smaller). Limitations: zero participation only shows A08 was not observed in the later window, so a change in recording that stopped capturing A08 cannot be ruled out, and the evidence set provides no chance baseline against which to compare the number of qualifying items. [OCC007, POS008, DIR008]
+
+Other differences: only minor redistributions elsewhere — A02's outgoing traffic shifted slightly from A06 towards A03 and A05, and several activities show small position shifts of a few hundredths — none approaching the size of the A08 difference, and plausibly knock-on effects of it rather than separate changes. [DIR002, POS002, POS004, POS005, POS006]

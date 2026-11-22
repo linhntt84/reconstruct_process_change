@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "39d03fce5b283ea1e9809f7c3deea3c1f2b013b1fdaece369368e604fdcdbcc3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:26:16.944263+00:00",
+  "finished_at_utc": "2026-11-15T12:27:14.980653+00:00",
+  "latency_seconds": 58.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8112,
+    "prompt_tokens": 7341,
+    "total_tokens": 15453,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7313,
+      "text_tokens": 799
+    },
+    "cost": 0.005157149999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27283,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each occurred exactly once in every one of the 200 traces; in the later window each occurs in about 53 in 100 traces (106 of 200), still exactly once when present, with no repeats in either window. [OCC001, OCC002, OCC003]\n- A36 and A21 still occur in every trace in both windows. Before, A36's outgoing transitions always led to A14; in the later window about 53 in 100 of them lead to A14 and about 47 in 100 lead directly to A21. [DIR001]\n- Before, A14, A15 and A20 always co-occurred with A36 and A21 in a single fixed order (A36 → A14 → A20 → A15 → A21). In the later window this co-occurrence and order hold in about 53 in 100 traces, while in about 47 in 100 traces A36 and A21 appear without any of A14, A15 or A20; reversed or interleaved orders are absent in both windows. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- A21's relative position in the trace moved slightly earlier (mean about 0.43 to 0.40 of the trace; quartile range about 0.40–0.47 to 0.36–0.43); this measure uses event positions, not clock time. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the block A14 → A20 → A15 between A36 and A21 became optional: in about 47 in 100 cases A36 now leads directly to A21 and A14, A20 and A15 are skipped, while in about 53 in 100 cases the original sequence A36 → A14 → A20 → A15 → A21 runs as before. The routing change is shown directly in A36's successor profile; the participation of A14, A15 and A20 drops in lockstep from 100 to about 53 in 100 traces while their single occurrence and internal order are unchanged; and A36 and A21 now occur without the block in about 47 in 100 traces. The 14 qualifying control-flow items far exceed the roughly 0.35 expected if nothing had changed, but they largely describe this one underlying difference rather than independent confirmations. [DIR001, OCC001, OCC002, OCC003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nLimitations: the evidence cannot show why the block is skipped in some cases, and it cannot fully rule out that the later window mixes two pre-existing variants of which only one appeared in the earlier sample — with about 94 of 200 later traces lacking the block against none of 200 earlier traces, chance sampling is implausible but not logically excluded. The slightly earlier position of A21 is a byproduct of the same bypass rather than a separate change. [REL001, REL002, REL005, POS001]\n\nOther differences: none; the only additional signal, A21's slightly earlier relative position, is consistent with the bypass described above. [POS001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

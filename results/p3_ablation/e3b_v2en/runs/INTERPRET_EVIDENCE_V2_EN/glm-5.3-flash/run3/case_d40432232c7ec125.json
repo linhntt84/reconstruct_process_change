@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "894fb0a8049ba242854905cfd65cc1d739a391f6393066d9816355a164e18b8d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:36:48.483974+00:00",
+  "finished_at_utc": "2026-11-15T10:40:33.021635+00:00",
+  "latency_seconds": 224.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 36805,
+    "prompt_tokens": 46015,
+    "total_tokens": 82820,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34059,
+      "text_tokens": 2746
+    },
+    "cost": 0.025304749999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 103007,
+  "text": "### Observed differences\n\n- In the later window, two sequence blocks have exchanged their order. Earlier, one of A19, A21 or A24 (each present in roughly 30–36 in 100 traces) was followed by A25 and A29, which in turn preceded the A20/A22/A23 block; now A20, A22 and A23 run early in the trace (mean relative position about 0.38–0.39, versus about 0.65 before) while A19, A21 and A24 run late (about 0.67, versus about 0.36), with A25 and A29 also shifting slightly later. The order flips are near-complete: A25 preceded A20 in about 98 in 100 traces before and in essentially none after, while A20 precedes A25 in about 97–98 in 100 after; the same reversal holds for A29 versus A20/A22/A23 (about 96–99 in 100 before, about 99 in 100 after) and for A19/A21/A24 versus A20/A22/A23/A25/A29 (each pair flips from roughly 29–38 in 100 to 0, and from 0 to roughly 27–39 in 100) [REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030, REL031, REL032, REL033, REL034, REL035, REL036, POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009].\n\n- Successors and distances moved with the reorder: A19, A21 and A24 now lead to A30 in about 92–97% of their outgoing transitions (previously to A25 in about 93–97%), while the A20/A22/A23 block now exits to A25 instead of A30 — A22→A30 and A23→A30 within five steps appear in about 200 of 200 traces before but only 1 afterwards, and A22→A25 / A23→A25 rise from 1 to about 200 traces; A29 reaches A30 in about 2 steps instead of about 4; and A40, which earlier fed A19/A21/A24, now feeds A20/A22/A23 (A40→A22 within five steps: 1 trace before, about 200 after) [DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR013, LAG018, LAG020, LAG021, LAG022, LAG023, LAG024, LAG026, LAG027, LAG028].\n\n- A08 is now skipped in most traces: it appears in about 29 in 100 traces (57 of 200) versus about 64 in 100 (127 of 200) before. A15 now goes directly to A16 in about 88% of its outgoing transitions (was about 61%) and to A08 in about 7% (was about 39%); A08's own successors spread out (A16 falls from about 93% to 31%), its remaining occurrences sit later (mean relative position about 0.41 versus 0.26), and the tight A08→A16 adjacency at distance 1 (about 99% of observed pairs) becomes diffuse [OCC003, DIR002, DIR005, POS001, LAG001, LAG009, LAG010, REL002, REL003].\n\n- Participation in A04, A06 and A10 roughly doubled or tripled (to about 21, 24 and 19 in 100 traces, from about 7, 6 and 9), with clearly redistributed successors; these rest on only 13–17 traces in the earlier window [OCC001, OCC002, OCC004, DIR001, DIR003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the sequence was reordered: the segment \"one of A19/A21/A24, then A25 and A29 (whose mutual order the evidence does not pin down)\" and the A20/A22/A23 block exchanged positions, and the exit into A30 moved from after the A20/A22/A23 block to directly after A19/A21/A24, with A40 now entering the A20/A22/A23 block. Earlier, traces ran roughly A40 → (A19 or A21 or A24) → A25/A29 → A20/A22/A23 → A30; in the later window, roughly A40 → A20/A22/A23 → A25/A29 → (A19 or A21 or A24) → A30. A second, possibly separate change is that A08, previously inserted between A15 and A16 in about 64 in 100 traces, is skipped in most later traces (about 29 in 100), with A15 connecting directly to A16 [OCC003, DIR002, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR013, LAG018, LAG020, LAG021, LAG022, LAG023, LAG024, LAG026, LAG027, LAG028, REL023, REL030, REL033].\n\nThe signature is direct and coherent: pair orders flip almost deterministically (about 98 in 100 one way before, about 97–99 in 100 the other way after), successor and distance evidence points the same way, and the position shifts are large and in opposite directions for the two blocks; 94 qualifying items is roughly 90 times the about 1 expected by chance across the 211 tested units, and each difference exceeds those seen in about 199 of 200 random re-splits. These items are not independent confirmations — most pair items describe the same traces — so the judgement rests on the directness and consistency of the reorder signature rather than on the item count [REL023, REL024, REL030, REL031, REL033, REL034, DIR006, DIR009, DIR010, DIR011, LAG021, LAG022, LAG023, LAG024, POS003, POS005, POS006].\n\nLimitations: with 200-trace windows, a shift in the mix of process variants — for example a reversed-order variant that was rare or unsampled earlier becoming dominant — could produce the same relational signature, and the evidence cannot distinguish a rewired sequence from such a variant-mix change. The A04/A06/A10 increases and several distance items rest on as few as 1–17 observations in one window and may be sampling variation, and an unobserved pair or edge is not evidence of absence [OCC001, OCC002, OCC004, LAG002, LAG003, LAG004, LAG012, LAG016].",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

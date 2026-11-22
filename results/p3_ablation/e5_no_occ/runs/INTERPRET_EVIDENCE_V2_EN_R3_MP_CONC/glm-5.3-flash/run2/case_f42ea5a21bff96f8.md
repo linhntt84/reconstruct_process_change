@@ -1,0 +1,23 @@
+### Observed differences
+
+- The dominant difference is a flip between two alternative activity blocks. In the earlier window, A21, A22 and A23 typically ran together in the same cases (co-occurring in about 75 in 100 traces), while A24, A25 and A26 rarely did (about 25 in 100, and absent together in about 74 in 100). In the later window this reversed: A21–A23 co-occur in only about 25 in 100 traces, while A24–A26 co-occur in about 75 in 100. [REL025, REL026, REL034, REL049, REL050, REL055]
+
+- The two blocks remain mutually exclusive in both windows (an activity from each block shares a trace in at most about 2 in 100 cases), and the flip is mirrored in A19 and A20, which appear in virtually every trace in both windows: A19 co-occurred with A21 in about 75 in 100 cases before versus about 26 in 100 after, and with A24 in about 26 in 100 before versus about 77 in 100 after; A20 shows the same reversal. A20's outgoing transitions likewise moved from roughly three quarters into A21/A22/A23 before to roughly three quarters into A24/A25/A26 after. [REL013, REL016, REL019, REL022, REL027, DIR002]
+
+- A06 changed participation and placement: it appeared in about 17 in 100 traces before and about 53 in 100 after, moving from mid-trace (median event position about 0.48) to the end of the trace (median about 0.96). [POS001]
+
+- In the later window, A06 sits between A34 and A35 in roughly half of the executions: A34's outgoing flow, previously about 89% to A35, now splits about 50% to A06 and 48% to A35; A06's outgoing flow, previously spread over many successors (largest share about 21% to A33), now goes about 90% to A35; A06 is followed by A35 within one event in about 97 in 100 observed pairs (versus gaps spread over 1–5 events before); and direct A34→A35 succession within one event fell from about 90 in 100 to about 49 in 100, with the remainder at a distance of two events. [DIR005, DIR001, LAG001, LAG013]
+
+- Ordering relations agree with this: in the later window A34 precedes A06 in about 46 in 100 cases and A06 precedes A35 in about 49 in 100 cases, whereas before, A06 co-occurred with either activity in only about 17 in 100 cases. [REL011, REL012]
+
+- Secondary, consistent shifts: pairs such as A29→A24/A25 and A30→A06 are observed far more often and at larger event distances than before (for example A30 before A06 in about 8 in 100 cases before versus about 51 in 100 after, with typical distance moving from 1–2 to 3–4 events). [LAG009, LAG010, LAG011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+In the control-flow family, 83 items qualified where fewer than 1 would be expected by chance in an unchanged process, so the flagged differences as a whole cannot be explained by random re-splits of a stable process. [screening]
+
+Main hypothesis: in the later window, the choice between two existing alternative blocks flipped — the block A21–A22–A23, previously executed together in about three quarters of cases, was largely set aside in favour of the block A24–A25–A26, now executed together in about three quarters of cases, with A19 and A20 (present in nearly all cases) now leading into A24–A26 instead of A21–A23. Supporting signs: co-occurrence within each block, cross-block co-occurrence, and the order relations with A19/A20 all reverse consistently between the windows, the same reversal appears in both blocks' relations with the later activities A29, A30, A34 and A35, and both blocks are well observed in both windows while staying mutually exclusive — so this reads as a shift in how often existing alternative paths are taken, not as activities appearing or disappearing. Limitations: these items are highly interdependent (they largely re-describe one trace-level flip rather than independent confirmations), and the evidence cannot rule out that the two windows draw on different case mixes rather than a changed routing rule. [REL013, REL016, REL019, REL022, REL025, REL049, REL032, REL053, DIR002]
+
+Other differences: A06, previously a rare mid-trace activity (about 17 in 100 cases), now runs in about half of the cases between A34 and A35 — A34 leads to A06 in about half of its outgoing transitions, A06 leads almost always to A35 within one step, and direct A34→A35 succession dropped to about half — while about half of A34's executions still go straight to A35; this is consistent with an existing, previously rare activity being inserted into the A34→A35 sequence in roughly half of the executions, though a changed case mix remains a competing explanation the evidence cannot exclude. [POS001, DIR001, DIR005, LAG001, LAG013, REL011, REL012]

@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, A14, A15 and A20 each ran in a minority of cases — about 35, 30 and 35 in 100 traces respectively — and the three never occurred together; in the later window none of the three was observed in any of the 200 traces. [OCC001, OCC002, OCC003, REL001, REL003, REL008]
+- In the earlier window the three were mutually exclusive alternatives directly after A36: all observed outgoing transitions of A36 went to A14 (about 35%), A15 (about 30%) or A20 (about 35%), and each of the three was in turn always followed by A21. In the later window, every observed outgoing transition of A36 goes straight to A21. [DIR004, DIR001, DIR002, DIR003, REL004, REL009, REL013]
+- Accordingly, the A36–A21 pair was two event positions apart in essentially all earlier traces, and in the later window the two are immediately consecutive in all traces. [LAG001]
+- A21 and A26 still occur in every trace in both windows; before, they co-occurred with one of the three (which ran before them) in about 30–35 in 100 traces, whereas in the later window they never co-occur with any of the three. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]
+- A knock-on effect on A19: it previously ran after A20 in about 17 in 100 traces, whereas it now occurs alone in about 56 in 100 traces (about 49 in 100 before). [REL012, REL002, REL007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative block between A36 and A21 — in which exactly one of A14, A15 or A20 executed after A36 and before A21 — is no longer executed, so that in the later window A36 leads directly to A21 in every trace. The signs are direct and mutually consistent: participation of all three activities fell from about 30–35 in 100 traces to zero out of 200; A36's successor profile moved from an even three-way split to exclusively A21; the A36→A21 distance shortened from two positions to one; and A21, A26 and A36 continue in every trace while never co-occurring with the three. Screening qualified 23 control-flow items where only about 0.38 would be expected without a change, so the item set as a whole is far beyond what an unchanged process typically produces, and each individual difference also exceeds about 995 of 1,000 random re-splits. [OCC001, OCC002, OCC003, DIR004, LAG001, REL004, REL009, REL013]
+
+Limitations: the many agreeing items largely restate one trace-level difference rather than independent confirmations, and zero participation only means the three activities were not observed in the later sample — a drastic reduction to a frequency below detection cannot be ruled out, nor can the evidence show whether the direct A36→A21 flow is now mandatory or the branch merely never triggered. [OCC001, OCC002, OCC003, DIR004]

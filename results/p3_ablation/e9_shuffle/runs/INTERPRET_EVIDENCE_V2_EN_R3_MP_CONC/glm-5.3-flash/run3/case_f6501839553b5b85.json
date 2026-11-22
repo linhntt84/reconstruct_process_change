@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f6501839553b5b85.json",
+  "evidence_sha256": "59045c7c3c758289ac43511cfac1810ab17531dcb7548bb91a8523fd898c047d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:50:43.873019+00:00",
+  "finished_at_utc": "2026-11-15T09:52:34.563135+00:00",
+  "latency_seconds": 110.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15125,
+    "prompt_tokens": 6450,
+    "total_tokens": 21575,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14029,
+      "text_tokens": 1096
+    },
+    "cost": 0.00853
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51685,
+  "text": "### Observed differences\n\n- A01 was not observed at all in the earlier window (0 of 200 traces). In the later window it appears in about 30 in 100 traces, averages about 0.66 occurrences per trace, repeats within the same trace in about 14 in 100 traces, and sits around the middle of the trace (median relative position about 0.41) [OCC001, POS001].\n- The behaviour after A12 changed completely: earlier, A12's outgoing transitions led to A04 in about 52 in 100 cases and to A13 in about 48 in 100 (175 transitions observed); in the later window, all 131 observed outgoing transitions of A12 led to A01 [DIR002].\n- A01's own successors, unobserved earlier, split in the later window between A04 (about 53 in 100 transitions) and A13 (about 47 in 100) [DIR001].\n- Measured distances shifted one step later across the board: A04 and A13 each followed A12 mostly one to two steps earlier but two to three steps later; the distance between consecutive A12 occurrences moved from four to five steps, and the self-distances of A04 and of A13 moved from three-to-four to four-to-five steps [LAG002, LAG004, LAG003, LAG001, LAG005].\n- A01's relations with the other activities changed from \"never together\" to \"usually together when present\": earlier, A04 and A13 each appeared without A01 in about 50 in 100 traces and never with it; later, each co-occurred with A01 in about 30 in 100 traces — always interleaved or repeated, with no fixed order — and without it in about 21 in 100 [REL001, REL003]. A12, earlier without A01 in about 33 in 100 traces, later never appeared without it; the two co-occurred in about 30 in 100 traces, with A12 before A01 in about 16 in 100 and interleaved or repeated in about 14 in 100 [REL002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added to the process and now sits between A12 and its former successors: in the earlier window A12 led directly to A04 or A13 (about 52/48), while in the later window A12 leads to A01 in every observed transition, and A01 in turn leads to A04 or A13 in roughly equal shares [DIR002, DIR001]. The one-step shift in every measured distance — A12 to A04 and A12 to A13, plus the self-distances of A12, A04 and A13 — is exactly what one extra step in that cycle would produce, and A01's appearance (0 to about 30 in 100 traces, mid-trace position) fits the same picture [LAG002, LAG004, LAG003, LAG001, LAG005, OCC001, POS001]. A04 and A13 still appear in about 50 in 100 traces in both windows, so their overall presence is stable; what changed is how they are reached [REL001, REL003].\n\nTwelve items qualified against fewer than 0.2 expected if nothing had changed, so the set as a whole is not what a stable process typically produces, and the change is shown directly by successor and distance evidence rather than inferred from occurrence counts alone; each item's difference also exceeds about 995 of 1,000 random re-splits of the pooled traces [OCC001, POS001, DIR001, DIR002, REL001, REL002, REL003, LAG001, LAG002, LAG003, LAG004, LAG005]. Limitations: A01's zero participation earlier only means it was not observed in that 200-trace window; the later window cannot rule out rare direct A12→A04 or A12→A13 transitions below detection; and because A04 and A13 still occur without A01 in about 21 in 100 later traces, the evidence does not show whether the new step applies to every execution of the cycle or only to the subset of traces in which A01 appears [REL001, REL003, DIR002].\n\nOther differences: A12 occurs somewhat less often in the later window — 131 outgoing transitions versus 175 earlier, and traces in which A12 repeats within five steps fell from 39 to 26 — which may be a side effect of the lengthened cycle or a separate reduction in participation; the evidence cannot distinguish these [DIR002, LAG003].",
+  "case_id": "case_f6501839553b5b85",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

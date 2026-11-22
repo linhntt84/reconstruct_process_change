@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f43819e4d0685d77.json",
+  "evidence_sha256": "4b64e8bcd31cb8ffc97d1d8d4faf14bab758a487aedb6996cf19f497a6c0668a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:54:55.781187+00:00",
+  "finished_at_utc": "2026-11-15T13:55:56.756159+00:00",
+  "latency_seconds": 60.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8110,
+    "prompt_tokens": 5104,
+    "total_tokens": 13214,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7236,
+      "text_tokens": 874
+    },
+    "cost": 0.0048205999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27101,
+  "text": "### Observed differences\n\n- In the earlier window, A02 did not occur at all (0 of 200 traces); in the later window it occurs in every trace, exactly once per case, and always as the last event of the trace. [OCC001, POS001]\n- A06 occurs in all traces in both windows, but its placement changed: earlier it sat at the very end of the trace (mean relative position about 0.99, with a following activity observable in only 4 of 200 traces), while in the later window it sits earlier (mean relative position about 0.79) and is directly followed by A02 in all 200 traces. [POS002, DIR005]\n- The relationship between A06 and A02 flipped completely: earlier, 100% of traces contained A06 without A02; later, 100% contain both activities, always with A06 executed before A02. [REL001]\n- Smaller shifts elsewhere: A05 now occurs slightly more often (in about 53 of 100 later traces versus about 50 earlier; mean occurrences about 1.0 versus 0.9), and several routing shares moved by a few percentage points — the largest being from A03, where the share continuing to A06 fell from about 41% to 32% while shares to A05 (about 37% to 41%) and A04 (about 22% to 27%) rose. [OCC002, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, a new closing activity A02 is executed exactly once at the end of every case, directly after A06, which previously ended the trace and now precedes A02. This is shown directly and consistently by several views of the same behaviour: A02's participation flips from 0 to 200 of 200 traces with a fixed last position; A06, which earlier had an observable successor in only 4 of 200 traces, is now followed by A02 in all 200 traces; and the A02–A06 relation changes from \"A06 only\" to \"both present, A06 first\" in 100% of traces. A06's shift to an earlier relative position (about 0.99 to about 0.79) is consistent with this. Each key item has an empirical strength of about 0.995, meaning differences this large arose in almost none of 200 random re-splits of the pooled data. [OCC001, POS001, POS002, DIR005, REL001]\n\nLimitations: the evidence describes two finite samples, not a confirmed model modification; and what followed A06 in the earlier window (A04) rests on only 4 observed transitions, so the earlier successor of A06 is only weakly documented. [DIR005] A competing explanation that cannot be fully ruled out is that A02 was already a possible step that simply was never executed earlier, since zero participation only means it was not observed — though appearance in 100% of later traces after none is difficult to explain by sampling variation alone. [OCC001]\n\nOther differences: several routing shares shifted by two to five percentage points without any activity appearing or disappearing — from A01, the share to A04 fell from about 74% to 72% while A03 rose; from A03, shares to A05 and A04 rose slightly at the expense of A06; from A04, the share to A06 rose from about 11% to 16%; from A05, the self-transition share rose from about 43% to 46%. These shifts are modest (empirical strengths about 0.44–0.83) and may partly reflect sampling variation between the windows. [DIR001, DIR002, DIR003, DIR004]",
+  "case_id": "case_f43819e4d0685d77",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

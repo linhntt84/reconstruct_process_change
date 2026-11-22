@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "d95a3a43d16f0073ee7734958aa4d9737c55571e1100a68b3629e3552781d69a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:57:37.159183+00:00",
+  "finished_at_utc": "2026-11-15T04:59:37.593413+00:00",
+  "latency_seconds": 120.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17218,
+    "prompt_tokens": 9838,
+    "total_tokens": 27056,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15889,
+      "text_tokens": 1329
+    },
+    "cost": 0.0100847
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56385,
+  "text": "### Observed differences\n\n- Routing out of A20 changed almost completely: before, A20's outgoing transitions went to A30 (about 40 in 100), A31 (about 33) and A36 (about 27); in the later window, about 99 in 100 go directly to A22, with A30 and A36 at about 0.5 in 100 and A31 unobserved as a successor. [DIR001]\n- Routing out of A21 flipped: before, essentially all of A21's outgoing transitions led to A25; in the later window they lead to A30 (about 36 in 100), A31 (about 33) and A36 (about 31), with A25 at about 1 in 100. [DIR002]\n- For A30, A31 and A36, the outgoing transition into A22 (previously about 28–38 in 100 for each) is no longer observed beyond about 0.5 in 100, and an outgoing transition into A25 appeared at about 31–36 in 100 for each of the three. [DIR003, DIR004, DIR005]\n- The order between the A30/A31/A36 group and A21/A22 reversed: before, each of A30, A31 and A36 ran before A21, and before A22, in 100 of 100 traces containing both; in the later window, A21 and A22 each run before them in about 99 of 100. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Relative event positions (positions in the trace, not clock time) moved consistently with the order flip: the mean position of A30, A31 and A36 shifted later by about 0.17–0.18 of the trace (from about 0.41 to about 0.59), while A21 (about 0.62 to 0.53) and A22 (about 0.47 to 0.38) shifted earlier by about 0.09. [POS001, POS002, POS003, POS004, POS005]\n- Step distances changed in the same direction: A20 to A22 became adjacent (from four steps apart to adjacent in about 99 of 100 cases), and A21 to A25 went from adjacent to about four steps apart. [LAG001, LAG004]\n- Participation itself shows no change: the profiles examined rest on 200 of 200 traces in each window (for example A20's routing and A30's position), so the differences concern routing and order rather than whether these activities run. [DIR001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A30/A31/A36 group changed its place in the sequence relative to A22 and A21: in the later window the group runs after A21 (and after A22), whereas before it ran before both; A20 now leads almost exclusively into A22, A21 leads into the A30/A31/A36 group instead of directly into A25, and A25 is now reached after that group, about four steps after A21 rather than immediately after it. The order reversal is measured directly on about 200 traces per window for all six activity pairs, and the routing, distance and position indicators all point the same way; 22 flagged items against about 0.42 expected without change means the ensemble is unlikely to be a random-split artefact, although the items most plausibly reflect one underlying difference in sequence rather than 22 independent changes. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005]\n\nAn important competing explanation cannot be fully ruled out: both orderings may have existed as variants of an unchanged process, with only their frequencies shifting between the two finite 200-trace samples, which would produce the same aggregate picture. The near-total flip (100% before versus about 99% after in every pair, together with coordinated routing changes) makes pure sampling noise unlikely, but a shift in the mix of two stable variants remains possible. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002]\n\nTwo limitations remain: the LAG items for A20–A31, A20–A36, A31–A22 and A36–A22 rest on only about 2 after-window observations and cannot support firm proportions, and the evidence does not pin down the exact path between A21 and A25, which are now about four steps apart. [LAG002, LAG003, LAG004, LAG005, LAG006]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

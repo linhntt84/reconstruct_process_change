@@ -1,0 +1,16 @@
+### Observed differences
+
+- The dominant order between A36 and A37 reversed. In the earlier window, A36's observed outgoing transitions led mainly to A33 (about 59 in 100) and to A37 (about 34 in 100); in the later window, they lead mainly to A37 (about 62 in 100), with A33 down to about 38 in 100. A37 shows the mirror image: earlier its exits went mainly to A36 (about 62 in 100) versus A33 (about 34 in 100); later A33 dominates (about 58 in 100) and A36 drops to about 37 in 100. [DIR001, DIR002]
+- Relative to A32, the two activities exchanged their distance. Earlier, A32 was followed immediately by A37 (about 63 in 100 of observed pairs) and by A36 two steps later (about 66 in 100); later, A32 is followed immediately by A36 (about 62 in 100) and by A37 two steps later (about 62 in 100). [LAG002, LAG003]
+- Direct A36→A37 adjacency became more prevalent and tighter: the pair within five steps appears in about 33 of 200 traces earlier (94% at distance 1) versus about 56 of 200 later (100% at distance 1); the earlier figure rests on only 33 observations. [LAG004]
+- Separate from the A36/A37 cluster, A07 took part in more traces (about 43 in 100 earlier vs about 54 in 100 later; 85 vs 107 traces) and appears slightly later within traces by event position (mean relative position about 0.05 vs 0.07, with the spread growing from about 0.02 to about 0.06). The ordered pair A07→A14 is now observed at shorter distances: distance 1 rose from about 28 to about 46 in 100, while distance 3 fell from about 42 to about 25 in 100. [POS001, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A36 and A37 exchanged their order in the sequence after A32: in the earlier window the dominant chain ran A32 → A37 → A36, with the onward transition to A33 leaving from A36; in the later window it runs A32 → A36 → A37, with the transition to A33 leaving from A37. This is shown directly by the flipped successor profiles of both activities and the swapped distances from A32, both activities occur in a substantial share of traces in both windows (about 46 in 100), and seven control-flow items qualified against roughly 0.5 expected without change, so the set of differences is unlikely to be a sampling artefact. [DIR001, DIR002, LAG002, LAG003, LAG004]
+
+An important competing reading remains: both orders are observed in both windows (A37→A36 still accounts for about 37 in 100 of A37's exits later, and A36→A37 already appeared in about 33 traces earlier), so the evidence cannot distinguish a genuine positional swap from a shift in the relative frequencies of two pre-existing alternative orders; the small earlier sample for direct A36→A37 adjacency (33 observations) also limits that item's weight. [DIR002, LAG004]
+
+Other differences: A07 occurs in more traces and slightly later within them, and A07→A14 is observed at shorter event distances; these involve A07 and A14, are not relationally tied to the A36/A37 change, and may reflect a separate difference in participation and relative placement. [POS001, LAG001]

@@ -1,0 +1,17 @@
+### Observed differences
+
+- Repetition largely stopped for A30, A31 and A36. In the earlier window each activity still appeared in every trace but averaged about 3.4 occurrences per trace, with repeats in about 75 of 100 traces; in the later window they still appear in every trace but average only about 1.0–1.1 occurrences, with repeats in roughly 1–2 of 100 traces. [OCC001, OCC002, OCC003]
+- The relationship between A30 and A36 changed from repeated/interleaved execution to a fixed sequence. Both activities co-occurred in all traces in both windows, but earlier their executions were interleaved or repeated in about 75 of 100 traces (A30 first in 25 of 100, A36 never first); in the later window A30 precedes A36 in about 98 of 100 traces, with interleaving in only about 2 of 100. This is a move from an unfixed, repetitive order to a fixed order, not an exchange of positions. [REL001]
+- In the later window A36 follows A30 tightly: the ordered pair occurs within about two steps in roughly 89 of 100 cases, versus about 12 of 100 earlier, while longer-range pairs (gap 5, about 5 in 100 earlier) and reverse-order pairs (A36 before A30, from about 150 observed pair instances down to a single one) have practically disappeared. [LAG002, LAG003]
+- The relative positions of the two activities barely moved (A30 mean 0.44 → 0.42; A36 about 0.49 in both windows), but their spread roughly halved (A30 std 0.12 → 0.07; A36 0.12 → 0.06), consistent with single rather than repeated executions. [POS001, POS002]
+- Two low-support items show the self-gaps of A30 and A36 shifting from mostly three steps to two-to-three steps, but they rest on only one to two pair observations in the later window. [LAG001, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeated execution of A30, A31 and A36 largely stopped: earlier, all three activities ran about three to four times per trace and A30 and A36 alternated within traces in about three quarters of cases, whereas in the later window each runs about once per trace, A30 precedes A36 in about 98 of 100 traces, and A36 follows within about two steps in about 89 of 100. [OCC001, OCC002, OCC003, REL001, LAG002]
+
+Supporting signs: the occurrence drop is measured on all 200 traces in each window while participation stayed at 100 in 100, so the activities were not removed — they stopped repeating [OCC001, OCC002, OCC003]; the ordering change is shown directly by the relation profile [REL001] and corroborated by the tight succession and the near-disappearance of reverse-order pairs [LAG002, LAG003]; the halved position spread fits single executions [POS001, POS002]. Ten control-flow items qualified against about 0.24 expected without change (48 units tested), so the volume of findings is far beyond what a stable process typically produces. [OCC001, OCC002, OCC003, POS001, POS002, REL001, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: the evidence cannot show whether the ordering between A30 and A36 itself tightened or whether the fixed sequence is simply the residue of the stopped repetition; A31 shows the same repetition drop but has no relational evidence, so its placement relative to A30 and A36 is unobserved; and the self-gap and reverse-order items rest on one to two later observations. [OCC002, REL001, LAG001, LAG003, LAG004]

@@ -1,0 +1,20 @@
+### Observed differences
+
+- The three activities **A30, A31 and A36** repeat far less often: in the earlier window each occurred about 3.4 times per case and appeared in every case; in the later window each occurs about once per case, still in every case. Cases with repeated executions of these activities fell from about 75 in 100 to about 1–2 in 100. [OCC001, OCC002, OCC003]
+- The return edge of this cycle nearly disappeared: earlier, about 70 in 100 of A36's outgoing transitions led back to A30 and about 29 in 100 led to A25; in the later window about 93 in 100 lead to A25 and only about 4 in 100 to A30. Per case, the exit to A25 occurred about once in both windows, while the return to A30 fell from about 2.4 times to almost never. [DIR003]
+- The forward chain itself is unchanged: A30 was followed by A31 in about 99 in 100 of its outgoing transitions earlier and about 97 in 100 later; A31 was followed by A36 in about 99 in 100 earlier and about 98 in 100 later. [DIR001, DIR002]
+- The A30–A36 relationship flipped from overlapping to strictly sequential: the two activities co-occurred in all cases in both windows, but earlier they were interleaved or repeated in about 75 in 100 cases (strictly A30 first in about 25), while in the later window A30 comes strictly before A36 in about 98 in 100. [REL001]
+- A tight direct succession emerged: cases recording A30 followed by A36 within five steps rose from about 17 in 100 to about 92 in 100, concentrated at a distance of two positions (about 89 in 100 later versus about 12 in 100 earlier, with about 5 in 100 at five positions earlier). [LAG002]
+- Weaker signals point the same way: the average relative position of A30 (about 0.44) and A36 (about 0.49) barely moved while their spread roughly halved, and the self-repetition gaps of A30 and A36 (typically three positions earlier) and the A36→A30 gap now rest on only 1–2 later-window observations. [POS001, POS002, LAG001, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repetitive cycle through **A30 → A31 → A36** was reduced to a single pass per case. Earlier, cases typically ran this cycle about three to four times, returning from A36 to A30 and leaving it once via A36 to A25; in the later window each of the three activities runs once, the return edge A36 → A30 is nearly unused, and cases proceed from A36 to A25. Since the number of repetitions per case changed while participation stayed at 100 in 100, this is a change in repetition — the cycle stopped repeating — not a re-weighting of intact alternative paths. [OCC001, OCC002, OCC003, DIR003, REL001, LAG002]
+
+The hypothesis is direct and consistent: the repetition counts drop exactly for the three activities in the cycle, the routing change sits at the cycle's closing edge, the pair relation flips from interleaved/repeated to strictly ordered, and the two-step A30→A36 succession appears, while the forward edges A30→A31 and A31→A36 keep their shares. The screening volume also exceeds what a stable process produces: 13 qualified items in the control-flow family against roughly 0.5 expected without change, and every item's difference is larger than in about 995 of 1000 random re-splits. [OCC001, DIR003, REL001, LAG002, DIR001, DIR002]
+
+Limitations: the evidence cannot show how cases reach A30 or what follows A25, so a broader re-routing around the cycle cannot be ruled out; the self-repetition and A36→A30 gap items rest on one or two later-window observations, and the directional shares are computed over outgoing transitions rather than cases. [DIR001, DIR003, LAG001, LAG003, LAG004]
+
+Other differences: only minor additional differences appear — rare outgoing edges of A30, A31 and A36 (each well under 1 in 100 transitions) appear or vanish between the windows, and the positional spread of A30 and A36 narrowed around unchanged average positions; both are consistent with the same single-pass behaviour rather than separate shifts. [DIR001, DIR002, POS001, POS002]

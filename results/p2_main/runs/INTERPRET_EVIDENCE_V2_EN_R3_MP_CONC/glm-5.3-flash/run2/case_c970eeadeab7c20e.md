@@ -1,0 +1,16 @@
+### Observed differences
+
+- Activity A06 disappeared from execution: in the earlier window every one of the 200 traces contained A06 exactly once (participation 100%, one occurrence per trace); in the later window none of the 200 traces contain it. [OCC001, POS003]
+- In the earlier window, A03 and A06 always appeared together and in either order — A03 before A06 in about 53 in 100 traces, A06 before A03 in about 47 in 100 — so there was no fixed order between them. In the later window A03 always appears without A06. [REL001]
+- The edges between the two vanished: earlier, all of A03's observed outgoing transitions (106) went to A06, and all of A06's observed outgoing transitions (94) went back to A03; in the later window A03 shows no observed outgoing transitions at all and sits at the final position of every trace (mean position 1.00 with no spread, versus about 0.94 with spread before). [DIR001, DIR003, POS001]
+- A04 no longer routes into A06: earlier, of A04's observed outgoing transitions, roughly 52 in 100 went to A02, 26 to A03 and 23 to A06; in the later window none go to A06, while A03 and A02 each receive about half. [DIR002]
+- Accordingly, A03 now follows A04 exactly one step later in 100 in 100 traces, whereas earlier this was immediate in about 53 in 100 traces and two steps apart in about 47 in 100. [LAG001]
+- A04 and A06, which co-occurred in every earlier trace (A04 first in about 44 in 100, the rest interleaved or repeated), never co-occur in the later window; A04 appears without A06 throughout. [REL002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A06 was removed from the process, or is no longer executed. In the earlier window every trace contained A06 once, and traces ended with the A03–A06 pair in alternating order (A03→A06 in about 53 in 100 traces, A06→A03 in about 47 in 100); in the later window A06 is never observed, A03 is always the terminal activity, and A04 — which previously split its outgoing transitions between A02 (about 52%), A03 (about 26%) and A06 (about 23%) — now routes only to A03 and A02 in equal shares and reaches A03 in a single step every time. The support is direct (participation 200 of 200 traces falling to 0 of 200, with full support in both windows) and consistent across relational, directional, positional and lag indicators, and ten items qualified against roughly 0.09 expected for an unchanged process, far beyond what chance would produce. The main limitation is that zero participation strictly means only that A06 was not observed in the later window: the evidence cannot distinguish a true removal from A06 becoming rare, or its work being absorbed into another activity such as A03, whose lack of observed outgoing transitions in the later window hides what follows it. [OCC001, POS003, REL001, DIR001, DIR003, DIR002, LAG001, POS001]
+
+Other differences: A04's typical position within traces moved slightly later (median 0.60 to 0.75), which is consistent with the shorter ending but is based on event positions rather than clock time and does not by itself show that A04 was moved. [POS002]

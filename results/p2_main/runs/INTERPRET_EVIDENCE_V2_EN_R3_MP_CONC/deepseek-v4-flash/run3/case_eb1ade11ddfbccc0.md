@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, activity A03, which occurred in all 200 traces before (mean 1.0 per trace), is no longer observed in any trace. [OCC001, DIR001, POS002, REL001, REL003, REL005, REL006]
+- Activity A07, absent before, occurs in all 200 traces after (mean 1.0 per trace). [OCC002, DIR003, POS004, REL002, REL004, REL006, REL007]
+- A04's outgoing transitions changed: before, 99% went to A01 and 1% to A03; after, 100% go to A07. [DIR002]
+- A07, which had no outgoing transitions before, now leads to A01 in 100% of its occurrences. [DIR003]
+- Ordering relations changed: before, A03 preceded A01 in 99.5% of traces and A02 in 86%; after, A07 precedes A01 in 100% and A02 precedes A07 in 100%. [REL001, REL002, REL003, REL004]
+- Positions shifted: A02 moved from mean position 0.215 to 0.0 (first), A04 from 0.746 to 0.5, and A07 appears at 0.75. [POS001, POS003, POS004]
+- Lags increased: A04-to-A01 changed from 1 step (99%) to 2 steps (100%); A02-to-A01 changed from 3 steps (86.5%) to 4 steps (100%). [LAG003, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The process changed by removing activity A03 and adding activity A07, with A07 inserted between A04 and A01: A04 now routes to A07, and A07 routes to A01, instead of A04 leading directly to A01. A02 becomes the first activity. This is supported directly by the disappearance of A03, the appearance of A07, the rerouting of A04's outgoing edge, the new A07→A01 edge, the ordering relations (A07 before A01, A02 before A07), and the increased lags between A04–A01 and A02–A01, all consistent with one extra step inserted between A04 and A01. The screening count (19 items vs 0.13 expected by chance) makes a chance explanation very unlikely. A competing explanation that cannot be fully ruled out is that the observed traces represent a different variant that happens to dominate the later window, but the consistency and volume of evidence make this implausible.
+
+Other differences: The branches from A03 to A06 and A05 (about 5% each) also disappeared with A03. [DIR001]

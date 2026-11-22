@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_7b13ca4049a2d623.json",
+  "evidence_sha256": "533aa51617d3e910789d97a8e2aa6bcd2f49f642e7d152c57c2ee2c6703a19be",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:48:24.593483+00:00",
+  "finished_at_utc": "2026-11-15T04:49:21.029137+00:00",
+  "latency_seconds": 56.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7828,
+    "prompt_tokens": 5032,
+    "total_tokens": 12860,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7243,
+      "text_tokens": 585
+    },
+    "cost": 0.0046688
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27928,
+  "text": "### Observed differences\n\n- Activity A02 was not observed in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200), always at the same position, about two-thirds into the trace. [OCC001, POS002]\n- In the earlier window, all observed outgoing transitions of A06 led to A01; in the later window they all lead to A02, and A02's observed transitions in turn all lead to A01. [DIR002, DIR001]\n- A01 and A02 never appeared together earlier (A01 appeared without A02 in 100% of traces); in the later window they co-occur in 100% of traces, with A02 always before A01. A06 and A02 show the same pattern: never together earlier, always together later, with A06 always before A02. [REL001, REL002]\n- A01 followed A06 immediately (one step away) in essentially all earlier traces; in the later window it follows two steps after A06 in all traces. [LAG001]\n- A06 and A01 themselves still occur in every trace in both windows; their positions shifted only slightly (A06 from about 0.60 to 0.50, A01 from about 0.80 to 0.83 of the trace), consistent with one event having been inserted between them. [POS001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a step A02 now executes between A06 and A01 in every case: in the earlier window A06 led directly to A01, whereas in the later window A06 leads to A02, A02 leads to A01, and A01 follows A06 two events later instead of immediately, with A02 running exactly once per trace at a fixed position. This is shown directly by the rerouting of A06's outgoing transitions, the order relations between the activity pairs, and the changed A06-to-A01 distance, and it is consistent across all nine control-flow items; 9 qualifying items against roughly 0.04 expected without a change cannot be explained by random re-splitting of the two windows. A limitation is that the evidence covers only A01, A02 and A06 and their immediate succession; in particular, it cannot rule out that A02 already existed as a rare step elsewhere that simply was not observed in the earlier sample (0 of 200 traces) and has now become a fixed step in this position. [OCC001, DIR001, DIR002, REL001, REL002, LAG001, POS002]\n\nOther differences: none — the small position shifts of A01 and A06 follow mechanically from the same insertion and are not independent changes. [POS001, POS003]",
+  "case_id": "case_7b13ca4049a2d623",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

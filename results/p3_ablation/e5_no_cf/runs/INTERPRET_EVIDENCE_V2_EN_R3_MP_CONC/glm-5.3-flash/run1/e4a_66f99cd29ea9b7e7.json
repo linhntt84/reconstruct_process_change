@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_66f99cd29ea9b7e7.json",
+  "evidence_sha256": "9958c8851248de0f1350f0b1eda68a0169be8818048d00f026f878ebe724ba49",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:27:55.330892+00:00",
+  "finished_at_utc": "2026-11-14T13:28:22.089117+00:00",
+  "latency_seconds": 26.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4237,
+    "prompt_tokens": 2937,
+    "total_tokens": 7174,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3701,
+      "text_tokens": 536
+    },
+    "cost": 0.0025590499999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16079,
+  "text": "### Observed differences\n\n- The elapsed time from the completion of A01 to the completion of A04 roughly doubled: about 0.84 hours on average in the earlier window (median about 0.85, quartiles roughly 0.78–0.92) versus about 1.75 hours in the later window (median about 1.74, quartiles roughly 1.58–1.89). This pair occurs in about 19 in 100 traces in both windows (38 of 200). [TWAIT001]\n- The elapsed time from the completion of A24 to the completion of A28 collapsed to nearly zero: about 1.0 hours on average in the earlier window (median about 1.01) versus about 0.01 hours in the later window, where the median and upper quartile are both 0. This pair occurs in all 200 traces in both windows. [TWAIT002]\n- Both differences are far larger than those produced by random re-splits of the pooled traces: each exceeds all but about 1 in 2,000 reference comparisons. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the interval between the completions of A01 and A04 is about twice as long as before (about 1.75 h versus about 0.84 h on average), while the interval between the completions of A24 and A28 has all but disappeared (from about 1.0 h to essentially zero). Both intervals are measured directly on the pairs concerned and shift consistently across mean, median and quartiles; the A24–A28 result rests on all 200 traces per window and the A01–A04 result on 38 traces per window; and 2 qualifying items from 19 tested time units is far above the roughly 0.009 expected by chance, so sampling variation cannot account for the pattern as a whole. [TWAIT001, TWAIT002]\n\nLimitations: T_WAIT measures elapsed time between consecutive completion events, not pure waiting or processing time, so the shifts may reflect when completions are scheduled or batched rather than a change in work duration. Without ordering or positional evidence, a structural reordering that produces these elapsed-time shifts cannot be ruled out, although a timing change is a hypothesis in its own right and does not require one. The A01–A04 interval also rests on a smaller sample (about 19 in 100 traces) than the A24–A28 interval. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_66f99cd29ea9b7e7",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

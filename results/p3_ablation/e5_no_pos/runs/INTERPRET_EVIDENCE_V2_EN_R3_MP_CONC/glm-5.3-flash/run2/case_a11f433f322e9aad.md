@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A27 was executed exactly once in every case (participation 100%, 200 of 200 traces); in the later window it appears in only about 51 in 100 cases (102 of 200), still without repetition. [OCC001]
+- Three activities that were never observed before — A32, A33 and A38 — each now occur once in about 49 in 100 cases in the later window (98–99 of 200 each). [OCC002, OCC003, OCC004]
+- A26 still occurs in every case, but its outgoing transitions changed: earlier about 99% went to A27; in the later window only about 50% go to A27, with the rest split among A33 (~17%), A38 (~16%) and A32 (~15%). [DIR001, REL001]
+- The new activities lead to one another and to A28 (for example, from A32: ~35% to A38, ~34% to A33, ~28% to A28), and each pair of them occurs in both orders in similar proportions, so the three run in varying order rather than in a fixed sequence. [DIR003, DIR004, DIR005, REL012, REL013, REL014]
+- A27 and each of A32/A33/A38 behave as alternatives: in the later window they co-occur in at most about 0.5% of cases, while each new activity occurs without A27 in about 49 in 100 cases. [REL006, REL007, REL008]
+- A28 still occurs in every case in both windows, but earlier it was preceded by A27 in about 99.5% of cases, whereas in the later window A27 precedes it in about 51% and one of A32/A33/A38 precedes it in about 49% of cases. [REL005, REL009, REL010, REL011]
+- The distance from A26 to A28 changed: earlier it was 2 event positions in about 98% of cases; in the later window it is 2 positions in about 50% and 4 positions in about 48% of cases, matching the two routes. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the process contains an alternative route between A26 and A28: in roughly half the cases the original segment A26 → A27 → A28 still runs as before, while in the other half A27 is skipped and a block of three activities — A32, A33 and A38, executed in varying order — is inserted between A26 and A28. The change is shown directly and consistently: A27's participation halved while A32/A33/A38 appeared from zero to about half each; A26 now splits its outgoing transitions about 50/50 between A27 and the new activities; A27 and the new activities are mutually exclusive; the new activities precede A28; and the A26→A28 distance became bimodal (2 or 4 positions). With 24 qualifying control-flow items against roughly 0.54 expected if nothing had changed, chance sampling cannot explain the pattern as a whole. Limitations: the evidence cannot show what determines which route a case takes, cannot fully rule out that the two windows draw on different mixtures of case types rather than a modified process, and the internal order of A32/A33/A38 is not fixed. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR003, DIR004, DIR005, REL001, REL005, REL006, REL009, REL012, LAG001]
+
+Other differences: in the later window, A27 shows a few rare new outgoing transitions (to A09 about 2%, and to A34 and A25 about 1% each of its outgoing transitions) plus negligible recurrence, all minor next to its dominant edge to A28 (~96%). [DIR002, OCC001]

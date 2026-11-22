@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_f737638cadfdd3c5.json",
+  "evidence_sha256": "a64bbec7f26846b0b5c99cd7949d4c3fc04991d60b1cf38546f5dc91886628f7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:11:01.246741+00:00",
+  "finished_at_utc": "2026-11-15T12:11:52.912998+00:00",
+  "latency_seconds": 51.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6819,
+    "prompt_tokens": 7542,
+    "total_tokens": 14361,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5974,
+      "text_tokens": 845
+    },
+    "cost": 0.0045408
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22402,
+  "text": "### Observed differences\n\n- Three activities that never occurred in the earlier window appear in the later one: A19 in about 37 in 100 traces, A25 in about 34, and A20 in about 29, each occurring at most once per trace (mean occurrences equal participation; no repetitions) [OCC001, OCC002, OCC003].\n- In the later window, each of the three leads almost exclusively to A26: roughly 96 in 100 observed outgoing transitions of A19 go to A26, about 98 of A20's and about 97 of A25's, with only tiny residual shares to other activities [DIR001, DIR002, DIR003].\n- A41's routing changed fundamentally. Earlier, about 93 in 100 of A41's observed outgoing transitions went directly to A26; later, about 92 in 100 go to one of the new activities (roughly 34 to A19, 31 to A25, 27 to A20), and only about 1 in 100 still goes directly to A26 [DIR004].\n- The distance from A41 to A26 grew accordingly: earlier the pair was one step apart in about 94 in 100 cases; later it is two steps apart in about 90 in 100, and three steps in about 9 [LAG002].\n- The new activities sit about a third of the way into the trace (median relative position around 0.35), and A26 itself now occurs slightly later (median about 0.36 before vs about 0.38 after) [POS001, POS002, POS003, POS004].\n- Other differences: A31 occurs slightly later in the trace (mean relative position about 0.69 vs 0.71), and the A31-to-A35 gap shifted from mostly one step (about 55 in 100) to mostly two steps (about 62 in 100) [POS005, LAG001].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, a block of three alternative activities — A19, A20 and A25 — is executed between A41 and A26. Where a case previously went from A41 almost directly to A26, it now runs A41, then exactly one of A19/A20/A25 (chosen in roughly equal shares of about a third each), and then A26; A26 is consequently reached two steps after A41 instead of one and sits slightly later in the trace. This is supported directly and consistently: the three activities appear from zero participation, their outgoing flow points almost solely to A26, A41's outgoing flow moved from A26 to the block, and the A41→A26 step distance shifted from one to two — agreeing across occurrence, direction, lag and position indicators, with 14 qualifying items against roughly 0.5 expected by chance without a change [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, POS001, POS002, POS003, POS004].\n\nLimitations: the evidence shows the sequence at the level of observed transitions but cannot fully rule out that the block runs in parallel with A26 rather than strictly before it, and it does not directly observe that A19, A20 and A25 are mutually exclusive within one trace — their shares summing to about one per trace (roughly 995 in 1000 combined) and each occurring at most once make this likely but not proven. The small residual transitions out of A41 (to A04, A08 and others) persist in both windows and are not explained by this hypothesis [DIR004].",
+  "case_id": "case_f737638cadfdd3c5",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_d5faf451fa7ec585.json",
+  "evidence_sha256": "dc7dc436f8adca2c005aaaf4d28332830af30a6a3f2a3a63f1cd33e23436e182",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:49:07.641628+00:00",
+  "finished_at_utc": "2026-11-15T05:50:01.856676+00:00",
+  "latency_seconds": 54.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7224,
+    "prompt_tokens": 11167,
+    "total_tokens": 18391,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6329,
+      "text_tokens": 895
+    },
+    "cost": 0.00528705
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23047,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 were low-frequency, mutually exclusive steps: A14 ran in about 32 of 100 traces, A15 in about 28, and A20 in about 40, and no trace contained more than one of them — together the three covered essentially every trace. In the later window, none of the three appears in any of the 200 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n\n- In the earlier window, the three alternatives sat just past the middle of the trace (mean relative position about 0.51–0.52), always after A22 and before A24, with no fixed order relative to A23 (e.g. A14 preceded A23 in about 14 of 100 traces and followed it in about 19). In the later window, A22, A23 and A24 still occur in every trace, but never together with any of the three alternatives. [POS001, POS002, POS003, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n\n- The spacing between the remaining steps tightened: before, A22 reached A23 at a distance of one position in about 55 of 100 traces (otherwise two), A23 reached A24 at distance one in about 46 of 100 traces (otherwise two), and A22 to A24 was always three positions apart. In the later window, A22→A23 and A23→A24 are always directly consecutive, and A22 to A24 is always two positions apart. [LAG001, LAG002, LAG003]\n\n- A22's mean relative position moved slightly later (about 0.46 to 0.47) and A24's slightly earlier (about 0.57 to 0.55), while both remained in every trace — consistent with the interval between them shrinking. [POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative step between A22 and A24 is no longer executed in the later window. Earlier, every trace contained exactly one of A14, A15 or A20 — a per-case choice among the three — placed after A22 and before A24, on either side of A23; in the later window none of the three is observed, and A22, A23 and A24 follow one another directly with nothing in between. The supporting signs are consistent: participation of all three activities fell from about 28–40 in 100 traces to zero; the relation profiles show they were strict alternatives occupying the A22–A24 interval; the lag profiles show that interval closing from three positions to two, with both adjacent pairs now always at distance one; and the small opposite position shifts of A22 and A24 fit the same compression. With 23 qualifying control-flow items against roughly 0.25 expected without any change, chance sampling cannot account for the evidence as a whole. [OCC001, OCC002, OCC003, REL001, REL002, REL003, REL005, REL006, REL007, REL009, REL010, REL012, LAG001, LAG002, LAG003, POS004, POS005]\n\nLimitations: zero participation only shows that A14, A15 and A20 were not observed in the later window, so the evidence cannot distinguish removing or skipping the choice block from the branch simply never being taken in this sample, nor rule out that the choice was replaced by behaviour outside the recorded activities. All qualifying items also come from a single evidence family, so the hypothesis rests on control-flow observations alone. [OCC001, OCC002, OCC003]",
+  "case_id": "case_d5faf451fa7ec585",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

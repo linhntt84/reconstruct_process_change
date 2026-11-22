@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_cdlg_bf3eec1981cf.json",
+  "evidence_sha256": "4ed516b6ce1b7f35626fb8284426d767901d4c0a359fbc9133b17c1b8d90dbfe",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T15:05:15.463346+00:00",
+  "finished_at_utc": "2026-11-14T15:06:20.938075+00:00",
+  "latency_seconds": 65.47,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10374,
+    "prompt_tokens": 5523,
+    "total_tokens": 15897,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9438,
+      "text_tokens": 936
+    },
+    "cost": 0.0060154499999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36678,
+  "text": "### Observed differences\n\n- The clearest difference is in what follows A02. In the earlier window, A02 was followed by A04 in about 56 of 100 cases and by A03 in about 44; in the later window this flipped, with A03 following in about 53 of 100 cases and A04 in about 47. [DIR001]\n- A04 was executed in about 56 of 100 traces before and about 47 of 100 after (roughly 112 vs 94 of 200 traces), always once per trace; its mean occurrences per trace fell from 0.56 to 0.47. [OCC002]\n- A03, A06, A07 and A10 each appeared in about 44 of 100 traces before and about 53 of 100 after (88 vs 106 of 200 traces each). A03 and A06 also occur more often per trace (means about 0.95 to 1.21 and 0.95 to 1.17), but each participating trace contains them about twice in both windows, so the increase comes from more traces entering this group, not from more repetitions. [OCC001, OCC004, OCC005, OCC007]\n- A05 and A09, which are reached inside the group opened by A03, also became more frequent (A05 mean about 0.52 to 0.68; A09 mean about 0.51 to 0.64), consistent with the group being traversed more often. [OCC003, OCC006]\n- Routing inside the group barely moved: from A03 the share continuing to A07 fell only from about 42% to 39%; from A06 the share to A10 fell from about 44% to 43%; from A07 about 93 in 100 transitions still return to A06; from A09 almost all transitions still go to A06. These differences fall within the range random splits produce (empirical strengths about 0.07 to 0.37). [DIR002, DIR003, DIR004, DIR005]\n\n### Inference\n\nSupport level: Weak hypothesis\n\nMain hypothesis: in the later window, the alternative chosen after A02 shifted — the branch through A03, which opens a cyclic block containing A05, A06, A07, A09 and A10, is now taken in about 9 more of 100 cases, while the branch through A04 is taken correspondingly less often; as a result the block's activities run in more traces and A04 in fewer. Both alternatives and all block activities are observed in substantial shares in both windows, and only the shares between them shift, while the block's internal successor shares stay essentially unchanged. [DIR001, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, DIR002, DIR003, DIR004, DIR005]\n\nThe supporting signs are the directly observed flip in A02's successor shares and the near-exact mirror image between A04's decline and A03's rise. What is missing: the routing difference is only moderately unusual for an unchanged process (larger than about 94 of 100 random re-splits, so about 6 of 100 unchanged splits reach this size), the occurrence increases of the block activities follow from the same traces and are not independent confirmations, and no screening baseline is provided to compare the number of qualifying items against the chance expectation. A sampling fluctuation between the two windows therefore cannot be ruled out. [DIR001, OCC001, OCC002]\n\nOther differences: the small internal redistributions within the block (A03 to A07 down about 3 points, A06 to A10 down about 1.5 points, and a single A09 to A07 transition appearing in the later window) have low empirical strength and are consistent with an unchanged internal structure; A05's increase sits mostly in repetitions per participating trace (participation nearly flat at about 27 to 29 of 100, on roughly 55 traces per window), which is only weakly supported. [DIR002, DIR003, DIR004, DIR005, OCC003]",
+  "case_id": "null_cdlg_bf3eec1981cf",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "weak hypothesis"
+}

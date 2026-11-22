@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_1ed70f47ec8b0ce2.json",
+  "evidence_sha256": "16d86bfdf68ac4a9bb00faad640fe51f6e90ca1aa0e28838192dfd6140c8f848",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:05:32.381420+00:00",
+  "finished_at_utc": "2026-11-14T13:07:12.092042+00:00",
+  "latency_seconds": 99.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16382,
+    "prompt_tokens": 17127,
+    "total_tokens": 33509,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14900,
+      "text_tokens": 1482
+    },
+    "cost": 0.01076005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52242,
+  "text": "### Observed differences\n\n- Two blocks of activities exchanged their place along the case. In the earlier window, exactly one of A14, A16 and A19 ran per case (about 30, 35 and 36 of 100 cases respectively, shares summing to roughly one choice per case), about a third of the way into the trace (mean relative position 0.34–0.35); in the later window they still run once per case (about 29–39 in 100 each) but about two-thirds in (0.67–0.68). [POS001, POS003, POS006]\n- A15, A17 and A18 ran in every case in both windows and moved in the opposite direction: from about two-thirds into the trace (means ≈0.64) earlier to about a third in (means ≈0.38) later. [POS002, POS004, POS005]\n- A20 and A24 ran in every case throughout and shifted only slightly later (A20 mean 0.38→0.44; A24 0.57→0.64), consistent with a longer block now running before them. [POS007, POS008]\n- Every tested order relation spanning the two blocks flipped. A20 preceded A15 in 200 of 200 earlier cases and followed it in 200 of 200 later cases; A24 switched from always preceding A15/A17/A18 to always following them; each of A14/A16/A19 switched from running before A15/A17/A18/A20/A24 (in the roughly 30–39 of 100 cases where they co-occur) to running after them. [REL008, REL009, REL015, REL016, REL018, REL019, REL001, REL010, REL020]\n- Successors changed accordingly. Earlier, A14, A16 and A19 always led to A20; later they always lead to A25. Earlier, A15/A17/A18 each led to the other two trio members and to A25 (about one third of outgoing transitions each); later they lead to the other two and to A20 (about 28–37%). A24's outgoing transitions moved from A15/A18/A17 (about 37/33/30%) to A19/A16/A14 (about 39/29/33%), and A35's from A16/A14/A19 to A17/A15/A18. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- Participation was stable: the alternatives' shares still sum to about one choice per case, the trio and A20/A24 remain in every case, and within-block routing changed only slightly (for example A15→A17 fell from about 40% to about 30% of A15's outgoing transitions), so the difference is a reordering rather than paths being replaced or activities becoming optional or mandatory. [POS001, POS002, POS003, POS004, POS005, POS006, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks of the process exchanged their position in the sequence. In the earlier window the flow ran from A35 into a choice of exactly one of A14, A16 or A19, then through A20 and A24 into the always-executed trio A15, A17 and A18 (executed in a varying internal order), which exited to A25; in the later window A35 leads into the trio A15/A17/A18, which flows into A20 and then A24, and the choice of A14/A16/A19 follows and exits to A25. [DIR007, DIR008, DIR001, DIR002, POS001, POS002, POS007, POS008, REL008, REL016]\n\nThe placement change is shown directly and consistently: opposite position shifts of about 0.26–0.35 in relative position [POS001, POS002, POS003, POS004, POS005, POS006], all 21 tested cross-block order relations flipping in the same direction [REL001, REL006, REL008, REL010, REL015, REL020], and matching successor changes at both block boundaries [DIR001, DIR003, DIR006, DIR007, DIR008]. Stable participation rules out path replacement or a change in which activities run, and 37 qualifying items against roughly 0.42 expected if nothing had changed is far beyond what random re-splits of these windows produce. [POS001, POS002, POS006]\n\nLimitations: A25 and A35 have no position or relation profiles of their own, so their placement is inferred only from the successor changes [DIR001, DIR003, DIR006, DIR007, DIR008]; positions are event positions, not clock times, so no timing claim is made. An important competing explanation the evidence cannot rule out is an additional change in the internal execution order within the trio A15/A17/A18 or among the alternatives A14/A16/A19, since no order relations were tested inside those blocks; the data pin down only their placement relative to A20 and A24.\n\nOther differences: only small redistributions within the blocks, such as A17→A15 rising from about 30% to about 36% of A17's outgoing transitions, and the alternative frequencies shifting slightly (A16 about 35→29 in 100 cases, A19 about 35→39 in 100); these are secondary to the reordering and may reflect sampling variation between two 200-trace windows. [DIR004, DIR005, POS003, POS006]",
+  "case_id": "case_1ed70f47ec8b0ce2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

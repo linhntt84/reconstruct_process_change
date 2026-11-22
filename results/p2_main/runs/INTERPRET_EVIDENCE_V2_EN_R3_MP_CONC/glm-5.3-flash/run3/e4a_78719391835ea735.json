@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_78719391835ea735.json",
+  "evidence_sha256": "41119b72a031103209f512c17261b7f9679d8eee2d7cb3ecab7c494b3efebf4f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:45:42.041224+00:00",
+  "finished_at_utc": "2026-11-15T03:47:57.894781+00:00",
+  "latency_seconds": 135.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19791,
+    "prompt_tokens": 18824,
+    "total_tokens": 38615,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18034,
+      "text_tokens": 1757
+    },
+    "cost": 0.012719099999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57383,
+  "text": "### Observed differences\n\n- The same activities occur in both windows with essentially unchanged participation: A15, A17, A18, A20, A24 and A35 appear in every case in both windows, and A14, A16 and A19 each appear in roughly 29–39 in 100 cases, with their shares summing to 200 of 200 cases in each window (exactly one of the three per case). What changed is where these two groups sit in the flow. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, POS001, POS002, POS003, POS004, POS005, POS006]\n- In the earlier window, A35 was followed by one of A14/A16/A19 (about 35%, 30% and 36% of its outgoing transitions), each of which led exclusively to A20; A24 then fed into the trio A15/A17/A18 (about 37%, 33%, 30%), and the trio cycled internally before exiting to A25 (about 30–38% of each member's exits). In the later window, A35 feeds the trio (about 33–36% each), the trio exits to A20 (about 28–37%), A24 feeds one of A14/A16/A19 (about 29–39%), and that activity leads exclusively to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- All 21 measured pairs spanning the two groups reversed their execution order completely and deterministically: A20 always preceded A15/A17/A18 before and always follows them now [REL008, REL015, REL018]; A24 preceded the trio before and precedes A14/A16/A19 now [REL005, REL009, REL013, REL016, REL019, REL021]; and each of A14/A16/A19 flipped from running before A15, A17, A18, A20 and A24 to running after all of them [REL001, REL002, REL003, REL004, REL006, REL007, REL010, REL011, REL012, REL014, REL017, REL020].\n- Event positions moved accordingly: A14/A16/A19 shifted from a mean relative position of about 0.34–0.35 to about 0.67–0.68, while A15/A17/A18 moved from about 0.64 to about 0.38; A20 (0.38→0.44) and A24 (0.57→0.64) shifted only slightly later. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- Distances changed consistently with a three-event group and a one-event group trading places: A25 now follows A24 two events later instead of four, and A20 now follows A35 four events later instead of two. [LAG001, LAG002]\n- In the later window, the elapsed time between consecutive completion events A02→A08 roughly doubled (mean about 0.9 h to about 1.7 h, with all quartiles shifting up similarly), and the A06→A08 gap also roughly doubled (mean about 0.12 h to about 0.26 h); both rest on modest counts (26 vs 28 and 37 vs 27 transitions). [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks of the flow exchanged places. In the earlier window each case ran A35, then one of A14/A16/A19, then A20, then A24, then the always-executed trio A15/A17/A18, then A25; in the later window it runs A35, the trio A15/A17/A18, A20, A24, one of A14/A16/A19, then A25. The trio moved from the late segment (between A24 and A25) to the early segment (between A35 and A20), and the single per-case activity from {A14, A16, A19} moved the opposite way. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL001, REL008, REL015, REL018, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002]\n\nThe support is direct and consistent: 39 control-flow items qualified against roughly 0.5 expected if nothing had changed (control-flow family 39 vs 0.46), so the pattern as a whole is far beyond random re-splitting; all cross-group pairs reversed order, the successor changes at A35, A24 and the block exits match the exchange exactly, and the lag changes (4↔2 and 2↔4 steps) fit a three-event group and a one-event group trading places. Unchanged participation shares rule out activities being added, removed, skipped or made optional, and the placement claim does not rest on positions alone since relational and successor evidence agree. [DIR001, DIR003, DIR006, DIR007, DIR008, REL001, REL006, REL007, REL010, REL014, REL020, POS001, POS002, LAG001, LAG002]\n\nLimitations: the order between A20 and A24 and the internal sequence within each block are not directly measured, so those details rest on position and distance information; and a more complex restructuring that produces the same pairwise orders cannot be fully excluded. [POS007, POS008, LAG001, LAG002]\n\nOther differences: the elapsed time between consecutive completion events A02→A08 and A06→A08 roughly doubled in the later window (means about 0.9→1.7 h and about 0.12→0.26 h). This is a timing hypothesis in its own right, but it rests on few observations (26 vs 28 and 37 vs 27 transitions) and involves activities that appear in no control-flow item, so any connection to the reordering is not shown by this evidence; TWAIT measures elapsed time between consecutive completions, not pure waiting or service time. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_78719391835ea735",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_c9e04f0448c33ecd.json",
+  "evidence_sha256": "939332a50b64051a2a4f97fcf9152355f01f9565ccf79471d34f617bd02bc735",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:54:21.729041+00:00",
+  "finished_at_utc": "2026-11-15T01:54:52.431331+00:00",
+  "latency_seconds": 30.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4357,
+    "prompt_tokens": 3006,
+    "total_tokens": 7363,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3679,
+      "text_tokens": 678
+    },
+    "cost": 0.0026293999999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 15771,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A23 and A31 roughly doubled: in the earlier window it averaged about 0.9 hours (median about 0.9, middle half roughly 0.84–0.99 hours), while in the later window it averaged about 1.8 hours (median about 1.9, middle half roughly 1.6–2.0 hours). This rests on about 104 gaps before and 103 after, and only about 1 in 2000 random re-splits of the pooled data produced a difference this large [TWAIT001].\n- The elapsed time between consecutive completions of A30 and A31 also roughly doubled: from about 0.18 hours on average (median about 0.13) in the earlier window to about 0.38 hours (median about 0.29) in the later one, with the upper quarter rising from about 0.26 to about 0.59 hours. About 96 and 97 gaps were observed, and again only about 1 in 2000 random re-splits exceeded this difference [TWAIT002].\n- Timing became more variable as well as longer: the spread of these elapsed times roughly doubled for both pairs (about 0.12 to 0.25 hours for A23–A31; about 0.14 to 0.28 hours for A30–A31) [TWAIT001, TWAIT002].\n- The frequency of these consecutive pairs stayed essentially stable (104 vs 103 and 96 vs 97 occurrences in the 200-trace windows), and the control-flow family produced no qualifying items (0 found where about 0.29 were expected by chance), so no structural difference accompanies the timing shift [TWAIT001, TWAIT002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completion events on the pairs leading to A31 is about twice as long as before — from A23 to A31 it rose from about 0.9 to about 1.8 hours, and from A30 to A31 from about 0.18 to about 0.38 hours. The screening found 2 time items where about 0.008 would be expected if nothing had changed, so the time family as a whole cannot be explained by chance sampling, while the control-flow family found nothing (0 vs about 0.29 expected), consistent with a pure timing change. The supporting signs are that both items measure the changed behaviour directly, agree in direction and magnitude, rest on roughly 100 observations per window, and show differences larger than about 1999 of 2000 random re-splits. Limitations: TWAIT is elapsed time between consecutive completions and cannot separate waiting, service or scheduling effects; both items share A31, so they may reflect one underlying timing difference around A31 rather than two independent changes. A competing explanation the evidence cannot rule out is that the predecessors A23 and A30 (or event recording between the pairs) changed their timing, producing the same elapsed-time pattern without any change at A31 itself [TWAIT001, TWAIT002].\n\nOther differences: none are established at the configured thresholds; no control-flow, positional or relational items qualified.",
+  "case_id": "e4a_c9e04f0448c33ecd",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

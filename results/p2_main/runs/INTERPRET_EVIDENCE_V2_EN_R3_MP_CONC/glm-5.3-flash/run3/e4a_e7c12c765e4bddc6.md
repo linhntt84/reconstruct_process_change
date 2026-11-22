@@ -1,0 +1,15 @@
+### Observed differences
+
+- The elapsed time between consecutive completions of A36 and A37 roughly halved. In the earlier window these intervals averaged about 1.0 hours (median about 1.0 h, middle half between about 0.9 and 1.1 h); in the later window they averaged about 0.5 hours (median about 0.5 h, middle half between about 0.45 and 0.55 h). The spread halved as well (standard deviation about 0.16 h to 0.08 h), while the number of observed intervals stayed similar (153 versus 163). [TWAIT001]
+- A31 appeared in fewer traces and fewer times per trace: participation fell from about 31 in 100 traces to about 21 in 100, mean occurrences per trace from 0.54 to 0.31, and within-trace repetition slightly decreased (recurrence support 0.11 to 0.08). [OCC001]
+- A32 likewise appeared in a smaller share of traces: about 60 in 100 before versus about 48 in 100 after, with mean occurrences per trace down from 1.14 to 0.79 and recurrence support from 0.31 to 0.21. [OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing: in the later window, the elapsed time between consecutive completions of A36 and A37 was consistently shorter, at roughly half its earlier level, with the mean, median and both quartiles all shifting down by about 0.45–0.56 hours and the variability halving. This rests on direct measurement of the interval itself, agreement across all distribution components, a substantial sample (153 and 163 intervals), and a screening result far above chance for its family: the time family produced one qualifying item where about 0.008 — fewer than one in a hundred screenings — would be expected without a change, and only about 1 in 2000 random re-splits of the pooled data showed a larger difference. [TWAIT001]
+
+Limitation and competing explanation: TWAIT measures elapsed time between consecutive completion events, not pure waiting or service time, so the hypothesis concerns the length of the interval, not its cause. The evidence contains no relational or positional items, so it cannot distinguish a genuine shortening of the same A36-to-A37 interval from a change in which completions are consecutive around these activities, which would also shorten the measured intervals; the similar interval counts (153 versus 163) speak against a large shift in how often the pair occurs but do not rule this out. [TWAIT001]
+
+Other differences: A31 and A32 both appeared in a smaller share of traces and fewer times per trace in the later window (A31: about 31% to about 21% of traces; A32: about 60% to about 48%), with slightly less within-trace repetition. These are the only control-flow findings, and the control-flow family produced two items where about 0.25 would be expected by chance alone — a level an unchanged process typically produces — so they do not on their own support a participation or structural change, and the evidence does not link them to the timing change. [OCC001, OCC002]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_985448163fb22b6c.json",
+  "evidence_sha256": "bfa32d7accca3865aa8f6ec16021ce30ca8bdc879917f1176dc59b3ed74622ab",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:28:51.788333+00:00",
+  "finished_at_utc": "2026-11-14T13:29:17.699260+00:00",
+  "latency_seconds": 25.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3988,
+    "prompt_tokens": 2959,
+    "total_tokens": 6947,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3405,
+      "text_tokens": 583
+    },
+    "cost": 0.00243785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 15193,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completion events on the A09 → A10 pair roughly doubled: the median interval was about 1.0 hour in the earlier window (middle half of cases between about 0.85 and 1.10 hours) and about 2.0 hours in the later window (between about 1.77 and 2.18 hours). The whole distribution shifted up by about 1 hour, not just the average, and the pair was observed in all 200 of 200 traces in both windows. [TWAIT001]\n- The same pattern appears on the A11 → A10 pair: the median interval was about 1.0 hour in the earlier window versus about 2.0 hours in the later window, again an increase of about 1 hour across all quartiles. This rests on 111 occurrences before and 120 after, out of 200 traces each (about 56 versus 60 in 100 traces). [TWAIT002]\n- Both differences are far outside what random re-splits produce: only about 1 in 2000 reference comparisons reached a difference this size. With 23 time units tested, 2 items qualified, whereas roughly 0.01 would be expected if nothing had changed. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a timing change on the transitions into A10: intervals between consecutive completion events that took about 1 hour in the earlier window took about 2 hours in the later window, both from A09 to A10 and from A11 to A10. Supporting signs: two distinct incoming pairs show the same direction and magnitude of shift, the entire distribution (quartiles) moved rather than only the mean, both items rest on substantial support (200 of 200 traces; 111 and 120 occurrences), and the number of qualifying items (2) is far above the chance expectation of about 0.01. A consistent change in these elapsed times is a timing hypothesis in its own right and needs no structural counterpart.\n\nLimitations: TWAIT measures elapsed time between consecutive completion events, so the evidence cannot show where in the interval the extra hour arose — before A10 started, during A10's execution, or after the predecessor completed. Because both flagged pairs share A10, the change may be specific to A10's incoming transitions rather than a process-wide slowdown, and the evidence covers only these two pairs. An important competing explanation the evidence cannot rule out is a shift in when the completion events are timestamped (for A10 or its predecessors) rather than a genuine lengthening of execution or waiting time.\n\nOther differences: the A11 → A10 pair occurred slightly more often as consecutive completions in the later window (120 versus 111 of 200 traces), a small difference that could reflect sampling variation. [TWAIT002]",
+  "case_id": "e4a_985448163fb22b6c",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

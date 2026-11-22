@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_d04d1f22a1f6d97f.json",
+  "evidence_sha256": "fc4df490e4645a7e434b4c160bc1b28e55dc7bbd87ff6bc4f67ae697a10d04ba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:59:19.264426+00:00",
+  "finished_at_utc": "2026-11-15T02:00:25.733292+00:00",
+  "latency_seconds": 66.47,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9508,
+    "prompt_tokens": 12890,
+    "total_tokens": 22398,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8461,
+      "text_tokens": 1047
+    },
+    "cost": 0.006687499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31421,
+  "text": "### Observed differences\n\n- In the earlier window, A22 ran exactly once in every case and A27, A28 and A33 were never observed; in the later window A22 appears in about 51 of 100 cases, while each of A27, A28 and A33 appears exactly once in about 49 of 100 cases. [OCC001, OCC002, OCC003, OCC004]\n- Routing out of A21 changed accordingly: before, all of its observed outgoing transitions went to A22; in the later window about half still go to A22, with the rest splitting almost evenly between A28 (~18%), A33 (~17%) and A27 (~15%). [DIR001]\n- The three new activities form a block: each of A27, A28 and A33 is followed either by another trio member or by A23 (for example, of A27's observed outgoing transitions roughly 36% go to A33, 35% to A28 and 30% to A23), and no fixed order exists inside the trio — both orders appear in similar proportions for every pair. [DIR002, DIR003, DIR004, REL012, REL013, REL014]\n- A22 and each trio member never occur in the same case in the later window (co-occurrence 0), whereas A21 precedes each trio member in about 49 of 100 cases; A23, which previously always followed A22, now occurs without A22 in about 49 of 100 cases. [REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- The distance from A21 to A23 was always 2 steps before; in the later window it is 2 steps in about 51% of cases and 4 steps in about 49%, with the trio sitting around the middle of the trace (mean relative position about 0.49). [LAG001, POS001, POS002, POS003]\n- Timing differs on another part of the process: the elapsed time between consecutive completion events for A25→A29 fell from a mean of about 0.9 h to about 0.5 h (median 0.90 to 0.48 h; 56 vs 57 intervals), and for A30→A29 from about 0.18 h to about 0.09 h (41 vs 48 intervals), with all quantiles shifting down consistently. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: in the later window, two alternative routes exist between A21 and A23. About half of the cases keep the original sequence A21 → A22 → A23, while the other half skip A22 and run from A21 into a block of three activities — A27, A28 and A33, each executed once in no fixed order — which then leads on to A23. This is supported directly on participation (A22 from all cases down to about 51 in 100; the trio from not observed to about 49 in 100 each), on routing out of A21, and relationally (A21 before each trio member, each trio member before A23, A22 and the trio mutually exclusive), and the A21→A23 step distance shifted from always 2 to 2 or 4 steps, consistent with three activities standing between them. The screening context makes chance sampling implausible as an explanation for the pattern as a whole: 26 control-flow items qualified against roughly 0.4 expected without change. Limitations: zero participation before only means the trio was not observed earlier, and the evidence cannot show what determines which route a case takes; an important competing explanation it cannot rule out is that the two windows draw on different case populations whose mix shifted, although the behavioural difference itself is directly observed. [OCC001, OCC002, OCC003, OCC004, DIR001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, POS001, POS002, POS003]\n\nOther differences: On a separate part of the process, the elapsed time between consecutive completion events roughly halved for the pairs A25→A29 (mean about 0.9 h to about 0.5 h) and A30→A29 (about 0.18 h to about 0.09 h); this timing change is a hypothesis in its own right, rests on fewer than 60 intervals per window, and the evidence shows no link between it and the routing change above. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_d04d1f22a1f6d97f",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

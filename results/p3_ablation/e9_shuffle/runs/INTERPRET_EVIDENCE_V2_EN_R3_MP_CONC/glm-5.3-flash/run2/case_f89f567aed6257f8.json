@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f89f567aed6257f8.json",
+  "evidence_sha256": "3a6440e9f46767dd1f9a5b601b98223923a7f4220d358f3197bf6c036751a6d9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:33:06.948841+00:00",
+  "finished_at_utc": "2026-11-15T04:35:21.134615+00:00",
+  "latency_seconds": 134.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19253,
+    "prompt_tokens": 53245,
+    "total_tokens": 72498,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17546,
+      "text_tokens": 1707
+    },
+    "cost": 0.017613249999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60622,
+  "text": "### Observed differences\n\n- **A01 appears and repeats.** In the earlier window A01 was not observed in any of the 200 cases; in the later window it runs in about 56 in 100 cases, about 2.4 times per case on average (roughly 4 times in each case where it appears), at middle positions of the case (median position about 0.49). [OCC001, POS001]\n\n- **A01 rewires the middle of the process.** Its outgoing flow splits almost evenly over A02, A05, A09 and A11 (about 23–27% each). A13 and A09, which earlier flowed mainly to A11 and A02, now send all of their outgoing flow to A01; A17, A10 and A08 send roughly half to three-fifths of theirs to A01 (about 53–58%), where they earlier flowed mainly to A06, A13, A09 or A11. A09 both precedes and follows A01, and A01 co-occurs with A03 and with A06 in about 56 in 100 later cases, mostly interleaved or repeated (about 46 in 100), consistent with its repeated execution. [DIR001, DIR009, DIR006, DIR011, DIR007, DIR005, REL002, REL004, REL006]\n\n- **A14 disappears and the ending is simplified.** Earlier, A14 ran exactly once in every case, near the end (median position 1.0); in the later window it is not observed at all. Earlier, A06 always preceded A14 and A06's outgoing flow split between A03 (about 52%) and A14 (about 48%), with A03 and A14 following each other in no fixed order (A03 first in about 52 in 100 cases, A14 first in about 48); in the later window A06 always flows directly to A03, immediately (a gap of one position in essentially all cases), and A03 is the final activity in every case (mean position 1.0, no spread). [OCC003, POS006, DIR004, DIR002, REL017, REL026, POS002, LAG015]\n\n- **A05 recedes and is rerouted.** A05 takes part in about 29 in 100 later cases versus about 62 earlier, with mean occurrences falling from about 2.0 to about 1.2 per case; A11 now sends about half of its outgoing flow to A16 where it previously sent about half to A05, and A05's own outgoing flow shifted from A16 (about 49%) to A13 (about 49%). [OCC002, DIR008, DIR003]\n\n- **Secondary shifts.** A11 and A16 each appear in about 70 in 100 later cases versus about 62 earlier, and A11 runs at later positions (mean about 0.36 → 0.46); A06 also runs later (about 0.80 → 0.90); many pairwise position gaps shifted by roughly one step (for example A02→A09 typically two positions apart earlier, three later). [POS005, POS007, POS003, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process now runs without A14 and with a newly appearing, repeating activity A01: A14, previously executed once in every case at the end alongside A03 in no fixed order, is absent from the later window, while A01 — not observed earlier — now runs in about 56 in 100 cases, repeats roughly four times per case at middle positions, interleaves with A03, A06 and A09, receives all of the outflow of A13 and A09 and about half of the outflow of A17, A10 and A08, and passes flow on to A02, A05, A09 and A11. Consistent with A14's disappearance, A06 now always flows directly to A03, which is now the final activity in every case. [OCC001, OCC003, POS001, POS002, POS006, DIR001, DIR002, DIR004, DIR009, REL017, REL026]\n\nThe change is shown directly rather than inferred: participation moves from 0 to 56 in 100 for A01 and from 100 to 0 for A14; successor profiles change at the source (A06→A14 and A03→A14 vanish, A13→A01 and A09→A01 appear); every A14 pair shows its co-occurrence collapsing to zero; and the screening flagged 129 control-flow items where fewer than 1 would qualify by chance if nothing had changed, so the body of evidence cannot be a sampling artefact. [OCC001, OCC003, DIR002, DIR004, DIR009, REL011, REL015, REL017]\n\nLimitations: zero participation only establishes that an activity was not observed, so a very low-rate presence of A01 before (or of A14 after) cannot be strictly excluded, although 483 A01 executions after none in 200 cases makes this unlikely; many items describe the same underlying traces (the A14 pairs in particular) and are not independent confirmations; and the evidence cannot tell whether the disappearance of A14 and the appearance of A01 are one modification or two independent ones. [OCC001, OCC003, REL017]\n\nOther differences: A05 takes part in far fewer cases (about 62 → 29 in 100) with fewer repetitions (mean about 2.0 → 1.2 occurrences per case) and was rerouted (A11 now flows to A16 instead of A05; A05 flows to A13 instead of A16); A11 and A16 appear in somewhat more cases and A11 at later positions; numerous pairwise position gaps between other activity pairs shifted by about a step. These may be downstream of the same rewiring but are not part of the main hypothesis. [OCC002, DIR003, DIR008, POS005, POS007, LAG003]",
+  "case_id": "case_f89f567aed6257f8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

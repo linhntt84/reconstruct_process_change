@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A45's outgoing transitions went mainly to A19 (about 31 in 100), A25 (about 28) and A20 (about 26); in the later window, about 89 in 100 go directly to A26, and this A45→A26 succession is now immediate in about 89 in 100 cases, where before it was typically two steps apart [DIR006, LAG008].
+- In the earlier window, A19, A20 and A25 each led almost exclusively to A26 (about 89–98 in 100 of their outgoing transitions); in the later window they lead mainly to A28 and A32 instead (A19 about 51 and 46 in 100, A20 about 51 and 43, A25 about 38 and 58) [DIR001, DIR002, DIR003]. The immediate A25→A26 succession, observed 63 times before, is nearly unobserved later (1 observation, at distance 5) [LAG003].
+- A19, A20 and A25 now occur later in the case: their mean relative position moved from about 0.31–0.34 to about 0.58–0.59, while how often they appear stayed similar (A19 in about 38% of traces before vs 31% after, A20 about 32% vs 34%, A25 about 32% vs 38%) [POS001, POS002, POS003].
+- The three activities are now reached from the A27/A28 region: before, A27 led almost only to A28 (about 98 in 100) and A28 almost only to A32 (about 94); in the later window A27 leads to A28 (about 51) but also to A20 (about 18), A19 (about 16) and A25 (about 14), and A28 leads to A32 (about 48) but also to A25 (about 22), A20 (about 15) and A19 (about 14) [DIR004, DIR005]. A20 and A28 now immediately follow one another in both orders (36 and 30 observations after; the before-side of these two items rests on a single observation each) [LAG001, LAG006].
+- A26 and A27 still occur in every trace in both windows but sit slightly earlier (mean relative position about 0.35 vs 0.32 and 0.58 vs 0.55), and the A27→A28 and A28→A32 successions are now at distance 2 about half the time (before almost always adjacent), with A27→A32 moving from distance 2 to 3 [POS004, POS005, LAG004, LAG005, LAG007].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the block of activities A19, A20 and A25 was re-routed: in the earlier window it sat between A45 and A26 (A45 led to one of the three, which then led straight on to A26), while in the later window A45 connects directly to A26 and the three activities run in the later, A27/A28-centred part of the case, reached from A27 and A28 and flowing into A28 and A32 rather than into A26. This is a re-wiring of existing activities rather than a shift in how often existing paths are taken, because A26 no longer receives from A19, A20 or A25 at all and A45 no longer leads to them [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, LAG003, LAG008].
+
+The screening context supports reading these items as more than chance: 19 qualifying items against about 0.6 expected without change for 118 tested units (all in the control-flow family), and every item's difference exceeded about 995 of 1000 random re-splits. The successor changes, positions and pair distances all describe the same re-routing, though they partly reflect the same traces and are not independent confirmations [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008].
+
+Limitations: the exact shape of the new late cluster is not settled — the before-side of the A20↔A28 and A20→A32 distance items rests on one observation each, so whether A19, A20 and A25 now run once in a fixed order, alternate with A28, or repeat cannot be determined; and DIR profiles cover only observed transitions, so unobserved mediating activities cannot be excluded [LAG001, LAG002, LAG006, DIR001, DIR002, DIR003].
+
+Other differences: the slightly earlier positions of A26 and A27 and the loosened spacing between A27, A28 and A32 are consistent knock-on effects of the re-routing rather than part of its core [POS004, POS005, LAG004, LAG005, LAG007].

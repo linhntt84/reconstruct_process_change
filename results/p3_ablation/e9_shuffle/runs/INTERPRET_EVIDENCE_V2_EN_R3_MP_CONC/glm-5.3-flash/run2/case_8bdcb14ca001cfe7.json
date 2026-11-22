@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_8bdcb14ca001cfe7.json",
+  "evidence_sha256": "76b4a42b4e22c016a492a2b5b51adf7bbf1e973662b2e5625d52de038cd1568a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:41:28.497465+00:00",
+  "finished_at_utc": "2026-11-15T04:44:48.395830+00:00",
+  "latency_seconds": 199.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28939,
+    "prompt_tokens": 16233,
+    "total_tokens": 45172,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27264,
+      "text_tokens": 1675
+    },
+    "cost": 0.01690445
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 97538,
+  "text": "### Observed differences\n\n- In the later window, A09 is executed far more often per case: about 4.3 occurrences per case versus about 1.9 earlier. It repeats within a case in about 60 in 100 cases (previously about 39 in 100) and appears in about 68 in 100 cases (previously about 62 in 100); its observed outgoing transitions rose from 374 to 853. [OCC002, DIR003]\n- A03 and A14 stopped repeating: each drops from about 1.1 to about 0.5 occurrences per case, and within-case repetition falls from about 28 in 100 cases to none, while participation is nearly unchanged (about 51 to 47 in 100 cases). [OCC001, OCC003]\n- Both A13 and A15 now lead predominantly to A09: of A13's outgoing transitions, the share to A09 rose from about 35 to 71 in 100 while the share to A15 fell from about 36 to 8 in 100; of A15's outgoing transitions, the share to A09 rose from about 41 to 95 in 100, and a transition from A15 to A01 (about 38 in 100 before) was no longer observed. [DIR004, DIR006]\n- A11 takes part in more cases and much earlier: about 47 in 100 cases versus about 28 in 100, with a median position of about 0.11 of the case versus about 0.40. [POS002]\n- A11 now appears in every case that contains A03 or A14 (each pair together in about 47 in 100 cases, versus about 28 in 100 before, when A03 also appeared without A11 in about 23 in 100 cases). Interleaving or repetition of these pairs disappeared (about 28 in 100 cases to none), and the order is now mostly A11 first: A11 precedes A14 in about 39 in 100 cases and precedes A03 in about 33 in 100 cases. [REL001, REL004]\n- A03 and A14 still appear together in about the same share of cases (about 51 in 100 before, 47 in 100 later) but no longer interleave or repeat (about 27 in 100 cases to none); across cases both orders now occur (A03 first about 26 in 100, A14 first about 21 in 100), so there is no fixed order between them. A09 and A13 moved the opposite way, interleaving or repeating together in about 60 in 100 cases versus about 39 in 100 before. [REL002, REL003]\n- Successions became more immediate where the de-repeated activities are involved: A14→A03 and A03→A11 successions are now concentrated at distance 1 (about 68 and 61 in 100 of recorded successions, versus about 15 and 14 in 100), with both pairs appearing in fewer cases (about 40 to 21 in 100 and about 27 to 14 in 100). A09→A09 self-successions became more common (within five steps in about 58 in 100 cases versus 34 in 100) and shorter, while A15→A13 successions moved to longer distances. [LAG010, LAG005, LAG007, LAG012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, repetition moved from the A03/A14 group to A09: A09 is now executed about 4.3 times per case (previously about 1.9) and has become the dominant successor of both A13 and A15, while A03 and A14 — which still always appear together, now joined by A11 in every such case — occur at most once per case, mostly with A11 first, instead of repeating and interleaving. [OCC002, OCC001, OCC003, DIR004, DIR006, REL001, REL002, REL004]\n\nThe hypothesis is shown directly and consistently: the occurrence items capture the repetition shift outright, the transition items show the redirection to A09, and the relation and position items show the new single-pass, ordered co-occurrence and A11's higher, earlier participation. Screening qualified 29 items on 86 units where about 0.43 would be expected if nothing had changed, so chance cannot account for the set, and every item's difference exceeds about 199 of 200 random re-splits; the profiles rest on substantial supports (for example 124–135 traces behind A09's profile, 94–101 behind the A03/A14 pair). [OCC002, DIR004, REL004, POS002]\n\nLimitations: the evidence shows that A09 occurs more often but not where the extra occurrences come from (a newly repeating segment versus more passes through existing ones), and an important competing explanation it cannot rule out is that the shift is driven by a subset of cases following a new variant rather than by a uniform change across all cases; the aggregate profiles cannot separate these. [OCC002, LAG007]\n\nOther differences: A14's remaining outgoing traffic shifted toward A12 (about 10 to 34 in 100) and away from A11 (about 18 to 4 in 100), with far fewer A14 transitions overall (212 versus 94); A06 now leads almost exclusively to A01 (about 99 in 100); A01's outgoing traffic no longer goes to A15 and slightly more often to A10, A13 and A09; A09's own outgoing traffic moved toward A15 (about 37 to 48 in 100) and away from A13 (about 22 to 11 in 100); and A03 and A14 sit earlier in the case (median position about 0.17 and 0.20 versus about 0.36 and 0.32). [DIR005, DIR002, DIR001, DIR003, POS001, POS003]",
+  "case_id": "case_8bdcb14ca001cfe7",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

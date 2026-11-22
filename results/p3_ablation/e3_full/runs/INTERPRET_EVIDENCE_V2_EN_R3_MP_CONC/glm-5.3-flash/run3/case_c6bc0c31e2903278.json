@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_c6bc0c31e2903278.json",
+  "evidence_sha256": "2cb4d1c4ca27eab80c9dc8e0a540a74974d60c12f9ab41e25f4048bbefd14dea",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:43:23.031669+00:00",
+  "finished_at_utc": "2026-11-16T03:48:22.072908+00:00",
+  "latency_seconds": 299.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 35019,
+    "prompt_tokens": 52139,
+    "total_tokens": 87158,
+    "completion_tokens_details": {
+      "reasoning_tokens": 33058,
+      "text_tokens": 1961
+    },
+    "cost": 0.025330349999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 110307,
+  "text": "### Observed differences\n\n- Before, A03, A07 and A10 each ran in every trace, any two of them co-occurred in 100 in 100 cases, and they sat within one to two steps of one another, usually with A07 first (about 80 in 100). In the later window A07 still runs in every trace, but A03 and A10 each appear in only about 50 in 100 traces and never in the same trace: every case now executes exactly one of the two, directly adjacent to A07 (lag 1 in all observed sequences). A03 and A10 also no longer lead to each other or to A01; their outgoing transitions now go to A04, A12, A08 or back to A07. [OCC003, OCC009, REL025, REL028, REL054, LAG007, LAG018, LAG020, LAG023, DIR002, DIR008]\n\n- The closing of the case changed. Earlier, A01 (about 32 in 100 traces, always the final event), A04 (about 37 in 100) and A12 (about 15 in 100, always the final event) were mutually exclusive, and about 17 in 100 cases contained none of them. In the later window A01 is no longer observed, A04 runs in about 52 in 100 cases (still always after A07), and a new pair A08–A12 runs in about 48 in 100: A08, unobserved earlier, always follows A07 and sits at the very end of the trace, together with A12, the two finishing the case in either order (A12 first in about 60 of these 96 cases, A08 first in about 36). A04 never runs alongside A08 or A12, so every case now ends with either A04 or the A08–A12 pair. [OCC001, OCC004, OCC007, OCC011, POS001, POS005, POS009, REL003, REL011, REL033, REL034, REL038, REL052, REL056, REL060, DIR006, DIR010]\n\n- A09 is new: unobserved earlier, it now runs in about 18 in 100 cases. A06, which earlier appeared in about 25 in 100 cases and led mostly straight back to A07 (about 73 in 100 of its outgoing transitions), now always leads to A09; A09 leads on to A07 in about 89 in 100 of its outgoing transitions; and A06 now occurs only in cases that also contain A09. [OCC006, OCC008, DIR004, DIR007, REL048, REL053, LAG015]\n\n- Downstream distances shortened by one to two positions: the gap from A02, A05 or A11 to A03, A04, A10 or A12 typically fell from about 4–5 positions to 3–4, A07 now reaches A04 two positions after itself instead of three, and it reaches whichever of A03/A10 runs immediately (previously one to two positions away). [LAG002, LAG005, LAG010, LAG013, LAG018, LAG019, LAG020, LAG026, LAG029]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural reorganisation of the flow around its middle and its closing, not merely a shift in how often existing paths are taken. In the later window, the formerly mandatory adjacent pair A03 and A10 became a one-per-case alternative under the still-mandatory A07; the closing stage was rebuilt, with A01 no longer observed, A08 appearing and alternating with A12 as the final pair, and A04 taking the remaining endings; and A09 now runs between A06 and A07, with A06 occurring only on this path. The support is direct and consistent: participations flipped with large supports (A01 from 64 to 0 of 200 traces, A03 and A10 from 200 to 100 each, A08 from 0 to 96, A09 from 0 to 36), A03 and A10 fell from co-occurring in 100 in 100 cases to 0 in 100, A06's outgoing transitions now lead only to A09, and the position data place A01 at the trace end in the earlier window and A08/A12 there in the later one; the key items exceed about 199 of 200 random re-splits of the pooled data. The one-to-two-position shortening of downstream lags is consistent with one activity having dropped out of the former A07–A03–A10 block. [OCC001, OCC003, OCC007, OCC008, OCC009, REL028, REL034, REL048, REL060, DIR004, DIR006, DIR010, POS001, POS005, LAG010, LAG019]\n\nLimitations: the evidence carries no screening baseline, so the number of qualifying items cannot be compared with the number expected by chance; and several items re-describe the same traces — REL060, DIR006, DIR010 and POS005 all reflect the single A08–A12 closing behaviour — so their agreement is not independent confirmation. An important competing explanation the evidence cannot rule out is that the later window sampled a different mix of pre-existing case variants rather than a modified process. [REL028, OCC003, OCC009, REL060, DIR006, DIR010, POS005]\n\nOther differences: A05 and A11 each rose slightly (from about 48 to 53 in 100 cases) with only moderate empirical strength, A02 is essentially unchanged (about 28 to 30 in 100), A07 now sits slightly later within traces (median position 0.4 to 0.5) while A03 and A10 sit slightly earlier, and the remaining routing redistributions at A02, A05, A07 and A11 are small. [OCC002, OCC005, OCC010, POS002, POS004, POS007, DIR001, DIR003, DIR009]",
+  "case_id": "case_c6bc0c31e2903278",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

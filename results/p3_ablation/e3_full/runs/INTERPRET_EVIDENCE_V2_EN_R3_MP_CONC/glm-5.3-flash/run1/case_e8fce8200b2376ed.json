@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_e8fce8200b2376ed.json",
+  "evidence_sha256": "026faa11099384b99f4869504066428137aaea8d6aa9dc0a40035204f2b22342",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:06:32.063160+00:00",
+  "finished_at_utc": "2026-11-16T01:09:25.276799+00:00",
+  "latency_seconds": 173.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21670,
+    "prompt_tokens": 119790,
+    "total_tokens": 141460,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19674,
+      "text_tokens": 1996
+    },
+    "cost": 0.0288035
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63602,
+  "text": "### Observed differences\n\n- Four activities that never occur in the earlier window (0 of 200 traces) occur regularly in the later window: A07 in about 95 of 200 traces, A15 in about 78, A16 in about 139 and A17 in about 65, each running roughly 1.5–2.5 times per trace that contains it. [OCC006, OCC014, OCC015, OCC016]\n\n- The routing into and out of these activities is new. In the earlier window A08's outgoing transitions split between A05 (about 52 in 100) and A04 (48); in the later window A05 is replaced by A07 (about 46), and A07 leads only to A18. A18 previously always led to A02; in the later window it leads to A17 (about 54) and A14 (about 46), and A17 leads to A09. A10 previously led mostly to itself (48) and to A03 (27) and A02 (25); in the later window it leads to A16 (51) and A15 (49), with A15 leading back to A10 and A16 splitting evenly between A03 and A02. [DIR005, DIR006, DIR011, DIR012, DIR007, DIR009, DIR010]\n\n- Two further connections were rewired: A12, which previously led to A08 (51) and A18 (49), now leads to A08 and to A05 (about 49) instead of A18; and A05, which previously led to A13 (51), A09 (26) and A14 (23), now leads to A13 (53) and A02 (47). [DIR008, DIR003]\n\n- Repetition moved from A18 to A05: A05's mean occurrences per trace rose from about 1.9 to 4.0 (roughly 4 to roughly 10 per trace containing it), while A18's fell from about 1.8 to 0.9 (about 4.4 to about 1.9 per containing trace); A13, reached mainly from A05, doubled from about 1.0 to 2.1 occurrences per trace, and A02 rose from about 7.1 to 8.0. [OCC004, OCC017, OCC012, OCC002]\n\n- Pairs involving the new activities changed from never co-occurring to co-occurring in roughly 15–70 of 100 traces — for example A03 with A16 from A03-only in every trace to co-occurrence in about 70, A07 with A08 from A08-only in 48 to co-occurrence in 48, and A15 with A16 from never co-occurring to 39. [REL045, REL087, REL147, REL014]\n\n- Relative event positions and step distances moved consistently with this rewiring: A05 and A13 now appear earlier in the trace (median relative position about 0.69 to 0.45 and 0.66 to 0.44), A18 later (about 0.39 to 0.71) and A10 earlier (median 0.40 to 0.25); A10-to-A10 repetitions are now typically two steps apart instead of one, and A18-to-A14 pairs one step apart instead of five. [POS004, POS012, POS017, POS009, LAG056, LAG084]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural change in the later window in which four previously unobserved activities — A07, A15, A16 and A17 — were added to the flow and the routing around them was rewired: A08 now reaches A18 through A07; A18 exits to A17 (which leads to A09) or A14 instead of A02; A10 routes through A15 (back to A10, replacing its direct self-repetition) and A16 (to A03/A02) instead of its previous targets; and A12 now feeds A05 instead of A18. Together with A05's new link to A02, this shifts the repeating cycle from A18 to A05, which matches A05's much higher repetition, A18's drop to about one occurrence per containing trace, and A13's doubling. [OCC006, OCC014, OCC015, OCC016, DIR003, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, OCC004, OCC017, OCC012]\n\nThe hypothesis rests on direct rather than cumulative evidence: the four activities go from zero participation to 33–70% of traces, which sampling variation in a 200-trace window cannot produce; the successor profiles of A07, A08, A10, A12, A18 and A05 change directly, each with an empirical strength of about 0.995 (a difference larger than in about 199 of 200 random re-splits); and the co-occurrence, position and step-distance items move in the same direction. The many pair-level items largely reflect this same rewiring rather than independent additional changes. [OCC006, OCC014, OCC015, OCC016, DIR003, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, REL045, REL087, POS004, POS012, POS017, LAG056, LAG084]\n\nAn important limitation: the direction profiles cover only observed transitions, so the evidence cannot show whether the earlier edges (A08 to A05, A12 to A18, A10 to A02/A03/itself) were removed or merely not taken in the later sample; the change could therefore be a replacement of one sub-path by another rather than a pure addition, and the exact form of the new routing beyond the observed edges is not pinned down. [DIR003, DIR006, DIR007, DIR008, DIR012]\n\nOther differences: A02, A11 and A12 occur slightly later in the trace in the later window (mean relative position up about 0.02–0.04), and A04 occurs somewhat more often per trace (about 0.9 to 1.1); A01, A06, A08, A09 and A14 are essentially unchanged in frequency. [POS002, POS010, POS011, OCC003, OCC001, OCC005, OCC007, OCC008, OCC013]",
+  "case_id": "case_e8fce8200b2376ed",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "ef0e62e93131332207d03eae09d072550897958f76884691e47497a9e0ec37d7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:09:49.426071+00:00",
+  "finished_at_utc": "2026-11-15T13:12:22.857332+00:00",
+  "latency_seconds": 153.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21941,
+    "prompt_tokens": 34223,
+    "total_tokens": 56164,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20032,
+      "text_tokens": 1909
+    },
+    "cost": 0.01610395
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67386,
+  "text": "### Observed differences\n\n- In the earlier window, the segment between A26 and A27 ran as one fixed chain, A26→A17→A15→A18→A19→A21→A20→A27: each of these steps carried all of the source's outgoing transitions, in each case across all 200 traces. In the later window these deterministic edges became choices: A15 still leads mostly to A18 (about 68 in 100, down from all cases), A18 now leads directly to the exit A27 in about 52 in 100 of its transitions (previously unobserved), A26 enters at A17 in about 53 in 100 cases and directly at A19 in about 47 in 100, and A19, A20 and A21 each also lead back to A15, A17 or A18 in about 5–25 in 100 of their transitions, while A20's exit share to A27 fell from all cases to about 49 in 100. [DIR012, DIR013, DIR014, DIR015, DIR016, DIR017, DIR019]\n- The order relation between the two groups flipped from fixed to mixed: before, A15, A17 and A18 always preceded A19, A20 and A21 (all nine pairs 100% in one direction); after, both directions occur — A19 precedes A18 in about 85 in 100 traces (before 0), A19 precedes A15 in about 74 in 100 (before 0), A21 precedes A18 in about 68 in 100 (before 0), while A17 still precedes A20 in about 88 in 100. All nine pairs still co-occur in every trace in both windows, so none of these activities disappeared or became optional. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- Step distances spread from single fixed values to ranges of roughly 1–5 positions: A15 to A18 was always 1 step apart and now is so in about 68 in 100 cases; A18 to A27 was always 4 steps and now is 1 step in about half the cases; A15 to A20 was always 4 steps and now varies over 1–4. [LAG001, LAG003, LAG013]\n- Positions shifted consistently with this intermixing: A15, A17 and A18 now occur later within the trace (mean relative position about 0.59 to 0.64, 0.56 to 0.59 and 0.62 to 0.68), while A19, A20 and A21 occur earlier (about 0.65 to 0.59, 0.71 to 0.68, 0.68 to 0.64); A26 and A27 are unchanged. All items in this block exceed the differences seen in about 995 of 1000 random re-splits, but they largely describe one underlying reordering rather than independent confirmations. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- Away from this block, the share of traces containing A01, A03, A04 and A05 rose from about 40 to 48 in 100, while A02, A06, A07 and A08 fell from about 60 to 52 in 100 — a mirrored shift consistent with two alternative branches being taken with different frequency (each difference larger than in about 90 of 100 random re-splits). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]\n- A few other choice points show small, mirrored share flips of a few percentage points, e.g. A12 now leads slightly more often to A13 than to A37 (about 54/46 versus 45/55) and A38's split between A39 and A40 reversed (about 48/52 versus 53/47), with A39 appearing in about 60 of 100 traces versus 66 before. [DIR010, DIR011, DIR028, DIR029, DIR030, OCC022]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the fixed sequential ordering of the block involving A15, A17, A18, A19, A20 and A21 — entered from A26 and exiting to A27 — was relaxed into variable ordering. Earlier, the block always executed A17→A15→A18→A19→A21→A20; in the later window the two groups {A15, A17, A18} and {A19, A20, A21} interleave in both directions (for example, A19 precedes A18 in about 85 in 100 traces, previously never), the entry point splits between A17 and A19 (about 53/47), and the exit to A27 now also occurs directly after A18 in about half of A18's outgoing transitions. Since every involved activity still appears in every trace in both windows, this points to a change in ordering constraints and exit routing, not to activities being added, removed or made optional. [REL001, REL003, REL007, DIR012, DIR014, DIR016, DIR019, LAG001, LAG013, POS001, POS003, POS004]\n\nThe change is shown directly by relational evidence (order shares moving from 100/0 to mixed), by successor profiles turning from one deterministic target into several, and by lag distributions spreading from single fixed distances to ranges, with the positional shifts agreeing in direction; the differences are larger than those in about 995 of 1000 random re-splits, and because all involved activities occur in all traces of both windows, rare-variant sampling cannot account for them. [REL001, REL007, DIR014, LAG003, POS004]\n\nLimitations: the many agreeing items largely describe one underlying reordering, so they are not independent confirmations, and no chance-expectation baseline is provided for the screening as a whole. The evidence also cannot determine how the variable order is produced — for example genuine re-sequencing of the steps versus other activities being inserted between them, which would likewise lengthen step distances — nor whether the later window still contains a small set of fixed sequences rather than free ordering. [LAG001, LAG007, REL001]\n\nOther differences: the mirrored participation shift (A01, A03, A04, A05 up from about 40 to 48 in 100 traces; A02, A06, A07, A08 down from about 60 to 52) is a plausible second change in how often existing branches are taken, but no relational or positional evidence covers these activities, so it remains weaker than the main hypothesis. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008] The small share flips at other choice points (A12 between A13 and A37, A37 between A14 and A16, A38 between A39 and A40) are of a size an unchanged process often produces. [DIR010, DIR011, DIR028, DIR029, DIR030]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

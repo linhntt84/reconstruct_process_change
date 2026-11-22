@@ -1,0 +1,17 @@
+### Observed differences
+
+- Both A25 and A26 went from strictly single occurrences to repeating activity. Before, each occurred exactly once in every trace (mean 1.0 occurrences per trace, no repeats in any of the 200 traces). In the later window, both still appear in every trace but average about 1.56 occurrences per trace, with repeats in about 37 in 100 traces; total occurrences rose from about 200 to about 312 each. [OCC001, OCC002]
+- A26 gained an outgoing route that was not observed before. Earlier, every observed outgoing transition of A26 went to A20; in the later window about 64 in 100 still go to A20, while about 36 in 100 go back to A25. A26's observed outgoing transitions rose from 200 to 312, consistent with its higher frequency. [DIR002, OCC002]
+- The fixed order of the pair A25/A26 loosened. Before, the two always co-occurred with A25 before A26 (100 in 100 traces); in the later window co-occurrence is still universal, but the strict A25-before-A26 order holds in only about 64 in 100 traces, with interleaved or repeated arrangements in about 37 in 100. [REL001]
+- The pair's adjacency also loosened. Before, A25 and A26 were in adjacent positions in all cases; in the later window only about 37 in 100 are adjacent, with separations of three positions in about 5 in 100 cases and five positions in about 1 in 100. [LAG001]
+- Routing at A01 shifted independently of the above: the share of A01's outgoing transitions to A04 fell from about 42 in 100 to about 20 in 100, while transitions to A05 rose from about 24 to about 45 in 100; transitions to A03 stayed at about 34 in 100. These shares rest on moderate support (about 97 and 88 outgoing transitions in the two windows). [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the previously fixed segment A25 → A26 can now repeat within a trace: in the later window, A26 leads back to A25 in about 36 in 100 of its outgoing transitions (previously all went to A20), A25 and A26 each recur in about 37 in 100 traces (previously neither ever repeated), and the pair's strict order and adjacency gave way to interleaved, repeated or wider-spaced arrangements in the same share of traces. [OCC001, OCC002, DIR002, REL001, LAG001]
+
+The supporting signs are direct and consistent: a routing change at A26 towards A25 is observed outright, and the occurrence, relation and gap indicators all describe the same behaviour with matching size (about 0.36–0.37 on their own scales). Six qualifying items is roughly twenty times the 0.29 expected by chance alone when nothing has changed, so the pattern as a whole is unlikely to be a sampling artefact. [OCC001, OCC002, DIR002, REL001, LAG001]
+
+Limitations remain. The five A25/A26 items plausibly describe one underlying trace behaviour rather than independent confirmations, and the evidence cannot fully rule out that the later window samples a repeat variant that was too rare to appear in the earlier 200 traces — although a behaviour absent from 200 traces yet present in about 73 of 200 later traces, together with the previously unobserved A26→A25 transition, makes a pure sampling difference unlikely. In addition, the shift at A01 from A04 towards A05 is not connected to the A25/A26 behaviour by any relational evidence and may be a separate difference, so this hypothesis does not cover all observed changes. [DIR001, DIR002, REL001]

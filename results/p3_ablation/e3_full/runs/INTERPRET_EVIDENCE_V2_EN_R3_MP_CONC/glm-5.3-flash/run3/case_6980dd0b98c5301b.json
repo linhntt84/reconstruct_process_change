@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_6980dd0b98c5301b.json",
+  "evidence_sha256": "e1ed513363d4d8c0519ea8cdb1c4268bf0fbc302fd36c30b86c3b648653e9b24",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:23:04.991257+00:00",
+  "finished_at_utc": "2026-11-16T03:24:09.295846+00:00",
+  "latency_seconds": 64.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8397,
+    "prompt_tokens": 7863,
+    "total_tokens": 16260,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7337,
+      "text_tokens": 1060
+    },
+    "cost": 0.005377949999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26966,
+  "text": "### Observed differences\n\n- The closing sequence of activities changed its order. In the earlier window, every trace ended with the fixed sequence A06 → A07 → A01, with A01 as the final event (mean relative position 1.0 in 200 of 200 traces). In the later window, every trace ends with A01 → A06 → A07, with A07 as the final event (mean relative position 1.0 in 200 of 200 traces). [REL001, REL002, POS001, POS002, POS003]\n- The directly-follows relations changed at three points. Earlier, A01 had no observed outgoing transition (it ended every trace), A07 was always followed by A01, and A08 was always followed by A06. Later, A01 is always followed by A06, A07 has no observed outgoing transition (it ends every trace), and A08 is always followed by A01. [DIR001, DIR002, DIR003]\n- Positions shifted accordingly: A01 moved from the last position to a mean relative position of about 0.71, while A06 and A07 each moved one position later (about 0.71 → 0.86 and 0.86 → 1.0). All position distributions have zero spread, so the shifts are deterministic across traces. [POS001, POS002, POS003]\n- The pairwise order flipped completely while co-occurrence stayed at 100 in 100 traces: earlier, A06 preceded A01 and A07 preceded A01 in every trace; later, A01 precedes A06 and A01 precedes A07 in every trace. The three activities still always occur together, so participation did not change. [REL001, REL002]\n- Distances from the unchanged earlier part of the trace match this shift exactly: lags to A01 shortened by two steps (e.g., A08 → A01 from 3 to 1, A03 → A01 from 4 to 2), while lags to A06 and A07 each lengthened by one step (e.g., A08 → A06 from 1 to 2, A08 → A07 from 2 to 3), each in 200 of 200 traces. [LAG001, LAG005, LAG008, LAG002, LAG006, LAG009, LAG003, LAG007, LAG010]\n- All 17 evidence items show differences larger than in about 995 of 1,000 random re-splits of the pooled data, and they all describe this one reordering rather than separate changes. [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the order of the closing sequence changed: the tail A06 → A07 → A01 in the earlier window became A01 → A06 → A07 in the later window. A01 moved from the end of every trace to directly after A08 and ahead of A06 and A07; A07 became the final activity, and A06 and A07 each shifted one position later. Because all three activities occur in 200 of 200 traces in both windows and always co-occur, this is a reordering of a fixed sequence, not a path being taken more or less often or an activity becoming optional. [REL001, REL002, DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\nThe support is direct and consistent: the pairwise order flips appear in 100 in 100 traces, the successor changes at A01, A07 and A08 agree with them, and the lag changes measured from four stable anchors (A03, A04, A05, A08) match the predicted shifts exactly. These items are facets of a single underlying difference, not independent confirmations. [REL001, REL002, DIR001, DIR002, DIR003, LAG001, LAG004, LAG005, LAG008]\n\nLimitations: no screening expectation was provided, so the item count cannot be compared against a chance baseline; the judgement rests on the directness and consistency of the relational and positional evidence. The evidence also covers only these activities and distances up to five steps, so it cannot rule out that the reordering is part of a broader change elsewhere in the trace. [REL001, REL002, LAG001, LAG008]",
+  "case_id": "case_6980dd0b98c5301b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

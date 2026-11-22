@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_6d3b1a39e446ce7d.json",
+  "evidence_sha256": "5ba0bd92e57fb904ee2313bdb8257baf1a7419cdd12f059745cd9b1c51878d0a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:47:44.408086+00:00",
+  "finished_at_utc": "2026-11-15T06:49:25.104356+00:00",
+  "latency_seconds": 100.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14667,
+    "prompt_tokens": 13829,
+    "total_tokens": 28496,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13244,
+      "text_tokens": 1423
+    },
+    "cost": 0.009407849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47059,
+  "text": "### Observed differences\n\n- A36, A37 and A42 were optional before: each appeared in about 47 in 100 traces (93–94 of 200), at most once per trace. In the later window each appears in essentially every trace (199–200 of 200), exactly once (mean about 1.0 per trace). A27 shows the same shift, from about 55 in 100 traces to all 200. [OCC001, OCC002, OCC003, OCC004]\n- A25's routing changed completely: before, about 97 in 100 of its outgoing transitions led to A28; in the later window they split almost evenly across A36 (about 34 in 100), A37 (about 31) and A42 (about 31), with A28 nearly unobserved as a successor. [DIR001]\n- A26's routing concentrated on A27: before, about 54 in 100 of its outgoing transitions led to A27, with A36, A37 and A42 sharing most of the rest; in the later window about 98 in 100 lead to A27. [DIR002]\n- The trio's outgoing edges were re-wired: before, A36, A37 and A42 each led to A31 in roughly 29–39 in 100 of their outgoing transitions; in the later window A31 is no longer a successor and A28 appears instead (about 31–34 in 100), alongside transitions among the trio members themselves. [DIR003, DIR004, DIR005]\n- Distances changed accordingly: A28 followed A25 immediately (one step) in about 96 in 100 traces before, but now follows about four steps later in about 91 in 100 (five steps in about 8 in 100). The pairs A36→A28, A37→A28 and A42→A28, seen in only 1–2 traces before, now occur within one to three steps in about 97–99 in 100 traces. [LAG001, LAG007, LAG008, LAG009]\n- A31 now follows A26 at a fixed distance: before, the A26→A31 gap was two steps in about 54 in 100 traces and four steps in about 42; in the later window it is two steps in about 97 in 100. The ordered pairs A26→A36/A37/A42, each previously present in about 92 traces, are now almost unobserved (1–2 traces), consistent with the trio now running before A26. [LAG003, LAG004, LAG005, LAG006]\n- Event positions shifted consistently with this re-wiring: A36, A37 and A42 moved clearly earlier (mean relative position about 0.59 to about 0.41), while A28 (about 0.40 to 0.46), A26 (0.54 to 0.60), A27 (0.58 to 0.63) and A31 (0.63 to 0.66) moved slightly later, and A25 marginally earlier (0.37 to 0.35). A31 itself is still present in every trace in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural re-wiring in which the previously optional activities A36, A37 and A42 became mandatory and were placed on the path between A25 and A28: in the later window A25 leads into the trio in roughly equal shares, the trio members hand over to one another and then to A28 (now reached about four steps after A25 instead of immediately), while A31 — still executed in every trace — is now reached from A26 about two steps later instead of from the trio, and A27 became a near-certain step after A26. [OCC002, OCC003, OCC004, DIR001, DIR003, DIR004, DIR005, LAG001, LAG003, LAG007]\n\nThe supporting signs are direct and consistent: the number of qualifying items (26 against roughly 0.6 expected if nothing had changed) cannot be explained by chance as a whole; occurrence, routing, distance and position indicators all describe the same re-wiring; and a participation jump from about 47 to about 100 in 100 traces for three separate activities, together with the changed successor profiles of A25, A26, A36, A37 and A42, is far beyond what sampling variation of a rare variant would produce. [OCC002, OCC003, OCC004, DIR001, DIR002, LAG001, POS006, POS007, POS008]\n\nLimitations: the evidence uses event positions rather than clock time, so the change is established in ordering terms only; some before-window pair profiles rest on very few observations (1–2 traces), so the precise previous wiring inside the trio and around A28/A31 cannot be fully reconstructed; and several items describe the same underlying trace behaviour, so they are not independent confirmations. A competing explanation the evidence cannot rule out concerns the exact form of the new structure: whether the trio now runs in a fixed internal order or in a varying order, and which activity lies between A26 and A31, cannot be determined from these profiles. [LAG003, LAG007, LAG008, LAG009, DIR003, DIR004, DIR005]",
+  "case_id": "case_6d3b1a39e446ce7d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

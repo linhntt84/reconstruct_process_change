@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_88246f43af7f2567.json",
+  "evidence_sha256": "b5f8b69ed4dfdcb1d1efad5699bd27cb9e3728735d55c3e3701ebaf0a6f0e57e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:41:00.524360+00:00",
+  "finished_at_utc": "2026-11-15T01:42:34.728059+00:00",
+  "latency_seconds": 94.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13713,
+    "prompt_tokens": 8524,
+    "total_tokens": 22237,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12572,
+      "text_tokens": 1141
+    },
+    "cost": 0.0081351
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45325,
+  "text": "### Observed differences\n\n- The routing out of A02 and A04 changed completely. In the earlier window, A02 led to A03 in about 91 of 100 of its observed outgoing transitions (A12 about 6, A11 about 2), and A04 led to A03 in about 67 of 100 (A12 about 20, A11 about 13). In the later window, A02 and A04 lead exclusively to A12, and each pair is immediately consecutive in essentially all observed cases, whereas before they were usually 2–4 steps apart. [DIR001, DIR003, LAG001, LAG002]\n- A03 changed both its predecessors and its successors. In the earlier window it led to A11 (about 45 of 100 outgoing transitions) and A12 (about 45); in the later window it leads to A11 (about 55) and A10 (about 45), with no observed transition to A12. [DIR002]\n- A03 and A12 went from inseparable to mutually exclusive: earlier they co-occurred in 49% of traces and never appeared one without the other; in the later window they never co-occur (A03 without A12 in about 30 in 100 traces, A12 without A03 in about 45 in 100). A03 likewise stopped co-occurring with A02 (from about 26 in 100 traces to 0) and with A04 (from about 24 in 100 to 0). [REL004, REL001, REL002]\n- A03 became embedded in the A16/A10 part of the process. Earlier, A03 never co-occurred with A10 or A16; in the later window it co-occurs with each in about 30 in 100 traces, typically with A03 before A10 (or interleaved) and A16 before A03 (or interleaved). A16's outgoing traffic shifted from A10 (about 52 of 100) and A09 (about 48) to A09 (about 50) and A03 (about 50), and A16 and A10, previously adjacent in about 85 of 100 observed pairs, are now typically 2 or more steps apart. [REL003, REL005, DIR004, LAG003]\n- Event positions shifted accordingly: A03 now occurs in fewer traces (about 30 in 100 vs 49 in 100) and later within them (mean relative position about 0.67 vs 0.44), and A12, previously almost always the final event (mean about 0.97), now appears at variable positions including the very start (mean about 0.71). [POS001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural rerouting of the control flow around A03. In the earlier window, A02 and A04 fed into A03, which then led on to A11 or A12, with A12 at the end of the trace; in the later window, A02 and A04 connect directly and immediately to A12, A03 and A12 have become mutually exclusive, and A03 now sits between A16 and A10/A11 — A16 leads to A03, A03 leads to A10 or A11, and A16 and A10 are no longer directly adjacent. A03 also takes part in fewer traces (about 30 in 100 vs 49 in 100) and appears later within them. [DIR001, DIR002, DIR004, REL003, REL004, REL005, LAG001, LAG002, LAG003, POS001, POS003]\n\nThe support is direct and consistent: successor changes, co-occurrence flips between \"always together\" and \"never together\", adjacency changes and position shifts all describe the same rewiring, and 16 control-flow items qualified where about 0.21 would be expected by chance across the 42 tested units — far beyond what an unchanged process produces. The old connections (A02→A03, A03→A12, A16→A10) are entirely absent from the later window despite 28–134 observations behind those profiles, which speaks against the old routing merely having become rarer. [DIR001, DIR002, DIR004, REL004, LAG003]\n\nLimitations: several items describe the same underlying rewiring and are not independent confirmations; DIR shares are over outgoing transitions rather than cases; and the evidence cannot rule out that the windows mix process variants whose relative frequencies shifted, nor does it cover connections outside the tested units — A12 still occurs in about 45 in 100 later traces, more than A02 and A04 together, so other entries into A12 are unobserved. [POS003, DIR001, DIR003]\n\nOther differences: minor position shifts of A10 (slightly later, mean 0.83 → 0.90) and A16 (slightly earlier, mean 0.53 → 0.43), consistent with the rerouting above. [POS002, POS004]",
+  "case_id": "case_88246f43af7f2567",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

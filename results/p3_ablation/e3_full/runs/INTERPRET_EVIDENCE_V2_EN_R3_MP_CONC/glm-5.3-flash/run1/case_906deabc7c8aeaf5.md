@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the earlier window, A05 appeared exactly once in every trace (200 of 200 traces, mean 1.0 occurrence per trace); in the later window, A05 was not observed in any of the 200 traces. [OCC001, POS003]
+- Routing after A01 changed completely: before, all observed outgoing transitions of A01 went to A05, and all outgoing transitions of A05 went to A02; in the later window, A01 led directly to A02 in all observed transitions, and A05 had no observed outgoing transitions at all. [DIR001, DIR002]
+- Before, A05 co-occurred with A01, A02, A03 and A04 in every trace, always after A01 and before each of the other three; in the later window, each of A01, A02, A03 and A04 occurred without A05 in all of its traces. [REL001, REL002, REL003, REL004]
+- The order of the remaining activities stayed the same, but each now follows A01 one step sooner than before: A02 after 1 step instead of 2, A04 after 2 instead of 3, and A03 after 3 instead of 4; the relative positions of A02 and A04 moved from 0.50 and 0.75 to about 0.33 and 0.67. [LAG001, LAG002, LAG003, POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A05 dropped out of the executed flow: traces that previously ran A01, A05, A02, A04, A03 now run A01, A02, A04, A03, with A01 proceeding directly to A02 [OCC001, DIR001, DIR002, LAG001]. The signs are direct and mutually consistent across indicator families: participation in A05 fell from all 200 traces to none, A01's routing shifted entirely from A05 to A02, A05 no longer co-occurs with any other activity, and every downstream activity (A02, A03, A04) moved exactly one step closer to A01 — the pattern expected when one activity between A01 and A02 ceases to appear, not when existing paths are merely taken with different frequencies [OCC001, DIR001, REL002, REL003, REL004, LAG001, LAG002, LAG003]. Every item's difference was larger than in about 199 of 200 random re-splits of the pooled data, and the profiles rest on large samples (200 traces per window wherever the activities occur) [OCC001, DIR001, LAG001]. An important competing explanation the evidence cannot rule out is that A05 still executes but is no longer recorded in the event data, since zero participation strictly means only that A05 was not observed in the later window [OCC001].

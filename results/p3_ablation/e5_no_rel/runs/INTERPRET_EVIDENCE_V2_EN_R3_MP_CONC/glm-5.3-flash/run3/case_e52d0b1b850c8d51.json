@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_e52d0b1b850c8d51.json",
+  "evidence_sha256": "7e428725c438085dd1e649f5550cbeb73115a0db0b3d8c61d30811e72e79e8a7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:18:48.158293+00:00",
+  "finished_at_utc": "2026-11-15T12:21:20.014542+00:00",
+  "latency_seconds": 151.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21697,
+    "prompt_tokens": 17051,
+    "total_tokens": 38748,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20263,
+      "text_tokens": 1434
+    },
+    "cost": 0.01340615
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75789,
+  "text": "### Observed differences\n\n- Three activities that ran in every before-trace now run in only about half of the traces: A19, A20 and A25 each appear in 200 of 200 before-traces but in only about 53–54 in 100 after-traces; recurrence stays near zero in both windows, so the drop is whole traces skipping them, not fewer repetitions. [OCC005, OCC006, OCC007]\n- A new direct handover accompanies this: before, about 96 in 100 of A41's observed outgoing transitions went to A19, and A26 did not appear among them; in the later window only about 47 in 100 go to A19 while about 39 in 100 go straight to A26, and the A41→A26 pair — previously typically about four steps apart — is now immediately adjacent in about 40 in 100 after-cases. [DIR008, LAG008]\n- When the affected activities do run, their local routing is unchanged: A20 still leads to A26 in about 97 in 100 of its outgoing transitions in both windows, and A15→A19 co-occurrence within five steps simply halves (173 → 88 traces). [DIR007, LAG006]\n- A14's continuation choice flipped: before it led to A06 in about 69 in 100 outgoing transitions and to A15 in about 31; in the later window it leads to A15 in about 78 and to A06 in about 12. A06 consequently runs in far fewer traces (about 71 → 26 in 100), sits later within them (median position about 0.16 → 0.30 of the trace), and its own outgoing spread widened (to A15: about 92 → 37 in 100). [DIR005, OCC002, POS001, DIR003, LAG003]\n- Three rare activities became more frequent: A04, A08 and A10 rose from about 4–5 in 100 traces to about 15–20 in 100; their outgoing profiles also differ, but those rest on few observations (about 8–18 outgoing transitions before). [OCC001, OCC003, OCC004, DIR002, DIR004]\n- Smaller distance shifts: A14→A15 is more often adjacent (within one step about 17 → 41 in 100) and A14→A41 closer (within four steps about 29 → 67 in 100), while A46→A47 is slightly less tight (within one step about 97 → 88 in 100). [LAG004, LAG005, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the part of the process between the handover from A41 and the arrival at A26 — which contains A19 and A20, with A25 showing the same participation profile — became optional: these activities ran in every before-trace but each runs in only about half of the after-traces, and where the part is skipped, A41 leads directly to A26 (about 39 in 100 of A41's outgoing transitions, typically adjacent) instead of proceeding via A19 as before (about 96 in 100). The participation drops are measured on all 200 traces per window and each exceeds about 995 in 1,000 random re-splits; the rerouting rests on about 200 observed outgoing transitions of A41 and about 200 pair co-occurrences in each window. The pattern is consistent across indicators — A20's own routing is unchanged when it runs, and A15→A19 co-occurrence halves in step with A19's participation — and 29 control-flow items qualified overall against roughly 0.7 expected without change, so the windows differ well beyond chance as a whole. [OCC005, OCC006, OCC007, DIR008, LAG008, DIR007, LAG006]\n\nLimitations: the aggregates cannot show that the same after-traces that skip A19, A20 or A25 are the ones in which A41→A26 occurs — the bypass rate (about 39 in 100) only approximates the share of after-traces missing each activity (about 46–47 in 100), so the per-trace coincidence is inferred. A25's membership in the skipped part rests on its identical participation drop, as no relational evidence ties it to A19 or A20. An important competing explanation the evidence cannot rule out is that the later window blends two coexisting trace variants, one with and one without this part, rather than a single process in which the part is optionally skipped. [OCC005, OCC006, OCC007, DIR008, LAG008]\n\nOther differences: A14 now usually continues to A15 where it previously usually continued to A06, and A06 consequently runs in far fewer traces (about 71 → 26 in 100) and later within them; both branches are well observed in both windows, so this reads as a shift in how often existing paths are taken rather than a replacement of one path by another. Separately, A04, A08 and A10 became more frequent (about 4–5 → 15–20 in 100 traces). [DIR005, OCC002, POS001, DIR003, OCC001, OCC003, OCC004]",
+  "case_id": "case_e52d0b1b850c8d51",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

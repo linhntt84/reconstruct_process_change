@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "754add85b2dcf697e5df997f477157f016ee0f4ea8c7f4516395572c94697a20",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:45:09.020362+00:00",
+  "finished_at_utc": "2026-11-14T12:46:52.113651+00:00",
+  "latency_seconds": 103.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14213,
+    "prompt_tokens": 15070,
+    "total_tokens": 29283,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12889,
+      "text_tokens": 1324
+    },
+    "cost": 0.009367
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45165,
+  "text": "### Observed differences\n\n- In the earlier window, six activities — A33, A35, A36, A37, A38 and A39 — each ran exactly once in virtually every case (participation 100%, about one occurrence per trace). In the later window each of them appears in only about 47–57 in 100 cases, still once when present, so each is skipped in roughly half of the cases. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The endpoints are stable: A30 and A31 still occur in every case in both windows. [POS001, POS002]\n- Routing out of A30 widened: before, its outgoing transitions went almost exclusively to A33 (about 34 in 100), A35 (about 36) and A36 (about 29); in the later window they spread over all six activities at roughly 14–20 in 100 each, including direct transitions to A37, A38 and A39 that were not observed as successors before. [DIR001]\n- Direct transitions into A31 are new: before, A33, A35 and A36 led to one another and on to A37–A39, with no observed transition to A31; in the later window A33→A31 carries about 33 in 100 of A33's outgoing transitions, A35→A31 about 34 in 100 and A36→A31 about 24 in 100. [DIR002, DIR003, DIR004]\n- Distances collapsed: the pairs A30→A37, A30→A38, A30→A39 and A33→A31, A35→A31, A36→A31 fell at lag 4–5 in essentially all earlier observations (for example A30→A39: about 48 in 100 at lag 4 and 52 at lag 5); in the later window about 95 in 100 of these pairs fall at lag 1–3. [LAG001, LAG002, LAG003, LAG004, LAG007, LAG010]\n- Event positions converged: A30 now occurs slightly later (mean relative position about 0.62 vs 0.67) and A33/A35/A36 slightly later (about 0.68 vs 0.73), while A37/A38/A39 occur slightly earlier (about 0.76–0.77 vs 0.74); A31 is nearly unchanged (about 0.82 vs 0.80, with somewhat more spread). These are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- Several lag changes among the block's own pairs (for example A33→A38, A35→A39) rest on only 4–5 later-window observations and are too weak to interpret. [LAG005, LAG006, LAG008, LAG009, LAG011, LAG012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening flagged 30 control-flow items where about 0.66 would be expected if nothing had changed (132 units tested), and every item's difference exceeds about 995 in 1000 random re-splits, so the flagged volume is far beyond what an unchanged process typically produces. The evidence supports the possibility that the fixed block of six activities A33, A35, A36, A37, A38 and A39, which previously always executed between A30 and A31, is partially skipped in the later window and the route through it is shorter: each block activity is omitted in about half of the cases, A30 now feeds directly into any member of the block (including A37, A38 and A39, which previously lay four to five steps after it), and A33, A35 and A36 now pass directly on to A31 instead of reaching it four to five steps later. Supporting signs: the participation drop is consistent across all six activities (93–113 later-window traces each), the new edges and the lag collapse are relational observations rather than position-based inference, and the two groups' positions move towards each other as this picture implies. Limitations: the evidence does not show which intermediate steps between these pairs disappeared, so the shortening cannot be tied to specific removed activities, and it cannot rule out that the later window mixes two kinds of cases (some still running the full block) rather than a single new skip choice; the fine ordering within the block cannot be established from the few-observation lag items. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, LAG001, LAG002, LAG003, LAG004, LAG007, LAG010, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\nOther differences: a handful of rare outgoing transitions (each about 0.5–2 in 100) from A30, A33, A35 and A36 to other activities are observed only in the later window. [DIR001, DIR002, DIR003, DIR004]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

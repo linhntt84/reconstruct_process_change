@@ -1,0 +1,23 @@
+### Observed differences
+
+- **Routing around the five-activity group changed.** In the earlier window, A42's observed outgoing transitions split across A14, A15, A20, A21 and A22 (roughly 18–23% each), and each of these five always continued to A23. In the later window, A42 leads directly to A23 in essentially all cases, and the five activities instead continue to A25 (about 37–68%, depending on the activity) or A29 (about 33–63%). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR008]
+
+- **Order relative to A23 and A24 reversed.** Earlier, each of the five always ran before A23 and before A24 (e.g., A14 before A23 in about 22 of 100 traces, never the reverse); in the later window, A23 and A24 always run before each of the five (about 20–23 of 100 traces), and the earlier order is never observed. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- **Position shifted, participation did not.** The five activities occur in a similar share of traces in both windows (about 15–23 in 100; e.g., A14 in 43 of 200 earlier and 44 of 200 later), but their mean relative position moved from about 0.30–0.33 to about 0.58–0.61, while A23, A24 and A25 still occur in every trace with only small shifts (A23 about 0.35→0.31, A24 about 0.59→0.55, A25 about 0.62→0.60). [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+- **The A24–A25–A29 segment changed.** Earlier, A24 was always directly followed by A25 and A25 directly by A29 (A24 to A29 always two positions apart). In the later window, each adjacency holds in only about half of the traces (49% and 51%), one event sits between them in the rest, and A24 to A29 is always three positions apart; A24 and A25, which earlier led only to A25 and A29, now lead to one of the five activities in about half of their observed outgoing transitions (about 51% from A24, about 49% from A25). [LAG001, LAG002, LAG003, DIR006, DIR007]
+
+- **Timing.** For six activity pairs (A03–A08 each paired with A09), the elapsed time between consecutive completion events halved, from about 0.96–1.07 hours to about 0.49–0.51 hours on average, on 22–51 observations per pair earlier and 29–37 later. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, TWAIT005, TWAIT006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the five activities A14, A15, A20, A21, A22, which in the earlier window executed between A42 and A23 (always before A23 and A24), in the later window execute after A23 and A24, within the A24→A25→A29 segment — in about half of the traces between A24 and A25, in the other half between A25 and A29 — and now lead on to A25 or A29 instead of A23, while A42 connects directly to A23. Participation is essentially unchanged (each of the five in about 15–23% of traces in both windows; A23, A24, A25 in all traces), so this is a change in placement and successors, not in how often these activities run. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005, LAG001, LAG002, LAG003, LAG004]
+
+The reading is direct and consistent: relational evidence shows the order reversal outright (the earlier order disappears completely in all eight activity pairs), successor profiles show the rewiring at A42, A24, A25 and the five activities, lag and position items show the insertion and the shift, and the number of qualifying control-flow items (28, against roughly 0.43 expected without a change) is many times the chance expectation, so the pattern as a whole is not what a stable process typically produces. [REL001, REL003, REL005, REL007, DIR006, DIR007, DIR008, LAG001, LAG002, LAG003, LAG004, POS001, POS005]
+
+Limitations: POS and LAG use event positions rather than clock time, so placement is inferred from order and adjacency, not timestamps; and the evidence cannot fully rule out that the later-window occurrences are additional executions of the same activities within a repeated segment rather than a relocated group, although the complete disappearance of the earlier order and the unchanged participation make a pure sampling difference unlikely. [REL001, REL003, REL005, REL007, POS001, LAG001]
+
+Other differences: an independent timing change — the elapsed time between consecutive completion events for the pairs (A03, A09) through (A08, A09) consistently halved from about 1 hour to about 0.5 hours; this is a change in timing in its own right and need not have a structural counterpart, and it measures elapsed time between consecutive completions, not pure waiting or service time. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, TWAIT005, TWAIT006]

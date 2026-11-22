@@ -1,0 +1,17 @@
+### Observed differences
+
+- A06 is no longer executed: in the earlier window it appeared in every one of the 200 traces, once per trace on average, near the end of the trace (mean relative position about 0.95); in the later window it appears in 0 of 200 traces. [OCC001, POS003]
+- The transitions touching A06 disappeared: before, A03 led to A06 in all 106 observed outgoing transitions of A03, and A06 led back to A03 in all 94 observed outgoing transitions of A06; in the later window neither transition is observed. [DIR001, DIR003]
+- The co-occurrence pattern changed accordingly: before, A03 and A06 always ran in the same trace, with A03 first in about 53 in 100 traces and A06 first in about 47 in 100, and A04 and A06 also always co-occurred (interleaved in about 57 in 100 traces); in the later window A03 and A04 each appear without A06 in every trace. [REL001, REL002]
+- A04's routing changed: before, its outgoing transitions went to A02 in about 52 in 100 cases, to A03 in about 26 and to A06 in about 23; in the later window only A02 and A03 remain, in roughly equal shares (about 50 in 100 each). [DIR002]
+- The ending became fixed and shorter: before, A03 followed A04 at a distance of one step in about 53 in 100 cases and two steps in about 47, and A03 sat near but not always at the trace end (mean relative position about 0.94 with some spread); in the later window A03 always immediately follows A04 and is always the final event (relative position 1.0 with no variation). [LAG001, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the later window runs the process without A06: the closing sequence that previously contained both A03 and A06 — each executed once per trace, in either order (A03 first in about 53 in 100 traces, A06 first in about 47) — now consists of A03 alone, which always directly follows A04 and always ends the trace. A04 no longer routes to A06 (about 23 in 100 of its outgoing transitions before, none after) and now splits about evenly between its two remaining successors, A02 and A03. [OCC001, POS003, DIR001, DIR003, REL001, REL002, DIR002, LAG001, POS001]
+
+The change is shown directly on participation (200 of 200 traces to 0 of 200), on both transitions involving A06, on both co-occurrence relations, and on routing, lag and position, all pointing to the same structural difference; ten qualifying items against roughly 0.09 expected by chance makes chance an implausible explanation of the evidence as a whole, and each difference is larger than in about 995 of 1000 random re-splits. Limitations: the items largely reflect one underlying difference rather than independent confirmations, and zero participation strictly means only that A06 was not observed in the later sample — the evidence cannot distinguish an activity removed from the process from one that remains possible but was never executed, nor can it show why the behaviour differs. [OCC001, POS003, DIR001, DIR003, REL001, REL002, DIR002, LAG001, POS001]
+
+Other differences: A04 itself occurs slightly later within traces in the later window (median relative position about 0.60 before versus 0.75 after, measured by event order, not clock time), which is consistent with the shorter ending but is not part of the hypothesis above. [POS002]

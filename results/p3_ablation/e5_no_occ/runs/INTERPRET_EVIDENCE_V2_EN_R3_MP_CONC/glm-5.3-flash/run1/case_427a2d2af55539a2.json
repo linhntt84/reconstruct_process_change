@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_427a2d2af55539a2.json",
+  "evidence_sha256": "44afc9d80370d33bd6561d4cfd7e75214448d1fc52be12f8fd77947d1d67ec27",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:26:06.028648+00:00",
+  "finished_at_utc": "2026-11-14T11:27:02.964379+00:00",
+  "latency_seconds": 56.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8485,
+    "prompt_tokens": 18545,
+    "total_tokens": 27030,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7485,
+      "text_tokens": 1000
+    },
+    "cost": 0.007024249999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27167,
+  "text": "### Observed differences\n\n- In the earlier window, A39 occurred in every trace and was always followed by exactly one of three mutually exclusive activities: A14 in about 35 in 100 traces, A15 in about 30 in 100, and A16 in about 36 in 100; these three never occurred together, and whichever ran was always followed by A24. [DIR007, REL001, REL002, REL008, DIR001, DIR002, DIR003, REL006, REL012, REL017]\n- In the later window, A14, A15 and A16 are not observed in any of the 200 traces, while A21, A22 and A23 — not observed at all before — each occur in all 200 traces. [POS001, POS002, POS003, POS004, POS005, POS006]\n- A39's observed successors changed accordingly: before, its outgoing transitions went to A14, A15 and A16 in roughly equal shares (about 0.35, 0.30 and 0.36); after, they go to A21, A22 and A23 in roughly equal shares (about 0.36, 0.33 and 0.32). [DIR007]\n- In the later window, A21, A22 and A23 co-occur in every trace with no fixed order among themselves (each pair is split roughly 50/50 between the two orders); each of them always runs after A39 and always before A24. [REL019, REL020, REL023, REL022, REL025, REL027, REL021, REL024, REL026]\n- A24 still occurs in every trace in both windows, but it now lies further after A39: the observed gap grew from 2 steps in essentially all earlier cases to 4 steps in essentially all later cases, and A24's mean normalized position moved from about 0.39 to about 0.44. [LAG001, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A39 and A24 was restructured: in the earlier window exactly one of the alternatives A14, A15 or A16 executed between A39 and A24, whereas in the later window that one-of-three step is no longer observed and instead A21, A22 and A23 all execute in every case between A39 and A24, in no fixed order among themselves, leaving about two extra steps between A39 and A24; A14, A15 and A16 are no longer observed at all. [DIR007, REL019, REL021, REL024, REL026, LAG001, POS001, POS002, POS003, POS004, POS005, POS006]\n\nThis rests on direct relational and directional evidence, not on participation counts alone: A39's successor set changed as a whole, each new activity is bounded by A39 before it and A24 after it in 200 of 200 traces, and the A39–A24 distance shifted consistently from 2 to 4 steps. Screening also qualified 42 items where only about 0.34 would be expected if nothing had changed, far beyond what an unchanged process typically produces. [DIR007, REL021, REL022, REL024, REL025, REL026, REL027, LAG001, DIR004, DIR005, DIR006]\n\nLimitations: the evidence cannot show whether A21, A22 and A23 run concurrently or merely in an arbitrary sequence, and it cannot rule out that the two windows sample different case populations or variants rather than a modified single process. Many of the qualified items describe the same underlying difference and are not independent confirmations. [REL019, REL023, POS007]\n\nOther differences: none — all qualified items concern the restructuring around A39 and A24 described above, including A24's later position relative to A39. [DIR007, LAG001, POS007]",
+  "case_id": "case_427a2d2af55539a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

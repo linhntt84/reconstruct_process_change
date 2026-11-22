@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ca2ce64391868894.json",
+  "evidence_sha256": "ea9d90be68942690a400886c4ba7c0dd76963f080c4cbf129abbc219e4a177cf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:19:27.164583+00:00",
+  "finished_at_utc": "2026-11-15T08:21:15.089022+00:00",
+  "latency_seconds": 107.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15069,
+    "prompt_tokens": 22763,
+    "total_tokens": 37832,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13673,
+      "text_tokens": 1396
+    },
+    "cost": 0.010948949999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44625,
+  "text": "### Observed differences\n\n- In the earlier window, A01 and A02 each occurred exactly once in every trace (200 of 200) and A03 occurred in every trace with about 2.1 occurrences per trace, repeating within a trace in roughly 56 in 100 traces; in the later window none of these three activities was observed in any trace. A04 shows the mirror image: not observed before, it appears exactly once in every later trace and always as the final event. Each of these participation differences is larger than in about 995 of 1,000 random re-splits of the pooled traces. [OCC001, OCC002, OCC003, OCC004, POS004]\n\n- The wiring around the removed activities changed directly: A05, previously followed by A02 in 100 in 100 of its outgoing transitions, is now followed by A04 in 100 in 100; A08, previously followed by A03 in 100 in 100, now leads to A06 in about 46 in 100 and to A07 in about 54 in 100 of its outgoing transitions. A03's earlier split to A06 (~53 in 100) and A07 (~47 in 100) disappeared with the activity. [DIR001, DIR002, DIR003, DIR004]\n\n- Pairs among the removed activities flipped from universal co-occurrence to universal separation: A01/A02 (previously always together, A02 before A01), A01/A03 and A02/A03 co-occurred in every earlier trace and in no later trace; pairs with A04 inverted the same way (e.g., A01 present without A04 before, A04 present without A01 after). [REL001, REL002, REL008, REL003, REL009, REL014]\n\n- The remaining loop runs one step shorter: before, A03, A06 and A08 formed a repeating cycle (A03 → A06 → A08 and back to A03) that exited to A07; in the later window A08 exits directly to A06 or A07. Step distances shrank by one throughout — A06→A07 from lag 3 to lag 2, A08→A07 from 2 to 1, A06→A05 from 4 to 3, and the repetitions A06→A06 and A08→A08 from 3 to 2 — and mean relative positions moved earlier for A07 (about 0.48 to 0.30) and A06 (about 0.27 to 0.18). [DIR002, DIR004, LAG001, LAG002, LAG003, LAG005, LAG007, LAG008, POS006, POS007]\n\n- A05 itself was stable: present in every trace in both windows at a mean relative position of about 0.65. A06 and A08 occurred slightly less often (about 56 in 100 traces before versus about 50 in 100 after; mean occurrences about 1.1 versus 0.9), and relations among A05–A08 shifted by only about 5 percentage points with unremarkable strength (about 50 in 100). [POS005, OCC005, OCC006, REL023, REL025, REL027]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural restructuring centred on A03 and the process closing: in the later window, A01, A02 and A03 are no longer executed at all, the repetition cycle that previously ran A03 → A06 → A08 and back to A03 now runs without A03 (A08 leads directly to A06 or A07, and the exit to A07 moved from A03 to A08), and every trace now ends with A05 followed by the newly observed final activity A04 instead of A05 → A02 → A01. [OCC001, OCC002, OCC003, OCC004, DIR002, DIR003, DIR004, REL019]\n\nThe supporting signs are the complete participation reversal on 200 traces per window, the directly observed successor changes at A05 and A08, and the uniform one-step shortening of every lag around the removed activity (for example A06→A06 from 3 to 2), which fits A03 dropping out of the cycle rather than merely moving. These items describe one underlying difference, so they corroborate but are not independent confirmations of it. [OCC001, OCC004, DIR003, DIR004, LAG002, LAG003, LAG005, LAG007]\n\nLimitations: the evidence set contains no screening baseline of how many items an unchanged process would produce, so the judgement rests on the extremity and consistency of the observations; the evidence cannot rule out that the two windows simply capture different case types or a complete switch of the executed variant rather than a modification of one process, and it shows nothing about what, if anything, now precedes A06/A08 at the start of the remaining loop. [OCC001, OCC004]\n\nOther differences: the small decrease in A06 and A08 participation and occurrences, together with the roughly 5-percentage-point shifts among A05–A08 relations, are minor and could reflect sampling variation rather than a separate change. [OCC005, OCC006, REL023, REL025, REL027]",
+  "case_id": "case_ca2ce64391868894",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

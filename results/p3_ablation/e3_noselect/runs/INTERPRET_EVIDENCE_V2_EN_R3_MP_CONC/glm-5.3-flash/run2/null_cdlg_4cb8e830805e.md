@@ -1,0 +1,12 @@
+### Observed differences
+
+- **Participation.** In the later window, A02 appears in about 29 in 100 traces, up from about 22 in 100 (58 vs 44 traces), while A05 appears in about 10 in 100, down from about 16 in 100 (19 vs 32 traces); neither activity repeats within a trace in either window. [OCC002, OCC005]
+- **Repetition.** In the later window, A07, A15 and A16 occur more often per trace (A07 about 4.6 vs 3.8, A15 about 2.4 vs 1.8, A16 about 2.3 vs 2.0 mean occurrences), while the share of traces containing each stays around 22–25 in 100 in both windows, so the extra occurrences come from more repetitions within the same traces rather than wider use. [OCC007, OCC014, OCC015]
+- **Routing around A01/A03/A04.** In the later window, A03's outgoing transitions lead to A01 in about 16 in 100 cases (down from about 27) and to A08 in about 11 (up from about 3); A04's outgoing transitions lead to A07 in about 50 in 100 (up from about 42) and to A08 in about 42 (down from about 50). A01's own outgoing mix barely moves (to A08: about 1 in 100 vs 6). [DIR002, DIR003, DIR001]
+- **Routing between A09 and A10.** In the later window, A12, A13 and A14 all route slightly less to A09 and more to A10 (after A12: A09 about 53 in 100 vs 61; after A13: about 51 vs 55; after A14: about 47 vs 51), and A10 occurs somewhat more often per trace (about 0.53 vs 0.42) while A09 appears in slightly fewer traces (about 13 in 100 vs 16). [DIR005, DIR006, DIR007, OCC010, OCC009]
+- **Stable behaviour.** A01, A03 and A08 each appear in about half the traces in both windows; the split after A07 stays about 50/50 between A15 and A16; and A16's successor mix is essentially unchanged. [OCC001, OCC003, OCC008, DIR004, DIR008]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. The flagged differences fall within the range that random re-splits of unchanged data produce: across the 23 items only one exceeds an empirical strength of 0.9 (A05's decrease, resting on only 19 later-window traces) and seven exceed 0.6, which is no more than an unchanged process typically yields over this many tests, and the individual shifts point in unrelated directions (A02 up, A05 down, A03/A04 routing, A07/A15/A16 repetition, A09-to-A10 routing) rather than toward one coherent change. [OCC002, OCC005, DIR002, DIR003, OCC007, DIR005]

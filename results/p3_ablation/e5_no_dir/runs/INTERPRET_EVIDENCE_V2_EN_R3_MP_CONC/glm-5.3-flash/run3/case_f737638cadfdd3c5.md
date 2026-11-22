@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, activities A19, A20 and A25 were not observed at all (0 of 200 traces). In the later window, A19 appears in about 37 in 100 traces, A25 in about 34 in 100 and A20 in about 29 in 100, each occurring at most once per trace. [OCC001, OCC002, OCC003]
+- In the later window the three are mutually exclusive alternatives: A19 and A20 never share a trace, A20 and A25 never, A19 and A25 co-occur in a single trace, and virtually every trace contains exactly one of the three; in the earlier window neither activity of each pair was observed. [REL001, REL002, REL007]
+- The new step sits between A41 and A26: in the later window, A41 precedes A19, A20 or A25 in essentially every co-occurrence, and the new activity in turn precedes A26 and A31; A41, A26 and A31 themselves occur in all traces in both windows. [REL003, REL006, REL008, REL009, REL010, REL011, REL012, REL014]
+- Accordingly, the direct A41→A26 succession (distance 1 step) fell from about 94 in 100 earlier traces to about 1 in 100, while a distance of 2 steps rose from about 7 in 100 to about 90 in 100 — one activity now lies between them. [LAG002]
+- The three activities occur at a stable relative position of about 0.36 (roughly a third into the trace), just before A26 (mean about 0.39); A26 and A31 themselves shifted only slightly later (mean +0.02 and +0.015). [POS001, POS002, POS003, POS004, POS005]
+- Other: the distance from A31 to A35 shifted from mostly 1 step (about 55 in 100) to mostly 2 steps (about 62 in 100), and A35 now appears in about 48 in 100 traces versus about 54 in 100 earlier. [LAG001, REL005, REL013]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, a step now executes between A41 and A26 that did not run in the earlier window, realised as exactly one of three mutually exclusive variants — A19, A25 or A20 — so that virtually every later case runs one of them at that point (with A19/A25 sharing one trace and two traces running none). This rests on direct and mutually consistent evidence: the variants were absent earlier and now participate substantially; they never occur together; the ordering items place each of them after A41 and before A26 and A31 in essentially every co-occurrence; and the A41→A26 distance moved from one step to two, with the roughly 9 in 100 later traces at distance 3 matching the roughly 7 in 100 earlier traces that already had an unidentified activity between them. The 24 qualifying control-flow items are about 70 times the roughly 0.33 expected without change, and every item ranks above all but about 0.5% of random re-splits — though many items describe the same underlying behaviour and are not independent confirmations. [OCC001, OCC002, OCC003, REL001, REL002, REL007, REL003, REL006, REL008, REL010, REL011, REL014, LAG002, POS001, POS002, POS003]
+
+The evidence cannot distinguish activities genuinely added to the process from variants that existed earlier but were never selected in the before window (zero participation only means "not observed"), nor determine whether the step is mandatory or a choice made in about 99 of 100 later cases. [OCC001, OCC002, OCC003]
+
+Other differences: the A31→A35 step distance grew (1 step: about 55% to about 37%; 2 steps: about 42% to about 62%) and A35 participation dipped slightly; the evidence does not identify which activity, if any, now lies between A31 and A35, so this is not part of the main hypothesis. [LAG001, REL005, REL013]

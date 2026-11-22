@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_cf38f33e1cdfc390.json",
+  "evidence_sha256": "f1504fbd87aad93bda51988df4dd321bd581b53bd93f05a6857c77808981a9f2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:00:15.491870+00:00",
+  "finished_at_utc": "2026-11-15T12:01:19.734698+00:00",
+  "latency_seconds": 64.24,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8731,
+    "prompt_tokens": 4467,
+    "total_tokens": 13198,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7827,
+      "text_tokens": 904
+    },
+    "cost": 0.00503555
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31117,
+  "text": "### Observed differences\n\n- Two groups of activities swapped how often they run. In the earlier window, A16, A17 and A18 each appeared in about 75 in 100 traces (150 of 200), while A19, A20 and A21 each appeared in about 25 in 100 (50 of 200). In the later window this reversed: A16–A18 each appear in about 25 in 100 traces (49 of 200) and A19–A21 in about 75 in 100 (151 of 200). None of the six repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The branching at A15 flipped accordingly. Before, about three quarters of A15's observed outgoing transitions led to A16, A17 or A18 (shares of roughly 27, 23 and 26 in 100) and about one quarter to A19, A20 or A21 (roughly 14, 4 and 8 in 100). After, about three quarters led to A19, A20 or A21 (roughly 25, 22 and 29 in 100) and one quarter to A16, A17 or A18 (roughly 9 in 100 each). [DIR001]\n- Where A20 follows A15, it now does so earlier in the trace: among traces containing the pair within five steps, about half of the earlier gaps were 3 positions apart, whereas in the later window about two thirds are 1 or 2 positions apart and only about one third are 3 positions. The number of such traces grew from 50 to 151, tracking A20's participation. [LAG001, OCC005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the routing at A15 changed: in the later window, A15 leads predominantly to A19, A20 and A21 (about three quarters of its outgoing transitions, versus about one quarter before), while A16, A17 and A18 — previously the predominant continuations, each running in about 75 in 100 traces — now run in only about 25 in 100, with A19–A21 rising symmetrically from about 25 to about 75 in 100. Since all six activities remain well observed in both windows (at least about 25 in 100 traces) and only the shares between them move, this reads as two existing alternative paths being taken with different frequencies rather than activities being added, removed or bypassed. The flip is shown directly in A15's outgoing profile [DIR001] and mirrored by six participation changes of matching size and direction [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]; with 8 qualifying control-flow items against roughly 0.39 expected for an unchanged process, and every difference larger than about 995 of 1000 random re-splits, chance sampling is an unlikely overall explanation [OCC001, DIR001].\n\nLimitations: the evidence cannot show whether A16–A18 form one sequential branch or three separate alternatives of A15, nor the internal order of A19–A21. A competing reading — two independent changes that made A16–A18 rarer and A19–A21 more common, only coincidentally aligned with A15's profile — cannot be fully ruled out, though the exact match of the routing flip makes the branch-shift reading the more direct one. [DIR001, OCC001]\n\nOther differences: Independently of the share shift, the spacing between A15 and A20 shortened: before, about half of the A15→A20 pairs within five steps sat 3 event positions apart, while in the later window about two thirds sit 1 or 2 positions apart. This is a positional change (event positions, not clock time) and suggests A20's placement within the now-more-frequent path may differ, but without order evidence among A19, A20 and A21 the underlying arrangement change cannot be pinned down. [LAG001]",
+  "case_id": "case_cf38f33e1cdfc390",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

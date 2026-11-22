@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "894fb0a8049ba242854905cfd65cc1d739a391f6393066d9816355a164e18b8d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:48:24.968384+00:00",
+  "finished_at_utc": "2026-11-15T00:53:03.339215+00:00",
+  "latency_seconds": 278.37,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 39800,
+    "prompt_tokens": 46486,
+    "total_tokens": 86286,
+    "completion_tokens_details": {
+      "reasoning_tokens": 37220,
+      "text_tokens": 2580
+    },
+    "cost": 0.026872899999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 120396,
+  "text": "### Observed differences\n\n- The mandatory core around A25/A29 was reordered. A20, A22, A23, A25 and A29 each occur in virtually every trace in both windows, but their order flipped: earlier, A25 and A29 came before A20/A22/A23 in about 96–99 of 100 traces; in the later window, A20/A22/A23 come before A25/A29 in about 97–99 of 100 traces. [REL023, REL024, REL030, REL031, REL033, REL034]\n- The optional activities A19, A21 and A24 (each in roughly 29–38 of 100 traces in both windows, so their participation is unchanged) moved the same way: earlier each ran before A20/A22/A23/A25/A29 in about 93–97 of 100 traces in which they co-occurred; later they run after them in about 97–100 of 100. [REL016, REL021, REL022, REL025, REL029, REL035, REL036]\n- Positions match: A20, A22 and A23 sit at about 38–39% of the trace length in the later window versus about 64–65% earlier, while A19, A21 and A24 move from about 36–37% to about 67%; A25 and A29 shift only slightly later (about 39%→45% and 58%→64%). [POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]\n- Successors rewired accordingly: A19, A21 and A24 now typically continue into A30 (about 92–97% of their outgoing transitions) instead of into A25 (about 93–97% earlier); A20, A22 and A23 now typically continue into A25 (about 28–37%) instead of into A30 (about 29–37%); A29 now continues into A24/A21/A19 (about 28–38% each) instead of into A20/A23/A22; A40 now continues into A20/A22/A23 (about 24–31%) instead of into A21/A19/A24 (about 29–32%). [DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013]\n- Distances match: A29 reaches A30 in about two steps in the later window (about 94 of 100 traces) versus about four steps earlier; A40 reaches A25 in about four to five steps (about 99 of 100) versus about two earlier; A22 and A23 reach A25 within five steps in nearly every later trace, against about 1 of 200 traces earlier. [LAG018, LAG020, LAG021, LAG023, LAG026, LAG029]\n- A08 is executed far less often and behaves differently when it runs: about 29 of 100 traces in the later window versus about 64 of 100 earlier; its mean position moves from about 26% to about 41% of the trace length with a much wider spread; its dominant transition into A16 falls from about 93% to about 31% of its outgoing transitions; and it now usually appears without its former partners — co-occurrence with A14, A15, A16, A20, A22, A23, A25, A29, A30, A40, A45 and A46 drops from about 64 to about 28–29 of 100 traces while those partners still occur in nearly all traces. [OCC003, POS001, DIR002, REL001, REL003, REL015, LAG001]\n- A04, A06 and A10 each appear in roughly two to three times as many traces (about 7→21, 7→24 and 9→19 of 100) and now lead mostly to a different successor set (e.g. A15, A16, A23, A44, A46 rather than A43, A27, A24, A45); the underlying counts are small (13–17 traces earlier, 37–47 later). [OCC001, OCC002, OCC004, DIR001, DIR003]\n- Smaller distance shifts: A45 reaches A46 in two steps in about 16 of 100 later traces (almost always one step earlier); A15 and A14 reach A16 somewhat sooner; A16 repeats at distance two more often (about 16→35 of 100). [LAG030, LAG010, LAG007, LAG015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two groups of activities exchanged their places around the A25–A29 segment. Earlier, A19, A21 and A24 ran before A25 and typically continued into A25, while A20, A22 and A23 ran after A29 and typically continued into A30; in the later window this is reversed — A20, A22 and A23 run before A25 and continue into it, A19, A21 and A24 run after A29 and continue into A30, and A29 and A40 now feed the group on the opposite side of the segment. Screening flagged 94 control-flow items against roughly 1 expected for an unchanged process, so the flagged differences as a whole cannot be attributed to random re-splits; each individual difference is also larger than about 995 of 1000 random re-splits. The hypothesis is shown directly and consistently: near-complete order reversals between pairs that co-occur in virtually every trace in both windows, position shifts of about 0.26–0.30 of the trace length in matching directions, successor rewiring between A25 and A30, and matching distance changes. Limitations: positions and distances are event positions rather than clock time, the order within each group is not fully resolved because its members show transitions onto one another in both directions, and some distance details rest on few observations. A competing explanation the evidence cannot rule out is that the two windows draw on two different pre-existing ways of running the process rather than on a modified one, since all indicators are computed from the same traces. [REL023, REL024, REL030, REL031, REL033, REL034, POS002, POS003, POS004, POS005, POS006, POS007, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013, LAG018, LAG020, LAG023, LAG026, LAG029]\n\nOther differences:\n- A08 was executed in about 64 of 100 traces earlier but only about 29 of 100 later; when it runs it sits later and more variably, its dominant edge into A16 is largely gone (about 93%→31% of its outgoing transitions), and it now usually appears without twelve former partners that still run in nearly all traces — consistent with A08 having become skippable, with A15 passing directly to A16 far more often (about 61%→88% of its outgoing transitions). [OCC003, POS001, DIR002, DIR005, REL001, REL002, REL015, LAG001, LAG010]\n- A04, A06 and A10 appear in about two to three times as many traces and now lead mostly to a different successor set, though on small bases. [OCC001, OCC002, OCC004, DIR001, DIR003]\n- Minor distance shifts remain around A45→A46, A15/A14→A16 and A16 self-repetition. [LAG030, LAG007, LAG010, LAG015]",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

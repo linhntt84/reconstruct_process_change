@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_c84b9a46d9ec92b5.json",
+  "evidence_sha256": "57af66bedb548d9a5976874dc6afdde92e72aac0fc4a44927835b2a28b573de1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:56:14.019469+00:00",
+  "finished_at_utc": "2026-11-14T12:56:53.054101+00:00",
+  "latency_seconds": 39.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6504,
+    "prompt_tokens": 7952,
+    "total_tokens": 14456,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5554,
+      "text_tokens": 950
+    },
+    "cost": 0.0044448000000000005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21406,
+  "text": "### Observed differences\n\n- Three activities that each ran in roughly a third of traces in the earlier window are almost completely absent in the later window: A19 fell from 73 to 1 of 200 traces (about 37% to under 1%), A20 from 62 to 0 (about 31% to 0%), and A25 from 70 to 0 (about 35% to 0%); none of the three repeated within a trace in either window. [OCC001, OCC002, OCC003]\n- Before, A19, A20 and A25 each led almost exclusively to A26 (about 94–97% of their observed outgoing transitions); in the later window A20 and A25 have no observed outgoing transitions at all, and A19's later profile rests on a single trace. [DIR001, DIR002, DIR004]\n- A41, which appears in every trace in both windows, rerouted: earlier about 87% of its outgoing transitions went to A19 (29%), A25 (32%) and A20 (26%); later about 86% go directly to A26. [DIR005]\n- The A41→A26 distance shrank: earlier A26 followed A41 two event positions later in about 85 in 100 cases (three positions in about 15 in 100); later it immediately follows A41 in about 86 in 100 cases. [LAG001]\n- Consistent with this, A26's event position moved slightly earlier (median about 0.38 to 0.36 of the trace) and A41's slightly later (median about 0.31 to 0.32), with both activities present in all traces; these are event positions, not clock times. [POS004, POS005]\n- A21's outgoing shares also shifted: A24 rose from about 14% to about 35% of observed transitions while A31 fell from about 54% to about 38% (114 vs 101 transitions). [DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window the segment formed by A19, A20 and A25 between A41 and A26 is bypassed: A41 now leads directly to A26, and the three intermediate activities are essentially no longer executed. Earlier, each of the three ran in about a third of traces and led almost always to A26, A41 routed to one of them in about 87% of its outgoing transitions, and A26 typically followed A41 two positions later; later, A41 routes directly to A26 in about 86% of its transitions and A26 immediately follows A41 in about 86 in 100 traces. [OCC001, OCC002, OCC003, DIR005, LAG001]\n\nSupporting signs: the change is shown directly by relational evidence (the A41→A26 distance and A41's successor distribution) rather than inferred from participation alone, and it is consistent across participation, direction and position indicators; the 14 qualified items are many times the roughly 0.49 expected by chance for the 99 tested units, so the set as a whole is not what an unchanged process typically produces; and the key profiles rest on substantial support (A41 in all 400 traces, the three activities in 62–73 of 200 traces before). [LAG001, DIR005, OCC001, OCC002, OCC003]\n\nLimitations: zero participation only means the activities were not observed, so the evidence cannot distinguish complete removal from the three activities still occurring in a small residual share; A19's later outgoing profile rests on one trace and is not load-bearing here; and the evidence establishes the behavioural difference, not its cause. [OCC001, OCC002, OCC003, DIR001]\n\nOther differences: A21's routing shares shifted towards A24 (about 14% to 35%) and away from A31 (about 54% to 38%), a redistribution among successors that is not part of the main hypothesis; given its small magnitude and the sampling variability between finite windows, the evidence cannot rule out that this particular shift is a sampling fluctuation. [DIR003]",
+  "case_id": "case_c84b9a46d9ec92b5",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

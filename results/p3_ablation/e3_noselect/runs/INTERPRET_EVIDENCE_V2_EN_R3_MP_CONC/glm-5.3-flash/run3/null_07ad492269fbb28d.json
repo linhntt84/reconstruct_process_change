@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_07ad492269fbb28d.json",
+  "evidence_sha256": "058538e6fd1362b7f3677f1c3b9c815eb346c9552b1b9a69ba84be10bc9abb70",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:17:38.951712+00:00",
+  "finished_at_utc": "2026-11-15T14:20:54.522712+00:00",
+  "latency_seconds": 195.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26367,
+    "prompt_tokens": 51026,
+    "total_tokens": 77393,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24471,
+      "text_tokens": 1896
+    },
+    "cost": 0.0208374
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 76864,
+  "text": "### Observed differences\n\n- **Routing around A36, A37 and A42.** In the earlier window, A36's most common successor was A42 (about 38 in 100 of A36's outgoing transitions, versus about 28 to A37), and A37's most common successor was A36 (about 36 in 100). In the later window both flipped: A36 now most often continues to A37 (about 37 in 100, with A42 down to about 25), A37 most often continues to A42 (about 38, with A36 down to about 27), and A42 most often leads to A36 (about 36 in 100, up from about 29). All three activities still occur once in essentially every trace in both windows, so their frequency hardly moved. [DIR036, DIR037, DIR042, OCC029, OCC030, OCC035]\n\n- **Order of the A36/A42 pair.** The two activities still occur together in every trace, but A42 now precedes A36 in about 53 in 100 traces (about 46 before), while A36-before-A42 fell from about 52 to 47 in 100. [REL001]\n\n- **Adjacency of the pair.** A36 followed by A42 one step later dropped from about 72 in 100 such pairs to about 54, with two-step gaps rising from about 28 to 46 in 100; in the opposite direction, A42 immediately followed by A36 rose from about 60 to 68 in 100. The mean event positions of A36 and A42 also shifted slightly earlier (about 0.41 to 0.40 and 0.40 to 0.39 of the trace), a positional rather than clock-time observation. [LAG001, LAG002, POS001, POS002]\n\n- **Rerouting at A08.** A08 appears in about 24 in 100 traces in the later window (about 19 before), and its outgoing transitions moved strongly to A49 (about 8 to 29 in 100) at the expense of A16 (about 18 to 9) and A15 (about 13 to 7); A48 also leads to A08 more often (about 2 to 10 in 100 of its outgoing transitions). [OCC008, DIR008, DIR048]\n\n- **Repetition and A44.** A15 and A16 still run in every trace but repeat less often (mean occurrences about 1.67 to 1.54 and 1.68 to 1.53); A44 is executed in about 48 in 100 traces versus about 55 before, and A43 now leads to A44 in about 88 in 100 of its outgoing transitions (about 99 before), with new links to A06 (about 4 in 100) and A10 (about 3 in 100). [OCC014, OCC015, OCC037, DIR043]\n\n- **Smaller shifts.** A01's successor mix moved from A09 (about 41 to 29 in 100) toward A07 (about 28 to 41); A51's outgoing profile changed markedly, but it rests on only 4 observed outgoing transitions before and 20 after, so it is not reliable. [DIR001, DIR051]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A37 and A42 exchanged their places in the sequence after A36: in the earlier window A36 typically led directly to A42, with A37 following A42, whereas in the later window A36 typically continues to A37, which then leads to A42, and A42 precedes A36 in a small majority of traces. Since A36, A37 and A42 each still occur once in essentially every trace in both windows, this is a change in ordering and routing between existing activities, not a change in participation. [DIR036, DIR037, DIR042, REL001, LAG001, LAG002]\n\nSupporting signs: the successor-share shifts at all three activities are coordinated (each activity's modal successor flipped), the order mix for the A36/A42 pair shifted in the same direction, and the adjacency changes match (A36→A42 less often immediate and more often two steps apart; A42→A36 more often immediate). The key items score high against random re-splits (roughly the 80th–99th percentile). These items likely reflect one underlying difference rather than independent confirmations. [DIR036, DIR037, DIR042, REL001, LAG001, LAG002]\n\nLimitations: the order-mix shift itself is moderate (about 6–7 in 100 traces), and with 200 traces per window, sampling variability remains a competing explanation for the size of each individual shift; the consistency across successor, order and adjacency evidence makes a pure-sampling account unlikely but cannot rule it out. No screening baseline was provided to compare the number of qualifying items against a chance expectation. [REL001, LAG001]\n\nOther differences: A08 occurs in more traces and reroutes to A49, while A15 and A16 receive fewer of its transitions and themselves repeat less often; A44 is executed in fewer traces and A43→A44 is less dominant; A01's successor mix shifted from A09 to A07; A51's outgoing profile changed on very few observations. [OCC008, OCC014, OCC015, OCC037, DIR001, DIR008, DIR043, DIR048, DIR051]",
+  "case_id": "null_07ad492269fbb28d",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

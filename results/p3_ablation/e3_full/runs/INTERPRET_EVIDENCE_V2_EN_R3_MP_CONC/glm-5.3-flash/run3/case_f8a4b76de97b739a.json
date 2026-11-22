@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f8a4b76de97b739a.json",
+  "evidence_sha256": "a19129aea2117d35ed4ff9725bac4a96e657b92ee18d4ca056da55833c011f9e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:14:33.569459+00:00",
+  "finished_at_utc": "2026-11-16T03:16:58.334043+00:00",
+  "latency_seconds": 144.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20921,
+    "prompt_tokens": 214370,
+    "total_tokens": 235291,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18911,
+      "text_tokens": 2010
+    },
+    "cost": 0.042616
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61249,
+  "text": "### Observed differences\n\n- Two activities absent from the earlier window are frequent in the later one: A01 appears in about 59 in 100 traces (about 1.5 occurrences per trace, around the middle of the trace), and A02 appears in about 87 in 100 traces, exactly once per trace and early (median position about one fifth into the trace). Both differences exceed those seen in about 199 of 200 random re-splits. [OCC001, OCC002, POS001, POS002]\n- A09 shows the reverse: it appeared in about 54 in 100 traces before (about 1.5 occurrences per trace, mid-trace) and is not observed at all in the later window. [OCC008, POS009]\n- Routing around these activities changed accordingly. Before, A09 led mainly to A03 (about 82 in 100 of its outgoing transitions) and A16 led to A09 (about 45 in 100); in the later window A16 leads to A01 (about 43 in 100) and A01 leads to A03 (about 83 in 100). A02 leads mainly to A12 (about 63 in 100) and to A03 (about 19 in 100); A04 precedes A02 in about 85 in 100 of the traces containing both, and A02 precedes A12 and A20 in about 87 in 100. A05 and A13, which previously led to A12 (about 20 in 100 of their outgoing transitions each), now lead to A02 (about 37 and 35 in 100) and no longer to A12. [DIR001, DIR002, DIR009, DIR016, DIR005, DIR013, REL021, REL029, REL037]\n- A14 became much more frequent: from about 39 in 100 traces (once per trace, near the end) to about 89 in 100 traces (about 1.9 occurrences per trace when present, repeating in about 42 in 100 of the traces containing it), still near the end of the trace. [OCC013, POS014]\n- A14 now occurs together with many activities it previously rarely met: with A03, A07, A08, A10 and A16 from about 39 in 100 to about 89 in 100 traces, and with A12 and A20 from about 28 to about 76 in 100. A14 and A17, never in the same trace before, now co-occur in about 42 in 100. [REL048, REL106, REL118, REL139, REL171, REL156, REL175, REL172]\n- The end-of-process repetition loop shifted from A17/A08 towards A14/A17: before, A17 led mainly to A08 (about 54 in 100) and A08 led to A17 (about 35 in 100) and A14 (about 28 in 100); in the later window A17 leads almost exclusively to A14 (about 89 in 100), A14 leads mainly back to A17 (about 68 in 100), and A08 leads to A14 in about 65 in 100 of its outgoing transitions. A17 now repeats (about 2 occurrences per trace when present, versus about 1 before) at similar participation. A14 also follows A07, A08 and A10 at larger step distances than before (lags 3–5 gaining where lags 1–2 dominated). [DIR007, DIR008, DIR014, DIR017, OCC016, LAG067, LAG077, LAG091]\n- Smaller shifts — slightly lower participation for A05 (about 67 to 60 in 100) and A11 (about 57 to 51 in 100) and a stable A03 — are of the size random re-splits of an unchanged process produce. [OCC004, OCC010, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the process runs with two added activities and one dropped activity: A02 was added as a new early step — after the start activity A04, and after A05/A13, which now route to it — leading mainly to A12 (which continues to A20 as before), while A01 was added as a new mid-trace step leading mainly to A03; A09, which previously occupied that mid-trace slot feeding A03 after A16, is no longer observed, so the segment A16→A09→A03 appears to have become A16→A01→A03. [OCC001, OCC002, OCC008, POS001, POS002, POS009, DIR001, DIR002, DIR009, DIR016, DIR005, DIR013, REL021, REL029, REL037]\n\nThe supporting signs are direct and consistent: the presence/absence flips are measured on all 200 traces per window (0 versus 117 and 173 traces for A01/A02; 108 versus 0 for A09) and are larger than in about 199 of 200 random re-splits; the successor profiles of A01, A02, A09 and A16 change directly (empty versus populated, and A09 replaced by A01 among A16's targets); A01's later occurrence profile (about 1.5 occurrences per trace, repeats in about 39 in 100 of its traces) closely matches A09's earlier profile (about 1.5 occurrences, repeats in about 38 in 100); and the ordering evidence agrees (A04 before A02, A02 before A12/A20). Many relation items describe the same underlying traces, so they corroborate rather than independently confirm the change. [OCC001, OCC002, OCC008, DIR001, DIR002, DIR009, DIR016, REL021, REL029, REL037]\n\nAn important competing explanation remains: zero participation only means an activity was not observed in that window, so a rare variant already containing A01/A02 (or still containing A09) in the earlier 200-trace sample cannot be fully excluded, and the placement statements rest on event positions rather than clock time. [OCC001, OCC002, POS001, POS002]\n\nOther differences: A14 became far more frequent (about 39 to 89 in 100 traces, with repeats) and now forms a repetition loop with A17 near the end of the trace — A17 leads almost exclusively to A14, A14 leads mainly back to A17, A07/A08 route more to A14, and A14 and A17 moved from never co-occurring to co-occurring in about 42 in 100 traces; this is consistent with the same restructuring but the evidence does not tie it to the A01/A02/A09 difference. [OCC013, OCC016, DIR007, DIR008, DIR014, DIR017, REL172] The slightly lower participation of A05 and A11 falls within the range random re-splits produce. [OCC004, OCC010]",
+  "case_id": "case_f8a4b76de97b739a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

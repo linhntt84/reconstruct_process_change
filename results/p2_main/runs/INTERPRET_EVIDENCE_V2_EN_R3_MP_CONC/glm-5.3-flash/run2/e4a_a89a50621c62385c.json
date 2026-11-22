@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_a89a50621c62385c.json",
+  "evidence_sha256": "a24dfd0dbffe38d10c9b2a8ec9f92f6c84fa9ea566fdbc17339b547bb4deb9b5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:54:33.407825+00:00",
+  "finished_at_utc": "2026-11-15T01:55:14.077092+00:00",
+  "latency_seconds": 40.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5628,
+    "prompt_tokens": 3018,
+    "total_tokens": 8646,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4931,
+      "text_tokens": 697
+    },
+    "cost": 0.0032666999999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20679,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A16 and A17 roughly doubled. In the earlier window the median gap was about 0.06 hours (roughly 4 minutes) and the mean about 0.09 hours (about 5 minutes); in the later window the median was about 0.13 hours (about 8 minutes) and the mean about 0.17 hours (about 10 minutes). The gaps also became more variable (standard deviation up from about 0.07 to about 0.14 hours). The behaviour was observed on 45 pairs before and 37 pairs after. [TWAIT001]\n- The elapsed time between consecutive completions of A28 and A17 also roughly doubled: a median of about 0.78 hours (about 47 minutes) in the earlier window versus about 1.58 hours (about 96 minutes) in the later one. The later distribution sits almost entirely above the earlier one — the earlier upper quartile (about 0.86 hours) is well below the later lower quartile (about 1.43 hours). The behaviour was observed on 42 pairs before and 41 after, so participation in this transition was essentially unchanged. [TWAIT002]\n- Both timing differences are unusually large for samples of this size: only about 1 in 2,000 random re-splits of the pooled data produced a larger difference for each item. [TWAIT001, TWAIT002]\n- No corresponding structural difference was observed: the frequencies of both transitions changed little (45 to 37 pairs, and 42 to 41 pairs), and no control-flow item passed the screening thresholds. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completions increased to roughly twice its earlier level on both measured transitions into A17 — from A16 (mean about 0.09 to about 0.17 hours) and from A28 (mean about 0.79 to about 1.60 hours). This is stated directly by the elapsed-time indicator, the two items agree in direction and in their pattern of change (all distribution components increased while pair counts stayed similar), and each difference exceeds essentially all random re-splits. At the family level, 2 time items qualified where roughly 0.014 would be expected if nothing had changed — many times the chance expectation — while the control-flow family produced 0 items against about 0.27 expected, consistent with a pure timing change that has no structural counterpart. [TWAIT001, TWAIT002]\n\nLimitations: the indicator measures elapsed time between consecutive completion events, so it cannot separate waiting, queueing or processing time; the estimates rest on moderate samples (about 37–45 observed pairs per window per transition); and because both measured gaps end at A17, the evidence cannot tell whether the slowdown lies in the segments before A17 or in A17's own completion step. [TWAIT001, TWAIT002]\n\nA competing explanation the evidence cannot rule out: a slowdown specific to A17's completion, rather than to A16 or A28, would produce the same pattern in both measured gaps. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_a89a50621c62385c",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

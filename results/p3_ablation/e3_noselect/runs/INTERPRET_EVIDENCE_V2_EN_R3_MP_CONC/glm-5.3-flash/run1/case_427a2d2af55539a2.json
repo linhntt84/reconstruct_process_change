@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_427a2d2af55539a2.json",
+  "evidence_sha256": "05a1c32841767a46cd9487daf6565552cd094108344ecf6f420683dcf917a88b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:46:19.927946+00:00",
+  "finished_at_utc": "2026-11-14T13:48:11.303306+00:00",
+  "latency_seconds": 111.37,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16803,
+    "prompt_tokens": 36449,
+    "total_tokens": 53252,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14993,
+      "text_tokens": 1810
+    },
+    "cost": 0.013868849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54001,
+  "text": "### Observed differences\n\n- The sharpest difference concerns the segment between A39 and A24. In the earlier window, every trace contained exactly one of three alternative activities — A14 in about 35 in 100 cases, A15 in about 30, A16 in about 36 — and the three never occurred together; each appeared only after A39 and was always followed directly by A24. In the later window, none of A14, A15 or A16 appears in any of the 200 traces. [OCC012, OCC013, OCC014, REL001, REL002, REL008, DIR010, DIR011, DIR012, REL006, REL007]\n- In the later window, three activities that were previously absent — A21, A22 and A23 — each occur exactly once in every one of the 200 traces. [OCC019, OCC020, OCC021]\n- A39's outgoing transitions switched completely: earlier they split across A14, A15 and A16 (about 35%, 30% and 36% of its outgoing transitions); in the later window they split across A21, A22 and A23 (about 36%, 33% and 32%). [DIR030]\n- The new activities form an unordered block between A39 and A24: each of A21, A22 and A23 co-occurs with A39 in all 200 later traces, always after it, and with A24 in all 200, always before it; within each pair of the three, both orders occur in near-equal shares (about 51 vs 49 in 100), so there is no fixed order among them. [REL021, REL022, REL024, REL025, REL026, REL027, REL019, REL020, REL023]\n- The distance from A39 to A24 was always 2 event positions in the earlier window and is always 4 positions in the later one; A24's mean position moved later (about 0.39 to 0.44 of the trace), and the new activities sit at a mean position of about 0.37, close to where A14–A16 used to sit (about 0.36). [LAG001, POS007, POS004, POS005, POS006, POS001, POS002, POS003]\n- After A40, the split between its two successors moved: transitions to A41 fell from about 54% to 47% of A40's outgoing transitions (A41 appears in 69 vs 58 in 100 traces) while A42 rose from about 46% to 54% (A42 and A43 appear in 59 vs 64 in 100 traces). [DIR031, OCC029, OCC030, OCC031]\n- Smaller routing shifts appear elsewhere: after A29, the A33/A34 branch weakened (54 → 45 in 100 traces) while A35/A36 strengthened (46 → 55); after A38, flow to A39 fell from about 62% to 55% of outgoing transitions while A37 rose from about 38% to 45%; and A19 routes to A29 in about 59% of its outgoing transitions, up from about 43%. [DIR022, OCC022, OCC023, OCC024, OCC025, DIR029, OCC026, DIR015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative one-of-three segment between A39 and A24 was replaced by a mandatory three-activity block: in the earlier window each case executed exactly one of A14, A15 or A16 (about 35, 30 and 36 in 100 cases), each leading directly to A24, whereas in the later window A14–A16 are not observed and every case executes A21, A22 and A23 exactly once each, in no fixed order among themselves, between A39 and A24. [OCC012, OCC013, OCC014, OCC019, OCC020, OCC021, DIR030, REL021, REL024, REL026, REL019, REL020, REL023]\n\nThe change is shown directly by directional and relational evidence rather than inferred from frequencies alone: A39's successors switch entirely from the old trio to the new trio, each new activity follows A39 and precedes A24 in all 200 later traces, and the A39→A24 distance moves from always 2 to always 4 event positions with A24's position shifting later accordingly. The pattern is consistent across the occurrence, direction, position, relation and lag indicators, and its size (0 vs 200 traces, and 200 vs 0 traces) is far beyond what sampling differences between two 200-trace windows produce. [DIR030, REL021, REL022, REL024, REL025, REL026, REL027, LAG001, POS007]\n\nLimitations: zero participation strictly means only that A14–A16 were not observed in the later window; the evidence cannot distinguish removal from rerouting through paths not exercised later, although A39, their only observed earlier predecessor, no longer leads to them. It also cannot show how the order of A21–A23 is chosen within a case, only that both orders occur across cases in near-equal shares. [OCC012, OCC013, OCC014, DIR030, REL019, REL020, REL023]\n\nOther differences: the moderate branch-share shifts after A40 (A41 less, A42/A43 more), after A29 (A33/A34 less, A35/A36 more), after A38 (A39 less, A37 more) and at A19 (more often to A29) are separate from this hypothesis; both alternatives remain well observed in each pair, but without a chance baseline in the evidence these shifts cannot be cleanly separated from sampling variation. [DIR031, OCC029, OCC030, OCC031, DIR022, OCC022, OCC023, OCC024, OCC025, DIR029, OCC026, DIR015]",
+  "case_id": "case_427a2d2af55539a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

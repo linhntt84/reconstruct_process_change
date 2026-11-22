@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "910dd211e324902127a3a3c68b9bca80db43c1b4ab694ab8325a10736d08eed1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:50:16.399461+00:00",
+  "finished_at_utc": "2026-11-14T12:52:31.822010+00:00",
+  "latency_seconds": 135.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18865,
+    "prompt_tokens": 14872,
+    "total_tokens": 33737,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17470,
+      "text_tokens": 1395
+    },
+    "cost": 0.0116633
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59183,
+  "text": "### Observed differences\n\n- The most striking difference is an exchange of places between two groups of activities. In the earlier window, A20, A22 and A23 (each in essentially every trace) sat at about 39–40% of the trace length, while A19, A21 and A24 (in roughly 30–38 in 100 traces) sat at about 67–69%. In the later window this is reversed: A19, A21 and A24 sit at about 35–37%, and A20, A22 and A23 at about 64–65%. The groups' overall frequencies barely moved — A19, A21 and A24 together still account for about one occurrence per trace (participation 31/38/32 in 100 before vs 44/29/29 after). [POS002, POS003, POS004, POS005, POS006, POS007]\n- The groups' successors flipped accordingly. Earlier, practically all observed outgoing transitions of A19, A21 and A24 went to A30 (about 97–99 in 100); in the later window they go to A25 (about 95–100 in 100). Conversely, A20, A22 and A23 earlier sent about 30–39 in 100 of their outgoing transitions to A25 with none observed to A30; later they send about 32–34 in 100 to A30 and at most about 1 in 200 to A25. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- The connecting activities now hand over to the other group. Earlier, A29 led to A19/A21/A24 (about 31–38 in 100 of its outgoing transitions) and A40 to A20/A22/A23 (about 27–37 in 100); later, A29 leads to A20/A22/A23 (about 30–33 in 100) and A40 mainly to A02, A19, A21 and A24. Pair-level distances agree: A22→A25 within five steps fell from 200 traces to 1 and A40→A22 from 200 to 1, while A29→A20 rose from 1 to 200 traces; the typical distance from A29 to A30 grew from about 2 steps to about 4, and from A40 to A25 shrank from about 4 steps to 2–3. [DIR008, DIR009, LAG002, LAG003, LAG004, LAG006, LAG007]\n- A02 became far more prominent: it appears in about 34 in 100 traces in the later window versus 8 in 100 before, sits earlier (mean position about 0.51 → 0.35), and now leads mainly to A19, A21 and A24 (about 37, 27 and 24 in 100 of its outgoing transitions) instead of the scattered successor set seen before. A40 is followed by A02 within one step in 62 traces (2 before), and A02 reaches A25 within two steps in 63 traces (2 before). [OCC001, POS001, DIR001, LAG001, LAG005]\n- Smaller shifts: A25 (mean position about 0.45 → 0.39) and A29 (about 0.65 → 0.58) each occur somewhat earlier in the later window. [POS008, POS009]\n- A41, present in every trace in both windows, now repeats more often: about 1.77 occurrences per trace versus 1.51, with repeats in about 40 in 100 traces versus 32 in 100. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a reordering of the mid-process sequence: the group A19, A21, A24 and the group A20, A22, A23 exchanged their typical place in the case, and A02 became a regular early step in front of the group that now runs first. In the earlier window the flow ran A40 → A20/A22/A23 → A25 in the first half of the case and A29 → A19/A21/A24 → A30 in the later part; in the later window it runs A40 → (A02) → A19/A21/A24 → A25 early and A29 → A20/A22/A23 → A30 late. This rests on direct and mutually consistent positional and relational evidence — opposite position shifts of about a quarter of the trace length for the two groups [POS002, POS003, POS004, POS005, POS006, POS007], a near-complete flip of each group's main successor between A25 and A30 [DIR002, DIR004, DIR005, DIR006], and the corresponding disappearance and appearance of close activity pairs [LAG002, LAG003, LAG006]. Screening qualifies 28 control-flow items where fewer than one would be expected if nothing had changed, and every item's difference exceeds about 995 of 1000 random re-splits of the pooled windows, so sampling variation alone is an unlikely explanation [OCC001, DIR004, POS005, LAG004]. Limitations: positions and gaps are counted in event steps, not clock time, so the hypothesis concerns order, not timing; and because no case attributes are available, the evidence cannot rule out that the two windows captured a different mix of case types routing differently through these activities rather than a modified sequence, although the tight position spreads in both windows (standard deviations about 0.05–0.08) argue against that [POS002, POS003, POS005, POS006].\n\nOther differences: A41 now recurs more often — about 1.77 occurrences per trace versus 1.51, with repeated occurrences in about 40 in 100 traces versus 32 in 100 before [OCC002].",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

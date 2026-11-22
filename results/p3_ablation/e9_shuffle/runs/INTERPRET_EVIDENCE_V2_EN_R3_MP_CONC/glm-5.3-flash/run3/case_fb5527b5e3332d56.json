@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "231c0ce56841146f8b47b4c6e22c6fa35c2840f939b28d371de420a62f99437d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:25:05.175783+00:00",
+  "finished_at_utc": "2026-11-15T09:26:05.962350+00:00",
+  "latency_seconds": 60.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8431,
+    "prompt_tokens": 15250,
+    "total_tokens": 23681,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7177,
+      "text_tokens": 1254
+    },
+    "cost": 0.006503
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24831,
+  "text": "### Observed differences\n\n- In the earlier window, A21 and A23 ran in essentially every case, A22 in about 52 in 100 cases, and each of A27, A28 and A33 in about 48 in 100 cases. In the later window, A22 runs in about 995 in 1000 cases, while A27, A28 and A33 each appear in only about 1 in 200 cases. [OCC001, OCC002, OCC003, OCC004, REL001, REL005]\n- Before, A22 and the block of A27/A28/A33 were strict alternatives: they never co-occurred, splitting cases roughly 52/48. In the later window the block has virtually disappeared — pairs within it, such as A27 with A33, co-occur in only about 1 in 200 cases versus about 48 in 100 before. [REL006, REL007, REL008, REL012, REL013, REL014]\n- Before, A21 led to A22 in about 52 in 100 of its observed outgoing transitions and into the block (A27/A28/A33) in the remaining ~48; in the later window A21 leads to A22 in about 995 in 1000 transitions. [DIR001, REL002, REL003, REL004]\n- Before, the distance from A21 to A23 was two steps in A22-cases and four steps in block-cases; in the later window it is uniformly two steps, matching a single shape A21 → A22 → A23 in almost all cases. [LAG001, REL001, REL005, REL009, REL010, REL011]\n- Within the block, the earlier window shows no fixed order (e.g., A27 preceded A33 in about 26 in 100 block-cases and followed it in about 23); the later window contains only a single block-trace, so its internal routing cannot be characterised. [REL012, REL013, REL014, DIR002, DIR003, DIR004, POS002, POS003, POS004]\n- A23's relative position moved slightly earlier (mean relative position about 0.55 to about 0.53), consistent with the average trace becoming shorter. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative branch formed by A27, A28 and A33 — previously executed together between A21 and A23 in about 48 in 100 cases — is almost always skipped in the later window, so that nearly all cases run directly A21 → A22 → A23, with A22 changing from an optional alternative (about 52 in 100 cases) to an almost mandatory step (about 995 in 1000). This rests on direct participation evidence (A27/A28/A33 falling from 97 to 1 of 200 traces each, A22 rising from 103 to 199), on relation evidence with full 200-trace support in both windows (co-occurrence of A21 or A22 with each block activity collapsing to near zero), on A21's outgoing transitions concentrating on A22, and on the A21→A23 distance becoming uniformly two steps. Screening found 34 qualifying items against roughly 0.45 expected without a change, so the ensemble cannot be explained by random re-splits; note, however, that the items largely describe one underlying difference rather than independent confirmations. [OCC001, OCC002, OCC003, OCC004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, DIR001, LAG001]\n\nLimitations: the later window still contains about 1 block-trace in 200, so the evidence cannot distinguish a fully removed branch from one that has become very rare; and the items describing the block's successors, distances and positions in the later window rest on a single trace, so they characterise that one case rather than a stable new pattern. A competing explanation the evidence cannot rule out is that the skipped work was displaced elsewhere in the trace rather than dropped, since no new activity appears in its place. [REL012, REL013, REL014, DIR002, DIR003, DIR004, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, POS002, POS003, POS004]\n\nOther differences: A23's relative position shifted slightly earlier (mean about 0.55 to about 0.53), which is consistent with the shorter average trace rather than a separate change. [POS001]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

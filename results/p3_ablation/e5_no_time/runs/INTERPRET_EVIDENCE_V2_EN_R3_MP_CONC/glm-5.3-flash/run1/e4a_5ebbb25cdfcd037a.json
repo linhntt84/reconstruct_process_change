@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_5ebbb25cdfcd037a.json",
+  "evidence_sha256": "1538bf029062955acb9a137fd8feb63d8ce644bf3f1b1223b534e67c11d8bcb6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:25:05.625243+00:00",
+  "finished_at_utc": "2026-11-14T13:26:24.201142+00:00",
+  "latency_seconds": 78.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12628,
+    "prompt_tokens": 13614,
+    "total_tokens": 26242,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11522,
+      "text_tokens": 1106
+    },
+    "cost": 0.008356099999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41726,
+  "text": "### Observed differences\n\n- In the earlier window, every trace shared one backbone: A38, then A14, then A15, with A23 later in the trace. A38's outgoing transitions led to A14 in 100% of observations, and A38 and A23 sat 4–5 event positions apart. About half of the traces inserted A20 followed by A21 between A14 and A15, the other half inserted A22 instead; the A20→A21 block and A22 were mutually exclusive alternatives. [DIR001, LAG001, REL012, REL013, REL016]\n- In the later window, A38's outgoing transitions split: about 52 in 100 still lead to A14, but about 48 in 100 lead directly to A23, a successor not observed before. [DIR001]\n- The distance from A38 to A23 collapsed accordingly: it is now a single step in about 48 in 100 later traces (previously never), while the remaining traces keep the old 4–5 step distance. [LAG001]\n- The activities inside the old segment lost participation in exactly that proportion: A14 and A15 now appear in about 52 in 100 traces (previously in all 200), A20 and A21 in about 29 in 100 (previously about 50), and A22 in about 24 in 100 (previously about 50). Each still occurs once per trace when present, with no repetition in either window. [OCC001, OCC002, OCC003, OCC004, OCC005]\n- The relational profiles match: A14 and A15 co-occur in about 52 in 100 later traces and are both absent in about 48 in 100 (previously always together); A23 and A38 still occur in every trace but now appear without A14 in about 48 in 100 traces. Among the traces that still run the segment, the choice between A20→A21 and A22 is broadly unchanged (about 55/45 versus about 50/50 before). [REL001, REL005, REL006, REL012, REL014, OCC003, OCC005]\n- Relative event positions shifted only slightly: A23's mean position moved from about 0.44 to about 0.41 of the trace (slightly earlier and more spread) and A38's from about 0.30 to about 0.32, consistent with a mixture of shorter bypass traces and unchanged ones. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, about 48 in 100 traces bypass the segment A14 → (A20 → A21 | A22) → A15: A38 is followed directly by A23, whereas in the earlier window A38 always led into A14 and the segment ran in every trace. In other words, the block around A14, A15, A20, A21 and A22 became skippable, while A38 and A23 remain in every trace. The support is direct and consistent: the successor change at A38 is observed outright, the new one-step A38→A23 adjacency appears in exactly the share of traces in which A14 and A15 disappear, and all participation and relation drops match that same share; the internal choice between A20→A21 and A22 is essentially unchanged, so the drops reflect the bypass rather than re-routing inside the segment. Screening flagged 29 control-flow items where fewer than 1 would be expected if nothing had changed, so sampling noise cannot account for the ensemble. [DIR001, LAG001, OCC001, OCC002, OCC003, OCC004, OCC005, REL001, REL005, REL006, REL012]\n\nLimitations: the evidence ties the missing segment to the direct A38→A23 edge only through matching aggregate shares, not by linking both within individual traces, and nothing is observed before A38 or after A23, so the scope of the bypass beyond this segment is unknown. A competing explanation — an unrelated mechanism removing A14 and A15 in about 48 in 100 traces while a direct A38→A23 connection arises independently — cannot be fully ruled out, though the exact match in shares makes a single bypass the more consistent reading. [REL001, REL005, DIR001, LAG001]\n\nOther differences: the small relative-position shifts of A23 and A38 are plausibly by-products of mixing shorter bypass traces with unchanged traces and are not treated as a separate change. [POS001, POS002]",
+  "case_id": "e4a_5ebbb25cdfcd037a",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

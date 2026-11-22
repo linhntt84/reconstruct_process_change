@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_67b9d2ba8a5ef433.json",
+  "evidence_sha256": "ec4f30bbac88b8956d41c028c7510e3c81a114855cbb738beb0be11a8b101888",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:58:29.195305+00:00",
+  "finished_at_utc": "2026-11-15T13:59:23.181352+00:00",
+  "latency_seconds": 53.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7129,
+    "prompt_tokens": 6759,
+    "total_tokens": 13888,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6219,
+      "text_tokens": 910
+    },
+    "cost": 0.00457835
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21327,
+  "text": "### Observed differences\n\n- Activity A01 was absent from the earlier window (0 of 200 traces) and appears in every trace of the later window (200 of 200), exactly once per case, at a stable relative event position of about 0.83 of the trace. [OCC001, POS001]\n- In the later window, all observed outgoing transitions of A01 go to A03, and A01 precedes A03 in every trace containing both; earlier, A03 always appeared without A01. [DIR001, REL001]\n- Earlier, A05 and A07 both ran in every case in no fixed order (about 52/48 between the two orders), and the later of the two led directly to A03: roughly 48 in 100 of A05's outgoing transitions went to A03, and roughly 52 in 100 of A07's. In the later window these direct transitions to A03 are gone: A05 now leads to A01 in about 47 in 100 of its transitions (A07 taking the rest), and A07 leads to A01 in about 53 in 100 (A05 taking the rest). [DIR003, DIR004, REL004]\n- In the later window, A01 co-occurs with A05 and with A07 in every trace, with A05 before A01 and A07 before A01 in all cases; earlier, A05 and A07 always appeared without A01. [REL002, REL003]\n- The step distance from A05 to A03 and from A07 to A03 grew by one step: earlier mostly 1–2 steps, later mostly 2–3 steps. [LAG001, LAG002]\n- The mean relative positions of A05 and A07 moved earlier, from about 0.70 to about 0.58, consistent with one extra event being inserted after them (these are event positions, not clock times). [POS002, POS003]\n- The branch at A04 (about 52/48 between A05 and A07) and the mixed ordering of A05 and A07 stayed essentially unchanged; these differences are well within what random re-splits produce (empirical strength about 0.07). [DIR002, REL004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added as a new step executed once in every case, inserted between the A05/A07 block and A03. In the earlier window a case ran A04, then A05 and A07 in either order, with the second of the pair passing control directly to A03; in the later window the second of A05/A07 instead leads to A01 (about half of the outgoing transitions in each case), and A01 always hands over to A03. [OCC001, DIR001, DIR003, DIR004, REL001, REL002, REL003, LAG001, LAG002]\n\nSupporting signs: the change is shown directly by occurrence, direction, relation, position and distance indicators that all describe the same insertion; eleven of the thirteen items reach the maximum empirical strength (about 0.995), and the two that do not describe stability rather than a competing change. The one-step increase in the A05/A07-to-A03 distances and the earlier relative positions of A05 and A07 match the insertion of exactly one event after them. [OCC001, DIR003, DIR004, LAG001, LAG002, POS002, POS003]\n\nLimitations: zero participation in the earlier window strictly means only that A01 was not observed there, so an extremely rare pre-existing variant cannot be fully excluded, although 0 occurrences in 200 traces bounds it tightly; the evidence also cannot show whether A01 took over work previously performed outside the observed traces, since no other activity disappeared. [OCC001]\n\nOther differences: none beyond the stable items noted above; the A04 branch split and the A05/A07 mixed order are unchanged within chance variation. [DIR002, REL004]",
+  "case_id": "case_67b9d2ba8a5ef433",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

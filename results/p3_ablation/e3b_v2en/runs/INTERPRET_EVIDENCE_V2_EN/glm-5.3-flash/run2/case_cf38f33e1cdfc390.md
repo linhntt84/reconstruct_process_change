@@ -1,0 +1,16 @@
+### Observed differences
+
+- A16, A17 and A18 each appeared in about 75 in 100 traces in the earlier window but only about 25 in 100 in the later window (150 of 200 traces before, 49 of 200 after), with no repetition within a trace in either window. [OCC001, OCC002, OCC003]
+- A19, A20 and A21 moved the opposite way, each rising from about 25 in 100 traces to about 75 in 100 (50 of 200 traces before, 151 of 200 after). [OCC004, OCC005, OCC006]
+- The two groups act as alternative routes out of A15: each group's three activities co-occur as a block, A15 precedes the block whenever it appears, and a member of one group never shares a trace with a member of the other. The split flipped from roughly 75/25 in favour of the A16–A18 route to roughly 25/75 in favour of the A19–A21 route (A15-before-A16 co-occurrence fell from 0.75 to 0.245; A15-before-A19 rose from 0.25 to 0.755), with no fixed internal order inside either group (e.g., A19-before-A20 0.375 vs A20-before-A19 0.38 in the later window). [REL001, REL004, REL007, REL009, REL022]
+- A15's direct outgoing transitions redistributed accordingly: transitions into A16–A18 together fell from about three quarters of A15's outgoing transitions to about a quarter, while transitions into A19–A21 rose from about a quarter to about three quarters (A15→A21 from 0.075 to 0.285; A15→A16 from 0.265 to 0.085). [DIR001]
+- A25 changed company: it previously co-occurred with A16, A17 and A18 in about 75 in 100 traces and typically appeared without A19–A21; in the later window it co-occurs with A19–A21 in about 75 in 100 traces and typically appears without A16–A18. [REL012, REL017, REL021, REL024, REL026, REL027]
+- The event-position gap from A15 to A20 shifted slightly shorter (one-step gaps rose from 0.16 to 0.29 while three-step gaps fell from 0.52 to 0.34), consistent with A20 now more often following A15 closely. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the alternative routes leaving A15 exchanged their shares: in the later window roughly three quarters of traces continue from A15 into A19, A20 and A21 (occurring together and accompanied by A25), while only about a quarter still pass through A16, A17 and A18 — the reverse of the earlier window. The routing change is observed directly in A15's successor shares, and the participation, co-occurrence and ordering items all move consistently in the same mirror-image direction, each with a swing of about 0.505 on the participation scale and each larger than in about 199 of 200 random re-splits of the pooled traces. [DIR001, OCC001, OCC004, REL001, REL004, REL009, REL022]
+
+Two limitations apply. The 35 qualifying items far exceed the roughly 0.53 expected by chance in an unchanged process, but they largely describe one underlying shift rather than independent confirmations. The evidence also cannot rule out that the two windows simply captured different mixes of process variants — for example a shift in case mix — which would produce the same flip in variant frequencies without any change to the process structure; moreover, the old route persists at a reduced share (A15 still precedes A16–A18 in the roughly 25 in 100 later traces where they appear), so the data show re-weighted branch shares rather than a removed path. [REL001, DIR001]

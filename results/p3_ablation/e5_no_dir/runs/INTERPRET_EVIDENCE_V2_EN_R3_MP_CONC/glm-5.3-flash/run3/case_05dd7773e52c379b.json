@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_05dd7773e52c379b.json",
+  "evidence_sha256": "4ae4c23874925df805d6805bbd31eeea6d64f68862dc22882c564a8fd550b4f5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:06:56.310501+00:00",
+  "finished_at_utc": "2026-11-15T11:08:47.675206+00:00",
+  "latency_seconds": 111.36,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16177,
+    "prompt_tokens": 21889,
+    "total_tokens": 38066,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14759,
+      "text_tokens": 1418
+    },
+    "cost": 0.01137185
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55738,
+  "text": "### Observed differences\n\n- **Six activities moved from about half of the traces to nearly all.** In the earlier window, A28, A30 and A31 each appeared in about 49 in 100 traces and A32, A33 and A34 in about 52 in 100, always exactly once per trace; in the later window, all six appear in about 99 in 100 traces (197–199 of 200), still exactly once. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n\n- **Two activity groups changed from alternatives to being executed together.** Earlier, no trace contained activities from both groups: for each of the nine pairs combining one of A28/A30/A31 with one of A32/A33/A34, co-occurrence was 0 of 200, with one activity alone in about 49 in 100 traces and the other alone in about 52 in 100. In the later window, each such pair occurs together in about 98 in 100 traces, always with the A28/A30/A31 activity first (reverse order 0 in 100). [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]\n\n- **The surrounding anchors kept their roles.** A25 and A26 ran in every trace in both windows; A25 still precedes the first group (about 99 in 100 later traces, up from about 49) and the groups still precede A26 (about 99 in 100, up from about 49–52). [REL001, REL004, REL007, REL010]\n\n- **Pair distances grew by about three positions.** The gap from A25 to A32, A33 or A34 moved from 1–3 steps (roughly a third of pairs each) to 4–5 steps (about 98 in 100 of observed pairs); the gap from A28, A30 or A31 to A26 moved from 1–3 to 4–5 steps in the same way. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]\n\n- **Positions shifted as longer traces would predict, and internal group order stayed mixed.** Mean relative position moved earlier for A28/A30/A31 (about 0.74 to about 0.68) and later for A32/A33/A34 (about 0.73 to about 0.77); inside each group both orders still occur in similar shares in both windows (for example, A28 before A30 in about half of co-occurrences before and after). [POS003, POS004, POS005, POS006, POS007, POS008, REL013, REL018, REL025]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the two activity groups {A28, A30, A31} and {A32, A33, A34}, which in the earlier window alternated as alternatives between A25 and A26 — each trace executed one group or the other, in about half of traces each — are in the later window executed together in sequence in nearly every trace: A25, then the first group in mixed internal order, then the second group in mixed internal order, then A26. In participation terms, the six activities changed from optional (each group in about half of the traces) to effectively mandatory (about 99 in 100). [REL015, REL019, REL022, OCC001, OCC004]\n\nThe hypothesis is shown directly by the relational items — cross-group co-occurrence rising from 0 to about 98 in 100 with a fixed order between the groups — and fits the distance items (gaps growing from 1–3 to 4–5 steps, the effect expected when the other group's three activities come to sit in between) and the position shifts of all involved activities. The ensemble of 47 qualifying items against roughly 0.44 expected if nothing had changed cannot be explained by chance, and every item's difference exceeds about 995 of 1000 random re-splits of the data. [REL015, LAG001, LAG004, POS003, POS006]\n\nLimitations: the evidence contains no direct transition (DIR) items, so the exact wiring between the groups and their neighbours is inferred from co-occurrence, order and distance rather than observed edges; and the evidence cannot distinguish a re-routing within one process from a shift in the mix of trace variants (traces carrying both groups replacing single-group traces), which look identical here. About 1–2 in 100 later traces still miss a group activity, so \"mandatory\" is approximate. [REL015, OCC001]\n\nOther differences: none beyond the above; the small position shifts of A25 (mean 0.67 to 0.62) and A26 (0.80 to 0.83) fit the same change, since traces now contain both groups. [POS001, POS002]",
+  "case_id": "case_05dd7773e52c379b",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c6241d9baa4f3bd9.json",
+  "evidence_sha256": "501833e5ace7ef899e113b8095e70e2632aa47b24f965e1a9fe720656fe06cc0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:28:52.259275+00:00",
+  "finished_at_utc": "2026-11-14T14:30:15.470942+00:00",
+  "latency_seconds": 83.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13197,
+    "prompt_tokens": 9499,
+    "total_tokens": 22696,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11932,
+      "text_tokens": 1265
+    },
+    "cost": 0.00802335
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41523,
+  "text": "### Observed differences\n\n- Activity A07 disappeared from the later window: it appeared in about 53 in 100 traces before (106 of 200) and in none of the 200 traces after; its position distribution vanished accordingly. [OCC005, POS003]\n- A07's outgoing flow vanished with it: before, about 92 in 100 of A07's observed outgoing transitions led to A06; in the later window A07 has no observed outgoing transitions at all. [DIR004]\n- A03 was rerouted around A07: before, roughly 56% of A03's outgoing transitions went to A05, about 39% to A07 and only about 5% directly to A06; in the later window about 49% go to A05 and about 51% go directly to A06, with no transition to A07. [DIR002]\n- The relations confirm this rerouting: A03–A07 and A06–A07 co-occurred in about 53 in 100 traces before (A03 before A07 in 24%, A07 before A06 in about 20% of traces), while in the later window they never co-occur and A03 or A06 appear alone in about 52 in 100 traces. [REL002, REL003]\n- The A03→A06 distance shifted by one step: before, pairs sat mostly at distances 2 (about 23%) and 4 (about 20%); in the later window even distances are absent and pairs sit at 1 (about 19%), 3 (about 11%) and 5 (about 6%). [LAG002]\n- A03's relative position moved later (mean 0.43 → 0.48, median 0.39 → 0.45), consistent with the traces that used to contain A07 becoming shorter; A06's position stayed essentially unchanged (mean 0.745 → 0.746). [POS001, POS002]\n- Executions per trace fell modestly while participation stayed stable: A03 1.21 → 1.01, A06 1.17 → 1.01, A09 0.64 → 0.49 and A05 0.68 → 0.49 occurrences per trace, with participation in both windows around 52–53% for A03/A06, 27–29% for A09 and 26–29% for A05. [OCC001, OCC003, OCC004, OCC006]\n- Smaller shifts: A06's rare edge to A07 (about 3% of its outgoing transitions) is gone and A10's share rose from about 43% to 51%; the former A10→A07 edge rested on only 2 observations and is no longer seen. A02's split between A03 and A04 (about 53/47) and the participation of A04 and A10 were unchanged. [DIR003, DIR006, DIR001, OCC002, OCC007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA specific possibility supported by the evidence is that in the later window A07 is no longer executed, and the flow that previously ran A03 → A07 → A06 now goes directly from A03 to A06, bypassing A07. Before, A07 ran in about 53 in 100 traces and almost always handed over to A06; in the later window it appears in 0 of 200 traces, A03's outgoing share to A07 (about 39%) disappeared while its direct share to A06 rose from about 5% to 51%, A03–A07 and A06–A07 co-occurrence dropped to zero while A03 and A06 still co-occur in about half the traces, and the A03→A06 distance shortened by exactly one step. A drop from 106 to 0 participating traces is far outside what sampling variation between two 200-trace windows produces. Limitations: these items all reflect the same underlying difference, so they corroborate rather than independently confirm it; the evidence cannot show whether A07 was removed from the process or still exists but is simply never triggered in the later sample; and the A10→A07 link rests on only two observations. [OCC005, DIR002, DIR004, REL002, REL003, LAG002, DIR006]\n\nOther differences: Mean executions per trace fell modestly for A03 (1.21 → 1.01), A05 (0.68 → 0.49), A06 (1.17 → 1.01) and A09 (0.64 → 0.49) while their participation stayed roughly stable, which hints at fewer within-trace repetitions; the evidence cannot establish whether this is a knock-on effect of A07's disappearance or a separate repetition change, and the moderate empirical strengths (about 0.66–0.79) leave room for sampling variation. A06's outgoing mix also shifted slightly, with A10's share rising from about 43% to 51% after the edge to A07 disappeared. [OCC001, OCC003, OCC004, OCC006, DIR003]",
+  "case_id": "case_c6241d9baa4f3bd9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

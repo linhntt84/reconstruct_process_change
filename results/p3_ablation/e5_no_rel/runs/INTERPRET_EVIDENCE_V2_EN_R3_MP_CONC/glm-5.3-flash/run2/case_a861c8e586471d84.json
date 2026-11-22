@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_a861c8e586471d84.json",
+  "evidence_sha256": "f73a83776a6fbac87c1bc16eed5890a2c9693920c65bd4b2e820df21819644f2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:45:13.656445+00:00",
+  "finished_at_utc": "2026-11-15T06:45:58.871879+00:00",
+  "latency_seconds": 45.22,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6447,
+    "prompt_tokens": 7913,
+    "total_tokens": 14360,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5537,
+      "text_tokens": 910
+    },
+    "cost": 0.00441045
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21778,
+  "text": "### Observed differences\n\n- Three activities behaved very differently across the windows. In the earlier window, A19, A20 and A25 each appeared in roughly a third of traces (about 35, 31 and 35 in 100 traces respectively, once per trace, never repeated). In the later window, A19 and A25 were not observed at all (0 of 200 traces) and A20 appeared in only 1 of 200 traces. [OCC001, OCC002, OCC003]\n- In the earlier window, each of these three activities led almost exclusively to A26 (about 97–99 in 100 of their outgoing transitions); in the later window these outgoing transitions are no longer observed. [DIR001, DIR002, DIR003]\n- A41's routing changed markedly. Before, its outgoing transitions went to A25 (about 33 in 100), A19 (about 33) and A20 (about 27), with no direct transition to A26; in the later window, about 92 in 100 of its transitions go directly to A26. [DIR004]\n- The distance from A41 to A26 shortened: before, A26 followed A41 mostly two steps later (about 93 in 100 cases); in the later window, mostly one step later (about 93 in 100 cases). [LAG002]\n- Consistent with this, A26 now occurs slightly earlier within traces (mean relative position about 0.39 vs 0.37) and A41 slightly later (about 0.32 vs 0.33). [POS005, POS006]\n- Smaller shifts unrelated to the above: A14 occurs slightly later in traces (mean relative position about 0.14 vs 0.15), and the A24→A31 distance moved from mostly two steps (about 59 in 100) to mostly one step (about 59 in 100). [POS001, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the earlier window, A41 was followed by exactly one of three alternative activities — A19, A20 or A25, taken in roughly equal shares — and each of these in turn led almost always to A26. In the later window, these three activities are no longer observed and A41 leads directly to A26, so the alternative segment between A41 and A26 is no longer executed and A41 now bypasses it. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002]\n\nThe support is direct and consistent: the successor change at A41 is observed on about 200 outgoing transitions in each window, the A41→A26 gap shortened from two steps to one in line with a direct edge (200 traces behind each window), and the three activities' disappearance rests on 60–70 traces each in the earlier window against none afterwards. The occurrence, direction, position and lag indicators all point to the same underlying difference, though they partly reflect the same traces and are not independent confirmations. Overall, 15 evidence items qualified against about 0.51 expected by chance for 102 tested units — roughly 30 times the chance expectation — so the set of differences is unlikely for an unchanged process. [OCC001, OCC002, OCC003, DIR004, LAG002, POS002, POS003, POS004, POS005, POS006]\n\nA competing explanation the evidence cannot rule out is that the three activities still exist in the process but the alternative branch is simply never taken in the later window; zero participation only means the activities were not observed, and the evidence cannot distinguish removal from a routing change that always skips the branch. Also, the single remaining A20 occurrence was followed by A30 rather than A26, but this rests on one trace. [OCC002, DIR002]\n\nOther differences: A14 occurs slightly later within traces, and the A24→A31 distance shifted from mostly two steps to mostly one; neither is explained by the main hypothesis. [POS001, LAG001]",
+  "case_id": "case_a861c8e586471d84",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

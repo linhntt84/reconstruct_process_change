@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A16, A17 and A18 each ran in about 75 in 100 traces; in the later window each runs in about 25 in 100 — a shift of roughly 50 percentage points. Each of them occurs at most once per trace in both windows (mean occurrences equal trace participation, with no repetition). [OCC001, OCC002, OCC003]
+- The mirror image holds for A19, A20 and A21: about 25 in 100 traces earlier, about 76 in 100 in the later window, likewise at most once per trace. [OCC004, OCC005, OCC006]
+- The two triples act as strict alternatives in both windows: no trace contains an activity from {A16, A17, A18} together with one from {A19, A20, A21}, and every trace contains exactly one of the two groups. Within each group the three activities always run together and appear in both orders in similar proportions, i.e. without a fixed internal order. [REL009, REL014, REL018, REL022, REL023, REL025]
+- A15 precedes whichever group runs, in both windows: A15 before A16/A17/A18 in about 75 in 100 traces earlier versus about 25 in 100 later, and A15 before A19/A20/A21 in about 25 in 100 earlier versus about 76 in 100 later; A15 itself appears in essentially every trace throughout. [REL001, REL002, REL003, REL004, REL005, REL006]
+- A25 also appears in every trace in both windows and co-occurs with whichever group is chosen (with A16–A18: about 75 in 100 earlier versus about 25 in 100 later; with A19–A21: about 25 in 100 earlier versus about 76 in 100 later), typically after the group's activities, with interleaving or repetition in roughly a third of the A19–A21 cases in the later window. [REL012, REL017, REL021, REL024, REL026, REL027]
+- Among traces containing A15 followed by A20 within five steps, the positional gap moved slightly toward smaller distances: gaps of 1–2 steps rose from about 48 in 100 to about 66 in 100, while 3-step gaps fell from about 52 in 100 to about 34 in 100 (event positions, not clock time). [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the process routes each case through an exclusive choice between two existing three-activity branches — one of A16, A17 and A18, the other of A19, A20 and A21 — each executed as an unordered group after A15 and together with A25, and that in the later window the branch shares flipped: the A19–A21 branch is taken in about 76 in 100 cases (previously about 25 in 100), while the A16–A18 branch dropped to about 25 in 100 (previously about 75 in 100). [OCC001, OCC004, REL001, REL004, REL009, REL022, REL024]
+
+Supporting signs: every activity involved is observed in a substantial share of traces in both windows (roughly 25 to 100 in 100), so this is a shift of shares between existing alternatives rather than a path being added, removed or bypassed; the occurrence and relation indicators agree in direction and magnitude (each about 0.505 on its own scale); and the control-flow family produced 34 qualifying items against roughly 0.42 expected if nothing had changed, a volume an unchanged process does not typically produce, with each item's difference larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, OCC004, REL001, REL009, REL022]
+
+Limitations: all items describe one and the same flip, so they are not independent confirmations; the evidence does not show what governs the choice point, and it cannot rule out that the two windows draw on different case mixes that route differently through an otherwise unchanged choice rather than a changed routing rule. [REL009, REL022]
+
+Other differences: the positional distance between A15 and A20 narrowed slightly (gaps of 1–2 event positions in about 66 in 100 observed pairs later versus about 48 in 100 earlier); this is position-based and does not by itself show that the activity was moved in clock time. [LAG001]

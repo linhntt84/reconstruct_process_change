@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran exactly once in every case (200 of 200), always together and with no fixed order among themselves — each pair split roughly 50/50 between the two orders. In the later window, each of the three appears in only 1 of 200 cases. [OCC004, OCC005, OCC006, REL025, REL026, REL031]
+- In the later window, three previously unobserved activities appear as strict one-per-case alternatives: A14 in 60 of 200 cases (30%), A15 in 65 (about 33%) and A16 in 74 (37%); no case contains two of them, and together they cover 199 of 200 cases. [OCC001, OCC002, OCC003, REL001, REL002, REL010]
+- A39, present in all cases in both windows, changed its successors completely: earlier its outgoing transitions led to A23, A22 and A21 (about 35%, 30% and 35% of them); later they lead to A16, A15 and A14 (37%, 33% and 30%). [DIR007]
+- The new activities occupy the old segment's position: in the later window A39 always precedes A14/A15/A16, and each of them always precedes A24; the positional distance from A39 to A24 shrank from always 4 positions earlier to 2 positions in about 199 of 200 later cases. [REL007, REL015, REL022, REL006, REL014, REL021, LAG010]
+- The direction and lag items for the old trio itself (A21/A22/A23) rest on a single later case each and carry little weight. [DIR004, DIR005, DIR006, LAG001, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural substitution in the segment between A39 and A24: in the earlier window every case executed all three of A21, A22 and A23 there (in varying order, always before A24 and after A39), while in the later window every case executes exactly one of the mutually exclusive activities A14, A15 or A16 in that position, and A21–A23 are observed in only 1 of 200 cases. This rests on 62 qualifying control-flow items against fewer than 1 expected by chance for the 118 tested units, on the successor change at A39 measured on all 200 cases in both windows, on the consistent placement of the new activities between A39 and A24, and on the A39→A24 distance dropping from 4 to 2 positions; every item's difference exceeds about 995 of 1000 random re-splits. Two limits remain: zero participation shows only that A21–A23 were not executed, not that they were removed from the process, and the evidence cannot rule out that A14–A16 are relabelled counterparts of A21–A23 rather than genuinely different work. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL006, REL007, REL014, REL015, REL021, REL022, LAG010]
+
+Other differences: A41 ran in about 59 of 100 earlier cases and about 69 of 100 later ones, and now sometimes co-occurs with the new activities; A40's presence is unchanged (all cases in both windows), but the new activities run before or interleaved with it, whereas the old trio mostly ran before it. [REL009, REL017, REL024, REL008, REL016, REL023, REL029, REL034, REL038]

@@ -1,0 +1,29 @@
+### Observed differences
+
+- **Where the five-activity block sits changed.** In the earlier window, A47 led almost always directly to A28 (about 91 in 100 of A47's outgoing transitions), and the five activities A19, A20, A25, A26 and A27 — each present in roughly 16–24 of 100 traces — ran late in the trace (mean event position about 0.60–0.64), after A28 and A29. In the later window, A47's outgoing transitions spread almost entirely over exactly these five activities (about 17–21 in 100 each, roughly 92–93 in 100 combined), the five now run early (mean position about 0.34–0.36), and A28 follows A47 two event positions later instead of one (about 92 in 100 of the pairs, against about 91 in 100 at gap 1 before). [DIR008, LAG009, POS001, POS002, POS003, POS004, POS005]
+
+- **Order between the block and A28/A29 reversed.** In the earlier window, A28 and A29 preceded A19, A26 and A27 in essentially every trace in which they co-occurred (about 20–24 in 100 traces overall); in the later window the block member comes first in essentially every such trace (about 18–22 in 100), the old order surviving in at most about 1 in 200 traces. [REL001, REL002, REL003, REL004, REL005, REL006]
+
+- **Exit from the block changed.** In the earlier window, each of the five led roughly half the time to A34 and half to A30 (for example A19: about 51 vs 46 in 100; A25: about 58 vs 42 in 100). In the later window, each of the five leads almost always to A28 (about 93–100 in 100); A20 immediately followed by A28, seen in 2 traces before, now occurs in 38 traces, and the old close adjacencies into A34 nearly vanished (A19 then A34 within five steps: 39 traces before, 1 after; A20 then A34: 41 before, 1 after). [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003]
+
+- **The late-stage loop became a fixed chain.** In the earlier window, A29 split its outgoing transitions between A30 (about 51 in 100) and returns into the five activities (about 48 in 100), and A30 split between A34 (about 48–49 in 100) and returns into the five (about 51 in 100); A34 followed A29 about three positions later (about 98 in 100). In the later window, A29 leads to A30 in about 98–99 in 100 and A30 to A34 likewise, each immediately adjacent, so A34 now follows A29 two positions later (about 97 in 100). [DIR006, DIR007, LAG004, LAG005, LAG006, LAG007, LAG008]
+
+- **Small residual shifts.** A28's and A29's mean positions each moved about 0.02–0.03 later, and A27 appeared in somewhat fewer traces (about 24 of 100 before vs about 18–19 of 100 after). [POS005, POS006, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the five related activities A19, A20, A25, A26 and A27 — each occurring in about one in five traces in both windows — are placed between A47 and A28 in the later window: A47 feeds into one of them, and the chosen activity leads almost always straight into A28. In the earlier window, A47 fed directly into A28, and the five ran after A28 and A29, were also reached through returns from A29 and A30, and each led on to A34 or A30. As part of the same reorganisation, the late-stage routing, which previously cycled between A29, A30 and the five activities, became a fixed chain A29 → A30 → A34 in the later window. [DIR001, DIR006, DIR007, DIR008, POS001, REL001, LAG009]
+
+Supporting signs:
+- Thirty items qualified against about 0.61 expected by chance in the control-flow family — roughly fifty times the chance expectation — so this many flagged items is not what an unchanged process typically produces. [DIR001-DIR008, POS001-POS007, REL001-REL006, LAG001-LAG009]
+- The order reversal is shown directly by the relational items, each computed over all 200 traces per window and consistent across A19, A26 and A27 against both A28 and A29. [REL001, REL002, REL003, REL004, REL005, REL006]
+- The positional items agree: all five activities moved about a quarter of the trace earlier while A28 and A29 barely moved. [POS001, POS002, POS003, POS004, POS005, POS006, POS007]
+- The directional items show the rewiring at the block's entry and exit and at A29 and A30, with 33–48 traces behind each block member's profile and all 200 traces behind A29's, A30's and A47's profiles. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+- The lag items corroborate the new immediate adjacencies (A20→A28, A29→A30, A30→A34) and the near-disappearance of the old ones. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+- The five activities occur at similar rates in both windows (about 16–24 of 100 traces each), so the evidence shows a reordering and rewiring of activities present throughout, not activities appearing or disappearing. [POS001, POS002, POS003, POS004, POS005]
+
+Limitations: the indicators use event positions, not clock time, so the evidence speaks to order and adjacency, not to when work happened; A28's outgoing transitions are not covered by the evidence, so the wiring between A28 and A29 in the later window remains unobserved; and items from different indicators on the same activities describe the same trace behaviour, so they corroborate one another but are not independent confirmations. An important competing explanation the evidence cannot rule out is that the routing change at A29 and A30 is an independent change rather than a counterpart of the block's relocation — both are shown, but not the link between them. The lag items on the old adjacencies also rest on a single after-window observation each, though the directional items carry the same story on many more traces. [LAG001, LAG003, LAG004, LAG005]
+
+Other differences: A28's and A29's mean positions each shifted about 0.02–0.03 later, and A27 appeared in somewhat fewer traces (about 24 of 100 before vs about 18–19 of 100 after); these are small and may reflect sampling variation between the two 200-trace windows. [POS005, POS006, POS007]

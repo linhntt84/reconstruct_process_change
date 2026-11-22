@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A14, A15 and A20 each took part in about 30–35 in 100 traces (roughly 60–70 of 200), always exactly once per trace, always at about one third of the trace length, and always as mutually exclusive alternatives — no trace contained more than one of them. In the later window, none of the three appears in any of the 200 traces. [OCC001, OCC002, OCC003, REL001, REL003, REL008, POS001, POS002, POS003]
+- In the earlier window, A36 (present in every trace) was always followed by exactly one of A14, A15 or A20 — about 35/30/35 of its observed outgoing transitions — and each of the three in turn always led to A21. In the later window, A36's outgoing transitions go to A21 in all cases. [DIR001, DIR002, DIR003, DIR004]
+- The distance from A36 to A21 shortened: in the earlier window the pair occurred two steps apart in essentially all cases; in the later window it occurs one step apart in all cases, i.e. A21 now immediately follows A36. [LAG001]
+- Relation items agree with this picture: each of the three activities co-occurred with A21 and with A26 and always preceded them (for example, A14 preceded A21 in about 35 in 100 traces), while A36 always preceded the trio member; in the later window only A21 and A26 remain, each in every trace. [REL004, REL005, REL006, REL009, REL011, REL013, REL014, REL015]
+- Positions shifted slightly in the direction expected if one intermediate event disappeared: A21's median relative position moved earlier (about 0.38 to 0.36 of the trace) and A36's moved slightly later (about 0.31 to 0.32); both activities still occur in every trace in both windows. [POS004, POS005]
+- A19's participation rose modestly, from about 48–49 in 100 traces to about 55–56 in 100, and it no longer co-occurs with any of the three disappeared activities; this shift was not flagged as an occurrence change in its own right. [REL002, REL007, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the intermediate step between A36 and A21 — previously a mutually exclusive choice of one of A14, A15 or A20 — is no longer executed: in the later window A36 flows directly to A21 in every trace, whereas before it always passed through one of the three (split roughly 35/30/35), each of which then always led to A21. [OCC001, OCC002, OCC003, DIR004, LAG001]
+
+The signs are direct and mutually consistent. Participation of the three activities fell from about 60–70 of 200 traces to 0 of 200; the successor profile of A36, measured on all 200 traces in both windows, changed completely from the trio to A21 alone; the A36-to-A21 distance shortened from two steps to one; and the small positional shifts of A21 (earlier) and A36 (later) are what one would expect if one intermediate event were removed. The reported differences are larger than those seen in about 99.5 of 100 random re-splits of the pooled data, and 28 qualifying items against roughly 0.41 expected without change cannot be explained by chance as a whole. [DIR004, LAG001, POS004, POS005, OCC001]
+
+Limitations remain. Zero participation shows only that A14, A15 and A20 were not observed in the later window, so the evidence cannot distinguish removal of the step from a branch that has merely stopped being taken; and although three activities at 30–35% participation all falling to 0 of 200 is very hard to attribute to sampling, the windows are finite samples and variant frequencies can differ without a change. The modest rise in A19's participation is not independently flagged and may be sampling variation. Several items also describe the same underlying traces, so they are not independent confirmations of one another. [REL002, REL007, REL012, OCC001]

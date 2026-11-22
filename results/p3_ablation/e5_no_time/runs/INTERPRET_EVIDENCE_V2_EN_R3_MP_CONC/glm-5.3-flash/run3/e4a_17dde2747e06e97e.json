@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_17dde2747e06e97e.json",
+  "evidence_sha256": "261af1fad2f9eb4f05107c04071375120056155d4c520884123a26321cf42414",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:45:48.461354+00:00",
+  "finished_at_utc": "2026-11-15T12:46:38.588954+00:00",
+  "latency_seconds": 50.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6758,
+    "prompt_tokens": 8151,
+    "total_tokens": 14909,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6011,
+      "text_tokens": 747
+    },
+    "cost": 0.0046016500000000005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22641,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces ran the same fixed sequence: A36 → A14 → A20 → A15 → A21. A36's only observed successor was A14, and A14, A15 and A20 each appeared exactly once in all traces. [OCC001, OCC002, OCC003, DIR001, REL001]\n- In the later window, A14, A15 and A20 each appear in only about 53 in 100 traces (still exactly once when present, with no repetition), while A36 and A21 still appear in every trace. [OCC001, OCC002, OCC003, REL003, REL004]\n- A36's outgoing transitions are now split: about 53 in 100 still lead to A14, while about 47 in 100 lead directly to A21 — a successor not observed at all in the earlier window. [DIR001]\n- The three middle activities disappear together rather than independently: A14 and A15 co-occur in about 53 in 100 later traces and are both absent in about 47 in 100, and the same pattern holds for A14/A20 and A15/A20. [REL001, REL002, REL005]\n- When the middle block is skipped, A21 immediately follows A36: the A36→A21 distance is 1 step in about 47 in 100 later traces (never before), while the original 4-step spacing remains in about 53 in 100. [LAG001]\n- Small positional shifts accompany this: A21's mean relative position moved slightly earlier (about 0.43 to 0.40) and A36's slightly later (about 0.30 to 0.32), consistent with a mix of a short and a long path. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, the block A14 → A20 → A15 between A36 and A21 appears to have become skippable: in roughly 47 in 100 cases the flow goes directly from A36 to A21, bypassing A14, A20 and A15, while the remaining cases still run the original chain A36 → A14 → A20 → A15 → A21 in its original order. This rests on direct signs: the new A36→A21 transition is observed in the routing profile [DIR001], the immediate A36→A21 succession appears in about 47 in 100 later traces and never before [LAG001], and the three bypassed activities dropped from universal participation to about 53 in 100 while vanishing as a group [OCC001, OCC002, OCC003, REL001, REL002, REL005]. The screening produced 16 qualifying items against roughly 0.35 expected for an unchanged process, so chance sampling cannot account for the pattern as a whole.\n\nLimitation: with 200 traces per window, the evidence cannot distinguish a genuinely new connection from a pre-existing but very rare bypass (below roughly 1 in 100 cases) that the earlier sample happened not to capture; it shows the block is skipped in the later window, not that the direct step was newly created.\n\nOther differences: none — all items, including the small position shifts of A21 and A36, fit the same bypass pattern. [POS001, POS002]",
+  "case_id": "e4a_17dde2747e06e97e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

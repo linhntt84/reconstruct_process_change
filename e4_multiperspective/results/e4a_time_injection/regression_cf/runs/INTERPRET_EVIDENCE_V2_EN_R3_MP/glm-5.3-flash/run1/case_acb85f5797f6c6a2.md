@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A20's outgoing transitions spread almost evenly over A30, A31, A36 and A37 (about 25 in 100 each); in the later window, every observed outgoing transition of A20 goes to A22. [DIR001]
+- In the earlier window, every observed outgoing transition of A21 went to A25; in the later window, A21's transitions spread over A31 (about 30 in 100), A30 (about 27), A36 (about 25) and A37 (about 19). [DIR002]
+- In the earlier window, each of A30, A31, A36 and A37 sent roughly a quarter of its outgoing transitions to A22 (about 24–26 in 100) and the rest roughly evenly to the other three group members; in the later window that quarter goes to A25 instead (about 22–27 in 100), with the internal shares again roughly even. [DIR003, DIR004, DIR005, DIR006]
+- The relative order reversed completely and remained fixed: in the earlier window, A30, A31, A36 and A37 each ran before A21 and before A22 in all 200 traces; in the later window, A21 and A22 each ran before all four in all 200 traces. Both windows show a fixed order, not a mixture of orders. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- Distances swapped accordingly: A22 followed A20 by exactly 5 event positions in the earlier window and by exactly 1 in the later window; A25 followed A21 by exactly 1 position earlier and exactly 5 later. [LAG001, LAG002]
+- Positions within the trace moved consistently: A21 shifted from about 62% to about 51% of the trace length and A22 from about 48% to about 37%, while A30, A31, A36 and A37 shifted from about 41% to about 58–59%. All these activities occur in every trace in both windows. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two segments of the process exchanged their order. In the earlier window the flow ran from A20 into one of A30/A31/A36/A37, moved among the four (the fixed 5-step distance to A22 is consistent with passing through all of them), exited to A22, then reached A21, which was immediately followed by A25. In the later window the flow runs A20 → A22 → … → A21 → one of A30/A31/A36/A37 → A25: the block containing A22 and A21 and the block of the four group activities exchanged places between A20 and A25, with the connections rewired so that A20 now feeds A22 directly, A21 now feeds into the group, and the group now exits to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL005, LAG001, LAG002]
+
+The support is direct and consistent rather than a matter of item count: the order reversal is relational evidence with a fixed order in both windows (not a move to unordered execution), the lag items show the group moving from one side to the other (A20→A22 shortens from 5 to 1; A21→A25 lengthens from 1 to 5), the DIR items show exactly the rewiring this implies, and the position shifts of all six measured activities agree in direction. All 20 items describe this single rewiring, each rests on all 200 traces per window, and 20 items is many times the 0.44 expected by chance if nothing had changed. A competing reading — that only A22 and A25 exchanged roles — is contradicted by the observed successors, since in the later window A20 feeds A22 and A21 feeds the group, not the reverse. [DIR001, DIR002, REL001, REL005, LAG001, LAG002, POS003]
+
+Limitations: the items do not cover the activities running between A22 and A21, so the exact boundaries of the moved segment are inferred from these anchors, and there are no positional items for A20 and A25 themselves, so the evidence cannot confirm that these two endpoints kept their places while the middle reordered. [LAG001, LAG002]
+
+Other differences: small redistributions remain among the group's internal transitions — for example, A31's share to A37 rose from about 19 to 30 in 100 while its share to A30 fell from about 29 to 19, and A37's share to A31 fell from about 30 to 23 in 100; these are minor next to the A22/A25 rewiring and may reflect sampling variation. [DIR004, DIR006]

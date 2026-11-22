@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "6b1305b80565ef8a890c9687dcad4d29e429193531392e4934bfbb076551f6a7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:46:27.806324+00:00",
+  "finished_at_utc": "2026-11-15T05:47:52.518079+00:00",
+  "latency_seconds": 84.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11200,
+    "prompt_tokens": 10675,
+    "total_tokens": 21875,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10103,
+      "text_tokens": 1097
+    },
+    "cost": 0.007201249999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39206,
+  "text": "### Observed differences\n\n- In the earlier window, execution was uniform: every one of the 200 traces ran A21, then A22, then A23, with A22 occurring exactly once per trace and a fixed two-position gap between A21 and A23. [OCC001, REL001, REL005, LAG001]\n- In the later window, behaviour split into two mutually exclusive variants of nearly equal size. About 51 in 100 traces still run A21 → A22 → A23, with A22 once per trace and in the same relation to A21 and A23 as before. [OCC001, REL001, REL005, LAG001]\n- In the other about 49 in 100 later traces, A22 does not occur; instead, three activities that were absent from the earlier window — A27, A28 and A33 — each occur exactly once. [OCC001, OCC002, OCC003, OCC004]\n- The three new activities always run together in the same traces and without a fixed order between them: each pair co-occurs in about 49 in 100 traces, with both orders in nearly equal shares (roughly 22–27 in 100 each way). [REL012, REL013, REL014]\n- A22 and the new block never share a trace in the later window (about 51 in 100 traces contain A22 but none of the new activities, about 49 in 100 contain the new activities but not A22), while A21 and A23 still occur in every trace in both windows. [REL006, REL007, REL008, REL001, REL005]\n- The new block sits between A21 and A23: A21 precedes each of A27, A28 and A33, and each of them precedes A23, in about 49 in 100 later traces; accordingly, the A21–A23 distance is four positions in these traces instead of two. [REL002, REL003, REL004, REL009, REL010, REL011, LAG001]\n- The new activities appear around the middle of the trace (mean relative position about 0.49, with a narrow spread of about 0.05–0.06). [POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that an alternative branch was inserted between A21 and A23: in the later window, about half of the executions skip A22 and instead run A27, A28 and A33 together, in no fixed order, between A21 and A23, while the other half keep the original A21 → A22 → A23 path. The signs are direct and mutually consistent: the participation split (A22 from all traces to about 51 in 100; A27/A28/A33 from none to about 49 in 100), the strict mutual exclusivity between A22 and the new activities, the ordering relations placing the new block after A21 and before A23, and the A21–A23 gap changing from always two positions to two or four. The volume of qualifying evidence (22 control-flow items against about 0.26 expected without change) is far beyond what an unchanged process typically produces, and each item's difference exceeds about 199 of 200 random re-splits. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001]\n\nLimitations: zero earlier participation strictly means only that A27, A28 and A33 were not observed in the earlier window; several items describe the same underlying traces rather than independent confirmations; and the evidence cannot show what determines which branch a case takes. A competing explanation the evidence cannot rule out is that the A27/A28/A33 branch already existed earlier but went unexercised in the earlier sample of 200 traces. [OCC002, OCC003, OCC004, REL006, REL007, REL008, REL012, REL013, REL014]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

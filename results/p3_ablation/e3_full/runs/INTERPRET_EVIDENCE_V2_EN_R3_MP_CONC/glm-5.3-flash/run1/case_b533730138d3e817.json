@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_b533730138d3e817.json",
+  "evidence_sha256": "c009717529810de9a308700543ca78240e8d547a0e6b3904c6b256cd84d6974e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:29:56.658995+00:00",
+  "finished_at_utc": "2026-11-16T01:31:48.318430+00:00",
+  "latency_seconds": 111.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13468,
+    "prompt_tokens": 18097,
+    "total_tokens": 31565,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12408,
+      "text_tokens": 1060
+    },
+    "cost": 0.00944855
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45026,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200) and always at the final position of the trace (mean normalized position 1.0, no variation). [OCC001, POS001]\n- In the earlier window, A06 occupied the final position in all 200 traces; in the later window its mean position moved back to about 0.87 and all of its observed outgoing transitions lead to A01. [POS006, DIR002]\n- In the earlier window, A01 never co-occurred with any other activity: A04–A08 each appeared in 100 in 100 traces without it, and A03 appeared in about 54 in 100 traces, also never with it. In the later window, A04–A08 co-occur with A01 in every trace and always run before it, A03 co-occurs with A01 whenever it appears (about 52 in 100 traces) and always precedes it, and A02 likewise only precedes A01, with its repeats recorded as interleaved in about half of the traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n- All other activities shifted slightly earlier in relative position in the later window (mean position down by roughly 0.04–0.13 for A04–A08), the pattern expected when every trace becomes one event longer at the end. [POS004, POS005, POS007, POS008]\n- Minor: A03 repeats somewhat more often (about 22 in 100 traces before versus about 27 in 100 after) and its order with A04–A08 shows a bit more interleaving (fixed A03-first share about 33 in 100 down to 25 in 100), with small lag redistributions toward larger event gaps around A02 and A03. A02's own behaviour and its split into A03 versus A04 (about 50/50 in both windows) are essentially unchanged. [OCC003, REL014, LAG001, LAG008, LAG009, OCC002, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new final activity, A01, was appended at the end of the process after A06: in the earlier window traces ended with A06, whereas in the later window every trace ends with A06 followed by A01. This is shown directly — A01 goes from no occurrences to exactly one occurrence in all 200 later traces, always at the last position; A06 gains A01 as its sole observed successor; and every other activity (A02–A08) co-occurs with A01 and precedes it, while all of them keep essentially the same participation, so nothing was removed or displaced. The uniform backward shift of A04–A08's positions fits every trace gaining one final event rather than any reordering among the existing activities. These key differences are larger than about 995 in 1000 random re-splits of unchanged behaviour, and an activity absent from 200 earlier traces but present in all 200 later ones is not plausibly a sampling artefact. The evidence cannot show whether A01 is genuinely new or an existing activity under a new anonymous code, and it cannot indicate what prompted the addition. [OCC001, POS001, DIR002, REL003, REL004, REL005, REL006, REL007, POS004, POS005, POS006, POS007, POS008]\n\nOther differences: A03 repeats slightly more often in the later window (about 27 in 100 traces versus about 22 in 100), with slightly more interleaving against A04–A08 and small lag shifts toward larger gaps around A02 and A03; these are minor and not part of the main hypothesis. [OCC003, REL014, LAG001, LAG008, LAG009]",
+  "case_id": "case_b533730138d3e817",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

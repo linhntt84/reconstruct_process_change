@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_c20f0115c62d65b0.json",
+  "evidence_sha256": "1817a931b2d1ee2763f497077f00d15c9a4c1fbcfbf9d4e312d101846a845d3b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:19:55.860974+00:00",
+  "finished_at_utc": "2026-11-15T06:21:45.429356+00:00",
+  "latency_seconds": 109.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15667,
+    "prompt_tokens": 11441,
+    "total_tokens": 27108,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14632,
+      "text_tokens": 1035
+    },
+    "cost": 0.00954965
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53768,
+  "text": "### Observed differences\n\n- The sharpest difference concerns three activities, A19, A20 and A25. In the earlier window each took part in a substantial share of traces — about 32 in 100 for A19 (64 of 200 traces), 28 in 100 for A20 (56 of 200) and 40 in 100 for A25 (80 of 200) — while in the later window each appears in only 1 of 200 traces (about 0.5 in 100). [OCC001, OCC002, OCC003]\n- In the earlier window these three were mutually exclusive alternatives that together covered every trace: no trace contains two of them, and their participation shares (32%, 28%, 40%) sum to 100 in 100. In the later window, for every pair among them, neither activity is present in about 99 in 100 traces. [REL001, REL002, REL006]\n- The three used to sit between the stable activities: when one of them was present it followed A27 (for A19 in about 32 in 100 traces) and preceded A29 (again about 32 in 100), with mixed order relative to A28. In the later window all these co-occurrences have dropped to about 0.5 in 100, while A27, A28 and A29 themselves still occur in essentially every trace in both windows. [REL003, REL004, REL005, REL007, REL009, REL010, REL012]\n- Routing consolidated around the gap: in the earlier window about 53 in 100 of A27's observed outgoing transitions led to A28 and about 44 in 100 led to one of A19, A20, A25; in the later window about 97 in 100 lead to A28. A28's outgoing transitions to A29 rose from about 45 in 100 to about 99 in 100. [DIR004, DIR005]\n- Event positions tightened accordingly: A28 immediately follows A27 in about 98 in 100 traces (about 54 in 100 before), A29 immediately follows A28 in about 98 in 100 (about 45 in 100 before), and the distance from A27 to A29 shrank from mostly three positions (about 94 in 100) to mostly two (about 97 in 100). [LAG001, LAG003, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative segment formed by A19, A20 and A25 — through which every earlier trace passed via exactly one of the three, between A27 and A29 — is no longer executed in the later window, so that traces proceed directly from A27 through A28 to A29. Supporting signs: the participation of all three activities collapses from 56–80 of 200 traces to 1 of 200 while A27, A28 and A29 remain in essentially all traces; the successions A27→A28 and A28→A29 become near-deterministic; and the A27→A29 distance shortens from three positions to two, which fits the dropping of one intermediate activity. The 23 qualifying control-flow items are roughly forty times the 0.52 items expected by chance under an unchanged process, and each difference exceeds those seen in about 995 of 1,000 random re-splits, so the ensemble is not what an unchanged process typically produces. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003, REL001, REL003]\n\nThe evidence cannot distinguish a complete removal of the segment from it having become very rare: a path taken in fewer than about 1 in 200 later cases would go unobserved in this sample. [OCC001, OCC002, OCC003]\n\nAlso, the later outgoing profiles of A19, A20 and A25 (each showing a single transition, to A44, A08 and A42 respectively) rest on one trace each, so what little those activities still do is not established; and several indicators reflect the same underlying trace behaviour, so the agreement among items is not independent confirmation. [DIR001, DIR002, DIR003]",
+  "case_id": "case_c20f0115c62d65b0",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

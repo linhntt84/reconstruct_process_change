@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_9b7721c10ea83900.json",
+  "evidence_sha256": "d3887ff0a428508dd2bbf8e9e0662602aa6ac30f37bf046a5704ac048cf9b1f1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:52:44.944835+00:00",
+  "finished_at_utc": "2026-11-15T01:53:23.557738+00:00",
+  "latency_seconds": 38.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5423,
+    "prompt_tokens": 3502,
+    "total_tokens": 8925,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4792,
+      "text_tokens": 631
+    },
+    "cost": 0.0032367999999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20406,
+  "text": "### Observed differences\n\n- The elapsed time from the completion of A26 to the completion of A34 roughly doubled: in the earlier window it was about 1.0 hour (median ~1.00 h, quartiles ~0.91–1.10 h), in the later window about 2.0 hours (median ~1.96 h, quartiles ~1.77–2.19 h), an increase of roughly one hour, observed 200 times in each window. [TWAIT001]\n- The same shift appears for A35→A34: median about 0.98 h earlier versus about 2.03 h later (mean 0.99 h → 2.01 h), with 76 observations before and 66 after. [TWAIT002]\n- And for A37→A34: median about 1.04 h earlier versus about 1.97 h later (mean 1.02 h → 1.99 h), with 82 observations before and 52 after. [TWAIT003]\n- The whole distribution shifted, not just the average: the spread roughly doubled as well (e.g., standard deviation ~0.16 h → ~0.31 h for A26→A34), with the lower quartile rising by about as much as the median. [TWAIT001, TWAIT002, TWAIT003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change centred on A34: in the later window, the elapsed time between the completion of each of its predecessors A26, A35 and A37 and the completion of A34 itself is about one hour longer than before, roughly doubling from about one hour to about two hours, consistently across all three pairs and across the whole distribution [TWAIT001, TWAIT002, TWAIT003]. Each difference exceeds more than 999 of 1,000 random re-splits of the pooled data, and the time family yielded three qualifying items where about 0.01 would be expected if nothing had changed, while the control-flow family yielded none where about 0.31 were expected — so the pattern is unlikely to be a sampling artefact and comes without any qualifying structural difference [TWAIT001, TWAIT002, TWAIT003]. The main limitation is that this indicator measures elapsed time between consecutive completion events, not pure waiting or service time, so the evidence cannot distinguish whether A34 was completed later, its predecessors earlier, or whether about an hour of other work now lies between them; the three items also share A34 and may reflect one underlying change rather than three independent ones [TWAIT001, TWAIT002, TWAIT003].\n\nOther differences: the number of observed consecutive A37→A34 completion pairs fell from 82 to 52 and A35→A34 pairs from 76 to 66; no control-flow indicator qualified at these thresholds, so this may be sampling variation, though a structural shift (other events now interleaving between these predecessors and A34) cannot be ruled out [TWAIT002, TWAIT003].",
+  "case_id": "e4a_9b7721c10ea83900",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ef685e3eccdfa1b6.json",
+  "evidence_sha256": "75728b4e799d45c24091e64875a9b683dcfb7639ebd05c1d8eaeb17db33fa555",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:39:04.633672+00:00",
+  "finished_at_utc": "2026-11-15T07:42:16.287118+00:00",
+  "latency_seconds": 191.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27188,
+    "prompt_tokens": 48444,
+    "total_tokens": 75632,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24441,
+      "text_tokens": 2747
+    },
+    "cost": 0.0208606
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 83088,
+  "text": "### Observed differences\n\n- The starkest difference sits in the segment between A25 and A26. In the earlier window, A28, A30 and A31 each appeared in all 200 traces, and so did A32, A33 and A34; in the later window, A28, A30 and A31 each appear in about 47 in 100 traces and A32, A33 and A34 in about 55 in 100 traces, while A25 and A26 still appear in every trace [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, POS001, POS002].\n\n- The relation of A25 and A26 to the first group dissolved: earlier, A25 always co-occurred with A28/A30/A31 and always preceded them, and A28/A30/A31 always preceded A26; in the later window, A25 occurs without the first group in about 53 in 100 traces, and A26 occurs without the first group before it in about 53 in 100 traces [REL001, REL002, REL003, REL007, REL008, REL009].\n\n- The two groups changed from fixed sequential stages to near-exclusive alternatives: earlier, each cross-group pair (e.g. A28 with A32) co-occurred in 100 in 100 traces with the first group always first; in the later window such pairs co-occur in only about 2 in 100 traces, one group appearing without the other in about 45–53 in 100 [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024].\n\n- Within each group the members still appear together whenever they appear at all: the first group is jointly present in about 47 in 100 later traces and jointly absent in about 53 in 100; the second group is jointly present in about 55 in 100 and jointly absent in about 45 in 100; neither group has a fixed internal order in either window [REL013, REL014, REL018, REL025, REL026, REL027].\n\n- Routing shows the bypass directly. Earlier, A25's outgoing transitions went only to A28, A30 and A31; in the later window about 16–20 in 100 of them go to each of A32, A33 and A34 (about 53 in 100 combined). A28, A30 and A31 now lead directly to A26 in about 26–36 in 100 of their outgoing transitions — a successor not observed for them earlier — while their transitions into A32/A33/A34 fell to about 1 in 100 [DIR016, DIR018, DIR020, DIR021].\n\n- Step distances shrank accordingly: the gap from A25 to A32/A33/A34 was 4–5 positions earlier and is 1–3 positions in the later window, and the gap from A28/A30/A31 to A26 fell from 4–5 to 1–3 steps; mean relative positions moved the same way (A25 from 0.62 to 0.67, A32–A34 from about 0.77 to 0.74, A26 from 0.83 to 0.81) [LAG004, LAG005, LAG006, LAG007, LAG013, LAG019, POS001, POS003, POS004, POS005, POS006, POS007, POS008].\n\n- Elsewhere, participation shifted by about 6–8 in 100 traces between A16 and A18 (down from about 53–54 to about 46–47) and A17 and A19 (up to about 53–54), with A18 routing to A25 more often (52 to 62 in 100 of its outgoing transitions) and A19 less often (55 to 45 in 100) [OCC015, OCC016, OCC017, OCC018, DIR012, DIR013, DIR015].\n\n- The two-way splits at A20, A27 and A29 flipped preference by about 8–9 in 100: A20 led to A29 in 55 in 100 earlier versus A27 in 54 in 100 later, A27 led to A21 in 55 in 100 earlier versus A29 in 54 in 100 later, and A29 led to A27 in 55 in 100 earlier versus A21 in 54 in 100 later [DIR014, DIR017, DIR019].\n\n- A38 recurred more often (about 1.5 versus 1.7 occurrences per trace) and A39 appeared in more traces (63 versus 68 in 100), with routing shifted toward A39 after A38 and toward A38 after A39 and A41; smaller redistributions appear around A02–A08 (for example A02 to A06 up from 22 to 35 in 100) [OCC027, OCC028, DIR027, DIR028, DIR029, DIR002, DIR004, DIR006, DIR008].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A25 and A26 changed from two mandatory, strictly ordered groups into a choice between them: in the earlier window every trace executed A25, then the group A28/A30/A31, then the group A32/A33/A34, then A26, whereas in the later window a trace typically executes exactly one of the two groups — A28/A30/A31 in about 47 in 100 traces, A32/A33/A34 in about 55 in 100, both in only about 2 in 100 — with A25 leading directly into A32/A33/A34 when the first group is skipped and A28/A30/A31 leading directly on to A26. In other words, all six activities became skippable as two alternative blocks, while A25 and A26 remained in every trace and the groups' position relative to these anchors was preserved [OCC019, OCC022, REL001, REL013, REL015, REL025, DIR016, DIR018, DIR020, DIR021, LAG004, LAG007].\n\nThe support rests on direct, mutually consistent relational, routing and participation signals rather than on the number of items: participation falls from 100 in 100 to 47/55 in 100 traces with 200 traces per window; the always-together, fixed-order relations dissolve into separate occurrence; and the new direct edges and shortened step distances appear exactly where a bypass would place them. Differences of this magnitude (empirical strength about 0.995 on the core items) are far outside what random re-splits of unchanged behaviour produce. Note that many items describe the same underlying trace behaviour, so they are not independent confirmations [OCC019, OCC022, REL015, DIR016, DIR018, LAG004, LAG007, POS003].\n\nThe evidence cannot show what determines which of the two groups a trace takes, and it cannot rule out that the later window reflects a different mix of complete trace variants (for example a shorter variant that was absent or very rare in the earlier sample) rather than a modified single process; a few later-window distance items rest on only about 4 observations and were not relied upon [LAG010, LAG011, LAG016].\n\nOther differences: participation shifted modestly between A16/A18 (down) and A17/A19 (up), with A18 routing more often to A25 and A19 less often [OCC015, OCC016, OCC017, OCC018, DIR012, DIR013, DIR015]; the two-way splits at A20, A27 and A29 flipped preference by about 8–9 in 100 [DIR014, DIR017, DIR019]; and A38/A39 occur somewhat more often with corresponding routing shifts, alongside smaller redistributions around A02–A08 [OCC027, OCC028, DIR027, DIR028, DIR029, DIR002, DIR004, DIR006, DIR008].",
+  "case_id": "case_ef685e3eccdfa1b6",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

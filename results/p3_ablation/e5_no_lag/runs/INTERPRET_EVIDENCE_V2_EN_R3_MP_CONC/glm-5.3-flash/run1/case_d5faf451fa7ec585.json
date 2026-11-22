@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_d5faf451fa7ec585.json",
+  "evidence_sha256": "e212285c684c2adbfe3ec95d83d10da8a6d3148a84457e8cc22c7ffe82734cc0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:02:40.546221+00:00",
+  "finished_at_utc": "2026-11-14T13:03:51.581527+00:00",
+  "latency_seconds": 71.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11910,
+    "prompt_tokens": 11449,
+    "total_tokens": 23359,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10934,
+      "text_tokens": 976
+    },
+    "cost": 0.00767235
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39303,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 were mutually exclusive alternatives that together appeared in every trace: A14 in about 32 in 100 traces, A15 in about 28, A20 in about 40, with no trace containing two of them. In the later window, none of the three is observed at all (0 of 200 traces, zero occurrences). [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n- The routing around this block changed accordingly. Before, about 45 in 100 of A22's observed outgoing transitions went to one of A14, A20 or A15 (about 14, 21 and 11 in 100 respectively) and the remainder went directly to A23; in the later window, A22 leads to A23 in every observed transition. Before, A23 led to A24 in about 46 in 100 of its outgoing transitions and to A14, A20 or A15 in about 54; in the later window, A23 leads to A24 in every observed transition. The three alternative activities show no outgoing transitions in the later window. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Pairwise relations confirm this. Before, each of A14, A15 and A20 always co-occurred with A22 (A22 first) and with A24 (the alternative activity first), and stood in a mixed order with A23; in the later window, every pair involving one of the three is either \"only the other activity\" (100 in 100 traces) or \"neither\". [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n- Event positions show only small shifts: A22's mean relative position moved from about 0.46 to 0.47 and A24's from about 0.57 to 0.55, while A14, A15 and A20 have no position observations in the later window. [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block of A14, A15 and A20 is no longer executed in the later window. Earlier, exactly one of the three ran in each trace between A22 and A24 — directly after A22 in about 45 in 100 traces and after A23 in about 55 in 100 — whereas in the later window every observed trace passes from A22 directly to A23 and from A23 directly to A24, and none of the three activities appears. [OCC001, OCC002, OCC003, DIR004, DIR005, REL003, REL005, REL012]\n\nThe screening context supports this reading: 25 control-flow items qualified, many times the roughly 0.37 expected by chance in an unchanged process, and every item's difference exceeded about 199 of 200 random re-splits. The disappearance is shown directly (64, 56 and 80 traces contained the activities before versus 0 afterwards) and consistently across occurrence, direction, relation and position indicators, all describing one underlying behaviour: the bypass of the block via A22 → A23 → A24. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\nLimitations: zero participation in the later window means only that the activities were not observed in these 200 traces, so a residual execution rate too low to observe cannot be ruled out; and because all items come from control-flow indicators over the same traces, they are not independent confirmations. [OCC001, OCC002, OCC003]\n\nOther differences: none beyond the small position shifts of A22 and A24 noted above, which are consistent with the same change. [POS004, POS005]",
+  "case_id": "case_d5faf451fa7ec585",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,23 @@
+### Observed differences
+
+- The activities A19, A20 and A25 swapped sides relative to A26 (and, the same way, relative to A27). Earlier, in the roughly 32–37 in 100 traces containing both, A26 came first in about 31–36 in 100 and the A19/A20/A25 activity first in at most about 1 in 100; in the later window the A19/A20/A25 activity comes first in about 29–35 in 100 and A26 never does. [REL005, REL006, REL007, REL008, REL009, REL010]
+- In the earlier window A19, A20 and A25 sat at about 60 in 100 of the trace length (mean positions 0.59–0.61); in the later window they sit at about a third (0.32–0.33), while A26 itself moved only slightly later (mean 0.32 → 0.35). A26 and A27 occurred in every trace in both windows, and the group's participation stayed similar (about 30–37 in 100 traces in both). [POS002, POS003, POS004, POS005, POS006]
+- Earlier, A19, A20 and A25 led mainly to A28 and A32 (about 41–56 in 100 of their outgoing transitions to each); in the later window they lead to A26 in about 96–100 in 100 of transitions, and A26 directly follows A19 in 69 later traces against 1 earlier trace. [DIR002, DIR003, DIR004, LAG007]
+- Earlier, about 92 in 100 of A45's outgoing transitions went to A26, which followed A45 after one step in about 91 in 100 of traces; in the later window A45 leads to A19, A20 or A25 in about 73 in 100 of transitions (most of the rest to A08) and A26 follows A45 two to three steps later (about 73 and 27 in 100). The distance from A18 to A26 grew from two to three–four steps while A18 to A45 stayed at one step. [DIR007, LAG014, LAG005, LAG006]
+- A08 now appears in about 30 in 100 traces against about 13 in 100 earlier, sits earlier (mean position about 0.49 → 0.34), and its outgoing transitions, previously spread over many targets (A16, A26, A15 and A49 at about 14 in 100 each), now go mainly to A19, A20 and A25 (about 38, 29 and 21 in 100); A08 precedes A26 in about 27 in 100 traces versus about 6 in 100 earlier. [OCC001, DIR001, POS001, REL001, LAG001, LAG002]
+- A27 and A28 became near-fixed steps: A27→A28 rose from about half to essentially all outgoing transitions (now at lag 1 in about 99 in 100), A28→A32 from about half to about 99 in 100 (now at lag 1), and the earlier transitions A27→A25, A28→A25 and A25→A32 are no longer observed (supports fell from 72, 41 and 72 to 1–2). [DIR005, DIR006, LAG010, LAG011, LAG013, LAG008, LAG009, LAG012]
+- A48 and A50 still lead almost exclusively to A49 and A51 (about 89 in 100 earlier, 98–99 in 100 later), i.e. essentially unchanged. [DIR008, DIR009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the group of activities A19, A20 and A25 — each present in roughly a third of cases in both windows — was repositioned from after A26 to before A26, and that A45, which previously fed A26 directly, now reaches A26 through this group. In the earlier window the group ran after A26 and led on mainly to A28 and A32; in the later window it runs immediately before A26 and leads directly into it. [REL005, REL007, REL009, POS002, POS003, POS004, DIR002, DIR003, DIR004, DIR007, LAG007, LAG014]
+
+The hypothesis rests on direct relational evidence rather than frequency shifts alone: the order between the group and A26 reversed almost completely (A26-first about 31–36 in 100 → 0 in 100; group-first at most about 1 in 100 → 29–35 in 100), the group's mean position moved from about 0.60 to about 0.32 while A26 moved only about 0.04, and the successor and adjacency changes match (A19's outgoing transitions all go to A26; A19–A26 adjacency in 69 later traces). The screening context also fits: 40 qualifying items against about 0.72 expected for the control-flow family, each difference larger than in about 99.5 in 100 of random re-splits, so chance sampling cannot explain the set. [REL005, REL007, REL009, POS002, POS003, POS004, POS005, DIR002, LAG007]
+
+Limitation: the comparison is between two aggregate windows of 200 traces each, so it cannot distinguish a rewiring of one path from a change in the mix of process variants between the windows, and positions are event positions rather than clock times; the group's stable participation argues against the activities having been replaced. [POS002, POS003, POS004, REL005]
+
+Other differences:
+- A08 now takes part in about twice as many cases and leads mainly into A19, A20 and A25, so it appears to feed the repositioned group. [OCC001, DIR001, POS001, LAG001, LAG002]
+- A27 and A28 now form a near-deterministic chain A27→A28→A32 with both steps adjacent, whereas earlier A27 and A28 also branched into A25 and A25 led on to A32; those transitions are no longer observed. [DIR005, DIR006, LAG010, LAG013, LAG008, LAG009, LAG012]

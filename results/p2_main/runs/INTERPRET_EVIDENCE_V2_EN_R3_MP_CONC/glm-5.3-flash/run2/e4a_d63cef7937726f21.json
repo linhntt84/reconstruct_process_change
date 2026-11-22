@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_d63cef7937726f21.json",
+  "evidence_sha256": "f1185c3343a2358b3c90240c10af659a0409725e7544d0eba5633d3b6bfe0386",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:56:58.665843+00:00",
+  "finished_at_utc": "2026-11-15T01:57:37.002062+00:00",
+  "latency_seconds": 38.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5551,
+    "prompt_tokens": 3017,
+    "total_tokens": 8568,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5006,
+      "text_tokens": 545
+    },
+    "cost": 0.00322805
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21218,
+  "text": "### Observed differences\n\n- In the earlier window, the elapsed time between the completion of A22 and the completion of A14 was about 0.93 hours on average (median about 0.95 hours); in the later window it was about 0.44 hours (median about 0.45 hours) — a reduction of roughly half an hour, with the pair occurring at similar rates in both windows (about 21 vs 20 in 100 traces) [TWAIT002].\n- The elapsed time from the completion of A17 to the completion of A14 also shortened, from about 0.19 hours (roughly 11 minutes) to about 0.08 hours (roughly 5 minutes) on average, while the observed number of A17→A14 intervals rose from 18 to 32 (about 9 vs 16 in 100 traces) [TWAIT001].\n- Both qualifying differences concern elapsed times between consecutive completions; no control-flow difference passed the configured thresholds in this sample [TWAIT001, TWAIT002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a timing change centred on A14: in the later window, the elapsed time between the completion of the preceding activity and the completion of A14 is roughly halved, both when the predecessor is A22 (about 0.93 to about 0.44 hours) and when it is A17 (about 0.19 to about 0.08 hours). Both intervals moved in the same direction, each difference is larger than in all but about 1 of 2000 random re-splits of the pooled data, and the time family yielded 2 qualifying items against roughly 0.01 expected if nothing had changed, while the control-flow family yielded none against about 0.3 expected — so the change stands as a timing change in its own right, without a structural counterpart at these thresholds [TWAIT001, TWAIT002].\n\nLimitations: the indicator measures elapsed time between consecutive completion events, so the evidence cannot show whether the reduction reflects shorter waiting, faster processing, or a different content of the interval; and because both items share A14, they may describe a single underlying difference around A14 rather than two independent changes [TWAIT001, TWAIT002].\n\nOther differences: the A17→A14 interval was observed about twice as often in the later window (32 vs 18 pairs), which could suggest the pair occurs more often, but with only 18 and 32 observations and no qualifying control-flow item this is not established [TWAIT001].",
+  "case_id": "e4a_d63cef7937726f21",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

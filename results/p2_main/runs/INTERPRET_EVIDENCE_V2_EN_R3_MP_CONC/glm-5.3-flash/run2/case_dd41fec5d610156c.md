@@ -1,0 +1,18 @@
+### Observed differences
+
+- Participation flipped completely for three activities: in the earlier window A03 ran in all 200 traces (about two occurrences per trace, repeating in about 44 in 100 traces) and A01/A02 were not observed at all; in the later window A03 is not observed in any trace, while A01 and A02 each appear exactly once in every trace. [OCC001, OCC002, OCC003]
+- In the later window A02 sits at the very start of traces (median event position 0) and A01 in the later part (median about three quarters through); in the earlier window traces typically began with A03. [POS001, POS002, POS003]
+- Routing changed accordingly: before, A06 always led to A03 and A03's outgoing transitions split about 50/50 between A05 and A04; in the later window A06 leads to A01 in about 53 in 100 transitions and back to A04 in about 46 in 100, A02 leads to A04 (about 51 in 100) or A01 (about 48 in 100), and A01 leads to A05 in nearly all of its transitions. [DIR001, DIR002, DIR003, DIR004]
+- Ordering changed: in the later window A02 precedes A01 in about 98 in 100 traces and A01 precedes A05 in all traces; earlier, A05 always co-occurred with A03 and never with A01 or A02. [REL001, REL004, REL008, REL011]
+- Repetitions became one step shorter: repeats of A04 and of A06 occurred at distance 3 before (about 44 in 100 pairs) and now occur mostly at distance 2 (about 27 in 100), and A06→A04 moved from distance 2 to distance 1 — consistent with the repetition loop now closing directly between A04 and A06 instead of passing through A03. [LAG001, LAG003, LAG005]
+- A04 and A06 each now appear in about 50 in 100 traces, up from about 44 in 100 before. [POS004, POS005, REL003, REL005, REL007, REL009, REL010, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural reorganisation in which A03 disappeared and A01 and A02 took over its two roles. In the earlier window every trace passed through A03 about twice: A06 always led back to A03, and A03 branched roughly equally to A05 (ending the trace) or to A04 (continuing a repetition loop through A06). In the later window A03 is not observed; traces begin with A02, which either runs directly to A01 or enters a repetition loop between A04 and A06 that now closes without an intermediate activity, after which A01 precedes the final A05. Unlike A03, A01 never repeats within a trace, so it appears to have taken only the exit role. The shortening of repeat distances (A04→A04 and A06→A06 from 3 to 2 steps, A06→A04 from 2 to 1) matches the removal of exactly one activity from that loop. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL001, REL004, REL008, LAG001, LAG003, LAG005]
+
+This judgement rests on 29 qualifying control-flow items where about 0.17 would be expected if nothing had changed, so chance sampling cannot account for the evidence as a whole; the participation flips (0 vs 200 of 200 traces), the successor changes and the ordering relations all describe one and the same restructuring, so they are consistent rather than independent confirmations. A competing explanation the evidence cannot rule out is that A01 and A02 are relabelled rather than genuinely new activities, since the activity codes are anonymous; positions are event positions, so no claim about clock-time timing is made. [screening, OCC001, OCC002, OCC003, POS001, POS002]
+
+Other differences: A04 and A06 now appear in about 50 in 100 traces versus about 44 in 100 before, and A04→A05 pairs now also occur at distance 5 (about 15 in 100 pairs) alongside distance 3; these may be consequences of the restructuring or sampling differences, and the evidence cannot separate the two. [POS004, POS005, LAG002, REL003]

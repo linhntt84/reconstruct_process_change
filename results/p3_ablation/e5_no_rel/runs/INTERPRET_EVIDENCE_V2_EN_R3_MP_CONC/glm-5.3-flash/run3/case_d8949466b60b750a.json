@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "26693d23da8014219860388f992d604c3322524781ed150005d6b6f0bdf11ec7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:06:13.695583+00:00",
+  "finished_at_utc": "2026-11-15T12:07:19.417033+00:00",
+  "latency_seconds": 65.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9025,
+    "prompt_tokens": 10264,
+    "total_tokens": 19289,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8005,
+      "text_tokens": 1020
+    },
+    "cost": 0.0060520999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30791,
+  "text": "### Observed differences\n\n- Activity A27 ran in about 52 of 100 traces in the earlier window (about once per trace when present); in the later window it runs in about 199 of 200 traces, still about once per trace. [OCC001]\n- Activities A32, A33 and A38 each ran in roughly 48–49 of 100 traces earlier; in the later window each appears in only about 1 of 200 traces. [OCC002, OCC003, OCC004]\n- Earlier, the transitions out of A26 were split between A27 (about 51 in 100) and entries into the A32/A33/A38 group (A38 about 18, A33 about 16, A32 about 14 in 100); in the later window about 97 in 100 go directly to A27. [DIR001]\n- The positional gap from A26 to A28 was bimodal earlier (2 steps in about 50 of 100 cases, 4 steps in about 47, i.e. with the group in between); in the later window it is almost always 2 steps (about 97 in 100), consistent with the intermediate group being bypassed. [LAG001]\n- The succession A27 → A28 is immediate in both windows (gap of 1 in about 97 of 100 earlier, in all later cases), and A28 appears in every trace in both windows, with its mean position only slightly earlier (about 0.55 vs 0.53 of the trace). [LAG004, DIR002, POS001]\n- All later-window profiles of A32, A33 and A38 (successors, positions, gaps) rest on a single trace each, so the group's internal behaviour in the later window cannot be characterised. [DIR003, DIR004, POS002, POS003, POS004, LAG002, LAG003, LAG005, LAG006, LAG007, LAG008, LAG009]\n- Screening qualified 21 control-flow items against about 0.53 expected if nothing had changed (107 units tested), and each item's difference exceeds about 99.5 of 100 random re-splits of the pooled data. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative route through A32, A33 and A38 between A26 and A28 became optional and is now almost always skipped, while A27 became effectively mandatory. Earlier, about half of the traces entered this group after A26 (each activity in about 48–49 of 100 traces) as an alternative to the direct step to A27; in the later window the group is nearly unobserved (about 1 in 200 traces per activity), A26 leads to A27 in about 97 of 100 outgoing transitions, and A27's participation rose from about 52 to about 99.5 in 100 traces, leaving the direct route A26 → A27 → A28 in nearly all cases. [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001]\n\nThe pattern is direct and consistent across occurrence, routing and distance indicators, and the screening produced 21 items where fewer than one would be expected without change, so chance sampling of rare variants cannot explain the pattern as a whole. [screening] Limitations: the group still occurs in about 1 of 200 later traces, so the evidence shows near-disuse rather than certain removal; the group's later internal ordering is based on single traces [DIR003, DIR004, LAG005, LAG006, LAG007, LAG008, LAG009]; and a competing explanation — that the choice at A26 merely became near-deterministic in favour of the direct path while the group remains reachable in rare cases — cannot be ruled out.\n\nOther differences: A28's mean position shifted slightly earlier (about 0.55 to 0.53 of the trace), consistent with the intermediate group being bypassed [POS001]; A26 shows a few new successors observed only in single traces (A08, A13, A17, A24, A25, A28) and no longer A06 [DIR001]; A27's own outgoing behaviour is essentially unchanged, still almost always followed immediately by A28 [DIR002, LAG004].",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

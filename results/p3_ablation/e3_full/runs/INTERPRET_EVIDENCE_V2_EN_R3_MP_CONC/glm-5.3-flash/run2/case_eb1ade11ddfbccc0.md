@@ -1,0 +1,19 @@
+### Observed differences
+
+- A03 disappeared: in the earlier window every one of the 200 traces contained A03 exactly once, usually as the first activity, and its outgoing transitions went mostly to A02 (about 86 in 100); in the later window A03 does not appear in any trace and none of its former transitions are observed. [OCC001, POS003, DIR003, REL009]
+- A07 appeared as a new step between A04 and A01: earlier, A07 was never observed and A04 led directly to A01 (about 99 in 100 of A04's outgoing transitions, one step later); in the later window A07 occurs in every trace, A04's transitions all go to A07, A07's transitions all go to A01, and A01 now follows A04 two steps later. [OCC004, DIR004, DIR007, LAG005, REL004, REL015]
+- The start of the process simplified: earlier, A03 ran before A02 in about 86 in 100 traces, while A02 came first (before A03) in about 14 in 100; in the later window A02 is always the first activity, and the former A02→A03 transition (about 10 in 100 of A02's outgoing transitions) is gone. [POS002, REL005, DIR002, LAG001]
+- The remaining activities each shifted one position earlier and every path into A01 became one step longer: A05 and A06 moved from mid-trace to quarter-position and A04 from three-quarters to mid-position, while A02→A01 went from mostly 3 steps to always 4, and A05→A01 and A06→A01 from 2 to 3 steps. [POS004, POS005, POS006, LAG001, LAG005, LAG006, LAG008]
+- The rest of the flow is unchanged: A02 is followed by exactly one of A05 or A06 (the two never occur together in either window), both lead on to A04, and A01 remains the final activity in both windows. [REL016, DIR005, DIR006, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A03 was dropped from the process and A07 was added as a new mandatory step between A04 and A01. Earlier, each trace ran A03 and A02 at the start in either order (usually A03 first), then one of A05/A06, then A04, then A01. In the later window, A03 is not observed at all, A02 always starts, and every trace runs A02 → one of A05/A06 → A04 → A07 → A01. [OCC001, OCC004, DIR004, DIR007, REL004, REL009, POS007]
+
+The placement of A07 is shown directly, not just inferred from position shifts: A04's successor changed from A01 to A07, A07's successor is A01, A07 co-occurs with A01, A02, A04, A05 and A06 in 100 in 100 later traces (always after A04/A05/A06 and before A01), and all lags into A01 grew by exactly one step. The participation flips are maximal — A03 from 200 in 200 traces to 0 in 200, A07 from 0 to 200 — and these differences exceed those seen in 199 of 200 random re-splits of the pooled data, with occurrence, direction, position, relation and lag indicators all telling the same story. [OCC001, OCC004, DIR004, DIR007, LAG005, REL015, REL017, REL018]
+
+An important competing explanation remains: zero participation only shows that A03 was not observed in the later window, so the evidence cannot distinguish a genuine removal of A03 from its branch simply never being triggered in this period; it also cannot show whether the disappearance of A03 and the appearance of A07 were one coordinated change or two independent ones. [OCC001]
+
+Other differences: the split between the two alternatives shifted slightly — A05 ran in about 47 in 100 traces before and about 53 in 100 after, with A06 correspondingly falling from about 53 to 47 in 100; this 6-point shift is unremarkable against random re-splits (smaller than in only about 72 in 100 of them) and may be sampling noise rather than a routing change. [OCC002, OCC003, REL016, DIR002]

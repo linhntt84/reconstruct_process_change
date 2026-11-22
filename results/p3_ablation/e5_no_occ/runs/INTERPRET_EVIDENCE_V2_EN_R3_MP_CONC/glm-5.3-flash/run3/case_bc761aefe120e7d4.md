@@ -1,0 +1,20 @@
+### Observed differences
+
+- The cycle A30 → A31 → A36 repeated far less often in the later window. Earlier, each of the three activities occurred about 3.4 times per trace (about 690 observed outgoing transitions per activity across 200 traces); in the later window each occurred about once per trace (about 210 transitions, so a few traces still repeat). [DIR001, DIR002, DIR003]
+- The loop-back from A36 to A30 largely disappeared. Earlier, about 70 in 100 of A36's outgoing transitions returned to A30 and about 29 in 100 exited to A25; in the later window about 93 in 100 exited to A25 and only about 4 in 100 returned to A30. The links A30 → A31 and A31 → A36 stayed dominant in both windows (about 97–99 in 100). [DIR001, DIR002, DIR003]
+- The relation between A30 and A36 changed from interleaved repetition to a fixed ordering constraint. The two co-occurred in every trace in both windows, but earlier they were interleaved or repeated in 75 in 100 traces (strictly A30 before A36 in 25 in 100); in the later window the strict order held in 98 in 100 and interleaving fell to 2 in 100. [REL001]
+- A36 followed A30 within two steps in about 89 in 100 later traces, against about 12 in 100 earlier. [LAG002]
+- Both activities still occur in every trace, but their positions became more concentrated: A30's positional spread roughly halved (standard deviation about 0.12 to 0.07, median 0.43 to 0.41) and A36's spread halved (about 0.12 to 0.06) with its mean position unchanged near 0.49. [POS001, POS002]
+- Repeats within five steps almost vanished: earlier, about 150 traces contained a repeated A30 or a repeated A36 (usually three steps apart) and about 150 contained A36 followed by A30; in the later window these ordered pairs appeared in only 1–2 traces each, so this sign rests on very few observations. [LAG001, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeating cycle A30 → A31 → A36 stopped repeating: in the earlier window traces cycled through these three activities about three times, with A36 returning to A30 in about 70 in 100 of its transitions, while in the later window each activity executes about once per trace and A36 proceeds to A25 (about 93 in 100) instead of looping back (about 4 in 100). Since A30 → A31 and A31 → A36 remain the near-exclusive links in both windows, this reads as a loop reduced to a single pass, not a replacement of one path by another. [DIR001, DIR002, DIR003]
+
+The signs are direct and consistent: occurrences per trace fell from about 3.4 to about 1 for all three activities, the A30–A36 relation switched from mostly interleaved or repeated (75 in 100) to a fixed single order (98 in 100), A36 now follows A30 within two steps in about 89 in 100 traces, and positional spread roughly halved while participation stayed at 100 in 100 traces. Ten control-flow items qualified where about 0.26 would be expected by chance across the 52 tested units, and every item's difference exceeds about 995 of 1,000 random re-splits, so the pattern as a whole is unlikely in an unchanged process. [DIR001, DIR002, DIR003, REL001, LAG002, POS001, POS002]
+
+Other differences: a few successors of A30 and A31 that were previously unobserved (for example A10 and A19 after A30, A15 and A41 after A31) each carry about 0.5 in 100 of transitions in the later window, but these rest on roughly one transition each and are within what sampling explains. [DIR001, DIR002]
+
+The items are not independent confirmations, as they can all reflect this one underlying shift, and the near-disappearance of the self-repetition and reverse-pair evidence rests on only 1–2 later observations. The evidence also cannot rule out that the later window samples a different mix of trace variants, with and without the loop, rather than a single modified behaviour. [DIR001, DIR002, DIR003, REL001, LAG001, LAG003, LAG004]

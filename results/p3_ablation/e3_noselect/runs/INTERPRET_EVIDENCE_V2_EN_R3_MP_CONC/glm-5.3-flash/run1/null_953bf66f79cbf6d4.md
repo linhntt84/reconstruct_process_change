@@ -1,0 +1,15 @@
+### Observed differences
+
+- The largest differences concern A36 and A37, which in both windows mostly pass control to each other. In the earlier window A37 appears in about 60 of 100 traces (roughly 1.1 occurrences per trace) and A36 in about 31 of 100; in the later window these fall to about 48 and about 21 of 100, and repetitions also become rarer (traces with a repeated A37: about 31% earlier versus 21% later; A36: about 11% versus 8%). [OCC031, OCC032]
+- Routing around this pair moves in the same direction: of A37's observed outgoing transitions, the share continuing to A36 falls from about 47% to about 40% while the share continuing to A38 rises from about 52% to about 59%, and the A36-to-A37 transition is observed about 109 times earlier versus about 62 times later. [DIR036, DIR037]
+- A39, present in every trace in both windows, is repeated more often in the later window: about 43 of 100 traces contain a repeat versus about 31 of 100 earlier (about 1.7 versus 1.5 occurrences per trace), and the share of A40's outgoing transitions leading to A39 rises from about 31% to about 40%; A40, A41 and A42 also repeat slightly more often (recurrence support up by about 0.04–0.06). [OCC033, DIR040, OCC034, OCC035, OCC036]
+- A17 and A18 are executed in more traces in the later window (A17 about 24 of 100 versus 18; A18 about 29 versus 25), while A16's outgoing transitions shift away from A37 (about 29% versus 36%) towards A17 (about 15% versus 10%) and A18 (about 17% versus 13%). [OCC014, OCC015, DIR016]
+- Several activities shift by roughly four to six participation points in 100 traces with only moderate backing: A10 (about 14 of 100 traces versus 19), A23 (about 51 versus 56) alongside a rise in A24 (about 52 versus 45) and a matching move in A21's outgoing transitions from A23 to A24, A02 (about 16 versus 11), and A33 down while A34 rises (about 49 versus 54 and about 52 versus 47). [OCC008, OCC020, OCC021, DIR021, OCC002, OCC028, OCC029]
+- Two items look striking but rest on little: A44's successor profile changes completely, yet only 7–8 outgoing transitions of A44 are observed per window, and A17's transitions to A38 rise from about 92% to 98% of its outgoing transitions — unusual but behaviourally negligible. [DIR044, DIR017]
+- Across the whole set the shifts are small and two-sided: six activities gain and six lose at least four percentage points of trace share, and only about 13 of the 81 reported items reach an empirical strength of 0.8 (5 reach 0.9), roughly what random re-splits of a stable process would produce (about 16 and 8 expected). [OCC001-OCC037, DIR001-DIR044]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The strongest differences (around A36 and A37) are mirrored by several indicators that largely describe the same underlying traces rather than independent signals, and no screening baseline is provided to judge how many of the 81 items an unchanged process would produce, so ordinary window-to-window variation remains a full explanation. [OCC031, OCC032, DIR036, DIR037]

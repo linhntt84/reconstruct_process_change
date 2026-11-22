@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "fd74d13b7d9c5b0ab32fcd50be7811562514fdc96eb5dabc0edf1e25a1f4d552",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:10:16.095871+00:00",
+  "finished_at_utc": "2026-11-14T11:11:32.404704+00:00",
+  "latency_seconds": 76.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12718,
+    "prompt_tokens": 27656,
+    "total_tokens": 40374,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11118,
+      "text_tokens": 1600
+    },
+    "cost": 0.0105074
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34392,
+  "text": "### Observed differences\n\n- In the later window, A02 appears in about 34 in 100 traces, up from about 8 in 100 (mean occurrences per trace 0.35 vs 0.08), and it occurs earlier in the trace (median position about 0.33 vs 0.53 of the trace length). [OCC001, POS001]\n- A19, A21 and A24 now run much earlier: their mean position moved from about 0.67–0.69 to about 0.35–0.37, and A21's participation fell from about 38 to about 28 in 100 traces. Their outgoing transitions flipped from A30 (about 97 in 100 before) to A25 (about 95–100 in 100 after). [POS002, POS004, POS007, DIR002, DIR004, DIR007]\n- A20, A22 and A23 now run much later: mean position about 0.64 vs about 0.39 before. Their outgoing transitions to A25 (about 30–39 in 100 before) largely disappeared, replaced by transitions to A30 (about 32–34 in 100 after). [POS003, POS005, POS006, DIR003, DIR005, DIR006]\n- Pairwise order reversed almost completely between the two groups and the pivot activities: A20, A22 and A23 preceded A25 and A29 in about 98–100 in 100 traces before and in essentially none after, while A25/A29 now precede them in about 97–100 in 100; A19, A21 and A24 similarly flipped from following A20/A22/A23 and A25/A29 to preceding them (e.g., A19 before A20 in about 44 in 100 co-occurring traces after, from 0 before). [REL010, REL015, REL017, REL018, REL019, REL024, REL025, REL027, REL028]\n- A29 and A40 were rerouted consistently with this reversal: A29's outgoing transitions moved from A19/A21/A24 (about 99 in 100 before) to A20/A22/A23 (about 97 in 100 after), and the distance from A29 to A30 grew from about 2 to about 4 steps; A40's outgoing transitions moved from A20/A22/A23 (about 94 in 100) to A02/A19/A21/A24 (about 98 in 100), shortening its distance to A25 from about 4 to about 2–3 steps. [DIR008, DIR009, LAG004, LAG007]\n- A02 now sits ahead of both groups: it precedes A19/A21/A24 and A20/A22/A23/A25/A29 in roughly 9–33 in 100 traces (from about 1–5 in 100 before), A40 feeds into it within one step (62 traces), and it reaches A25 within about two steps (63 traces) — though the before-sides of these two lag comparisons rest on only about 2 observations each. [REL001, REL002, REL004, REL005, REL008, REL009, LAG001, LAG005]\n- A41 repeats slightly more often: mean occurrences per trace rose from about 1.5 to about 1.8, with recurrence in about 40 in 100 traces vs about 32 in 100. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the placement of two groups of activities was exchanged around A25 and A29: the group A19, A21, A24 — now commonly entered from the much more frequent A02, which in turn follows A40 — moved from the late part of traces to before A25/A29, while the group A20, A22, A23 moved from before A25 to after it. Accordingly, A19/A21/A24 now flow into A25 (previously A30), A20/A22/A23 now flow into A30 (previously A25), and A29's and A40's routing changed exactly as this rearrangement would predict. [REL017, REL024, REL027, POS002, POS003, POS005, POS006, DIR002, DIR003, DIR007, DIR008, DIR009]\n\nThe support is direct and consistent: the order reversals are near-total in both directions across 200-trace windows, the positional shifts of all six activities match the reversal, and the successor changes mirror each other (A30→A25 for one group, A25→A30 for the other). The volume of evidence (58 items against roughly 0.75 expected for an unchanged process) cannot be explained by chance as a whole. [REL017, REL025, DIR002, DIR004, DIR005, DIR006]\n\nLimitations: many items describe the same underlying trace behaviour — the numerous relation items are highly correlated rather than independent confirmations — and a few lag details rest on only 1–2 observations in one window [LAG001, LAG002, LAG005, LAG006]. A02's outgoing profile in the earlier window is based on only 16 traces, so its exact former successors are uncertain [DIR001]. Importantly, the evidence cannot distinguish a within-trace relocation of these groups from a complete shift in the mix of process variants (a variant with the old order disappearing and one with the new order appearing), since both would produce identical indicator patterns; sampling differences in variant frequencies remain a competing explanation in principle, though near-deterministic reversals make pure noise implausible. A41's increased repetition appears to be a separate change not explained by the rearrangement [OCC002].",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

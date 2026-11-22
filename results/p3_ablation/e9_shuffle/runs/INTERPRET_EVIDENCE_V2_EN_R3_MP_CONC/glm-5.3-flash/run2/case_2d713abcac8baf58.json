@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_2d713abcac8baf58.json",
+  "evidence_sha256": "fca9a74e857e97024418099df4bf768584b8a392033131c5545a5147696bcbed",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:24:08.847059+00:00",
+  "finished_at_utc": "2026-11-15T04:25:42.471930+00:00",
+  "latency_seconds": 93.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13609,
+    "prompt_tokens": 22060,
+    "total_tokens": 35669,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12242,
+      "text_tokens": 1367
+    },
+    "cost": 0.0101135
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40486,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A44 and A29, and exactly one of A19, A20 or A21 ran in essentially every trace (about 35, 30 and 36 in 100 traces respectively; the three never occurred together). Each of the three led on to A29 in about 95–99 in 100 of its observed outgoing transitions. [OCC001, OCC002, OCC003, REL001, REL002, REL008, DIR001, DIR002, DIR003]\n- In the earlier window these three activities sat between A44 and A29: A44 preceded them in all of their co-occurrences, they preceded A29, A44's outgoing transitions went to one of them in about 85 in 100 cases, and A44 reached A29 within 2 steps in about 84 in 100 traces (3 steps in about 16 in 100). [REL006, REL007, REL012, REL013, REL017, REL018, DIR007, LAG001]\n- In the later window, A19, A20 and A21 have nearly disappeared (1–2 in 200 traces each), while A26, A27 and A28 — not observed at all earlier — now run exactly once in every trace. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- In the later window, A44 precedes A26, A27 and A28 in about 99 in 100 traces, and each of the three precedes A29 in about 98 in 100. The three always occur together, and each pair appears in both orders in roughly equal shares (about 50/50), so the block has no fixed internal order. [REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]\n- A44's outgoing transitions moved from one of A19/A20/A21 (about 85 in 100 combined) to one of A26/A27/A28 (about 85 in 100 combined); each block activity in turn leads to A29 in about a third of its outgoing transitions and to one of the other two block activities in the rest. [DIR004, DIR005, DIR006, DIR007]\n- The distance from A44 to A29 widened from 2 steps in about 84 in 100 traces to 4 steps in about 82 in 100 (5 steps in about 18), and A29's mean event position moved from about 0.40 to 0.44 of the trace — both consistent with two additional activities now running before it. [LAG001, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A44 and A29 was restructured: in the earlier window each case executed a single step chosen from three alternatives (A19, A20 or A21) between A44 and A29, whereas in the later window that single step is replaced by a block of three activities (A26, A27, A28) executed in every case in unfixed order, with A44 leading into the block and the block leading to A29. The change is shown directly rather than inferred from frequencies alone: participation flips from 0 to 100 in 100 traces for A26/A27/A28 and from about 30–36 in 100 to nearly 0 for A19/A20/A21; relational items place A44 before the block and the block before A29; the successor profiles of A44 and of the block activities match this chain; and the widened A44–A29 gap and A29's later position fit two inserted activities. Screening also qualified 48 control-flow items where only about 0.65 would be expected without a change, far beyond what a stable process produces, and the items consistently describe this one restructuring. [OCC001, OCC004, REL021, REL022, DIR004, DIR007, LAG001, POS007]\n\nThe evidence cannot rule out that the two windows sample different case populations or coexisting process variants whose mix shifted, rather than a modification within one process; the residual later-window occurrences of A19/A20/A21 (1–2 traces) are also too few to show whether they survive as a rare path. [OCC001, OCC002, OCC003]\n\nOther differences: a handful of low-frequency successors appear around the new block (each roughly 1 in 200 transitions, e.g. from A26, A27 or A28 to activities such as A02, A09, A14, A47 or A48, and from A44 to A42), and the few later traces still containing A19, A20 or A21 show entirely different successors than before; these rest on 1–2 traces and carry little weight. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]",
+  "case_id": "case_2d713abcac8baf58",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

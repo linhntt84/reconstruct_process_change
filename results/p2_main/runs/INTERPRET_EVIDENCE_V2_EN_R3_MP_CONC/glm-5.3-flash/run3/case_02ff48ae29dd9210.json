@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_02ff48ae29dd9210.json",
+  "evidence_sha256": "5272b120621d6fe1fc152414f03aeed7938769ce9f4482482fad9e105ca6917e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:51:16.147618+00:00",
+  "finished_at_utc": "2026-11-15T02:52:29.339260+00:00",
+  "latency_seconds": 73.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10518,
+    "prompt_tokens": 16323,
+    "total_tokens": 26841,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9406,
+      "text_tokens": 1112
+    },
+    "cost": 0.007707449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33353,
+  "text": "### Observed differences\n\n- In the earlier window, five activities — A14, A15, A20, A21 and A22 — each ran in about 15–23 in 100 traces (31–46 of 200 traces each), never together in the same trace, so that every trace contained exactly one of them; in the later window they have all but disappeared, with A20 and A21 in 0 of 200 traces and A14, A15 and A22 in 1 of 200 each. [OCC001, OCC002, OCC003, OCC004, OCC005, REL001, REL007, REL012]\n- Before, this alternative step was inserted after A24 in about 39 in 100 traces and after A25 in about 61 in 100; in the later window A24 is followed directly by A25 in about 99 in 100 traces, and A25 is followed directly by A26 in all traces. [DIR005, DIR006, LAG005, LAG007]\n- As a result, the distance from A24 to A26 shortened from three event positions (in all earlier traces) to two positions (in about 99 in 100 later traces), and A26's average event position moved slightly earlier (about 0.56 to 0.55 of the trace; event positions, not clock time). [LAG006, POS005]\n- The five activities behaved as mutually exclusive alternatives before — for each pair they never co-occurred, and neither activity of a pair appeared in about 54–62 in 100 traces — whereas in the later window neither activity of any pair appears in 99–100 in 100 traces. [REL001, REL002, REL003, REL007, REL008, REL012]\n- Their co-occurrence with A24, A25 or A26, previously seen in about 20–23 in 100 traces, has dropped to at most about 1 in 200 traces. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative step between A24 and A26 is no longer executed: in the earlier window every trace contained exactly one of A14, A15, A20, A21 or A22, placed after A24 in about 39 in 100 cases and after A25 in about 61 in 100, while in the later window cases run directly from A24 via A25 to A26 and each of the five appears in at most 1 of 200 traces. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR005, DIR006, LAG005, LAG006, LAG007]\n\nThe screening produced 38 qualifying control-flow items against roughly 0.46 expected if nothing had changed, so this set of differences cannot be explained by chance sampling of rare variants. [screening] The support is direct and consistent: participation collapsed from 37–46 traces per activity to 0–1, the outgoing routing of A24 and A25 consolidated with full support in both windows (200 traces each), and the A24-to-A26 lag shortened in step. [OCC003, OCC004, DIR005, DIR006, LAG005, LAG006, LAG007]\n\nLimitations: zero participation only means the activities were not observed — they could still occur at a rate too low to surface in 200 traces — and the after-window routing detail for A15 and A22 rests on a single trace each. [DIR001, DIR004, OCC001, OCC002, OCC005] The many agreeing items largely describe one underlying difference and are not independent confirmations. A competing reading the evidence cannot rule out is that the five activities were not removed but became an optional branch that is now almost never taken; the observed behaviour is the same either way, but the evidence cannot distinguish removal from near-zero usage. [OCC001, OCC002, OCC003, OCC004, OCC005]",
+  "case_id": "case_02ff48ae29dd9210",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

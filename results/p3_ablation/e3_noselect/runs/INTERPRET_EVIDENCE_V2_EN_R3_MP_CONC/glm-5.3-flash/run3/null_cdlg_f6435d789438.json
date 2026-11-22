@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_cdlg_f6435d789438.json",
+  "evidence_sha256": "1887176c3e4441bf9724354c0f723b5c36814c4c87afcc5361e1d2194b41d227",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:56:47.590367+00:00",
+  "finished_at_utc": "2026-11-15T14:59:09.119822+00:00",
+  "latency_seconds": 141.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19402,
+    "prompt_tokens": 7297,
+    "total_tokens": 26699,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18140,
+      "text_tokens": 1262
+    },
+    "cost": 0.01079555
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65421,
+  "text": "### Observed differences\n\n- The choice of path after A01 shifted. In the earlier window, about 30 in 100 of A01's outgoing transitions went to A05, about 10 in 100 to A02 and about 11 in 100 to A11; in the later window, only about 20 in 100 go to A05, while A02 and A11 receive about 15 in 100 each. The share continuing to A03 stayed at roughly 36–38 in 100. This is the strongest single signal in the sample (empirical strength about 0.99, with roughly 400 outgoing transitions behind each window). [DIR001]\n- A05 is executed less in the later window: it appears in 56 of 200 traces (about 28 in 100) versus 78 of 200 (about 39 in 100) earlier; mean occurrences per trace fell from about 0.62 to 0.40, and traces in which A05 repeats dropped from about 15 in 100 to 8 in 100 (empirical strength about 0.99). [OCC004]\n- A02 and A11 are executed more in the later window, with identical profiles in both windows: each appears in 79 of 200 traces (about 40 in 100) versus 60 of 200 (30 in 100) earlier, with mean occurrences per trace up from about 0.43 to 0.59 (empirical strength about 0.96). Each is the other's most frequent successor, so they typically occur together. [OCC002, OCC010, DIR002, DIR007]\n- From A11, exits redistributed in the later window: toward A10 about 25 in 100 of A11's outgoing transitions (about 15 in 100 earlier) and away from A04 about 24 in 100 (about 32 in 100 earlier), while the share returning to A02 stayed at about half. A02's own exit shares barely moved. [DIR007, DIR002]\n- All other measured activities (A01, A03, A04, A06, A07, A08, A09, A10) and A05's own exits show only small fluctuations, with empirical strengths of at most about 0.41. [OCC001, OCC003, OCC005, OCC006, OCC007, OCC008, OCC009, DIR003, DIR004, DIR005, DIR006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the existing alternative paths after A01 are taken with different frequencies: fewer cases proceed from A01 to A05 and more proceed into A02 and A11, which typically occur together. A05 consequently runs in fewer traces (about 39 to 28 in 100) and repeats less often when it runs, while A02 and A11 run in more traces (about 30 to 40 in 100 each). The rerouting is observed directly at A01, and the participation changes match it in direction and size: A05's total occurrences fell from about 123 to 79, mirroring the drop in A01's transitions toward A05, while A02 and A11 occurrences rose from 85 to 118 each. Because A05 (28–39 in 100 traces) and A02/A11 (30–40 in 100) remain well observed in both windows, this reads as a shift in how often existing branches are taken, not as a path appearing, disappearing or being bypassed. [DIR001, OCC002, OCC004, OCC010]\n\nLimitations: the shift is not purely a branch-share change, since A05 also repeats less often within its traces (about 15 to 8 in 100 traces); and the evidence contains no chance baseline for the screening, so sampling variation cannot be excluded by count alone — although a direct rerouting signal this large, accompanied by consistent participation changes, is unlikely under random re-splits of these windows. [OCC004, DIR001]\n\nOther differences: From A11, exits shifted toward A10 and away from A04 (about 15 to 25 in 100, and about 32 to 24 in 100, of A11's outgoing transitions), while A02's exits stayed stable; this is a further routing difference the main hypothesis does not cover, and the evidence cannot show whether it belongs to the same change or is a separate one. [DIR007, DIR002] The remaining activities show only small, unspecific fluctuations. [OCC001, OCC003, OCC005, OCC006, OCC007, OCC008, OCC009, DIR003, DIR004, DIR005, DIR006]",
+  "case_id": "null_cdlg_f6435d789438",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

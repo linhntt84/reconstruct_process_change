@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, each of the five activities A25, A26, A31, A32 and A33 was executed about 3.6 times per case on average and occurred more than once in about 70 in 100 cases; in the later window each was executed about once per case and repeated in only about 1 in 100 cases. Participation stayed at 100 in 100 cases for all five in both windows, so none of them disappeared or became optional. [OCC001, OCC002, OCC003, OCC004, OCC005]
+- The ordering among these five changed from interleaved/repeated to largely fixed. Earlier, every pair among them was interleaved or repeated in about 70 in 100 cases; in the later window this dropped to about 1 in 100, A25 preceded A26, A31, A32 and A33 in about 99 in 100 cases, A26, A31 and A32 appeared in both orders in roughly equal shares (for example A26 before A31 in about 51 in 100 cases and A31 before A26 in about 48 in 100), and A26, A31 and A32 each preceded A33 in about 99 in 100 cases. [REL001, REL005, REL007, REL008, REL010]
+- The successors of A33 shifted: earlier, about 72% of A33's outgoing transitions led to A25 and about 28% to A20; in the later window about 98% led to A20 and only about 2% to A25. [DIR001]
+- Successive occurrences of A26, A31 and A32 moved close together: pairs that were previously spread thinly across one to five steps apart are now concentrated at one to two steps (for example A31 followed by A32: about 68% at one step and 28% at two steps in the later window, against a few percent per distance earlier). [LAG001, LAG004, LAG005, LAG008]
+- The event positions of all five activities became much tighter (standard deviation fell from about 0.15 to about 0.05–0.06, with mean positions almost unchanged), consistent with single rather than multiple occurrences per case. [POS001, POS002, POS003, POS004, POS005]
+- A few lag items for the pairs A31→A25, A32→A25, A33→A26, A33→A31 and A33→A32 also changed, but in the later window each rests on only about 2 observations and is weak on its own. [LAG003, LAG006, LAG009, LAG010, LAG011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeated execution of the block A25, A26, A31, A32, A33 stopped: in the earlier window these five activities each ran about 3–4 times per case and were interleaved with one another, while in the later window each runs once per case in a fixed order with A25 first and A33 last and no fixed order among A26, A31 and A32; A33 now leads on to A20 instead of back to A25. [OCC001, OCC005, REL001, REL008, REL010, DIR001]
+
+The repetition drop is measured directly on all 200 cases in each window (mean occurrences 3.57 → 1.02, recurrence about 70 in 100 → 1 in 100, participation unchanged), the relational, successor and adjacency items all match this picture, and the screening flagged 32 control-flow items where about 0.49 would be expected without a change — far more than an unchanged process typically produces. Note that these items largely describe one underlying difference, so they are not independent confirmations of it. [OCC001, OCC002, OCC003, OCC004, OCC005, REL001, DIR001, LAG005]
+
+Limitations: the evidence cannot distinguish whether the earlier behaviour was a sequential loop or a concurrent, repeatedly executed block, since interleaving and repetition are combined in the relational indicator; the lag items about A33 following the other activities rest on about 2 later-window observations; and the evidence shows nothing about what precedes A25 or follows A20. [REL001, LAG009, LAG010, LAG011, DIR001]

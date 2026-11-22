@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_51e14a7831df43cc.json",
+  "evidence_sha256": "92395ac5b706d7073c54c18278fe30abb279003a2922e7296bcecb08e6939a13",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:16:03.842339+00:00",
+  "finished_at_utc": "2026-11-16T01:19:32.688167+00:00",
+  "latency_seconds": 208.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28295,
+    "prompt_tokens": 116513,
+    "total_tokens": 144808,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26128,
+      "text_tokens": 2167
+    },
+    "cost": 0.03162445
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 83702,
+  "text": "### Observed differences\n\n- **A09 dropped from mandatory to optional and moved earlier.** In the earlier window A09 appeared in every trace (200 of 200), about twice per trace on average, with repeats in roughly half of the traces, and sat late in the trace (median position about 0.86 of the trace length). In the later window it appears in about 97 of 200 traces (roughly 49 in 100), always exactly once, and much earlier (median about 0.47). [OCC007, POS008]\n- **A16 moved the opposite way: from optional to mandatory, gained repeats, and moved later.** Earlier it appeared in about 100 of 200 traces (half), exactly once, around the middle of the trace (median about 0.40); later it appears in every trace, about 1.9 times per trace with repeats in about 44 in 100 traces, late in the trace (median about 0.86). [OCC013, POS015]\n- **The two activities exchanged their neighbours.** Earlier, A04 and A10 led exclusively to A09; later they lead exclusively to A16. Earlier, A09's outgoing transitions went to A06 (about half), A05 and A14; later, A16's outgoing transitions go to A06 (about 54 in 100), A05 and A14 in nearly the same shares. Earlier, A16 led to A10, A04, A01 and A13; later, A09 leads to A10, A04, A01 and A13. A16 no longer appears among A01's and A13's observed outgoing transitions (about 20% and 23% of them earlier), while A09 now does (about 18% and 27%). [DIR004, DIR006, DIR007, DIR011, DIR001, DIR009]\n- **Co-occurrence profiles were exchanged.** A01, A03, A06, A13 and A18 always co-occurred with A09 earlier and only in about half of the traces later; with A16 the reverse holds (about half earlier, always later). A15 earlier never co-occurred with A16 (the two were strict alternatives) and co-occurred with A09 in about half of the traces; later A15 and A09 are not observed together in any trace, while A15 co-occurs with A16 in about half of the traces. [REL007, REL037, REL076, REL108, REL113, REL014, REL044, REL082, REL137, REL147, REL110, REL143]\n- **Pairwise gaps mirrored the exchange.** A01→A09 gaps moved from 2–4 steps to 1–2 steps while A01→A16 moved from 1–2 steps to 2–4; A09→A06 moved from an immediate follow-on (gap 1) to gaps of 3–5 steps while A16→A06 moved from gaps of 3–5 to gap 1. [LAG004, LAG010, LAG028, LAG067, LAG081, LAG084]\n- Secondary differences: A05, A07, A12 and A14 repeat less often per trace than before (mean occurrences down by about 0.27–0.62), A07 also appears in fewer traces (36% vs 28.5%), and A05, A07, A08 and A12 sit slightly later within the trace than before. [OCC004, OCC005, OCC010, OCC011, POS005, POS006, POS007, POS011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A09 and A16 exchanged their placement and relational roles. In the earlier window, A09 was a mandatory, frequently repeated, late activity reached from A04 and A10 and leading to A05, A06 and A14, while A16 was an optional, single, mid-trace activity reached from A01 and A13, leading back to A01/A04/A10/A13, and never executed together with A15. In the later window each activity shows the profile the other had before: A16 is mandatory (all 200 traces), repeated in about 44 in 100 traces, placed late, reached from A04 and A10 and leading to A05/A06/A14; A09 is optional (about 49 in 100 traces), single, placed earlier, reached from A01 and A13 and leading to A01/A04/A10/A13; A15 now co-occurs with A16 in about half of the traces and never with A09. [OCC007, OCC013, POS008, POS015, DIR004, DIR006, DIR007, DIR011, REL110, REL143]\n\nThe exchange is shown directly rather than inferred: successor profiles flipped (A04 and A10 switched their sole observed target from A09 to A16; A01 and A13 switched from A16 to A09), the always-co-occurring set moved from A09 to A16, the position distributions swapped (median about 0.86 vs about 0.40–0.47), and the gap profiles of the affected pairs mirrored each other. The occurrence statistics of each activity in one window closely match the other's in the other window (participation about 0.49 vs 0.50 with single occurrences and no repeats; full participation with about 1.9 occurrences and repeats in about 44 in 100 traces), and the core items carry empirical strengths of about 0.995 — differences larger than in essentially all random re-splits of an unchanged process. The many agreeing REL, LAG and DIR items describe this one underlying difference, not independent changes. [DIR001, DIR009, REL007, REL014, LAG004, LAG010]\n\nOther differences: A05, A07, A12 and A14 repeat less often per trace than before (means down by about 0.27–0.62), A07 participates in fewer traces (36% vs 28.5%), and A05, A07, A08 and A12 sit slightly later within the trace; the evidence does not show whether these are side effects of the same restructuring or independent changes. [OCC004, OCC005, OCC010, OCC011, POS005, POS006, POS007, POS011]\n\nA competing explanation the evidence cannot rule out is that the A09 and A16 changes are two independent changes (A09 becoming optional and earlier, A16 becoming mandatory, repeated and later) that happen to involve the same neighbours, rather than a single exchange; the aggregate window-level profiles also cannot verify that A16 occupies A09's exact former position within individual traces. [OCC007, OCC013]",
+  "case_id": "case_51e14a7831df43cc",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

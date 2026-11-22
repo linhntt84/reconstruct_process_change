@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_7d7d4196fcf5e63e.json",
+  "evidence_sha256": "d723977dece92e5b9055214e58b79bc13d86c6f081d78e9cf8e2570e77c4b0ab",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:48:26.913847+00:00",
+  "finished_at_utc": "2026-11-15T04:50:45.628926+00:00",
+  "latency_seconds": 138.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20990,
+    "prompt_tokens": 26011,
+    "total_tokens": 47001,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19377,
+      "text_tokens": 1613
+    },
+    "cost": 0.014396649999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61874,
+  "text": "### Observed differences\n\n- Participation shifted markedly: in the earlier window A08 ran in every trace (about 2 occurrences per trace) and A01, A02 and A06 each appeared in about 49 in 100 traces; in the later window A02 appears in all 200 traces (about 1.8 occurrences per trace), while A08 fell to about 45 in 100 traces (about 0.8 occurrences), A01 to about 30, A06 to about 29 (mean about 0.7) and A07 to about 15. [OCC001, OCC002, OCC003, OCC004, OCC005]\n- Placement changed: A02 now sits at the very start of traces (median position 0, previously about 0.5), A08 moved from near the start (median about 0.1) to mid-trace (median about 0.5), and A01 moved earlier (median about 0.33 versus about 0.57). [POS001, POS002, POS004]\n- Successors were rewired: A02, which earlier led only to A01, now leads to A04 (about 57 in 100 outgoing transitions) and A03 (about 43); A08, which earlier split its outgoing flow between A03 and A04, now leads almost only to A02; A06 now leads to A08 (about 53) where it earlier led to A02 (about 51), its A07 share roughly unchanged; A03, which earlier led only to A06, now leads to A01 (about 52) or A06 (about 48). [DIR001, DIR002, DIR003, DIR004]\n- Pairwise relations moved the same way: A02 and A04, earlier together in about 49 in 100 traces (A04 alone otherwise), now always co-occur, with A02 first in about 55 in 100; A02 now occurs without A08 in about 55 in 100 traces and A04 without A08 in about 55 (earlier both always co-occurred with A08); A02 also now appears without A03, A06 or A07 in roughly 55–85 in 100 traces. [REL006, REL009, REL011, REL005, REL007, REL008]\n- Step distances changed accordingly: A02 reaches A04 typically 1 step later (about 62 in 100 observed pairs, previously always 3), A08 reaches A04 about 2 steps later (previously 1), A03 reaches A01 immediately (about 53 in 100), and A08 reaches A02 about 1 step later (about 41 in 100, previously about 3). [LAG011, LAG035, LAG015, LAG033]\n- Consecutive repetitions of the same activity (A01, A02, A03, A08) now occur about 4 steps apart rather than about 5. [LAG001, LAG009, LAG017, LAG038]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the flow was rewired around A02 and A08: in the later window A02 is a mandatory, first-position activity (present in all traces, median position 0, about 1.8 occurrences per trace) that passes flow to A04 and A03, whereas earlier it was optional (about 49 in 100 traces), sat mid-trace and led only to A01; A08, previously the mandatory early hub running about twice per trace and branching to A03 and A04, is now optional (about 45 in 100 traces), sits later, and leads into A02; A06 now routes through A08 instead of directly to A02, and A03 gained a direct link to A01, which itself became rarer (about 30 in 100 traces, about 0.4 occurrences per trace). [DIR001, DIR002, DIR003, DIR004, POS002, POS004, OCC001, OCC002, OCC005, REL006, REL009, REL011]\n\nThe hypothesis rests on direct successor changes in all four direction profiles, and the occurrence, position and relation items point the same way; 64 control-flow items qualified where fewer than one would be expected without change, and every item's difference exceeds about 995 of 1,000 random re-splits of the pooled traces, so sampling variation alone cannot explain the pattern. [DIR001, DIR002, DIR003, DIR004, OCC002, OCC005, POS002, POS004, REL006, REL009, REL011]\n\nLimitations: positions and step distances reflect event order within traces, not clock time; several lag profiles rest on few traces (for example A07→A01 with 6 and A06→A01 with 15 traces in the later window); and many items describe overlapping aspects of one rewiring rather than independent confirmations. A competing explanation the evidence cannot fully exclude is that a small residual share of cases still follows the old routing below the detection thresholds. [LAG027, LAG021, LAG035, REL006]\n\nOther differences: A07 became rarer (about 31 to 15 in 100 traces) and sits slightly later, while remaining a successor of A06; repetitions of the same activity are now spaced about 4 steps apart instead of about 5. [OCC004, POS003, DIR003, LAG001, LAG009, LAG017, LAG038]",
+  "case_id": "case_7d7d4196fcf5e63e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

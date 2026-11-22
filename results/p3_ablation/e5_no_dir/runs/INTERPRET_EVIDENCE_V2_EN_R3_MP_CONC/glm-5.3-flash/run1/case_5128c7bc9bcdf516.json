@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_5128c7bc9bcdf516.json",
+  "evidence_sha256": "358bfb6695d4efae5e5317833ec735a251c23109b3303a6430d47a22b2ff9d12",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:50:14.332104+00:00",
+  "finished_at_utc": "2026-11-14T11:52:03.860225+00:00",
+  "latency_seconds": 109.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16053,
+    "prompt_tokens": 18609,
+    "total_tokens": 34662,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14414,
+      "text_tokens": 1639
+    },
+    "cost": 0.010817849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48965,
+  "text": "### Observed differences\n\n- Participation is unchanged: A15, A17, A18, A19, A20 and A21 each appear in essentially every trace in both windows, and every pair of them co-occurs in 200 of 200 traces before and after. [POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- The order between the two groups of activities changed from mixed to fixed. In the earlier window both orders occur for every pair: A15 preceded A19 in only about 25 in 100 traces (A19 came first in about 75 in 100), A18 preceded A19 in about 12 in 100, and the pairs A15–A21 and A17–A19 were close to 50/50. In the later window, A15, A17 or A18 comes before A19, A20 or A21 in 199–200 of 200 traces for all eight pairs. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- Gaps between the activities became fixed. Earlier, distances spread over one to five positions (for example A15 to A20 over one to four steps, A17 to A18 over two to five); in the later window each pair sits at a single dominant gap, consistent with one consecutive chain A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 (adjacent pairs such as A17–A15, A15–A18, A19–A21, A21–A20, A26–A17 and A20–A27 are one step apart in about 995 in 1000 or more later traces; A15 to A20 four steps; A17 to A20 five steps). [LAG001, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, LAG009, LAG010, LAG013, LAG016, LAG017, LAG018, LAG020, LAG022, LAG023, LAG024, LAG025, LAG026, LAG027, LAG029]\n- Relative positions shifted in the same direction: A15, A17 and A18 moved earlier in the trace (mean relative position from about 0.64, 0.59 and 0.68 to about 0.59, 0.56 and 0.62), while A19, A20 and A21 moved later (about 0.59 to 0.65, 0.68 to 0.71, and 0.64 to 0.68). [POS001, POS002, POS003, POS004, POS005, POS006]\n- The reverse orders nearly disappear: pairs read backwards, such as A19 followed by A15 or A20 followed by A18 within five steps, occur in only 1 of 200 later traces (against roughly 106–176 of 200 earlier); each of these later profiles rests on a single trace and is weak on its own. [LAG014, LAG015, LAG019, LAG021, LAG028]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints among A15, A17, A18, A19, A20 and A21 changed: in the earlier window these activities were executed in variable order relative to one another, with gaps varying over one to five steps, while in the later window they run as one fixed, consecutive sequence — A17, A15, A18, A19, A21, A20 — with A26 immediately before and A27 immediately after the block. This is a change from mixed to fixed order (a tightening of ordering constraints), not a change in participation and not a swap of two activities. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG006, LAG007, LAG016, LAG017, LAG020, LAG022, LAG024, LAG025, POS001, POS003, POS004, POS006]\n\nSupporting signs: the relational evidence is direct and consistent — all eight cross-pairs moved from mixed to near-deterministic order while co-occurrence stayed at 100%, ruling out a participation change; the lag distributions collapsed onto single values that all fit the same chain; the position shifts agree with the new order; and 43 control-flow items qualified against roughly 0.33 expected if nothing had changed, far beyond what an unchanged process typically produces, with every item showing differences larger than in about 995 of 1000 random re-splits. [REL001, REL006, LAG001, LAG003, LAG007, POS003, POS004, screening]\n\nLimitations: about 1 in 200 later traces still deviates from the fixed order for some pairs, and the reverse-direction lag profiles rest on a single later observation each; some earlier lag profiles also rest on fewer observations (for example 51–61 of 200 for the A15–A19 and A18–A21 pairs). An important competing explanation the evidence cannot rule out is that the earlier mixed order reflects a mixture of two stable order variants rather than per-case variability; both would look the same here. [REL001, REL006, LAG002, LAG012, LAG014, LAG015, LAG019, LAG021]\n\nOther differences: none beyond this reordering — activity presence and co-occurrence are essentially unchanged between the windows, and all qualifying items describe the same reordering of this block and its fixed neighbours. [POS001, POS006, REL001, REL008, LAG001]",
+  "case_id": "case_5128c7bc9bcdf516",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

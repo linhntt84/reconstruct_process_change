@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_ff14d234ecc98f96.json",
+  "evidence_sha256": "f8a1db0f9e233d915e81b4fe846eb0c893838ae56217100bfc36c9ab8b0cda25",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:08:36.154345+00:00",
+  "finished_at_utc": "2026-11-15T07:09:53.046393+00:00",
+  "latency_seconds": 76.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10789,
+    "prompt_tokens": 27541,
+    "total_tokens": 38330,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9405,
+      "text_tokens": 1384
+    },
+    "cost": 0.00952565
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31849,
+  "text": "### Observed differences\n\n- In the earlier window, A26, A27 and A28 were mandatory: each ran in all 200 traces, about once per trace, and the three always co-occurred (in mixed order between them). In the later window they are nearly gone, each appearing in only about 1 in 100 traces (1–2 of 200). [OCC004, OCC005, OCC006, REL031, REL032, REL035]\n- A19, A20 and A21 show the reverse pattern: they were not observed in the earlier window, while in the later window each participates in about 31, 34 and 37 in 100 traces respectively, once per trace where it appears. [OCC001, OCC002, OCC003]\n- The three new activities behave as mutually exclusive alternatives rather than a sequence: any pair of them co-occurs in at most about 2 in 100 later traces, and their participation shares sum to roughly one activity per trace. [REL013, REL014, REL020]\n- A44's outgoing transitions switched from the old trio to the new one: earlier roughly 33%, 28% and 32% of its outgoing edges led to A26, A27 and A28; later roughly 27%, 30% and 36% lead to A19, A20 and A21 (about 200 traces behind each profile). [DIR007]\n- The new activities hand over to A29: about 97% of the observed outgoing transitions of A19, A20 and A21 go to A29. Earlier, A26, A27 and A28 each preceded A29 in essentially every trace; in the later window the old activities precede A29 in only about 1 in 100 traces. [DIR001, DIR002, DIR003, REL033, REL036, REL038]\n- The new activities occupy the old block's slot: A44 precedes A19/A20/A21 in about 30–37 of 100 later traces, and A11/A12 — which earlier preceded A26–A28 (co-occurrence about 47 in 100) — now precede A19/A20/A21 in about 17–20 of 100 traces each. [REL018, REL019, REL024, REL025, REL029, REL030, REL001, REL004, REL007, REL010]\n- A29 and A44 still occur in every trace in both windows; A29's mean event position is slightly earlier (about 0.43 to 0.40 of the trace) and A44's slightly later (about 0.31 to 0.33) — these are event positions, not clock times. [POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A44 and A29 was restructured by replacement: the mandatory trio A26, A27 and A28, which executed in every earlier trace between A44 (typically after A11/A12) and A29 in no fixed internal order, was replaced by a single activity chosen among the mutually exclusive alternatives A19, A20 and A21, each taken in roughly a third of later traces, again following A44/A11/A12 and preceding A29. The participation flips are large and well supported in both directions (0 of 200 to 62–74 of 200; 200 of 200 to 1–2 of 200) [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006], A44's successor profile switched wholesale from the old trio to the new one [DIR007], the new activities' outgoing edges lead to A29 [DIR001, DIR002, DIR003], and the relational items directly show both the new chain (A44 and A11/A12 before A19/A20/A21, and A19/A20/A21 before A29) and the loss of the old co-occurrences and orderings [REL018, REL019, REL024, REL029, REL033, REL036, REL038, REL031]. The screening tested 145 control-flow units and 60 items qualified, where about 0.72 would be expected if nothing had changed, so the ensemble is far beyond what a stable process produces. Because each side of the swap is (nearly) absent in one window, this is a replacement of activities rather than a re-weighting of pre-existing paths.\n\nLimitations: zero participation only means the activity was not observed, so the evidence cannot distinguish complete removal of A26–A28 from their becoming extremely rare, and a shift in the mix of two pre-existing process variants (one unobserved in the 200 earlier traces) cannot be ruled out. The later routing profiles of A26, A27 and A28 rest on only 1–2 traces and should not be interpreted. [DIR004, DIR005, DIR006]\n\nOther differences: A11 and A12 now appear in somewhat more traces (about 56 in 100, up from about 47 in 100) [REL001, REL007]; A29's mean event position moved slightly earlier and A44's slightly later, consistent with the shorter segment but not demonstrative on their own. [POS007, POS008]",
+  "case_id": "case_ff14d234ecc98f96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

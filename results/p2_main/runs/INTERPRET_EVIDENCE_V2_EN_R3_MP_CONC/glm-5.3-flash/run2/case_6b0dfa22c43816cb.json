@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_6b0dfa22c43816cb.json",
+  "evidence_sha256": "38b527fc4ca6c3f21f7cbc9d256ab179399f159745cc26a98e1b10805a08a42e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:45:53.993365+00:00",
+  "finished_at_utc": "2026-11-15T00:48:01.769282+00:00",
+  "latency_seconds": 127.78,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18875,
+    "prompt_tokens": 25300,
+    "total_tokens": 44175,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17068,
+      "text_tokens": 1807
+    },
+    "cost": 0.0132325
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56901,
+  "text": "### Observed differences\n\n- A02 was executed far less often in the later window: it appeared in about 21 in 100 traces, down from about 75 in 100, and when it appeared it sat around the middle of the trace (mean relative position about 0.55) rather than near the end (about 0.93). [OCC001, POS001]\n- A02's routing changed fundamentally: in the earlier window about 91 in 100 of its observed outgoing transitions led to A50, and A50 followed within one step in about 99 in 100 of those cases; in the later window its transitions spread over many targets, with A50 and A48 the largest at about 13 in 100 each. [DIR001, LAG001]\n- A02 also largely stopped co-occurring with the other main activities: with each of A25, A26, A27, A30, A35, A36, A41, A49 and A50, joint occurrence fell from about 75 in 100 traces to about 21 in 100, with the other activity now running without A02 in about 79 in 100 traces; previously A02 typically ran after these activities and before A50. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- The order of the middle segment reversed: earlier, A35, A36 and A41 each ran before A26 and A27 in about 97–99 in 100 traces; in the later window A26 and A27 ran before A35/A36/A41 in about 97–98 in 100. Positions agree: A35, A36 and A41 moved later (mean relative position about 0.40 to about 0.58) while A26 and A27 moved earlier (about 0.60 to 0.53 and 0.46 to 0.39). [REL010, REL011, REL012, REL013, REL014, REL015, POS002, POS003, POS004, POS005, POS006]\n- A30 changed place: it used to follow A26 immediately (about 98 in 100 within one step); in the later window it followed about four steps later (about 91 in 100), and A35, A36 and A41 each led to A30 in roughly 30–34 in 100 of their outgoing transitions, where earlier they had led to A27 in about 28–36 in 100 and almost never to A30. [LAG005, LAG006, LAG008, DIR006, DIR007, DIR008, DIR009]\n- A25 now feeds A27 directly: the A25→A27 distance was four steps in about 92 in 100 cases before and one step in about 98 in 100 after; A25's outgoing transitions, previously split across A35, A36 and A41 (about 38, 31 and 27 in 100), now go to A27 in about 96 in 100. [LAG002, DIR005]\n- The ending changed: transitions from A49 to A02 fell from about 72 in 100 to about 3 in 100, while A49 to A50 rose from about 26 to about 83 in 100, with A50 immediately after A49 in about 84 in 100 cases (about 27 in 100 before). [DIR011, LAG009]\n- A06 and A10 were executed more often: participation rose from about 7 to about 19 in 100 traces for A06 and from about 9 to about 22 in 100 for A10, though on small bases (13→38 and 17→43 traces). [OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the second half of the process was restructured. In the earlier window a typical case ran the block A35/A36/A41 first, then A26/A27 with A30 directly after A26, and ended A49 → A02 → A50, with A02 present in about 75 in 100 cases. In the later window, A02 takes part in only about 21 in 100 cases and no longer channels work to A50; A49 passes straight to A50; the middle block is reversed so that A26/A27 run before A35/A36/A41; A25 links directly to A27; and A30 is reached after the A35/A36/A41 block instead of directly after A26. A02 and the middle-block activities also changed from usually being executed together (about 75 in 100) to being near-alternatives (together in about 21 in 100). [OCC001, DIR001, DIR011, LAG009, REL010, REL013, LAG002, LAG005, DIR006, REL001]\n\nThe ordering changes are shown directly by relational evidence: the six A26/A27-versus-A35/A36/A41 pairs co-occur in every trace in both windows and flip from about 97–99 in 100 one way to about 97–98 in 100 the other, a magnitude that random re-splits of a stable process do not produce; successor and adjacency items point the same way, and 45 items qualified overall against roughly 1 expected without a change for this family, so the volume cannot be explained by chance sampling. [REL010, REL011, REL012, REL013, REL014, REL015, DIR005, DIR006, DIR007, DIR008, DIR009, DIR011, LAG002, LAG005, LAG006, LAG008, LAG009]\n\nOther differences: A06 and A10 are executed more often (about 7→19 and 9→22 in 100 traces, on 13→38 and 17→43 traces); A47's outgoing transitions to A48 dropped from about 97 to about 81 in 100, with small new shares to A10, A06, A02 and A04; A49's position moved slightly later (mean relative position about 0.94 to 0.96). [OCC002, OCC003, DIR010, POS007]\n\nLimitations: the windows are aggregates, so a shift in the mix of pre-existing variants between the windows cannot be ruled out as an alternative to a single modified process; and A02's post-change routing profile rests on only about 46 observed outgoing transitions (about 42 traces), so its new behaviour is estimated on a small base. [DIR001, OCC001]",
+  "case_id": "case_6b0dfa22c43816cb",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

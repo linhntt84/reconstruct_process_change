@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_dfdaac706f50a2ea.json",
+  "evidence_sha256": "9a54b4c4e385b06e6e34f9b1f66a1784f0a023fa0f77a68cf893a62629157e5b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:27:02.966200+00:00",
+  "finished_at_utc": "2026-11-14T11:28:51.177526+00:00",
+  "latency_seconds": 108.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15619,
+    "prompt_tokens": 22308,
+    "total_tokens": 37927,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13842,
+      "text_tokens": 1777
+    },
+    "cost": 0.011155700000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45143,
+  "text": "### Observed differences\n\n- Participation: before, A25, A26, A27, A28, A31 and each of A36, A37, A42 appeared in essentially every trace; in the later window A25, A26, A28 and A31 still do, while A27 appears in about 54 in 100 traces and A36, A37 and A42 in about 47 in 100 each. [POS003, POS006, POS007, POS008, REL001, REL009]\n\n- A25 to A28: before, A25's outgoing transitions split roughly equally across A42, A36 and A37 (about 34, 34 and 31 in 100) and A25 was typically four events before A28; in the later window about 99 in 100 of A25's outgoing transitions go to A28, and the two are directly consecutive in about 99 in 100 traces (before: about 6 in 100). [DIR001, LAG001]\n\n- Placement of the A36/A37/A42 group: before, each group member preceded A28 in about 99 in 100 traces and each led on to A28 in roughly a third of its outgoing transitions; in the later window A28 precedes each group member in about 46–47 in 100 traces, the group members no longer lead to A28, each leads to A31 in roughly 28–36 in 100 transitions, and their mean position moved from about 0.40 to about 0.58 of the trace. [REL014, REL015, REL016, DIR003, DIR004, DIR005, POS006, POS007, POS008]\n\n- A26, A27 and the group: before, A26 led to A27 in about 98 in 100 transitions and A27 preceded A31 in about 99 in 100 traces; in the later window A26 leads to A27 in about 53 in 100 cases and to A36/A37/A42 in about 46 in 100, and A27 co-occurs with each group member in at most about 1 in 100 traces (before: in every trace) — they changed from always executed together to mutually exclusive alternatives. [DIR002, REL005, REL010, REL011, REL012, REL013]\n\n- Order around A26 and A31: before, each group member preceded A26 in about 98–99 in 100 traces; in the later window A26 precedes each group member in about 46–47 in 100 traces, the group still precedes A31 when they co-occur (about 46–47 in 100), and A27 precedes A31 in about 52 in 100 traces, with A31 remaining universal. [REL006, REL007, REL008, REL017, REL018, REL019, REL010]\n\n- Spacing and group cohesion: before, A26 and A31 were two events apart in about 97 in 100 traces; in the later window they are two events apart in about 51 in 100 and four events apart in about 46 in 100, matching either A27 alone or the three-activity group in between. The group members still always run together when they run at all, in mixed order, in both windows. [LAG005, REL020, REL021, REL022]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural relocation: the group A36/A37/A42, which previously always executed between A25 and A28, now executes after A26 in roughly 47 in 100 traces, where it acts as an alternative to A27 (previously executed after every A26); A25 and A28 have become directly consecutive, A27 and the group have each changed from mandatory to optional, and A31 still executes in every trace, now following either A27 or the group. [REL011, REL012, REL013, REL014, REL015, REL016, REL006, REL007, REL008, DIR001, DIR002, LAG001, LAG005]\n\nThe change is shown directly by relational evidence: the order between A28 and each group member flipped (group member before A28 in about 99 in 100 traces before, A28 before them in about 46–47 in 100 after), the order between A26 and the group flipped the same way, and co-occurrence between A27 and the group collapsed from every trace to about 1 in 100. Successor profiles agree (A25 now exits almost only to A28; A26 splits between A27 and the group; the group exits to A31 instead of A28), participation drops match, and the A25–A28 and A26–A31 spacings shift exactly as this relocation predicts. With 46 qualifying control-flow items against fewer than 1 expected by chance, the pattern as a whole is not explainable by sampling noise, and the old arrangement is essentially absent afterwards (A36 before A28 in about 0.5 in 100 traces; A25 four events before A28 in about 0.5 in 100), so this is a structural change rather than existing paths being taken with different frequencies. [REL014, REL015, REL016, REL006, REL007, REL008, REL011, REL012, REL013, DIR001, DIR002, DIR003, DIR004, DIR005, POS003, POS006, POS007, POS008, LAG001, LAG005]\n\nLimitation: the evidence cannot show what determines which of the two later variants (A27 versus the group) a case takes, so a changed mix of case types routed differently cannot be ruled out; several LAG items rest on a single observation in one window and were not relied upon. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011]\n\nOther differences: mean relative positions of A26, A27, A28 and A31 shifted slightly earlier in the later window (for example A28 from about 0.45 to 0.39 of the trace) and A25 slightly later (about 0.34 to 0.36); these are consistent consequences of the relocation rather than separate changes. [POS001, POS002, POS003, POS004, POS005]",
+  "case_id": "case_dfdaac706f50a2ea",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

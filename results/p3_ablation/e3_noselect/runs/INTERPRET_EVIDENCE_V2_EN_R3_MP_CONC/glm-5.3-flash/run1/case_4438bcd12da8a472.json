@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_4438bcd12da8a472.json",
+  "evidence_sha256": "b172cdfb12e2e26d1782ea1ce6cfca484a55335cf311acc19c806b1b2a0d3576",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:45:59.873619+00:00",
+  "finished_at_utc": "2026-11-14T13:47:52.650629+00:00",
+  "latency_seconds": 112.78,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17872,
+    "prompt_tokens": 33158,
+    "total_tokens": 51030,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16137,
+      "text_tokens": 1735
+    },
+    "cost": 0.0139097
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54219,
+  "text": "### Observed differences\n\n- The dominant difference is a block of three activities between A36 and A21. In the earlier window, A14, A15 and A20 each ran in about 47 in 100 traces (94 of 200), always together, at most once per trace, and in the fixed order A36 → A14 → A20 → A15 → A21; in the later window each of the three runs in 199 of 200 traces, still once per trace and in the same order. [OCC013, OCC014, OCC019, REL001, REL002, REL004, REL007, REL012]\n- Routing at A36 flipped accordingly: before, about 53 in 100 of A36's outgoing transitions went straight to A21 (bypassing the block) and about 47 in 100 went to A14; in the later window about 995 in 1000 go to A14 and only about 1 in 200 to A21. The distance from A36 to A21 changed from 1 step in about 53 in 100 cases (4 steps in the rest) to 4 steps in about 995 in 1000 cases. [DIR024, LAG001]\n- Positions argue against a relocation: A14, A15 and A20 kept their relative positions (medians essentially unchanged, e.g. A14 at about 0.32 in both windows), while A21 shifted later (median about 0.41 to 0.42) and A36 earlier (about 0.32 to 0.29). [POS001, POS002, POS003, POS004, POS005]\n- A40, which earlier often appeared without the block (in about 33 in 100 traces), was almost never seen without it in the later window; its co-occurrence with A14 rose from about 28 to about 63 in 100 while its own participation stayed near 60 in 100. [REL006, REL011, REL015, OCC028]\n- A separate, smaller set of changes concerns repetition around A37, A39 and A40: A37 rose from about 1.6 to 1.7 occurrences per trace (traces with repeats up from about 37 to 46 in 100), A39 and A40 from about 0.76 to 0.89 occurrences (repeats up from about 12 to 21 in 100), A40 led to A37 in about 46 in 100 of its transitions (was about 36), and A37's self-distance shifted from mostly 2 towards mostly 3 steps. [OCC026, OCC028, OCC029, DIR027, DIR025, LAG002, LAG004, REL016, REL020]\n- Smaller routing shifts appear elsewhere (A02 more often followed by A08 and less by A07; A16 more often by A26 and less by A19; A30/A31 more often by A27; A35 more often by A36), and A13's participation fell from about 30 to 24 in 100 traces. [DIR002, DIR007, DIR010, DIR013, DIR019, DIR023, OCC012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block A14 → A20 → A15 between A36 and A21, which in the earlier window was executed in about 47 in 100 traces and bypassed (A36 directly followed by A21) in the remaining ~53 in 100, became near-mandatory in the later window: it executes in 199 of 200 traces, in the same fixed order and at the same relative positions, so that A21 now consistently comes after the block instead of directly after A36. The change is shown directly and consistently by participation (47 to about 99.5 in 100 for all three activities), by A36's successor split (A21 from about 53 in 100 to about 1 in 200, A14 to about 995 in 1000), by the A36-to-A21 gap becoming uniformly 4 steps, and by the stable positions of the three activities. Limitations: the bypass path survives in only about 1 in 200 later traces, so complete removal versus a strongly reduced share cannot be distinguished, and the many relation items are pairwise views of the same traces rather than independent confirmations. A competing explanation the evidence cannot rule out is a shift in the mix of cases entering the process (for example more cases of a variant that always includes the block) rather than a change in the process itself. [OCC013, OCC014, OCC019, DIR024, LAG001, POS001, POS004, POS005]\n\nOther differences: Repetition around A37, A39 and A40 increased (A37 repeats in about 46 in 100 traces, up from 37; A39/A40 average about 0.89 occurrences per trace, up from 0.76; A40 leads to A37 more often), and several smaller routing shifts (A02/A07/A08, A16/A19/A26, A30/A31, A35) plus a participation drop for A13 (about 30 to 24 in 100) were observed; these are not part of the main hypothesis. [OCC026, OCC028, OCC029, DIR027, LAG002, DIR002, DIR010, DIR019, DIR023, OCC012]",
+  "case_id": "case_4438bcd12da8a472",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

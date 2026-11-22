@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, assignment of activities A01, A03, A17 and A22 was spread thinly: about 42–55 in 100 assignments went to a long tail of infrequent resources, and even the most used single resource (User_48) held only about 6–11 in 100. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+- In the later window, allocation of the same four activities concentrated on a small, specific group of resources that had previously carried little of this work: User_40 rose from essentially zero to about 8–13 in 100 and User_3 from essentially zero to about 8–11 in 100, becoming the largest assignees, while the long-tail share fell to about 32–45 in 100 (a drop of roughly 10 percentage points in every one of the four activities) and previously leading resources such as User_48 lost several points (from about 6–11 down to about 4–9 in 100) without disappearing. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+- All four assignment-profile differences are of comparable size (about 0.29–0.47 on the indicator's own scale), each is larger than in about 999.5 of 1000 random re-splits of the pooled data, and the profiles rest on roughly 130–270 observations per window. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+- The elapsed time between consecutive completion events involving A16 and A24 shortened: the mean fell from about 76 hours to about 44 hours (48 versus 57 observed intervals), the median from about 93 to about 45 hours, and the middle half of intervals narrowed from roughly 30–119 hours to roughly 24–52 hours. [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that resource allocation changed: work on activities A01, A03, A17 and A22, previously spread across a diffuse long tail of many resources, was reallocated in the later window to a small, specific group of resources (including User_40 and User_3), with the long-tail share falling by about 10 percentage points per activity and previously leading resources such as User_48 losing share while remaining involved. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+
+This rests on a direct indicator of allocation (per-activity assignment shares), the same direction of shift in all four profiles, differences larger than about 999.5 of 1000 random re-splits, and substantial observation counts (about 130–270 per window). At the family level, 4 resource items qualified where only about 0.005 were expected if nothing had changed, so chance cannot explain the resource family as a whole — even though the four items most likely describe one underlying reallocation rather than four separate changes. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+
+Limitations: the resource codes are anonymous, so the evidence cannot distinguish a genuine reassignment of work from a change in how assignments were recorded, and it says nothing about whether activities outside these four were affected. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+
+Other differences: the elapsed time between consecutive completions involving A16 and A24 fell (mean about 76 to about 44 hours; median about 93 to about 45 hours). [TWAIT001] This is the only time item, in a family where about 0.019 items were expected by chance, so a single qualifying item is something a stable process can still produce; it remains a tentative timing observation rather than an established change. [TWAIT001] No control-flow items qualified (0 against about 0.18 expected without change), so the evidence indicates no structural difference at the configured thresholds. [TWAIT001, ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]

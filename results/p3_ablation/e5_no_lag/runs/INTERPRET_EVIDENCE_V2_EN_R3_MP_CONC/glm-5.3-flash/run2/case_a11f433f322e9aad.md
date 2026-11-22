@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, every case ran the same chain A26 → A27 → A28: A27 occurred exactly once in all 200 traces, A26 preceded A27 in about 199 of 200 traces, and A27 preceded A28 in about 199 of 200. A32, A33 and A38 did not occur at all (0 of 200 traces). [OCC001, OCC002, OCC003, OCC004, REL001, REL005]
+- In the later window, A27 appears in about 51 in 100 traces (once when present), while A32, A33 and A38 each appear in about 49 in 100 traces, once per trace. [OCC001, OCC002, OCC003, OCC004]
+- A26's outgoing transitions, which earlier went to A27 about 99 in 100 times, are now split roughly half to A27 and half to the three new activities (A33 about 17 in 100, A38 about 16, A32 about 15). [DIR001]
+- The three new activities form an unordered block: each pair co-occurs in about 49 in 100 traces — the same share as their individual participation — and both orders occur in similar proportions (for example, A32 before A33 in about 23 in 100 traces and A33 before A32 in about 27 in 100). [REL012, REL013, REL014]
+- A26 precedes each of the three new activities, and each of them precedes A28; A27 and each of the three are near-perfectly mutually exclusive (co-occurrence at most about 0.5 in 100 traces). [REL002, REL003, REL004, REL006, REL007, REL008, REL009, REL010, REL011]
+- A28 still runs in every case: it follows A27 where A27 runs, and runs without A27 in about 49 in 100 traces. The new activities sit around the middle of the event sequence (median position about 0.48–0.50). [REL005, POS001, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a new alternative branch operates between A26 and A28: in roughly half the cases A27 is skipped, and A32, A33 and A38 all execute between A26 and A28 in no fixed order, while the other half still run the original A26 → A27 → A28 sequence. Because A32, A33 and A38 had zero participation earlier, this is an added branch that makes A27 optional, not a re-weighting of previously observed paths. The routing split at A26, the successor profiles of the new activities (each leading to the other two and to A28), and the relational profiles (A26 before each new activity, each before A28, exclusivity with A27, unordered co-execution among the three) show this directly and consistently, and 26 qualifying items against roughly 0.55 expected without change far exceeds what a stable process typically produces [OCC001, OCC002, DIR001, DIR003, REL002, REL005, REL006, REL009, REL012]. Limitations: the many agreeing items largely describe one underlying trace pattern rather than independent confirmations, and the evidence cannot rule out that the two windows contain different mixes of case types — for example, a case type that always used this branch — rather than a routing change within one process; zero participation earlier only means the branch was not observed in that window.
+
+Other differences: A27's outgoing transitions show small new shares to A09 (about 2 in 100) and to A34 and A25 (about 1 in 100 each) in the later window, and A26 shows trace-level edges of about 0.5 in 100 to A07, A43 and A25 in both windows; both are negligible and consistent with sampling noise in an otherwise stable neighbourhood [DIR002, DIR001].

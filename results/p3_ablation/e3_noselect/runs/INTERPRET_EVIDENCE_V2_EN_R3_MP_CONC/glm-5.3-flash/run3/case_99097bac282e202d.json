@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_99097bac282e202d.json",
+  "evidence_sha256": "257836f9ce5874726fc3daa0b9fa006e1401486905209444de8a624d931fa6d0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:16:27.446340+00:00",
+  "finished_at_utc": "2026-11-15T13:19:09.191098+00:00",
+  "latency_seconds": 161.74,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22397,
+    "prompt_tokens": 82594,
+    "total_tokens": 104991,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20229,
+      "text_tokens": 2168
+    },
+    "cost": 0.0235876
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65990,
+  "text": "### Observed differences\n\n- The largest difference is a reversal between two groups of three activities. In the earlier window, A21, A22 and A23 each ran in about 75 in 100 traces, while A24, A25 and A26 each ran in about 25 in 100; in the later window, A21–A23 each run in about 25 in 100 and A24–A26 in about 75–76 in 100. Each of the six occurs at most once per trace in both windows. [OCC021, OCC022, OCC023, OCC024, OCC025, OCC026]\n\n- The two groups behave as mutually exclusive alternatives in both windows. Within each group the activities still occur together whenever the group runs (co-occurrence tracks the group share: A21–A22 75% → 24.5%, A24–A25 25% → 75.5%), while an activity from one group still almost never co-occurs with one from the other (at most about 1 in 100 traces in either window). [REL020, REL021, REL028, REL041, REL042, REL046, REL022, REL024, REL029, REL031, REL035, REL037]\n\n- The branch point is A20. Before, about 75% of A20's observed outgoing continuations led to A21, A22 or A23 (about 26%, 23% and 25%) and about 25% to A24, A25 or A26; in the later window this is reversed, with about 75% to A24, A25 or A26 (about 25%, 22% and 28%) and about 24% to A21–A23. [DIR020]\n\n- The surrounding structure is preserved. A20 still precedes the active group in almost every joint case (about 99 in 100 before, about 97 in 100 after), the later-window group still follows A20 within one to three steps, and A30 — present in every trace — co-occurred with the A21–A23 group before (about 75 in 100) and with the A24–A26 group after (about 75–76 in 100). Trace positions of all six activities are essentially unchanged (medians about 0.65–0.70 in both windows; A25 moved slightly earlier, 0.71 → 0.67). [REL011, REL012, REL013, REL014, REL015, REL016, REL025, REL032, REL038, REL043, REL047, REL050, LAG006, LAG007, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- A10 changed separately: it ran in about 6 in 100 traces before and about 21 in 100 after, and it now sits consistently late in the trace (median event position 0.86 vs 0.60, with a much narrower spread). It co-occurs with A20, A30, A32 and A33 in about 20–21 in 100 traces (before: about 3.5–5.5), typically after A20 or A32 and before A33; about 90% of A10's outgoing continuations now go to A33 (before about 18%, spread over several successors), and A32 now sends about 20% of its outgoing continuations to A10 (before none observed). [OCC010, POS001, REL001, REL008, REL009, REL010, DIR010, DIR032]\n\n- Smaller shifts, several resting on few traces: A02 fell from about 9 in 100 traces to about 1 (18 → 2 traces) with a completely changed successor profile; A06 and A08 fell from about 7 in 100 to about 2–3; A17 and A18 gained about 5 points (to about 52–53 in 100); A27 gained about 4 points; A31 declined slightly while A32 and A33 rose in participation and occurrences; A15 and A16 repeat in more traces (about 37 → 46–47 in 100). Within the now-larger A24–A26 group, continuations to A30 shifted (A24 → A30 up from about 20% to about 39% of its outgoing; A25 → A30 down from about 51% to about 34%). [OCC002, DIR002, OCC006, OCC008, OCC017, OCC018, OCC027, OCC031, OCC032, OCC033, OCC015, OCC016, DIR024, DIR025]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two existing alternative branches swapped their usage shares at the A20 branch point: the branch in which A21, A22 and A23 execute together after A20 (alongside A30) fell from about three of four cases to about one of four, while the branch with A24, A25 and A26 at the same point rose from about one of four to about three of four. This qualifies as a change in how often existing paths are taken rather than a structural replacement: all six activities appear in substantial shares in both windows (about 25 and 75 in 100), the groups remain mutually exclusive, keep their internal togetherness, their order after A20 and their trace positions, and A20's outgoing distribution flipped in step from about 75/25 to about 25/75; the core items agree across occurrence, relation, directly-follows and position indicators with empirical strengths near 0.995. Limitations: the evidence includes no chance-expectation baseline, so the comparison against random variation rests on those empirical strengths, and two 200-trace windows cannot show whether the take-up share changed for all cases or whether the windows contain different proportions of coexisting case types. [OCC021, OCC022, OCC023, OCC024, OCC025, OCC026, DIR020, REL011, REL014, REL020, REL041, POS003, POS006]\n\nOther differences: A10 became about four times as common and is now embedded late in the trace between A32/A20/A30 and A33, a pattern barely present earlier that looks like a second, separate difference rather than part of the branch swap. Smaller participation and recurrence shifts at A02, A06, A08, A15, A16, A17, A18, A27, A31, A32 and A33 are also visible, but several rest on fewer than about 20 traces per window and could be sampling variation. [OCC010, POS001, REL009, REL010, DIR010, DIR032, OCC002, OCC006, OCC008, OCC015, OCC016, OCC017, OCC018, OCC027, OCC031, OCC032, OCC033]",
+  "case_id": "case_99097bac282e202d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

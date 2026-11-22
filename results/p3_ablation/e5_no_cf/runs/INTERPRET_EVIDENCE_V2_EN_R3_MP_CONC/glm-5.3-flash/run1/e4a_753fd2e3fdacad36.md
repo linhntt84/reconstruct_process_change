@@ -1,0 +1,13 @@
+### Observed differences
+
+- In the earlier window, the elapsed time between the completion of each of A03, A04, A05, A06, A07, A08 and the next completion of A09 was typically about 1.0 hour (medians about 0.98–1.06 hours, standard deviations about 0.13–0.19 hours). In the later window, these elapsed times were typically about 0.5 hour (medians about 0.49–0.53 hours, standard deviations about 0.07–0.11 hours) — a reduction of about 0.47–0.56 hours, roughly half, with clearly less spread. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, TWAIT005, TWAIT006]
+- The observations behind these pairs are moderate in number and shifted in both directions: A04→A09 fell from about 51 to 36 observed consecutive pairs and A06→A09 from 36 to 32, while A05→A09 rose from 28 to 35, A08→A09 from 22 to 31, A03→A09 from 27 to 29, and A07→A09 stayed near 36–37; combined, the six pairs accounted for 200 observations in both windows. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, TWAIT005, TWAIT006]
+- Each of the six time differences is larger than 1999 of 2000 random re-splits of the pooled data, and the time family produced 6 qualifying items where about 0.008 would be expected if nothing had changed. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, TWAIT005, TWAIT006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+A change in timing is supported: in the later window, A09 follows the completion of A03, A04, A05, A06, A07 or A08 in about half the elapsed time as before — roughly 0.5 hours instead of about 1.0 hour. The change is measured directly on all six predecessor pairs, points in the same direction with similar size everywhere (mean reductions of about 0.47–0.56 hours), each difference exceeds 1999 of 2000 random re-splits, and six items against a chance expectation of about 0.008 cannot be explained by sampling variation. Because every predecessor pair shows the same halving individually, a shift in which activity precedes A09 cannot account for the reduction. The main limitation is that the indicator measures elapsed time between consecutive completion events, so the evidence cannot show whether the halving reflects less waiting, faster handling, or a different pattern of events between the two completions. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, TWAIT005, TWAIT006]
+
+Other differences: the mix of observed consecutive pairs shifted while the combined count stayed at 200 — A04→A09 down from about 51 to 36 and A08→A09 up from about 22 to 31 — a small redistribution of adjacency that the timing hypothesis does not cover and that this evidence alone cannot pin down further. [TWAIT002, TWAIT006]

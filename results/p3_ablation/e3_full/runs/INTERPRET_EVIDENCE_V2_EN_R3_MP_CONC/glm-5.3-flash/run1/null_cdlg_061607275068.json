@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_061607275068.json",
+  "evidence_sha256": "992850d84dfe226fdf49a2780ebdc17c79472a2e15d9342518b58c8d32f62d41",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:55:07.478302+00:00",
+  "finished_at_utc": "2026-11-16T01:59:40.476326+00:00",
+  "latency_seconds": 273.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 38091,
+    "prompt_tokens": 44704,
+    "total_tokens": 82795,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36273,
+      "text_tokens": 1818
+    },
+    "cost": 0.0257511
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 114727,
+  "text": "### Observed differences\n\n- The shared skeleton is stable: every trace contains A01 and A03 in both windows, A01 passes to A03 in about 87% of its outgoing transitions in both windows, and A03's mean position (about 0.24 of the trace) is essentially unchanged [POS002, DIR001, LAG002].\n- The process runs two mutually exclusive branches: one made of A02, A05, A08 and A09, the other of A04, A06, A07 and A10. None of the 16 cross-branch activity pairs ever occur in the same trace, in either window [REL010, REL012, REL013, REL016, REL024, REL027, REL028, REL030, REL031, REL034, REL036, REL037, REL039, REL040, REL043, REL044].\n- The choice between the branches moved slightly: in the earlier window each activity of the A02/A05/A08/A09 branch runs in about 49 in 100 traces and each activity of the A04/A06/A07/A10 branch in about 51 in 100; in the later window this is about 45 and 55 in 100. All eight occurrence differences are exactly 4 points, with unremarkable empirical strength (about 0.47, i.e. roughly half of random re-splits of the same traces show differences at least this large) [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008].\n- Inside the A02/A05/A08/A09 branch, the relative order of A02 and A09 swung: before, A02 preceded A09 in about 52 traces and followed it in about 46 (nearly even, no fixed order); in the later window A02 preceded A09 in about 37 and followed it in about 53 of the roughly 90 branch traces [REL015, LAG013, LAG034].\n- With that swing, A02 sits later in the trace (median position 0.4 → 0.6) and A09 earlier (0.6 → 0.4); A03 now passes directly to A09 more often (about 47% → 59% at one step) and directly to A02 less often (about 56% → 47%); from A02, transitions to A05 rose from about 46% to 58% of its outgoing transitions while transitions to A09 fell from about 50% to 38% [POS001, POS008, LAG020, LAG014, DIR002, DIR009, LAG011, DIR003].\n- Smaller shifts within the A04/A06/A07/A10 branch: A07 passed to A10 in about 94% of its outgoing transitions before and about 97% after. Several other flagged items rest on very few observations (for example, A08's outgoing transitions are observed in only one later trace, A10's in 3 before vs 6 after, and A05→A03 in a single trace each) and cannot be interpreted [DIR007, LAG033, DIR008, DIR010, LAG026].\n\n### Inference\n\nSupport level: Insufficient evidence\n\nThe evidence is insufficient to infer a change in the process. The most coherent candidate pattern — the changed relative order of A02 and A09 inside their branch together with the 4-point shift between the two branches — consists of small frequency movements that random re-splits of two 200-trace windows regularly produce (the branch-share items sit at chance-level strength near 0.47, and the order signal appears only as several correlated views of one modest swing rather than as independent confirmations), and the evidence provides no screening benchmark against which the number of qualifying items could be compared to the chance expectation [OCC001, OCC008, REL015, LAG013, LAG034, DIR002].",
+  "case_id": "null_cdlg_061607275068",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "insufficient evidence"
+}

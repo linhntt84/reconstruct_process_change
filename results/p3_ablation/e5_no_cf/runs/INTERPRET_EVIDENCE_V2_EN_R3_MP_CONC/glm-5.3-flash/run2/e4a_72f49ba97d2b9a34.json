@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_72f49ba97d2b9a34.json",
+  "evidence_sha256": "ebbdc3870eb485a720e9469a903f7a2e15f596c9db9d0263bedbc32373939d9d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:28:07.844764+00:00",
+  "finished_at_utc": "2026-11-15T07:28:42.889972+00:00",
+  "latency_seconds": 35.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6645,
+    "prompt_tokens": 3500,
+    "total_tokens": 10145,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5896,
+      "text_tokens": 749
+    },
+    "cost": 0.0038474999999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24383,
+  "text": "### Observed differences\n\n- The elapsed time between the completion of A30 and the completion of A40 — a pair observed in all 200 traces in both windows — was centred on about 1.0 hour in the earlier window (median about 1.0, middle half roughly 0.9–1.1 hours) and on about 0.5 hour in the later window (middle half roughly 0.44–0.54), a drop of about 0.52 hours; the intervals also became about half as variable. In only about 1 in 1000 of 2000 random re-splits did a difference this large appear. [TWAIT001]\n- The same halving shows for A41 → A40: median about 1.0 hour in the earlier window (68 of 200 traces) versus about 0.5 hour in the later window (70 of 200 traces), a drop of about 0.49 hours, likewise larger than in about 999 of 1000 re-splits. [TWAIT002]\n- And for A43 → A40: median about 0.99 hour in the earlier window (80 of 200 traces) versus about 0.49 hour in the later window (66 of 200 traces), a drop of about 0.47 hours with the same strength. [TWAIT003]\n- The shift is uniform across the three predecessor pairs in direction and size (about −0.47 to −0.52 hours), pointing to one timing change around A40 rather than three unrelated shifts; screening flagged 3 time items where about 0.015 would be expected by chance across the 30 tested units. [TWAIT001, TWAIT002, TWAIT003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change around A40: in the later window, the elapsed time between the completion of each predecessor — A30, A41 or A43 — and the completion of A40 is roughly half of what it was in the earlier window (about 1.0 hour down to about 0.5 hour), with about half the previous spread. The change is measured directly by the elapsed-time indicator on all three pairs, is consistent in direction and magnitude, rests on 66–200 observations per window per pair, and the number of qualifying items (3 versus about 0.015 expected without change) far exceeds what random re-splits of unchanged data produce. [TWAIT001, TWAIT002, TWAIT003]\n\nLimitations: TWAIT measures elapsed time between consecutive completion events, not pure waiting or service time, so the halving need not concern waiting specifically; all three items share A40 and may reflect a single underlying change rather than independent confirmations; and, as the evidence contains no order or participation items, a reordering around A40 that shortens the measured interval cannot be ruled out. [TWAIT001, TWAIT002, TWAIT003]\n\nOther differences: the A43 → A40 pair within five steps became somewhat less frequent (about 40 in 100 traces in the earlier window versus about 33 in 100 in the later window, 80 versus 66 of 200), while A41 → A40 stayed flat (68 versus 70) and A30 → A40 occurred in every trace in both windows; this modest participation shift is not part of the timing hypothesis and could reflect sampling variation between finite windows. [TWAIT001, TWAIT002, TWAIT003]",
+  "case_id": "e4a_72f49ba97d2b9a34",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

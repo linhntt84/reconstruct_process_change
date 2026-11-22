@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the later window, about 98 in 100 of A25's outgoing transitions go to A27; in the earlier window they were spread almost evenly over A35, A36, A41 and A42 (about 24–25 in 100 each). [DIR001]
+- In the later window, A26's outgoing transitions are spread over A35, A36, A41 and A42 (about 19–29 in 100 each); earlier, about 96 in 100 went directly to A30. [DIR002]
+- Each of A35, A36, A41 and A42 now sends roughly a quarter of its outgoing transitions to A30, where earlier it sent them to A27; transitions from each of the four to the other three remain spread in both windows, so the group's internal sequencing looks unchanged. [DIR003, DIR004, DIR005, DIR006]
+- The order between A26/A27 and the four activities reversed: earlier, A35, A36, A41 and A42 each came before A26 and before A27 in about 98–99 in 100 traces; in the later window, A26 and A27 each come before the four in about 97–99 in 100. All six activities still co-occur in every trace in both windows. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- A25 and A27 sat at the largest observed separation whenever the pair was seen earlier (172 traces) but are directly consecutive in about 98 in 100 later traces; A26 and A30 were directly consecutive in about 96 in 100 earlier traces and sit at the largest observed separation in all 181 later observations — a five-step gap consistent with the four activities now lying between them. [LAG001, LAG004]
+- A26 and A27 occur earlier in the later window (mean relative position from about 0.62 to 0.51 and from 0.48 to 0.37), while A35, A36, A41 and A42 occur later (from about 0.41 to about 0.58). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the four-activity group A35, A36, A41, A42 changed where it runs in the sequence: in the earlier window it ran between A25 and A27 (A25 led into it, it exited to A27, and A26 passed directly on to A30), while in the later window it runs between A26 and A30 (A26 leads into it, it exits to A30, and A25 passes directly to A27). [DIR001, DIR002, LAG001, LAG004, REL001, REL005]
+
+- The placement change is shown directly by relational evidence: all eight pairs between A26/A27 and the four group members flip from "group first" to "A26/A27 first" with near-deterministic shares (about 97–99 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- The adjacency flips for A25–A27 and A26–A30 rest on 172–200 observations per window, and the successor changes of both endpoints and all four group members point the same way. [LAG001, LAG004, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- In total 29 evidence items qualified, many times the roughly 0.7 expected if nothing had changed; the items overlap in what they capture, but they all describe one consistent placement difference rather than scattered effects. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+
+Limitations: the evidence cannot rule out that both arrangements already coexisted as rare variants in both windows and only their frequencies swapped between the samples — the 1–3% minority shares in the order relations are compatible with such a mix, and finite-sample variant frequencies can differ without any change. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008] Several lag profiles that would also fit the relocation rest on only one or two observations in one window and were not relied upon. [LAG002, LAG003, LAG005, LAG006, LAG007, LAG008, LAG009] Positions and lags are measured in event positions, not clock time, so no claim about timing or duration is made. [POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG004]

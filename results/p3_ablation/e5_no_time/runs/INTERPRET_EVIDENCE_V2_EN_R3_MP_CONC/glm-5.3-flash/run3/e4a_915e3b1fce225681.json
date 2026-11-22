@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_915e3b1fce225681.json",
+  "evidence_sha256": "f97fd06028241e390dd689ea64cf4172bcbf7438e2c204bc8e58bc63a17953ca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:48:16.742119+00:00",
+  "finished_at_utc": "2026-11-15T12:50:43.782853+00:00",
+  "latency_seconds": 147.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22472,
+    "prompt_tokens": 15464,
+    "total_tokens": 37936,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21091,
+      "text_tokens": 1381
+    },
+    "cost": 0.0135556
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75787,
+  "text": "### Observed differences\n\n- The same activities occur in every trace in both windows: A20, A21, A22, A25 and the five-activity group A30, A31, A36, A37 and A38 are each present in 200 of 200 traces before and after, and no pair is interleaved or repeated. What changed is their order. In the earlier window, each of the five group activities ran before A21 and before A22 in 200 of 200 traces; in the later window, A21 and A22 each run before all five group activities in about 199 of 200 traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]\n- The connections at the edges of the block flipped. In the earlier window, A20's outgoing transitions spread almost evenly over the five group activities (about 19–23 in 100 each); in the later window, A20 leads to A22 in about 99.5 in 100 of its outgoing transitions. Earlier, A21 always led to A25; in the later window, A21 leads into the five group activities (about 16–23 in 100 each) and to A25 in only about 0.5 in 100. Earlier, each group activity led to A22 in roughly 18–22 in 100 of its outgoing transitions; in the later window, that edge has practically vanished and each group activity leads to A25 in about 18–23 in 100 instead. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- Event positions shifted consistently: A22 now occurs earlier in the trace (mean position about 0.52 before, about 0.39 after) and A21 earlier (about 0.65 to about 0.52), while each of the five group activities now occurs later (about 0.44 to about 0.60). [POS001, POS002, POS003, POS004, POS005, POS006, POS007]\n- Close succession collapsed: earlier, A20 was within five steps of each group activity, and each group activity was within five steps of A22, in 200 of 200 traces; in the later window, this holds for only about 1 in 200 traces per pair. The after-side lag profiles rest on a single trace each, so the specific lag values carry little weight. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n- For scale: 34 control-flow items qualified, against roughly 0.55 expected by chance in an unchanged process, so the volume of flagged differences is far beyond what random re-splits of stable behaviour produce. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the segment consisting of A22 followed by A21 is executed before the five-activity block A30, A31, A36, A37 and A38, whereas in the earlier window it was executed after that block. Earlier, A20 fed directly into the group, the group led on to A22, A21 followed later and always led to A25; in the later window, A20 leads to A22, A21 follows about 0.13 of the trace later and feeds into the group, and the group now exits to A25. Because every activity keeps a 100% trace share and nothing is interleaved or repeated, this is a change in the placement and ordering of these activities, not a change in participation or in how often existing paths are taken. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006, POS007]\n\nSupporting signs: the order reversal is shown directly and near-perfectly in all ten activity pairs (from 100% \"group first\" to about 99.5 in 100 \"A21/A22 first\"), the successor changes mark the new entry and exit points, and the position shifts and the collapse of five-step proximity point the same way; with 34 items against roughly 0.55 expected without change, chance cannot account for the pattern as a whole. [REL001, REL006, DIR001, DIR002, DIR003, POS001, POS002, POS003, LAG001, LAG006, screening]\n\nLimitations: the flagged items largely describe one underlying reorder, so they are not independent confirmations; the relation between A22 and A21 themselves, A22's own successors and A25's new position are not directly observed, so the exact boundaries of the reordering — including what now runs between A22 and A21 — remain unconfirmed. A competing explanation the evidence cannot rule out is that both orderings existed as separate variants and only their mix shifted between the windows; the complete uniformity within each window makes sampling noise implausible, but behaviour outside the two windows is not observable. [REL001, REL006, LAG001, LAG006, POS001, POS002]\n\nOther differences: small redistributions inside the group block, most notably A37's outgoing share to A38 rising from about 13 to about 26 in 100, with compensating shifts in its other transitions. [DIR006]",
+  "case_id": "e4a_915e3b1fce225681",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

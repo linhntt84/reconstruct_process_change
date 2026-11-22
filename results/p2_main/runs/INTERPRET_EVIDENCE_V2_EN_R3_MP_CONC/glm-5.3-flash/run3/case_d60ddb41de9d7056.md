@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran in all 200 traces, always in the fixed order A21 → A22 → A23, and every observed outgoing transition of A21 led to A22 [OCC001, DIR001, REL001, REL007].
+- In the later window, A22 runs in about 57 in 100 cases (participation 1.00 → 0.57), while five activities that were not observed at all earlier — A27, A28, A33, A34 and A35 — each run in about 44 in 100 cases (87 of 200 traces), exactly once in each case where they appear [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006].
+- After A21 the flow splits in the later window: about 57 in 100 of A21's observed outgoing transitions still go to A22, and the remaining ~43 in 100 go to the five new activities, with individual shares of roughly 0.07–0.11 [DIR001].
+- The new activities and A22 are mutually exclusive: no later trace contains both (co-occurrence 0.00), whereas earlier A22 ran in every case; about 44 in 100 later traces contain a new activity but not A22 [REL008, REL009, REL010, REL011, REL012].
+- The five new activities always run together as one group — each of the ten pairs co-occurs in about 44 in 100 traces, matching each activity's participation — and within the group both orders occur in similar proportions (about 0.2 each), so there is no fixed internal order [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027].
+- The group sits between A21 and A23: A21 precedes each of the five in about 44 in 100 cases, each of the five precedes A23 in about 44 in 100 cases, and their observed outgoing transitions lead both to A23 and to one another; A23 itself still runs in every case [REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017, DIR002, DIR003, DIR004, DIR005, DIR006, REL007].
+
+### Inference
+
+Support level: Supported hypothesis
+
+- The evidence supports the hypothesis that, in the later window, A22 is bypassed in roughly 44 in 100 cases: after A21, the flow either runs A22 as before (about 57 in 100 cases) or runs a previously unobserved group of five activities — A27, A28, A33, A34 and A35, always together and in no fixed order — which then continues to A23. A22 changed from running in every case to being skipped in about 44 in 100 cases, and the five new activities changed from never being observed to running in about 44 in 100 cases [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL008, REL013].
+- The amount of qualifying evidence far exceeds what an unchanged process typically produces: 45 control-flow items qualified where roughly 0.5 would be expected by chance, and the occurrence, routing and relational items all describe this same rerouting rather than unrelated differences [OCC001, DIR001, DIR002, REL001, REL008, REL013, REL018].
+- A competing explanation the evidence cannot fully rule out is that this two-route behaviour already existed earlier as a variant too rare to appear in the 200 earlier traces, so that the later window only reflects a frequency shift between pre-existing routes; it also cannot show whether the group's lack of fixed order reflects genuinely unordered execution or only variability in this sample [OCC002, OCC003, OCC004, OCC005, OCC006, REL018, REL027].
+- Other differences: A21's mean relative position moved slightly earlier (about 0.49 to 0.46 of the trace), and the new activities occupy mid-trace positions (mean about 0.52); both are consistent with the extra group lengthening traces rather than indicating a separate change [POS001, POS002, POS003, POS004, POS005, POS006].

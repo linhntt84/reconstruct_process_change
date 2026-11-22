@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "d2858707e0810f0cc15400438352f2b73030bcb0f2459d6c4a1bd805f946aa6e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:11:32.563311+00:00",
+  "finished_at_utc": "2026-11-15T11:12:38.744710+00:00",
+  "latency_seconds": 66.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8784,
+    "prompt_tokens": 7428,
+    "total_tokens": 16212,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7906,
+      "text_tokens": 878
+    },
+    "cost": 0.0055062
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30541,
+  "text": "### Observed differences\n\n- In the earlier window, every case ran the same fixed block: A36, then A14, then A15, then A20, then A21, each exactly once per case — A14, A15 and A20 each appeared in 200 of 200 cases, and every pair among these five activities co-occurred in 100% of cases with a single fixed order. [OCC001, OCC002, OCC003, REL001, REL004, REL005, REL008, LAG001]\n- In the later window, A14, A15 and A20 each appear in only about 53 in 100 cases (106 of 200), still exactly once when present, while A36 and A21 continue to appear in every case. [OCC001, OCC002, OCC003, REL003, REL004]\n- The three activities are skipped together: in about 47 in 100 later cases none of A14, A15 or A20 appears (this never happened earlier), and when they do appear they are never seen without each other or outside the stretch between A36 and A21. [REL001, REL002, REL003, REL005]\n- When the block does run in the later window (about 53 in 100 cases), its order is unchanged: A36 before A14 before A15 before A20 before A21. [REL001, REL006, REL007, REL008, REL009]\n- The distance between A36 and A21 reflects this directly: earlier, A21 followed A36 four positions later in 100% of cases; in the later window the distance is four positions in about 53% of cases and one position — A36 directly followed by A21 — in about 47%. [LAG001]\n- A21's relative position in the case shifted slightly earlier (median from about 0.43 to about 0.41 of the case) with slightly more spread. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block A14 → A15 → A20, previously executed in a fixed order between A36 and A21 in every case, became skippable in the later window: in roughly 47 in 100 cases the whole block is bypassed and A36 leads directly to A21, while in the remaining cases the block runs exactly as before. The signs are direct and mutually consistent: participation of all three activities dropped in lockstep from 100% to about 53% with no change in repetition; the pairwise relations show the three always absent together, never appearing alone, and never reordered; and the A36–A21 distance distribution shows the four-step gap replaced by a one-step gap in exactly the share of cases in which the block is missing. Screening also qualifies 14 control-flow items where only about 0.22 would be expected if nothing had changed, so the pattern as a whole is not what random re-splits of an unchanged process produce — though the items largely describe one underlying difference rather than many independent changes. The evidence cannot distinguish between the three activities having become optional and a new direct A36→A21 route having been introduced, since edge-level directional evidence is not part of this sample; it also cannot rule out that the skipped work is performed by other activities not covered by these indicators. [OCC001, OCC002, OCC003, REL001, REL002, REL003, REL005, REL006, REL007, REL008, REL009, LAG001]\n\nOther differences: A21's slightly earlier relative position is plausibly a by-product of the block being skipped in some cases rather than an independent change. [POS001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

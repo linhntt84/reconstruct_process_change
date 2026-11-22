@@ -1,0 +1,23 @@
+### Observed differences
+
+- In the later window, A32 appears in about 48 in 100 traces, down from about 60, and occurs about 0.8 times per trace, down from about 1.1, so it also repeats less often within traces; A31 appears in about 21 in 100 traces, down from about 31. [OCC021, OCC022]
+- In the later window, A11 sends about 29% of its outgoing transitions to A32 (previously about 36%) and larger shares to A12 (about 15%, previously 11%) and A13 (about 18%, previously 14%); accordingly, A12 appears in about 24 in 100 traces (previously 18) and A13 in about 29 (previously 23). [DIR009, OCC011, OCC012]
+- In the later window, about 61% of the outgoing transitions from A32 go to A33 (previously about 52%), while the share going to A31 falls to about 40% (previously 48%). [DIR020]
+- In the later window, about 26% of A16's outgoing transitions go to A19 (previously about 17%) and about 22% to A18 (previously 32%); A19 appears in about 52 in 100 traces (previously 45) and A18 in about 49 (previously 56). [DIR010, OCC015, OCC016]
+- In the later window, A34 recurs within a trace in about 42 in 100 traces (previously about 31) and occurs about 1.7 times per trace (previously 1.5); from A35, about 41% of outgoing transitions return to A34 (previously 33%) at the expense of A38 (about 59%, previously 67%), with a smaller same-direction shift from A37, and A35 appears in about 64 in 100 traces (previously 60) while A36 and A37 recur somewhat more often. [OCC023, OCC024, OCC025, OCC026, DIR023, DIR024]
+- In the later window, A27 and A28 each appear in about 49 in 100 traces (previously about 54) and A29 and A30 in about 52 (previously 47), matching a small shift in A25's outgoing shares towards A29 (about 29% versus 25%); the routing evidence for this shift is weak. [OCC017, OCC018, OCC019, OCC020, DIR015]
+- Remaining differences are small: A10 and A11 repeat slightly less often (about 1.62 occurrences per trace versus 1.67), successor shares in the A01–A09 group moved mildly (from A03, the share to A05 fell from about 38% to 28% while A09 rose to about 38%), and every other listed activity changes by about one percentage point or less, within the range random re-splits of these windows produce. [OCC009, OCC010, DIR003, DIR004, OCC001, DIR014]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, flow after A11 was redirected: A11 passes a smaller share of its onward transitions to A32 and larger shares to A12 and A13, so A12 and A13 run in more cases while the A31/A32 branch runs in fewer cases and A32 repeats less often, and from A32 the exit goes relatively more often to A33 than to A31. The participation, recurrence and routing indicators move in the same direction by compatible amounts (for example A32 from about 60 to 48 in 100 traces while A11's share to A32 falls from about 36% to 29%), the A31 and A32 differences exceed about 99 in 100 random re-splits and the routing and A12/A13 differences about 73–94 in 100, so sampling noise is an unlikely explanation for this cluster; the limitations are that these items describe the same underlying traces and are not independent confirmations, each window holds only 200 cases, and no screening baseline is included against which the number of flagged items could be compared. [OCC011, OCC012, OCC021, OCC022, DIR009, DIR020]
+
+Other differences:
+- After A16, the A19 branch is taken more often and the A18 branch less; both alternatives remain frequently observed in both windows, so this is a change in how often two existing alternative paths are taken. [DIR010, OCC015, OCC016]
+- Around A34–A38, A34 is repeated more often and A35 and A37 route a larger share of their transitions back to A34 and a smaller share to A38. [OCC023, OCC024, DIR023, DIR024]
+- A milder shift at A25 moves shares from A27/A28 towards A29/A30, but its routing evidence is weak. [OCC017, OCC018, OCC019, OCC020, DIR015]
+- A10 and A11 repeat slightly less often, and successor shares in the A01–A09 group moved mildly, for example away from A05 towards A09 after A03. [OCC009, OCC010, DIR003, DIR004]
+
+The main competing explanation the evidence cannot rule out is ordinary sampling variability between the two 200-case windows; it is unlikely for the A32 cluster given the agreement of participation, recurrence and routing indicators, but it remains plausible for the milder A25/A27–A30 shift and the A01–A09 reshuffle. [DIR015, OCC017, DIR003]

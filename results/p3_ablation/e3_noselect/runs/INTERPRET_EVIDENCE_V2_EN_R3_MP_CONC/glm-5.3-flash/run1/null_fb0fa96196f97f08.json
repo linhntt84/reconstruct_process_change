@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_fb0fa96196f97f08.json",
+  "evidence_sha256": "05ecf37b521ba8989c96f30586d16b85f0ea3964d0be8591b4c0637d3e1e64af",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:53:39.600717+00:00",
+  "finished_at_utc": "2026-11-14T14:57:42.559943+00:00",
+  "latency_seconds": 242.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 39513,
+    "prompt_tokens": 37711,
+    "total_tokens": 77224,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36856,
+      "text_tokens": 2657
+    },
+    "cost": 0.02541315
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 127762,
+  "text": "### Observed differences\n\n- The clearest difference concerns two groups of activities that behave like mutually exclusive alternative paths. Before, A01, A05, A07 and A09 each appeared in about 57 in 100 traces, while A03, A11, A12 and A13 each appeared in about 43–44 in 100; in the later window the first group appears in about 48–49 in 100 and the second in about 51–52 in 100. In both windows the two groups' shares sum to about 100 in 100, and none of the eight activities repeats within a trace, so this looks like a pure re-weighting of two existing alternatives rather than activities appearing, disappearing or becoming repeatable; each of the eight differences is larger than about 78–89 in 100 of random re-splits. [OCC001, OCC003, OCC005, OCC007, OCC008, OCC010, OCC011, OCC012]\n- Inside the second group, the preferred successor shifted: from A12, the share of outgoing transitions going to A11 fell from about 39 to 26 in 100 while A13 rose from about 24 to 32; from A13, the share going to A11 rose from about 26 to 39. The corresponding loop in the first group (A05/A07/A09, all exiting to A14) kept its internal routing nearly unchanged. [DIR011, DIR012, DIR013, DIR001, DIR005, DIR007, DIR009]\n- Around A42–A46, A43 is now executed in about 70 in 100 traces (about 58 before) and occurs about 1.0 times per trace (about 0.8 before); A42, which runs in every trace, now occurs about 1.8 times per trace (about 1.6 before); A44 appears in about 57 in 100 traces (about 65 before). From A42, the share of outgoing transitions to A43 rose from about 48 to 55 while the share to A44 fell from about 51 to 44; from A45, the share to A42 rose from about 38 to 45 while the share to A46 fell from about 61 to 54. [OCC037, OCC038, OCC039, DIR042, DIR043, DIR045]\n- In the A35–A38 loops, A35 and A36 now appear in about 42 in 100 traces each (about 50 before) while A37 and A38 appear in about 58–59 in 100 (about 51 before); the preferred successor also swapped: from A35, transitions to A36 rose from about 44 to 57 in 100 of its outgoing transitions while A32 fell from 55 to 39; from A36, A32 rose from 44 to 56; from A37, A32 rose from 47 to 54; from A38, A37 rose from 47 to 56. [OCC030, OCC031, OCC032, OCC033, DIR035, DIR036, DIR037, DIR038]\n- In the A21–A24/A31 loop, A23 now appears in about 46 in 100 traces (about 53 before) and A24 in about 55 (about 48 before); from A21, the share of outgoing transitions to A24 rose from about 20 to 29 while the share to A23 fell from about 24 to 18. [OCC022, OCC023, DIR021]\n- Smaller shifts: A39 now appears in about 13 in 100 traces (about 19 before) and, after A40, share moved from A39 (about 38 to 29 in 100 of outgoing transitions) to A41 (about 62 to 69); A02 appears in about 29 in 100 traces (about 35 before) and, from A46, transitions to A47 rose from about 66 to 74 while those to A02 fell from about 32 to 25. A few always-executed activities (A30, A33, A41, A46, A47) differ only by 2–4 recurring traces in 200, and A47's outgoing profile rests on only 1 vs 6 observed transitions — too small to interpret. [OCC034, DIR040, OCC002, DIR046, OCC027, OCC029, OCC036, OCC041, OCC042, DIR047]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the share of cases taking two existing alternative paths was re-weighted: before, the path containing A01, A05, A07 and A09 was executed in about 57 in 100 cases and the alternative path containing A03, A11, A12 and A13 in about 43 in 100; in the later window this is reversed to about 48–49 versus 51–52 in 100. The support is direct and consistent: the claim rests exactly on the participation of the eight activities involved, all of which remain frequent in both windows and none of which repeats; the two groups' shares sum to about 100 in 100 in both windows, so they behave as mutually exclusive alternatives that both feed into A14; every activity moved by a similar margin (about 8 in 100) in its path's direction; and the internal routing of the first path's A05/A07/A09 loop stayed nearly stable, which fits a frequency change of the whole path rather than a structural replacement. [OCC001, OCC003, OCC005, OCC007, OCC008, OCC010, OCC011, OCC012, DIR001, DIR005, DIR007, DIR009]\n\nLimitations: the eight activity-level items describe one underlying difference (the same traces), so they are not independent confirmations; the decision point between the two paths was not itself observed, so the two-alternatives reading rests on the complementary participation pattern; and no screening baseline is included, so chance sampling of two 200-trace windows — which for a single activity produces a difference this size in roughly 10–20 in 100 of random re-splits — cannot be fully ruled out, although several other, independent regions show coordinated shifts of their own. [OCC001, OCC003, OCC005, OCC010, DIR011, DIR012, DIR013]\n\nOther differences:\n- Around A42–A46, execution shifted towards A42 and A43 (A43 in about 58→70 in 100 traces; A42 repeating more, about 1.6→1.8 occurrences per trace) and away from A44/A45/A46, with A44 down from about 65 to 57 in 100 traces. [OCC037, OCC038, OCC039, OCC040, DIR042, DIR043, DIR045]\n- In the A35–A38 loops, A35 and A36 became less frequent (about 50→42 in 100) while A37 and A38 became more frequent (about 51→58–59), and the preferred successor within each pair swapped. [OCC030, OCC031, OCC032, OCC033, DIR035, DIR036, DIR037, DIR038]\n- In the A21–A24/A31 loop, share moved from A23 (about 53→46 in 100) to A24 (about 48→55). [OCC021, OCC022, OCC023, DIR021, DIR022, DIR023]\n- A39 became less frequent (about 19→13 in 100) with share after A40 moving from A39 to A41, and A02 became less frequent (about 35→29 in 100) with A46 now continuing more often to A47. [OCC034, DIR040, OCC002, DIR046]",
+  "case_id": "null_fb0fa96196f97f08",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

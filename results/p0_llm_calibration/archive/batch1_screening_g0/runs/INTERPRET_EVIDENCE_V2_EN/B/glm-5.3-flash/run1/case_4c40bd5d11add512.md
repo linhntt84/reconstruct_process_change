@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, A19 and A20 each appear in about 88–89 in 100 traces, up from about 46 in 100 in the earlier window; each runs about once per trace that contains it (mean occurrences 0.46 → 0.89 for A19, 0.46 → 0.89 for A20). [OCC001, OCC002]
+- The choice activities A25 and A26 also roughly doubled, to about 48 in 100 traces (from about 26) and about 42 in 100 (from about 21), while remaining mutually exclusive: they co-occur in essentially no trace in either window. [OCC003, OCC004, REL018]
+- The internal order of this group is preserved: in the later window A19 precedes A25 in about 47 in 100 traces and A25 precedes A20 in about 48 in 100; A19 precedes A26 and A26 precedes A20 in about 42 in 100 each; A19 precedes A20 in about 88 in 100. [REL001, REL002, REL003, REL010, REL011]
+- Routing out of A42 changed markedly: in the later window about 81 in 100 of A42's observed outgoing transitions go to A19 (about 41 in 100 before), while transitions to A27 fall from about 51 in 100 to about 10 in 100. [DIR002]
+- A27 still follows A42 within five steps in nearly every trace, but the typical distance shifts: gap 1 drops from about 51 in 100 to about 10 in 100, while gap 4 rises from about 40 in 100 to about 77 in 100 — consistent with the segment A19 → (A25 or A26) → A20 now usually running between A42 and A27, since A20 precedes A27 in about 88 in 100 later-window traces. [LAG001, DIR002, REL012]
+- A45 and A46 are executed more often and repeat more: participation rises from about 54 to about 69 in 100 traces each, mean occurrences from about 0.71–0.72 to about 0.98–1.0, and they now usually co-occur with A19 (about 21 in 100 before, about 61 in 100 after). A43's outgoing mix shifts accordingly: transitions to A45 rise from about 43 to about 55 in 100, while transitions to A44 fall from about 56 to about 44 in 100. [OCC005, OCC006, REL007, REL008, DIR003]
+- Positional drifts are small: A27's mean relative position moves slightly later (about 0.40 → 0.43), A42's slightly earlier (about 0.32 → 0.31), and A47's is essentially unchanged (about 0.96 in both windows). [POS001, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+As a possibility supported by the evidence, the process reroutes so that the segment A19 → (exclusive choice of A25 or A26) → A20 is executed in a far larger share of cases and now typically sits between A42 and A27: A42's transitions to A19 rise to about 81 in 100 while the formerly dominant direct transition to A27 (about 51 in 100) shrinks to about 10 in 100, and A27 typically follows A42 four steps later instead of immediately. A second, related difference is that A45 and A46 run more often and repeat more, now usually alongside A19, with A43 more often continuing into A45 than into A44. [DIR002, LAG001, REL012, OCC005, OCC006, DIR003]
+
+The supporting signs are the consistency across participation, routing and relational indicators, the preserved internal order of the segment, and the fact that the many items collapse into only about three distinct behavioural differences — clearly more than the roughly 0.78 expected by chance across the 156 tested units — with each difference exceeding all but about 1 in 200 random re-splits of the pooled traces. [OCC001, DIR002, LAG001, OCC005]
+
+Limitations remain: the two windows are finite samples, so a shift in the mix of trace variants (more cases of a variant containing this segment) could produce the same participation and co-occurrence pattern without any edge being rewired, and these aggregates cannot separate the two. DIR shares are measured over outgoing transitions rather than cases, and POS/LAG use event positions rather than clock time, so the placement conclusion rests on order and distance, not timing. [OCC001, DIR002, POS001, LAG001]

@@ -1,0 +1,14 @@
+### Observed differences
+
+- Participation is essentially unchanged: A01 and A03 occur in every trace in both windows, A02, A05 and A07 each occur in about 50 in 100 traces before versus about 52 in 100 after, and A06 in about 33 in 100 before versus about 36 in 100 after. [OCC001, OCC002, OCC003, OCC004, OCC005, POS003]
+- Repetition intensity moves only slightly: mean occurrences per trace are marginally lower in the later window for all measured activities (A05 about 2.0 to 1.9; A06 about 1.0 to 0.9; the others about 1.0 to 1.0 and 2.0 to 2.0), and the share of traces in which an activity repeats stays within about 6 points of the earlier window (largest: A06, about 18 to 24 in 100). [OCC001, OCC003, OCC004, OCC005]
+- Routing shares are stable: after A01, the split between A02 and A03 stays near 51/49 before and 49/51 after; after A05, the split between A06 and A07 stays near 49/51 in both windows. [DIR001, DIR002]
+- Positions shift by a few percent of trace length at most: A06's median position moves from about 44% to about 39% of the trace and A07's from about 52% to about 57%, while A01 and A03 keep their positions almost exactly. [POS005, POS006, POS001, POS003]
+- Pairwise relations keep the same structure: co-occurrence shares rise by only about 1.5–3 in 100 traces (for example A01–A06 from 33 to 36 in 100), ordering proportions barely move (A01 precedes A03 in about 50 in 100 traces in both windows, the remainder interleaved), and no pair switches between being alternatives and being executed together. [REL005, REL001, REL002, REL013]
+- The largest lag changes are small and thinly supported: A06 repeats at distance 2 in about 14 in 100 observed pairs before versus about 25 in 100 after, on only about 30 versus 40 observations, and pairs around A06 show slightly more long gaps (distance-5 share about 9 to 14 in 100). [LAG018, LAG004, LAG016, LAG019]
+- Overall the differences sit within random-split variation: every occurrence, direction and relation item has an empirical strength below 0.62, only about 8 of the 54 items exceed 0.85 (roughly the number an unchanged process produces when this many units are tested), and those items — A06's position and lag results — share identical component values across pairs, so they restate one trace behaviour rather than independently confirming each other. [OCC001, DIR002, REL013, POS005, LAG004, LAG008, LAG016, LAG018, LAG019]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. All differences are at most a few percentage points on their own scales, most items fall within the range that random re-splits of these 200-trace windows produce, and the few more unusual items concern A06's repetitions and gap lengths, which rest on roughly 30–70 observations and duplicate one another's values. [LAG018, LAG004, LAG008, LAG016, LAG019, POS005]

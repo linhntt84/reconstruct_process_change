@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f537091a8d8f5258.json",
+  "evidence_sha256": "c3dcb2666f3acbd96232af0ae45311101884cca68703fdb89adf3d79a0113893",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:09:02.570065+00:00",
+  "finished_at_utc": "2026-11-16T01:12:24.051487+00:00",
+  "latency_seconds": 201.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25835,
+    "prompt_tokens": 44449,
+    "total_tokens": 70284,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23909,
+      "text_tokens": 1926
+    },
+    "cost": 0.01958485
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75364,
+  "text": "### Observed differences\n\n- Both windows contain the same three mutually exclusive path groups, but with different take-up: the branch carrying A01, A04, A05, A06, A07 and A09 ran in about 48 in 100 traces in the earlier window and about 55 in 100 in the later window; the branch carrying A03, A08, A10 and A11 fell from about 28 to about 21 in 100; A02 stayed at about 25 in 100. No trace mixes the two multi-activity branches in either window. [OCC001, OCC002, OCC003, OCC008, OCC010, OCC011, REL001, REL016, REL040]\n\n- Inside the six-activity branch, two segments swapped places. Earlier the flow ran A01 → A04 → A07 → A09 and closed with A05 and A06 at the end: A04 led to A07 in about 80 in 100 of its observed outgoing transitions, A07 led to A09 in about 90, and A05/A06 had mean relative positions near the trace end (about 0.89 on a 0–1 scale). In the later window A05 and A06 sit between A04 and A07 — A04 now leads to A05 in about 51 in 100 (A07 only about 9) and A06 leads to A07 in about 76 — with mean relative positions of about 0.32 (A05), 0.65 (A06), 0.74 (A07) and 0.98 (A09). [DIR001, DIR003, DIR004, DIR005, DIR006, POS004, POS005, POS006, POS008]\n\n- The pairwise orders flip accordingly: A07 preceded A05 in about 48 in 100 of their joint occurrences earlier and never later, with A05 first in about 55 in 100 later; A09 preceded A05 in about 48 in 100 earlier and never later; A09 preceded A06 in about 48 in 100 earlier versus about 5 later (A06 first in about 50); and A04 now precedes A07 more often (about 42 to 53 in 100). [REL020, REL026, REL028, REL031, REL033]\n\n- Step distances moved with the swap: A05 now follows A01 or A04 one to two steps later (earlier three to five steps), A06 follows A01 two to three steps later (earlier four to five), and A07 and A09 now run three to five steps after A04 (earlier one to two). [LAG002, LAG003, LAG010, LAG012, LAG013]\n\n- A09 became the branch end: only 12 outgoing transitions were observed in the later window against 96 earlier, and its earlier A09 → A05 edge (about 51 in 100 of its outgoing transitions) disappeared. The A05–A06 pair, earlier always adjacent in mixed order, now runs A05 before A06 in about 55 in 100 of joint occurrences and is directly adjacent in only about 56 in 100. [DIR008, LAG027, POS008, REL025, LAG016]\n\n- Two smaller shifts: ordering around A01/A04 loosened (A04 preceded A01 in about 17 in 100 of joint occurrences versus about 7 earlier; A05 preceded A04 in about 15 in 100 versus about 1), and in the four-activity branch A03 tends to appear later (mean relative position about 0.08 to 0.23) with A03 → A10 rising from about 2 to about 11 in 100 of A03's outgoing transitions. [REL002, REL018, POS002, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, within the six-activity branch, the segment formed by A05 and A06 and the segment formed by A07 and A09 exchanged their places: earlier the branch ran A01 → A04 → A07 → A09 → A05/A06 with A05 and A06 last, while in the later window it runs A01 → A04 → A05 → A06 → A07 → A09 with A09 last. The support is direct and coherent rather than additive: every cross-segment pair reversed its order, the two segments shifted in opposite directions along the trace, step distances changed symmetrically, and the successors of A04, A06 and A09 changed exactly as the swap predicts, with most of these items exceeding the differences seen in about 995 of 1000 random re-splits. Limitations: the later order is not fully rigid — minority orderings remain (A05 before A04 in about 15 in 100, A04 before A01 in about 17 in 100) and A05/A06 are no longer always adjacent — so the evidence shows the two segments exchanged regions rather than one fixed new sequence; an important competing explanation it cannot rule out is that the segments are now partly interleaved in some cases rather than strictly repositioned. The evidence also carries no screening baseline, so the judgement rests on this directness and coherence. [REL026, REL028, REL031, POS004, POS006, POS008, LAG010, LAG012, DIR003, DIR005, DIR008]\n\nOther differences: The take-up of the two branches shifted — the six-activity branch rose from about 48 to about 55 in 100 traces while the four-activity branch fell from about 28 to about 21, with every involved activity well observed in both windows, so this is consistent with existing paths being taken at different frequencies; the per-item strength is moderate (about 70–86 in 100 random re-splits showed smaller differences). A03's later position and its slightly higher share of A03 → A10 transitions are weak to moderate and are not part of the main hypothesis. [OCC001, OCC002, OCC003, OCC008, OCC010, OCC011, POS002, DIR002]",
+  "case_id": "case_f537091a8d8f5258",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,16 @@
+### Observed differences
+
+- After A02, transitions shift toward A09: in the earlier window about 46 in 100 of A02's outgoing transitions went to A09 and about 54 in 100 to A10; in the later window the split is about 51 versus 49. A02 also runs slightly more often, about 1.9 versus 2.1 times per trace, while appearing in every trace in both windows. [DIR002, OCC002]
+- A09 takes part in more traces: about 47 in 100 earlier versus about 53 in 100 later, and about 0.9 versus 1.1 occurrences per trace. The extra occurrences (roughly 170 → 210 per 200 traces) match the additional A02→A09 transitions implied by the shifted shares and transition counts. [OCC008, DIR002]
+- After A01, transitions move from A05 toward A06: the share going to A05 falls from about 54 to 51 in 100 while the share to A06 rises from about 46 to 49; A01 itself occurs slightly less often (about 4.3 versus 4.1 times per trace). [DIR001, OCC001]
+- A05 and A08, which have identical profiles, are executed less: they appear in about 74 in 100 traces earlier versus about 69 in 100 later, with about 2.3 versus 2.1 occurrences per trace. A06, A07 and A12 (identical profiles among themselves) recur somewhat more often, with repeats in about 49 versus 56 in 100 traces. [OCC004, OCC007, OCC005, OCC006, OCC009]
+- A03 appears in somewhat more traces (about 49 versus 56 in 100), but this is a weak signal on its own. [OCC003]
+- The branch shares at A04, A11 and A07 barely move (for example A04 splits about 51/49 between A02 and A11 in both windows), so the shifts above are localised rather than process-wide. [DIR003, DIR004, DIR005]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that in the later window, executions of A02 lead to A09 more often — about 51 in 100 outgoing transitions versus about 46 earlier, with A10 correspondingly less often — and A02 itself is executed slightly more often per trace, so A09 participates in about 53 in 100 traces instead of about 47. Supporting signs: the routing shift is measured directly on A02's outgoing transitions, A09's occurrence increase matches the additional A02→A09 transitions almost exactly, and every activity involved is well represented in both windows, so this looks like a redistribution among existing paths rather than an added or removed path. What is missing: the differences are small and their empirical strength is only moderate — about 86 in 100 random re-splits of the pooled data show smaller differences, meaning roughly 1 in 7 re-splits of an unchanged process would look this large — and the evidence provides no screening baseline against which to compare the number of flagged items; a sampling difference between the two 200-trace windows therefore cannot be ruled out, nor can the alternative reading that simply more A02 executions occur and each happens to proceed via A09. [DIR002, OCC002, OCC008]
+
+Other differences: a similar but smaller redistribution after A01, away from A05 and A08 toward A06 (with A06, A07 and A12 recurring slightly more often), a weak increase in A03's participation, and no comparable shift at the A04, A11 and A07 decision points. [DIR001, OCC004, OCC007, OCC005, OCC003, DIR003, DIR004]

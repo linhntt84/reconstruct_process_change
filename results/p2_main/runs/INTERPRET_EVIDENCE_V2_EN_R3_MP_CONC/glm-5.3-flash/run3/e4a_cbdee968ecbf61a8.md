@@ -1,0 +1,13 @@
+### Observed differences
+
+- In the earlier window, the elapsed time between consecutive completion events of A26 and A30 was centred near 0.9 hours (median about 0.93 h, middle half roughly 0.87–1.00 h), observed about 38 times across the 200 traces. In the later window it was centred near 1.8 hours (median about 1.79 h, middle half roughly 1.62–1.93 h), observed about 54 times — an increase of about 0.87 hours, with the spread widening slightly (standard deviation about 0.14 → 0.20 h). [TWAIT001]
+- The elapsed time from A31 to A30 also lengthened: from a median of about 0.17 hours (middle half roughly 0.07–0.32 h) in about 53 earlier observations to a median of about 0.31 hours (middle half roughly 0.18–0.57 h) in about 54 later observations — an increase of about 0.19 hours, with a clearly wider spread (standard deviation about 0.17 → 0.31 h). [TWAIT002]
+- Both intervals end at A30 and both shifted upward; each difference exceeded about 999.5 in 1,000 random re-splits of the pooled data. No structural differences surfaced: across 54 control-flow units tested, no item qualified, in line with the roughly 0.27 items expected by chance in that family. [TWAIT001, TWAIT002, screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing around activity A30 as a possibility: in the later window, the elapsed time between consecutive completion events leading into A30 roughly doubled from both of its observed predecessors — from A26 (median about 0.9 → 1.8 hours) and from A31 (median about 0.17 → 0.31 hours) — with the variability of both intervals increasing. This rests on direct timing evidence: the time family produced 2 qualifying items where only about 0.009 were expected if nothing had changed, both items agree in direction, each difference was larger than about 999.5 in 1,000 random re-splits, and both rest on substantial observation counts (roughly 19–27 per 100 traces in each window). [TWAIT001, TWAIT002, screening]
+
+The main limitation is that both intervals share A30, so the two items may describe one underlying difference rather than two independent confirmations. Also, because the indicator measures elapsed time between consecutive completions, the evidence cannot show which part of each interval lengthened, so a competing explanation — that the lengthening originates with the predecessors or in between rather than at A30 itself — cannot be ruled out. The absence of control-flow items (0 of 54 units against about 0.27 expected) is consistent with a pure timing change, which needs no structural counterpart. [TWAIT001, TWAIT002, screening]

@@ -1,0 +1,21 @@
+### Observed differences
+
+- The relative order of two groups of activities reversed. In the earlier window, A19, A21 and A24 each sat early in the case (mean position about 0.34–0.36 of the trace) while A20, A22 and A23 sat late (about 0.63–0.64); in the later window, A20, A22 and A23 sit early (about 0.38) and A19, A21 and A24 sit late (about 0.66–0.68). [POS001, POS002, POS003, POS004, POS005, POS006]
+- Pairwise order flipped almost completely. A25 and A20 occur together in every trace in both windows; before, A25 came first in about 199 of 200 traces, after, A20 came first in about 199 of 200. The same near-total reversal holds between each of A19, A21, A24, A29 and the A20/A22/A23 group (for example, A29 preceded A20 in about 198 of 200 traces before and followed it in about 197 of 200 after), with virtually no interleaving in either window. [REL001, REL006, REL008, REL009, REL015, REL016, REL019]
+- Successors changed accordingly. Before, A40 led mainly to A19/A21/A24 (about 28–34 in 100 outgoing transitions each) and A29 led mainly to A20/A22/A23 (about 30–37 in 100 each); in the later window A40 leads mainly to A20/A22/A23 and A29 to A19/A21/A24. A19, A21 and A24 led to A25 before (about 97–98 in 100) and now lead to A30 (about 95–98 in 100), while A20, A22 and A23 led to A30 before (about 29–37 in 100) and now often lead to A25 (about 27–37 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+- Distances between consecutive activities match the same movement: A40 to A25 stretched from about 2 steps (95 in 100 cases) to about 4 steps (92 in 100); A29 to A30 shortened from about 4 steps (93 in 100) to about 2 steps (98 in 100); A29 to A21 became immediate (gap of 1 in all 58 supporting traces). [LAG004, LAG005, LAG009]
+- Participation barely moved, so the difference is one of order rather than presence: A20, A22, A23, A25 and A29 occur in all traces in both windows, and each of A19, A21, A24 occurs in roughly 30–40 of 100 traces in both windows (about one of the three per case). A25 and A29 kept their place between the two groups, shifting only slightly later (mean position about 0.38 to 0.45 and 0.57 to 0.64). [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, REL008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the sequence block A20–A22–A23 and the per-case choice step (one of A19, A21, A24) exchanged places around the unchanged A25 → A29 connector. In the earlier window a case typically ran A40, then one of A19/A21/A24, then A25, then A29, then A20, A22 and A23 in varying order, closing at A30; in the later window it typically runs A40, then A20/A22/A23 in varying order, then A25, then A29, then one of A19/A21/A24, closing at A30. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL008, LAG005, LAG009]
+
+Supporting signs: the 46 qualifying items far exceed the fewer than one item expected by chance in an unchanged process, so the pattern as a whole is not a sampling artefact; the order reversals are near-deterministic on about 200 traces per window rather than marginal shifts; successor, positional, pairwise-order and gap indicators all describe the same movement; and stable participation rules out the activities having become optional, repeated or removed. [REL008, REL015, DIR007, DIR008, POS002, LAG005, LAG009]
+
+Limitations: positions and gaps are event indices, not clock time, so nothing can be said about timing; and a few gap items rest on only one or two observations in one window (A21–A25 and A24–A25 in the later window, A29–A21 in the earlier one), so they fit the pattern but carry little weight alone. [LAG001, LAG002, LAG003, LAG004]
+
+An important competing explanation the evidence cannot rule out: each window shows essentially a single order, so a wholesale switch between two pre-existing variants would look identical; the evidence contains nothing that separates such a variant-mix change from a resequencing of one process. [REL008, REL015]
+
+Other differences: only rare edges moved — A20 lost occasional successors A07, A08 and A31 (about 1 in 100 outgoing transitions each), and A22's rare edges to A04, A05, A08, A09, A27 and A36 gave way to A06, A10 and A37 at similar rates; at 1–2 in 100 transitions these are consistent with sampling noise. [DIR002, DIR004]

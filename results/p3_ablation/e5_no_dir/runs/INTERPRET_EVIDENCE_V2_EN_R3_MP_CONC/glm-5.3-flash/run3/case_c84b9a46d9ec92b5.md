@@ -1,0 +1,18 @@
+### Observed differences
+
+- Three activities stopped appearing. A19 was present in about 36 in 100 traces before and in only 1 of 200 traces after; A20 in about 31 in 100 before and in none after; A25 in about 35 in 100 before and in none after. Each of these differences is larger than those seen in about 995 of 1,000 random re-splits of the pooled data. [OCC001, OCC002, OCC003]
+- Before, A19, A20 and A25 formed a mutually exclusive choice: any two of them co-occurred in only about 1 in 100 traces, while their individual shares sum to roughly all traces, so almost every trace contained exactly one of the three. In the later window, essentially no trace contains any of them (about 995–1,000 in 1,000 cases show "neither"). [REL001, REL003, REL008, OCC001, OCC002, OCC003]
+- The neighbouring activities are unchanged in frequency: A41, A26 and A31 each occur in essentially every trace in both windows (about 200 of 200). Their earlier co-occurrence with the three dropped activities (about 31–37 in 100 traces, with A41 preceding each alternative and each alternative preceding A26) collapsed to near zero, leaving the persistent activity alone in the pair. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]
+- The distance from A41 to A26 shrank by one event: before, A26 followed A41 two positions later in about 85 in 100 cases (three positions in about 15); after, it immediately follows in about 86 in 100 cases. [LAG001]
+- Small relative-position shifts accompany this: A26's median position moved slightly earlier (about 0.38 to 0.36 of the trace) and A41's slightly later (about 0.31 to 0.32), consistent with traces becoming one event shorter between them. [POS004, POS005]
+- A24 became less common: it appeared in about 67 in 100 traces before (support 134–138) versus about 56 in 100 after (support 112). [REL002, REL007, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative block consisting of A19, A20 and A25 — three mutually exclusive activities of which every trace previously contained exactly one, executed between A41 and A26 — was no longer executed in the later window; that is, the activities were removed or their branch was never taken. The signs are direct and consistent: participation collapsed from roughly a third of traces each (62–73 supporting traces) to at most 1 of 200; the three behaved as alternatives before, and pairs of them show "neither" in nearly all later traces; A41, A26 and A31 remain universal; and the A41→A26 gap shrank from two positions to one, which is what removing the intermediate activity would produce. The screening context reinforces this: 24 control-flow items qualified against roughly 0.33 expected for that family if nothing had changed, so the pattern as a whole is not what an unchanged process typically produces. [OCC001, OCC002, OCC003, REL001, REL003, REL008, REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, LAG001]
+
+A limitation is that zero participation only means the activities were not observed in the later window, so actual removal cannot be distinguished from the alternative branch simply not being triggered; the many relation items also largely restate one underlying difference rather than independently confirming it. [OCC001, OCC002, OCC003, REL001, REL003, REL008]
+
+Other differences: A24's participation decreased from about 67 to about 56 in 100 traces; this is not explained by the main hypothesis, and since no occurrence item flagged A24, part of the decrease could be sampling variation. [REL002, REL007, REL012]

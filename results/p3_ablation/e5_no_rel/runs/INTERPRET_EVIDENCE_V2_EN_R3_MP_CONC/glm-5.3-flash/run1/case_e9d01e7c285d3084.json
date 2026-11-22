@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_e9d01e7c285d3084.json",
+  "evidence_sha256": "eeb0e5b6068379ed015e9b38ec6b302b79cc7a6753d5e7d2b055f4f40b4f9054",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:53:44.207962+00:00",
+  "finished_at_utc": "2026-11-14T12:55:07.961829+00:00",
+  "latency_seconds": 83.75,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12046,
+    "prompt_tokens": 5974,
+    "total_tokens": 18020,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11195,
+      "text_tokens": 851
+    },
+    "cost": 0.006919099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43024,
+  "text": "### Observed differences\n\n- The clearest difference is repetition. In the earlier window, A30, A31 and A36 each occurred about once per trace, and second occurrences were almost unseen (roughly 0–2 in 100 traces). In the later window, each of the three occurs about 3.5 times per trace, and about 68 in 100 traces contain at least one repeat; every trace still contains all three activities in both windows. [OCC001, OCC002, OCC003]\n- The flow out of A36 changed. Before, about 97 in 100 observed outgoing transitions of A36 led to A25; in the later window, about 70 in 100 lead back to A30 and about 28 in 100 still lead to A25 (based on 203 versus 697 outgoing transitions). [DIR001]\n- A30 and A36 now occur across a much wider band of trace positions: the spread of their relative positions roughly doubled (about 0.07 to about 0.12), with medians slightly later (A30 about 0.40 to 0.44; A36 about 0.47 to 0.49). [POS002, POS003]\n- The former tight sequence from A30 to A36 largely dissolved: before, A36 followed A30 two positions later in about 98 in 100 observed pairs; in the later window only about 12 in 100 pairs do, with small shares at gaps of four to five steps, and the one-to-five-step shares together cover only about 17 in 100 pairs, suggesting many A30→A36 pairs now lie further apart. [LAG002]\n- Minor: A14 sits slightly earlier in the trace (mean relative position about 0.14 to 0.12) with somewhat more spread, and the gap from A05 to A14 shifted from mostly one to three steps to mostly two to three steps. [POS001, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a block containing A30, A31 and A36 — each of which executed exactly once per case before — is repeated about three to four times per case, with A36 passing control mainly back to A30 instead of mainly onward to A25, while still proceeding to A25 in about 28 in 100 of its transitions. Supporting signs: the repetition is observed directly for all three activities with full participation in both windows, so this is not an activity appearing or disappearing; the new dominant A36→A30 edge is observed directly; the widened position spread of A30 and A36 and the breakdown of the fixed two-step A30→A36 spacing fit multiple occurrences per trace. All nine qualifying items (against roughly 0.5 expected without a change) belong to this control-flow picture, and each difference exceeds about 995 of 1000 random re-splits, although the items partly describe the same underlying behaviour rather than independent confirmations. [OCC001, OCC002, OCC003, DIR001, POS002, POS003, LAG002]\n\nLimitations: the evidence shows only A36's outgoing flow, not what feeds into A30 or A31, so the cycle's entry point and A31's wiring are inferred from its matching repetition pattern; a competing reading is that these are three separate repetition changes rather than one shared cycle, and the wider context of the A25 path cannot be traced from these items. [DIR001, OCC002]\n\nOther differences: A14 occurs slightly earlier in the trace with more spread, and the A05→A14 step gap moved from mostly one-to-three to mostly two-to-three steps; these small positional shifts are not part of the main hypothesis. [POS001, LAG001]",
+  "case_id": "case_e9d01e7c285d3084",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

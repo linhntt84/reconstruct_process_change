@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_10efcd488201676b.json",
+  "evidence_sha256": "f145f14fa2c86ef5eca22592bce8437f5f539cda7b05cd3c1b874ea89b67980a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:32:28.922415+00:00",
+  "finished_at_utc": "2026-11-15T01:35:11.995573+00:00",
+  "latency_seconds": 163.07,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23401,
+    "prompt_tokens": 72462,
+    "total_tokens": 95863,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21580,
+      "text_tokens": 1821
+    },
+    "cost": 0.0225698
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75771,
+  "text": "### Observed differences\n\n- Two activities are no longer executed: in the earlier window A01 ran in about 64 in 100 traces (128 of 200) and A17 in all 200 traces, with A17 near the end of the trace (mean relative position about 0.95) and always adjacent to A10; in the later window neither appears in any of the 200 traces. [OCC001, OCC008, POS012, DIR007, DIR012, REL063]\n- A new early activity appears: A07, unobserved earlier, now runs in about 68 in 100 traces, typically among the first events (median relative position about 0.06), and its outgoing steps go to A03 or A04 in roughly equal shares; A03, which earlier led to A02 or A05, now leads to A07 or A05 instead. [OCC004, POS005, DIR006, DIR003]\n- The closing stage was rebuilt: earlier, A06 and A16 each appeared in only about 40 in 100 traces, often more than once (about 2.1 occurrences per trace) around the middle, frequently reached from A02; in the later window each runs exactly once in every trace at the very end (mean relative position about 0.95), always together and directly adjacent in either order (about 48 vs 53 in 100 traces), so one of the two is always the final event. [OCC003, OCC007, POS004, POS011, REL045, LAG022, LAG058, DIR002, DIR005, DIR011]\n- The route into the closing stage changed: earlier A04 led to A10 or A17 (about 52 vs 48 in 100 outgoing steps) and A10 was always followed by A17; in the later window A04 always leads to A10, and A10 always precedes A06 and A16, which close the trace. [DIR004, DIR007, REL031, REL035, REL039, REL062, LAG021]\n- Repetition increased sharply in the middle of the process: A02 went from about 2.0 to about 9.0 occurrences per trace (participation about 69 vs 71 in 100), A14 from about 1.0 to about 4.5 and A15 from about 1.1 to about 4.6; A02's successors changed completely (earlier A16, A06, A03, A04; now A15, A11, A14, A12 in similar shares), about half of A14's outgoing steps now lead back to A14 itself, and A02's self-distances spread out instead of clustering at two or four events. [OCC002, OCC005, OCC006, DIR002, DIR010, LAG001]\n- Smaller shifts accompany these changes: A13 now always leads to A02 (earlier split between A11 and A12) and A12 leads to A09 instead of A01; typical event distances also moved, for example A02 to A03/A04 from usually the next event to about three events later, and A02 to A06/A16 now only at five or more events' distance. [DIR008, DIR009, LAG002, LAG003, LAG012, LAG004, LAG011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the process was structurally reworked between the two windows. In the later window, A01 and A17 are no longer executed (earlier about 64 in 100 and all 200 traces respectively), A07 appears near the start in about 68 in 100 traces and hands over to A03 or A04, every trace closes with A04 → A10 followed by A06 and A16 executed exactly once each and directly adjacent in either order (whereas A06 and A16 were previously optional, mid-process and sometimes repeated), and A02, A14 and A15 are repeated far more often (A02 about 9 vs about 2 occurrences per trace). This rests on direct relational evidence — A04 precedes A16 and A06 in 100 in 100 traces, A10 precedes A06 in 100 in 100 traces, A06 and A16 follow one another at lag 1, and A07 leads to A03/A04 — and on agreement across the occurrence, position, successor, co-occurrence and lag indicators, with 171 qualifying items against roughly 1 expected if nothing had changed. [OCC001, OCC003, OCC004, OCC007, OCC008, DIR004, DIR006, DIR011, REL031, REL035, REL039, REL045, LAG022, LAG058]\n\nLimitations: only control-flow evidence is available, positions and lags refer to event positions rather than clock time, and zero participation shows only that A01 and A17 were not executed in the later sample, not that they were removed from the process definition. [OCC001, OCC008] An important competing explanation the evidence cannot rule out is a shift in case mix or between coexisting variants rather than a modification of one shared process; the later window is internally very uniform, but the finite samples cannot show whether the rework happened at once or gradually. [OCC003, OCC007]\n\nOther differences: A13 now always leads to A02 and A12 leads to A09 instead of A01; A09, A11 and A12 run slightly more often and slightly later in the trace; and several pairwise event distances shifted, for example A11 to A12 from typically three to typically four events apart. [DIR008, DIR009, POS006, POS008, POS009, LAG029]",
+  "case_id": "case_10efcd488201676b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

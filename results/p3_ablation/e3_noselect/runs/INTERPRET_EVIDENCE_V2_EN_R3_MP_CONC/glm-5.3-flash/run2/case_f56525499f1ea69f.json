@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f56525499f1ea69f.json",
+  "evidence_sha256": "fc5c3f8512a1a6678a14084b11154800136cea483ad9859c4888342bfc6a538d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:49:52.667280+00:00",
+  "finished_at_utc": "2026-11-15T07:51:56.311365+00:00",
+  "latency_seconds": 123.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16490,
+    "prompt_tokens": 95775,
+    "total_tokens": 112265,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14539,
+      "text_tokens": 1951
+    },
+    "cost": 0.02261125
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46782,
+  "text": "### Observed differences\n\n- The largest difference concerns two groups of three activities, {A33, A35, A36} and {A37, A38, A39}. In the earlier window every trace executed exactly one of the two groups — the first in about 97 of 200 traces, the second in about 103 — and the two groups never appeared in the same trace. In the later window each of the six activities appears in about 197–199 of 200 traces, both groups run in the same trace in about 98 in 100 traces, and the first group precedes the second in about 97–98 in 100 of those. [OCC030, OCC031, OCC032, OCC033, OCC034, OCC035, REL054, REL055, REL056, REL058, REL059, REL060, REL061, REL062, REL063]\n\n- Within each group the activities keep no fixed order in either window: both orders occur in similar proportions (for example, A33 before A35 and A35 before A33 each in roughly half of the traces containing both, before and after). [REL052, REL053, REL057, REL064, REL065, REL066]\n\n- The two groups sit between A30 and A31. In the later window A30 leads almost exclusively into the first group (about 37 in 100 of its outgoing transitions to A35 and about 30 each to A33 and A36, versus a mix of both groups before), the first-group activities now lead into the second group instead of directly to A31 (A33 to A31 fell from about 36 in 100 to under 1 in 100), and A31 is reached after the second group. [DIR030, DIR033, DIR035, DIR036, REL040, REL046, REL049]\n\n- Positions and step distances shift accordingly: A30's mean position moved earlier (about 0.67 to 0.62 of the trace) and A31's later (about 0.80 to 0.82); the distance from A30 to the second-group activities and from first-group activities to A31 grew from roughly 1–3 steps to roughly 4–5 steps, as expected if an extra block of three activities is now inserted between them. [POS005, POS006, POS007, POS008, POS009, POS010, POS011, POS012, LAG023, LAG024, LAG025, LAG027, LAG030, LAG033]\n\n- A04 became much rarer: it appeared in about 61 of 200 traces before and about 27 after, its co-occurrence with the always-present A14, A15, A16, A30 and A31 fell by the same amount, and its remaining occurrences sit later and more variably in the trace (mean position about 0.27 to 0.40). [OCC004, POS001, REL001, REL002, REL003, REL004, REL005, DIR004]\n\n- Several rare activities occur more often — A02 (about 12 to 21 traces), A06 (6 to 22), A08 (11 to 26), A10 (5 to 24) — with substantially changed successor profiles, but each rests on fewer than 30 traces per window. [OCC002, OCC006, OCC008, OCC010, DIR002, DIR006, DIR008, DIR010]\n\n- Smaller repetition shifts: A15 and A16 repeat somewhat more often (recurrence support from about 33 to about 40 in 100 traces), the fixed A14-before-A15/A16 order loosened slightly (about 66 in 100 before, 60 in 100 after, with more interleaving), and A43 repeats less (mean occurrences about 1.76 to 1.60). [OCC015, OCC016, REL012, REL013, REL022, OCC038]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two alternative three-activity segments — one consisting of A33, A35 and A36, the other of A37, A38 and A39, which in the earlier window were mutually exclusive alternatives run in a roughly 50/50 split — are in the later window both executed in nearly every case, first the A33/A35/A36 group and then the A37/A38/A39 group (each internally unordered), between A30 and A31. The change is shown directly by relational evidence: co-occurrence of the two groups rose from zero to about 98 in 100 traces with the first group first in about 97–98 in 100, and the occurrence, position, step-distance and successor evidence all shift consistently with one extra block of three activities per trace. The many agreeing items describe one underlying difference rather than independent confirmations, and no chance-expectation baseline (screening counts) is provided, so the judgement rests on the directness and coherence of the relational evidence; the evidence also cannot show whether all cases changed or whether a previously rare \"both blocks\" variant came to dominate the case mix, nor when or why. [OCC030, OCC031, OCC032, OCC033, OCC034, OCC035, REL054, REL055, REL056, REL058, REL059, REL060, REL061, REL062, REL063, REL040, REL046, POS005, POS006, LAG023, LAG027, DIR030, DIR033]\n\nOther differences: A04 occurs in far fewer traces and its remaining occurrences sit later in the trace; the rare activities A02, A06, A08 and A10 occur about twice to four times as often on small samples; A15 and A16 repeat slightly more often with a looser A14→A15→A16 order; A43 repeats somewhat less. These are not part of the main hypothesis. [OCC004, POS001, OCC002, OCC006, OCC008, OCC010, OCC015, OCC016, REL012, REL013, OCC038]",
+  "case_id": "case_f56525499f1ea69f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

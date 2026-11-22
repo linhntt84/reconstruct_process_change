@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_59a78a1e31d99895.json",
+  "evidence_sha256": "d809d1d3ba3a85f8e9ed878364ca651c5517c6bc822cdde15324f75829a497d8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:22:55.867215+00:00",
+  "finished_at_utc": "2026-11-16T01:25:48.725625+00:00",
+  "latency_seconds": 172.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23377,
+    "prompt_tokens": 59458,
+    "total_tokens": 82835,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21145,
+      "text_tokens": 2232
+    },
+    "cost": 0.0206072
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 68740,
+  "text": "### Observed differences\n\n- The activity block A04/A06/A10 runs far less often: before, each of the three appeared in about 50 in 100 cases (99, 101 and 101 of 200 traces); after, each appears in only about 20 in 100 (40, 43 and 43), with mean occurrences per trace roughly halving (A04 about 0.50 → 0.24; A06 and A10 about 0.51 → 0.26). [OCC003, OCC005, OCC009]\n- A04 was effectively a closing activity before: it sat at the end of traces (mean position about 0.99) and produced only one observed outgoing transition across the 99 traces containing it. In the later window it sits mid-trace (mean position about 0.60) and every observed occurrence continues to A08 (47 of 47 outgoing transitions). [POS004, DIR004, OCC003]\n- A06 and A10 previously always came as a pair near the end — together in about 50 in 100 cases, both absent in the rest, in either order — and each led only to the other (100% of observed outgoing transitions). In the later window both are absent in about 78 in 100 cases, and each also continues to A08 (A06→A08 about 44%, A10→A08 about 56% of outgoing transitions). [REL039, DIR006, DIR009]\n- Before, every case contained exactly one of A04 or A06 (A04 alone in about 50 in 100, A06 alone in about 50, never both and never neither); after, both are missing in about 66 in 100 cases. The same before/after pattern holds for A04 with A10. [REL026, REL030]\n- A02 still occurs in every case (about twice per trace) but is routed and placed differently: before, its outgoing transitions went to A05 (23%), A04 (25%), A10 (13%), A06 (13%), A09 (12%) and A03 (12%); after, they go to A05 (46%), A03 (21%), A09 (21%) and A01 (12%), with no observed transitions into A04, A06 or A10. A02 also sits later (median position 0.50 → 0.73) and fewer of its occurrences have an observed successor (381 outgoing transitions before vs 219 after). [DIR002, POS002, OCC001]\n- A03 and A09 now lead into the block instead of into A08: A03 previously led only to A07 (53%) and A08 (47%), now to A07 (55%), A04 (23%), A06 (14%) and A10 (8%); A09 previously led to A08 (62%) and A07 (37%), now to A07 (50%), A04 (21%), A10 (14%) and A06 (14%). [DIR003, DIR008]\n- A08 runs at a similar rate (about 33 in 100 cases in both windows) but later in the trace: mean position about 0.57 → 0.72, median about 0.63 → 0.83. [POS008, OCC007]\n- Pair distances moved consistently: A01→A04 and A02→A04 pairs within five steps now sit at larger lags (A01→A04: lag 2 in 77% of pairs before vs lags 3 and 5 in 35% and 55% after; A02→A04: lag 1 in 61% before vs lags 2 and 4 in 38% and 34% after), while from A03 and A07 the block is reached sooner (A03→A04: lag 3 in 53% before vs lag 1 in 38% after; A07→A04: lag 4 in 100% before vs lag 2 in 43% after). [LAG003, LAG013, LAG022, LAG041]\n- A05 runs somewhat more often (about 29 → 35 in 100 cases) and still returns to A02 in nearly all of its outgoing transitions (100% before, 98% after). [OCC004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the routing into and out of the closing block A04/A06/A10 changed. In the earlier window, cases typically ended either with A04 as the final activity (about half of all cases) or with the A06/A10 pair near the end, entered directly from A02. In the later window, this block executes in only about one in five cases, is reached mainly from A03 and A09 rather than from A02, and no longer closes the case: A04 now always continues to A08, and A06/A10 frequently do so as well. A02, still present in every case about twice, now loops through A05 far more often and sits later in the trace, and A08 correspondingly sits later. [DIR002, DIR003, DIR004, DIR006, DIR008, DIR009, POS002, POS004, POS008, OCC003, OCC005, OCC009]\n\nThe change is shown directly by successor-profile changes at A02, A03, A04, A09, A06 and A10 (several with maximal dissimilarity and top empirical strength), the participation drop rests on roughly 100 traces per window, the co-occurrence profiles of A04, A06 and A10 with A01/A02 collapsed consistently, and the position and lag shifts point the same way. [DIR002, DIR003, DIR004, DIR006, DIR008, DIR009, OCC003, OCC005, OCC009, REL003, REL005, REL009, REL026, REL030, REL039, POS004, LAG003, LAG013, LAG015]\n\nLimitations: the evidence contains no screening baseline, so the expected number of chance findings could not be compared and the judgement rests on the size, directness and consistency of the differences. Unobserved edges are not proof of absence, so A02 may still occasionally lead into the block, and the earlier A04 successor profile rests on a single observed transition (though its end-of-trace position corroborates it). [DIR002, DIR004, POS004]\n\nOther differences:\n- A07 and A09 now repeat more within a case: mean occurrences per trace rose for A07 from about 0.38 to 0.56 and for A09 from about 0.41 to 0.54, while participation stayed roughly stable (A07 about 18 → 20 in 100 cases; A09 about 24 → 27 in 100). [OCC006, OCC008]\n- A01 is slightly less strictly at the start: its mean position rose from about 0.02 to 0.09 with more spread, A01 precedes A02 in about 42 in 100 cases (was 50) with more interleaving, and A02→A01 returns rose to about 12% of A02's outgoing transitions (was 3%). [POS001, REL001, DIR002]",
+  "case_id": "case_59a78a1e31d99895",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

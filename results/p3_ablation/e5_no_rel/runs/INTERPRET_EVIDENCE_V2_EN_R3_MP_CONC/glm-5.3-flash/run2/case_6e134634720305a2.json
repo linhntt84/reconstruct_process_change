@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_6e134634720305a2.json",
+  "evidence_sha256": "7f0683e502f851a99cc76e39695b09ed6572a0db6b34ae3687b4cfe858704ba9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:50:17.234412+00:00",
+  "finished_at_utc": "2026-11-15T06:51:30.972191+00:00",
+  "latency_seconds": 73.74,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10468,
+    "prompt_tokens": 6793,
+    "total_tokens": 17261,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9603,
+      "text_tokens": 865
+    },
+    "cost": 0.00625295
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36887,
+  "text": "### Observed differences\n\n- In the earlier window, A30, A31 and A36 each occurred about 3.5 times per trace and appeared in every trace, recurring within the same trace in about 75 in 100 traces; in the later window each occurs about once per trace, still in every trace, with within-trace recurrence in only about 1 in 100 traces. [OCC001, OCC002, OCC003]\n- A36's outgoing transitions shifted: earlier, about 70 in 100 led back to A30 and about 28 in 100 led to A25; in the later window about 92 in 100 lead to A25 and only about 4 in 100 to A30. In absolute terms the exits to A25 stayed at roughly 190 transitions in both windows, while the returns to A30 fell from roughly 480 to about 8. [DIR002]\n- The close successions associated with the earlier repetitions largely vanished: A36 followed by A30 within five steps appears in about 150 earlier traces but only about 1 later trace, and A36 followed by itself in about 150 earlier traces but about 2 later traces. [LAG002, LAG003]\n- In the later window, A36 follows A30 exactly two positions later in about 89 in 100 traces; earlier, such a tight A30→A36 succession held in only about 12 in 100 traces, with the pair spread over longer gaps. [LAG001]\n- A30's own routing is essentially unchanged: about 99 in 100 of its outgoing transitions went to A31 in the earlier window and about 97 in 100 in the later one. [DIR001]\n- The relative event positions of A30 and A36 barely moved (means near 0.44 and 0.49 in both windows); only their spread narrowed, from a standard deviation of about 0.12 to about 0.07, consistent with a single occurrence instead of several. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeated execution of the cycle through A30, A31 and A36 stopped. In the earlier window a pass typically ran A30→A31 and, via A36, returned to A30, so all three activities ran about 3.5 times per trace; in the later window each runs once, A36 leads to A25 instead of back to A30, and A36 no longer follows itself. The signs are direct and mutually consistent: participation stays at 100% while mean occurrences and recurrence collapse, the return edge and the A36→A30 / A36→A36 successions disappear in both directional and lag evidence, and the ten qualified items far exceed the roughly 0.5 expected by chance among the 93 tested units. [OCC001, OCC002, OCC003, DIR002, LAG001, LAG002, LAG003]\n\nLimitations: a small residual of looping remains in the later window (A36→A30 in about 4 in 100 transitions, within-trace recurrence in about 1–2 in 100 traces), so repetition may be strongly reduced rather than entirely removed; no directional evidence covers the steps between A31 and A36, so the interior of the cycle is unobserved; and direction shares are over outgoing transitions, not cases. [DIR002, OCC002, OCC003]\n\nOther differences: only second-order effects — the spread of A30's and A36's relative positions narrowed, and A30's outgoing profile shows negligible new slivers of about 0.5% each to activities such as A02, A06 and A42. [POS001, POS002, DIR001]",
+  "case_id": "case_6e134634720305a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

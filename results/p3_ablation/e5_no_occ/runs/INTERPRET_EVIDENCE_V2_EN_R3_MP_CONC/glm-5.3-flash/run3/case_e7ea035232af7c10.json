@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_e7ea035232af7c10.json",
+  "evidence_sha256": "7d4d9c85c4976d6f1c7d4add96dd04cabedc789e5658dc44654b03e98effc7b7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:46:35.244671+00:00",
+  "finished_at_utc": "2026-11-15T10:49:19.665571+00:00",
+  "latency_seconds": 164.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24195,
+    "prompt_tokens": 20336,
+    "total_tokens": 44531,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22253,
+      "text_tokens": 1942
+    },
+    "cost": 0.015147899999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 77685,
+  "text": "### Observed differences\n\n- In the earlier window, A25 was followed by A28 in about 98 in 100 of its observed outgoing transitions; in the later window, A25 is followed by A36 in about 35 in 100, A42 in about 32 in 100 and A37 in about 32 in 100, while A28 follows A25 in under 1 in 100. [DIR001]\n- In the earlier window, A26 led to A27 in about 54 in 100 transitions and to A36, A37 or A42 in about 45 in 100 combined; in the later window, A26 leads to A27 in about 98 in 100 transitions. [DIR002]\n- A36, A37 and A42 each appeared in about 46 in 100 traces in the earlier window, at a mean relative position of about 0.59; in the later window, each appears in about 995 in 1000 traces, at a mean position of about 0.40, i.e. earlier in the case. [POS006, POS007, POS008]\n- A27 appeared in about 54 in 100 traces in the earlier window; in the later window it appears in every trace, its mean position moving from about 0.59 to about 0.63. [POS003]\n- The order between A26 and the trio flipped: earlier, A26 preceded A36, A37 and A42 in about 46 in 100 traces and never followed them; in the later window, each of the three precedes A26 in about 99 in 100 traces. The same flip occurred against A28: A28 preceded the trio in about 46 in 100 traces earlier, whereas in the later window the trio precedes A28 in about 99 in 100 traces. [REL006, REL007, REL008, REL014, REL015, REL016]\n- Earlier, A27 and each of A36, A37 and A42 practically never shared a trace (co-occurrence at most about 0.5 in 100); in the later window they co-occur in about 995 in 1000 traces, with the trio first. [REL011, REL012, REL013]\n- The successors of A36, A37 and A42 changed from A31 (about 29 to 39 in 100 of their outgoing transitions earlier) to A28 (about 30 to 36 in 100 in the later window). [DIR003, DIR004, DIR005]\n- The distance from A25 to A28 grew from one step (about 98 in 100 cases earlier) to four steps (about 97 in 100 in the later window), and the distance from A26 to A31, previously split between two steps (about 54 in 100) and four steps (about 44 in 100), is now consistently two steps (about 96 in 100). [LAG001, LAG003]\n- The internal order of A36, A37 and A42 stays unfixed in both windows: each pair occurs in both orders in similar shares. [REL020, REL021, REL022]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block A36–A37–A42, executed in no fixed internal order, previously formed an optional branch — run in about 46 in 100 cases after A26 and before A31, instead of A27 — and that in the later window this block runs in nearly every case directly after A25 and before A28, while A27, previously the alternative to that branch, now follows A26 in essentially every case; both the trio and A27 thus changed from optional, mutually exclusive alternatives into near-universal steps at new positions in the flow. [DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, POS003, POS006, POS007, POS008]\n\nThe ordering change is shown directly by relational and successor evidence: A26 preceding the trio became the trio preceding A26 (about 46 vs about 99 in 100 traces), A28 preceding the trio became the trio preceding A28, and the trio's outgoing transitions moved from A31 to A28. [REL006, REL007, REL008, REL014, REL015, REL016, DIR003, DIR004, DIR005]\n\nThe participation and adjacency evidence agrees: A27 and each trio member went from practically never sharing a trace to co-occurring in about 995 in 1000 traces, and the A25→A28 distance grew from one to four steps, consistent with the trio now lying between them; screening produced 41 qualifying control-flow items where about 0.5 were expected without a change, so sampling variation cannot account for the ensemble. [REL011, REL012, REL013, LAG001, screening]\n\nLimitations: no evidence item covers the order between A28 and A26 in the later window, so the trio's exact downstream placement relative to A26 is inferred from positions rather than observed directly; the earlier-window distance profiles for the new adjacencies A25→A36 and A36→A28 rest on a single observation each; and about 1 in 200 later traces lack the trio, so a rare remaining alternative routing cannot be ruled out. [LAG002, LAG004, POS006, POS007, POS008]\n\nOther differences:\n\n- A26, A28 and A31 now sit slightly later in the case (mean relative positions about 0.54→0.60, 0.39→0.46 and 0.63→0.66) and A25 slightly earlier (about 0.36→0.35). [POS001, POS002, POS004, POS005]\n- A25, A26, A27, A28 and A31, which earlier co-occurred only in about 46–54 in 100 trace combinations, now co-occur in essentially every trace. [REL001, REL005, REL009, REL010]\n- The trio's former close succession to A31 (within one to three steps in about 92 traces earlier) is no longer observed within five steps except in a single later trace, though that after-window profile rests on one observation. [LAG005, LAG006]",
+  "case_id": "case_e7ea035232af7c10",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

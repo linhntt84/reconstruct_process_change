@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A02 was not observed in the earlier window (0 of 200 traces, mean 0 occurrences per trace). In the later window it appears in about 58 in 100 traces and averages about 2.4 occurrences per trace (roughly 4 within traces that contain it), typically placed around 58–60% of the way through the trace. [OCC001, POS001]
+- A15's outgoing flow was rewired. Earlier, its observed transitions went to A07 (about half), A08 (about a quarter) and A12 (about a quarter); in the later window, every observed A15 transition goes to A02. [DIR002]
+- A02's own outgoing flow in the later window mirrors A15's earlier targets: about half of its observed transitions go to A07, about a quarter to A08 and about a fifth to A12. [DIR001]
+- Observed distances shifted by one step across the segment where A02 now sits: A15 to A07, A08 or A12 moved from a most-common distance of 1 step earlier to 2 steps later (a majority of pairs for A08 and A12), and A07 to A07/A08/A12 as well as A15 to itself moved from typically 4 steps to typically 5 steps. [LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG008]
+- Relationships with A02 changed from none to near-universal. Earlier, A02 never co-occurred with A07, A08, A12 or A15, each of which appeared without it in roughly 33–50 in 100 traces; in the later window A15 and A02 always appear together, A07, A08 and A12 occur only alongside A02, and in most co-occurring traces they are interleaved or repeated rather than in one fixed order (fixed-order shares are small: A02 before A08/A12 in about 6–10 in 100 traces, A15 before A02 in about 15 in 100). The downstream activities' own frequency stayed similar (about 33–37 in 100 traces earlier, about 35–42 later). [REL001, REL002, REL003, REL004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, a repeating step A02 — not observed in the earlier window — was inserted directly after A15 and before A07, A08 and A12: A15 now always flows into A02, A02 recurs within traces (about 2.4 occurrences per trace on average), and A02 then hands over to A07, A08 or A12, the same targets A15 previously reached directly. The placement is shown directly by the redirection of A15's outgoing transitions and by A02's outgoing profile, and is corroborated by the one-position distance shifts on every pair spanning the segment and by the co-occurrence changes; all sixteen qualified items describe this one pattern, against roughly 0.2 expected if nothing had changed, and each difference exceeds about 995 in 1000 random re-splits of the pooled traces. [OCC001, DIR001, DIR002, POS001, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG005, LAG006, LAG007, LAG008]
+
+The evidence cannot rule out that A02 is a re-labelled existing activity rather than a genuinely new one, since the codes are anonymous and no corresponding disappearance is visible in this evidence; it also cannot separate a single looping step from several sequential occurrences of A02. The A07 distance shifts rest on modest counts (roughly 8–31 traces), and pairwise distances are observed only within five steps. [OCC001, LAG001, LAG002, LAG003]
+
+Other differences: the observed distance from A07 back to A15 shifted, with pairs 3 steps apart rising from about 31% to about 45% of observed pairs and pairs 5 steps apart falling from about 24% to about 9%; this is consistent with the insertion above but not required by it. [LAG004]

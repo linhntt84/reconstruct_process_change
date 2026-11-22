@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7f08b700b5dd4317.json",
+  "evidence_sha256": "f035fbc283850d9681b2cc63a1d11920467802e3a0fe7cd88b745c1eaa4137b6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:35:44.030647+00:00",
+  "finished_at_utc": "2026-11-15T12:37:24.486297+00:00",
+  "latency_seconds": 100.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14580,
+    "prompt_tokens": 21447,
+    "total_tokens": 36027,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13173,
+      "text_tokens": 1407
+    },
+    "cost": 0.01050705
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46667,
+  "text": "### Observed differences\n\n- In the earlier window, the six activities A33, A35, A36, A37, A38 and A39 each ran in every case (100 in 100, about once per case, essentially never repeated); in the later window each runs in only about 47–57 in 100 cases (A33 and A35 in 93 of 200 cases, A36 in 94, A37 and A38 in about 113, A39 in 112), still at most once per case. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The six form two blocks of three. Earlier, every case executed both blocks in sequence — {A33, A35, A36} first, {A37, A38, A39} after it (e.g., A36 before A37 in about 99 in 100 cases). In the later window, cases contain one block or the other: cross-block co-occurrence fell from 100 in 100 cases to about 3 in 100, with about 44 in 100 cases containing only the first block, about 53 in 100 only the second, and virtually none containing neither. [REL015, REL017, REL019, REL021, REL022, REL024]\n- Within each block, behaviour is unchanged: the three members still always occur together and in both mutual orders (no fixed internal order) in both windows. [REL013, REL014, REL018, REL025, REL026, REL027]\n- Routing around the blocks changed. Earlier, A30's outgoing transitions led almost only into the first block (A33 about 34 in 100, A35 about 36, A36 about 28); in the later window they spread across both blocks (each of the six about 12–19 in 100). The first block's exit also changed: A33, A35 and A36 now lead directly to A31 in about 26–34 in 100 of their outgoing transitions, which was not observed earlier, while their direct edges into the second block shrank to about 1 in 100. [DIR001, DIR002, DIR003, DIR004]\n- A31 still runs in every case in both windows and still follows whichever block executed (A33/A35/A36 before A31 in first-block cases; A37 before A31 in second-block cases). [POS002, REL007, REL008, REL009, REL010]\n- Event positions shifted consistently with cases now containing one block instead of two: when present in the later window, A33, A35 and A36 sit later in the case (mean about 0.68 to about 0.74) and A39 slightly earlier (about 0.77 to 0.73); A30's mean position moved later (about 0.62 to 0.67). These are event positions, not clock times. [POS001, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the two blocks {A33, A35, A36} and {A37, A38, A39}, which every case previously executed one after the other (the first after A30, the second after the first, both before A31), behave in the later window as mutually exclusive alternatives: a case now typically executes one block or the other — about 47 in 100 the first, about 54 in 100 the second, about 3 in 100 both — A30 can enter either block directly, and A31 follows whichever block ran. [REL015, REL019, REL022, DIR001, DIR002, DIR003, DIR004, OCC001, OCC004]\n\nThe support is direct and consistent: all nine cross-block activity pairs flip from always co-occurring to almost never co-occurring, each backed by 200 cases per window; the participation drops of all six activities match the split; and the entry and exit routing changes line up with it. The volume of qualifying items (43 against roughly 0.6 expected by chance in a stable process) is far beyond what random re-splits of these windows produce, and every item's difference exceeds about 995 in 1000 random re-splits. [REL015, REL016, REL017, REL020, REL021, REL023, REL024]\n\nLimitations: the evidence cannot rule out that the later mixture reflects two rare pre-existing variants that the earlier 200-case window did not sample, and the outgoing transitions of A37, A38 and A39 were not profiled, so the second block's downstream wiring is inferred from co-occurrence rather than observed directly. [REL015, DIR001]\n\nOther differences: apart from the block change, the only further signals are small event-position shifts (A30 later, A31 slightly earlier) and a few rare outgoing edges of A30 (about 1 in 200 each) that appear or disappear; both are consistent with the changed case composition rather than independent differences. [POS001, POS002, DIR001]",
+  "case_id": "case_7f08b700b5dd4317",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

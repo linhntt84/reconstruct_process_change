@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_6b862ed7b1edd0b4.json",
+  "evidence_sha256": "12a296ac9e13dc4117064e1356775fe0752b822f4ed8f2d5c54f8b6f890bba1d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:03:01.335247+00:00",
+  "finished_at_utc": "2026-11-15T11:06:55.822514+00:00",
+  "latency_seconds": 234.49,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 38712,
+    "prompt_tokens": 29141,
+    "total_tokens": 67853,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36479,
+      "text_tokens": 2233
+    },
+    "cost": 0.02372715
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 119707,
+  "text": "### Observed differences\n\n- The segment A19 → A25 → A20 became part of essentially every case. In the earlier window these three activities each appeared in about 48 in 100 traces and co-occurred in about 47 in 100, with about 52 in 100 traces containing none of them; in the later window they co-occur in about 995 in 1,000 traces, and traces containing none are down to about 5 in 1,000. [REL018, REL019, REL022, DIR004, DIR005]\n\n- The segment now runs in a fixed order after A41, and the old bypass is nearly gone. A41 was present in every trace in both windows. Earlier, about 45 in 100 of A41's outgoing transitions went directly to A26 (bypassing the segment) and about 37 in 100 went to A19; in the later window about 96 in 100 go to A19 and the direct exit to A26 has fallen to about 1 in 200. The internal chain A41 → A19 → A25 → A20 → A26 already held in about 96–99 in 100 of the earlier traces where both members appear; what changed is that it now runs in every case, with A26 four steps after A41 in about 93 in 100 of the observed pairs, where earlier it had followed A41 directly (one step) in about 46 in 100. [DIR006, REL018, REL019, REL020, REL021, REL022, REL023, REL025, LAG018, LAG019, LAG020, LAG021]\n\n- A06 became a frequent, early and focused step. It appeared in about 24 in 100 traces earlier versus about 73 in 100 in the later window, and its mean relative position moved from roughly halfway through the case to about a quarter in. Earlier its exits were spread over many activities (A15 about 21 in 100, A47 about 15, A45 about 12, A16 and A19 about 8 each); later, about 88 in 100 of its outgoing transitions go to A16, within a single step in about 97 in 100 of the observed pairs. [POS001, DIR001, LAG002]\n\n- A06 is now embedded between the always-present activities. A14 precedes A06 in about 69 in 100 later-window traces, typically two steps earlier, whereas earlier A14 usually occurred without A06 (about 77 in 100). A15 now sends about 40 in 100 of its exits to A06 (about 1 in 100 earlier), while A15 → A16 fell from about 94 to about 58 in 100. A06 precedes A41, A19, A20 and A25 in about 65 in 100 traces; earlier it co-occurred with A19, A20 or A25 in only about 13 in 100. [REL001, REL002, DIR003, REL004, REL005, REL006, REL008, LAG005, LAG006, LAG009]\n\n- A14, A15 and A16, each present in every trace in both windows, now precede the segment: A14 precedes A19, A20 and A25 in about 96–98 in 100 traces (earlier it occurred without them in about 52 in 100), and A15 and A16 precede them in about 57 in 100, with about 42 in 100 interleaved or repeated. [REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, cases run a single dominant structure in which the segment A19 → A25 → A20 between A41 and A26 — earlier executed in only about half of the cases, with A41 passing directly to A26 in the rest — now executes in every case in that fixed order, and A06, previously rare, mid-case and diffusely connected, now occurs in about three quarters of cases near the start, exits almost always to A16, is typically preceded by A14 and revisited from A15. Because the bypass A41 → A26 was a usual path earlier and is now nearly unobserved, this is a hypothesis about participation and structure — the segment became mandatory and A06 became a standard early step — not a re-weighting of unchanged paths. [DIR006, REL018, REL020, REL022, REL023, REL025, POS001, DIR001, LAG002, LAG021]\n\nThe volume of qualifying evidence is far beyond what an unchanged process produces: 57 control-flow items qualified where about 0.62 were expected, and every item's difference exceeds about 995 of 1,000 random re-splits. Participation counts, routing profiles, pairwise order shares and step distances all show the same restructuring directly; note that the many relation items overlap heavily (most re-express the segment's new presence), so the judgement rests on this directness and consistency rather than on the number of independent signals. [DIR004, DIR005, POS001, DIR001, DIR003, DIR006, REL018, LAG018, LAG021]\n\nAn important competing explanation remains: the two windows may sample different mixes of case variants rather than a changed routing for every case. Positions and step distances also refer to event order within the case, not clock time, so no conclusion about timing is possible; a few distance items rest on very few observations (LAG012 and LAG017 have a single after-window observation) and were not used. [LAG012, LAG017]\n\nOther differences: A14 now routes to A15 in about 97 in 100 of its exits (about 85 earlier); A26 sits slightly later within the case (mean relative position from about 0.41 to 0.44); and the distances between repeated occurrences of A14, A15 and A16 shifted modestly. [DIR002, POS002, LAG007, LAG010, LAG013, LAG015]",
+  "case_id": "case_6b862ed7b1edd0b4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

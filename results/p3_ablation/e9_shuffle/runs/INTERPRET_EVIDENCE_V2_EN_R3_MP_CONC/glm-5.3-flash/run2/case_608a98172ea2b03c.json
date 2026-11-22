@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_608a98172ea2b03c.json",
+  "evidence_sha256": "fc6e1768547cd075a65b5ef9b856d92154efc4129551236e2344b7e734183eeb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:26:12.156847+00:00",
+  "finished_at_utc": "2026-11-15T04:28:52.612423+00:00",
+  "latency_seconds": 160.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22933,
+    "prompt_tokens": 9353,
+    "total_tokens": 32286,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21537,
+      "text_tokens": 1396
+    },
+    "cost": 0.012869450000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 77157,
+  "text": "### Observed differences\n\n- **Handover from A01:** in the earlier window, about 50 in 100 of A01's outgoing transitions went to A04, about 29 to A03 and about 22 to A02; in the later window, essentially all of A01's outgoing transitions go to A04, and the A01→A04 pair occurs within five steps in all 200 traces (144 of 200 before), now concentrated at a one-step distance (about 53 in 100 of its occurrences, versus about 30 before, when four- and five-step occurrences also appeared). [DIR001, LAG004]\n- **Handover from A04:** in the earlier window, about 50 in 100 of A04's outgoing transitions led back to A01, with A02 (about 26) and A03 (about 23) sharing the rest; in the later window, no A04→A01 transition is observed (0 of about 380 outgoing transitions) and A04 passes to A03 (about 53 in 100) or A02 (about 47). [DIR002]\n- **Way back to A01:** before, A04 reached A01 within five steps in 150 of 200 traces, usually at one step (about 31 in 100 of occurrences); in the later window the pair appears in only 84 of 200 traces and only at about four steps, consistent with a return route through A06, which now passes entirely to A01 (before an even split between A04 and A01) and reaches A04 only at two steps (before one or two). [LAG008, DIR003, LAG013, LAG014]\n- **Order and position of A01 and A04:** the two activities co-occur in every trace in both windows, but before they appeared in mixed order (A01 first in about 25 in 100 traces, A04 first in about 28, interleaved or repeated in about 47), whereas in the later window A01 comes first in about 58 in 100, A04 never comes first, and interleaving or repetition remains at about 42; A01 now sits at the very start of traces (median relative position 0, versus about 0.45) and A04 slightly later (mean 0.50, versus 0.39). [REL001, POS001, POS002]\n- **Distances elsewhere:** most other activity pairs shifted by about one step, e.g. A02→A04 from a mix of three and four steps to consistently four, A01→A06 from three to four, A01→A03 and A01→A02 from mixes of one and two to consistently two, A04→A03 and A04→A02 to consistently one, and the self-repetitions of A01 and A04 now occur only at a distance of five steps. [LAG007, LAG005, LAG012, LAG006, LAG003, LAG002, LAG010, LAG009, LAG001, LAG011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural rerouting of the flow between A01 and A04: in the earlier window the two activities formed a tight back-and-forth, each passing to the other in about half of its outgoing transitions in mixed order, whereas in the later window A01 always hands over directly to A04 at the start of the case, the direct return step from A04 to A01 is no longer observed, A04 passes its work to A02 or A03 instead, and A04 reaches A01 again only after about four steps along a route that includes A06→A01. [DIR001, DIR002, DIR003, LAG004, LAG008, REL001, POS001]\n\nThis is shown directly by the successor changes of A01, A04 and A06, by the order reversal between A01 and A04, and by the opposing distance shifts of the two directed pairs, while A01 and A04 still occur in every trace in both windows, so participation itself did not change; with 20 qualifying items against roughly 0.13 expected if nothing had changed, the pattern as a whole cannot be a sampling artefact. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014, DIR001, DIR002, DIR003, POS001, POS002, REL001]\n\nLimitations: all indicators are computed from the same traces, so their agreement is not independent confirmation; the evidence shows that A04→A01 was not taken in the later sample rather than proving the step was removed from the process, and the exact activities forming the new return route are inferred from distances, not observed as one path. [DIR002, LAG008, LAG013] An important competing explanation that cannot be fully ruled out is that the direct A04→A01 step still exists but was bypassed in every later case; given 0 occurrences in about 380 transitions, it would in any case have become far rarer. [DIR002]",
+  "case_id": "case_608a98172ea2b03c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

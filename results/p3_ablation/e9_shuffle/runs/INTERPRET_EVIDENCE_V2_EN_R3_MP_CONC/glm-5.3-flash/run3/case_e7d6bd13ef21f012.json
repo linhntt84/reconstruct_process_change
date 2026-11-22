@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_e7d6bd13ef21f012.json",
+  "evidence_sha256": "efa1eb628722c41b65c52c2064a249829abc0fdea2b10912b853e67914ff94ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:57:57.918246+00:00",
+  "finished_at_utc": "2026-11-15T09:58:52.530068+00:00",
+  "latency_seconds": 54.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8024,
+    "prompt_tokens": 10605,
+    "total_tokens": 18629,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7071,
+      "text_tokens": 953
+    },
+    "cost": 0.00560275
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26149,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces showed the same four-step chain A02 → A04 → A05 → A06: A02's only observed successor was A04, A04's only observed successor was A05, and A06 closed each trace at relative position 1.0; A01 and A03 were not observed in any trace. [DIR001, DIR003, POS005, REL007, REL011, REL012, OCC001, OCC002]\n- In the later window, every trace shows a five-step chain A02 → A03 → A05 → A06 → A01: A02's only observed successor is now A03, A03's only observed successor is A05, and A06 now leads to A01, which closes each trace at relative position 1.0. [DIR001, DIR002, DIR004, POS001, POS002, REL001, REL002, REL005, REL006, REL009, REL010, REL004]\n- A04 dropped out of the sample entirely: it ran exactly once in all 200 earlier traces but in none of the 200 later traces, and its edge to A05 is no longer observed. [OCC003, DIR003, POS003, REL008, REL011, REL012]\n- A03 and A01 moved in the opposite direction, from absent to exactly one occurrence in every trace (A03 at relative position about 0.25, A01 at 1.0). [OCC001, OCC002, POS001, POS002]\n- A05 and A06 still run in every trace, but their relative positions moved earlier (A05 from about 0.67 to 0.50; A06 from 1.0 to 0.75), consistent with one step inserted before A05 and one appended after A06. [POS004, POS005]\n- All 24 qualifying items are control-flow items, and each difference exceeds about 995 of 1,000 random re-splits of the pooled data; screening expected roughly 0.12 items by chance, so the volume is far beyond what an unchanged process typically produces. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the step between A02 and A05 was exchanged: A04, which executed exactly once in every earlier trace with A02 always leading to it and it always leading to A05, is no longer observed, while A03 now executes exactly once in every later trace in that same slot (A02 → A03 → A05). This is a replacement of a step rather than a shift in how often existing paths are taken, since A04 is absent from the later window and A03 from the earlier one. The signs are direct and mutually consistent — the successor of A02 changed from A04 to A03, the edge A04→A05 disappeared while A03→A05 appeared, and every activity pair involving A04 or A03 flipped from \"only one of the two present\" to the other — and 24 qualifying items against roughly 0.12 expected by chance cannot be explained by sampling variation in these finite windows. An important competing explanation the evidence cannot rule out is a mere relabelling of the activity (A04 renamed to A03), because zero participation only means the activity was not observed in that window. [OCC002, OCC003, DIR001, DIR002, DIR003, REL006, REL007, REL008, REL009, REL011, screening]\n\nOther differences: A01, unobserved in the earlier window, now runs exactly once in every trace at the end, directly after A06 (A06 → A01); as a result A05 and A06 occupy earlier relative positions (about 0.67→0.50 and 1.0→0.75). This addition of a closing step is separate from the A04/A03 exchange, and the same relabelling caveat applies to it. [DIR004, OCC001, POS001, POS004, POS005, REL004, REL005]",
+  "case_id": "case_e7d6bd13ef21f012",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

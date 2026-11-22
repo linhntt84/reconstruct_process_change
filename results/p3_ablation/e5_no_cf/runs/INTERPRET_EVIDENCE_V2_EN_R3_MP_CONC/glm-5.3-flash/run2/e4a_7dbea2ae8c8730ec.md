@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, the elapsed time between the completions of each of the pairs A16–A28, A17–A28, A18–A28 and A19–A28 was about 1 hour (means 1.01–1.05 hours, medians about 1.01–1.06 hours). In the later window, the same intervals take about 2.1 hours (means 2.07–2.10 hours, medians about 2.08–2.09 hours) — an increase of roughly 1.0–1.1 hours, about a doubling, for every one of the four pairs [TWAIT001, TWAIT002, TWAIT003, TWAIT004].
+- The whole distribution moved, not just a tail: in the earlier window three quarters of the intervals finished below about 1.13–1.18 hours, while in the later window three quarters took at least about 1.87–1.92 hours, so the two ranges barely overlap; the spread also widened, with standard deviations rising from about 0.13–0.15 hours to about 0.24–0.28 hours [TWAIT001, TWAIT002, TWAIT003, TWAIT004].
+- How often these pairs occur hardly changed: each pair appears in about 46–53 of 200 traces in both windows (roughly a quarter of cases), so the difference lies in the length of the interval, not in how often the sequence runs [TWAIT001, TWAIT002, TWAIT003, TWAIT004].
+- All four differences are unusual for random re-splits — each exceeds about 1,999 of 2,000 reference comparisons — and four time items qualified in screening where about 0.01 would be expected if nothing had changed [TWAIT001, TWAIT002, TWAIT003, TWAIT004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing: in the later window, the elapsed time between the completion of each of A16, A17, A18 and A19 and the completion of A28 is about one hour longer than in the earlier window, rising from roughly 1 hour to roughly 2.1 hours on average. The shift is measured directly on these intervals, is consistent in direction and size (about +1.0 to +1.1 hours) across all four pairs, affects essentially the entire distribution rather than a tail, and is not accompanied by any change in how often the pairs occur; with four qualifying items against an expectation of about 0.01, a chance explanation for the pattern as a whole is implausible [TWAIT001, TWAIT002, TWAIT003, TWAIT004].
+
+Limitations: all four items end at A28, so they most likely describe one underlying difference rather than four independent ones, and TWAIT measures elapsed time between consecutive completion events, not pure waiting or processing time. A competing explanation the evidence cannot rule out is where in absolute clock time the extra hour arises: only the gap between the two completions is observed, so a later completion of A28 and an earlier completion of the predecessor relative to it look identical here [TWAIT001, TWAIT002, TWAIT003, TWAIT004].
+
+Other differences: none are evident; the evidence consists solely of these four time items describing the same interval ending at A28, and it contains no structural or positional items that would support any claim about order or placement [TWAIT001, TWAIT002, TWAIT003, TWAIT004].

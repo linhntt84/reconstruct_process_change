@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_cb094c7321bbcbe9.json",
+  "evidence_sha256": "4c19d30bc6385acfa25226e3eb310d392cd2b63f15ac22a5a632526ea5224a6a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:24:38.980695+00:00",
+  "finished_at_utc": "2026-11-15T08:25:20.762995+00:00",
+  "latency_seconds": 41.78,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5257,
+    "prompt_tokens": 3503,
+    "total_tokens": 8760,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4744,
+      "text_tokens": 513
+    },
+    "cost": 0.00315395
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 19972,
+  "text": "### Observed differences\n\n- Activity A04 was executed exactly once in every case in the earlier window (in 200 of 200 traces, mean 1.0 occurrence per trace); in the later window it is not observed at all (0 of 200 traces). [OCC001, POS002]\n- Before, every observed outgoing transition of A02 led to A04; in the later window no outgoing transitions from A02 are observed at all (200 before, 0 after), so the step A02 → A04 no longer occurs and A02 now ends its trace. [DIR001]\n- The pair A02/A04 changed from always being executed together, with A02 before A04 in 100 in 100 cases, to never co-occurring: in the later window A02 occurs alone in every case. [REL001]\n- A02 now occurs at the end of the trace: its mean relative position moved from 0.8 (with no variation) to 1.0, the last position, in the later window. [POS001]\n- All five items show differences larger than about 995 of 1,000 random re-splits of the pooled data, and together they describe one coherent picture: the final step A04 disappeared and A02 became the terminal activity. [OCC001, DIR001, POS001, POS002, REL001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A04, previously a mandatory final step executed after A02 in every case, is no longer executed, so that cases which previously ended with the sequence A02 → A04 now end with A02 as the last activity. This rests on direct participation evidence (A04 in 200 of 200 traces before versus 0 of 200 after), on the simultaneous disappearance of the A02 → A04 transition and of the ordered co-occurrence of the two activities, and on A02 shifting to the terminal position; the items consistently describe this single structural difference rather than unrelated changes. [OCC001, DIR001, POS001, POS002, REL001]\n\nLimitations: zero participation strictly means only that A04 was not observed in the later window; with 200 traces per window a sampling artefact is very unlikely, but the evidence cannot rule out that the later window simply does not capture anything after A02, and it cannot distinguish A04 being skipped in every case from being removed from the flow, as both look identical here. [OCC001, DIR001]",
+  "case_id": "case_cb094c7321bbcbe9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

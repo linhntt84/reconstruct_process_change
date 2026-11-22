@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_959be1124672665e.json",
+  "evidence_sha256": "7e1dbedc4da3b78510a26ff6516162383092ed72277a682fc92fa2e7cee1e2d6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:13:12.222888+00:00",
+  "finished_at_utc": "2026-11-14T14:15:18.918636+00:00",
+  "latency_seconds": 126.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20378,
+    "prompt_tokens": 100322,
+    "total_tokens": 120700,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18846,
+      "text_tokens": 1532
+    },
+    "cost": 0.025237299999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64453,
+  "text": "### Observed differences\n\n- Three activities disappeared from the later window: A02 and A08, each previously present in about 47 of 100 traces (roughly 0.8 occurrences per trace), and A03, previously in about 21 of 100, appear in none of the 200 after-traces. Relations confirm this: A01 with A02 co-occurred in 47 of 100 before-traces and in none after, and the A02–A03, A02–A08 and A03–A08 pairs are \"neither\" in essentially every after-trace [OCC002, OCC003, OCC008, REL001, REL016, REL020, REL033].\n- The flow that ran through them now skips them. A13, which previously sent all of its observed outgoing transitions to A03, now sends about 59 in 100 to A05 and 41 in 100 to A18; A19 switched from A03 only to A18 and A05 in roughly equal shares. A05 and A18, which previously sent about half of their outgoing transitions to A02 (50 and 53 in 100), now send about half to A10 (46 and 59 in 100). A10, which previously led only to A08, now leads only to A01 [DIR011, DIR016, DIR004, DIR015, DIR009].\n- Step distances moved with the rerouting: A10 typically preceded A01 by four steps before (about 76 in 100 of observed pairs) and by one step after (about 57 in 100) [LAG029].\n- A01 and A16 exchanged downstream roles: A16 previously led only to A01 and now leads to A06 (43 in 100), A14 (37 in 100) and A07 (20 in 100) of its outgoing transitions, while A01, which previously split between A06, A07 and A14, now leads only to A11; the pair order flipped from A16-first (27 of 100 traces) to A01-first (27 of 100), A01 now occurs earlier in traces (mean relative position about 0.66 to 0.48) and A16 later (about 0.61 to 0.70) [DIR001, DIR013, REL012, POS001, POS013, LAG047].\n- A07 and A14 became rarer and terminal: participation fell from 47 to 17 of 100 traces (A07) and from 47 to about 30 of 100 (A14); both now occur only at the end of traces (mean position 1.0) with no observed outgoing transitions, and the A07-to-A14 hand-over disappeared — the two co-occurred in 47 of 100 before-traces and never after [OCC007, OCC014, POS006, POS012, DIR006, DIR012, REL071].\n- A09 and A17 are executed more often (mean occurrences per trace rose from about 0.44 to 0.76 for A09 and from about 0.34 to 0.76 for A17) and now also feed each other: about half of A09's outgoing transitions go to A17 and about half of A17's to A09 [OCC009, OCC017, DIR008, DIR014].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment containing A02, A03 and A08 was dropped from execution and the surrounding flow rerouted directly around it: in the later window A02, A03 and A08 were not executed at all (0 of 200 traces, versus about 47, 21 and 47 of 100 before), A13 and A19 now lead straight to A05/A18 instead of via A03, A05 and A18 lead straight to A10 instead of via A02, and A10 leads straight to A01, which passes on to A11 — the link previously provided by A08 [OCC002, OCC003, OCC008, DIR011, DIR016, DIR004, DIR015, DIR009, DIR001, LAG029]. This reading is direct and consistent across indicator families: the disappearances and each new direct connection are observed in the direction profiles, co-occurrence with the removed activities falls to zero, and the A10-to-A01 distance shrinks from about four steps to one; with prior participation of 21–47 in 100 traces and 200 after-traces, chance absence is implausible [REL016, REL020, REL033, LAG029]. The evidence cannot rule out that the rewiring around A01, A16, A07 and A14 is a separate change rather than part of the same restructuring, and zero participation strictly means only that these activities were not observed in the later window [DIR001, DIR013].\n\nOther differences: A16 now feeds A06, A07 and A14 where it previously fed A01; A07 and A14 have become rare end-of-trace activities that no longer connect to each other; A09 and A17 run more often and now also follow one another; and A01 sits earlier while A16 sits later in the trace [DIR013, DIR006, DIR012, REL071, OCC009, OCC017, DIR008, DIR014, POS001, POS013].",
+  "case_id": "case_959be1124672665e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_d60ddb41de9d7056.json",
+  "evidence_sha256": "6a190c473f02730bc966ba49f6db1c7a38c4e9ea8102c733a9866c58a41c31bc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:40:37.659032+00:00",
+  "finished_at_utc": "2026-11-15T02:41:50.352803+00:00",
+  "latency_seconds": 72.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10220,
+    "prompt_tokens": 20265,
+    "total_tokens": 30485,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9066,
+      "text_tokens": 1154
+    },
+    "cost": 0.00814975
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35134,
+  "text": "### Observed differences\n\n- In the earlier window, A21, A22 and A23 each ran in all 200 traces, always in the fixed order A21 → A22 → A23, and every observed outgoing transition of A21 led to A22 [OCC001, DIR001, REL001, REL007].\n- In the later window, A22 runs in about 57 in 100 cases (participation 1.00 → 0.57), while five activities that were not observed at all earlier — A27, A28, A33, A34 and A35 — each run in about 44 in 100 cases (87 of 200 traces), exactly once in each case where they appear [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006].\n- After A21 the flow splits in the later window: about 57 in 100 of A21's observed outgoing transitions still go to A22, and the remaining ~43 in 100 go to the five new activities, with individual shares of roughly 0.07–0.11 [DIR001].\n- The new activities and A22 are mutually exclusive: no later trace contains both (co-occurrence 0.00), whereas earlier A22 ran in every case; about 44 in 100 later traces contain a new activity but not A22 [REL008, REL009, REL010, REL011, REL012].\n- The five new activities always run together as one group — each of the ten pairs co-occurs in about 44 in 100 traces, matching each activity's participation — and within the group both orders occur in similar proportions (about 0.2 each), so there is no fixed internal order [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027].\n- The group sits between A21 and A23: A21 precedes each of the five in about 44 in 100 cases, each of the five precedes A23 in about 44 in 100 cases, and their observed outgoing transitions lead both to A23 and to one another; A23 itself still runs in every case [REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017, DIR002, DIR003, DIR004, DIR005, DIR006, REL007].\n\n### Inference\n\nSupport level: Supported hypothesis\n\n- The evidence supports the hypothesis that, in the later window, A22 is bypassed in roughly 44 in 100 cases: after A21, the flow either runs A22 as before (about 57 in 100 cases) or runs a previously unobserved group of five activities — A27, A28, A33, A34 and A35, always together and in no fixed order — which then continues to A23. A22 changed from running in every case to being skipped in about 44 in 100 cases, and the five new activities changed from never being observed to running in about 44 in 100 cases [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL008, REL013].\n- The amount of qualifying evidence far exceeds what an unchanged process typically produces: 45 control-flow items qualified where roughly 0.5 would be expected by chance, and the occurrence, routing and relational items all describe this same rerouting rather than unrelated differences [OCC001, DIR001, DIR002, REL001, REL008, REL013, REL018].\n- A competing explanation the evidence cannot fully rule out is that this two-route behaviour already existed earlier as a variant too rare to appear in the 200 earlier traces, so that the later window only reflects a frequency shift between pre-existing routes; it also cannot show whether the group's lack of fixed order reflects genuinely unordered execution or only variability in this sample [OCC002, OCC003, OCC004, OCC005, OCC006, REL018, REL027].\n- Other differences: A21's mean relative position moved slightly earlier (about 0.49 to 0.46 of the trace), and the new activities occupy mid-trace positions (mean about 0.52); both are consistent with the extra group lengthening traces rather than indicating a separate change [POS001, POS002, POS003, POS004, POS005, POS006].",
+  "case_id": "case_d60ddb41de9d7056",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A10 appeared in about 44 in 100 traces (88 of 200); in the later window it does not appear at all (0 of 200), and none of its outgoing transitions are observed [OCC010, POS002, DIR009].
+- Earlier, A10 sat between A04 and A12: about 55 in 100 of A04's observed outgoing transitions went to A10 and only about 10 in 100 to A12, and whenever A10 and A12 occurred together (about 44 in 100 traces), A10 always came first. In the later window, A12 receives about 73 in 100 of A04's outgoing transitions while A10 receives none, and A12 appears without A10 in about 58 in 100 traces [DIR004, REL003, DIR009].
+- The gap between A04 and A12 contracted: earlier, A12 followed A04 within one event step in about 11 in 100 cases and two steps later in about 56 in 100; in the later window it follows within one step in about 75 in 100 cases [LAG001].
+- The A04–A10 and A10–A12 pairs went from co-occurring in about 44 in 100 traces to never co-occurring; in the later window A04 occurs without A10 in about 58 in 100 traces [REL001, REL003].
+- A04 and A12 each now occur in about 58 in 100 traces, up from about 44 in 100, and A12's median event position moved to the end of the trace [OCC004, OCC012, POS003].
+- A02 occurs in about 43 in 100 later traces, down from about 56 in 100; A01's outgoing share to A02 fell from about 47% to 28% while A04 (about 52%) and A12 (about 20%) grew [OCC002, DIR001]. A03, A07 and A11 also now lead to A04/A12 rather than A02/A10, but these profiles rest on only about 5–10 observed transitions [DIR003, DIR007, DIR010].
+- Smaller shifts: A05's outgoing mix moved from A06 (about 46% to 37%) toward A07 (about 39% to 49%) [DIR005]; A12's outgoing mix moved toward A05 and A06 and away from A04 and A07 [DIR011]; A06 recurs somewhat less within the traces containing it (mean about 0.64 to 0.55 occurrences per trace with participation unchanged, a weak signal) [OCC006].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A10 is no longer executed and that the segment which previously ran A04 → A10 → A12 now runs directly from A04 to A12, with A04 and A12 executed in more traces (about 58 vs 44 in 100) and A12 immediately following A04 in about three quarters of the cases where the pair occurs [OCC010, DIR004, LAG001, REL001, REL003, OCC004, OCC012]. The signs are direct rather than frequency-only: a co-occurrence collapse, a successor redistribution at A04, and a contraction of the A04→A12 distance to one step, consistent across the occurrence, direction, position, relation and lag indicators, with empirical strengths near 0.99 on the core items [OCC010, DIR004, LAG001, REL001, REL003]. Limitations: the agreeing items largely describe one underlying rerouting rather than independent confirmations; zero participation shows only that A10 was not observed, not that it was removed from the process; and the rerouting of A03, A07 and A11 away from A02 rests on very few observations [DIR003, DIR007, DIR010].
+
+Other differences: A02 is executed in fewer traces (about 43 vs 56 in 100) and A01 routes proportionally more to A04 and A12, which may be connected to the same rerouting but is not demonstrated directly [OCC002, DIR001]; the successor mixes of A05 and A12 shifted moderately [DIR005, DIR011]; A06 repeats less often within its traces [OCC006].
+
+An important competing explanation remains: A10 could still be reachable but was not taken in any of the 200 later traces, and part of the A04/A12 rise may reflect traces that previously took other routes; the small direction profiles cannot be separated from sampling noise [OCC010, DIR003, DIR007, DIR010].

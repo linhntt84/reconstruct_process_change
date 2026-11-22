@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_9b9bc6a5ea43374c.json",
+  "evidence_sha256": "f1c24febae15257aa42904362e145b1361b37e216b260c7cbac854ac3be7ef10",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T00:58:54.183647+00:00",
+  "finished_at_utc": "2026-11-16T01:02:48.668991+00:00",
+  "latency_seconds": 234.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26837,
+    "prompt_tokens": 54719,
+    "total_tokens": 81556,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24812,
+      "text_tokens": 2025
+    },
+    "cost": 0.021626349999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 78801,
+  "text": "### Observed differences\n\n- Activity A03 was absent from all 200 earlier traces; in the later window it appears in about 103 of 200 traces (roughly half), typically at an early-to-middle position (median about 38% of the trace's event positions). This difference is larger than in essentially all reference re-splits of unchanged windows (about 995 of 1000). [OCC003, POS002]\n- Both windows split into two mutually exclusive case groups — one around A01/A02 (about 51 in 100 traces before, 52 after) and one around A04 (about 49 before, 48 after) — with unchanged sizes. A03 appears only in the A01/A02 group: it co-occurs with A01 and A02 in every case where it occurs and precedes both, whereas before, A01 and A02 always ran without it. A03 never shares a trace with A04, A09 or A13 in either window. [REL003, REL014, REL002, REL013, REL024, REL029, REL033]\n- New direct transitions involve A03 in the later window: A03 is followed by A12 in about 36%, A11 in about 35% and A08 in about 29% of its outgoing transitions (none were observed before, since A03 did not occur), and A05, A08 and A12 now lead to A03 in about 16%, 38% and 33% of their outgoing transitions, which was not observed before. A03 runs before A06, A10 and A11 in all shared cases and in mixed order around A05, A08 and A12. [DIR001, DIR003, DIR004, DIR005, REL025, REL026, REL028, REL030, REL031, REL032]\n- Pairs downstream of A03 shifted one event position later: A05→A06 moved from lag 4 in essentially all cases to lag 5 in all cases, A07→A11 from lag 4 to lag 5, A08→A12 from lag 1 in all cases to about 60% lag 1 / 40% lag 2, and A12→A11 from lags 1–2 to lags 1–3, with similar one-step shifts for A08→A06, A08→A11, A12→A06 and A12→A10 (lags count event positions, not clock time). [LAG002, LAG010, LAG013, LAG015, LAG016, LAG018, LAG020, LAG021]\n- A05 and A07 repeat less often: A05's mean occurrences per trace fell from about 1.2 to 0.9 while its participation stayed at about 51 in 100 traces; A07's mean fell from about 0.7 to 0.4 and its participation from about 31 to 24 in 100 traces, with self-repetition at lag 2 becoming more common for both. [OCC005, OCC007, LAG001, LAG008]\n- Within the A04 group, the follow-up split moved: A04→A13 fell from about 63% to 47% of A04's outgoing transitions while A04→A09 rose from about 37% to 53%; A09 now typically sits at the end of its trace (median position 1.0 versus 0.0) and A04 somewhat earlier (mean about 0.28 versus 0.40). [DIR002, POS003, POS008]\n- Participation of the remaining activities is essentially unchanged (A01, A02, A06, A08, A10, A11, A12 at about 51 in 100 traces in both windows; A04 at about 49; A09 and A13 at about 24). [OCC001, OCC002, OCC004, OCC006, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A03 was added to the process and is now performed in about half of all cases, placed inside the existing block of activities that runs before A02→A01. Before, cases in this group executed A05, A06, A07, A08, A10–A12 and then A02→A01 without A03; in the later window the same group also executes A03, always together with and before A01/A02, directly followed by A11, A12 or A08 in roughly equal shares, and reached from A05, A08 and A12 through transitions not observed before. [REL003, REL002, REL013, DIR001, DIR003, DIR004, DIR005]\n\nSupporting signs: the move from 0 of 200 traces to about 103 of 200 far exceeds what random re-splits of two 200-trace windows produce; the consistent one-step-later positions of many downstream pairs fit an inserted step rather than a re-weighting of existing paths; and the participation of all surrounding activities is unchanged, so this is not one path replacing another. [OCC003, LAG002, LAG010, LAG016, LAG021, OCC001, OCC004]\n\nLimitations: the exact edge into which A03 was placed cannot be fixed from these aggregates — A03 both receives from and leads to A08 and A12, suggesting a position inside a repeated block, but the precise wiring is not recoverable. The evidence also cannot distinguish a genuinely new activity from one that was previously executed but not recorded, since 0 of 200 traces only bounds its earlier frequency below roughly 1–2 in 100 cases. [DIR001, DIR004, DIR005, OCC003]\n\nOther differences: A05 and A07 are now repeated less often (A05 mean occurrences about 1.2 → 0.9 with unchanged participation; A07 about 0.7 → 0.4 with participation down from about 31% to 24%), and within the A04 group the follow-up choice shifted from about 63/37 in favour of A13 to about 53/47 in favour of A09, with A09 occurring later and A04 earlier within traces; these differences are not part of the insertion hypothesis and may be independent changes. [OCC005, OCC007, LAG001, LAG008, DIR002, POS003, POS008]",
+  "case_id": "case_9b9bc6a5ea43374c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

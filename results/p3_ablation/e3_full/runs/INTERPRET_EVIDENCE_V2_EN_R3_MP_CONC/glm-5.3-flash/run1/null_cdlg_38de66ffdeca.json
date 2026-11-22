@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_38de66ffdeca.json",
+  "evidence_sha256": "66d83521799ea48199dd7c48a1fbd62d36101dbd62dbb8599af6828dd8ff9223",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:40:22.011707+00:00",
+  "finished_at_utc": "2026-11-16T01:43:51.309097+00:00",
+  "latency_seconds": 209.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29207,
+    "prompt_tokens": 118371,
+    "total_tokens": 147578,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26830,
+      "text_tokens": 2377
+    },
+    "cost": 0.032359149999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 86862,
+  "text": "### Observed differences\n\n- In the later window, A01, A07 and A15 are executed less often: A01 appears in about 66 in 100 traces (about 72 before) and averages about 2.2 occurrences per trace (about 2.5 before); A07 and A15 appear in about 43 in 100 traces (about 50 before) and average about 1.1 occurrences per trace (about 1.4 before). A08 moves the same way more weakly (about 72 to 65.5 in 100 traces; about 1.1 to 1.0 occurrences per trace). [OCC001, OCC006, OCC007, OCC013]\n- These four activities also sit later in traces: A01's median relative position rises from about 0.36 to 0.44, A08's from 0.50 to 0.64, and A07's and A15's from about 0.41 to 0.44. [POS001, POS007, POS008, POS014]\n- Conversely, A05, A09, A10, A11 and A12 are executed more often: mean occurrences per trace rise from about 1.9 to 2.3 (A05), 1.9 to 2.4 (A09), 0.9 to 1.2 (A11) and 1.0 to 1.2 (A12), while their trace participation stays roughly flat (about 28–40 in 100 traces), so the extra executions come mainly from more repetitions within traces; A05 and A10 also appear in somewhat more traces (about 63 to 67 in 100). [OCC004, OCC008, OCC009, OCC010, OCC011]\n- These activities appear earlier: median relative positions fall for A05 (about 0.40 to 0.35), A09 (0.43 to 0.37), A11 (0.41 to 0.38), A12 (0.50 to 0.43) and A10 (0.60 to 0.57). [POS005, POS009, POS010, POS011, POS012]\n- Pairwise relations move the same way: A01 co-occurs with A07, A08 and A15 in fewer traces (for example A01–A08 falls from 72 to 65.5 in 100, while traces containing neither rise from 28 to 34.5 in 100), and A05 and A10 increasingly appear without their former partners (for example A05 alone alongside A01 rises from 28 to 34.5 in 100). [REL004, REL006, REL007, REL009, REL014, REL018, REL023, REL073, REL080]\n- A10's outgoing transitions shifted towards A02: about 32 in 100 led to A02 in the later window against about 19 in 100 before, with the shares to A04, A06, A03 and A16 each a few points lower. [DIR009]\n- A02 and A04 appear in fewer traces (about 55.5 to 48.5 in 100) but slightly more often within them, and later (median relative position about 0.39–0.40 to 0.46). [OCC002, OCC003, POS002, POS004]\n- Several step-gap distributions shifted, for example A02→A03 gaps moving from mostly 5 steps to mostly 3–4 steps, but these rest on only a few dozen observations per window. [LAG014, LAG026, LAG043, LAG074]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, part of the process is exercised more often and earlier — A05, A09, A10, A11 and A12, where A09, A11 and A12 gain mainly through more repetitions within the traces that contain them and A05 and A10 also appear in somewhat more traces — while another part is exercised less often and later — A01, A07, A15 and, more weakly, A08, with A01, A07 and A15 both in fewer traces and with fewer repetitions. All these activities remain observed in a substantial share of traces in both windows, so this is a change in how often existing behaviour is exercised and repeated, not in whether activities appear at all. [OCC001, OCC004, OCC006, OCC008, OCC010, OCC011, OCC013, POS005, POS008, POS009, POS012, POS014, REL007, REL080]\n\nThe signs are direct and consistent: the occurrence changes rest on 76–144 traces per window per activity, the position shifts match the occurrence direction for every activity in both groups, and the relation items corroborate the same activities; the routing change at A10 is also unusually large for a no-change re-split (empirical strength about 0.97). [DIR009, OCC004, OCC008, POS005, POS009, REL004, REL009]\n\nLimitations: each individual shift is moderate — empirical strengths of roughly 0.6–0.9 mean a fair share of random re-splits of unchanged data produce differences of similar size — and no screening baseline is provided to compare the number of qualifying items with chance, so sampling variation between the two 200-trace windows cannot be fully ruled out; the coherence across activities and indicators, not any single item, carries the inference. The position measure counts event positions, so the later or earlier placement may partly follow mechanically from the changed repetition counts rather than being an independent relocation, and participation and co-occurrence indicators overlap, so agreeing items are not independent confirmations. [OCC001, OCC004, POS001, POS005, REL007]\n\nOther differences:\n- A02 and A04 occur in fewer traces but slightly more often within them, appear later, and are reached more often from A10 (about 19 to 32 in 100 of A10's outgoing transitions) while A08 sends fewer of its transitions to A02 (about 28 to 21 in 100); A02 and A04 also co-occur with A13 more often (about 9.5 to 14 in 100 traces) and with A03 and A16 less often (about 30.5 to 22 in 100). [DIR007, DIR009, OCC002, POS002, POS004, REL016, REL026, REL029, REL049]\n- Several lag distributions shifted in differing directions (for example A02→A03 towards shorter gaps and A04→A16 towards longer gaps), but these rest on only about 17–49 observations per window and are weak. [LAG014, LAG026, LAG043, LAG074, LAG077]",
+  "case_id": "null_cdlg_38de66ffdeca",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

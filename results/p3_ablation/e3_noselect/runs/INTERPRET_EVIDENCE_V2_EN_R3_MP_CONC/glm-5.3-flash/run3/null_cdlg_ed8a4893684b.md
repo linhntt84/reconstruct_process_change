@@ -1,0 +1,12 @@
+### Observed differences
+
+- Core activities kept their occurrence levels: A01 and A08 appear in every trace in both windows, at about 2.1 occurrences per trace earlier and about 2.0 in the later window (a decrease of roughly 0.07 occurrences per trace), and A12 appears in about 97 in 100 traces in both windows. These small decreases are no larger than what random re-splits of the pooled data produce (empirical strengths about 0.37). [OCC001, OCC004, OCC007]
+- Participation in the optional activities drifted slightly downward in the later window: A11 from about 53 to 47 in 100 traces, A16 from 52 to 47, A14 from 52 to 47, A15 from 42 to 37, and A09 from 37 to 34, while A04 rose slightly from 33 to 36 in 100. None of these shifts stands out against random re-splits (empirical strengths between 0.0 and about 0.49). [OCC002, OCC005, OCC006, OCC008, OCC009, OCC010]
+- Routing is nearly unchanged. The largest successor-profile difference is at A12, where transitions to A07 fell from about 26 in 100 to about 3 in 100 of A12's outgoing transitions while those to A01 and A09 each rose to about 21 in 100; however, this rests on only 23 versus 29 observed outgoing transitions (roughly 6 versus 1 cases for A07). [DIR012]
+- All other successor shares moved by at most about 7 percentage points — for example, A02's transitions to A06 fell from 10 to 4 in 100, and A05's transitions to A08 rose from 33 to 40 in 100 while those to A11 fell from 17 to 10 in 100 — with empirical strengths between about 0.09 and 0.60. [DIR002, DIR005, DIR007, DIR009]
+- Strongly fixed successions stayed fixed: A13 led to A11 in essentially all of its transitions in both windows (100% before, 98% after), and A14 led to A08 (98% before, 100% after). [DIR013, DIR014]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. All differences are small — participation shifts of at most about 5 in 100 traces and successor-share shifts of a few percentage points, the largest of which (at A12) rests on only about two dozen observed transitions — and none is unusual against random re-splits of the pooled windows, so sampling variation between the two 200-trace samples fully explains the picture. [OCC005, OCC006, OCC010, DIR012]

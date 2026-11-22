@@ -1,0 +1,18 @@
+### Observed differences
+
+- **Resource allocation.** In the earlier window, work on A01, A03, A17 and A22 was spread thinly: roughly 42–55 in 100 assignments went to a long tail of many occasionally used resources, and no single resource held more than about 1 in 10. In the later window, a small group of resources that previously handled little of this work takes over: User_40 rises from below about 3 in 100 (outside the top ten) to about 8–13 in 100, User_3 from below about 3 in 100 to about 8–11 in 100, and User_49 roughly doubles to about 6–7 in 100, while the long tail shrinks by about 10 points on every one of the four activities. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+- The shift is consistent in direction across all four activities: the same resources gain and the same previously used resources (each around 3–7 in 100 before) fall to near zero. The profile dissimilarities are 0.29–0.47, each larger than in all but about 1 in 2000 random re-splits. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+- **Timing.** The elapsed time between consecutive completions of A16 and A24 shortened: in the earlier window the mean gap was about 76 hours (median about 93; half of the gaps between roughly 30 and 119 hours), while in the later window the mean is about 44 hours (median about 45; half between roughly 24 and 52 hours) — about 33 hours lower on average and visibly more consistent. The pair occurs in about 24 in 100 before-traces and 29 in 100 after-traces (48 vs 57 gaps). [TWAIT001]
+- **Control flow.** No control-flow indicator qualified (0 items against about 0.18 expected by chance), so routing, participation and ordering show no detectable difference at these thresholds. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in resource allocation: for activities A01, A03, A17 and A22, assignments moved from a diffuse spread over many resources to concentration on a small group — including User_40, User_3 and User_49, which previously carried almost none of this work — while previously used resources lost their shares and the long tail shrank by about 10 in 100 assignments on each activity. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+
+Supporting signs: all four activity-level assignment profiles shift in the same direction with large dissimilarities and empirical strength of about 0.9995; the resource family produced 4 qualifying items where only about 0.005 would be expected without a change, so chance cannot account for them as a whole; and the profiles rest on substantial observation counts (roughly 130–270 assignments per activity per window). [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, screening]
+
+Limitations: the evidence shows assignment shares only, so it cannot distinguish a change in the allocation itself from a change in the mix of cases reaching these activities, and the aggregated remainder hides where exactly the lost shares went within the still-substantial tail of about 32–45 in 100. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004]
+
+Other differences: the elapsed time between consecutive completions of A16 and A24 fell by about 33 hours on average (median from about 93 to about 45 hours) and became more consistent; this is a distinct timing change supported in its own right (1 time item against about 0.019 expected by chance, strength about 0.9995), though it rests on only 48 vs 57 observed gaps. [TWAIT001, screening]

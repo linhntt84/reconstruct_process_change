@@ -1,0 +1,18 @@
+### Observed differences
+
+- The sharpest change concerns **A19, A20 and A25**. In the earlier window each of them ran in about 48 in 100 cases (94–96 of 200 traces); in the later window each runs in essentially every case (199 of 200). When present, each ran once per case in both windows (mean occurrences about 0.5 before vs about 1.0 after, with negligible repetition), so this is a participation change, not a change in how often they repeat. [OCC003, OCC004, OCC005]
+- The order inside this group did not change. Before, in the roughly half of cases where the activities ran, A19 preceded A25 and A25 preceded A20 almost always; in the later window the same order holds in about 97–99 in 100 cases. A41 ran before all three, and all three before A26, in both windows. [REL018, REL019, REL022, REL021, REL024, REL026, REL020, REL023, REL025]
+- In the later window the sequence also runs at fixed spacings: A19 about one step after A41, A25 about two, A20 about three and A26 about four steps after A41 (in about 93–98 in 100 of the observed pairs). [LAG018, LAG020, LAG019, LAG021]
+- **A06** is executed far more often: about 24 in 100 cases before (47 of 200) vs about 73 in 100 after (146 of 200), and it now appears earlier within traces (median relative position about 0.21 vs about 0.39). It now usually co-occurs with A14 (about 73 in 100 cases vs about 24 before, with A14 before A06) and precedes A19, A20 and A25 in about 65 in 100 cases, where such co-occurrence was seen in only about 13 in 100 before. [OCC001, POS001, REL001, REL004, REL005, REL006]
+- **A08** is executed much less often: about 20 in 100 cases before (40 of 200) vs about 8 in 100 after (15 of 200). [OCC002]
+- Participation of A14, A15, A16, A26 and A41 was about 100 in 100 cases in both windows, so the shift is localised to the block above plus A06 and A08. [REL009, REL012, REL015, REL020, REL021]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the section of the process formed by **A19, A20 and A25**, which before was executed in only about half of the cases, is now executed exactly once in virtually every case — that part of the process is no longer skipped. Its internal sequence (A41 before A19 before A25 before A20 before A26) is unchanged and now runs at fixed spacings. **A06** participates in the same shift: it runs in about three quarters of cases (up from about a quarter), appears earlier within traces, and now typically sits between the A14/A15/A16 part and this block. The participation differences are large (about 50 percentage points) and each is backed by roughly 95–199 traces per window; the screening produced 54 qualifying control-flow items where fewer than 1 (0.61) would be expected without any change, so the pattern as a whole is not what random re-splits produce. Note that the many relation items largely restate the same underlying trace behaviour rather than constituting independent confirmations.
+
+The evidence cannot distinguish between the block having become a mandatory part of every case and a shift in the mix of case types toward cases that include this block; both would look identical here. Position statements rest on event order within traces, not clock time.
+
+Other differences: A08 is executed far less often (about 20 → 8 in 100 cases) [OCC002]; A26's position within traces shifted slightly later (mean relative position about 0.41 → 0.44) [POS002]; the gap between the front activities and A41 grew by about one step (A41 about 4 → 5 steps after A14, and about 3 → 4 steps after A15) [LAG008, LAG013].

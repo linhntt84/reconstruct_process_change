@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7535c771ea572495.json",
+  "evidence_sha256": "9a6c2760d7f4052ff2d744e0d8d86d5f149256e2735c2579267100a1a1ab0324",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:27:49.814315+00:00",
+  "finished_at_utc": "2026-11-15T08:28:47.778439+00:00",
+  "latency_seconds": 57.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8239,
+    "prompt_tokens": 14161,
+    "total_tokens": 22400,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7244,
+      "text_tokens": 995
+    },
+    "cost": 0.00624365
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25271,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained A01, always followed directly by A03, and A03 was always the final event of the trace. In the later window, A01 and A03 appear in none of the 200 traces (participation 100% → 0%). [OCC001, OCC003, DIR001, POS003, REL002]\n- In the earlier window, A05 and A07 were not observed at all. In the later window, both run in every trace: A05 is always followed by A06, and A07 is always the final event. [OCC005, OCC006, DIR003, POS004, POS006, REL013, REL014, REL015]\n- A06 still runs in every trace in both windows, but its connections changed: before, its only observed successor was A01 and it sat around mid-trace (mean relative position about 0.50); after, its only observed successor is A07 and it sits later (mean about 0.75). [DIR004, POS005, REL004, REL011]\n- A02 still runs in every trace, with repeats in about 48–49 in 100 traces in both windows, but its outgoing transitions shifted: before, about 53 in 100 went to A06 and 47 to A04; after, about 50 go to A04 and 50 to A05, and the typical distance from A02 to A06 grew from one step (about 42 in 100 observed pairs) to two steps (about 51 in 100), consistent with A05 now lying between them. [OCC002, DIR002, LAG002, REL008]\n- A04's participation is essentially stable (about 48–49 in 100 traces in both windows); its repetition rose slightly, from about 22 to 29 in 100 of the traces containing it. [OCC004, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the closing segment of the process was restructured: the earlier ending, in which A06 led to A01 and A01 directly to the final A03, is no longer observed, and in the later window every case instead runs A02 → A05 → A06 → A07 with A07 last. A01 and A03 were dropped, A05 and A07 were added, A06 was retained but rewired (predecessor now A05, successor now A07), and A02's branch into A06 was replaced by a branch into A05, while the A02 → A04 branch continued as before. [OCC001, OCC003, OCC005, OCC006, DIR002, DIR003, DIR004, REL013]\n\nThe support is direct and consistent: the presence/absence swap is complete (200 of 200 traces in each window), the successor changes are observed on the edges themselves rather than inferred, and the positional and lag shifts match the rewiring; nearly all items show differences larger than in about 995 of 1,000 random re-splits of the pooled traces. Note that the many agreeing items largely describe one underlying change (for example, the occurrence, direction, position and relation items on A01) and are not independent confirmations. [DIR004, POS005, POS006, LAG002, REL015]\n\nThe evidence cannot rule out that the two windows sample different case populations or variants rather than a modified single process, and zero participation strictly means only that A01 and A03 were not observed in the later window. [OCC001, OCC003, OCC005, OCC006]\n\nOther differences: A04 repeats somewhat more often than before (about 22 → 29 in 100 of the traces containing it) and A02 averages slightly more occurrences per trace (about 1.9 → 2.0); both are small and could reflect sampling variation (empirical strength about 0.71 for A04). [OCC002, OCC004, LAG001]",
+  "case_id": "case_7535c771ea572495",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

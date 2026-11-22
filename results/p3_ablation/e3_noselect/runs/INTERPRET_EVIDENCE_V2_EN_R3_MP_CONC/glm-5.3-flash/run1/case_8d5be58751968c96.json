@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "b6a68605954ae395b3f26cb8ad3c8d7f0160ba1167c9dd5cb97440296aeb0e42",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:49:14.929793+00:00",
+  "finished_at_utc": "2026-11-14T13:52:16.618391+00:00",
+  "latency_seconds": 181.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27608,
+    "prompt_tokens": 71404,
+    "total_tokens": 99012,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25236,
+      "text_tokens": 2372
+    },
+    "cost": 0.024514599999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 79973,
+  "text": "### Observed differences\n\n- Six activities that each ran in all 200 earlier traces — A33, A35, A36, A37, A38 and A39 — appear in only about half of the 200 later traces: A33 in 94, A35 and A36 in 93 each (about 47 in 100), A37 in 113 (about 57 in 100), A38 in 111 and A39 in 112 (about 56 in 100). [OCC029, OCC031, OCC032, OCC033, OCC034, OCC035]\n- The six split into two trios that became almost mutually exclusive: before, every pair of the six co-occurred in 100 in 100 traces; in the later window, pairs within {A33, A35, A36} co-occur in about 46–47 in 100 traces (essentially whenever one runs, all three do), pairs within {A37, A38, A39} in about 55–56 in 100, while pairs across the two trios co-occur in only about 2–4 in 100 traces. [REL014, REL015, REL019, REL026, REL027, REL028, REL016, REL020, REL023]\n- The surrounding activities are unchanged: A30 and A31 still run in every trace in both windows, with A30 before A31 in about 99 in 100 traces; each trio activity now co-occurs with A30 only in the roughly 47 or 56 in 100 traces where it runs, down from 100 in 100. [OCC026, OCC027, REL001, REL002, REL005]\n- Routing at the block's edges changed: before, A30 led only into the first trio (about 34, 36 and 29 in 100 of its outgoing transitions to A33, A35 and A36), whereas in the later window its transitions spread over all six activities (about 14–20 in 100 each); A33, A35 and A36, which previously flowed on into the second trio and never directly to A31, now lead directly to A31 in about 33, 34 and 24 in 100 of their outgoing transitions. [DIR030, DIR033, DIR035, DIR036]\n- Event-order distances shrank accordingly: before, the second trio followed A30 by 4–5 event positions (gap 4 in about 48, gap 5 in about 52 of 100 observed pairs) and A31 followed the first trio by 4–5 positions; in the later window both distances are 1–3 positions in about 94 in 100 of observed pairs, while the first trio's distance to A30 was already 1–3 and barely moved. Mean event positions of the six converge to about 0.73–0.74 of the trace (first trio up from about 0.68, second trio down from about 0.76–0.77). [LAG004, LAG005, LAG007, LAG013, LAG019, LAG001, POS003, POS004, POS005, POS006, POS007, POS008]\n- Repetition around A43 and A44 increased: A43's mean occurrences per trace rose from about 1.56 to 1.71 and A44's from 0.79 to 0.94, with A44 present in about 63 vs 68 in 100 traces and somewhat more A43→A44 and A44→A43 transitions in the later window. [OCC039, OCC040, DIR043, DIR044]\n- Branch shares just before A30 shifted modestly: of the four alternatives after A29, A23's participation fell from about 54 to 47 in 100 traces and A24's rose from about 46 to 54 in 100 (A21 about 6 points lower, A22 about 5 points higher), with all four still in use. [OCC019, OCC020, OCC021, OCC022, DIR029]\n- A48's successor profile changed completely between the windows, but only 5 versus 7 outgoing transitions stand behind it, so this item is weak. [DIR048]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the six-activity block between A30 and A31 became an exclusive choice between two fixed trios. In the earlier window, every trace executed all six activities once, ordered A30 → {A33, A35, A36} in varying internal order → {A37, A38, A39} in varying internal order → A31; in the later window, about 44 in 100 traces execute only the first trio, about 53 in 100 only the second trio, and about 3 in 100 contain both, so running one trio goes together with not running the other, while A30 and A31 remain mandatory anchors. [OCC029, OCC031, OCC032, OCC033, OCC034, OCC035, REL001, REL014, REL016, REL020, REL023, REL026, DIR030]\n\nThe signs are direct and mutually consistent: participation of all six activities halved with the maximum empirical strength (0.995 in each case); co-occurrence collapsed only across the trios and stayed intact within them; A30's direct successors widened from the first trio to all six; A33, A35 and A36 gained a direct link to A31 that was absent before; and the second trio's event-order distance to A30 and A31 shrank from 4–5 to 1–3 positions, matching a block that shrank from six activities to three. [OCC029, OCC031, OCC032, OCC033, OCC034, OCC035, REL002, REL016, REL020, REL026, DIR030, DIR033, DIR035, LAG004, LAG007]\n\nLimitations: the evidence cannot show what determines which trio runs, and it cannot rule out that the two windows simply draw different mixes of cases (for example two case types whose proportions shifted between the windows) rather than a routing change within one process; the roughly 3 in 100 later traces containing both trios also do not fit a strictly exclusive choice. [REL016, REL021, REL025]\n\nOther differences:\n- Repetition around A43 and A44 increased (A43 mean occurrences about 1.56 → 1.71 per trace; A44 about 0.79 → 0.94), consistent with a loop that iterates more often, but no relational item connects this to the main change. [OCC039, OCC040, DIR043, DIR044]\n- The four alternative branches after A29 shifted shares by about 5–8 in 100 traces (A23 down, A24 up), all four remaining in use. [OCC021, OCC022, DIR029]\n- A48's successor profile changed completely, but it rests on only 5 versus 7 outgoing transitions. [DIR048]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

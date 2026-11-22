@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "ebaac48d8e032f0352aeddd2f3d176858c797d0180cc96a8e57db4083a74fd23",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:47:06.209828+00:00",
+  "finished_at_utc": "2026-11-14T13:49:40.389166+00:00",
+  "latency_seconds": 154.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25088,
+    "prompt_tokens": 40041,
+    "total_tokens": 65129,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22651,
+      "text_tokens": 2437
+    },
+    "cost": 0.01855015
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 72073,
+  "text": "### Observed differences\n\n- The dominant difference is an exchange of places between two groups of activities. In the earlier window, A15, A17 and A18 always occurred together, on average around 39% into the case, while exactly one of the three alternatives A14, A16, A19 occurred (never two of them) around 68–69% into the case, between A24 and A25. In the later window this is reversed: A14, A16 and A19 each run around 34–35% into the case, and A15, A17 and A18 around 64%. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n- All order relations between the two groups and the activities A20 and A24 flipped completely. Before, each of A15, A17, A18 preceded A20 and A24 in every case, and each of A14, A16, A19 followed them in every case; in the later window each of these relations holds only in the opposite direction (for example, A15 preceded A20 in 100% of cases before and in 0% after). [REL014, REL015, REL025, REL026, REL028, REL029, REL006, REL007, REL019, REL020, REL030, REL031]\n\n- Direct successors changed consistently with this. Before, A14, A16 and A19 always led to A25, A24 always led to one of A14/A16/A19, and A35 led to one of A15/A17/A18; in the later window A14, A16 and A19 always lead to A20, A24 always leads to one of A15/A17/A18, A35 leads to one of A14/A16/A19, and each of A15/A17/A18 leads directly to A25 in roughly a third of its outgoing transitions. [DIR010, DIR012, DIR015, DIR017, DIR026, DIR011, DIR013, DIR014]\n\n- Fixed step distances moved with the blocks: A24 to A25 was always 2 steps apart before and is always 4 steps apart in the later window, while A35 to A20 was always 4 steps apart before and is now always 2. [LAG007, LAG008]\n\n- The internal makeup of both groups and the segment anchors are preserved: A15, A17 and A18 still co-occur in every case in both orders in similar proportions, A14, A16 and A19 still never share a case, and A35 and A25 keep their places relative to all six activities (A35 before, A25 after). A20 and A24 shifted slightly earlier (about 46%→38% and 65%→57% into the case), A25 and A35 stayed put (about 72%→70% and 33%→31%). [REL011, REL012, REL023, REL002, REL005, REL018, REL008, REL009, REL032, REL033, POS007, POS008, POS009, POS010]\n\n- Outside this segment, the repetition loop around A36 became busier: A36 rose from about 1.5 to about 1.8 occurrences per case, A38 and A39 from about 0.69 to about 0.92 with their repeat share roughly doubling, and after A39 the flow returns to A36 in about 46 in 100 cases versus about 33 before, with continuation to A40 shrinking accordingly. [OCC022, OCC024, OCC025, DIR029, DIR027, DIR028]\n\n- Within the alternative block the routing shares also moved: A14 is now the executed alternative in about 44 in 100 cases (about 31 before), while A16 and A19 each fell to about 28–29 in 100 (about 38 and 32 before). [OCC013, OCC014, OCC015, REL002, REL005]\n\n- Smaller shifts: A10 and A11 repeat slightly less (about 1.69 versus about 1.60 occurrences per case), and after A11 the continuation moved from A12 (about 27 down to 21 in 100 cases) towards A13 (about 23 up to 28 in 100). [OCC009, OCC010, OCC011, OCC012, DIR009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the single-alternative block (exactly one of A14, A16, A19 per case) and the jointly executed block (A15, A17, A18, always together in varying order) have exchanged their places around the A20–A24 span: the earlier flow A35 → A15/A17/A18 → A20 → A24 → one of A14/A16/A19 → A25 became, in the later window, A35 → one of A14/A16/A19 → A20 → A24 → A15/A17/A18 → A25. The change is shown directly and consistently: six pairwise order relations reversed from always-one-order to always-the-other, the positions of all six activities moved by roughly a quarter of the case while the anchors A35 and A25 stayed in place, direct successors changed exactly as this exchange predicts, and the fixed step distances (A24→A25 from 2 to 4 steps, A35→A20 from 4 to 2) match a three-activity block being replaced by a one-activity block on each side, with differences that random re-splits of the pooled data almost never produce (strength about 0.99 on the key items). Because the internal relations of both blocks are preserved and participation is essentially unchanged, the evidence argues against the activities having been added, removed, made optional or repeated differently. Limitations: the evidence carries no screening baseline, so the number of qualifying items cannot be compared with a chance expectation, and many items describe the same underlying trace behaviour rather than independent confirmations; a competing explanation the evidence cannot rule out is that the two blocks were displaced independently rather than as one coordinated exchange. [REL014, REL015, REL025, REL026, REL028, REL029, POS001, POS002, POS004, POS005, POS009, POS010, DIR010, DIR012, DIR015, DIR017, DIR026, LAG007, LAG008, REL011, REL023, REL002, REL018]\n\nOther differences:\n- The loop around A36, A38 and A39 is executed more often and repeats more (A36 about 1.5 → 1.8 occurrences per case; A39 returns to A36 in about 46 in 100 cases versus about 33 before). [OCC022, OCC024, OCC025, DIR029]\n- Within the alternative block, A14 is now chosen more often than A16 and A19 (about 44 versus about 28–29 in 100 cases). [OCC013, OCC014, OCC015]\n- After A11, the continuation shifted from A12 towards A13, with A10/A11 repeating slightly less overall. [OCC009, OCC010, OCC011, OCC012, DIR009]",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

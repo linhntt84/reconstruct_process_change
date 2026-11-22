@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_46b1bc1c958fefb4.json",
+  "evidence_sha256": "c790a82a5c1d9fa960715bd3aaef24d87e45346e8c5008082d76a53675628022",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:22:16.998678+00:00",
+  "finished_at_utc": "2026-11-14T14:23:10.449105+00:00",
+  "latency_seconds": 53.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8712,
+    "prompt_tokens": 21093,
+    "total_tokens": 29805,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7561,
+      "text_tokens": 1151
+    },
+    "cost": 0.007519949999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26430,
+  "text": "### Observed differences\n\n- A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it runs exactly once in about 101 of 200 traces (roughly 50 in 100), and it sits early in the trace (median position about 0.14 of the trace length). [OCC001, POS001]\n- A02 shows the mirror image: about 92 of 200 traces (~46%) contained it in the earlier window, also early in the trace (median position about 0.11), while it does not appear in any trace in the later window. [OCC002, POS002]\n- The two activities swap their neighbourhoods. In the later window, A01's outgoing transitions go mainly to A06 (~24%), A03 (~19%), A10 and A11 (~15% each), A13 (~11%), A05 (~8%) and A04 (~7%); in the earlier window, A02's outgoing transitions went to almost the same activities (A03 ~32%, A06 ~22%, A11 ~14%, A13 ~11%, A04 ~9%, A10 ~7%). [DIR001, DIR002]\n- Predecessors switched as well: activities that previously passed control to A02 — A03, A05, A06, A09, A10, A11 and A13, with shares of roughly 1–10% of their outgoing transitions — now lead to A01 with similar or somewhat larger shares (for example A13 about 10%→15%, A05 about 5%→10%, A11 about 9%→11%). [DIR003, DIR005, DIR006, DIR009, DIR010, DIR011, DIR013]\n- A01 and A02 never occur in the same trace in either window: earlier, A02 appeared without A01 in 46 in 100 traces; later, A01 appears without A02 in about 50 in 100. A01's co-occurrence with A03 rose from never to about 50 in 100 traces and with A06 from never to about 26 in 100, precisely the co-occurrences A02 lost (46 and 26 in 100). [REL001, REL002, REL003, REL004, REL005]\n- Separately from this swap, A03 repeats more often in the later window (mean 1.87→2.17 occurrences per trace; repeated in about 53% vs 45% of traces) and A10 occurs more often (present in about 53% vs 45% of traces; mean 0.87→1.17); A03 also routes relatively more of its outgoing transitions to A10 (~32%→~37%) and fewer to A11 (~24%→~19%). [OCC003, OCC010, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 took over the position and connections previously held by A02: A02 is no longer executed in any trace, while A01 — unobserved before — now runs once in about half of the traces at a similarly early position, receives transitions from the same predecessor activities (A03, A05, A06, A09, A10, A11, A13) and hands control to nearly the same successors (A03, A04, A05, A06, A09, A10, A11, A13). This rests on direct, mutually consistent occurrence, direction, position and relation evidence — including the strict mutual exclusivity of A01 and A02 in both windows and the transfer of A02's co-occurrences with A03 and A06 to A01 — and the key items exceed virtually all random re-splits (strength about 0.99). The main competing explanation the evidence cannot rule out is that A01 is simply a relabelled continuation of A02 rather than a genuinely new activity, and with 200 traces per window any single item alone could reflect sampling; the conclusion rests on the consistency across indicators, not on any one item. [OCC001, OCC002, DIR001, DIR002, DIR003, POS001, POS002, REL001, REL002, REL003, REL004, REL005]\n\nOther differences: A03 is repeated more often and A10 is executed more often in the later window (A03: mean 1.87→2.17 per trace, repeated in about 53% vs 45% of traces; A10: present in about 53% vs 45% of traces, mean 0.87→1.17), and A03 shifts outgoing share from A11 towards A10; these shifts may be related to A01's new routing, but the evidence does not show that connection directly. [OCC003, OCC010, DIR003]",
+  "case_id": "case_46b1bc1c958fefb4",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

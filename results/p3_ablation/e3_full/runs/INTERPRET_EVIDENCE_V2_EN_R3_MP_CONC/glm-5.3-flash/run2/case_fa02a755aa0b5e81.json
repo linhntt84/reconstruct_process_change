@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_fa02a755aa0b5e81.json",
+  "evidence_sha256": "630eb532caf0c2f4cb9146713c4bc5cc0da537e78342b39105d4eb2dfac35042",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:44:01.695447+00:00",
+  "finished_at_utc": "2026-11-16T02:48:33.724793+00:00",
+  "latency_seconds": 272.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 42326,
+    "prompt_tokens": 46828,
+    "total_tokens": 89154,
+    "completion_tokens_details": {
+      "reasoning_tokens": 39736,
+      "text_tokens": 2590
+    },
+    "cost": 0.028187200000000003
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 128652,
+  "text": "### Observed differences\n\n- **A02 is the clearest difference.** In the earlier window A02 appeared in about 27 of 100 traces (53 of 200), usually as the first activity of its traces; in the later window it appears in none of the 200 traces. None of its five observed outgoing transitions (to A07 about 42 of 100, A03 about 26, A08 about 13, A13 about 11, A05 about 8) is seen afterwards, and it no longer shares a trace with A03, A05, A07, A08 or A13, all of which still occur. A02 never shared traces with A01 or A06, so this concerns a separate trace family. [OCC002, DIR002, POS002, REL001, REL011, REL012, REL013, REL014, REL015, REL019]\n\n- **Flows that used to pass through A02 now run directly between its neighbours.** Before, A07 sent about 34 of 100 outgoing transitions to A02, A08 about 11, A13 about 4 and A03 about 15; in the later window these edges are unobserved, while A07→A03 rose from about 21 to about 48 of 100 and A07→A13 from about 8 to about 29, A08→A05 from about 30 to about 62, A13→A08 from about 37 to about 62, and A03→A05 from about 65 to about 85. Step distances agree: A08 reached A05 within one step in about 62 of 100 pair observations (about 30 before), A07 reached A13 within one step in about 70 (about 18 before) and A03 in all observations (about 55 before), and A07 now typically opens its traces (median relative position 0.25 before, 0 after). [DIR003, DIR005, DIR006, DIR009, LAG009, LAG012, LAG013, LAG023, POS005]\n\n- **In the other trace family, the order of A01 and the A06/A10/A11/A12 block reversed.** Before, the block came first (A06 preceded A01 in about 12 of 100 traces, A11 in every trace containing A01, about 27 of 100) and A01 led straight to A05 (all of its outgoing transitions; the pair one step apart in all 54 observations; A01's mean relative position about 0.82). In the later window A01 opens the traces (mean position 0) and passes to A06 in all its observed outgoing transitions, A11 and A12 now lead to A05 (about 70 and about 30 of their outgoing transitions) instead of to A01, A05 follows A01 four steps later in all 22 pair observations, and the block members all sit at later positions (e.g., A11 median 0.5 → 0.75). [REL004, REL008, REL009, DIR001, DIR007, DIR008, LAG001, LAG021, LAG022, POS001, POS004, POS007, POS008, POS009]\n\n- **Secondary shifts:** A06 and A10 repeat less often (A06 mean occurrences per trace about 0.60 → 0.43, repetition in about 15 → 10.5 of 100 traces; A10 about 0.33 → 0.21), and participation moved mildly — up for A04 (about 23 → 28 of 100 traces) and A09 (about 24 → 27), down for A05 (about 54 → 46), A01, A11 and A12 (about 27 → 22 each) and A08/A13 (about 14 → 11 each). [OCC004, OCC005, OCC006, OCC009, OCC010, OCC001, OCC011, OCC012, OCC008, OCC013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A02-mediated path was dropped from execution and its flows shortcut. In the earlier window A02 opened about 27 of 100 traces and passed flow to A07, A03, A08, A13 and A05; in the later window A02 is unobserved in all 200 traces, its outgoing transitions are gone, it never co-occurs with its former partners, and those neighbours now connect directly (A07→A03, A07→A13, A08→A05, A13→A08, A03→A05), with A07 typically starting these traces. [OCC002, DIR002, REL011, REL012, REL014, REL015, REL019, DIR003, DIR005, DIR006, DIR009, POS005]\n\nSupporting signs: the change is documented directly on the activity itself, on its outgoing edges and on its relations with several partners, and a drop from 53 to 0 of 200 traces is larger than all but about 1 of 200 random re-splits of the pooled data, so sampling variation is not credible — A02 was far too frequent (about 27 of 100 earlier traces) to be a rare variant of a stable process. The rerouting shows up as specific new edge shares and shorter step distances while A03 and A07 continue at nearly unchanged rates (about 13 and about 24–27 of 100 traces), fitting a bypass of A02 rather than a decline of the cluster. Limitations: zero participation strictly shows only that A02 was not exercised in the later sample, and the occurrence, relation and distance items partly describe the same traces, so they corroborate rather than independently confirm the rerouting. [OCC002, DIR002, OCC003, OCC007, DIR005, DIR006, LAG009, LAG013]\n\nOther differences: in the traces that never contained A02, the sequence around A01 reversed — before, the A06/A10/A11/A12 block ran first and reached A05 through A01, while in the later window A01 opens the traces and A11/A12 exit directly to A05; A06 and A10 also repeat less often, and small participation shifts (A04 and A09 up about 4 in 100; A05, A01, A11, A12, A07, A08 and A13 down about 2–8 in 100) accompany both restructurings. [REL001, REL004, REL008, REL009, DIR001, DIR007, DIR008, LAG001, LAG021, LAG022, OCC004, OCC005, OCC006, OCC009, OCC010]\n\nA competing explanation the evidence cannot rule out is that the later window simply did not exercise the A02 path and the old A01-first sequencing (a different mix of cases) rather than a lasting rerouting; the windows show how execution differed, not what caused it. [OCC002, REL008]",
+  "case_id": "case_fa02a755aa0b5e81",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

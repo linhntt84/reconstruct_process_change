@@ -1,0 +1,19 @@
+### Observed differences
+
+- Three activities that were not observed in the earlier window appear in the later one: A19 occurs in about 37 in 100 later traces (74 of 200), A25 in about 34 in 100 (68 of 200) and A20 in about 29 in 100 (57 of 200), after occurring in none of the 200 earlier traces; each appears at roughly one-third of the trace length (mean relative position about 0.36). [POS001, POS002, POS003]
+- Routing out of A41 changed accordingly: in the earlier window about 93 in 100 of A41's outgoing transitions went directly to A26, while in the later window about 35 in 100 go to A19, about 31 in 100 to A25 and about 27 in 100 to A20, with the direct edge to A26 down to about 1 in 100. [DIR004]
+- In the later window the new activities lead almost always to A26: about 96 in 100 of A19's outgoing transitions go to A26, about 98 in 100 of A20's and about 97 in 100 of A25's. [DIR001, DIR002, DIR003]
+- The new activities sit between A41 and A26: A41 runs before A19 in all 74 traces containing both, before A20 in 56 of 57 and before A25 in 66 of 68; in turn, A19, A20 and A25 each run before A26 in every trace containing both (74, 57 and 68 traces respectively). [REL003, REL006, REL008, REL010, REL011, REL014]
+- The three new activities are mutually exclusive: A19 and A20 never occur in the same trace, nor A20 and A25, and A19 and A25 share only about 1 in 200 later traces; in the earlier window every trace contained neither member of each pair. [REL001, REL002, REL007]
+- The event distance from A41 to A26 grew: before, about 94 in 100 A41–A26 pairs were one event apart; after, about 90 in 100 are two events apart and about 9 in 100 three events apart, and A26's mean position moved slightly later (about 0.37 to 0.39 of the trace). [LAG002, POS004]
+- A smaller, separate shift: the distance between A31 and A35 moved from mostly one event apart (about 55 in 100) to mostly two events apart (about 62 in 100). [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new step now executes between A41 and A26, with three mutually exclusive alternatives at that point: traces that previously ran directly from A41 to A26 now pass through A19 (about 37 in 100 traces), A25 (about 34 in 100) or A20 (about 29 in 100), each at about one-third of the trace and followed almost always by A26. The placement is shown directly rather than inferred: A41's outgoing transitions shifted from about 93 in 100 to A26 to about 92 in 100 to the three new activities, the relational items place A41 before and A26 after each of them, and the A41–A26 distance grew from one event to two, which is what a single intervening activity produces; the earlier one-event distance also indicates that no other behaviour was displaced between the two. [DIR004, REL003, REL006, REL008, REL010, REL011, REL014, LAG002]
+
+This is unlikely to be a sampling artefact: activities occurring in 29–37% of later traces would essentially never be missed across 200 earlier traces, and 25 evidence items qualified where roughly 0.35 would be expected if nothing had changed. Limitations: many items describe the same traces (for example, the DIR, POS and REL items on A19 all reflect one behaviour), so they are not independent confirmations, and the evidence cannot establish whether the roughly 37/34/29 split among the three alternatives reflects genuinely different selection frequencies or only sampling variation around equal thirds. [POS001, POS002, POS003, DIR001, DIR002, DIR003]
+
+Other differences: A31's mean position moved slightly later (about 0.69 to 0.71 of the trace) [POS005], and A35 — present in about half the traces in both windows — now co-occurs with A19 or A25 in about 15–20 in 100 traces, with the new activity running first [REL005, REL013]; these appear to be side effects of the new step rather than independent changes.

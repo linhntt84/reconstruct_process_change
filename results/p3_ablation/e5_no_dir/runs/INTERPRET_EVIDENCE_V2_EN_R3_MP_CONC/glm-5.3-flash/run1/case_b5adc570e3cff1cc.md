@@ -1,0 +1,19 @@
+### Observed differences
+
+- **The order between the optional trio A14/A15/A20 and the pair A21/A22 reversed completely.** In the earlier window, each of A14, A15 and A20 ran in roughly a third of cases (31–38 in 100), and in every case where one of them co-occurred with A21 or A22, A21/A22 came first (reverse order in 31–38 of 100 traces, forward order in 0). In the later window this is fully flipped: the trio member comes first in every co-occurring case (32–35 in 100), with no mixed orders in either window. [REL001, REL002, REL003, REL004, REL005, REL006]
+
+- **The trio moved earlier in the case while A21/A22/A23 stayed roughly in place.** The mean relative position of A14, A15 and A20 moved from about 0.60 of the trace to about 0.32, while their trace share stayed around a third (e.g., A14: 38%→34% of traces). A21, A22 and A23 occur in all traces in both windows and shifted only slightly later (A21 mean 0.33→0.35, A22 0.56→0.59, A23 0.61→0.62). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- **Spacing around A22 and A23 tightened.** A23 now always immediately follows A22 (gap of 1 step in 100% of traces, versus about 48 before, with about 52 at distance 2), and A27 now always immediately follows A23 (100% versus about 52 before). [LAG001, LAG003]
+
+- **A10 and A11 repeat less.** Both still appear in every trace in both windows, but mean occurrences per trace fell from about 1.9 to about 1.6, and the share of traces in which they repeat fell from about 47 in 100 to about 38 in 100. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the optional activities A14, A15 and A20 — each executed in roughly a third of cases, always alongside A21/A22 — were relocated: in the earlier window they ran after A21 and A22 (around 60% of the trace length), in the later window they run before A21 (around 32% of the trace length), while A21, A22 and A23 kept their approximate positions. The order reversal is shown directly by the relation indicators for all six trio–pair combinations, completely and without mixed orders; the position indicators corroborate it (the trio moved about 0.28 of the trace earlier, the pair only 0.01–0.03 later); and the lag indicators are consistent with the trio leaving the middle of the case, since the A22→A23 and A23→A27 distances became uniformly minimal. With 18 qualifying items against fewer than 1 (0.23) expected by chance in the control-flow family, this pattern is far beyond what re-splitting an unchanged process produces. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG003]
+
+Limitations: the position and lag indicators use event positions, so the evidence establishes a change in execution order within cases, not in clock time; the six relation and three position items plausibly reflect one underlying relocation rather than independent confirmations; and the evidence does not reveal the trio's exact neighbours, so the precise insertion point and whether the three moved as one block cannot be established. A competing explanation the evidence cannot fully rule out is that always-present activities also shifted, contributing to the observed spacing changes. [LAG002, LAG004]
+
+Other differences: A10 and A11 still run in every case but repeat less often (mean about 1.9→1.6 occurrences per trace; repetition in about 47%→38% of traces) [OCC001, OCC002]. The A22→A27 distance shortened from always 3 steps to always 2, and the A40→A21 distance lengthened from always 1 step to always 2 — changes among always-present activities that the trio relocation alone does not explain [LAG002, LAG004].

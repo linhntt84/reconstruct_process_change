@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "a28a944d134dc77020e468c4bbd1daa507ba1d6f912e8ace0e88c1e582906417",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:57:58.289476+00:00",
+  "finished_at_utc": "2026-11-14T13:00:29.491211+00:00",
+  "latency_seconds": 151.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31996,
+    "prompt_tokens": 30447,
+    "total_tokens": 62443,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29866,
+      "text_tokens": 2130
+    },
+    "cost": 0.020565049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 93552,
+  "text": "### Observed differences\n\n- The main difference is a reordering of two blocks of activities. In the earlier window, one of the three alternatives A19/A21/A24 (each in roughly 30–38 of 100 traces, together about one per case) ran at about 0.36–0.37 of the case's event sequence, while the trio A20/A22/A23 (all three in every trace, with no fixed internal order) ran at about 0.64–0.65. In the later window these positions are reversed: A19/A21/A24 sit at about 0.67 and A20/A22/A23 at about 0.38–0.39, while each activity's participation stayed essentially the same. [POS002, POS003, POS004, POS005, POS006, POS007, DIR007, DIR009, DIR010]\n\n- The blocks' main successors flipped accordingly. Before, about 93–97 of 100 outgoing transitions of A19, A21 and A24 went to A25; in the later window about 92–97 of 100 go to A30. Before, A20, A22 and A23 sent about 29–37 of 100 transitions to A30; in the later window they send about 28–37 of 100 to A25 instead. [DIR006, DIR007, DIR008, DIR009, DIR010, DIR011]\n\n- The surrounding activities kept their roles but now precede the other block: A29's transitions went about 99 of 100 to A20/A23/A22 before versus about 98 of 100 to A24/A21/A19 in the later window; A40's went about 93 of 100 to A21/A19/A24 before versus about 83 of 100 to A22/A20/A23 in the later window. [DIR012, DIR013]\n\n- Distances match the exchange: A29 reached A30 typically 4 steps later before (about 94 of 100) and 2 steps later in the later window (about 95 of 100); A40 reached A25 2 steps later before (about 91 of 100) and 4 steps later in the later window (about 78 of 100). Pairs adjacent before (A21→A25 and A40→A21 at distance 1 in about 94–97 of 100) are now rarely within five steps, while pairs rarely close before (A19→A30 and A21→A30 at distance 1; A22/A23→A25 within 1–3 steps) now occur in about 58–200 traces. A25 and A29 each shifted slightly later (mean position about 0.39 to 0.45, and 0.58 to 0.64), consistent with the early block growing from a single choice to a three-activity sequence. [LAG018, LAG019, LAG020, LAG021, LAG023, LAG025, LAG026, LAG027, LAG029, POS008, POS009]\n\n- A08 became much rarer: it appeared in about 64 of 100 traces before and about 29 of 100 in the later window, its mean position moved later (about 0.26 to 0.41), and its outgoing transitions went from about 93 of 100 concentrated on A16 to about 31 of 100, now spread over many successors. A15 accordingly now leads to A16 in about 88 of 100 transitions (about 61 before) and to A08 in about 7 (about 39 before). [OCC003, POS001, DIR002, DIR005]\n\n- A04, A06 and A10 roughly tripled their presence, from about 7, 7 and 9 of 100 traces to about 21, 24 and 19, with substantially changed successor profiles (based on only 13–16 observed outgoing transitions before). [OCC001, OCC002, OCC004, DIR001, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two blocks of the case exchanged their places while participation stayed unchanged: in the earlier window a case ran A40, then one of A19/A21/A24, then A25, and later A29, then the A20/A22/A23 sequence, then A30; in the later window the two blocks are reversed, with A40 followed by A20/A22/A23 and A25, and A29 followed by one of A19/A21/A24 and A30. The signs are direct and mutually consistent: opposite position shifts of about a quarter of the case for all six activities with unchanged participation, a flip of each activity's main successor between A25 and A30, A29 and A40 now preceding the other block, and the A40→A25 and A29→A30 distances changing by exactly the length difference between a one-of-three choice and a three-activity sequence (2 versus 4 steps). The 58 qualifying items far exceed the roughly 1 expected by chance in the control-flow family, so chance is an unlikely explanation for the ensemble. Limitations: the evidence uses event positions rather than clock time, and it cannot distinguish one coordinated exchange of the two blocks from two independent re-placements around the fixed points A25/A30, nor rule out finer changes inside the blocks, since the running order of A20/A22/A23 is unfixed in both windows. [POS002, POS003, POS004, POS005, POS006, POS007, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013, LAG018, LAG020, LAG021, LAG023, LAG025, LAG026, LAG029]\n\nOther differences: A08 became much rarer (about 64 to about 29 of 100 traces) and its transitions now spread over many successors instead of concentrating on A16, while A04, A06 and A10 each roughly tripled their trace participation; the evidence does not link these participation shifts to the block exchange. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, POS001]",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

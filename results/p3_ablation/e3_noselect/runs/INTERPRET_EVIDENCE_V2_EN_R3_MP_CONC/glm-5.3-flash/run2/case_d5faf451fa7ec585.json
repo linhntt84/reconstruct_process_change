@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_d5faf451fa7ec585.json",
+  "evidence_sha256": "e963dfa81f00e7ae98daa0993fe63607c50d8e9d14a59c68178853cdadcab2ca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:42:52.347993+00:00",
+  "finished_at_utc": "2026-11-15T07:44:15.020406+00:00",
+  "latency_seconds": 82.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11388,
+    "prompt_tokens": 27915,
+    "total_tokens": 39303,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10082,
+      "text_tokens": 1306
+    },
+    "cost": 0.00988125
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34592,
+  "text": "### Observed differences\n\n- Three activities disappear from the later window: A14, A15 and A20 each ran in about 32, 28 and 40 in 100 traces before (64, 56 and 80 of 200 traces) and in none of the 200 traces after. [OCC013, OCC014, OCC019]\n- In the earlier window these three were mutually exclusive alternatives — they never co-occurred and their shares sum to one, so exactly one of them executed in every trace; in the later window no trace contains any of them. [REL001, REL002, REL006]\n- This block sat between A22/A23 and A24. Before, A22 led to A23 in about 55 in 100 of its outgoing transitions and to A20, A14 or A15 in the rest; A23 led to A24 in about 46 in 100 cases and to A14, A20 or A15 otherwise. In the later window A22 always continues directly with A23, and A23 always with A24. [DIR017, DIR018]\n- The removed activities themselves led mostly to A24 and A23 (for example A14 to A24 in about 58 in 100 of its outgoing edges); none of these transitions are observed in the later window. [DIR010, DIR011, DIR016]\n- Distances tightened accordingly: A22→A23 and A23→A24 now always occur at distance 1 (before: distance 1 in about 55 and 46 in 100 cases, distance 2 otherwise), and A24 now follows A22 two positions later in every trace instead of three. [LAG001, LAG002, LAG003]\n- Consistent with the shorter segment, A22 now occurs slightly later within traces (mean relative position about 0.46 vs 0.47) and A24 slightly earlier (about 0.57 vs 0.55), while A23 is essentially unchanged; these are event positions, not clock times. [POS004, POS005, POS006]\n- Separately, A10 and A11 still occur in every trace but repeat less: mean occurrences per trace fell from about 1.43 to 1.31 and the share of traces with repeats from about 31 to 24 in 100; A11's outgoing share also moved from A10 and A12 toward A13 and A35. [OCC009, OCC010, DIR009]\n- A few small routing shifts appear elsewhere, e.g. A32 and A33 now continue more often to A27 (about 47 vs 58 in 100) and less often to each other, and A26 continues somewhat more often to A33; these differences are small. [DIR023, DIR024, DIR020, DIR025]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block of A14, A15 and A20 — exactly one of which executed in every earlier trace, between A22/A23 and A24 — is no longer executed in the later window, so that A22, A23 and A24 now form a fixed, immediate sequence A22→A23→A24. The change is shown directly and consistently across occurrence, direction, position, relation and lag indicators: participation drops to zero out of 200 traces, the three activities' transitions vanish, A22 and A23 lose all branches except the direct continuation, the A22→A24 distance shortens from three to two, and A22 and A24 shift slightly toward each other; all of these items show the maximum empirical strength of about 0.995 against random re-splits. [OCC013, OCC014, OCC019, DIR017, DIR018, LAG001, LAG002, LAG003, REL010, POS004, POS006]\n\nLimitations: zero participation strictly shows only that A14, A15 and A20 were not observed in the later window, so a choice that existed but was never taken in these 200 traces cannot be distinguished from a removal; several items describe the same underlying difference and are not independent confirmations; and no screening baseline is present to compare the number of qualifying items with a chance expectation. [OCC013, OCC014, OCC019]\n\nOther differences: A10 and A11 repeat less often per trace in the later window (mean about 1.43 vs 1.31 occurrences; repeats in about 31 vs 24 in 100 traces), with A11's continuations shifting toward A13 and A35 — a separate, weaker observation about repetition, not part of the main hypothesis. [OCC009, OCC010, DIR009] Minor routing-share changes around A26, A32, A33, A34 and A35 are within the range where sampling differences are plausible. [DIR020, DIR023, DIR024, DIR025, OCC024, OCC025]",
+  "case_id": "case_d5faf451fa7ec585",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

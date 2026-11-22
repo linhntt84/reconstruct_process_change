@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_26055cf0ce197a19.json",
+  "evidence_sha256": "bff954969ae468784d2ce4807918bd7034910e45ab52f170b0831d7d99338eec",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:27:11.347938+00:00",
+  "finished_at_utc": "2026-11-15T03:29:57.738112+00:00",
+  "latency_seconds": 166.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24889,
+    "prompt_tokens": 17327,
+    "total_tokens": 42216,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23136,
+      "text_tokens": 1753
+    },
+    "cost": 0.015043550000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 82261,
+  "text": "### Observed differences\n\n- The recurring cycle through A01, A05 and A07 ran in opposite orders in the two windows. In the earlier window, A01 led to A07 in about 94 in 100 of its observed outgoing transitions, A07 led mainly to A05 or A06 (about 43 and 41 in 100), and A05 led back to A01 (about 96 in 100). In the later window, A01 leads mainly to A05 (about 57 in 100, with A06, A04 and A03 at about 18, 14 and 11), A05 leads to A07 (about 91 in 100), and A07 leads back to A01 (about 94 in 100); transitions from A01 to A07 no longer appear among its observed outgoing transitions. [DIR001, DIR004, DIR006]\n- The adjacency changes match: A01→A05, A05→A07 and A07→A01 occur as immediately consecutive events in about 20, 23 and 25 in 100 of their occurrences in the later window, which never happened earlier, while the previously immediate pairs A01→A07 (about 28 in 100 at lag 1), A07→A05 (about 26) and A05→A01 (about 29) lost all lag-1 occurrences and now occur only at longer distances. [LAG001, LAG011, LAG012, LAG003, LAG013, LAG009]\n- The activities feeding the cycle changed as well. Earlier, A03 and A04 sent about 51 and 41 in 100 of their outgoing transitions back to A07; in the later window they send about 34 and 39 in 100 to A01 and almost none to A07 (about 2 and 1 in 100). The A03→A01 and A04→A01 links became near-immediate (about half of occurrences at lags 1–2, where lags 3–4 dominated before), while their links to A07 became distant (lags 3–5). [DIR002, DIR003, LAG004, LAG006, LAG005, LAG008]\n- A06 changed from a late-trace activity (mean relative position about 0.96 of the trace), reached from A07 and leading on to A03 or A04, to a mid-trace activity (about 0.48) whose transitions go to A01, A03, A05 and A04; the earlier direction profile rests on only about 11 observed outgoing transitions and is weakly grounded. [POS003, DIR005, DIR006]\n- A07's mean relative position moved later in the trace (about 0.51 to 0.69). A01 now co-occurs with A03, A04 and A06 in about 53 in 100 traces (about 27 in 100 before), and A03, A04 and A06 each now appear in traces without A07 (about 24 in 100), which essentially never happened before, when they co-occurred with A07 in about 51 in 100 traces. [POS004, REL001, REL002, REL004, REL006, REL007, REL009]\n- Participation also shifted: A01 appeared in about 28 in 100 traces earlier and about 53 in 100 later (mean occurrences about 0.5 vs 1.1 per trace; recurrence in about 11% vs 29% of its traces), while A07 fell from about 51 to about 29 in 100 traces; A01 now occurs without A07 in about 24 in 100 traces, whereas before A07 appeared without A01 in about 23 in 100. [OCC001, OCC002, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe screening tested 58 control-flow units and 35 items qualified, where fewer than 0.3 would be expected by chance alone if nothing had changed, so the set of differences is far larger than random re-splits of a stable process produce; each qualifying difference was also larger than in about 199 of 200 random re-splits. The evidence supports the hypothesis that the recurring cycle around A01 was reorganised: A05 and A07 exchanged places in it, so the earlier traversal A01 → A07 → A05 and back to A01 became A01 → A05 → A07 and back to A01 in the later window, while A03, A04 and A06, which previously re-entered the cycle at A07, now feed into A01, with A06 moving from the end to the middle of traces. The support is direct and consistent: the successor profiles of A01, A05, A07, A03 and A04 changed almost completely in the direction of this loop, the new pairs became immediately consecutive while the old pairs stopped being so, and the position and co-occurrence shifts agree with the same reordering. [DIR001, DIR004, DIR006, LAG001, LAG011, LAG012, LAG003, LAG013, LAG009, POS003, POS004, REL006]\n\nLimitations: all items are control-flow measures from two samples of 200 traces, and many items describe the same re-routing, so they are not independent confirmations; an unobserved transition does not prove that a connection is gone. A competing explanation the evidence cannot rule out is a change in the mix of complete trace variants — traces running A01 → A05 → A07 replacing traces running A01 → A07 → A05 — rather than a reordering within individual executions; the aggregate indicators cannot separate these. [DIR001, DIR004, DIR006, LAG003, LAG012]\n\nOther differences: A01 takes part in about twice as many traces (about 28 vs 53 in 100) and repeats within a trace more often (in about 11% vs 29% of its traces), while A07 takes part in fewer traces (about 51 vs 29 in 100); the evidence cannot show whether these participation shifts follow from the reorganisation above or are a separate change in how often the cycle runs. [OCC001, OCC002, REL005]",
+  "case_id": "case_26055cf0ce197a19",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

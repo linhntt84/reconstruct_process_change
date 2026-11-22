@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_4df99fd015704993.json",
+  "evidence_sha256": "16dc06bebaabc9757be29f1151d55f6a3724129d07631b8db99c672884f11c3f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:13:31.864892+00:00",
+  "finished_at_utc": "2026-11-15T08:15:58.497120+00:00",
+  "latency_seconds": 146.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18923,
+    "prompt_tokens": 29212,
+    "total_tokens": 48135,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17335,
+      "text_tokens": 1588
+    },
+    "cost": 0.0138433
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57473,
+  "text": "### Observed differences\n\n- The activity A02 was not observed in any of the 200 earlier traces, but appears in about 78 of 200 later traces (~39%); whenever it occurs it is directly followed by A13 (100% of its observed outgoing transitions), at a normalised position around the middle of the trace (median ~0.5). [OCC002, DIR001, POS001]\n- The activity A14, present in about 51 of 200 earlier traces (~26%), was not observed in any later trace. Earlier, every observed A12 execution led to A14 and every A14 led to A03; in the later window A12 leads directly back to A03 (100% of its observed outgoing transitions) and A14 has no observed successors. [OCC014, DIR010, DIR011, POS007]\n- The exit from the A03/A12 loop was rerouted: earlier, A03's outgoing transitions split about 51% to A12 and 49% to A13, with A13 typically following A03 immediately (lag 1 in ~50% of observed pairs); later, A03 leads to A02 (~54%) or A12 (~46%), never directly to A13, and A13 follows A03 at a distance of 2 steps (~52% of pairs), with A02 preceding A13 in all ~39% of later traces containing both. [DIR002, LAG003, REL006, REL012]\n- The repetition loop became one step shorter: A12→A03 distances moved from lag 2 (~26% of pairs) to lag 1 (~28%); A03→A03 repetition gaps moved from lag 3 (~49%) to lag 2 (~32%) and lag 4 (~7%); A12→A12 gaps moved from lag 3 (~48%) to lag 2 (~34%). [LAG009, LAG001, LAG010, LAG011]\n- A01 was also not observed earlier but appears in about 55 of 200 later traces (~28%); no directional or relational evidence shows where it sits in the flow. [OCC001]\n- Trace-family shares shifted: A03 and A13 fell from ~50% to ~39% of traces, the family around A04, A05, A07, A09, A10 and A11 fell from ~50% (99/200) to ~33.5% (67/200), A08 from 34% to 24%, and A12 from ~26% to ~18.5%. Earlier, exactly one of A03/A07 was present in every trace; later, both are absent in ~27.5% of traces — a share matching A01's participation — and A02 never occurs together with A07, A09 or A10. [OCC003, OCC004, OCC005, OCC007, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013, REL002, REL008, REL014]\n- Minor: A09's outgoing share to A10 fell from ~28% to ~18% while A06 (~49%→54%) and A07 (~21%→27%) rose slightly; most other routing and position differences are within random-split variation. [DIR007, DIR003, DIR009, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the cyclic region involving A03 and A12 was restructured in two ways: A12 now leads directly back to A03 where the return previously passed through A14 (an activity no longer observed at all), and the loop's exit now runs A03 → A02 → A13 through the new activity A02, instead of A03 leading directly to A13. The support is direct — the successor profiles of A12 and A03 changed exactly at these points, A02's only observed successor is A13, and A02/A13 always co-occur with A02 first — and consistent across occurrence, direction, relation and lag indicators, with the lag shifts (A12→A03 from 2 steps to 1, A03→A13 from 1 to 2, loop gaps from 3 to 2) matching the new wiring. The magnitudes make sampling an unlikely explanation: an activity in ~26% of earlier traces is absent from all 200 later traces, and one absent from all 200 earlier traces appears in ~39% of later traces. Limitations: no screening baseline is provided, so the number of qualifying items cannot be compared with a chance expectation; several items reflect the same underlying traces and are not independent confirmations; and the evidence cannot distinguish an edit of the existing path from the old A03-family variant being replaced wholesale by a differently wired one. [OCC002, OCC014, DIR001, DIR002, DIR010, DIR011, REL006, LAG003, LAG009, LAG001, LAG010]\n\nOther differences: A01 appears in ~28% of later traces with unknown placement, and a group of ~27.5% of later traces contains neither A03 nor A07 (earlier, one of the two was always present), while participation of the A04–A11 family fell from ~50% to ~33.5% of traces — suggesting an additional new or expanded trace family whose contents the evidence does not reveal; A09's routing also shifted slightly toward A06 and A07 away from A10. An important competing explanation the evidence cannot rule out is that these broader participation changes are an independent change in variant frequencies rather than a consequence of the A02/A14 restructuring. [OCC001, REL008, REL014, OCC004, OCC005, OCC007, OCC009, OCC010, OCC011, DIR007]",
+  "case_id": "case_4df99fd015704993",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

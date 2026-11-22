@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_0d5456a31099.json",
+  "evidence_sha256": "11e0ec559b16cf63a9ab64439978b727ed91a2262e80a8d8ad49bc61b2502648",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:50:08.038498+00:00",
+  "finished_at_utc": "2026-11-16T02:54:46.391223+00:00",
+  "latency_seconds": 278.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 37615,
+    "prompt_tokens": 35680,
+    "total_tokens": 73295,
+    "completion_tokens_details": {
+      "reasoning_tokens": 35647,
+      "text_tokens": 1968
+    },
+    "cost": 0.024159499999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 122365,
+  "text": "### Observed differences\n\n- In the later window, A04 ran in more cases: it appeared in about 27 of 100 traces (54 of 200) versus about 20 of 100 (39 of 200) in the earlier window, its occurrences per trace rose from about 0.33 to about 0.55, and traces in which it ran at least twice doubled from about 8 to 14 in 100. [OCC004, LAG007]\n- A02 appeared in a stable share of traces (about 44–46 of 100 in both windows) but ran more often per trace (about 0.77 versus 1.0 occurrences) and repeated within a trace in about 27 of 100 traces versus about 20 earlier (39 versus 54 of 200). [OCC002, LAG001]\n- Exits from A02 shifted toward A04: about 54 of 100 of A02's outgoing transitions went to A04 in the later window versus about 43 of 100 earlier, while exits to A05 fell from about 28 to 19 in 100 and exits to A09 stayed near 27–29 in 100. In both windows the number of direct A02→A04 transitions (about 66 earlier, about 109 later) matches the total number of A04 occurrences, A04 never appeared in a trace without A02, and it never appeared together with A01 or A10. [DIR002, OCC004, REL011, REL003, REL030]\n- The activities downstream of A02 were pushed further away: immediate A02→A05 succession fell from about 24 to 16 in 100 while 4–5-step gaps grew, A02→A08 pairs at 3 steps fell from about 54 to 45 in 100, and A04→A05 pairs at 2 steps fell from about 31 to 19 in 100; A02, A05, A08 and A09 also occur at somewhat later event positions (for example, A05's lower quartile moved from 0.20 to 0.40 of the trace). [LAG003, LAG004, LAG008, POS002, POS005, POS007, POS008]\n- Traces containing A02 together with one of its partners (A03, A05, A07, A08, A09) were more often interleaved-or-repeated in the later window (about 27 of 100 versus 20) and less often a single A02-before-partner run (about 19 versus 24–25 in 100). [REL010, REL012, REL014, REL015, REL016]\n- A01 and A10 became confined to the trace boundaries: earlier, about half of A01's occurrences sat at the very first position but a quarter or more at the very last (A10 mirrored this); in the later window at least three-quarters of A01's occurrences are at the first position and of A10's at the last (mean relative positions about 0.28 versus 0.21 for A01, 0.73 versus 0.85 for A10). A10 also appeared in slightly fewer traces (about 30 versus 26 in 100). [POS001, POS009, OCC010]\n- Within the successor group the exit choice shifted mildly: from A05, transitions to A08 rose from about 51 to 59 in 100 (A09 fell accordingly), and from A09, transitions to A05 rose from about 51 to 59 in 100. [DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the repeat sequence around A02 and A04 was executed more often: A04 took part in about 27 of 100 cases versus about 20 earlier, always running directly after an A02 and never in traces containing A01 or A10; A02 repeated within a case in about 27 of 100 cases versus about 20; and A02's exits moved toward A04 (about 54 of 100 outgoing transitions versus 43) at the expense of A05 (19 versus 28 in 100). The extra A02/A04 executions sit between A02 and its successors A03, A05, A07, A08 and A09, which now occur at longer distances from A02 and A04 and at later event positions. The signs are direct and consistent: participation, routing, repetition, distance and position indicators all move in the same direction, the same trace counts (39 versus 54 of 200) recur across the occurrence, relation and lag data, and the core items rank above roughly 90 in 100 random re-splits. Limitations: the evidence carries no screening baseline, so the number of qualifying items could not be compared with a chance expectation, and most items describe the same traces, so their agreement is not independent confirmation; the exact placement of A04 between two A02 runs is inferred from direction and distance data rather than observed directly. A competing explanation the evidence cannot fully exclude is an unchanged process in which an existing intermittent repeat pattern was simply sampled more often in the later window; the cross-family consistency makes this unlikely but cannot rule it out quantitatively. [OCC002, OCC004, DIR002, LAG001, LAG003, REL011, POS005]\n\nOther differences: A01 and A10 became confined to the trace boundaries (at least three-quarters of occurrences at the first, respectively last, position in the later window, versus about half before), A10 appeared in slightly fewer traces (about 30 versus 26 in 100), and traces with A10 before A01 halved to about 4 in 100; within the successor group, exits from A05 to A08 and from A09 to A05 each rose from about 51 to 59 in 100. [POS001, POS009, OCC010, REL009, DIR003, DIR004]",
+  "case_id": "null_cdlg_0d5456a31099",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

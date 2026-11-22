@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "99021b56c8e16f109f368537fabc6e079ec0e57ad85c105b7dd63aee169d997c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:44:22.776045+00:00",
+  "finished_at_utc": "2026-11-15T06:45:42.245504+00:00",
+  "latency_seconds": 79.47,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11780,
+    "prompt_tokens": 22323,
+    "total_tokens": 34103,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10362,
+      "text_tokens": 1418
+    },
+    "cost": 0.009238449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34208,
+  "text": "### Observed differences\n\n- In the earlier window, the activities A20, A22, A23, A24, A25, A26, A31 and A32 appeared in essentially every trace, but their relative order varied: pairwise event distances were dispersed (A20 to A23 within one to four steps, about 62 in 100 at distance one; A22 to A24 split roughly half at one step and a quarter each at two and three steps), and several pairs occurred in both orders (A24 before A20 in about 149 of 200 traces, A26 before A23 in about 139, A25 before A23 in about 106). [LAG003, LAG010, LAG016, LAG021, LAG023]\n\n- In the later window, the same group runs as one fixed sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32, with each pair at a single fixed distance: A20 is followed by A23 one step later in about 199 of 200 traces (before about 62 in 100, spread over one to four steps), A22 by A20 one step later (before 56 in 100), and A31 reaches A24 only four steps later (before about half the cases at one step). [LAG003, LAG004, LAG008, LAG029, DIR003, DIR004, DIR009]\n\n- The reverse-order pairs disappeared: within-five-steps occurrences of A24 before A20 fall from about 149 of 200 traces to 1, A24 before A23 from 176 to 1, A25 before A23 from 106 to 1, A26 before A23 from 139 to 1, and A31 before A25 from 106 to 1 — pairs previously seen in both orders now occur only in the chain order. [LAG016, LAG017, LAG021, LAG023, LAG030]\n\n- Direct successors consolidated the same way: A20 now leads to A23 in about 99 in 100 of its outgoing transitions (before about 62), A22 to A20 (about 99 vs 55), A23 to A24 (about 98 vs 12), A24 to A26 (about 99 vs 55), A26 to A25 (about 99.5 vs 66), A25 to A32 (about 93 vs 43) and A31 to A22 (100 vs 50). [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009]\n\n- Consistent with this reordering, A20, A22 and A23 now sit slightly earlier in the trace (median event position lower by roughly 0.04–0.07 of trace length) while A24, A25 and A26 sit slightly later (median higher by roughly 0.03–0.06); participation itself did not change, as every group member still appears in essentially all traces in both windows. [POS002, POS003, POS004, POS005, POS006, POS007]\n\n- Separately, A08 became much rarer — present in about 32 in 100 traces before versus about 13 after (64 vs 26 traces) — and sits later in the trace when it occurs (mean relative position about 0.18 vs 0.34), with A14 now routing to A15 in about 90 in 100 of its outgoing transitions (before 70) and to A08 in about 7 (before 29); A10 rose from about 3 to about 13 in 100 traces (6 vs 25 traces, small counts). [OCC001, OCC002, POS001, DIR001, DIR002, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints within the group A20, A22, A23, A24, A25, A26, A31 and A32 changed: in the earlier window these activities were executed in a variable order with varying distances and several pairs in both orders, whereas in the later window they follow the single fixed sequence A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32 at fixed spacings. The change is shown directly by relational evidence — pairwise lags collapsing to one distance per pair and reverse-order pairs vanishing — and corroborated by successor profiles consolidating to one dominant successor per activity, with about 200 traces behind most profiles in both windows. It is not a participation change (all members remain in essentially every trace), and chance cannot explain the pattern as a whole: 49 control-flow items qualified where roughly 0.7 would be expected for an unchanged process. Limitations: LAG and POS use event positions rather than clock time, so \"fixed spacing\" means fixed event distance, not fixed clock time; the many agreeing items describe the same traces and are not independent confirmations; and pair-level evidence cannot distinguish whether the earlier variability was free ordering within each trace or a mixture of several fixed orderings across traces — under either reading, the later window has narrowed to one order. [LAG003, LAG008, LAG016, LAG023, DIR003, DIR005, DIR006, DIR009]\n\nOther differences: A08 participation dropped from about 32 to about 13 in 100 traces, its coupling to A14 loosened (A14→A08 falling from about 29% to about 7% of A14's outgoing transitions while A14→A15 rose from 70% to 90%), and A08 occurs later when present; A10 became more frequent (about 3 to about 13 in 100 traces). These involve A08, A10, A14 and A15 and are not part of the main hypothesis; the after-window profiles for A08 rest on only about 26 traces, so sampling noise remains a competing explanation for their details. [OCC001, OCC002, POS001, DIR001, DIR002, LAG001]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

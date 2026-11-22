@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_545df4cf7e08915b.json",
+  "evidence_sha256": "beaad79bc91a93ab0f0a523e7a2f5f7856d29bf28d347ecd99df2cb9b1d27820",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:44:56.736169+00:00",
+  "finished_at_utc": "2026-11-15T13:48:04.701803+00:00",
+  "latency_seconds": 187.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26432,
+    "prompt_tokens": 49063,
+    "total_tokens": 75495,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24704,
+      "text_tokens": 1728
+    },
+    "cost": 0.020575450000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 86358,
+  "text": "### Observed differences\n\n- Activity A01 is no longer observed, while A08 appears in its place. In the earlier window A01 ran in about 48 in 100 traces (about one occurrence per trace, 96 of 200 traces); in the later window it appears in none of the 200 traces. A08 shows the mirror image: not observed earlier, it runs in about 48 in 100 traces afterwards (about 1.1 occurrences per trace, 96 of 200). [OCC001, OCC006]\n\n- A08 also took over A01's connections. Earlier, A01's outgoing transitions led to A09 in about half of the cases (51%) and to A10 and A16 in about a quarter each; in the later window A08's outgoing transitions lead to the same activities in similar shares (A09 about 56%, A10 about 25%, A16 about 19%). A17, which earlier always led to A01, now always leads to A08, and A03's outgoing traffic moved from A01 (about 21%) to A08 (about 26%). [DIR001, DIR006, DIR012, DIR003]\n\n- The takeover matches position and co-occurrence as well: A01's earlier relative position in the trace (mean about 0.57) matches A08's later one (about 0.55); A03 co-occurred with A01 in about 48 in 100 traces earlier and now co-occurs with A08 in the same share; and the earlier pattern that A01 and A11 never ran together (48% vs 52%, exactly one per trace) is mirrored later by A08 and A15 never running together (48% vs 52%). [POS001, POS004, REL001, REL003, REL012, REL006, REL031]\n\n- A11 and A15 exchanged roles. Earlier, A11 ran in about 52 in 100 traces, always at the same, latest position with no observed outgoing activity, reached from A05 (about 52% of A05's outgoing transitions); A15 ran in about 32 in 100 traces, mid-trace, and always led to A03. In the later window this is reversed: A15 runs in about 52 in 100 traces, always at the latest position with no outgoing activity and reached from A05 (about 52%), while A11 runs in about 29 in 100 traces, mid-trace, and always leads to A03. A18's transition to A15 (about 21%) became a transition to A11 (about 26%), and the typical event distances swapped accordingly (A18 to A11 about 4 steps earlier vs about 1 step later; A18 to A15 the reverse). [OCC009, OCC011, POS007, POS008, DIR005, DIR008, DIR010, DIR013, LAG023, LAG024]\n\n- Several activities repeat less often per trace in the later window: A03 from about 2.1 to about 1.8 occurrences (still in every trace), A04 and A18 from about 2.2 to about 1.6 (in about 50 vs 45 in 100 traces), A07 from about 39 to 27 in 100 traces, and A06 from about 1.1 to 0.8 occurrences per trace. [OCC002, OCC003, OCC014, OCC005, OCC004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 no longer occurs and A08 has taken over the role A01 previously held: A08 receives the transitions A01 used to receive (always from A17, about 26% of A03's outgoing transitions, a small share from A02), leads on to the same successors (A09, A10, A16) in similar shares, runs in the same share of traces (about 48 in 100) and at the same relative position. This is shown directly by successor, co-occurrence and position evidence, not only by occurrence counts, and the same picture appears consistently across the occurrence, direction, position, relation and lag indicators; an activity falling from 96 to 0 of 200 traces while another rises from 0 to 96 with matching profiles is not plausibly a sampling artefact. The evidence cannot distinguish this from the same steps simply being recorded under a new activity code, and it cannot rule out that the moderate repetition decreases elsewhere are partly sampling variation. [OCC001, OCC006, DIR001, DIR006, DIR012, DIR003, REL003, POS001, POS004]\n\nOther differences: A11 and A15 exchanged roles — A15 became the terminal activity after A05 that A11 used to be, and A11 took over the mid-process position leading to A03 that A15 used to hold, a second structural change with its own direct relational and positional support; in addition, A03, A04 and A18 repeat less often per trace and A07 (and slightly A06) participate in fewer traces, which the role-takeover hypothesis does not explain. [OCC009, OCC011, DIR005, DIR008, DIR010, REL023, REL024, LAG023, LAG024, OCC002, OCC003, OCC014, OCC005, OCC004]",
+  "case_id": "case_545df4cf7e08915b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

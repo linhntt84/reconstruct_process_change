@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_9f4a4aad6df1262d.json",
+  "evidence_sha256": "372589cdbf0683d967a35df7602a03798eb57449ed05b2a2ddf29ff5f4c27926",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:20:35.329528+00:00",
+  "finished_at_utc": "2026-11-15T06:22:56.325623+00:00",
+  "latency_seconds": 141.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20888,
+    "prompt_tokens": 19282,
+    "total_tokens": 40170,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19068,
+      "text_tokens": 1820
+    },
+    "cost": 0.013336299999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65463,
+  "text": "### Observed differences\n\n- In the earlier window, the activities A20, A22, A23, A24, A25 and A26 formed one fixed sequence: A20's outgoing transitions led to A23 in about 99 in 100 cases, A23 led only to A24, A24 led to A26 in about 99 in 100, A26 led to A25 in about 99 in 100, A25 led to A32 in about 93 in 100, and A22 and A31 fed the chain (A22 to A20 in about 99 in 100 transitions, A31 to A22 always). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- Order relations matched this chain: A20 preceded A24, A25 and A26, A22 preceded A24 and A26, and A23 preceded A24, A25 and A26 in 98–99 in 100 traces, with the reverse order essentially never observed; every pair still co-occurred in 100 in 100 traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- In the later window, the order between these activities reversed or lost its fixed direction: A24 precedes A20 in 73 in 100 traces (previously 0) and A23 in 84 in 100 (previously about 2); A26 precedes A23 in 68 in 100 (previously about 2); A20/A26, A22/A24 and A23/A25 now occur in both orders in roughly even shares; A20 still precedes A25 in 67 in 100 and A22 precedes A26 in 77 in 100, down from 98–99. Co-occurrence remains 100 in 100 for every pair, so participation did not change. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- Routing changed accordingly in the later window: A23 now leads to A32 in about 49 in 100 transitions (previously never), A24 also leads to A22 (about 23 in 100) and A20 (about 11), A26 to A20, A22 and A23 (about 13, 12 and 8), A25 to A20, A23 and A22 (about 20, 20 and 12), A22 to A24 (about 27), and A31 now routes to A24 in about 47 in 100 transitions (previously always to A22). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- At trace level the ordered pairs invert: A20 followed by A24 within five steps falls from 200 to about 52 of 200 traces while A24 followed by A20 rises from 1 to about 148; A26 followed by A20 rises from 1 to about 101, A24 followed by A22 from 1 to about 94, and A25 followed by A20 from 1 to about 64. [LAG002, LAG014, LAG015, LAG019, LAG021]\n\n- Distances spread: A23 is now directly followed by A32 in about 49 in 100 cases (previously at distance 4 in about 94 in 100), A20 followed by A23 at distance 1 drops from 100 to 68 in 100, and A20 followed by A32 moves from distance 5 in about 99 in 100 cases to a spread over distances 2–5. [LAG001, LAG005, LAG013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering among A20, A22, A23, A24, A25 and A26 changed: in the earlier window they executed in one fixed sequence (A22/A31 → A20 → A23 → A24 → A26 → A25, then A32), while in the later window that fixed order is partially reversed and loosened — A24 and A26 now frequently execute before A20 and A23, several pairs occur in both orders without a fixed direction, and A23 passes directly to A32 in about half of its transitions; A31, which fed the chain, now also routes to A24. [REL001, REL003, REL004, REL006, REL007, REL008, DIR003, DIR004, DIR007]\n\nThe hypothesis rests on direct relational evidence: order reversals between pairs that co-occur in 100 in 100 traces in both windows, each relation backed by about 200 traces per window, with matching successor and distance changes; every flagged item exceeded about 995 of 1,000 reference comparisons. Screening flagged 43 control-flow items against roughly 0.62 expected without change — about 70 times the chance expectation — so sampling variation cannot account for the evidence as a whole. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014, LAG015, LAG016, LAG017, LAG018, LAG019, LAG020, LAG021, LAG022, LAG023, LAG024, LAG025, LAG026, LAG027, LAG028]\n\nLimitations: the pairwise relations show that the fixed order was loosened and partially reversed but cannot establish the complete new structure — whether the activities now follow a different fixed sequence or execute without a fixed order. An important competing explanation is a shift in the mix of pre-existing execution variants: the reversed orders were observed in 0 of 200 earlier traces, so variants rare or absent in that sample could in principle have grown to dominate and would look identical here. [REL001, REL003, REL006, REL008, LAG001, LAG013]\n\nOther differences: a few new transitions appear only at very low shares in the later window (each about 1 in 200 or less of the source activity's outgoing transitions, e.g. A23 to A10/A19/A37/A42 and A20 to A12/A30); they are within the range of single-window noise and are not part of the hypothesis. [DIR001, DIR003]",
+  "case_id": "case_9f4a4aad6df1262d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

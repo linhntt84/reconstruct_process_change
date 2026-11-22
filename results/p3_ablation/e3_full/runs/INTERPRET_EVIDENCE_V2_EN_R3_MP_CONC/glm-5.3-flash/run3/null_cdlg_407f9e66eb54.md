@@ -1,0 +1,23 @@
+### Observed differences
+
+- The sharpest difference concerns two mutually exclusive activities: A04 and A07 never occur in the same trace in either window, so every case contains exactly one of them. In the earlier window A04 ran in about 57 of 100 traces and A07 in about 44; in the later window the split is about 50 versus 51 — the choice moved toward A07 by roughly 7 in 100 cases. [OCC003, OCC006, REL036]
+- Participation rose for A05 (about 34 → 39 of 100 traces) and A12 (about 38 → 42) and fell for A06 (about 37 → 33); A05 still occurs about three times in the cases that contain it, so these are shifts in how many cases involve the activities, not in how often they repeat. [OCC004, OCC011, OCC005]
+- The participation shifts are mirrored in co-occurrence: A04 shared traces with A01 and with A02 in about 57 of 100 cases before versus 50 in the later window, while A07's co-occurrence with these same partners rose from about 44 to 51. [REL003, REL006, REL014, REL017]
+- A05 co-occurred more often with A01, A02, A03, A07, A09 and A13 (e.g., with A07 from 12 to 20 of 100 cases), and A12 with nearly all of its partners (e.g., with A07 from 16 to 24 of 100). [REL004, REL015, REL025, REL044, REL046, REL050, REL011, REL032, REL062, REL071, REL078]
+- A06 co-occurred less often with A01, A02, A03, A04, A09 and A13 (e.g., with A01 from about 37 to 33 of 100 cases). [REL005, REL016, REL026, REL035, REL053, REL057]
+- Routing shares moved in the same direction: among the transitions leaving A13, the share leading to A05 rose from about 47% to 54%, while shares to A06 (about 28% → 23%) and A10 (about 25% → 23%) fell; among transitions leaving A02, the share to A07 rose from about 20% to 24% while the share to A03 fell from about 50% to 45%. [DIR008, DIR002]
+- Placement and order are essentially stable: the largest positional shifts are small (A06 and A10 occur slightly later within their traces, median relative position about 0.74 → 0.82 and 0.78 → 0.85), and pairwise order barely moves (A01 before A02 in about 41% versus 43% of traces, otherwise interleaved). [POS006, POS010, REL001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that existing paths are taken with different frequencies, with no activity added, removed or reordered. The mutually exclusive choice between A04 and A07 moved toward A07 (from about 57/44 to about 50/51 per 100 traces), cases involving A05 and A12 became more common (participation up about 5 and 4 in 100 cases) and cases involving A06 less common (down about 3–4 in 100). The hypothesis is measured directly — through participation counts, the exclusive A04/A07 relation, and routing shares after A13 (to A05, about 47% → 54% of outgoing transitions) and after A02 (to A07, about 20% → 24%) — and it meets the condition for a shift in path frequencies, since every involved activity appears in a substantial share of traces in both windows and no predecessor now bypasses a group of activities. [OCC003, OCC006, REL036, OCC004, OCC011, OCC005, DIR008, DIR002, DIR001, DIR003]
+
+The main competing explanation the evidence cannot rule out is a coordinated sampling fluctuation: the differences are modest (about 3–8 in 100 cases) on 200-trace windows, many agreeing items re-express the same underlying traces rather than independent confirmations, and the evidence file provides no screening baseline against which the number of qualifying items could be compared. Chance is made unlikely — but not impossible — by the complementary A04/A07 split and by routing-share changes whose differences exceed those seen in about 93 of 100 random re-splits for A13's outgoing transitions. [REL036, DIR008, DIR002]
+
+Other differences:
+- A02 repeated slightly less often in the later window (about 2.13 → 2.0 occurrences per trace, recurring in about 54% versus 52% of traces, while still present in every case). [OCC001]
+- The always-together block A03/A09/A13 appeared in about 54% versus 52% of traces, and the always-together block A08/A11 in about 41% versus 43%. [OCC002, OCC008, OCC012, REL029, OCC007, REL066]
+- Several step-gap distributions shifted slightly; the largest single change is A12 followed by itself within two steps, in about 10% versus 15% of observed pairs. [LAG082, LAG030]
+- One after-window observation of A07 directly followed by A01 rests on a single case and is too weak to interpret. [DIR004]

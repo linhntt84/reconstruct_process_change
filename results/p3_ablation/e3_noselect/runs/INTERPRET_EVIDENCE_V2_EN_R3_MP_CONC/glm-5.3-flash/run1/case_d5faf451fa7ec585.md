@@ -1,0 +1,23 @@
+### Observed differences
+
+- In the later window, three activities that previously ran in a substantial minority of traces no longer appear at all: A14 occurred in about 32 in 100 traces before and in 0 of 200 after, A15 in about 28 before and 0 after, and A20 in about 40 before and 0 after; when they occurred, all three sat near the middle of the trace (mean relative position about 0.51) [OCC013, OCC014, OCC019, POS001, POS002, POS003].
+- Their outgoing transitions disappeared with them: before, A14 led mainly to A24 (about 58 in 100 of its outgoing transitions, the rest to A23), A15 mainly to A24 (about 61, rest to A23) and A20 mainly to A23 (about 53, rest to A24); afterwards none of these transitions were observed [DIR010, DIR011, DIR016].
+- The surrounding chain became direct and deterministic. Earlier, A22 led to A23 in about 55 in 100 of its outgoing transitions and to A14, A15 or A20 in the remainder; in the later window it led to A23 in 100 in 100. Earlier, A23 led to A24 in about 46 in 100 and to A14, A15 or A20 in the remainder; later it led to A24 in 100 in 100 [DIR017, DIR018].
+- Event distances shortened accordingly: A22 to A24 took 3 steps in every trace before and 2 steps in every trace after; A22 to A23 was 1 step in about 55 in 100 cases before (2 steps otherwise) and 1 step always after; A23 to A24 was 1 step in about 46 in 100 before and 1 step always after [LAG001, LAG002, LAG003].
+- Relations show the same picture: A22, A23 and A24 still run in every trace, but their co-occurrence with A14, A15 and A20 fell from 28–40 in 100 traces to 0, leaving only A22/A23/A24 in those traces; among themselves, A14, A15 and A20 were already mutually exclusive before and now neither member of any pair occurs [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, REL001, REL002, REL006].
+- Consistent with a block between them disappearing, A22's relative position moved slightly later (mean about 0.46 to 0.47) and A24's slightly earlier (about 0.57 to 0.55), while A23 stayed in place (about 0.51) [POS004, POS005, POS006].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the activities A14, A15 and A20 are no longer executed and the detour they formed between A22 and A24 has disappeared: A22 now leads directly to A23 and A23 directly to A24 in every observed case, shortening the A22-to-A24 distance from three steps to two [OCC013, OCC014, OCC019, DIR017, DIR018, LAG001, LAG002, LAG003].
+
+This is shown directly, not inferred indirectly: participation of the three activities fell from 64, 56 and 80 of 200 traces to zero, their positions and outgoing transitions vanished, and their co-occurrence with A22, A23 and A24 (which still run in every trace) dropped to nil, while the lag items show the mechanical consequence of the removal — a one-step shortening — rather than a mere re-timing [OCC013, OCC014, OCC019, POS001, POS002, POS003, DIR010, DIR011, DIR016, REL003, REL005, REL010, REL012, LAG002]. All five indicator types describe one coherent mechanism, and differences of this size (activities present in 28–40 in 100 traces falling to 0 of 200) are larger than essentially all reference comparisons of unchanged data (empirical strength 0.995 on these items) [OCC013, OCC014, OCC019].
+
+Limitations: zero participation strictly means only that the activities were not observed in the later sample, so a rerouting that simply never triggers A14, A15 or A20 in these 200 traces cannot be excluded with certainty, though it is implausible at the earlier rates; the evidence also contains no screening baseline, so the number of qualifying items cannot be checked against a chance expectation [OCC013, OCC014, OCC019].
+
+Other differences:
+- A10 and A11 still occur in every trace but repeat less often: mean occurrences per trace fell from about 1.43 to 1.31, and traces containing repetitions from about 31 to 24 in 100 [OCC009, OCC010].
+- Several successor shares shifted moderately: A32 now routes to A27 in about 58 in 100 of its outgoing transitions (about 47 before) instead of to A33, mirrored at A33 [DIR023, DIR024]; A02 routes more to A06 (about 29 to 39 in 100) [DIR002]; A08 routes less to A06 (about 36 to 26 in 100) [DIR008]; A11's outgoing mix moved toward A13 and A35 and away from A10 and A12 [DIR009].
+- A34 and A35 occur somewhat more often (A34 in about 19 vs 16 in 100 traces; A35 at about 0.77 vs 0.69 mean occurrences per trace), and A35 leads to A34 more often (about 34 vs 28 in 100) [OCC024, OCC025, DIR025].

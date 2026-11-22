@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "ef0e62e93131332207d03eae09d072550897958f76884691e47497a9e0ec37d7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:44:26.342786+00:00",
+  "finished_at_utc": "2026-11-14T13:46:19.926261+00:00",
+  "latency_seconds": 113.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18859,
+    "prompt_tokens": 34223,
+    "total_tokens": 53082,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16887,
+      "text_tokens": 1972
+    },
+    "cost": 0.01456295
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54508,
+  "text": "### Observed differences\n\n- The largest differences concern the sequencing of eight activities — A26, A17, A15, A18, A19, A21, A20, A27 — each of which occurs in every trace in both windows (200 of 200). In the earlier window they formed one rigid chain: A26 always passed to A17, A17 to A15, A15 to A18, A18 to A19, A19 to A21, A21 to A20 and A20 to A27, each successor holding 100% of the source's outgoing transitions. In the later window these exclusive successions dissolved: A18 passes directly to A27 in about 52 of 100 transitions (A19 only about 15 of 100), A26 enters at A19 in about 47 of 100 transitions, and A15 keeps A18 as successor in only about 68 of 100 transitions while A19, A20 and A21 receive roughly 11 of 100 each. [DIR012, DIR013, DIR014, DIR015, DIR016, DIR017, DIR019]\n\n- New backward transitions appeared in the later window: A19 now passes to A17 in about 24 of 100 of its transitions, and A20 passes back to A15, A17 or A18 in about 52 of 100. [DIR015, DIR016]\n\n- Pairwise order reversed or lost its fixed direction: A15 preceded A19 in 100 of 100 traces before, but A19 now comes first in about 74 of 100; A18 preceded A19 in 100 of 100, now A19 comes first in about 85 of 100; A18 before A21 dropped to about 32 of 100; A15/A21, A18/A20 and A17/A19 are now split roughly 50/50 (no fixed order), while A17 still precedes A20 in about 88 of 100 traces. [REL001, REL004, REL005, REL007, REL008, REL009]\n\n- Distances changed consistently: A15 to A18 was always 1 step apart and is now 1 step in about 68 of 100 cases and 2–4 steps otherwise; A18 to A27 was always 4 steps apart and is now immediately consecutive in about 52 of 100 cases; A15 to A27 was always 5 steps and is now spread over 2 to 5 steps. [LAG001, LAG005, LAG013]\n\n- Positions shifted in the same direction: A15, A17 and A18 now occur later in the trace (mean relative position about 0.59 to 0.64 for A15, 0.62 to 0.68 for A18), while A19, A21 and A20 occur earlier (about 0.65 to 0.59 for A19). All of these items exceed 199 of 200 random re-splits of the pooled data (strength 0.995). [POS001, POS002, POS003, POS004, POS005, POS006]\n\n- Away from this block, the two alternative branches around A01 and A02 shifted in frequency: A01, A03, A04 and A05 now appear in about 48 of 100 traces (previously 40), while A02, A06, A07 and A08 appear in about 52 of 100 (previously 60); within them, A01 hands over to A04 more often (about 29% to 38% of its transitions) and A02 to A07 (about 33% to 39%). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR001, DIR002]\n\n- Smaller shifts: A39 occurs less often (about 66 of 100 traces before, 60 after; mean occurrences 0.90 to 0.79), with A38 rerouting relatively more to A40 (47% to 52% of transitions) and A39 handing to A42 more often (55% to 61%); A12's split between A13 and A37 flipped (about 44/56 to 54/46), as did A31's split between A32 and A28 (about 55/45 to 46/54), and A14/A16 participation moved by about 4–5 percentage points. [OCC022, DIR029, DIR030, DIR010, DIR011, DIR023, DIR024, OCC013, OCC014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: in the later window, the fixed execution order of the block A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 was relaxed into a mixed order — A19 now typically runs before A15 and A18, A21 typically before A18, several pairs are executed in both orders, A18 commonly hands over straight to A27, and A26 enters the block at A19 in nearly half of the cases; all eight activities still occur in every trace, so this is a change in ordering constraints, not in participation. [REL001, REL007, REL008, REL009, DIR012, DIR014, DIR019, LAG001, LAG013, POS001, POS003, POS004]\n\nSupporting signs: the hypothesis rests on direct relational evidence — order reversals in REL, successor changes in DIR, distance changes in LAG and position shifts in POS all point the same way, and each of these items is larger than in 199 of 200 random re-splits; unchanged participation (every involved activity in 200 of 200 traces in both windows) rules out activities appearing or disappearing as an explanation. [REL001, REL007, DIR014, LAG013, POS003]\n\nLimitations: no screening baseline is present, so the number of flagged items cannot be compared with a chance expectation; and the aggregate profiles cannot distinguish genuinely flexible per-case ordering from a mixture of fixed-order variants (for example a subpopulation still following the old chain alongside one following a different order) — the pairs also differ in degree, from near-complete reversal (A18/A19) to largely unchanged order (A17 before A20). [REL005, REL007]\n\nOther differences:\n- The share of traces running through the A01-led branch (A01, A03, A04, A05) rose from about 40 to 48 in 100 while the A02-led branch (A02, A06, A07, A08) fell from about 60 to 52 in 100, with all involved activities remaining common in both windows — a shift in how often existing alternative paths are taken. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR001, DIR002]\n- A39 became less frequent (about 66 to 60 in 100 traces) with A38 rerouting relatively more to A40 and A39 handing over to A42 more often, and small successor-share flips occurred at A12 (A13 vs A37), A31 (A32 vs A28) and A37 (A14 vs A16). [OCC022, DIR029, DIR030, DIR010, DIR011, DIR023, DIR024, DIR028]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

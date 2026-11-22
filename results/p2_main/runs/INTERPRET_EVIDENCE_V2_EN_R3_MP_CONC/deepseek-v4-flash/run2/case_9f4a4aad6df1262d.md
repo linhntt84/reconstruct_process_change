@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, the process followed a strict linear order: A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32, with each step almost always going to the next activity (e.g., A20 to A23 in about 99% of cases, A23 to A24 in 100%, A24 to A26 in 99%, A26 to A25 in 99%, A25 to A32 in 93%). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- In the later window, this order is largely broken. For example, A20 now goes to A23 in about 67% of cases and to A24, A25, A26 in about 11% each; A23 now goes to A32 in about 49% of cases and to A24 in only 15%; A24 now goes to A26 in about 60% and to A22 in 23% and A20 in 11%. [DIR001, DIR003, DIR004]
+- The order between many activity pairs reversed or became mixed. For instance, A20 before A24 dropped from 98% to 25% (A24 before A20 rose to 73%); A23 before A24 dropped from 98.5% to 15% (A24 before A23 rose to 83.5%); A20 before A26 dropped from 98% to 48.5% (A26 before A20 rose to 50.5%). [REL001, REL006, REL003]
+- The relative positions of activities shifted: A20, A22, A23 moved later (mean position increased by about 0.05, 0.03, 0.06 respectively), while A24, A25, A26 moved earlier (mean position decreased by about 0.06, 0.02, 0.04). [POS001, POS002, POS003, POS004, POS005, POS006]
+- The distance between activities in the trace changed: many pairs that were always a fixed number of steps apart now show a spread of distances. For example, A20 and A23 were always 1 step apart, now 67.5% at 1 step, 21.5% at 2, 6.5% at 3, 4.5% at 4; A22 and A23 were always 2 steps apart, now 35% at 2, 25% at 3, 23% at 4, 17% at 5. [LAG001, LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the process changed from a strict sequential order to a more flexible ordering with multiple alternative paths. The activities involved are A20, A22, A23, A24, A25, A26, A31, and A32. In the earlier window, these activities formed a linear chain with each activity having a single dominant successor and a fixed order between pairs. In the later window, many activities have multiple successors, and the order between pairs is often reversed or mixed (e.g., A24 now often precedes A20, A23, and A22, whereas before it always followed them). This is directly shown by the DIR, REL, POS, and LAG items, which all point to the same underlying change. The number of qualifying items (49) far exceeds the 0.66 expected by chance, so the overall pattern is not a sampling artifact. A competing explanation that cannot be fully ruled out is that the process was not simply reordered but that some activities were added or removed, changing the sequence; however, the direct reversal of order between existing pairs and the redistribution of successors among the same activities make a reordering the most parsimonious interpretation. Other differences, such as the shift in positions and distances, are consistent with this reordering and do not require a separate hypothesis.
+
+Other differences: None beyond the reordering and routing changes described.

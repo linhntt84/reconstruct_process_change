@@ -1,0 +1,18 @@
+{
+  "note": "Size 1 has its own base model (activity names differ from sizes 2-5), so the name-based conventions of the E0 rule (o* partner, o1 anchor, p5.. sibling) do not apply. The same conventions are applied by ROLE, read from the trace variants before/after (compare_sizes12345.csv, inspection printed in README). Proposed by Claude 2026-11-13, to be confirmed by the author.",
+  "cases": {
+    "ConditionalMove": {"required": ["n"], "optional": ["o", "p"], "both_sources": "n, p changed", "reason": "n o p -> o XOR(n, p): n is the moved activity; p is the partner branch (presence 1 -> 0.5), optional as the o* partner in sizes 2-5 (e.g. o11 in size 3, presence also changes); o is the neighbour"},
+    "ConditionalRemoval": {"required": ["re"], "optional": [], "both_sources": "rule re; projection re + r (drift 1)", "reason": "re is removed from a conditional branch; r: loop-region fluctuation (s r s 0.06 -> 0.10), not part of the change; drift 2 projection gives re only"},
+    "ConditionalToSequence": {"required": ["p", "q"], "optional": [], "both_sources": "p, q", "reason": "p XOR q -> p q: both presences 0.5 -> 1; the name-based sibling convention (p5..) has no counterpart; FLAG for author: if one of p, q is regarded as the sibling branch it becomes optional"},
+    "Frequency": {"required": ["p", "q"], "optional": [], "both_sources": "p, q", "reason": "branch frequencies change symmetrically"},
+    "Loop": {"required": ["k"], "optional": [], "both_sources": "k", "reason": "k becomes loopable"},
+    "ParallelMove": {"required": ["n"], "optional": ["o", "p"], "both_sources": "rule n, p (pred+succ changed); projection n", "reason": "n o p -> o AND(n, p): n is moved; p is the parallel partner (optional as o* partner in sizes 2-5); o neighbour"},
+    "ParallelRemoval": {"required": ["re"], "optional": ["z1"], "both_sources": "rule re, z1 (pred+succ changed); projection re", "reason": "AND(re, z1) -> z1: re removed; z1 is the parallel partner (optional as in sizes 2-5)"},
+    "ParallelToSequence": {"required": ["n", "o"], "optional": [], "both_sources": "n, o (projection: deleting either suffices)", "reason": "AND(n, o) -> n o: both branches, as in the size-3 author reference"},
+    "SerialMove": {"required": ["n"], "optional": [], "both_sources": "n", "reason": "n moved"},
+    "SerialRemoval": {"required": ["re"], "optional": [], "both_sources": "re", "reason": "re removed"},
+    "Skip": {"required": ["n"], "optional": ["o"], "both_sources": "n", "reason": "n becomes skippable; o is the re-entry anchor (o1 in sizes 2-5)"},
+    "Substitute": {"required": ["sub", "z1"], "optional": [], "both_sources": "sub, z1", "reason": "sub replaced by z1"},
+    "Swap": {"required": ["n", "p"], "optional": ["o"], "both_sources": "n, o, p (projection: any two of three suffice)", "reason": "n o p -> p o n: n and p are swapped; o keeps its position between them (neighbours change only)"}
+  }
+}

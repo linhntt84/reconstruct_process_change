@@ -1,0 +1,17 @@
+### Observed differences
+
+- The relative order of two activity groups reversed. In the earlier window, the single activity that runs in each trace — one of A14, A17, A20, A21, whose shares sum to about 100 in 100 traces — always came before A22, A26 and the group A15, A16, A18, A19, which occur in every trace. A14, for example, co-occurred with each of A15, A16, A18, A19, A22 and A26 in roughly 23–25 in 100 traces and always preceded them; in the later window it still co-occurs in about 23 in 100 traces but always follows them, and A15 now precedes A22 in all 200 traces where before it did so in none. [REL001–REL032, POS001–POS010]
+
+- Event positions shifted accordingly: in the later window A14, A17, A20 and A21 sit at a mean relative position of about 0.68–0.69, up from about 0.33–0.34, while A15, A16, A18 and A19 sit at about 0.39, down from about 0.63–0.64; A22 and A26 each moved about 0.10 later (0.37 to 0.47 and 0.56 to 0.66). Participation stayed essentially stable: A15, A16, A18, A19, A22 and A26 still occur in every trace, and the four alternatives keep similar shares (for example A17 in 20 vs 29 in 100 traces). [POS001–POS010]
+
+- Outgoing routing was rewired at the segment boundaries. In the earlier window A14, A17, A20 and A21 led only to A22; in the later window they lead only to A27. A15, A16, A18 and A19 previously sent about 23–28 in 100 of their outgoing transitions to A27 and none to A22; now they send about 18–31 in 100 to A22, and A27 is no longer observed among their successors. A26's successors changed from A15, A16, A18 and A19 to A14, A17, A20 and A21, and A37's from A14, A17, A20 and A21 to A15, A16, A18 and A19. [DIR001–DIR010]
+
+- Step distances flipped consistently with a one-activity segment and a four-activity segment trading places: the gap from A26 to A27 changed from always 5 steps to always 2, and the gap from A37 to A22 from always 2 to always 5. [LAG001, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two segments exchanged their order: in the later window the always-executed group A15, A16, A18, A19 runs between A37 and A22, and the single alternative activity — one of A14, A17, A20, A21 — runs between A26 and A27, whereas in the earlier window the alternative activity ran between A37 and A22 and the group ran between A26 and A27. The support is direct and consistent: all 32 activity-pair items show the same order reversal, several completely (from 100 in 100 traces to 0), the successor changes at A37, A26 and the segment boundaries match this reordering, the A37→A22 and A26→A27 distances change from 2 to 5 and from 5 to 2 steps as expected when one- and four-activity segments trade places, and the position shifts agree; with 54 qualifying items against roughly 0.6 expected for an unchanged process, the pattern as a whole is not a chance artefact. [REL001–REL032, DIR001–DIR010, LAG001, LAG002, POS001–POS010]
+
+Limitations: the items overlap heavily and largely re-express one underlying trace behaviour, so they are not independent confirmations; the evidence covers only a subset of activities and uses event positions rather than clock time; and it cannot distinguish a rewiring of the control flow from a complete flip in the mix of pre-existing process variants in which both orders already existed — although pure sampling variation cannot plausibly explain reversals from 0 to 200 of 200 traces, smaller shifts such as A17's participation (20 vs 29 in 100 traces) could reflect sampling noise. [REL010, POS004]

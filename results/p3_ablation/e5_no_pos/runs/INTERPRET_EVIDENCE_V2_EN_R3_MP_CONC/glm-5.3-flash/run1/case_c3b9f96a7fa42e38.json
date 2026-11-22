@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_c3b9f96a7fa42e38.json",
+  "evidence_sha256": "dbc45d4a1db5254334968b35102f69e7e5f33b8d3b9748486d3bb5cea3655cd1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:23:32.603932+00:00",
+  "finished_at_utc": "2026-11-14T12:25:55.365866+00:00",
+  "latency_seconds": 142.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19818,
+    "prompt_tokens": 14244,
+    "total_tokens": 34062,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18335,
+      "text_tokens": 1483
+    },
+    "cost": 0.0120456
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64184,
+  "text": "### Observed differences\n\n- The relative order of two activity groups reversed. In the earlier window, A35, A36 and A41 each ran before both A26 and A27 in about 98–100 in 100 of the traces containing those pairs (the six activities co-occurred in every trace, in both windows). In the later window, A26 and A27 each ran before A35, A36 and A41 in about 97–99 in 100 of those traces, with co-occurrence still complete. [REL001, REL002, REL003, REL004, REL005, REL006]\n- A25's continuation changed. Earlier, about 39 in 100 of A25's outgoing transitions went to A35, about 32 to A36 and about 27 to A41, with A27 reached about four steps later (about 94 in 100 cases). In the later window, about 98 in 100 of A25's outgoing transitions go directly to A27, one step away in about 99 in 100 cases. [DIR003, LAG005]\n- A26's continuation and A30's position changed. Earlier, A26 was followed immediately by A30 in about 99 in 100 of its outgoing transitions. In the later window, A26 leads instead to A35, A36 or A41 (roughly 34, 32 and 30 in 100), and A30 now follows about four steps after A26 (about 91 in 100 cases, against one step in about 99 in 100 earlier). [DIR004, LAG009]\n- The exit target of the A35/A36/A41 group shifted. Earlier, each of the three continued to one of the others or to A27 (about 28–37 in 100 of each one's transitions to A27); in the later window they continue to one another or to A30 (about 29–35 in 100 to A30), with A27 almost no longer a target. [DIR005, DIR006, DIR007]\n- In the later window, A16 is typically followed by A27 five positions later (about 99 in 100 of 149 supported observations); earlier, this ordered pair appeared in only 1 trace, so the earlier-side picture is thin. The A16–A35 pairing within five steps, seen in 58 traces earlier, was observed in only 4 later. [LAG003, LAG004]\n- Separately, A06 appeared in about 27 in 100 traces earlier versus about 13 in 100 later, and its outgoing transitions spread from mostly A16 (about 86 in 100, on 57 observed transitions) to A16 at about 39 in 100 with many weak successors (28 observed transitions); A02 rose from about 5 to about 12 in 100 traces; A15 now continues to A16 in about 95 in 100 of its transitions (about 85 earlier), while its route via A06 fell from about 15 to about 3 in 100. [OCC001, OCC002, DIR001, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the execution order of two activity groups reversed: the segment containing A26 and A27, which earlier ran after the group A35/A36/A41, in the later window runs before it. Earlier, A25 fed into the A35/A36/A41 group, the group exited to A27, and A26 was followed directly by A30; in the later window, A25 leads straight into A27, A26 leads into the group, and the group exits to A30, which consequently moved from directly after A26 to about four positions later. [REL001, REL002, REL003, REL004, REL005, REL006, DIR003, DIR004, DIR005, DIR006, DIR007, LAG005, LAG009]\n\nThe change is shown directly by the pair relations, which flip near-deterministically between the windows while co-occurrence stays complete and every involved activity is observed in about 200 traces in both windows, so this is an ordering change rather than a participation change; the successor profiles of A25, A26, A35, A36 and A41 and the position gaps for A25→A27 and A26→A30 all shift consistently with the same reorder. Screening qualified 27 control-flow items against that family's expectation of about 0.71 for an unchanged process, far more than chance would produce, though these items likely describe one underlying reordering rather than independent confirmations. [REL001, REL004, DIR003, DIR004, LAG005, LAG009]\n\nLimitations: the indicators use event positions rather than clock time, so only sequence is established; the evidence cannot show what drove the reorder — for example, it cannot rule out that the upstream routing change around A15, A06 and A16 is the trigger rather than a direct exchange of the two segments — and the relative order of A26 and A27 themselves is not directly observed. [DIR001, DIR002, OCC002]\n\nOther differences: A06 participation roughly halved (about 27 to 13 in 100 traces) with its outgoing transitions becoming much more spread out; A02 participation roughly doubled (about 5 to 12 in 100 traces); A15 now almost always continues to A16 with the detour via A06 nearly gone; and A16 is now typically followed by A27 five positions later, a pairing almost absent earlier (1 trace). These are not part of the reorder hypothesis above. [OCC001, OCC002, DIR001, DIR002, LAG003]",
+  "case_id": "case_c3b9f96a7fa42e38",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

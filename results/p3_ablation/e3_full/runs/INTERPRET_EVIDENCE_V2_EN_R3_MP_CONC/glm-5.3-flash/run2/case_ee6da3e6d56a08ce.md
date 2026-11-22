@@ -1,0 +1,19 @@
+### Observed differences
+
+- Activity A02 appears only in the later window: none of the 200 earlier traces contain it, while about 58 in 100 later traces (116 of 200) do, with roughly 2.4 occurrences per trace; its typical position is about 0.60 of the trace length, just after A15's typical position of about 0.58. This occurrence difference is larger than in about 995 of 1000 random re-splits. [OCC001, POS002, POS015]
+- The handover out of A15 changed completely: in the earlier window A15's outgoing transitions went to A07 in about 52 of 100 cases, to A08 in about 25 and to A12 in about 23; in the later window all 474 observed A15 transitions go to A02. [DIR011]
+- In the later window, A02's outgoing transitions go to A07 in about 52 of 100 cases, to A08 in about 27 and to A12 in about 21 — almost exactly the split A15 itself showed earlier. [DIR002]
+- The separation between A15 and its former successors grew by one step: A15-to-A07 pairs within five steps moved from a distance of 1 (about 24 of 100) to a distance of 2 (about 31 of 100), A15-to-A08 from 1 (about 51 of 100) to 2 (about 66 of 100), and A15-to-A12 from 1 (about 54 of 100) to 2 (about 71 of 100). [LAG105, LAG106, LAG110]
+- The same one-step shift appears further along the flow: A15-to-A04 moved from distance 2 to 3, A15-to-A06 and A15-to-A09 from 3 to 4, A05-to-A07 and A14-to-A07 from 3 to 4, and A11-to-A04 from distances 3 and 5 to 4. [LAG102, LAG104, LAG107, LAG039, LAG096, LAG069]
+- A02 now co-occurs with the other activities: with A03 and A04 it shares about 58 of 100 later traces, where earlier the two never shared a trace, and with A11 and A15 co-occurrence rises from zero to about 58 of 100, with A15 preceding A02 in about 15 of 100 later traces. [REL015, REL016, REL023, REL027]
+- Beyond this, somewhat more traces contain the mid-process activities in the later window — A05, A11 and A15 rise from about 50 to 58 of 100 traces and A10 and A13 from about 40 to 48, while average occurrences per trace stay nearly unchanged — and A03 tends to appear slightly earlier within traces (its upper-quarter position falls from about 0.33 to about 0.06). [OCC003, OCC008, OCC009, OCC011, OCC013, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the flow from A15 to its former successors now passes through A02: earlier, A15 handed over directly to A07, A08 or A12 (about 52, 25 and 23 of 100 outgoing transitions), whereas in the later window A15 always hands over to A02 first, and A02 hands on to A07, A08 and A12 in almost the same proportions. The signs are direct and mutually consistent: A02 is absent from every earlier trace but frequent in the later one; A15's successor profile collapsed onto A02 alone while A02's mirrors A15's earlier profile; the distance from A15 to each former successor grew by exactly one step, with the same one-step shift for pairs further downstream; and A02 sits positionally just after A15, with A12, which is now reached through A02, also appearing slightly later. [OCC001, DIR002, DIR011, POS002, POS012, LAG105, LAG106, LAG110]
+
+A competing explanation the evidence cannot rule out is that A02 already existed but occurred too rarely to be sampled in the earlier window, so that only its new, regular use on this path is observable; the evidence also contains no outgoing profiles for A07, A08 and A12, so behaviour beyond this handover is not covered. [OCC001, DIR002, DIR011]
+
+Other differences: the higher trace participation of A05, A10, A11, A13 and A15 (with flat average repetitions) and A03's slightly earlier position are not explained by the A15–A02 change; the evidence cannot tell whether they reflect a small additional shift or only sampling variation. [OCC003, OCC008, OCC009, OCC011, OCC013, POS003]

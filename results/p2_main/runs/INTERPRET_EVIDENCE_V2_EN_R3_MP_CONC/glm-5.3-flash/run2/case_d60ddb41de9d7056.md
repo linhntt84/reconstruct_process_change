@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window the process ran a single uniform sequence: A21 occurred in all 200 cases and was always followed by A22, and A22 was always followed by A23. [OCC001, DIR001, REL001, REL007]
+- In the later window the cases split into two routes. In about 57 in 100 cases the original sequence A21 → A22 → A23 is unchanged (A22 now appears in 113 of 200 cases, once per case). [OCC001, DIR001, REL001, REL007]
+- In about 44 in 100 cases, A21 is instead followed by a group of five activities — A27, A28, A33, A34 and A35 — none of which were observed in the earlier window (0 of 200 cases) and each of which now appears in 87 of 200 cases, always together as a group. [OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL018]
+- A22 and the new group are mutually exclusive: before, A22 co-occurred with the rest of the trace in all cases; after, A22 never appears in the same case as any of A27, A28, A33, A34 or A35. [REL008, REL009, REL010, REL011, REL012]
+- The new group sits between A21 and A23: A21 precedes each group member, each group member precedes A23 in about 44 in 100 cases, and A23 — which previously always followed A22 — now occurs without A22 in about 44 in 100 cases. [REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017, REL007]
+- Within the group there is no fixed order: for every pair among the five, both orders occur in similar proportions (roughly 20–25 in 100 cases each), and each member leads both to the other members and onward to A23. [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, DIR002, DIR003, DIR004, DIR005, DIR006]
+- By event position, the new activities sit around the middle of the trace (mean relative position about 0.52), and A21's own position moved slightly earlier (mean about 0.49 to about 0.46), consistent with the new route producing longer traces. [POS002, POS003, POS004, POS005, POS006, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window the process offers a new alternative route between A21 and A23: in about 44 in 100 cases A21 leads into the group A27, A28, A33, A34, A35, which executes as a block in varying internal order and then leads to A23, while A22 is skipped in those cases; in the remaining about 57 in 100 cases the original A21 → A22 → A23 sequence is retained. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL007, REL008, REL013, REL018]
+
+This is more than chance sampling can produce: 45 control-flow items qualified against roughly 0.5 expected without change for the 99 tested units, and the structural evidence is direct and consistent — A21's outgoing transitions shifted from entirely A22 to about 57 in 100 A22 plus 7–11 in 100 to each new activity, the new activities' own successors lead to A23 and to each other, and the relational items show the group preceding A23 and never co-occurring with A22. The participation shares of the two routes (about 57 and 44 in 100) sum to one, matching a clean split. Because the new activities were absent earlier, this is an added route with A22 becoming optional, not a re-weighting of previously existing paths. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL008, REL013, REL018]
+
+A competing explanation the evidence cannot rule out is that this route existed before as a rare variant that the earlier 200-case sample simply did not capture (zero observations only bound its earlier frequency), so a shift in the mix of two pre-existing behaviours cannot be distinguished from a newly appeared route. The internal structure of the group can also only be characterised as having no fixed order between its members. [OCC002, OCC003, OCC004, OCC005, OCC006, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+
+Other differences: A21's slight shift to an earlier event position (mean relative position about 0.49 to 0.46) is consistent with the longer traces on the new route rather than an independent change. [POS001]

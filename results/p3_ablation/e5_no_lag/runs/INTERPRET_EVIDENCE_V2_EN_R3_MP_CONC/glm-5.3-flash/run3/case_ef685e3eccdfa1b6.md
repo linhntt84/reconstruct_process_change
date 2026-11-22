@@ -1,0 +1,23 @@
+### Observed differences
+
+- Before, six activities — A28, A30 and A31 in one group, A32, A33 and A34 in another — each ran exactly once in every one of the 200 earlier traces. In the later window, A28, A30 and A31 each appear in about 46 in 100 traces (93 of 200) and A32, A33 and A34 in about 56 in 100 (111 of 200); none of them repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+
+- The two groups became almost mutually exclusive. Earlier, every trace contained both groups, always A28/A30/A31 before A32/A33/A34. In the later window, pairs spanning the groups (for example A28 with A32) occur together in only about 2 in 100 traces; in about 44 in 100 only the first group runs, and in about 54 in 100 only the second. [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]
+
+- Within each group the activities still travel together: A28, A30 and A31 co-occur whenever any of them appears (both present in about 46 in 100 traces, both absent in about 54 in 100), and likewise A32/A33/A34 (about 56 present, 44 absent). Their internal order remains mixed, roughly 50/50, in both windows. [REL013, REL014, REL018, REL025, REL026, REL027]
+
+- A25 and A26 still appear in every trace. Earlier, A25 always preceded the first group and A26 always followed the second. In the later window, A25 precedes whichever group runs (co-occurring with A28/A30/A31 in about 46 in 100 traces and with A32/A33/A34 in about 56 in 100, otherwise appearing alone), and A26 follows whichever group runs. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+
+- Routing matches this pattern. Earlier, all observed outgoing transitions of A25 went to A28, A30 or A31 (roughly 34, 37 and 30 in 100); later they spread across all six activities (about 14–20 in 100 each). From A28, A30 and A31, roughly 26–35 in 100 outgoing transitions now lead directly to A26 — a successor not observed earlier — while their transitions into the second group fell to about 1–2 in 100. [DIR001, DIR002, DIR003, DIR004]
+
+- When present, A28/A30/A31 sit slightly later within the trace (mean relative position about 0.68 before, 0.74 after) and A32/A33/A34 slightly earlier (about 0.77 before, 0.74 after); these event-position shifts are consistent with traces now containing only one of the two groups. [POS003, POS004, POS005, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the fixed sequence between A25 and A26 — first the group A28/A30/A31, then the group A32/A33/A34, which every case executed before — became an exclusive choice in the later window: a case now runs either the first group (about 45 in 100 cases) or the second (about 54 in 100), with both groups in only about 2 in 100 cases, while A25 and A26 remain in every case and bracket whichever group runs. Screening flagged 45 control-flow items where fewer than one (0.47) would qualify by chance in an unchanged process, so the volume of differences cannot be explained by random sampling; each item's difference also exceeds about 995 of 1000 random re-splits of the pooled data. The signs are direct and mutually consistent — participation of all six activities fell from every trace to roughly half, cross-group co-occurrence collapsed from 100% to about 2% while each group still appears complete whenever it appears, and the routing changes (A25 now feeding both groups; A28, A30 and A31 leading straight to A26) reflect one underlying restructuring rather than unrelated shifts. [OCC001, OCC006, REL015, REL024, REL013, REL025, DIR001, DIR002, DIR004]
+
+The near-zero cross-group co-occurrence also weighs against the main competing explanation — that each group independently became optional, which would leave both present in roughly a quarter of cases rather than about 2 in 100. What the evidence cannot establish is what determines which group a case takes, and the roughly 2 in 100 cases containing both groups remain unexplained; the position measures use event positions and cannot by themselves show that any activity was moved. [REL015, REL019, REL024]
+
+Other differences: A25's mean event position moved later (about 0.62 to 0.67) and A26's slightly earlier (about 0.83 to 0.81); these small shifts accompany the same restructuring and are not treated as a separate change. [POS001, POS002]

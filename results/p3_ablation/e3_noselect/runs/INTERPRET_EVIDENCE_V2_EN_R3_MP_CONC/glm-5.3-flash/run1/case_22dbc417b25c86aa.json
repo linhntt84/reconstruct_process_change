@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_22dbc417b25c86aa.json",
+  "evidence_sha256": "81652dba2905eae36814942a1b60eb3959773c6212fe90754bc66b2702ce9f85",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:35:58.420084+00:00",
+  "finished_at_utc": "2026-11-14T14:36:43.103857+00:00",
+  "latency_seconds": 44.68,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7355,
+    "prompt_tokens": 4941,
+    "total_tokens": 12296,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6759,
+      "text_tokens": 596
+    },
+    "cost": 0.00441865
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26279,
+  "text": "### Observed differences\n\n- In the earlier window, A06 was executed in every case — 200 of 200 traces, about one occurrence per trace, typically around one third into the trace. In the later window, A06 does not appear in any of the 200 traces. [OCC001, POS003]\n- The flow out of A05 changed completely: before, A05 was always followed by A06; in the later window, A05 is always followed directly by A01. [DIR001]\n- A06's own outgoing edge to A01, observed after every A06 before, is no longer seen. [DIR002]\n- The gap between A05 and A01 shrank from two positions to one: A01 now immediately follows A05, whereas before one event lay between them. [LAG001]\n- The pairwise relations match: before, A06 co-occurred with A01 (A06 first) and with A05 (A05 first) in 100% of traces; in the later window, A01 and A05 each occur without A06 in 100% of traces. [REL001, REL002]\n- Event positions shifted slightly: A01's mean position moved from 0.5 to 0.4 and A05's from about 0.17 to 0.2, consistent with traces containing one event fewer. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the step A06 between A05 and A01 is no longer executed: in the earlier window every case ran A05 → A06 → A01, while in the later window A05 leads directly to A01 and A06 is not observed at all. The change is shown directly by the successor change at A05 and the disappearance of A06's edge to A01, and corroborated by A06's participation dropping from 200 of 200 traces to 0, both activity relations collapsing to \"one activity only\", and the A05→A01 distance shrinking from two positions to one; all nine items describe this single difference, and each difference is larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, DIR001, DIR002, POS003, REL001, REL002, LAG001, POS001, POS002]\n\nOne limitation remains: zero participation only means A06 was not observed in the later sample of 200 traces, so the evidence cannot distinguish a complete disappearance of A06 from it still occurring rarely below the detection level. [OCC001, POS003]\n\nOther differences: none — the small position shifts of A01 (mean 0.5 to 0.4) and A05 (about 0.17 to 0.2) follow from the same change rather than being independent differences. [POS001, POS002]",
+  "case_id": "case_22dbc417b25c86aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

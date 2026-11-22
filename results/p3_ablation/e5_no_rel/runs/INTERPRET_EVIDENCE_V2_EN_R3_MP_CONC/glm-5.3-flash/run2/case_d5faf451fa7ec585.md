@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A14, A15 and A20 each ran in a minority of traces — about 32, 28 and 40 in 100 traces respectively — never twice within the same trace, and together they account for about one occurrence per trace, so essentially every earlier trace contained one of the three, placed around the middle of the trace (mean relative position about 0.51–0.52). In the later window, none of the three appears in any of the 200 traces. [OCC001, OCC002, OCC003, POS001, POS002, POS003]
+- In the earlier window, A22's outgoing transitions were split between A23 (about 55 in 100) and the three activities above (about 45 in 100 together); in the later window A22 always leads directly to A23. A23 likewise earlier led to A24 in about 46 in 100 of its transitions and to one of the three in the remainder; in the later window A23 always leads directly to A24. [DIR004, DIR005]
+- When the three activities still occurred (earlier window only), each led either to A24 or to A23 — for example A14 went to A24 in about 58 in 100 of its occurrences and to A23 in the rest; their outgoing profiles are empty in the later window because the activities themselves no longer occur. [DIR001, DIR002, DIR003]
+- Distances shrank: earlier, A22 reached A23 in one step in about 55 in 100 cases (two steps otherwise), A23 reached A24 in one step in about 46 in 100 cases (two steps otherwise), and A24 always followed A22 three steps later. In the later window, A22→A23 and A23→A24 are always directly adjacent, and A24 follows A22 two steps later in every trace. [LAG001, LAG002, LAG003]
+- Minor: A22's typical relative position moved slightly later (mean about 0.46 to 0.47) and A24's slightly earlier (about 0.57 to 0.55); both still occur in every trace in both windows. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the single optional step drawn from the alternatives A14, A15 and A20 — which earlier ran in every trace, either directly after A22 or directly after A23 and always before A24 — is no longer executed in the later window: A22 now always hands over directly to A23, A23 directly to A24, and A24 follows A22 two steps later instead of three. This is a disappearance of an activity block rather than a re-weighting between existing paths, since the three activities are entirely unobserved in the later window. Supporting signs: participation of all three fell from 28–40 in 100 traces to 0 of 200; the successor profiles of A22 and A23 collapsed from mixed splits to a single successor each; and the lag distributions show the new direct adjacencies and the shortened A22→A24 distance directly. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003]
+
+The 16 qualifying control-flow items are many times the roughly 0.33 items expected by chance across the 66 tested units, so the differences as a whole are not what an unchanged process typically produces; all items point to the same underlying behaviour, but they are not independent confirmations of it. [screening]
+
+Other differences: Beyond the main change, A22's typical relative position shifted slightly later (mean about 0.46 to 0.47) and A24's slightly earlier (about 0.57 to 0.55), with both activities still present in every trace; these small shifts are consistent with the shortened path rather than separate findings. [POS004, POS005]
+
+The main competing explanation the evidence cannot rule out is that A14, A15 and A20 remain possible in the process but were simply not executed in any of the 200 later traces, since zero participation strictly means "not observed"; given their earlier participation of 28–40 in 100 traces, chance non-observation is implausible but not logically excluded. All evidence is control-flow, so no statement about timing or resources is possible. [OCC001, OCC002, OCC003]

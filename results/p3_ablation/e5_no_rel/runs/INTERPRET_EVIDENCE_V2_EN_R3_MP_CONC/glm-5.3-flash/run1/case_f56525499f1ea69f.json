@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_f56525499f1ea69f.json",
+  "evidence_sha256": "d3f64c7f91191548a07d759f6c4563db03bc5384362b5de58f7b0141ffe20b15",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:44:59.700697+00:00",
+  "finished_at_utc": "2026-11-14T12:46:52.313889+00:00",
+  "latency_seconds": 112.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16134,
+    "prompt_tokens": 20252,
+    "total_tokens": 36386,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14452,
+      "text_tokens": 1682
+    },
+    "cost": 0.0111048
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48606,
+  "text": "### Observed differences\n\n- In the earlier window, each of the six activities A33, A35, A36, A37, A38 and A39 appeared in only about half of the cases (roughly 48–52 in 100); in the later window each appears in about 99 in 100 cases, with mean occurrences per trace rising from about 0.5 to about 1.0. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n- In the earlier window, A30 spread its outgoing transitions roughly evenly (about 14–18% each) over A39, A33, A37, A38, A35 and A36; in the later window it leads almost only to A35 (about 37%) and A33 and A36 (about 30% each), and its direct edges to A37, A38 and A39 have nearly disappeared. [DIR006]\n- In the earlier window, A33, A35 and A36 each sent about 30–36% of their outgoing transitions to A31; in the later window these edges are practically gone and new edges to A37, A38 and A39 (about 8–12% each) have appeared. [DIR007, DIR008, DIR009]\n- Pairs that used to follow one another closely are now separated: A30→A37/A38/A39 and A33/A35/A36→A31 occurred within 1–3 steps in nearly all instances before, and at 4–5 steps in about 85–100 in 100 instances afterwards; the pair A30→A31, previously seen within five steps in 200 traces, is now seen in only 5. [LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n- Positions moved consistently with a longer chain: A30 and A33/A35/A36 now occur slightly earlier (e.g., A33 mean position about 0.75 → 0.68 of trace length), while A37/A38/A39 and A31 occur slightly later (e.g., A31 about 0.80 → 0.82). [POS004, POS005, POS006, POS007, POS008, POS009, POS010, POS011]\n- Outside this block, A04 now appears in about 14 in 100 cases instead of about 31 in 100; when it occurs, its outgoing transitions shifted from mostly A16 (about 81%) to a spread including A15 (about 18%) and A48 (about 14%), and A04→A16 is no longer almost always adjacent. [OCC001, DIR002, LAG001, POS001]\n- Smaller shifts: A06 and A10 rose from about 3 in 100 to about 11–12 in 100 cases (on few traces, 6→22 and 5→24); A14 and A16 occur slightly earlier, A14 much more uniformly; A15 leads to A16 in about 93% of its outgoing transitions versus about 83% before, with the share to A04 down from about 17% to about 3%; A47→A48 is slightly less exclusive (about 99.5% → 91%); the outgoing profiles of A02 and A08 changed markedly but rest on only about 13 and 9 outgoing transitions in the earlier window. [OCC002, OCC003, POS002, POS003, DIR004, DIR005, DIR010, DIR001, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a block of six activities — A33, A35, A36, A37, A38 and A39 — which in the earlier window was executed in only about half of the cases, is now executed in nearly every case and forms a chain inserted between A30 and A31: A30 leads into A33/A35/A36, these lead on to A37/A38/A39, and A31 follows only after the whole block. The participation change is directly observed for all six activities on roughly 100 versus roughly 200 traces each; the successor changes (the direct transitions A30→A37/A38/A39 and A33/A35/A36→A31 disappearing, edges from A33/A35/A36 to A37/A38/A39 appearing) and the shift of the affected pairs from 1–3 to 4–5 steps apart show the reordering directly; and the screening produced 38 qualifying items where fewer than 1 would be expected without a change, so the pattern as a whole is not what an unchanged process typically yields. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, DIR006, DIR007, DIR008, DIR009, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\nLimitations: the evidence does not pin down a fixed internal order within the A33/A35/A36 group or within the A37/A38/A39 group, since mutual transitions among A33, A35 and A36 appear in both windows; and it cannot distinguish \"the six activities became mandatory\" from a shift in the mix of case types, in which traces skipping parts of the block have disappeared — these look the same in this evidence. [DIR007, DIR008, DIR009, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n\nOther differences: A04 now appears in about 14 in 100 cases instead of about 31 in 100, with its routing moved away from A16 and wider position spread; A06 and A10 became more frequent from a very low base; A14, A16 and A30 occur slightly earlier and A31 slightly later, with A14's position much more uniform; A15 sends relatively more of its traffic to A16 and less to A04, and A47 leads to A48 slightly less exclusively. Whether A04's decline belongs to the same underlying change cannot be determined from this evidence. [OCC001, DIR002, LAG001, POS001, OCC002, OCC003, POS002, POS003, POS004, POS005, DIR005, DIR010]",
+  "case_id": "case_f56525499f1ea69f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

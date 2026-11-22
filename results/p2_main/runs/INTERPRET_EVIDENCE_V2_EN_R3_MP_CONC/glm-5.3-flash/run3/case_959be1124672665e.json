@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_959be1124672665e.json",
+  "evidence_sha256": "7764aaecefbef74dbfd1c37a46f563c8ef4251f3c599b721e6ea37c9673163a4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:12:18.691575+00:00",
+  "finished_at_utc": "2026-11-15T03:15:16.403108+00:00",
+  "latency_seconds": 177.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26082,
+    "prompt_tokens": 52484,
+    "total_tokens": 78566,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24386,
+      "text_tokens": 1696
+    },
+    "cost": 0.020913599999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 85173,
+  "text": "### Observed differences\n\n- Three activities are no longer observed in the later window. In the earlier window, A02 and A08 each appeared in about 47 in 100 traces (roughly 0.8 occurrences per trace, with repeats in about 21 in 100 of their traces) and A03 in about 21 in 100 traces; in the later window, none of the 200 traces contains A02, A03 or A08, and no pair among them ever occurs together. [OCC001, OCC002, OCC004, REL006, REL010, REL023]\n- The flow that ran through these activities was rewired. Before, A18 and A05 led most often to A02 (about 53 and 50 in 100 of their observed outgoing transitions); in the later window, both lead mainly to A10 (about 59 and 46 in 100). A10, which previously always led to A08, now always leads to A01, which itself now always leads to A11, so the earlier chain A10–A08–A11 runs as A10–A01–A11. A13 and A19, which previously led only to A03, now lead to A05 and A18 (about 59/41 and 50/50 in 100). [DIR013, DIR004, DIR008, DIR006, DIR001, DIR009, DIR014]\n- The branch to A06, A07 and A14 moved from A01 to A16. Before, A01 split into A06 (44 in 100), A07 (31) and A14 (25) of its outgoing transitions, and A16 always led to A01; in the later window, A01 always leads to A11, and A16 splits into A06 (43), A14 (37) and A07 (20). The pair also reversed order: before, A16 preceded A01 in about 27 in 100 of their shared traces; in the later window, A01 precedes A16 in about 27 in 100. [DIR001, DIR011, REL005]\n- The back-and-forth between A07 and A14 stopped. Before, both appeared in about 47 in 100 traces, co-occurred in 47 in 100 with each following the other, and each always led to the other; in the later window, A07 appears in about 17 in 100 traces and A14 in about 31 in 100, they never co-occur, neither shows an outgoing transition, and each occupies the last position of every trace containing it. [OCC003, OCC005, DIR005, DIR010, POS004, POS006, REL036]\n- Routing around A09 and A17 shifted: A09 now leads to A17 in about 51 in 100 cases and A17 leads to A09 in about 49 in 100 (neither link was observed before), while their shares towards A05 and A18 shrank; both also carry more flow, with observed outgoing transitions rising from about 88 to 152 for A09 and from 68 to 152 for A17. [DIR007, DIR012]\n- Event positions moved with the rewiring: A01 now runs earlier (median position 0.80 before vs 0.46 in the later window) and A16 somewhat later (0.70 vs 0.80); A10 reaches A01 in one step in about 57 in 100 cases (previously four steps in about 76 in 100), A16 reaches A07 and A14 in one step, and A01's former one-to-two-step links to A07 and A14 now sit three or more steps away and are observed in far fewer traces. [POS001, POS007, LAG022, LAG036, LAG038, LAG003, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural change in which A02, A03 and A08 are no longer executed and the surrounding flow was rewired: A18 and A05 now lead to A10 where they previously led to A02; A10 leads to A01 where it previously led to A08; A13 and A19 lead to A05/A18 where they previously led only to A03; and the branch to A06/A07/A14 moved from A01 to A16, with A01 now leading to A11. [OCC001, OCC002, OCC004, DIR004, DIR008, DIR009, DIR013, DIR014, DIR001, DIR011]\n\nThe signs are direct and consistent: the disappearances rest on 94, 41 and 94 of 200 traces before against 0 of 200 after, which sampling variation cannot plausibly produce; the successor changes are read directly from the outgoing profiles of A05, A10, A13, A18 and A19 with substantial observation in both windows; relation and distance items show the same picture (A10, A11 and A16 now run without A02, and A10 reaches A01 immediately); and 129 control-flow items qualified where fewer than 1 (0.85) would be expected if nothing had changed, so the collection as a whole is far beyond chance. [OCC001, OCC002, OCC004, DIR004, DIR013, REL012, REL013, REL016, LAG022, screening]\n\nLimitations: the evidence cannot show whether the work of A02, A03 and A08 was dropped or continues under other anonymous activity codes, pairwise indicators cannot fully reconstruct the new end-to-end order, and the rerouting of A13 and A19 rests on fewer observations (roughly 24–50 outgoing transitions per window). [OCC001, OCC002, OCC004, DIR009, DIR014]\n\nOther differences: the A07–A14 alternation at the end of traces stopped, leaving A07 (about 17 in 100 traces) and A14 (about 31 in 100) as single, terminal steps that never co-occur, and A09 and A17 now often hand over to each other while carrying more flow; these differences are not part of the main hypothesis above. [OCC003, OCC005, REL036, DIR007, DIR012]",
+  "case_id": "case_959be1124672665e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,23 @@
+### Observed differences
+
+- The largest difference concerns ten activities. In the earlier window, A33, A34, A35, A37 and A38 formed one set and A39–A43 another: each activity ran in about half of the traces (roughly 49–53 in 100), the two sets were mutually exclusive (A33 and A39 together in fewer than 2 in 100 traces), and within each set the activities always ran together. In the later window, all ten activities run in nearly every trace (about 98–100 in 100), with the first set preceding the second (A33 before A39 in about 95 in 100 traces). [OCC005, OCC006, OCC007, OCC009, OCC010, OCC014, REL059, REL063, REL075, REL096, REL105]
+
+- The block's embedding now holds everywhere: A14, A15, A30 and A31 occur in every trace in both windows, and A14 before A33 (about 98 in 100), A30 before A33 (about 97 in 100) and A33 before A31 (about 97 in 100) — orderings previously seen only in the roughly half of traces that ran the block. A15 is partly interleaved with the first set (about 36 in 100 later traces). [REL019, REL029, REL039, REL049, REL054]
+
+- Direct-succession flows moved accordingly: A30's transitions into A39–A43 (about 7–13 in 100 of its outgoing transitions before) fell below 1 in 100, while its transitions into A38, A37 and A33 grew to about 20–23 in 100; the first set's transitions into A31 nearly vanished (A33→A31 from about 27 in 100 to under 1) and were replaced by transitions into the second set (A33→A39–A43 about 2–5 in 100 each). [DIR007, DIR008, DIR009, DIR011, DIR012]
+
+- Event positions (not clock time) agree with this sequencing: the first set's average position moved earlier (about 0.71 to 0.63) and the second set's later (about 0.71 to 0.76), A30 earlier (0.63 to 0.55) and A31 later (0.80 to 0.84); before, both sets shared one average position because only one ran per trace. [POS004, POS005, POS006, POS011, POS012]
+
+- A08 became rare and was bypassed: it appeared in about 62 in 100 traces before but about 21 in 100 in the later window; A49→A08 fell from about 71 to 4 in 100 of A49's outgoing transitions while A49→A50 rose from about 25 to 80 in 100; A08's own dominant edge to A50 fell from about 87 to 13 in 100, and when A08 occurs it sits much earlier (median position about 0.33 versus 0.91). [OCC003, DIR004, DIR013, POS001, REL015]
+
+- Smaller shifts: A04, A06 and A10 rose from about 6–8 in 100 traces to about 20–27 in 100, and later chain gaps shifted by roughly one event position (A49→A50 mostly 2 steps before, mostly 1 after; A49→A52 mostly 4 before, mostly 3 after). [OCC001, OCC002, OCC004, LAG027, LAG029]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two previously alternative activity sets — {A33, A34, A35, A37, A38} and {A39, A40, A41, A42, A43} — changed from mutually exclusive alternatives (about half of the cases each, never both) into a single sequence executed in nearly every case, first set then second set, embedded between A14/A15/A30 before it and A31 after it. This is shown directly by the relation items, where every cross-set pair flips from near-zero co-occurrence to co-occurrence in about 97–99 in 100 traces with a stable order, and corroborated by the participation of all ten activities rising from about half to nearly all traces, by the successor changes at A30 and the first-set activities, and by the opposing position shifts of the two sets. [REL063, REL075, REL096, OCC005, OCC010, DIR007, DIR008, POS006, POS011]
+
+Screening qualified 219 control-flow items where about 2 would be expected without a change, so the evidence as a whole cannot be a chance artefact of the two 200-trace samples; note, however, that the many relation items restate one underlying pattern rather than confirming it independently, and several lag items rest on only one or two observations and were not relied on. A competing explanation the evidence cannot rule out is that the later window simply contains a larger share of cases of a kind that always ran both sets, rather than a change affecting every case; the small residue of later traces still showing only one set (about 2–3 in 100) does not settle this. [REL063, OCC005]
+
+Other differences: A08 became rare (about 62 in 100 traces before, about 21 in 100 in the later window) and is now bypassed, with A49 flowing almost directly to A50 instead of through A08, and A04, A06 and A10 occur about three times as often as before; the evidence does not tie these shifts to the block change, so they are reported separately. [OCC001, OCC002, OCC003, OCC004, DIR013, REL015]

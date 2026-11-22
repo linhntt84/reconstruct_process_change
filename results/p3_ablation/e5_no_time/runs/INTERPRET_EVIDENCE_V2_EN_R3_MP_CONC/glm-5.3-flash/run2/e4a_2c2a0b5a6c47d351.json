@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_2c2a0b5a6c47d351.json",
+  "evidence_sha256": "e2936891d8a00efe019676f6b5e3af90feade6b8188c09965eb44d3b10163fa0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:20:50.504115+00:00",
+  "finished_at_utc": "2026-11-15T07:21:47.621170+00:00",
+  "latency_seconds": 57.12,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7967,
+    "prompt_tokens": 20270,
+    "total_tokens": 28237,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6870,
+      "text_tokens": 1097
+    },
+    "cost": 0.007023999999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25058,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A39 and A24, and exactly one of A14, A15 or A16 sat between them: A39 was followed by A14 in about 35 in 100 traces, by A15 in about 30, and by A16 in about 36; each of the three always led to A24, and the three never occurred in the same trace. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR007, REL001, REL002, REL008]\n- In the later window, A14, A15 and A16 were not observed in any of the 200 traces (0 in 100, down from about 35, 30 and 36 in 100). [OCC001, OCC002, OCC003, POS001, POS002, POS003]\n- In the later window, three activities that were absent earlier — A21, A22 and A23 — each occurred exactly once in every trace (participation 100 in 100, mean occurrences per trace 1.0, versus 0 before). [OCC004, OCC005, OCC006, POS004, POS005, POS006]\n- In the later window, A39's outgoing transitions went to A21, A22 and A23 in roughly equal shares (about 36, 33 and 32 in 100), and each of the three led either to one of the other two or to A24, also in roughly equal shares; all three always followed A39 and always preceded A24. [DIR004, DIR005, DIR006, DIR007, REL021, REL022, REL024, REL025, REL026, REL027]\n- The three new activities were executed without a fixed order between them: each pair co-occurred in all traces with both orders in near-equal shares (for example A21 before A22 in about 51 in 100 traces and A22 before A21 in about 49 in 100). [REL019, REL020, REL023]\n- The span between A39 and A24 grew from exactly 2 to exactly 4 event positions, and A24's mean relative position moved later, from about 0.39 to about 0.44 of the trace. [LAG001, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A39 and A24 was restructured: in the earlier window it held exactly one of A14, A15 or A16, chosen exclusively in about 35, 30 and 36 in 100 traces respectively, while in the later window A14–A16 disappear from the sample and A21, A22 and A23 instead run in every trace, once each, with no fixed order among the three, after A39 and before A24. Because the old activities are entirely absent from the later window and the new ones entirely absent from the earlier one, this is an exchange of activities rather than a re-weighting of shared paths. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL019, REL021, REL022, REL024, REL025, REL026, REL027]\n\nThe support is direct and consistent across indicators: occurrence counts flip from 0 to full participation (or back) with 59–71 or 200 traces behind each window's profile; the successor profiles of A39 and of A21–A23 change exactly as the hypothesis requires; the relational items show the new activities always co-occurring, ordered after A39 and before A24 with mixed internal order; and the lag and position items corroborate an insertion between A39 and A24 (gap 2 → 4, A24 about 0.04 later in relative position). The screening qualified 48 items where roughly 0.5 would be expected if nothing had changed, so the body of evidence is far larger than random re-splits of a stable process produce. [DIR004, DIR007, LAG001, POS007, screening]\n\nLimitations: zero participation only shows that A14–A16 were not observed in the later window, so the evidence cannot show whether they still exist unobserved, and it cannot distinguish a modification of one process from a complete switch in the mix of process variants between the two samples. The \"no fixed order\" reading of A21–A23 also rests on both orders appearing in similar proportions within these finite windows. [OCC001, OCC004]",
+  "case_id": "e4a_2c2a0b5a6c47d351",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "945f796c5408e085bbfdf1b33bc365981b362ba67e3b22ad96bce99f3489a439",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:26:08.979012+00:00",
+  "finished_at_utc": "2026-11-15T00:26:22.270800+00:00",
+  "latency_seconds": 13.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3792,
+    "prompt_tokens": 20586,
+    "total_tokens": 24378,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2925
+    },
+    "cost": 0.00377478
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 9446,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A20, A21, A22, A23, A26, A31, A32, and A37 (participation 1.0 for each). In the later window, A22 appears in about 54% of traces, and A31, A32, A37 each in about 47% of traces; the other activities remain in all traces. [OCC001, OCC002, OCC003, OCC004]\n- A20's outgoing transitions changed: before it went to A37 (35%), A31 (34%), A32 (31%); after it goes to A23 (99.5%) and A31 (0.5%). [DIR001]\n- A21's outgoing transitions changed: before it went to A22 (100%); after it goes to A22 (53.5%), A37 (16.5%), A32 (16%), A31 (14%). [DIR002]\n- The successors of A31, A32, A37 changed: before they all had A23 as a successor (35%, 32.5%, 32.5% respectively); after A23 is almost never a successor (1% for A32, 0% for A31 and A37), and A26 appears as a successor (36%, 29%, 34% respectively). [DIR003, DIR004, DIR005]\n- The order between A20 and A23 changed: before A23 occurred 4 steps after A20 in all traces; after A23 occurs immediately after A20 in 99.5% of traces. [LAG001]\n- The co-occurrence of A20 with A22, A31, A32, A37 dropped from 100% to 53.5% or 47%, with A20 occurring alone in the remaining traces. [REL001, REL002, REL003, REL004]\n- The order between A21 and A31/A32/A37 reversed: before A31/A32/A37 preceded A21 in all traces; after A21 precedes them in about 46.5% of traces and A21 occurs without them in 53%. [REL006, REL007, REL008]\n- A22 and A31/A32/A37 became mutually exclusive: before they co-occurred in all traces; after they co-occur in only 0.5% of traces. [REL011, REL012, REL013]\n- A23 and A31/A32/A37 reversed order: before A31/A32/A37 preceded A23 in all traces; after A23 precedes them in 46.5% and A23 occurs without them in 53%. [REL014, REL015, REL016]\n- A31, A32, A37 now co-occur in only 47% of traces, and are both absent in 53%. [REL020, REL021, REL022]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the control-flow structure: the process moved from a path where A20 led to one of A31, A32, A37, which then led to A23, to a direct path A20→A23, while the group A31/A32/A37 became optional and, when executed, is no longer followed by A23 but by A26. This is directly shown by the routing changes (DIR001, DIR003-005), the shortened lag between A20 and A23 (LAG001), and the drop in participation of A22, A31, A32, A37 (OCC001-004). The reversal of order between A21 and the group, and the mutual exclusivity of A22 with the group, are consistent with a reorganisation of the middle section. A competing explanation that cannot be fully ruled out is that the later window reflects a different variant mix rather than a process change, but the large number of consistent items (47 vs 0.51 expected by chance) makes this unlikely.\n\nOther differences: A21 now branches to A22 or to the group, whereas before it always went to A22. [DIR002, REL006-008]",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, every trace contained A36 and A21 with exactly one intermediate activity between them: A36's observed outgoing transitions split almost evenly among A20 (about 35 in 100), A14 (about 35 in 100) and A15 (about 30 in 100), and each of these three led only on to A21; A36 sat two steps before A21 in essentially all traces. [DIR001, DIR002, DIR003, DIR004, LAG001]
+- The three intermediates were mutually exclusive alternatives: in the earlier window exactly one of each pair (A14/A15, A14/A20, A15/A20) occurred per trace, never both. [REL001, REL003, REL008]
+- In the later window, A14, A15 and A20 are not observed at all (participation drops from about 35, 30 and 35 in 100 traces to 0 in 200 traces), A36's only observed outgoing transition is to A21, and A36 immediately precedes A21 (one step apart) in all later traces, where it was previously two steps away. [POS001, POS002, POS003, DIR004, LAG001]
+- A21 and A36 still occur in every trace in both windows; A21's mean relative position moved slightly earlier (about 0.39 to 0.37 of the trace) and A36's slightly later (about 0.32 to 0.33), consistent with the intermediate step being gone. [POS004, POS005]
+- A19 appears in about 49 in 100 traces earlier and about 56 in 100 later; A26 is present throughout in both windows. [REL002, REL007, REL012, REL005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of three mutually exclusive activities A14, A15 and A20, which previously always executed between A36 and A21, was no longer executed in the later window, so that A36 now leads directly to A21. This rests on direct and mutually consistent signs: A36's successor profile changed from three alternatives (A20, A14, A15) to only A21; the A36–A21 distance shortened from two steps to one in essentially all traces; the participation of A14, A15 and A20 fell from about 30–35 in 100 traces to zero; and their pairwise relations changed from "exactly one occurs" to "neither occurs" in all traces, while the earlier ordering A36 before the intermediate before A21 is confirmed by the relation items. With 25 qualifying control-flow items against roughly 0.27 expected for an unchanged process, chance sampling is not a plausible explanation for the pattern as a whole. The main limitation is that zero participation only shows these activities were not observed in this sample of 200 later traces; the evidence cannot distinguish removal from the process versus the activities still existing but not being exercised. [DIR001, DIR002, DIR003, DIR004, LAG001, POS001, POS002, POS003, REL001, REL003, REL008, REL004, REL009, REL013, REL006, REL011, REL015]
+
+Other differences: A19's presence rose from about 49 to about 56 in 100 traces, a small shift that sampling variation in a finite window could still produce; the slight positional shifts of A21 and A36 are consistent with the main hypothesis rather than independent changes. [REL002, REL007, REL012, POS004, POS005]

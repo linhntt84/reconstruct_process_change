@@ -1,0 +1,25 @@
+### Observed differences
+
+- The three activities A20, A22 and A23, each present in every case in both windows (200 of 200 traces), moved from about two thirds into the case (mean relative position about 0.63–0.64, by event order) to about a third in (about 0.38) in the later window. [POS002, POS004, POS005]
+- The choice step, in which about one of A19, A21 and A24 executes per case (about 30, 35 and 37 in 100 cases earlier; about 33, 30 and 40 in 100 later), moved the opposite way: from about a third into the case (mean about 0.34–0.36) to about two thirds in (about 0.66–0.68) in the later window. [POS001, POS003, POS006]
+- Their successors exchanged: earlier, A19, A21 and A24 led almost exclusively to A25 (97–98 in 100 outgoing transitions each) while A20, A22 and A23 each led to A30 in about 29–37 in 100 transitions; in the later window, A19, A21 and A24 lead almost exclusively to A30 (95–98 in 100), while A20, A22 and A23 lead to A25 in about 27–37 in 100 transitions. [DIR001, DIR003, DIR006, DIR002, DIR004, DIR005]
+- The neighbouring steps re-wired consistently: earlier, A40 led to A24, A21 or A19 (about 28–34 in 100 each) and reached A25 two steps later in 95 in 100 cases, while A29 led to A20, A23 or A22 (about 30–37 in 100 each) and reached A30 four steps later in 93 in 100; in the later window, A40 leads to A22, A20 or A23 (about 28–35 in 100 each) and reaches A25 only after four to five steps, while A29 leads immediately to A21 in 58 of the 59 cases containing A21 and reaches A30 two steps later in about 99 in 100. [DIR008, DIR007, LAG009, LAG005, LAG004]
+- Pair-level gaps flip accordingly: A21→A25 and A24→A25 sat one step apart in about 69–71 cases earlier but appear in only 1–2 cases later; A23→A25 and the pairs A40→A20, A40→A22 and A40→A23, each seen once earlier, now occur in about 200 cases at gaps of one to three steps. [LAG001, LAG003, LAG002, LAG006, LAG007, LAG008]
+- A25 and A29 themselves shifted only modestly later (mean position about 0.38 to 0.45 and 0.57 to 0.64), and the internal order of A20, A22 and A23 stays unfixed, each being followed by either of the other two or by the segment end in similar proportions in both windows. [POS007, POS008, DIR002, DIR004, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the two middle segments of the case run in exchanged order in the later window. Earlier, a case executed one of A19, A21 or A24, then A25, then A29, then the triple A20, A22, A23 in varying order before A30; in the later window, a case executes the triple A20, A22, A23 first, then A25, then A29, then one of A19, A21 or A24 before A30. Participation is unchanged — the triple still occurs in every case and about one alternative still executes per case — so the difference lies in placement and ordering, not in which activities run. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006]
+
+Supporting signs:
+
+- The successor of each of the six activities changed in the direction the exchange predicts, which is direct relational evidence. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+- Every pairwise gap flips consistently with the new order, including A29→A30 shortening from four to two steps and A40→A25 lengthening from two to four to five steps. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG009]
+- The two groups show large position shifts (a quarter to a third of the case) while A25 and A29 move only slightly, so the groups moved rather than the fixed points. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+- All 25 qualifying control-flow items far exceed what chance produces (about 0.6 expected without change; each difference larger than in 199 of 200 random re-splits), though the items overlap heavily and describe one underlying difference rather than independent confirmations. [DIR001–DIR008, POS001–POS008, LAG001–LAG009]
+
+Limitations: the evidence covers only the observed pairs, so what precedes A40 or follows A30 is unseen and the exact boundaries of the exchanged segments are inferred from the successor and gap changes rather than observed directly; a competing reading the evidence cannot rule out is two coordinated relocations of the groups instead of a single exchange of segments. [DIR007, DIR008, LAG005, LAG009]
+
+Other differences: a few rare outgoing transitions, about 1–3 in 100, appear in only one window — A19 led to A18 in about 2 in 100 transitions earlier, and A24 leads to A04, A32, A36 or A40 in about 1 in 100 transitions later — each resting on one or two observations; the mix among the alternatives also tilted slightly (A21 down from about 35 to 30 in 100 cases, A24 up from about 37 to 40), which sampling variation could explain. [DIR001, DIR006, POS001, POS003, POS006]

@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, every trace followed the same backbone: A38, then A14, then A15, then A23, with exactly one middle block in between — in about 50 in 100 traces A20 followed by A21, in the other half A22 instead; A20/A21 and A22 never occurred together, and the middle block always sat between A14/A15 [REL001, REL002, REL012, REL013, REL016, REL006, REL010].
+- In the later window, this whole segment is missing in about 47 in 100 traces: A14 and A15 each appear in only about 53 in 100 traces (down from all 200), and in about 47 in 100 traces neither A14 nor A15 appears at all [OCC001, OCC002, REL001].
+- The middle activities drop accordingly: A20 and A21 now appear in about 29 in 100 traces (down from about 50), A22 in about 24 in 100 (down from about 50); their internal rules persist — A20 and A21 still occur together, A22 still excludes both, and each still sits between A38 and A23 [OCC003, OCC004, OCC005, REL012, REL013, REL016, REL014, REL019].
+- The routing out of A38 changed: before, every observed outgoing transition of A38 led to A14; in the later window about 53 in 100 still lead to A14, while about 47 in 100 lead directly to A23 [DIR001].
+- Consistently, the gap from A38 to A23, previously always 4 or 5 steps, is now a single step in about 48 in 100 cases and remains 4–5 steps in the rest [LAG001].
+- A38 and A23 themselves still occur in every trace in both windows; A23's mean relative position moved slightly earlier (about 0.44 to 0.41) and A38's slightly later (about 0.30 to 0.32) [POS001, POS002].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window the segment A14 → (A20 → A21, or alternatively A22) → A15 between A38 and A23 is skipped in roughly 47–48 in 100 cases, with A38 passing straight to A23, whereas in the earlier window every trace executed this segment. The change is shown directly by the new A38→A23 transition and the one-step adjacency, and consistently by the coordinated participation drops of A14, A15, A20, A21 and A22 while A38 and A23 remain universal; when the segment does run, its internal order is unchanged [DIR001, LAG001, OCC001, OCC002, OCC003, OCC004, OCC005, REL001, REL005]. With 29 qualifying items against fewer than one expected for an unchanged process, chance sampling cannot account for the pattern as a whole, and the fact that A14 and A15 are entirely absent from the skipping traces (rather than appearing elsewhere) argues against a mere repositioning of activities [OCC001, REL001]. Limitations: most of the relation items mirror this one underlying difference rather than confirming it independently, the evidence cannot distinguish a newly added optional bypass from a changed mix of case types entering the process, and it cannot show why about half of the cases now skip the segment.
+
+Other differences: only minor positional shifts — A23's mean relative position moved slightly earlier and A38's slightly later (about 0.02–0.03 on the position scale), consistent with the skipping traces containing fewer events; within the segment, the choice between the A20→A21 branch and A22 is broadly unchanged (about 55/45 among segment traces later versus about 50/50 before, based on modest counts) [POS001, POS002, REL013, REL019].

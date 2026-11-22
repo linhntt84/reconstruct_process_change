@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_2c2a0b5a6c47d351.json",
+  "evidence_sha256": "e2936891d8a00efe019676f6b5e3af90feade6b8188c09965eb44d3b10163fa0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:22:18.345643+00:00",
+  "finished_at_utc": "2026-11-14T13:23:05.732526+00:00",
+  "latency_seconds": 47.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7550,
+    "prompt_tokens": 20270,
+    "total_tokens": 27820,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6571,
+      "text_tokens": 979
+    },
+    "cost": 0.0068154999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24285,
+  "text": "### Observed differences\n\n- In the earlier window, A39 (present in every trace) was followed by exactly one of three alternative activities: A14 in about 35 in 100 traces, A15 in about 30, and A16 in about 36. The three never occurred in the same trace, and whichever was executed always led directly to A24, its only observed successor. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR007, REL001, REL002, REL008]\n- In the later window, A14, A15 and A16 were not observed in any of the 200 traces; their participation fell from roughly 30–36 in 100 traces to zero. [OCC001, OCC002, OCC003, POS001, POS002, POS003]\n- In the later window, A21, A22 and A23 — not observed at all earlier — each appear exactly once in every trace (200 of 200 traces, mean occurrences 1.0). [OCC004, OCC005, OCC006, POS004, POS005, POS006]\n- A39's observed outgoing transitions shifted accordingly: earlier they went to A14, A15 and A16 in roughly 35/30/36 shares; in the later window they go to A21, A22 and A23 in roughly 36/33/32 shares. [DIR007]\n- The three new activities always occur together and their mutual order is mixed (about 51/49, 51/49 and 52/48 splits for the three pairs), each always after A39 and always before A24. [REL019, REL020, REL023, REL021, REL024, REL026, REL022, REL025, REL027]\n- The distance from A39 to A24 grew from 2 event positions in every earlier trace to 4 positions in every later trace, and A24's mean relative position moved later, from about 0.39 to about 0.44 — consistent with three activities now sitting between them. [LAG001, POS007]\n- Screening flagged 48 control-flow items where only about 0.5 would be expected if nothing had changed, far beyond what a stable process typically produces. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A39 and A24 changed from a single choice among three alternatives to a mandatory block of three activities. In the earlier window, every trace ran A39, then exactly one of A14, A15 or A16 (about 35, 30 and 36 in 100 traces, never together), each leading directly to A24. In the later window, A14, A15 and A16 were no longer observed, while A21, A22 and A23 each ran exactly once per trace in varying mutual order, always after A39 and always before A24; the A39-to-A24 distance grew from 2 to 4 positions and A24 moved later in the trace. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL019, REL021, REL022, REL024, LAG001, POS007]\n\nThe volume of qualifying evidence (48 items against roughly 0.5 expected without change) and its consistency across occurrence, routing, position and relation indicators make chance sampling of the two windows an implausible explanation for the pattern as a whole. [screening]\n\nLimitations: zero participation only means an activity was not observed in that window, so it cannot be ruled out that A14, A15 or A16 still occur in a very small share of later cases; and although both the old alternatives and the new block sit in the same A39–A24 segment, the evidence cannot establish that the new block replaced the old one rather than the two sets changing independently.",
+  "case_id": "e4a_2c2a0b5a6c47d351",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, every trace contained exactly one of A01 or A04 immediately before A02 — A01 in about 101 of 200 traces, A04 in about 99 — and the two never occurred in the same trace. A02 itself ran in all traces, always at one fixed, final position. [REL001, REL002, DIR001, DIR002, POS002]
+- In the later window, A01 no longer appears in any of the 200 traces, while A05, which was absent earlier, runs in about 92 of 200 traces (about 46 in 100). [OCC001, OCC002, POS001, POS004]
+- In the later window, A04 keeps roughly its earlier share of traces (about 46 in 100, at a fixed mid-trace position) but is now always followed directly by A05, which is in turn always followed directly by A02; the distance from A04 to A02 grew from one step to two. [DIR002, DIR003, LAG001, POS003]
+- A04 and A05, which never shared a trace earlier, now always occur together with A04 first (about 46 in 100 traces); in the remaining about 54 in 100 later traces none of A01, A04 or A05 occurs, and A02 appears at the first position rather than the final one. [REL003, REL004, REL005, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the branch leading into A02 was restructured: the route on which A01 ran immediately before A02 no longer occurs, and A05 now runs between A04 and A02 on the A04 route. Earlier, traces split roughly half and half between "A01, then A02" and "A04, then A02"; in the later window, about 46 in 100 traces run A04, then A05, then A02, while in about 54 in 100 traces none of A01, A04 or A05 runs before A02, which now appears at the first position. [OCC001, OCC002, DIR001, DIR002, DIR003, LAG001, REL001, REL005]
+
+Supporting signs: the screening produced 15 qualifying control-flow items where fewer than 0.1 were expected without change, and every item's difference was larger than in about 199 of 200 random re-splits of the pooled data; the participation flips are complete (A01 from about half of traces to none, A05 from none to about 46 in 100), which sampling variation between two 200-trace windows cannot produce; and the rewiring is shown directly by the successor change at A04, the new A05-to-A02 succession, and the A04-to-A02 distance growing from one step to two. [DIR002, DIR003, LAG001, OCC001, OCC002]
+
+Limitations: the evidence covers only the activities that qualified, so it cannot show whether the other activities in these traces (A04 does not start its traces, so others precede it) also changed, nor what the roughly 54-in-100 later traces contain besides A02. A competing reading of A02's position shift — that A02 itself was relocated to the start of its traces — cannot be ruled out, although the shift coincides exactly with the traces in which A01 disappeared and A02 stays at the final position on the A04 route. The relative take-up of the two trace forms stayed near one half (about 50/50 earlier, about 46/54 later), so the difference lies in what the branches contain, not in how often each branch is taken. [POS002, POS003, REL005]

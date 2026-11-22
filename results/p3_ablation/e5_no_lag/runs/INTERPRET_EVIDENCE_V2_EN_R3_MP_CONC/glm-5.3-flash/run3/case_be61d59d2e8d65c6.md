@@ -1,0 +1,20 @@
+### Observed differences
+
+- Participation in three activities collapsed. In the earlier window A19 ran in about 33 in 100 traces (65 of 200), A20 in about 29 in 100 (57 of 200) and A25 in about 41 in 100 (81 of 200), in each case at most once per trace; in the later window each of the three appears in only about 1 in 200 traces. [OCC001, OCC002, OCC003, POS001, POS002, POS003]
+- In the earlier window these three were mutually exclusive alternatives (each pair co-occurred in about 1 in 200 traces), and each always co-occurred with A27, running after A27 and essentially always before A29, with a mixed order relative to A28. In the later window, pairs among A19, A20 and A25 show neither activity in about 99 in 100 traces, and their co-occurrence with A27, A28 and A29 drops to about 1 in 200 traces while A27, A28 and A29 themselves still occur in essentially every trace. [REL001, REL002, REL006, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]
+- Routing around this step changed accordingly: in the earlier window about 52 in 100 of A27's outgoing transitions went to A28, with about 20 to A25, 13 to A19 and 10 to A20; in the later window about 98 in 100 go to A28. A28's outgoing transitions, previously about 43 in 100 to A29 plus about 19 to A25, 18 to A19 and 16 to A20, now go to A29 in about 97 in 100. [DIR005, DIR006]
+- A27 and A29 occur in every trace in both windows; their mean relative event positions shifted only slightly (A27 about 0.46 to 0.48, A29 about 0.57 to 0.55), consistent with a mid-trace step disappearing, though these are event positions rather than clock times. [POS004, POS005]
+- The later-window outgoing profiles of A19, A20 and A25 each rest on a single observed transition and cannot describe their current routing. [DIR002, DIR003, DIR004]
+- A10's outgoing transitions were redistributed: earlier they concentrated on A15 (about 20 in 100), A47 and A16 (about 17 each) and A45 (about 14); later they spread over many successors, the largest being A26 at about 17 in 100. [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the optional step between A27 and A29, in which exactly one of A19, A20 or A25 was executed, is no longer carried out in the later window. In the earlier window the three together covered essentially all traces (participations of about 33, 29 and 41 in 100 with almost no overlap), always after A27 and before A29 with a variable order around A28; in the later window each is observed in only about 1 in 200 traces, A27 proceeds almost always directly to A28, and A28 almost always directly to A29. [OCC001, OCC002, OCC003, REL001, REL002, REL006, REL003, REL005, REL009, REL012, REL004, REL008, REL011, DIR005, DIR006]
+
+This is not what an unchanged process typically produces: 26 control-flow items qualified where roughly 0.54 would be expected by chance, and the participation, relational and successor evidence all describe one coherent difference, with A27, A28 and A29 present in every trace in both windows, which locates the change precisely between A27 and A29. [OCC001, OCC002, OCC003, REL003, REL007, REL010, DIR005, DIR006]
+
+Limitation: not observed strictly means not observed, so the evidence cannot fully separate complete removal of this step from a drastic drop in how often the branch is taken that falls below the sample's resolution; the single remaining occurrences of A19, A20 and A25 (leading to A38, A37 and A31) rest on one observation each and cannot show whether anything replaced them. [DIR002, DIR003, DIR004]
+
+Other differences: A10's outgoing transitions shifted from a profile concentrated on A15, A47, A16 and A45 to a much wider successor set led by A26; this redistribution is not explained by the main hypothesis. [DIR001]

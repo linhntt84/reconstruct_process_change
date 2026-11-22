@@ -1,0 +1,22 @@
+### Observed differences
+
+- In the earlier window, A01 and A02 were not observed in any of the 200 cases; in the later window each runs exactly once in every case (200 of 200 cases, mean 1.0 occurrence per case), so both now behave as mandatory steps. [OCC001, OCC002]
+- In the later window, A01 always passes directly to A04 and sits in the later middle of the case (median normalized position about 0.75, middle half roughly 0.67–0.86), while A02 is always the final event of the case. [DIR001, POS001, POS002]
+- The direct hand-offs into A04 disappeared: earlier, about 50 in 100 of A06's outgoing steps went to A04 (the rest to A13) and about 50 in 100 of A13's went to A04 (the rest to A06); in the later window A06 leads to A01 in about 48 in 100 steps and A13 leads to A01 in about 52, with no direct steps from either into A04. [DIR004, DIR007]
+- Consistently, one-step successions vanished: A06-to-A04 pairs at a distance of one step fell from about 21 in 100 to none, and A13-to-A04 from about 20 in 100 to none, with distances of two to three steps now typical. [LAG003, LAG005]
+- The case ending changed: earlier, A12 was always the last event (normalized position 1.0 in every case, hence no observed outgoing steps); in the later window A12 always leads to A02, its mean position is about 0.94, and A02 is last. [POS005, DIR006, REL008]
+- Distances from A06 and A13 to A12 shifted about one step later: A06-to-A12 within two steps fell from about 33 in 100 to none (three- and four-step distances now about 35 and 45 in 100), with the same pattern for A13-to-A12. [LAG004, LAG006]
+- In the later window, A01 and A02 co-occur with the established activities in fixed relations where they previously never co-occurred: A06 and A13 always precede A01, and A01 always precedes A12 and A02; with A04, which still repeats about twice per case, A01 comes first outright in about 49 in 100 cases and the two interleave in the rest. [REL003, REL005, REL004, REL001, REL002]
+- The relative positions of long-standing activities moved slightly earlier (A06 median about 0.77 to 0.67, A13 0.75 to 0.67, A04 0.89 to 0.83), the pattern expected when two steps are added to each case; on its own a position shift does not prove those activities moved. [POS004, POS006, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, two activities were added to every case: A01 is inserted between the A06/A13 stage and A04 — earlier, A06 and A13 each passed directly on to A04 in about half of their outgoing steps, whereas now they pass to A01, which always passes to A04 — and A02 is appended as a new final step after A12, which previously always ended the case. Both newcomers went from not being observed at all (0 of 200 cases) to running exactly once in every case (200 of 200). [OCC001, OCC002, DIR004, DIR007, DIR001, DIR006, POS005, POS002]
+
+The hypothesis is shown directly and consistently: successor profiles contain the new edges (A01 to A04 and A12 to A02 in all cases) and lack the former direct A06/A13-to-A04 hand-offs; relation evidence shows fixed co-occurrence and order where there was none before; lag distances on the affected pairs lengthen by about one step; and A02 takes over the final position from A12. Occurrence, direction, position, relation and lag evidence all describe the same underlying difference, and the key differences exceed those seen in roughly 995 in 1,000 random re-splits of the pooled data. [REL001, REL002, REL003, REL004, REL005, LAG003, LAG004, LAG005, LAG006, POS001, POS002]
+
+The evidence cannot rule out that A01 and A02 are existing activities appearing under new anonymous codes rather than genuinely new steps, and "not observed earlier" strictly means only that they did not appear in that sample; the placement of A01 relative to activities other than A06, A13, A04, A12 and A02 is not pinned down. [OCC001, OCC002]
+
+Other differences: A03 occurs slightly more often (mean about 4.06 to 4.24 per case) and A07 and A10 show small increases (mean about 2.05 to 2.20 per case; participation about 69 to 70 in 100 cases); order shares between A04 and A06, A12 or A13 shift by about 2 in 100, and routing shares among existing successors shift by at most about 2 in 100. All of these are unremarkable against random re-splits (empirical strength 0.13–0.42) and are consistent with sampling variation between two 200-case windows. [OCC003, OCC006, OCC009, REL010, REL011, REL012, REL013, DIR002, DIR003, DIR005]

@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, every trace contained exactly one of five alternative activities: A18 in about 27 of 100 traces, A17 in about 25, A20 in about 19, A14 in about 17 and A19 in about 13 (the five shares sum to 1.0, and no trace contained two of them) [OCC001, OCC004, OCC005, OCC006, OCC007, REL003, REL029, REL037, REL044].
+- In the earlier window, each of these five had A28 as its only observed successor, and A43's outgoing transitions went only to these five (A18 about 27, A17 about 25, A20 about 19, A14 about 17, A19 about 13 in 100 outgoing transitions) [DIR001, DIR004, DIR005, DIR006, DIR007, DIR011].
+- In the later window, none of A14, A17, A18, A19 or A20 is observed at all (0 of 200 traces, against 27–53 of 200 earlier) [OCC001, OCC004, OCC005, OCC006, OCC007].
+- In the later window, five different activities — A15, A16, A25, A26 and A27 — each occur in all 200 traces; they always co-occur and appear in both orders in similar proportions (for example A15 precedes A16 in about 52 of 100 traces and follows it in about 48), so there is no fixed order among them [OCC002, OCC003, OCC008, OCC009, OCC010, REL010, REL015, REL051, REL052].
+- In the later window, A43 precedes each of the five new activities in every trace, and each of the five precedes A28 in every trace; A43's outgoing transitions are redistributed from the old five to the new five (shares about 0.17–0.25 each) [REL019, REL028, REL054, REL057, REL059, REL018, REL027, REL053, REL056, REL058, DIR011].
+- The new activities each have several outgoing transitions, spread across the other new activities and A28 (for example from A15: A25 about 25, A27 about 23, A26 about 19, A28 about 17, A16 about 17 in 100 outgoing transitions), instead of the single edge to A28 seen earlier [DIR002, DIR003, DIR008, DIR009, DIR010].
+- A28 now occurs later in traces (mean event position about 0.39, up from about 0.39 to about 0.47) and A43 slightly earlier (about 0.32 down to about 0.29); these are event positions, not clock times [POS011, POS012].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A43 and A28 was restructured: in the earlier window A43 was followed by exactly one of five alternative activities (A14, A17, A18, A19, A20), each leading directly to A28, whereas in the later window that choice is no longer observed and five activities (A15, A16, A25, A26, A27) all execute in every case between A43 and A28, in no fixed order, each with several outgoing transitions [DIR011, REL010, REL018, REL019, OCC002, OCC008]. This is a replacement of one path structure by another, not a shift in how often existing paths are taken, because the earlier activities are entirely unobserved in the later window and the later ones entirely unobserved earlier [OCC001, OCC004, OCC005, OCC006, OCC007, OCC002, OCC003, OCC009, OCC010].
+
+The judgement rests on the screening volume (92 qualifying items against roughly 0.72 expected for an unchanged process), on direct relational evidence (A43's successor profile changed from the old five to the new five, and the new five always co-occur and always sit between A43 and A28), and on consistency across occurrence, direction, relation and position indicators with substantial support (27–53 traces behind the disappearing activities, 200 of 200 for the new ones and the A43/A28 relations) [OCC005, DIR011, REL018, REL019, REL010, POS011].
+
+An important competing explanation remains: the evidence uses anonymous activity codes, so it cannot distinguish genuinely added and removed activities from the same branch behaviour appearing under relabelled codes; the mixed orders also establish only that no fixed order exists among the five new activities, not how they are coordinated [DIR002, REL010, OCC002].

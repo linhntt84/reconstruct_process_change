@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "45119538402d2bd9b1ec6d7d8319d7b6c477355474201b0813c2d081b9b1089b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:04:16.592056+00:00",
+  "finished_at_utc": "2026-11-14T11:06:12.463970+00:00",
+  "latency_seconds": 115.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18624,
+    "prompt_tokens": 17555,
+    "total_tokens": 36179,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17162,
+      "text_tokens": 1462
+    },
+    "cost": 0.011945250000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56180,
+  "text": "### Observed differences\n\n- In the later window, A14 appears in about 44 in 100 traces (87 of 200) versus about 31 in 100 before (62 of 200), never more than once per case; its typical position moved from about 0.70 to about 0.33 of the trace length, i.e., from near the end to roughly the first third. [OCC001, POS001]\n- The order of A14 relative to A15, A17, A18, A20 and A24 reversed completely: before, each of these preceded A14 in every case where both occurred (about 31 in 100 traces); in the later window, A14 preceded each of them in every co-occurrence (about 44 in 100). [REL001, REL002, REL003, REL004, REL005]\n- A15, A17 and A18, present in every trace in both windows, moved later (median relative position from about 0.39 to about 0.65), while A16 and A19 moved earlier (from about 0.68–0.70 to about 0.33); A20 and A24 shifted only slightly earlier (about 0.44 to 0.37, and 0.67 to 0.57), keeping their relative order. [POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- All pairwise orders between the two triads flipped: A15, A17 and A18 preceded A20 and A24 in 100% of co-occurrences before and followed them in 100% after; A16 and A19 likewise switched from following A15/A17/A18 and A20/A24 to preceding them. [REL006, REL007, REL008, REL009, REL010, REL014, REL015, REL018, REL020]\n- Successors were rerouted consistently: A14, A16 and A19, whose only observed outgoing transition was to A25 before, now lead only to A20; A15, A17 and A18 lost their transitions to A20 (about 31–39% of their outgoing transitions) and now exit to A25 (about 33–35%); A24 now passes to A15/A17/A18 (about 32–35% each) where it previously passed to A16/A14/A19; A35 now passes to A14/A16/A19 where it previously passed to A15/A17/A18. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- The distance from A24 to A25 changed from 2 to 4 event steps, and from A35 to A20 from 4 to 2 steps, each a single fixed value in essentially all cases in both windows. [LAG001, LAG002]\n- The branch shares changed: before, A24 was followed by exactly one of A16 (about 38 in 100), A19 (about 32) or A14 (about 31); in the later window, A35 is followed by exactly one of A14 (about 44 in 100), A16 (about 28) or A19 (about 28). [DIR007, DIR008, DIR001, DIR003, DIR006, OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two segments of the flow now occupy each other's former positions: the three-activity block A15–A17–A18, which runs in full with varying internal order, and the branch point where exactly one of A14, A16 or A19 executes. Before, the flow ran from A35 through the A15/A17/A18 block into A20, and after A24 it selected one of A16/A19/A14 leading to A25; in the later window, A35 first selects one of A14/A16/A19 leading into A20, and the A15/A17/A18 block runs after A24 towards A25. The 40 qualifying items are many times the roughly 0.5 expected by chance in an unchanged process, and the signs are direct and mutually consistent: every order relation between the two groups reversed (100% one way before, 100% the other way after), the A35-to-A20 and A24-to-A25 distances changed from 4 to 2 and from 2 to 4 steps — exactly what exchanging a three-activity block with a single-activity choice predicts — and every observed successor change lines up with the same re-arrangement, while A20 and A24 kept their relative order. [REL008, REL015, REL018, REL020, LAG001, LAG002, DIR001, DIR007, DIR008]\n\nTwo limitations remain. The indicator families overlap — the five A14 relation items, its position shift and its successor change largely describe the same movement of A14, so they are not independent confirmations — and the evidence shows nothing about the segment between A20 and A24, so the middle of the flow is inferred only from position shifts. The change in branch shares (A14 from about 31 to about 44 in 100, A16 and A19 slightly down) could partly reflect sampling differences in variant frequencies between the two 200-trace windows, although complete order reversals (200 versus 0 traces) cannot be produced by sampling noise alone. [OCC001, DIR007, DIR008, REL008, POS003]",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,20 @@
+### Observed differences
+
+- The order between the group A35/A36/A41 and the pair A26/A27 reversed. In the earlier window, A35, A36 and A41 each came before A26 in 98–100 in 100 traces and before A27 in 98–100 in 100 traces; in the later window A26 came before A35/A36/A41 in about 97–98 in 100 traces and A27 before them in about 98–99 in 100 traces. All six activity pairs still co-occur in every trace in both windows. [REL001, REL002, REL003, REL004, REL005, REL006]
+- The routing at the edges of this segment changed accordingly. A25 earlier led to A35 (about 39 in 100 outgoing transitions), A36 (32) and A41 (27), but in the later window leads to A27 in about 98 in 100 transitions. A26 earlier led to A30 in about 99 in 100 transitions and now leads to A35 (34), A36 (32) and A41 (30). The group members themselves earlier each led to A27 in roughly 28–37 in 100 outgoing transitions; now they lead to A30 in about 30–35 in 100, with the A27 share nearly gone. [DIR003, DIR004, DIR005, DIR006, DIR007]
+- Event positions are consistent with this: A26's median position moved earlier (0.62 to 0.53 of the trace) and A27's earlier as well (0.47 to 0.37), while A35, A36 and A41 moved later (medians about 0.41 to 0.58–0.59); each of these five activities occurs in 200 of 200 traces in both windows. [POS002, POS003, POS004, POS005, POS006]
+- A06 became less frequent and later: it appeared in about 27 in 100 traces before versus about 13 in 100 after (54 vs 25 traces), its mean occurrences per trace fell from about 0.29 to 0.15, and its typical position moved later (mean 0.25 to 0.44). Its outgoing transitions, earlier dominated by A16 (86 in 100), are now spread over many targets with A16 at 39 in 100, though only 28 outgoing transitions support the later profile. [OCC002, POS001, DIR001]
+- Two smaller shifts: A02 appeared in about 5 in 100 traces before versus about 12 in 100 after (9 vs 23 traces), and A15's transitions to A06 became rare (15 in 100 to 3 in 100) while its transitions to A16 grew (85 to 95 in 100). [OCC001, DIR002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment formed by A35, A36 and A41 was repositioned relative to A26 and A27: in the earlier window the group ran after A25 and before A27 and A26, whereas in the later window it runs after A26 and before A30, with A25 now leading to A27 and A26 feeding into the group. This rests on the near-complete reversal of all six activity-pair orders while the activities still occur together in 100 in 100 traces in both windows, which rules out a participation change or a replacement of one path by another; the successor changes at the segment boundaries (A25, A26, and the exits of A35, A36, A41) and the position shifts of all five activities match the same picture; and the 21 qualifying control-flow items far exceed the fewer than 1 expected by chance in an unchanged process. [REL001, REL002, REL003, REL004, REL005, REL006, DIR003, DIR004, DIR005, DIR006, DIR007, POS002, POS003, POS004, POS005, POS006]
+
+Limitations: the relational items do not cover the order between A26 and A27 directly (their relative order is inferred only from positions) nor the internal order among A35, A36 and A41, so the evidence cannot distinguish whether the group moved later in the trace or A26 and A27 moved earlier, and it says nothing about sequencing inside the group. [REL001, REL002, REL003, REL004, REL005, REL006, POS002, POS003, POS004, POS005, POS006]
+
+Other differences:
+- A06 occurs in fewer traces and later within them, and its outgoing transitions are much more dispersed, with the caveat that the later direction profile rests on only 28 transitions. [OCC002, POS001, DIR001]
+- A02 occurs in a modestly larger share of traces (about 12 in 100 versus about 5 in 100), based on small counts. [OCC001]
+- A15 now almost always leads to A16 rather than to A06. [DIR002]

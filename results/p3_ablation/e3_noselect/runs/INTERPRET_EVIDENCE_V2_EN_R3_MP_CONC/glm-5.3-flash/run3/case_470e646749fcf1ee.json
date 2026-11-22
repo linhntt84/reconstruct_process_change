@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_470e646749fcf1ee.json",
+  "evidence_sha256": "49138e9bc9ed72c58ad35c3e32fa66d3e2166456464edc8a52ca1ae14e30b812",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:04:43.958811+00:00",
+  "finished_at_utc": "2026-11-15T14:06:44.071554+00:00",
+  "latency_seconds": 120.11,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17346,
+    "prompt_tokens": 32681,
+    "total_tokens": 50027,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15573,
+      "text_tokens": 1773
+    },
+    "cost": 0.013575150000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49943,
+  "text": "### Observed differences\n\n- **A01 is no longer observed and A14 now flows straight into A04.** In the earlier window A01 ran in 40 of 200 traces (about 20 in 100), always preceded by A14 and always followed by A04. In the later window A01 appears in 0 of 200 traces, and A14's outgoing transitions, previously all pointing to A01, now all point to A04; the A14→A04 distance shrank from typically two steps to one step. [OCC001, DIR001, DIR011, LAG010, REL008]\n\n- **A new A02/A12/A13 block now runs between A03 and A04.** Earlier, A03 (present in every trace, at the very start) led to A08 in about 52 in 100 of its outgoing transitions and directly to A04 in about 46 in 100. In the later window the direct A03→A04 share is about 1 in 100, while A03→A02 is about 46 in 100; A02 (now in 95 of 200 traces) alternates with A12 (51 traces; A12 leads back to A02 in about 99 in 100 of its outgoing transitions) and then reaches A13 (95 traces, once per trace), which leads to A04 in about 99 in 100. A02 and A12 co-occur and interleave in about 26 in 100 traces, and A13 co-occurs with A02 in every A02 trace. The A03→A04 distance, earlier spread over 1–5 steps, is now mostly 3 or 5 steps. [OCC002, OCC010, OCC011, DIR002, DIR003, DIR009, DIR010, REL009, REL010, REL013, REL014, REL020, LAG001]\n\n- **A08's self-repetition is replaced by a detour through A09.** Earlier, about 43 in 100 of A08's outgoing transitions returned to A08 itself; in the later window none do, and about 45 in 100 go to the new A09, which in turn always leads back to A08. A09 appears in 51 of 200 traces, and consecutive A08 executions are now typically two steps apart instead of adjacent. [DIR006, DIR007, OCC007, LAG008, REL027]\n\n- **The new block and the A08 path remain alternatives.** A02, A12 and A13 never co-occur with A08 or A09 (co-occurrence 0 in every one of these pairs), so the route via A02/A12/A13 and the route via A08/A09/A10 are mutually exclusive branches out of A03, mirroring the earlier split between A08 and direct A03→A04. [REL011, REL012, REL028, REL029, REL031, REL032]\n\n- **Downstream shift with a stable tail.** A04 still runs in every trace, but its mean position moved from about 0.58 to 0.71 of the trace (by event order, not clock time) and its occurrences per trace fell from about 2.1 to 1.9; A08 and A14 also sit slightly later. A03 keeps its early position in all traces, and A04's own outgoing mix is virtually unchanged (A06 about 47→53 in 100, A05 about 26→22, A07 and A11 roughly stable). [POS004, OCC003, POS005, POS009, POS003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between the start activity A03 and A04 was restructured. In the earlier window, cases ran from A03 either directly to A04 or via A08/A10, and about 20 in 100 cases contained the side-branch A14 → A01 → A04. In the later window, A01 is no longer observed and A14 leads directly into A04, while a new block — A03 → A02, alternating with A12, then A13 → A04 — now runs between A03 and A04; in addition, A08's repetition now passes through A09 (A08 → A09 → A08) instead of returning to A08 directly. [DIR001, DIR002, DIR003, DIR007, DIR009, DIR010, DIR011, OCC001, OCC002, OCC007, OCC010, OCC011]\n\nThe support is direct and consistent: every added or removed connection is observed in the directly-follows profiles (A01→A04 gone; A14→A04, A03→A02, A02→A12, A12→A02, A13→A04, A08→A09 and A09→A08 new), the occurrence and position data agree with it, and the lag evidence shows exactly the distances this behaviour predicts (A14→A04 shrinking from two steps to one; A03→A04 moving from a 1–5-step spread to mostly 3 or 5 steps). The relation items consistently show the new co-occurrence patterns and that the A02-block and the A08-path stay mutually exclusive. [DIR003, DIR011, POS004, LAG001, LAG010, REL011, REL014, REL029]\n\nLimitations: zero participation only means an activity was not observed in that window, and the two windows are finite samples, so the evidence cannot rule out that the two windows draw on two coexisting process variants in different proportions rather than on one modified process; several items also describe the same underlying trace differences rather than independent confirmations. [OCC001, OCC002, REL011]\n\nOther differences: small participation declines in A05 (66 → 59 traces), A07 and A14 (40 → 35 each) and A11 (49 → 31), and a somewhat more fixed A03-before-A04 order (about 47 → 55 in 100 of their shared traces); these are minor next to the structural differences above and could reflect sampling variation. [OCC004, OCC005, OCC012, OCC009, REL016]",
+  "case_id": "case_470e646749fcf1ee",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

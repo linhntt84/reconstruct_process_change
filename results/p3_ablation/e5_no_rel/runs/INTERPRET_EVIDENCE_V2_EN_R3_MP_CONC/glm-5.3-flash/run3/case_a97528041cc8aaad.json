@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_a97528041cc8aaad.json",
+  "evidence_sha256": "c7b48369a0c3ceb974a4764e0132206de5695602c7039a977ac992c03da622fd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:20:17.230794+00:00",
+  "finished_at_utc": "2026-11-15T12:22:20.943378+00:00",
+  "latency_seconds": 123.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22804,
+    "prompt_tokens": 26764,
+    "total_tokens": 49568,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21011,
+      "text_tokens": 1793
+    },
+    "cost": 0.015416599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69801,
+  "text": "### Observed differences\n\n- In the later window, A02 appears in about 65 in 100 traces, up from about 15 in 100 in the earlier window (mean occurrences per trace about 0.69 vs 0.17), and it now sits early in the trace (median relative position about 0.16 vs 0.41). [OCC001, POS001]\n\n- In the later window, the continuation from A14 to A15 usually runs through A02: earlier, about 84 in 100 of A14's outgoing transitions went directly to A15 and about 1 in 100 to A02, while A02's outgoing transitions were scattered (about 21 in 100 to A46, 15 to A16, only 9 to A15); in the later window about 60 in 100 of A14's outgoing transitions go to A02 (the observed A14→A02 pairs, about 121 vs 10 before, are almost all immediate) and about 87 in 100 of A02's outgoing transitions go to A15 (about 123 observed pairs vs 4 before, about half at distance one). Where A14 is still followed by A15, the gap is now typically two steps (about 35 in 100 of pairs) rather than immediate (about 41 in 100 before). [DIR004, DIR001, LAG005, LAG001, LAG006]\n\n- In the later window, a mid-process block is rerouted: earlier, A40 led mainly to A22, A20 and A23 (about 33, 25 and 25 in 100) and A29 to A21, A19 and A24 (about 36, 31 and 31 in 100), with A19, A21 and A24 exiting almost always to A30 (about 95 in 100) and the mutually connected trio A20/A22/A23 exiting mainly to A25 (about 30–38 in 100); in the later window A40 leads to A19, A21 and A24 (about 40, 28 and 27 in 100) and A29 to A20, A22 and A23 (about 31–33 in 100 each), while A19, A21 and A24 now exit to A25 (about 97–98 in 100) and A20/A22/A23 now exit to A30 (about 31–33 in 100) instead of A25. [DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012]\n\n- The six block activities shifted position accordingly: A19, A21 and A24 now occur earlier in the trace (mean relative position about 0.68 before vs about 0.37 after), A20, A22 and A23 later (about 0.40 vs about 0.64). [POS002, POS004, POS007, POS003, POS005, POS006]\n\n- Adjacencies changed consistently with the rerouting: A40 is now immediately followed by A19, A21 or A24 (about 56–87 observed pairs, 92–100 in 100 at distance one, vs one observation before), A29→A22 within one to three steps appears in about 200 traces (vs one), A21→A25 and A24→A25 became immediate (about 57 and 56 pairs vs one each), the immediate A24→A30 link (63 pairs before) all but disappeared, the A29→A30 gap grew from about two to about four steps, and the A40→A25 gap shrank from about four to two. [LAG021, LAG022, LAG024, LAG018, LAG013, LAG016, LAG017, LAG019, LAG025]\n\n- A06 and A10 became rare: in the later window each appears in only about 5–6 in 100 traces, down from about 22 (A06) and 17 (A10). [OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A02 typically mediates the transition from A14 to A15 on the main flow: A14, which previously passed directly to A15 in about 84 in 100 of its outgoing transitions, now passes to A02 in about 60 in 100, and A02 leads to A15 in about 87 in 100 of its outgoing transitions, while A02's participation rose from about 15 to about 65 in 100 traces and it now occurs near the start of traces. The change is shown directly by the successor shift at A14 with support near 200 traces in both windows, and it is consistent across occurrence, direction, position and gap indicators; with 52 qualifying items against roughly 0.82 expected by chance across 165 tested units, the pattern as a whole is unlikely to be a sampling artefact. Limitations: the rerouting is partial, since about 37 in 100 of A14's outgoing transitions still go directly to A15, and the evidence cannot show whether the later window is a single modified process or a mixture of modified and unchanged variants, because the aggregate shares cannot separate coexisting variants. [DIR004, DIR001, LAG005, LAG001, LAG006, OCC001, POS001]\n\nOther differences: the rerouting of the mid-process block — the triads A19/A21/A24 and A20/A22/A23 exchanged places between the branch points A40 and A29 and the targets A25 and A30, with their exit targets swapped — is a second structural difference that the evidence shows directly through successor changes, new and vanished adjacencies, and position shifts; it is a change in ordering, not a shift in the shares of unchanged paths. In addition, A06 and A10 are now observed in only about 5–6 in 100 traces (vs about 22 and 17 before), suggesting they are executed in a minority of cases, though the after-profile for A06 rests on only 10 traces. [DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, POS002, POS003, POS004, POS005, POS006, POS007, LAG013, LAG016, LAG017, LAG018, LAG019, LAG025, OCC002, OCC003]",
+  "case_id": "case_a97528041cc8aaad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

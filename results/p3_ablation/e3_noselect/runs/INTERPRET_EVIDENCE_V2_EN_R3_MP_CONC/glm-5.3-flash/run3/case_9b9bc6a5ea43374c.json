@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9b9bc6a5ea43374c.json",
+  "evidence_sha256": "a98baa886e8010e22255c3bf231f390d945a4a0d15552402ebefbfbd548876c4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:47:40.263569+00:00",
+  "finished_at_utc": "2026-11-15T13:48:50.128024+00:00",
+  "latency_seconds": 69.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9795,
+    "prompt_tokens": 17109,
+    "total_tokens": 26904,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8736,
+      "text_tokens": 1059
+    },
+    "cost": 0.007463849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30697,
+  "text": "### Observed differences\n\n- Activity A03 was not observed at all in the earlier window (0 of 200 traces); in the later window it runs in about 52 in 100 traces, typically in the first half of the trace (median position roughly a third of the way in). [OCC003, POS001]\n- In the later window A03's outgoing flow goes to A12 (about 36% of its outgoing transitions), A11 (about 35%) and A08 (about 29%). A05, A08 and A12 each gained A03 as a new successor (about 16% of A05's outflow, about 38% of A08's and about 33% of A12's), whereas A03 had no observed successors before simply because it never occurred. [DIR001, DIR003, DIR004, DIR005]\n- Before, each of A05, A08, A11 and A12 occurred in about 51 in 100 traces and never together with A03; in the later window A03 co-occurs with each of them in about 52 in 100 traces. When both run, A03 always precedes A11, while with A05, A08 and A12 both orders occur (e.g. A05 before A03 in about 28% of traces and interleaved in about 24%; A08 and A03 in each order in roughly 23–29%). [REL001, REL002, REL003, REL004]\n- Distances between the existing activities grew consistently with something inserted between them: A08 to A11, previously 1–2 steps apart, is now about 3 steps apart in roughly 38% of cases; A12 to A11 now also includes 3-step gaps (about a third of cases); A08 to A12 and A12 to A08, previously always adjacent, are now 2 steps apart in about a third to 40% of cases; A05 to A11 is now always exactly 4 steps apart, where before it was 3 or 5. [LAG005, LAG006, LAG007, LAG008, LAG003]\n- Smaller shifts elsewhere: A05 repeats less often (about 1.23 vs 0.93 occurrences per trace; repeated within five steps in about 31% vs 24% of traces) and now sits earlier in the trace (median position about 0.18 vs 0); A07 occurs in fewer traces (about 31% vs 24%) and receives a smaller share of A05's outflow (about 58% vs 45%); A04's outflow moved from A13 (about 63% vs 47%) toward A09 (about 37% vs 53%). [OCC005, POS002, LAG001, OCC007, DIR003, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new activity, A03, was introduced into roughly half of the executions, placed between the existing activities A05/A08/A12 and A11: A03 appears in about 52 in 100 later traces after being entirely absent, it is reached from A05, A08 and A12, it leads to A11, A12 and A08, and it always executes before A11 when both run. The increased step distances between A08/A12 and A11 in the later window fit A03 sitting on these paths. The change is shown directly by occurrence, direction, relation and position evidence that all agree, and an appearance in about 103 of 200 traces with structured relations to four existing activities is not what a rare variant or sampling noise produces. Limitations: the evidence cannot show under which condition A03 runs (which variants include it), and it cannot separate whether the concurrent decline of A05's repetitions and of A07 is a consequence of this insertion or an independent change; a shift in the mix of existing variants between the windows would look similar.\n\nOther differences: A04's routing between A09 and A13 became more balanced (A09 about 37% vs 53% of A04's outgoing transitions), and A05 now starts earlier in the trace and repeats less often; whether these belong to the same change cannot be determined from the evidence. [DIR002, POS002, OCC005]",
+  "case_id": "case_9b9bc6a5ea43374c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

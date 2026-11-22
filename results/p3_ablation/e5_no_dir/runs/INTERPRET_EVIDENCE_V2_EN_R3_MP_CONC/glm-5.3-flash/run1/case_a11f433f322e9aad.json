@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "5928c97618c21fda2ed150f48f06624003211f35638f775911d832a390309bf5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:53:18.824040+00:00",
+  "finished_at_utc": "2026-11-14T11:54:11.166333+00:00",
+  "latency_seconds": 52.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7015,
+    "prompt_tokens": 10811,
+    "total_tokens": 17826,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6057,
+      "text_tokens": 958
+    },
+    "cost": 0.00512915
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22800,
+  "text": "### Observed differences\n\n- In the earlier window, activity A27 ran in every case (200 of 200 traces, once per trace); in the later window it runs in only about 51 in 100 cases (about 102 of 200; mean occurrences per trace 1.0 → 0.52). [OCC001]\n- Three activities that did not appear at all earlier — A32, A33 and A38 — each run in about 49 in 100 later cases (98–99 of 200), positioned around the middle of the trace (median position ≈ 0.5). [OCC002, OCC003, OCC004, POS001, POS002, POS003]\n- Earlier, nearly every case ran A26 → A27 → A28: A26 preceded A27 and A27 preceded A28 in all but about one of 200 cases, and A28 followed A26 two steps later in about 98 in 100 cases. In the later window this intact sequence remains in about half the cases, while in the other half A26 and A28 occur without A27. [REL001, REL005, LAG001]\n- In the later window, each of A32, A33 and A38 co-occurs with A26 and follows it, and co-occurs with A28 and precedes it (each in about 49 in 100 cases), while co-occurring with A27 in essentially no case (0–1 of 200). [REL002, REL003, REL004, REL006, REL007, REL008, REL009, REL010, REL011]\n- The three newer activities appear together: any pair of them co-occurs in about 49 in 100 later cases, and within those cases both orders occur in similar shares (e.g., A32 before A33 in about 23 in 100 cases overall, A33 before A32 in about 27 in 100), i.e., there is no fixed order among them. [REL012, REL013, REL014]\n- Consistently, the gap from A26 to A28, previously two steps in about 98 in 100 cases, is in the later window two steps in about 50 in 100 cases and four steps in about 48 in 100 cases — the pattern expected if three activities are inserted between them. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the segment between A26 and A28 has an alternative form: in roughly half of the cases A27 is skipped and the three activities A32, A33 and A38 run between A26 and A28 as a group without a fixed internal order, while the original A26 → A27 → A28 sequence continues in the remaining cases. This rests on direct relational evidence — each newer activity follows A26 and precedes A28 and is essentially never seen together with A27 — corroborated by the widened A26–A28 distance (two steps becoming four in about half of later cases) and the mid-trace position of the newer activities; the volume of qualifying items (22 versus roughly 0.34 expected by chance in the control-flow family) also far exceeds what an unchanged process typically produces. Limitations: most items describe the same underlying trace behaviour and are not independent confirmations, and because A32, A33 and A38 were simply not observed in the earlier window, the evidence cannot fully exclude that they existed as a rare path before whose share later rose — although a path reaching about 49 in 100 cases is hard to reconcile with zero occurrences in 200 earlier traces. The evidence reflects event order and positions, not clock-time timing. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001]",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

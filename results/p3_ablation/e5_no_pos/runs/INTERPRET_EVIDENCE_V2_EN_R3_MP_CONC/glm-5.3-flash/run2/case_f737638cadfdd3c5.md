@@ -1,0 +1,20 @@
+### Observed differences
+
+- A19, A20 and A25 were not observed at all in the earlier window (0 of 200 traces each). In the later window, A19 occurs in about 37 in 100 traces (74/200), A25 in about 34 in 100 (68/200) and A20 in about 29 in 100 (57/200), once per trace where present. [OCC001, OCC002, OCC003]
+- In the later window, each of the three is followed almost exclusively by A26: about 96 in 100 of A19's observed outgoing transitions go to A26, about 98 in 100 of A20's and about 97 in 100 of A25's, with only about 1–2 in 100 going to other activities. [DIR001, DIR002, DIR003]
+- A41's successors changed: earlier, about 93 in 100 of its outgoing transitions went to A26; in the later window only about 1 in 100 does, while about 34 in 100 go to A19, about 31 in 100 to A25 and about 27 in 100 to A20. [DIR004]
+- A41 and A26 themselves still occur in essentially every trace in both windows; what changed is what sits between them. [REL003, REL006, DIR004]
+- In the later window, A41 comes before A19, A20 or A25, and each of the three comes before A26; the three almost never share a trace (no co-occurrence for A19/A20 or A20/A25, 1 trace in 200 for A19/A25), so they behave as mutually exclusive alternatives. [REL003, REL006, REL008, REL010, REL011, REL014, REL001, REL002, REL007]
+- The separation between A41 and A26 grew by one position: A26 followed A41 at distance 1 in about 93 in 100 cases earlier, but at distance 2 in about 90 in 100 cases in the later window. [LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a mutually exclusive choice among three previously unobserved activities — A19, A20 and A25 — now sits between A41 and A26. In the earlier window a trace went from A41 directly on to A26; in the later window A41 leads in about 92 in 100 cases to exactly one of A19 (about 34 in 100), A25 (about 31) or A20 (about 27), and that activity in turn leads to A26, leaving A41 and A26 one position further apart. Because the three activities were absent earlier, this is an addition of a new block rather than a re-weighting of previously observed paths. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL003, REL006, REL008, REL011, LAG002]
+
+The hypothesis is direct and consistent across indicators: the three activities appear from zero participation, A41's successor profile flips from A26 to the three new activities, the ordering relations place A41 before the new activity and the new activity before A26, and the A41-to-A26 distance moves from 1 to 2 steps. Screening qualified 23 control-flow items where roughly 0.53 would be expected if nothing had changed, so the set of differences is far larger than an unchanged process typically produces. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001, LAG002]
+
+Limitations: the evidence cannot show what determines which of the three alternatives is taken, and small residual shares remain unexplained — about 1 in 100 of A41's transitions still go straight to A26, and about 1–2 in 100 of the new activities' transitions go to activities other than A26. A competing explanation the evidence cannot rule out is that these paths existed before but were exercised so rarely (below about 1–2 in 100 traces) that they were not observed; either way, their participation rose from near zero to roughly three in ten traces each. [DIR004, DIR001, DIR002, DIR003, OCC001, OCC002, OCC003]
+
+Other differences: the positional distance between A31 and A35 shifted modestly — earlier it was 1 step in about 55 in 100 observed pairs and 2 steps in about 42 in 100; in the later window it is 2 steps in about 62 in 100 and 1 step in about 37 in 100. This redistribution is not explained by the main hypothesis. [LAG001]

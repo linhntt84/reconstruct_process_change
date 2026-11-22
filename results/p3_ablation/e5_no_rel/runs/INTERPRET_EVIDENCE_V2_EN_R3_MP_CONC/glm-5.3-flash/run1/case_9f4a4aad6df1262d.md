@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, the activities A31, A22, A20, A23, A24, A26, A25 and A32 formed a fixed chain (A31→A22→A20→A23→A24→A26→A25→A32): each source sent essentially all of its outgoing transitions to one successor — A23→A24 in all observed cases, A24→A26 and A26→A25 in about 99 in 100, A25→A32 in about 93 in 100. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- In the later window, these activities fan out to several successors: A20→A23 drops from about 99 in 100 to about 67 in 100 with new transitions to A24, A25 and A26 (about 10–11 in 100 each); A23→A24 falls from all cases to about 15 in 100 while A23→A32 appears at about 49 in 100; A24→A26 falls to about 60 in 100 with new edges back to A22 (about 23 in 100) and A20 (about 11 in 100); A31 splits between A22 (about 52 in 100) and A24 (about 47 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- Bypassing appeared: the distance from A23 to A32 was 4 steps in about 94 in 100 earlier cases (via A24, A26, A25) but is 1 step in about 49 in 100 later cases; A31 reaches A24 directly in about 47 in 100 later cases, where earlier it was always 4 steps away via the chain. [LAG013, LAG027]
+- New backward (rework) transitions appeared: A24 before A22 occurs in about 95 of 200 later traces (about 1 before), A24 before A20 in about 150 of 200 (about 1 before), A25 before A20 in about 65 of 200 (about 1 before), and A26 before A20 in about 100 of 200 (about 1 before); pairs such as A20/A24 and A22/A24 now occur in both orders, where earlier the order was fixed. [LAG014, LAG015, LAG019, LAG021, LAG002, LAG008]
+- Distances that were constant became spread: A20→A23 moved from lag 1 in all cases to lag 1 in about 68 in 100 with the rest at lags 2–4; A22→A23 moved from lag 2 in all cases to lags 2–5. [LAG001, LAG007]
+- Positions shifted mildly: A20, A22 and A23 occur somewhat later within the trace (mean relative position up about 0.03–0.06), while A24, A25 and A26 occur somewhat earlier (down about 0.02–0.06). [POS001, POS002, POS003, POS004, POS005, POS006]
+- Scale check: 41 control-flow items qualified, against roughly 0.6 expected by chance in an unchanged process, so this set of differences is far larger than random re-splitting of stable traces would produce. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural reorganisation of the control flow around A20, A22, A23, A24, A25 and A26 (entered from A31, closing at A32): in the later window the previously fixed sequence is loosened, with A23 bypassing A24, A26 and A25 by leading directly to A32 in about half of its outgoing transitions, A31 and A22 able to skip ahead to A24, and new backward transitions (A24→A22, A24→A20, A25→A20, A26→A20) introducing rework, so that several activity pairs that previously followed one fixed order now occur in both orders and at varying step distances. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG002, LAG008, LAG013, LAG014, LAG015, LAG019, LAG021, LAG027]
+
+The change is shown directly by successor profiles and ordered-pair distances rather than inferred indirectly, it is consistent across the whole segment, and the volume of qualifying items (41 versus about 0.6 expected without change) rules out sampling variation as an explanation for the set as a whole. [DIR003, LAG013, LAG014, LAG015, screening]
+
+Limitations: the evidence cannot rule out that the two windows sample different proportions of coexisting process variants rather than a single modified process, and the direction shares are computed over outgoing transitions rather than cases, so exact per-case routing probabilities are not established. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+Other differences: the small position shifts of A20, A22, A23 (later) and A24, A25, A26 (earlier) fit the same restructuring but come from the same traces, so they are consistent corroboration rather than independent confirmation. [POS001, POS002, POS003, POS004, POS005, POS006]

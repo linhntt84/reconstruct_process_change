@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_3c73eabdaef64df5.json",
+  "evidence_sha256": "787d9e608fa938e87cd525dd512063e2e1888e9486a6d2d04ba4cbb14e9deefc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:43:53.580804+00:00",
+  "finished_at_utc": "2026-11-15T08:45:14.553498+00:00",
+  "latency_seconds": 80.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11418,
+    "prompt_tokens": 12681,
+    "total_tokens": 24099,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10152,
+      "text_tokens": 1266
+    },
+    "cost": 0.00761115
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38313,
+  "text": "### Observed differences\n\n- In the earlier window, the evidence covers only two activities, A04 and A07, and both appeared in all 200 traces: A04 was immediately followed by A07 (its only observed outgoing transition), A04 sat in the middle of the trace (mean relative position 0.5) and A07 was the final event (mean relative position 1.0). A01, A03, A05 and A06 were not observed in any trace (0 of 200). [OCC001, OCC002, OCC003, OCC004, DIR002, POS003, POS006]\n- In the later window, all six activities occur in every trace, exactly once each (participation 200 of 200, mean one occurrence per trace). The observed transitions form a single chain, A04 → A03 → A05 → A06 → A07 → A01, and each of these edges is the only observed outgoing transition of its source in all 200 traces. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005]\n- Positions shifted accordingly: A04 moved from the middle (0.5) to near the start (about 0.17) and A07 from the end (1.0) to about 0.83, while A03 (about 0.33), A05 (0.5), A06 (about 0.67) and A01 (1.0) occupy the positions between. [POS001, POS002, POS003, POS004, POS005, POS006]\n- The distance from A04 to A07 grew from one step (immediate succession) in all earlier traces to four steps in all later traces. [LAG001]\n- All 14 activity pairs among these six activities changed from never being co-observed (or only one partner present) to co-occurrence in 200 of 200 traces, always in the same order: A04 before A03 before A05 before A06 before A07 before A01. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]\n- Every one of the 30 evidence items shows an empirical strength of about 0.995, i.e. its difference is larger than in roughly 995 of 1,000 random re-splits of the pooled traces. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural extension of the trace sequence: in the later window every case runs A04, then A03, A05 and A06 in sequence, then A07, and finally A01, whereas in the earlier window cases ran A04 directly followed by A07. A03, A05 and A06 are now executed between A04 and A07, and A01 is executed after A07 at the end of the trace; all four went from 0 of 200 traces to exactly one occurrence in every trace. The hypothesis is shown directly and consistently: the successor chain, the co-occurrence and fixed ordering of every activity pair, the position shifts and the A04-to-A07 distance change all describe the same underlying difference, and the participation change from 0 to 200 of 200 traces per activity is far outside what random re-splits of these window sizes produce (each item exceeds about 995 of 1,000 reference splits). Because the four activities were absent from the earlier window, this is a lengthening of the sequence with activities now executed in every case, not a shift of shares between pre-existing paths. Note that the 30 items largely describe this one underlying difference, so they are consistent rather than independent confirmations. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001]\n\nLimitation: zero participation in the earlier window strictly means \"not observed\", so the evidence cannot distinguish between these activities being newly introduced and their having existed before only in a rare variant that has now become the dominant (or only) path; the evidence also covers only these six activities, so behaviour elsewhere is invisible. [OCC001, OCC002, OCC003, OCC004]",
+  "case_id": "case_3c73eabdaef64df5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_99097bac282e202d.json",
+  "evidence_sha256": "a9459f9fdb1288b220bc6a2f9ecc8340046b5921ba61c81e3415b6e1b3aa9d1a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:03:57.318617+00:00",
+  "finished_at_utc": "2026-11-15T07:05:14.862961+00:00",
+  "latency_seconds": 77.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11333,
+    "prompt_tokens": 27562,
+    "total_tokens": 38895,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9968,
+      "text_tokens": 1365
+    },
+    "cost": 0.009800799999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37153,
+  "text": "### Observed differences\n\n- The dominant difference is a swap in how often two groups of activities run. A21, A22 and A23 each appeared in about 75 in 100 traces in the earlier window but only about 25 in 100 in the later window (about 150 of 200 traces before, about 49 after) [OCC003, OCC004, OCC005]. A24, A25 and A26 show the mirror image, each rising from about 25 in 100 traces to about 76 in 100 (about 50 before, about 151 after) [OCC006, OCC007, OCC008].\n- Routing out of A20 flipped in step. A20 itself is present in essentially every trace in both windows, but among its observed outgoing transitions the share leading to A21, A22 or A23 fell from about 75% to about 24%, while the share leading to A24, A25 or A26 rose from about 25% to about 75% [DIR003]. Co-occurrence with A20 agrees: A21–A23 shared a trace with A20 in about 75 in 100 cases before and about 25 in 100 after, while A24–A26 went from about 25 to about 76 in 100 [REL007, REL008, REL009, REL010, REL011, REL012].\n- Within each group the three activities still appear together whenever the group runs, and in both orders (no fixed internal order) in both windows; what changed is how often the group is taken. A21/A22/A23 co-occurred in about 75 in 100 traces before and about 25 in 100 after; A24/A25/A26 co-occurred in about 25 in 100 before and about 76 in 100 after [REL013, REL014, REL021, REL034, REL035, REL039]. The two groups are near-exclusive alternatives, and the preferred group switched between the windows [REL015, REL017, REL022, REL024, REL028, REL030].\n- Downstream partners follow the same swap: A30 co-occurred with A21–A23 in about 75 in 100 traces before and now mostly appears without them, while it now co-occurs with A24–A26 in about 76 in 100 (up from about 25); A32 and A33 show the same reversal (co-occurrence with A21–A23 about 48 → 15 in 100; with A24–A26 about 17 → 52 in 100) [REL018, REL025, REL031, REL036, REL040, REL043, REL019, REL020, REL037, REL038]. These pairs largely re-express the same trace behaviour rather than adding independent confirmation.\n- Separate from the swap, A10 became more frequent (about 6 in 100 traces before, 21 in 100 after) and, when present, now appears later within traces by event position (mean relative position about 0.57 → 0.82), with its outgoing transitions concentrating on A33 (about 90% of observed outgoing transitions after, vs about 18% before) [OCC002, POS001, DIR002]. A32 now sends about 20% of its observed outgoing transitions to A10, up from about 1% [DIR004]. A02 nearly disappeared (about 9 → 1 in 100 traces), though its later-window routing profile rests on only 2 outgoing transitions [OCC001, DIR001].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the relative frequency of two alternative paths shifted: the path in which A21, A22 and A23 run together after A20 is taken in about a quarter of later-window cases (about three-quarters before), while the alternative path containing A24, A25 and A26 is taken in about three-quarters (about a quarter before). Both groups remain well observed in both windows, keep their internal no-fixed-order structure, and A20's outgoing routing moved in step, which fits a change in how often existing alternatives are taken rather than activities being added, removed, bypassed or relocated [OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR003, REL007, REL010, REL013, REL034].\n\nThe screening context supports this reading: 59 control-flow items qualified against roughly 0.63 expected if nothing had changed, so the pattern as a whole is far beyond what random re-splits of a stable process produce, and the key items rest on large supports (about 150 vs 49 traces, and about 51 vs 151) [OCC003, OCC006]. A competing explanation the evidence cannot rule out is that the two windows sample different case populations rather than one process changing; the evidence shows the windows differ, not how the difference came about [OCC003, DIR003].\n\nOther differences: A10 participation roughly tripled (about 6 → 21 in 100 traces), it appears later within traces by event position, and its outgoing transitions now concentrate on A33; A32 routes to A10 in about 20% of observed outgoing transitions (up from about 1%); A02 fell to near-absence with too few later-window observations to characterise its routing [OCC002, POS001, DIR002, DIR004, OCC001, DIR001].",
+  "case_id": "case_99097bac282e202d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

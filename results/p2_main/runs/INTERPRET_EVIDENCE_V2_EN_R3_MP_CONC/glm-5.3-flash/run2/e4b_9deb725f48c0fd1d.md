@@ -1,0 +1,18 @@
+### Observed differences
+
+- All qualifying evidence concerns resource allocation; no control-flow or timing item passed the screening thresholds (zero items in those families, in line with chance expectations of about 0.2 and 0.02). [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+- In the earlier window, assignments for A01, A03, A13, A14, A17 and A22 were diffuse: roughly 37–52 in 100 executions went to resources outside the ten most frequent, and no single resource exceeded about 10 in 100. In the later window, allocation concentrated on a small recurring group: User_61 became the most frequent resource for A01, A03, A13, A14 and A17 at about 9–11 in 100 executions (it had not been among their top resources before), User_55 rose to about 8–9 in 100, and the outside-group share fell to about 30–42 in 100. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- A22 shows the largest partial shift (dissimilarity about 0.76, versus about 0.4–0.5 for the other activities): its earlier top resource (about 10 in 100) and several others dropped out of the top group, while User_61 rose from about 4 to about 14 in 100 and User_55 from outside the top group to about 13 in 100. [ASSIGN006]
+- A24 changed categorically: earlier, its executions were spread over 21 distinct resources, with the most-used handling about 22 in 100; in the later window, every observed execution was assigned to a single resource, User_107 (concentration index about 0.09 to 1.0; distinct resources 21 to 1). [ASSIGN007, CONC001]
+- A13 and A14 have identical resource profiles in both windows, so they most likely reflect one underlying allocation pattern rather than two independent changes. [ASSIGN003, ASSIGN004]
+- Every difference is larger than in all but about 1 of 2000 random re-splits of the pooled data, and each profile rests on roughly 80–260 observations per window. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, work on the monitored activities was reallocated from a broad, diffuse set of resources to a smaller, recurring set: partially for A01, A03, A13, A14, A17 and A22, where a consistent group of resources led by User_61 and User_55 took over the largest shares from a previously diffuse pool, and completely for A24, where a single resource (User_107) took over all executions after about 21 resources had shared them earlier.
+
+Supporting signs: the resource family produced 8 qualifying items where fewer than 0.01 were expected without change, so the number of items as a whole cannot be explained by random re-splits, while the control-flow and timing families produced none; all items point in the same direction (redistribution toward fewer, more concentrated resources), each with a difference exceeding about 9995 of 10000 random re-splits; and for A24 two indicators agree on the move from about 21 resources to one. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+Limitations: the evidence shows only assignment shares, so it cannot rule out that a changed case mix or workload, rather than a change in allocation itself, produced the shift; resource codes are anonymous, so no roles, people or reasons can be inferred; and because the A13 and A14 profiles are identical, the eight items likely describe fewer than eight independent allocation changes.

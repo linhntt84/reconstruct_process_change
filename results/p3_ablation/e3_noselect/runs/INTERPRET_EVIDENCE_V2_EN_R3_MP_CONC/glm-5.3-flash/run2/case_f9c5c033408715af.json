@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f9c5c033408715af.json",
+  "evidence_sha256": "4ed5fb4350242a770874ae8cedc8c14a46abe17ee1af8120afd2985aad710b0c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:45:55.774708+00:00",
+  "finished_at_utc": "2026-11-15T08:47:25.113829+00:00",
+  "latency_seconds": 89.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13027,
+    "prompt_tokens": 13237,
+    "total_tokens": 26264,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11840,
+      "text_tokens": 1187
+    },
+    "cost": 0.008499050000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40147,
+  "text": "### Observed differences\n\n- Activity A07 is no longer observed in the later window: it appeared in 46 of 200 traces before (about 23 in 100) and in none of the 200 traces after. Its outgoing transitions — before, about half led to A03 and about 30 in 100 to A13 — and its typical trace position (mean relative position about 0.57) are no longer observed. [OCC006, DIR006, POS002]\n- A07's relations with other activities collapsed: before, A03 co-occurred with A07 in about 15 in 100 traces (always with A07 first) and A10 co-occurred with A07 in about 23 in 100 (usually A10 first); in the later window A03 and A10 never co-occur with A07. [REL001, REL003]\n- The flow that used to pass through A07 now appears to bypass it: A01's and A10's transitions into A07 (about 9 and 13 in 100 of their outgoing transitions before) are gone, while their direct transitions to A03 rose (A01: about 2 to 9 in 100; A10: about 2 to 8 in 100) and to A13 also rose (about 1 to 6 and 1 to 5 in 100). A03 now follows A10 within one step in about 22 in 100 cases, versus about 4 in 100 before. [DIR001, DIR009, LAG002]\n- A03 itself occurs somewhat more often: about 56 in 100 traces in the later window versus about 51 in 100 before, still almost always near the start of the trace (median position 1 in both windows, slightly more spread after). [OCC002, POS001]\n- Several other activities shifted modestly in participation: A02 and A09 rose from about 23 to 29 in 100 traces; A04 and A08 fell from about 55 to 46 in 100 (mean occurrences per trace down from about 1.09 to 0.93); A06 and A11 fell from about 29 to 24 in 100; A13 fell from about 50 to 45 in 100. [OCC001, OCC008, OCC003, OCC007, OCC005, OCC009, OCC011]\n- A10 now sits slightly earlier in the trace (median relative position about 0.0 versus about 0.1) and leads more often directly to A01 (about 43 to 52 in 100 of its outgoing transitions). [POS003, DIR009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A07 was no longer executed — skipped in every trace that previously contained it, or removed — and that traces which used to route through A07 now continue directly from its main predecessors A01 and A10 into A03 (and, to a lesser degree, A13), with A03 reached sooner after A10. The sign is direct and consistent across occurrence, direction, position and relation indicators: participation of 46 of 200 traces versus 0 of 200, vanishing outgoing transitions and position, and the complete collapse of A03–A07 and A07–A10 co-occurrence, each with empirical strength of about 0.99; a sampling fluctuation cannot plausibly explain zero occurrences in 200 traces after 46 in 200 before. Limitations: zero participation only shows A07 was not observed, so removal, an optional branch that was never taken, or a relabelling of the activity cannot be distinguished; and the rerouting is inferred from aggregate transition shares, so the exact new path of each former A07 trace is not directly observed. The competing explanation that A07 events were filtered or renamed rather than the behaviour changing cannot be ruled out from this evidence. [OCC006, DIR006, POS002, REL001, REL003, DIR001, DIR009, LAG002]\n\nOther differences: A02 and A09 participate more often (about 23 to 29 in 100 traces) while A04 and A08 participate less often with slightly fewer repetitions per trace (about 55 to 46 in 100), and A06, A11 and A13 participate slightly less often; the evidence does not show a routing mechanism tying these shifts to the A07 disappearance, so they stand as separate observations. [OCC001, OCC008, OCC003, OCC007, OCC005, OCC009, OCC011]",
+  "case_id": "case_f9c5c033408715af",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

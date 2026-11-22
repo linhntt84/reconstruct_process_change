@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_317b0313f6a28537.json",
+  "evidence_sha256": "998d44eb180a4e344ca4b787d05f98b87f5957c3507c80dbfed63ca53d13626e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:33:36.558941+00:00",
+  "finished_at_utc": "2026-11-15T10:34:54.419679+00:00",
+  "latency_seconds": 77.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10639,
+    "prompt_tokens": 13948,
+    "total_tokens": 24587,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9512,
+      "text_tokens": 1127
+    },
+    "cost": 0.007411699999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32825,
+  "text": "### Observed differences\n\n- The three activities A19, A20 and A25 keep roughly the same participation (each appears in about 31–39 in 100 traces in both windows) but appear much earlier in the trace: their mean relative position falls from about 0.60 to about 0.32–0.34 of the trace length. [POS001, POS002, POS003]\n- Their order relative to A26 and A27 reverses. Before, A26 or A27 came before A19/A20/A25 in roughly 31–38 in 100 traces, with the reverse order essentially absent; in the later window A19/A20/A25 come before A26/A27 in roughly 30–36 in 100 traces, and the old order has almost disappeared. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Routing changes at both ends of this block. Before, A19, A20 and A25 led mainly to A28 (about 47–56 in 100 outgoing transitions) and A32 (about 43–48 in 100); in the later window they lead to A26 in about 88–94 in 100 cases. A45, which previously led to A26 in about 85 in 100 cases, now leads to A20, A19 or A25 (about 29 in 100 each) and no longer directly to A26. [DIR001, DIR002, DIR003, DIR006]\n- The later part of the process tightens. A27 now goes to A28 in about 98 in 100 transitions (before about 47, with the rest split across A19/A20/A25), and A28 goes to A32 in about 96 in 100 (before about 50); the one-step successions A27→A28 and A28→A32 rise from roughly half of cases to nearly all. [DIR004, DIR005, LAG004, LAG006]\n- Distances corroborate this: A45 and A26 are now typically two steps apart (about 82 in 100 cases) instead of adjacent (about 86 in 100 before), and A27 reaches A32 typically in two steps instead of three. Successions from A19/A20/A25 to A28 or A32 within five steps, seen in 33–76 traces before, are now seen in only 1–3 traces. [LAG007, LAG005, LAG001, LAG002, LAG003]\n- A15 still occurs in every trace but repeats less often: mean occurrences per trace fall from about 1.9 to about 1.6, and its recurrence support drops from about 47 to 38 in 100. [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block of alternative activities A19/A20/A25 changed its placement: in the earlier window it ran late in the trace, after A26 and A27 and around A28, continuing on to A28 or A32; in the later window it sits directly after A45 and before A26, so the main flow reads A45 → (A19 or A20 or A25) → A26 → A27 → A28 → A32. This is shown directly by relational evidence (the order flip in all six block-versus-A26/A27 pairs, each affecting roughly 30–38 in 100 traces), positional evidence (relative position dropping from about 0.60 to about 0.33), and successor changes at both ends (A45 now feeds the block; the block now feeds A26). The lag shifts match an insertion between A45 and A26 and the removal of the block from between A27/A28 and A32, while participation of the block and of A26/A27/A28 stays essentially unchanged, pointing to a placement change rather than activities appearing or disappearing. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, DIR001, DIR002, DIR003, DIR006, LAG004, LAG005, LAG006, LAG007]\n\nLimitations: with 26 evidence items against roughly 0.6 expected if nothing had changed, chance cannot explain the pattern as a whole, but a shift in the mix of process variants — for example, traces in which the block runs early simply becoming more frequent, without any single process being rewired — would produce the same aggregate picture, and the finite windows cannot rule this out. The after-window gap profiles for block-to-A28/A32 successions rest on only 1–3 observations, and A15's reduced repetition may belong to the same restructuring or be independent; the evidence does not distinguish these. [LAG001, LAG002, LAG003, OCC001]",
+  "case_id": "case_317b0313f6a28537",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

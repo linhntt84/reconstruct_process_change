@@ -1,0 +1,15 @@
+### Observed differences
+
+- **Resource allocation of A16:** in the earlier window its assignments were spread across 17 distinct resources, with the largest single shares about 18 in 100 each (User_116 and User_117) and a concentration index of about 0.13; in the later window, all roughly 150 observed assignments went to the single resource User_8 (concentration index 1.0, top share 100 in 100). Participation itself barely moved — the activity appears in about 76 in 100 traces before and 75 in 100 after — so what changed is who performs it, not how often. [ASSIGN001, CONC001]
+- **Timing:** the elapsed time between consecutive completions of A09 and A23 is much longer in the later window — the median gap grew from about 1.3 hours to about 16 hours, the mean from about 2.2 to about 15.6 hours, and the middle half of gaps moved from roughly 0.8–2.4 hours to roughly 1.7–22.3 hours. This rests on 22 gaps before and 26 after, i.e. about 11–13 in 100 traces. [TWAIT001]
+- No control-flow item qualified (0 items against about 0.19 expected without change), so the qualified differences are confined to timing and resource allocation. [TWAIT001, ASSIGN001, CONC001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the resource allocation of A16 changed: in the earlier window its work was shared across many resources (17 distinct, largest share about 18 in 100), while in the later window a single resource, User_8, handled every observed assignment (about 150 of 150). Supporting signs: the assignment-share and concentration indicators show this shift directly on the same activity; participation is stable at about three quarters of traces in both windows, ruling out the activity simply becoming rarer; and the resource family produced 2 evidence items against roughly 0.005 expected if nothing had changed — a many-fold excess — while control flow produced none against about 0.19 expected. Limitations: both resource items summarise the same traces, so they represent one behavioural difference rather than two independent confirmations, and the anonymous resource codes permit no inference about roles or about behaviour beyond the sampled windows. [ASSIGN001, CONC001]
+
+An important competing explanation the evidence cannot rule out is that the later window captures a transient period in which only one resource performed this activity, rather than a durable reallocation; the two windows differ in allocation behaviour either way, but the evidence cannot distinguish these. [ASSIGN001, CONC001]
+
+Other differences: the elapsed time between the completions of A09 and A23 increased markedly (median about 1.3 hours before versus about 16 hours in the later window; 1 time item against about 0.015 expected by chance). This is a timing difference in its own right; the evidence does not show whether it is connected to the resource concentration, and because the pair occurs in only about 12 in 100 traces, a shift in which cases contain this pair cannot be ruled out as an alternative to a genuine lengthening of the interval. [TWAIT001]

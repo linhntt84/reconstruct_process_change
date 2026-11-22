@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_eb1ade11ddfbccc0.json",
+  "evidence_sha256": "47656eabd4754703d1ba0f9622a5780c3f7bbd7333b35b6fcc38248650ca9f30",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:23:38.391137+00:00",
+  "finished_at_utc": "2026-11-15T08:25:54.736382+00:00",
+  "latency_seconds": 136.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17749,
+    "prompt_tokens": 10654,
+    "total_tokens": 28403,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16387,
+      "text_tokens": 1362
+    },
+    "cost": 0.010472599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54982,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 cases contained A03 exactly once, almost always as the first event (median position 0; A03 ran before A02 in about 86 of 100 cases), and about 86 out of 100 of A03's outgoing transitions led to A02, with small shares to A06, A05, A04 and A01. In the later window, A03 does not appear in a single trace, and A01, A02 and A04, which previously co-occurred with A03 in essentially every case, now always appear without it. [OCC001, POS003, DIR003, REL001, REL003, REL005]\n- In the earlier window, A07 was not observed at all; in the later window, every case contains it exactly once, about three quarters into the case, always directly after A04 and directly before A01: all of A04's outgoing transitions now go to A07 (previously about 99 out of 100 went to A01), and all of A07's outgoing transitions go to A01. [OCC004, POS005, DIR004, DIR007, REL002, REL007]\n- A02 now opens the case: its median position moved from a quarter into the case to the first position, and its outgoing transitions changed from roughly 42% to A05, 48% to A06 and 10% back to A03, to roughly 52% to A05 and 48% to A06, with no transition to A03. [POS002, DIR002]\n- Distances shifted accordingly: A04→A01 grew from one step in about 99 of 100 cases to always two steps (A07 in between); A02→A01 grew from mostly three steps (about 87 of 100 cases, four steps in the remaining ~13, the minority variant in which A02 preceded A03) to always four; A02→A04 stayed at two steps; and A01 remained the final activity in both windows. [LAG003, LAG001, LAG002, POS001, REL003]\n- The choice between A05 and A06 after A02 moved only slightly: A05 appeared in about 47 of 100 cases earlier and about 53 of 100 later (A06 correspondingly 53 then 47); this difference's empirical strength (about 0.72) lies within the range that random re-splits of an unchanged process produce. [OCC002, OCC003, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural hypothesis about the case flow: A03, which earlier ran first in every case immediately before A02, is no longer executed, while A07, previously unobserved, now runs in every case between A04 and A01 — the earlier path A03 → A02 → (A05 or A06) → A04 → A01 appears in the later window as A02 → (A05 or A06) → A04 → A07 → A01. [OCC001, OCC004, DIR002, DIR003, DIR004, DIR007]\n\nThe signs are direct and consistent across all indicator families: both participation flips are total (200 of 200 traces to 0, and 0 to 200 of 200) with empirical strength of about 0.995, effectively the maximum for 200 reference comparisons; the successor profiles change exactly where the hypothesis requires (A03's outgoing transitions vanish, A04's outgoing moves from about 99% A01 to 100% A07, A07's outgoing is 100% A01); the relational items show co-occurrence with A03 collapsing to \"executed alone\" while co-occurrence with A07 appears with a fixed order (A02 before A07, A04 before A07, A07 before A01 in 100 of 100 later cases); and the lag and position data confirm both the added step between A04 and A01 and the reshaped prefix with A02 first. The difference affects every later trace, not a rare variant. [OCC001, OCC004, DIR003, DIR004, DIR007, REL002, REL004, REL007, LAG001, LAG003, POS002, POS005]\n\nLimitations: the evidence cannot show whether the disappearance of A03 and the appearance of A07 were one coordinated restructuring or two independent changes, and strictly speaking zero participation only means A03 was not observed in the later sample — although 200 traces without a single occurrence, after 200 in which every case contained it, makes a rare survival unlikely. No screening baseline (items expected without change) is included in the evidence, so the judgement rests on the directness and consistency of the relational evidence rather than on a chance-expectation count. [OCC001, OCC004]\n\nOther differences: the split between A05 and A06 after A02 shifted by about six percentage points (A05 from about 46.5 to 52.5 in 100 cases), a size whose empirical strength (~0.72) is consistent with ordinary sampling variation between two 200-trace windows. In addition, the rare transitions into A03 from A02, A05 and A06 (about 10%, 3% and 1% of the respective sources' outgoing transitions) disappeared together with A03, which is consistent with the removal described in the main hypothesis rather than a separate finding. [OCC002, OCC003, DIR002, DIR005, DIR006]",
+  "case_id": "case_eb1ade11ddfbccc0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

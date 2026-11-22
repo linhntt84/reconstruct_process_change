@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_dd41fec5d610156c.json",
+  "evidence_sha256": "5d8d86694ab1a4d94c92292d59b678c385f2534b23de4c0fc910ba246cde4423",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:01:42.887276+00:00",
+  "finished_at_utc": "2026-11-16T01:04:03.610702+00:00",
+  "latency_seconds": 140.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16110,
+    "prompt_tokens": 16017,
+    "total_tokens": 32127,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14823,
+      "text_tokens": 1287
+    },
+    "cost": 0.01045755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50498,
+  "text": "### Observed differences\n\n- In the later window, A01 and A02 each appear in every trace (200 of 200); in the earlier window neither was observed (0 of 200 traces). A02 is typically the first event of the case (median relative position 0), and A01 occurs about two-thirds to three-quarters of the way through (median 0.75). [OCC001, OCC002, POS001, POS002]\n- A03 shows the opposite: earlier it was executed in every trace, with just over 2 occurrences per trace on average (so it repeated in a substantial share of cases), while in the later window it is not observed at all. [OCC003, POS003]\n- The routing around these activities changed accordingly. Earlier, A06 always led to A03, and A03's outgoing transitions split about evenly between A05 (about 50 in 100) and A04 (about 50 in 100). In the later window, A02 leads to A04 (about 51 in 100) or A01 (about 48 in 100), A06 leads to A01 (about 53 in 100) or A04 (about 46 in 100), and A01 leads to A05 in virtually all of its outgoing transitions. [DIR003, DIR005, DIR002, DIR001]\n- A05 itself is unchanged: it occurs in every trace in both windows and remains the final event (relative position 1.0 throughout). [POS005]\n- The relational items agree: A02 precedes A01 in about 98 of 100 later cases; A01 co-occurs with A05 in every later case and always precedes it; A03 and A05, which always co-occurred earlier (A03 first in 56 of 100 cases, interleaved or repeated in 44 of 100), never occur together later, so A05 now appears without A03. [REL001, REL004, REL011]\n- A04 and A06 still occur only together and in a minority of cases — about 44 in 100 traces earlier, about 50 in 100 later — with almost unchanged means and positions. [OCC004, OCC005, REL014, POS004, POS006]\n- Within-case distances shifted: repeats of A04 and of A06 were about 3 steps apart earlier and are about 2 (sometimes 4) steps apart later; A04 reaches A05 about 3 steps later in about 54 of 100 observed pairs (previously always), and A06 reaches A05 about 2 steps later in about 54 of 100 (previously about 46). [LAG001, LAG006, LAG002, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which A02 and A01 were added to the process and A03 was removed. In the later window, every case starts with A02, which is followed by A04 or by A01, and A01 in turn precedes the final A05; A03, previously executed in every case (just over 2 occurrences per trace) and routing to A04 or A05, is no longer observed, and A06 now leads to A01 or A04 instead of to A03. [OCC001, OCC002, OCC003, DIR002, DIR001, DIR005, DIR003, POS005, REL004, REL011]\n\nThe support is direct and consistent: participation flips between 0 and 200 of 200 traces for all three activities, the successor relations around them appear and disappear accordingly, and the positional and relational items place the new activities where the direction items imply; nearly all items exceed the differences seen in about 199 of 200 random re-splits of the pooled data. The evidence contains no screening expectation, so the judgement rests on this directness and consistency rather than on an item count. The main limitation is that zero participation strictly means only non-observation: the evidence cannot show that A01 and A02 did not exist earlier, although with 200 traces per window and all-or-nothing participation, sampling variation is an implausible explanation. It also cannot show what precedes A02 or what follows A04, since no outgoing profile for A04 is reported, and several items re-describe the same addition and removal rather than confirming it independently. [OCC001, OCC002, OCC003, DIR002, POS002, POS005]\n\nOther differences: A04 and A06 participation rose from about 44 to about 50 in 100 traces, but a difference of this size is unremarkable against random re-splits (strength about 0.34) and may be sampling noise; their repeat distances and relative positions shifted slightly, which is consistent with the inserted A01/A02 and removed A03 changing event positions rather than being a separate change. A few later transitions from A05 to A02 are observed (4 outgoing transitions), which rests on very few observations. [OCC004, OCC005, LAG001, LAG006, POS004, POS006, DIR004]",
+  "case_id": "case_dd41fec5d610156c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

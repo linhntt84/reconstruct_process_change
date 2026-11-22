@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_01e7ee155471e5d7.json",
+  "evidence_sha256": "4ea2b4795f7e4c4b6d18bea854743fe8d488a68487a1a1aa24de9267d316cce2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:11:18.822291+00:00",
+  "finished_at_utc": "2026-11-15T13:13:15.435012+00:00",
+  "latency_seconds": 116.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16691,
+    "prompt_tokens": 31281,
+    "total_tokens": 47972,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14837,
+      "text_tokens": 1854
+    },
+    "cost": 0.013037650000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48227,
+  "text": "### Observed differences\n\n- In the earlier window, A20 was followed directly by A22 in 100% of its outgoing transitions, with the two events one step apart in every trace. In the later window, A20 led to A22 in only about 1 in 200 cases and instead led to A30, A31 or A36 in roughly equal shares (about a third each). [DIR014, LAG001]\n- In the earlier window, A21 was followed by one of A30, A31 or A36 (about 38, 34 and 28 in 100 of its outgoing transitions), and A25 was reached only after the whole group, four steps after A21. In the later window, A21 led directly to A25 in all but about 1 in 200 cases, one step away. [DIR015, LAG002, LAG003, LAG004, LAG005]\n- In the earlier window, A30, A31 and A36 each flowed on to A25 in roughly 28–37 in 100 of their outgoing transitions and never to A22. In the later window, each flowed to A22 in about 30–38 in 100 of cases and to A25 in about 1 in 200. [DIR018, DIR019, DIR024]\n- The relative order flipped: earlier, A21 and A22 each ran before A30, A31 and A36 in 100% of traces; later, A30, A31 and A36 each ran before A21 and before A22 in all but about 1 in 200 traces. All these activities still occurred together in every trace in both windows. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Event positions moved accordingly: A30, A31 and A36 shifted earlier (mean position about 0.59 → 0.41 of the trace), A21 (about 0.53 → 0.62) and A22 (about 0.38 → 0.47) shifted later by a similar amount, while A20 (about 0.35) and A25 (about 0.65) stayed in place. [POS005, POS006, POS007, POS002, POS003, POS001, POS004]\n- The group's internal behaviour did not change: A30, A31 and A36 still run consecutively in no fixed order among themselves (for example, A30 before A31 in about 55% of traces earlier and 53% later). [REL007, REL008, REL009, LAG007]\n- Smaller differences appear elsewhere: participation shifted by about 5–9 in 100 traces for several activities (A18 up from 46% to 55%, A19 down from 54% to 46%, A13 down from 28% to 21%, A16 up to about 60%, A17 down to about 41%, and A01–A08 by about 6 in 100); A02 routed relatively more often to A07 (about 28% → 44%) and less to A06 (about 40% → 27%); A10 and A11 repeat slightly more often (mean 1.58 → 1.72 occurrences per trace). [OCC017, OCC018, OCC012, OCC015, OCC016, OCC001, OCC002, DIR002, OCC009, OCC010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the consecutive activity group A30, A31 and A36 changed its placement: in the earlier window the group ran between A21 and A25 (A21 handed over to one member, the group ran through in no fixed internal order, and the last member reached A25), whereas in the later window it runs between A20 and A22 (A20 hands over to one member and the last member reaches A22), with A21 now leading straight to A25. A20 and A25 kept their positions, and A21 and A22 each shifted later by about the length of the group. [DIR014, DIR015, DIR018, DIR019, DIR024, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, POS002, POS003, POS005, POS006, POS007]\n\nThe change is shown directly and consistently across four indicator families: the successor profiles at A20, A21, A30, A31 and A36 flip almost deterministically (100% to about 0% and back) on all 200 traces per window, each with empirical strength 0.995; the pairwise order between A21/A22 and each group member reverses in all but about 1 in 200 traces; the separation of A20 from A22 grows from one to four steps while A21 to A25 shrinks from four to one; and the group's mean positions move earlier while A21's and A22's move later. [DIR014, DIR015, DIR018, DIR019, DIR024, REL001, REL004, LAG001, LAG002, POS002, POS003, POS005, POS006, POS007]\n\nLimitations: the evidence cannot distinguish whether the group moved earlier or the A22–A21 segment moved later, since both descriptions fit the same orderings; A22's outgoing behaviour is not part of the evidence, so how A22 connects onward to A21 in the later window is inferred from positions rather than observed transitions; the lag profiles for A21 against the group in the later window rest on a single observation each, although the direct-successor and order items establish the reversal on their own; and no screening expectation is reported, so the judgement rests on directness and consistency rather than a chance-count comparison. [LAG003, LAG004, LAG005, DIR014, REL001]\n\nOther differences: small participation shifts of roughly 5–9 in 100 traces (A18 up, A19 and A13 down, A16 up, A17 down, A01–A08 by about 6 in 100), a routing-share shift at A02 towards A07 (about 28% → 44%) at the expense of A06 (about 40% → 27%), and slightly more repetitions of A10 and A11 (mean 1.58 → 1.72 per trace); these scattered, modest shifts are not part of the main hypothesis, and sampling differences between two 200-trace windows remain a plausible explanation for them. [OCC017, OCC018, OCC012, OCC015, OCC016, OCC001, OCC002, DIR002, OCC009, OCC010]",
+  "case_id": "case_01e7ee155471e5d7",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

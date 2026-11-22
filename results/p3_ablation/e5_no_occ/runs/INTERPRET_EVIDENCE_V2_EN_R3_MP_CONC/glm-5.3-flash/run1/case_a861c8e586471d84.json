@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_a861c8e586471d84.json",
+  "evidence_sha256": "346fda9d88c1829f5311f9d1fb34739863bee1117a631b38499ca8c055299a3f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:33:11.422950+00:00",
+  "finished_at_utc": "2026-11-14T11:34:52.436973+00:00",
+  "latency_seconds": 101.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13913,
+    "prompt_tokens": 16271,
+    "total_tokens": 30184,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12676,
+      "text_tokens": 1237
+    },
+    "cost": 0.00939715
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45403,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 each ran in roughly a third of the cases (about 36, 31 and 35 in 100 traces) and were strictly mutually exclusive alternatives, so almost every case contained exactly one of them; in the later window none of the three is observed (0, 1 and 0 out of 200 traces). [POS002, POS003, POS004, REL007, REL009, REL014]\n- Before, these three formed a stage between A14/A41 and A26: A14 preceded each of them in about 30–36 in 100 cases and they never occurred without A14, A41 preceded each in about 31–35 in 100 cases, and about 97–99 in 100 of the outgoing transitions of A19, A20 and A25 led to A26. [REL004, REL005, REL006, REL012, REL017, REL021, DIR001, DIR002, DIR003]\n- In the later window, A41's outgoing transitions, which previously went to A19, A20 or A25 in about 93 in 100 cases, now lead directly to A26 in about 92 in 100 cases; accordingly A26 typically follows A41 immediately (about 92 in 100 at a one-step distance) instead of two steps later (about 93 in 100 before). [DIR004, LAG002]\n- The remaining activities keep their participation: A14, A26, A31 and A41 still appear in essentially every case, but now always without any of the three, whereas before each of them co-occurred with one of A19/A20/A25 in about 30–36 in 100 cases. [REL004, REL010, REL011, REL012, REL015, REL016, REL017, REL019, REL020, REL021, POS001, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative step formed by A19, A20 and A25 — a three-way, mutually exclusive choice that ran in essentially every earlier case between A14/A41 and A26 — is no longer executed in the later window, with A41 now flowing directly to A26. This rests on direct participation evidence (the three drop from about 30–36 in 100 traces to 0–1 of 200), on relational evidence showing all their ties to A14, A26, A31 and A41 disappearing, and on A41's outgoing profile flipping from the three variants to A26 with the A41→A26 distance shortening from two steps to one. Chance is also an unlikely explanation for the evidence set as a whole: 33 control-flow items qualified against roughly 0.42 expected for an unchanged process, many times that expectation. [POS002, POS003, POS004, REL004, REL010, REL015, REL019, DIR001, DIR002, DIR003, DIR004, LAG002]\n\nThe main limitation is that zero participation strictly means \"not observed\": the evidence cannot fully rule out that the later window simply contains only cases of a route that never reaches this step (a case-mix shift) rather than a structural removal of the branch, although the direct redirection of A41 to A26 favours a structural bypass. [DIR004]\n\nOther differences: A24 occurs in about 55 in 100 later traces, always without A19/A20/A25, versus about 48 in 100 before (then partly together with A19 or A20, about 15–17 in 100), and A24 now typically precedes A31 by one step instead of two — consistent with the removed stage but not required by the hypothesis [REL008, REL013, REL018, LAG001]; A14 and A41 sit slightly later and A26 slightly earlier within the trace (mean relative positions shift by about 0.01–0.02), which alone would not show that an activity was moved [POS001, POS005, POS006]; A12 appears in somewhat more cases (about 51 versus 42 in 100) [REL001, REL002, REL003]; A20's single later occurrence lies much later in the trace and leads to A30 instead of A26, but one trace is too few to interpret [POS003, DIR002].",
+  "case_id": "case_a861c8e586471d84",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

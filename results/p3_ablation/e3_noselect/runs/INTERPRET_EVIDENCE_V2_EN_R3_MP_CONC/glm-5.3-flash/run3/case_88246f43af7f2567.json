@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_88246f43af7f2567.json",
+  "evidence_sha256": "c61c41a6154cdac1f4c10ae270f0c24df50d933f71c2228f60055f909d237b96",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:03:22.091849+00:00",
+  "finished_at_utc": "2026-11-15T14:05:43.569612+00:00",
+  "latency_seconds": 141.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20764,
+    "prompt_tokens": 20977,
+    "total_tokens": 41741,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19163,
+      "text_tokens": 1601
+    },
+    "cost": 0.013528549999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64672,
+  "text": "### Observed differences\n\n- **A02 and A04 now feed directly into A12.** In the earlier window, about 91% of A02's observed outgoing transitions went to A03 (roughly 6% to A12, 2% to A11), and about 67% of A04's went to A03 (about 20% to A12, 13% to A11). In the later window, all observed outgoing transitions of both A02 and A04 go to A12. [DIR002, DIR004]\n- **The step to A12 became immediate.** Earlier, A02 preceded A12 by about 2 steps in roughly 59 of 100 observed pairs (and by 4 steps in about 33), and A04 preceded A12 at mixed distances of 1–4 steps; in the later window, both A02→A12 and A04→A12 occur exclusively as immediately consecutive events. [LAG001, LAG003]\n- **A03 no longer runs together with A02, A04 or A12.** Earlier, A03 co-occurred with A12 in about 49 in 100 traces (roughly half A03-first, half interleaved), with A02 in about 26 in 100 and with A04 in about 24 in 100; in the later window it shares no trace with any of them. A03's participation fell from about 49 to 30 in 100 traces (mean occurrences per trace from about 0.96 to 0.67), and it now appears later within traces (mean position about 0.44 to 0.67). [REL001, REL006, REL008, OCC003, POS002]\n- **A03 is now placed between A16 and A10/A11.** A16's outgoing transitions, earlier about 52% to A10 and 48% to A09, now go about 50% to A09 and 50% to A03; the immediate A16→A10 step (lag 1 in about 85 of 100 observed pairs earlier) is no longer observed, with remaining A16→A10 pairs sitting 2 or more steps apart. A03, which earlier never shared a trace with A10 or A16, now co-occurs with each in about 30 in 100 traces (largely interleaved or repeated), and its outgoing transitions now go to A11 (about 55%) and A10 (about 45%) instead of A11, A12, A04 and A02. [DIR010, LAG004, REL007, REL009, DIR003]\n- **A12 sits earlier and more variably.** Earlier, A12 sat at about position 1 in essentially all its occurrences; in the later window its mean position is about 0.71, with at least a quarter of its occurrences at the very start of a trace. [POS005]\n- Smaller shifts: A06's split between A15 and A16 moved from about 59/41 to 53/47 (of outgoing transitions); A12's own feedback to A02 versus A04 shifted from about 80/20 to 46/54 (based on only 5 earlier observations); participation changed mildly for A05, A09, A10 and A16 (up by about 2–5 in 100 traces) and for A02, A11 and A12 (down by about 4–7 in 100 traces). [DIR005, DIR007, OCC002, OCC005, OCC009, OCC010, OCC011, OCC012, OCC016]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural rerouting around the A02/A03/A04/A12 loop: in the later window, A02 and A04 bypass A03 and lead directly to A12 (their outgoing transitions shifted from about 91% and 67% via A03 to entirely A12, with the step to A12 now always immediate), while A03 is re-attached elsewhere — A16 now leads to A03 in about half of its outgoing transitions, A03 leads on to A10 or A11, and A03 no longer co-occurs with A02, A04 or A12 while co-occurring with A10 and A16 in about 30 in 100 traces each; A03 also runs in fewer cases and later within them. The signs are direct (successor changes at A02, A04, A03 and A16), mutually consistent across occurrence, direction, relation, lag and position indicators, and backed by substantial counts (for example, the A03–A12 co-occurrence flip rests on 98 earlier versus 149 later supporting traces). [DIR002, DIR003, DIR004, DIR010, REL001, REL006, REL007, REL008, REL009, LAG001, LAG003, LAG004, OCC003, POS002, POS005]\n\nOther differences: the slight shift in A06's split between A15 and A16, the shifted A12→A02/A04 feedback shares, and the small participation changes for A05, A09, A10, A16 (up) and A02, A11, A12 (down) are observed but are not clearly tied to the rerouting hypothesis. [DIR005, DIR007, OCC002, OCC005, OCC009, OCC010, OCC011, OCC012, OCC016]\n\nA competing explanation the evidence cannot rule out is that the two windows capture a different mix of process variants — for instance, a variant containing the A03–A12 loop being replaced by one without it — rather than a rerouting within a single process. Limitations: positions are event positions rather than clock times, a few profiles rest on modest counts (A02's later outgoing profile on 28 transitions, A12's earlier one on 5), and no screening baseline was provided to compare the volume of qualifying items against a chance expectation. [DIR002, DIR007]",
+  "case_id": "case_88246f43af7f2567",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

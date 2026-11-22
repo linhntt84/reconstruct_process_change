@@ -1,0 +1,68 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN_R2.md",
+  "prompt_sha256": "6e1c43d34432c3c28ff5d99ad414958981d70f67ff94bdce15e04412fa2b491d",
+  "sent_prompt_sha256": "57c364787c78895f67355681f21ec61fe50e8f72a56d84aa820151c8d0fe2c93",
+  "evidence_path": "results/p0_llm_calibration/evidence/B/null_9df660c72869c6e2.json",
+  "evidence_sha256": "31784455a49f066616caf2273c0e954d0a7d0c2a8736a7776d40ad6688215355",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": false
+  },
+  "started_at_utc": "2026-11-11T15:49:31.012905+00:00",
+  "finished_at_utc": "2026-11-11T15:49:37.260407+00:00",
+  "latency_seconds": 6.25,
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1107,
+    "prompt_tokens": 1990,
+    "total_tokens": 3097
+  },
+  "response_model": "glm-5.3-flash",
+  "transport": "curl",
+  "text": "### Observed differences\n\n- Activity A02 appeared in fewer traces in the later window: about 15 in 100 traces (30 of 200) contained it, compared with about 27 in 100 traces (53 of 200) in the earlier window. [OCC001]\n- The mean number of A02 executions per trace fell from about 0.30 to about 0.16, a drop of roughly 0.14 occurrences per trace. [OCC001]\n- Repetition of A02 within a trace was rare in both windows (recurrence support about 0.03 earlier versus 0.01 later), so the difference lies mainly in how often traces included A02 at all, not in repeated execution. [OCC001]\n- This difference is unusual for a random re-split of the pooled traces: it exceeds about 995 of 1,000 reference comparisons. [OCC001]\n\n### Inference\n\nSupport level: Insufficient evidence\n\nThe evidence is insufficient to infer a structural change in the process. Only one evidence item qualified across 87 tested units, whereas about 0.43 items would be expected by chance in an unchanged process; a single item is what a stable process typically produces, even one whose difference looks large against random re-splits. The apparent drop in A02 participation could therefore reflect sampling variation between the two windows rather than a real change in how often A02 is executed.",
+  "raw_response": {
+    "id": "chatcmpl-9c22f27da5c5af0b",
+    "created": 1794412171,
+    "model": "glm-5.3-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "vllm-0.1.dev20051+g487ecf187-tp4-22b9f958",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "### Observed differences\n\n- Activity A02 appeared in fewer traces in the later window: about 15 in 100 traces (30 of 200) contained it, compared with about 27 in 100 traces (53 of 200) in the earlier window. [OCC001]\n- The mean number of A02 executions per trace fell from about 0.30 to about 0.16, a drop of roughly 0.14 occurrences per trace. [OCC001]\n- Repetition of A02 within a trace was rare in both windows (recurrence support about 0.03 earlier versus 0.01 later), so the difference lies mainly in how often traces included A02 at all, not in repeated execution. [OCC001]\n- This difference is unusual for a random re-split of the pooled traces: it exceeds about 995 of 1,000 reference comparisons. [OCC001]\n\n### Inference\n\nSupport level: Insufficient evidence\n\nThe evidence is insufficient to infer a structural change in the process. Only one evidence item qualified across 87 tested units, whereas about 0.43 items would be expected by chance in an unchanged process; a single item is what a stable process typically produces, even one whose difference looks large against random re-splits. The apparent drop in A02 participation could therefore reflect sampling variation between the two windows rather than a real change in how often A02 is executed.",
+          "role": "assistant",
+          "reasoning_content": "Let me analyse this evidence.\n\nWe have one evidence item: OCC001, about activity A02's occurrence (CF_OCC indicator).\n\nBefore window (200 traces):\n- mean occurrences per trace: 0.295\n- trace participation: 0.265 (about 53 in 200 traces contained A02 — support before = 53)\n- recurrence support: 0.03\n\nAfter window (200 traces):\n- mean occurrences per trace: 0.16\n- trace participation: 0.15 (about 30 in 200 traces — support after = 30)\n- recurrence support: 0.01\n\nObserved change: 0.135 (absolute difference in mean occurrences per trace, presumably). Empirical strength: 0.995 — the difference is larger than about 199 of 200 reference comparisons, so unusual for random splits.\n\nScreening: 87 units tested, 0.43 items expected without change. We have 1 item. Per instructions: \"A count of the same order as that expectation (for example one or two items when fewer than one is expected) is what an unchanged process typically produces: choose 'Insufficient evidence', however large or unusual a single item looks.\"\n\nSo with 1 item when 0.43 expected, that's the same order — one item. So the verdict must be \"Insufficient evidence\".\n\nNow the sections:\n\n### Observed differences\nDescribe: In the earlier window, A02 appeared in about 27 in 100 traces (participation 0.265, ~53 of 200 traces), with mean occurrences per trace 0.295. In the later window, participation dropped to about 15 in 100 traces (~30 of 200), mean occurrences per trace 0.16. Recurrence support small in both (0.03 → 0.01). The difference of 0.135 occurrences per trace was larger than about 995 of 1000 random re-splits (empirical strength 0.995). But support: 53 vs 30 traces — moderate counts, proportions based on these are reasonably grounded but still.\n\nEvery bullet/paragraph stating a fact must end with exactly one pair of square brackets with evidence ids. So each bullet ends with [OCC001].\n\n### Inference\nFirst line: \"Support level: Insufficient evidence\"\nThen: \"The evidence is insufficient to infer a structural change in the process.\" Plus one short sentence on limitation: only one qualifying item when about 0.43 were expected by chance; a single participation drop for one activity can arise from sampling even with strength 0.995.\n\nNo hypothesis levels beyond insufficient, so no need to state main hypothesis. The instructions say for insufficient: write the sentence, may add one short sentence on limitation. Keep it brief.\n\nLet me write the observed differences carefully:\n\n- Activity A02 was executed less often per trace in the later window: mean occurrences fell from about 0.30 to 0.16 per trace (a drop of about 0.14). [OCC001]\n- Participation fell: about 27 in 100 traces (53 of 200) contained A02 in the earlier window, versus about 15 in 100 (30 of 200) in the later window. [OCC001]\n- Repetition was rare in both windows (recurrence support about 0.03 vs 0.01), so the change is mainly in how often traces included A02 at all, not in repetition. [OCC001]\n- The difference is unusual for random re-splits: larger than about 995 of 1000 reference comparisons. [OCC001]\n\nAlso note: zero participation only means not observed — not relevant here since it's not zero.\n\nScreening comparison: 1 item vs 0.43 expected — mention in inference.\n\nFormat: exactly the two sections. Bullets with citations. Keep concise.",
+          "provider_specific_fields": {
+            "reasoning": "Let me analyse this evidence.\n\nWe have one evidence item: OCC001, about activity A02's occurrence (CF_OCC indicator).\n\nBefore window (200 traces):\n- mean occurrences per trace: 0.295\n- trace participation: 0.265 (about 53 in 200 traces contained A02 — support before = 53)\n- recurrence support: 0.03\n\nAfter window (200 traces):\n- mean occurrences per trace: 0.16\n- trace participation: 0.15 (about 30 in 200 traces — support after = 30)\n- recurrence support: 0.01\n\nObserved change: 0.135 (absolute difference in mean occurrences per trace, presumably). Empirical strength: 0.995 — the difference is larger than about 199 of 200 reference comparisons, so unusual for random splits.\n\nScreening: 87 units tested, 0.43 items expected without change. We have 1 item. Per instructions: \"A count of the same order as that expectation (for example one or two items when fewer than one is expected) is what an unchanged process typically produces: choose 'Insufficient evidence', however large or unusual a single item looks.\"\n\nSo with 1 item when 0.43 expected, that's the same order — one item. So the verdict must be \"Insufficient evidence\".\n\nNow the sections:\n\n### Observed differences\nDescribe: In the earlier window, A02 appeared in about 27 in 100 traces (participation 0.265, ~53 of 200 traces), with mean occurrences per trace 0.295. In the later window, participation dropped to about 15 in 100 traces (~30 of 200), mean occurrences per trace 0.16. Recurrence support small in both (0.03 → 0.01). The difference of 0.135 occurrences per trace was larger than about 995 of 1000 random re-splits (empirical strength 0.995). But support: 53 vs 30 traces — moderate counts, proportions based on these are reasonably grounded but still.\n\nEvery bullet/paragraph stating a fact must end with exactly one pair of square brackets with evidence ids. So each bullet ends with [OCC001].\n\n### Inference\nFirst line: \"Support level: Insufficient evidence\"\nThen: \"The evidence is insufficient to infer a structural change in the process.\" Plus one short sentence on limitation: only one qualifying item when about 0.43 were expected by chance; a single participation drop for one activity can arise from sampling even with strength 0.995.\n\nNo hypothesis levels beyond insufficient, so no need to state main hypothesis. The instructions say for insufficient: write the sentence, may add one short sentence on limitation. Keep it brief.\n\nLet me write the observed differences carefully:\n\n- Activity A02 was executed less often per trace in the later window: mean occurrences fell from about 0.30 to 0.16 per trace (a drop of about 0.14). [OCC001]\n- Participation fell: about 27 in 100 traces (53 of 200) contained A02 in the earlier window, versus about 15 in 100 (30 of 200) in the later window. [OCC001]\n- Repetition was rare in both windows (recurrence support about 0.03 vs 0.01), so the change is mainly in how often traces included A02 at all, not in repetition. [OCC001]\n- The difference is unusual for random re-splits: larger than about 995 of 1000 reference comparisons. [OCC001]\n\nAlso note: zero participation only means not observed — not relevant here since it's not zero.\n\nScreening comparison: 1 item vs 0.43 expected — mention in inference.\n\nFormat: exactly the two sections. Bullets with citations. Keep concise.",
+            "refusal": null
+          }
+        },
+        "provider_specific_fields": {
+          "stop_reason": 154827,
+          "routed_experts": null,
+          "token_ids": null
+        }
+      }
+    ],
+    "usage": {
+      "completion_tokens": 1107,
+      "prompt_tokens": 1990,
+      "total_tokens": 3097
+    }
+  },
+  "case_id": "null_9df660c72869c6e2",
+  "kind": "null",
+  "config": "B",
+  "run_index": 1,
+  "support_level": "insufficient evidence"
+}

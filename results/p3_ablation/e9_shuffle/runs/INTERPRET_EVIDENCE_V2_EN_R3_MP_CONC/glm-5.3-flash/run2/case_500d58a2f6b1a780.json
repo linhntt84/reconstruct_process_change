@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_500d58a2f6b1a780.json",
+  "evidence_sha256": "981af4ce7ecf339dbe8fe735f7987e041c12efbe2796a6472f525db31821806f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:02:52.118942+00:00",
+  "finished_at_utc": "2026-11-15T04:03:40.776660+00:00",
+  "latency_seconds": 48.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6951,
+    "prompt_tokens": 5255,
+    "total_tokens": 12206,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6140,
+      "text_tokens": 811
+    },
+    "cost": 0.00426375
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23820,
+  "text": "### Observed differences\n\n- In the earlier window, A25, A26 and A31 each occurred about 3.4 times per trace and appeared more than once in about 75 in 100 traces; in the later window each occurs about once per trace (1.04) and repeats in only about 1 in 200 traces, while all three still appear in every trace in both windows. [OCC001, OCC002, OCC003]\n- Earlier, A25 and A31 always co-occurred but were interleaved or repeated in about 75 in 100 traces, with a fixed A25-before-A31 order in the remaining ~25; in the later window A25 precedes A31 in about 199 in 200 traces. [REL001]\n- The spacing also tightened: in the later window A31 follows A25 exactly two positions later in about 92 in 100 cases, whereas earlier the gap was scattered (about 12 in 100 at two steps, about 5 at five). [LAG001]\n- A31's outgoing flow shifted: earlier roughly 71 in 100 of its observed outgoing transitions went to A25 and 29 to A20; in the later window roughly 96 in 100 go to A20 and only 4 to A25 (689 vs 208 observed transitions). [DIR001]\n- Accordingly, an A31-then-A25 succession within five steps was seen 150 times earlier but only once later; the later count rests on a single observation but matches the direction change. [LAG002]\n- The average relative positions of A25 (about 0.43 to 0.41 of the trace) and A31 (about 0.48 in both windows) barely moved, but their positional spread roughly halved (standard deviation about 0.12 to 0.06 for both). [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the repeated execution of a block involving A25, A26 and A31 stopped: earlier these three activities cycled within the case (about 3.4 occurrences each, with A31 frequently leading back to A25 and the pair interleaved or repeated in about 75 in 100 traces), whereas in the later window each runs once per case in a fixed sequence — A25, then A31 two positions later in about 92 in 100 cases — after which flow continues to A20 (about 96 in 100 of A31's outgoing transitions) instead of returning to A25 (about 4 in 100). [OCC001, OCC002, OCC003, DIR001, REL001, LAG001, LAG002]\n\nThe screening found 9 qualifying control-flow items where about 0.3 would be expected if nothing had changed, so the set is unlikely under an unchanged process, and the occurrence, direction, relation and lag indicators all describe the same behaviour consistently. [OCC001, DIR001, REL001, LAG001, LAG002]\n\nLimitations: A26's involvement rests only on its occurrence profile matching A25's and A31's exactly, since no relational or directional evidence covers A26; the evidence cannot distinguish a complete removal of the repetition from the same cycle now always executing exactly once, as about 1 in 200 later traces still shows repeats; and the nine items partly reflect one underlying trace behaviour, so they are not independent confirmations. A competing explanation the evidence cannot rule out is that the shift of A31's exits towards A20 is partly an independent routing change, although it is consistent with the repetition simply ending. [OCC001, OCC002, OCC003, DIR001]",
+  "case_id": "case_500d58a2f6b1a780",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

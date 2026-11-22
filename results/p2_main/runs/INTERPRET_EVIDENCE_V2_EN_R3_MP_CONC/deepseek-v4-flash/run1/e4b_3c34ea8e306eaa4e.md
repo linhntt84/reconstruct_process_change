@@ -1,0 +1,13 @@
+### Observed differences
+
+- In the later window, the assignment of resources to activities A01, A03, A07, A13, A14, A17, and A22 changed. In the earlier window, each activity was performed by a wide set of resources, with the largest single share around 8–18% and about half of the work done by many other resources (the "OTHER" share). In the later window, the shares shifted: some resources (e.g., User_3, User_67, User_28, User_36, User_42, User_48, User_56, User_61, User_84, User_96) increased or appeared, while others (e.g., User_79, User_2, User_10, User_18, User_49, User_52, User_65, User_80) decreased or disappeared. For A07, the change is extreme: in the earlier window, User_100 handled about 18% of executions and 28 other resources handled the rest; in the later window, User_100 handled 100% of executions, and the number of distinct resources dropped from 29 to 1. [ASSIGN001-007, CONC001]
+
+- In the later window, the elapsed time between consecutive completions of activities A09 and A23 increased. The mean rose from about 3.9 hours to about 15.8 hours, and the median from about 1.5 hours to about 17.2 hours. The number of observed intervals fell from 26 to 14. [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a hypothesis that resource allocation changed for several activities, most notably A07, which became fully concentrated on a single resource. The resource family produced 8 evidence items against an expected 0.006 by chance, far exceeding the chance expectation. The changes are consistent across activities: a shift from a broad set of resources to a different set, with a strong concentration for A07. The main hypothesis: in the later window, the assignment of resources to activities A01, A03, A07, A13, A14, A17, and A22 changed, with A07 now performed exclusively by one resource (User_100). This is supported by the large number of resource items and the extreme concentration change for A07. A competing explanation that cannot be fully ruled out is that the observed shift reflects a change in the pool of available resources rather than a deliberate reallocation, but the evidence does not distinguish that.
+
+Other differences: The timing between completions of A09 and A23 increased substantially (mean from ~3.9 to ~15.8 hours). This is a separate change, supported by one time item that is far above the chance expectation for that family (1 vs 0.013). However, the support is based on only 26 and 14 intervals, so it is less robust than the resource change.

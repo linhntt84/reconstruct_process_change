@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_99097bac282e202d.json",
+  "evidence_sha256": "e46e699d4fe9d2f81ae3f46b74dab0d8c7b17213d4e0738fd10a069c3b4a5b6b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:27:15.451902+00:00",
+  "finished_at_utc": "2026-11-15T05:29:21.839102+00:00",
+  "latency_seconds": 126.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18774,
+    "prompt_tokens": 26503,
+    "total_tokens": 45277,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17358,
+      "text_tokens": 1416
+    },
+    "cost": 0.01336245
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 62528,
+  "text": "### Observed differences\n\n- The dominant branch after A20 flipped. In the earlier window, A20's outgoing transitions led to A21, A22 or A23 in about 75 in 100 cases (about 26%, 23% and 25%) and to A24, A25 or A26 in about 25 in 100; in the later window, about 75 in 100 led to A24, A25 or A26 (about 25%, 22% and 28%) and only about 24 in 100 to A21, A22 or A23. [DIR003, REL007, REL010]\n- The two branches behave as strict alternatives in both windows: A21 and A24 (likewise A22 with A25, and A23 with A26) practically never occur in the same trace, so each trace runs exactly one branch. The preference flipped from roughly 75/25 favouring the A21 side to roughly 25/75 favouring the A24 side; accordingly, A21, A22 and A23 each appear in about 75 in 100 traces before and about 24–25 in 100 after, while A24, A25 and A26 rise from about 25 to about 76 in 100. [REL015, REL017, REL022, REL024, REL028, REL030, REL018, POS002]\n- Branch-internal structure moved with the flip: A21, A22 and A23 co-occurred in about 75 in 100 traces before (in both orders, roughly 37% each) but only about 24–25 in 100 after; A24, A25 and A26 co-occurred in about 25 in 100 before and about 75–76 in 100 after, in both windows without a fixed order between them. [REL013, REL014, REL021, REL034, REL035, REL039]\n- A20 still precedes whichever branch runs, in about 74–75 in 100 of the relevant cases in both windows, so the branches were neither bypassed nor reordered relative to A20; only the choice frequency changed. [REL007, REL010, REL011, REL012]\n- A10 became more prominent: it appears in about 5 in 100 traces before versus about 21 in 100 after, sits later within traces in event positions (mean relative position about 0.57 versus 0.82), and its outgoing transitions now concentrate on A33 (about 90 in 100 after versus 18 in 100 before, though the before profile rests on only 11 transitions); A32 now leads to A10 in about 20 in 100 of its outgoing transitions versus about 1 in 100 before. [POS001, DIR002, DIR004]\n- Smaller shifts: A02 appeared in 18 of 200 traces before but only 2 of 200 after, with a completely different successor profile (the after profile rests on 2 traces); the A20→A24 gap shifted slightly further out (immediate succession 54% versus 33%, three-step gap 20% versus 39%), and the A25→A30 and A32→A33 gaps also shifted slightly towards larger distances. [DIR001, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the routing choice at A20 flipped between two pre-existing alternative branches: before, about three in four traces ran A20 followed by A21, A22 and A23 (executed together in either order) and about one in four ran A20 followed by A24, A25 and A26; in the later window the ratio reversed to about one in four versus three in four. The shift is visible directly in A20's outgoing transition shares and is mirrored consistently across many activity-pair relations computed over all 200 traces per window; because both branches, all six branch activities and A20 itself are observed in substantial shares in both windows, A20 still precedes the active branch, and the strict mutual exclusivity of the branches persists, this is existing paths being taken with different frequencies rather than activities being added, removed or bypassed. With 54 qualifying control-flow items against fewer than 1 expected for an unchanged process, sampling variation cannot account for the ensemble. [DIR003, REL007, REL008, REL009, REL010, REL011, REL012, REL015, REL030]\n\nA competing explanation the evidence cannot rule out is that the mix of cases reaching A20 changed while the branch choice remained tied to case attributes; the trace-level relations would look the same in both situations. [REL007, REL010]\n\nOther differences: A10 occurs in far more traces (about 5 versus 21 in 100), sits later within traces, and now leads to A33 in about 90 in 100 of its outgoing transitions, with A32 feeding A10 in about 20 in 100 of its transitions; whether this is connected to the branch flip is not shown by the evidence. A02 was almost unobserved in the later window (18 versus 2 of 200 traces) with entirely different successors, but that after profile rests on only 2 traces. Gap distributions shifted slightly towards larger distances for A20→A24, A25→A30 and A32→A33. [POS001, DIR002, DIR004, DIR001, LAG001, LAG002, LAG003]",
+  "case_id": "case_99097bac282e202d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

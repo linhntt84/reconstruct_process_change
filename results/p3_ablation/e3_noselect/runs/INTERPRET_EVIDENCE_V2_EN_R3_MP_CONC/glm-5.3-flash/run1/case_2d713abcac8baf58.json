@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_2d713abcac8baf58.json",
+  "evidence_sha256": "34cc43fac589f3e92a07985dac8506ff45745ea9f96d3c29ed9a2f1df21f67a5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:07:37.181475+00:00",
+  "finished_at_utc": "2026-11-14T14:09:41.483792+00:00",
+  "latency_seconds": 124.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18670,
+    "prompt_tokens": 66227,
+    "total_tokens": 84897,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16857,
+      "text_tokens": 1813
+    },
+    "cost": 0.01926905
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55727,
+  "text": "### Observed differences\n\n- In the earlier window, three activities each ran in roughly a third of traces — A19 in 70 of 200, A20 in 60 of 200 and A21 in 72 of 200 — and pairs of them almost never shared a trace; in the later window each is nearly gone (2, 1 and 1 of 200 traces). These differences are larger than in about 995 of 1,000 random re-splits of unchanged data. [OCC018, OCC019, OCC020, REL001, REL002, REL008]\n- In the earlier window, A26, A27 and A28 were not observed in any trace; in the later window each runs exactly once in every one of the 200 traces. [OCC025, OCC026, OCC027, POS004, POS005, POS006]\n- The change sits between A44 and A29, which themselves ran in every trace in both windows. Earlier, about 85 in 100 of A44's outgoing transitions went to exactly one of A19/A20/A21 (about 31%, 25% and 30%), those activities led almost exclusively to A29 (about 95–99 in 100 of their outgoing transitions), and A29 followed A44 two steps later in about 84 in 100 cases. Later, about 85 in 100 of A44's outgoing transitions go to A26/A27/A28 (about 31%, 27% and 26%), and A29 follows A44 four steps later in about 82 in 100 cases (five steps in most of the rest). [OCC040, OCC028, DIR044, DIR019, DIR020, DIR021, LAG001]\n- In the later window, A26, A27 and A28 always occur together in the same trace, with no fixed order among themselves (each pair splits roughly 50/50 between the two orders); A44 precedes each of them in about 99 in 100 traces, and each precedes A29 in about 98–99 in 100 traces. A29's mean event position moved later, from about 0.40 to 0.44 of the trace. [REL019, REL020, REL023, REL022, REL025, REL027, REL021, REL024, REL026, POS007]\n- Consistently, the successor mixes of A02, A08 and A10 shifted in the same direction: shares leading to A19/A20/A21 disappeared and shares leading to A26/A27/A28 appeared. [DIR002, DIR008, DIR010]\n- Several other activities show moderate participation shifts: A39 fell from about 54 to 45 in 100 traces while A40 rose from 46 to 55 and A41 from 47 to 55; A46 fell from about 70 to 58 while A47 and A48 rose from about 59 to 64 in 100; A42 and A18 each rose from about 21–22 to 27 in 100. [OCC035, OCC036, OCC037, OCC042, OCC043, OCC044, OCC038, OCC017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A44 and A29 was restructured: in the earlier window almost every trace took exactly one of three alternative activities (A19, A20 or A21) between A44 and A29, whereas in the later window that one-of-three choice has disappeared and a block of three activities (A26, A27, A28) runs once in every trace between A44 and A29, in no fixed order among themselves. The hypothesis is shown directly and consistently across the indicator families: participation flips from about a third of traces to none for the old trio and from none to every trace for the new trio; A44's successor mix switches wholesale from the old to the new trio; relational evidence places the new block after A44 and before A29 in nearly every later-window trace; and the A44→A29 distance grows from about two to about four steps, matching the insertion of three activities. Limitations: the 1–2 residual occurrences of A19/A20/A21 are too few to characterise; positions and lags refer to event positions, not clock time; and the evidence cannot rule out that A26/A27/A28 are relabelled versions of A19/A20/A21 rather than genuinely new steps, since the identifiers are anonymous codes — although even under relabelling, the observable structure changed from a one-of-three choice to an always-executed three-activity block. [OCC018, OCC019, OCC020, OCC025, OCC026, OCC027, DIR044, REL019, REL021, REL022, LAG001, POS007]\n\nOther differences: participation shifted moderately outside this hypothesis — A39 decreased (about 54 to 45 in 100 traces) while A40 and A41 increased (about 46 to 55 and 47 to 55); A46 decreased (about 70 to 58) while A47 and A48 increased (about 59 to 64 each); A42 and A18 increased modestly (about 21–22 to 27 in 100). Outgoing-transition shares also moved within the A22–A25/A34 cluster (A24's transitions to A34 rose from about 43% to 57%) and in A45's split between A46 and A47 (from about 52/44 to 46/52). [OCC035, OCC036, OCC037, OCC042, OCC043, OCC044, OCC038, OCC017, DIR024, DIR045]",
+  "case_id": "case_2d713abcac8baf58",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

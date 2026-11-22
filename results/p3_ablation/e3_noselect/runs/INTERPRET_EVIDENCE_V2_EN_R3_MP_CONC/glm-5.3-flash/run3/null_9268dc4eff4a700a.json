@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_9268dc4eff4a700a.json",
+  "evidence_sha256": "04b023b9bc05d41a8edeb7d10354a304de603cebe247017afb62317e8a41f6c2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:34:26.087574+00:00",
+  "finished_at_utc": "2026-11-15T14:39:37.753747+00:00",
+  "latency_seconds": 311.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 43243,
+    "prompt_tokens": 28944,
+    "total_tokens": 72187,
+    "completion_tokens_details": {
+      "reasoning_tokens": 40231,
+      "text_tokens": 3012
+    },
+    "cost": 0.0259631
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 133389,
+  "text": "### Observed differences\n\n- In the segment reached from A26 and leading to A27, the dominant execution order of A30 and A31 reversed. In the earlier window A31 typically came first: A31 followed A26 immediately in about 60 in 100 pair occurrences, A27 followed A30 immediately in about 60 in 100 of A30's outgoing transitions, and A31 ran before A30 in about 31 vs 21 in 100 traces. In the later window this flipped: A30 followed A26 immediately in about 62 in 100, A27 followed A31 immediately in about 62 in 100 of A31's outgoing transitions, and A30 ran before A31 in about 27 vs 17 in 100 traces. [REL012, LAG002, LAG003, LAG004, LAG005, DIR016, DIR019, DIR020]\n- The two routes through that segment also exchanged how often they are taken: the route via A30/A31 ran in about 52 in 100 traces before and about 44 in 100 after, while the route via A32/A33 rose from about 48 to about 56 in 100; from A26, A31 as successor fell from about 31% to 17% while A32 rose from about 22% to 30%. The A32/A33 pair shows a mirrored reversal in successor shares (A32 to A33 about 45% to 53%, A33 to A27 about 45% to 53%), but no direct order relation was observed for that pair. [OCC019, OCC020, OCC021, OCC022, DIR016, DIR021, DIR022]\n- Two large alternative branches shifted share: the branch through A01, A03, A04 and A05 ran in about 49 in 100 traces before and about 58–59 in 100 after, while the branch through A02, A06, A07 and A08 fell from about 51 to about 41–42 in 100; all eight activities remained frequent in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]\n- Within both branches the exit into A09 moved to a different activity: from A03, transitions to A09 rose from about 24% to about 39% of its outgoing transitions while from A05 they fell from about 43% to about 27%; in the other branch, exits from A08 rose from about 32% to about 45% while exits from A07 fell from about 35% to about 27%. A09 itself ran in every trace in both windows, and A03's typical event position shifted slightly later in the later window. [DIR003, DIR005, DIR007, DIR008, LAG001, POS001, POS002]\n- A34 was reached less often: it appeared in about 18–19 in 100 traces before and about 12 in 100 after, and from A35 the share of outgoing transitions leading to A34 fell from about 36% to about 23% while A36 rose from about 64% to about 77%. [OCC023, DIR023]\n- Smaller shifts: A14 rose from about 30 to 35 in 100 traces while A20 fell from about 40 to 35, matching a 5-point shift in A36's outgoing shares; around A16–A19, A16 and A18 gained and A17 and A19 lost roughly 2–5 points with corresponding successor reshuffles toward A26; the remaining flagged items (A10–A13, A38, and the near even splits at A21/A28/A29 and A37–A41) show differences at or below the level random re-splits typically produce. [OCC013, OCC018, DIR024, OCC014, OCC015, OCC016, OCC017, DIR010, DIR013, DIR015, OCC009, OCC011, OCC026, DIR014, DIR017, DIR018, DIR025, DIR027]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the dominant execution order of A30 and A31, in the segment reached from A26 and leading to A27, reversed between the windows: in the earlier window the typical sequence ran A26, then A31, then A30, then A27, and in the later window A26, then A30, then A31, then A27. The hypothesis rests on the directly observed order relation between the two activities, which flipped from A31-first (about 31 vs 21 in 100 traces) to A30-first (about 27 vs 17 in 100), together with immediate-successor lags that flipped for all four adjacent pairs and successor shares at A26, A30 and A31 that moved consistently in the same direction; every one of these items shows a difference larger than about 995 in 1000 random re-splits, backed by roughly 90–100 observations per window. [REL012, LAG002, LAG003, LAG004, LAG005, DIR016, DIR019, DIR020]\n\nLimitations: both orders still occur in both windows, so the change is a reversal of the dominant order rather than a strict swap of a fixed sequence, and the evidence cannot rule out that this reversal is one facet of a broader reorganisation of the segment, since the A32/A33 route changed at the same time without a directly observed order relation for that pair; the two windows are also finite samples. [REL012, LAG002, LAG003, LAG004, LAG005, DIR021, DIR022, OCC019, OCC020, OCC021, OCC022]\n\nOther differences: the split between the A01/A03/A04/A05 branch and the A02/A06/A07/A08 branch moved from about 49/51 to about 58.5/41.5 in 100 traces [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]; within both branches the exit into A09 moved from A05 to A03 and from A07 to A08 [DIR003, DIR005, DIR007, DIR008, LAG001, POS001]; the A30/A31 route was taken less often (about 52 to 44 in 100) while the A32/A33 route rose (about 48 to 56 in 100) [OCC019, OCC020, OCC021, OCC022, DIR016]; A34 was skipped more often after A35 (about 36% to 23% of A35's outgoing transitions, participation about 18 to 12 in 100) [OCC023, DIR023]; and small shifts appeared around A14/A20 and A16–A19 [OCC013, OCC014, OCC015, OCC016, OCC017, OCC018, DIR010, DIR013, DIR015, DIR024].",
+  "case_id": "null_9268dc4eff4a700a",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

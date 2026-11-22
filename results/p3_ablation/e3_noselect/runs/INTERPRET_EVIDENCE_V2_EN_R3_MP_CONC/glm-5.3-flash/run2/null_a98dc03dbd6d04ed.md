@@ -1,0 +1,23 @@
+### Observed differences
+
+- The clearest difference is in how A36, A37 and A42 continue. All three activities ran in essentially every case in both windows, and each kept the same three successors (each other plus A28). In the earlier window the dominant continuations were A36→A42 (about 38 of 100 outgoing transitions, vs about 28 to A37), A37→A36 (about 38 vs about 29 to A42) and A42→A37 (about 36 vs about 30 to A36). In the later window each of these flipped: A36 mainly continued to A37 (about 37, with A42 down to about 26), A37 mainly to A42 (about 38, A36 down to about 29), and A42 mainly to A36 (about 36, A37 down to about 30), while the share going to A28 stayed near a third throughout. Each difference is larger than in about 72–96 of 100 random re-splits. [DIR036, DIR037, DIR042]
+- The repeated block A15→A16 ran fewer times per case: both activities still occurred in every trace and in the same order (A15→A16 in about 95–97 of 100 transitions in both windows), but average occurrences per trace fell from about 1.67 to about 1.53 for A15 and to about 1.53 for A16. [OCC013, OCC014, DIR015]
+- Around A01, A05, A07 and A09 (each in roughly 50–56 of 100 traces in both windows) the chosen successors shifted: A01's dominant continuation switched from A09 (about 43 of 100) to A07 (about 41); A05 continued to A09 more often (about 27→37); A09 continued to A07 less often (about 39→29). [DIR001, DIR005, DIR009]
+- A21 and A22 moved in opposite directions: A21 appeared in about 47→56 of 100 traces, A22 in about 54→47; consistently, A31's outgoing share shifted from A22 (about 29→23) toward A21 (about 24→31). [OCC019, OCC020, DIR031]
+- After A45, the split between its two main successors evened out: A20 fell from about 54 to 47 of 100 transitions while A19 rose from about 40 to 47. [DIR045]
+- Two activities were observed less often in the later window: A06 in about 8.5 of 100 traces vs about 15 before (small basis: 17 vs 30 traces), and A44 in about 48 of 100 traces vs about 55 (mean occurrences 0.98→0.84). [OCC005, DIR006, OCC038]
+- Elsewhere behaviour was stable: the backbone A14→A15→A16 (about 94–97 of 100) and several near-deterministic steps such as A26→A27 and the chain A28→A29→A30→A34→A35→A26 (about 98–99 of 100) barely moved. [DIR014, DIR015, DIR026, DIR028, DIR029, DIR030, DIR034, DIR035]
+- A few large-looking redistributions — at A02, A04, A08, A10 and A51 — rest on only about 14–28 observed outgoing transitions per window (A51: 2 before, 12 after) and are too weak to interpret. [DIR002, DIR004, DIR008, DIR010, DIR051]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, existing alternative paths were taken with different frequencies around A36, A37 and A42: each activity's dominant successor flipped (A36 from A42 to A37, A37 from A36 to A42, A42 from A37 to A36), reversing the dominant direction of flow through the three. Every involved activity still ran in essentially every case, all six transitions between them were well observed (about 200 outgoing transitions each per window), and the alternative successor A28 kept a stable share of about a third, so only the shares between existing alternatives moved — no activity was added, removed or bypassed. The supporting signs are three agreeing directly-follows items with shifts of roughly 6–13 percentage points, each larger than in about 72–96 of 100 random re-splits, with mutually consistent directions. The main limitations are that the evidence carries no screening baseline against which the number of flagged items could be compared, and the three items derive from the same traces and are not independent; an important competing explanation that cannot be ruled out is that this cluster is one of the few chance extremes expected when roughly 50 transitions are tested on 200-trace windows, though the mutual coherence of the three shifts makes pure chance unlikely. [DIR036, DIR037, DIR042]
+
+Other differences:
+- A repetition change: the ordered block A15→A16 still ran in every trace but fewer times per case (average occurrences about 1.67→1.53 for both A15 and A16). [OCC013, OCC014, DIR015]
+- A second rerouting around A01, A05, A07 and A09, as described above. [DIR001, DIR005, DIR009]
+- An opposite participation shift between A21 (about 47→56 of 100 traces) and A22 (about 54→47), together with A31's successor share moving from A22 to A21. [OCC019, OCC020, DIR031]
+- A more even A19/A20 split after A45 (about 40→47 and 54→47 of 100). [DIR045]
+- Lower observed participation for A06 (about 15→8.5 of 100 traces, on a basis of only 17 vs 30 traces, so possibly a rare-variant fluctuation) and for A44 (about 55→48 of 100 traces). [OCC005, DIR006, OCC038]

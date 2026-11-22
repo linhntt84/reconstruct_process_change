@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_9f4a4aad6df1262d.json",
+  "evidence_sha256": "95acfe0f66cc5d5e6dbe3468521906fca6cfde5e55ac742eeced27309b42f712",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:32:13.350052+00:00",
+  "finished_at_utc": "2026-11-14T11:34:39.887522+00:00",
+  "latency_seconds": 146.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20938,
+    "prompt_tokens": 22145,
+    "total_tokens": 43083,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19377,
+      "text_tokens": 1561
+    },
+    "cost": 0.01379075
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67646,
+  "text": "### Observed differences\n\n- In the earlier window the visible control flow was one fixed chain: essentially all outgoing transitions of A31 went to A22, A22 to A20, A20 to A23, A23 to A24, A24 to A26, A26 to A25, and A25 to A32 (about 93–100 in 100 for each source). In the later window these successor shares are redistributed: A23 now goes to A32 in about 49 in 100 of its outgoing transitions and to A24 in only about 15 (before: 100 to A24); A22 goes to A24 in about 27 and to A25/A26 together in about 17 (before: about 99 to A20); A24 goes back to A22 in about 23 and to A20 in about 11 (before: about 99 to A26); A25 returns to A20/A22/A23 in about 52 in 100, while A25→A32 fell from about 93 to about 42. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- The order between the two activity groups changed. Before, A20, A22 and A23 preceded A24, A25 and A26 in 98–99 in 100 traces; in the later window the second group frequently comes first (A24 before A20 in about 73 in 100 traces, A24 before A23 in about 84, A26 before A23 in about 68), and several pairs now appear in both orders in similar proportions (A20/A26 about 48.5 vs 50.5; A23/A25 about 48 vs 51.5; A22/A24 about 52.5 vs 46.5). Every tested pair still co-occurs in 100 in 100 traces in both windows. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- Distances changed accordingly. Pairs running against the old direction — A24 before A22, A25 before A20, A26 before A20, A24 before A20 — were seen within five steps in only about 1 of 200 earlier traces but in about 64–148 of 200 later traces; A31 now reaches A24 immediately in about 47 in 100 cases (before: always 4 positions apart); previously fixed gaps spread, e.g. A20→A23 was always adjacent and is now adjacent in about 68 in 100, and A23→A32 moved from typically 4 positions apart to adjacent in about 49 in 100. [LAG001, LAG013, LAG014, LAG015, LAG019, LAG021, LAG027]\n- Relative positions shifted consistently with this reordering: A20, A22 and A23 now occur later in the trace (mean relative position up by about 0.03–0.06), while A24, A25 and A26 occur earlier (down by about 0.02–0.06). [POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints between two groups of activities changed: before, the group A20/A22/A23 (entered from A31 via A22) preceded the group A24/A25/A26 in 98–99 in 100 traces within one fixed sequence, whereas in the later window the second group frequently runs first — A24 precedes A20 in about 73 in 100 traces and A23 in about 84, against essentially 0 before — and pairs such as A20/A26, A22/A24 and A23/A25 now appear in both orders in similar proportions, i.e. without a fixed order between them. [REL001, REL003, REL004, REL006, REL007, REL008]\n\nSupporting signs: all eight tested pairs move in the same direction while both activities of each pair still occur in every trace of both windows, so this is not a participation or skip change; the reversed-direction pairs were observed within five steps in only about 1 earlier trace but are now common; the positional shifts (first group later, second group earlier) and the successor redistributions agree with the relational evidence; and 49 qualifying items against roughly 0.47 expected for an unchanged process means sampling variation cannot explain the ensemble. Limitations: positions and gaps are measured in event positions, not clock time; the agreeing items largely describe one underlying difference rather than independent confirmations; and the pairwise proportions cannot distinguish whether each case now interleaves the two groups freely or whether the later window mixes two or more fixed variants. [LAG014, LAG015, LAG019, POS003, POS004, POS005, POS006, DIR001, DIR003]\n\nOther differences: A32 is now reached differently — before it followed almost only from A25 immediately after the second group (about 93 in 100 of A25's outgoing transitions; from A23 typically 4 positions later), while in the later window A23 leads directly to A32 in about 49 in 100 of its outgoing transitions (usually adjacent) and A25→A32 holds only about 42 in 100; separately, A31 routes about 47 in 100 of its outgoing transitions straight to A24, where before it went only to A22. Both fit the same broad restructuring but are not part of the main hypothesis above. [DIR003, DIR005, DIR007, LAG013, LAG020, LAG027]",
+  "case_id": "case_9f4a4aad6df1262d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

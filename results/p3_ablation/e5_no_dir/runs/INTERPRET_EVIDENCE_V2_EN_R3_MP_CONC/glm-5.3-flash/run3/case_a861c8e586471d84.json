@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_a861c8e586471d84.json",
+  "evidence_sha256": "ada86fefb661f2019a3888908a9b6bfd7b93aadfb72ca64b6b7aef4032540d03",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:18:04.403346+00:00",
+  "finished_at_utc": "2026-11-15T11:21:00.751700+00:00",
+  "latency_seconds": 176.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23432,
+    "prompt_tokens": 15571,
+    "total_tokens": 39003,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21897,
+      "text_tokens": 1535
+    },
+    "cost": 0.01405165
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 77109,
+  "text": "### Observed differences\n\n- Three activities stopped appearing. A19 ran in about 36 in 100 traces in the earlier window (71 of 200) and in 0 of 200 in the later window; A25 fell from about 35 in 100 (70 of 200) to 0 of 200; A20 fell from about 31 in 100 (61 of 200) to 1 of 200. [OCC001, OCC002, OCC003]\n\n- Before, these three were mutually exclusive alternatives that together covered almost every case: no trace contained more than one of them (pairwise co-occurrence at most about 1 in 200), and exactly one of the three ran in about 99 in 100 traces. In the later window, at most about 1 in 200 traces contains any of them. [REL007, REL009, REL014]\n\n- The block occupied a fixed slot in the flow. Whenever one of A19, A20, A25 ran, A14 and A41 had always (or almost always) executed before it, and the block activity in turn almost always ran before A26 or A31, and before A24 in about 16 in 100 of the earlier traces. In the later window A14, A41, A26 and A31 still occur in every trace and A24 in about 55 in 100, but never together with any of the three. [REL004, REL005, REL006, REL008, REL010, REL011, REL012, REL013, REL015, REL016, REL017, REL018, REL019, REL020, REL021]\n\n- The distance between A41 and A26 collapsed: before, A26 followed A41 two steps later in about 94 in 100 pair observations (three steps in the remainder); in the later window it immediately follows A41 in about 92 in 100. [LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of three mutually exclusive activities — A19, A20 and A25, which before ran in about 99 in 100 cases (exactly one per case), always after A14 and A41 and almost always before A26 or A31 — is no longer executed in the later window, and that cases now proceed from A41 directly to A26: A26 immediately follows A41 in about 92 in 100 observations, where before it followed two steps later in about 94 in 100, with A26's mean relative position moving slightly earlier (about 0.39 to 0.37) and A41's slightly later (about 0.32 to 0.33). This is unlikely to be a sampling artefact: 32 control-flow items qualified against roughly 0.38 expected without a change, and the occurrence, relation and lag indicators all describe the same underlying difference consistently. [OCC001, OCC002, OCC003, REL004, REL005, REL006, REL007, REL009, REL010, REL011, REL012, REL014, REL015, REL016, REL017, REL019, REL020, REL021, LAG002, POS005, POS006]\n\nLimitations: zero participation only means the activities were not observed, so complete removal cannot be distinguished from a drastic drop to below about 1 in 200 traces — a competing explanation this evidence cannot rule out is that the block still executes at a very low rate. A20's single later occurrence, at relative position about 0.62 against about 0.36 before, rests on one trace and cannot characterise any residual execution. The many relation items re-express the same disappearance on shared traces and are not independent confirmations. [OCC002, POS003, REL007]\n\nOther differences:\n- A31 now follows A24 immediately in about 59 in 100 observations, against about 39 in 100 before (two steps later was the mode before). [LAG001]\n- A24 and A12 each appear in somewhat more traces: about 55 vs 49 in 100 for A24, and about 51 vs 42 in 100 for A12. [REL001, REL002, REL003, REL008, REL013, REL018]\n- A14's mean relative position moved slightly later (about 0.140 to 0.145); the shift is small. [POS001]",
+  "case_id": "case_a861c8e586471d84",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

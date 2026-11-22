@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, one of the five low-frequency activities A14, A18, A21, A22 and A23 (each in roughly 16–23 of 100 cases, with shares essentially unchanged between windows) ran at about one-third of the trace, followed by A24 (about 36% in) and A28 (about 54% in), while the block A15, A16, A17, A19 and A20 — all five present in every case in both windows — sat at about 63% in. In the later window this order is reversed: the block sits at about 39% in, A24 at about 48%, A28 at about 66%, and the low-frequency activity last, at about 70% in. [POS001–POS012]
+- All 45 relation items show the same flip between the two groups: A24 preceded A15 in every earlier case and followed it in every later case, and the same complete reversal holds for A28 against each block member; pairs across the groups flipped as well, e.g. A14 came before A15 in all 21 of 100 co-occurrences before, while A15 came first in all 17 of 100 after. [REL001–REL045]
+- The wiring at the segment boundaries changed accordingly: A14, A18, A21, A22 and A23 flowed entirely to A24 before and entirely to A29 after; the block members no longer flow to A29 and now exit to A24 (for A15, A29 took about a quarter of outgoing flow before and none after, A24 the reverse); A28 now flows to the low-frequency activities instead of to the block, and A39 now flows to the block instead of to the low-frequency activities. [DIR001–DIR012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two segments of the process exchanged their order: the five-activity block A15, A16, A17, A19 and A20, which runs in every case, and the segment formed by one of the low-frequency activities A14, A18, A21, A22 or A23 together with A24 and A28. In the later window the block runs first in each case, then A24 and A28, then the chosen low-frequency activity, with the connections rewired so that A39 enters the block, the block exits to A24, A28 leads to the low-frequency activities, and those exit to A29. [REL001–REL045, POS001–POS012, DIR001–DIR012]
+
+The volume of evidence alone cannot be explained by an unchanged process: 69 control-flow items qualified, about 100 times the fewer-than-one expected by chance. [screening] The reorder is also shown directly and consistently: ten cross-segment pairs reverse completely (A24 and A28 versus each block member go from 100% one order to 100% the other), the remaining 35 cross-pairs flip in the same direction, every activity with a position profile shifts by roughly 13–37% of the trace length, and participation shares stay stable — which fits a reordering rather than activities being added, removed or taken with different frequencies. [REL001–REL045, POS001, POS005, POS008, POS009, POS010]
+
+A competing explanation the evidence cannot rule out is that the two windows draw on two different trace variants whose mix flipped completely, rather than a reordering within unchanged traces; the direction profiles of the low-frequency activities also rest on only about 32–46 traces per window. [DIR001, DIR005, DIR008, DIR009, DIR010]
+
+Other differences: only small shifts in how often each low-frequency activity occurs (A14 about 21→17 in 100 cases, A23 about 16→21), within what sampling variation between two 200-case windows produces; they are not part of the swap hypothesis. [POS001, POS005, POS008, POS009, POS010]

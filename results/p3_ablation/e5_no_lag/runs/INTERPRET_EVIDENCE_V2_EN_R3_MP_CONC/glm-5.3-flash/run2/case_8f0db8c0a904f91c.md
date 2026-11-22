@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 each appeared in every trace (participation 100%, about one occurrence per trace); in the later window each appears in only about 53 in 100 traces. [OCC004, OCC005, OCC006]
+- The three activities still run together as a block: pairs among them co-occur in about 53 in 100 later traces (100% before), and in about 47 in 100 later traces none of the three appears; their internal order is unchanged, with A19 before A25 before A20 whenever the block runs. [REL008, REL009, REL014]
+- A26, A41, A46 and A47 still occur in every trace in both windows, but their co-occurrence with A19/A20/A25 fell from 100% to about 53%, so in about 47 in 100 later traces the block is absent while these activities still run. [REL010, REL011, REL017, REL022]
+- Routing around the block changed accordingly: A41 led to A19 in about 96 in 100 of its outgoing transitions before, and now leads to A19 in about 50 in 100 and directly to A26 in about 44 in 100. [DIR005]
+- The block's own wiring is stable: A25 still leads to A20 (about 99% before, 98% after) and A20 still leads to A26 (about 99% before, 96% after), and the positions of A26, A41 and A46 barely moved. [DIR003, DIR004, POS002, POS003, POS004]
+- A02 became rarer (participation 29% to about 8.5%; the A46 → A02 transition fell from 25% to under 1 in 100), and A04 and A06 roughly tripled their participation (about 4–5% to about 12%), the latter on only about 9–25 traces per window. [OCC001, DIR006, OCC002, OCC003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the fixed sequence A19 → A25 → A20, which ran between A41 and A26, is now optional and is skipped in nearly half of the executions. In the earlier window every trace ran A41, then A19, A25 and A20 in that order, then A26; in the later window about 53 in 100 traces still run this block in the same internal order, while in about 47 in 100 the block is skipped entirely and A41 passes straight to A26. The participation drop is measured directly for all three activities on about 200 versus about 106 traces each, more than a dozen relation items consistently show the same co-occurrence collapse from 100% to about 53%, and the block's internal and downstream edges are stable, so the block is skipped rather than rewired. The screening qualified 38 control-flow items where fewer than 1 would be expected without a change, so the pattern as a whole is far beyond what random re-splits of a stable process produce. An important competing explanation the evidence cannot rule out is that the later window mixes two trace populations, one with the block and one without, rather than a single process in which the block became optional. [OCC004, OCC005, OCC006, REL008, REL015, REL019, DIR005, DIR003, DIR004]
+
+Other differences: A02, besides becoming rarer, appears earlier in the trace when it occurs (mean relative position about 0.90 to about 0.51) and its successors are dispersed (A47 share fell from 85% to about 6%), but its later-window profile rests on only 17 traces [OCC001, POS001, DIR001]. A04 and A06 show small participation increases on few observations [OCC002, OCC003]. A08's outgoing transitions changed completely, but the earlier profile rests on only 4 observations [DIR002].

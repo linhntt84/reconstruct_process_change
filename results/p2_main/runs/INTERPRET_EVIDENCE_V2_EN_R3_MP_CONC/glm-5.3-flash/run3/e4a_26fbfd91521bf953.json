@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_26fbfd91521bf953.json",
+  "evidence_sha256": "dd8b0a0c283ddc37506fe3c97967bcde44c3b10147e83a4fe18cb7145d1ab0c6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:36:56.569031+00:00",
+  "finished_at_utc": "2026-11-15T03:37:48.701811+00:00",
+  "latency_seconds": 52.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7688,
+    "prompt_tokens": 3373,
+    "total_tokens": 11061,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7026,
+      "text_tokens": 662
+    },
+    "cost": 0.00434995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29761,
+  "text": "### Observed differences\n\n- In the later window, the elapsed time between the completion of A11 and the next completion of A13 roughly doubled: from a mean of about 0.9 hours (median about 0.9 hours, seen 63 times) in the earlier window to about 1.8 hours (median about 1.8 hours, seen 50 times). [TWAIT001]\n- The same pattern holds for A12→A13: the mean gap rose from about 0.17 hours (median about 0.13, 56 occurrences) to about 0.32 hours (median about 0.24, 41 occurrences) — also roughly double. [TWAIT002]\n- Both gaps also became more variable (standard deviation roughly 0.13→0.29 hours for A11→A13 and 0.15→0.25 hours for A12→A13), and the number of observed consecutive pairs fell by about a fifth to a quarter. [TWAIT001, TWAIT002]\n- Routing out of A22 shifted in the sample: in the earlier window about 53 in 100 of A22's observed outgoing transitions led to A25, 29 to A23 and 18 to A21 (49 transitions); in the later window about 58 led to A21, 29 to A23 and only 13 to A25 (31 transitions) — A21 and A25 effectively swapped as the dominant successor. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a change in timing around A13: in the later window, the elapsed time between consecutive completion events roughly doubled for both observed predecessor pairs, A11→A13 (mean about 0.9→1.8 hours) and A12→A13 (mean about 0.17→0.32 hours). The signs are direct and consistent: the time family produced 2 qualifying items where only about 0.006 were expected if nothing had changed (12 units tested), a count many times the chance expectation; both pairs move in the same direction with similar relative size; each difference exceeds all but about 1 of 2,000 random re-splits; and the counts behind them are moderate (63 vs 50 and 56 vs 41 occurrences). The main limitation is that TWAIT measures elapsed time between consecutive completions, so the evidence cannot distinguish longer waiting from longer processing or a different clock-time placement of A13 — that is the competing explanation it cannot rule out. Since both items share A13, they most likely reflect one underlying change rather than two independent ones. [TWAIT001, TWAIT002]\n\nOther differences: the redistribution of A22's outgoing transitions (A25 about 53%→13%, A21 about 18%→58%, A23 stable near 29%) is clearly visible in the sample and unusual for random re-splits, but the control-flow family produced 1 item where about 0.27 were expected by chance — what an unchanged process typically produces — and the shares rest on only 49 vs 31 observed transitions, so this single routing difference does not support a structural change on its own. [DIR001]",
+  "case_id": "e4a_26fbfd91521bf953",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

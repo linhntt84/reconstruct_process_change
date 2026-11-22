@@ -1,0 +1,14 @@
+### Observed differences
+
+- Participation moved only slightly for most activities: in the earlier window A01, A03, A04 and A05 each appeared in about 55 in 100 cases and in the later window in about 52 in 100, while A02, A06, A07 and A08 rose from about 45 to 48 in 100; A13 fell from 32% to 27% of cases. Differences of this size are unremarkable for random re-splits (empirical strength roughly 0.36–0.70). [OCC001, OCC002, OCC003, OCC012]
+- Two activity pairs moved in opposite directions by about 7 percentage points each: A14 rose from 46% to 53% of cases while A15 fell from 54% to 47%, exactly mirroring the shift in A39's outgoing transitions (A14 46% to 53%, A15 54% to 47%); likewise A18 rose from about 47% to 53% of cases while A19 fell from about 53% to 47%. [OCC013, OCC014, DIR025, OCC017, OCC018]
+- A37 and especially A38 were executed more often and repeated more often in the later window: A38 appeared in 44% of cases before and 51% after, with mean occurrences per case up from 0.71 to 0.86 and repetition in 16% versus 21% of cases; A37 rose from 16% to 21% of cases. [OCC024, OCC023]
+- Successor mixes shifted in several places: A06 led to A08 in 52% of its outgoing transitions before and 26% after, while A06→A07 rose from 22% to 42%; A08→A07 fell from 47% to 30% while A08→A06 rose from 20% to 34%; A02 moved from A06 (41% to 32%) toward A08 (28% to 40%); A20 moved from A36 (37% to 28%) toward A30 (30% to 40%); with smaller mirror-image shifts among A22, A30 and A31. [DIR006, DIR008, DIR002, DIR014, DIR017, DIR018]
+- Within the pairs (A32, A33) and (A34, A35) the dominant traversal direction reversed, although both orders occur in both windows: A32→A33 fell from 53% to 44% while A33→A32 rose from 47% to 56%, and A34→A35 rose from 47% to 58% while A35→A34 fell from 53% to 42%; A26's outgoing share also tilted from A32 and A35 toward A33 and A34. [DIR019, DIR020, DIR021, DIR022, DIR016]
+- Several activities were essentially flat, including A10, A11, A12, A42 and A43, with changes of about one to two percentage points and empirical strength near zero. [OCC009, OCC011, OCC027]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The flagged differences are of a size that random re-splits of unchanged traces also produce, the items that agree (for example A14, A15 and A39) draw on the same cases rather than constituting independent confirmation, and no screening expectation is provided to show that the number of flagged items exceeds what chance alone would produce. [DIR006, OCC013, OCC014, DIR025]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_5ebbb25cdfcd037a.json",
+  "evidence_sha256": "5e8456b102ccbae674e3b624568371d46c6af5ee53e287bd1891bd1594deafe6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:29:47.019999+00:00",
+  "finished_at_utc": "2026-11-14T13:30:13.662125+00:00",
+  "latency_seconds": 26.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4240,
+    "prompt_tokens": 3489,
+    "total_tokens": 7729,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3603,
+      "text_tokens": 637
+    },
+    "cost": 0.00264335
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 14838,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A28 and A34 roughly halved: in the earlier window these gaps averaged about 0.9 hours (median about 0.89 h, spread about 0.16 h), while in the later window they average about 0.45 hours (median about 0.46 h, spread about 0.07 h), so the gaps also became more consistent. The pair was observed somewhat more often (47 gaps before, 63 after — roughly 24 vs 32 per 100 traces). [TWAIT001]\n- The elapsed time from A35 to A34 fell from about 0.20 hours on average (median about 0.16 h) in the earlier window to about 0.08 hours (median about 0.08 h) in the later window, a reduction of roughly 60%, at a similar frequency (49 vs 48 gaps). [TWAIT002]\n- The elapsed time from A38 to A14 lengthened by about 1 hour, from about 2.0 hours on average (median about 2.0 h) to about 3.0 hours (median about 3.0 h). At the same time the pair was observed far less often: 200 gaps before (essentially every trace) versus 105 after (about half of the traces). [TWAIT003]\n- Each of the three differences is larger than in essentially all 2,000 random re-splits of the pooled data (empirical strength about 999.5 in 1000 for each item). [TWAIT001, TWAIT002, TWAIT003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: transitions into A34 became markedly faster while the interval between A38 and A14 became longer. In the earlier window, gaps into A34 averaged about 0.9 hours from A28 and about 0.2 hours from A35; in the later window they average about 0.45 and about 0.08 hours respectively, with visibly tighter spread. The A38→A14 interval grew from about 2.0 to about 3.0 hours. Supporting signs: three time items were flagged where only about 0.01 would be expected if nothing had changed — a count many times the chance expectation — and each item shows a direct, internally consistent shift of the whole elapsed-time distribution (all quartiles moving together) that exceeds essentially all random re-splits. [TWAIT001, TWAIT002, TWAIT003]\n\nLimitations: TWAIT measures elapsed time between consecutive completion events, so a longer or shorter gap may reflect changes in what happens between the two activities rather than in the activities' own timing. In particular, the A38→A14 observation count dropped from 200 to 105, which hints that the two activities co-occur or are adjacent less often in the later window — a possible participation or adjacency change that the time-only evidence cannot confirm or separate from the timing shift. [TWAIT003]",
+  "case_id": "e4a_5ebbb25cdfcd037a",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

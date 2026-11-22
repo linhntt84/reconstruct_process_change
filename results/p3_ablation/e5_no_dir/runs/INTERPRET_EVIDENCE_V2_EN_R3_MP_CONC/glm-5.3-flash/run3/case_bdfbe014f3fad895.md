@@ -1,0 +1,20 @@
+### Observed differences
+
+- A27 ran in every trace in the earlier window (200 of 200) but in only about 52 in 100 traces in the later window (103 of 200); when it does run, its order relative to A14, A26 and A28 is unchanged. [OCC003, REL009, REL017, REL021]
+- A32, A33 and A38 were not observed in the earlier window; in the later window each appears in about half of the traces (about 98–100 of 200), around the middle of the trace (mean relative position about 0.51). [OCC004, OCC005, OCC006, POS003, POS004, POS005]
+- In the later window A27 and each of A32/A33/A38 behave as alternatives: they co-occur in at most about 2 in 100 traces, while each of A32/A33/A38 appears without A27 in about 48–49 in 100 traces. The three new activities co-occur with each other in about 49 in 100 traces, in both orders and without a fixed order between them (about 21–27 in 100 in each direction). [REL022, REL023, REL024, REL028, REL029, REL030]
+- The new segment sits between the shared activities and A28: A14 and A26 precede A32/A33/A38 in essentially every co-occurrence (about 48–50 in 100 traces), A15 precedes them in about 29–31 in 100 with about 20 in 100 interleaved, and A32/A33/A38 precede A28 in about 47–49 in 100 traces. Correspondingly, the A26→A28 distance, previously 2 steps in about 90 in 100 traces, is now split between 2 steps (about 50 in 100) and 4 steps (about 46 in 100). [REL010, REL011, REL012, REL014, REL015, REL016, REL018, REL019, REL020, REL025, REL026, REL027, LAG003]
+- A04 became more frequent and moved earlier: participation rose from about 19 to 60 in 100 traces, its mean relative position fell from about 0.54 to 0.21, and it now immediately follows A14 (1-step lag in about 96 of observed pairs, up from about 57) and precedes A15 and A26 in most co-occurrences. [OCC001, POS001, LAG001, REL002, REL003]
+- Smaller shifts: A06 nearly disappears (about 20 to 4 in 100 traces, the later figure resting on only 8 traces); A28 sits slightly later (mean relative position about 0.53 to 0.56); the A14→A15 distance moves from mostly 1 step (about 46 in 100) toward 2 steps (about 31 in 100). [OCC002, POS002, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, about half of the executions no longer include A27 — which ran in every trace earlier and now runs in about 52 in 100 — and instead run a segment of three previously unobserved activities, A32, A33 and A38, each present in about half of the later traces, placed after A14/A15/A26 and before A28; A27 and the new activities behave as alternatives rather than being executed together or in sequence. [OCC003, OCC004, OCC005, OCC006, REL022, REL023, REL024]
+
+- The placement of the new segment is shown directly by ordering relations to activities that occur in every trace in both windows, and by the increased A26→A28 step distance in about half of the later traces. [REL010, REL011, REL012, REL018, REL019, REL020, REL025, REL026, REL027, LAG003]
+- The pattern is consistent across occurrence, position, relation and lag indicators, and the screening produced 44 qualifying items against roughly 0.5 expected for an unchanged process, so the evidence set as a whole is not what random re-splits of a stable process typically produce. [OCC003, OCC004, OCC005, OCC006, POS003, POS004, POS005, LAG003]
+- Limitations: the evidence cannot rule out that the two windows sample two different case types at changed proportions rather than a modified single process, and without direct successor data the exact entry and exit points of the new segment are inferred from co-occurrence and order only. [REL022, REL023, REL024, LAG003]
+
+Other differences: A04 appears in far more traces in the later window (about 60 vs 19 in 100) and now runs immediately after A14 and before A15/A26, having previously sat around the middle of the trace with no fixed relation to A15/A26; A06 nearly disappears (about 20 to 4 in 100 traces, based on few later observations); A28 sits slightly later and the A14→A15 distance shifts toward 2 steps. [OCC001, POS001, LAG001, REL002, REL003, OCC002, POS002, LAG002]

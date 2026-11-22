@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_b533730138d3e817.json",
+  "evidence_sha256": "29c971f275128ede9655d12430c2e6d69b45663fc8857ce76d3e463706c34db9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:49:00.969104+00:00",
+  "finished_at_utc": "2026-11-15T04:49:33.160860+00:00",
+  "latency_seconds": 32.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4452,
+    "prompt_tokens": 3621,
+    "total_tokens": 8073,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3944,
+      "text_tokens": 508
+    },
+    "cost": 0.0027691499999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16268,
+  "text": "### Observed differences\n\n- Activity A01 was absent from the earlier window (0 of 200 traces) but appears in the later window in every trace, exactly once per case (mean 1.0 occurrences per trace, participation 200 of 200) [OCC001].\n- In the later window A01 always sits at the final position of the trace (mean and median relative position 1.0, no variation) [POS001].\n- A06 was the closing step in the earlier window (mean relative position 1.0, with no outgoing transition observed from it); in the later window it sits earlier, at about 0.87 of the trace length, and every observed outgoing transition of A06 now leads to A01 [POS002, DIR001].\n- The relationship between the two activities changed completely: earlier, 100 in 100 traces contained A06 without A01; later, 100 in 100 traces contain both, with A06 before A01 in every case [REL001].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a final step A01 was appended after A06 (equivalently, A01 became executed in every case): in the earlier window cases ended with A06 and A01 was never observed, while in the later window every case executes A06 and then A01 exactly once, with A01 in the last position [OCC001, POS001, REL001, DIR001]. The signs are direct and consistent: participation went from 0 to 200 of 200 traces with exactly one occurrence, the pair relation changed from \"A06 only\" to \"A06 before A01\" in all traces, A06 now flows only to A01, and A06's shift from the final position to about 0.87 of the trace matches A01 being placed after it [POS002]. Five control-flow items qualified where roughly 0.04 would be expected by chance, all five describe this one coherent difference, and each difference exceeds about 995 of 1000 random re-splits of the pooled data [POS001, POS002, OCC001, DIR001, REL001].\n\nLimitation: zero participation in the earlier window only shows A01 was not observed there, so the evidence cannot distinguish a genuinely new activity from one previously too rare to appear in 200 traces; it also says nothing about behaviour elsewhere in the trace [OCC001].",
+  "case_id": "case_b533730138d3e817",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

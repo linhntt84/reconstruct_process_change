@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_9c8e6698f338a04b.json",
+  "evidence_sha256": "6d4b47976c9d41306423747bb033534435e265b47b8f5980d54c8410db73350c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:06:19.227147+00:00",
+  "finished_at_utc": "2026-11-15T10:08:09.673277+00:00",
+  "latency_seconds": 110.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16140,
+    "prompt_tokens": 13404,
+    "total_tokens": 29544,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14716,
+      "text_tokens": 1424
+    },
+    "cost": 0.0100806
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50679,
+  "text": "### Observed differences\n\n- **A17 is no longer observed.** In the earlier window A17 ran in about 52 in 100 traces, about twice per trace on average (repeating within the trace in about 37 in 100 of the traces containing it); it was reached mainly from A12 (about 52 in 100 of A12's outgoing transitions) and led mainly to A15 (about 53 in 100) and A14 (about 46 in 100). In the later window A17 appears in 0 of 200 traces. [OCC004, POS003, DIR003]\n- **A01 appears only in the later window.** Earlier it occurred in 0 of 200 traces; in the later window it runs once in about 38 in 100 traces, around the middle of the trace (median event position about 0.45), with outgoing transitions mainly to A09 (about 27 in 100), A07 (about 23), A12 (about 19) and A04 (about 10). [OCC001, POS001, DIR001]\n- **A01 sits after A02.** Earlier, A02 ran in every trace but never together with A01; in the later window the two run together in about 38 in 100 traces — A02 first in 22, interleaved in 17, never A01 first — and A01 also co-occurs with A12, A15 and A14 in about 19, 19 and 11 in 100 traces, whereas earlier it co-occurred with none of them. [REL001, REL002, REL004, REL003]\n- **A12 now routes around where A17 used to be.** Earlier, A12's outgoing transitions went almost only to A17 (about 52 in 100) and A16 (about 47); in the later window they go to A16 (about 44), A15 (about 29) and A14 (about 22), with none to A17. A12's own participation (about 53 vs 50 in 100 traces) and position barely moved. [DIR002, POS002, REL007]\n- **Every relation involving A17 collapsed.** The pairs A12–A17, A15–A17, A14–A17 and A02–A17, which earlier co-occurred in roughly 30–52 in 100 traces (mostly interleaved or repeated), never co-occur in the later window; each partner now appears only without A17. [REL006, REL007, REL008, REL009, REL005]\n- **Gaps in event positions shortened around A14/A15.** A14→A15 now typically follows within 2–4 steps instead of 3–5; A15→A14 within 3–5 instead of 4; A15→A15 repeats at 3 or 5 steps instead of 4; A02→A14 moved from mostly 4–5 steps to about 1–3 (this last pair rests on only about 13–17 traces). [LAG006, LAG007, LAG008, LAG001, LAG005]\n- **A06 and A08 occur in fewer traces:** participation fell from about 52 to 30 in 100 for A06 and from about 47 to 30 for A08. [OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural change in which the repeating branch through A17 was removed and A01 was inserted before A12. In the earlier window, A12 handed work to A17, which repeated within the trace and passed it on to A14 and A15, while A01 never ran; in the later window A17 is unobserved, A12 leads directly to A15 and A14, and A01 runs once in about 38 in 100 traces, after A02 and before A12, leading onward mainly to A09, A07 and A04. [OCC004, DIR003, DIR002, OCC001, DIR001, REL001, REL007]\n\nThe screening produced 27 qualifying control-flow items where only about 0.3 would be expected if nothing had changed, so the pattern as a whole is not what random re-splits produce; A17's disappearance and A01's appearance are each shown directly by occurrence, position, direction and relation indicators, and the shortened gaps around A14 and A15 fit the loss of A17's repeats from between them. Many items, however, describe one and the same underlying difference (A17 vanishing) and are not independent confirmations. [OCC004, POS003, DIR003, OCC001, POS001, DIR001, DIR002, LAG005, LAG006]\n\nThe main limitation: zero participation only means \"not observed\", so the evidence cannot distinguish a complete removal of A17 (or a brand-new A01) from both activities falling to rates too low to appear in 200-trace samples, and A01's exact placement is bounded only by its observed relations (after A02, often before A12). [OCC004, OCC001, REL001, DIR001]\n\nOther differences: A06 and A08 now run in fewer traces (about 52→30 and 47→30 in 100); whether these drops are an independent change or a by-product of the rerouting cannot be decided from this evidence. [OCC002, OCC003]",
+  "case_id": "case_9c8e6698f338a04b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

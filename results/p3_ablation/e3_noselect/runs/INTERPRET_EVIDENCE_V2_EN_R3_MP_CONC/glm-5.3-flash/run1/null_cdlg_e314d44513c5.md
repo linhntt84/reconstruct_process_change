@@ -1,0 +1,20 @@
+### Observed differences
+
+- The balance between the A03 path and the A15 path tipped toward A03. In the earlier window A03 appeared in about 48 in 100 traces (95 of 200) and A15 in about 53 in 100 (105 of 200); in the later window A03 rose to about 58 in 100 (116 of 200) while A15 fell to about 42 in 100 (84 of 200). Together the two counts cover roughly the whole sample in each window, consistent with a choice between the two, and both remained well observed, so only the shares moved. [OCC002, OCC013]
+- Successor profiles show the same redirection directly. From A13, transitions to A03 rose from about 46 in 100 to about 67 in 100 while transitions to A15 fell from about 54 to about 33. From A10, the A03 share rose from about 38 to about 52 and the A15 share fell from about 58 to about 43. From A11, the A03 share rose from about 37 to about 54 and the A15 share fell from about 63 to about 43. [DIR013, DIR010, DIR011]
+- A02 and A10 took part in more executions: about 23 in 100 traces each before (45 of 200) versus about 28 in 100 after (56 of 200), and from A02 the outgoing flow concentrated further on A10 (about 87 in 100 of its observed transitions before, about 95 in 100 after). [OCC001, OCC009, DIR002]
+- Transition shares around the A04/A05/A08 cluster shifted: from A05, transitions to A08 rose from about 48 in 100 to about 58 in 100 while transitions to A04 fell from about 51 to about 39; from A04, transitions to A05 rose from about 16 to about 24 while those to A08 and A06 eased. A05 itself appeared in fewer traces (about 23 in 100 before, about 18 in 100 after) but recurred slightly more within the traces containing it. [DIR005, DIR004, OCC004]
+- A06, A13 and A07 each appeared slightly less often (A06 and A13 about 25 in 100 traces before versus about 21 after; A07 about 28 versus about 24); these are differences of a size that random re-splits of a stable process often produce. [OCC005, OCC006, OCC011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, existing alternative paths were taken with different frequencies: the continuation via A03 was chosen more often and the continuation via A15 less often. Earlier the two were nearly balanced (about 95 versus 105 traces of 200, slightly favouring A15); later A03 clearly dominated (about 116 versus 84). The successor profiles of A13, A10 and A11 show this redirection directly, each losing roughly 15–21 in 100 transitions to A15 while gaining a comparable share for A03. Because both activities and both continuations are well observed in both windows and no successor disappeared, this reads as a shift in how often existing paths are taken, not a replacement of one path by another. [OCC002, OCC013, DIR010, DIR011, DIR013]
+
+The occurrence changes for A03 and A15 are each larger than about 96 in 100 random re-splits and mirror each other exactly, and the three successor shifts agree in direction with strengths of roughly 0.80–0.95, making pure sampling noise an unlikely explanation. The items are not independent, however: they can all reflect one underlying redirection, the evidence cannot show which branching point drives the shift, and it cannot rule out that the A03/A15 tilt is a side effect of a broader change in which upstream branch (for example the one through A02 and A10) is entered more often. Two low-support sources, A09 and A14 (about 10–15 transitions per window), even point weakly in the opposite direction. [OCC002, OCC013, DIR010, DIR011, DIR013, DIR009, DIR014, OCC001, OCC009]
+
+Other differences:
+- A02 and A10 appeared in more traces, with A02's outgoing flow concentrating further on A10. [OCC001, OCC009, DIR002]
+- Around A04/A05/A08, transition shares moved toward A05→A08 and A04→A05, while A05 appeared in fewer traces but repeated slightly more often within its traces. [DIR004, DIR005, OCC004]
+- A06, A13 and A07 each appeared in slightly fewer traces. [OCC005, OCC006, OCC011]

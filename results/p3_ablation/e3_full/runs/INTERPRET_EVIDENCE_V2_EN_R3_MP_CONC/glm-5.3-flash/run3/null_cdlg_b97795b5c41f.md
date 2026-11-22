@@ -1,0 +1,12 @@
+### Observed differences
+
+- Participation and frequencies are flat across the two windows: A01, A03 and A04 occur in every trace both before and after, A02, A05 and A06 in about 47–48 in 100 traces in both windows, and mean occurrences per trace change by at most 0.005 (e.g., A01: 1.91 → 1.92). [OCC001, OCC002, OCC003, OCC004, OCC005, REL002, REL010]
+- Ordering and co-occurrence relations are essentially unchanged: A01 precedes A03 in about 52–53 in 100 traces in both windows (never the reverse), A04 precedes A03 in about 52–53 in 100 in both, and the only visible order shift — A01 before A04 in 30 in 100 traces earlier versus 25 in 100 later, with A04 first rising from about 22–23 to 28 in 100 — keeps both orders present in both windows and is within ordinary random-split variation. [REL002, REL003, REL010]
+- The clearest directional differences are modest in size: of A06's outgoing transitions (about 180 in each window), about 58 in 100 led to A04 in the earlier window versus about 50 in 100 in the later window (to A01: about 42 → 50 in 100), and the spacing between consecutive executions of A04 shifted toward longer gaps (weight at distance 4 about 0.25 → 0.20; at distance 5 about 0.34 → 0.42, based on roughly 85–90 traces with such repeats in each window), with a weaker shift in the same direction for repeated A01 (distance 4 about 0.19 → 0.15; distance 5 about 0.42 → 0.45). [DIR003, LAG012, LAG001]
+- Relative positions within the trace barely move (A01 mean relative position 0.39 → 0.40, A04 0.41 → 0.39, A02/A05/A06 practically identical), and these shifts are of the size random re-splits routinely produce. [POS001, POS002, POS003, POS004, POS005]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The two largest differences — the routing split at A06 and the longer spacing between repeated A04 executions — each rest on a single indicator whose magnitude random re-splits of unchanged data still reach roughly one time in ten, while all participation, co-occurrence and ordering indicators show differences smaller than typical random variation, so sampling variation remains a fully adequate explanation. [DIR003, LAG012, OCC001, REL003]

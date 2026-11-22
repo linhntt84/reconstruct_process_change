@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "e747b120fd516a014fa1a93bdfcde476bdba99eabc4e7e00320ab81790deddac",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:41:29.559571+00:00",
+  "finished_at_utc": "2026-11-14T12:42:56.016102+00:00",
+  "latency_seconds": 86.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12655,
+    "prompt_tokens": 7785,
+    "total_tokens": 20440,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11422,
+      "text_tokens": 1233
+    },
+    "cost": 0.00749525
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38846,
+  "text": "### Observed differences\n\n- Transitions out of **A20** changed completely: in the earlier window they split across A30 (about 40 in 100), A31 (about 33) and A36 (about 28); in the later window about 99 in 100 go to A22, with A30 and A36 at roughly 1 in 200 each. [DIR001]\n- Transitions out of **A21** changed in the mirror-image way: earlier, A21 was followed by A25 in every observed transition; later, its transitions spread over A30 (about 36 in 100), A31 (about 33) and A36 (about 31), with A25 at about 1 in 100. [DIR002]\n- The exits of the **A30/A31/A36 group** changed: earlier, each of A30, A31 and A36 led to one of the other two group members or to A22 (A22 taking roughly 29–38 in 100 of each one's outgoing transitions); later, A22 has practically disappeared as a successor (about 1 in 200 or unobserved) while A25 appears with roughly 31–36 in 100. [DIR003, DIR004, DIR005]\n- Step distances flipped: A20 was followed by A22 four steps later in essentially all earlier traces but one step later in about 99 in 100 later traces; A21 was followed by A25 one step later in essentially all earlier traces but four steps later in about 99 in 100 later traces. [LAG001, LAG004]\n- The pairs spanning the group's old location (A20→A31, A20→A36, A31→A22, A36→A22) occurred within five steps in all 200 earlier traces but in only 2 of 200 later traces; their later lag profiles rest on those 2 traces each. [LAG002, LAG003, LAG005, LAG006]\n- Event positions shifted consistently: A30, A31 and A36 each moved later (mean relative position about 0.41 to about 0.59, a shift of roughly 0.17–0.18), while A22 (about 0.47 to 0.38) and A21 (about 0.62 to 0.53) moved earlier by about 0.09. [POS001, POS002, POS003, POS004, POS005]\n- Participation itself did not change: A20, A21, A22, A30, A31 and A36 were observed in all 200 traces of both windows, so the differences concern order, not occurrence. [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a reordering hypothesis: the block of activities **A30, A31 and A36**, executed in varying internal order, previously ran between **A20** and **A22**, and in the later window runs between **A21** and **A25** — A20 now leads directly to A22, and A21 now enters the block, which exits to A25. Equivalently, the segment containing A22 and A21 moved from after the block to before it. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005]\n\nSupporting signs: the successor profiles of A20 and A21 flipped in mirror image, the block's exits moved from A22 to A25, and the two step-distance changes (A20→A22 from four steps to one; A21→A25 from one to four) directly show the block leaving the gap between A20 and A22 and filling the gap between A21 and A25; the position shifts (block later by roughly 0.17, A22 and A21 earlier by roughly 0.09) agree. Each core item rests on 200 traces per window, and 16 items qualified against roughly 0.39 expected by chance among the 78 tested control-flow units, so the collection is far beyond what an unchanged process typically produces. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: the four pair items around the block's old location rest on only 2 later traces each, so they show the old arrangement disappeared but cannot characterise the new one; the evidence also does not show what precedes A20/A21 or follows A25, so it cannot distinguish whether the block moved later or the A22–A21 segment moved earlier, and positions are event positions rather than clock times. [LAG002, LAG003, LAG005, LAG006, POS001, POS002, POS003, POS004, POS005]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

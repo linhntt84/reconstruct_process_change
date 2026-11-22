@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, the four choice activities A14, A17, A20 and A21 — each present in roughly 20–29 of 100 cases, together covering essentially every case — appear much earlier: their mean relative event position drops from about 0.68–0.69 to about 0.33–0.36. [POS001, POS004, POS007, POS008]
+- The four activities A15, A16, A18 and A19, present in every case, move the opposite way: their mean relative position rises from about 0.39 to about 0.64. [POS002, POS003, POS005, POS006]
+- The order between the two groups reverses. In the earlier window A15/A16/A18/A19 always preceded A22 and A26 (200 of 200 cases), which in turn preceded A14/A17/A20/A21 in every case where they co-occurred; in the later window A22 and A26 precede A15/A16/A18/A19 in all but about 1 of 200 cases, and the choice activities now come before A22 and before A15/A16/A18/A19. [REL010, REL011, REL029, REL031, REL001, REL007, REL017]
+- Outgoing routing swaps accordingly: A26's transitions, previously spread about evenly over A14/A17/A20/A21 (roughly 24–26 in 100 each), now go to A15/A16/A18/A19 (roughly 22–27 in 100 each), and A37 shows the mirror image, switching from A15/A16/A18/A19 to A14/A17/A20/A21. [DIR010, DIR011]
+- Downstream targets flip as well: A14, A17, A20 and A21 now lead to A22 in about 98–100 of 100 transitions (previously always A27), while A15/A16/A18/A19 now often lead to A27 (about 17–29 in 100) and practically never to A22, reversing the earlier pattern. [DIR002, DIR005, DIR008, DIR009, DIR003, DIR004, DIR006, DIR007]
+- Step distances agree: A22 now follows A37 after about 2 events instead of 5, A27 follows A26 after about 5 instead of 2, and the ordered pairs A37→A15/A16/A18/A19 and A15→A22 within five steps, seen in all 200 earlier cases, are virtually gone (1 of 200 later cases). [LAG011, LAG006, LAG002, LAG005, LAG007, LAG010]
+- A separate, smaller shift: of A05's outgoing transitions, A04 rises from about 24 to 48 in 100 while A09 falls from about 41 to 22, and A05 now follows A01 sooner (a 1-event gap in about 44 of 100 cases versus about 31 before). [DIR001, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two segments exchanged their placement around A22 and A26: in the later window a case runs A37, then one of the alternatives A14/A17/A20/A21, then A22, then A26, then the four-activity sequence A15/A16/A18/A19 (in varying internal order), then A27 — whereas in the earlier window the sequence A15/A16/A18/A19 sat between A37 and A22 and the alternative branch sat between A26 and A27. [REL010, DIR010, DIR011, LAG006, LAG011]
+
+This rests on direct relational and positional evidence rather than marginal shifts: every traced cross-pair between the two groups reverses order almost completely, the successor sets of A26 and A37 exchange wholesale, and the A37→A22 and A26→A27 step distances change exactly as this reordering predicts. With 64 qualifying items against about 0.64 expected if nothing had changed, chance alone cannot account for the pattern as a whole, even though the items describe one underlying difference. [REL010, REL015, DIR010, DIR011, LAG006, LAG011]
+
+The main competing explanation is that the two windows simply sample different variant frequencies, but that is hard to sustain here: the reversals are near-deterministic in both windows (200 of 200 one way, about 199 of 200 the other, on 200-case supports), which sampling variation cannot produce. Remaining limitations: the internal order within A15/A16/A18/A19 varies and is only partially observed, positions are event positions rather than clock times, and the A05/A01 routing shift is not covered by this hypothesis and may be an independent difference. [REL010, DIR003, POS002, DIR001]

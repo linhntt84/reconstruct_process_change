@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 were mandatory: each appeared exactly once in virtually every trace (participation 100 in 100, about 1 occurrence per trace), with no fixed order among the three (each pair ran in both directions in roughly 45–55% of cases), always after A44 (about 98–99.5 in 100 traces) and before A29 (about 98.5–100 in 100). [OCC004, OCC005, OCC006, REL031, REL032, REL033, REL034, REL035, REL036, REL038, REL039]
+- In the later window, these three activities nearly vanished: A26 and A28 each appear in about 1 in 100 traces (2 of 200) and A27 in about 0.5 in 100 (1 of 200), and pairs among them no longer co-occur. [OCC004, OCC005, OCC006, REL031, REL032, REL035]
+- In the later window, A19, A20 and A21 — absent earlier (0 of 200 traces; A21 in a single trace) — each run in about 31–37 in 100 traces (62, 67 and 74 of 200). They almost never occur together (at most about 1 in 100), and the share of traces containing neither of any two matches the third's share, so essentially every later trace contains exactly one of the three. [OCC001, OCC002, OCC003, REL013, REL014, REL020]
+- The new activities occupy the old block's place: whenever one occurs it runs after A44 and before A29 (e.g., A21 precedes A29 in about 37 in 100 traces and follows A44 in about 37 in 100, with the reverse orders essentially unobserved), at a mean relative position of about 0.36 versus about 0.37 for the old block. [REL018, REL019, REL024, REL025, REL029, REL030, POS001, POS002, POS003, POS004, POS005, POS006]
+- Consequently, the distance from A44 to A29 shrank from 4 event positions (about 93 in 100 traces) to 2 positions (about 92 in 100). [LAG010]
+- A11 and A12 now appear in about 56 in 100 traces versus about 47 in 100 earlier, and when they occur they precede the new activities (reverse order essentially unobserved). [REL001, REL002, REL003, REL004, REL010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was restructured in the later window: the mandatory three-activity block A26, A27, A28 — executed once per case in varying order — was replaced by a single step, one of A19, A20 or A21, chosen per case (roughly 31, 34 and 37 in 100, rarely combined), inserted after A44 (and after A11/A12 when those occur) and before A29 at the same relative position the block previously held, so the segment shrank from three activities to one. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL018, REL019, REL024, REL025, REL029, REL030, LAG010, POS001, POS002, POS003]
+
+The supporting signs are direct and consistent: the participation flips (100 to about 1 in 100, and 0 to about 31–37 in 100) are far too large for sampling variation and rest on 62–74 or 198–200 traces per window; the ordering of the new step between A44 and A29 is observed relationally, not just inferred from positions; and the screening produced 63 qualifying control-flow items where about 0.53 would be expected without a change, so the ensemble cannot be explained by chance. Because the involved activities are near-fully absent in one window each, this is a replacement of one path structure by another, not a mere shift in how often existing paths are taken. [OCC001, OCC004, LAG010, REL018]
+
+Limitations: the activity codes are anonymous, so the evidence cannot rule out that A19, A20 and A21 are the same underlying steps as A26, A27 and A28 under new labels rather than genuinely different work; nor can it show whether the removed block's work moved elsewhere. Since the old block had no fixed internal order, the change is a block replacement rather than a swap or reordering of positions. [REL031, REL032, REL035]
+
+Other differences: A11 and A12 participate more often in the later window (about 56 vs about 47 in 100 traces) [REL001, REL004, REL010]; A29's mean relative position moved slightly earlier (about 0.43 to 0.40) and A44's slightly later (about 0.31 to 0.33), consistent with the shorter segment [POS007, POS008].

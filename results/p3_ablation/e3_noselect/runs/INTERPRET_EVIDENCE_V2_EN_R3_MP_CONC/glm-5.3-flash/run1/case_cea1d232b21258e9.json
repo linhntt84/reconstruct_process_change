@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_cea1d232b21258e9.json",
+  "evidence_sha256": "fbdfc4d01b00c5777f0200b6e0e8714d7235060e60c850f507fcb37269ee6b88",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:30:15.474005+00:00",
+  "finished_at_utc": "2026-11-14T14:32:09.113274+00:00",
+  "latency_seconds": 113.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18345,
+    "prompt_tokens": 68634,
+    "total_tokens": 86979,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16599,
+      "text_tokens": 1746
+    },
+    "cost": 0.0194676
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57989,
+  "text": "### Observed differences\n\n- **A02 is no longer observed at all.** In the earlier window it appeared in about 97 of 200 traces (roughly half), typically about twice within a trace (mean about 1 occurrence per trace overall, with repeats in about 24 in 100 traces), and its outgoing transitions went mostly to A13 (about 42 in 100), A08 (about 17 in 100) and A09 (about 15 in 100). In the later window A02 has zero occurrences, zero outgoing transitions and zero co-occurrence with any other activity. [OCC002, DIR002, POS001, REL001, REL002, REL004, REL005, REL007, REL008]\n\n- **The A03–A14 segment runs far less often.** Earlier, A03 and A14 each appeared in about 97 of 200 traces and almost always together (co-occurrence about 49 in 100 traces; A03 led to A14 in about 74 of 100 of its outgoing transitions). In the later window each appears in only about 37 of 200 traces, still together, with A14 now leading mostly to A13 (about 76 in 100 of its outgoing transitions). [OCC003, OCC014, REL016, DIR003, DIR013, POS002, POS009]\n\n- **A10-centred behaviour roughly doubled and moved earlier.** Earlier, A10 appeared in about 48 of 200 traces around the middle of the trace (mean position about 0.52) and was followed mostly by A02 and A13 (about 37 in 100 of outgoing transitions each). In the later window it appears in about 92 of 200 traces, earlier in the trace (mean position about 0.36), is followed mostly by A07 (about 33 in 100) and A11 (about 25 in 100), and now usually co-occurs with A07, A09 and A13 (about 44–46 in 100 traces, up from about 23–24). A10 self-repetitions within five steps rose from about 16 to about 42 traces. [OCC010, POS006, DIR010, REL020, REL031, REL037, LAG026, LAG029]\n\n- **A08 changed its main successor from A10 to A03:** about 81 in 100 of its outgoing transitions went to A10 earlier, about 69 in 100 go to A03 in the later window, while its own participation slipped from about 48 to about 37 of 200 traces. [OCC008, DIR008]\n\n- **A13 and A09 kept their participation (about 97→92 and 93→90 of 200 traces) but follow different activities.** A13's outgoing shifted from A02 (about 34 in 100) and A03 (about 19 in 100) to A09, A08 and A10 (about 30, 28 and 20 in 100); A09's outgoing shifted from A03 and A14 (about 35 and 25 in 100) to A10 (about 47 in 100). A15's outgoing shifted from A03 (about 60 in 100) to A10 (about 63 in 100). [OCC013, DIR012, DIR009, DIR014]\n\n- **Pairwise gaps within five steps changed broadly around the affected activities** (for example A03→A09 gaps are now concentrated three positions apart versus a spread earlier, and immediate A13→A03 succession is no longer observed), consistent with the rerouting above rather than separate phenomena. [LAG004, LAG043]\n\n- **The remaining activities are essentially stable:** A01, A04, A05, A07, A11 and A12 changed participation by at most a few percentage points, with differences no larger than in about 18–49 of 100 random re-splits. [OCC001, OCC004, OCC005, OCC007, OCC011, OCC012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that execution shifted away from the path segment containing A02, A03 and A14 toward A10-centred behaviour. In the earlier window A02, A03 and A14 almost always ran together (each in about 97 of 200 traces), whereas in the later window A02 is not observed at all, A03 and A14 appear in only about 37 of 200 traces, and A10 — previously tied to A02 and A08 — appears about twice as often (about 92 of 200 traces), earlier in the trace and now typically followed by A07 and A11. [OCC002, OCC003, OCC010, OCC014, REL016, DIR002, DIR003, DIR010, POS001, POS006]\n\nThe supporting signs are direct and consistent: the A02 disappearance is shown by all four indicator families (occurrence, directly-follows, position and relation), and a drop from about 49 in 100 traces to 0 of 200 is not a plausible sampling fluctuation; the A03/A14 decline and the A10 rise each show differences larger than in about 995 of 1,000 random re-splits across occurrence, succession, co-occurrence and position items. [OCC002, DIR002, POS001, REL005, OCC003, OCC010, OCC014, REL016]\n\nLimitations: the evidence shows aggregate participation and succession changes; it cannot show that the same individual cases switched from the A02/A03/A14 segment to A10, and zero participation for A02 means only that it was not observed in the later window. An important competing explanation that cannot be ruled out is a change in the mix of cases entering the process (the two windows may contain different kinds of cases) rather than a modification of the process itself. [OCC002, OCC010]\n\nOther differences: A08 now leads mainly to A03 instead of A10, and A13, A09 and A15 follow different successors than before; the pairwise gap distributions within five steps changed broadly around A03, A08, A10, A13 and A14. These are consistent with the same rerouting but are not part of the main hypothesis as stated. [DIR008, DIR012, DIR009, DIR014, LAG004, LAG043]",
+  "case_id": "case_cea1d232b21258e9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

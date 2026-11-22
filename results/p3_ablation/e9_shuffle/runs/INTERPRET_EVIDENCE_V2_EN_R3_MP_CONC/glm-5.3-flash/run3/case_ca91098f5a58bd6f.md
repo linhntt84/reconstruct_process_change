@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, essentially every trace ran A36, then exactly one of three mutually exclusive activities — A14 in about 35 of 100 traces, A20 in about 35, A15 in about 30 — and that activity then led on to A21; the three never occurred together, A36 preceded whichever was chosen, and each had A21 as its only observed successor [REL001, REL003, REL008, REL006, REL011, REL015, DIR001, DIR002, DIR003, DIR004].
+- In the later window, A14, A15 and A20 are not observed at all: participation fell from about 35/35/30 in 100 traces to 0 of 200, they occupy no trace positions, and their outgoing transitions to A21 are no longer observed [OCC001, OCC002, OCC003, POS001, POS002, POS003, DIR001, DIR002, DIR003].
+- A36 now leads directly to A21: its outgoing transitions, previously split among A20 (about 35%), A14 (about 35%) and A15 (about 30%), all go to A21, and the distance from A36 to A21 shrank from two event positions in essentially all traces to one [DIR004, LAG001].
+- A21 and A26 still occur in every trace in both windows; their earlier co-occurrence with the three alternatives (about 30–35 in 100 traces) has ended, and A21's mean position moved slightly earlier (about 0.39 to 0.37 of the trace) while A36's moved slightly later (about 0.32 to 0.33), consistent with one intermediate step disappearing between them [REL004, REL005, REL009, REL010, REL013, REL014, REL015, POS004, POS005].
+- A19's participation rose from about 48 to about 56 in 100 traces, and its co-occurrence with each of the three alternatives (about 16 in 100 traces before) ended [REL002, REL007, REL012].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the three-way choice between A14, A15 and A20 — of which exactly one executed in every earlier trace, between A36 and A21 — is no longer executed in the later window, so that A36 passes directly to A21; in other words, the choice block was bypassed or its activities removed. This is shown directly by the alternatives' disappearance (0 of 200 traces, against 60–70 of 200 before), the loss of their only outgoing edges to A21, the collapse of A36's successor set to A21 alone, and the A36-to-A21 distance shrinking from two positions to one [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG001].
+
+The pattern is coherent across all 28 qualifying control-flow items, compared with roughly 0.4 items expected by chance without a change, and every item's difference exceeds those seen in about 99.5 of 100 random re-splits of the pooled data, so a chance origin of the ensemble is not plausible [REL001, REL004, POS001, LAG001]. The main limitation: zero participation only shows the activities were not observed in the later sample, so the evidence cannot distinguish the block having been removed from its simply never being triggered in this period (for example through a changed case mix), nor show whether any replacement behaviour involves activities outside those observed [OCC001, DIR004].
+
+Other differences: A19's participation rose from about 48 to about 56 in 100 traces and it no longer co-occurs with A14, A15 or A20; this may be a knock-on effect of the block's disappearance, but the evidence cannot confirm that [REL002, REL007, REL012].

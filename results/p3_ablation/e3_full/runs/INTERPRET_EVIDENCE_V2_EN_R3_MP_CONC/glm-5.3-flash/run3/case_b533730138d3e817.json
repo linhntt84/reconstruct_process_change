@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_b533730138d3e817.json",
+  "evidence_sha256": "c009717529810de9a308700543ca78240e8d547a0e6b3904c6b256cd84d6974e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:52:37.840828+00:00",
+  "finished_at_utc": "2026-11-16T03:53:53.769365+00:00",
+  "latency_seconds": 75.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8694,
+    "prompt_tokens": 18097,
+    "total_tokens": 26791,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7719,
+      "text_tokens": 975
+    },
+    "cost": 0.00706155
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30582,
+  "text": "### Observed differences\n\n- In the earlier window, A01 was not observed at all (0 of 200 traces); in the later window it occurs exactly once in every trace (mean 1.0 occurrences per trace, participation 100%). [OCC001]\n- In the later window, A01 always sits at the end of the trace: its relative position is 1.0 in all 200 traces, with no variation. [POS001]\n- In the earlier window, A06 was the last activity (relative position 1.0 in every trace); in the later window it sits earlier (mean relative position about 0.87), and all of its roughly 200 observed outgoing transitions now lead to A01. [POS006, DIR002]\n- In the earlier window, A02 and A04–A08 each appeared without A01; in the later window, A01 co-occurs with each of them in 100% of traces and always runs after A04–A08. With A02 it runs afterwards in about 49 in 100 traces and is interleaved or repeated in the rest, matching A02's repetitions; the same after-placement holds for A03 in the roughly half of traces where A03 appears. [REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n- The other recurring activities all shifted slightly earlier in relative position (for example A05 from about 0.68 to 0.60, A07 from about 0.84 to 0.73, A04 from about 0.37 to 0.33) — the pattern expected when every trace becomes one event longer; these items describe the same underlying change rather than independent shifts. [POS004, POS005, POS007, POS008]\n- Participation and routing elsewhere are essentially stable: A03 remains optional (present in about 54 in 100 earlier traces and 52 in 100 later ones), A02 still runs about twice per trace, A02's outgoing split between A04 and A03 stays near 50/50 in both windows, and changes in step gaps are small. [OCC002, OCC003, DIR001, REL008, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new final step, A01, was appended to the process: in the later window every case executes A01 exactly once at the very end, directly after A06, which had been the last activity in the earlier window. The support is direct and consistent across indicator families — participation rises from 0 to 200 of 200 traces, A01 holds the last relative position in every later trace, A06's only observed successor in the later window is A01, and every relation item places A01 after A02–A08 — while the slight earlier shift of A04–A08 fits traces becoming one event longer and is part of the same change, not separate evidence. [OCC001, POS001, DIR002, POS004, POS005, POS007, POS008, REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n\nA competing explanation the evidence cannot rule out is that A01 existed before but was simply not executed or not recorded in the earlier window, since zero participation only means \"not observed\"; no screening baseline is present in the evidence, so the judgement rests on the directness of the participation and placement evidence rather than a chance comparison. [OCC001]\n\nOther differences: A03's participation slipped from about 54% to 52% and A02's recurrence from about 54% to 52%, with small shifts in some step-gap distributions; these are minor, consistent with sampling variation between two 200-trace windows, and are not part of the main hypothesis. [OCC002, OCC003, REL008, LAG008]",
+  "case_id": "case_b533730138d3e817",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

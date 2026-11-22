@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, the elapsed time between consecutive completions in the pairs A27–A24, A28–A24, A29–A24 and A30–A24 (A24 is the second activity in each pair) was typically about 1 hour, with means of about 0.95–1.03 hours and medians of about 0.95–1.04 hours. In the later window, these intervals typically take about 2 hours, with means of about 1.98–2.05 hours and medians of about 2.0–2.1 hours — an increase of roughly 1 hour, i.e. the intervals roughly doubled. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]
+- The intervals also became more variable: their standard deviation rose from about 0.15–0.19 hours to about 0.30–0.36 hours. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]
+- Each of the four intervals is observed in a substantial share of traces in both windows — roughly 22 to 30 in 100 traces (44–60 observations out of 200 per window) — so the difference is not driven by a rare variant. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]
+- Each of the four differences is larger than in about 999.5 of 1,000 random re-splits of the pooled data, i.e. unusually large for an unchanged process. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]
+- No control-flow indicator qualified (0 items against about 0.3 expected by chance), so no difference in participation, routing or ordering was detected at the configured thresholds. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a timing change centred on A24: in the later window, the elapsed time from the completion of A27, A28, A29 or A30 to the completion of A24 is about twice as long as before, rising from roughly 1 hour to roughly 2 hours (about +1 hour in every pair). [TWAIT001, TWAIT002, TWAIT003, TWAIT004] The supporting signs are that four time-family items qualified where only about 0.011 would be expected if nothing had changed — a count far beyond what chance produces — that all four point in the same direction with a similar magnitude, that each difference exceeds about 999.5 of 1,000 random re-splits, and that each interval rests on 44–60 observations per window. [TWAIT001, TWAIT002, TWAIT003, TWAIT004, screening] The absence of any control-flow items (0 against about 0.3 expected) is consistent with a pure timing change, which this indicator treats as a hypothesis in its own right. [screening]
+
+Limitations: T_WAIT measures elapsed time between consecutive completion events, not pure waiting or processing time, so the evidence cannot show where the extra hour accrues — before A24, within A24's own execution, or between the two events. [TWAIT001, TWAIT002, TWAIT003, TWAIT004] Because all four pairs share A24 as the later activity, they may reflect one underlying behaviour rather than four independent changes, and the evidence cannot rule out that the predecessors' completions shifted relative to A24 rather than A24 itself taking longer; either would produce the same interval lengthening. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]

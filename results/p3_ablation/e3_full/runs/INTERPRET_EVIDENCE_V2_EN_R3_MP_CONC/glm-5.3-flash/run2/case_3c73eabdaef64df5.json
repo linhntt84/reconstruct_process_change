@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_3c73eabdaef64df5.json",
+  "evidence_sha256": "25f8d6ad119332911033e313e9f9150ae4b892f59194b7aadedbf01821202c04",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:41:07.102539+00:00",
+  "finished_at_utc": "2026-11-16T02:43:15.171268+00:00",
+  "latency_seconds": 128.07,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17486,
+    "prompt_tokens": 14709,
+    "total_tokens": 32195,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16290,
+      "text_tokens": 1196
+    },
+    "cost": 0.010949349999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58727,
+  "text": "### Observed differences\n\n- In the earlier window, A01, A03, A05 and A06 were not observed in any of the 200 traces, while A02, A04 and A07 each occurred exactly once in every trace; in the later window, all seven activities occur exactly once per trace, so participation of the four previously unseen activities rose from 0 to 200 of 200 cases (0% to 100%). [OCC001, OCC002, OCC003, OCC004, POS003, POS006]\n- Routing around A04 changed completely: earlier, every observed outgoing transition of A04 led to A07; in the later window it leads to A03, and the new edges A03→A05, A05→A06, A06→A07 and A07→A01 carry the entire flow of their sources — A07, from which no outgoing transitions had been observed earlier, now leads to A01 in every trace. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Positions shifted consistently with steps being added before and after A07: A04's median position fell from 0.5 to about 0.17 of the trace and A07's from 1.0 (last position) to about 0.83, while the new activities settled at fixed positions (A03 about 0.33, A05 at 0.5, A06 about 0.67, A01 at 1.0). [POS001, POS002, POS003, POS004, POS005, POS006]\n- All 18 monitored activity pairs involving a new activity changed from \"never executed together\" (one or both activities absent) to co-occurrence in 100% of traces with a single fixed order — for example, A02 now always precedes A03, A05, A06 and A01, and A03, A05 and A06 always precede A07. [REL001–REL018]\n- Execution distances grew by three steps: A02 now reaches A07 after 5 steps instead of 2, and A04 after 4 steps instead of 1. [LAG001, LAG002]\n- Taken together, traces ran A02 → A04 → A07 in the earlier window and run A02 → A04 → A03 → A05 → A06 → A07 → A01 in the later window; every reported item shows a difference larger than about 995 in 1,000 random re-splits of the pooled data. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a mandatory block of steps was added to the process: in the later window every execution runs A02 → A04 → A03 → A05 → A06 → A07 → A01, whereas earlier executions ran only A02 → A04 → A07. A03, A05 and A06 were placed between A04 and A07 and A01 was appended after A07, each occurring exactly once per case, while A02, A04 and A07 kept their previous roles and order. The change is shown directly at the insertion point — A04's successor switched from A07 to A03 and the new edges A03→A05, A05→A06, A06→A07 and A07→A01 appeared — and it is consistent across every indicator family: participation of the four activities rose from 0 to 200 of 200 cases, all pair relations settled into one fixed order, positions shifted coherently, and both measured distances grew by exactly three steps. Each item's difference exceeds about 995 in 1,000 random re-splits of the pooled data, and a clean 0-versus-200 split on four activities is not the kind of difference random re-splits of two 200-trace windows typically produce. [OCC001–OCC004, DIR001–DIR005, POS001–POS006, REL001–REL018, LAG001, LAG002]\n\nLimitations: the many indicators largely re-express one underlying difference rather than serving as independent confirmations, and the evidence covers only the seven monitored activities using event positions rather than clock time. The competing explanation the evidence cannot rule out is that this sequence already existed as an extremely rare path before the first window — a variant taken in fewer than about 1–2 in 100 cases would leave 200 earlier traces empty — rather than being newly added, although the complete absence-then-universality pattern across all items makes a sampling artifact unlikely. [OCC001, OCC002, OCC003, OCC004]",
+  "case_id": "case_3c73eabdaef64df5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

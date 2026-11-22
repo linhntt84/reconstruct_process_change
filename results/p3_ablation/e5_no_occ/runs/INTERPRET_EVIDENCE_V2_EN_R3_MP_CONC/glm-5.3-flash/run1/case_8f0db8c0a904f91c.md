@@ -1,0 +1,19 @@
+### Observed differences
+
+- Before, the chain A41 → A19 → A25 → A20 → A26 ran in essentially every trace: A19, A20 and A25 co-occurred in 100 in 100 traces in a fixed order (A41 before A19 in about 98 in 100, A19 before A25 in about 99, A25 before A20 in about 100, A20 before A26 in about 100). In the later window, each of A19, A20 and A25 appears in only about 53 in 100 traces, and the three always appear together or not at all, while A41 and A26 still appear in every trace at essentially the same positions as before. [REL008, REL009, REL011, REL014, REL015, REL019, REL020, POS002, POS003]
+
+- In the later window the block is bypassed in roughly half of the cases: A41's outgoing transitions, which before led to A19 in about 96 in 100 cases (A26 was not observed as a successor in about 200 transitions), now split about 50 in 100 to A19 and about 44 in 100 directly to A26. Accordingly, the distance from A41 to A26, previously 4 steps in 93 in 100 cases, is now 1 step in about 44 in 100 and 4 steps in about 48 in 100. [DIR005, LAG002]
+
+- When the block does run in the later window, its internal behaviour is unchanged: A41 still precedes A19, A25 still precedes A20, and A20 still leads to A26 in about 96 in 100 of its outgoing transitions, A25 to A20 in about 98 in 100. [REL009, REL011, REL014, REL015, DIR003, DIR004]
+
+- A02 changed separately: it appears in about 9 in 100 later traces (about 29 in 100 before), its median relative position moved from near the end of the trace (about 0.97) to mid-trace (about 0.47), its adjacency to A47 nearly disappeared (53 observed A02→A47 pairs before versus 5 after; A47's share of A02's outgoing transitions fell from about 85 in 100 to about 6), and A46 now passes almost always directly to A47 (about 96 in 100, up from about 75, with the A46→A02 share falling from about 25 in 100 to under 1). These later profiles rest on only 17 traces containing A02. [POS001, DIR001, LAG001, DIR006, LAG003, REL004]
+
+- A08's outgoing mix changed completely, but only 4 outgoing transitions were observed before and 15 after — too few to interpret. [DIR002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the sequential block A19 → A25 → A20 between A41 and A26 is skipped in about half of the executions: A41 passes directly to A26 instead of traversing A19, A25 and A20, whose participation falls from every trace to about 53 in 100 while their order and links are preserved whenever they do run. The signs are direct and consistent — the successor profile of A41 shifted from almost exclusively A19 to an even split between A19 and A26, the A41–A26 distance collapsed from 4 steps to 1 step in about 44 in 100 traces, and the relation items show the block's co-occurrence with the rest of the flow dropping from 100 in 100 to about 53 in 100 with unchanged ordering; the 35 qualifying items also far exceed the roughly 0.5 expected by chance for the 102 tested units. The evidence cannot rule out that a different case mix between the two windows, rather than a routing change within the same cases, produces these shares. [DIR005, LAG002, REL008, REL010, REL011, REL014, REL015, REL019]
+
+Other differences: A02 became rare (about 9 in 100 traces, from about 29), moved from the end to the middle of the trace and lost its role feeding A47, while A46 now leads almost always directly and immediately to A47; these changes are documented only on small after-window samples (17 traces with A02, 5 observed A02–A47 pairs), and A08's outgoing profile changed on 4 versus 15 observed transitions, which is too weak to support any conclusion. [POS001, DIR001, LAG001, DIR006, LAG003, DIR002]

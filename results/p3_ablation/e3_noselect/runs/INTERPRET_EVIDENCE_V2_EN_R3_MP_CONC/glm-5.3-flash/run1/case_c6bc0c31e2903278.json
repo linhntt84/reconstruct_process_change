@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c6bc0c31e2903278.json",
+  "evidence_sha256": "fc2a74cec61ff7b63bfad6587616e7ec7a49bdaa81fe496d7883346ad77aee5b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:28:12.093548+00:00",
+  "finished_at_utc": "2026-11-14T14:30:12.108084+00:00",
+  "latency_seconds": 120.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19587,
+    "prompt_tokens": 27556,
+    "total_tokens": 47143,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18048,
+      "text_tokens": 1539
+    },
+    "cost": 0.013926899999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59456,
+  "text": "### Observed differences\n\n- **A03 and A10 went from always running together to being mutually exclusive.** In the earlier window both occurred in every trace and co-occurred in 100% of traces, in both orders and with no fixed order between them (A03 first in about 51 in 100 cases, A10 first in about 49 in 100). In the later window each occurs in about 50 in 100 traces, every trace contains exactly one of the two, and they never share a trace (co-occurrence 100% → 0%). The direct transitions A03→A10 (about 49% of A03's outgoing) and A10→A03 (about 46% of A10's outgoing) are no longer observed. [REL012, OCC003, OCC009, DIR002, DIR008]\n\n- **Sequences around A07 tightened.** A07 still occurs in every trace in both windows, and it co-occurs with whichever of A03/A10 is present. Pairs such as A07→A03 and A07→A10, earlier at distance 1 in roughly half to three-quarters of cases and otherwise at distance 2, are now always at distance 1; A07's median event position moved slightly later (0.4 → 0.5; positions are event ranks, not clock time). [POS003, LAG007, LAG008, LAG001, LAG010, REL009, REL021]\n\n- **A01 disappeared.** Earlier it occurred in about 32 in 100 traces, always as the final event of the trace; in the later window it was not observed at all. [OCC001, POS001, REL003]\n\n- **Two activities are new.** A08, not observed earlier, occurs in about 48 in 100 later traces near the end (median position about 1.0); A09, also not observed earlier, occurs in about 18 in 100 traces early in the case (mean position about 0.22). [OCC007, OCC008, POS004, POS005]\n\n- **A12 became much more common and now alternates with A08.** A12 rose from about 15 in 100 traces (always the very last event) to about 48 in 100 (median position 0.8). A08 and A12 co-occur in about 48 in 100 later traces — essentially whenever either occurs — with A08 first in about 18 and A12 first in about 30; the only outgoing transitions observed from A08 and from A12 each lead to the other. [OCC011, POS007, REL025, DIR006, DIR010]\n\n- **A06 is now routed through A09.** Earlier, about 73% of A06's outgoing transitions went to A07, mostly immediately; later, all observed outgoing transitions of A06 go to A09, and A06 reaches A07 at distance 2 (about 89% of pairs) and A03/A10 at distance 3. A09's outgoing transitions lead to A07 in about 89% of observations. A06's own participation slipped from about 24% to about 18% of traces. [DIR004, DIR007, LAG004, LAG005, LAG003, OCC006]\n\n- **A04 became more frequent.** It rose from about 37 to about 52 in 100 traces and is now the most common successor of both A03 (about 38% of its outgoing) and A10 (about 43%). [OCC004, DIR002, DIR008]\n\n- **Otherwise the process is stable:** A02 (about 28% → 30%) and A05/A11 (about 48% → 53% each) show only small participation changes. [OCC002, OCC005, OCC010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A03 and A10, which were previously executed together in every case in no fixed order, became mutually exclusive alternatives in the later window: each now runs in about half of the cases, the two never run in the same case, and both now typically hand over to A04 rather than to each other. This rests on direct relational evidence — co-occurrence falling from 100% to 0% while single-activity traces rose from 0% to about 50% each — and is consistent across occurrence (participation 100% → 50% for both), direction (the A03↔A10 transitions vanished) and position indicators, with differences larger than in about 199 of 200 random re-splits of unchanged behaviour. The evidence is aggregate and based on two 200-trace samples, so it cannot distinguish a single new exclusive routing from a later window that mixes two variants (one running only A03, one only A10), nor show that every individual case changed. [REL012, OCC003, OCC009, DIR002, DIR008, POS002, POS006]\n\nOther differences:\n- A01, previously the final event in about 32 in 100 traces, was not observed in the later window. [OCC001, POS001]\n- A08 and A09, absent earlier, now appear in about 48% and 18% of traces respectively. [OCC007, OCC008]\n- A12 became roughly three times as common and no longer only terminates traces; it alternates with A08 at the end, each being the other's only observed successor. [OCC011, REL025, DIR006, DIR010]\n- A06's outgoing behaviour was rewired via the new activity A09, which now sits between A06 and A07. [DIR004, LAG004]\n- A04's participation increased from about 37% to about 52% of traces. [OCC004]",
+  "case_id": "case_c6bc0c31e2903278",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

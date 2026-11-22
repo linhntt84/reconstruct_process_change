@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_cbdee968ecbf61a8.json",
+  "evidence_sha256": "af8c7e4bbffb906acb6710f720096a36ceabed0ce7430e66fb7f6a299b2c0f16",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:52:05.497588+00:00",
+  "finished_at_utc": "2026-11-15T01:52:44.943246+00:00",
+  "latency_seconds": 39.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5886,
+    "prompt_tokens": 3009,
+    "total_tokens": 8895,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5287,
+      "text_tokens": 599
+    },
+    "cost": 0.00339435
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22710,
+  "text": "### Observed differences\n\n- The elapsed time from the completion of A26 to the completion of A30 roughly doubled: in the earlier window these consecutive completions were about 0.9 hours apart on average (median ~0.93 h), while in the later window they are about 1.8 hours apart (median ~1.79 h) — an increase of about 0.87 hours, a difference this large arises in fewer than 1 of 1,000 random re-splits of the pooled data. The interval was observed 38 times before and 54 times after (200 traces per window). [TWAIT001]\n- The elapsed time from the completion of A31 to the completion of A30 also roughly doubled: from about 0.21 hours on average (median ~0.17 h) to about 0.40 hours (median ~0.31 h), an increase of about 0.19 hours, likewise larger than in fewer than 1 of 1,000 random re-splits; it was observed 53 times before and 54 times after. [TWAIT002]\n- Both qualifying items are increases and both intervals end at A30, so in the later window the time before A30's completion lengthened relative to both predecessors, A26 and A31. [TWAIT001, TWAIT002]\n- No control-flow differences qualified: 0 of 54 tested units, where about 0.27 would be expected by chance in a stable process. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change around A30: in the later window, the elapsed time between consecutive completions leading into A30 is consistently longer, whether the preceding completion is A26 (about +0.87 hours, from ~0.9 to ~1.8 hours) or A31 (about +0.19 hours, from ~0.2 to ~0.4 hours). [TWAIT001, TWAIT002]\n\nSupporting signs: the time family produced 2 qualifying items where only about 0.009 were expected by chance (19 units tested), far beyond what an unchanged process typically yields; both items agree in direction and share the endpoint A30; both differences exceed essentially all random re-splits; and the control-flow family produced no items (0 vs ~0.27 expected), consistent with a timing change that needs no structural counterpart. [TWAIT001, TWAIT002, screening]\n\nLimitations: T_WAIT measures elapsed time between consecutive completion events, so the evidence cannot distinguish whether A30's own completion was delayed, whether waiting before it grew, or whether other work was interleaved between A26/A31 and A30; and because both items share A30, they may reflect one underlying shift rather than two independent changes. [TWAIT001, TWAIT002]\n\nOther differences: none — no structural, participation or ordering items qualified in either family. [screening]",
+  "case_id": "e4a_cbdee968ecbf61a8",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

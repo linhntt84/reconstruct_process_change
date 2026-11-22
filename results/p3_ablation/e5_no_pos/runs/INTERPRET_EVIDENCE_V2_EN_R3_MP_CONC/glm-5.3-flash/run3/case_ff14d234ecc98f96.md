@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 each ran exactly once in every trace (200 of 200) and always together, with no fixed order among themselves; in the later window they appear in only 1–2 traces each (about 1 in 100). [OCC004, OCC005, OCC006, REL031, REL032, REL035]
+- Three activities that were previously absent — A19, A20 and A21 — now run in about 31%, 34% and 37% of later traces (62, 67 and 74 of 200), at most once per trace, and almost never together (pairwise co-occurrence at most about 2%), so a typical later trace contains exactly one of them. [OCC001, OCC002, OCC003, REL013, REL014, REL020]
+- A44's outgoing transitions changed: earlier they went to A26 (about 33%), A28 (about 32%) and A27 (about 28%); later they go to A21 (about 36%), A20 (about 30%) and A19 (about 27%). [DIR007]
+- The new activities lead to A29 in about 97% of their observed outgoing transitions; earlier, A26, A27 and A28 each preceded A29 in about 98–100% of traces. [DIR001, DIR002, DIR003, REL033, REL036, REL038]
+- The upstream precedence is preserved: A44 precedes A19/A20/A21 in about 30–37% of later traces, matching each activity's participation (earlier A44 preceded the old trio in about 98–100% of traces), and A11/A12, when present, now precede the new activities in about 17–20% of traces (earlier they preceded the old block in about 45–47%). [REL019, REL025, REL030, REL034, REL037, REL039, REL001, REL002, REL003, REL007, REL008, REL009]
+- The distance from A44 to A29 shrank from about 4 event positions (93% of earlier cases) to about 2 positions (92% of later cases), consistent with three consecutive activities being replaced by one. [LAG010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was restructured by substitution: the three activities A26, A27 and A28, which ran together in every earlier trace between A44 and A29 in no fixed order, were replaced by exactly one of three activities — A19, A20 or A21 — chosen per case (about 31%, 34% and 37% of later traces respectively), keeping the same position: after A44, and after A11/A12 when those run, and before A29. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL013, REL018, REL019, REL024, REL025, REL029, REL030, LAG010]
+
+Chance is an unlikely explanation for the pattern as a whole: 62 control-flow items qualified against roughly 0.73 expected for an unchanged process, and the key items are direct and mutually consistent — participation flips observed on full support (200 of 200 down to 1–2 of 200; 0 up to 62–74 of 200), A44's successor set changing with about 200 outgoing transitions behind each window, and the A44-to-A29 distance shrinking from about 4 to about 2 positions with nearly full support in both windows. Limitations: the old activities still occur in about 1 in 100 later traces, so the old behaviour did not vanish completely, and the evidence cannot show whether A19/A20/A21 are genuinely new steps or the old work carried out under different activity labels, since identity beyond observed behaviour is not in the evidence. [OCC004, OCC005, OCC006, DIR007, LAG010]
+
+Other differences: A11 and A12 now occur in about 56–57 of 100 later traces, up from 47 of 100 earlier, a modest rise beyond their shifted precedence; and the 1–2 later traces still containing A26/A27/A28 are too few to characterise their new surroundings. [REL001, REL004, REL007, REL010, DIR004, DIR006]

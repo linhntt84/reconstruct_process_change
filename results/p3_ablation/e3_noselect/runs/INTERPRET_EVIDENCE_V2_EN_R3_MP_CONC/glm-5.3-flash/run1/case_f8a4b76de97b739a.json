@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f8a4b76de97b739a.json",
+  "evidence_sha256": "b895b5ea573873852c10717d80326df63f4f04d676ec0ba481cb025a529cee24",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:09:41.486938+00:00",
+  "finished_at_utc": "2026-11-14T14:11:41.869937+00:00",
+  "latency_seconds": 120.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19285,
+    "prompt_tokens": 83755,
+    "total_tokens": 103040,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17516,
+      "text_tokens": 1769
+    },
+    "cost": 0.02220575
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59231,
+  "text": "### Observed differences\n\n- In the later window, two activities that were absent from the earlier window have become routine steps: A02 now runs in about 87 in 100 traces (about 0.9 executions per trace, never twice in one trace) near the start of the trace (median position about 0.2), and A01 now runs in about 59 in 100 traces (about 1.5 executions per trace, recurring in a substantial share of the traces that contain it) around the middle (median position about 0.5). [OCC001, OCC002, POS001, POS002]\n- A09, which in the earlier window ran in about 54 in 100 traces (about 1.5 executions per trace, around the middle of the trace), is not observed at all in the later window. [OCC008, POS007]\n- The A01 appearance lines up with the A09 disappearance: A16's outgoing transitions moved from A09 (about 45 in 100) to A01 (about 43 in 100), A01 now leads to A03 in about 83 in 100 of its outgoing transitions against A09's earlier about 82 in 100, and at trace level the two never co-occur (earlier, A09 appeared without A01 in about 54 in 100 traces; later, A01 appears without A09 in about 59 in 100). [DIR016, DIR001, DIR009, REL006]\n- A02 now sits between A05/A13 and A12: earlier, about 20 and 21 in 100 of A05's and A13's outgoing transitions went directly to A12 and none went to A02; in the later window those direct A12 transitions are gone, A02 is their main new successor (about 37 and 35 in 100), A02's most common successor is A12 (about 63 in 100), A02 precedes A12 in about 87 in 100 traces, and the A05-to-A12 and A13-to-A12 distances moved from mostly one step (about 45 and 40 in 100) to mostly two steps (about 47 and 56 in 100). [DIR005, DIR013, DIR002, REL017, LAG014, LAG041]\n- A14 and A17 now form a mutual back-and-forth: A14's participation rose from about 39 to 89 in 100 traces and it now recurs within traces (recurrence support about 0.4, previously none); A17 recurs in about 19 in 100 of its traces while its participation stayed near 42 in 100; A14 now leads mostly to A17 (about 68 in 100, previously mainly A08 at about 56 in 100) and A17 leads almost always to A14 (about 89 in 100, previously mainly A08 at about 54 in 100). [OCC013, OCC016, DIR014, DIR017, DIR008]\n- Smaller shifts: A05 participates slightly less often (about 67 to 60 in 100 traces) and A10 slightly more often (about 84 to 91 in 100), and A12 now occurs somewhat earlier within traces (median position about 0.41 to 0.32). [OCC004, OCC009, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reconfiguration in which two activities entered the flow and one left it. A01 appears to have taken over the mid-process position A09 used to hold between A16 and A03 — A09 fell from about 54 in 100 traces to unobserved, A16 now hands over to A01 (about 43 in 100 of its outgoing transitions) where it previously handed over to A09 (about 45 in 100), and A01 leads to A03 about 83 in 100 of the time, mirroring A09's earlier about 82 in 100 — while A02 appears as a new early step that now sits between A05/A13 and A12, which reach A12 one step later than before and no longer reach it directly. [OCC001, OCC002, OCC008, DIR016, DIR001, DIR009, DIR005, DIR013, REL017, LAG014, LAG041]\n\nThe hypothesis is supported directly and consistently: the appearance and disappearance are unambiguous (0 of 200 traces before versus 117 and 173 of 200 after, and 108 of 200 down to 0 for A09), the rewiring is read off the observed successor profiles and orderings rather than inferred from frequencies alone, and the occurrence, direction, position, relation and lag indicators all describe the same coherent pattern, with nearly all qualifying items showing differences larger than 199 of 200 random re-splits. [OCC001, OCC002, OCC008, DIR016, DIR005, POS001, POS002, REL006, REL017]\n\nLimitations: the activity codes are anonymous, so the evidence cannot distinguish a genuine replacement and insertion from the earlier A09 step and A05/A13-to-A12 link being relabelled as A01 and A02; and the many relation items involving A01 or A02 largely restate the same trace-level appearance, so they are not independent confirmations. [REL001, REL012, REL016, REL017]\n\nOther differences: A14 and A17 began to alternate with repetition — A14's participation rose from about 39 to 89 in 100 traces and it now recurs (recurrence support about 0.4, previously none), A17 recurs in about 19 in 100 of its traces, and the pair forms a loop (A14 to A17 in about 68 in 100 of its outgoing transitions, A17 to A14 in about 89 in 100) where previously both led mainly to A08; the before-side of this routing change rests on comparatively few observations. Smaller shifts concern A05's participation (down from about 67 to 60 in 100) and A10's (up from about 84 to 91 in 100). [OCC013, OCC016, DIR014, DIR017, DIR008, OCC004, OCC009]",
+  "case_id": "case_f8a4b76de97b739a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

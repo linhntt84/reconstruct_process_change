@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_bc761aefe120e7d4.json",
+  "evidence_sha256": "13710499e8f21da40e449b411021d2a6bdd0666f18a48042d0f8c5f4d825d4ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:08:25.775909+00:00",
+  "finished_at_utc": "2026-11-14T13:09:19.021124+00:00",
+  "latency_seconds": 53.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8580,
+    "prompt_tokens": 6504,
+    "total_tokens": 15084,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7663,
+      "text_tokens": 917
+    },
+    "cost": 0.0052656
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30611,
+  "text": "### Observed differences\n\n- A30, A31 and A36 each occurred about 3.4–3.5 times per trace in the earlier window, appearing in every trace and repeating in about 75 in 100 traces; in the later window each occurs about once per trace (about 1.05), still in every trace, with repeats in only about 1–2 in 100 traces. [OCC001, OCC002, OCC003]\n- The loop-back from A36 to A30 largely disappeared: earlier, about 70 in 100 of A36's outgoing transitions returned to A30 and about 29 in 100 went forward to A25; in the later window about 93 in 100 go to A25 and only about 4 in 100 return to A30. [DIR003]\n- The chain itself is stable: A30 led to A31 in about 99 in 100 of its transitions and still does in about 97 in 100; A31 led to A36 in about 99 in 100 and still does in about 98 in 100. The outgoing transitions behind these profiles fell from about 690 to about 210 for both sources, matching the drop in occurrences. [DIR001, DIR002]\n- The relation between A30 and A36 changed from repeated/interleaved to a single ordered pass: earlier the two were interleaved or repeated in 75 in 100 traces (A30 strictly before A36 in 25 in 100); in the later window A30 comes before A36 in 98 in 100 traces with interleaving in about 2 in 100, while the two still co-occur in every trace in both windows. [REL001]\n- The positional spread of A30 and A36 narrowed (standard deviation from about 0.12 to about 0.07 and 0.06 respectively) with medians roughly unchanged, consistent with fewer repetitions rather than a move to a different position. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeating cycle A30 → A31 → A36 → A30 stopped repeating: in the earlier window the cycle ran about three to four times per case before exiting through A36 to A25, whereas in the later window the chain A30 → A31 → A36 runs essentially once per case and then continues to A25. The signs are direct and consistent — repetition counts for all three activities fell from about 3.4 to about 1.05 per trace while participation stayed at every trace, the loop-back edge A36 → A30 collapsed from about 70 to about 4 in 100 of A36's transitions while the exit to A25 rose from about 29 to about 93 in 100, and the A30/A36 relation changed from mostly interleaved-or-repeated to a single A30-before-A36 pass; every item's difference also exceeds about 995 in 1000 random re-splits. Nine control-flow items qualified where fewer than one (0.44) would be expected without change, so the set as a whole is unlikely for an unchanged process. Limitations: the occurrence, direction and relation items largely describe one underlying difference (the loop no longer repeats) and are therefore not independent confirmations, and the evidence cannot distinguish whether the loop-back was structurally removed or is now only rarely taken — it still occurs in about 4 in 100 of A36's transitions, so a residual loop or a shifted mix of pre-existing variants cannot be ruled out. [OCC001, OCC002, OCC003, DIR003, REL001]\n\nOther differences: DIR001 and DIR002 show a handful of very weak new edges (each about 0.5 in 100 of the source's transitions, e.g. from A30 to A19, A36 or A11, and from A31 to A08, A15, A41, A23 or A24) replacing similarly weak earlier edges; with only about 210 outgoing transitions per source in the later window, these are minor and may reflect sampling variation. [DIR001, DIR002]",
+  "case_id": "case_bc761aefe120e7d4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

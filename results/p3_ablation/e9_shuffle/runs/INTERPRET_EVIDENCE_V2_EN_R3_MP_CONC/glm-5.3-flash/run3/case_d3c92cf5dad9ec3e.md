@@ -1,0 +1,23 @@
+### Observed differences
+
+- The block of alternative activities A19, A21 and A24 (each present in roughly 30–40 of 100 traces) moved from the start to the end of the trace. In the earlier window it followed A40, whose outgoing transitions went about 28% to A19, 33% to A21 and 34% to A24, and each alternative led directly to A25 (97–98% of its outgoing transitions; A24 and A21 each immediately preceded A25 in about 70 of 200 traces). In the later window, A19, A21 and A24 follow A29 instead (about 38% A24, 32% A19, 29% A21 of A29's outgoing transitions) and lead to A30 (95–98% of their transitions), with A29 immediately before A21 in 58 of 200 traces. [DIR008, DIR006, DIR001, DIR003, DIR007, LAG001, LAG003, LAG004]
+
+- The trio A20, A22 and A23 (all three in every trace in both windows, in a varying internal order) moved the opposite way. Earlier it ran after A29 (A29's outgoing about 37% A20, 33% A23, 30% A22) at a mean relative position of about 0.63 and exited to A30, which A29 reached four steps later in about 93 of 100 traces. In the later window it runs directly after A40 (about 34% A22, 31% A20, 28% A23 of A40's outgoing transitions; each A40→trio-member pair occurs within five steps in essentially all 200 traces), sits at a mean relative position of about 0.38, and exits to A25 (about 27–37% of each member's transitions). [DIR007, DIR005, DIR002, DIR004, DIR008, POS002, POS004, POS005, LAG005, LAG006, LAG002, LAG007, LAG008]
+
+- Every one of the 21 observed activity pairs reversed its execution order. For example, A25 preceded A22 in about 99 of 100 co-occurring traces before, while A22 precedes A25 in about 99 of 100 after; A29 preceded A23 before and follows it after; A19 preceded A29 in about 30 of 100 traces before and follows it in about 33 of 100 after; A24 preceded A25 in about 37 of 100 traces before and follows it in about 38 of 100 after. [REL015, REL018, REL019, REL005, REL020, REL008, REL009, REL021]
+
+- A25 and A29 kept their relative order but each shifted slightly later: A25's mean relative position rose from about 0.38 to about 0.45 and A29's from about 0.57 to about 0.64, with both present in every trace in both windows. [POS007, POS008]
+
+- Participation was essentially stable: A20, A22, A23, A25 and A29 appear in all traces in both windows, and the alternatives' trace shares moved only slightly (A19 in 60 of 200 traces before vs 66 after, A21 70 vs 59, A24 73 vs 79). [POS002, POS004, POS005, POS007, POS008, POS001, POS003, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a specific reordering: the alternative block (one of A19, A21, A24 per trace) and the trio block (A20, A22, A23 executed together in a varying order) exchanged their places around the A25–A29 segment. Before, a trace ran A40 → one of A19/A21/A24 → A25 → A29 → A20/A22/A23 in varying order → A30; in the later window it runs A40 → A20/A22/A23 in varying order → A25 → A29 → one of A19/A21/A24 → A30. The distance changes match this exactly: A40→A25 lengthened from two steps (about 95 of 100 pairs) to four–five steps, A29→A30 shortened from four steps (about 93 of 100) to two steps (about 99 of 100), the A24→A25 and A21→A25 adjacencies of about 70 traces each fell to 1–2 traces, and A29→A21 at distance one appeared in 58 traces. [DIR006, DIR001, DIR003, DIR007, DIR008, LAG001, LAG003, LAG004, LAG005, LAG009, REL015, REL019, REL005, REL020]
+
+This goes well beyond chance: 46 items qualified against roughly 0.69 expected for an unchanged process, and each item's difference exceeds about 995 of 1000 random re-splits of the pooled data. The reordering is shown directly by relational, distance and positional evidence rather than inferred from frequencies, and since participation is stable in both windows, it is a reordering of existing behaviour rather than paths being added, removed or taken with different frequencies. [screening, POS001, POS003, POS006]
+
+Limitation: the windows show where activities sat relative to one another but cannot distinguish a single coordinated exchange from two independent block relocations, which would look identical in the data, and they cannot indicate what produced the difference. [LAG005, LAG009, POS007, POS008]
+
+Other differences: the choice among the three alternatives shifted slightly (A21 was executed in 70 of 200 traces before vs 59 after, A24 in 73 vs 79, A19 in 60 vs 66), small residual transitions of roughly 1–2% per source activity persist in both windows, and about 8 of 100 A40→A25 pairs in the later window sit five steps apart rather than four; these are not part of the main hypothesis and the small shifts may reflect sampling. [POS001, POS003, POS006, DIR006, DIR001, DIR003, LAG009]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_ca2ce64391868894.json",
+  "evidence_sha256": "3c86733260c15538ab23a5dab65a272f668170fa0d5a8a2c4c66fe284036770e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:12:23.165572+00:00",
+  "finished_at_utc": "2026-11-15T03:14:09.185829+00:00",
+  "latency_seconds": 106.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15247,
+    "prompt_tokens": 18698,
+    "total_tokens": 33945,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13817,
+      "text_tokens": 1430
+    },
+    "cost": 0.0104282
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44330,
+  "text": "### Observed differences\n\n- In the earlier window, A01, A02, A03, A05 and A07 each ran in all 200 traces, A06 and A08 in about 56 in 100 traces, and A04 was never observed. In the later window, A01, A02 and A03 are not observed at all (0 of 200 traces), A04 runs in every trace, and A06/A08 appear in about 50 in 100 traces. [OCC001, OCC002, OCC003, OCC004, POS005, REL020, REL022]\n- A03 used to repeat: about 2.1 occurrences per trace, appearing at least twice in roughly 56 in 100 traces; in the later window it is absent. [OCC003]\n- The closing sequence changed: before, A05 was always followed by A02, A02 always by A01, and A01 was always the final event; in the later window, A05 is always followed by A04, and A04 is always the final event (relative position 1.0 in every trace, the position A01 used to hold). [DIR001, DIR003, POS001, POS004, REL019]\n- A08's routing changed: before, A08 always led to A03, which led on to A06 (about 53 in 100 of A03's outgoing transitions) or A07 (about 47 in 100); in the later window, A08 leads directly to A06 (about 46 in 100) or A07 (about 54 in 100). [DIR002, DIR004]\n- Pair relations confirm this: every pair among A01, A02, A03 and their pairs with A05/A07 went from always co-occurring (e.g., A05 before A01 in all traces) to never co-occurring, while A04 went from never co-occurring with A05/A07 to always following them. [REL004, REL006, REL010, REL012, REL015, REL017, REL019, REL021]\n- A06 and A07 now sit earlier within traces (A06 mean relative position about 0.27 before vs 0.18 after; A07 about 0.48 vs 0.30) and step gaps shrank: A06→A05 moved from a fixed gap of 4 to gaps of 3 or 5, A06→A07 and A08→A05 from a fixed gap of 3 to gaps of 2 or 4, A08→A07 from about 2 to about 1, and the self-repeats A06→A06 / A08→A08 from gap 3 to gap 2. [POS005, POS006, LAG001, LAG002, LAG003, LAG004, LAG006, LAG007]\n- For scale: 43 control-flow items qualified, where about 0.24 would be expected by chance if nothing had changed. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reorganisation of the closing part of the process. In the earlier window, traces ran a repeating A03 block (fed by A08, routing to A06/A07) and ended with A05 → A02 → A01; in the later window, A01, A02 and A03 are no longer executed, the new activity A04 terminates every trace directly after A05, and A08 routes directly to A06/A07 instead of through A03. [OCC001, OCC002, OCC003, OCC004, DIR003, DIR004, POS004, REL019]\n\nThe supporting signs are direct and consistent: participation flips are complete (200 of 200 traces to 0 of 200, and the reverse for A04), the successor rewiring is directly observed and complete (A05: A02 → A04; A08: A03 → A06/A07), A04 occupies exactly the terminal position A01 held, and 43 qualifying items against roughly 0.24 expected without change cannot be explained by random re-splitting of a stable process. [OCC001, OCC002, OCC003, OCC004, DIR003, DIR004, POS001, POS004, screening]\n\nLimitations: position and lag indicators use event positions, so the earlier positions and shorter gaps of A06/A07 are best read as consequences of the rewiring, not independent moves; and because the activity codes are anonymous, the evidence cannot distinguish genuine removal and addition from a relabelling in which A04 took over the closing role. [POS004, POS005, POS006]\n\nA competing explanation the evidence cannot fully rule out is that the two windows sample different mixes of process variants; however, an all-or-nothing participation flip across 200-trace windows is not what random sampling of an unchanged process produces. [OCC001, OCC002, OCC003, OCC004]\n\nOther differences: A06 and A08 now appear in slightly fewer traces (about 56 in 100 before vs about 50 in 100 after) and repeat somewhat less often (traces containing A06→A06 or A08→A08 within five steps fell from 57 to 46); together with the position and gap shifts of A06/A07, these look like downstream effects of the same rewiring rather than independent changes. [POS005, REL020, REL022, LAG002, LAG007]",
+  "case_id": "case_ca2ce64391868894",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

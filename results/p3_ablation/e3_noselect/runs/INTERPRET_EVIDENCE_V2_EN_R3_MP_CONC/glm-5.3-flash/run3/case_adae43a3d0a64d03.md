@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A05 ran exactly once in every case (200 of 200 traces, always at the same relative position, halfway through the case sequence); in the later window, A05 is not observed in any case. [OCC003, POS003]
+- In the earlier window, A01 was not observed at all; in the later window, A01 runs exactly once in every case (100% participation) at the same relative mid-sequence position A05 used to occupy (normalized position 0.5 with no spread in both windows). [OCC001, POS001, POS003]
+- The successor relation is preserved: earlier, A05's only observed outgoing transition led to A03 (100% of its outgoing edges); in the later window, A01's only observed outgoing transition leads to A03 (100%), and A01 precedes A03 in every case, just as A05 did. [DIR001, DIR003, REL002, REL010]
+- The predecessors redirected their flow from A05 to A01 with almost unchanged shares: A02's outgoing transitions moved from about 72% to A05 / 28% to A06 to about 75% to A01 / 25% to A06; A07's from about 71% to A05 to about 66% to A01; A06's from about 29% to A05 to about 30% to A01. [DIR002, DIR004, DIR005]
+- The relational pattern mirrors the earlier one: A06 co-occurred with A05 in every case and always preceded it; now A06 co-occurs with A01 in every case and always precedes it. A02 and A07 each precede A01 in about 50 in 100 cases, matching the roughly 47 and 53 in 100 cases in which they used to precede A05. [REL004, REL012, REL001, REL005, REL007, REL013]
+- The rest of the control flow is stable: A06 and A03 still appear in every case in both windows, the choice between the alternatives A02 and A07 shifted only from about 47/53 to 50/50, and the position lags from A02, A06 and A07 to A03 are nearly unchanged. [POS004, REL009, LAG001, LAG002, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 has taken over the position in the flow that A05 held before: in the later window A01 executes once per case at exactly the relative position A05 used to occupy, A05 is no longer observed, A01's only observed successor is A03 (previously A05's), and all three former predecessors of A05 — A02, A06 and A07 — now lead to A01 with nearly the same transition shares, while order relations and position lags among the remaining activities are preserved. [OCC001, OCC003, POS001, POS003, DIR001, DIR002, DIR004, DIR005, REL002, REL004, REL010, REL012, LAG001, LAG002]
+
+Supporting signs: 18 of the 31 evidence items reach the maximum empirical strength (about 0.995, meaning larger differences arise in fewer than 1 in 200 random re-splits of unchanged behaviour), and they all describe one coherent substitution across participation, position, direction and relation indicators rather than isolated fluctuations; the remaining items concern shares that stayed essentially flat. [OCC001, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS003, REL001, REL002, REL003, REL004, REL005, REL007, REL010, REL012, REL013]
+
+Limitations: the windows are finite samples, and the evidence cannot distinguish a genuine takeover by a new activity from a relabelling of the same step in the event log, since both would leave identical control-flow signatures; no chance-expectation baseline was included in the evidence, so the judgement rests on the directness and consistency of the items rather than on a count-versus-chance comparison. [OCC001, OCC003, POS001, POS003]
+
+Other differences: the split between the alternatives A02 and A07 moved from about 47/53 to 50/50, and A07's position lag to A03 shifted slightly (about 71% to 66% at distance 2); none of these differences is unusual for random re-splits of an unchanged process (empirical strengths about 0.32–0.50), so they are consistent with sampling variation. [OCC002, OCC004, POS005, LAG003, REL009]

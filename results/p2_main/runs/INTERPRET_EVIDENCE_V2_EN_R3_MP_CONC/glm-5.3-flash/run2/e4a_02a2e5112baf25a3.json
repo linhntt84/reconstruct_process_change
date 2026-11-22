@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_02a2e5112baf25a3.json",
+  "evidence_sha256": "17506bf019ad3480547e4634a70afdd69fee951b6c764cb8aa89fa4b9c35959f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:57:37.003675+00:00",
+  "finished_at_utc": "2026-11-15T01:58:51.914170+00:00",
+  "latency_seconds": 74.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10450,
+    "prompt_tokens": 2499,
+    "total_tokens": 12949,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9746,
+      "text_tokens": 704
+    },
+    "cost": 0.00559985
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41180,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A02 and A07 roughly halved: in the earlier window these gaps averaged about 0.86 hours (median about 0.88; middle half between about 0.78 and 0.93 hours), while in the later window they averaged about 0.43 hours (median about 0.44; middle half between about 0.37 and 0.48 hours) — a drop of about 0.43 hours, roughly 50 in 100 of the earlier level [TWAIT001].\n- The shift is a near-uniform downward move of the whole distribution: every quartile fell by about 0.41–0.44 hours and the spread narrowed slightly (standard deviation about 0.09 to 0.07 hours); the two gap distributions do not overlap, since the slowest quarter of later gaps (up to about 0.48 hours) is still faster than the fastest quarter of earlier gaps (from about 0.78 hours) [TWAIT001].\n- How often the A02–A07 succession occurs barely changed: 32 such gaps were observed before and 35 after (roughly 16 vs 18 in 100 traces), so the difference lies in the duration of this relation, not in how often it is executed [TWAIT001].\n- Screening context: this is the only qualifying item. The time family produced 1 item against about 0.009 expected by chance (roughly a hundredfold its chance expectation), while the control-flow family produced none against about 0.27 expected [TWAIT001].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a timing change: in the later window, the elapsed time between consecutive completions of A02 and A07 is about half of what it was in the earlier window (mean about 0.86 → 0.43 hours; median about 0.88 → 0.44 hours). The support is direct — the indicator measures exactly this elapsed time — and consistent, since all distribution components (mean, median, quartiles) moved down by roughly the same 0.4 hours while the pair's occurrence rate stayed stable (32 vs 35 gaps). The difference is also unusual for sampling noise: only about 1 in 2,000 random re-splits of the pooled traces produced a gap this large, and the time family's single item is about a hundred times its chance expectation, so the evidence as a whole is not what an unchanged process typically yields. Limitations: this indicator measures elapsed time between consecutive completion events, not pure waiting or processing time, so the evidence does not show where within the interval the half hour was saved; a timing change in steps upstream of A02 or A07 that compresses this gap would look identical here, and the evidence cannot localise the reduction further [TWAIT001].\n\nOther differences: none were flagged — no control-flow item qualified (0 against about 0.27 expected by chance), so no structural, participation or ordering differences reached the configured thresholds [TWAIT001].",
+  "case_id": "e4a_02a2e5112baf25a3",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

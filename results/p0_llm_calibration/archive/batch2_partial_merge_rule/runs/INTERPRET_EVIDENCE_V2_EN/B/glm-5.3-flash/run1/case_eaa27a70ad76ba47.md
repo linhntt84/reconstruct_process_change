@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the later window, the chain A15 → A16 → A17 is executed far less often: A16 and A17 each appear in about 21 in 100 traces, down from about 78 in 100 earlier. The two activities still occur only as a pair, with A16 before A17, and they drop out together — both are absent in about 79 in 100 later traces, up from about 22 in 100. [OCC001, OCC002, REL005]
+- Mirroring this, A18 and A19 rise from about 22 in 100 traces to about 79 in 100, likewise always occurring together with A18 before A19. [OCC003, OCC004, REL012]
+- The shift is visible directly in A15's routing: among A15's observed outgoing transitions, the share leading to A16 fell from about 78% to about 21%, while the share leading to A18 rose from about 22% to about 79% (200 outgoing transitions in each window). [DIR001]
+- Pairwise relations with A15 confirm the swap: A15 occurs before A16 in about 78 in 100 earlier traces but only about 21 in 100 later traces, while A15 before A18 rises from about 22 to about 79 in 100. [REL001, REL002, REL003, REL004]
+- A23 appears in essentially every trace in both windows; its co-occurrence moves from A16/A17 (about 78 in 100 earlier) to A18/A19 (about 79 in 100 later), which mirrors the branch switch rather than indicating an independent change in A23. [REL008, REL011, REL013, REL014]
+- All of these shifts have the same magnitude — roughly a 57-point swing on participation and co-occurrence shares — and each is larger than about 995 of 1,000 random re-splits of the pooled traces. [OCC001, OCC003, DIR001, REL005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the branch choice after A15 flipped: in the later window, roughly four in five cases leaving A15 continue to A18 and then A19, whereas in the earlier window roughly four in five continued to A16 and then A17. This is supported directly by the redistribution of A15's outgoing transitions [DIR001], consistently by the mirrored participation changes of the two activity pairs [OCC001, OCC002, OCC003, OCC004], and relationally by the co-occurrence and ordering patterns showing A15 → A16 → A17 giving way to A15 → A18 → A19 [REL001, REL003, REL005, REL012]. Although the 19 evidence items collapse into this single underlying difference, that one distinct difference exceeds the roughly 0.32 items expected by chance across the 64 tested units, and the size and consistency of the shift (about 57 points, above ~995 of 1,000 reference comparisons) make pure sampling noise an unlikely explanation [OCC001, DIR001].
+
+The evidence cannot distinguish a change in the branch probabilities at A15 from a replacement or relabelling of the A16–A17 block by the A18–A19 block, because each pair always occurs together in a fixed order and the two pairs never mix within a trace [REL005, REL012]. The old branch still runs in about 21 in 100 later traces, and with finite windows of 200 traces each, differences in variant frequencies between samples can occur without a change — though a swing of this size is far outside what random re-splits typically produce [OCC001, REL005].

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_474c0d1524b73d8f.json",
+  "evidence_sha256": "438301ce105d269bf60a8f7bf9332deebb313411cf078eebf60094a5cd4f3319",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:51:31.866702+00:00",
+  "finished_at_utc": "2026-11-15T01:52:35.928975+00:00",
+  "latency_seconds": 64.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9261,
+    "prompt_tokens": 3107,
+    "total_tokens": 12368,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8589,
+      "text_tokens": 672
+    },
+    "cost": 0.00509655
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35651,
+  "text": "### Observed differences\n\n- In the later window, the elapsed time between consecutive completions of A11 and then A12 roughly doubled: the mean rose from about 0.9 to about 1.8 hours and the median from about 0.9 to about 1.9 hours, and the whole distribution shifted upward (middle 50% from roughly 0.75–0.95 hours to roughly 1.6–2.0 hours). The number of such consecutive pairs stayed at 45 in both windows, so the pair's occurrence frequency did not change — only the time between the two completions did. [TWAIT001]\n- The outgoing routing of A31 and A32 was redistributed. Before, about 64 in 100 of A31's observed outgoing transitions went to A28 and about 36 to A32, while from A32 about 64 in 100 went to A31 and about 36 to A28. In the later window these shares flipped: from A31 about 38 in 100 went to A28 and about 62 to A32, and from A32 about 38 went to A31 and about 62 to A28. Both transitions remain in use in both windows; the two DIR items are mirror images of this single redistribution, not independent findings. [DIR001, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a change in timing: in the later window, the elapsed time between the completion of A11 and the completion of A12 is about twice as long as in the earlier window (mean about 0.9 → 1.8 hours; median about 0.9 → 1.9 hours; quartile range about 0.75–0.95 → 1.6–2.0 hours), while the pair occurs in the same number of traces in both windows. This is a timing hypothesis in its own right and needs no structural counterpart. It is the only time item, where about 0.006 were expected by chance for the 13 time units tested, so chance alone cannot account for it; the shift is consistent across mean, median, both quartiles and spread, and it exceeds all but about 1 in 2000 random re-splits of the pooled traces. Limitations: the indicator measures elapsed time between consecutive completion events, so the evidence shows the interval grew but not whether the extra hour reflects waiting, service or a handover, and a change in the mix of cases containing this A11→A12 pair (about 45 of 200 traces per window) cannot be ruled out. [TWAIT001]\n\nOther differences: the routing redistribution around A31, A32 and A28 described above, in which the dominant successor of each activity flipped (a dominant route A32 → A31 → A28 before versus A31 → A32 → A28 after, in terms of transition shares). With two control-flow items against about 0.27 expected without change, this is the range an unchanged process typically produces, and without relational evidence a swap of the dominant order cannot be separated from a change in how often the A31–A32 pair repeats before exiting to A28; it is therefore reported as an observed difference in the sample, not as an established structural change. [DIR001, DIR002]",
+  "case_id": "e4a_474c0d1524b73d8f",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

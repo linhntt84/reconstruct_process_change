@@ -1,0 +1,25 @@
+### Observed differences
+
+- In the earlier window, A03 ran in about 29 in 100 traces (about 1.2 executions per trace on average) and A11 in about 20 in 100; in the later window, neither appears in any of the 200 traces. Their outgoing transitions vanished with them: A03 led to A11 in about 44 in 100 of its outgoing transitions (plus A19 about 28, A12 about 22, A06 about 6), and A11 led to A03 about 97 in 100 times. [OCC003, OCC009, DIR003, DIR006, POS001, POS003]
+
+- In the later window, the related group A06, A12 and A19 runs in fewer traces and earlier in each trace: each of the three fell from about 29 in 100 traces to about 21 (57 to 43 of 200), mean occurrences per trace from about 0.6 to about 0.4, and mean event position moved earlier in the trace (A12 from about 0.33 to 0.23, A19 from 0.32 to 0.22, A06 from 0.19 to 0.16). [OCC005, OCC010, OCC016, POS002, POS004, POS005]
+
+- Before, A03 co-occurred with A06, A12 or A19 in about 29 in 100 traces, and A11 with them in about 20 in 100; in the later window these pairs never co-occur and only the surviving partner appears (for example A06 without A03 in about 21 in 100 traces). Pairs within the surviving group still co-occur, but in about 21 in 100 traces instead of about 29. [REL001, REL002, REL003, REL004, REL005, REL008, REL009, REL006, REL007, REL010]
+
+- Routing reorganised where the vanished pair used to sit: A06's outgoing transitions went to A03 about 86 in 100 times before and now go mostly to A19 (about 58) and A12 (about 37); A02 no longer transitions to A03 (about 9 in 100 of its outgoing before) and now sends more to A04 (about 57 vs 46) and less to A06 (about 39 vs 45). [DIR005, DIR002]
+
+- Gaps between the surviving activities shortened: A06→A12 and A06→A19 now happen mostly within one to two steps of A06 (before, spread over two to five steps), and self-repetitions come sooner (A12→A12 five steps apart fell from about 54 in 100 to about 11, A19→A19 from about 50 to about 7, A06→A06 from about 66 to about 3). The A12↔A19 pair moved slightly the other way, with one-step succession falling from about 36–38 in 100 to about 19–29; the self-pair lags rest on only about 20 observations per window. [LAG002, LAG003, LAG005, LAG009, LAG001, LAG004, LAG006, LAG008]
+
+- Small shifts elsewhere: A01's split between A07 and A08 moved about five points toward A08, A02 repeats slightly less (about 1.1 vs 0.9 executions per trace at unchanged participation of about 52 in 100), and the remaining occurrence and routing differences are a few percentage points with low empirical strength. [DIR001, OCC002, OCC007, OCC011, OCC012, OCC013, OCC014, OCC015, DIR004, DIR008, DIR009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the process no longer executes A03 and A11 — previously a tightly coupled block (A11 led to A03 in about 97 in 100 of its outgoing transitions, and both ran together with A06, A12 and A19) — while the remaining A06/A12/A19 group is executed in fewer traces (about 21 vs 29 in 100), earlier in each trace, and with shorter gaps between its activities. Because A03 and A11 are entirely unobserved rather than merely less frequent, and A06's exits reorganised around their absence, this points to part of the process being skipped or no longer executed, not to existing alternatives being taken with different frequencies. [OCC003, OCC009, DIR003, DIR006, DIR005, OCC005, OCC010, OCC016, POS002, POS004, POS005, LAG002, LAG003]
+
+The signs are direct and consistent across all five control-flow indicator families: occurrence falls from 57 and 39 traces to 0 of 200, outgoing profiles and position supports become empty, co-occurrence drops to zero, and the core differences exceed essentially all random re-splits of the pooled data (empirical strength about 0.995); the rerouting of A02 and A06 and the shortened lags point the same way. [OCC003, OCC009, DIR003, DIR006, POS001, POS003, REL001, REL002, DIR002, DIR005, LAG002, LAG003]
+
+Competing explanation the evidence cannot rule out: A03 and A11 might still execute but go unsampled, since zero participation strictly means only "not observed" — although with 200 traces per window and earlier participation of about 29% and 20% this is implausible. The moderate drop of A06/A12/A19 (57 to 43 traces) could also partly reflect window sampling, and the occurrence, position and relation items partly restate the same trace behaviour, so they are not independent confirmations. [OCC003, OCC009, OCC005, OCC010, OCC016]
+
+Other differences: A02 repeats less and routes more of its transitions to A04; A01's outgoing split shifted a few points toward A08; A09, A13, A14, A15, A17 and A18 show small occurrence changes with low empirical strength. [OCC002, DIR002, DIR001, OCC007, OCC011, OCC012, OCC013, OCC014, OCC015, DIR004, DIR008, DIR009]

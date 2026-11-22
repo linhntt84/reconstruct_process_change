@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_441a64956934ea2d.json",
+  "evidence_sha256": "960be5a4612db29b188874c3011d629cba31fa8074ae3633f04c63c2738530eb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:22:03.804669+00:00",
+  "finished_at_utc": "2026-11-15T08:24:00.445221+00:00",
+  "latency_seconds": 116.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16137,
+    "prompt_tokens": 45182,
+    "total_tokens": 61319,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14348,
+      "text_tokens": 1789
+    },
+    "cost": 0.0148458
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50326,
+  "text": "### Observed differences\n\n- In the later window, A01 is much less prominent: it appears in about 28 in 100 traces (previously about 66 in 100), with about 0.6 occurrences per trace (previously about 2.2) and within-trace repetition in about 18 in 100 traces (previously about 45 in 100); it also sits much later in the trace (mean relative position about 0.77, previously about 0.42). [OCC001, POS001]\n- A13 moved the opposite way: it now appears in about 61 in 100 traces (previously about 23 in 100), with about 2.1 occurrences per trace (previously about 0.4), repeats within a trace in about 44 in 100 traces (previously never observed repeating), and now sits early in the trace (mean relative position about 0.35, previously about 0.77). [OCC013, POS007]\n- The two activities exchanged their successor relations almost one-for-one. Earlier, A01's outgoing transitions went mainly to A08 (about 48 in 100), A15 (about 26) and A07 (about 26), while A13 led exclusively to A06; in the later window A01 leads almost exclusively to A06, and A13 leads to A08 (about 45 in 100), A15 (about 28) and A07 (about 28). [DIR001, DIR010]\n- Incoming edges were rewired to match: A02, A04, A07 and A15, which earlier sent about 24, 27, 51 and 49 in 100 of their outgoing transitions to A01, now send about 20, 27, 50 and 50 in 100 to A13; A06, which earlier led to A13 (about 47 in 100), now leads to A01 (about 54 in 100). [DIR002, DIR003, DIR006, DIR011, DIR005]\n- Co-occurrence relations flipped: A01 and A08 ran together in about 66 in 100 traces earlier versus about 18 in 100 later (A08 now usually runs without A01, about 44 in 100), while A08 and A13 now run together in about 61 in 100 traces versus about 17 earlier; likewise, A01 typically appeared without A13 earlier (about 49 in 100 traces), whereas now A13 typically appears without A01 (about 44 in 100). [REL005, REL026, REL006]\n- Short-range lags mirror this: A02→A01 and A07→A01 within five steps became rare and late (observed pairs falling from 68 to 11 and from 86 to 15, remaining lags at 4–5 steps instead of 1–2), while A02→A13 and A07→A13 became frequent and early (19 to 58 and 11 to 77 observed pairs, lags now mostly 1–2 steps); the same mirrored pattern holds for A04 and A15 towards A01/A13. [LAG003, LAG020, LAG009, LAG026, LAG011, LAG017, LAG037, LAG043]\n- Downstream of these activities, A07 and A15 shifted slightly earlier in the trace (mean relative position about 0.44 to 0.37) and A08 likewise (about 0.55 to 0.49). [POS005, POS008, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 and A13 exchanged their places in the process: in the later window A13 behaves as A01 did earlier — frequent, often repeated, positioned early, followed mainly by A08, A15 and A07, and fed by A02, A04, A06, A07 and A15 — while A01 behaves as A13 did earlier — rare, positioned late, and leading to A06. [OCC001, OCC013, POS001, POS007, DIR001, DIR010, DIR002, DIR003, DIR005, DIR006, DIR011]\n\nThe support is direct and consistent: the successor profiles are exchanged exactly, every observed predecessor edge to A01 was redirected to A13 (and A06's edge from A13 to A01), the position distributions moved in opposite directions, and the co-occurrence and lag patterns flipped accordingly; all of these key items rank at the top of the reference comparisons (empirical strength about 0.995, i.e. larger than the differences seen in roughly 199 of 200 random re-splits). [DIR001, DIR010, DIR002, DIR003, DIR005, DIR006, DIR011, POS001, POS007, REL005, REL026, LAG003, LAG009, LAG020, LAG026]\n\nThis edge-for-edge exchange argues against the main competing explanation that A01 was merely skipped more often while A13 was independently executed more often, because the wiring moved as a unit rather than fading separately; however, the evidence cannot verify per-trace correspondence between the two windows, the exchange is not perfectly symmetric (A13's new level of about 2.1 occurrences per trace is close to but not identical with A01's earlier 2.2, and A01's new level of about 0.6 is somewhat above A13's earlier 0.4), and no chance-expectation baseline for the number of qualifying items was provided — so a replacement with small additional adjustments, rather than a strict exchange, cannot be ruled out. [DIR001, DIR002, DIR003, DIR005, DIR006, DIR010, DIR011, OCC001, OCC013]\n\nOther differences: A02, A04 and A05 repeat less often per trace in the later window (means about 1.1 to 0.9 for A02 and A04, and about 2.3 to 1.9 for A05) with stable trace participation; A09 and A12 also repeat less (means about 2.4 to 1.9 and 1.2 to 0.9) while appearing in slightly more traces; A06 occurs slightly more often (mean about 0.9 to 1.1). These shifts are consistent with side effects of the exchange but are not directly explained by it. [OCC002, OCC004, OCC005, OCC009, OCC012, OCC006]",
+  "case_id": "case_441a64956934ea2d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

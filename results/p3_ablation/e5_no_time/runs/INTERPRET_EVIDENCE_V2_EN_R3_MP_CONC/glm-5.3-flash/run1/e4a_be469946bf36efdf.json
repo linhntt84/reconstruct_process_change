@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_be469946bf36efdf.json",
+  "evidence_sha256": "adf1a7a84386d265b78b7dc065270237e9806dcee12afad56a28e86b0ddb5c35",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:23:09.386535+00:00",
+  "finished_at_utc": "2026-11-14T13:24:20.051512+00:00",
+  "latency_seconds": 70.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11583,
+    "prompt_tokens": 34188,
+    "total_tokens": 45771,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10394,
+      "text_tokens": 1189
+    },
+    "cost": 0.0109197
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37699,
+  "text": "### Observed differences\n\n- The two five-activity blocks swapped how often they run. In the earlier window, A16–A20 each appeared in about 85 in 100 traces, while A21–A25 each appeared in about 16 in 100; in the later window, A21–A25 each appear in about 82 in 100 traces and A16–A20 in about 18 in 100. Each activity occurs at most once per case in both windows, and none disappeared: each still runs in roughly one case in six in the window where it is rare. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- A15, which occurs in every trace in both windows and precedes the branch entry in both, reversed its dominant next step: earlier, about 85 in 100 of its observed outgoing transitions went to A19 and about 15 in 100 to A24; in the later window, about 82 in 100 go to A24 and about 18 in 100 to A19. [DIR001, REL001, REL006]\n- The two blocks remained mutually exclusive: cross-block pairs such as A16 with A21 or A20 with A25 never occurred in the same trace, either earlier or later. [REL015, REL024, REL032, REL039, REL045]\n- Each block kept its internal shape. The A16–A20 block ran as A19 first, then A16, A17 and A18 in no fixed order, then A20 — both earlier and in the later window's ~18 in 100 traces where it still runs. The A21–A25 block ran as A24 first, then A21, A22 and A23 in no fixed order, then A25 — in the earlier window's ~16 in 100 traces and as the common path later. [REL011, REL013, REL014, REL030, REL031, REL038, REL051, REL053, REL054, REL056, REL060, REL063]\n- A29 ran in essentially every trace in both windows and kept a similar relation to the active block's middle activities (preceded by them in about half of cases, interleaved in about a third). [REL020, REL055]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports that the two mutually exclusive branches available after A15 exchanged how often they are taken: earlier, roughly 85 in 100 cases ran the branch A19 → A16/A17/A18 (no fixed order) → A20 and roughly 15 in 100 ran A24 → A21/A22/A23 (no fixed order) → A25; in the later window the shares reversed to roughly 18 in 100 and 82 in 100. The flip is shown directly in A15's own outgoing-transition shares and consistently across the evidence: all ten activities moved by the same ~66 percentage points in opposite directions, the branches stayed mutually exclusive, and each branch's internal ordering is unchanged between windows. The volume of qualifying evidence also far exceeds what an unchanged process produces — 79 control-flow items qualified where fewer than 1 (0.84) was expected by chance — and every item's difference exceeded those seen in about 995 of 1000 random re-splits of the pooled traces. [DIR001, OCC001, OCC006, REL013, REL015, REL053, REL063]\n\nBecause the two branches never occur in the same trace, the evidence cannot distinguish a changed routing decision at A15 from a changed mix of cases that simply take different branches; the rarer branch in each window (about 31–36 of 200 traces) is also estimated less precisely. [REL015, OCC006]\n\nOther differences: A22's outgoing transitions redistributed — earlier about 58 in 100 went to A21 (A23 ~29, A25 ~13), in the later window they are more even (A23 ~36, A25 ~33, A21 ~31); the earlier profile rests on only 31 traces. The event-position gap from A18 to A16 shifted from mostly one step (about 72 in 100) to often two steps (about 53 in 100), and from A18 to A17 from mixed to mostly one step (about 82 in 100); both rest on only 17 later observations and concern positions, not clock time. [DIR002, LAG001, LAG002]",
+  "case_id": "e4a_be469946bf36efdf",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "ac13c6af389623a79340048daf7d33c793d74bb8ed7e0c68282c0437acf25580",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:35:29.927875+00:00",
+  "finished_at_utc": "2026-11-16T03:38:42.638127+00:00",
+  "latency_seconds": 192.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27089,
+    "prompt_tokens": 10578,
+    "total_tokens": 37667,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25707,
+      "text_tokens": 1382
+    },
+    "cost": 0.0151312
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 81617,
+  "text": "### Observed differences\n\n- In the earlier window the process ran as one fixed pass: A02 and A04 each occurred exactly once in all 200 traces (mean 1.0 occurrence, 100% participation, no repetitions) at constant relative positions (A02 at 0.5, A04 at 0.75, A05 at 0.25 of the trace, zero spread). [OCC001, OCC002, POS001, POS002, POS003]\n- Ordering was equally rigid: A02's only observed successor was A04 and A04's only observed successor was A03, and every tracked activity pair co-occurred in one direction only (for example A05 before A02, A02 before A03, A04 before A03). [DIR001, DIR002, REL003, REL005, REL006]\n- In the later window A02 repeats: mean occurrences rose from 1.0 to about 2.1 per trace while participation stayed at 100%, and in about 50 in 100 traces A02 occurs at least twice; its previously fixed one-way relations with A01, A03 and A05 are now roughly half interleaved-or-repeated. [OCC001, REL001, REL003, REL005]\n- A04 became optional and repeatable: it now appears in only about 50 in 100 traces (99 of 200, down from all 200), occurs at least twice in about 28 in 100 traces (mean about 1.1 per trace), and its pairs with A01, A02, A03 and A05 dropped from always co-occurring to co-occurring in about half the traces, with the partner appearing alone in the other half. [OCC002, REL002, REL004, REL006, REL007]\n- Routing was rewired: A02's outgoing transitions, previously all to A04, now go about 53% to A04 and 47% directly to A03, and A04 now always leads back to A02 where it previously always led to A03. [DIR001, DIR002]\n- Positions and gaps moved with the repetition: A02's relative position spread from a constant 0.5 to a mean of about 0.59 with spread (std about 0.21), A04 when present sits earlier (mean 0.75 → 0.56), the A02→A03 gap is now most often one step (about 40 in 100 observed pairs, versus always two before), A04→A03 is no longer adjacent (gaps of two or four steps), and the constant A01→A03 gap of four became three (about 70%) or five (about 30%). [POS001, POS002, LAG002, LAG004, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 and A04 now form a repeating, optional cycle. In the earlier window every trace executed the fixed sequence A01 → A05 → A02 → A04 → A03 exactly once; in the later window A02 can hand over to A04, A04 returns to A02, and this cycle can run several times before A02 exits directly to A03, while in about half the traces the cycle is not entered at all, so A04 is skipped and A02 occurs once. The rewiring is observed directly in the successors (A04 → A02 in 100% of A04's outgoing transitions, A02 → A03 newly appearing for about 47% of A02's), the occurrence changes are direct (A02 mean 1.0 → about 2.1 with repetitions in half the traces; A04 participation 100% → about 50%), and the relational, positional and gap items all change exactly as this structure predicts, each with empirical strength near the top of the reference scale (about 995 in 1000 reference comparisons showing a smaller difference). [OCC001, OCC002, DIR001, DIR002, REL004, LAG004, LAG006]\n\nLimitations: the indicators cannot show how many loop iterations are possible, and an important competing reading — that the later window mixes two trace populations, one still single-pass and one looping, rather than one process with a skip-or-repeat choice — cannot be ruled out; either way, the two windows behave differently. The evidence file also provides no screening baseline, so the number of qualifying items cannot be checked against a chance expectation; the judgement rests on the directness and consistency of the control-flow items. [OCC002, DIR001, DIR002]\n\nOther differences: A05's relative position shows only a small spread (median 0.25 → 0.33, std about 0.10) with its mean essentially unchanged (0.25 → 0.24); this reads as a side effect of the changed trace lengths rather than an independent shift of A05. [POS003]",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

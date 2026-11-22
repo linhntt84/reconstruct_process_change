@@ -1,0 +1,20 @@
+### Observed differences
+
+- A27 was executed exactly once in every case in the earlier window (200 of 200 traces); in the later window it runs in only about 52 in 100 cases (103 of 200), still after A26 and before A28 whenever it appears. [OCC003, REL017, REL021]
+- A32, A33 and A38 were not observed at all earlier (0 of 200 traces each); in the later window each runs in about half of the cases (100, 99 and 98 of 200), around the middle of the trace (median relative position about 0.5). [OCC004, OCC005, OCC006, POS003, POS004, POS005]
+- The three new activities appear together and instead of A27: they co-occur with one another in about 49 in 100 later cases, but with A27 in about 1 in 100 or fewer; later cases split into roughly equal groups running A27 only or the trio only. [OCC003, REL022, REL023, REL024, REL028, REL029, REL030]
+- The trio sits in the stretch where A27 used to run: the gap from A26 to A28 was two steps in about 90 in 100 earlier cases, while in the later window about half remain at two steps and about 46 in 100 stretch to four, with A26 preceding the trio and the trio preceding A28. [LAG003, REL018, REL025]
+- The trio has no fixed internal order: A32 precedes A33 in about 23 in 100 later cases and follows it in about 26, and the other two pairs are balanced similarly. [REL028, REL029, REL030]
+- A04 ran in about 19 in 100 cases earlier (38 of 200), around the middle of the trace; it runs in about 60 in 100 later (120 of 200), near the start (median relative position about 0.17 versus about 0.55), typically immediately after A14 (one-step gap in about 96 in 100 observed pairs versus about 57 in 100 earlier, the earlier figure resting on only 14 pair observations). [OCC001, POS001, LAG001, REL001]
+- A06 fell from about 20 in 100 cases (39 of 200) to about 4 in 100 (8 of 200). [OCC002]
+- A14, A15, A26 and A28 continue to appear in every case in both windows. [REL009, REL013, REL017, REL021]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A27 changed from a mandatory step into one of two alternatives: in the later window, about half of the cases still run A27 between A26 and A28 as before, while the other half skip A27 and instead run the previously unobserved activities A32, A33 and A38 together, in no fixed order, in that same stretch between A26 and A28. The support is direct and consistent across indicators: participation is large and well-observed on both sides (A27 from 200 to 103 of 200 traces; the trio from 0 to about 100 each), the exclusivity between A27 and the trio is near-total, and the relation and lag indicators place the trio exactly between A26 and A28. [OCC003, OCC004, OCC005, OCC006, REL022, REL023, REL024, LAG003, REL018, REL025]
+
+Screening flagged 44 items where fewer than 1 (about 0.49) would qualify by chance in an unchanged process, so the volume of flagged behaviour cannot be explained by random re-splitting, and the key proportions rest on roughly 100 traces per window rather than rare variants. The evidence cannot show whether the trio takes over A27's function or is merely an alternative branch that happens to exclude it, cannot distinguish concurrent execution from simply unfixed ordering within the trio, and cannot rule out that the two windows capture a shifted mix of pre-existing case types rather than a modified flow. [OCC003, REL022, REL028, LAG003]
+
+Other differences: A04 is executed far more often and earlier — from about 19 in 100 cases around the middle of the trace to about 60 in 100 near the start, typically immediately after A14, which pushes the usual A14-to-A15 gap from one to about two steps — and A06 nearly disappears. A04's increase appears independent of the A27-versus-trio choice, since A04 co-occurs with A27 and with the trio at similar rates (about 30 in 100 each). [OCC001, OCC002, POS001, LAG001, LAG002, REL004, REL006]

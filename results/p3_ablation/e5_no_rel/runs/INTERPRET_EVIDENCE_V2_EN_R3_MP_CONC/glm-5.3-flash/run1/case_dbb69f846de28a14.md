@@ -1,0 +1,20 @@
+### Observed differences
+
+- Before, the outgoing transitions of A25 split almost evenly among A42 (about 34%), A36 (about 32%) and A37 (about 30%); in the later window, about 97 in 100 of A25's outgoing transitions go directly to A28, and the A25→A28 pair moved from usually four event positions apart (91% of cases) to one position apart (98%). [DIR001, LAG001]
+- The branch A36/A37/A42 changed its exit: before, each of A36, A37 and A42 sent roughly 31–35% of its outgoing transitions to A28; in the later window that edge carries only about 1%, while a new edge to A31 carries about 26–35%, with transitions among the three activities themselves staying near 30% each. The A37→A31 pair, seen in only 1 of about 200 earlier traces, appears in about 93 of 200 later traces. [DIR003, DIR004, DIR005, LAG008]
+- A26 now feeds the branch: before, 99% of A26's outgoing transitions went to A27; in the later window A27 still receives about 52%, while A37, A42 and A36 together receive about 44% (roughly 16%, 16% and 13%). Correspondingly, the A26→A31 distance, previously almost always two positions, now splits between two (about 53%) and four (about 43%) positions. [DIR002, LAG005]
+- Participation dropped for the affected activities: A27, A36, A37 and A42 each ran in every trace before but in only about 47–54 in 100 traces in the later window, with mean occurrences per trace falling from about 1.0 to about 0.5. [OCC001, OCC002, OCC003, OCC004]
+- Positions moved consistently with this rewiring: A36, A37 and A42 shifted later in the case (mean relative position about 0.40 to about 0.57), while A28 moved earlier (about 0.46 to 0.39) and A26 moved earlier (about 0.60 to 0.54). [POS006, POS007, POS008, POS004, POS002]
+- Several lag results on the old connections (A25→A36, A25→A37, A25→A42, A36→A28, A37→A28, A42→A28) rest on only 1–2 after-window observations and are not relied on here. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the three-activity branch A36/A37/A42 was re-wired rather than merely taken less often: in the earlier window A25 routed cases into the branch (about a third each to A36, A37, A42) and the branch converged on A28, while A26 led to A27; in the later window A25 connects directly to A28, bypassing the branch, the branch is entered from A26 as an alternative to A27, and it exits to A31 instead of A28. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG008]
+
+The participation and position changes match this rewiring but are largely facets of the same underlying difference rather than independent confirmations: A27 and the three branch activities fell from running in every trace to about half of the traces, the branch activities now sit later in the case, and A28 and A26 sit earlier. All 26 qualifying items far exceed the 0.62 expected without a change, so chance alone cannot explain the collection, but most items describe this one rewiring. [OCC001, OCC002, OCC003, OCC004, POS002, POS004, POS006, POS007, POS008]
+
+Limitations: the evidence cannot establish that the A25 shortcut and the re-attachment of the branch to A26 and A31 are one coordinated modification rather than two simultaneous rewirings, and because A27's outgoing transitions are not reported, it remains open whether the branch is entered directly from A26 or via A27. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG008]
+
+Other differences: A25 sits slightly later and A31 slightly earlier in the later window (mean relative positions about 0.34 to 0.37 and 0.65 to 0.63), and a few new but rare outgoing edges appear (for example A36→A13 and A36→A35, A37→A09/A10/A12, A42→A07 and A42→A45), each carrying only about 1–2% of the source activity's transitions. [POS001, POS005, DIR003, DIR004, DIR005]

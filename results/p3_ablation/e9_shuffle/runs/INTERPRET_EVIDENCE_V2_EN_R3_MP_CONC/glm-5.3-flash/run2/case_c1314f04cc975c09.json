@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_c1314f04cc975c09.json",
+  "evidence_sha256": "5d258d21d757c6223c7a2b885c0a27937d8a9609d2f70c228850bb80d86e90be",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:02:30.693165+00:00",
+  "finished_at_utc": "2026-11-15T04:03:43.896051+00:00",
+  "latency_seconds": 73.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9952,
+    "prompt_tokens": 4840,
+    "total_tokens": 14792,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9146,
+      "text_tokens": 806
+    },
+    "cost": 0.005702
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36630,
+  "text": "### Observed differences\n\n- In the earlier window, A25, A26 and A31 each occurred exactly once per trace (100% of traces, no repeats). In the later window, each of the three occurs about 3.5 times per trace on average, and about 68 in 100 traces contain repeats of them. [OCC001, OCC002, OCC003]\n- In the earlier window, all of A31's outgoing transitions led to A20. In the later window, about 71 in 100 of A31's outgoing transitions lead back to A25, with the remaining about 29 in 100 still going to A20 (based on 697 observed outgoing transitions). [DIR001]\n- In the earlier window, A25 and A31 always occurred together and always in the fixed order A25 before A31. In the later window they still co-occur in every trace, but a clean A25-before-A31 pass remains in only about 32 in 100 traces, while about 68 in 100 show interleaved or repeated execution. [REL001]\n- In the earlier window, A31 followed A25 exactly two event positions later in essentially all traces. In the later window, this tight two-step gap accounts for only about 12 in 100 observations, with about 5 in 100 at a distance of five positions. [LAG001]\n- The mean relative positions of A25 (about 0.41 → 0.44) and A31 (about 0.48 → 0.48) are nearly unchanged between the windows, but their spread roughly doubled (standard deviation about 0.06 → 0.12 for both), consistent with repetition rather than relocation. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment containing A25, A26 and A31, which previously ran exactly once per trace in a fixed order, now repeats within single cases: A31 routes back to A25 in about 71 in 100 of its outgoing transitions (earlier it always continued to A20), so that A25, A26 and A31 each run about 3.5 times per trace instead of once, with repeats in about 68 in 100 traces. [OCC001, OCC002, OCC003, DIR001, REL001]\n\nThe repetition is measured directly on activities present in every trace in both windows, so this is not an activity appearing or disappearing; the routing change at A31 is observed directly and supplies the back edge the repetition requires, with the residual traffic to A20 consistent with the cycle eventually exiting to the original successor; and the order statistics match the repetition statistics almost exactly (fixed order in about 32 in 100 traces, interleaved/repeated in about 68 in 100). With 8 qualifying control-flow items against fewer than 1 expected by chance among 60 tested units, the ensemble is unlikely if nothing had changed, and the unchanged mean positions with doubled spread argue against the activities having merely moved. [OCC001, OCC002, OCC003, DIR001, REL001, LAG001, POS001, POS002]\n\nLimitations: the routing evidence covers only A31's outgoing transitions and is expressed per transition rather than per case, so an additional upstream cycle re-entering the segment before A25 cannot be fully excluded, although the dominant A31-to-A25 edge already accounts for the repetition; A26's place inside the repeated segment is inferred from its identical occurrence profile, since no routing evidence for A25 or A26 is present; and the three occurrence and two position items describe the same traces, so they corroborate the loop without being independent confirmations. [DIR001, OCC001]",
+  "case_id": "case_c1314f04cc975c09",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

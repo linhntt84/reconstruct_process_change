@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_224cf4a477bfaa2d.json",
+  "evidence_sha256": "d6748fca223966a778b74f7b772db6e9bb687b23bcfca5236c06f67670314ac3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:45:50.063135+00:00",
+  "finished_at_utc": "2026-11-15T04:48:41.384139+00:00",
+  "latency_seconds": 171.32,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25105,
+    "prompt_tokens": 16086,
+    "total_tokens": 41191,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23532,
+      "text_tokens": 1573
+    },
+    "cost": 0.0149654
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 74688,
+  "text": "### Observed differences\n\n- In the earlier window, A01 was not observed in any of the 200 traces; in the later window it occurs exactly once in every trace (participation 0% to 100%, mean 1 occurrence per trace) and early in each case (median relative position about 0.2). [OCC001, POS001]\n- Routing now passes through A01. Earlier, A02 led directly to A04 in about 87 of 100 of its observed transitions, with small shares to A07, A10, A05 and A03; in the later window A02 leads to A01 in about 54 of 100 and to A04 in about 44 of 100. A04's successors also shifted: A01 is now its most frequent successor (about 39 of 100, previously unobserved), while A03 fell from about 20 to 8 and A05 from about 15 to 10 of 100. [DIR002, DIR003, REL001]\n- In the later window, A01 passes work on to the existing branches: about 47 of 100 of its observed transitions go to A04, about 17 to A07, about 16 to A03 and about 10 to A10; earlier it had no observed outgoing transitions. A01 now co-occurs with A02, A03, A04, A06, A07 and A10 in every trace (before: never), A02 runs before A01 in all traces, and A01 precedes A03, A06, A07 and A10 in essentially all traces containing them; with A04 the order is mixed (A01 first in about 55 of 100 traces, A04 first in about 45). [DIR001, REL001, REL002, REL003, REL004, REL005, REL007]\n- A09 is no longer observed: it closed about 45 of 100 earlier traces (90 of 200), always at the end of the case (mean relative position about 1.0) and after A03, A04, A06 or A10; in the later window it is not observed at all, and A06, previously at about 0.80, now sits at the end (about 0.99). Participation of the remaining branch activities stayed roughly stable (A03, A06 and A10 in about 45 of 100 traces in both windows; A07 about 55 before, 53 after). [OCC002, POS006, POS004, POS002, POS005, POS007, REL009, REL010, REL011, REL013]\n- Downstream activities shifted about one step later. Steps from A02 grew: A02→A04 from 1 step in about 87 of 100 observations to a mix of 1 (44) and 2 (47); A02→A03 from mostly 2–3 steps to 3–4; A02→A07 from 2 (67) to 3 (64); A02→A10 from 2–3 to 3–4; A02→A06 from 4 (99 of 100) to 5 (97 of 100). Mean relative positions moved later for A03 (about 0.51 to 0.68), A10 (about 0.46 to 0.68), A07 (about 0.45 to 0.52) and A04 (about 0.24 to 0.31). Steps from A04 also grew for some pairs (A04→A03 from 1–2 to mostly 2–3; A04→A06 from 3 to 3–4; A04→A10 from 1–2 to 1–3), consistent with A01 sometimes sitting between A04 and its successors. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, POS002, POS003, POS005, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new activity, A01, was added to every case between A02 and the branching point — A02 now hands over to A01 in about half of its transitions and A04 routes on to A01 in about 39 of 100 — from where work flows into the pre-existing branches (A04, A07, A03, A10, A05), while the closing activity A09, which previously ended about 45 of 100 cases after A06, A03, A04 or A10, no longer runs, leaving A06 as the final step in those cases. The support is direct and consistent: A01 went from 0 to 200 of 200 traces and A09 from 90 to 0 of 200; the successor profiles of A02 and A04 shifted onto A01; and the roughly one-step increases in distances from A02 and in the branch activities' positions match a single added step, while the branch activities' own participation stayed stable. The volume of qualifying evidence (34 control-flow items against roughly 0.28 expected for an unchanged process) rules out sampling variation as an explanation of the pattern as a whole. [OCC001, OCC002, POS001, POS006, DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, LAG004, LAG005]\n\nThe evidence cannot show whether A01 was genuinely new or had previously occurred below detection in the 200 earlier traces, nor whether the addition of A01 and the disappearance of A09 are one coordinated restructuring or two independent changes; A01's exact slot also varies, preceding A04 in about 55 of 100 later traces and following it in about 45, so the insertion point is only approximate. [OCC001, REL003]",
+  "case_id": "case_224cf4a477bfaa2d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

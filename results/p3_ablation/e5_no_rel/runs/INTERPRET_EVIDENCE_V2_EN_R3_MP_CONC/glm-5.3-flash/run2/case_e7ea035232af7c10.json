@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_e7ea035232af7c10.json",
+  "evidence_sha256": "a7a50af3d656f444a54cf599257789c1d405f64e257be41d8cc61fc33ff6592a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:40:31.503925+00:00",
+  "finished_at_utc": "2026-11-15T06:43:36.991066+00:00",
+  "latency_seconds": 185.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27743,
+    "prompt_tokens": 11795,
+    "total_tokens": 39538,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26103,
+      "text_tokens": 1640
+    },
+    "cost": 0.01564075
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 90255,
+  "text": "### Observed differences\n\n- The three activities A36, A37 and A42 became mandatory and moved earlier: before, each appeared in about 46 of 100 traces (once per trace); in the later window each appears in about 199 of 200 traces, and their mean event position moved from about 0.59 to about 0.40 of the trace. [OCC002, OCC003, OCC004, POS006, POS007, POS008]\n- A25 no longer leads directly to A28: before, 98 of 100 outgoing transitions from A25 went to A28; in the later window they split almost equally among A36 (35), A42 (32) and A37 (32), with A28 nearly unobserved. [DIR001]\n- The distance from A25 to A28 stretched accordingly: in the later window A28 follows four steps after A25 in 97 of 100 cases, instead of immediately (lag 1 in 98.5 of 100 before) — the gap expected if three activities were inserted between them. [LAG001]\n- The three activities now continue into A28 instead of A31: before, A31 received about 29–36 of 100 outgoing transitions of each of A36, A37 and A42; in the later window A31 has disappeared from their profiles while A28 appears with about 30–36 of 100. A37→A31 and A42→A31 within five steps fell from 92 traces to 1, and the pairs A25→A36 and A36→A28, each seen within five steps in only one before-window trace, now occur in about 199 traces at lags of one to three. [DIR003, DIR004, DIR005, LAG005, LAG006, LAG002, LAG004]\n- A26 now routes almost exclusively to A27 (98.5 of 100 outgoing transitions, versus 53.5 before, when the rest went to A36/A37/A42), and A26→A31 tightened to a uniform two-step distance (96.5 of 100 at lag 2, versus a 54/44 split between lags 2 and 4 before). [DIR002, LAG003]\n- In the later window A27 also appears in every trace (about 54 of 100 before) and occurs slightly later (mean position 0.59 → 0.63). [OCC001, POS003]\n- Smaller shifts: A26 (0.54→0.60), A28 (0.39→0.46) and A31 (0.63→0.66) occur somewhat later, A25 (0.36→0.35) slightly earlier. [POS001, POS002, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, A36, A37 and A42 run as a mandatory block between A25 and A28, in varying order, and no longer continue into A31; before, A25 led straight to A28, while the same three activities ran in only about 46 of 100 traces, late in the case, each followed by A31. As the counterpart of this move, A26 — which previously split between A27 and the three activities — now routes almost exclusively to A27, which also became mandatory, and A31 is reached two steps after A26. [DIR001, LAG001, DIR003, DIR004, DIR005, LAG005, LAG006, OCC002, OCC003, OCC004, POS006, POS007, POS008, DIR002, LAG003, OCC001]\n\nThe rewiring is shown directly by the successor changes at A25 and at the three activities and by the A25→A28 distance stretching from lag 1 to lag 4 — the gap three inserted activities would leave — and the before-window near-complementarity of A27 (54 of 100 traces) and the three activities (46 of 100) after A26 fits one rearrangement rather than unrelated changes. With 23 qualified control-flow items against roughly 0.59 expected for an unchanged process, chance sampling cannot account for the evidence as a whole, and every item's difference exceeds those of about 199 of 200 random re-splits. [DIR001, LAG001, DIR003, DIR004, DIR005, OCC001, OCC002, OCC003, OCC004, DIR002]\n\nLimitations: the qualified items largely reflect this one underlying rearrangement rather than independent confirmations; whether A31 now directly follows A27 is inferred (from A26→A31 at lag 2 together with A26→A27 in 98.5 of 100 transitions) because no successor profile for A27 or A31 is included, so an alternative route to A31 cannot be excluded; LAG002 and LAG004 each rest on a single before-window observation; and positions and lags are event counts, not clock times. [LAG002, LAG003, LAG004, DIR002]\n\nOther differences: only small position drifts — A26, A28 and A31 somewhat later, A25 slightly earlier — which are consistent with the repositioning above rather than separate changes. [POS001, POS002, POS004, POS005]",
+  "case_id": "case_e7ea035232af7c10",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

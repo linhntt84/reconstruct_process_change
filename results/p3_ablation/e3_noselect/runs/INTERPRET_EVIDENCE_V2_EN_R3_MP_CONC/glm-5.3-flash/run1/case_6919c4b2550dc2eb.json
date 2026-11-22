@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_6919c4b2550dc2eb.json",
+  "evidence_sha256": "b3934bf0a5c579d00214321f71ae51d10729df72f8f9c52a83e5760413f589c7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:21:16.113347+00:00",
+  "finished_at_utc": "2026-11-14T14:22:16.975754+00:00",
+  "latency_seconds": 60.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9731,
+    "prompt_tokens": 13250,
+    "total_tokens": 22981,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8875,
+      "text_tokens": 856
+    },
+    "cost": 0.006853
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29997,
+  "text": "### Observed differences\n\n- Two activities, A01 and A05, are absent from the earlier window (0 of 200 traces) but occur exactly once in every trace of the later window (200 of 200); neither is repeated within a trace. [OCC001, OCC002]\n- In the later window, A01 sits between the existing A02/A03/A04 block and A06: A01 precedes A06 in all traces, A03 precedes A01 in about 87 in 100 traces, and A04 precedes A01 in about 69 in 100. [REL004, REL001, REL002]\n- A05 acts as a new closing step: A06 precedes A05 in all traces (and A01 precedes A05 in all traces), and A05 occupies the final position in at least 75 in 100 later traces. [REL010, REL003, POS004]\n- A06 changed from usually terminal to always continued: before, it had an observed outgoing transition in only 59 of 200 traces (roughly 3 in 10, mostly looping back to A02); after, all 200 traces show an outgoing transition, and about 84 in 100 of these lead to A05. [DIR006, POS005]\n- Existing activities moved apart in step distance, consistent with an insertion rather than a swap: A04 followed by A06 within one step fell from about 74 in 100 cases to about 7 in 100, and A03 followed by A06 within one step fell from about 40 to about 9 in 100. [LAG004, LAG002]\n- Smaller shifts: A02's outgoing transitions redistributed slightly (somewhat more towards A01, A05 and A06, less towards A03), and A03 precedes A04 in about 67 in 100 later traces versus about 78 in 100 earlier ones. [DIR002, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two activities were added to the process as fixed steps: A01 was inserted before A06, after the A02/A03/A04 block, and A05 was appended after A06 at the end of the case. The participation items show both activities moving from no occurrences to every one of 200 traces; the relational items show their placement directly (A01 always before A06, A06 always before A05); A06's behaviour changed from usually ending the case to almost always flowing into A05; and the increased step distances between A03/A04 and A06 match an insertion between them. Differences of this size exceed about 995 of 1000 random re-splits of the pooled data. [OCC001, OCC002, REL004, REL010, DIR006, LAG004]\n\nLimitations: the occurrence, direction, position, relation and distance items largely describe the same trace-level change, so they are consistent corroboration rather than independent confirmations. The evidence cannot distinguish a genuinely new activity from one that previously existed but was skipped in every earlier case and has now become mandatory. A05's own outgoing behaviour rests on only about 29 observed transitions, so what follows A05 in the minority of cases is weakly supported. [OCC001, DIR005]\n\nOther differences: the slight redistribution of A02's outgoing transitions and the small shift in the relative order of A03 and A04 are visible but are not part of the main hypothesis. [DIR002, REL005]",
+  "case_id": "case_6919c4b2550dc2eb",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

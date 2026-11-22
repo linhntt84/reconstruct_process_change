@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_7d7d4196fcf5e63e.json",
+  "evidence_sha256": "d723977dece92e5b9055214e58b79bc13d86c6f081d78e9cf8e2570e77c4b0ab",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:56:57.559227+00:00",
+  "finished_at_utc": "2026-11-14T10:59:30.433976+00:00",
+  "latency_seconds": 152.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31262,
+    "prompt_tokens": 26011,
+    "total_tokens": 57273,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29008,
+      "text_tokens": 2254
+    },
+    "cost": 0.01953265
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 90306,
+  "text": "### Observed differences\n\n- **A02 moved from a mid-process step to the opening activity and changed its successors.** Earlier, A02 appeared in about 49 in 100 cases, around the middle of the trace (median relative position about 0.51), roughly once per case, and every observed outgoing transition went to A01. In the later window, A02 appears in all 200 cases at the very beginning (median position 0), occurs about 1.8 times per case, and its transitions go to A04 (about 57 in 100) or A03 (about 43 in 100); A01 was no longer observed as a direct successor, and A04, which earlier sat three steps downstream of A02, now typically follows it immediately. [DIR001, POS002, OCC002, LAG011, LAG008]\n\n- **Successors also changed at A03, A06 and A08.** Earlier, A03 always passed to A06, A06 split about evenly between A02 (about 51 in 100 of its transitions) and A07 (about 49), and A08 split evenly between A03 and A04. In the later window, A03 passes to A01 (about 52 in 100) or A06 (about 48), A06 passes to A08 (about 53) or A07 (about 47), and A08 always passes back to A02. [DIR002, DIR003, DIR004]\n\n- **The formerly inseparable group of activities dissolved.** Earlier, A01, A02, A03 and A06 occurred only jointly (in about 49 in 100 cases) and A04 always co-occurred with A08. In the later window, A02 appears without A01 in about 70 in 100 cases, without A06 in about 71, without A07 in about 85 and without A08 in about 55; A04 appears without A08 in about 55 in 100 cases, while A02 and A04 now co-occur in every case, with A02 first in about 55 in 100. [REL001, REL005, REL007, REL008, REL009, REL011, REL006]\n\n- **Participation and placement of the former loop partners dropped sharply.** A08 fell from all cases (about 2.0 occurrences per case) to about 45 in 100 cases (about 0.8 per case) and moved from early to late positions (median position about 0.10 to 0.50); A01 fell from 49 to 31 in 100 cases (about 1.0 to 0.4 occurrences) and moved earlier (mean position 0.58 to 0.37); A06 fell from 49 to 29 in 100 cases (about 2.0 to 0.7 occurrences); A07 fell from 31 to 15 in 100 cases (about 0.95 to 0.33). A03 (about 45–49 in 100 cases) and A04 (all cases) kept roughly their earlier frequencies. [OCC005, POS004, OCC001, POS001, OCC003, OCC004, POS003, REL005, REL006, REL011]\n\n- **The repeating cycle shortened by one step.** Self-repetitions of A01, A02, A03 and A08, previously about five steps apart, are now about four steps apart; where the branch is taken, A02→A03, A03→A06, A06→A08 and A08→A02 now each sit one step apart, giving a four-step return path instead of the earlier five-step cycle that ran through A01. [LAG001, LAG009, LAG017, LAG038, LAG010, LAG019, LAG026, LAG033]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the routing around A02 was rerouted structurally: earlier, A02 ran in about half of the cases as a step inside a repeating five-step cycle A02 → A01 → A08 → A03 → A06 (with exits from A08 to A04 and from A06 to A07), always handing over to A01; in the later window, A02 opens every case and routes directly to A04 or A03, A03 hands over to A01 or A06, and A08 — now observed in only about 45 in 100 cases, late in the trace — returns to A02. Along with this, the activities around the old cycle (A01, A06, A07, A08) appear in far fewer cases, while A02 and A04 are present throughout. [DIR001, DIR002, DIR003, DIR004, REL001, REL005, REL006, REL011, OCC001, OCC002, OCC003, OCC005, POS002, POS004]\n\nThe routing change is shown directly by the successor profiles of A02, A03, A06 and A08, the dissolved couplings by the relation profiles, and the occurrence and position shifts agree in direction; screening qualified 64 items where fewer than one (0.36) would be expected if nothing had changed, and every item's difference exceeds about 99.5 in 100 random re-splits of the pooled data, so sampling variation alone cannot account for the difference between the windows. [DIR001, DIR004, REL001, REL011, OCC002, OCC005, POS002]\n\nLimitations: the many items describe one underlying restructuring and are not independent confirmations, and POS and LAG are based on event positions, so \"start\" and the step distances refer to event order rather than clock time; the evidence also cannot rule out that the two windows simply draw different mixes of pre-existing process variants (for example a shifted case population) rather than reflecting a modified process. [POS002, LAG009, OCC002]\n\nOther differences: A07, though about half as frequent, still receives about 47 in 100 of A06's outgoing transitions and now typically continues to A08 within about two steps, whereas earlier it re-entered the cycle at A02 within about two steps; A06 also now recurs two steps later in some cases, consistent with an A06–A07 back-and-forth before A08. [DIR003, LAG031, LAG028, LAG025]",
+  "case_id": "case_7d7d4196fcf5e63e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

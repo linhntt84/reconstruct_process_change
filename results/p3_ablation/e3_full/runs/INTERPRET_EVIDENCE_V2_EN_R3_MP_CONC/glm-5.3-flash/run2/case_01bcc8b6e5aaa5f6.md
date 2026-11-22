@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A02 disappeared from the executions: in the earlier window it occurs in 200 of 200 traces (100%), about once per trace, almost always as the first event (median position 0); in the later window it occurs in 0 of 200 traces. [OCC001, POS002]
+- Before, A02's outgoing transitions went mainly to A03 (about 48 in 100) and A04 (about 42 in 100), with small shares to A06, A05 and A07; in the later window A02 has no observed outgoing transitions at all (199 before vs 0 after). [DIR002]
+- Before, A02 co-occurred with every other activity in 100% of traces, preceding A01 in about 995 of 1000 traces and A03–A07 in 88–99.5% of traces; in the later window it never co-occurs with any of them — A01 and A03–A07 now run without it. [REL001, REL004, REL005, REL006, REL007, REL008]
+- All other activities (A01, A03–A07) still occur in 100% of traces in both windows. [POS001, POS003, POS004, POS005, POS006, POS007]
+- With A02 gone, the remaining activities sit slightly earlier in the trace: mean position fell for A03 (0.27→0.18), A04 (0.29→0.15, with the median dropping from 0.33 to 0, so A04 now opens at least half of all traces), A05 (0.54→0.49), A06 (0.58→0.48) and A07 (0.78→0.73), while A01 remains the closing activity (mean position about 0.96–0.98 in both windows). [POS003, POS004, POS005, POS006, POS007, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A02 is no longer executed in any case. In the earlier window A02 was the opening activity of every trace, handing over mainly to A03 and A04; in the later window it is absent from all 200 traces, and cases now begin directly with A03 or A04 (A04 is the first event in about half the traces). Every other activity continues to run in every trace. [OCC001, DIR002, POS002, POS004, REL001, REL004, REL005, REL006, REL007, REL008]
+
+The support is direct and consistent: the participation drop is observed outright (200/200 → 0/200) and corroborated by the loss of A02's outgoing transitions and of all its co-occurrences, while the uniformly earlier positions of A03–A07 fit the loss of an early activity. These items largely reflect one underlying disappearance rather than independent confirmations. A stable process with 100% participation cannot yield 0 of 200 by sampling alone, so chance does not plausibly explain this finding. The main competing explanation the evidence cannot rule out is that A02 has become extremely rare rather than fully absent — 0 of 200 traces only bounds its participation at roughly 1–2 in 100 — and it cannot show whether A02's entry role was formally reassigned or traces merely start with A03/A04. [OCC001, DIR002, POS002, POS003, POS004, POS005, POS006, POS007]
+
+Other differences: small redistributions in the outgoing shares of A03–A07 (for example A04→A03 up about 8 points, A03→A04 down about 6 points, A05→A07 up about 5 points, A06→A07 down about 6 points), a modest shift in the mutual order of A03 and A04 (A03 first in 53% → 43.5% of traces), slightly shorter gaps in some A03→A01 and A03→A07 sequences, and the vanished edges into A02 from A01 (about 1 in 21 of A01's transitions before), A04 and A05 — all small, and partly expected consequences of A02 no longer running; the evidence cannot separate them from sampling variation. [DIR001, DIR003, DIR004, DIR005, DIR006, REL009, LAG002, LAG006]

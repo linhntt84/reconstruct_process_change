@@ -1,0 +1,74 @@
+{
+  "status": "invalid_response",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p0_llm_calibration/evidence/B/case_a0bc073d895f5239.json",
+  "evidence_sha256": "ea9add9acade96442689c664b89580c5367c22070326ab40eddc21641befd8b7",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": false
+  },
+  "started_at_utc": "2026-11-11T13:34:52.309933+00:00",
+  "finished_at_utc": "2026-11-11T13:35:21.495220+00:00",
+  "latency_seconds": 29.18,
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1681,
+    "prompt_tokens": 10164,
+    "total_tokens": 11845,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "response_model": "deepseek-v4-flash",
+  "transport": "curl",
+  "text": null,
+  "raw_response": {
+    "id": "chatcmpl-abe11980d935e13d",
+    "created": 1794404092,
+    "model": "deepseek-v4-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "vllm-0.28.0-tp2-ep-b3976021",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": "We need to produce analysis. Evidence: 22 items? Let's count: OCC001-004 (4), DIR001-004 (4), REL001-014 (14). Total 22 items. Screening: units_tested 91, items_expected_without_change 0.45. So expected ~0.45 items by chance. We have 22 items, many times larger. So not chance as a whole. Need to judge hypothesis.\n\nObserved differences: Main pattern: Activities A21 and A22 decrease in occurrence (from ~0.78 to ~0.21-0.22), while A23 and A24 increase (from ~0.225 to ~0.79-0.80). Also A20? DIR001 shows A20's outgoing transitions: before A21 0.78, A23 0.22; after A21 0.209, A23 0.786, A05 0.005. So A20 now leads to A23 instead of A21. Also REL items show A20-A21 cooccurrence drops from 0.78 to 0.22, A20-A23 cooccurrence rises from 0.225 to 0.795. So the main change: a branch from A20 that previously went to A21 (and then A22) now goes to A23 (and then A24). Also A21 and A22 are now rarely present, A23 and A24 common. Also A28? REL008, REL011, REL013, REL014 show A28 cooccurrence with A21/A22 drops, with A23/A24 rises. So A28 follows the new path.\n\nWe need to describe differences concisely. Then inference: Support level? We have many items, all consistent with a single structural change: the successor of A20 changed from A21 to A23. That is a routing change. Direct evidence: DIR001 shows A20's outgoing distribution changed from A21 78% to A23 79%. Also OCC shows A21/A22 drop, A23/A24 rise. REL shows A20-A21 cooccurrence drop, A20-A23 rise. So supported hypothesis: In the later window, A20 is followed by A23 instead of A21, leading to A24 instead of A22. Need to state as possibility, not confirmed. Also mention competing explanation: sampling differences? But with 200 traces each, large changes, and many items, unlikely. But we should mention that variant frequency differences could explain some, but the direct successor change is strong.\n\nWe need to follow instructions: first line exactly \"Support level: Supported hypothesis\" or \"Weak hypothesis\" or \"Insufficient evidence\". Given many items and direct evidence, I'd say Supported hypothesis.\n\nBut careful: The evidence includes many items that are all reflecting the same underlying change. The instruction says: \"A count many times larger cannot be explained by chance as a whole, even when all items describe one underlying difference; do not merge items for this comparison.\" So we have 22 items vs expected 0.45, so definitely not chance. So we proceed to judge by directness, consistency, ability to rule out competing explanations. The direct evidence is DIR001 (successor change) and REL items showing cooccurrence changes. So supported.\n\nWe need to write \"Observed differences\" with numbers. Use rounded percentages or simple fractions. For example: In the later window, A21 appears in about 22% of traces instead of 78%; A22 similarly drops from 78% to 21%. A23 rises from about 23% to 80%, A24 from 22% to 79%. The outgoing transitions of A20: before, about 78% went to A21 and 22% to A23; after, about 21% to A21 and 79% to A23. Cooccurrence of A20 with A21 drops from 78% to 22%, while with A23 rises from 23% to 80%. Also A28 cooccurrence with A21/A22 drops and with A23/A24 rises.\n\nWe need to mention that these are consistent with a shift in the branch after A20.\n\nInference: State hypothesis: In the later window, the process more often routes from A20 to A23 (and then A24) instead of to A21 (and then A22). Supporting signs: DIR001 shows successor change; OCC001-004 show participation changes; REL001-004, REL005-014 show cooccurrence changes. Limitation: The evidence does not show why, and we cannot rule out that some variant frequency differences are due to sampling, but the direct successor change and the large number of consistent items make a structural change likely.\n\nWe need to name activities involved: A20, A21, A22, A23, A24, A28.\n\nAlso note: DIR002, DIR003, DIR004 show minor changes in successors of A21, A23, A24, but those are small (e.g., A21 now sometimes goes to A12 or A20, but still mostly A22; A23 mostly A24; A24 mostly A28). So the main change is the A20 branch.\n\nWe should not overcomplicate.\n\nNow write answer with sections.\n\nMake sure each bullet or paragraph that states a fact ends with evidence identifiers. For example: \"In the later window, A21 appears in about 22% of traces instead of 78% [OCC001].\" etc.\n\nWe need to include all relevant evidence IDs. We can group.\n\nLet's craft.\n\n### Observed differences\n\n- In the later window, activities A21 and A22 appear in about 22% and 21% of traces respectively, down from about 78% each; A23 and A24 appear in about 80% and 79% of traces, up from about 23% and 22% [OCC001, OCC002, OCC003, OCC004].\n- The outgoing transitions of A20 changed: before, about 78% went to A21 and 22% to A23; after, about 21% go to A21 and 79% to A23, with a trace amount to A05 [DIR001].\n- Cooccurrence of A20 with A21 dropped from 78% to 22%, while cooccurrence of A20 with A23 rose from 23% to 80% [REL001, REL003]. Similarly, A20 with A22 dropped from 78% to 21% [REL002], and A20 with A24 rose from 22% to 79% [REL004].\n- A28, which previously co-occurred with A21/A22 in about 78% of traces, now co-occurs with A23/A24 in about 79-80% of traces [REL008, REL011, REL013, REL014].\n- The successors of A21, A23, and A24 themselves changed only slightly; A21 still mostly goes to A22, A23 to A24, and A24 to A28 [DIR002, DIR003, DIR004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the process routes from A20 to A23 (and then A24) instead of to A21 (and then A22). This is directly shown by the change in A20's outgoing distribution [DIR001] and is consistent with the large shifts in participation of A21/A22 versus A23/A24 [OCC001-OCC004] and the corresponding cooccurrence changes [REL001-REL014]. The number of evidence items (22) far exceeds the 0.45 expected by chance under a stable process [screening], so the overall pattern is unlikely to be a sampling artefact. A competing explanation that the differences are due to random variation in variant frequencies is largely ruled out by the direct successor change and the consistency across indicators, though the evidence does not reveal the cause or intention behind the change.",
+          "provider_specific_fields": {
+            "refusal": null,
+            "reasoning": "We need to produce analysis. Evidence: 22 items? Let's count: OCC001-004 (4), DIR001-004 (4), REL001-014 (14). Total 22 items. Screening: units_tested 91, items_expected_without_change 0.45. So expected ~0.45 items by chance. We have 22 items, many times larger. So not chance as a whole. Need to judge hypothesis.\n\nObserved differences: Main pattern: Activities A21 and A22 decrease in occurrence (from ~0.78 to ~0.21-0.22), while A23 and A24 increase (from ~0.225 to ~0.79-0.80). Also A20? DIR001 shows A20's outgoing transitions: before A21 0.78, A23 0.22; after A21 0.209, A23 0.786, A05 0.005. So A20 now leads to A23 instead of A21. Also REL items show A20-A21 cooccurrence drops from 0.78 to 0.22, A20-A23 cooccurrence rises from 0.225 to 0.795. So the main change: a branch from A20 that previously went to A21 (and then A22) now goes to A23 (and then A24). Also A21 and A22 are now rarely present, A23 and A24 common. Also A28? REL008, REL011, REL013, REL014 show A28 cooccurrence with A21/A22 drops, with A23/A24 rises. So A28 follows the new path.\n\nWe need to describe differences concisely. Then inference: Support level? We have many items, all consistent with a single structural change: the successor of A20 changed from A21 to A23. That is a routing change. Direct evidence: DIR001 shows A20's outgoing distribution changed from A21 78% to A23 79%. Also OCC shows A21/A22 drop, A23/A24 rise. REL shows A20-A21 cooccurrence drop, A20-A23 rise. So supported hypothesis: In the later window, A20 is followed by A23 instead of A21, leading to A24 instead of A22. Need to state as possibility, not confirmed. Also mention competing explanation: sampling differences? But with 200 traces each, large changes, and many items, unlikely. But we should mention that variant frequency differences could explain some, but the direct successor change is strong.\n\nWe need to follow instructions: first line exactly \"Support level: Supported hypothesis\" or \"Weak hypothesis\" or \"Insufficient evidence\". Given many items and direct evidence, I'd say Supported hypothesis.\n\nBut careful: The evidence includes many items that are all reflecting the same underlying change. The instruction says: \"A count many times larger cannot be explained by chance as a whole, even when all items describe one underlying difference; do not merge items for this comparison.\" So we have 22 items vs expected 0.45, so definitely not chance. So we proceed to judge by directness, consistency, ability to rule out competing explanations. The direct evidence is DIR001 (successor change) and REL items showing cooccurrence changes. So supported.\n\nWe need to write \"Observed differences\" with numbers. Use rounded percentages or simple fractions. For example: In the later window, A21 appears in about 22% of traces instead of 78%; A22 similarly drops from 78% to 21%. A23 rises from about 23% to 80%, A24 from 22% to 79%. The outgoing transitions of A20: before, about 78% went to A21 and 22% to A23; after, about 21% to A21 and 79% to A23. Cooccurrence of A20 with A21 drops from 78% to 22%, while with A23 rises from 23% to 80%. Also A28 cooccurrence with A21/A22 drops and with A23/A24 rises.\n\nWe need to mention that these are consistent with a shift in the branch after A20.\n\nInference: State hypothesis: In the later window, the process more often routes from A20 to A23 (and then A24) instead of to A21 (and then A22). Supporting signs: DIR001 shows successor change; OCC001-004 show participation changes; REL001-004, REL005-014 show cooccurrence changes. Limitation: The evidence does not show why, and we cannot rule out that some variant frequency differences are due to sampling, but the direct successor change and the large number of consistent items make a structural change likely.\n\nWe need to name activities involved: A20, A21, A22, A23, A24, A28.\n\nAlso note: DIR002, DIR003, DIR004 show minor changes in successors of A21, A23, A24, but those are small (e.g., A21 now sometimes goes to A12 or A20, but still mostly A22; A23 mostly A24; A24 mostly A28). So the main change is the A20 branch.\n\nWe should not overcomplicate.\n\nNow write answer with sections.\n\nMake sure each bullet or paragraph that states a fact ends with evidence identifiers. For example: \"In the later window, A21 appears in about 22% of traces instead of 78% [OCC001].\" etc.\n\nWe need to include all relevant evidence IDs. We can group.\n\nLet's craft.\n\n### Observed differences\n\n- In the later window, activities A21 and A22 appear in about 22% and 21% of traces respectively, down from about 78% each; A23 and A24 appear in about 80% and 79% of traces, up from about 23% and 22% [OCC001, OCC002, OCC003, OCC004].\n- The outgoing transitions of A20 changed: before, about 78% went to A21 and 22% to A23; after, about 21% go to A21 and 79% to A23, with a trace amount to A05 [DIR001].\n- Cooccurrence of A20 with A21 dropped from 78% to 22%, while cooccurrence of A20 with A23 rose from 23% to 80% [REL001, REL003]. Similarly, A20 with A22 dropped from 78% to 21% [REL002], and A20 with A24 rose from 22% to 79% [REL004].\n- A28, which previously co-occurred with A21/A22 in about 78% of traces, now co-occurs with A23/A24 in about 79-80% of traces [REL008, REL011, REL013, REL014].\n- The successors of A21, A23, and A24 themselves changed only slightly; A21 still mostly goes to A22, A23 to A24, and A24 to A28 [DIR002, DIR003, DIR004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the process routes from A20 to A23 (and then A24) instead of to A21 (and then A22). This is directly shown by the change in A20's outgoing distribution [DIR001] and is consistent with the large shifts in participation of A21/A22 versus A23/A24 [OCC001-OCC004] and the corresponding cooccurrence changes [REL001-REL014]. The number of evidence items (22) far exceeds the 0.45 expected by chance under a stable process [screening], so the overall pattern is unlikely to be a sampling artefact. A competing explanation that the differences are due to random variation in variant frequencies is largely ruled out by the direct successor change and the consistency across indicators, though the evidence does not reveal the cause or intention behind the change."
+          },
+          "content": null
+        },
+        "provider_specific_fields": {
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      }
+    ],
+    "usage": {
+      "completion_tokens": 1681,
+      "prompt_tokens": 10164,
+      "total_tokens": 11845,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  },
+  "case_id": "case_a0bc073d895f5239",
+  "kind": "drift",
+  "config": "B",
+  "run_index": 1,
+  "support_level": "unparsed"
+}

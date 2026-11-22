@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "ac13c6af389623a79340048daf7d33c793d74bb8ed7e0c68282c0437acf25580",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:26:37.198043+00:00",
+  "finished_at_utc": "2026-11-16T02:28:33.990975+00:00",
+  "latency_seconds": 116.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17523,
+    "prompt_tokens": 10578,
+    "total_tokens": 28101,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16162,
+      "text_tokens": 1361
+    },
+    "cost": 0.0103482
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54785,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces followed one fixed chain — A01 → A05 → A02 → A04 → A03 — with each activity executed exactly once: A02 and A04 each appeared in 100 in 100 traces with no repetition, A02 was always followed by A04 and A04 always by A03, and all event positions and gaps were constant. [OCC001, OCC002, DIR001, DIR002, POS001, POS002]\n- In the later window, A02 occurs about 2.1 times per trace instead of exactly once, repeating within the same trace in about 50 in 100 traces (before: 0 in 100). [OCC001, REL001, REL003, REL005]\n- A04 is now frequently skipped: it appears in about 50 in 100 later traces (99 of 200) versus all traces before; when present it occurs about 2.2 times per containing trace and repeats in about 28 in 100 traces. [OCC002, REL002, REL004, REL006, REL007]\n- Routing changed at both activities: A02, previously always followed by A04, now sends about 53 of 100 outgoing transitions to A04 and about 47 directly to A03, an edge not observed in the earlier window; A04, previously always followed by A03, now always leads back to A02. [DIR001, DIR002]\n- Gaps shifted accordingly: A01→A03 was always 4 steps apart and is now 3 steps in about 70 of 100 observed pairs and 5 steps in about 30, with the pair more than five steps apart in the remaining ~56 of 200 traces; A04→A03 was always directly consecutive and now sits 2 or more steps apart in every observed pair; A02→A03, always 2 steps before, now includes direct consecutivity (lag 1, about 40 in 100 of the observed mass) plus longer gaps. [LAG002, LAG004, LAG006, LAG009]\n- Co-occurrence of A04 with A02, A01, A03 and A05 fell from all traces to about 50 in 100, and the previously fixed orders around A02 (A01→A02, A02→A03, A05→A02) now split roughly 50/50 between a single fixed order and interleaved or repeated execution — a change in ordering constraints and repetition, not a swap of positions. [REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n- Event positions spread out: A02's median position moved from 0.5 to about 0.67 (std 0 to 0.21) and A04's positions now cover only the half of traces in which it occurs; A05 is essentially unchanged (mean position about 0.25 in both windows). [POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: in the later window the once-per-case chain A01 → A05 → A02 → A04 → A03 appears to have been replaced by a structure in which A02 and A04 can cycle one or more times (A02 → A04 → A02 …) before A03 follows the final A02, while in about half the traces the cycle is skipped entirely and A02 leads directly to A03. This is a structural change — A04 became optional and A02 became repeatable — not merely a shift in how often existing paths are taken, since A04 is unobserved in about half the later traces, the A02→A03 transition was not observed before, and A02's repetition is new. [OCC001, OCC002, DIR001, DIR002, REL004, LAG002]\n\nThe signs are direct and mutually consistent: the successor profiles changed at both activities (A02: 100% A04 before versus roughly 53/47 A04/A03 after; A04: 100% A03 before versus 100% A02 after), participation and recurrence moved in the same direction, and every lag and co-occurrence item fits the same loop — A01→A03 shortens to 3 steps exactly when A04 is skipped, and A04→A03 is never directly consecutive any more. Every item's difference exceeds about 995 of 1,000 random re-splits of the pooled traces, and differences of this size (for example A04 appearing in 99 versus 200 traces) are implausible as sampling variation between 200-trace windows. [DIR001, DIR002, OCC001, OCC002, LAG002, LAG006, REL004]\n\nLimitations: all items describe one underlying trace behaviour, so they corroborate rather than independently confirm the loop; relations are observed only within five steps, so the number of cycle iterations per trace and behaviour beyond that range are inferred rather than directly observed; and no screening baseline was provided, so the chance comparison rests on the empirical reference strengths. A competing explanation the evidence cannot fully rule out is that the later window mixes trace variants of an otherwise unchanged process rather than reflecting one modified flow — though a variant present in about half of 200 later traces but in none of 200 earlier traces is hard to attribute to sampling alone. [OCC001, OCC002, LAG001, LAG004]",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

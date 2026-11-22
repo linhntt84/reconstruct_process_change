@@ -1,0 +1,13 @@
+### Observed differences
+
+- Repetition within traces eased slightly for four activities. In the earlier window, A03 and A12 each averaged about 2.2 occurrences per trace (roughly 435 occurrences across the 200-trace sample); in the later window, about 1.8 (roughly 370), while the share of traces containing them stayed nearly flat (about 52 in 100 cases before, 50 in 100 after). A06 and A11 moved the same way, from about 1.2 to 0.9 occurrences per trace at a participation of about 35 versus 32.5 in 100. [OCC003, OCC004, OCC008, OCC009]
+- A09 shifted slightly the other way, from about 0.9 to 1.0 occurrences per trace and from about 50 to 52 in 100 traces containing it; in step, its co-occurrence with A03, A06, A07, A08, A11 and A12 each rose by roughly 3 percentage points (for example, A03 and A09 shared a trace in about 26 versus 29.5 in 100 cases). [OCC007, REL027, REL045, REL050, REL054, REL059, REL060]
+- The outgoing transitions of A03 and A12 were slightly redistributed: of A03's outgoing transitions, the share to A06 fell from about 25% to 21% while the share to A08 rose from about 10% to 15%; of A12's, the share to A08 fell from about 14% to 9% while the share to A07 rose from about 12% to 16%. [DIR003, DIR007]
+- A03, A06, A11 and A12 appear at slightly earlier relative positions in the later window (medians about 0.35 versus 0.32 for A03 and A12, 0.37 versus 0.32 for A06, and 0.40 versus 0.35 for A11); these are the largest position differences in the evidence, each exceeded by only about 2–10 in 100 random re-splits. [POS003, POS006, POS010, POS011]
+- All other differences are marginal — mostly about 3 percentage points or less with empirical strengths below 0.5 — and the largest single gap-distribution change (repeated A07 executions four events apart, weight about 0.31 versus 0.14) rests on only about 25 traces per window. [REL049, DIR006, LAG034]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest differences (slightly fewer repetitions of A03/A12 and A06/A11, a small rise for A09, slightly earlier positions for the first four) are small, largely mirrored copies of one or two coupled behaviours of the same few activities rather than independent confirmations, and are of a size that random re-splits of these windows also produce; with no screening expectation provided to benchmark the item yield, sampling variability cannot be ruled out. [OCC003, OCC009, POS006, DIR003]

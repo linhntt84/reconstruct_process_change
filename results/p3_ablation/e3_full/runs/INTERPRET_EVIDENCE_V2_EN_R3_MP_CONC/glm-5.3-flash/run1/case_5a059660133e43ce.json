@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_5a059660133e43ce.json",
+  "evidence_sha256": "ab34971259707d88e40b0bb9202aed7db391eef8ec9fa4376ce94129964d040d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:05:45.976036+00:00",
+  "finished_at_utc": "2026-11-16T01:09:02.567744+00:00",
+  "latency_seconds": 196.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22036,
+    "prompt_tokens": 95266,
+    "total_tokens": 117302,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20451,
+      "text_tokens": 1585
+    },
+    "cost": 0.0253079
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 71916,
+  "text": "### Observed differences\n\n- In the earlier window, activity A01 was not observed in any of the 200 traces; in the later window it occurs in about 22 in 100 traces (44 of 200), and in every one of those occurrences it sits at the final position of the trace (normalized position 1.0, with no variation). [OCC001, POS001]\n- A01 is always reached from A02: in the later window the transition A02→A01 accounts for about 21% of A02's observed outgoing transitions (it was not observed before), A01 never appears in a trace without A02, and A02 comes first (strictly before A01 in about 11 in 100 traces, interleaved or with A02 repeated in the rest). Roughly 4 in 10 of the traces containing A02 now close this way. [DIR001, REL001, OCC001]\n- A06 and A15: earlier, A06 appeared in about 13–14 in 100 traces, always at the final position and with no observed outgoing transitions, and it never occurred together with A15; in the later window every observed A06 occurrence (about 16 in 100 traces) is followed by A15, the pair always in the order A06 then A15, and A06's median position moved from the end of the trace to about the middle. The direct A02→A15 transition (about 12% of A02's outgoing transitions before) is no longer observed; the A02→A15 pair now occurs mostly at distance two instead of one, consistent with the route A02→A06→A15, while A15's own frequency barely moved (about 13→16 in 100 traces). [DIR003, REL055, POS004, LAG013, DIR001, OCC014, OCC006]\n- A08 and A12 each occur in roughly half as many traces as before (about 17–18 in 100 earlier, about 9–10 in 100 later). The hand-off A08→A12, previously about 84% of A08's outgoing transitions, is no longer observed; A08 now leads mostly to A09 (about 46%), A04 returns directly to A02 in about 48% of its transitions (before about 12%, with about 69% going to A08), and A12 leads to A09 more often (about 52% vs 35%) and back to A02 less often (about 26% vs 51%). A08 and A12 now appear together in about 3–4 in 100 traces instead of about 17 in 100. [OCC008, OCC012, DIR004, DIR002, DIR008, REL067, LAG042]\n- Smaller shifts: A02 occurs somewhat more often (about 47→54 in 100 traces) and now often sits at the very start of the trace (median normalized position about 0.29→0); A03, A05 and A07 each occur slightly less often. [POS002, OCC002, OCC003, OCC005, OCC007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, cases can close with a new final step: A02 is followed by A01, an activity not observed in the earlier window, which now runs in about 22 in 100 cases, always as the last event and always directly after A02. The supporting signs are direct measurements of this behaviour in four indicator families — occurrence (0 of 200 vs 44 of 200 traces), position (final position in every occurrence), direction (new A02→A01 edge at about 21% of A02's outgoing transitions) and relation (co-occurrence of the pair rising from 0 to about 22 in 100 traces, with A02 first) — and a jump from 0 to 44 of 200 traces is not what sampling a stable process produces. Limitations: no screening baseline was provided, so the expected number of chance findings could not be checked against the item count; and \"not observed before\" cannot distinguish a genuinely new activity from one previously unused on this path, although a stable 22% participation would virtually never yield zero occurrences in 200 traces. An important competing explanation the evidence cannot rule out is that this closing step and the reroutings below stem from the same underlying modification rather than separate ones. [OCC001, POS001, DIR001, REL001]\n\nOther differences: (1) A06, previously a terminal step, is now always followed by A15, replacing the former direct A02→A15 route with A02→A06→A15; this rests on A06's newly observed outgoing transitions and the pair's co-occurrence and lag changes, not on position alone. (2) The segment through A08 and A12 is executed much less often — both activities appear in about half as many traces, the A08→A12 hand-off is no longer observed, A04 returns to A02 directly instead of through A08, and A08 and A12 lead to A09 more often; this is consistent with the segment being skipped more often, though the vanished edge could also reflect a structural restriction that these samples cannot pin down. [DIR003, REL055, POS004, LAG013, DIR001, OCC008, OCC012, DIR002, DIR004, DIR008, REL067, LAG042]",
+  "case_id": "case_5a059660133e43ce",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

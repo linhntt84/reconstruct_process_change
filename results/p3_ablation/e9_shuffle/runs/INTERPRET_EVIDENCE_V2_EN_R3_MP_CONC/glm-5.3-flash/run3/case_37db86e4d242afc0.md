@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A01 ran exactly once in every trace (200 of 200) at an early position (mean about 0.22 of the case); in the later window, A01 is not observed in any of the 200 traces. [OCC001, POS001]
+- A03 shows the mirror image: not observed earlier, it runs in every later trace (200 of 200) at position 0.2 — the same early slot A01 previously held. [OCC002, POS002]
+- Successors were rewired around this slot: earlier, A02 always led to A01 and A01 always led to A07; later, A02 always leads to A03 and A03 always leads to A07. [DIR002, DIR001, DIR003]
+- Pairwise relations agree: earlier, A01 co-occurred with A02, A07 and A05 in a fixed order (A02 before A01 before A07/A05) in 100% of traces; later, those pairs contain only the partner activity, while A03 co-occurs with A02, A07 and A05 in that same order in every trace. [REL001, REL005, REL003, REL002, REL006, REL010, REL008]
+- The end of the case changed: earlier, all 101 observed outgoing transitions of A05 went to A08, and in the remaining ~99 traces A05 had no observed successor and occupied the final position (about half the cases); later, A05 always has a successor — A08 in about 53 in 100 traces and A06 in about 47 in 100 (93 of 200), with A06 always in the last position after A05. [DIR004, POS003, POS004, OCC003, REL011, REL012, REL009]
+- Positions became rigid: A07 moved from a mean of about 0.45 with spread (0.4–0.5) to a fixed 0.4, and A05 from about 0.9 (0.8 or 1.0) to a fixed 0.8. [POS005, POS003]
+- Screening flagged 24 control-flow items where about 0.12 would be expected without a change, and each item's difference exceeds roughly 995 of 1,000 random re-splits of the pooled data. [screening, OCC001, REL001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural change in the early stage of the process: A01 no longer executes, and A03 runs in its place between A02 and A07. In the earlier window every case ran A02 → A01 → A07 with A01 at about position 0.2; in the later window every case runs A02 → A03 → A07 with A03 at position 0.2. The support is direct and consistent: participation flips completely (100% → 0% for A01, 0% → 100% for A03, on 200 traces each), both neighbouring edges move completely (A02's successor changes from A01 to A03, and the edge into A07 moves from A01 to A03), and the occurrence, relation, direction and position indicators all agree, with 24 qualifying items against about 0.12 expected by chance. An important competing explanation remains: because A03 appears exactly where A01 stood, between the same neighbours and at the same position, the evidence cannot distinguish a genuine replacement from a relabelling of the same step in the event log. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, REL001, REL006, REL010, screening]
+
+Other differences: A06, unobserved in the earlier window (absence there means only that it was not seen), appears as a closing activity: earlier, about half the traces ended with A05 itself and the rest with A05 → A08; later, A05 always hands over to A08 (about 53 in 100) or to A06 (about 47 in 100), with A06 always in the final position. Relatedly, A07 and A05 now sit at fixed positions (0.4 and 0.8) where they previously varied. [OCC003, POS004, DIR004, POS003, POS005, REL011, REL012, REL009]

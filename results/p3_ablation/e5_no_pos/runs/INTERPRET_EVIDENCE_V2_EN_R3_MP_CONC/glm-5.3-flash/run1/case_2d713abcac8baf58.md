@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A21 were mutually exclusive alternatives: each ran in about 35, 30 and 36 in 100 traces respectively, and pairs of them almost never occurred in the same trace. In the later window, each of the three appears in only 1–2 of 200 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL008]
+- A26, A27 and A28 were not observed at all in the earlier window (0 of 200 traces); in the later window each occurs in all 200 traces, about once per trace. [OCC004, OCC005, OCC006]
+- A44's outgoing transitions changed wholesale: before, they went mainly to A19 (about 31%), A21 (about 30%) and A20 (about 25%); in the later window they go to A26 (about 31%), A27 (about 27%) and A28 (about 26%). [DIR007]
+- In the later window, A26, A27 and A28 co-occur in every trace with no fixed order among them (each pair runs in one order in about half the cases and in the other order in about half), they follow A44 in about 99 in 100 cases and precede A29 in about 98–99 in 100. In the earlier window these three never co-occurred. [REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+- The spacing between A44 and A29 grew: before, A29 followed A44 two steps later in about 84 in 100 cases (three steps in about 16); in the later window it follows four steps later in about 82 in 100 cases (five steps in about 18), consistent with three activities now sitting between them. [LAG001]
+- A29 and A44 themselves continue to appear in essentially every trace in both windows. [REL006, REL007, REL012, REL013, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment between A44 and A29 was restructured. In the earlier window, essentially every case executed exactly one of the mutually exclusive alternatives A19, A20 or A21 between A44 and A29; in the later window, cases execute the three activities A26, A27 and A28 together, in varying order, in that segment. This is a replacement of one path segment by another — one group of activities becoming unobserved while a new group appears — not a shift in how often existing paths are taken. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL019, REL021, REL022, LAG001]
+
+The support is direct and consistent: 41 evidence items qualified against roughly 0.6 expected by chance for the 123 tested units, so the set cannot be explained as sampling noise; participation flips from 0 to 200 of 200 traces and back; A44's successor profile switches entirely from the old trio to the new trio; the relational items show the new trio bounded by A44 before and A29 after; and the A44→A29 step distance grows from about 2 to about 4, matching one activity being replaced by three. [DIR007, OCC004, OCC005, OCC006, REL019, REL021, REL022, LAG001] An important competing explanation the evidence cannot rule out is that the two windows draw from different case populations or from two coexisting process variants whose mix shifted, rather than a modification of a single process; the near-complete absence of each trio in the opposite window makes pure sampling fluctuation unlikely, but the finite windows cannot exclude a mix shift.
+
+Other differences: in the later window, the few remaining executions of A19, A20 and A21 show successors (A09/A10, A45, A34) not seen before, and small new edges from A26, A27 and A28 to activities such as A02, A38, A43, A47 and A48 appear at roughly 0.5–1% of transitions; both rest on very few observations and should not be over-interpreted. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]

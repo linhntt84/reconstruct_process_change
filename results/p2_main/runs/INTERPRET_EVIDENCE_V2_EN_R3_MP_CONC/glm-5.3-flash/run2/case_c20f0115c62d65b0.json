@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_c20f0115c62d65b0.json",
+  "evidence_sha256": "d4fdca0cb6a4c47f59f3cf020543ff1155e9d102a2348e067b82366d191a1ca1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:36:32.117839+00:00",
+  "finished_at_utc": "2026-11-15T00:37:40.147600+00:00",
+  "latency_seconds": 68.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9815,
+    "prompt_tokens": 13352,
+    "total_tokens": 23167,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8879,
+      "text_tokens": 936
+    },
+    "cost": 0.006910299999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31713,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained exactly one of three alternative activities: A19 in about 32 of 100 traces, A20 in about 28, and A25 in about 40, and the three never occurred together. In the later window, each appears in only about 1 of 200 traces, and about 99 of 100 traces contain none of them. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n- The block sat between A27/A28 and A29: before, A19, A20 and A25 each co-occurred with A27 and A28 whenever they appeared and typically ran before A29 (for example, A19 ran before A29 in about 32 of 100 traces); in the later window, A27, A28 and A29 occur in essentially every trace without any of the three. [REL003, REL005, REL007, REL009, REL010, REL012]\n- Successors were redirected accordingly: before, about 53 of 100 observed outgoing transitions of A27 went to A28 and about 44 to the block (A19/A20/A25), while about 45 of 100 outgoing transitions of A28 went to A29 and about 54 to the block. In the later window, about 97 of 100 A27 transitions go to A28 and about 99 of 100 A28 transitions go to A29. [DIR004, DIR005]\n- The A27→A29 distance shortened by one step: three positions apart in about 94 of 100 traces before, two positions apart in about 97 of 100 after; A27→A28 and A28→A29 became almost always immediately consecutive (lag 1 in about 98 of 100, versus roughly 45–54 of 100 before). [LAG001, LAG002, LAG003]\n- The later outgoing profiles of A19, A20 and A25 (single targets A44, A08, A42) each rest on one trace and are too weak to interpret. [DIR001, DIR002, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block formed by A19, A20 and A25 — of which exactly one was executed in essentially every earlier trace, between A27/A28 and A29 — is no longer executed in the later window, so traces proceed directly from A27 through A28 to A29. This is a removal or skipping of a block, not a re-weighting among the three alternatives: the activities drop from 56–80 of 200 traces to 1 each, their co-occurrence with A27, A28 and A29 collapses, A27 and A28 now lead almost exclusively to each other and to A29, and the A27→A29 distance shortens from three steps to two. With 27 qualifying items against roughly 0.55 expected if nothing had changed, chance alone cannot account for the pattern, and the occurrence, relation, direction and lag evidence all describe the same underlying difference. [OCC001, OCC002, OCC003, REL001, REL002, REL006, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nLimitations: the windows are finite samples and each of the three activities still appears once in the later window, so the evidence cannot distinguish complete removal of the block from a drastic drop in how often the branch is taken; the new outgoing targets observed for A19, A20 and A25 rest on single traces and were not used to support the hypothesis. [DIR001, DIR002, DIR003, OCC001, OCC002, OCC003]\n\nOther differences: A29 occurs in every trace in both windows and shows only a slightly earlier mean event position (about 0.56 to 0.55 of the trace), a small shift consistent with the block's removal; positions are event positions, not clock times. [POS004]",
+  "case_id": "case_c20f0115c62d65b0",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

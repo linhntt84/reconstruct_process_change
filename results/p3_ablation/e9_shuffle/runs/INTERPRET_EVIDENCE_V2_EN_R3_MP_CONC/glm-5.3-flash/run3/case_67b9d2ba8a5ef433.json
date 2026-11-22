@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_67b9d2ba8a5ef433.json",
+  "evidence_sha256": "006790deca77303e7cea15c3570f20216e63f849e413c3b56dcb37ca8704b80b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:01:53.406698+00:00",
+  "finished_at_utc": "2026-11-15T10:02:44.572194+00:00",
+  "latency_seconds": 51.17,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7727,
+    "prompt_tokens": 6152,
+    "total_tokens": 13879,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6736,
+      "text_tokens": 991
+    },
+    "cost": 0.004786299999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24172,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces) but occurs in every trace of the later window (200 of 200), exactly once per trace, always at the same relative position, about 0.83 of the trace length [OCC001, POS001].\n- In the earlier window, A07's observed outgoing transitions split about 52 in 100 to A03 and 48 in 100 to A05, while A05's split about 52 in 100 to A07 and 48 in 100 to A03; A03 was reached from A05 and A07 within 1–2 steps, so the pair A05/A07 ran in either order and was followed directly by A03 [DIR003, DIR002, LAG001, LAG002].\n- In the later window, A01 sits between that pair and A03: about 53 in 100 of A07's outgoing transitions now go to A01 (about 47 still to A05), about 47 in 100 of A05's go to A01 (about 53 to A07), and all of A01's observed outgoing transitions go to A03 [DIR003, DIR002, DIR001].\n- Before, A01 never co-occurred with A03, A05 or A07 (each pair appeared as the other activity alone in 100 of 100 traces); after, A01 co-occurs with each of them in all traces, always after A05 and A07 and before A03 [REL001, REL002, REL003].\n- The step distance from A05 and A07 to A03 grew by one step: A05 reached A03 within 1 step in about 48 of 100 cases before versus within 2–3 steps after, and A07 within 1–2 steps before versus 2–3 steps after [LAG001, LAG002].\n- A05 and A07 now occur slightly earlier in the trace (mean relative position about 0.70 for both before, versus about 0.58 and 0.59 after) [POS002, POS003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a new step A01 was placed between the A05/A07 pair and A03: traces that previously moved from A05 and A07 (in either order) directly to A03 now execute A01 once, after both of them and before A03. The signs are direct and mutually consistent — A01 went from unobserved to occurring once in every trace at a fixed position, it always follows A05 and A07 and precedes A03, about half of the outgoing transitions of A05 and A07 that previously led to A03 now lead to A01, the distance from A05/A07 to A03 increased by exactly one step, and the slightly earlier positions of A05 and A07 fit an event added after them [OCC001, POS001, POS002, POS003, REL001, REL002, REL003, DIR001, DIR002, DIR003, LAG001, LAG002].\n\nTwelve control-flow items qualified against roughly 0.06 expected by chance in an unchanged process, far more than random splitting would typically produce, and each difference was larger than in about 995 of 1000 random re-splits; however, many items describe the same underlying insertion, so they are not independent confirmations [OCC001, POS001, POS002, POS003, REL001, REL002, REL003, DIR001, DIR002, DIR003, LAG001, LAG002].\n\nLimitations: the picture covers only these four activities, so A01's placement relative to unobserved parts of the process is unknown, and the position evidence reflects event order rather than clock time [POS001, DIR001]. An important competing explanation the evidence cannot rule out is that A01 already existed but was too rare to appear in the earlier 200 traces and then became frequent, rather than being genuinely new — zero participation only means it was not observed in that sample [OCC001, POS001].\n\nOther differences: none — every qualified item fits the same insertion of A01 described above [OCC001, POS001, POS002, POS003, REL001, REL002, REL003, DIR001, DIR002, DIR003, LAG001, LAG002].",
+  "case_id": "case_67b9d2ba8a5ef433",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

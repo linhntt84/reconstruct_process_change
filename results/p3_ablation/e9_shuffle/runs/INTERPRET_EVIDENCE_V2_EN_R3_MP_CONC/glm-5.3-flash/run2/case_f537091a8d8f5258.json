@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f537091a8d8f5258.json",
+  "evidence_sha256": "8d363e1123db7138c35a543d30ef01f774708e08a481d3e25742140c38e47a4d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:36:27.999960+00:00",
+  "finished_at_utc": "2026-11-15T04:38:29.245684+00:00",
+  "latency_seconds": 121.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18197,
+    "prompt_tokens": 13724,
+    "total_tokens": 31921,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16668,
+      "text_tokens": 1529
+    },
+    "cost": 0.0111571
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53505,
+  "text": "### Observed differences\n\n- The relative order of two activity blocks flipped. In the earlier window, A07 preceded A05 in about 48 of 100 cases and A09 preceded A05 in about 48 of 100 (in every case where the pair co-occurred); in the later window, A05 preceded A07 in about 55 of 100 and A05 preceded A09 in about 55 of 100, again in every co-occurrence. A06 flipped the same way: A07-before-A06 (48 in 100) became mostly A06-before-A07 (41 in 100, with about 14 in 100 still reversed), and A09-before-A06 (48 in 100) became A06-before-A09 (about 50 in 100, A09-first only about 5 in 100). [REL002, REL003, REL004, REL005]\n- A05 and A06 ran adjacently in both windows (gap of one step), but their order changed from mixed (A05 first in 25, A06 first in 23 of 100 cases) to a fixed A05-then-A06 sequence (about 55 in 100, no reversed cases). [REL001, LAG010]\n- Event positions moved accordingly (event positions, not clock times): A05's mean position fell from about 0.89 to 0.32 and A06's from about 0.89 to 0.65, while A07's rose from about 0.36 to 0.74 and A09's from about 0.59 to 0.98, the latest of all activities; A04 stayed at about 0.22. [POS002, POS003, POS004, POS005, POS001]\n- Successors were rewired. In the later window, A01 hands over to A05 in 45% of its observed outgoing transitions (1% before) alongside A04 (45%, was 76%); A04 now leads mostly to A05 (51%, was 1%) instead of A07 (9%, was 80%); A06 now leads to A07 (76%) and A09 (16%) instead of A05 (96% before, now unobserved); A05 gained transitions to A04 (19%) and A07 (17%) beside A06 (56%); A07 still leads mostly to A09 (84%) and gained A06 (16%). A09 rarely shows a successor in the later window (observed outgoing transitions in 12 of 109 traces versus 96 of 96 before), and when one is observed it goes to A06 (83%) rather than A05 (51% before) — consistent with A09 now closing the case. [DIR001, DIR002, DIR004, DIR003, DIR005, DIR006]\n- Step distances moved with the same rewiring: A01–A05 shrank from mostly 4–5 steps to 1–2, A04–A05 from 3–4 to 1–2, A01–A06 from 4–5 to 2–3 and A04–A06 from 3–4 to 1–2, while A01–A07 grew from 1–2 to 3–4, A04–A07 from 1 to 2–4, A01–A09 from 3 to 4–5 and A04–A09 from 2 to 3–5. [LAG002, LAG006, LAG003, LAG007, LAG004, LAG008, LAG005, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the late block of the case was reordered: A05 and A06, which earlier executed after A09 and typically concluded the case (A09 handed over to A05 or A06, adjacent and in either order, with each of them ending about half of the traces), now execute before A07 and A09, so that a typical case in the later window runs A01 → A04 → A05 → A06 → A07 → A09, with A09 the closing step in most traces and A04 passing the case to A05 instead of A07. The order changes are observed directly in both windows on about 96 versus 109 traces per activity pair; the position shifts of all four activities, the successor changes and the step-distance changes all agree with the same rewiring; 28 qualifying control-flow items against roughly 0.26 expected by chance cannot be explained by random re-splitting, and every item's difference exceeds about 995 of 1000 random re-splits. Because the orders A05-before-A07 and A05-before-A09 were not observed at all in the earlier window (share 0), this is a new ordering constraint rather than a shift in how often existing paths are taken. The evidence cannot rule out that the later window samples a variant that already existed earlier but was too rare to appear; a few peripheral readings (A09's outgoing profile rests on 12 observations, the A07–A06 distance on 27) are weak, but the hypothesis does not rest on them. [REL001, REL002, REL003, REL004, REL005, POS002, POS003, POS004, POS005, DIR001, DIR002, DIR004, LAG002, LAG004]\n\nOther differences: each activity of the block appears in slightly more traces (about 48 in 100 before versus 55 in 100 after), and small back-transitions such as A04→A01 (about 23% of A04's outgoing transitions after, 10% before) and A05→A04 (about 19%) suggest occasional repetition in the later window. [POS001, POS005, DIR002, DIR003]",
+  "case_id": "case_f537091a8d8f5258",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

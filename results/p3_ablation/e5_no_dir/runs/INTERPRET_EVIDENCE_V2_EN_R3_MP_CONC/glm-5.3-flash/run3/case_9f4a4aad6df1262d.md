@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, the order between the two activity groups was fixed: A20, A22 and A23 came before A24, A25 and A26 in about 98–99 in 100 traces for every tested pair, with the reversed order essentially never observed and interleaving at only about 1–2 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- In the later window, this fixed order became mixed or reversed: A24 now precedes A20 in about 73 in 100 traces (before: 0) and A23 in about 84 in 100 (before: 0); A26 precedes A23 in about 68 in 100 (before: 0); A20–A26 and A23–A25 now occur in both orders in roughly equal shares (about 49 vs 51 and 48 vs 52 in 100). [REL001, REL006, REL008, REL003, REL007]
+- Pairs in the reversed direction were almost unobserved before (1 of 200 traces) and are now common: A24 before A20 appears in 148 of 200 traces, A26 before A20 in 101, A24 before A22 in 94 and A25 before A20 in 64. [LAG014, LAG021, LAG015, LAG019]
+- Step distances that were a single fixed value before are now variable: A20→A23 was always 1 step and is now 1 step in about 68 in 100 traces and 2–4 steps otherwise; A22→A25 was always 5 steps and now spreads over 1–5; A31→A24 was always 4 steps and is now 1 step in about 47 in 100 traces. [LAG001, LAG009, LAG027]
+- Relative positions shifted accordingly: A20, A22 and A23 moved later in the trace (mean position about 0.59→0.63, 0.56→0.59, 0.62→0.68), while A24, A25 and A26 moved earlier (about 0.65→0.59, 0.70→0.68, 0.67→0.64). All six activities occur in every trace in both windows. [POS001, POS002, POS003, POS004, POS005, POS006]
+- Participation is unchanged: every tested pair co-occurs in 100 in 100 traces in both windows, and interleaving or repetition stays at about 1–2 in 100, so no activity became optional, absent or repeated. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the ordering constraints between the group A20/A22/A23 and the group A24/A25/A26 were loosened. In the earlier window the six activities always ran in one fixed sequence at fixed step distances, consistent with a single rigid chain A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32; in the later window, A24, A25 and A26 frequently execute before or interleaved with A20, A22 and A23, and the previously fixed gaps between consecutive activities became variable. This is a change from a fixed order to a mixed order rather than a replacement of one path by another: all activities still occur in every trace in both windows and co-occurrence is unchanged. [REL001, REL003, REL006, REL008, LAG001, LAG009, LAG015, POS003, POS004]
+
+The relational evidence shows the order change directly: all eight tested pairs moved from about 98–99 in 100 fixed order to mixed or majority-reversed order, reversed pairs observed in only 1 of 200 traces before now appear in 64–148, 28 lag items show fixed gaps becoming variable, and the position shifts agree in direction (the earlier group later, the later group earlier). The number of qualifying items (42, all control-flow) is about 100 times the number expected for an unchanged process (0.42), so the pattern as a whole is not what random re-splits of an unchanged process produce. [REL001, REL002, REL004, REL005, LAG014, LAG019, LAG021, LAG027, POS001, POS004, screening]
+
+Limitations: the indicators use event positions, not clock time, so no statement about timing is possible; and the aggregates cannot distinguish whether the two groups now run concurrently with variable interleaving or follow several redefined sequences, since both would produce the observed mixed orders. The POS, REL and LAG items likely reflect one underlying reordering rather than independent confirmations. [REL003, LAG001, LAG016]
+
+Other differences: none beyond this reordering; the variable distances from the boundary activities A31 and A32 to the rest belong to the same loosening — A31 still precedes A22 and A20, and A32 still follows A23 and A25, but at variable step distances. [LAG024, LAG025, LAG013, LAG020]

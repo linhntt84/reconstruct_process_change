@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_4e635c32e1ae04e5.json",
+  "evidence_sha256": "1f52cab466041c618f856690cdb76b3d2974bb96c493eeea53afaf3cb14bb515",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:03:08.388885+00:00",
+  "finished_at_utc": "2026-11-15T14:04:43.956994+00:00",
+  "latency_seconds": 95.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13496,
+    "prompt_tokens": 5598,
+    "total_tokens": 19094,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12450,
+      "text_tokens": 1046
+    },
+    "cost": 0.007587699999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46930,
+  "text": "### Observed differences\n\n- Activity A02 was not observed in any of the 200 earlier traces; in the later window it occurs exactly once in every trace (participation 0% → 100%, mean 1.0 occurrence per trace, no repeats). [OCC001]\n- The relationship between A05 and A02 changed completely: earlier, A05 appeared in every trace while A02 appeared in none (A05 without A02 in 100% of traces, never together); later, the two always occur together and always in the order A05 before A02 (co-occurrence and A05-before-A02 both 0% → 100%). [REL001]\n- A05's observed successors changed: in the earlier window no outgoing transition from A05 was observed (0 over the 200 traces containing it), while in the later window all 200 observed outgoing transitions of A05 lead to A02. [DIR002]\n- Positions match an appended step: A05 sat at one fixed relative position (1.0) in every earlier trace, and in the later window it sits slightly earlier (median about 0.86) while A02 takes over the fixed position 1.0 in every trace. [POS001, POS002]\n- Participation of A06, A07 and A08 shifted by about 6 in 100 traces each: A06 from about 44% to 50%, A07 from about 56% to 50%, A08 from about 44% to 50% (roughly 88–112 of 200 traces before, 100 of 200 after); differences of this size occur regularly in random re-splits (empirical strength about 0.74). [OCC002, OCC003, OCC004]\n- Routing shares moved slightly: out of A03, the share going to A04 fell from about 18% to 13% while the share going to A06 rose from about 39% to 46%; out of A08, the share going to A03 fell from about 7% to about 1% (about 6 of 88 vs 1 of 100 transitions — unusual for random splits but based on very few transitions); routing out of A06 and A07 barely moved. [DIR001, DIR003, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A02 was added as a new final step executed after A05: in the earlier window, cases ended with A05 — A05 appeared in all 200 traces at a single fixed end position with no observed outgoing transition, and A02 was not observed — whereas in the later window every case continues A05 → A02, with A02 running exactly once per trace and taking over the fixed end position A05 previously held. [OCC001, REL001, DIR002, POS001, POS002]\n\nThe supporting signs are direct and mutually consistent: the relation itself changed from \"A05 alone in 100% of traces\" to \"A05 before A02 in 100% of traces\" [REL001]; the new edge A05→A02 accounts for all of A05's observed outgoing transitions [DIR002]; participation moved from 0 of 200 to 200 of 200 traces [OCC001]; and both position items agree with this picture [POS001, POS002]. All five items show empirical strength of about 0.99, and a shift from 0 to 200 of 200 traces is far outside ordinary sampling variation. Limitations: the five items describe one underlying difference rather than independent confirmations; zero participation in the earlier window means only that A02 was not observed there, so a change in recording that previously suppressed A02 cannot be ruled out; position evidence reflects event order rather than clock time; and the file offers no baseline for how many flagged items a stable process produces, so the judgement rests on the directness and consistency of the relational and successor evidence. [OCC001, REL001, DIR002, POS001, POS002]\n\nOther differences: the participation shares of A06, A07 and A08 converged to about 50% each, A03's outgoing shares shifted a few points toward A06, and the A08→A03 share became rare (about 7% to 1% of A08's outgoing transitions); these are small shifts, mostly within the range of sampling variation, and are not part of the main hypothesis. [OCC002, OCC003, OCC004, DIR001, DIR005]",
+  "case_id": "case_4e635c32e1ae04e5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, every case ran the same chain: A25, then the group A28/A30/A31 (all three always present, internal order mixed roughly half each way), then the group A32/A33/A34 (also always all three, mixed order), then A26. Each of these six activities appeared in 200 of 200 traces, exactly once per case, and the first group always ran before the second. [OCC001, OCC004, REL013, REL015, REL025, DIR001]
+- In the later window, A28, A30 and A31 each appear in about 47 in 100 traces (93 of 200) and A32, A33 and A34 in about 56 in 100 (111 of 200), still at most once per case, while A25 and A26 remain in every trace in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002]
+- The two groups became alternatives: cross-group pairs such as A28 with A32, which co-occurred in 100% of earlier traces (first group always first), co-occur in only about 2 in 100 later traces; in about 45 in 100 traces only the first group runs, and in about 54 in 100 only the second. [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]
+- Within each group the activities still run together whenever they run at all (A28/A30/A31 together in about 47 in 100 traces and jointly absent otherwise; A32/A33/A34 together in about 56 in 100), with internal order still mixed rather than fixed. [REL013, REL014, REL018, REL025, REL026, REL027]
+- Routing follows suit: A25's outgoing transitions, previously aimed only at A28/A30/A31 (about 34%, 37% and 30%), now split across all six group activities (roughly 15%, 18% and 14% to the first group, 16%, 18% and 20% to the second). A28, A30 and A31, which never led to A26 before, now lead directly to A26 in about 34%, 36% and 26% of their outgoing transitions, while their edges into the second group have nearly vanished (about 1% each). [DIR001, DIR002, DIR003, DIR004]
+- Positional distances shrank accordingly: A28/A30/A31 to A26, and A25 to A32/A33/A34, sat 4–5 event positions apart before and are 1–3 positions apart in about 19 of 20 later observations. Lag detail for cross-group pairs in the later window rests on only about 4 traces and is not reliable. [LAG001, LAG002, LAG003, LAG004, LAG008, LAG011, LAG005]
+- A25's mean event position moved slightly later (about 0.62 to 0.67 of the trace) and A26's slightly earlier (about 0.83 to 0.81). [POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the two three-activity blocks became alternatives in the later window: cases run A25, then either the A28/A30/A31 block (about 47 in 100 cases) or the A32/A33/A34 block (about 53 in 100), then A26 — whereas before, every case executed both blocks in sequence between A25 and A26. Equivalently, each block is now skipped in roughly half of the cases (the first block in about 53 in 100, the second in about 45 in 100, both present together in about 2 in 100). [REL015, OCC001, OCC004, DIR001, DIR002, LAG004]
+
+The change is shown directly by relational evidence — co-occurrence of the two groups falls from 100% of traces to about 2 in 100 while one-group-only traces appear — and it is consistent across participation (46.5% and 55.5%, which sum with the 2% overlap to the full case volume), new direct successors (A25 into the second group; A28/A30/A31 straight to A26) and shortened positional distances. Screening also flagged 58 items against fewer than one expected by chance among 127 tested units, so the volume of flagged behaviour cannot be explained by random splitting; note, however, that these indicators partly describe the same traces, so they corroborate rather than independently confirm one another. [REL015, DIR002, DIR003, LAG004, LAG008]
+
+The evidence cannot rule out that the later window mixes two coexisting behaviours (for example a transition in which old and new routings coexist) rather than one stable new routing, and the lag picture for the rare cases where both blocks run rests on about 4 traces; nothing is observed about activities before A25 or after A26. [LAG005, LAG006, LAG012]
+
+Other differences: beyond this restructuring, only the small position shifts of A25 (later) and A26 (earlier) stand out; they fit the shorter traces that result from one block being skipped rather than indicating a separate change. [POS001, POS002]

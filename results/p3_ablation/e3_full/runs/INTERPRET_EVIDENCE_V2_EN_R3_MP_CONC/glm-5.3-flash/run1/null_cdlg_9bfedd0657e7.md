@@ -1,0 +1,13 @@
+### Observed differences
+
+- Participation and structure look stable: A03 and A05 occur together in every trace in both windows (co-occurrence 1.0 in both), and every analysed activity and activity pair is supported by all 200 traces in each window, so no activity was added, removed or became optional. [REL001, DIR001, POS001, LAG001]
+- The one consistent difference concerns the order of A03 and A05, which run in a mixed order in both windows (both orders occur frequently before and after). In the earlier window each order held in about 50 of 100 traces; in the later window A05 came before A03 in about 57 in 100 traces and A03 before A05 in about 43 in 100. [REL001]
+- The outgoing shares around this pair move by the same amount: from A02, the share continuing to A05 rose from 50% to about 57% while the share to A03 fell to about 43%; from A03, the share to A04 rose to about 57% and the share to A05 fell to about 43%; from A05, the share to A03 rose to about 57% and the share to A04 fell to about 43%. [DIR001, DIR002, DIR003]
+- Event positions and gaps mirror this: A05's mean event position moved slightly earlier (0.625 to about 0.61, median from 0.75 to 0.5) and A03's slightly later (to about 0.64); the gap from A01 or A02 to A05 shortened by one step and the gap to A03 lengthened by one step in about 15 of 200 traces; and A03 now sits immediately before A04 in about 57 of 100 cases (previously 50) while A05 does so in about 43 of 100 (previously 50). [POS001, POS002, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]
+- All twelve items describe this same single movement with the same size — a shift of about 15 traces in 200, i.e. 7.5 percentage points — and the same moderate empirical strength (about 0.81), meaning roughly 19 in 100 random re-splits of unchanged data produce differences at least this large; they therefore reflect one behaviour, not independent confirmations. [DIR001, DIR002, DIR003, POS001, POS002, REL001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The items jointly describe only one small difference — A05 preceding A03 in about 57 of 100 later-window traces versus about 50 of 100 earlier — and its size is matched or exceeded in roughly one in five random re-splits of unchanged data, so an ordinary sampling fluctuation in a stable process cannot be ruled out. [REL001, DIR001, LAG001]

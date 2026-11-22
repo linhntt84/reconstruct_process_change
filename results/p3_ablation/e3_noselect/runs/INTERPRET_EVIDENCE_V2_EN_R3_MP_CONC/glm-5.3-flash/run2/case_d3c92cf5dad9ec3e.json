@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_d3c92cf5dad9ec3e.json",
+  "evidence_sha256": "32db7bfcb1832c82cd96ff90f3b46faf212afc4c13b58fab0fd5b47a10e5f90a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:59:16.157263+00:00",
+  "finished_at_utc": "2026-11-15T08:03:09.733602+00:00",
+  "latency_seconds": 233.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33150,
+    "prompt_tokens": 71212,
+    "total_tokens": 104362,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30411,
+      "text_tokens": 2739
+    },
+    "cost": 0.027256799999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 96685,
+  "text": "### Observed differences\n\n- In the earlier window, A20, A22 and A23 each ran in every trace at a mean relative position of about 0.63; in the later window they still run in every trace, but at a mean position of about 0.38 (each shift at the maximum empirical strength of about 0.995). [POS002, POS004, POS005]\n- In the earlier window, A19, A21 and A24 each ran in about 30–37 in 100 traces at a mean position of about 0.34; in the later window they run in about 30–40 in 100 traces at a mean position of about 0.66–0.68. [POS001, POS003, POS006, OCC018, OCC020, OCC023]\n- Successors were rewired accordingly: before, A40's outgoing transitions went to A19, A21 and A24 in roughly equal thirds (about 28, 33 and 34 in 100); after, they go to A20, A22 and A23 in roughly equal thirds (about 31, 35 and 28 in 100). [DIR040]\n- Before, A29 led to A20, A23 and A22 (about 37, 33 and 30 in 100 of its outgoing transitions); after, it leads to A24, A19 and A21 (about 38, 32 and 29 in 100). [DIR029]\n- Before, A19, A21 and A24 were each followed by A25 in about 97–98 in 100 of their outgoing transitions; after, they are followed by A30 in about 95–99 in 100. Conversely, A20, A22 and A23, which previously exited to A30 (about 29–37 in 100), now exit to A25 (about 27–37 in 100), and A30 no longer appears among their observed successors. [DIR019, DIR021, DIR024, DIR020, DIR022, DIR023]\n- Every pair spanning the two groups reversed its order almost completely: A25 preceded A20 in about 995 in 1000 traces before and follows it in about 995 in 1000 after, and A19, A21 and A24 each ran before A20, A22, A23, A25 and A29 in the earlier window and after them in the later window (all reversals at empirical strength about 0.995). [REL014, REL001, REL003, REL004, REL006, REL007, REL010, REL013, REL015, REL018, REL027, REL031, REL032, REL036]\n- Pairs whose order should be unaffected kept it: A20 still precedes A30 (about 98–100 in 100) and A40 still precedes A20 and A19 (about 99–100 in 100). [REL016, REL017, REL009]\n- The internal shape of both groups is unchanged: A20, A22 and A23 still co-occur in every trace and run in both orders in similar proportions (A20 before A22 in about 54 in 100 before versus 46 in 100 after), while A19, A21 and A24 remain mutually exclusive alternatives, co-occurring in at most about 2 in 100 traces in both windows. [REL011, REL012, REL025, REL002, REL005, REL020]\n- Step distances match a three-activity block replacing a single-activity block in each segment: the gap from A29 to A30 shrank from mostly 4 steps (about 93 in 100) to mostly 2 steps (about 99 in 100), and the gap from A40 to A25 grew from mostly 2 steps (about 95 in 100) to mostly 4 steps (about 92 in 100); A25 and A29 each shifted later by a similar amount (mean position about 0.38 to 0.45, and 0.57 to 0.64). [LAG013, LAG019, POS007, POS008]\n- Outside this pattern, A08 declined clearly, running in about 17 in 100 traces before and about 7 in 100 after (empirical strength 0.985), with a visibly changed outgoing mix, though only 32 versus 14 outgoing transitions were observed. [OCC007, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks of activities exchanged their places between two segments of the process. In the earlier window the sequence ran A40, then exactly one of the mutually exclusive activities A19, A21 or A24, then A25, and later A29, then the block A20–A22–A23 (all three, in varying order), then A30; in the later window A40 is followed by the A20–A22–A23 block and then A25, while A29 is followed by one of A19, A21 or A24 and then A30. [DIR040, DIR029, DIR019, DIR021, DIR024, DIR020, DIR022, DIR023]\n\nSupporting signs: the rewiring is shown directly in the successor profiles of A29 and A40 and of all six activities; every cross-block pair reverses order almost completely while pairs that should keep their order do not; the position shifts, the step-distance changes and the equal later shift of A25 and A29 all match one and the same exchange; and behaviour downstream of A25 (towards A32/A33) and of A30 (towards A34–A37) stayed essentially unchanged. Participation of all six activities remained substantial in both windows, so this is a re-sequencing of existing behaviour, not activities appearing, disappearing or being skipped. [REL014, REL016, LAG013, LAG019, POS007, DIR025, DIR030, OCC018]\n\nAn important competing explanation the evidence cannot rule out is that the later window simply contains a different case mix that uniformly follows the other ordering; with only two aggregate windows of 200 traces each, this cannot be separated from a change in the process itself. [DIR029, DIR040]\n\nOther differences:\n- A08 became much rarer (about 17 in 100 traces before, about 7 in 100 after) and its outgoing mix changed; the new mix rests on only 14 observed outgoing transitions, so its details are uncertain. [OCC007, DIR008]\n- Around A41–A44, the split after A41 moved from about 51:47 in A43's favour to about 45:54 in A42's favour, A43 and A44 lost about 0.12 occurrences per trace each, and A39 rose from a mean of 0.79 to 0.90 occurrences per trace. [DIR041, OCC040, OCC041, OCC039]\n- A03 and A11–A13 each lost about 6–7 points of trace participation (about 49 down to 42–43 in 100), and A14/A15 show slightly fewer repetitions; these shifts are small and may reflect sampling between two 200-trace windows. [OCC003, OCC010, OCC011, OCC012, OCC014, OCC015]\n- Routing profiles of rare activities such as A02 and A46 changed on very few observations (10 versus 18, and 7 versus 5 outgoing transitions) and carry little weight. [DIR002, DIR046]",
+  "case_id": "case_d3c92cf5dad9ec3e",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

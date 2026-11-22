@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_66f99cd29ea9b7e7.json",
+  "evidence_sha256": "9958c8851248de0f1350f0b1eda68a0169be8818048d00f026f878ebe724ba49",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:26:26.009565+00:00",
+  "finished_at_utc": "2026-11-15T07:26:56.272391+00:00",
+  "latency_seconds": 30.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4392,
+    "prompt_tokens": 2937,
+    "total_tokens": 7329,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3806,
+      "text_tokens": 586
+    },
+    "cost": 0.00263655
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 15976,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A01 and A04 roughly doubled: in the earlier window the median was about 0.85 hours (typical spread roughly 0.78–0.92 hours), while in the later window it was about 1.74 hours (roughly 1.58–1.89 hours), a mean increase of about 0.9 hours; the interval also became somewhat more variable (spread of about 0.10 vs 0.19 hours). This pair is observed in about 19 in 100 traces in each window (38 of 200). [TWAIT001]\n- The elapsed time between consecutive completions of A24 and A28 collapsed to nearly zero: in the earlier window the median was about 1.01 hours (typical spread roughly 0.93–1.10 hours), while in the later window the median and both quartiles were 0 hours and the mean was about 0.01 hours (under a minute). This pair is observed in all 200 traces in both windows. [TWAIT002]\n- Both differences are unusual for random re-splits of the pooled data: each exceeds all but about 1 in 2000 reference comparisons. Across the 19 tested activity pairs, 2 time items qualified where about 0.01 would be expected if nothing had changed. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a change in timing between consecutive activity completions. In the later window, the interval between the completions of A01 and A04 roughly doubled (median about 0.85 to about 1.74 hours), while the interval between the completions of A24 and A28 fell from about one hour to essentially zero, with most traces showing no elapsed time at all between the two completions. [TWAIT001, TWAIT002]\n\nSupporting signs: both items measure this timing directly on its own scale, rest on 38 and 200 observations per window respectively, and are each more extreme than all but about 1 in 2000 random re-splits; with 2 qualifying items against an expectation of about 0.01 without change, chance alone cannot account for the set. Limitations: this indicator is the elapsed time between consecutive completion events and mixes waiting and processing time, so the near-zero A24–A28 interval could also reflect a structural change in which the two activities now complete back-to-back rather than a pure timing change, and the evidence contains no relational or positional items to distinguish these; the A01–A04 profile additionally rests on only about 19 in 100 traces per window. [TWAIT001, TWAIT002]\n\nOther differences: none — the evidence contains only these two timing items. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_66f99cd29ea9b7e7",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,19 @@
+### Observed differences
+
+- A05 and A10 exchanged their participation and repetition. Before, A05 ran in every trace with about 4.2 occurrences per trace, while A10 ran in about 47 in 100 traces with about 1.9 occurrences; in the later window, A10 runs in every trace with about 4.1 occurrences and A05 in about 50 in 100 traces with about 2.2. [OCC001, OCC003]
+- Their typical placement in the case flipped: A05's median relative position moved from about 0.69 to about 0.29, and A10's from about 0.30 to about 0.70 (event positions within the case, not clock time). A08 moved the same way as A05 (median about 0.67 to about 0.30; present in 68 vs 34 in 100 traces) and A16 the same way as A10 (about 0.30 to about 0.68; present in 30 vs 68 in 100). [POS001, POS003, POS002, POS004, OCC002, OCC004]
+- Outgoing edges were rewired: A06 led only to A05 before and leads only to A10 now; A11 and A15 each dropped their edge to A05 and now send about half of their outgoing flow to A10; A14 moved the opposite way, from about half to A10 to about half to A05. A05's outgoing flow shifted from A08/A09 to A17/A08, and A10's from A16/A17 to A16/A09. [DIR002, DIR004, DIR006, DIR005, DIR001, DIR003]
+- Co-occurrence patterns flipped accordingly: A09 previously co-occurred with A05 in every trace and now co-occurs with A10 in every trace; A17 previously appeared only alongside A10 and now only alongside A05 (about 50 in 100 traces); A08 co-occurred with A09, A11, A14 and A15 in about 68 in 100 traces and now in about 34, which now run without A08; A16's co-occurrence with A11, A14 and A15 rose from about 30 to about 68 in 100. [REL003, REL020, REL026, REL009, REL016, REL015, REL027, REL029, REL018]
+- Event gaps moved consistently with the exchange: gaps from A14 to A05 shortened (mass moved from about 3 steps to about 1), while gaps from A14 to A10 lengthened (from about 1 step to about 3–5). [LAG005, LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A05 and A10 exchanged their roles in the process, with A08 and A16 exchanging alongside them. Before, A05 was mandatory, executed late in the case and repeated (about 4.2 occurrences per trace), fed by A06, A11, A14 and A15, while A10 was optional and early; in the later window, A10 holds the mandatory, late, repeated role and receives that inflow (A06 now leads only to A10), A05 has become optional and early (A14 now feeds it), A08 fell from about 68 to about 34 in 100 traces and moved earlier, A16 rose from about 30 to about 68 and moved later, and the companions switched: A09 now always accompanies A10 instead of A05, and A17 accompanies A05 instead of A10. [OCC001, OCC003, POS001, POS003, DIR002, DIR005, REL020, REL009]
+
+The hypothesis is shown directly rather than inferred from frequency shifts alone: successor changes and opposite position shifts place each activity where the other used to be, participation moves in opposite directions, and the relational and gap items match the same exchange. The ensemble is far beyond what an unchanged process produces: 55 items qualified where fewer than 1 was expected by chance, and every item's difference exceeds about 995 in 1000 random re-splits of the pooled traces. [DIR002, POS001, OCC003, LAG005, REL023]
+
+Limitations: many relational items re-describe the same traces, so they are not independent confirmations; positions and gaps are measured in event order, not clock time; and because the activity codes are anonymous, the evidence cannot distinguish a literal exchange of places from A10 and A16 replacing A05 and A08 in those roles — that competing reading remains open. [REL003, REL020, POS001]
+
+Other differences: none that stand apart from this exchange; the remaining qualifying items (self-gaps of A05, A08, A10 and A16, and small gap redistributions such as A14–A16 becoming uniformly about 4 steps) are consistent with it. [LAG001, LAG003, LAG004, LAG009, LAG008]

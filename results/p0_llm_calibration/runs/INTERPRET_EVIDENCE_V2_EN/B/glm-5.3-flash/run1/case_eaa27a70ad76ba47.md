@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the later window, A16 and A17 each appear in about 21 in 100 cases, down from about 78 in 100 before (156 vs 42 of 200 traces); neither activity occurs more than once per case in either window. [OCC001, OCC002]
+- In the later window, A18 and A19 each appear in about 79 in 100 cases, up from about 22 in 100 before (44 vs 158 of 200 traces). [OCC003, OCC004]
+- Among the observed outgoing transitions of A15, the share leading to A16 fell from about 78% to about 21%, while the share leading to A18 rose from about 22% to about 79%. [DIR001]
+- The four activities form two mutually exclusive pairs that always run in a fixed internal order: A16 then A17 together in about 78 in 100 cases before and 21 after (otherwise both absent), and A18 then A19 together in about 22 before and 79 after; no case contains activities from both pairs in either window. [REL005, REL012, REL006, REL007, REL009, REL010]
+- Ordering around the pairs is preserved: A15 precedes whichever pair runs (A15 before A16/A17 and before A18/A19 in all their co-occurring cases), A23's relative position to the pair that ran is proportionally unchanged (A18 before A23 in about 6 of 10 co-occurring cases both before and after, interleaved in the rest), and A15 and A23 themselves appear in every case in both windows. [REL001, REL002, REL003, REL004, REL008, REL011, REL013, REL014]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the routing after A15 reversed in frequency: in the later window roughly four in five cases run the branch A15 → A18 → A19, whereas before roughly four in five ran A15 → A16 → A17. The change is shown directly by the redistribution of A15's outgoing transitions and consistently by the mirrored participation shifts of the four branch activities and the co-occurrence and ordering relations; screening flagged 19 items where only about 0.32 would be expected by chance alone, every item shows the same shift size, and each difference exceeds about 199 of 200 random re-splits of the pooled data. The order within and around the branches is the same in both windows, so the difference concerns how often each branch executes, not where activities sit. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]
+
+The main competing explanation the evidence cannot rule out is sampling: the two windows are finite samples of 200 cases each, and variant frequencies can differ between samples without any process change, so a shift in the case mix towards the A18–A19 variant of an otherwise unchanged process remains possible — although a swing of this size (156 vs 42 cases containing A16), larger than in about 199 of 200 random re-splits, makes pure chance unlikely. The evidence establishes a change in how often each branch runs; the two-branch structure itself is visible in both windows, and no change to that structure is shown. [OCC001, DIR001, REL006, REL009]

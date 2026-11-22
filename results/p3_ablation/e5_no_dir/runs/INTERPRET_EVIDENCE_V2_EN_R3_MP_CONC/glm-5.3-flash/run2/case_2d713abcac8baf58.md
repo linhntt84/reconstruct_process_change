@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, almost every case executed exactly one of A19, A20 or A21: A19 in about 35 in 100 traces, A20 in about 30 and A21 in about 36, while any two of them shared a trace in at most about 1 in 200. In the later window all three have nearly disappeared, appearing in only 2, 1 and 1 of 200 traces respectively. [OCC001, OCC002, OCC003, REL001, REL002, REL008]
+- In the earlier window this optional step always sat between A44 and A29: A44 came first and A29 after in essentially every trace containing one of A19, A20 or A21. [REL006, REL007, REL012, REL013, REL017, REL018]
+- In the later window, A26, A27 and A28 — not observed in any of the 200 earlier traces — each run in all 200 later traces, about once per trace. [OCC004, OCC005, OCC006, POS004, POS005, POS006]
+- In the later window the new block occupies the old slot: A44 precedes each of A26, A27 and A28 in about 99 in 100 traces, and each of them precedes A29 in about 98–99 in 100; among themselves, A26/A27/A28 appear in both orders in roughly equal shares (about 50 in 100 each way), so their internal order is not fixed. [REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+- The event distance from A44 to A29 grew accordingly, from mostly 2 steps (about 84 in 100 earlier traces, 3 steps in most of the rest) to mostly 4 steps (about 82 in 100 later traces, 5 steps in most of the rest); A29's mean event position moved from 0.40 to 0.44, while A44 and A29 themselves occur in every trace in both windows. [LAG001, POS007, REL021]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was restructured: the earlier pattern, in which each case executed exactly one of the alternatives A19, A20 or A21 (about 35/30/36 in 100, always after A44 and before A29), was replaced by a mandatory block in which A26, A27 and A28 each execute once in every case in the same slot, with no fixed order among the three. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL006, REL007, REL012, REL013, REL017, REL018, REL019, REL021, REL022, REL024, REL025, REL026, REL027]
+
+The signs are direct and consistent: the participation changes are large and well supported (about 70 versus 2 of 200 traces for A19; 0 versus 200 for each of A26–A28), the relational items show the new ordering A44, then A26/A27/A28 in varying order, then A29 directly, and the widened A44–A29 event gap (2 to 4 steps) matches one activity being replaced by three. Screening produced 41 qualifying control-flow items where about 0.4 would be expected without a change, so the pattern as a whole is far beyond what random re-splits of stable behaviour yield. [OCC001, OCC004, LAG001, REL019, REL021]
+
+Limitations: the evidence cannot show whether A19–A21 were removed outright or only became very rare, nor whether A26–A28 existed at a very low rate earlier, since zero participation only means they were not observed; moreover, many relational items describe the same traces and are not independent confirmations. An important competing explanation the evidence cannot fully rule out is an extreme shift in the mix of two pre-existing case variants rather than a structural modification, although the all-or-nothing participation pattern (0 versus 200 of 200 traces) makes a pure shift in how often unchanged paths are taken unlikely. [OCC001, OCC004]
+
+Other differences: in the few later traces where the old activities still occur, their event positions differ from before (A19 around 0.11 of the trace length versus about 0.37 earlier; single occurrences of A20 and A21 at 0.88 and 0.73), but these rest on only 1–2 traces each. [POS001, POS002, POS003]

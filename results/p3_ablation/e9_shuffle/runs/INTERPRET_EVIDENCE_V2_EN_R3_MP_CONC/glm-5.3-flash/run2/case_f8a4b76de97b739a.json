@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f8a4b76de97b739a.json",
+  "evidence_sha256": "dd50a10d46e4ab21e80cba2f46e655236671c2425f9e4a70b0b5f157093c12c1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:25:42.473463+00:00",
+  "finished_at_utc": "2026-11-15T04:27:38.314101+00:00",
+  "latency_seconds": 115.84,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17643,
+    "prompt_tokens": 33681,
+    "total_tokens": 51324,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15816,
+      "text_tokens": 1827
+    },
+    "cost": 0.01387365
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52975,
+  "text": "### Observed differences\n\n- The sharpest change is around A09: in the earlier window A09 appeared in about 54 in 100 traces (about 1.5 occurrences per trace on average), while in the later window it is not observed at all. Conversely, A01 and A02, absent from the earlier window, appear in about 59 and about 87 in 100 later traces respectively, with A01 averaging about 1.5 occurrences per trace. [OCC001, OCC002, OCC003, POS001, POS002, POS004]\n\n- Successors changed accordingly: A16's outgoing transitions earlier went about 45 in 100 to A09 and 43 in 100 to A10; in the later window about 43 in 100 go to A01 and 45 in 100 to A10. Both A09 earlier and A01 later send most of their outgoing transitions to A03 (about 82 and 83 in 100). A02's outgoing transitions go mainly to A12 (about 63 in 100), and A13 now leads to A02 (about 35 in 100) instead of to A12 (about 21 in 100 earlier). [DIR001, DIR002, DIR006, DIR007, DIR009]\n\n- Relations flip consistently with this swap: A09 earlier co-occurred with A03, A07, A08, A12 and A16 in roughly 44–54 in 100 traces (largely interleaved); in the later window the partner appears alone in nearly all such traces (A03 alone in 100 in 100, A12 alone in about 87, A16 alone in about 95). Where A09 earlier appeared alone in about 54 in 100 of the traces containing it or A01/A02, A01 and A02 now appear alone (about 59 and 87 in 100). A02 now runs before A12 in about 87 in 100 traces and before A07 and A08 in about 69 in 100; A01 co-occurs with A03 in about 59 in 100, entirely interleaved or repeated. [REL002, REL006, REL014, REL015, REL016, REL017, REL022, REL026, REL028, REL030, REL033]\n\n- A14 and A17 intensified: A14 rose from about 39 to about 89 in 100 traces, its mean occurrences from about 0.4 to 1.7 (repeating in about 42 in 100 of its traces), while A17's mean occurrences rose from about 0.4 to 0.8 at unchanged participation (about 42–44 in 100). The two never co-occurred earlier; later they co-occur in about 42 in 100 traces, always interleaved or repeated, and now succeed each other directly (A14→A17 in about 68 in 100 of A14's outgoing transitions; A17→A14 in about 89 in 100 of A17's), whereas earlier both led mainly to A08 (about 56 and 54 in 100). A07 and A08 also shifted outgoing transitions from A17 towards A14. [OCC004, OCC005, DIR004, DIR005, DIR008, DIR010, REL038]\n\n- Positional gaps widened: A07 reached A17 within two steps in about 94 in 100 earlier cases but only about 48 in 100 later; A08 followed A17 immediately in about 69 in 100 earlier versus about 6 in 100 later; A16 reached A17 at four steps earlier (about 70 in 100) versus five steps later (about 78 in 100); similar widening appears for A08→A14 and A07→A14. [LAG002, LAG003, LAG004, LAG005, LAG007]\n\n- Caveat: A17's and A14's earlier outgoing profiles rest on few observed transitions (about 26 and 34), so their earlier targets are less firmly established than the later ones. [DIR008, DIR010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the later window executes a restructured flow in which A09 no longer appears and two previously unobserved activities, A01 and A02, have taken over its part: A01 (about 59 in 100 traces) now receives the handover from A16 and feeds A03, the successor A09 previously fed, while A02 (about 87 in 100 traces) typically runs before A12, with A13 now flowing into A02 rather than directly into A12. The support is direct — occurrence and position data show A09 in about half the earlier traces and none later, and A01/A02 in none earlier and frequent later — and consistent, since every traced partner of A09 flips from co-occurrence to appearing alone while A02's partners flip from appearing alone to a fixed order after A02. The screening comparison also shows the ensemble is far beyond chance: 67 items qualified against fewer than one expected if nothing had changed. A competing explanation the evidence cannot rule out is that the anonymous codes re-label existing work (for example A09's steps re-mapped under new codes) rather than representing genuinely added steps, and a systematic case-mix difference between the windows cannot be excluded. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR006, DIR007, DIR009, REL002, REL006, REL016, REL017, REL022, REL026, REL028, REL030, REL033]\n\nOther differences: A14 became far more frequent and now repeats and alternates with A17 — the two, which never co-occurred earlier, co-occur in about 42 in 100 later traces and directly succeed each other in both directions, whereas both previously led mainly to A08; gaps between several pairs (A07/A17, A08/A17, A08/A14, A07/A14, A16/A17) widened by roughly one to two positions, consistent with the added and repeated activities pushing later events further out. [OCC004, OCC005, DIR004, DIR005, DIR008, DIR010, REL038, LAG002, LAG003, LAG004, LAG005, LAG007]",
+  "case_id": "case_f8a4b76de97b739a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

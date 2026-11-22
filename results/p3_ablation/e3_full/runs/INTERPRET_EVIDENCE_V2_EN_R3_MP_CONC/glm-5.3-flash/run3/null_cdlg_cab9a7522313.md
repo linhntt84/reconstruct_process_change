@@ -1,0 +1,14 @@
+### Observed differences
+
+- Both windows contain 200 traces with the same overall shape: A02 appears in every trace, and cases split between a branch where A01, A05 and A06 always occur together and an alternative where A03 occurs instead, with A04 found only inside the first branch. In the earlier window the split is even — about 100 in 200 traces for each branch, with A04 in about 55 — and in the later window it barely moves: the A01/A05/A06 branch appears in about 103 in 200 traces, A03 in about 97, and A04 in about 48. [REL001, REL006, REL004, REL010, REL013, OCC003]
+- Ordering within the branch shifts slightly toward strict precedence: A01 precedes A02 in about 22.5 in 100 of their shared traces in the earlier window and about 27.5 in 100 in the later one, while interleaved-or-repeated orderings fall from about 27.5 to 24 in 100; the pairs A01–A05, A01–A06, A02–A06 and A05–A06 show the same small shift (about 22.5 to 27.5 in 100). [REL001, REL004, REL005, REL009, REL015]
+- Occurrences inside the branch sit slightly closer together in the later window: A01→A06 at a distance of one event rises from about 0.25 to 0.30 of observed pairs, and A01→A05 and A06→A05 at distances of one to two events from about 0.47 to 0.52. [LAG003, LAG002, LAG009]
+- Positions move slightly earlier for two activities: A01's median position falls from about 0.17 to 0.0 of the trace length and A05's from about 0.83 to 0.67, while A06's mean position is nearly unchanged (about 0.42 to 0.41). [POS001, POS003, POS004]
+- Of the transitions leaving A06, the share going to A04 falls from about 51 in 100 to about 46 in 100, while the share going to A05 rises from about 49 to 54 in 100. [DIR001]
+- All of these differences are small — participation moves by 1.5–3.5 in 100 traces and ordering shares by about 5 in 100 — and for most items more than half of random re-splits of the pooled data produce differences at least as large (empirical strengths mostly 0.14–0.46); only the position and distance items reach about 0.70–0.80. [OCC001, OCC003, REL001, POS001, POS003, LAG002, LAG003]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The visible shifts — the A01/A05/A06 branch in about 103 of 200 later traces versus about 100 earlier, A04 in about 48 versus 55, and slightly tighter precedence within the branch — are of a size that random re-splits of two 200-trace windows regularly produce, and no chance-expectation benchmark is provided that would show the number of qualifying items exceeds what an unchanged process yields. [REL004, REL005, OCC003, REL001, LAG002]

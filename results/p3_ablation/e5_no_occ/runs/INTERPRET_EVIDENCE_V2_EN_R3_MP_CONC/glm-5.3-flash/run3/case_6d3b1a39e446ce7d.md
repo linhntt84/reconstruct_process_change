@@ -1,0 +1,20 @@
+### Observed differences
+
+- Participation widened: in the earlier window A27 appeared in about 55 of 100 traces and A36, A37 and A42 in about 46–47 of 100 each; in the later window A27 appears in all traces and A36, A37 and A42 in nearly all (about 199 of 200). A25, A26, A28 and A31 were present in every trace in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+- Before, A27 and the block A36/A37/A42 were alternatives, co-occurring in only about 1 of 100 traces; in the later window they execute together in about 995 of 1000 traces, with the block before A27 in about 97 of 100. [REL011, REL012, REL013]
+- Routing changed at the branch points: before, about 97 of 100 of A25's observed outgoing transitions went to A28, and A26 went to A27 in about 54 of 100 (most of the rest to A36/A37/A42); in the later window A25 splits roughly one third each to A36, A37 and A42, and A26 goes to A27 in about 98 of 100. The block's exit moved from A31 (about 29–39 of its outgoing transitions before) to A28 (about 31–34 after). [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Order reversed around the block: before, A28 preceded A36/A37/A42 in about 46 of 100 co-occurrences and A26 preceded the block in about 46 of 100; in the later window the block precedes A28 in about 98 of 100 and precedes A26 in about 98–99 of 100. [REL006, REL007, REL008, REL014, REL015, REL016]
+- Distances changed accordingly: A25 and A28 were adjacent (1 step) in about 96 of 100 cases before and are 4–5 steps apart in about 99 of 100 after; A28 now follows the block within 1–3 steps in about 199 of 200 traces (a relation seen in only 1–2 traces before); the A26-to-A31 gap, previously 2 steps in about 54 of 100 and 4 steps in about 42 of 100, is now consistently 2 steps (about 97 of 100). [LAG001, LAG003, LAG007, LAG008, LAG009]
+- Positions shifted consistently: A36/A37/A42 now sit earlier in the trace (mean position about 0.59 before, 0.41 after), while A28 (about 0.40 to 0.46), A26 (about 0.54 to 0.60) and A27 (about 0.58 to 0.63) sit later. The block's internal order shows no fixed sequence in either window (both orders in similar shares). [POS002, POS003, POS004, POS006, POS007, POS008, REL020, REL021, REL022]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the three-activity block A36–A37–A42 was placed between A25 and A28 and made mandatory, while the former either-or branch at A26 was removed: before, A25 led directly to A28 and A26 led either to A27 (about 55 of 100 traces) or to the block (about 46 of 100); in the later window A25 opens into the block, A28 follows the block, and A26 always leads to A27, which is likewise executed in every trace. [DIR001, DIR002, REL011, REL012, REL013, POS003, POS006, POS007, POS008]
+
+The placement change is shown directly by relational evidence — the reversed order between the block and A28/A26, the new block-to-A28 succession within 1–3 steps, and the A25-to-A28 distance growing from 1 to 4–5 steps — and the successor changes at A25, A26, A36, A37 and A42 agree with it. Screening qualified 44 control-flow items where about 0.5 would be expected without a change, so sampling variation cannot account for the pattern as a whole. [REL006, REL014, REL015, REL016, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG007, LAG008, LAG009]
+
+Limitations: the evidence cannot distinguish a relocation of the block from removing it after A26 and re-inserting it after A25, nor determine whether the block moved earlier or A28 was pushed later, and it cannot show whether unobserved activities sit between the block and A28. Many items describe the same underlying trace behaviour and are not independent confirmations; LAG002 and LAG004–006 rest on only 1–2 observations on one side and were not relied upon. [LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+
+Other differences: A25 occurs slightly earlier (mean position about 0.37 to 0.35) and A31 slightly later (about 0.63 to 0.66) than before, consistent with the reordering around them but too small to interpret alone. [POS001, POS005]

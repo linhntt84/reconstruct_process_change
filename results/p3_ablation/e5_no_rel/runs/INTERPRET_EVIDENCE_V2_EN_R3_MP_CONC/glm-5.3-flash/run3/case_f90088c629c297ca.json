@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "f2f19a4538d4efaa1ce8d739409f91465af994b5ed9abab60146e77f7b2ef929",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:04:30.068837+00:00",
+  "finished_at_utc": "2026-11-15T12:05:32.781199+00:00",
+  "latency_seconds": 62.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8401,
+    "prompt_tokens": 5774,
+    "total_tokens": 14175,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7655,
+      "text_tokens": 746
+    },
+    "cost": 0.005066599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30636,
+  "text": "### Observed differences\n\n- Three activities that do not occur at all in the earlier window appear regularly in the later one: A14 in about 37 in 100 traces (74 of 200), A20 in about 34 (67 of 200) and A15 in about 29 (57 of 200); none of them repeats within a trace. [OCC001, OCC002, OCC003]\n- The routing out of A36 changed: earlier, every observed outgoing transition of A36 went to A21; later, about 37% go to A14, about 34% to A20, about 28% to A15, and only about 1 in 100 still go straight to A21. [DIR004]\n- In the later window, each of the three new activities leads exclusively to A21 — all of their observed outgoing transitions point to A21. [DIR001, DIR002, DIR003]\n- The distance between A36 and A21 changed from one step in all earlier-window cases to two steps in about 99 in 100 later-window cases. [LAG001]\n- The three new activities sit at a relative trace position of about 0.35, just before A21, whose mean relative position moved slightly later (about 0.37 to 0.39) while it still occurs in every trace in both windows. [POS001, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window one of three activities — A14, A15 or A20 — runs between A36 and A21 in nearly every trace, whereas earlier A36 was immediately followed by A21 in essentially all cases. The three together now account for about 99 in 100 of A36's outgoing transitions (A14 about 37%, A20 about 34%, A15 about 29%), each of them in turn leads only to A21, the A36–A21 distance moved from one to two steps in about 99% of cases, and the new activities sit at relative position about 0.35 just before A21, which itself shifted slightly later — a picture consistent with one new step per trace between the two activities. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG001, POS001, POS002, POS003, POS004]\n\nTwelve control-flow items qualified against roughly 0.32 expected if nothing had changed, far beyond what an unchanged process typically produces, and every item describes this same difference, with the three activities moving from zero of 200 traces to 57–74 traces of support and each difference also being unusual for random re-splits (empirical strength about 0.99). What the evidence cannot show is what selects among A14, A15 and A20 in a given trace — the split could reflect a routing choice or simply different kinds of cases — and zero participation earlier only means the activities were not executed in that sample, not why. [DIR004, DIR001, DIR002, DIR003, OCC001, OCC002, OCC003]",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

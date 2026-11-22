@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_9ac92922bd8acf53.json",
+  "evidence_sha256": "190a2efb801ab15a1266a0553da4540cfd188589f66b5179c68c57c44870811f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:49:34.870379+00:00",
+  "finished_at_utc": "2026-11-15T00:51:47.992928+00:00",
+  "latency_seconds": 133.12,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19313,
+    "prompt_tokens": 49781,
+    "total_tokens": 69094,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17430,
+      "text_tokens": 1883
+    },
+    "cost": 0.017123649999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58520,
+  "text": "### Observed differences\n\n- In the earlier window the five activities A36, A37, A42, A43 and A44 each ran in every trace; in the later window each appears in only about 55 in 100 traces (110–111 of 200), and they are skipped as a group — in about 45 in 100 traces none of them occurs. Their internal order stayed mixed in both windows. [OCC003, OCC004, OCC005, OCC006, OCC007, REL048, REL052, REL055]\n- A27, previously present in every trace, appears in about 46 in 100 traces in the later window (91 of 200). [OCC002, POS005]\n- Routing around this block changed. Earlier, A25's outgoing transitions led to the block members (about 17–24% each) and A26 sent about 98 in 100 of its outgoing transitions to A27; in the later window about 99 in 100 of A25's outgoing transitions go to A28, while A26 splits between A27 (about 45 in 100) and the block members (about 55 in 100 combined). The block members, which earlier led to A28 in about 17–25% of their outgoing transitions, now lead to A31 (about 14–25% each), and A28 is no longer observed among their successors. [DIR003, DIR004, DIR006, DIR007, DIR008, DIR009, DIR010]\n- The block changed position relative to its neighbours. Earlier it ran after A25 (about 99 in 100 joint occurrences) and before A26, A28 and A31 (about 98 in 100 each); in the later window A26 and A28 each precede the block in essentially all of their roughly 55 in 100 joint occurrences, and the block still precedes A31 (about 54 in 100). [REL019, REL026, REL030, REL038, REL042, REL043, REL047]\n- A27 and the block became mutually exclusive: earlier they always co-occurred (block before A27 in about 98 in 100); in the later window they co-occur in fewer than 1 in 100 traces — A27 alone in about 45 in 100, the block alone in about 55 in 100. [REL033, REL034, REL035, REL036, REL037]\n- Event positions moved accordingly: the block's mean position shifted later (about 0.41 to 0.58 of the trace), A26 earlier (0.62 to 0.53) and A28 earlier (0.49 to 0.38). [POS004, POS006, POS008, POS009, POS010, POS011, POS012]\n- Pairwise gaps mirror the rewiring: the A25→block and block→A28 gaps, seen in about 200 pair observations before, fall to 1–2, while the A26→block and block→A31 gaps rise from 1–2 to about 107–108. [LAG007, LAG008, LAG012, LAG016, LAG010, LAG013, LAG019]\n- A10 became rarer: about 32 in 100 traces before, about 13 in 100 after, with its co-occurrence with A27 and the block falling from about 32 in 100 to under 8 in 100. [OCC001, REL001, REL003, REL006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the block A36, A37, A42, A43, A44 was repositioned and made optional: it previously always ran between A25 and A28, whereas it now runs in about 55 in 100 traces after A28 and A26 and before A31; A25 proceeds directly to A28, and A27 — previously always executed after A26 — now alternates with the block, so a trace typically takes either A27 (about 45 in 100) or the block (about 55 in 100), with A31 following either branch. [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, DIR003, DIR004, DIR006, DIR010, REL026, REL033, REL038, REL043]\n\nThe supporting signs are direct and consistent: participation drops, successor changes at A25, A26 and the block members, order reversals relative to A26 and A28, position shifts, and the adjacency changes all describe the same rewiring; and with 106 qualifying items against roughly 1 expected if nothing had changed, random re-splits of the pooled traces cannot account for the evidence as a whole. [OCC003, DIR003, POS008, REL026, LAG010] Limitations: the many relation items describe the same traces and are not independent confirmations, and the exact post-change split (for example whether the block is skipped in a stable share of cases) is estimated from finite samples. An important competing explanation the evidence cannot rule out is the precise decision structure — whether A27 and the block are direct alternatives at a single gateway after A26 or become exclusive through earlier routing choices.\n\nOther differences: A10 declined and decoupled — participation fell from about 32 in 100 traces to about 13 in 100, its co-occurrence with A27 and the block fell from about 32 in 100 to under 8 in 100, and its outgoing transitions shifted away from A16 (about 79% to 38%); A15 now leads to A16 in about 94% of its outgoing transitions (about 84% before), and A15 and A16 occur without the block in about 45 in 100 traces, consistent with the block being skipped. [OCC001, DIR001, DIR002, REL001, REL008, REL014]",
+  "case_id": "case_9ac92922bd8acf53",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

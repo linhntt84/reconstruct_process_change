@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "10765079a9f335496c4faf790ff8ec84fae849d2849069f4cf27145bb41726f0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:38:41.411721+00:00",
+  "finished_at_utc": "2026-11-15T11:40:11.607252+00:00",
+  "latency_seconds": 90.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11975,
+    "prompt_tokens": 11411,
+    "total_tokens": 23386,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10705,
+      "text_tokens": 1270
+    },
+    "cost": 0.00769915
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39698,
+  "text": "### Observed differences\n\n- In the earlier window, A27 ran in every case (200 of 200 traces, once per case) and A32, A33 and A38 never appeared; in the later window, A27 runs in about 51 in 100 cases and each of A32, A33 and A38 runs in about 49 in 100 cases, once per case. [OCC001, OCC002, OCC003, OCC004]\n- Routing after A26 changed: earlier, about 99 in 100 of A26's outgoing transitions went to A27; in the later window, about 50 in 100 go to A27, with the rest split almost evenly among A33 (about 17 in 100), A38 (about 16 in 100) and A32 (about 15 in 100). [DIR001]\n- A27 and the three new activities are now strict alternatives: in the later window, A27 co-occurs with A32, A33 or A38 in at most about 1 in 200 cases, while A26 appears with A27 in about half of the cases and with each of A32, A33 and A38 in about half, essentially always before them. [REL001, REL002, REL003, REL004, REL006, REL007, REL008]\n- In the later window, the three new activities typically run together: each pair of them co-occurs in about 49 in 100 cases and appears in both orders in similar shares (for example, A32 before A33 in about 23 in 100 and A33 before A32 in about 27 in 100), so there is no fixed order among them. [REL012, REL013, REL014]\n- A28 still occurs in essentially every case in both windows, but in the later window each of A32, A33 and A38 precedes A28 in about 49 in 100 cases, whereas earlier A28 was always reached via A27. [REL005, REL009, REL010, REL011]\n- A28's distance from A26 shifted: earlier it followed two steps after A26 in about 98 in 100 cases; in the later window it is two steps after in about half of the cases and four steps after in about 48 in 100, consistent with three activities now sitting between them. [LAG001]\n- When A27 does run in the later window, it still leads almost always to A28 (about 96 in 100 of its outgoing transitions). [DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe control-flow screening flagged 24 items where about 0.54 would be expected if nothing had changed, so the volume of flagged behaviour is far beyond what an unchanged process typically produces. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001]\n\nThe evidence supports the possibility that in the later window about half of the cases skip A27 between A26 and A28 and instead run A32, A33 and A38 — all three, in no fixed order among themselves — between A26 and A28, while the remaining cases still follow the earlier A26 → A27 → A28 sequence; A26 and A28 themselves still open and close essentially every case. The signs are direct and mutually consistent: participation flipped from A27 to the trio [OCC001, OCC002, OCC003, OCC004]; A26 now routes to either A27 or one of the new activities [DIR001]; the trio is mutually exclusive with A27, co-occurs internally in both orders, and precedes A28 [REL001, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]; and A28's positional lag from A26 moved from two steps to two or four steps in equal shares [LAG001].\n\nThe evidence cannot distinguish whether A32, A33 and A38 run sequentially in varying orders or largely in parallel, since each pair appears in both orders with similar shares; nor can it rule out that the later window blends two case populations (old and new behaviour) rather than one behaviour shared by all cases. [REL012, REL013, REL014]\n\nOther differences: a few rare new transitions appear in the later window — from A27 to A09, A34 and A25, and from the new activities to A06, A25 and A02 — each at about 1–2 in 100 of the source's observed outgoing transitions, too rare to characterise further. [DIR002, DIR003, DIR004, DIR005]",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "11d366ac49778ba3bd2e14bd390b31ec0f590bfbe592df3f69129b772747562c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:14:39.403072+00:00",
+  "finished_at_utc": "2026-11-15T06:15:36.347857+00:00",
+  "latency_seconds": 56.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7858,
+    "prompt_tokens": 7208,
+    "total_tokens": 15066,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7065,
+      "text_tokens": 793
+    },
+    "cost": 0.0050102
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27670,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each occurred exactly once in every trace (participation 100%); in the later window each appears in only about 53 in 100 traces, still never more than once per trace. [OCC001, OCC002, OCC003]\n- In the earlier window, every observed outgoing transition of A36 went to A14; in the later window the flow out of A36 splits, with about 53 in 100 transitions still going to A14 and about 47 in 100 going directly to A21. [DIR001]\n- The three activities are skipped together rather than one at a time: the pairs A14–A15, A14–A20 and A15–A20 co-occurred in every earlier trace, whereas in the later window they co-occur in about 53 in 100 traces and are both absent in about 47 in 100. [REL001, REL002, REL005]\n- A36 and A21 still occur in every later trace; in about 47 in 100 traces each appears without the block activities (for example A21 without A14, or A36 without A14), and whenever the block does run, the earlier order is preserved: A36 before A14, A14 before A15, A15 before A20, A20 before A21. [REL003, REL004, REL006, REL007, REL008, REL009]\n- The distance from A36 to A21 was always 4 event positions in the earlier window, with the three block activities in between; in the later window it is 1 position in about 47 in 100 traces and 4 positions in about 53 in 100. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block A14 → A15 → A20, which ran mandatorily between A36 and A21 in every earlier trace, became optional in the later window: in about 47 in 100 traces A36 now leads directly to A21 and the whole block is skipped, while in the remaining traces the original chain A36 → A14 → A15 → A20 → A21 is executed once, in the same order as before. [OCC001, DIR001, REL001, REL004, LAG001]\n\nThe reading is direct and consistent: the participation of all three block activities dropped in lockstep from 100% to about 53 in 100; all within-block pairs are absent together in the same roughly 47 in 100 traces, pointing to joint skipping rather than independent drops; the new A36-to-A21 link appears both as a routing share and as a lag-1 connection; and 14 qualifying items against only 0.33 expected by chance for the 66 tested units cannot be explained as a chance artefact of the split. The items overlap heavily, however, so they are converging views of one underlying behaviour, not independent confirmations. [OCC001, OCC002, OCC003, DIR001, REL003, LAG001]\n\nAn important competing explanation the evidence cannot rule out is that the later window mixes two kinds of cases (for instance a case type that never required the block) rather than reflecting one process in which the block became skippable per case; the joint skipping of all three activities is also inferred from pairwise relations rather than observed as a single three-activity pattern. [REL001, REL002, REL005]\n\nOther differences: none — all qualifying items describe this single structural shift. [OCC001, DIR001, REL001, LAG001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

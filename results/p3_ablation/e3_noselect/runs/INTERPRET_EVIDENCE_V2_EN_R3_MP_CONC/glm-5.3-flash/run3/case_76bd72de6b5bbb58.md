@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A03 was a routine activity: present in about 45 in 100 traces (90 of 200), executed roughly once per trace, and positioned about 40% of the way through the case (median position about 0.39). In the later window, A03 is not observed in any of the 200 traces. [OCC003, POS002]
+- A01 shows the mirror image: it is absent from all 200 earlier traces, while in the later window it appears in about 50 in 100 traces (99 of 200), about once per trace, also around 40% into the case (median about 0.38). [OCC001, POS001]
+- A01 also took over A03's outgoing connections. Earlier, A03 was followed by A11 in about 45 in 100 of its outgoing transitions, with A10, A09 and A12 next at about 14–18 in 100 each; in the later window, A01 is followed by A11 in about 46 in 100, with A12, A09 and A10 at about 15–16 in 100 each. [DIR001, DIR003]
+- Incoming edges moved the same way: A09, which led to A03 in about 52 in 100 of its outgoing transitions, now leads to A01 in about 55 in 100; A11, A02, A05, A07, A10 and A14 likewise now reach A01 where they previously reached A03. [DIR002, DIR004, DIR005, DIR006, DIR007, DIR008, DIR010]
+- Co-occurrence flipped in the same direction. Earlier, A03 appeared together with A05, A09, A10, A11 and A12 (with A09 and with A11 each in about 45 in 100 traces) and A01 never did; in the later window, A01 co-occurs with these same activities (about 50 in 100 traces for A09 and for A11) and A03 never does. A01 and A03 never share a trace in either window. [REL001, REL002, REL003, REL005, REL007, REL008, REL010]
+- Away from this exchange, participation shifted modestly: A05 now appears in about 74 in 100 traces (about 64 before) and A12 in about 35 (about 28 before), while A07 (about 36 vs 43) and A08 (about 22 vs 28) appear in fewer traces; a few between-activity step distances also shifted slightly. [OCC005, OCC007, OCC008, OCC012, LAG004, LAG011, LAG019]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 has taken over the role A03 played: A03 is no longer observed, and A01 is now executed in the same contexts — a similar share of traces (about 50 in 100 vs about 45 before), the same position within the case, and a similar recurrence rate. [OCC001, OCC003, POS001, POS002]
+
+The substitution is shown directly and consistently: A01's successor profile matches A03's almost component for component (A11 dominant at about 45–46 in 100, then A12, A09 and A10), the predecessor edges were rewired one for one (most visibly A09→A03 at about 52 in 100 becoming A09→A01 at about 55 in 100), and every co-occurrence that A03 had with A05, A09, A10, A11 and A12 is now carried by A01, while A01 and A03 never occur in the same trace in either window. The same picture emerges across the occurrence, direction, position and relation indicators, with most items at the top of the strength scale. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR010, REL001, REL002, REL003, REL005, REL007, REL008, REL010]
+
+Two limitations remain. With anonymous activity codes, the evidence cannot distinguish a different activity being inserted into A03's role from the same activity continuing under a new identifier. Also, A01's later share runs slightly above A03's earlier share (about 50 vs 45 in 100 traces), but A09 and A11 show the same small rise with low empirical strength, so it is within ordinary sampling variability rather than part of the change. [OCC001, OCC009, OCC011]
+
+Other differences: A05 (about 64→74 in 100 traces) and A12 (about 28→35) now participate in more traces, while A07 (about 43→36) and A08 (about 28→22) participate in fewer; these shifts are modest (empirical strengths roughly 0.55–0.87) and the evidence cannot establish whether they belong to the same change. A few step distances shifted slightly — for example A05→A12 pairs now sit mostly four steps apart (about 60 in 100, up from about 47) — but these rest on only about 30–60 observations per window. [OCC005, OCC007, OCC008, OCC012, LAG004, LAG011, LAG019]

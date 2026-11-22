@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_4438bcd12da8a472.json",
+  "evidence_sha256": "db80f5957e531fa0b403c277c09d54c3a34f7384a767717522dc12cb4f1dee0d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:06:27.324504+00:00",
+  "finished_at_utc": "2026-11-15T04:08:03.855977+00:00",
+  "latency_seconds": 96.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13506,
+    "prompt_tokens": 10923,
+    "total_tokens": 24429,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12366,
+      "text_tokens": 1140
+    },
+    "cost": 0.00839145
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44317,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A20 and A15 each ran in about 47 in 100 traces — always together and in the fixed order A14 → A20 → A15. In the later window, all three run in about 995 in 1000 traces, with the same internal order. [OCC001, OCC002, OCC003, REL001, REL002, REL007]\n- The surrounding order is unchanged in both windows: A36 precedes the group and A21 follows it, and the share of traces containing each of these pairs rises from about 47 in 100 to about 995 in 1000. [REL003, REL004, REL008, REL009, REL012, REL013]\n- The shortcut past the group has nearly vanished: earlier, A36 led directly to A21 in about 53 in 100 traces and to A14 in about 47 in 100; in the later window A36's outgoing flow goes to A14 in about 995 in 1000 cases and to A21 in about 5 in 1000. The event distance from A36 to A21 was one step in about 53 in 100 traces (four steps in about 47 in 100) and is now four steps in about 995 in 1000. [DIR001, LAG001]\n- A40 keeps roughly the same overall frequency (about 60 in 100 traces in both windows), but earlier it appeared without A14/A15/A20 in about 33 in 100 traces, while in the later window it practically never appears without the group. [REL006, REL011, REL015]\n- A37 is present in every trace in both windows, but it now more often appears interleaved with the group, in both orders, in about 46 in 100 later traces versus about 17 in 100 earlier. [REL005, REL010, REL014]\n- Average event positions shifted slightly: A36 a little earlier (mean relative position about 0.33 to 0.30) and A21 a little later (about 0.41 to 0.43); these are event positions, not clock times. [POS002, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the activity group A14 → A20 → A15, which sits between A36 and A21, changed from optional to mandatory: in the earlier window about 47 in 100 traces executed the full chain A36 → A14 → A20 → A15 → A21 while the rest went directly from A36 to A21, whereas in the later window nearly every trace executes the chain and the direct A36 → A21 step survives in only about 5 in 1000 traces. [OCC001, OCC002, OCC003, DIR001, LAG001]\n\nThe supporting signs are direct and mutually consistent: the participation of all three activities rose in lockstep with their order intact; A36's successor switched from a near-even split to almost exclusively A14; the A36-to-A21 distance moved from one step to four; and 22 control-flow items qualified in total against roughly 0.41 expected for an unchanged process, so the ensemble is far beyond what chance sampling produces. [OCC001, DIR001, LAG001, REL003, REL004]\n\nLimitations: the shortcut is strongly reduced but not shown to be removed, since about 1 in 200 later traces still takes it; many items describe the same traces and are not independent confirmations; and the indicators cannot distinguish a changed routing rule from a shifted mix of cases entering the process. [DIR001, LAG001]\n\nOther differences: A40 now occurs only in traces that also contain A14/A15/A20, whereas earlier about 33 in 100 traces had A40 without the group, its overall frequency being roughly unchanged. [REL006, REL011, REL015] A37's ordering relative to the group became more mixed (interleaved in about 46 in 100 later traces versus about 17 in 100 earlier). [REL005, REL010, REL014] The small average position shifts of A36 (earlier) and A21 (later) are consistent with the group now always lying between them, though a position shift alone does not show that an activity was moved. [POS002, POS001]",
+  "case_id": "case_4438bcd12da8a472",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "4ce79ec5bcf6d2c311b5d5ed9bd5222d93f9919a81b01d264fb7fcf22188bed3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:34:38.878765+00:00",
+  "finished_at_utc": "2026-11-15T00:36:14.258080+00:00",
+  "latency_seconds": 95.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14059,
+    "prompt_tokens": 27098,
+    "total_tokens": 41157,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12505,
+      "text_tokens": 1554
+    },
+    "cost": 0.011094199999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45815,
+  "text": "### Observed differences\n\n- In the earlier window, the six activities A33, A35, A36, A37, A38 and A39 each ran in essentially every case (participation 1.0, about one occurrence per case). In the later window they run in only about 47 in 100 cases (A33, A35, A36) and about 56 in 100 cases (A37, A38, A39), still about once per case when present. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The two groups of three changed from always running together, one after the other, to being almost mutually exclusive. Earlier, A33 and A37 co-occurred in 100 in 100 cases with A33 always first; later they co-occur in only about 2–4 in 100 cases, while in about 44 in 100 cases only the first-group activity runs and in about 53 in 100 cases only the second-group activity runs. The same pattern holds for all nine pairings between the groups. [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]\n- Within each group the activities still run together: A33, A35 and A36 co-occur in about 47 in 100 later cases (both absent in about 53 in 100), and A37, A38 and A39 co-occur in about 56 in 100 (both absent in about 44 in 100); the order inside each group remains unfixed, as before. [REL013, REL014, REL018, REL025, REL026, REL027]\n- A30 and A31 still appear in every case in both windows, and the overall direction is preserved: A30 still precedes whichever group executes, and the executing group still precedes A31. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, POS001, POS002]\n- Successor profiles changed accordingly: A30's outgoing transitions, which earlier went almost entirely to A33/A35/A36, now go to A37/A38/A39 in about 53 in 100 of the observed transitions; and A33, A35 and A36 now lead directly to A31 in roughly 24–34 in 100 of their observed outgoing transitions, a target essentially absent earlier. [DIR001, DIR002, DIR003, DIR004]\n- Step distances shrank consistently with one group being skipped: the gap from A30 to A37/A38/A39 was 4–5 steps in essentially all earlier observations and is 1–3 steps in about 95 in 100 of later ones; the gap from A33/A35/A36 to A31 fell from 4–5 steps to 1–3 steps in about 96 in 100 of later observations. [LAG001, LAG002, LAG003, LAG004, LAG007, LAG010]\n- Relative positions moved in line with this: A30's mean relative position shifted later (about 0.62 to 0.67 of the trace) and A31's slightly earlier, while A33/A35/A36 sit later and A37/A38/A39 earlier within the cases where they occur — consistent with shorter cases when one group is missing. These are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment A33–A35–A36 and the segment A37–A38–A39, which in the earlier window were always executed in sequence between A30 and A31, became almost mutually exclusive alternatives in the later window: about 44 in 100 later cases run only the first block (A30 → A33/A35/A36 → A31), about 53 in 100 run only the second block (A30 → A37/A38/A39 → A31), and only about 2–4 in 100 still run both — in other words, each block is now skipped in roughly half of the cases. The volume of qualifying evidence (57 items against about 0.79 expected if nothing had changed) cannot be explained by chance as a whole; the relation items show the co-occurrence collapse between the groups directly while the ordering around A30 and A31 is preserved, the direction items show the new direct transitions A30→A37/A38/A39 and A33/A35/A36→A31, and the lag items show the corresponding shortening of step distances. These indicator families largely describe the same trace behaviour, so they are consistent support rather than independent confirmations. [OCC001, OCC006, REL015, REL024, DIR001, DIR002, DIR004, LAG001, LAG010]\n\nWhat the evidence cannot rule out is that the later window mixes two case populations (one following the old full path, one a shortened path) rather than reflecting a per-case skip decision. In addition, several lag items for pairs inside the two blocks rest on only 4–5 later observations and were not relied on, and positions and lags are measured in event steps, so no claim about clock timing is made. [LAG005, LAG006, LAG008, LAG009, LAG011, LAG012]\n\nOther differences: only minor low-share successors appear in the direction profiles (for example A30 to A02, A03 and A06 at about 0.5 in 100 of A30's outgoing transitions each); they are not part of the hypothesis above. [DIR001]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

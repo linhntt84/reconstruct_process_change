@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the later window, the outgoing transition sets of most activities became much smaller and more deterministic. For example, A15 previously went to six different activities (A16 0.295, A19 0.265, A20 0.155, A22 0.135, A23 0.08, A21 0.07); now it goes only to A16 (0.51) and A19 (0.49). Similarly, A16 now goes only to A19 and A15, A18 only to A15 and A16, A19 only to A20, A20 only to A22 and A23, A21 only to A29, A22 only to A21 and A23, A23 only to A22 and A21, and A28 only to A18. [DIR001-009]
+- The relative order of many activity pairs became fixed. For instance, A15 precedes A20 in 100% of cases after vs 28.5% before; A19 precedes A20 in 100% after vs 9% before; A19 precedes A22 in 100% after vs 27% before; A16 precedes A20 in 100% after vs 31% before. [REL001, REL010, REL012, REL004]
+- The positions of activities shifted: A15, A16, A18, and A19 moved earlier (mean position decreased by about 0.04–0.07), while A20, A21, A22, and A23 moved later (mean increased by about 0.03–0.08). [POS001-008]
+- Lag distances changed accordingly: A15 and A16 became adjacent (lag 1 in all cases after vs 60% before), A15 and A19 are within 1–2 steps after vs spread up to 5 before, while A15 and A20 moved further apart (lag 2–3 after vs lag 1 mostly before). [LAG001, LAG002, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the process was restructured into a more linear, deterministic sequence. In the later window, activities A15, A16, A18, and A19 occur earlier and in a fixed order relative to A20, A21, A22, A23, and A29, with each activity having only one or two possible successors instead of many. The pattern is consistent with a flow like A28 → A18 → (A15/A16) → A19 → A20 → (A22/A23) → A21 → A29, where A15/A16 and A22/A23 can be swapped. The supporting signs are the reduced successor sets (DIR), the fixed pairwise order (REL), the position shifts (POS), and the lag changes (LAG). A competing explanation—that the differences arise from sampling variation in variant frequencies—is unlikely given the large number of consistent items (68 vs 0.58 expected by chance) and the coherence across indicators. However, the evidence cannot rule out that the change is due to a different mix of process variants rather than a deliberate redesign, and it does not reveal the cause or intention behind the change.

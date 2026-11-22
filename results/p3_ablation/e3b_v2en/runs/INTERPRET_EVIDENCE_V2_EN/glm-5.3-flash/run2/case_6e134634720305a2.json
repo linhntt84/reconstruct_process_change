@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_6e134634720305a2.json",
+  "evidence_sha256": "f43495a3ecc6267c7470d510c0f771b5a6b230a26640ae13e9b28b934515d226",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:10:58.968723+00:00",
+  "finished_at_utc": "2026-11-15T05:11:57.867779+00:00",
+  "latency_seconds": 58.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8387,
+    "prompt_tokens": 6749,
+    "total_tokens": 15136,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7479,
+      "text_tokens": 908
+    },
+    "cost": 0.00520585
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29214,
+  "text": "### Observed differences\n\n- In the later window, A30, A31 and A36 each occur about once per trace (mean about 1.0) instead of about 3.5 times; every trace still contains all three (participation 100% in both windows), but the share of traces in which they repeat drops from about 75 in 100 to about 1 in 100 [OCC001, OCC002, OCC003].\n- Routing out of A30 is nearly unchanged: about 99 in 100 of its outgoing transitions go to A31 before, and about 97 in 100 in the later window, with only small shares (under 1 in 100 each) appearing for other targets; the observed outgoing transitions fall from about 690 to about 210, in line with the lower occurrence count [DIR001].\n- Routing out of A36 changes markedly: before, about 70 in 100 of its outgoing transitions go to A30 and about 28 in 100 to A25; in the later window about 92 in 100 go to A25 and only about 4 in 100 to A30 [DIR002].\n- The relative order of A30 and A36 shifts from interleaved repetition to a fixed sequence: before, the two are interleaved or repeated in about 76 in 100 traces (A30 first in about 25 in 100); in the later window A30 comes before A36 in about 98 in 100 traces, with interleaving in about 2 in 100; the two still co-occur in every trace in both windows [REL001].\n- In the later window, A36 typically follows A30 two positions later (about 89 in 100 cases, versus about 12 in 100 before) [LAG001]; the reverse pair (A36 before A30 within five steps) appears in 150 before-window traces but only 1 later trace, and A36 self-repetition in 150 versus 2 — both later-window counts rest on very few observations [LAG002, LAG003].\n- The typical position of A30 and A36 within the trace stays about the same (mean relative position about 0.44 and 0.49), but their spread narrows (standard deviation about 0.12 to about 0.07), consistent with each now occurring exactly once [POS001, POS002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the repeating pass over A30, A31 and A36 — previously run about three to four times per case, with A36 returning to A30 between passes — is now executed as a single pass: A30 once, then A31, then A36 about two positions after A30, after which A36 continues to A25 instead of going back to A30. Participation is unchanged while repetition collapses, the dominant successor of A36 switches from A30 to A25 while the A30→A31 link is preserved, and ordering changes from mostly interleaved to A30 before A36 with a two-position gap; every item shows a difference larger than in about 995 of 1000 random re-splits, and eleven qualifying items against roughly 0.5 expected by chance makes the pattern as a whole unlikely for an unchanged process [OCC001, OCC002, OCC003, DIR001, DIR002, REL001, LAG001, POS001, POS002, LAG002, LAG003].\n\nThe evidence cannot rule out that both behaviours already existed as process variants and only their frequencies shifted between windows — the repeating behaviour falling from about 75 in 100 cases to about 1 in 100 — rather than a structural modification; the small residual recurrence in the later window suggests the repeating pattern may still occur occasionally. The apparent disappearance of the reverse order and of A36 self-repetition rests on only 1 and 2 later-window observations, the direction shares are computed over transitions rather than cases, and several items describe the same underlying trace behaviour rather than independent confirmations [LAG002, LAG003, DIR002, OCC001].",
+  "case_id": "case_6e134634720305a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_46b1bc1c958fefb4.json",
+  "evidence_sha256": "9743b394f47bda9dbebf5ef954041043b7a1101055fc1f9af41d0cac3c262fec",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:32:24.515001+00:00",
+  "finished_at_utc": "2026-11-16T03:34:30.489378+00:00",
+  "latency_seconds": 125.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16884,
+    "prompt_tokens": 115048,
+    "total_tokens": 131932,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15223,
+      "text_tokens": 1661
+    },
+    "cost": 0.0256992
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52273,
+  "text": "### Observed differences\n\n- In the earlier window, A02 ran in 92 of 200 cases (about 46 in 100), exactly once per case and early in the trace (mean relative position about 0.14); in the later window A02 is not observed at all (0 of 200 cases). [OCC002, POS002]\n- A01 shows the mirror image: not observed in the earlier window, it runs in about 101 of 200 later cases (about 50 in 100), also exactly once per case, never repeated, and early in the trace (mean relative position about 0.19). [OCC001, POS001]\n- The two activities have nearly the same neighbourhood. Earlier, A02's outgoing transitions went mostly to A03 (about 32 in 100), A06 (about 22), A11 (about 14) and A13 (about 11); later, A01's outgoing transitions go to A06 (about 24), A03 (about 19), A10 (about 15), A11 (about 15) and A13 (about 11). Activities that used to lead into A02 (A03, A05, A06, A11, A13) now lead into A01 with similar shares. [DIR001, DIR002, DIR003, DIR005, DIR006, DIR011, DIR013]\n- The downstream ordering also matches: earlier, A02 preceded A04, A12, A14 and A15 in about 44 in 100 cases and A11 in about 33 in 100; later, A01 precedes the same activities in about 37–47 in 100 cases, and always comes first when it co-occurs with A04, A12, A14 or A15. [REL003, REL010, REL011, REL013, REL014, REL016, REL023, REL024, REL026, REL027]\n- A01 and A02 never occur in the same case in either window, and both are mutually exclusive with A07, which appeared without A02 in about 54 in 100 earlier cases and without A01 in about 50 in 100 later cases. [REL001, REL006, REL019]\n- A03 is repeated more often in the later window: mean occurrences per case rise from about 1.9 to about 2.2, and the share of cases with a repeated A03 rises from about 45 to 53 in 100, while it remains present in every case. [OCC003]\n- A10 becomes more frequent and more often repeated: participation rises from about 45 to 53 in 100 cases, mean occurrences from about 0.9 to 1.2, and it co-occurs more often with A03 (about 44 to 53 in 100) and A11 (about 41 to 51 in 100). [OCC010, REL034, REL091]\n- A11 sits later in the trace in the later window (median relative position about 0.43 to 0.50), consistent with the new relation in which A01 precedes A11 in about 37 in 100 cases. [POS011, REL010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 has taken over the position and relations that A02 held in the earlier window: A02, previously executed once in about 46 in 100 cases, is no longer observed, while A01 now runs once in about 50 in 100 cases at the same early point in the flow, followed by essentially the same activities (A03, A04, A05, A06, A09, A10, A11, A13) and preceding the same downstream activities (A04, A11, A12, A14, A15) that A02 used to precede. [OCC001, OCC002, DIR001, DIR002, REL003, REL010, REL011, REL013, REL014, REL016, REL023, REL024, REL026, REL027]\n\nThe support is direct and consistent: both the disappearance and the appearance concern roughly half of all cases (92 of 200 to 0, and 0 to 101 of 200), each with an empirical strength of about 0.99, the successor profiles of A02 earlier and A01 later match almost component for component, and the incoming and outgoing relations line up item by item. The main limitation is that A01 and A02 never appear in the same window, so the evidence shows role equivalence rather than identity: a removal of A02 combined with the insertion of a new, similarly placed step cannot be distinguished from a substitution. A competing explanation the evidence cannot rule out is that the two windows draw on different coexisting process variants rather than a change over time, although the size of the shifts makes a pure sampling artefact unlikely. [OCC001, OCC002, DIR001, DIR002, DIR003, DIR005, DIR011, DIR013, REL001]\n\nOther differences: A03 and A10 are executed and repeated more often in the later window (A03 mean about 1.9 to 2.2 occurrences per case; A10 participation about 45 to 53 in 100 cases), and A11's position moves later, consistent with A01 now preceding it; these are separate from the main hypothesis. The remaining activities shift participation by at most about 5 in 100 cases, differences that most random re-splits of the same data also produce. [OCC003, OCC010, REL034, REL091, POS011, REL010, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC013]",
+  "case_id": "case_46b1bc1c958fefb4",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,15 @@
+### Observed differences
+
+- Three activities that were common in the earlier window are essentially absent in the later one: A19 appeared in about 37 in 100 traces before but in only 1 of 200 traces after; A20 appeared in about 31 in 100 before and in none after; A25 appeared in about 35 in 100 before and in none after. [POS001, POS002, POS003, DIR001, DIR002, DIR004]
+- In the earlier window these three acted as alternatives: each pair rarely occurred in the same trace (about 1 in 100 traces or fewer), and essentially every trace ran exactly one of them between A41 and A26 — A41 preceded each of them in roughly 31–37 in 100 traces, and each of them preceded A26 in roughly 30–35 in 100 traces. [REL001, REL003, REL008, REL006, REL011, REL015, REL004, REL009, REL013]
+- In the later window, A41's outgoing transitions, which earlier went about 29 in 100 to A19, 26 to A20 and 32 to A25, now go about 86 in 100 directly to A26; accordingly, the A41→A26 distance changed from mostly two steps (85 in 100) to immediately adjacent (86 in 100). [DIR005, LAG001]
+- A26 and A41 still occur in every trace in both windows; A26 now sits slightly earlier in the trace (mean relative position about 0.39 → 0.37) and A41 slightly later (about 0.32 → 0.33), consistent with a shorter stretch between them. [POS004, POS005]
+- The routing out of A21 shifted: A24 rose from about 14 to about 35 in 100 of A21's outgoing transitions, while A31 fell from about 54 to about 38 in 100; A21 itself appeared in about 57 in 100 traces before and about 50 in 100 after. [DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the alternative block A19/A20/A25 between A41 and A26 is no longer executed: earlier, essentially every trace ran exactly one of A19, A20 or A25 after A41 and before A26, whereas later A41 flows on to A26 without any of them, and the three activities are observed in at most 1 of 200 traces. This is shown directly by the rerouting of A41's outgoing transitions to A26, the collapse of the A41→A26 distance from two steps to one, the disappearance of the A41→A19/A20/A25 and A19/A20/A25→A26 orderings, and the near-zero participation of the three activities; the 26 qualifying items also far exceed the roughly 0.36 expected by chance for 72 tested units. A competing explanation the evidence cannot rule out is that A19, A20 and A25 remain possible but optional and were skipped in every observed later case, rather than being removed from the process altogether. [DIR005, LAG001, REL004, REL006, REL009, REL011, REL013, REL015, POS001, POS002, POS003]
+
+Other differences: the shift of A21's branch shares towards A24 and away from A31, with A24 appearing in slightly more traces (about 50 → 56 in 100); the evidence shows this redistribution but does not connect it to the bypass above. [DIR003, REL002, REL012]

@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, A35, A36, A41 and A42 run **before** A26 and A27 in about 96–98 in 100 traces; in the earlier window they ran **after** them in about 99–100 in 100 traces. [REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015]
+- Consistent with this, A26 and A27 sit later in the case (mean relative position about 0.51 to 0.62 and 0.37 to 0.48), while A35, A36, A41 and A42 sit earlier (about 0.58 to 0.41). [POS002, POS003, POS004, POS005, POS006, POS007]
+- Handovers moved with the block: in the later window A25 leads to A35, A36, A41 or A42 in about 21–26 in 100 of its outgoing transitions each, instead of leading to A27 in about 99 in 100 (now 2 in 100); A35, A36, A41 and A42 hand over to A27 in about 18–29 in 100 of their transitions instead of to A30 (which fell from about 21–31 in 100 to at most 1 in 100); and A26 now leads to A30 in about 96 in 100 of its transitions instead of to the four activities. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- Distances changed accordingly: A30 now follows A26 within one step in about 97 in 100 cases (before, it followed five steps later in all cases), and A27 now follows A25 about five steps later in about 98 in 100 cases (before, immediately). [LAG001, LAG002]
+- A04 appears in about 30 in 100 traces, up from about 12 in 100; it now sits near the end of the case (median relative position about 0.97 versus 0.70), typically after A27, A30, A35, A36, A41, A42 and A50 (that ordering rose from about 5–8 in 100 to 25–28 in 100), and its outgoing transitions concentrate on A51 (85 in 100, up from 43 in 100). A50 now hands to A04 in about 25 in 100 of its transitions, up from 5 in 100. [OCC001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, DIR001, DIR009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the segment containing A35, A36, A41 and A42 is placed before A26 and A27 rather than after it: A25 feeds into the block instead of going straight to A27, the block hands over to A27 instead of A30, and A26 passes to A30 immediately rather than five steps later. [REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG001, LAG002]
+
+A second, separate difference concerns A04, which runs about three times as often, late in the case, and typically between A50 and A51. [OCC001, POS001, DIR001, DIR009, REL007]
+
+Supporting signs: the order change is shown directly by relational evidence on all eight activity pairs, each backed by about 200 traces per window; the successor and position shifts agree with it; the two well-supported distance items flip almost completely; and the 45 qualifying items are many times the roughly 0.78 expected by chance in an unchanged process. [REL008, REL012, DIR003, POS002, POS004, LAG001, LAG002]
+
+Limitations: these items largely describe one underlying rearrangement (and the seven A04 relation items mirror the same participation and placement change) rather than independent confirmations; the evidence cannot rule out that the windows simply sample different mixes of pre-existing variants, for example a later-positioned variant that was very rare before; position and distance indicators reflect event order, not clock time; and several distance items (for example A26–A41 and A42–A30) rest on only 3–6 after-window observations, so they were not relied on. For A04, the data show increased and later participation but cannot establish whether it belongs to the same rearrangement. [LAG004, LAG010, OCC001, POS001]

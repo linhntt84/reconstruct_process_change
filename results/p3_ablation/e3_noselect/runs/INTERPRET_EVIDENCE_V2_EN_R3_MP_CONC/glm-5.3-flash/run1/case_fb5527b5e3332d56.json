@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "bf22f9f921d8f2808ed79ec86dd6734b521aec29bf10c3c2f5705d1ff4a9cdd9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:40:19.360436+00:00",
+  "finished_at_utc": "2026-11-14T13:41:32.279469+00:00",
+  "latency_seconds": 72.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10816,
+    "prompt_tokens": 32840,
+    "total_tokens": 43656,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9479,
+      "text_tokens": 1337
+    },
+    "cost": 0.010334
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33808,
+  "text": "### Observed differences\n\n- In the earlier window, the process split after A21 into two alternative routes: in about 52 in 100 traces it ran directly A21 → A22 → A23, while in about 48 in 100 traces it passed through a group of three activities, A27, A28 and A33, which were executed together in varying orders before reaching A23. In the later window, the A22 route is taken in about 100 in 100 traces (199 of 200), and A27, A28 and A33 each appear in only 1 of 200 traces. [OCC019, OCC020, OCC021, OCC026, REL012, LAG001]\n\n- Before, the two routes were strictly mutually exclusive: A22 never co-occurred with A27, A28 or A33 (co-occurrence 0 in about 200 traces), and exactly one route was present per trace. After, A22 co-occurs with A21 and precedes A23 in nearly every trace, while the three group activities no longer co-occur with either. [REL006, REL001, REL005, REL002, REL009]\n\n- A21's outgoing transitions changed accordingly: the share leading to A22 rose from about 52 in 100 to essentially all, while the shares leading to A27 (about 14 in 100), A28 (about 17 in 100) and A33 (about 18 in 100) disappeared. [DIR014]\n\n- The distance from A21 to A23 consolidated: before, it was 2 event steps in about half of the traces and 4 steps in about half; afterwards it is 2 steps in about 100 in 100 of occurrences. A23 now sits slightly earlier in the trace (mean relative position about 0.55 → 0.53) and A21 slightly later (about 0.45 → 0.46), consistent with the shorter route; A22's position is unchanged. [LAG001, POS003, POS001, POS002]\n\n- Away from this change, most indicators move only slightly: participation shifts of at most about 3–4 in 100 traces (e.g., A16 up, A17 down, A29/A30 up, A31/A32 down), and one branch choice, A35's split between A36 and A34, moved from about 53/47 to about 61/39. [OCC015, OCC016, OCC022, OCC024, DIR024]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative three-activity branch between A21 and A23 — the route through A27, A28 and A33 — is no longer executed in the later window, so that essentially all cases now follow the direct route A21 → A22 → A23. Previously roughly half of the cases (about 97–103 of 200) took each route; afterwards the branch activities are each observed in 1 of 200 traces and A21 leads almost exclusively to A22. [OCC019, OCC020, OCC021, OCC026, DIR014, REL006]\n\nThe change is visible directly and consistently in participation (swings of about 48–52 in 100 traces), in A21's successor profile, in the relation items showing strict alternatives becoming a single route, and in the A21→A23 distance collapsing from a 2/4-step mix to a consistent 2 steps; the small position shifts of A21 and A23 match the shortened traces. The key differences are larger than in about 995 of 1000 random re-splits of the pooled data, which sampling variation between two 200-trace windows does not plausibly produce. Note, however, that the many agreeing items largely reflect one underlying trace behaviour rather than independent confirmations. [OCC020, DIR014, REL006, LAG001, POS001, POS003]\n\nLimitations: near-zero participation only shows that the branch was not observed; the evidence cannot distinguish complete removal of the A27/A28/A33 branch from it still existing but being triggered extremely rarely (about 1 in 200 cases). The internal ordering of the three branch activities in the later window cannot be assessed from a single trace. [OCC020, OCC021, OCC026]\n\nOther differences: A35's branch share between A36 and A34 shifted from about 53/47 to about 61/39 — a possible change in how often an existing branch is taken, but it rests on a single indicator and could also be a sampling difference. The remaining participation and routing movements of a few cases in 100 are consistent with noise between the two windows. [DIR024, OCC015, OCC016]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

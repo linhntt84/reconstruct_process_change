@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_bd9e1644c53f4d26.json",
+  "evidence_sha256": "c67366e28c57f98ad683d9f0c82a902cf29be2ccfd461352f0af2a752ed77fa9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T00:53:22.934720+00:00",
+  "finished_at_utc": "2026-11-16T00:54:30.004243+00:00",
+  "latency_seconds": 67.07,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8374,
+    "prompt_tokens": 27567,
+    "total_tokens": 35941,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7199,
+      "text_tokens": 1175
+    },
+    "cost": 0.00832205
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25576,
+  "text": "### Observed differences\n\n- Activity A02 was not observed at all in the earlier window (0 of 200 traces, no outgoing transitions recorded, never co-occurring with any other activity); in the later window it occurs exactly once in every trace (participation 100 in 100, mean 1.0 occurrence per trace, never repeated) [OCC001, DIR002, REL001].\n- In the later window A02 is wired into the flow on both sides: A01, A03, A05 and A06 now send about 24%, 24%, 28% and 18% of their outgoing transitions to A02 (A01 previously sent it nothing), with smaller new shares from A04 (about 9 in 100) and A07 (about 4 in 100); A02's own outgoing transitions spread over all six other activities, mainly A04 (about 26 in 100) and A06 (about 25 in 100) [DIR001, DIR002, DIR003, DIR005, DIR006, DIR004, DIR007].\n- Pairs involving A02 changed from never co-occurring to co-occurring in every trace: A02 runs before A05 in about 89 in 100 cases, before A07 in about 81, before A04 in about 69, and in roughly even mixed order with A01 (56/44), A03 (45/55) and A06 (51/49) [REL001, REL007, REL008, REL009, REL010, REL011].\n- A02 sits at an early-to-middle event position (mean about 0.37, median about 0.33); the other activities drift slightly later (e.g., A04's median position from 0.60 to 0.67, A01/A03/A06 medians from 0.20 to 0.33), and large event gaps appear where none existed, e.g. lag-5 shares of about 22 in 100 for A01→A07 and 21 in 100 for A06→A07, and lag-4 shares of about 23 in 100 for A01→A04 [POS002, POS004, POS001, POS003, POS006, LAG005, LAG023, LAG002].\n- Relations among the pre-existing activities are essentially stable, with only small order-share wobbles of a few percentage points (e.g., A01 before A03 at 52 vs 53 in 100; A03 before A05 at 90 vs 89 in 100), and every other activity still appears in all traces in both windows [REL002, REL013, POS005, POS007].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A02 was added to the process and is now executed exactly once per case, placed between the early activities (A01, A03, A06) and the late ones (A04, A05, A07). In the earlier window A02 was never observed; in the later window it runs in all 200 traces, once each, at a mean event position of about 0.37, with direct transitions to and from every other activity, usually before A04 (69 in 100), A05 (89 in 100) and A07 (81 in 100) and in mixed order with A01, A03 and A06 [OCC001, DIR002, POS002, REL008, REL009, REL011, REL001, REL007, REL010].\n\nThe change is shown directly and consistently across indicators that all describe the same behaviour: participation jumps from 0 to 100 in 100 traces, A02 gains a full outgoing profile where it had none, co-occurrence with each other activity goes from 0 to 100 in 100, and the modest later drift of the other activities' positions together with the newly appearing large event gaps fit one extra event inserted in the middle of the trace rather than independent relocations; no other activity lost or gained participation, so nothing appears to have been removed or made optional [OCC001, DIR002, REL001, POS004, LAG005, LAG023, POS001, POS003, POS004, POS005, POS006, POS007].\n\nLimitations: zero participation only means A02 was not observed in the earlier sample, so an extremely rare pre-existing occurrence cannot be ruled out; and because A02's order relative to A01, A03 and A06 is mixed, it does not occupy one single fixed slot [OCC001, REL001, REL007, REL010].\n\nOther differences: minor order-share shifts of a few percentage points among pre-existing pairs (e.g., A01 before A04 from 73 to 68 in 100, A03 before A04 from 66 to 73 in 100) and small position drifts; these are within what finite samples produce and are not part of the main hypothesis [REL003, REL012, POS001, POS003].",
+  "case_id": "case_bd9e1644c53f4d26",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

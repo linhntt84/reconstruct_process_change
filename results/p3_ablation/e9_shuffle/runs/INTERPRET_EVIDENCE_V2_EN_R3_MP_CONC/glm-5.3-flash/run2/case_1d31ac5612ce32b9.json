@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "08cb5b4047cafb420c5d43a053f6ec0b75fce3979ce24ba3f4789b8c8c360ce8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:39:48.430474+00:00",
+  "finished_at_utc": "2026-11-15T04:41:11.880424+00:00",
+  "latency_seconds": 83.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12064,
+    "prompt_tokens": 6029,
+    "total_tokens": 18093,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10988,
+      "text_tokens": 1076
+    },
+    "cost": 0.00693635
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40429,
+  "text": "### Observed differences\n\n- **A02 now repeats.** In the earlier window every trace contained A02 exactly once (200 of 200), always at a relative position of about 0.5; in the later window A02 is still present in every trace but averages about 2.1 occurrences per trace, and in about 50 in 100 traces it occurs more than once. [OCC001, POS001]\n- **A04 became occasional and repeated.** A04 previously appeared exactly once in every trace at a fixed position of about 0.75; in the later window it appears in only about half of the traces (99 of 200), and the 222 outgoing transitions observed for it across those traces indicate it typically occurs about twice or more per trace where it is present. [POS002, DIR002]\n- **Successors changed.** A02's outgoing transitions went from entirely A04 to a split of about 53% to A04 and 47% to A03; A04's outgoing transitions went from entirely A03 to exclusively back to A02 — so A04 now feeds back into A02 instead of passing control on to A03. [DIR001, DIR002]\n- **The fixed order dissolved into interleaving.** Before, A02, A04 and A03 always co-occurred in the single order A02 → A04 → A03; in the later window A03 appears without A04 in about 50 in 100 traces, A02 and A04 co-occur in about half the traces and then always in interleaved or repeated order, and A02 and A03, still always together, are now split roughly evenly between A02-first and interleaved-or-repeated. [REL001, REL002, REL003]\n- **Pair distances stretched.** A02→A03 was always 2 steps apart and is now most often 1 step (about 40 in 100, with smaller shares at 3 and 5 steps); A02→A04 was always adjacent and is now adjacent in only about 18 in 100; A04→A03 was always adjacent and now sits mostly 2 steps (about 46 in 100) or 4 steps (about 18 in 100) apart. [LAG001, LAG002, LAG003]\n- **Positions spread out.** A02's relative position moved from a constant 0.5 to a median of about 0.67 with clear spread; A04's position, previously constant at 0.75, now averages about 0.56 and varies across the traces containing it. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural restructuring of the segment formed by A02, A04 and A03: the earlier fixed chain A02 → A04 → A03, executed exactly once per case, appears in the later window as a repeating cycle in which A04 leads back into A02, A02 repeats (about 2.1 occurrences per trace, recurring in about half the traces) and exits either back to A04 or forward to A03, while A04 is executed in only about half of the cases and is not observed at all in the rest. The successor changes are observed directly rather than inferred [DIR001, DIR002], and they close numerically: about 53% of A02's 422 outgoing transitions (roughly 222) match A04's 222 observed outgoing transitions, all returning to A02 [DIR001, DIR002]. The occurrence and participation changes match this picture [OCC001, POS002], and the order, distance and position items all shift consistently with a cycle plus an optional A04 — fixed orders becoming interleaved or repeated, A03 regularly appearing without A04, and pair distances stretching [REL001, REL002, REL003, LAG001, LAG002, LAG003, POS001]. Eleven control-flow items qualified where fewer than one in a hundred would be expected without a change, so chance sampling cannot account for the pattern as a whole; note, however, that the items largely describe one underlying difference and are not independent confirmations of it [OCC001, REL001, REL002, REL003, LAG001, LAG002, LAG003, DIR001, DIR002, POS001, POS002].\n\nAn important competing explanation remains: the two windows could in principle capture different mixtures of pre-existing variants (for example a looping variant that happened not to appear among the 200 earlier traces) rather than a modification of one process, and the activities preceding A02 and following A03 were not measured, so the full shape of the cycle — such as whether A03 also leads back into it — cannot be determined from this evidence [REL001, DIR001].",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

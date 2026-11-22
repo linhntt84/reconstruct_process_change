@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f8a4b76de97b739a.json",
+  "evidence_sha256": "b895b5ea573873852c10717d80326df63f4f04d676ec0ba481cb025a529cee24",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:14:56.925249+00:00",
+  "finished_at_utc": "2026-11-15T08:17:05.284097+00:00",
+  "latency_seconds": 128.36,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18048,
+    "prompt_tokens": 83755,
+    "total_tokens": 101803,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16070,
+      "text_tokens": 1978
+    },
+    "cost": 0.021587250000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54186,
+  "text": "### Observed differences\n\n- Two activities that never appeared earlier now run regularly: in the earlier window neither A01 nor A02 occurs in any of the 200 traces, while in the later window A01 runs in about 59 in 100 traces (about 1.5 executions per trace, repeated in roughly 4 in 10 of the traces containing it) and A02 runs in about 87 in 100 traces, exactly once each time. [OCC001, OCC002]\n- A09 shows the reverse pattern: it ran in about 54 in 100 earlier traces (about 1.5 executions per trace) and is not observed in any later trace; its earlier co-occurrence with A03, A12 and A16 (about 44–54 in 100 traces) drops to zero. [OCC008, POS007, REL025, REL052, REL055]\n- A01 appears to occupy the slot A09 previously held: A16's outgoing transitions moved from A09 (about 45 in 100) to A01 (about 43 in 100), A01 now leads mostly to A03 (about 83 in 100) just as A09 did earlier (about 82 in 100), both sit around the middle of the trace (median relative position about 0.5), and the two are never seen in the same trace. [DIR001, DIR009, DIR016, POS001, POS007, REL006]\n- A02 is a new intermediate step before A12: earlier, A05 and A13 sent about 20 and 21 in 100 of their outgoing transitions to A12; in the later window those direct edges are unobserved, A05 sends about 37 in 100 and A13 about 35 in 100 to A02 instead, and A02's own transitions go mainly to A12 (about 63 in 100) and A03 (about 19 in 100). Whenever A02 and A12 occur together (about 87 in 100 traces), A02 always comes first. [DIR002, DIR005, DIR013, REL017]\n- The lost adjacency is visible in step distances: A05→A12 was adjacent in about 45 in 100 of its earlier occurrences and is never adjacent later, now typically two steps apart (about 47 in 100); A13→A12 moved from adjacent (about 40 in 100) to two steps apart (about 56 in 100). [LAG014, LAG041]\n- A14 became much more frequent and now repeats: participation rose from about 39 to about 89 in 100 traces and mean occurrences from about 0.4 to 1.7, and it now co-occurs with A03, A07, A08, A12 and A16 in about 76–89 in 100 traces (previously about 28–39 in 100). [OCC013, POS010, REL028, REL043, REL049, REL058, REL064]\n- The surrounding cluster rewired: A14 now sends about 68 in 100 of its transitions to A17 (earlier mainly to A08), A17 sends about 89 in 100 back to A14 (earlier mainly to A08), A08 sends about 65 in 100 to A14 (earlier about 28), A14 and A17 — which never co-occurred earlier — now co-occur in about 42 in 100 traces, and A17 sometimes repeats (mean about 0.8 vs 0.4 per trace) at unchanged participation of about 42–44 in 100. [OCC016, DIR008, DIR014, DIR017, REL065]\n- A03, present in every trace in both windows, is essentially unchanged in frequency, position and routing; other activities show only small participation shifts (e.g., A05 about 67→60 in 100, A11 about 57→51 in 100) with empirical strength of about 0.4–0.8, i.e. unremarkable against random re-splits. [OCC003, DIR003, POS003, OCC004, OCC010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural change in which two activities were added and one was removed: A01 and A02, entirely absent earlier, run in most later cases, while A09, previously executed in over half of the cases, is no longer observed. The relational evidence places both additions directly: A02 acts as a new intermediate step between A05/A13 and A12 — A05 and A13 reroute to it, it leads mainly to A12, it always precedes A12, and the former direct A05→A12 and A13→A12 successions are gone — and A01 takes over A09's former position between A16 and A03 with nearly the same routing profile. [OCC001, OCC002, OCC008, DIR001, DIR002, DIR005, DIR009, DIR013, DIR016, REL017, LAG014, LAG041]\n\nThe participation differences rest on large supports (0 vs 117 of 200 traces for A01, 0 vs 173 for A02, 108 vs 0 for A09) and are larger than essentially all random re-splits of the pooled traces (empirical strength about 0.995); the outgoing-transition profiles of A01 and A02 appear from empty and A09's disappears whole rather than shifting gradually, and the occurrence, position, direction and relation indicators describe one coherent placement rather than unrelated shifts. [OCC001, OCC002, OCC008, DIR001, DIR002, DIR009, POS001, POS002, POS007]\n\nLimitations: indicators covering the same activity reflect the same traces and are therefore not independent confirmations; direction shares are computed over outgoing transitions rather than cases; zero participation only means an activity was not observed, so the evidence cannot distinguish a true removal of A09 from it simply not being exercised in the later sample; and it cannot tell whether the A01-for-A09 replacement, the A02 insertion and the rewiring reported below are one redesign or separate concurrent changes. [OCC008, DIR009, DIR014, DIR017]\n\nOther differences: A14 became both more frequent and repeating and is now locked in a mutual sequence with A17, with A08 rerouted towards A14 — a repetition and rewiring change in the A07/A08/A14/A17 cluster that the main hypothesis does not cover. [OCC013, OCC016, DIR008, DIR014, DIR017, REL065]",
+  "case_id": "case_f8a4b76de97b739a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

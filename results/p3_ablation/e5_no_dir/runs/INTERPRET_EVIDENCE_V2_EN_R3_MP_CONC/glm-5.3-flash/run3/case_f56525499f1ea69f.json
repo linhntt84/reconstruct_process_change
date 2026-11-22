@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_f56525499f1ea69f.json",
+  "evidence_sha256": "0bbb53feac1ec7c016eb1e26fa3e3b66f94cdf50d36c8ca26e11f4f630bbe443",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:14:01.633824+00:00",
+  "finished_at_utc": "2026-11-15T11:15:52.456538+00:00",
+  "latency_seconds": 110.82,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15188,
+    "prompt_tokens": 35940,
+    "total_tokens": 51128,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13478,
+      "text_tokens": 1710
+    },
+    "cost": 0.012985
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46632,
+  "text": "### Observed differences\n\n- The six activities A33, A35, A36, A37, A38 and A39 moved from roughly half of the cases to nearly all: each was present in about 49–52 in 100 traces in the earlier window and in about 99–100 in 100 in the later window, occurring once per case in both windows (recurrence stays near zero) [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009].\n- Before, these six formed two mutually exclusive groups: A33/A35/A36 never shared a trace with A37/A38/A39 (co-occurrence 0, each group running in about 49–52 in 100 traces), while within each group the three activities ran together without a fixed order. In the later window, all six run together in about 98 in 100 traces, with the A33/A35/A36 group preceding the A37/A38/A39 group in about 97–98 in 100 traces; order within each group remains mixed [REL039, REL041, REL044, REL046, REL048, REL037, REL042, REL049, REL051].\n- The joint block sits between A30 and A31: A30 precedes each of the six in about 98 in 100 later traces (before, it preceded them whenever both were present, about 48–50 in 100), and A31 follows each of the six in about 98–99 in 100 (before about 48–50) [REL025, REL028, REL030, REL031, REL034, REL036]. Event distances agree: A30 to A37/A38/A39 moved from mostly 1–3 positions apart to 4–5, and A33/A35/A36 to A31 likewise, while A30 and A31 themselves now fall within five steps in only about 5 of 200 after-traces versus about 99 in 100 before [LAG003, LAG005, LAG006, LAG008, LAG002]. A30's mean relative position moved earlier (about 0.67 to 0.62) and A31's later (about 0.80 to 0.82) [POS004, POS005].\n- Upstream relations adjusted to the block's new presence: A14 precedes it in about 98 in 100 later traces (about 47–51 in 100 before, when the block appeared only half the time), and A15/A16 precede it in about 59–60 in 100 while interleaving with it in about 40 in 100 [REL007, REL010, REL012, REL013, REL016, REL019, REL022].\n- A04 receded: present in about 31 in 100 traces before versus about 13–14 in 100 after, and where it occurs it now sits later in the trace (mean relative position about 0.27 to 0.40, upper quartile about 0.27 to 0.60) [OCC001, POS001]. Its immediate succession after A16 became less consistent (lag-1 share about 98 in 100 down to 59 in 100), but this rests on only 15 after-observations [LAG001].\n- Smaller shifts: A06 and A10 rose from about 3 and 2–3 in 100 traces to about 11–12 in 100, though with only 5–6 before-observations each; A14's position became slightly earlier and much more uniform (spread 0.069 to 0.014) [OCC002, OCC003, POS002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening flagged 79 control-flow items where fewer than one (about 0.78) would be expected if nothing had changed, so the volume of flagged behaviour far exceeds what random re-splits of a stable process produce [screening, OCC004, REL039, LAG003].\n\nThe evidence supports the hypothesis that two previously alternative groups of activities became jointly executed. Before, a case ran either the group A33/A35/A36 or the group A37/A38/A39 — about 50 in 100 cases each, never both. In the later window, about 98–99 in 100 cases run both groups in sequence between A30 and A31: A33/A35/A36 in mixed order first, then A37/A38/A39 in mixed order, so all six activities effectively became mandatory and the either-or relation disappeared. This is shown directly by co-occurrence moving from 0 to about 98 in 100 for every cross-group pair, by the near-universal participation of all six activities, by A30 consistently preceding and A31 consistently following the block, and by lag distances growing exactly where the other group now sits [REL039, REL041, REL046, OCC004, OCC007, REL025, REL031, LAG003, LAG006].\n\nLimitations: the evidence describes before/after behaviour, not the underlying routing, so it cannot show how the joint execution came about; positions and lags use event positions, not clock times. A competing explanation the evidence cannot rule out is a shift in the mix of case types between the windows — with 200 traces per window and zero cross-group co-occurrence before, a rare \"both groups\" behaviour could have gone unobserved, though it would have to occur in well under 1 in 100 before-traces [REL039, REL046].\n\nOther differences: A04's decline (about 31 to 13–14 in 100 traces, later position where present) is a separate shift not covered by the main hypothesis [OCC001, POS001]; the increases of A06 and A10 rest on very few before-observations and may be sampling variation [OCC002, OCC003].",
+  "case_id": "case_f56525499f1ea69f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_cf38f33e1cdfc390.json",
+  "evidence_sha256": "d986bc8050eeed520610f86299202ba0e2f8151211298770bcd57ec82e9708f0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:01:53.142186+00:00",
+  "finished_at_utc": "2026-11-15T04:03:05.023898+00:00",
+  "latency_seconds": 71.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10560,
+    "prompt_tokens": 16124,
+    "total_tokens": 26684,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9543,
+      "text_tokens": 1017
+    },
+    "cost": 0.0076986
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34099,
+  "text": "### Observed differences\n\n- The choice between two mutually exclusive groups of activities flipped. In the earlier window, about 75 in 100 traces contained A16, A17 and A18 together (each appearing in 150 of 200 traces), while about 25 in 100 contained A19, A20 and A21 together (50 of 200). In the later window, A16, A17 and A18 each appear in only about 25 in 100 traces (49 of 200), while A19, A20 and A21 each appear in about 76 in 100 (151 of 200). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- A15's outgoing flow redistributed in the same way: transitions from A15 to A16, A17 and A18 fell from about 75% of its observed outgoing flow to about 25%, while transitions to A19, A20 and A21 rose from about 25% to about 75%. [DIR001]\n- The two groups remained mutually exclusive and internally unchanged: cross-group pairs such as A16–A19 or A17–A20 never occur in the same trace in either window, partners within a group always co-occur when they occur at all, and their internal order stays mixed (both orders observed in similar proportions) in both windows. [REL009, REL014, REL022, REL007, REL013]\n- A15 still precedes the executing group in essentially every trace containing it in both windows (for example, A15 before A16 in 75% of traces earlier, A15 before A19 in about 76% later, matching the co-occurrence shares). [REL001, REL004, REL006]\n- A25 is present in all traces in both windows; it co-occurs with the A16–A18 group in about 75 in 100 earlier traces and with the A19–A21 group in about 76 in 100 later traces, mirroring the branch shift rather than showing an independent change. [REL012, REL024, REL017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA possibility supported by the evidence is that the shares of two existing alternative paths after A15 changed: the path through A16, A17 and A18 — which always execute together in mixed order — was taken in about 75 in 100 cases in the earlier window and about 25 in 100 in the later window, while the alternative through A19, A20 and A21 rose from about 25 to about 76 in 100. The screening produced 35 qualifying control-flow items against roughly 0.5 expected if nothing had changed, so the set of differences is far beyond what an unchanged process typically produces; although many items describe the same underlying shift, the occurrence, direction and relation indicators all show it directly and consistently. Both branches and every involved activity remain well observed in both windows (at least 49 of 200 traces each), the groups stay mutually exclusive, internal ordering is unchanged, and no repetitions appear or disappear — this is a change in how often existing paths are taken, not a replacement of one path by another or activities becoming optional. A competing explanation the evidence cannot rule out is that the mix of cases reaching A15 changed between the windows (for example, different case types arriving at the branch point) rather than the routing decision itself; the evidence contains no time or resource items that could corroborate the change further. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL009, REL007, REL022, REL001, REL004]\n\nOther differences: Among the traces containing both A15 and A20, the positional gap between them narrowed — before, about 52 in 100 such pairs were three positions apart, while in the later window about 66 in 100 were one or two positions apart; this concerns event positions rather than clock time, and the underlying subset itself grew from 50 to 151 traces. [LAG001]",
+  "case_id": "case_cf38f33e1cdfc390",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_580c3bdc13426125.json",
+  "evidence_sha256": "7bad5348871c4b530bc55ce2227b00eed5c6eb11c0cb47a96869ad9b73a16fd3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:13:04.651198+00:00",
+  "finished_at_utc": "2026-11-15T10:14:26.799466+00:00",
+  "latency_seconds": 82.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12196,
+    "prompt_tokens": 10054,
+    "total_tokens": 22250,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11078,
+      "text_tokens": 1118
+    },
+    "cost": 0.007606099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39265,
+  "text": "### Observed differences\n\n- A02 disappeared: in the earlier window it ran in all 200 traces, about 2.2 times per trace, and repeated within a trace in about 59 in 100 traces; in the later window it was not observed at all. [OCC001, POS001]\n- A03 appeared: it was absent earlier, while in the later window it runs in all 200 traces, exactly once per trace. [OCC002, POS002]\n- A05 was re-wired: earlier every observed A05 execution was followed by A02; in the later window about 97 in 100 lead to A03, with about 1.5 in 100 each to A06 and A07. [DIR003, REL005]\n- A03 inherited A02's routing and placement: earlier A02's outgoing transitions went to A06 in about 55 in 100 and to A07 in about 45 in 100; in the later window A03 splits about 50/50 between A06 and A07, sits at the same mean relative position A02 held (about 0.64 of the trace), and precedes A07 in about 98.5 in 100 traces containing both. [DIR001, DIR002, POS001, POS002, REL007]\n- The repetition loop moved: earlier A06 always led back to A02, and A02's repeats came from alternating with A06 (A06–A06 pairs most often 2 steps apart, about 27 in 100 pair observations); in the later window A06 leads to A07 in about 51 in 100 and to itself in about 48 in 100 of its outgoing transitions, directly consecutive A06 pairs (1 step apart) appear in about 26 in 100 pair observations, and A06–A07 pairs at 1 step, absent earlier, now occur in about 35 in 100. [DIR004, LAG003, LAG004, OCC001]\n- A06 participation and placement: earlier A06 appeared in about 59 in 100 traces around mean position 0.61; in the later window in about 49 in 100 traces around mean position 0.73. [POS004, REL003, REL006]\n- Distances spread out: A05-to-A07 gaps were concentrated at 2 and 4 steps earlier (about 59 and 41 in 100) and now range from 1 to 5 steps; A05 itself sits slightly later (median about one half vs one third of the trace). [LAG002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural replacement in which A03 took over the slot previously held by A02. In the earlier window the flow ran A05 → A02, with A02 repeating about 2.2 times per trace through a loop in which A06 returned to A02 before A02 branched to A06 or A07; in the later window A02 is unobserved, A05 leads to A03, A03 branches about 50/50 to A06 or A07 from the same relative position A02 occupied, and the repetition is now carried by A06 repeating itself rather than by A02 alternating with A06. [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, POS001, POS002, LAG003]\n\nThe hypothesis is shown directly by the successor changes at A05, A03 and A06 and by the all-or-nothing participation flip of A02 and A03, and it is consistent across the relation, position and gap indicators; with 21 qualifying items against roughly 0.12 expected if nothing had changed, chance sampling cannot account for the pattern as a whole, although many items restate the same underlying difference and are not independent confirmations. [screening, REL001, REL005, REL007, LAG003]\n\nThe evidence cannot rule out that A02 still occurs outside this sample, since zero participation only means it was not observed in the later window; nor can it distinguish a genuine removal and insertion from A02 being relabelled as A03, which would look identical at this level. [OCC001, OCC002]\n\nOther differences: in the later window A06 appears in fewer traces (about 49 vs 59 in 100) and later in the trace (mean position about 0.73 vs 0.61), A05 sits slightly later (median about one half vs one third of the trace), and distances between consecutive activities are more varied than before; these fit the rerouting but the evidence does not establish why fewer traces contain A06. [POS004, POS003, LAG001, LAG002, LAG004]",
+  "case_id": "case_580c3bdc13426125",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

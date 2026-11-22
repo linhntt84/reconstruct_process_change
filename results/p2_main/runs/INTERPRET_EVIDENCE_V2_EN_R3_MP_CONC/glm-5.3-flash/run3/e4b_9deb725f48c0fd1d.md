@@ -1,0 +1,15 @@
+### Observed differences
+
+- Across activities A01, A03, A13, A14, A17 and A22, assignment work moved from a broad pool of resources to a small, specific set. In the earlier window no single resource held more than about 10 in 100 assignments, and a long tail of many resources together carried roughly 40–52 in 100; in the later window User_61 (about 9–14 in 100) and User_55 (about 8–13 in 100) lead a consistent group of gainers, the long-tail share drops by about 7–11 in every 100 assignments, and the same resources gain and lose across all six activities. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- Activity A24 changed most sharply: before, its assignments were spread over 21 distinct resources with the largest holding about 22 in 100; in the later window all traced A24 assignments (83 of 83) went to the single resource User_107, and its concentration index rose from about 0.09 to 1.0. [ASSIGN007, CONC001]
+- For context: 8 resource items qualified in screening against roughly 0.005 expected for an unchanged process, while no control-flow or timing items qualified (0 against about 0.17 and 0.015 expected), so the flagged differences are confined to resource allocation. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that resource allocation changed: in the earlier window the work on A01, A03, A13, A14, A17, A22 and A24 was distributed across a wide pool of resources, and in the later window it was reallocated to a small, specific set of resources, with A24 assigned exclusively to User_107 after previously being spread over 21 resources. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+The signs are direct and consistent: the count of qualifying resource items (8) is far above the roughly 0.005 an unchanged process would produce; every item's difference exceeds all but about 1 in 2000 random re-splits of the data; the same resources gain and the same resources lose across six activities; each profile rests on roughly 80–260 observations per window; and A24's concentration is confirmed by two indicators, the assignment profile and the concentration index. [ASSIGN001, ASSIGN006, ASSIGN007, CONC001, screening]
+
+Limitations: all qualifying evidence concerns allocation, and no control-flow or timing counterpart was observed, so the hypothesis covers only who executes the work, not how the process is structured or timed. A13 and A14 show identical profiles and likely reflect one underlying behaviour rather than two independent confirmations. The evidence also cannot rule out that a changed case mix or a changed pool of available resources, rather than a reallocation of the same work, produced these profiles; resource codes are anonymous, so no roles or teams can be inferred. [ASSIGN003, ASSIGN004, screening]

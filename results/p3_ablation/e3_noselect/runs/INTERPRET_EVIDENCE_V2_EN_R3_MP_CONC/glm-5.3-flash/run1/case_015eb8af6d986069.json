@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_015eb8af6d986069.json",
+  "evidence_sha256": "11ef0f1ed64c2c31dc4ba49330d40bfd872b61b91a7b689de41314adac3120df",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:03:00.729978+00:00",
+  "finished_at_utc": "2026-11-14T14:05:40.172495+00:00",
+  "latency_seconds": 159.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25431,
+    "prompt_tokens": 116138,
+    "total_tokens": 141569,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23091,
+      "text_tokens": 2340
+    },
+    "cost": 0.030136200000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 71063,
+  "text": "### Observed differences\n\n- The clearest difference is in sequencing. In the earlier window, the eight activities A31, A22, A20, A23, A24, A26, A25 and A32 followed one another in varying orders: for example, A20 was followed by A23 in about 62 in 100 of its outgoing transitions but also by A24, A25 or A26 in roughly 12–13 in 100 each, and A23 came before A24 in only about 12 in 100 traces. In the later window each of these activities has a single dominant successor, forming the chain A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32, with each edge carrying about 90–99 in 100 of the source activity's outgoing transitions. [DIR020, DIR022, DIR023, DIR024, DIR025, DIR026, DIR031]\n- Pairwise order moved from mixed to fixed: A20 preceded A24 in about 26 in 100 traces before versus 99 in 100 after (previously A24 usually came first), A22 preceded A24 in about 49 versus 99, A23 preceded A24 in about 12 versus 97, and A23 preceded A26 in about 30 versus 96. All these pairs co-occur in 100 in 100 traces in both windows, so this is a re-sequencing, not a change in which activities run. [REL048, REL050, REL056, REL061, REL063]\n- Gaps between consecutive chain activities became fixed at one step: A20→A23 immediately in about 62 in 100 before versus 99.5 in 100 after, A22→A20 about 56 versus 99.5, A24→A26 about 56 versus 99.5, A26→A25 about 66 versus 100, A25→A32 about 42 versus 90, and A31→A22 about 50 versus 100; longer gaps match the chain exactly (A20→A32 at five steps in 99.5 in 100). [LAG023, LAG028, LAG046, LAG059, LAG053, LAG063, LAG027]\n- Consistently with the chain, A20, A22 and A23 now occupy earlier positions in the trace (mean position about 0.64→0.59, 0.60→0.57, 0.69→0.62) while A24, A25 and A26 occupy later ones (0.60→0.65, 0.69→0.70, 0.64→0.67); these are event ranks, not clock times. [POS005, POS006, POS007, POS008, POS009, POS010]\n- A08 became far less frequent: it appeared in about 72 in 100 traces before versus 29 in 100 after, and when present it sits later and more variably (mean position 0.24→0.41). A15 now leads directly to A16 in about 87 in 100 of its outgoing transitions (previously 58), the detour via A08 fell from about 42 to 7 in 100, and A08's own dominant edge to A16 weakened from 90 to 39 in 100. [OCC008, POS001, DIR015, DIR008]\n- A02, A04, A06 and A10 each roughly doubled in participation, from about 8–9 in 100 traces to 17–22 in 100. [OCC002, OCC004, OCC006, OCC010]\n- A15 and A16 repeat more often within a trace (mean occurrences about 1.63→1.81 and 1.64→1.82; recurrence in about 40→46 in 100 traces), and A43 and A44 also repeat somewhat more often (recurrence about 41→47 and 15→20 in 100). [OCC015, OCC016, OCC037, OCC038]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the block of activities A31, A22, A20, A23, A24, A26, A25 and A32 — which co-occur in every trace in both windows — is executed as one fixed sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32, whereas earlier their order varied from case to case. The change is shown directly and consistently: successor profiles collapsed from three or four near-equal options to one dominant successor per activity, pairwise orders that previously appeared in both directions collapsed to the chain order (for example A23 before A24 in about 12 → 97 in 100 traces), gaps between consecutive chain members became fixed at one step, and the position shifts of A20–A26 match the new chain. These many agreeing items describe one underlying change rather than independent confirmations, and all rest on about 200 traces per window. A competing explanation the evidence cannot rule out is a shift in the mix of case types between the windows (different proportions of pre-existing orderings) rather than a changed routing rule; the earlier window's several near-equal orderings make a single rare variant unlikely, but aggregate indicators cannot fully exclude mixture effects. [DIR020, DIR023, DIR031, REL048, REL061, LAG023, LAG027, POS005, POS008]\n\nOther differences:\n- A08 became skippable: it is now usually omitted between A15 and A16, which are directly connected in the later window. [OCC008, DIR015, DIR008, POS001]\n- A02, A04, A06 and A10 appear in roughly twice as many traces as before; their new successor patterns rest on only about 14–49 outgoing transitions and are uncertain in detail. [OCC002, OCC004, OCC006, OCC010, DIR002, DIR004, DIR006, DIR010]\n- A15, A16, A43 and A44 repeat more often within traces than before. [OCC015, OCC016, OCC037, OCC038]",
+  "case_id": "case_015eb8af6d986069",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

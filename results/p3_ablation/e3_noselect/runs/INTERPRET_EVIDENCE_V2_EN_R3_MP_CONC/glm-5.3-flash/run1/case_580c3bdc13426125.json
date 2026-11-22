@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_580c3bdc13426125.json",
+  "evidence_sha256": "a491b1e7ce18154f4e664b30bb849ba5a004d5bc04f518f208dfcebcfed9f2b6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:35:10.697744+00:00",
+  "finished_at_utc": "2026-11-14T14:36:09.413266+00:00",
+  "latency_seconds": 58.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9637,
+    "prompt_tokens": 11727,
+    "total_tokens": 21364,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8443,
+      "text_tokens": 1194
+    },
+    "cost": 0.00657755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28772,
+  "text": "### Observed differences\n\n- A02 disappeared: in the earlier window it ran in all 200 traces (about 2.2 occurrences per trace, repeated in about 59 in 100 traces); in the later window it is not observed at all (0 of 200 traces). [OCC001]\n- A03 appeared where A02 used to run: not observed earlier (0 of 200 traces), in the later window it runs in all 200 traces, exactly once per trace. Its position within the trace closely matches A02's former position (mean relative event position about 0.64 in both windows; median 0.70 before vs 0.75 after). [OCC002, POS001, POS002]\n- The wiring around this position moved from A02 to A03: earlier, A05 was always followed by A02, A02 led to A06 (about 55 in 100 transitions) or A07 (about 45), and A06 always led back to A02. In the later window, A05 leads to A03 in about 97 of 100 transitions, A03 leads to A06 (about 50) or A07 (about 50), and A06 now leads to A07 (about 51) or to itself (about 48) instead of back to A02. [DIR001, DIR002, DIR003, DIR004]\n- Repetition moved from the A02–A06 alternation to A06 alone: earlier, A06 never directly followed itself and always returned via A02. In the later window, A06 follows itself at distance 1 in about 26 of 100 observed pairs, and A06 is directly followed by A07 in about 35 of 100 pairs (neither occurred earlier). [LAG003, LAG004, DIR004]\n- Pairwise relations flip consistently with a replacement: (A02, A03) changes from \"A02 only\" in all traces to \"A03 only\" in all traces; (A03, A05) changes from never co-occurring to always co-occurring with A05 before A03; (A03, A07) changes from never co-occurring to co-occurring with A03 before A07 in about 99 of 100 traces. [REL001, REL005, REL007]\n- Smaller shifts: A06 appears in about 49 in 100 later-window traces, down from about 59 in 100, and sits later in the trace (median relative position about 0.80 vs 0.67); A05's position is slightly later (mean about 0.42 vs 0.36); A07 remains the final activity in both windows, and the spacing between A05, A06 and the trailing activities became more variable. [OCC003, POS003, POS004, POS005, REL008, REL009, LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 was removed and A03 inserted at the position A02 used to occupy between A05 and the A06/A07 branch point, with A03 executing exactly once per trace, and that the repetition previously carried by the A02–A06 alternation is now carried by A06 itself: earlier traces ran A05 → A02 → (A06 → A02, repeated in about 59 in 100 traces) → A07, whereas in the later window they run A05 → A03 → (A06 repeated in about 27 in 100 traces) → A07. This rests on direct occurrence evidence (A02 in 200 of 200 earlier traces vs 0 of 200 later; A03 the reverse), near-identical position distributions of A03 later and A02 earlier, consistent rewiring of every observed edge from A02 to A03, and relation and lag evidence showing the repeat structure shifting to A06; all five control-flow indicator families point to the same restructure. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, REL001, REL005, REL007, LAG003, LAG004]\n\nLimitations: activity codes are anonymous, so a relabelling of A02 as A03 combined with a restructured loop cannot be ruled out — although the repetition behaviour changed regardless of naming (about 2.2 executions per trace before vs exactly 1 after). The A07→A03 transition in the later window rests on only 3 observations and is not relied on here. [OCC001, OCC002, DIR005]\n\nOther differences: A06's lower participation and later position, and A05's slightly later position, are consistent with the same restructure (A03 passes once, pushing subsequent activities back) rather than independent changes; rare edges A06→A03 (about 2 in 100 of A06's outgoing transitions) and A07→A03 appear only in the later window. [OCC003, POS003, POS004, DIR004, DIR005, REL008, REL009]",
+  "case_id": "case_580c3bdc13426125",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

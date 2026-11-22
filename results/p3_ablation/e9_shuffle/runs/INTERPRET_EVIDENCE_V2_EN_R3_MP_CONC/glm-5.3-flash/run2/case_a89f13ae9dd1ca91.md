@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran exactly once in every trace (100% participation, one occurrence per trace); in the later window each appears in only about 1 in 200 traces (about 0.5%). [OCC004, OCC005, OCC006]
+- A14, A15 and A16 do not appear at all in the earlier window; in the later window A14 runs in about 30% of traces (60 of 200), A15 in about 33% (65) and A16 in about 37% (74), and the three never occur in the same trace — exactly one of them runs in about 199 of 200 later traces. [OCC001, OCC002, OCC003, REL001, REL002, REL010]
+- Earlier, A39 preceded A21, A22 and A23 in 100% of traces and each of the three preceded A24 in 100% of traces, while among themselves A21, A22 and A23 appeared in both orders in similar shares; in the later window A39 precedes A14, A15 or A16 in essentially all traces where they co-occur, and each of A14, A15 and A16 precedes A24 in all traces containing both. [REL028, REL033, REL037, REL027, REL032, REL036, REL025, REL026, REL031, REL007, REL015, REL022, REL006, REL014, REL021]
+- A39's outgoing transitions shifted from a roughly even split over A21, A22 and A23 (about 31–35% each) to a roughly even split over A16, A15 and A14 (about 30–37% each). [DIR007]
+- The event distance from A39 to A24 shrank from always 4 positions earlier (three activities in between) to 2 positions in about 99.5% of later traces (one activity in between); A24's mean relative position moved slightly earlier (about 0.43 to 0.39) and A39's slightly later (about 0.31 to 0.33). [LAG010, POS007, POS008]
+- A41 now appears in about 69 in 100 traces, up from about 59 in 100 earlier. [REL030, REL024]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the block of three activities A21, A22 and A23, which ran between A39 and A24 in every earlier trace, was skipped in the later window and replaced, in about 199 of 200 traces, by exactly one of the three mutually exclusive activities A14, A15 or A16 placed between A39 and A24. The change is shown directly and consistently: participation of A21/A22/A23 collapsed from 100% to about 0.5% while A14/A15/A16 appeared at 30–37% each; A39's successors changed from A21/A22/A23 to A14/A15/A16; the A39-to-A24 distance halved from 4 to 2 positions; and the ordering A39 before the inserted activity before A24 holds wherever the pairs co-occur. With 71 qualifying control-flow items against roughly 0.64 expected for an unchanged process, sampling noise cannot account for the pattern as a whole. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, LAG010, REL007, REL015, REL022, REL006, REL014, REL021]
+
+Limitations: zero participation earlier only shows that A14, A15 and A16 were not observed before, so the evidence cannot distinguish newly added activities from previously rare ones; and one later trace still contains A21, A22 and A23, so the old block became rare rather than disappearing entirely. A competing explanation the evidence cannot rule out is that the two windows sample different mixes of case types rather than a modified single process. [OCC001, OCC004]
+
+Other differences: A41 occurs in more traces in the later window (about 69 in 100, up from about 59 in 100), and A40 is unchanged in participation and late position (mean about 0.85) in both windows, though it now shows some interleaving with A14/A15/A16 in roughly 15–19% of traces. [REL030, REL024, POS009, REL008, REL016, REL023]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9797d0e0d44a09c4.json",
+  "evidence_sha256": "3678823b590ecb4e2df3d0e513f660d1d4fa69eba372d98e3942d09c9f73affb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:57:25.255349+00:00",
+  "finished_at_utc": "2026-11-15T07:59:16.154938+00:00",
+  "latency_seconds": 110.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15139,
+    "prompt_tokens": 59914,
+    "total_tokens": 75053,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13730,
+      "text_tokens": 1409
+    },
+    "cost": 0.016556599999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47135,
+  "text": "### Observed differences\n\n- The clearest difference concerns A19, A20 and A25. In the earlier window each appeared in about 47 in 100 traces (94–95 of 200), exactly once when present; in the later window each appears in about 199 of 200 traces, again once per trace (mean occurrences about 1.0). [OCC018, OCC019, OCC024]\n- Before, these three activities were all-or-nothing: A19 and A20 co-occurred in 47% of traces and were jointly absent in about 53%, never appearing one without the other; in the later window they co-occur in 99.5% of traces. Their internal order is unchanged: A19 before A25 and A25 before A20 in 98–99.5% of later traces, the same order as before. [REL001, REL002, REL007, REL012]\n- The block's surroundings are unchanged. A41 precedes it (A41 before A19/A20/A25 in 96–98% of later traces) and the block precedes A26 (A20 before A26 in 99%); one-step distances are stable, e.g. A19→A20 at distance 2 in about 96 in 100 traces in both windows and A20→A26 at distance 1 in about 98–99. [REL004, REL008, REL009, REL013, LAG001, LAG004, LAG007]\n- The route that skipped the block has practically disappeared. Before, about 52% of A41's outgoing transitions went directly to A26 and about 44% to A19, and A41 reached A26 at distance 1 in 52% of traces; in the later window about 92% of A41's outgoing transitions go to A19 and under 1% directly to A26, with A41→A26 at distance 4 in about 89 in 100 traces — the block now always sits between them. [DIR041, LAG010]\n- Consistent with this, A26's relative position moved later (median event position about 0.40 → 0.42) and A41's moved earlier (about 0.31 → 0.29), while A19, A20 and A25 kept their relative positions. [POS004, POS005, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the three-activity block A19 → A25 → A20, executed between A41 and A26, changed from optional to effectively mandatory: in the earlier window it was executed as a complete block, once per trace, in about 47 in 100 cases and skipped in the remainder (A41 passing directly to A26), whereas in the later window it is executed in about 199 of 200 cases with the same internal order and the same distances to A41 and A26. [OCC018, OCC019, OCC024, REL001, REL007, DIR041, LAG010]\n\nThe support is direct and consistent: the participation and co-occurrence shifts are large (about 47% → 99.5%) and larger than almost all of 200 random re-splits (empirical strength 0.995 on the pivotal items), and the occurrence, relation, direction, lag and position items all describe one underlying behaviour rather than separate changes. A competing explanation the evidence cannot rule out is a shift in the mix of cases reaching this part of the process — if cases of the variant that skips the block no longer occur in the later sample, the same pattern would result without any structural modification; also, one later trace still lacks the block, so \"virtually mandatory\" is the precise reading. [OCC018, REL001, LAG010]\n\nOther differences: A42, A44 and A45 repeat somewhat more often in the later window (A42: mean 1.6 → 1.72 occurrences per trace, with repeats in about 37% → 46% of traces; A44/A45: mean 0.76 → 0.885, repeats in about 11% → 20%), and A42 is interleaved with A41 and A26 more often than before; these are moderate changes alongside the main pattern. [OCC040, OCC042, OCC043, REL017, REL019]\n\nSeparately, a few large-looking successor-profile shifts involve activities with very few observations (A02, A06, A10, A47, with only about 6–25 outgoing transitions per window) and are weakly based. [DIR002, DIR006, DIR010, DIR047]",
+  "case_id": "case_9797d0e0d44a09c4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

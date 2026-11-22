@@ -1,0 +1,24 @@
+### Observed differences
+
+- The order between the activities A14, A15 and A20 on the one hand and A21 and A22 on the other reversed. In the earlier window, A21 preceded A14, A15 and A20 in every trace where they co-occurred (about 38, 32 and 31 of 100 traces respectively), and A22 likewise preceded them in the same traces. In the later window, A14, A15 and A20 precede A21 in about 34, 35 and 32 of 100 traces, and precede A22 in the same shares, while the earlier order is no longer observed. [REL001, REL002, REL003, REL004, REL005, REL006]
+- A14, A15 and A20 now sit much earlier in the trace: their mean position fell from about 0.60–0.61 of the trace length to about 0.32, while A21, A22 and A23 shifted only slightly later (mean about +0.02 to +0.03). [POS001, POS002, POS003, POS004, POS005, POS006]
+- Successors changed: in the earlier window, A14, A15 and A20 each led to A23 or A27 in roughly equal shares; in the later window each of them always leads to A21. A40 previously always led directly to A21; in the later window it leads to A14, A15 or A20 in roughly equal thirds, and A21 now follows A40 two steps later instead of immediately. [DIR001, DIR002, DIR003, DIR006, LAG004]
+- The chain A22 → A23 → A27 became fixed and immediate. Earlier, A22 led to A23 in about 48 of 100 of its outgoing transitions (otherwise to A14, A15 or A20) and A23 led to A27 in about 53 of 100 (otherwise to A14, A15 or A20), with pair distances of one or two steps; in the later window A22 always leads immediately to A23, A23 always immediately to A27, and the A22→A27 distance is uniformly two steps. [DIR004, DIR005, LAG001, LAG002, LAG003]
+- A10 and A11 still occur in every trace, but repeat less often: mean occurrences per trace fell from about 1.9 to about 1.6, and the share of traces containing a repeat fell from about 47 to 38 in 100. [OCC001, OCC002]
+- The affected activities were well represented in both windows: A14 appears in about 38 of 100 traces before and 34 after, A15 in about 32 before and 35 after, A20 in about 31 before and 32 after — together about one occurrence per trace in both windows, so none of them is a rare variant appearing in only one window. [POS001, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the per-case choice of one of A14, A15 and A20 now runs before A21 instead of after A21 and A22. In the earlier window, A40 led directly into A21 and the chosen activity ran late in the trace (around 60% of its length), after A21/A22, handing over to A23 or A27; in the later window, A40 leads into the chosen activity, which always hands over to A21, and A22, A23 and A27 run afterwards as a fixed immediate chain. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR006, POS001, POS002, POS003, LAG001, LAG002, LAG003, LAG004]
+
+Supporting signs:
+- The order reversal is shown directly by all six relation pairs between {A14, A15, A20} and {A21, A22}: they flip from 31–38 of 100 traces "A21/A22 first" to 32–35 of 100 "chosen activity first", with the old order disappearing entirely. [REL001, REL002, REL003, REL004, REL005, REL006]
+- Successor changes agree: A14, A15 and A20 now always lead to A21 (previously to A23 or A27 about half each), and A40 now leads to them instead of to A21, with the A40→A21 distance growing from one to two steps. [DIR001, DIR002, DIR003, DIR006, LAG004]
+- Position and distance evidence fits an insertion before A21: the triple's mean position drops by about 0.28–0.29 while A21 moves only about 0.02 later, and the A22→A23 and A23→A27 distances become uniformly one step. [POS001, POS002, POS003, POS004, LAG001, LAG003]
+- The volume of qualifying evidence far exceeds what an unchanged process produces: 24 items qualified where about 0.39 were expected by chance in the control-flow family, and every item's difference exceeds about 99.5 in 100 random re-splits of the pooled traces. [REL001, DIR001, POS001, LAG001, OCC001]
+
+Limitations: the evidence cannot distinguish a true move of the same activities from the late occurrences being removed and equivalent early ones introduced, and the six relation items mirror one underlying change rather than confirming it independently; the DIR shares are also based on 61–76 traces per window, so the exact thirds among A14, A15 and A20 are approximate. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003]
+
+Other differences: A10 and A11 repeat less often (mean occurrences per trace about 1.9 → 1.6; traces with a repeat about 47 → 38 in 100) while still appearing in every trace — a change in repetition frequency that is separate from the ordering change above. [OCC001, OCC002]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_8f0db8c0a904f91c.json",
+  "evidence_sha256": "d8ee819e20a352b63ea4e30a9fdc3ca5d03bd4d8f09913febb1ebcd0ccca1418",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:49:00.929380+00:00",
+  "finished_at_utc": "2026-11-14T12:51:02.378743+00:00",
+  "latency_seconds": 121.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16152,
+    "prompt_tokens": 10360,
+    "total_tokens": 26512,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14906,
+      "text_tokens": 1246
+    },
+    "cost": 0.00963
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54256,
+  "text": "### Observed differences\n\n- The largest difference concerns three activities that previously ran in every case: A19, A20 and A25 each appeared in all 200 earlier traces, but in the later window each appears in only about 106 of 200 traces (roughly 53 in 100). [OCC004, OCC005, OCC006]\n- The entry to this block changed: earlier, about 96 of 100 of A41's outgoing transitions led to A19, and A26 was not observed as a successor of A41; in the later window A41 splits roughly evenly between A19 (about 50 of 100) and A26 (about 44 of 100). [DIR005]\n- The distance from A41 to A26 changed accordingly: earlier, A26 followed A41 about four steps later in 93 of 100 cases; in the later window the pair splits between immediate succession (44 of 100) and the old four-step gap (49 of 100). [LAG002]\n- Where the block still runs, its internal routing is essentially unchanged: A25 leads to A20 in about 98 of 100 transitions and A20 to A26 in about 96–99 of 100, essentially as before, and the positions of A41, A26 and A46 in the trace barely move. [DIR003, DIR004, POS002, POS003, POS004]\n- A02 behaves differently: it appears in about 8–9 of 100 later traces versus about 29 of 100 earlier; it now sits around the middle of the trace (median position about 0.47 versus about 0.97); A46 almost never leads to it any more (about 25 of 100 of A46's transitions earlier, under 1 of 100 later); and its own outgoing transitions, previously mostly to A47 (about 85 of 100), are now spread over many activities. The later-window profiles rest on only 17 traces. [OCC001, POS001, DIR001, DIR006]\n- Smaller shifts: A04 and A06 each appear in roughly 12–13 of 100 later traces versus 4–5 of 100 earlier (based on only 8–9 earlier traces); A46 is now almost always immediately followed by A47 (97 of 100 versus 75 of 100); and A08's outgoing transitions changed completely, though only 4 were observed earlier against 15 later. [OCC002, OCC003, LAG003, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of activities A19, A25 and A20 — entered from A41 and exiting to A26 — has become skippable: in the later window A41 leads directly on to A26 and the block is not executed in roughly 44–47 of 100 traces, whereas earlier the block executed in every trace. [OCC004, OCC005, OCC006, DIR005, LAG002]\n\nThe reading is direct and quantitatively consistent: the three block activities lose participation by the same amount (about 47 in 100), the direct A41→A26 succession appears at almost exactly the rate needed to explain that loss, and where the block still runs, its internal routing (A25→A20, A20→A26) and the positions of A41 and A26 are unchanged — pointing to a bypass of an existing block rather than a reordering or replacement of its activities. These indicators partly reflect the same traces, so they corroborate one underlying difference rather than independently confirming it. [DIR003, DIR004, POS002, POS003]\n\nLimitations: the evidence cannot show whether the direct A41→A26 connection is newly added or was only too rare to appear in the earlier outgoing profile, nor why or for which cases the block is skipped; an unobserved shift in the case mix between the windows cannot be fully ruled out, although a fall from 200 of 200 to about 106 of 200 traces is hard to attribute to sampling variation alone. [DIR005, OCC004]\n\nOther differences:\n- A02 is observed less often, sits mid-trace instead of near the end, is no longer reached from A46, and its outgoing transitions are dispersed — a change in its role or placement that the thin later window (17 traces) leaves imprecise. [OCC001, POS001, DIR001, DIR006, LAG001]\n- A04 and A06 occur somewhat more often, on few earlier observations. [OCC002, OCC003]\n- A46 is now almost always immediately followed by A47, and A08's outgoing transitions changed on very few observations. [LAG003, DIR002]",
+  "case_id": "case_8f0db8c0a904f91c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

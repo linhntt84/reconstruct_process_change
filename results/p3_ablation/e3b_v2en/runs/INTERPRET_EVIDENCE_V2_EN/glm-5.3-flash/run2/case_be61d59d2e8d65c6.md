@@ -1,0 +1,17 @@
+### Observed differences
+
+- Three activities nearly disappear: A19, A20 and A25 each appeared in about 33, 29 and 40 in 100 traces before the boundary, but in the later window each appears in only about 1 in 200 traces. [OCC001, OCC002, OCC003]
+- In the later window, the routing out of A27 is almost exclusively to A28 (about 98 in 100 outgoing transitions), whereas before it split between A28 (about 52 in 100), A25 (about 20), A19 (about 13) and A20 (about 10). [DIR005]
+- In the later window, the routing out of A28 goes almost only to A29 (about 97 in 100), where before it split between A29 (about 43 in 100), A25 (about 19), A19 (about 18) and A20 (about 16). [DIR006]
+- Before the boundary, A19, A20 and A25 co-occurred with A27, A28 or A29 in roughly 28–40 in 100 traces, typically preceded by A27 and followed by A29; in the later window, A27, A28 and A29 occur without any of the three in about 995 in 1000 traces. [REL003, REL005, REL007, REL009, REL010, REL012]
+- Successive steps became adjacent in the later window: A27 to A28 at a distance of 1 event in about 98 in 100 cases (before about 52, with many 2-step gaps), A28 to A29 at distance 1 in about 96 in 100 (before about 43), and A27 to A29 typically at distance 2 instead of 3. [LAG001, LAG002, LAG004]
+- The few remaining occurrences of A19, A20 and A25 each show a single successor (A38, A37 and A31 respectively), but each of these profiles rests on one trace. [DIR002, DIR003, DIR004]
+- Activities present in every trace barely moved: A27's typical position shifted about 0.02 of the trace later and A29's about 0.02 earlier. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the detour path executions running through A19, A20 and A25 — which previously branched off after A27 (and partly around A28) before rejoining towards A29 — were no longer executed in the later window, leaving the direct A27 → A28 → A29 route. The participation of all three activities collapsed from roughly 30–40 in 100 traces to about 1 in 200 [OCC001, OCC002, OCC003]; their co-occurrence with A27, A28 and A29 vanished in step [REL003, REL005, REL008, REL011]; and the successors of A27 and A28 consolidated onto A28 and A29 with adjacent lags, on strong support of about 200 outgoing transitions per window [DIR005, DIR006, LAG001, LAG004]. The 30 qualifying items are many times the roughly 0.56 expected if nothing had changed, so the pattern as a whole is not what screening typically produces on an unchanged process [OCC001, DIR005, REL003, LAG001].
+
+Limitations: zero participation only shows that A19, A20 and A25 were not observed in the later window, not that they were removed from the process — they could have become merely very rare, and the apparent new successors (A38, A37, A31) rest on one trace each and establish nothing [DIR002, DIR003, DIR004]. Most items describe the same underlying difference rather than independent confirmations. The main competing explanation the evidence cannot fully rule out is sampling: a still-existing variant containing A19, A20 and A25 could by chance be almost absent from the later 200-trace window, although the simultaneous collapse of three activities at 29–40% participation together with the consistent routing and lag changes makes pure sampling variation implausible [OCC001, OCC002, OCC003, DIR005].

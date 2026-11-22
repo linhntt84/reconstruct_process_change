@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_51a133f489fb5efa.json",
+  "evidence_sha256": "1b68fe1c6cdcc4a33e4a83d0165982b2636480f7bf0f4b6c33339595cd0a086b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:55:31.804198+00:00",
+  "finished_at_utc": "2026-11-15T05:58:25.569512+00:00",
+  "latency_seconds": 173.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23350,
+    "prompt_tokens": 14688,
+    "total_tokens": 38038,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21582,
+      "text_tokens": 1768
+    },
+    "cost": 0.0138782
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 76420,
+  "text": "### Observed differences\n\n- In the later window, A19, A20 and A25 typically run **before** A26 and A27, whereas in the earlier window they typically ran **after** them: for example, A26 preceded A19 in about 31 of 100 cases where both occurred (the reverse in essentially none), while in the later window A19 precedes A26 in about 34 of 100 such cases (the reverse in none). The same flip appears for A20 and A25 against A26 and A27. Co-occurrence of each pair stayed at roughly 30–37 in 100 cases in both windows, so the activities meet just as often — their order changed. [REL005, REL006, REL007, REL008, REL009, REL010]\n- The A19/A20/A25 group now sits at a mean relative position of about 0.32–0.33, down from about 0.59–0.61, with participation roughly stable (A19 about 32→35, A20 about 33→36, A25 about 37→30 in 100 cases). A26 and A27 barely moved (mean position about 0.32→0.35 and 0.56→0.59; both occur in every case in both windows), so the reversal comes from the A19/A20/A25 group moving earlier, not from a symmetric swap. In the later window A26 also immediately follows A19 in essentially all joint cases (69 traces). [POS002, POS003, POS004, POS005, POS006, LAG007]\n- A26 runs later relative to its other predecessors: it now follows A45 two to three steps later (previously immediately, about 91 in 100), A16 about four to five steps later (previously about three), and A18 about three to four steps later (previously two). [LAG014, LAG004, LAG005]\n- A08 appears about twice as often — about 13 in 100 cases earlier versus about 30 in 100 in the later window (26 vs 59 traces) — at a somewhat earlier mean position (about 0.49→0.34). Where A08 and A26/A27/A28/A32 occur together, both orders appeared about equally often before, whereas in the later window A08 comes first in about 9 of 10 joint cases, with A26 following it two steps later in about 96% of paired observations. [OCC001, POS001, REL001, REL002, REL003, REL004, LAG002]\n- The sequence A27 → A28 → A32 became tightly ordered: A28 immediately follows A27 in about 99 of 100 cases (previously about 51) and A32 immediately follows A28 in about 99 of 100 (previously about half), so A32 now follows A27 two steps later instead of three. [LAG010, LAG013, LAG011]\n- Several flagged lag pairs rest on only 1–2 paired observations in one of the windows (A08→A19 and A16→A19 in the earlier window; A25→A32, A27→A25 and A28→A25 in the later window) and were not used to judge change; the A19→A26 adjacency above is used only as a description of the later window, where its support is substantial. [LAG001, LAG003, LAG007, LAG008, LAG009, LAG012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening flagged 31 control-flow items where roughly 0.47 would be expected by chance in an unchanged process, so the volume of flagged behaviour cannot be explained by random re-sampling of the two windows. [OCC001, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014]\n\nThe evidence supports the possibility that the relative execution order of two groups of activities reversed: A19, A20 and A25, which previously ran after A26 and A27, now run before them, moving from a mean relative position of about 0.6 to about 0.32 while A26 and A27 stayed near their earlier positions. The change is shown directly by six activity pairs that all flip in the same direction with stable co-occurrence, and it is corroborated by the positional shifts of the same activities and by A26 running one to two steps later relative to A16, A18 and A45. Limitations: positions are event positions rather than clock times, and the evidence shows the reversed order but not the mechanism — it cannot distinguish the three activities moving as one block, moving separately, or unobserved activities being inserted between the groups. A competing explanation the evidence cannot rule out is that the reversal is a side effect of the broader restructuring reflected in the A08 and A27–A28–A32 changes below. [REL005, REL006, REL007, REL008, REL009, REL010, POS002, POS003, POS004, POS005, POS006, LAG004, LAG005, LAG014]\n\nOther differences:\n- A08 became about twice as common (about 13→30 in 100 cases) and, in joint cases, shifted from mixed order to typically preceding A26, A27, A28 and A32 — a participation increase plus an ordering-constraint change, consistent with the same restructuring but not part of the main hypothesis. [OCC001, POS001, REL001, REL002, REL003, REL004, LAG002]\n- The A27 → A28 → A32 sequence became tightly ordered, with A28 immediately after A27 and A32 immediately after A28 in about 99 of 100 cases each. [LAG010, LAG011, LAG013]",
+  "case_id": "case_51a133f489fb5efa",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

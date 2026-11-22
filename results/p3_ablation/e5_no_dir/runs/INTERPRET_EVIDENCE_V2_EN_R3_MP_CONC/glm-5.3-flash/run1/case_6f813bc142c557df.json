@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "fb34d47c26fc4a624e202dee7ccaea9802cfdab5422bbf6c1fca8d7ec1c43c20",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:56:28.244296+00:00",
+  "finished_at_utc": "2026-11-14T11:57:31.839210+00:00",
+  "latency_seconds": 63.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9646,
+    "prompt_tokens": 21254,
+    "total_tokens": 30900,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8284,
+      "text_tokens": 1362
+    },
+    "cost": 0.0080111
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24379,
+  "text": "### Observed differences\n\n- The order between the two groups of activities flipped. Before, the order was mixed or reversed: A24 came before A20 in about 75 in 100 traces and before A23 in about 88 in 100, while A22–A24 and A20–A26 appeared in both orders roughly equally. In the later window, A20, A22 and A23 each precede A24, A25 and A26 in about 98–99 in 100 traces across all nine pairs. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- Distances between these activities became fixed. Before, gaps varied widely (for example, A22 was followed by A20 within one step in about 56 in 100 cases, with the remainder spread over two to four steps). In the later window, nearly every pair sits at one fixed distance, consistent with a single chain A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: A31→A22, A22→A20, A20→A23, A23→A24, A24→A26, A26→A25 and A25→A32 each within one step in almost all cases, and longer pairs at exactly the summed distance (e.g., A20→A24 two steps, A22→A24 three, A20→A26 three, A20→A25 four, A20→A32 five). [LAG003, LAG004, LAG005, LAG006, LAG008, LAG009, LAG010, LAG013, LAG018, LAG019, LAG024, LAG025, LAG026, LAG027, LAG029, LAG031]\n- Event positions shifted accordingly: in the later window A20, A22 and A23 occur earlier in the trace (mean relative position about 0.64→0.59, 0.59→0.56 and 0.68→0.62), while A24, A25 and A26 occur later (about 0.59→0.65, 0.68→0.70 and 0.64→0.68); all six were present in every trace of both windows. [POS002, POS003, POS004, POS005, POS006, POS007]\n- A08 became rarer: it appeared in about 32 in 100 traces before but only about 13 in 100 after; when present it now sits later in the trace (mean position about 0.18 vs 0.34), and its co-occurrence with A32 fell from about 32 to 13 in 100 traces, with A32 now appearing alone in about 87 in 100. [OCC001, POS001, REL001, LAG001]\n- A10 appears more often, in about 12 in 100 later traces versus about 3 in 100 earlier ones, but this rests on only 6 versus 25 traces. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a change in ordering constraints: the activities A20, A22, A23, A24, A25 and A26, bracketed by A31 at the start and A32 at the end, were previously executed in a variable order with variable gaps, and in the later window they follow one fixed sequence (A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32) in which each activity immediately follows the previous one. This is shown directly by relational evidence — all nine pairs between the two groups moved from mixed or reversed orders to a single order in about 98–99 in 100 traces [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009] — and corroborated by lag distributions collapsing from spreads over one to five steps to one fixed distance per pair [LAG003, LAG004, LAG008, LAG010, LAG011, LAG031] and by position shifts in the matching directions [POS002, POS003, POS004, POS005, POS006, POS007]. The screening context makes chance an implausible explanation: 49 items qualified where roughly 0.5 would be expected if nothing had changed. Limitations: the positional and lag evidence is based on event positions, not clock time, so no statement about timing is possible; and the evidence cannot rule out that the later window samples an already-existing fixed-sequence variant far more often than before (a shift in variant mix) rather than a modified ordering — although either way the executed behaviour differs markedly. A few lag items with only one supporting observation in the later window were deliberately not used.\n\nOther differences: A08 was executed in far fewer traces in the later window (about 13 vs 32 in 100) and, when executed, sits later in the trace, with its co-occurrence with A32 correspondingly reduced [OCC001, POS001, REL001]; A10 appears somewhat more often but on few traces [OCC002]. These participation changes are not part of the main ordering hypothesis.",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

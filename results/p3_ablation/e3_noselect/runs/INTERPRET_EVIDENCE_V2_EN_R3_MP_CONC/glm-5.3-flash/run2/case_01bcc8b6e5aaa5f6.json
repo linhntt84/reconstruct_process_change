@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_01bcc8b6e5aaa5f6.json",
+  "evidence_sha256": "ac7c410de0c405713b4edd8ff3a824b0906126a552e542ecb28d2791f70bc38c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:33:06.717081+00:00",
+  "finished_at_utc": "2026-11-15T08:34:22.498509+00:00",
+  "latency_seconds": 75.78,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11217,
+    "prompt_tokens": 7970,
+    "total_tokens": 19187,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10271,
+      "text_tokens": 946
+    },
+    "cost": 0.006803999999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38911,
+  "text": "### Observed differences\n\n- Activity A02 disappeared from execution: in the earlier window every trace contained it exactly once (participation 200 of 200 traces, mean 1.0 occurrence per trace) and it sat at or near the start of the trace (median event position 0); in the later window it appears in 0 of 200 traces. [OCC001, POS001]\n- A02's outgoing edges vanished with it: before, its transitions led to A03 in about 48 in 100 cases and to A04 in about 42 in 100, with small shares to A05, A06 and A07; afterwards no outgoing transition from A02 was observed (199 observed transitions before, 0 after). [DIR002]\n- The ties between A02 and its successors broke off: before, A02 co-occurred with A03 in 100% of traces (A02 first in about 89 in 100) and with A04 in 100% (A02 first in about 88 in 100); in the later window A03 and A04 each occur without A02 in essentially every trace. [REL001, REL002]\n- The surviving activities shifted slightly earlier in event position: A03's mean position fell from about 0.27 to 0.18 of the trace and A04's from about 0.29 to 0.15 (A04's median moved from about a third into the trace to the first event). Event positions shift mechanically when an early activity disappears, so this is consistent with the removal rather than independent evidence of a move. [POS002, POS003]\n- Routing among the remaining activities changed only at the margins; the common pattern is that every source which previously had an edge to A02 (A01, A03, A04, A05, A06) lost it, while other shares moved by a few points at most — for example A04 now leads to A03 in about 36 in 100 of its transitions versus about 28 before, and A03 leads to A04 in about 14 versus about 20. [DIR001, DIR003, DIR004, DIR005, DIR006]\n- The mutual order of A03 and A04 tilted slightly toward A04 first (A03 before A04 in about 53 in 100 traces before versus about 44 after), while the two still co-occur in every trace and the A03→A04 gap now concentrates at two steps (about 68 in 100 versus about 56 before). [REL003, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A02, a step that was mandatory and executed once at or near the start of every trace — preceding A03 in about 89 in 100 traces and A04 in about 88 in 100 — is no longer executed in the later window, so traces now enter A03, A04 or A05 without passing through A02. The pattern is direct and consistent across four indicator families: participation fell from 200 of 200 traces to 0 of 200, all 199 observed outgoing transitions of A02 disappeared, co-occurrence with A03 and A04 dropped from 100% to 0%, and A02's positional footprint vanished, each on 200 traces per window. Limitations: zero participation only shows that A02 was not observed, so a renaming or merging of A02 into another activity cannot be ruled out; and the small position shifts of A03 and A04 are plausibly mechanical consequences of the removal rather than independent relocations. [OCC001, DIR002, POS001, REL001, REL002]\n\nOther differences: minor redistributions of the surviving routing shares (e.g., A04 → A03 up about 8 points, A03 → A04 down about 6 points) and a slight tilt in the A03/A04 ordering toward A04 first, with A03→A04 gaps concentrating at two steps; these are small and may be side effects of A02's disappearance rather than independent changes. [DIR003, DIR004, REL003, LAG001]",
+  "case_id": "case_01bcc8b6e5aaa5f6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

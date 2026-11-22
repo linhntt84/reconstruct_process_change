@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_3e135c8ad53638a4.json",
+  "evidence_sha256": "3f0310bec93fac22bceed56c5cf83a1f65651e752c047f0e2bf62f671f9de26d",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:46:41.356129+00:00",
+  "finished_at_utc": "2026-11-15T01:47:19.301350+00:00",
+  "latency_seconds": 37.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5573,
+    "prompt_tokens": 21104,
+    "total_tokens": 26677,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4880
+    },
+    "cost": 0.0043215
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 17046,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A20, A21, A22, A23, A26, A31, A32, and A37. In the later window, A22 appears in about 54 in 100 traces, and A31, A32, A37 each in about 47 in 100 traces; A20, A21, A23, and A26 remain in all traces. [OCC001, OCC002, OCC003, OCC004, REL001, REL005, REL009, REL010]\n\n- A20's outgoing transitions changed from A37 (35%), A31 (34%), A32 (31%) to A23 (99.5%) and A31 (0.5%). [DIR001]\n\n- A21's outgoing transitions changed from all to A22 to A22 (53.5%), A32 (16%), A37 (16.5%), A31 (14%). [DIR002]\n\n- A31, A32, and A37 no longer lead to A23; instead they lead to A26 (about 29–36%) and to each other. [DIR003, DIR004, DIR005]\n\n- The order between A21 and A31/A32/A37 reversed: before, A31/A32/A37 always preceded A21; after, when they co-occur A21 precedes them (46.5%), and A21 occurs alone in 53% of traces. [REL006, REL007, REL008]\n\n- A22 and A31/A32/A37 became almost mutually exclusive: co-occurrence dropped from 100% to 0.5%. [REL011, REL012, REL013]\n\n- A20 and A23: before A23 was 4 steps after A20; after, A23 is 1 step after A20 in 99.5% of cases. [LAG001]\n\n- The time between A23 and A24 increased from a mean of about 1.0 hour to about 1.9 hours. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a hypothesis that the process changed from a single mandatory sequence to a process with optional branches and altered routing. Specifically, activities A22, A31, A32, and A37 became optional, appearing in about half the traces instead of all; A20 now leads directly to A23 instead of through A31/A32/A37; and A21 now branches to A22 or to A31/A32/A37, which then lead to A26 instead of A23. The order between A21 and A31/A32/A37 reversed. This is supported by a large number of control-flow indicators (47 items vs 0.51 expected by chance) that consistently show these changes. A competing explanation that the differences are due to random sampling is unlikely given the magnitude of the evidence, though the exact mechanism (e.g., whether activities were added/removed or just skipped) cannot be fully determined from these indicators. The evidence also cannot rule out that the observed differences arise from a mixture of two stable process variants rather than a single changed process.\n\nOther differences: The time between A23 and A24 doubled from about 1.0 to 1.9 hours, indicating a separate timing change. [TWAIT001]",
+  "case_id": "e4a_3e135c8ad53638a4",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_51a133f489fb5efa.json",
+  "evidence_sha256": "f01ddd691f4daf26c9b4d9889ba616727ab4510c7a31b3ae1e5a88d08fd58b09",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:19:03.238526+00:00",
+  "finished_at_utc": "2026-11-15T13:21:33.113928+00:00",
+  "latency_seconds": 149.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21674,
+    "prompt_tokens": 82233,
+    "total_tokens": 103907,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19476,
+      "text_tokens": 2198
+    },
+    "cost": 0.023171949999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61935,
+  "text": "### Observed differences\n\n- The order between the group A19/A20/A25 and the activities A26/A27/A28 flipped. In the earlier window, A26 ran before A19, A20 and A25 in about 30–36 in 100 traces while the reverse order occurred in at most about 1 in 200 traces; in the later window A19, A20 and A25 each run before A26 in about 29–35 in 100 traces and almost never after it. The same reversal holds against A27 and A28, which previously preceded A19/A20/A25 in roughly 14–36 in 100 traces (A19/A20 versus A28 appeared in both orders) and now almost never do. [REL030, REL031, REL032, REL036, REL037, REL038, REL041, REL042, REL043]\n- Positions moved accordingly: the median position of A19, A20 and A25 moved from about 0.60–0.61 of the trace to about 0.31, and A08 from a median of about 0.53 to 0.29, while A26, A27 and A28 shifted slightly later (medians about 0.30→0.34, 0.56→0.59, 0.61→0.63). [POS004, POS005, POS006, POS001, POS007, POS008, POS009]\n- Routing changed at both ends. In the earlier window about 92 in 100 of A45's outgoing transitions went straight to A26; in the later window A45 leads instead to A19, A20, A25 and A08 (roughly 23–26 in 100 each) and almost never to A26. A19, A20 and A25, which previously led mainly to A28 and A32, now lead to A26 in about 96–100 in 100 of their transitions. A27 now leads to A28 in about 98 in 100 transitions (before about 50) and A28 leads to A32 in about 99 in 100 (before about 48); the earlier feeder edges from A27/A28 into A19/A20/A25 (about 14–21 in 100 each) are gone. [DIR045, DIR019, DIR020, DIR025, DIR027, DIR028]\n- A08 now runs in about 30 in 100 traces versus 13 before, and its successors changed from a scatter (A16, A26, A15, A49 at about 14 in 100 each) to almost entirely A19, A20 and A25 (about 88 in 100 combined); it typically runs one step after A45 and about three steps after A16, and it now precedes A26/A27/A28/A32 in about 27 in 100 traces versus about 6 before. [OCC008, DIR008, LAG026, LAG005, REL006, REL007, REL008, REL009]\n- Spacing between unchanged neighbours grew: the gap from A16 to A26 moved from three steps (about 54 in 100 observed pairs) to four or five steps (about 99 in 100); A27 reaches A32 in two steps rather than three; and the A27→A28 and A28→A32 gaps, previously split between one and two steps, are now almost always one step. [LAG009, LAG019, LAG018, LAG023]\n- A18 participates in about 20 in 100 traces in the later window versus 32 before, and its \"before A26/A27/A28/A32/A45\" relations shrank in proportion (about 31 in 100 traces to 20), while it still leads to A45 when it runs. [OCC018, REL023, REL024, REL025, REL026, REL027, DIR018]\n- Several rare activities became rarer: A02 about 10→4.5, A04 about 12→6, A06 about 8→3.5, and A10 about 13→7.5 per 100 traces. [OCC002, OCC004, OCC006, OCC010]\n- Repetition increased mildly for A46 (repeated occurrences in about 44 in 100 traces versus 32), and A44 and A47 occur somewhat more often (participation about 49→56 and 58→65 in 100). [OCC041, OCC040, OCC042]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a re-placement of the late block of the process: A19, A20 and A25, which in the earlier window ran after A26 and interleaved with A27/A28 (reached from them and leading on to A28/A32), now run early — entered from A45 directly or via A08, whose presence roughly doubled to about 30 in 100 traces — and lead almost always to A26, while A27 → A28 → A32 became a near-fixed late sequence. The order flip is observed directly in the relation indicators (A26 before A19/A20/A25 fell from about 30–36 in 100 traces to essentially zero, the reverse rising to about 29–35 in 100, with empirical strength about 0.99), the successor changes appear coherently on both ends of the rerouting (A45, A19, A20, A25, A27, A28, A08), and the position and gap indicators agree; participation of A19/A20/A25 itself stayed similar (about 31–37 in 100 traces in both windows), so the difference lies in order and wiring rather than in how often these activities run. Limitations: positions reflect event order, not clock time; several items describe the same underlying trace behaviour and are not independent confirmations; the windows are finite samples and no screening baseline is included, so item counts cannot be compared against a chance expectation. [REL030, REL036, REL041, DIR045, DIR019, DIR020, DIR025, DIR027, DIR028, DIR008, OCC008, OCC019, OCC020, OCC025, POS004, POS005, POS006, LAG009]\n\nOther differences: A18 is skipped more often (about 32→20 in 100 traces) while keeping its link to A45; the rare activities A02, A04, A06 and A10 occur at roughly half their earlier rates; A46 repeats more often and A44/A47 occur somewhat more often. These are not part of the main hypothesis. [OCC018, DIR018, OCC002, OCC004, OCC006, OCC010, OCC041, OCC040, OCC042]\n\nA competing explanation the evidence cannot rule out is that a rare pre-existing variant with this early ordering simply became the dominant one rather than the arrangement having been re-wired; the earlier window shows the early order in at most about 1 in 200 traces, so a very rare earlier variant cannot be excluded. [REL030, REL036, REL041]",
+  "case_id": "case_51a133f489fb5efa",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

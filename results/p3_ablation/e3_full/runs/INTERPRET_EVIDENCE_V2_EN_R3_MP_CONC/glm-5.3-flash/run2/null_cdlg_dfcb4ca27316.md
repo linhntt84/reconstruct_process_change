@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the later window, the exits from A06 are split differently: earlier, about 58 in 100 of A06's outgoing transitions led to A15 and about 42 in 100 to A16; later the split is about 50/50 (roughly 250 vs 213 outgoing transitions behind this; the difference exceeds about 92 in 100 random re-splits). [DIR005]
+- A15 is executed less often in the later window: about 0.54 occurrences per trace versus about 0.72 earlier, almost entirely through fewer repetitions (recurrence support 0.14 vs 0.11, while participation only slipped from about 17 to about 15.5 in 100 traces). A06 also repeats less (about 1.07 vs 1.25 occurrences per trace, participation flat at about 22 in 100), while A16 is stable (participation about 22 in 100 traces and 106 outgoing transitions in both windows). [OCC015, OCC006, POS015, DIR010]
+- Positions and lags around the A06/A15/A16 region shifted: A16's events sit earlier within traces (median position about 0.46 vs 0.58 of trace length), A06→A16 pairs at distance 1 rose from about 10 to about 13 in 100, and A15-related lags shifted (e.g., A15→A09 pairs at distance 3 up from about 24 to about 32 in 100); these are event positions, not clock time. [POS015, LAG023, LAG042]
+- A11 occurs in more traces: 30 in 100 versus 24 in 100 (mean 0.57 vs 0.45 occurrences per trace), and A02 now leads directly to A11 for about 10 in 100 of A02's outgoing transitions, which was not observed earlier (about 50 outgoing transitions behind this). [OCC011, DIR002, LAG008]
+- The strict alternative between the A03 route (A03 always occurs together with A12) and A05 shifted: A03 in 55 in 100 traces versus 51 earlier, A05 in 45 versus 49; the two still never occur in the same trace. [OCC003, OCC012, REL031, REL038, REL061]
+- A01 (about 27 vs 22 in 100 traces) and A08 (about 17 vs 12 in 100) participate less in the later window. [OCC001, OCC008]
+- A13 and A14 tend to appear later within traces (medians about 0.58→0.65 and 0.67→0.71 of trace length), and A07→A05 pairs shifted from distance 3 towards distance 4 (about 23→44 in 100 pairs); each of these rests on only about 21–29 observations. [POS012, POS013, LAG025]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the A15 route out of A06 is exercised less often relative to the A16 route. Earlier, A06's exits split roughly 58/42 between A15 and A16; later, roughly 50/50, and A15 fell to about 0.54 occurrences per trace (from about 0.72), mostly through fewer repetitions, while A16's participation and transition count stayed unchanged. This rests on a direct successor-share change at A06 whose size exceeds about 92 in 100 random re-splits on roughly 230–250 transitions, and it is consistently accompanied by A15's occurrence and repetition decline, A16's earlier positions, and more A06→A16 pairs at distance 1. Limitations: with 200 traces per window a shift of about 7 points could partly reflect sampling, and the evidence cannot distinguish a changed branch choice from A06 and A15 simply repeating fewer times per trace; the concurrent differences listed below are not explained by this hypothesis. [DIR005, OCC015, OCC006, POS015, LAG023, LAG042, LAG050]
+
+Other differences:
+- A11 participates more (24→30 in 100 traces) and A02 gains a direct edge to A11 seen only in the later window; with only about 5 transitions behind the new edge, its extent is uncertain. [OCC011, DIR002, LAG008]
+- The share of traces taking the A03 route (always together with A12) instead of A05 rose from about 51/49 to about 55/45; both routes are substantial alternatives in both windows, so this is a shift between existing alternatives. [OCC003, OCC012, REL031, REL038, REL061]
+- A01 and A08 appear in fewer traces (about 27→22 and 17→12 in 100). [OCC001, OCC008]
+- A13 and A14 occur at later positions and A07→A05 pairs at longer distances; such position-based shifts alone do not show that these activities were moved, and each rests on roughly 21–29 observations. [POS012, POS013, LAG025]

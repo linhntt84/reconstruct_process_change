@@ -1,0 +1,21 @@
+### Observed differences
+
+- The largest difference is in how often a set of activities is executed. In the earlier window, A02, A06 and A09 each appeared in about 18–21 of 100 traces and averaged roughly 0.34–0.36 occurrences per trace; in the later window they appear in about 23–27 of 100 traces and average roughly 0.59–0.66 occurrences per trace (about three-quarters to four-fifths more executions per case), and the share of traces in which the activity repeats rose from about 10–11 to about 15–16 of 100. [OCC002, OCC005, OCC008]
+
+- The same direction holds more weakly for A07, A08, A10 and A11 (for example A07 in about 30 of 100 traces before vs 34 after, mean occurrences 0.44 vs 0.55), while A01 and A03 are essentially unchanged (A01 present in every trace in both windows, mean occurrences 1.93 vs 2.02) and A04 and A05 dip slightly (A04 in about 49 of 100 traces before vs 45 after). [OCC006, OCC007, OCC009, OCC010, OCC001, OCC003, OCC004]
+
+- These activities also increasingly share traces: co-occurrence rose for all 49 tested pairs involving at least one of A02, A06, A07, A08, A09, A10 or A11 (for example A02 and A09 together in about 21 of 100 traces before vs 27 after, with neither present falling from about 79 to 73 of 100), while the pairs among A01, A03, A04 and A05 stayed flat or fell slightly. [REL017, REL014, REL032, REL022, REL003, REL020]
+
+- Routing among the busier activities shifted toward one another: from A02, the share of outgoing transitions to A09 rose from about 45% to 57% while the share to A07 fell from about 36% to 21%; from A09 the share to A06 rose from about 19% to 32% (the share to A02 fell from 55% to 42%); from A06 the share to A02 rose from about 17% to 27%; from A11 the share to A06 rose from about 45% to 58%. Every successor involved was observed in both windows. [DIR002, DIR007, DIR005, DIR009]
+
+- A02, A06 and A09 also sit slightly later in the event sequence in the later window (A09's mean relative position about 0.43 before vs 0.49 after); this concerns event order, not clock time. [POS002, POS005, POS008]
+
+- The lag-distance distributions between activity pairs shifted only slightly, point in mixed directions, and many rest on fewer than about 30 observations, so they add no clear structural signal of their own. [LAG015, LAG029, LAG010]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that in the later window a part of the process involving A02, A06, A07, A08, A09, A10 and A11 — most strongly A02, A06 and A09 — is executed more often and repeated more: these activities appear in roughly 3–6 more traces per 100, occur about three-quarters more often per case, co-occur more frequently, and route more to one another (A02→A09, A09→A06, A06→A02, A11→A06), while A01 and A03 stay flat and A04 and A05 dip slightly. Supporting signs are the consistent direction of the occurrence, co-occurrence, routing and position indicators for this one set of activities, routing changes that are shares between successors observed in both windows rather than new or removed edges, and occurrence differences larger than those seen in about 96–97 of 100 random re-splits. What is missing: the evidence provides no screening baseline, so the number of qualifying items cannot be compared with what an unchanged process would produce; the absolute shifts amount to a few traces in 100; the occurrence and co-occurrence items describe the same traces and are not independent confirmations; and many lag items rest on fewer than about 30 observations. An important competing explanation the evidence cannot rule out is a composition fluctuation between the two finite samples — the later window simply drawing somewhat more traces of a kind that runs this block — which would produce the same pattern without any change to the process. [OCC002, OCC005, OCC008, REL017, DIR002, DIR007, POS008]
+
+Other differences: A04 and A05 show small participation decreases (about 49→45 and 34→30 of 100 traces) with A05 sitting slightly earlier in the sequence, and A03 follows A01 within one step somewhat more often in the later window (about 67 vs 76 of 100 close pairs); these are weak and not part of the main hypothesis. [OCC003, OCC004, POS004, LAG003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_03dacefde2ff7f76.json",
+  "evidence_sha256": "a05be4c0d98ec0a21546c18a6bdf1be1bba8d57f82b422de944505773516930c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:37:48.876165+00:00",
+  "finished_at_utc": "2026-11-15T05:39:15.565363+00:00",
+  "latency_seconds": 86.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12543,
+    "prompt_tokens": 14246,
+    "total_tokens": 26789,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11203,
+      "text_tokens": 1340
+    },
+    "cost": 0.0084084
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36403,
+  "text": "### Observed differences\n\n- In the earlier window, A45 handed over to one of three alternatives — A19 (about 31 in 100 of its outgoing transitions), A20 (about 26) or A25 (about 28) — and each of these led almost exclusively to A26 (about 89–98 in 100). In the later window, A45 leads directly to A26 (about 89 in 100), while A19, A20 and A25 now lead mainly to A28 and A32 (roughly half to A28, most of the rest to A32) and practically never to A26. [DIR001, DIR002, DIR003, DIR006]\n- The three alternatives moved much later in the trace: their mean event position was about 0.31–0.34 before and is about 0.58–0.59 in the later window, while A26 and A27 shifted slightly earlier (A26 about 0.35 to 0.32, A27 about 0.58 to 0.55); A26 and A27 still occur in every trace in both windows. [POS001, POS002, POS003, POS004, POS005]\n- The order between the alternatives and A26/A27 reversed. Before, A19, A20 or A25 co-occurred with A26 in about 32–38 of 100 traces and always ran before it (for example A19 before A26 in 37 of 100, A26 before A19 in 0). In the later window they co-occur at similar rates (about 30–38 of 100) but A26 now always comes first (A26 before A25 in 36 of 100, A25 before A26 in about 0.5 of 100). The same reversal holds against A27 (A20 before A27 in 31 of 100 before; A27 before A20 in 31 of 100 after). [REL001, REL002, REL004, REL005, REL006, REL007]\n- Pairwise distances changed accordingly: A45 reaches A26 within one step in about 89 of 100 later-window cases (previously mostly two steps); A25 immediately preceded A26 in 63 earlier-window traces but in only 1 later-window trace; A27→A28, previously almost always one step apart, is now split between one and two steps (about 51/49), as is A28→A32 (about 48/51); A27→A32 moved from two to three steps. [LAG008, LAG003, LAG004, LAG007, LAG005]\n- New handovers around A28 appeared: in the later window A27 passes to A19/A20/A25 in about 48 of 100 of its outgoing transitions (not observed before), and A28 passes back to them in about 51 of 100 (previously about 94 of 100 went to A32); accordingly A19–A28 and A25–A28 now occur in both orders (A19 before A28 in 16 of 100 co-occurrences, A28 before A19 in 14 of 100). [DIR004, DIR005, REL003, REL008, LAG001, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block A19/A20/A25 — of which one activity executed per case — now runs in a different place: in the earlier window it sat between A45 and A26 (A45 → one of the three → A26), whereas in the later window A45 feeds A26 directly and the block executes after A27, in the segment around A28, continuing from there to A28 or A32. This is shown directly by the reversed order relations with A26 and A27 [REL001, REL002, REL004, REL005, REL006, REL007], the changed successors of A45, A19, A20, A25, A27 and A28 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006], the changed pairwise distances [LAG003, LAG004, LAG007, LAG008], and the position shift of the three activities [POS001, POS002, POS003]. The pattern is consistent across all 27 qualifying items, far more than the roughly 0.4 expected without a change, and the observations behind it are substantial (relational items cover all 200 traces per window; directional items 61–77 traces).\n\nLimitations: the exact arrangement around A28 cannot be fully resolved — the both-orders pattern for A19–A28 and A25–A28 indicates the block can run either directly after A27 and before A28 or after A28, but the evidence does not establish how often the block executes within one case, and some lag items rest on a single observation in one window [LAG001, LAG002, LAG003, LAG006]. Positions are event positions rather than clock times, so clock-time timing is unknown. A competing explanation the evidence cannot exclude is that the block was removed from its old position and separately inserted at the new one rather than relocated; behaviourally the two are indistinguishable here.\n\nOther differences: the choice among the three alternatives shifted slightly — A19 appears in about 31 of 100 later-window traces (about 38 before), A25 in about 38 (about 32 before), with A20 roughly stable at about 33. [POS001, POS002, POS003]",
+  "case_id": "case_03dacefde2ff7f76",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

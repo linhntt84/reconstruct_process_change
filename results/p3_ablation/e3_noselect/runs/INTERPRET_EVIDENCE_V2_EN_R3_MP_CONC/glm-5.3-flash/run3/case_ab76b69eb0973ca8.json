@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ab76b69eb0973ca8.json",
+  "evidence_sha256": "90e939e688c82f23cd96c067206363bcc0c8e6711cdf114d381acab274e814f6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:48:41.188856+00:00",
+  "finished_at_utc": "2026-11-15T13:49:50.114159+00:00",
+  "latency_seconds": 68.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10145,
+    "prompt_tokens": 21621,
+    "total_tokens": 31766,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8960,
+      "text_tokens": 1185
+    },
+    "cost": 0.008315649999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31685,
+  "text": "### Observed differences\n\n- Activity A08 disappeared from the execution: in the earlier window it appeared in about 70 in 100 traces (141 of 200, roughly 1.1 occurrences per trace, typically in the later part of a trace); in the later window it appears in 0 of 200 traces. [OCC007, POS005]\n- All recorded relationships of A08 collapsed: before, A08 co-occurred with A07 in about 70 in 100 traces (A07 before A08 in about 46 in 100, plus about 25 in 100 interleaved) and with A03, A04 or A05 in roughly 30 in 100 traces each; after, none of these pairs ever occur together, and A03, A04 and A05 each appear without the partner in about 33 in 100 traces, A07 in about 67 in 100. [REL004, REL007, REL009, REL010]\n- A07 took over A08's downstream routing: before, every observed outgoing transition of A07 went to A08; in the later window A07 leads to A05 (about 39%), A03 (about 27%), A04 (about 22%) and A02 (about 12%) — closely matching the distribution A08 itself had before (A05 about 36%, A03 about 35%, A04 about 19%, A02 about 10%). [DIR007, DIR008]\n- Distances behind A07 shortened: the typical gap from A07 to A03, A04 or A05 fell from about 2 steps to about 1 step, and A07-to-itself repetition gaps fell from about 4–5 steps to 3–4 steps. [LAG013, LAG014, LAG015, LAG016]\n- Smaller shifts: A04 and A05 occur slightly earlier and somewhat less often (A04 participation about 38 to 32 in 100 traces, mean relative position about 0.53 to 0.50; A05 about 36 to 33, mean about 0.48 to 0.44); A02 routes less exclusively to A06 (about 94% to 86% of its outgoing transitions, with A03 and A05 gaining); A07 participation dipped slightly (about 70 to 67 in 100 traces). [POS002, POS003, DIR002, OCC006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A08 was removed from the flow (or is no longer executed) and that A07 now bypasses it directly: before, A07 led to A08, which distributed to A05, A03, A04 and A02; in the later window A08 is not observed at all, A07 leads straight to those same activities with almost the same successor shares, and the gaps from A07 to A03, A04 and A05 shortened by about one step. This is a removal/bypass signature shown directly by participation, relation and successor evidence, not a shift in how often existing paths are taken, and it is consistent across every item touching A08 (all at the top of the reference comparisons, empirical strength about 0.995), making chance sampling implausible for an activity present in 70 in 100 traces vanishing from all 200 later traces. [OCC007, POS005, DIR007, DIR008, REL004, REL007, REL009, REL010, LAG013, LAG014, LAG015]\n\nLimitations: the evidence cannot distinguish whether A08 was deleted, is skipped in every case, or continues under a different name, and the screening summary needed to compare the number of qualifying items against the chance expectation is not part of this evidence, so the judgement rests on the directness and consistency of the A08 items themselves. A competing explanation the evidence cannot fully rule out is that A07's rerouting is an independent routing change that coincidentally mirrors A08's old successor profile, although the simultaneous shortening of the A07-to-successor gaps makes this less likely. [DIR007, DIR008, LAG013, LAG014, LAG015]\n\nOther differences: A04 and A05 occur somewhat earlier and slightly less often, A02's outgoing share to A06 fell from about 94% to 86% in favour of A03 and A05, and self-repetition gaps for A03, A04 and A05 shortened — the latter rest on few observations (roughly 12–19 pair instances per window) and are plausibly knock-on effects of A08's removal rather than independent changes. [POS002, POS003, POS004, DIR002, OCC006, LAG001, LAG006, LAG011]",
+  "case_id": "case_ab76b69eb0973ca8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

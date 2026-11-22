@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/null_ffce3d69cdc0313c.json",
+  "evidence_sha256": "5df88ac4d9310537d6633adfe4c16d7ebf40fe06ca6b685b90270daf24ef0f8c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:05:20.768804+00:00",
+  "finished_at_utc": "2026-11-15T03:06:31.111367+00:00",
+  "latency_seconds": 70.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9241,
+    "prompt_tokens": 4096,
+    "total_tokens": 13337,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8396,
+      "text_tokens": 845
+    },
+    "cost": 0.0052349
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32084,
+  "text": "### Observed differences\n\n- The dominant order of the segment between A27 and A28 flipped. In the earlier window the typical sequence was A27 → A32 → A31 → A28: A32 followed A27 at distance 1 in about 64 in 100 traces containing the pair, A31 followed A27 at distance 2 in about 64 in 100, and A28 followed A31 at distance 1 in about 64 in 100. In the later window the typical sequence was A27 → A31 → A32 → A28: A31 followed A27 at distance 1 in about 62 in 100, A32 at distance 2 in about 62 in 100, and A28 followed A32 at distance 1 in about 62 in 100. [LAG001, LAG002, LAG003, LAG004]\n- The successor shares of the two middle activities flipped in the matching direction. From A31, transitions to A28 fell from about 64% to about 38% of observed outgoing transitions, while transitions to A32 rose from about 36% to about 62%. From A32, transitions to A31 fell from about 64% to about 38%, while transitions to A28 rose from about 36% to about 62%. [DIR001, DIR002]\n- Both orderings coexist in both windows: the non-dominant order accounts for roughly 36–38% of cases in each window, so the later window shows the majority order reversed rather than one order replacing the other outright. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]\n- Participation was stable: each item rests on about 90 of 200 traces in the earlier window and about 91 of 200 in the later window (roughly 45 in 100 traces), and all observed distances stay within 1–2 steps, so this is not a change in how often these activities occur or in how often they repeat. [DIR001, LAG001]\n- Scale of the signal: 6 control-flow items qualified, roughly 20 times the 0.3 items expected by chance if nothing had changed, and each item's difference exceeded about 995 of 1000 random re-splits of the pooled traces. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A31 and A32 exchanged their typical positions in the sequence between A27 and A28: in the earlier window A32 typically came directly after A27, A31 one step later, and A28 directly after A31; in the later window A31 typically came directly after A27, A32 one step later, and A28 directly after A32. The support is direct and consistent: all four lag distributions flipped between distances 1 and 2, the successor shares from A31 and A32 flipped in exactly the matching direction, every item rests on about 90 observations per window, and six qualifying items is many times the number expected from chance alone. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]\n\nLimitations: the six items describe one underlying change rather than independent confirmations, and because both orderings appear in both windows at roughly 36–38% versus 62–64%, the evidence cannot distinguish a genuine exchange of the two activities' positions from a shift in the relative frequency of two alternative orders that already coexisted before the change. Behaviour outside this four-activity segment, and pairs more than five steps apart, are not observed. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]",
+  "case_id": "null_ffce3d69cdc0313c",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

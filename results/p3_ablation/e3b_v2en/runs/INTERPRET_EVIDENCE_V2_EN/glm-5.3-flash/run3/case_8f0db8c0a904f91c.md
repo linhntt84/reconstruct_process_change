@@ -1,0 +1,18 @@
+### Observed differences
+
+- The starkest difference is a block of three activities that used to run in every trace: A19, A25 and A20 each appeared in all 200 earlier traces (about one occurrence per trace), but in the later window each appears in only about 53 in 100 traces. [OCC004, OCC005, OCC006]
+- These three disappear together rather than one at a time: pairs among them co-occur in about 53 in 100 later traces (down from 100 in 100) and are jointly absent in about 47 in 100, while always-present activities (A26, A41, A46, A47) still run in every trace. When the block does run, its internal order is unchanged (A19 before A25 before A20 in about 98 in 100 co-occurrences). [REL008, REL009, REL014, REL010, REL019]
+- Routing around the block changed to match: A41 previously led to A19 in about 96 in 100 of its outgoing transitions; in the later window it splits between A19 (about 51 in 100) and A26 (about 44 in 100), and the A41 → A26 pair, previously almost always four positions apart, is now immediately adjacent in about 44 in 100 cases. [DIR005, LAG002]
+- A02 occurs in only about 8.5 in 100 later traces, down from about 29 in 100. A46 now leads to A02 in under 1 in 100 of its transitions (about 25 in 100 before), while A46 → A47 is immediately adjacent in about 96 in 100 cases (about 75 before). [OCC001, DIR006, LAG003]
+- A02's remaining behaviour is thinly documented: its outgoing transitions, previously about 85 in 100 going to A47, are now scattered over many targets, and it appears at earlier relative positions (median about 0.97 to 0.47 of the trace); both rest on only 17 traces, and the A02 → A47 gap evidence on 5 pairs. [DIR001, POS001, LAG001]
+- Smaller shifts: A04 and A06 each appear in about 12 in 100 later traces (up from about 4–5 in 100, on 24 and 25 traces versus 9 and 8); A08's outgoing transitions appear completely redistributed but rest on only 4 versus 15 transitions; A26, A41 and A46 show only small positional drifts. [OCC002, OCC003, DIR002, POS002, POS003, POS004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, roughly half of the executions follow a variant that skips the whole A19 → A25 → A20 segment and continues from A41 directly to A26. The participation of all three activities fell from 100% to about 53% with 200 traces per window; the relational items show they are skipped jointly while always-present activities continue, and their internal order is preserved when they do run; A41's successor split (about 51 in 100 to A19, 44 in 100 to A26) mirrors the skip split almost exactly; and the one-step A41 → A26 gap in about 44 in 100 cases shows the bypass directly. [OCC004, OCC005, OCC006, REL008, REL010, REL014, DIR005, LAG002]
+
+A second, smaller change — A02 being executed far less often, with A46 bypassing it straight to A47 — is directly visible in participation and routing shares, but the details of A02's remaining behaviour (scattered successors, earlier position) rest on 17 traces and 5 observed A02 → A47 gaps, so they are only weakly supported. [OCC001, DIR006, LAG003, DIR001, POS001, LAG001]
+
+The main competing explanation the evidence cannot rule out is a shift in the frequency of a pre-existing skip variant rather than a new structural connection: the windows are finite samples, and variant frequencies can differ between them without any change. The volume of flagged items (41, against roughly 0.72 expected if nothing had changed) makes chance as a whole implausible, but the A04, A06 and A08 items in particular rest on too few observations to interpret. [screening, OCC002, OCC003, DIR002]

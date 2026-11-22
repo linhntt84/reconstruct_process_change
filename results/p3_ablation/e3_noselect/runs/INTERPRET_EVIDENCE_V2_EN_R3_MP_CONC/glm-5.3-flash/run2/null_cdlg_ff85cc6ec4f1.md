@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the later window, A06 occurred more often per trace: about 1.18 occurrences per trace versus about 0.85 earlier (roughly a 40% increase), while the share of traces containing A06 stayed at about 25 in 100 in both windows; within the traces that contain it, repetitions rose from roughly 3.5 to roughly 4.6 per trace. [OCC006]
+- A08 also occurred more often in the later window: about 0.64 occurrences per trace versus about 0.375 earlier (roughly a 70% increase), with participation up from about 15 to 19 in 100 traces. [OCC008]
+- In the later window, transitions out of A06 went to A08 about 54 in 100 times, up from about 44 in 100, while the share going to A09 fell from about 53 to 45 in 100 (170 versus 235 observed outgoing transitions). The exits from this pair were stable across both windows: A08 led back to A06 in about 97–98 in 100 of its outgoing transitions, and A09 led to A04 in about 98–99 in 100. [DIR006, DIR008, DIR009]
+- Smaller shifts elsewhere: after A01, transitions to A04 rose from about 42% to 55% while those to A11 (15% → 9%) and A02 (8% → 3%) fell; the outgoing profiles of A11 and A07 changed markedly (for A11, to A10 from 80% to 33% with A03 at 44% and A01 appearing; for A07, to A10 from 33% to 63%), but these rest on only about 9–19 outgoing transitions per window. Participation dipped slightly for A11 (about 14% → 11%) and A02 (about 12% → 9.5%). [DIR001, DIR011, DIR007, DIR012, OCC011, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the loop between A06 and A08 was repeated more often per trace. Earlier, A06 averaged about 0.85 and A08 about 0.375 occurrences per trace; later, about 1.18 and 0.64, with little change in how many traces contain them (A06 about 25 in 100 in both windows; A08 15 → 19 in 100). This matches the routing out of A06 shifting toward A08 (about 44% → 54%) and away from A09 (about 53% → 45%), while A08 still returned to A06 in nearly all cases and A09 still led to A04, so both ways out of the pair remain in use. The three core items agree in direction and show high empirical strength (about 0.79, 0.91 and 0.92), and the routing item rests on 170 and 235 observed transitions. Limitations: the evidence provides no screening baseline, so the number of qualifying items cannot be checked against a chance expectation; the occurrence and routing items likely reflect one underlying behaviour rather than independent confirmations; and the data cannot distinguish more iterations of the loop from more entries into it. The main competing explanation is window-to-window sampling variation between two 200-trace samples, which the high strengths make unlikely for the core items but cannot exclude outright. [OCC006, OCC008, DIR006, DIR008, DIR009]
+
+Other differences:
+- After A01, transitions to A04 rose from about 42% to 55%, mainly at the expense of A11 and A02. [DIR001]
+- The outgoing profiles of A11 and A07 changed markedly (A11: to A10 from 80% to 33%, with A03 at 44% and A01 appearing; A07: to A10 from 33% to 63%), but with only about 9–19 outgoing transitions per window these may be sampling artefacts. [DIR011, DIR007]
+- After A12, transitions to A03 rose from about 12% to 22% while those to A06 fell from about 25% to 17%. [DIR012]
+- Trace participation dipped slightly for A11 (about 14% → 11%) and A02 (about 12% → 9.5%). [OCC011, OCC002]

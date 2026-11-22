@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f43819e4d0685d77.json",
+  "evidence_sha256": "c7ffa96b55360f6b116b0dacda0ab3791d6b68cde4869b3357f0b413a31b1a63",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:35:07.563078+00:00",
+  "finished_at_utc": "2026-11-15T01:36:32.315279+00:00",
+  "latency_seconds": 84.75,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11563,
+    "prompt_tokens": 3658,
+    "total_tokens": 15221,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10928,
+      "text_tokens": 635
+    },
+    "cost": 0.0063302
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43462,
+  "text": "### Observed differences\n\n- Activity A02 was not observed at all in the earlier window (0 of 200 traces, 0 occurrences per trace). In the later window it runs in every trace (200 of 200), exactly once per case and never repeated, always at the same sequence position (position 1.0 in every case, no spread). [OCC001, POS001]\n- The relationship between A06 and A02 changed completely: earlier, all 200 traces contained A06 without A02; later, all 200 traces contain both, with A06 before A02 in every single case and no reversed or interleaved orders. [REL001]\n- The outgoing transitions of A06 changed: in the earlier window only 4 outgoing transitions from A06 were observed across 200 traces (about 2 in 100 cases), all pointing to A04; in the later window all 200 observed outgoing transitions point to A02. The earlier side of this comparison rests on only 4 observations. [DIR001]\n- A06's typical position moved from about 0.99 (essentially the last recorded step, consistent with its near-absence of successors) to about 0.79 (median 1.0 to 0.8), roughly one step away from the end — consistent with A02 now following it. [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A02 became a mandatory closing step, executed exactly once at the end of every case immediately after A06. In the earlier window, cases effectively ended with A06 (a successor, A04, appeared in only about 2 in 100 cases); in the later window, every case runs A06 followed directly by A02, with A02 at the final recorded position. [OCC001, REL001, DIR001, POS001, POS002]\n\nSupporting signs: the participation change is maximal and symmetric (0 of 200 versus 200 of 200 traces); the A06-before-A02 order holds in all later traces without exception; A06's successor and position shifted accordingly. All five evidence items describe this one underlying trace-level difference rather than independent phenomena, and 5 qualifying items is about 100 times the 0.05 expected by chance for the 10 tested control-flow units, so this set of items is not what an unchanged process typically produces. Each item's difference also exceeds about 99.5 in 100 random re-splits of the pooled traces, though this is not a probability that a change occurred. [OCC001, REL001, DIR001, POS001, POS002]\n\nLimitations and competing explanation: zero participation in the earlier window means only that A02 was not observed, so the evidence cannot rule out that A02 already existed in the process but was never executed in that sample. The earlier successor profile of A06 rests on only 4 observations, so whether the rare A06→A04 transition disappeared or merely became unobservable cannot be established, and nothing can be said about A04's behaviour in the later window. [OCC001, DIR001]",
+  "case_id": "case_f43819e4d0685d77",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

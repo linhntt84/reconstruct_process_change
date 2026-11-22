@@ -1,0 +1,13 @@
+### Observed differences
+
+- Activity participation is essentially flat across all ten activities. A02, A03, A04, A06, A09 and A10 each appeared in about 53 of 100 traces in the earlier window and about 51–52 of 100 in the later window; A01 and A05 rose from about 47 to about 48–49 of 100; A07 fell from about 24 to 23; A08 rose from about 23 to about 26 (46 to 51 of 200 traces). Every shift is only 1–2.5 percentage points, and all are smaller than typical random-split differences (empirical strength 0.11–0.36). No activity repeated within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]
+- For seven of the ten source activities the outgoing-transition mix is nearly unchanged (cosine dissimilarity 0.002–0.006, strength 0.01–0.47); for example, A01's exits went roughly 40:20:40 to A08:A05:A07 before and about 43:19:39 after, and A04's exits to A03 rose only from about 8 to 12 of 100. [DIR001, DIR002, DIR004, DIR005, DIR006, DIR008, DIR010]
+- The clearest directional difference is at A07: in the earlier window all 13 of its observed outgoing transitions went to A01, while in the later window about three-quarters (13 of 17) went to A01 and the remaining 4 (about one in four) went to A05. This is the strongest single item (empirical strength 0.91) but rests on very few transitions. [DIR007]
+- A09's exits also shifted: transitions to A04 rose from about 35 to about 53 of 100 outgoing transitions (14 to 20 of roughly 40), exits to A06 fell from 20 to about 11 of 100, and the exit to A02 (4 of 40 transitions before) was not observed afterwards (strength 0.74). [DIR009]
+- A03 sent about 76 of 100 outgoing transitions to A09 in the later window, up from about 67, with exits to A10 down from about 8 to 4 of 100 (strength 0.76). [DIR003]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The only standout routing differences — A07 gaining A05 as a transition target and A09 redirecting exits towards A04 — rest on roughly 13–40 outgoing transitions per window, and only three of twenty control-flow comparisons show elevated strength, which is within the yield an unchanged process produces through sampling noise, with no participation change to corroborate them. [DIR003, DIR007, DIR009, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]

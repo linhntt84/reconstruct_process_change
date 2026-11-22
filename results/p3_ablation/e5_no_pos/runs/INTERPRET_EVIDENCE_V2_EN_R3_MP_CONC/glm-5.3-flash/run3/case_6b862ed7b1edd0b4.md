@@ -1,0 +1,23 @@
+### Observed differences
+
+- A06 became far more prominent: earlier it appeared in about 24% of cases (about 47 of 200 traces, mean 0.25 occurrences per case); in the later window it appears in about 73% (about 146 of 200, mean 0.76). [OCC001]
+- In the later window A06 almost always leads straight to A16: about 88% of A06's observed outgoing edges go to A16, against about 8% earlier, when its edges were spread over many targets (A15 about 21%, A47 about 15%, A45 about 13%); the pair is adjacent in about 97% of the roughly 136 later observations. [DIR001, LAG002]
+- A06 now sits between A15 and A16: A15→A16 fell from about 94% to about 58% of A15's outgoing edges while A15→A06 rose from about 1% to about 40%; the rare immediate A14→A06 edge (about 5% earlier) is no longer observed, and A14 now reaches A06 mostly one step after A15 (about 108 later cases, typically at gap 2). [DIR003, DIR002, LAG006, LAG009]
+- A19, A20 and A25 became near-mandatory: each ran in about 47–48% of cases earlier (about 94–96 of 200) and in about 99.5% later (199 of 200). [OCC003, OCC004, OCC005]
+- The split at A41 is gone: earlier its outgoing edges divided between A26 (about 45%) and A19 (about 37%); in the later window about 96% lead to A19 and A41→A26 remains in only about 0.5%. [DIR006]
+- The surviving block runs in a fixed order in almost every case: A41 precedes A19 in about 97% of cases, A19 precedes A25 in about 98% and A25 precedes A20 in about 97% (pair co-occurrence about 99.5%), typically at gaps of 1, 2 and 3 steps from A41; earlier the block ran in only about half of the cases. [REL021, REL019, REL022, LAG018, LAG020, LAG019]
+- A26 still occurs in essentially every case in both windows but now comes later: A16→A26 within five steps fell from 99 earlier cases (mostly gap 3) to 1, A41→A26 moved from gap 1 (about 46% of earlier observations) to gap 4 (about 93%), and A26 follows A20 in about 97% of later cases against about 46% earlier (previously A26 appeared without A20 in about 52% of cases). [LAG017, LAG012, LAG021, REL023, REL020]
+- A06 now precedes the block: it co-occurs with A19, A20 and A25 in about 72–73% of later cases and precedes each in about 65%, at about 3 steps from A41, 4 from A19 and 5 from A25; earlier these pairs co-occurred in only about 13% of cases, with gap profiles resting on just 7–10 observations. [REL004, REL005, REL006, LAG003, LAG004, LAG005]
+- A08 lost participation: about 20% of cases earlier (40 of 200) against about 7.5% later (15 of 200). [OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the main sequence was rewired: in the later window a typical case runs A14 → A15 → A06 → A16 and then A41 → A19 → A25 → A20, with A26 after A20, whereas earlier A06 appeared in only about a quarter of cases without a fixed successor, and roughly 45% of cases went from A41 directly to A26, leaving A19, A25 and A20 out (each then present in about 48% of cases). [OCC001, OCC003, OCC004, OCC005, DIR001, DIR003, DIR006, REL023, LAG002, LAG021]
+
+Supporting signs: the participation shifts rest on large samples in both windows (for example 95 vs 199 of 200 traces for A20), the rerouting is shown directly by successor profiles and pair relations rather than only by frequencies, and positional evidence pins A06 immediately before A16 and 3–5 steps before A41, A19 and A25; screening flagged 60 control-flow items where about 0.8 would be expected without a change, so the overall volume already exceeds what an unchanged process produces. Downstream pairs shifted one position later (A14→A41 and A15→A19, from gap 4 to gap 5), consistent with A06 being placed after A15, though this reflects the same underlying behaviour rather than independent confirmation. [OCC003, DIR003, DIR006, REL004, LAG002, LAG003, LAG004, LAG005, LAG008, LAG011]
+
+Limitations: the earlier gap distributions for A06 with A19/A25 rest on only 7–12 observations, so the previous positions are imprecise; the evidence also cannot establish whether the A06 placement and the disappearance of the A41→A26 branch were one coordinated modification or two simultaneous ones, nor exclude that the old branch survives very rarely. [LAG003, LAG004, DIR006]
+
+Other differences: A08's participation fell from about 20% to about 7.5% of cases; the dominant outgoing edges of A44 (to A45) and A46 (to A47) strengthened slightly with minor redistribution among their rare edges; A16's self-distance lengthened slightly (gap 3 becoming more common than gap 2). [OCC002, DIR007, DIR008, LAG015]

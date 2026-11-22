@@ -1,0 +1,21 @@
+### Observed differences
+
+- The clearest difference is in how cases travel through the A19/A20/A21 group. In the earlier window, about 51 in 100 of A21's outgoing transitions went to A19 and about 44 in 100 of A20's went to A21, so the dominant transitions formed the chain A20→A21→A19, with A19 then exiting to A25 in about 40 in 100 of its outgoing transitions. In the later window this is inverted: A19 sends about 42 in 100 of its transitions to A21, A21 sends about 46 in 100 to A20 (up from about 19), and A20 exits to A25 in about 52 in 100 of its transitions (up from about 30), while A19's exit to A25 halves from about 40 to 20 in 100. These are the largest routing shifts in the evidence (empirical strengths 0.90, 0.95 and 0.99), but each profile rests on only about 43 outgoing transitions before and 50 after. [DIR016, DIR017, DIR018]
+
+- Entry into this group shifted accordingly: from A15, the share of outgoing transitions to A19 rose from about 5 to 13.5 in 100 (roughly 10 to 27 of 200), while the share to A20 fell from about 10 to 4 in 100 (roughly 20 to 8), so the preferred entry point switched from A20 to A19 (strength 0.83). [DIR012]
+
+- Participation of the group itself barely moved: A19, A20 and A21 each appear in about 21.5 in 100 traces before and 25 in 100 after (43 vs 50 of 200 traces), and no activity in the evidence shows a participation shift larger than 7 traces in 200 in either direction. [OCC016, OCC017, OCC018]
+
+- A18's outgoing transitions moved away from A16 (about 37 to 27 in 100) towards A17 (about 30 to 35) and A25 (about 33 to 38), also with strength 0.83; the direction profiles of A01–A08, A11–A13 and A23–A28 show only small redistributions with low to moderate strengths. [DIR015, DIR001, DIR009, DIR019, DIR020]
+
+- Occurrence counts changed only marginally: A25's mean occurrences per trace rose from about 1.59 to 1.71 (strength 0.65) and A27/A28 from about 0.76 to 0.84 (strength 0.63), while all other flagged activities shifted by at most 7 traces in 200 with unremarkable strengths (roughly 0.4–0.65). [OCC021, OCC023, OCC024, OCC001, OCC002]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that the typical order of travel through the A19/A20/A21 group reversed, while the group's overall role stayed the same. In the earlier window, cases reaching this group typically ran A20→A21→A19 and left via A19 to A25; in the later window they typically run A19→A21→A20 and leave via A20 to A25, and A15 now feeds the group mainly through A19 instead of through A20. Supporting signs: the three direction items on this group show the largest and mutually consistent shifts in the evidence (strengths 0.90–0.99), the A15 entry shift points the same way (0.83), and the group's participation is nearly unchanged (about 21.5 vs 25 in 100 traces), so this reads as existing paths being taken with different frequencies rather than activities being added, removed or bypassed. [DIR012, DIR016, DIR017, DIR018, OCC016]
+
+The hypothesis remains weak because every routing share rests on only about 43–50 outgoing transitions per window (for example, A21→A19 corresponds to roughly 22 transitions before and 13 after), so the proportions are imprecise; no screening expectation is provided, so the number of flagged items cannot be checked against what an unchanged process would produce; and a high empirical strength cannot by itself separate a real change from a rare variant. The competing explanation the evidence cannot rule out is ordinary sampling variability within the roughly one-in-five traces that contain A19, A20 or A21. [DIR016, DIR017, DIR018]
+
+Other differences: A18 routes less to A16 and more to A17 and A25 than before; A25 repeats slightly more often and A27/A28 occur somewhat more often; and several activities show marginal participation shifts of 7 traces in 200 (A01/A03–A05, A12/A13 and A16–A18 down; A02/A06–A08 and A19–A21 up) with unremarkable strengths — none of these carries direct relational evidence of a structural change and they are consistent with sampling noise. [DIR015, OCC021, OCC023, OCC024, OCC001, OCC002, OCC011, OCC013, OCC016]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_57330ea305104e3a.json",
+  "evidence_sha256": "94c3801fbfaa9868d46e179e70c95412725acf664f0c90bd9a036ad8db684623",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:55:26.165392+00:00",
+  "finished_at_utc": "2026-11-15T01:57:13.069546+00:00",
+  "latency_seconds": 106.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15663,
+    "prompt_tokens": 3428,
+    "total_tokens": 19091,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14703,
+      "text_tokens": 960
+    },
+    "cost": 0.0083457
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57147,
+  "text": "### Observed differences\n\n- Hand-offs between A31, A32 and A28 flipped in a mirrored way. In the earlier window, about 64 in 100 observed outgoing transitions of A31 went to A28 and about 36 went to A32, while about 64 in 100 transitions from A32 went to A31 and about 36 went to A28. In the later window this reversed: about 62 in 100 transitions from A31 went to A32 (about 38 to A28), and about 62 in 100 from A32 went to A28 (about 38 to A31). Each activity had about 90 observed outgoing transitions per window. [DIR002, DIR003]\n- The entry into this block from A27 shifted in step. In the earlier window, about 29 in 100 of A27's outgoing transitions went to A32 and about 16 to A31; in the later window, about 28 went to A31 and about 18 to A32, while its transitions to A33 and A34 stayed nearly flat (together about 55 in 100 in both windows). A27 occurs in all 200 traces in each window. [DIR001]\n- Read together, the prevalent chain through this block ran A32 → A31 → A28 in the earlier window and A31 → A32 → A28 in the later window; all three routing items are larger than about 995 of 1,000 random re-splits, and the control-flow family produced 3 qualifying items where about 0.29 were expected by chance. [DIR001, DIR002, DIR003]\n- The elapsed time between the completion of A24 and the completion of A25 roughly halved: mean about 1.0 hour in the earlier window (median about 1.0 h, middle half about 0.90–1.15 h) versus about 0.5 hour in the later window (median about 0.5 h, middle half about 0.45–0.55 h), with the spread also halving (standard deviation about 0.18 h to about 0.08 h); this item exceeds about 999 of 1,000 random re-splits. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A31 and A32 typically execute in the opposite order relative to each other and to A28: in the earlier window the flow typically ran from A32 to A31 and then closed to A28, whereas in the later window it typically runs from A31 to A32 and then closes to A28. The entry from A27 moved in step, now reaching the block at A31 (about 28 in 100 of its outgoing transitions, up from about 16) rather than at A32 (about 18 in 100, down from about 29). [DIR001, DIR002, DIR003]\n\nSupporting signs: the control-flow family yielded 3 items against a chance expectation of about 0.29, each routing change is unusual for random re-splits (strength about 0.995), and every involved transition is observed in both windows (about 90 outgoing transitions of A31 and of A32 per window; A27 in essentially all traces), so this is a shift between existing behaviours rather than the appearance of a rare variant. Limitations: DIR shares are computed over outgoing transitions rather than cases, and the two mirrored items likely describe the same traces, so they are not independent confirmations. An important competing explanation the evidence cannot rule out is that both orderings already coexisted in both windows and only their prevalences changed (or that the exit point of a repetition involving A31 and A32 moved) rather than a strict exchange of positions; REL, LAG or POS evidence would be needed to settle that. [DIR002, DIR003]\n\nOther differences: A timing change stands on its own: the elapsed time between the completions of A24 and A25 fell from about 1.0 hour to about 0.5 hour per interval and became roughly half as variable, with all quartiles lower by about 0.45–0.6 hours; the time family produced 1 item against a chance expectation of about 0.006. The evidence shows no structural counterpart involving A24 or A25. [TWAIT001]",
+  "case_id": "e4a_57330ea305104e3a",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,21 @@
+### Observed differences
+
+- Trace participation is nearly unchanged: every activity is observed in both windows at almost the same share of cases (A03/A12 in about 52 in 100 traces before vs 50 in 100 in the later window; A06/A11 about 35 vs 32–33 in 100), and each source activity shows the same set of successors in both windows. [OCC003, OCC004, OCC009, DIR003, DIR007]
+- What moved is repetition within a case. In the later window, A03 and A12 — two activities that always occur together — average about 1.8 occurrences per trace, down from about 2.2; A06 and A11, which likewise always co-occur, average about 0.9, down from about 1.2. [OCC003, OCC009, OCC004, OCC008, REL030, REL047]
+- Fitting that, occurrences of A03, A06, A11 and A12 sit slightly earlier within traces in the later window (for A06 the mean normalised position falls from about 0.38 to 0.34); these are the largest position shifts in the evidence, though positions are event positions, not clock times. [POS003, POS006, POS010, POS011]
+- Routing shares moved within the unchanged successor sets: of A03's outgoing transitions, the share leading to A06 fell from about 25% to 21% while the share to A08 rose from about 10% to 15%; for A12, the share to A08 fell from about 14% to 9% and to A07 rose from about 12% to 16%. [DIR003, DIR007]
+- Distances between related occurrences stretched slightly: ordered A03→A06 pairs two positions apart rose from about 10% to 16% of observed pairs, and A03→A11 pairs three positions apart from about 15% to 21%. [LAG012, LAG015]
+- Two smaller movements: A02 and A09 occur slightly more often (A02 about 1.9 vs 2.0 occurrences per trace; A09 about 0.9 vs 1.0, now present in about 52 vs 50 in 100 traces), and A07's self-repetitions four positions apart dropped from about 31% to 14% of its self-pairs, though that rests on only about 25 traces per window. [OCC002, OCC007, LAG034]
+- Ordering between activity pairs otherwise barely moved (A01 precedes A02 in about 25% vs 28% of traces; A04 precedes A02 in about 51% vs 48%, remainder interleaved), so no pair switched between a fixed and a mixed order. [REL001, REL013]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that in the later window the activities A03 and A12, together with A06 and A11, are repeated fewer times within each case: they still appear in almost the same share of traces, but occur less often per trace (A03/A12 about 2.2 → 1.8; A06/A11 about 1.2 → 0.9), their occurrences sit slightly earlier in the trace, and A03's and A12's outgoing shares shift away from A06 toward A07/A08 — together consistent with part of the process being repeated less often in the later window. [OCC003, OCC004, OCC008, OCC009, POS006, DIR003, DIR007]
+
+Supporting signs: the occurrence counts measure repetition directly, the decreases are mirrored exactly between the members of each always-co-occurring pair, and the position shifts for the same four activities are the most unusual differences in the evidence (for about 90–98 in 100 random re-splits the difference is smaller). What is missing: the direct occurrence differences are only moderately unusual — about 30 in 100 random re-splits of a stable process produce a difference at least as large for A03/A12, and about 21 in 100 for A06/A11 — the participation changes amount to only 4–5 traces in 200, and because each pair's members always co-occur and all indicators summarise the same traces, the many agreeing items are not independent confirmations; no screening baseline is included to compare the number of qualifying items against chance expectation. [OCC003, OCC004, POS006]
+
+An important competing explanation the evidence cannot rule out is ordinary sampling variability between the two 200-trace windows: with this many activities and activity pairs tested, a stable process can produce differences of this size. [OCC003, OCC009]
+
+Other differences: A02 and A09 occur slightly more often in the later window (about +0.1 occurrences per trace each); the relation indicators show only shifts of a few percentage points with low empirical strength (the largest, about 0.055 in co-occurrence shares around A03/A07/A08/A09, is unremarkable against random re-splits). [OCC002, OCC007, REL027]

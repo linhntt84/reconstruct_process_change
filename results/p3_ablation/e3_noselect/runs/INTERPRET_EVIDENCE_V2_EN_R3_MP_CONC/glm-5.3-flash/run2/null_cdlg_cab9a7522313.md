@@ -1,0 +1,12 @@
+### Observed differences
+
+- Activities A01 and A06 show near-identical, very small shifts: in the earlier window each ran in about 50 in 100 traces (about 1.0 occurrences per trace, with within-trace repetition in about 28 in 100 participating traces), while in the later window participation was about 52 in 100, mean occurrences about 0.96, and repetition about 24 in 100. Random re-splits of a stable process produce a larger difference than this in roughly 65 in 100 cases, so these shifts are unremarkable. The two profiles match exactly and likely reflect the same trace behaviour rather than two independent findings [OCC001, OCC005].
+- A04 declined slightly: in the earlier window it appeared in about 28 in 100 traces (0.53 occurrences per trace, repetition in about 13 in 100 participating traces); in the later window about 24 in 100 traces (0.45 occurrences, repetition about 10 in 100). This rests on 55 versus 48 traces, and about 43 in 100 random re-splits show a larger difference [OCC003].
+- A03 and A05 were essentially flat: both ran in about 50 in 100 traces in the earlier window and about 49–52 in 100 in the later window, with no within-trace repetition in either window; random re-splits exceed these differences in about 86 in 100 cases [OCC002, OCC004].
+- From source A06, the split of its observed outgoing transitions between A04 and A05 moved from roughly 51/49 in favour of A04 in the earlier window to roughly 46/54 in favour of A05 in the later window — a shift of about 5 percentage points over 206 versus 192 outgoing transitions. About 29 in 100 random re-splits show a difference this large, so it is only mildly unusual [DIR001].
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. Every observed difference is small — participation shifts of at most about 4 cases in 100 and a routing shift of about 5 in 100 of A06's outgoing transitions — and most empirical strengths are low, which is the pattern finite 200-trace samples of an unchanged process typically produce; no screening expectation is provided, so the item count also cannot be checked against what chance alone would produce [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001].

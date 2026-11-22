@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_ca91098f5a58bd6f.json",
+  "evidence_sha256": "6ccb3289488bfadd90a5320b782bc454e8604cab460e058decb220edaec37065",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:21:52.139337+00:00",
+  "finished_at_utc": "2026-11-15T10:23:26.172478+00:00",
+  "latency_seconds": 94.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12702,
+    "prompt_tokens": 12201,
+    "total_tokens": 24903,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11708,
+      "text_tokens": 994
+    },
+    "cost": 0.00818115
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44839,
+  "text": "### Observed differences\n\n- Before, every trace contained A36, then exactly one of A14, A15 or A20, then A21: the three intermediate activities each ran in about 35%, 30% and 35% of traces (roughly 70, 60 and 70 of 200), never together, each always preceded by A36 and always followed by A21 [OCC001, OCC002, OCC003, REL001, REL003, REL008, REL004, REL006, REL009, REL013, DIR001, DIR002, DIR003].\n- In the later window, A14, A15 and A20 are not observed at all (0 of 200 traces each), while A36, A21 and A26 still occur in every trace [OCC001, OCC002, OCC003, DIR004, POS004, REL005].\n- A36's outgoing transitions changed completely: before, about 35% went to A14, 30% to A15 and 35% to A20; in the later window, all observed outgoing transitions of A36 go to A21 [DIR004].\n- Consistently, the A36→A21 distance fell from two positions in every before-window trace to one position (immediately consecutive) in every after-window trace [LAG001].\n- A21's mean relative position shifted slightly earlier (about 0.39 to 0.37) and A36's slightly later (about 0.32 to 0.33), with both activities' participation unchanged [POS004, POS005].\n- Relations with the remaining activities collapsed accordingly: before, A14, A15 and A20 each preceded A21 and A26 in exactly their participation share and co-occurred with A19 in about 15–17 in 100 traces; in the later window A21, A26 and A19 occur only without them, with A19's own participation changing little (about 49 to 56 in 100 traces) [REL002, REL004, REL005, REL007, REL009, REL010, REL012, REL013, REL014].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative intermediate step between A36 and A21, in which exactly one of A14, A15 or A20 executed, is no longer executed in the later window, so that A36 passes directly to A21 in every case [DIR004, LAG001, OCC001, OCC002, OCC003]. The support is direct rather than only correlational: A36's outgoing transitions are observed to move entirely from the three activities to A21, and the A36→A21 distance is observed to drop from two positions to one in all 200 after-window traces, while A21 and A36 themselves continue in every trace [DIR004, LAG001, POS004, POS005]. The 28 qualifying items far exceed the roughly 0.41 expected if nothing had changed, and the simultaneous disappearance of three activities each present in 60–70 of 200 before traces is difficult to attribute to sampling variation in variant frequencies alone [OCC001, OCC002, OCC003].\n\nLimitations remain: zero participation only shows that A14, A15 and A20 were not observed in the later window, and the evidence cannot distinguish whether the branch was removed outright or folded into A21 (for example by relabelling), since A21 already ran in every trace before the change [OCC001, REL004, LAG001]. With two 200-trace samples, modest variant-frequency differences can also arise without any change, so smaller shifts such as A19's slight participation increase should be treated cautiously [REL002, REL007, REL012].",
+  "case_id": "case_ca91098f5a58bd6f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_38de66ffdeca.json",
+  "evidence_sha256": "66d83521799ea48199dd7c48a1fbd62d36101dbd62dbb8599af6828dd8ff9223",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:52:15.289982+00:00",
+  "finished_at_utc": "2026-11-16T02:56:35.112799+00:00",
+  "latency_seconds": 259.82,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 37731,
+    "prompt_tokens": 118371,
+    "total_tokens": 156102,
+    "completion_tokens_details": {
+      "reasoning_tokens": 35508,
+      "text_tokens": 2223
+    },
+    "cost": 0.03662115
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 118838,
+  "text": "### Observed differences\n\n- Repetition within cases moved in opposite directions for two groups of activities. In the later window, A09 rises from about 1.9 to 2.4 occurrences per case, A05 from 1.9 to 2.3, A12 from 0.95 to 1.2, A11 from 0.93 to 1.2 and A10 from 0.96 to 1.1 (roughly 13–29 more in 100), while A01 falls from about 2.5 to 2.2 and A07 and A15 — which never appear without each other — from 1.4 to 1.1 (roughly 15–21 fewer in 100); A08 dips only slightly (1.13 → 1.04). Participation moves only a few points (A01 72 → 66 in 100 cases, A07/A15 50 → 43), so the shift lies mainly in how often these activities repeat, not in whether they appear. [OCC001, OCC004, OCC006, OCC007, OCC008, OCC009, OCC010, OCC011, OCC013]\n- The same groups also sit differently inside cases: the more often repeated group appears at relatively earlier positions (mean relative position A09 0.43 → 0.38, A12 0.50 → 0.44, A11 0.44 → 0.39, A05 0.41 → 0.37, A10 0.56 → 0.53), the less often repeated group at relatively later positions (A01 0.37 → 0.42, A08 0.49 → 0.55, A07/A15 0.41 → 0.45); most of these differences are larger than in about 90–99 of 100 random re-splits. [POS001, POS005, POS007, POS008, POS009, POS010, POS011, POS012, POS014]\n- Cases containing activities of both groups became less common: co-occurrence of A01 with A07/A15 fell from 0.50 to 0.43 while cases containing neither rose from 0.28 to 0.35, co-occurrence of A02/A04 with A07/A15 fell from 0.36 to 0.31, and A05 or A10 increasingly appear without A01 or A02/A04 (A05-only with A01 up from 0.28 to 0.35). [REL004, REL006, REL014, REL018, REL020, REL023, REL028, REL043, REL046, REL051]\n- A02 and A04, which likewise never appear without each other, repeat about as often per case as before but appear somewhat later (mean relative position 0.42 → 0.47) and in somewhat fewer cases (55 → 49 in 100, a weakly supported dip); A03, A06, A13 and A16 are essentially unchanged in occurrence and position. [OCC002, OCC003, POS002, POS003, POS004, POS006, POS013, POS015, REL026]\n- The set of observed successors is stable and routing shares moved only slightly; the direction items link A02/A04, A01, A07/A15 and A08 in one sequence and A05, A09/A10 and A11/A12 in another, so the two groups occupy different stretches of the flow. The clearest routing exception is A10, whose observed outgoing transitions to A02 rose from about 19 to 32 in 100, while A08 now sends about 21 instead of 28 in 100 to A02. [DIR001, DIR002, DIR004, DIR007, DIR008, DIR009]\n- Spacing between consecutive executions shifted for some pairs: A01→A14 and A08→A14 moved from mostly 2-step to more 4-step gaps (2-step share 0.78 → 0.61) and A02→A15 from 2–3-step towards 4–5-step gaps; several of these rest on fewer than 50 observations. [LAG009, LAG014, LAG026, LAG043, LAG076]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the stretch containing A05, A09, A10, A11 and A12 is repeated more often per case (each of these activities roughly 13–29 in 100 more occurrences) while the stretch containing A01, A07 and A15 is repeated less often (roughly 15–21 in 100 fewer), with the first group's executions sitting relatively earlier in each case, the second group's relatively later, and cases spanning both groups becoming less common. The support is direct — occurrences per case are the measured quantity for every activity named — and consistent: every activity with a clear occurrence change moves with its group, the position items mirror the occurrence items, the co-occurrence losses sit exactly between the two groups, and the inseparable pairs A07/A15 and A02/A04 behave as units, indicating the change is organised at the level of these stretches rather than of single activities. [OCC001, OCC004, OCC006, OCC008, OCC009, OCC010, OCC011, OCC013, POS001, POS005, POS008, POS009, POS011, POS012, REL004, REL006, REL014, REL020, REL028]\n\nThe evidence cannot rule out that the shift reflects a changed mix of already existing case behaviours — for example a larger share of cases repeating the A05-side stretch more times — rather than a uniform change in every case; the many pair-level relational and gap items overlap heavily and add little independent confirmation, and no screening baseline is included to check the number of qualifying items against what an unchanged process would produce. [OCC001, OCC004, OCC006, OCC013]\n\nOther differences: routing into A02 shifted (A10 → A02 up from about 19 to 32 in 100 of A10's outgoing transitions; A08 → A02 down from 28 to 21), and gap distributions moved for specific pairs such as A02/A04 → A03/A16 (from mostly 5-step to 3–4-step gaps); A03, A06, A13 and A16 themselves showed no occurrence or position change. [DIR007, DIR009, LAG014, LAG043, OCC002, OCC003, OCC005, OCC012, POS003, POS006, POS013, POS015]",
+  "case_id": "null_cdlg_38de66ffdeca",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

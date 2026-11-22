@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A21 were a choice of alternatives: each ran in roughly 30–36 of 100 cases (70, 60 and 72 of 200), essentially never two of them in the same case, and together they covered essentially every case. [OCC001, OCC002, OCC003, REL001, REL002, REL008]
+- In the earlier window, each of A19, A20 and A21 led almost exclusively to A29 (about 95–99 in 100 of their observed outgoing transitions), while A26, A27 and A28 were not observed in any of the 200 cases. [DIR001, DIR002, DIR003, OCC004, OCC005, OCC006]
+- In the later window, A19, A20 and A21 nearly disappeared, appearing in only 2, 1 and 1 of 200 cases respectively. [OCC001, OCC002, OCC003]
+- In the later window, A26, A27 and A28 each appear in all 200 cases, once per case on average, and the three always occur together in the same case. [OCC004, OCC005, OCC006, REL019, REL020, REL023]
+- A44, present in essentially every case in both windows, handed over to a different trio: earlier, about 85 in 100 of its outgoing transitions went to A19/A20/A21 (roughly 30/30/25 in 100); later, about 85 in 100 go to A26/A27/A28 (roughly 31/27/26 in 100). [DIR007, REL007, REL013, REL018]
+- The new trio occupies the same segment: A44 precedes A26, A27 and A28 in about 99 of 100 later cases, and each of A26, A27 and A28 precedes A29 in about 98–99 of 100 later cases. [REL022, REL025, REL027, REL021, REL024, REL026]
+- Among A26, A27 and A28 there is no fixed order: each pair appears in both directions in near-equal shares (about 50/50), unlike the old trio, whose members were alternatives rather than sequential steps. [REL019, REL020, REL023, REL001, REL002, REL008]
+- The slot is similar but not identical: the old trio sat at a mean event position of about 0.37, the new trio at about 0.38, and A29 — present in every case in both windows — sits slightly later in the later window (mean position about 0.40 vs 0.44). [POS001, POS002, POS003, POS004, POS005, POS006, POS007]
+- The few residual later-window occurrences of A19/A20/A21 (1–2 cases each) show different successors (A09/A10, A45, A34) but are too few to characterise. [DIR001, DIR002, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was reworked: the earlier pattern, in which every case executed exactly one of the alternatives A19, A20 or A21 before A29, was replaced by a pattern in which every case executes A26, A27 and A28 — all three, in no fixed order among them — after A44 and before A29. The screening produced 47 qualifying control-flow items where about 0.65 would be expected without a change, so the set of differences is far beyond what random re-splits of an unchanged process produce. The change is shown directly and consistently: participation flips from 0 to 200 of 200 cases for the new activities and from 70/60/72 down to 1–2 of 200 for the old ones, A44's outgoing transitions move as a block from the old trio to the new one, and the relational items place the new trio between A44 and A29 in nearly every later case. A competing explanation the evidence cannot rule out is that the two windows sample different case mixes rather than a modified process; the residual old-activity cases are also too few to show whether a small path using them remains. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, REL019, REL021, REL022, REL024, REL025, REL026, REL027]
+
+Other differences: A29, present throughout, is positioned slightly later within the case in the later window (mean event position about 0.40 vs 0.44), consistent with the new trio filling the slot ahead of it; the rare residual occurrences of A19/A20/A21 in the later window show new successors (A09/A10, A45, A34) but rest on only 1–2 cases each. [POS007, DIR001, DIR002, DIR003]

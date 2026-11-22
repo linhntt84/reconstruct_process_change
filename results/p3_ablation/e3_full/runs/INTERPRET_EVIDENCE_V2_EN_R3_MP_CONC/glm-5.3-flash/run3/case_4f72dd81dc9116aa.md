@@ -1,0 +1,23 @@
+### Observed differences
+
+- The dominant difference is an exchange of presence between A05 and A10. In the earlier window A05 was executed in every trace (about 4.2 occurrences per trace) while A10 appeared in about 47 in 100 traces (about 1.9 occurrences per trace); in the later window A10 runs in every trace (about 4.1 occurrences) and A05 in only about 50 in 100 traces (about 2.2 occurrences). Within the traces that contain them, both still repeat about four times in both windows, so presence rather than repetition changed. [OCC004, OCC008]
+
+- The flow into the two activities was rewired. A06, which always continued to A05, now always continues to A10; A11 and A15, which previously split their outgoing transitions roughly evenly between each other and an exit to A05, now exit to A10 (about 54 and 46 in 100 of their transitions); A14's dominant continuation changed from A10 (about 51 in 100) to A05 (about 53 in 100). [DIR004, DIR008, DIR011, DIR010]
+
+- The continuations out of the two activities changed as well: A05's observed outgoing transitions shifted from A08 (about 52 in 100) and A09 (48) to A17 (about 52) and A08 (48), and A10's from A16 (about 46) and A17 (54) to A16 (about 52) and A09 (48). A09 now appears as a continuation of A10 rather than of A05, and A17 as a continuation of A05 rather than of A10, while the A05–A08 and A10–A16 links persist in both windows. [DIR003, DIR007]
+
+- Co-occurrence flipped accordingly: before, A10 occurred only together with A05 (A05 without A10 in about 54 in 100 traces, never the reverse); in the later window A05 occurs only together with A10 (A10 without A05 in about 50 in 100). As a knock-on effect, A08's participation halved (about 68 to 34 in 100 traces) and A16's doubled (about 30 to 68 in 100), while each kept roughly the same share — about two in three — of the traces containing its hub activity. [REL060, OCC006, OCC012, REL058, REL109]
+
+- Positions corroborate the exchange: A05's mean event position moved from about two-thirds to about one-third of the trace and A10's from about one-third to about two-thirds, and the gap of about four events that separated A01 from A05 in the earlier window now separates A01 from A10 (event positions, not clock time). [POS004, POS009, LAG003, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A05 and A10 exchanged the places they occupy in the flow. In the earlier window A05 was the mandatory hub — entered from A06 and from the exit of the A11–A15 loop, and continuing to A08 or A09 — while A10 was an optional branch entered from A14 and continuing to A16 or A17. In the later window these roles are exchanged: A10 is mandatory, receives the continuations from A06, A11 and A15, and continues to A16 or A09, while A05 is optional, entered from A14 and continuing to A17 or A08; A08 and A16 stayed attached to A05 and A10 respectively. [OCC004, OCC008, DIR003, DIR004, DIR007, DIR008, DIR010, DIR011, REL058, REL109]
+
+The support is direct and consistent: the edge replacements are observed at the source-activity level rather than inferred from frequencies alone, the A05–A10 subset relation flips completely, and the positional evidence points the same way. Dozens of items in every indicator family reach an empirical strength of about 0.995 — differences larger than in about 199 of 200 random re-splits — far more than the few items an unchanged process typically produces at these thresholds, and no strong item contradicts the exchange. The participation changes of A08 and A16 are consequences of the exchange rather than separate changes, since their conditional share within their hub's traces stayed at about two in three. [DIR004, REL060, LAG005, OCC006, OCC012, REL058, REL109]
+
+Limitations: the many agreeing relation and lag items restate the same rewiring and are not independent confirmations; direction profiles cover only a subset of source activities, so rewiring on other edges cannot be checked; and the evidence cannot fully exclude that A05 and A10 changed independently (one becoming optional, the other mandatory) rather than exchanging places, although the coordinated switch of all their shared neighbours (A06, A11, A14, A15) and of A09 and A17 makes a single exchange the most consistent reading. [DIR003, DIR004, DIR007, DIR008, DIR010, DIR011]
+
+Other differences: outside this exchange only minor movements appear — A14 shows slightly more repetitions per trace (about 2.05 to 2.15) and A11's mean event position shifts slightly later — both small enough to be consistent with sampling variation. [OCC011, POS010]

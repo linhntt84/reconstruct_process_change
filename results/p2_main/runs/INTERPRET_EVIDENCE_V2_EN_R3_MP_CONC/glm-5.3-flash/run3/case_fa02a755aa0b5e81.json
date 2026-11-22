@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_fa02a755aa0b5e81.json",
+  "evidence_sha256": "50383d830efa1249a64c9d7e26065af1ed38ed294c7436da3c2ae343a22db7bc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:31:52.913239+00:00",
+  "finished_at_utc": "2026-11-15T03:33:17.113418+00:00",
+  "latency_seconds": 84.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12655,
+    "prompt_tokens": 11778,
+    "total_tokens": 24433,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11451,
+      "text_tokens": 1204
+    },
+    "cost": 0.0080942
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41078,
+  "text": "### Observed differences\n\n- A02 vanished from the later window: it appeared in about 27 in 100 traces before (53 of 200) and in none afterwards, and none of its five outgoing transitions (to A03, A05, A07, A08, A13) were observed later. [OCC001, DIR002, POS002]\n- A02's joint execution with other activities also ceased: it co-occurred with A05 in about 27 in 100 traces before (always A02 first) and never later, and with A07 in about 27 in 100 before (in both orders) and never later; the \"A02 only\" shares in its pairs with A06, A11 and A12 (about 27 in 100 each) fell to zero as well. [REL004, REL005, REL006, REL007, REL008]\n- In the later window, A01 always leads to A06, whereas before it always led to A05 within one step; A01 also now sits at the very start of traces (mean relative position 0) instead of late (about 0.82). [DIR001, POS001, LAG001]\n- The order between A01 and the A11/A12 block reversed: before, A11 preceded A01 and A12 preceded A01 in about 27 in 100 traces each; after, A01 precedes A11 and A12 in about 22 in 100 traces each, never the reverse. [REL002, REL003]\n- A11 and A12 now reach A05 without A01: before, A11's outgoing transitions went to A01 (about 57 in 100) or A12 (43), and A12's to A11 (57) or A01 (43); after, A11 leads to A05 (70) or A12 (30) and A12 leads to A11 (70) or A05 (30), and the distance from A11/A12 to A05 shortened from about 2–3 steps to 1–2. A05 itself now appears in about 46 in 100 traces, up from about 27. [DIR004, DIR005, LAG004, LAG005, REL004]\n- A07's outgoing flow redistributed: before it led to A02 (34%), A03 (21%), A05 (19%), A08 (19%) and A13 (8%); after, the A02 share is gone and A03 (48%) and A13 (29%) absorbed most of it. [DIR003]\n- A06 occurs somewhat later (mean position about 0.22 → 0.35) and reaches A05 within 3 or 5 steps instead of exactly 4. [POS003, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reorganisation centred on A01 and A02. In the earlier window, roughly a quarter of traces ran through A02, which branched to five activities, and A01 formed the exit of the A11/A12 block (A11/A12 → A01 → A05, one step per hop). In the later window, A02 is not observed at all, A01 occurs at the start of the trace and leads to A06 instead of A05, and A11/A12 bypass A01 and lead to A05 directly in about 70 in 100 of A11's outgoing transitions. [OCC001, DIR001, DIR002, DIR004, POS001, REL002, LAG001, LAG004]\n\nThis is shown directly rather than only through frequency shifts: the order flip around A01 is relational evidence (A11/A12 before A01 became A01 before A11/A12), corroborated by A01's position moving from about 0.82 to the trace start and by the A01→A05 distance stretching from one to four steps; A02's disappearance is consistent across participation, outgoing transitions, positions and five relation pairs. The 25 qualified items, against roughly 0.22 expected without change, also exceed what an unchanged process would typically produce. [REL002, REL003, POS001, LAG001, OCC001, DIR002, REL004, REL006]\n\nLimitations: the many agreeing items largely describe the same two underlying differences rather than independent confirmations, positions are event positions rather than clock time, and zero participation shows only that A02 was not observed — the evidence cannot distinguish its removal from the branch simply never being triggered in the later window. [OCC001, POS001]\n\nOther differences: A07 occurs earlier in traces (mean position about 0.24 → 0.06) with its remaining outgoing shares shifted toward A03 and A13, and A06 occurs somewhat later and reaches A05 within 3 or 5 steps instead of exactly 4; these fit the same reorganisation but are not part of the main hypothesis. [POS004, DIR003, LAG003, POS003, LAG002]",
+  "case_id": "case_fa02a755aa0b5e81",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

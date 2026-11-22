@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "39d03fce5b283ea1e9809f7c3deea3c1f2b013b1fdaece369368e604fdcdbcc3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:01:25.625658+00:00",
+  "finished_at_utc": "2026-11-15T07:02:34.390179+00:00",
+  "latency_seconds": 68.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9577,
+    "prompt_tokens": 7341,
+    "total_tokens": 16918,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8648,
+      "text_tokens": 929
+    },
+    "cost": 0.00588965
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33066,
+  "text": "### Observed differences\n\n- In the earlier window, every trace ran the same fixed chain A36 → A14 → A15 → A20 → A21: each of the five activities appears in 200 of 200 traces (100%), exactly once, always in that order. [OCC001, OCC002, OCC003, REL001, REL004, REL008]\n- In the later window, A14, A15 and A20 each appear in only about 53 in 100 traces (106 of 200), still once per trace, and they move as a unit: the three are either all present (about 53 in 100 traces) or all absent (about 47 in 100). [OCC001, OCC002, OCC003, REL001, REL002, REL005]\n- A36 and A21 still occur in essentially every trace in both windows. A36's outgoing transitions, which previously led only to A14, now lead to A14 in about 53 in 100 cases and directly to A21 in about 47 in 100. [DIR001, REL004, REL007, REL009]\n- Accordingly, in the later window A21 occurs without A14/A15/A20 in about 47 in 100 traces (before: never), and A36 occurs without A14 in about 47 in 100 (before: never); when the block does run, its internal order and its place between A36 and A21 are unchanged. [REL003, REL004, REL006, REL008, REL009]\n- A21's average relative position moved slightly earlier (about 0.43 to 0.40 of the trace) with slightly more spread; this is an event-position shift, not clock time. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the block A14 → A15 → A20 between A36 and A21 is bypassed in roughly 47 in 100 cases — A36 then leads directly to A21 — while the original chain A36 → A14 → A15 → A20 → A21 still runs in the remaining about 53 in 100 cases. The routing change at A36 is observed directly, the participation of A14, A15 and A20 falls from 100% to about 53% while A36 and A21 stay at about 100%, and the relational items show A21-only and A36-only traces in exactly the share in which the block is absent, with all orderings inside the block unchanged. Since the A36 → A21 transition was not observed at all in the earlier window, this looks like the block becoming optional rather than a re-weighting of previously seen paths. [DIR001, OCC001, OCC002, OCC003, REL003, REL004, REL008]\n\nThe scale of the signal backs this: 14 control-flow items qualified where about 0.35 would be expected by chance among the 70 tested units, and every item's difference exceeds about 99.5 in 100 random re-splits; all 14 items describe this one underlying difference, so chance sampling or a rare variant cannot explain the pattern — a bypass taken in 47% of cases could not have hidden in 200 earlier traces that all show the full chain. [OCC001, OCC002, OCC003, DIR001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nThe evidence cannot show what determines whether a case takes the bypass, and because only screened activities were tested and positions are step-based, it cannot rule out that untested substitute work covers the block in bypass cases. [DIR001, REL003]\n\nOther differences: none beyond the above; the slight forward shift of A21's average position is consistent with the bypass rather than a separate change. [POS001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

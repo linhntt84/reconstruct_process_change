@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_bf784930ed13fbd6.json",
+  "evidence_sha256": "ed23913af1a314429190589bcce538c91bc921d80c8e928dfbf97e3b7e715b7f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:03:29.249346+00:00",
+  "finished_at_utc": "2026-11-15T01:06:04.425400+00:00",
+  "latency_seconds": 155.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22410,
+    "prompt_tokens": 34344,
+    "total_tokens": 56754,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20721,
+      "text_tokens": 1689
+    },
+    "cost": 0.0163566
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 72192,
+  "text": "### Observed differences\n\n- In the earlier window, A08 was executed in about 74 in 100 traces, early in the trace (mean event position about 0.24), and about 95% of its outgoing transitions went to A16; in the later window it appears in only about 24 in 100 traces, later in the trace (mean about 0.45), with its outgoing transitions spread over many targets (A16 about 44%, A53 about 13%, A51 about 13%, A15 about 10%). [OCC003, POS001, DIR001]\n- Activities that previously usually ran together with A08 — A14, A15, A16, A28, A29, A30, A34, A47 — now usually run without it: co-occurrence with A08 fell from about 74 to about 24 in 100 traces for each of them, and A15 now leads to A16 in about 86% of its outgoing transitions (before about 60%) and to A08 in about 6% (before about 40%). [REL001, REL002, REL003, REL010, REL011, REL012, REL013, REL014, DIR003]\n- The order between the group A19, A20, A25, A26, A27 and A28/A29/A30 reversed: in the earlier window, in traces containing both, A28/A29/A30 came first in nearly every case (e.g. A28 before A20 in 20 of 100 traces, never the reverse); in the later window the group came first in nearly every case (A20 before A28 in 20 of 100, the reverse in at most about 2). [REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024]\n- In the later window the group members run earlier (mean event position about 0.61 down to about 0.31–0.34) and lead almost exclusively to A28 (about 92–97% of their outgoing transitions, versus mostly A30 and A34 before, e.g. A20: A34 58% and A30 40% before, A28 93% after). [POS002, POS003, POS004, POS005, POS006, DIR004, DIR005, DIR006, DIR007, DIR008]\n- The downstream chain tightened: A29 now leads to A30 in about 95% of its transitions (before about 51%), A30 leads to A34 in about 97% (before about 47%), and A47 switched from leading to A28 (about 97%) to leading into the group (about 84% combined), so A47 reaches A28 in 2–3 steps instead of one. [DIR009, DIR010, DIR011, LAG023, LAG026, LAG027]\n- Several other activities were executed in a larger share of traces: A02 about 6 up to 21 in 100, A04 about 4 up to 17, A10 about 8 up to 24, A17 about 20 up to 33. [OCC001, OCC002, OCC004, OCC005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the relative order of two blocks of activities changed: in the earlier window A28, A29 and A30 ran before the group A19, A20, A25, A26, A27, which then continued mainly into A30 and A34, whereas in the later window the group runs before A28 and continues into it, with A29, A30 and A34 following. The order flip is observed directly and consistently on all ten tested activity pairs between the two groups, with the previous order essentially vanishing and the new order becoming near-exclusive. [REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024]\n\nThe reversal is corroborated by independent indicators: the group's mean event position moved from about 0.61 to about 0.33 of the trace, its members' outgoing transitions now go to A28 in about 92–97% of cases, A47 now feeds the group, and the A29→A30→A34 chain consolidated; overall, 74 evidence items qualified against fewer than one expected for an unchanged process, so sampling variation cannot account for the pattern as a whole. [POS002, POS003, POS004, POS005, POS006, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, LAG027]\n\nLimitations: the evidence shows the new order and routing but cannot establish that this reordering and the sharp decline of A08 (about 74 down to 24 in 100 traces, with later positions and dispersed successors) stem from one coordinated change rather than two independent ones; positions and lags are event positions, so no claim about clock-time timing is implied. [OCC003, POS001]\n\nOther differences: A02, A04, A10 and A17 were executed in a larger share of traces in the later window (e.g. A02 about 6 up to 21 in 100), and A15's outflow shifted from A08 towards A16; these are not part of the main hypothesis. [OCC001, OCC002, OCC004, OCC005, DIR003]",
+  "case_id": "case_bf784930ed13fbd6",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

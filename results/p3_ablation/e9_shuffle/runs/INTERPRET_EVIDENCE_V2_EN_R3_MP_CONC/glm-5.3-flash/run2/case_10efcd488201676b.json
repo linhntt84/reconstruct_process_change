@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_10efcd488201676b.json",
+  "evidence_sha256": "dc20bcbe46eed8bac6a94e8d0beacdb48a26bfa9bbc90d146c96733cb4e9ebca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:33:39.785404+00:00",
+  "finished_at_utc": "2026-11-15T04:35:41.728958+00:00",
+  "latency_seconds": 121.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18059,
+    "prompt_tokens": 72462,
+    "total_tokens": 90521,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16527,
+      "text_tokens": 1532
+    },
+    "cost": 0.0198988
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55264,
+  "text": "### Observed differences\n\n- A01 ran in about 64 in 100 earlier cases (about 0.9 executions per case) but is not observed in any of the 200 later cases. [OCC001, POS001]\n- A17 ran exactly once in every earlier case, always at the end of the case (median relative position 1.0), but is not observed in the later window. [OCC008, POS012]\n- A07 is not observed in the earlier window; in the later window it runs in about 68 in 100 cases, near the start (median relative position about 0.06), and its observed outgoing transitions go to A03 and A04 in roughly equal shares. [OCC004, POS005, DIR006]\n- A06 and A16 earlier ran about 2.1 times per case in about 40 in 100 cases, around the middle of the case; in the later window each runs exactly once in every case at the very end (median relative position about 1.0), with A06 before A16 in about 48 in 100 cases and the reverse order otherwise. [OCC003, OCC007, POS004, POS011, REL045]\n- A02 became strongly repetitive: about 9 executions per case in the later window versus about 2 earlier, with participation stable at about 70 in 100 cases; its observed successors changed from mainly A16, A06, A03 and A04 to roughly equal shares of A15, A11, A14 and A12, and A13 now leads to A02 in all observed cases. [OCC002, DIR002, DIR009]\n- A14 and A15 also became repetitive: A14 rose from about 1.0 to about 4.5 executions per case (participation 28 to 55 in 100) and now follows itself or A15 in about equal shares; A15 rose from about 1.1 to about 4.6 executions per case (participation 40 to 63 in 100). [OCC005, OCC006, DIR010, POS010]\n- Several edges were rerouted: A10 earlier always led to A17 and now leads to A16 (about 53 in 100) or A06 (about 47 in 100); A04 earlier split between A17 and A10 and now always leads to A10, typically in the immediately following step; A03 earlier led to A05 or A02 and now to A07 or A05; A12 earlier led to A01 or A08 and now to A09 or A08. [DIR007, DIR004, LAG021, DIR003, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the control-flow structure was reorganised: A01 and A17 are no longer observed, A07 appears as a new early activity running before A03 and A04, the closing of a case moved from A17 to a mandatory A06–A16 pair that every case now executes exactly once at the end in either order, and A02, A14 and A15 changed from mostly single executions to many repetitions per case, with the outgoing edges of A02, A03, A04, A10, A12 and A13 rerouted accordingly. The appearances, disappearances and once-only end positions are shown directly by the occurrence and position indicators, the rerouting by the direction indicators, and the many relation items agree with this picture; the screening also produced 171 qualifying control-flow items where fewer than one (0.94) would be expected without a change, so chance sampling cannot explain the set as a whole. [OCC001, OCC008, OCC004, OCC003, OCC002, DIR007, DIR002]\n\nLimitations: zero participation only shows that an activity was not observed in a window, and many items describe overlapping behaviour of the same traces (for example, A01's disappearance appears in occurrence, position, direction and numerous relation items), so the items are not independent confirmations. An important competing explanation that cannot be ruled out is that the later window contains only a new variant while the earlier behaviour still occurs outside the sampled cases, or that the transition was gradual rather than a single change point. [OCC001, POS012, REL014]\n\nOther differences: A09, A11 and A12 now sit slightly later within the case (mean relative position up by roughly 0.06 to 0.08) and A10 slightly earlier (about 0.95 to 0.81); several step distances redistributed, for example A13 to A02 now typically one to two steps apart instead of about five, A12 to A09 now typically adjacent, and the self-distances of A14 and A15 spread from one dominant gap to a mixture of short gaps. [POS006, POS008, POS009, POS007, LAG041, LAG035, LAG047, LAG057]",
+  "case_id": "case_10efcd488201676b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

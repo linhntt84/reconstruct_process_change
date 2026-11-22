@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_01e7ee155471e5d7.json",
+  "evidence_sha256": "19cea1d822a07b3ed94b341d76ace9f914e1378bf15688ba57da84ee7e59ccc7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:23:13.419112+00:00",
+  "finished_at_utc": "2026-11-15T05:24:24.460512+00:00",
+  "latency_seconds": 71.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10817,
+    "prompt_tokens": 10999,
+    "total_tokens": 21816,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9650,
+      "text_tokens": 1167
+    },
+    "cost": 0.00705835
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33558,
+  "text": "### Observed differences\n\n- In the earlier window, A20 was followed immediately by A22 in 100 in 100 traces; in the later window, A20's outgoing transitions spread almost evenly over A30, A31 and A36 (about 33 in 100 each), and A22 now follows A20 four steps later in about 199 in 200 traces. [DIR001, LAG001]\n- In the earlier window, A21 was followed by A30, A31 or A36 (about 34, 28 and 38 in 100 of its outgoing transitions) and reached A25 only four steps later; in the later window, A21 leads directly to A25 in about 199 in 200 traces. [DIR002, LAG002]\n- In the earlier window, each of A30, A31 and A36 led to A25 in roughly 29–36 in 100 of its outgoing transitions; in the later window, each instead leads to A22 in about 30–34 in 100, and transitions to A25 have nearly disappeared (about 1 in 200). [DIR003, DIR004, DIR005]\n- The order between the pair A21/A22 and the trio A30/A31/A36 reversed completely: earlier, A21 preceded each trio activity in 100 in 100 traces, and A22 did so as well; later, the trio precedes A21 and A22 in about 199 in 200 traces, while all these activities still co-occur in every trace. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Relative positions shifted accordingly: the trio's mean position moved from about 0.59 to about 0.41 of the trace, while A21 moved from about 0.53 to about 0.62 and A22 from about 0.38 to about 0.47. [POS001, POS002, POS003, POS004, POS005]\n- Six further lag items (pairs such as A21–A30 and A30–A25) point in the same direction but rest on a single later-window observation each, so they carry little weight on their own. [LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: the block of three activities A30, A31 and A36, which in the earlier window executed between A21 and A25, in the later window executes between A20 and A22 — equivalently, the segment A22 → A21 moved from in front of the trio to behind it, turning a sequence A20 → A22 → A21 → {A30/A31/A36} → A25 into A20 → {A30/A31/A36} → A22 → A21 → A25. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, REL001, REL004, POS001, POS002, POS003]\n\nThe support is direct and consistent: the relational items show the order reversal in essentially every trace, the two well-supported lag items show the distances around the relocated block changing from 1 to 4 and from 4 to 1 steps, the direction items show exactly the successor changes this relocation implies, and the position items shift in the same direction; all six activities occur in virtually every trace in both windows (200 of 200), so this is a relocation of existing activities, not activities appearing or disappearing. [DIR001, DIR002, LAG001, LAG002, REL001, REL004, POS003, POS004, POS005]\n\nScreening qualified 24 control-flow items where about 0.28 would be expected without a change, so the pattern as a whole is far larger than what random re-splits of a stable process produce. [DIR001, POS001, REL001, LAG001]\n\nLimitations: the relational, directional and positional items describe the same traces and are not independent confirmations; the evidence cannot distinguish whether the trio moved earlier or the A22 → A21 segment moved later, since both descriptions fit the data equally; and positions are measured in event order rather than clock time, although the structural items carry the hypothesis on their own. [LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, REL001, POS001]\n\nOther differences: none beyond this relocation; the internal order among A30, A31 and A36 remains without a fixed order in both windows, each trio member being followed by either of the other two or by the next block boundary in similar shares. [DIR003, DIR004, DIR005]",
+  "case_id": "case_01e7ee155471e5d7",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

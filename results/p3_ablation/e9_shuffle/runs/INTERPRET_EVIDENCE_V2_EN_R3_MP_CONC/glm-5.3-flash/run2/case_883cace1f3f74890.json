@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_883cace1f3f74890.json",
+  "evidence_sha256": "8a6846673764a36823e64d9992ebb4b94078c1398c511aba0313148dfaf0a206",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:11:43.615170+00:00",
+  "finished_at_utc": "2026-11-15T04:13:06.285908+00:00",
+  "latency_seconds": 82.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11771,
+    "prompt_tokens": 13878,
+    "total_tokens": 25649,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10521,
+      "text_tokens": 1250
+    },
+    "cost": 0.007967199999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34937,
+  "text": "### Observed differences\n\n- In the earlier window the sequence A27 → A28 → A29 ran as a rigid chain: A27 was immediately followed by A28 in about 99 of 100 traces, A28 was immediately followed by A29 in about 99 of 100, and A27 sat two steps before A29; A19, A20 and A25 were not observed at all (0 of 200 traces). [LAG001, LAG003, DIR005, OCC002, OCC003, OCC004]\n- In the later window, A19, A20 and A25 each appear in roughly 30–40 of 100 traces (A20 about 41, A25 about 30, A19 about 30), normally once per trace, and they are mutually exclusive: A19 and A20 never share a trace, and A19/A25 or A20/A25 co-occur in only about 1 of 200 traces. [OCC002, OCC003, OCC004, REL001, REL002, REL006]\n- A27 now routes into this block: its outgoing transitions go to A28 in about 44 of 100 cases (down from about 99), and to A20 (about 22), A25 (about 17) or A19 (about 15) otherwise. The new activities in turn lead to A28 (about 52–56 of their outgoing transitions) or directly to A29 (about 42–46). [DIR004, DIR001, DIR002, DIR003]\n- The block sits inside the old chain: A27 precedes A20, A25 and A19 (in about 40, 30 and 29 of 100 co-occurring traces), the new activities precede A29 (about 39, 30 and 30 of 100), while against A28 the order is mixed (for example A20 before A28 in about 23 of 100 traces, A28 before A20 in about 17). [REL007, REL010, REL003, REL009, REL012, REL005, REL008, REL004, REL011]\n- The old successions stretch: A27 reaches A28 within one step in only about 44 of 100 traces (two steps in about 55), A28 reaches A29 within one step in about 56 (two steps in about 43), and A27 reaches A29 in three steps in about 97 of 100 traces, where previously two steps covered about 99. [LAG001, LAG003, LAG002]\n- Positions move consistently with inserted material: A27's median position shifts slightly earlier (0.48 to 0.46) and A29's slightly later (0.56 to 0.57), while the new activities sit mid-trace (median about 0.51–0.52); A28 and A29 still occur in essentially every trace. [POS004, POS005, POS001, POS002, POS003, DIR005]\n- Separately, A10's participation rises from about 5 to about 13 in 100 traces. [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, an optional block of three mutually alternative activities — A19, A20 and A25 — is executed inside the previously rigid A27 → A28 → A29 succession. Before, A27 passed directly to A28 and A28 directly to A29 in about 99 of 100 traces and the three activities never appeared; after, A27 hands over to one of them in about 55 of 100 cases, they run mid-trace and lead on to A28 or A29, stretching the A27–A28 and A28–A29 gaps by one step in roughly half of the traces. Since the block was absent before while A28 and A29 still run in essentially every trace, this is an inserted optional step (the activities became available and are taken in a large minority of cases), not a re-weighting of previously observed paths. [OCC002, OCC003, OCC004, DIR004, DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, POS004, POS005]\n\nThe screening produced 29 qualifying items in the control-flow family against roughly 0.54 expected if nothing had changed, so the ensemble cannot be explained by random sampling, and the occurrence, direction, relation, lag and position items all describe one coherent structure rather than independent confirmations. [OCC002, DIR004, REL007, LAG001, POS002]\n\nLimitations: with 200 traces per window the evidence cannot distinguish a newly added block from a variant that previously ran in at most about 1–2 of 100 cases and simply went unsampled; and the exact insertion point is not fully pinned down, since in a minority of traces the new activity follows A28 rather than preceding it (A28 before A20 in about 17 of 100 co-occurrences, before A19 in about 13). [REL008, REL004]\n\nOther differences: A10's participation rose from about 5 to about 13 in 100 traces; it is not part of the main hypothesis. [OCC001]",
+  "case_id": "case_883cace1f3f74890",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

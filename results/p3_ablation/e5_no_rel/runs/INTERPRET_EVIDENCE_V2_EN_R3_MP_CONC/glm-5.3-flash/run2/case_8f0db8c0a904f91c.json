@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_8f0db8c0a904f91c.json",
+  "evidence_sha256": "d8ee819e20a352b63ea4e30a9fdc3ca5d03bd4d8f09913febb1ebcd0ccca1418",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:45:42.247119+00:00",
+  "finished_at_utc": "2026-11-15T06:46:58.038071+00:00",
+  "latency_seconds": 75.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10642,
+    "prompt_tokens": 10360,
+    "total_tokens": 21002,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9484,
+      "text_tokens": 1158
+    },
+    "cost": 0.006874999999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34507,
+  "text": "### Observed differences\n\n- Three activities that previously ran in every case now run in only about half of them: A19, A20 and A25 each appeared in 100 in 100 earlier-window traces but in only about 53 in 100 later-window traces, with mean occurrences per trace falling from about 1.0 to about 0.53 for each. [OCC004, OCC005, OCC006]\n- The route into this block changed: earlier, A41 was followed by A19 in about 95 in 100 of its outgoing transitions; in the later window A41 leads to A19 about half the time and directly to A26 in about 44 in 100. [DIR005]\n- Accordingly, the distance from A41 to A26 split in two: earlier the pair was almost always about four steps apart (93 in 100), while later they are adjacent in about 44 in 100 cases and about four steps apart in about 48 in 100 — consistent with the block being skipped in roughly 45 in 100 later traces and still executed in the rest. [LAG002]\n- When the block does run, its internal order is preserved: A25 is followed by A20 and A20 by A26 in about 96–99 in 100 of the relevant transitions in both windows. [DIR003, DIR004]\n- A02 shows a separate decline: it appeared in about 29 in 100 earlier traces but only about 8–9 in 100 later traces; when present it now sits much earlier in the case (median relative position about 0.97 before vs about 0.47 after); its outgoing transitions shifted from about 85 in 100 leading to A47 to a spread over many activities (largest single share about 18 in 100); and A46 now continues to A47 in about 96 in 100 cases instead of sometimes going to A02 (25 in 100 before, under 1 in 100 after). These later-window profiles rest on only about 17 traces. [OCC001, POS001, DIR001, DIR006, LAG001]\n- Smaller shifts: A04 and A06 each appear in roughly three times as many traces (about 5 → 12 in 100 and 4 → 13 in 100, on 9→24 and 8→25 traces); A08's outgoing transitions changed completely but rest on only 4 earlier vs 15 later observations; A46→A47 is now almost always one step apart (about 97 in 100 vs 75 in 100); A26, A41 and A46 kept their positions (relative-position shifts of only about 0.01–0.02). [OCC002, OCC003, DIR002, LAG003, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block formed by A19, A20 and A25 — entered from A41 via A19 and closing with A25 → A20 → A26 — is skipped in roughly 45 in 100 later-window traces, where A41 leads directly to A26 instead, whereas earlier the block ran in essentially every trace. Supporting signs: all three block activities drop together from 100 to about 53 in 100 participation on large samples (about 200 vs about 106 traces each); a direct A41 → A26 transition appears where essentially none was observed before (about 44 in 100 of A41's outgoing transitions, on about 200 observations per window); the A41–A26 distance splits into an immediate and a four-step mode matching skip and execute; and the block's internal order is unchanged when it runs. The number of qualified items (19 vs about 0.6 expected without change) also far exceeds what a stable process typically produces. Note that the three occurrence items and the relational items describe one underlying difference, so they are not independent confirmations. Limitations: the evidence cannot show whether the skip is one new alternative route or a mixture of two case populations in the later window, and the exact set of bypassed activities between A41 and A26 is inferred from the endpoints rather than observed directly; the stable positions of A26, A41 and A46 argue against the later window simply containing shorter, truncated cases. [OCC004, OCC005, OCC006, DIR005, LAG002, DIR003, DIR004]\n\nOther differences: A02 became much rarer (about 29 → 8 in 100 traces), occurs earlier in the case when present, and its surroundings changed (A46 now almost always continues to A47 rather than to A02); these later-window profiles rest on about 17 traces and are indicative only. A04 and A06 appear about three times as often, and A08's outgoing transitions changed on very few observations. [OCC001, POS001, DIR001, DIR006, LAG001, OCC002, OCC003, DIR002]",
+  "case_id": "case_8f0db8c0a904f91c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

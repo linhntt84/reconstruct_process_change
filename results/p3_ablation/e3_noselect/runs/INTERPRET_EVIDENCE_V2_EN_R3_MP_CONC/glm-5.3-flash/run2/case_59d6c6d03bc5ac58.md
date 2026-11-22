@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A02 occurred in every trace, always as the final event, and was reached directly from A01 in about 50 in 100 traces and directly from A04 in the remaining 50; A01 and A04 never occurred in the same trace, acting as mutually exclusive entry paths. [POS002, REL001, REL002, REL004, DIR001, DIR002]
+- In the later window, A01 is not observed in any of the 200 traces (previously about 101 in 200), while A05 — not observed at all earlier — now appears in about 46 in 100 traces. [OCC001, OCC004]
+- A04's outgoing behaviour flipped: before, all of its observed outgoing transitions led to A02; after, all lead to A05, and A05 in turn always leads to A02. The distance from A04 to A02 grew from one step to two. [DIR002, DIR003, LAG001]
+- A02 still occurs in every trace, but its placement changed: it is now the first event in about 54 in 100 traces and the final event (after A04 and A05) in about 46, whereas earlier it was always final and always preceded by A01 or A04. A05 sits late in its traces (around three-quarters of the trace length), between A04 and A02. [POS002, POS004, REL005, REL006]
+- Minor shifts: A03, A04 and A06 each appear slightly less often (about 92 vs 99 of 200 traces); a difference of this size arises routinely in random re-splits (strength about 0.46), so it is consistent with sampling noise. [OCC002, OCC003, OCC005, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the routing into A02 was restructured: A01, previously one of two direct predecessors of A02 (about 50 in 100 traces, the other being A04), is no longer observed, and the newly observed A05 is now inserted between A04 and A02, so A04 reaches A02 through A05; correspondingly, A02 — previously always the closing event — now opens about 54 in 100 traces with no observed predecessor. [OCC001, OCC004, DIR002, DIR003, POS002, POS004, REL005, REL006, LAG001]
+
+Supporting signs: the change is shown directly by relational evidence rather than by frequencies alone — A04's successor changed from A02 to A05, A05's successor is A02, the A01–A02 co-occurrence fell from about 50 in 100 traces to none, and the A04→A02 distance moved from one to two steps; the participation swings (A01 from 101 to 0 of 200 traces, A05 from 0 to 92) and each strong item lie far outside the range produced by random re-splits of these windows (strength about 0.995). Limitations: most items describe this one underlying rerouting from different angles rather than serving as independent confirmations; the evidence cannot show what the former A01-traces now contain beyond a leading A02 (other, unmonitored activities could be involved), and A01's zero participation strictly means only that it was not observed in this 200-trace sample. A competing explanation the evidence cannot rule out is that the disappearance of the A01 path and the insertion of A05 are two independent edits rather than one coordinated rerouting — both are directly observed, but nothing ties them into a single change. [OCC001, DIR001, DIR002, DIR003, LAG001, POS002, REL001, REL005]
+
+Other differences: A03, A04 and A06 each occur slightly less often in the later window (about 92 vs 99 of 200 traces), and A04 sits slightly earlier within its traces (about half vs two-thirds of the trace length), consistent with one event (A05) having been added after it; the participation dip is within the range of random window-to-window variation (strength about 0.46). [OCC002, OCC003, OCC005, POS003, POS004]

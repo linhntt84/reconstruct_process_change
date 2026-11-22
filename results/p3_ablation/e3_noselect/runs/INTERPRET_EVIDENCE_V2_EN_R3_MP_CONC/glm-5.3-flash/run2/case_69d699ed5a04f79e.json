@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_69d699ed5a04f79e.json",
+  "evidence_sha256": "10d2e3dad1deafe6a6c36bf8ad6c72520d8a1a24e1d22ccf55c5b844b31d7974",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:46:57.326731+00:00",
+  "finished_at_utc": "2026-11-15T08:49:14.702728+00:00",
+  "latency_seconds": 137.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18728,
+    "prompt_tokens": 9199,
+    "total_tokens": 27927,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17309,
+      "text_tokens": 1419
+    },
+    "cost": 0.01074385
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60245,
+  "text": "### Observed differences\n\n- **A05 is no longer executed.** In the earlier window it appeared in about 46 of 100 traces (93 of 200, averaging 0.86 occurrences per trace); in the later window it is not observed in any of the 200 traces. [OCC003, POS003]\n- **The repetition loop around A04 runs without A05.** Earlier, A04's observed outgoing transitions led to A05 in about 46 of 100 cases and to A06 in about 52, and A05 led back to A04 in about 99 of 100 of its outgoing transitions. In the later window the A05 edge is gone and A04 is followed directly by another A04 in about 49 of 100 of its outgoing transitions (A06 still about 50). Accordingly, repeated A04 executions were earlier typically two positions apart (about 30 of 100 traces, occasionally four), while in the later window they are typically adjacent (one-position gap in about 20 of 100 traces; the two-position gap remains in only about 4 of 100). A05 has no observed outgoing transitions in the later window. [DIR003, DIR004, LAG001]\n- **A01 appears as a new final step.** Earlier it was not observed at all; in the later window it occurs exactly once in every trace (200 of 200), always at the final position, and every observed outgoing transition of A07 now leads to A01, with A07 preceding A01 in all traces. Earlier, A07 had no observed outgoing transitions and sat at the final position of each trace. [OCC001, POS001, DIR005, REL003, POS004]\n- **Relations confirm both changes.** A01 now co-occurs with A04 in every trace (A04 before A01 in about 50 of 100 traces, mixed/repeated in the rest, reflecting A04's repeats), whereas A05's co-occurrence with A04 (about 46 of 100 traces) and with A07 (about 46 of 100, usually A05 first) disappeared completely — every later trace contains A07 without A05. [REL001, REL002, REL004, REL006]\n- **Secondary shifts** consistent with the above: A07's mean relative position moved from 1.0 (last step) to about 0.83 and A04's from about 0.50 to 0.42; the A04–A07 gap redistributed slightly (two positions apart in about 51 of 100 traces earlier vs about 37 later, with three- and five-position gaps appearing). [POS004, POS002, LAG002]\n- **Largely unchanged:** routing shares at A02 and A03 moved by only 1–3 percentage points, A04's frequency stayed at about 1.9 executions per trace (repeats in about 46 vs 50 of 100 traces), and the A04-before-A07 share stayed near 50 of 100 — differences within the range of random re-splits (strength 0.36–0.58). [DIR001, DIR002, OCC002, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A05 is no longer executed and that the repetition loop around A04 now runs without it: earlier the loop passed from A04 to A05 and back (A04→A05 in about 46 of 100 of A04's outgoing transitions, A05→A04 in about 99 of 100), whereas in the later window A04 repeats directly (A04→A04 in about 49 of 100) and A05 appears in no trace at all, down from about 46 of 100 traces. The spacing of repeated A04 executions shifted accordingly, from typically one activity in between to direct adjacency. [OCC003, DIR003, DIR004, LAG001]\n\nSupporting signs: the participation drop rests on 93 before-traces versus zero after-traces (200 traces per window), which sampling variation cannot plausibly produce; the edge replacement is visible directly in A04's outgoing profile at roughly the share at which the A05 edge used to be taken; and A04's own frequency and the upstream routing stayed stable, so the difference is localised to this loop. Note that the occurrence, direction, relation and spacing items are mutually consistent but not independent — they largely describe the same underlying loop change from different angles. [OCC003, DIR003, OCC002, DIR001, REL004, REL006, LAG001]\n\nLimitation: the traces show only that A05 was not executed in the later window; they cannot distinguish removing the activity from a routing change that leaves its branch never taken, as both look identical in behaviour. [OCC003, DIR003]\n\nOther differences: A01 behaves as a newly executed final step — never observed earlier, now occurring exactly once in every trace, always after A07, whose observed outgoing transitions all lead to A01 (earlier, traces ended at A07); an activity that existed before but was never executed cannot be ruled out, since zero participation only means it was not observed. The small backward position shifts of A04 and A07 and the slight redistribution of the A04–A07 gap are consistent with this appended step and the shortened loop rather than separate changes. [OCC001, POS001, DIR005, REL003, POS002, POS004, LAG002]",
+  "case_id": "case_69d699ed5a04f79e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

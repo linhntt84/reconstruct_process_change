@@ -1,0 +1,22 @@
+### Observed differences
+
+- Before, the activities A27, A36, A37 and A42 each ran in every trace (participation 100 in 100, about once per trace); in the later window A27 appears in about 54 in 100 traces and each of A36, A37 and A42 in about 47–48 in 100, still about once per trace when present. [OCC001, OCC002, OCC003, OCC004]
+- Before, about 96 in 100 of A25's outgoing transitions went to A36, A37 or A42 (roughly one third each); in the later window about 96 in 100 go directly to A28. [DIR001]
+- Before, about 99 in 100 of A26's outgoing transitions went to A27; in the later window about 52 in 100 go to A27 and about 44 in 100 go to A36, A37 or A42. [DIR002]
+- Before, A36, A37 and A42 each exited to A28 in about 31–35 in 100 of their outgoing transitions (their other exits leading to one another); in the later window these exits to A28 have nearly disappeared (about 1 in 100 or fewer) and each of the three leads to A31 in about 26–35 in 100. [DIR003, DIR004, DIR005]
+- Before, each of A36, A37 and A42 ran before A26 in essentially all traces and before A28 in about 99 in 100; in the later window A26 runs before each of them in about 45 in 100 traces and A28 in about 46 in 100 — practically every trace in which they now meet. [REL006, REL007, REL008, REL014, REL015, REL016]
+- Before, A27 co-occurred with each of A36, A37 and A42 in every trace (the trio member before A27 in about 97–98 in 100); in the later window they co-occur in at most about 1 in 100 traces, with A27 alone in about 53 in 100 and the trio without A27 in about 47 in 100. [REL011, REL012, REL013]
+- Mean event positions shifted: A36, A37 and A42 from about 0.40 to about 0.57 of the trace, A28 from about 0.46 to 0.39, A26 from about 0.60 to 0.54 and A27 from about 0.62 to 0.59; the A25→A28 distance fell from mostly 4 steps (about 91 in 100) to 1 step (about 98 in 100), and the A26→A31 distance, previously 2 steps in about 98 in 100, is now 2 steps in about 53 in 100 and 4 steps in about 43 in 100 (positions and distances are event steps, not clock time). [POS002, POS003, POS004, POS006, POS007, POS008, LAG001, LAG005]
+- The trio's internal order remains mixed in both windows (A36 before A37 in about 52 in 100 before and about 22 in 100 after; A37 before A36 in about 47 and 25), and its three members still always run together when they run at all. [REL020, REL021, REL022]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the three-activity group A36, A37 and A42 was relocated and made conditional: before, every trace ran the group between A25 and A28 and also ran A27 between A26 and A31; in the later window the group runs after A26 and before A31, and each trace executes either A27 (about 53 in 100) or the group (about 47 in 100) — practically never both — so the group has become an alternative to A27, which itself kept its place in the sequence. [OCC001, OCC002, OCC003, OCC004, REL011, REL012, REL013]
+
+The relocation is shown directly by the successor changes at A25, A26 and the group members, the order reversals between the group and A26/A28, and the distance changes A25→A28 (4→1 steps) and A26→A31 (2→2 or 4 steps); screening qualified 48 items where about 0.73 would be expected without a change, so this set of differences is far beyond what a stable process typically produces. [DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL014, REL015, REL016, LAG001, LAG005]
+
+Limitations: positions and distances are measured in event steps, so nothing can be said about clock-time timing; the internal order of the group stays unfixed in both windows; and the indicators cannot show whether the branch after A26 is a routing choice within one process or a mixture of two trace variants in the later window. [REL020, REL021, REL022]
+
+Other differences: A25's mean position moved slightly later (about 0.34 to 0.37) and A31's slightly earlier (about 0.65 to 0.63), consistent with the relocation; several gap items (A25 towards A36/A37/A42, the group's old exits towards A28, A37→A31) rest on only 1–2 observations in one window and add little on their own. [POS001, POS005, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, LAG009]

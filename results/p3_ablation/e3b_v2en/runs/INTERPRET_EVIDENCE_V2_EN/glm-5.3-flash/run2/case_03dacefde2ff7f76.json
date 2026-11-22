@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_03dacefde2ff7f76.json",
+  "evidence_sha256": "6cb094f1248bddf67f28784ae07c0e7a908c0cafd586e1b4505292d95443786c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:11:11.992982+00:00",
+  "finished_at_utc": "2026-11-15T05:12:07.140868+00:00",
+  "latency_seconds": 55.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7882,
+    "prompt_tokens": 13775,
+    "total_tokens": 21657,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6781,
+      "text_tokens": 1101
+    },
+    "cost": 0.0060072500000000004
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21691,
+  "text": "### Observed differences\n\n- In the later window, A45 routes almost exclusively to A26: about 89 in 100 of its outgoing transitions go to A26, whereas before they split roughly 31/26/28 across A19, A20 and A25 (about 85 in 100 to one of those three). A45 is also followed by A26 within one step in about 89 in 100 traces, where before this took two steps in about 84 in 100. [DIR006, LAG008]\n- A19, A20 and A25 now run much later in the trace: their mean relative position moves from about 0.31–0.34 to about 0.58–0.59, while A26 and A27 shift slightly earlier (A26 about 0.35 to 0.32; A27 about 0.58 to 0.55). [POS001, POS002, POS003, POS004, POS005]\n- The order between these activities reverses: before, A19 preceded A26 in about 37 in 100 traces and A25 preceded A26 in about 32 in 100; in the later window A26 precedes A19 in about 30 in 100 and A25 in about 36 in 100, with the earlier direction almost gone. The same reversal holds for A20 against A26 and A27, and for A19 and A25 against A27. [REL001, REL002, REL004, REL005, REL006, REL007]\n- The successors of A19, A20 and A25 change from almost only A26 (about 89–98 in 100 of outgoing transitions) to a split between A28 and A32 (roughly 38–58 in 100 each). [DIR001, DIR002, DIR003]\n- A27 and A28, which previously flowed almost only forward (A27 to A28 about 98 in 100; A28 to A32 about 94 in 100), now also route back into A19, A20 and A25 (about 14–22 in 100 each), and their steps spread over one or two positions instead of a single lag; A27 typically reaches A32 three positions later rather than two. [DIR004, DIR005, LAG004, LAG005, LAG007]\n- New close successions appear around A28/A32: A20 is followed by A28 within one step in 36 traces and A28 by A20 within one step in 30 traces, pairs almost unobserved before (1 observation each); A20 reaches A32 within one or two steps in 66 traces (1 before). The direct A25 to A26 step at one position, seen in 63 traces before, is nearly gone (1 after). [LAG001, LAG002, LAG003, LAG006]\n- Participation is broadly stable: A26 and A27 appear in all traces in both windows; A19 appears in about 38 then 30 in 100 traces, A20 about 32 then 34, A25 about 32 then 38. [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the block of activities A19, A20 and A25 was repositioned to the later part of the process, after A26 and A27, where it alternates with A28 and A32 and may repeat (A20 and A28 follow each other within one step in both directions), while A45 now connects directly to A26 instead of dispatching to A19/A20/A25. This rests on direct relational evidence — the order of A19/A20/A25 against A26/A27 reverses with support from all 200 traces per window — together with consistent successor redistributions, position shifts and lag changes, including the near-disappearance of A25 to A26 at one step (63 traces to 1) and the emergence of A45 to A26 at one step. The number of qualifying items (27) is far above the roughly 0.63 expected by chance, so the pattern as a whole is not what an unchanged process typically produces. [REL001, REL006, DIR001, DIR003, DIR006, LAG003, LAG006, LAG008, POS001, POS003]\n\nLimitations: the items largely describe one underlying trace behaviour rather than independent confirmations, and several lag items rest on very few observations in one window (1 before versus 30–66 after). With 200 traces per window, a shift in the mix of variants — for example the later-window behaviour existing as a rare variant beforehand that became dominant — cannot be ruled out by this evidence alone. [LAG001, LAG002, LAG006]",
+  "case_id": "case_03dacefde2ff7f76",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

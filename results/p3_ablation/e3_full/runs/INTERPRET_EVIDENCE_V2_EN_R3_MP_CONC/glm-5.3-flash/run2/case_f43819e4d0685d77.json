@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f43819e4d0685d77.json",
+  "evidence_sha256": "71bdad6188b2112ce33a7f5c31b04eeb5f8841e775cddba4cf5aafabf32584fe",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:19:52.096293+00:00",
+  "finished_at_utc": "2026-11-16T02:21:14.653613+00:00",
+  "latency_seconds": 82.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12419,
+    "prompt_tokens": 15814,
+    "total_tokens": 28233,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11307,
+      "text_tokens": 1112
+    },
+    "cost": 0.0085816
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39683,
+  "text": "### Observed differences\n\n- Activity A02 was not observed at all in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200), never repeats, and always sits at the last position of the trace. [OCC001, POS001]\n- In the earlier window A06 was the closing event (mean relative position about 0.99, last in nearly every trace); in the later window A06 sits at about 0.79 of the trace, and all of its observed outgoing transitions (200) now lead to A02, whereas before, its only observed outgoing transitions (4 in total) led to A04; the roughly 2 in 100 earlier traces in which A06 preceded A04 are no longer seen. [POS005, DIR005, REL010]\n- A02 now co-occurs with A01, A03, A04 and A06 in 100 in 100 later-window traces and always runs after them; before, it never occurred together with any of these activities. [REL001, REL003, REL004, REL006]\n- All other activities shifted to earlier relative positions: A03 from about 0.48 to 0.36, A04 from 0.36 to 0.28, A05 from 0.69 to 0.58, and A06 from 0.99 to 0.79 — the pattern expected when one event is appended at the end and positions are expressed relative to trace length. [POS002, POS003, POS004, POS005]\n- Smaller shifts: A03's outgoing transitions moved from A06 41%, A05 37%, A04 22% to A06 32%, A05 41%, A04 27%; A04's outgoing share to A03 fell from 76% to 71% while its share to A06 rose from 11% to 16%; A05 appears in about 53 in 100 later traces versus about 50 before; and A03 is followed by A04 within one step in about 95% of the observed pairs (57) versus 86% before (51 pairs). [DIR002, DIR003, OCC002, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new final step, A02, was appended after A06: cases that previously ended with A06 now end with A06 followed by exactly one execution of A02. A02 goes from absent in all 200 earlier traces to present exactly once in all 200 later traces, always at the last position and never repeated [OCC001, POS001]; it always follows A01, A03, A04 and A06, with none of which it ever co-occurred before [REL001, REL003, REL004, REL006]; and A06's outgoing flow, previously observed only towards A04, now goes exclusively to A02 [DIR005]. The uniform earlier shift of every other activity's relative position is consistent with a single appended event rather than with several activities being moved [POS002, POS003, POS004, POS005]. Limitations: with anonymous activity codes the evidence cannot show whether A02 is a genuinely new step or a renamed existing one, and since A02 was simply not observed before, a prior presence at a rate below about 1 in 200 cases cannot be ruled out; the earlier A06 routing profile also rests on only 4 observed transitions [DIR005].\n\nOther differences: small routing redistributions at A03 (A06 41% to 32%, A05 37% to 41%, A04 22% to 27% of outgoing transitions) and at A04 (to A03 76% to 71%, to A06 11% to 16%), plus a slightly higher participation of A05 (about 50 to 53 in 100 traces); these are modest and the two windows cannot separate them from sampling variation [DIR002, DIR003, OCC002]. A tighter A03→A04 adjacency (86% to 95% of 51/57 observed pairs) and a lower share of immediate A05 self-repetition (34% to 21% of about 50 pairs) rest on few observations [LAG005, LAG011].",
+  "case_id": "case_f43819e4d0685d77",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,22 @@
+### Observed differences
+
+- Two activities disappeared: in the earlier window A01 and A02 each ran in about 50 in 100 traces (99 of 200), with A01 followed by A07, A10, A08 or A12 and A02 always followed by A14; in the later window neither appears in any of the 200 traces, and their outgoing transitions are no longer observed. [OCC001, OCC002, DIR001, DIR002]
+- One activity appeared: A09, unobserved earlier, runs in about 24 in 100 later traces (47 of 200) and is typically followed by A11 or A12. [OCC009, DIR007, POS007]
+- The entry into the loop changed: earlier, all observed A14 transitions led to A01, which reached A08 two steps later; in the later window A14's transitions lead to A08 (about 56 in 100) or A07 (about 35 in 100), with A08 immediately after A14 in all observed pairs. [DIR011, LAG043]
+- The A06–A13 cycle was replaced by direct returns to A14: earlier, A06 was followed by A13 (about 51 in 100 of its transitions) or A02 (about 49 in 100), and A13 led back to A06 in about 99 in 100; later, both A06 and A13 always lead to A14. With the cycle gone, A06's repetitions largely stopped (about 2.0 vs about 0.5 occurrences per trace; participation about 50 vs about 36 in 100 traces) and A13 fell from about 1.0 to about 0.4 occurrences per trace. [DIR004, DIR010, OCC006, OCC013, LAG014, LAG041]
+- The A08 branch was rerouted: earlier, A08 was always followed by A05; later it is always followed by A10, with A05 two positions after A08, and A08 and A10 — which never shared a trace earlier — now co-occur in about 50 in 100 later traces, always A08 first. Participation of both roughly doubled (A08 about 24 to 50 in 100 traces; A10 about 26 to 50 in 100). [DIR006, LAG023, REL059, OCC008, OCC010]
+- Routing inside the loop shifted: A07 now splits its transitions between A12 (about 46 in 100) and the new A09 (about 48 in 100) where it previously went to A12 in about 92 in 100; A11 now leads to A13 (about 52 in 100) or A06 (about 42 in 100) where it previously led to A06 in about 97 in 100; A12 now also leads to A09 (about 42 in 100). [DIR005, DIR008, DIR009]
+- A04 now bypasses A06 in a minority of cases: about 39 in 100 of its transitions go directly to A13 (about 1.5 in 100 earlier), reducing the share to A06 from about 99 to about 60 in 100. [DIR003, LAG006]
+- Largely unchanged: A03, A05 and A14 keep a participation of about 50 in 100 traces in both windows. [OCC003, OCC005, OCC014]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the cyclic core of the process was structurally rewired: A01 and A02, which previously relayed between A14 and the A07/A08/A10/A12 block (A14 → A01 → block, and back via A06/A13 → A02 → A14), are no longer observed; A14 now feeds directly into A08 or A07; A06 and A13 close the loop straight back to A14, ending the A06–A13 repetition; and the newly observed A09 sits between A07 and A11/A12. As part of the same rewiring, A08 now continues through A10 to A05 instead of directly to A05. [OCC001, OCC002, OCC009, DIR011, DIR004, DIR010, DIR005, DIR007, DIR006]
+
+The hypothesis is shown directly by successor evidence with many observations in both windows — for example, all 195 earlier outgoing transitions of A14 went to A01 while the 179 later ones go to A08 or A07, and A06's transitions moved from A13/A02 to A14 — and the occurrence, relation and adjacency indicators agree throughout, including A14 reaching A08 in one step instead of two and A08 reaching A05 in two steps instead of one; the key differences exceed those seen in about 199 of 200 random re-splits of the pooled data. [DIR011, DIR004, LAG043, LAG023, REL059]
+
+Limitations: zero participation only means an activity was not observed in that window, a few adjacency results rest on only 1–8 observed pairs and were not used, and the evidence cannot rule out that the two windows sample a different mix of pre-existing process variants rather than a modified single process. [LAG016, LAG017, LAG036]
+
+Other differences: A04's new direct transition to A13 (about 39 in 100 of its outgoing transitions, up from about 1.5 in 100) slightly reduces how often A06 is reached from A04, and A13's trace participation fell from about 35 to about 28 in 100 traces. [DIR003, OCC013]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5a059660133e43ce.json",
+  "evidence_sha256": "88ae8e20cfbb9b8c3a04225c53f2143adf431590918bd8e9733173e13e2feea6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:34:22.899845+00:00",
+  "finished_at_utc": "2026-11-15T04:37:06.625008+00:00",
+  "latency_seconds": 163.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23282,
+    "prompt_tokens": 7679,
+    "total_tokens": 30961,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22037,
+      "text_tokens": 1245
+    },
+    "cost": 0.012792849999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 79392,
+  "text": "### Observed differences\n\n- A01 appears only in the later window: it is absent from all 200 earlier traces, while in the later window it occurs in about 22 in 100 traces (44 of 200), always exactly once and always as the final event of the trace. [OCC001, POS001]\n- A01 is placed after A02: in the earlier window the two never occur in the same trace, whereas in the later window they occur together in about 22 in 100 traces, with A02 before A01 in about 11 in 100 and the two interleaved in about 11 in 100, never the reverse; about 21 in 100 of A02's observed outgoing transitions now go to A01, an edge not seen earlier. [REL001, DIR001]\n- A06 keeps a similar participation (about 14 in 100 traces earlier, about 16 in 100 later) but sits elsewhere and connects differently: earlier it is the last event in every trace containing it (fixed position 1.0, no outgoing transitions observed), while in the later window it sits around the middle (median position about 0.5) and all 32 of its observed outgoing transitions lead to A15. [POS002, DIR002]\n- The connection from A02 to A15 shifts from direct to indirect: earlier A02 is followed by A15 after one step in about 52 in 100 of the observed pairs, and about 12 in 100 of A02's outgoing transitions go straight to A15; in the later window the pair occurs mostly two steps apart (about 67 in 100) and the direct transition is no longer observed, consistent with the sequence A02 → A06 → A15. In the later window A01 never occurs together with A06 or with A15 (A01 alone in about 22 in 100 traces, A06 alone or A15 alone in about 16 in 100), so the A01 ending and the A06 → A15 route are alternatives. [LAG002, DIR001, REL002, REL003]\n- Around A08 and A12 the wiring differs: earlier about 84 in 100 of A08's outgoing transitions lead to A12, while in the later window none do — A08 now leads mainly to A09 (about 46 in 100), A04 (about 27 in 100) and back to A02 (about 23 in 100). A12 becomes rarer (in about 17 in 100 traces earlier vs about 10 in 100 later; about 0.29 vs 0.12 occurrences per trace) and sits earlier (median position about 0.50 vs 0.28), in the later window sometimes directly after A02 (gap 1 in about 29 in 100 of the observed A02→A12 pairs, vs gaps of 2–3 steps earlier); the later-window side of the A08–A12 gap comparison rests on only 5 observed pairs. [DIR003, OCC002, POS003, LAG001, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening flagged 14 control-flow items where an unchanged process would typically produce about 0.23 (46 units tested), so the volume of flagged differences is far beyond what random re-splits of these windows produce. The evidence supports the possibility that the closing part of the process now runs differently: A01, unobserved in the earlier window, appears in the later window as a final step executed once after A02 in about 22 in 100 traces, while A06 — which earlier closed the traces containing it — now runs around the middle and is always followed by A15, so that A15 is reached via A06 rather than directly from A02. [OCC001, POS001, REL001, DIR001, DIR002, POS002, LAG002]\n\nThe support is direct on several complementary angles, though they partly describe the same traces: participation (A01 from 0 to 44 of 200 traces), position (A01 fixed at the final position; A06 moving from a fixed final position to a mid-trace median of about 0.5 at unchanged participation), relation (A01–A02 co-occurrence from never to about 22 in 100; A01 never co-occurring with A06 or A15 in the later window) and direction (A02 gains A01 and loses A15 as a direct successor; A06 gains A15). A competing explanation the evidence cannot fully exclude is the surfacing of rare variants in finite samples, but the magnitudes (0 of 200 traces vs 44 of 200 for A01; 27 of 27 A06 events at the final position earlier vs a mid-trace median later) make pure sampling an unlikely account; what remains open is whether A01 replaced a specific earlier behaviour or was appended to traces that previously ended right after A02. [OCC001, POS001, POS002, REL001, REL002, REL003, DIR001, DIR002]\n\nOther differences: The rerouting around A08 and A12 — A08 no longer leading to A12 (about 84 in 100 of its outgoing transitions earlier, none later) and A12 becoming rarer and earlier, now sometimes directly after A02 — is not part of the main hypothesis and may be a separate change; its later-window gap evidence is thin (5 observed pairs) and A08's profile rests on fewer observations (57 vs 26 outgoing transitions). [DIR003, OCC002, POS003, LAG001, LAG003]",
+  "case_id": "case_5a059660133e43ce",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

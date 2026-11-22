@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ee6da3e6d56a08ce.json",
+  "evidence_sha256": "8663d46d32f134f91e27aa769a31b47e4b0bce5b267849aa5825b2abfeb29b9f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:18:33.293087+00:00",
+  "finished_at_utc": "2026-11-14T14:22:16.997195+00:00",
+  "latency_seconds": 223.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 36191,
+    "prompt_tokens": 19204,
+    "total_tokens": 55395,
+    "completion_tokens_details": {
+      "reasoning_tokens": 33995,
+      "text_tokens": 2196
+    },
+    "cost": 0.0209761
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 123515,
+  "text": "### Observed differences\n\n- Activity A02 was not observed in any of the 200 earlier-window traces. In the later window it appears in about 58 in 100 traces, about 2.4 times per trace on average, at positions spread from roughly a third to five-sixths through the trace (median relative position about 0.60). [OCC001, POS001]\n- In the earlier window, A15's outgoing transitions led to A07 in about 52 in 100 cases, to A08 in about 25 and to A12 in about 23 (shares of A15's observed outgoing transitions). In the later window, A15 leads only to A02 — all of about 474 observed outgoing transitions. [DIR011]\n- In the later window, A02's outgoing transitions lead to A07 in about 52 in 100 cases, to A08 in about 27 and to A12 in about 21 — almost exactly the successor mix A15 had before. [DIR002]\n- The gap from A15 to each of its former successors grew by one event: A15→A07, A15→A08 and A15→A12 pairs within five steps sat at distance 1 in the earlier window and at distance 2 in the later one. [LAG005, LAG006, LAG007]\n- All measured distances inside the repeating section grew by one event: A07→A07 from 4 to 5 steps, A07→A08 and A07→A12 from 4 to 5, A15→A15 mainly from 4 to 5, and A07→A15 pairs now concentrate at distance 3 (the 5-step share fell from about 24 to 9 in 100). [LAG001, LAG002, LAG003, LAG004, LAG008]\n- A02 and A15 now always occur together — co-occurrence in 58 in 100 later-window traces, with neither activity ever seen without the other — whereas they never co-occurred before. A02 also co-occurs with A07, A08 or A12 in roughly 35–42 in 100 traces, mostly interleaved or repeated, against no co-occurrence before. [REL001, REL002, REL003, REL004]\n- Smaller shifts lie within the range random splits produce: participation in the later section rose by about 2–9 in 100 traces (largest for A05, A11 and A15, from about 50 to 58 in 100), A12 sits somewhat later in the trace (mean relative position about 0.66 vs 0.73), and two edges appear on single observations only (A06→A01 in the later window, A09→A03 in the earlier window). [OCC003, OCC005, OCC006, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013, POS004, DIR006, DIR007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A02 executes as a new step in the repeating section, directly between A15 and its successors A07, A08 and A12. In the earlier window, a trace reaching A15 continued straight to A07 (about 52 in 100 of A15's outgoing transitions), A08 (about 25) or A12 (about 23); in the later window A15 leads only to A02, whose outgoing transitions reproduce that successor mix almost exactly, the gap from A15 to each successor grew from one event to two, and every measured distance inside the section grew from four to five events. A02 went from not being observed at all to running in about 58 in 100 traces, exactly as often as A15 (about 2.4 occurrences per trace each, never one without the other), fitting one A02 execution per pass of the section. The relational items show this directly — A15's successor set changed to A02 alone and the A15→successor distances shifted from 1 to 2 — and every key item stands at empirical strength about 0.995, so sampling variation cannot account for the pattern. [OCC001, OCC013, DIR002, DIR011, LAG001, LAG005, LAG006, LAG007, LAG008, REL004]\n\nLimitations: the evidence carries no screening baseline, so the number of qualifying items cannot be compared with a chance expectation; some lag profiles rest on few pair observations (as few as 8–31); and nothing shows how A02 relates to A11 or A14. The main competing explanation the evidence cannot exclude is that the repeating section is entered in more traces in the later window — participation of its activities all rose in the same direction — but each of those rises lies within the range random re-splits produce, so a real second change cannot be separated from sampling noise. [LAG001, LAG002, LAG003, OCC003, OCC008, OCC009, OCC011, OCC012, OCC013]\n\nOther differences:\n\n- Participation of the later-section activities rose by about 2–9 in 100 traces (A05, A11 and A15 from about 50 to 58; A10 and A13 from about 40 to 48; A14 from about 42 to 46; A07, A08 and A12 by 2–6); these shifts are not part of the hypothesis above and may be sampling variation. [OCC003, OCC005, OCC006, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013]\n- A12 sits later in the trace in the later window (mean relative position about 0.66 vs 0.73; median about 0.76 vs 0.83), in line with the new step preceding it, though individually near the random-split range. [POS004]\n- Two directed edges rest on single observations — A06→A01 in the later window and A09→A03 in the earlier window — and support no structural conclusion. [DIR006, DIR007]\n- The remaining routing shares out of A01, A03, A04, A05, A10, A11 and A13 differ only marginally, within the random-split range. [DIR001, DIR003, DIR004, DIR005, DIR008, DIR009, DIR010]",
+  "case_id": "case_ee6da3e6d56a08ce",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

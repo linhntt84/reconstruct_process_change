@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "7b11b0d372d7323ff3563cb6257e2a732646ce5911e72fce0eedd498f58fbb76",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:27:01.890470+00:00",
+  "finished_at_utc": "2026-11-15T05:28:34.522527+00:00",
+  "latency_seconds": 92.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13413,
+    "prompt_tokens": 25314,
+    "total_tokens": 38727,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12005,
+      "text_tokens": 1408
+    },
+    "cost": 0.0105036
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39443,
+  "text": "### Observed differences\n\n- Before, the six activities A33, A35, A36, A37, A38 and A39 each ran in essentially every case (200 of 200 traces), always between A30 and A31: A30 preceded them in about 98–100 in 100 traces, and they in turn preceded A31 just as consistently. [REL001-REL012, POS003-POS008]\n- Before, these six formed two ordered halves: A33/A35/A36 ran in no fixed order among themselves (each pair split roughly 50/50), then A37/A38/A39 in no fixed order, and every first-half activity preceded every second-half activity in about 99–100 in 100 traces. [REL013, REL014, REL018, REL015-REL017, REL019-REL024, REL025-REL027]\n- In the later window, each of the six runs in only about 47–57 in 100 cases (A33 in 94, A35 in 93, A36 in 93, A37 in 113, A38 in 111, A39 in 112 of 200 traces), while A30 and A31 still occur in every case. [POS003-POS008, REL001-REL012]\n- The two halves became nearly mutually exclusive: co-occurrence between any of A33/A35/A36 and any of A37/A38/A39 fell from 100% to about 2–3 in 100 traces, while within each half the three activities still run together (about 46–47 in 100 for the first half, 55–56 for the second), still in no fixed order. [REL013-REL027]\n- A30 now routes directly into either half: its observed outgoing transitions went from about 34%/36%/29% to A33/A35/A36 (with almost nothing else) to a roughly even spread over all six activities (about 13–20% each). [DIR001]\n- The first half now exits straight to A31: in the later window about 33% of A33's, 34% of A35's and 24% of A36's observed outgoing transitions go to A31 (previously essentially none), their transitions into A37/A38/A39 have nearly disappeared, and the positional gap from A30 to A37/A38/A39 and from A33/A35/A36 to A31 shrinks from 4–5 steps to 1–3 steps. Positions shifted only modestly (e.g. A30 mean position about 0.62 to 0.67); these are event positions, not clock times. [DIR002, DIR003, DIR004, LAG001-LAG004, LAG007, LAG010, POS001-POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A30 and A31 changed from always executing both three-activity halves — first A33, A35 and A36, then A37, A38 and A39 — to executing only one half per case: in the later window roughly 44 in 100 cases run A33/A35/A36 and skip A37/A38/A39, about 53 in 100 run A37/A38/A39 and skip A33/A35/A36, and about 2–4 in 100 still show both. Both halves keep their internal lack of a fixed order and their placement after A30 and before A31; what changed is participation, not the position of the activities. [REL001-REL027, DIR001, POS003-POS008]\n\nThe change is shown directly and consistently: cross-half co-occurrence collapsed from 100% to about 2–3%, each half's members still appear together as a complete trio, A33/A35/A36 gained direct transitions to A31, and the inter-activity gaps shortened exactly where the skipped half would have sat. The screening tested 116 control-flow units and 51 items qualified where roughly 0.58 would be expected if nothing had changed — a count many times larger, so the pattern as a whole is not what an unchanged process produces; every item also exceeds about 99.5% of random re-splits, and the supports are substantial (93–114 later traces per activity, 200 earlier). The many items describe one underlying trace behaviour, so they should be read as one coherent difference, not independent confirmations. [REL015-REL024, DIR002-004, LAG001-LAG004, LAG007, LAG010]\n\nLimitations: the evidence cannot show how the choice between the two halves is made, since no decision point is observed directly — only A30's split outgoing transitions approximate it. An important competing explanation that cannot be ruled out is that a one-half-only variant already existed earlier but was not sampled (no such case appears among the 200 earlier traces) and simply became frequent; the near-exclusivity is also not absolute, as about 2–4 in 100 later traces contain activities of both halves. [REL015, DIR001]\n\nOther differences: in the later window, A30 shows very rare new outgoing transitions to A02, A03 and A06 (about 0.5% of its observed outgoing transitions each). [DIR001]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

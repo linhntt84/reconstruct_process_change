@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "9910faeb1fbecc5346d314a183dde96007a00feab5cb426cefcef682c8800fc3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:12:13.217044+00:00",
+  "finished_at_utc": "2026-11-15T04:14:25.351306+00:00",
+  "latency_seconds": 132.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20117,
+    "prompt_tokens": 26221,
+    "total_tokens": 46338,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17817,
+      "text_tokens": 2300
+    },
+    "cost": 0.01399165
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60107,
+  "text": "### Observed differences\n\n- In the earlier window, the seven activities A31, A22, A20, A23, A24, A26 and A25 — which co-occur in every trace in both windows — each split their outgoing transitions across several successors: A31 about 50/50 between A24 and A22, A23 about 46 in 100 to A32 and only 12 in 100 to A24, A24 about 55 in 100 to A26 and 28 in 100 to A22, A25 about 43 in 100 to A32 and 22 in 100 to A23. In the later window each sends almost all observed outgoing transitions to a single successor: A31→A22 (100 in 100), A22→A20 (99), A20→A23 (99), A23→A24 (99), A24→A26 (99), A26→A25 (99) and A25→A32 (93). [DIR009, DIR005, DIR006, DIR007, DIR004, DIR003, DIR008]\n- Pairwise order changed from mixed to fixed: pairs that earlier occurred in both orders in similar shares now follow one order in about 98–99 in 100 traces, while co-occurrence stays at 100 in 100 in both windows. The largest flips are A23 before A24 (12 to 98 in 100), A20 before A24 (25 to 99), A23 before A26 (30 to 98), A23 before A25 (46 to 98), A20 before A26 (49 to 99) and A22 before A24 (50 to 99). [REL007, REL002, REL009, REL008, REL004, REL005, REL003, REL006]\n- Distances between these activities concentrated at the step distances of a single sequence A31→A22→A20→A23→A24→A26→A25→A32: A31 to A24 moved from half of the observations at distance 1 to 995 in 1000 at distance 4; A31 to A26 from a 2–5 spread to 995 in 1000 at 5; A20 to A25 to 995 in 1000 at 4; A24 to A32 to 93 in 100 at 3. Former shortcuts and reverse orders disappeared: the ordered pairs A24→A20, A24→A23, A25→A23, A26→A23 and A31→A25 had 106–176 supporting traces earlier and only 1 each later. [LAG029, LAG031, LAG005, LAG020, LAG016, LAG017, LAG021, LAG023, LAG030]\n- Positions shifted consistently with this re-sequencing: A23 moved earlier (mean position 0.68 to 0.62) while A24 (0.59 to 0.65), A26 (0.64 to 0.68) and A25 (0.68 to 0.70) moved later; these are event positions, not clock times. [POS004, POS005, POS007, POS006]\n- Outside this block, A08 now appears in far fewer traces (32 to 13 in 100) and later (mean position 0.18 to 0.34), its ordered co-occurrence with A32 fell (32 to 13 in 100), its successors became more dispersed (to A15 from 91 to 48 in 100, on only 27 transitions), and A14 now routes more to A15 (70 to 90 in 100); A10 appears more often (3 to about 12 in 100 traces, from 6 to 25 supporting traces). [OCC001, POS001, REL001, DIR001, DIR002, OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening qualified 58 control-flow items where about 0.76 would be expected if nothing had changed — roughly 76 times the chance expectation — so the volume of flagged differences cannot be explained by random re-splits of a stable process. [DIR006, LAG023, DIR005, LAG013, REL008, DIR007, POS001, OCC002, POS003, LAG028, REL005, LAG031, REL004, LAG018, REL002, DIR009, DIR008, LAG026, LAG022, POS002, DIR002, LAG020, LAG014, LAG001, POS007, LAG024, LAG017, LAG019, LAG005, OCC001, LAG016, REL009, REL003, DIR004, LAG003, DIR001, LAG006, LAG007, LAG002, LAG030, DIR003, POS005, LAG025, POS004, POS006, LAG009, LAG021, REL006, LAG015, LAG011, LAG004, REL001, REL007, LAG029, LAG008, LAG010, LAG027, LAG012]\n\nThe evidence supports the hypothesis that the block A31, A22, A20, A23, A24, A26 and A25 changed from mixed, partly unordered execution with several alternative routings into a fixed sequence A31 → A22 → A20 → A23 → A24 → A26 → A25 that closes into A32: in the earlier window these activities appeared in both orders in similar shares (for example A24 preceded A23 in 88 in 100 traces) and split their outgoing transitions across several successors, while in the later window each pair follows the chain order in about 98–99 in 100 traces and each activity leads almost exclusively to the next chain step. [REL007, REL002, REL009, REL008, REL004, REL005, REL003, REL006, DIR009, DIR005, DIR006, DIR007, DIR004, DIR003, DIR008]\n\nThe change is internally consistent across indicator types: every lag distribution now concentrates at the chain's step distance, the former direct shortcut A31→A24 (distance 1 in half of the earlier observations) is replaced by the four-step route through the chain, and all five reverse-order pairs survive in only about 1 trace each. This coherence between directional, relational and distance evidence, together with the item count far above the chance expectation, makes sampling variation an unlikely explanation. [LAG029, LAG031, LAG005, LAG020, LAG028, LAG013, LAG016, LAG017, LAG021, LAG023, LAG030]\n\nCompeting explanation the evidence cannot rule out: the later window may simply be dominated by one previously rare execution variant of an unchanged process rather than reflect a modified process, since the windows are finite samples; the evidence also shows ordering and routing behaviour only, not why it changed, and position/lag indicators use event positions, so no clock-time statement is implied. [POS004, LAG029]\n\nOther differences: A08 participates much less often (32 to 13 in 100 traces) at a later average position, with more dispersed successors and less ordered co-occurrence with A32; A10 participates more often (3 to about 12 in 100 traces, on few observations). These sit outside the re-sequencing hypothesis. [OCC001, POS001, DIR001, DIR002, REL001, OCC002]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

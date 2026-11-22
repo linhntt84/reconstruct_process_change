@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_470e646749fcf1ee.json",
+  "evidence_sha256": "49138e9bc9ed72c58ad35c3e32fa66d3e2166456464edc8a52ca1ae14e30b812",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:27:35.905092+00:00",
+  "finished_at_utc": "2026-11-14T14:29:21.467287+00:00",
+  "latency_seconds": 105.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17864,
+    "prompt_tokens": 32681,
+    "total_tokens": 50545,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16266,
+      "text_tokens": 1598
+    },
+    "cost": 0.01383415
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53127,
+  "text": "### Observed differences\n\n- In both windows the process starts with A03 in essentially every trace and A04 also occurs in every trace; what changes is the route between them. Before, A03 passed flow directly to A04 in about 46 in 100 of its outgoing transitions (and to A08 in about 52 in 100); in the later window that direct handover is nearly gone (about 1 in 100) and A03 instead feeds A02 in about 46 in 100, while A08 keeps about 52 in 100 [DIR003, POS003].\n- A02, A12 and A13 were not observed in any earlier trace; in the later window A02 appears in about 48 in 100 traces, A13 in about 48 in 100 (the same share as A02) and A12 in about 26 in 100 [OCC002, OCC010, OCC011].\n- In the later window A02's outgoing flow goes to A12 (about 54 in 100) and A13 (about 45 in 100); A12 leads back to A02 in about 99 in 100 of its transitions and A13 leads to A04 in about 99 in 100, so A02 can repeat via A12 before exiting through A13 into A04 [DIR002, DIR009, DIR010].\n- The distance from A03 to A04 stretched: pairs only 1–2 steps apart made up about 25 in 100 of observations before versus about 2 in 100 after, while lags of 3–5 steps grew from about 45 in 100 to about 78 in 100; A04 still occurs in every trace but sits later (median event position about 0.58 before vs 0.75 after) and repeats somewhat less often (mean about 2.1 vs 1.9 occurrences per trace) [LAG001, POS004, OCC003].\n- A08's self-repetition stopped: before, about 43 in 100 of A08's outgoing transitions looped back to A08 itself; afterwards that share is zero and A08 sends about 44 in 100 of its transitions to the previously unobserved A09, which always returns to A08 (A09 occurs in about 26 in 100 traces) [DIR006, DIR007, OCC007, LAG008].\n- A01 disappeared: before it appeared in about 20 in 100 traces, always preceded by A14 and followed by A04; in the later window A01 is unobserved and A14 leads directly to A04, typically at the immediately next event position (lag 1 in about 41 in 100 of observed pairs, versus lag 2 in about 43 in 100 before) [OCC001, DIR001, DIR011, LAG010, REL008].\n- Smaller shifts: A05, A07, A11 and A14 each occur a few percentage points less often (for example A11 in about 25 in 100 traces before vs 16 in 100 after) [OCC004, OCC005, OCC009, OCC012].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window a new branch is executed between the start activity A03 and A04: A03 hands over to A02 in about 46 in 100 of its outgoing transitions, A02 either repeats through A12 back to itself or exits via A13 into A04, and the former direct A03 → A04 transition (about 46 in 100 before) is essentially gone (about 1 in 100). [DIR003, DIR002, DIR009, DIR010]\n\nThe rerouting is observed directly in the transition profiles of A03, A02, A12 and A13, and it is consistent across indicators: the three previously unobserved activities rise to about 48, 26 and 48 in 100 traces; the A03 → A04 lag stretches while A04 still occurs in every trace; and the relation items show A02 co-occurring with A03 in about 48 in 100 later traces (after it), with A13 in about 48 in 100 (A02 first) and with A12 in about 26 in 100 (interleaved, consistent with the repetition), while A02 and A08 never share a trace, matching their role as alternative successors of A03. [OCC002, OCC010, OCC011, LAG001, POS004, REL009, REL014, REL013, REL011]\n\nLimitations: zero participation in the earlier window shows only that A02, A12 and A13 were not observed there, so an extremely rare pre-existing path cannot be excluded; and two aggregate windows cannot distinguish a modified flow from a shift in the mix of coexisting process variants. [OCC002, OCC010, OCC011]\n\nOther differences:\n- A08's former self-loop is replaced by a loop through the new activity A09 (A08 → A09 → A08). [DIR006, DIR007, LAG008]\n- A01 is no longer observed; A14, which previously reached A04 through A01, now leads directly to A04. [OCC001, DIR001, DIR011, LAG010]\n- A04 repeats slightly less often, and A05, A07, A11 and A14 each occur marginally less often; these are small changes of a few percentage points. [OCC003, OCC004, OCC005, OCC009, OCC012]",
+  "case_id": "case_470e646749fcf1ee",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

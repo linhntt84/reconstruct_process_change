@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the later window, activities A19, A20 and A25 have practically disappeared: A19 ran in about 36 in 100 traces before versus about 0 in 100 after (73 of 200 traces versus 1), A20 in about 31 in 100 versus none (62 versus 0), and A25 in about 35 in 100 versus none (70 versus 0). [OCC001, OCC002, OCC003]
+- In the earlier window, A41 was followed by A19, A20 or A25 in about 86 in 100 of its outgoing transitions (roughly 29%, 26% and 32% respectively); in the later window, A41 is followed directly by A26 in about 86 in 100 of its transitions. [DIR005]
+- The gap between A41 and A26 shrank by one step: before, A26 followed A41 two positions later in about 85 in 100 cases (three positions in about 15); after, it follows immediately in about 86 in 100 cases. [LAG001]
+- The ordering relations that placed A19, A20 or A25 between A41 and A26 or A31 have vanished: for example, A41 before A19 held in about 37 in 100 traces before and none after, A20 before A26 in about 30 in 100 before and none after, and A25 before A26 in about 35 in 100 before and none after; A26 and A31 now occur without any of the three in nearly all traces. [REL004, REL006, REL009, REL011, REL013, REL014]
+- Routing out of A21 shifted: A24 rose from about 14% to about 35% of A21's outgoing transitions, while A31 fell from about 54% to about 38%. [DIR003]
+- By event position, A26 now occurs slightly earlier in the trace (mean relative position about 0.39 to 0.37) and A41 slightly later (about 0.32 to 0.33); both still appear in every trace. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the alternative step between A41 and A26 — previously one of A19, A20 or A25, chosen in about 86 in 100 traces — is skipped, so that A41 connects directly to A26. This rests on direct and mutually consistent signs: the near-total participation collapse of all three activities, the redirection of A41's outgoing transitions from these three activities to A26 at almost the same overall rate, and the relational and lag evidence showing the two-step A41→intermediate→A26 sequence become a direct A41→A26 succession. Nearly thirty indicators qualify in total, far more than the fewer than one expected by chance under an unchanged process, and they converge on this single behavioural difference. [OCC001, OCC002, OCC003, DIR005, LAG001, REL006, REL013]
+
+Limitations remain. The after-window profile for A19 rests on a single trace, so the one observed A19→A12 transition should not be read as a new route. The evidence cannot distinguish a structural removal of the block from a drastic drop in how often it is selected, since 0–1 occurrences in 200 traces still leave room for a small residual probability. An important competing explanation is a shift in the mix of process variants between the two finite samples — A19, A20 and A25 could belong to a variant that was common in the earlier window and rare in the later one — although a fall from roughly 62–73 of 200 traces to 0–1 is hard to attribute to sampling alone. Finally, the routing shift at A21 may be an independent change or a side effect of the same difference; the evidence does not separate these. [DIR001, DIR003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_6d3b1a39e446ce7d.json",
+  "evidence_sha256": "fb207499ab01b8d51c98db0aa6c6b71474d956199d79d5c26e0dd7988e797242",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:27:12.043172+00:00",
+  "finished_at_utc": "2026-11-15T13:31:52.693416+00:00",
+  "latency_seconds": 280.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 39027,
+    "prompt_tokens": 75975,
+    "total_tokens": 115002,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36162,
+      "text_tokens": 2865
+    },
+    "cost": 0.03090975
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 119029,
+  "text": "### Observed differences\n\n- Four activities became mandatory. In the earlier window, A36, A37 and A42 each ran in about 46–47 in 100 traces and A27 in about 55 in 100; in the later window, each of the four runs in essentially every trace (about 99–100 in 100), essentially once per trace. [OCC027, OCC035, OCC036, OCC040]\n- A27 and the group A36/A37/A42 were alternatives before and are executed together now. Earlier, a trace contained either A27 (about 55 in 100) or all three group members together (about 46 in 100, in no fixed internal order); both in one trace occurred in only about 1 in 100 cases. In the later window, A27 and all three group members co-occur in about 99–100 in 100 traces. [REL016, REL017, REL018, REL026, REL027, REL028]\n- The group changed its place in the sequence. Earlier it ran after A26 and before A31 (A26 preceded A36 in every joint occurrence; A36 preceded A31 in about 99 in 100 of them); in the later window it runs between A25 and A28 (A25 precedes A36 in about 98 in 100; A36 precedes A28 in about 98 in 100), and its order towards A26 flipped: A36 now precedes A26 in about 99 in 100 joint occurrences. [REL005, REL011, REL020, REL023]\n- The directly-follows profiles changed at exactly the group's boundaries. A25's dominant successor changed from A28 (about 96 in 100 outgoing transitions) to A36, A37 or A42 (about 31–34 in 100 each); A26's successor changed from a mix (A27 about 54 in 100, the group about 45 in 100) to A27 alone (about 98 in 100); and A36, A37 and A42, which previously led to A31 in about 29–34 in 100 of their outgoing transitions, now lead to A28 or to another group member. [DIR025, DIR026, DIR036, DIR037, DIR042]\n- Step distances and event positions match: A25 reached A28 one step later in about 96 in 100 traces before, and four (occasionally five) steps later in about 92 in 100 after; A26 reached A31 two steps later in about 54 and four steps later in about 42 in 100 traces before, and uniformly two steps (about 97 in 100) after. The group's mean event positions moved earlier (about 0.59 to about 0.41 of the trace), while A27's and A28's moved later (about 0.58 to 0.63 and 0.40 to 0.46). [LAG001, LAG004, POS003, POS004, POS006, POS007, POS008]\n- Orderings not involving the group or A27 stayed stable: A25 before A28, A28 before A26, A26 before A27 and A27 before A31 hold in both windows in about 98–99 in 100 joint occurrences. [REL003, REL008, REL009, REL015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the group of three activities A36, A37 and A42 is executed in essentially every trace between A25 and A28, whereas in the earlier window it ran between A26 and A31 in about 46 in 100 cases as an alternative to A27; A27, which earlier ran between A26 and A31 in the remaining about 54 in 100 cases, is now also executed in essentially every trace there. In short, the earlier either/or choice after A26 disappeared: the later window runs A25, then the group in varying internal order, then A28, and later A26 followed by A27 and A31, in essentially every trace. [OCC027, OCC035, OCC036, OCC040, REL016, REL005, REL011, REL020, REL023, DIR025, DIR026, LAG001, LAG004]\n\nThe support is direct and consistent: the participation rise, the co-occurrence flip from about 1 in 100 to universal, successor changes sitting exactly at the group's entry and exit points, and step-distance shifts of the size that inserting three activities before A28 and removing them from after A26 would produce, all describe the same difference, and each core item exceeds the differences seen in about 995 in 1000 random re-splits of the two windows. [OCC035, OCC040, REL016, DIR025, DIR026, DIR036, LAG001, LAG004, POS006]\n\nLimitations: the hypothesis covers the group as a block, since A36, A37 and A42 follow one another in no fixed order in either window (each internal order in roughly half of the joint occurrences); and an important competing explanation the evidence cannot rule out concerns the smaller shifts elsewhere, which could be knock-on effects of the restructured sequence rather than independent changes — or sampling variation, since participation differences of about 0.05–0.09 are only moderately unusual under random re-splits of two 200-trace windows. [REL026, OCC020, OCC021, OCC046, OCC047]\n\nOther differences: outside the restructured region, trace participation rose for A02, A06, A08, A17, A22 and A23 (by about 0.05–0.08) and fell for A20, A21, A24, A48 and A49 (by about 0.04–0.07, with A44's mean occurrences per trace falling by about 0.12), and routing among A21–A24 shifted towards A23 and A32; these shifts are not part of the main hypothesis. [OCC002, OCC006, OCC008, OCC017, OCC020, OCC021, OCC022, OCC023, OCC024, OCC042, OCC046, OCC047, DIR021, DIR022, DIR023]",
+  "case_id": "case_6d3b1a39e446ce7d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_96cbe658a1ec3300.json",
+  "evidence_sha256": "6046dfd4d42b7e19ff4af05677fe8a304190a70390a8ef1284ee3c74c8e16f34",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:56:00.267757+00:00",
+  "finished_at_utc": "2026-11-14T12:57:58.287630+00:00",
+  "latency_seconds": 118.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19585,
+    "prompt_tokens": 11740,
+    "total_tokens": 31325,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18050,
+      "text_tokens": 1535
+    },
+    "cost": 0.0115535
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65754,
+  "text": "### Observed differences\n\n- Routing out of A25 was redirected: in the earlier window about 98 in 100 of A25's observed outgoing transitions went to A27; in the later window A27 receives about 0.5 in 100, while A36, A41 and A35 take roughly a third each (about 31–33 in 100). [DIR001]\n- Routing out of A26 changed in the complementary way: earlier, A26's transitions split across A41 (about 38 in 100), A35 (about 33) and A36 (about 28); later, about 98 in 100 go to A30. [DIR002]\n- The group A35/A36/A41 still cycles internally in both windows (each member sends about 27–38 in 100 of its transitions to each of the other two), but its exit changed: earlier each member passed about 28–34 in 100 on to A30; later A30 is at most a marginal target (0 to about 0.5 in 100) and each member sends about 31–33 in 100 to A27 instead. [DIR003, DIR004, DIR005]\n- Step distances confirm this: earlier A27 followed A25 immediately (gap of one event in about 98–99 of 100 cases); later it follows A25 four to five steps later in about 99 of 100. Earlier A30 followed A26 four to five steps later in all observed cases; later it immediately follows A26 in about 98–99 of 100. [LAG001, LAG003]\n- Co-occurrence within five steps flipped accordingly: A26 followed by A35, A36 or A41 appears in about 200 of 200 earlier traces but only 1–2 of 200 later traces; A35, A36 or A41 followed by A30 falls from about 200 of 200 to 1 of 200; A25 followed by A35 and A35 followed by A27 rise from 1 of 200 to 199 of 200. The gap distributions of these pairs rest on 1–2 observations in one window, so only the presence-or-absence flip was used. [LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n- Event positions (relative position in the case, not clock time) moved consistently: A35, A36 and A41 each occur earlier, mean position from about 0.58 to about 0.42; A27 moved later, from about 0.38 to about 0.47, and A26 from about 0.53 to about 0.62. [POS003, POS004, POS005, POS002, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the connections around the A35/A36/A41 group were rewired and the group moved earlier in the case. In the earlier window, A25 led directly to A27 while A26 fed the group, which ended in A30 four to five steps after A26; in the later window, A25 feeds the group (about a third of its transitions to each member), the group ends in A27 four to five steps after A25, and A26 leads directly to A30. In effect, A27 and A30 exchanged their places relative to A25 and A26, and the group's mean event position moved from about 0.58 to about 0.42 while A26 and A27 moved later. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG003, POS001, POS002, POS003, POS004, POS005]\n\nThe change is shown directly by successor profiles built on about 200 outgoing transitions per source, by distance distributions with about 200 paired observations per window (A25–A27, A26–A30), and by consistent position shifts across all five activities, while the group's internal cycling stays essentially unchanged, locating the difference at its entry, exit and placement. Because transitions that earlier carried roughly 28–98 in 100 of a source's outgoing edges are later unobserved or marginal while new edges appear, this is a replacement of paths rather than a shift in how often existing alternatives are taken. As screening context, 20 items qualified against roughly 0.6 expected by chance for the 120 tested control-flow units, and every item's difference exceeds about 995 of 1,000 random re-splits, so the pattern as a whole is not what an unchanged process typically produces. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: both windows are aggregate samples, so the evidence cannot distinguish a rerouting applied within individual cases from a changed mix of two complete routing patterns; positions are event positions rather than clock time, A25 and A30 have no measured positions, and there are no relation items, so the full end-to-end sequence (for example, the relative order of A25 and A26) remains unestablished. [LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, POS001, POS002, POS003, POS004, POS005]\n\nOther differences: none beyond noise-level residuals, such as roughly 0.5 in 100 transitions from A25 or A26 to assorted other activities in both windows. [DIR001, DIR002]",
+  "case_id": "case_96cbe658a1ec3300",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

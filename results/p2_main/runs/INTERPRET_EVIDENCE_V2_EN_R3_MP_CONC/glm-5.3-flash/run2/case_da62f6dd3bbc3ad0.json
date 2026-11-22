@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_da62f6dd3bbc3ad0.json",
+  "evidence_sha256": "333c4597a99899b7461dcf7e53eadebf3751274033f18a5c96a61b9112788e6b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:16:31.118602+00:00",
+  "finished_at_utc": "2026-11-15T01:18:27.743601+00:00",
+  "latency_seconds": 116.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15615,
+    "prompt_tokens": 11438,
+    "total_tokens": 27053,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14348,
+      "text_tokens": 1267
+    },
+    "cost": 0.0095232
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50132,
+  "text": "### Observed differences\n\n- A middle block of activities became universal. In the earlier window, A14 and A15 each appeared in about 52 in 100 traces; in the later window they appear in every trace (200 of 200). A20 and A21 rose from about 33 to about 53 in 100 traces, and A22 from about 20 to about 48 in 100; none of these activities repeats within a trace in either window [OCC001, OCC002, OCC003, OCC004, OCC005].\n\n- The direct step from A38 to A23 disappeared. Earlier, A38's observed outgoing transitions split between A23 (about 48 in 100) and A14 (about 52 in 100), and A23 immediately followed A38 in about 48 in 100 traces; in the later window every observed transition of A38 goes to A14, and A23 always follows four to five positions later instead of immediately [DIR001, LAG001].\n\n- The block stopped being skipped as a whole. Earlier, A23 appeared without A14 in about 48 in 100 traces, and A38 without A14 in about 48 in 100; in the later window A14 co-occurs with both in every trace, with A38 before A14 and A14 before A23. A14 and A15, jointly absent in about 48 in 100 traces earlier, now always appear together, A14 first [REL001, REL005, REL006].\n\n- The internal order of the block is stable across windows: A14 precedes the alternative activities, A20, A21 and A22 each precede A15, and A15 precedes A23; A20 and A21 occur in exactly the same traces, and the A20/A21 pair and A22 never occur together, in both windows [REL002, REL003, REL004, REL007, REL008, REL009, REL010, REL012, REL013]. Earlier, neither alternative was present in about 48 in 100 traces (the skipped cases); in the later window exactly one alternative is present in every trace. Within the cases that run the block, the A20+A21 branch held about 63 in 100 earlier versus about 53 in 100 later, A22 about 37 versus about 47 [OCC003, OCC004, OCC005, REL012, REL013].\n\n- Relative positions shifted only slightly: A23's median position moved from about 0.41 to about 0.45 of the trace length and A38's from about 0.32 to about 0.29, consistent with the block now always lying between them [POS001, POS002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the bypass from A38 directly to A23 is no longer taken: in the earlier window about 95 of 200 cases went from A38 straight to A23, executing neither A14, A15 nor the alternative activities, while in the later window no case does (0 of 200). Every case now runs A38, then A14, then exactly one of two alternatives — A20 together with A21, or A22 alone — then A15 and finally A23. A14, A15, A20, A21 and A22 thus changed from optional (present in roughly half or fewer of the cases) to executed in every case, while the choice between the two alternatives remains, at about 53 vs 47 in 100 (A20+A21 vs A22) in the later window against about 63 vs 37 within block-cases earlier [DIR001, LAG001, OCC001, OCC002, OCC003, OCC004, OCC005, REL005, REL006, REL012, REL013].\n\nThe change is shown directly, not only through frequencies: the successor profile of A38 changed from a split between A23 and A14 to A14 only, and the immediate A38–A23 succession fell from about 48 in 100 traces to none. Participation, co-occurrence and ordering items all fit this single structure, and the volume of qualifying items (24 control-flow items against roughly 0.42 expected for an unchanged process, each difference larger than about 995 of 1,000 random re-splits) rules out sampling variation as an explanation of the pattern as a whole [DIR001, LAG001, OCC001, OCC002, REL001, REL005, REL006].\n\nLimitation: the evidence cannot distinguish a change in the routing itself (the skip path removed, or its condition no longer true) from a shift in the mix of cases entering the process in which only full-block case types appear in the later sample; both would produce these traces. The evidence also covers only the relations among these seven activities, leaving the rest of the process unobserved here [DIR001, LAG001, OCC001, REL005].",
+  "case_id": "case_da62f6dd3bbc3ad0",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

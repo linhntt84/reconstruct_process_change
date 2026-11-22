@@ -1,0 +1,21 @@
+### Observed differences
+
+- **Ten activities went from optional to near-universal.** In the earlier window, A28, A29, A30, A32 and A33 each appeared in about 48 of 100 traces, and A34, A35, A36, A37 and A38 in about 52 of 100; in the later window, each of the ten appears in about 98–100 of 100 traces. Each occurs at most once per trace in both windows (mean occurrences equal participation), so this is participation, not repetition. [OCC001-OCC010]
+
+- **Two activity sets switched from being alternatives to being executed together.** Earlier, cross-set pairs such as A28 with A34 or A33 with A38 never shared a trace: one member was present in roughly 48–52 of 100 cases and the other in the remaining cases, with co-occurrence zero, so each earlier case contained exactly one of the two sets. In the later window, such pairs co-occur in about 97–98 of 100 traces, with the A28/A29/A30/A32/A33 member before the A34–A38 member in essentially all of those cases. [REL025-REL029, REL033-REL037, REL040-REL044, REL046-REL055]
+
+- **Within each set, activities moved from "sometimes together" to "always together" without gaining a fixed order in either window.** For example, A28 and A29 co-occurred in about 48 of 100 earlier traces with both orders in similar shares (about 20 vs 28 in 100), and in about 99–100 of 100 later traces, still in both orders (about 50 vs 50); pairs within A34–A38 show the same pattern (co-occurrence about 52 of 100 earlier, 98 of 100 later). [REL021-REL024, REL030-REL032, REL038-REL039, REL045, REL056-REL065]
+
+- **The surrounding activities kept their roles, with one routing change.** A25 preceded each of the ten activities in both windows and A26 followed them in both windows. In the later window, A25's outgoing transitions go almost entirely to A28, A29, A30, A32 and A33 (about 99 in 100, versus a spread over both sets earlier), and direct transitions from A28, A30 or A32 to A26 — about 17–28 in 100 of their outgoing transitions earlier — have practically disappeared. [REL001-REL020, DIR001-DIR004]
+
+- **Relative positions shifted consistently with this pattern.** A25 now occurs earlier in the case (mean relative position about 0.64 in the earlier window vs 0.55 in the later), the A28/A29/A30/A32/A33 activities earlier (about 0.72–0.74 vs 0.63), the A34–A38 activities later (about 0.72–0.73 vs 0.76–0.77), and A26 later (about 0.82 vs 0.84). [POS001-POS012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two five-activity sets that were previously mutually exclusive alternatives became jointly executed and sequenced. In the earlier window, a case ran either A28, A29, A30, A32 and A33 (about 48 in 100 cases) or A34, A35, A36, A37 and A38 (about 52 in 100), never both, framed by A25 in front and A26 behind; in the later window, both sets run in the same case, the first set before the second, with no fixed order inside either set. [REL025, REL033, REL040, REL046, REL051, REL021, REL056, OCC001, OCC006]
+
+This is shown directly by relational evidence with full support in both windows (cross-set co-occurrence rising from zero to about 97–98 in 100 with a consistent order), and it is corroborated by the participation, successor and position items; because cross-set co-occurrence was zero earlier, this is a participation and structure change, not a mere shift in how often existing paths are taken. The volume of qualified items (98 against roughly 1 expected for an unchanged process) is also far beyond what random re-splits of a stable process produce. [REL025-REL029, OCC001-OCC010, DIR001, DIR002, POS003, POS008]
+
+Limitations: the evidence consists of pairwise relations and a few successor profiles, so it cannot show whether anything runs between the two sets or before A25 and after A26, and about 1–2 in 100 later cases still resemble the old exclusive behaviour; the lag items rest on only 1–4 later observations and were not relied on. A competing explanation the evidence cannot fully rule out is that the ten activities became individually mandatory under a pairwise first-set-before-second constraint rather than two contiguous blocks being sequenced — the available relations cannot separate these two readings. [REL025, OCC001, LAG001, LAG006, LAG007]

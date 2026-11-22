@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "07a9da6191604da4fcdd233f1d8ff0c0f7cbd191f21a795375f169a3b1f9e258",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:14:08.255047+00:00",
+  "finished_at_utc": "2026-11-15T06:14:51.551593+00:00",
+  "latency_seconds": 43.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6360,
+    "prompt_tokens": 7895,
+    "total_tokens": 14255,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5481,
+      "text_tokens": 879
+    },
+    "cost": 0.00436425
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21116,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A36 and A21, A36's only observed outgoing transition was to A21, and A21 followed A36 one position later in 100 in 100 cases. [DIR004, LAG001]\n- In the later window, A36 leads to A14 in about 37 in 100 of its outgoing transitions, to A20 in about 34 in 100 and to A15 in about 29 in 100, while the direct transition to A21 remains in only about 1 in 100. [DIR004]\n- A14, A15 and A20 were not observed in any of the 200 earlier traces; in the later window A14 appears in about 37 in 100 traces, A20 in about 34 in 100 and A15 in about 29 in 100, each at most once per trace. [OCC001, OCC002, OCC003]\n- The three activities are mutually exclusive alternatives in the later window: no trace contains two of them together, and roughly 30–38 in 100 traces contain neither member of any given pair. [REL001, REL002, REL005]\n- Whenever one of the three appears, it runs after A36 and before A21 and its only observed outgoing transition is to A21; accordingly, the distance from A36 to A21 shifted from one position (100 in 100 cases earlier) to two positions (99 in 100 cases later). [DIR001, DIR002, DIR003, REL003, REL004, REL006, REL007, REL008, REL009, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, a step is now executed between A36 and A21: in nearly every trace exactly one of three mutually exclusive activities — A14 (about 37 in 100 traces), A20 (about 34 in 100) or A15 (about 29 in 100) — runs after A36 and before A21, whereas earlier A36 was directly followed by A21 in all traces. [DIR004, REL003, REL004, LAG001]\n\nThis rests on direct and consistent signs: the occurrence items show the three activities only in the later window with substantial participation (57–74 of 200 traces each); the direction items show A36's outgoing flow redistributed from A21 to exactly these three activities and each of them leading only to A21; the relation items place each new activity after A36 and before A21 in every trace where it occurs; and the lag item shows the A36-to-A21 distance moving from one to two positions. The 17 qualifying items are many times the roughly 0.34 expected by chance across the 69 tested units, so the set as a whole is not what an unchanged process typically produces. [OCC001, DIR004, REL003, LAG001]\n\nLimitations: zero participation in the earlier window only means A14, A15 and A20 were not observed there, so the evidence cannot show whether they are entirely new steps or were previously executed somewhere outside the sampled behaviour. All items describe one underlying difference, so they are not independent confirmations, and whether the choice among the three (about 37/34/29) follows a decision rule cannot be determined from this evidence. A competing explanation the evidence cannot fully exclude is a rare variant that happened to be absent from the earlier 200-trace sample, although the consistency of the ordering and lag evidence makes a pure sampling artefact unlikely. [OCC001, OCC002, OCC003]\n\nOther differences: none — every qualifying item concerns the same behaviour around A36, A21 and the three activities above. [DIR004, LAG001]",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

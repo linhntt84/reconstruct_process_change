@@ -1,0 +1,23 @@
+### Observed differences
+
+- In the earlier window, A25 was followed by the three-activity group A36/A37/A42 — its outgoing flow split about 35% to A42, 34% to A36 and 31% to A37 — and A28 followed about four steps later in about 94 of 100 pairs. In the later window, A25 leads almost exclusively to A28 (about 99 of 100 outgoing transitions), typically immediately (one-step gap in about 99 of 100 pairs). [DIR001, LAG001]
+
+- The group A36/A37/A42 executed together in essentially every earlier trace but in only about 47 of 100 later traces; each member's observed occurrences halved (roughly 200 down to about 95 outgoing transitions). Its internal order was unfixed in both windows. [POS006, POS007, POS008, DIR003, DIR004, DIR005, REL020, REL021, REL022]
+
+- The group moved downstream: before, it preceded A26 in about 98–99 of 100 traces and preceded A28 in about 99–100 of 100; in the later window it follows A26 (about 46–47 of 100 traces) and follows A28 (about 46–47 of 100). Its members now send about 28–36% of their outgoing flow to A31, where they previously sent about 32–33% to A28; A31 still runs after the group when both appear, but now appears without it in about 53 of 100 traces. The group's mean event position moved from about 0.40 to about 0.58. [REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019, DIR003, DIR004, DIR005, POS006, POS007, POS008]
+
+- A27 became skippable and an alternative to the group: it appeared in all earlier traces but in about 54 of 100 later traces, and in the later window it co-occurs with A36, A37 or A42 in at most about 1 of 100 traces (before: all). A26 now routes about 52 of 100 outgoing transitions to A27 and about 14–17 to each group member, versus about 97.5 of 100 to A27 before. [POS003, REL011, REL012, REL013, DIR002, REL001, REL005, REL009]
+
+- A26 and A28 occur earlier in the trace (mean event position about 0.60 to 0.54 and 0.45 to 0.39); the A26→A31 distance, previously almost always two steps (about 97 of 100), is now two steps in about 51 of 100 and four steps in about 46 of 100 pairs, matching the A27 branch versus the group branch. [POS002, POS004, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports this possibility: the segment between A25 and A28 was restructured, and the group A36/A37/A42 became a conditional alternative to A27. In the earlier window every trace ran A25, then the group (in no fixed internal order), then A28, and later A26, A27, A31 — all mandatory. In the later window, A25 passes directly to A28; the group, when it runs (about 47 of 100 traces), runs between A26 and A31, and traces take either A26 → A27 → A31 (about 53 of 100) or A26 → group → A31 (about 47 of 100), with A27 and the group almost never both present. [DIR001, LAG001, REL006, REL007, REL008, REL014, REL015, REL016, REL011, REL012, REL013, DIR002, DIR003, DIR004, DIR005, LAG005, POS003, POS006, POS007, POS008]
+
+The screening expected about 0.5 qualifying items from 100 tested units without a change, yet 46 control-flow items qualified — far beyond what an unchanged process produces. The relocation is shown directly by the reversed relative order of the group with A26 and A28, the successor change at A25, and the group members' exit shifting from A28 to A31; the alternative structure is shown by the near-zero co-occurrence of A27 with the group and by the two- versus four-step A26→A31 distances matching the two branches. [DIR001, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019, REL011, REL012, REL013, LAG001, LAG005]
+
+Limitations: the evidence cannot distinguish a relocated fragment from an early fragment that stopped running plus a separately added downstream one, nor say why one branch is taken in a given trace. Several gap items (A25 or A26 paired with a group member) rest on a single observation and were not used as support, and because DIR, POS, REL and LAG items describe overlapping trace behaviour, their agreement is not independent confirmation. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011]
+
+Other differences: A25's mean event position moved slightly later (about 0.34 to 0.36) and A31's slightly earlier (about 0.65 to 0.63); small new transitions of roughly 1% each appeared from A25 to A12 and A24, and from the group members to A12, A22, A33 and A08. [POS001, POS005, DIR001, DIR003, DIR004, DIR005]

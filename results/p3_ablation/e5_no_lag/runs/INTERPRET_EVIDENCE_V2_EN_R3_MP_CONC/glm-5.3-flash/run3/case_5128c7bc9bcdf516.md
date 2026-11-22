@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, each of the activities A15, A17, A18, A19, A20 and A21 had several successors with no single dominant one: A15 was followed by A18 in about 62 in 100 transitions and by A19, A20 or A21 in about 12–14 in 100 each; A18 was followed by A27 in about 53 in 100 and by A19, A20 or A21 in about 12–19 in 100 each; A19 was followed by A21 in about 56 in 100 and by A17 in about 28 in 100 [DIR001, DIR003, DIR004].
+- In the later window each of these activities has essentially one successor, forming the chain A17 → A15 → A18 → A19 → A21 → A20 → A27: the transitions A15→A18, A17→A15, A18→A19, A19→A21 and A20→A27 each occur in about 99–100 in 100 observed transitions, and A21→A20 in 100 in 100 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006].
+- A26, which earlier continued to A19 or A17 in equal shares (about 50 in 100 each), now always continues to A17 [DIR007].
+- Pairwise order changed accordingly: earlier, A19 preceded A15 in about 75 in 100 traces and A18 in about 88 in 100, A21 preceded A18 in about 70 in 100, and the pairs A15/A21, A17/A19 and A18/A20 appeared in both orders about equally; in the later window A15 precedes A19 in about 995 in 1,000 traces, A18 precedes A19 and A21, and the previously even pairs are fixed, as are A15 before A20 (from about 69 in 100) and A17 before A21 (from about 78 in 100) [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].
+- All eight monitored activity pairs co-occur in 100 in 100 traces in both windows, so participation did not change — only the sequence in which the activities run [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].
+- Event positions moved consistently with the new chain: A15, A17 and A18 occur earlier (mean relative position about 0.64→0.59, 0.59→0.56 and 0.68→0.62), while A19, A21 and A20 occur later (about 0.59→0.65, 0.64→0.68 and 0.68→0.71) [POS001, POS002, POS003, POS004, POS005, POS006].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in ordering constraints among A15, A17, A18, A19, A20 and A21: in the earlier window these activities ran in a largely unfixed order — A19 and A21 typically before A15 and A18, with several pairs appearing in both orders about equally — whereas in the later window a single fixed sequence A17 → A15 → A18 → A19 → A21 → A20 dominates, entered from A26 via A17 (previously an even split between A19 and A17) and continuing from A20 to A27 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL003, REL004, REL006, REL007, REL008].
+
+Supporting signs: 21 items qualified for the control-flow family against about 0.33 expected without change, so the set of differences cannot be explained by chance sampling; the relational evidence shows the ordering change directly, with all eight pairs moving to the same new order (order-share changes of about 0.23–0.88); successor profiles collapsed from three or four alternatives to one; and the position shifts agree in direction. Every item rests on all 200 traces in each window, with empirical strength of about 0.995 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].
+
+Limitations: the DIR, REL and POS items partly describe the same underlying trace behaviour, so they are consistent rather than independent confirmations; and the evidence cannot show whether the earlier mixed order was one flexible flow or a mixture of several coexisting variants.
+
+Other differences: none — all 21 qualifying items involve A15, A17, A18, A19, A20 or A21 and their relative sequencing [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].

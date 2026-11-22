@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_6341f56db4432a6b.json",
+  "evidence_sha256": "1f027ea82459b6861386f18672a6d0667face9e18b730341e1da1744906bf635",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:37:06.626773+00:00",
+  "finished_at_utc": "2026-11-15T04:38:03.759874+00:00",
+  "latency_seconds": 57.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7934,
+    "prompt_tokens": 4749,
+    "total_tokens": 12683,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7092,
+      "text_tokens": 842
+    },
+    "cost": 0.00467935
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27350,
+  "text": "### Observed differences\n\n- The end of the process changed. In the earlier window, A01 closed about 52 in 100 traces (103 of 200) and was always the final event; in the later window A01 was not observed in any of the 200 traces. [OCC001, POS001]\n- A12 kept roughly the same frequency (about 52 in 100 traces before, 51 in 100 after) but changed role: before, every observed exit of A12 led to A01 and A12 sat at about 82% of the trace's length; after, A12 was never followed by another activity and was the last event in all 102 of its traces. [DIR003, POS002]\n- The A01–A12 relationship flipped: before, the two activities co-occurred in about 52 in 100 traces, always with A12 before A01; after, they never co-occurred — A12 appeared alone in about 51 in 100 traces and neither activity appeared in about 49 in 100. [REL001]\n- Further upstream, exits were redistributed between existing successors. A06 previously split its exits between A14 (about 54 in 100) and A10 (about 46 in 100) and now leads only to A10; A14 previously split between A10 (about 54 in 100) and A15 (about 46 in 100) and now leads only to A10. A07 and A13, which previously always led to A05, now route part of their traffic elsewhere: A07 about half to A13, and A13 about half to A05, three in ten to A07 and two in ten to A08. [DIR001, DIR005, DIR002, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the process ending changed: A01, previously the final step, is no longer executed, and traces that used to end with the sequence A12 → A01 now end with A12 itself as the last activity. In the earlier window A01 ran in about 52 in 100 traces, always as the closing event and always preceded by A12; in the later window A01 was not observed at all, while A12 kept its frequency but became the final event in every trace in which it appears, with no observed successor. The screening context makes a chance explanation of the overall picture implausible: 9 items qualified where only about 0.13 would be expected if nothing had changed. The main limitation is that zero participation means A01 was not observed rather than proven removed from the process, and the five agreeing items describe one underlying difference rather than independent confirmations. [OCC001, POS001, DIR003, REL001, POS002]\n\nOther differences: routing between existing activities shifted earlier in the flow. The transitions A06 → A14 and A14 → A15, previously taken in roughly half of the relevant cases, were not observed in the later window, with both A06 and A14 now leading exclusively to A10; and A07/A13, which previously always led to A05, now send part of their traffic to A13, A07 and A08. These redistributions rest on modest supports (roughly 24–71 observed outgoing transitions per activity), and no occurrence data for A05, A08, A10 or A15 is available to check whether those activities themselves changed in frequency. [DIR001, DIR005, DIR002, DIR004]\n\nAn important competing explanation the evidence cannot rule out concerns these routing shifts: with only about two to three dozen observed exits per activity, redistributions of this size can occasionally arise in a stable process, so the redirections around A06, A14, A07 and A13 may partly reflect sampling variation rather than a routing change. [DIR001, DIR005, DIR002, DIR004]",
+  "case_id": "case_6341f56db4432a6b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

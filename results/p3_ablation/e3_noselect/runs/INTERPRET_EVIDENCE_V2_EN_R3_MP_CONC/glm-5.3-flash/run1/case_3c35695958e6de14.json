@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_3c35695958e6de14.json",
+  "evidence_sha256": "260d3a4be8d4245e53f784b9036774d56e9a49fb704cf9813c06f53a138e3223",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:22:46.778301+00:00",
+  "finished_at_utc": "2026-11-14T14:24:50.570810+00:00",
+  "latency_seconds": 123.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20942,
+    "prompt_tokens": 29226,
+    "total_tokens": 50168,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19186,
+      "text_tokens": 1756
+    },
+    "cost": 0.014854899999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61782,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces), while in the later window it appears in every trace, about 2.1 times per trace, repeated within a trace in about 53 in 100 cases, and typically early in the trace (median relative position about 0.25). This difference exceeds that of about 199 of 200 random re-splits of the pooled data. [OCC001, POS001]\n- The paths into the A03/A12 pair were rerouted through A01. Earlier, A02 led directly to A03 (about 49 in 100 of its outgoing transitions) or A12 (about 52 in 100); later, A02 always leads to A01, and A01 in turn leads to A12 (about 53 in 100) or A03 (about 47 in 100). A09 changed the same way: earlier to A12 (about 55 in 100) or A03 (about 45 in 100), later always to A01. [DIR002, DIR001, DIR007]\n- The A08/A13 pair was rewired. Earlier, A08 always led to A13 and A13 returned to A12 (about 54 in 100) or A03 (about 46 in 100); later, A08 leads to A01 (about 51 in 100) or A13 (about 49 in 100), and A13 always returns to A08, so the pair now cycles and re-enters the block via A01. [DIR006, DIR009]\n- Relational profiles confirm this: earlier, A01 never shared a trace with A02, A03, A12, A08 or A09; later, A01 co-occurs with A02, A03 and A12 in every trace (A02 before A01 in about 47 in 100 traces; A01 before A03 and before A12 in about 47 in 100, the rest interleaved or repeated), and with A08 in about 34 and A09 in about 39 in 100 traces. [REL001, REL002, REL005, REL003, REL004]\n- Distances in event positions grew by roughly the number of inserted steps: A02→A03 and A02→A12 moved from gaps of 1–2 steps (immediate succession in about 42–44 in 100 cases) to gaps of 2–3, with gap 1 no longer observed; A09→A03/A12 moved from gaps 1–2 to 2–3; A13→A03/A12 moved from gaps 1–2 to 3–5; A02→A09 moved from gap 4 to gap 5. [LAG001, LAG004, LAG014, LAG017, LAG023, LAG025, LAG003]\n- Side effects on participation: A13 now appears in about 17 in 100 traces, down from about 38 in 100, while A08 occurs nearly twice as often per trace (about 0.5 to about 1.0) with slightly lower participation (about 38 to 34 in 100) and at a somewhat later position (mean relative position about 0.55 to 0.62). [OCC011, POS006, OCC006, POS003]\n- The A03/A12 core itself is stable: both still occur about 2 times per trace in every trace, their mutual order is essentially unchanged (A03 before A12 about 22 in 100, A12 before A03 about 25 in 100, interleaved/repeated about 53 in 100 in both windows), and their branch shares to A04/A05/A06 barely move. [OCC002, OCC010, REL012, DIR003, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new activity, A01, was introduced as a step on the paths into the A03/A12 block: in the later window A02 → A01 → {A03 or A12} replaces the earlier direct A02 → {A03 or A12}, A09 reaches the block only through A01, and the A08/A13 pair now cycles (A08 → A13 → A08) and re-enters the block through A01 instead of A13 returning directly. [OCC001, DIR001, DIR002, DIR007, DIR006, DIR009]\n\nThe rerouting is shown directly by the successor changes, and A01's outgoing edges are exactly the successors A02 and the loop-back activities lost; A01's shift from unobserved to universal (0 to 200 in 200 traces) is far beyond what sampling of a rare variant produces; the gap increases on each affected path match the number of inserted steps; and the stability of the A03/A12 core and its downstream branches argues against a wholesale replacement of the process. [DIR002, DIR007, DIR006, DIR009, OCC001, LAG001, LAG004, LAG014, LAG017, OCC002, OCC010, REL012]\n\nLimitations: the items largely describe one underlying rerouting and are not independent confirmations; zero participation in the earlier window shows only that A01 was not observed, so a pre-existing but extremely rare A01 path cannot be excluded; and the evidence cannot indicate why the change was made. The main competing explanation — that the earlier window merely missed a rare existing A01 variant — is made implausible by the universal later participation but cannot be fully ruled out. [OCC001]\n\nOther differences: participation of A04 and A09 rose from about 32.5 to 39 in 100 traces, A10's occurrences per trace from about 0.4 to about 0.6, and A07's occurrences per trace from about 1.0 to about 1.3 with flat participation; these shifts are modest and sampling variation could contribute. [OCC003, OCC007, OCC008, OCC005]",
+  "case_id": "case_3c35695958e6de14",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

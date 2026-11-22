@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "6c6dc4e86b3764a6416449cdce10d09053b9c744e104f0ecc1df240439c4e729",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:09:27.169028+00:00",
+  "finished_at_utc": "2026-11-14T13:11:10.337868+00:00",
+  "latency_seconds": 103.17,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17640,
+    "prompt_tokens": 14703,
+    "total_tokens": 32343,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15852,
+      "text_tokens": 1788
+    },
+    "cost": 0.01102545
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54768,
+  "text": "### Observed differences\n\n- The six activities A20, A22, A23, A24, A25 and A26 occur together in every trace in both windows (co-occurrence 100 in 100), but their relative order changed from mixed to fixed. In the earlier window several pairs ran in both orders in similar shares — A20/A26 about 49 vs 51 in 100, A22/A24 about 50 vs 50, A23/A25 about 46 vs 53 — while other pairs leaned one way (A24 before A20 in about 75 in 100, A24 before A23 in about 88 in 100, A26 before A23 in about 70 in 100). In the later window every measured pair follows a single direction: A20 before A24, A25 and A26 in about 99 in 100 traces, A22 before A24 and A26 in about 99 in 100, and A23 before A24, A25 and A26 in about 98 in 100 — including reversals, e.g. A23 now precedes A24 in about 98 in 100 where A24 used to precede A23 in about 88 in 100. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- Successor profiles converged from several frequent targets to one each. Earlier, A22 led to A20 (about 55 in 100 of its outgoing transitions), A24 (about 24) and A26 (about 14); A20 led to A23 (about 62) and to A24/A25/A26 (about 12–13 each); A23 led to A32 (about 46), A26 (about 18) and A25 (about 16); A24 led to A26 (about 56) or back to A22 (about 28). Later, each has essentially a single successor: A22 → A20 about 99 in 100, A20 → A23 about 99, A23 → A24 about 99, A24 → A26 about 99, A26 → A25 about 100, and A25 → A32 about 93 (up from about 43). Together these are consistent with one fixed chain, A22 → A20 → A23 → A24 → A26 → A25. [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- Event positions (positions within the trace, not clock time) moved in line with this: A20, A22 and A23 sit slightly earlier in the later window (mean position about 0.64 → 0.59, 0.59 → 0.56 and 0.68 → 0.62 of the trace) while A24, A25 and A26 sit slightly later (about 0.59 → 0.65, 0.68 → 0.70, 0.64 → 0.68); A24's mean position moved from ahead of A20's to behind it. [POS002, POS003, POS004, POS005, POS006, POS007]\n- Separately, A08 takes part in far fewer traces later (about 13 in 100, down from about 32), appears later within the traces where it occurs (median position about 0.14 → 0.18, upper quartile about 0.15 → 0.44), and co-occurs with A32 less often (about 13 vs 32 in 100); its outgoing transitions, earlier almost all towards A15 (about 91 in 100), later spread over many targets, though that later profile rests on only about 27 observed transitions. A10 appears in more traces later (about 12–13 vs 3 in 100), but only 6 earlier traces contain A10, so this rests on few observations. [OCC001, OCC002, POS001, REL001, DIR001, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints among A20, A22, A23, A24, A25 and A26 changed: in the earlier window these six activities were executed together in every trace but without a fixed order between many pairs (with some pairs usually in the opposite direction), while in the later window they follow one fixed sequence, consistent with A22 → A20 → A23 → A24 → A26 → A25. This is a change in ordering constraints, not a shift in how often existing paths are taken or an exchange of positions, since all six activities occur in 100 in 100 traces in both windows and their co-occurrence is unchanged. The support is direct and consistent: eight relational items each move to a single order with all 200 traces behind them in both windows, six successor profiles converge to one dominant successor each (about 93–100 in 100 of outgoing transitions), and the position shifts match the direction of the new sequence. The volume of qualifying items (27, against roughly 0.5 expected if nothing had changed) is far beyond what an unchanged process typically produces. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, POS002, POS003, POS004, POS005, POS006, POS007, OCC001, OCC002, DIR001, DIR002, DIR009, POS001, POS007]\n\nLimitations: the relational items do not cover every pair (for example A22 versus A23 is not directly observed), so the exact total order is partly inferred from successor shares, which are shares of outgoing transitions rather than of cases. A competing explanation the evidence cannot rule out is that the earlier mixed orders reflect a mixture of several fixed case-level orderings rather than one genuinely unordered behaviour; either way, the later window shows a single fixed order. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nOther differences: A08 participates in far fewer traces in the later window (about 13 vs 32 in 100) and, when it occurs, sits later in the trace and co-occurs with A32 less often; A10 participates in more traces (about 12–13 vs 3 in 100, based on only 6 earlier traces). These participation changes are not part of the ordering hypothesis above. [OCC001, OCC002, POS001, REL001, DIR001, DIR002]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

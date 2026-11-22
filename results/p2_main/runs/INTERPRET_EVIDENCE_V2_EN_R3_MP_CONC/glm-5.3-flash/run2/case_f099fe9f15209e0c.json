@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f099fe9f15209e0c.json",
+  "evidence_sha256": "acaa323a3a6a7a390c00243d75cb1c05b18c450ef72db01cbf8ebd16e99b7958",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:37:10.132117+00:00",
+  "finished_at_utc": "2026-11-15T01:38:01.692067+00:00",
+  "latency_seconds": 51.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7548,
+    "prompt_tokens": 6337,
+    "total_tokens": 13885,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6730,
+      "text_tokens": 818
+    },
+    "cost": 0.00472455
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25001,
+  "text": "### Observed differences\n\n- Activity A02 ran exactly once in every trace in the earlier window (participation 100%, one occurrence per trace); in the later window it is not observed at all (0 of 200 traces). [OCC001, POS001]\n- Before, A02's outgoing transitions went to A03 (about 40 in 100), A04 (30), A01 (18) and A05 (12); in the later window A02 shows no outgoing transitions. [DIR001]\n- A03 no longer routes to A02: that transition carried about 38 in 100 of A03's outgoing transitions before and is unobserved after, while A03's remaining transitions all gained share (A01 about 18→31, A04 18→28, A05 23→35 in 100). [DIR002]\n- Before, A02 co-occurred with A01, A03 and A04 in every trace — usually before A01 (about 90 in 100), in mixed order with A03 (about 49 vs 51), and before or interleaved with A04 (47 vs 53); in the later window A01, A03 and A04 each occur without A02 in essentially all their traces. [REL001, REL002, REL003]\n- A05 co-occurred with A02 in about 47 in 100 traces before; in the later window A05 occurs alone in about 51 in 100 traces and neither activity appears in about 49 in 100 — A05's overall participation is roughly unchanged, but it no longer runs together with A02. [REL004]\n- A03 and A04 now appear at earlier relative positions (mean position about 0.11→0.04 for A03, 0.60→0.53 for A04), and A04 follows A03 more closely: gaps of 1–2 steps rose from about 23 to 35 in 100, while gaps of 3–5 steps fell. [POS002, POS003, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that activity A02 was removed from the process, or is no longer executed: it appeared exactly once in all 200 earlier traces and in none of the 200 later traces. This is shown directly by its participation and position support dropping from 100% to zero, by the loss of all its outgoing transitions, and by its former partners A01, A03, A04 and A05 now occurring without it. A03's routing matches: its transition to A02 (about 38 in 100 of its outgoing transitions) disappeared and the flow shifted to its remaining successors. Eleven control-flow items qualified where about 0.15 would be expected if nothing had changed, so the ensemble is far beyond what an unchanged process produces, and every item describes one coherent structural difference, each larger than in about 995 of 1000 random re-splits. [OCC001, POS001, DIR001, DIR002, REL001, REL002, REL003, REL004]\n\nA competing explanation the evidence cannot rule out is that A02 was relabelled to another activity code rather than truly removed, since activity identity is assumed from the codes themselves; a drop from universal occurrence to unobserved across 200 traces remains the strongest reading. [OCC001, DIR001]\n\nOther differences: A03 and A04 occur at earlier relative positions and the A03→A04 step gap shortened; these are consistent with knock-on effects of removing A02 from the early part of each trace, but position and lag shifts alone do not establish that an activity was moved. [POS002, POS003, LAG001]",
+  "case_id": "case_f099fe9f15209e0c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

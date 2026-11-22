@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "945f796c5408e085bbfdf1b33bc365981b362ba67e3b22ad96bce99f3489a439",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:54:28.048762+00:00",
+  "finished_at_utc": "2026-11-15T04:56:04.263281+00:00",
+  "latency_seconds": 96.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14227,
+    "prompt_tokens": 20378,
+    "total_tokens": 34605,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12554,
+      "text_tokens": 1673
+    },
+    "cost": 0.0101702
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41646,
+  "text": "### Observed differences\n\n- In the earlier window, A20, A21, A22, A23, A26, A31, A32 and A37 each appeared exactly once in every one of the 200 traces. In the later window, A20, A21, A23 and A26 still appear in every trace, but A22 appears in about 54 in 100 traces and A31, A32 and A37 in about 47 in 100 traces. [OCC001, OCC002, OCC003, OCC004]\n- A31, A32 and A37 behave as one block: before, every trace contained all three; in the later window each pair of them co-occurs in about 47 in 100 traces and all three are jointly absent in about 53 in 100, so they appear together or not at all. [REL020, REL021, REL022]\n- A22 and the A31/A32/A37 block have become near-exclusive alternatives. Before, both were always present, with the block running before A22 in every trace; in the later window they co-occur in only about 1 in 200 traces, with A22 alone in about 53 in 100 cases and the block alone in about 47 in 100. [REL011, REL012, REL013]\n- The block's position relative to A21 and A23 reversed. Before, A31, A32 and A37 each ran before A21 and before A23 in every trace; in the later window, A21 and A23 each run before the block in about 46–47 in 100 traces (the reverse order survives in about 1 in 200), while the block still runs before A26 whenever both appear. [REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019]\n- Successors changed accordingly: A20, previously followed by one of A37/A31/A32 (shares roughly 35/34/31), is now followed by A23 in about 995 in 1000 cases; A21, previously always followed by A22, is now followed by A22 in about 54 in 100 of its outgoing transitions and by one of the block in about 46 in 100; and the block's exit moved from A23 (roughly a third of outgoing transitions before) to A26 (about 29–36 in 100), with A23 practically no longer observed as its successor. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Distances and positions moved consistently: the A20→A23 gap was 4 event positions in every earlier trace and is 1 position in about 995 in 1000 later traces; the A21→A26 gap is now 2 positions in about 54 in 100 traces and 4 positions in about 46 in 100, instead of always 2; A23's mean relative position moved earlier (about 0.45 to 0.39) and the block's later (about 0.40 to 0.58). [LAG001, LAG005, POS004, POS006, POS007, POS008]\n- A few lag items describing the old adjacencies (A20 with A31/A32/A37, and the block with A23) rest on a single later-window observation each and carry little weight on their own. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block of activities A31, A32 and A37 changed its place in the process: a group that previously always executed between A20 and A23 now executes, in roughly 47 in 100 cases, after A21 and before A26, where it forms an exclusive alternative to A22, while A23 now directly follows A20 in almost every case. [REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG005, OCC001, OCC002, OCC003, OCC004]\n\nThe support is direct and consistent: the order reversal between the block and A21/A23 is observed relationally rather than inferred from position shifts alone; the successor changes at A20, A21 and the block, the gap changes (A20→A23 from 4 to 1 positions, A21→A26 now 2 or 4 positions) and the participation drops (about 54 in 100 for A22, about 47 in 100 for the block, with almost no joint occurrence) all match one coherent reading. The number of qualifying items (47, against roughly 0.5 expected if nothing had changed) also far exceeds what chance screening would produce. [REL006, REL014, DIR001, DIR002, LAG001, LAG005, OCC001, OCC002]\n\nLimitations remain: the windows are finite samples, and an unchanged process containing a rare variant could in principle produce such a split if the later window happened to over-represent that variant — although the complete absence of the later behaviour in 200 before-traces, and its near even split afterwards, make plain sampling noise an unlikely full explanation. The near-zero co-occurrences (about 1 in 200) and several lag profiles rest on only one or two traces, so the exact degree of exclusivity is not pinned down, and many items describe the same underlying trace behaviour rather than independent confirmations. [REL011, REL012, REL013, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008]",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

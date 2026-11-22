@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_a89f13ae9dd1ca91.json",
+  "evidence_sha256": "d6c0dc563f6b036c1ad781740df5b65e034c8b1c9b0d1ed5716d750221345204",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:04:05.734869+00:00",
+  "finished_at_utc": "2026-11-14T11:05:12.080519+00:00",
+  "latency_seconds": 66.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10156,
+    "prompt_tokens": 29540,
+    "total_tokens": 39696,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9005,
+      "text_tokens": 1151
+    },
+    "cost": 0.009509
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31235,
+  "text": "### Observed differences\n\n- In the earlier window, the three activities A21, A22 and A23 each ran exactly once in every single trace (200 of 200). In the later window they have almost disappeared, each appearing in only about 0.5 in 100 traces (1 of 200). [OCC004, OCC005, OCC006]\n- Three activities that were absent earlier now run regularly: A14 in about 30 in 100 later traces, A15 in about 33 in 100, and A16 in about 37 in 100. They never occur together in the same trace, and together they cover about 99.5 in 100 later traces, so nearly every case now executes exactly one of the three. [OCC001, OCC002, OCC003, REL001, REL010]\n- Routing around A39 changed completely. Earlier, A39's outgoing transitions split across A21, A22 and A23 (roughly 35, 31 and 30 per 100); in the later window they go almost entirely to A14, A15 and A16 (about 30, 33 and 37 per 100), and each of these three activities is in turn always followed by A24 (100 of 100 of its outgoing transitions). [DIR007, DIR001, DIR002, DIR003]\n- The relational pattern mirrors this swap. Earlier, A39 always preceded A21/A22/A23 and each of them always preceded A24; later, A39 precedes A14, A15 or A16 (in about 30–37 in 100 traces each), and each of them precedes A24 where it occurs. The new activities also take over the old block's ties to A40 and A41. [REL027, REL028, REL032, REL036, REL007, REL015, REL022, REL006, REL014, REL021, REL008, REL009]\n- The distance from A39 to A24 shrank from 4 event positions in essentially all earlier traces to 2 positions in about 99.5 in 100 later traces, consistent with three activities between them being replaced by one. A24's mean position moved slightly earlier (about 0.43 to 0.39 of the trace) and A39's slightly later (about 0.31 to 0.33). [LAG010, POS007, POS008]\n- A41 now appears in more traces (about 69 in 100, up from about 59 in 100) and is preceded by A14, A15 or A16 in roughly 14–20 in 100 traces, a role A21 previously filled (about 48 in 100). [REL030, REL009, REL017, REL024]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A39 and A24 was restructured: a stretch in which A21, A22 and A23 all executed in every case (in varying internal order) now runs as a single pass through one of three alternative activities, A14, A15 or A16, which then always flows into A24. This rests on direct relational and positional evidence, not only on frequency shifts: A39's outgoing transitions were redirected to the new activities, the new activities always lead to A24, and the A39-to-A24 gap contracted from 4 to 2 event positions, exactly the footprint of a three-activity stretch becoming a single activity. Occurrence, routing, positional and relational indicators all tell the same coherent story, and the 71 qualifying items far exceed the roughly 0.64 expected by chance when nothing has changed — though most of them describe this one underlying shift rather than independent changes. [OCC004, OCC001, DIR007, DIR001, LAG010, REL007, REL006]\n\nLimitations remain. The windows are finite samples, so a shift in the mix of process variants cannot be fully excluded — in principle the later window could over-represent a variant in which the block collapses, although the magnitudes involved (200 of 200 traces versus 1 of 200, and 60–74 traces using each new activity) make pure sampling noise implausible. The evidence also cannot show whether A14, A15 and A16 are genuinely new steps or reworked stand-ins for A21, A22 and A23 reduced from three executions to one, and a single later trace still shows the old three-activity block, so the earlier behaviour was not completely eliminated. [OCC004, OCC001, LAG010, REL025]",
+  "case_id": "case_a89f13ae9dd1ca91",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

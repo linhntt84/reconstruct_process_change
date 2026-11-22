@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_91980b9a218eb88d.json",
+  "evidence_sha256": "15e9671b27a66892c9f49cdd2c56142de5ed96d9ca507e816a4ecdd6b2789d96",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:25:31.654506+00:00",
+  "finished_at_utc": "2026-11-15T02:27:20.429339+00:00",
+  "latency_seconds": 108.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16068,
+    "prompt_tokens": 15457,
+    "total_tokens": 31525,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14587,
+      "text_tokens": 1481
+    },
+    "cost": 0.010352549999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47394,
+  "text": "### Observed differences\n\n- In the earlier window, A45 led into one of three alternatives — A19, A20 or A25 (present in about 38, 25 and 38 of 100 traces respectively; together they cover essentially every case) — and each of the three led on to A26 in 92–99 of 100 of its outgoing transitions. In the later window, A45 leads directly to A26 in 94 of 100 of its transitions, and the three alternatives now run after A27: A27 passes to one of them in about 43 of 100 of its transitions (before: essentially never) and A28 in about 53 of 100, while the three now lead to A28 (39–48 of 100) or A32 (45–56 of 100) instead of to A26 (now 1–2 of 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003]\n- The order between each of the three alternatives and A26/A27 reversed: A19 preceded A26 in 36 of 100 traces before and follows it in 31 of 100 after; A20 preceded A27 in 24 of 100 before and follows it in 37 of 100 after; the same reversal holds for A25 against A26 and A27. Against A28 the relation changed from almost always \"alternative first\" to mixed, with both orders in similar shares. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- Event positions of the three alternatives moved from a median of about 0.30–0.31 to about 0.60–0.62 of the trace, while A26 (median 0.34 to 0.31) and A27 (0.59 to 0.56) stayed essentially in place; both A26 and A27 still occur in every trace in both windows. [POS001, POS002, POS003, POS004, POS005]\n- Gap structure matches an insertion: A27 reached A32 within two steps in 97 of 100 cases before and within three steps in 92 of 100 after; A45 reached A26 within two steps before (93 of 100) and within one step after (94 of 100). New close successions appeared — A27 to A19 (about 65 observations) and A27 to A20 (about 75), A28 to A19 (about 32) and A28 to A20 (about 42), and A19 to A32 (about 65), mostly one to two steps apart — while A45→A25 and A19→A26 all but disappeared (2 or fewer observations after). [LAG001, LAG002, LAG003, LAG004, LAG007, LAG008, LAG009, LAG010, LAG011]\n- A28's routing changed accordingly: it led to A32 in 99 of 100 of its transitions before and in 44 of 100 after, with the rest going to A19, A20 or A25; A27→A28 dropped from immediate in 98 of 100 cases to 55 of 100, so after A27 the block activity and A28 appear in varying order before A32 is reached. [DIR004, DIR005, LAG005, LAG009, REL005, REL008]\n- Separately, A24's trace participation rose from about 43 to 58 of 100 traces (mean occurrences per trace 0.43 to 0.58). [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block A19/A20/A25 — one of which executes in essentially every case — moved from before A26 to after A27. In the earlier window the flow ran from A45 into one of A19/A20/A25, then to A26, with A27 → A28 → A32 further on; in the later window A45 connects straight to A26, and the block executes after A27, leading into A28 and A32 instead of into A26. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL003, REL006]\n\nThe support is direct and consistent: all six order relations between the block and A26/A27 reversed [REL001, REL002, REL003, REL004, REL006, REL007]; the successor changes in DIR show the same rewiring from both directions [DIR001, DIR003, DIR004, DIR006]; the A27-to-A32 gap grew by one step, as expected when the block is inserted after A27 [LAG006, LAG009]; and the block's positions shifted later while A26 and A27 held theirs [POS001, POS002, POS003, POS004, POS005]. Screening qualified 31 control-flow items where roughly 0.62 would be expected without a change — about 50 times the chance expectation — so the ensemble cannot be explained as sampling noise [OCC001, DIR001, REL001].\n\nLimitations: the later structure is not one fixed sequence, since after A27 the block activity and A28 occur in either order before A32 [DIR004, DIR005, LAG005, LAG009, REL005, REL008]; and two finite windows cannot rule out that the difference reflects a shift in the mix of two coexisting process variants rather than a modification of a single process [REL001, DIR001].\n\nOther differences: A24's participation rose from about 43 to 58 of 100 traces; the evidence does not connect this to the relocation above. [OCC001]",
+  "case_id": "case_91980b9a218eb88d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

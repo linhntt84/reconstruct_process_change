@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_06559d41d04a7207.json",
+  "evidence_sha256": "9a4a05e441ace58e51e64e33a76bd1ab5ebf4ad015b22d972629713a2a1db379",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:08:15.023029+00:00",
+  "finished_at_utc": "2026-11-15T07:09:44.280254+00:00",
+  "latency_seconds": 89.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12398,
+    "prompt_tokens": 32175,
+    "total_tokens": 44573,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11100,
+      "text_tokens": 1298
+    },
+    "cost": 0.01102525
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36939,
+  "text": "### Observed differences\n\n- In the earlier window, essentially every trace contained exactly one of three alternative activities — A19 in about 35 of 100 traces, A20 in about 30, A21 in about 36 — and these three practically never appeared together (co-occurrence at most 0.5%). In the later window each of them has all but vanished, appearing in about 1 of 200 traces. [OCC002, OCC003, OCC004, REL007, REL008, REL016]\n- In the later window, A26, A27 and A28 each occur in all 200 traces (about once per trace), whereas before they were absent (A26, A27) or seen in a single trace (A28). The three now co-occur in 100% of traces with no fixed internal order (for example, A26 before A27 in about 50 of 100 traces and A27 before A26 in about 49), at roughly 38% of the trace position. [OCC005, OCC006, OCC007, REL031, REL032, REL037, POS005, POS006, POS007]\n- The wiring around this segment changed accordingly: A44 (present in every trace in both windows) earlier sent its outgoing transitions mainly to A19, A20 and A21 (about 27%, 24% and 24%) plus A10 (23%), and preceded whichever alternative ran; in the later window it leads to A26, A28 and A27 (about 33%, 32% and 30%) and precedes the new trio in about 99 of 100 traces. The trio in turn precedes A29 in about 99 of 100 later traces, just as A19–A21 earlier led to A29 in 97–99% of their outgoing transitions; A29 remains in every trace, its mean position shifting slightly later (0.40 to 0.44). [DIR009, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL013, REL021, REL028, REL033, REL038, REL042, POS008]\n- A45 occurs in every trace in both windows and now follows the new trio (A26 before A45 in about 64 of 100 later traces, interleaved in about 36); A46's participation slipped from about 69% to about 58% of traces and it now co-occurs with the trio. [REL014, REL035, REL036]\n- A10 became rarer, dropping from about 26% to about 11% of traces; earlier about 85% of its outgoing transitions went to A19–A21, while in the later window its transitions spread over many targets (largest share A27, about 17%) and it co-occurs with the new trio in only 11% of traces. [OCC001, DIR001, REL004, REL005, REL006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural restructuring of the segment between A44 and A29: in the earlier window each case executed exactly one of the alternatives A19, A20 or A21 there (roughly 35/30/36 of 100 cases, never more than one), followed by A29; in the later window that per-case choice is gone and the three activities A26, A27 and A28 are each executed once in every case, in varying internal order, between A44 and A29. The support is direct and consistent: participation flips between 0 and 100%, the co-occurrence and precedence changes are observed relationally rather than inferred, and the routing into the segment (from A44) and out of it (to A29) is seen to rewire in both windows. With 69 qualifying control-flow items against fewer than 1 expected by chance, sampling variation cannot account for the pattern as a whole. A limitation: the evidence cannot show whether A19–A21 were removed from the process or are merely no longer reached, since a shift in which route cases take would look identical here; and the later-window behaviour of A19–A21 rests on a single trace each, so their new successors are weakly supported [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, REL007, REL031, REL033, DIR009, POS005, DIR003, DIR004, DIR005].\n\nOther differences: A10 participates less often (about 26% to 11% of traces) and its outgoing transitions redistributed away from the old alternatives toward many targets [OCC001, DIR001]; A46 co-occurs somewhat less with the segment activities than before [REL036]; A14's outgoing transitions remain dominated by A15 (about 99.5% before, 93% after) with only marginal new targets [DIR002].",
+  "case_id": "case_06559d41d04a7207",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

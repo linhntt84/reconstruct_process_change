@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "d9b7c830709e4fe5f5832fe0d3112eb3274d4369670c5769198beb776e77aca1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:00:29.684210+00:00",
+  "finished_at_utc": "2026-11-14T13:01:29.795482+00:00",
+  "latency_seconds": 60.11,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9403,
+    "prompt_tokens": 11491,
+    "total_tokens": 20894,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8460,
+      "text_tokens": 943
+    },
+    "cost": 0.006425149999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31806,
+  "text": "### Observed differences\n\n- In the earlier window, A22 ran in every trace exactly once (200 of 200 traces, mean 1.0 occurrence per trace); in the later window it runs in about 51 in 100 traces (102 of 200), still once per case. [OCC001]\n- A27, A28 and A33 were not observed at all in the earlier window (0 of 200 traces); in the later window each runs in about 49 in 100 traces (98 of 200), once per case. [OCC002, OCC003, OCC004]\n- Out of A21, all outgoing transitions previously led to A22; in the later window about 51 in 100 lead to A22, with the remainder split almost evenly to A28 (about 18%), A33 (about 17%) and A27 (about 15%). [DIR001]\n- The previously unobserved activities now have outgoing transitions to one another and to A23; for example, from A27 roughly 36% of outgoing transitions go to A33, 35% to A28 and 30% to A23, and from A33 about 44% go directly to A23. [DIR002, DIR003, DIR004]\n- In the later window, A22 never shares a trace with A27, A28 or A33 (co-occurrence 0), while the three of them always appear together (pairwise co-occurrence about 49 in 100, matching each one's participation) and in no fixed order — each pair occurs in both orders in similar shares (roughly 22–27 in 100 each way). [REL006, REL007, REL008, REL012, REL013, REL014]\n- The surrounding order is preserved: A21 still precedes A22 and each of the three activities, A22 and each of the three still precede A23, and A23 continues to run in every trace (in about 49 in 100 later traces it runs without A22). The three activities sit around the middle of the trace (median position about 0.48–0.50). [REL001, REL002, REL003, REL004, REL005, REL009, REL010, REL011, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, an alternative route between A21 and A23 executes the previously unobserved activities A27, A28 and A33 — each once, in varying order — in about half of the cases, in place of A22, which ran in every case before and now runs in the remaining half; A21 and A23 themselves still run in every case. [OCC001, OCC002, OCC003, OCC004, DIR001, REL005, REL006, REL009]\n\nThe supporting signs are direct and consistent: the 25 qualified items far exceed the roughly 0.39 expected without a change, and the occurrence, routing, relation and position indicators all describe one coherent picture — A22 and the trio are strictly mutually exclusive, the trio is always complete and internally unordered, and it occupies the mid-trace position between A21 and A23. [DIR001, DIR002, DIR003, DIR004, REL012, REL013, REL014, POS001, POS002, POS003]\n\nThe evidence cannot rule out that the two windows capture different case mixes rather than a change at a single point in time, and because most items re-describe the same underlying trace difference, they are not independent confirmations. [OCC001, OCC002, DIR001, REL006]\n\nOther differences: none — every qualified item concerns the six activities named above. [OCC001, DIR001, REL001, POS001]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

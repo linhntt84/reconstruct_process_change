@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, all 200 traces followed the same four-step chain A02 → A04 → A05 → A06: A04 ran once in every trace at about one third of the sequence, and A06 ended each trace with no observed successor. [OCC003, DIR001, DIR003, DIR004, POS003, POS005, REL007]
+- In the later window, all 200 traces follow a five-step chain A02 → A03 → A05 → A06 → A01: A03 and A01, which were not observed earlier (0 of 200 traces), now run once each in every trace, A03 at about one quarter and A01 at the very end of the sequence. [OCC001, OCC002, POS001, POS002, REL002]
+- The handovers changed accordingly: A02 always led to A04 earlier but always leads to A03 in the later window; the A04→A05 transition disappeared and A03→A05 took its place; A06, previously without an observed outgoing transition, now always leads to A01. [DIR001, DIR002, DIR003, DIR004, REL006, REL009]
+- A04's earlier relations are gone — it co-occurred with A02, A05 and A06 in 100% of earlier traces but in no later trace — while A01 now co-occurs with A02, A03, A05 and A06 in 100% of later traces, always after them. [REL001, REL002, REL004, REL005, REL007, REL011, REL012]
+- A05 and A06 still run in every trace in both windows; their relative positions moved earlier (A05 from about 0.67 to 0.50, A06 from 1.0 to 0.75), which is what inserting one activity before them and appending one after A06 would produce, not an independent relocation. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a structural reconfiguration of the sequential core: in the later window A03 runs where A04 used to, so the segment after A02 reads A02 → A03 → A05 instead of A02 → A04 → A05, and A01 was added as a new final activity after A06. A04 was not observed in any of the 200 later traces, whereas A03 and A01 run exactly once in every later trace. This is a replacement of one activity by another plus an appended activity, not a shift in how often existing paths are taken. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004]
+
+The support is direct and consistent: participation flips between 0 and 200 of 200 traces, the directly-follows profiles of A02, A03, A04 and A06 change exactly as this hypothesis predicts, and every occurrence, position and relation item fits the same pair of before and after sequences; each of the 24 items shows a difference larger than in about 199 of 200 random re-splits of the pooled traces. Because all items derive from the same traces, they describe one underlying change rather than independent confirmations. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+
+Limitations: the traces cannot distinguish a genuine replacement of A04 by a new activity A03 from a relabelling of the same step, since both would leave identical logs, and zero participation strictly means only that A04 was not observed in the later sample. No expected-without-change baseline for the screening was supplied, so the judgement rests on the directness and consistency of the participation, directly-follows and relation evidence. [OCC003, DIR001, DIR002]

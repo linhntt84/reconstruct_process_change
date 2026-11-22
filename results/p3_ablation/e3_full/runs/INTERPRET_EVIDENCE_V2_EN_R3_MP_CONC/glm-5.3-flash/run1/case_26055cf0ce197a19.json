@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_26055cf0ce197a19.json",
+  "evidence_sha256": "b80258bdd812a0764ef0b0277f87755de96f143fd53a2f1ccf13d1db54a79c84",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:24:39.909185+00:00",
+  "finished_at_utc": "2026-11-16T01:27:33.860190+00:00",
+  "latency_seconds": 173.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22130,
+    "prompt_tokens": 28811,
+    "total_tokens": 50941,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20306,
+      "text_tokens": 1824
+    },
+    "cost": 0.015386649999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67601,
+  "text": "### Observed differences\n\n- In the later window, A01 appears in about 53 in 100 traces versus about 28 in 100 earlier, its mean occurrences per trace roughly doubled (0.53 to 1.10), and its self-repetition rose (recurrence support 0.11 to 0.29, with A01→A01 gaps shifting from mostly 3 steps to 4–5 steps); all of these differences are larger than in any of the 200 random re-splits. [OCC001, LAG001]\n- A07 moved the opposite way: participation fell from about 51 in 100 traces to about 29 in 100, mean occurrences per trace halved (1.03 to 0.57), and recurrence fell from 0.28 to 0.14 — closely mirroring A01's earlier values, while A01's later values mirror A07's earlier ones. [OCC007, OCC001]\n- Successor profiles flipped: earlier, 94% of A01's observed outgoing transitions went to A07 and 96% of A05's went to A01; in the later window A05 sends 91% to A07, A07 sends 94% to A01, and A01 sends 57% to A05 and 18% to A06, with A07 no longer observed among A01's successors. [DIR001, DIR004, DIR006]\n- Immediate successions confirm the reversal: A01 followed by A07 at one step accounted for about 28 in 100 observed successions earlier and none later, A07 followed by A01 rose from none to about 25 in 100, and A05→A01 at one step (about 29 in 100) was replaced by A05→A07 (about 23 in 100). [LAG006, LAG025, LAG017, LAG022]\n- A07 now sits later in traces (mean relative position 0.51 to 0.69) and co-occurs with A03 and with A04 in about 29 in 100 traces versus about 51 in 100 earlier; A01 appearing without A07 (about 24 in 100 traces) replaced A07 appearing without A01 (about 23 in 100). [POS006, REL009, REL012, REL005]\n- A03 and A04 re-routed their handovers: A03→A07 fell from 51% to 2% of observed transitions while A03→A01 rose from 1% to 34%; A04→A07 fell from 41% to 1% while A04→A01 rose to 39%; steps from A03/A04 to A01 shortened (mostly 3–4 steps to 1–2) and steps to A07 lengthened (1–2 to 3–5). [DIR002, DIR003, LAG007, LAG011, LAG012, LAG016]\n- A06 moved from the end of traces into the middle (mean relative position 0.96 to 0.48, median 1.0 to 0.44); its observed outgoing transitions, previously only 11 (about two thirds to A03), now spread over A01 (31%), A03 (28%), A05 (18%) and A04 (14%), and A07→A06 within five steps is now seen in only 8 traces versus 101 earlier. [POS005, DIR005, LAG029]\n- Behaviour elsewhere was stable: A02, A03 and A04 each kept a participation near 50 in 100 traces and A05 near 28–29 in 100, with differences well inside the range produced by random re-splits. [OCC002, OCC003, OCC004, OCC005, OCC006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 and A07 exchanged their places in the main sequence. Earlier, control flowed A05 → A01 → A07, with A07 then branching back to A05 or on to A06 and receiving handovers from A03 and A04; in the later window A05 hands to A07, A07 hands to A01, and A01 takes over the branching to A05/A06 and the handovers from A03/A04. The exchange extends to their occurrence profiles: A01 now shows the participation, per-trace frequency and repetition that A07 showed before, while A07 dropped to roughly A01's former levels. [DIR001, DIR004, DIR006, LAG006, LAG017, LAG022, LAG025, OCC001, OCC007]\n\nThe reversal is shown directly by successor profiles and by immediate-succession counts moving in opposite directions for the two orders of the pair; positional and relational items agree (A07 moved later in traces, and A01-without-A07 replaced A07-without-A01); nearly all qualifying items reach the maximum empirical strength — differences larger than in all 200 reference re-splits — while describing one coherent rewiring rather than scattered shifts. [DIR001, DIR006, LAG006, LAG025, POS006, REL005, REL009]\n\nLimitations: no screening baseline was supplied, so the expected number of chance findings could not be checked directly; the evidence cannot distinguish a literal exchange of the two activities' positions from an equivalent re-routing that produces the same adjacency changes; and POS/LAG are based on event positions and step distances, so no statement about clock-time timing is possible. [POS006, LAG006]\n\nOther differences: A06 now behaves like an internal activity rather than a terminal one — it moved from the end of traces (median relative position 1.0) to the middle (median 0.44), is reached in fewer steps from A01 and A05, and more often precedes A03/A04; however, its earlier outgoing profile rests on only 11 observed transitions, so the before-picture of A06's routing is uncertain. A05 also occurs slightly later in traces (mean position 0.47 to 0.57). [POS005, DIR005, LAG005, LAG021, REL008, REL011, POS004]",
+  "case_id": "case_26055cf0ce197a19",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- **Allocation of A16 collapsed onto a single resource.** In the earlier window, A16 was assigned across 17 distinct resource codes, with the three busiest codes each handling about 18 in 100 assignments and the rest spread below that. In the later window, one code, User_8, handled 100 in 100 of the observed assignments: the concentration index rose from about 0.13 to 1.0 and distinct resources fell from 17 to 1. How often the activity occurs did not change — traces containing A16 numbered 152 of 200 before and 150 of 200 after, about three quarters in both windows. [ASSIGN001, CONC001]
+
+- **Longer elapsed time between A09 and W_Handle completions.** The gap from the completion of A09 to the immediately following completion of W_Handle had a median of about 1.3 hours in the earlier window (middle half roughly 0.8–2.4 hours) versus about 16 hours in the later window (middle half roughly 1.7–22.3 hours); the mean rose from about 2.2 to about 15.6 hours, a shift of about 13.4 hours. This rests on 22 such consecutive-completion pairs before and 26 after. [TWAIT001]
+
+- **Screening found no structural difference.** Control-flow indicators produced no qualifying items (0 against about 0.19 expected by chance); the time family produced 1 item against about 0.015 expected and the resources family 2 against about 0.005, so the flagged differences sit entirely in timing and resource allocation. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the handling of A16 was reallocated from a wide spread of resources to a single one: earlier, about 17 resource codes shared this activity with the largest share under 20 in 100 assignments; later, User_8 handled every observed assignment. The signs are direct and consistent: two indicators of the same allocation behaviour (assignment shares and concentration) agree, both differences exceed essentially all of 2,000 random re-splits of the pooled data (strength about 0.9995), participation is stable at about three quarters of traces in both windows, and the resources family flagged 2 items where about 0.005 would qualify by chance — more than chance plausibly yields. The two resource items describe one underlying difference and are not independent confirmations. [ASSIGN001, CONC001, screening]
+
+Other differences: the elapsed time between consecutive completions of A09 and the following W_Handle completion increased roughly twelvefold at the median (about 1.3 hours to about 16 hours; mean about 2.2 to about 15.6 hours), based on 22 and 26 pairs. This is a timing change in its own right and needs no structural counterpart; none was detected. Elapsed time between completions mixes queuing and processing and cannot be decomposed here, and no relational or positional evidence links this timing change to the resource concentration, so any connection between them remains unestablished. [TWAIT001]
+
+Competing explanation: the evidence establishes the concentration itself but cannot distinguish a change in assignment behaviour from a change in which resources were active on A16 in the later window, as both leave the same footprint; nor can it show whether User_8 already performed this activity occasionally before, since such cases could only have sat inside a residual group of about 7 in 100 assignments. [ASSIGN001, CONC001]

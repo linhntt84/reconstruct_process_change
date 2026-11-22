@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_e8fce8200b2376ed.json",
+  "evidence_sha256": "371b5d2304adb87dd844d6f612b2cd43726f1f89a9f3b4591dc31d547d3627d4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:35:41.730363+00:00",
+  "finished_at_utc": "2026-11-15T04:37:29.855647+00:00",
+  "latency_seconds": 108.12,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16930,
+    "prompt_tokens": 39275,
+    "total_tokens": 56205,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15444,
+      "text_tokens": 1486
+    },
+    "cost": 0.014356250000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52582,
+  "text": "### Observed differences\n\n- In the earlier window, A07, A15, A16 and A17 were not observed in any of the 200 traces. In the later window they run in about 48, 39, 70 and 33 in 100 traces respectively, with about 0.9, 1.0, 1.0 and 0.5 occurrences per trace on average; A16 sits around the middle of the trace, A07 and A17 in the later part. [OCC002, OCC004, OCC005, OCC006, POS003, POS004, POS005, POS006]\n- The new activities attach to existing ones. A08's outgoing transitions moved from A05 (about 52 in 100) and A04 (about 48) to A07 (about 46) and A04 (about 54), and A07 is followed by A18 in all observed cases. A10's outgoing moved from A03 (about 27), A10 itself (about 48) and A02 (about 25) to A16 (about 51) and A15 (about 49); A15 is always followed by A10, and A16 leads to A03 and A02 in roughly equal shares. A18's outgoing moved from always A02 to A17 (about 54) and A14 (about 46), and A17 is always followed by A09. [DIR002, DIR003, DIR004, DIR006, DIR007, DIR008, DIR009]\n- Pairs that never shared a trace before now usually do: A10 and A16 co-occur in about 70 in 100 traces (before 0), A03 and A16 in about 70 in 100 (before, A03 always ran without A16), and A07 and A18 in about 48 in 100 (before 0). [REL029, REL007, REL021]\n- New short successions appear: A08 reaches A18 within two steps in about 52 in 100 of the qualifying traces (before, the distance was four steps in about 83 in 100), and A18 reaches A09 within two steps in 95 traces against 7 before — each consistent with one new activity sitting between the pair. [LAG011, LAG027]\n- A05 is repeated far more often: about 4.0 occurrences per trace versus about 1.9 before, while slightly fewer traces contain it (about 39 vs 48 in 100) and it appears earlier within traces (mean position about 0.46 vs 0.63); A12 now leads to A05 (about 49 in 100 of its outgoing transitions) where it previously led to A18. [OCC001, POS002, DIR005]\n- A13 repeats about twice as often (about 2.1 vs 1.0 occurrences per trace), and A18 repeats less (about 0.9 vs 1.8 occurrences per trace) even though slightly more traces contain it (about 48 vs 40 in 100) and it appears later within traces (mean position about 0.64 vs 0.42). [OCC003, OCC007, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a group of activities that was not executed at all in the earlier window — A07, A15, A16 and A17 — now runs in a substantial share of traces and is spliced into the existing flow: A08 feeds A07, which feeds A18; A10 feeds A15 and A16, with A15 feeding back to A10 and A16 leading to A03 and A02; A18 feeds A17, which feeds A09, and A14. Participation of all four rises from zero to roughly one- to seven-tenths of traces, the successor changes sit exactly where the new activities attach, and the new two-step successions match one inserted intermediary per pair. The screening qualified 92 control-flow items where about 0.6 would be expected without a change, so the differences as a whole are not what an unchanged process produces. [OCC002, OCC004, OCC005, OCC006, DIR002, DIR003, DIR004, DIR006, DIR007, DIR008, DIR009, LAG011, LAG027]\n\nLimitations: zero participation in the earlier window only shows these activities were not executed then, so a path that existed but was never taken cannot be distinguished from genuinely new activities; the high interleaved-or-repeated shares (for example A10 and A16 in about 43 in 100 traces) leave the exact internal order of the new group undetermined; and many items describe the same underlying trace behaviour, so they are not independent confirmations. [REL029]\n\nOther differences: A05's increased repetition with its earlier position and A12's redirect from A18 to A05, A13's increased repetition, and A18's reduced repetition per trace with its later position are additional differences not covered by the main hypothesis. [OCC001, POS002, DIR005, OCC003, OCC007, POS007]",
+  "case_id": "case_e8fce8200b2376ed",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

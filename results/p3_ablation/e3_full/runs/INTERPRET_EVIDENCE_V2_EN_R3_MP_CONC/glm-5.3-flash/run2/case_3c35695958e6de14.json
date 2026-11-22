@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_3c35695958e6de14.json",
+  "evidence_sha256": "8b484297711b1768b321a290c63694b92e8ec86d744fc0b68bc704be2ad1d01f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:23:47.491135+00:00",
+  "finished_at_utc": "2026-11-16T02:27:57.645529+00:00",
+  "latency_seconds": 250.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 38405,
+    "prompt_tokens": 76440,
+    "total_tokens": 114845,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36370,
+      "text_tokens": 2035
+    },
+    "cost": 0.0306685
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 117027,
+  "text": "### Observed differences\n\n- A01 was absent from all 200 earlier traces; in the later window it appears in all 200 traces, about 2.1 times per trace (repeating in about half of them), early in each case (median event position about a quarter in), and it co-occurs with A02, A03, A05 and A12 in every later trace, where earlier those pairs never co-occurred. [OCC001, POS001, REL001, REL002, REL004, REL011]\n- Entry into the A03/A12 pair now runs through A01: earlier, A02's observed outgoing transitions split almost evenly between A03 (about 49%) and A12 (about 52%); in the later window A02 leads only to A01, and A01 leads to A12 (about 53%) or A03 (about 47%) — nearly the same split A02 used to have. [DIR002, DIR001]\n- Every event distance from A02 downstream grew by one step: A02→A03 and A02→A12 moved from lags 1–2 to 2–3, A02→A04/A05/A06 from 3 to 4, and A02→A07/A08/A09 from 4 to 5. [LAG001, LAG008, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]\n- The re-entry after A09 was re-routed the same way: earlier A09 led back to A12 (about 55%) or A03 (about 45%); in the later window A09 leads only to A01, and all distances from A09 grew by one step (to A03/A12 from lags 1–2 to 2–3, to A04/A05/A06 from 3 to 4, to A07/A08/A09 from 4 to 5). [DIR007, LAG043, LAG050, LAG044, LAG045, LAG046, LAG047, LAG048, LAG049]\n- Around A08 and A13 the route changed: earlier A08 always led to A13, and A13 led on to A12 (about 54%) or A03 (about 46%); in the later window A08 leads to A01 (about 51%) or A13 (about 49%), A13 leads only back to A08, and distances from A13 to A03/A12 grew by two steps (lags 1–2 → 3–4; to A04/A05/A06 from 3 → 5), consistent with the path A13 → A08 → A01 → A03/A12. [DIR006, DIR009, LAG074, LAG079, LAG075, LAG076, LAG077, LAG078]\n- A13 now takes part in far fewer cases, about 17 in 100 traces versus about 38 in 100 earlier (34 vs 76 of 200), and its co-occurrence with A02, A03, A05, A06 and A12 fell accordingly (for example A02–A13 together in 38% → 17% of traces). [OCC011, POS011, REL020, REL029, REL045, REL052, REL073]\n- A08 recurs about twice as often per trace (about 0.5 → 1.0 occurrences; participation about 38% → 34%) and sits later (mean event position about 0.55 → 0.62). [OCC006, POS006]\n- The A03/A12 pair itself is stable: both still occur in every trace about twice, keep the same onward routing to A05/A06/A04, and sit only slightly later (mean position about 0.50 → 0.55). [OCC002, OCC010, DIR003, DIR008, POS002, POS010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was introduced as a new step that now mediates the entries into the A03/A12 pair: earlier, A02, A09 and A13 (after A08) fed A03/A12 directly, whereas in the later window A02, A09 and A08 lead only to A01, A13 leads only back to A08, and A01 leads to A12/A03 with almost exactly the split A02 used to have. The placement is shown directly by A01's rise from 0 to 200 of 200 traces at an early position, by the collapsed successor profiles of A02, A09 and A08, and by lag distributions that shift by exactly one step from A02 and A09 and by two steps from A13; distances from A04 back to the pair also grew by one step, consistent with its re-entry passing A01 too, though A04's own transitions were not observed. That A03 and A12 keep their occurrence pattern and onward routing fits A01 being placed in front of the pair rather than the pair's paths being redrawn. [OCC001, POS001, DIR001, DIR002, DIR006, DIR007, DIR009, LAG001, LAG043, LAG074, LAG020, OCC002, DIR003]\n\nTwo limitations remain: the earlier window contains no A01 events at all, so strictly A01 was unobserved rather than proven absent, and a renaming or recording difference for A01 cannot be excluded from this evidence alone; the evidence file also provides no screening baseline, so the comparison with chance rests on the volume and coherence of the items (dozens at empirical strength about 0.995 describing one structure), and some A13-based lag comparisons rest on only about 10–35 traces. [OCC001, LAG077, LAG078]\n\nOther differences: A13's participation fell from about 38 to about 17 in 100 traces, A08 recurs about twice as often per trace and sits later, and A04 and A09 appear in slightly more traces (about 33% vs 39%). [OCC011, POS011, OCC006, POS006, OCC003, OCC007]",
+  "case_id": "case_3c35695958e6de14",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

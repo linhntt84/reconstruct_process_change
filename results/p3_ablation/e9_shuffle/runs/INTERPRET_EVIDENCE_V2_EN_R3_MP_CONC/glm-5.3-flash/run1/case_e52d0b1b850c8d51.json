@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_e52d0b1b850c8d51.json",
+  "evidence_sha256": "a8f1e04478aa419ed9123234acad85c8cbb5eadb6d18e3dbd93091b2741b7a28",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:49:53.662241+00:00",
+  "finished_at_utc": "2026-11-14T10:53:34.168166+00:00",
+  "latency_seconds": 220.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 36736,
+    "prompt_tokens": 30384,
+    "total_tokens": 67120,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34462,
+      "text_tokens": 2274
+    },
+    "cost": 0.022925599999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 116762,
+  "text": "### Observed differences\n\n- Before, A19, A25 and A20 each ran in essentially every trace (participation 100 in 100) and always together with A26, A46 and A47. In the later window, each of the three runs in only about 53 in 100 traces, and in about 46 in 100 traces they are absent together, while A26, A46 and A47 still run in essentially every trace — for example, A19 and A46 co-occurred in 100 in 100 traces before and in 53 in 100 in the later window, with A46 present alone in 47 in 100. [OCC005, OCC006, OCC007, REL016, REL020, REL023, REL030, POS003]\n\n- Where the segment still runs, its internal order is unchanged: A19 still precedes A25 and A20, A25 still precedes A20, and the segment still precedes A26 and A46/A47; A20 still leads to A26 in about 97 in 100 of its outgoing transitions in both windows. [REL016, REL017, REL022, REL018, DIR007]\n\n- A41 still runs in essentially every trace, but its routing changed: before, 96 in 100 of its outgoing transitions went to A19, and A26 followed A41 four steps later in about 91 in 100 of traces; in the later window, about 47 in 100 go to A19 and about 39 in 100 go straight to A26, so A26 now immediately follows A41 in about 40 in 100 traces — something not observed before. [DIR008, LAG008, REL019]\n\n- The early step A06 is largely bypassed: before, A14 led to A06 in 69 in 100 of its outgoing transitions and A06 led on to A15 in 92 in 100; in the later window, A14 leads straight to A15 in 78 in 100 (A06 only 12 in 100), A06 runs in about 26 in 100 traces (was 71 in 100), and when it runs it sits much later in the trace (mean position about 0.18 to 0.43) with its outgoing flow spread over many activities instead of concentrating on A15 (92 to 37 in 100). A14 followed by A06 within one step falls from about 140 to 32 of 200 traces. [DIR005, DIR003, OCC002, POS001, LAG003]\n\n- Step distances match both reroutings: A14 to A41 moved from mostly five steps apart (71 in 100) to mostly four (67 in 100); A14 to A15 within one step rose from 17 to 41 in 100; A15 to A19 moved from four steps in 94 in 100 of cases to four steps in 70 and five in 30; A15 followed by A26 within five steps appears in about 75 of 200 later traces versus 1 of 200 earlier; A06 followed by A19 or A41 within five steps fell from about 66–73 of 200 traces to 7–13. [LAG005, LAG004, LAG006, LAG007, LAG001, LAG002]\n\n- Smaller shifts: the rare activities A08, A10 and A04 now appear in about 20, 16 and 15 of 100 traces respectively (about 4–5 in 100 before); A26 sits slightly earlier (mean position 0.44 to 0.41) and A14 slightly later and more variably (spread 0.018 to 0.054). [OCC003, OCC004, OCC001, POS003, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the middle segment A19 → A25 → A20, reached from A41, is skipped in roughly half of the executions: the three activities fall from running in every trace to about 53 in 100, they are jointly absent in about 46 in 100 traces while A26, A46 and A47 still run, and A41 then connects directly to A26 (about 39 in 100 of A41's outgoing flow, from none before). [OCC005, OCC006, OCC007, REL020, REL023, REL030, DIR008, LAG008]\n\nThe support is direct and consistent: the rerouting is visible in A41's successor profile; the co-occurrence items in this group all shift from always-together to successor-only by the same 46–47 in 100 margin while the segment's internal order and its downstream links are preserved whenever it runs; the segment activities are absent from those traces rather than relocated, since participation and co-occurrence fall together; and A41 immediately followed by A26 appears only in the later window (about 40 in 100 traces). The 59 qualifying control-flow items are many times the fewer than 1 expected if nothing had changed, so sampling variation cannot explain the pattern as a whole. What the evidence cannot rule out is that the later window mixes two case cohorts — one with and one without the segment — rather than a single process in which the segment became an optional choice. [DIR008, LAG008, REL016, REL017, REL022, REL018]\n\nOther differences:\n- A second, equally direct rerouting sits earlier in the process: A06 is bypassed, with A14 leading straight to A15 in about 78 in 100 of its outgoing transitions (was 31 in 100) and A06 dropping from about 71 to 26 in 100 traces; in the later window A06 appears late in the trace and its successors are scattered rather than concentrated on A15. [DIR005, DIR003, OCC002, POS001, LAG003]\n- The rare activities A04, A08 and A10 appear in roughly three to five times as many traces as before (about 5 in 100 up to 15–20 in 100); these estimates rest on modest counts (about 8–10 traces before, 29–43 after). [OCC001, OCC003, OCC004]\n- A26's position moved slightly earlier (mean 0.44 to 0.41) and A14's slightly later and more variably (spread 0.018 to 0.054); A46 is still followed by A47 within one step in most traces in both windows (about 97 versus 88 in 100). [POS002, POS003, LAG009]",
+  "case_id": "case_e52d0b1b850c8d51",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

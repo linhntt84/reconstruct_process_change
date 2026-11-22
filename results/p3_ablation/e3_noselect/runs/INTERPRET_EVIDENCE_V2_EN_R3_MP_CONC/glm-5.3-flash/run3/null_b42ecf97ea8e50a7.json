@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_b42ecf97ea8e50a7.json",
+  "evidence_sha256": "676a357c17bff0e46e381cd7b83928b337b5d8c6da29877f8ad1311795f45fe3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:33:58.902012+00:00",
+  "finished_at_utc": "2026-11-15T14:39:57.840497+00:00",
+  "latency_seconds": 358.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 47361,
+    "prompt_tokens": 19018,
+    "total_tokens": 66379,
+    "completion_tokens_details": {
+      "reasoning_tokens": 44854,
+      "text_tokens": 2507
+    },
+    "cost": 0.0265332
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 143065,
+  "text": "### Observed differences\n\n- The choice between the two branches off A01 and A02 itself barely moved: A01 ran in about 55 in 100 traces before and 52 in 100 in the later window, A02 in 45 and 48 — but the order in which the activities inside each branch's group were executed changed clearly. [OCC001, OCC002]\n- In the group reached from A01 (A03, A04, A05 — each in about 55 in 100 traces in both windows), the typical direction of travel reversed. Before, the dominant successions were A01→A03 (38% of A01's outgoing transitions), A03→A04 (37%), A04→A05 (35%) and A05→A09 (39%); in the later window A01 led most often to A05 (38%, with A01→A03 down to 25%), A04 led to A03 (42%, up from 31%), A05 led to A04 (35%, up from 30%), and the exit to A09 moved from A05 to A03 (A03→A09 up from 27% to 35%, A05→A09 down from 39% to 33%). [DIR001, DIR003, DIR004, DIR005]\n- In the group reached from A02 (A06, A07, A08 — each in about 45 in 100 traces in both windows), the entry point moved and successions flipped: before, A02 led most often to A06 (41%) and A06 led to A08 (52%); in the later window A02 led most often to A08 (40%), A08 led to A06 (34%, up from 20%) and A06 led to A07 (42%, up from 22%), while A06→A08 fell from 52% to 26% — A06 and A08 effectively exchanged places in the typical succession. [DIR002, DIR006, DIR007, DIR008]\n- After A26, the two activity pairs reversed their internal order and the entry point moved. Before, A26 led most often to A32 (27%), with dominant continuations A32→A33 (53%) and A35→A34 (53%) and exits to A27 from A33 (53%) and A34 (53%); in the later window A26 led most often to A34 (31%, A26→A32 fell to about 20%), and the dominant continuations became A33→A32 (56%) and A34→A35 (58%), with the exits to A27 now from A32 (56%) and A35 (58%). Participation shifted the same way: A32 and A33 from about 50 in 100 traces to 47, A34 and A35 from about 50 to 53. [DIR016, DIR019, DIR020, DIR021, DIR022, OCC019, OCC020, OCC021, OCC022]\n- On the branch after A39 (about 200 outgoing transitions in each window), the choice moved from A15 toward A14: A14 took 46 in 100 of A39's continuations before and 53 in 100 later, and trace participation mirrored this (A14 46% to 53%, A15 54% to 47%). [DIR025, OCC013, OCC014]\n- Around A20, A30, A31 and A36 (each with about 200 outgoing transitions per window), successor shares moved: A20→A30 rose from 30% to 40% while A20→A36 fell from 36.5% to 27.5%; A30→A36 rose from 31% to 38.5% while A30→A22 fell from 36.5% to 28.5%; and A31→A22 rose from about 31.5% to 38% while A31→A30 fell from 36% to 28%. [DIR014, DIR017, DIR018]\n- Exits from the repeating A10/A11 pair (both in every trace, about 1.67 occurrences per trace in both windows) shifted toward A38: A11→A38 rose from about 26% to 30.5% of A11's outgoing transitions, while A13 became less common (32% of traces before, 26.5% later). A38 itself appeared in more traces (44% before, 50.5% later), occurred more often per trace (0.71 vs 0.855 on average) and was repeated in more traces (16% vs 21%); its follower A37 also rose (16% to 21% of traces). [DIR009, OCC012, OCC023, OCC024]\n- Within the A16–A19 block, execution shifted toward A16 and A18: A19→A16 rose from 20% to 33% of A19's outgoing transitions, A16→A26 from 50% to 59%, and A25's entry into the block moved toward A18 (21.5% to 28.5%); participation rose for A16 (46% to 50%) and A18 (46.5% to 53.5%) and fell for A17 (54% to 50%) and A19 (53.5% to 46.5%). [OCC015, OCC016, OCC017, OCC018, DIR010, DIR012, DIR013, DIR015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that routing between existing alternatives changed: in the later window, several preferred successions between activities that already executed together were reversed. In the group reached from A01, the typical chain A03→A04→A05 (exiting to A09) ran in the opposite direction, A05→A04→A03; in the group reached from A02, A06 and A08 exchanged places (A06→A08→A07 became A08→A06→A07); and after A26 the pairs (A32, A33) and (A34, A35) swapped their internal order while A26's entry shifted from A32 toward A34. This rests on direct successor-distribution changes: the branch sources were observed throughout (about 200 outgoing transitions each), the group members ran in roughly 45–55 in 100 traces in both windows, and the same successor sets appear in both windows, so no path was added, removed or bypassed — only the shares between existing alternatives moved. The shifts are complementary across related activities, and the largest differences were almost never approached by random re-splits of the pooled traces (empirical strengths up to about 0.99). An important competing explanation that cannot be fully excluded is sampling variation between the two 200-trace windows — the evidence provides no screening baseline against which the number of flagged items could be compared — and with successor shares alone a strict reversal cannot be distinguished from a re-weighting of parallel edges, although the size of the largest shifts (for example A06→A08 halving from about 52% to 26%) makes pure chance unlikely. [DIR001, DIR002, DIR004, DIR006, DIR008, DIR016, DIR019, DIR021]\n\nOther differences:\n\n- The branch choice after A39 moved from A15 to A14 (46/54 to 53/47 of A39's continuations, with mirrored participation). [DIR025, OCC013, OCC014]\n- Successor shares around A20, A30, A31 and A36 shifted as described above, without any activity gaining or losing overall presence. [DIR014, DIR017, DIR018]\n- Exits from the A10/A11 repeat moved toward A38, A13 became less common, and A38 and A37 occurred in more traces and repeated more often. [DIR009, OCC012, OCC023, OCC024]\n- Within the A16–A19 block, traffic moved toward A16 and A18, with A19→A16 showing the strongest single shift. [OCC017, OCC018, DIR010, DIR013, DIR015]\n- A minor shift: A41→A44 rose from about 61.5% to 66.5% of A41's continuations. [DIR027]",
+  "case_id": "null_b42ecf97ea8e50a7",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

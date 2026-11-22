@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_57330ea305104e3a.json",
+  "evidence_sha256": "94c3801fbfaa9868d46e179e70c95412725acf664f0c90bd9a036ad8db684623",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:39:01.041610+00:00",
+  "finished_at_utc": "2026-11-15T03:40:09.876757+00:00",
+  "latency_seconds": 68.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9975,
+    "prompt_tokens": 3428,
+    "total_tokens": 13403,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9237,
+      "text_tokens": 738
+    },
+    "cost": 0.005501700000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36947,
+  "text": "### Observed differences\n\n- The preferred successor of A31 and of A32 flipped between the windows. Earlier, about 64 in 100 of A32's outgoing transitions went to A31 (about 36 to A28), while about 64 in 100 of A31's went to A28 (about 36 to A32), making A32 → A31 → A28 the dominant sequence. In the later window this reversed: about 62 in 100 of A31's transitions go to A32 (about 38 to A28) and about 62 in 100 of A32's go to A28 (about 38 to A31). Both activities occur in about 90 of 200 traces in each window. [DIR002, DIR003]\n- At A27, observed in all 200 traces in both windows, the outgoing shares of A31 and A32 roughly exchanged places: A31 rose from about 16 in 100 to about 28, A32 fell from about 29 to about 18, while A33 (about 29 to 27) and A34 (about 26 to 27) stayed stable. [DIR001]\n- The elapsed time between consecutive completions of A24 and A25 roughly halved: mean about 1.0 hour earlier versus about 0.5 hour later, median about 1.01 versus 0.50 hours, and the middle 50% of observations narrowed from roughly 0.90–1.15 hours to roughly 0.45–0.55 hours; the pair is observed in all 200 traces in each window. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the routing through A31 and A32 reversed: earlier the dominant sequence ran A32 into A31, which then exited to A28, whereas in the later window A31 typically feeds A32, which then exits to A28, with A27's entries into the pair shifting in the same direction (more to A31, fewer to A32). This rests on mirrored successor-share reversals at both A31 and A32 (about 64/36 becoming about 38/62), a corroborating shift at A27 while A33 and A34 remained stable, three control-flow items against roughly 0.29 expected by chance for that family, and differences larger than about 99.5 in 100 random re-splits. Limitations: DIR002 and DIR003 view the same underlying behaviour from two endpoints rather than independently confirming it, and because DIR shows only successor shares, a strict exchange of the two activities' order versus a change in routing probabilities between the same activities cannot be separated without positional or relational evidence, which this evidence does not contain. [DIR001, DIR002, DIR003]\n\nOther differences: the elapsed time between A24 and A25 completions fell from about 1.0 to about 0.5 hour with a much narrower spread — a distinct timing change in a different part of the process, backed by one time item against roughly 0.006 expected by chance and a difference larger than about 999.5 in 1000 random re-splits; since TWAIT measures elapsed time between consecutive completion events, the evidence does not show which portion of that interval shortened, and this change involves activities outside the routing hypothesis. [TWAIT001]",
+  "case_id": "e4a_57330ea305104e3a",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

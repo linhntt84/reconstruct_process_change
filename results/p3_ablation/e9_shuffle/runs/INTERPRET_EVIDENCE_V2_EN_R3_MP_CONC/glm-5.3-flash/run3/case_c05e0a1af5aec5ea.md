@@ -1,0 +1,21 @@
+### Observed differences
+
+- **The handovers around the central activities were exchanged.** In the earlier window, A16 always led to A05 (62 of 62 observed outgoing transitions), A05 led mainly to A01 (about 54 in 100 of its 136 transitions) and to A16 (about 46), A09 led to A08 in about 43 in 100 of its transitions, and A08 led back to A13 (about 53) and A04 (about 47). In the later window, A16 always leads to A08 (53 of 53), A08 leads to A16 (about 51) and to A17 (about 49), A09 leads to A05 (about 51) instead of A08, and A05 leads to A13 (about 54) and A04 (about 46); A04 and A13 now hand to A08 in about 23–24 in 100 of their transitions, where they previously handed to A05 in about 28 in 100. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+
+- **Pairwise distances reversed.** A08→A13 and A08→A04, typically 1–2 positions apart earlier, sit 4–5 apart later, while A13→A08 and A04→A08 moved from 4–5 apart to adjacent; A05 shows the same reversal with A04 and with A13; A09→A05 is now adjacent where A09→A08 was earlier; and A16's tight 1–3-step relation moved from A05 to A08. Each item rests on roughly 5–25 paired observations per window, but all affected pairs reverse together. [LAG001, LAG002, LAG003, LAG005, LAG007, LAG009, LAG011, LAG012, LAG013, LAG014, LAG016, LAG017]
+
+- **A01 withdrew from this sequence.** Earlier, A01 appeared in about 21 in 100 traces, always together with A04, A05, A09 and A13, around two-thirds into the trace, and all 74 of its observed outgoing transitions went to A09. Later, A01 appears in about 34 in 100 traces, always at the first position, never together with any of A04, A05, A08, A09, A13, A16 or A17, and no outgoing transition from A01 was observed; traces containing A04, and with them the sequence, fell from about 21 to about 13 in 100. [DIR001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007]
+
+- **A17 entered the sequence.** It was not observed earlier; later it appears in about 13 in 100 traces (about 0.26 occurrences per trace), in all 51 observed cases it is followed by A09, it sits around two-thirds into the trace, and it co-occurs with A04, A09 or A13 in about 25 in 100 traces and with A05 in about 12 in 100. [OCC004, DIR008, POS002, REL008, REL009, REL010, REL011]
+
+- **Participation shifted.** A05 fell from about 21 to 6 in 100 traces (mean occurrences per trace 0.68 to 0.13) while A08's observed outgoing transitions rose from 32 to 104; A02 fell from about 50 to 38 in 100 traces and A03 from about 29 to 16. [OCC001, OCC002, OCC003, DIR004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the recurring sequence involving A16, A05, A08, A01, A17, A09, A04 and A13 was reordered in the later window: A05 and A08 exchanged their places (A16 now feeds A08 rather than A05, A09 now feeds A05 rather than A08, and A04/A13 now feed A08 rather than A05), A01 no longer takes part in the sequence and instead appears at the first position of traces, detached from every sequence activity, and the previously unobserved A17 was inserted immediately before A09, roughly where A01 used to sit; A05 also became much rarer. The screening produced 42 qualifying control-flow items against about 0.4 expected without a change, so the pattern as a whole cannot be explained by random re-splits, every item's difference exceeds about 199 of 200 reference comparisons, and the successor changes, reversed distance profiles and co-occurrence flips all describe the same reordering. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG002, LAG014, REL001, REL008, POS001, POS002, OCC003, OCC004]
+
+Limitations: many items re-describe the same traces (the seven A01 relations and the four A17 relations are not independent confirmations), several distance items rest on only about 5–25 paired observations per window, and the evidence cannot rule out that the windows differ in case composition — sequence-type cases shrinking while a new, A01-only case type grows — rather than a single behaviour having been rewired; nor can it show what A01's later traces contain beyond A01 itself, since no successor of A01 was observed. [REL001, POS001, OCC003, LAG004, LAG012, DIR001]
+
+Other differences: A02 and A03 participation declined (about 50 to 38 and 29 to 16 in 100 traces) [OCC001, OCC002].

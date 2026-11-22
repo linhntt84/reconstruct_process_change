@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "b7bcaaf1496851f7e01bd1edc814fc4ec204c27ff56932e2175cf66f8b131bc6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:29:46.590026+00:00",
+  "finished_at_utc": "2026-11-14T14:31:07.299658+00:00",
+  "latency_seconds": 80.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12555,
+    "prompt_tokens": 10298,
+    "total_tokens": 22853,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11360,
+      "text_tokens": 1195
+    },
+    "cost": 0.0078222
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38879,
+  "text": "### Observed differences\n\n- In the earlier window the flow was almost fixed: A01 led to A02 in about 87 in 100 of its outgoing transitions, A02 led to A04 in about 94 in 100, and A04 led to A03 in about 96 in 100; a direct A01→A04 step was rare (about 6 in 100). [DIR001, DIR002, DIR004]\n- In the later window, A02 and A04 no longer have a fixed order: A02 comes before A04 in about 54 in 100 traces and A04 before A02 in about 46 in 100, whereas before, A02 always came first (100 in 100). Where A02 still precedes A04, the step remains immediate in both windows (about 94 vs 92 in 100 at distance 1). [REL004, LAG006]\n- The later window shows transitions that were absent before: A02 passes directly to A03 in about 44 in 100 of its outgoing transitions, and A04 passes back to A02 in about 41 in 100; A01→A04 grows from about 6 to about 43 in 100 of A01's outgoing transitions. [DIR002, DIR004, DIR001]\n- Distances shift accordingly: A02→A03, previously usually two positions apart (about 90 in 100), is now immediate in about 44 in 100 cases; A04→A03, previously immediate in about 96 in 100, is now two or more positions apart in about half the cases; A01→A02, previously always adjacent, is now two positions apart in about 43 in 100 cases; A01→A04, previously usually two positions apart, is now immediate in about 49 in 100 cases. [LAG005, LAG009, LAG001, LAG003]\n- A02 now occurs later in the trace (mean relative position about 0.17 vs 0.27) and A04 earlier (about 0.39 vs 0.28), while A01 and A03 keep their positions. [POS002, POS004, POS001, POS003]\n- Participation is unchanged: A01–A04 still occur in all 200 traces of both windows, A03's split between A05 and A06 is essentially unchanged, and the A05⇄A06 loop is stable. [POS001, POS002, POS003, POS004, DIR003, DIR005, DIR006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints around A02 and A04 were relaxed and new shortcuts were introduced: the previously fixed chain A02 → A04 → A03 became a mixed order in which A04 often precedes A02 (about 46 in 100 traces), A02 can pass directly to A03 (skipping A04), A01 can pass directly to A04 (skipping A02), and A04 can pass back to A02. This is shown directly by the successor profiles of A01, A02 and A04, by the fixed-to-mixed order change between A02 and A04, and by matching lag shifts on the same activity pairs; the key items exceed 199 of 200 random re-splits in strength, rest on about 200 traces per window, and the opposite position shifts of A02 (later) and A04 (earlier) point the same way. [DIR001, DIR002, DIR004, REL004, LAG001, LAG003, LAG005, LAG009, POS002, POS004]\n\nLimitations: the indicators cannot distinguish a reordering in which A04 now runs before A02 from a new repetition loop in which A02 and A04 alternate one or more times — the two-way transitions between them are consistent with both. Also, the later window still contains the old pattern in roughly half of the cases, so a coexistence of an old and a new variant (for example during a gradual transition) cannot be ruled out. [DIR002, DIR004, REL004]\n\nOther differences: returns to A01 became somewhat more frequent and shorter — A04→A01 rises from about 4 to about 10 in 100 of A04's outgoing transitions and its distance to A01 shrinks — but this rests on only 14 versus 27 observations, and the A02→A01 and A03→A01 lags are based on fewer than 30 observations each, so these are weak signals rather than part of the main hypothesis. [DIR004, LAG008, LAG004, LAG007]",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

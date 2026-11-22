@@ -1,0 +1,16 @@
+### Observed differences
+
+- Activities A01 and A02 disappear completely: in the earlier window they each appeared in about 49.5% of traces (99 of 200) with a mean of about 0.98 occurrences per trace; in the later window they appear in no trace, and their outgoing transitions and positional distributions vanish. [OCC001, OCC002, DIR001, DIR002, POS001, POS002, REL001, REL002]
+- Activity A09 appears: it is absent in the earlier window and appears in about 23.5% of traces (47 of 200) in the later window, with a mean of 0.40 occurrences per trace and a recurrence share of 11.5%. Its successors are A11, A07 and A12. [OCC005, DIR007, POS005, REL007]
+- Participation of A08 and A10 roughly doubles: A08 from 23.5% to 50% of traces, A10 from 26% to 50%. [OCC004, OCC006]
+- Participation and repetition of A06 and A13 decrease: A06 mean occurrences per trace drop from 1.98 to 0.48 and trace participation from 49.5% to 35.5%; A13 mean drops from 1.00 to 0.42 and participation from 35% to 27.5%. [OCC003, OCC007]
+- Successor relations are rerouted: A14’s successor changes from A01 (100%) to A08 (55.9%), A07 (35.2%), A12 (4.5%), A09 (3.9%) and A04 (0.6%). A06’s successor changes from A13/A02 to A14 (100%). A13’s successor changes from A06 to A14 (100%). A08’s successor changes from A05 to A10. A07’s successor changes from A12 (91.7%) to A12 (45.6%) and A09 (48.1%). A12’s successor changes from A11 (94.8%) to A11 (54.4%) and A09 (41.8%). A11’s successor changes from A06 (96.9%) to A13 (51.9%) and A06 (41.8%). A04’s successor changes from A06 (99%) to A06 (60%) and A13 (39%). [DIR003, DIR004, DIR005, DIR006, DIR008, DIR009, DIR010, DIR011]
+- LAG items show that many activity pairs become closer in position: for example, A04–A06 becomes adjacent (lag 1) in the later window instead of being spread over lags 1, 3 and 5; A14–A08 becomes adjacent (lag 1) instead of lag 2; A13–A08 becomes lag 2 instead of lag 5. [LAG001, LAG003, LAG016, LAG029, LAG034]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural change in the process: activities A01 and A02 are removed, a new activity A09 is introduced, and the flow is rerouted so that A14 now leads to A08 and A07 instead of A01, while A06 and A13 now lead to A14 instead of looping back to A13/A02. This is directly shown by the complete disappearance of A01 and A02 (OCC, DIR, POS, REL), the appearance of A09, and the consistent successor changes across A14, A06, A13, A08, A07, A12, A11 and A04. The number of qualifying items (107) far exceeds the 0.64 expected by chance, so the overall difference is not a sampling artefact. The LAG items further confirm that the relative order of many activities has shifted, consistent with the rerouting.
+
+Other differences: A08 and A10 participation doubled, and A06 and A13 became less frequent and less repeated; these are consistent with the same rerouting rather than independent changes. A competing explanation that cannot be fully ruled out is that the process changed in several separate steps rather than one single modification, but the evidence is coherent enough to support the single structural hypothesis.

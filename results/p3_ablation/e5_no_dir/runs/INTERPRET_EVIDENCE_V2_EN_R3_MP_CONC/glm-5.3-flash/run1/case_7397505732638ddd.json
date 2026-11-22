@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "f4b8847f5487653ca95938d3cd38bcb38659ba192de05804b3087bea2eee7079",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:50:14.412476+00:00",
+  "finished_at_utc": "2026-11-14T11:51:33.360839+00:00",
+  "latency_seconds": 78.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11477,
+    "prompt_tokens": 16682,
+    "total_tokens": 28159,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10316,
+      "text_tokens": 1161
+    },
+    "cost": 0.0082408
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36148,
+  "text": "### Observed differences\n\n- Participation is unchanged: A15, A17, A18, A19, A20 and A21 each occur in all 200 traces in both windows, and every analysed pair of them co-occurs in 100 in 100 traces in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- In the earlier window the block ran as one rigid sequence, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27: every ordered pair had a single fixed gap in all traces (for example A15 exactly one position before A18, A26 exactly four before A19, A15 exactly five before A27). [LAG001, LAG002, LAG023, LAG005]\n- In the later window this fixed order is dissolved and several pairs reverse: A18 preceded A19 in all traces before but in only about 15 in 100 after (A19 first in about 85 in 100); A15 preceded A19 in all traces before versus about 26 in 100 after; A15/A21, A17/A19 and A18/A20 are now near even splits; A17 still precedes A21 in about 77 in 100. [REL006, REL001, REL003, REL004, REL007, REL005]\n- Mean positions shifted consistently with this: A15, A17 and A18 now occur slightly later (mean relative position about 0.59 to 0.64, 0.56 to 0.59, 0.62 to 0.68) while A19, A20 and A21 occur slightly earlier (about 0.65 to 0.59, 0.71 to 0.68, 0.68 to 0.64), so the six activities now overlap in a narrow band instead of forming a strict progression. [POS001, POS002, POS003, POS004, POS005, POS006]\n- Gaps became variable: A26 to A19 was always four positions apart and is now one position in about 47 in 100 traces; A17 to A18 was always two and now ranges over two to five; A15 to A27 was always five and now ranges over two to five. [LAG023, LAG007, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints among this block of activities were relaxed in the later window: A26, A17, A15, A18, A19, A21, A20 and A27, previously executed in one fixed sequence with constant spacing, are now executed in varying orders — A19 typically precedes A15 and A18 (about 74 and 85 in 100), several pairs have no dominant order, and the spacing between activities varies from case to case, while every activity still appears in every trace. This is a change in ordering constraints, not a change in participation or in how often existing paths are taken. [REL001, REL006, REL003, REL007, LAG001, LAG007, LAG023, POS001, POS004]\n\nThe support is direct and consistent: all eight relation items flip from a 100% fixed order to mixed or reversed orders with co-occurrence unchanged at 100 in 100; all 24 lag items show the same constant-gap-to-variable-gap pattern; the position shifts agree in direction with the relation changes; the directional pair A15 before A19 within five steps, present in all 200 earlier traces, appears in only about 52 of 200 later traces, matching the reversal; and 38 qualifying control-flow items against roughly 0.32 expected for an unchanged process (each item's difference exceeding about 995 in 1000 random re-splits) cannot be explained by chance sampling. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG007, LAG023, POS001, POS004, POS005, POS006]\n\nLimitations: the window-level relations cannot show whether each individual case now uses a genuinely flexible order or whether the later window mixes a few fixed-order variants (for example two fixed sequences each used in a subset of cases); the complete new ordering structure cannot be established from pair-level relations alone, and the position and gap indicators use event positions, not clock time. [REL003, REL004, REL007, LAG003, LAG009]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

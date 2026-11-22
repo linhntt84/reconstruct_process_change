@@ -1,0 +1,20 @@
+### Observed differences
+
+- **The choice between two alternative branches after A20 flipped.** In the earlier window, about 75 in 100 traces ran A21, A22 and A23 together after the A19 → A20 sequence, while about 26 in 100 ran A24, A25 and A26 instead; in the later window the shares reversed (roughly a quarter of traces for the A21/A22/A23 group, about 76 in 100 for the A24/A25/A26 group). The two groups were mutually exclusive alternatives in both windows (they co-occur in only about 1–4 in 200 traces), and A20 still leads directly into one of the two groups: before, its outgoing transitions went to A21 (27%), A23 (26%), A22 (23%), A24 (14%), A26 (8%) and A25 (4%); in the later window, to A26 (28%), A24 (25%), A25 (22%) and about 8% each to A21/A22/A23. Within each group the three activities still occur together and without a fixed order in both windows. [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, DIR020, REL014, REL034, REL036, REL058, POS004, POS007]
+
+- **A06 now runs late, immediately before the final activity A35.** Earlier, A06 appeared in about 17 in 100 traces at scattered positions (median position about 0.48) and led to varied successors (A33 about 21%, A16 and A19 about 15% each, A15 and A35 about 12% each). In the later window it appears in about 52 in 100 traces, tightly near the end (median position about 0.96), and about 90% of its outgoing transitions go to A35; A34, which previously led almost only to A35 (about 89 in 100), now leads to A06 in about half of its outgoing transitions, and the A34 → A35 distance changed from mostly one step (about 90 in 100) to split between one and two steps. This is consistent with A06 being executed between A34 and A35 in roughly half of the later traces. [OCC006, POS001, POS013, DIR006, DIR034, REL011, REL012, LAG005, LAG072, LAG076]
+
+- **Four rare activities became rarer.** A02, A04, A08 and A10 each fell from roughly 13–17 in 100 traces to about 5–8 in 100, with clearly reshuffled successor profiles; each of these rests on only about 10–16 later-window observations. [OCC002, OCC004, OCC008, OCC010, DIR002, DIR004, DIR008, DIR010]
+
+- **Slightly more repetition at A15 and A16.** Both still occur in every trace, but mean occurrences rose from about 1.73 to about 1.83 per trace (recurrence support from about 0.37 to about 0.47). [OCC014, OCC015]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the routing shares between two existing alternative branches after A20 were swapped: the branch group A21+A22+A23, previously executed in about 75 in 100 traces, now runs in only about a quarter of traces, while the alternative group A24+A25+A26 rose from about 26 to about 76 in 100. The signs are direct and consistent: participation of all six activities moved by roughly 50 percentage points, A20's direct successor shares flipped accordingly while still leading into one of the two groups, the groups remain strictly exclusive alternatives in both windows, and the surrounding sequence (A29 → A19 → A20 before the branch; A30, A34 and A35 after it) is unchanged. Limitations: the two windows are single samples, so a shift in the mix of case types between the windows rather than a changed routing rule cannot be ruled out; no chance-expectation baseline (screening) was provided, so the number of qualifying items could not be compared against it; and the evidence cannot show whether the shares flipped abruptly or drifted. [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, DIR020, REL013, REL014, REL017, REL034, REL036, REL058, POS004, POS007]
+
+Other differences:
+- A06's increased participation and late placement (described above) form a second, separately supported difference; it rests on relational and positional evidence, not on the position shift alone. [OCC006, POS001, DIR006, DIR034, REL011, REL012, LAG005, LAG076]
+- A02, A04, A08 and A10 occur in fewer traces than before; given the small later-window counts, part of this may be sampling variation. [OCC002, OCC004, OCC008, OCC010]
+- A15 and A16 repeat slightly more often (mean about 1.73 → about 1.83 occurrences per trace). [OCC014, OCC015]

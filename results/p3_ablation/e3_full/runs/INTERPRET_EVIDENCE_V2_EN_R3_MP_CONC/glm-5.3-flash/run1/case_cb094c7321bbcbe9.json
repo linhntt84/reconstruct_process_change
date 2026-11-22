@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_cb094c7321bbcbe9.json",
+  "evidence_sha256": "e0ee07d22b1acf7a4c30fd19e8b4c772b4e49395e16562ca1178f3760fbae6e8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:04:55.937539+00:00",
+  "finished_at_utc": "2026-11-16T01:05:45.972803+00:00",
+  "latency_seconds": 50.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5472,
+    "prompt_tokens": 6285,
+    "total_tokens": 11757,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4653,
+      "text_tokens": 819
+    },
+    "cost": 0.00367875
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 17753,
+  "text": "### Observed differences\n\n- Activity A04 was executed exactly once in every case in the earlier window (participation 100%, mean 1.0 occurrence per trace, always at the final position); in the later window it appears in 0 of 200 cases. [OCC001, POS003]\n- In the earlier window the visible order was fixed: A06 (mean position 0.2) → A05 (0.4) → A03 (0.6) → A02 (0.8) → A04 (1.0), with A01 also always before A04. In the later window the same partner activities still occur in 100% of cases, but co-occurrence with A04 drops to 0% — for every pair, only the non-A04 activity is observed. [POS001, POS002, POS004, POS005, REL001, REL002, REL003, REL004, REL005]\n- Before, A02's only observed outgoing transition led to A04 (100% of its outgoing edges); in the later window no outgoing transitions of A02 are observed at all, and A02 now sits at the final position (mean 1.0, previously 0.8). [DIR001, POS001]\n- The remaining activities kept their relative order but sit slightly later in normalized event position: A02 +0.20, A03 +0.15, A05 +0.10, A06 +0.05 — a pattern consistent with the final step having been removed. These are event positions, not clock times. [POS001, POS002, POS004, POS005]\n- All eleven items show an empirical strength of about 0.995, i.e. differences larger than in 199 of 200 random re-splits of the pooled data. [OCC001, DIR001, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the final process step A04 was dropped from the flow: in the earlier window every case ran the fixed sequence A06 → A05 → A03 → A02 and then finished with A04, whereas in the later window A04 is not executed in any case, cases end at A02, and the remaining activities A01, A06, A05, A03 and A02 keep their relative order at slightly later normalized positions. [OCC001, POS003, DIR001, POS001, POS002, POS004, POS005, REL001, REL002, REL003, REL004, REL005]\n\nThe change is shown directly and consistently: A04's participation falls from 200 of 200 cases to 0 of 200, its co-occurrence with all five other activities falls from 100% to 0% while the fixed predecessor relations simply disappear, and the transition A02 → A04 vanishes as A02 becomes the last observed activity. This is a removal of a step, not a shift in how often existing alternatives are taken, since A04 is entirely absent in the later window. [OCC001, POS003, REL001, REL002, REL003, REL004, REL005, DIR001, POS001]\n\nLimitations: the evidence cannot distinguish a genuine removal of A04 from the activity being recorded under a different label or not being logged in the later window — zero participation only means A04 was not observed; likewise, A02's empty outgoing profile shows only that no outgoing transition was observed, not that the edge to A04 cannot occur. [OCC001, DIR001]",
+  "case_id": "case_cb094c7321bbcbe9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

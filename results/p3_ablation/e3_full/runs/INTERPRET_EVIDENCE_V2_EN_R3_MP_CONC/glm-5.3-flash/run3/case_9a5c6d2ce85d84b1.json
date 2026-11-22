@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_9a5c6d2ce85d84b1.json",
+  "evidence_sha256": "0a4f9d900f7c0610fb7d3dea1a80ba8f919973e7898f97b163340e1887e26ea8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:50:48.770430+00:00",
+  "finished_at_utc": "2026-11-16T03:51:48.536554+00:00",
+  "latency_seconds": 59.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7184,
+    "prompt_tokens": 5618,
+    "total_tokens": 12802,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6441,
+      "text_tokens": 743
+    },
+    "cost": 0.0044347
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25142,
+  "text": "### Observed differences\n\n- Activity A01 is absent from the earlier window — it appears in 0 of 200 traces — while in the later window it occurs exactly once in every trace (200 of 200 traces, mean 1.0 occurrence per trace), always at the final position (mean position 1.0). [OCC001, POS001]\n- In the earlier window, traces ended with A04: it sat at the last position (mean 1.0) and no outgoing transition from it was observed. In the later window, A04 sits earlier (mean position 0.75) and all 200 of its observed outgoing transitions lead to A01. [POS003, DIR001]\n- In the earlier window, each of A02, A03, A04 and A05 appeared without A01 (in 100 in 100 traces only the other activity was present). In the later window, A01 co-occurs with each of these four activities in 200 of 200 traces and runs after each of them in 100 in 100 cases. [REL001, REL002, REL003, REL004]\n- A03, A05 and A04 each occupy earlier positions in the later window (A03 about 0.33 → 0.25, A05 about 0.67 → 0.50, A04 1.0 → 0.75) while their relative order A03 → A05 → A04 is unchanged — the pattern expected when one activity is appended at the end rather than any reordering among them. [POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 was added as a new final step executed once at the end of every case: in the earlier window traces ran through A02, A03, A05 and A04 and ended with A04, with A01 never observed, whereas in the later window every trace ends with A01, which directly follows A04 (all observed outgoing transitions of A04) and follows each of A02, A03, A04 and A05 in 100 in 100 co-occurring cases. [OCC001, POS001, DIR001, REL001, REL002, REL003, REL004, POS003]\n\nThe supporting signs are direct and consistent: the change is shown relationally and directionally (A01 after every other activity; the new A04 → A01 transition), not only through frequencies, and the occurrence, position, direction and relation indicators all describe one and the same difference. Every item's difference is larger than in about 199 of 200 random re-splits, so sampling fluctuation of a rare variant is an unlikely explanation. [OCC001, DIR001, POS001, REL001, REL002, REL003, REL004]\n\nLimitations: zero participation in the earlier window only establishes that A01 was not observed there, so a newly inserted activity cannot be distinguished from one that already existed but was executed in none of the earlier cases and then became mandatory in every case. The earlier positions of A03, A05 and A04 reflect event-position normalisation after the appended step, not a move of those activities in clock time. [OCC001, POS002, POS003, POS004]",
+  "case_id": "case_9a5c6d2ce85d84b1",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

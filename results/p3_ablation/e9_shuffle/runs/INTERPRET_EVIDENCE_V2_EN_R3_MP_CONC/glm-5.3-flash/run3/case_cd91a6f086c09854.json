@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "201295793e36dcae2370f6aeb35f21c49179c0bc8ca73d89426d96eb2382c4f7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:28:56.535050+00:00",
+  "finished_at_utc": "2026-11-15T09:31:44.325561+00:00",
+  "latency_seconds": 167.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23818,
+    "prompt_tokens": 10309,
+    "total_tokens": 34127,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22306,
+      "text_tokens": 1512
+    },
+    "cost": 0.01345535
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 77931,
+  "text": "### Observed differences\n\n- The relative order of two groups of activities reversed. In the earlier window, A30, A31 and A36 always executed before both A21 and A22: in all 200 earlier traces each of the six pairs co-occurred and the trio member came first (100 in 100). In the later window, A21 and A22 come before each of the three in about 99 in 100 traces, while the activities still co-occur in every trace. [REL001, REL002, REL003, REL004, REL005, REL006]\n\n- A20 changed successor. Before, its outgoing transitions went to A30 (about 40 in 100), A31 (about 33) and A36 (about 28), almost never to A22; in the later window about 99 in 100 go to A22, and the distance from A20 to A22 shrank from 4 steps in all earlier traces to 1 step in about 99 in 100 later traces. [DIR001, LAG001]\n\n- A21 changed from leading straight to A25 to leading into the trio. Before, A25 followed A21 immediately in every trace; in the later window A21 is followed by A30 (about 36 in 100 outgoing transitions), A31 (about 33) and A36 (about 31), and A25 now appears about 4 steps after A21 in nearly all traces. [DIR002, LAG004]\n\n- The trio's exit changed accordingly. Before, each of A30, A31 and A36 led to A22 in roughly 28–38 in 100 of its outgoing transitions and never to A25; in the later window each leads to A25 in about 29–36 in 100 and to A22 in fewer than 1 in 100. [DIR003, DIR004, DIR005]\n\n- Event positions moved consistently with this: in the later window A30, A31 and A36 occur later in the trace (mean relative position about 0.59 versus about 0.41 before), while A22 (about 0.38 versus 0.47) and A21 (about 0.53 versus 0.62) occur earlier. [POS001, POS002, POS003, POS004, POS005]\n\n- The internal order of A30, A31 and A36 stays unfixed in both windows (each member follows either of the other two in roughly equal shares), so the change concerns where the block sits in the sequence, not a fixed re-ordering inside it. [DIR003, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block of three activities A30, A31 and A36 changed its placement relative to the other activities: before, it executed between A20 and A22 (A20 led into the trio, the trio led to A22, and A25 directly followed A21), whereas in the later window it executes after A21 and before A25 (A21 leads into the trio, the trio leads to A25, and A22 directly follows A20). Participation is unchanged — every involved activity still occurs in all traces and every tested pair still co-occurs in 100 in 100 traces — so this is a change in ordering and placement, not in how often the activities run or whether they run at all. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005]\n\nSupporting signs: the reversal is shown directly by the relation evidence in all six tested pairs with full support (200 traces per window); the successor changes at A20, A21 and the trio members, the step-distance changes (A20–A22 from 4 to 1, A21–A25 from 1 to 4) and the position shifts of all five activities point to the same relocation; and screening produced 22 qualifying control-flow items where about 0.42 would be expected without a change — roughly 50 times the chance expectation — so the ensemble is not what random re-splits of an unchanged process produce, even though the items largely describe one underlying difference rather than independent confirmations. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS003, REL001, REL004]\n\nLimitations: the evidence contains no outgoing profile for A22 or A25, so the transitions immediately around them are inferred from order, direction and distance evidence rather than observed directly, and four lag items on the now-rare reversed pairs rest on only about 2 after-window observations each. A competing explanation the evidence cannot fully exclude is that the two windows sample two distinct process variants rather than one modified process, although the near-uniform proportions within each window (99–100 in 100, with no intermediate mixes) make a within-window variant blend unlikely. [LAG002, LAG003, LAG005, LAG006, REL001]\n\nOther differences: none independent of the relocation above; the four remaining lag items view the same reversal from its now-rare side and add little on their own. [LAG002, LAG003, LAG005, LAG006]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

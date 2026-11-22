@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_830b26ab4a8f28e2.json",
+  "evidence_sha256": "c38627eae160d68107363740006907da81d62acd3aec27c29f19be296e097f62",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:09:46.284858+00:00",
+  "finished_at_utc": "2026-11-15T10:10:42.009225+00:00",
+  "latency_seconds": 55.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8186,
+    "prompt_tokens": 9363,
+    "total_tokens": 17549,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7118,
+      "text_tokens": 1068
+    },
+    "cost": 0.005497449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24376,
+  "text": "### Observed differences\n\n- **A01 disappeared.** In the earlier window A01 ran in all 200 traces, about 3.5 times per trace, typically around a third of the way into the trace; in the later window it is not observed in any of the 200 traces [OCC001, POS001]. Its outgoing transitions (702 earlier, going to A10 in about 35 of 100 cases, A09 in about 33, A08 in about 28) are entirely absent later [DIR001].\n- **Predecessors now bypass A01.** Earlier, about 88 of 100 outgoing transitions of A03 went to A01; later, none do — instead about 42 of 100 go to A10, about 39 to A09 and about 19 to A08 [DIR002]. A05 shows the same rerouting: about 85 of 100 transitions went to A01 earlier; later about 41 go to A09, about 38 to A10 and about 21 to A08 [DIR003].\n- **Co-occurrence with A01 was lost while the partners stayed.** A09, A10 and A08 each appeared together with A01 in every earlier trace (mostly interleaved or repeated, roughly 74–86 of 100 traces); later each still runs in all 200 traces but never alongside A01 [REL003, REL004, REL005]. A05 ran together with A01 in about 65 of 100 earlier traces; later it runs without A01 in about 67 of 100, with neither activity in about 33 [REL002]. A03 ran with A01 in about 47 of 100 earlier traces; later A03 appears without A01 in about 46 and neither appears in about 54 [REL001].\n- **Step distances shortened.** The share of A03→A10 pairs within one step rose from about 3 to about 23 in 100, A03→A09 from about 3 to about 20, A05→A09 from about 3 to about 13, and A05→A10 from about 3 to about 12 [LAG002, LAG003, LAG005, LAG006]. Distances from A03/A05 to A08 lost their earlier concentration at four steps (about 28 and about 19 of 100) and became more spread out [LAG001, LAG004].\n- A minor redistribution: A08→A09 pairs within one step fell from about 14 to about 7 of 100, while four-step pairs rose to about 7 [LAG007].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was removed from the process (or is no longer executed), with the flow that previously ran through A01 now passing directly from A03 and A05 to A01's former successors A09, A10 and A08. This is shown directly: A01 fell from participation in every trace (about 3.5 occurrences each) to zero of 200 traces, its outgoing edges vanished, and its two predecessors A03 and A05 now lead to A09, A10 and A08 and never to A01 [OCC001, POS001, DIR001, DIR002, DIR003]. The relational evidence is consistent: all five partners keep their own participation roughly stable (A09, A10 and A08 still in all traces; A05 about 65→67 of 100; A03 about 47→46) while their co-occurrence with A01 drops to zero, and the step distances between A03/A05 and A09/A10 shorten as expected when a repeated intermediate block disappears [REL001, REL002, REL003, REL004, REL005, LAG002, LAG003, LAG005, LAG006, LAG001, LAG004]. With 17 qualifying items against roughly 0.26 expected if nothing had changed, the pattern as a whole cannot be explained by sampling variation.\n\nLimitations: zero participation only shows that A01 was not observed, so removal cannot be distinguished from A01 being renamed or always skipped; the LAG indicator uses event positions rather than clock time; and many items describe the same underlying behaviour (A01's disappearance), so they are not independent confirmations [OCC001, DIR001, LAG002].\n\nOther differences: the slight shift in distances between A08 and A09 (one-step pairs down from about 14 to about 7 of 100) is not directly tied to the bypass pattern above [LAG007].",
+  "case_id": "case_830b26ab4a8f28e2",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

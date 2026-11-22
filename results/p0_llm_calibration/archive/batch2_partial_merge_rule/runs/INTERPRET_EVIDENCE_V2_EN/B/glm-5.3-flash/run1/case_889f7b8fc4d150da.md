@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, A32, A33 and A34 are no longer present in every trace: participation falls from 100 in 100 traces to about 46 in 100 for A32 and to about 55 in 100 for A33 and A34, with mean occurrences per trace dropping by roughly 0.45–0.55. [OCC001, OCC002, OCC003]
+- A32 and the pair A33/A34 became mutually exclusive: A32 co-occurred with A33 and with A34 in 100 in 100 earlier traces, but in the later window they share at most about 1 in 100 traces; A32 appears without them in about 45 in 100 traces, while A33 and A34 still appear together in about 55 in 100. [REL013, REL014, REL015]
+- A25 now leads almost exclusively to A26 — about 98 in 100 of its outgoing transitions, versus roughly 47 to A33 and 52 to A34 before — and A26 follows A25 immediately (a gap of 1 event in about 98 in 100 cases, versus a typical gap of 3 before). [DIR001, LAG001]
+- A33 and A34 moved to the later part of the trace: they used to follow A25 within 1–2 events and to precede A26 and A28 in about 99 in 100 traces; in the later window they sit 4–5 events after A25 and come after A26 and A28 in about 54–55 in 100 of the traces containing both. [LAG004, LAG005, REL005, REL006, REL008, REL009]
+- A28's outgoing transitions redistributed from almost exclusively A32 (about 98 in 100) to a split of roughly 44 to A32, 31 to A33 and 24 to A34. [DIR002]
+- A29 now follows the branch activities almost immediately: the A33→A29 and A34→A29 gaps shrink from about 5 events to 1–2 events in nearly all observations, A33/A34 now route to A29 in about 44–55 in 100 of their outgoing transitions (a target essentially unused before), while A32 still precedes A29 whenever both appear. [LAG010, LAG012, DIR003, DIR004, REL010]
+- Relative positions shifted accordingly: A26 and A28 occur earlier (mean relative position from about 0.48 to 0.43 and from 0.54 to 0.50), while A33 and A34 occur later (from about 0.43 to 0.55). [POS002, POS003, POS006, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the process routes each case through one of two alternative branches after A28: in about 45 in 100 traces A28 is followed by A32 (which still precedes A29), and in about 55 in 100 it is followed by the pair A33/A34, which now run after A26 and A28 and are immediately followed by A29; A25 is connected directly to A26 instead of leading into A33/A34. [OCC001, OCC002, OCC003, REL013, REL014, DIR001, DIR002, DIR003, DIR004, LAG001, LAG004, LAG010, LAG012]
+
+The distinct differences — the A32-versus-A33/A34 split, the A25→A26 rewiring, the reordering of A33/A34 to after A26/A28, and the new A29 adjacency — number at least three, clearly more than the well under one item expected by chance at these thresholds, and every item's difference exceeds about 199 of 200 random re-splits of the pooled data. The order and placement claims rest on direct relational evidence (order flips, gap changes, successor changes) rather than participation alone, and the occurrence, routing, relation and position indicators consistently describe the same underlying split, though they are not independent confirmations. [REL005, DIR001, LAG010, OCC001]
+
+Limitations: a few lag comparisons rest on very few observations (A25→A29 has 1 supporting observation before, A33→A32 only 1 after) and were not relied upon. The main competing explanation the evidence cannot rule out is a shift in the mix of case variants: the two windows are finite samples, variant frequencies can differ between them without any structural modification, and the evidence cannot show whether the A32 branch is new or existed earlier at a low, unobserved frequency — although its complete co-occurrence with A33/A34 in all 200 earlier traces makes a sizeable hidden alternative unlikely. [LAG003, LAG011, REL013]

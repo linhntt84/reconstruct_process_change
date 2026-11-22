@@ -1,0 +1,14 @@
+### Observed differences
+
+- In the earlier window, a completion of A36 was followed by a consecutive completion of A37 after about 1.0 hour on average (median about 1.0 h; the middle half of gaps fell between about 0.9 and 1.1 h). In the later window, this gap was about 0.5 hour on average (median about 0.5 h; middle half about 0.45–0.55 h), and the spread halved as well (standard deviation about 0.16 h to 0.08 h). The pair still occurred at a similar rate (153 consecutive pairs earlier vs 163 later). The difference is larger than in all but about 1 of 2,000 random re-splits of the pooled data. [TWAIT001]
+- Two activities were executed less often in the later window: A31 appeared in about 31 of 100 traces earlier versus about 21 of 100 later (mean occurrences per trace about 0.54 to 0.31), and A32 in about 60 of 100 versus about 48 of 100 (mean about 1.1 to 0.8), with repeated executions within a trace also becoming less common. Each difference is larger than in all but about 1 of 200 random re-splits. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing as a specific possibility: the elapsed time from a completion of A36 to a consecutive completion of A37 halved, from about 1.0 hour per gap in the earlier window to about 0.5 hour in the later window. This is shown directly by the elapsed-time indicator for exactly this activity pair, the shift is consistent across the whole distribution (mean, median and both quartiles all fell to roughly half, and the spread halved), and the pair's frequency was stable, so the change is in the gap itself rather than in how often the pair occurs. The time family produced 1 qualifying item where only about 0.008 are expected when nothing has changed, far above what chance would produce, and the difference exceeds about 999.5 of 1,000 random re-splits. [TWAIT001]
+
+Limitations: TWAIT measures elapsed time between consecutive completion events, not pure waiting or processing time, so the evidence shows the gap shrank but cannot distinguish faster execution or handover between the two steps from a changed mix of cases contributing the gaps; the hypothesis also rests on a single time item, with no relational or positional evidence either way. [TWAIT001]
+
+Other differences: A31 and A32 were each executed less often per trace and in fewer traces in the later window (A31: about 31% to about 21% of traces; A32: about 60% to about 48%), with fewer repeats. These control-flow findings are not part of the timing hypothesis: the control-flow family produced 2 qualifying items where about 0.25 are expected without change, a level an unchanged process still produces, so a sampling difference cannot be ruled out for them. [OCC001, OCC002]

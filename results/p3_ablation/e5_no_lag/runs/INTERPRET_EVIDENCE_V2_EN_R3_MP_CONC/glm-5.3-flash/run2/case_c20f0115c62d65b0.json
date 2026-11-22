@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_c20f0115c62d65b0.json",
+  "evidence_sha256": "da9f8ac065ffda47f9f43ccd83c0a192dd20d6401b61f1f64a78c6d13da680d7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:05:41.981534+00:00",
+  "finished_at_utc": "2026-11-15T07:06:59.896597+00:00",
+  "latency_seconds": 77.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11527,
+    "prompt_tokens": 12199,
+    "total_tokens": 23726,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10486,
+      "text_tokens": 1041
+    },
+    "cost": 0.00759335
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37578,
+  "text": "### Observed differences\n\n- In the earlier window, exactly one of the three activities A19, A20 and A25 was executed in every case — A19 in about 32 in 100 traces, A20 in about 28, A25 in about 40 — and they never occurred together or repeated within a case; in the later window each appears in only about 1 in 200 traces, leaving about 197 in 200 traces without any of them [OCC001, OCC002, OCC003, REL001, REL002, REL006].\n- The flows into these three activities disappeared: before, about 43 in 100 of A27's outgoing transitions led to A19, A20 or A25 (A28 took about 53 in 100), and about 54 in 100 of A28's outgoing transitions led to one of the three (A29 took about 45 in 100); in the later window A27 leads to A28 in about 97 in 100 of its transitions and A28 leads to A29 in about 99 in 100 [DIR004, DIR005].\n- Before, whichever of the three ran, it always co-occurred with A27, A28 and A29 (co-occurrence in 28–40 in 100 traces), typically after A27 (in about 32, 28 and 40 in 100 traces for A19, A20 and A25 respectively) and before A29 (in about 32, 27 and 40 in 100); in the later window A27, A28 and A29 occur without any of the three in about 995 in 1000 traces [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012].\n- A27, A28 and A29 themselves remain in essentially every trace in both windows, so the difference is confined to the three alternative activities and the edges around them [DIR004, DIR005, POS004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe control-flow screening flagged 24 items where roughly 0.5 would be expected if nothing had changed, so chance cannot account for the set as a whole; note, however, that many items describe the same underlying difference and are not independent confirmations [OCC001-OCC003, DIR001-DIR005, POS001-POS004, REL001-REL012].\n\nMain hypothesis: the block of three mutually exclusive activities A19, A20 and A25 — of which exactly one was executed per case in the earlier window, after A27 and before A28/A29 — is no longer executed in the later window, and cases now proceed directly from A27 through A28 to A29. This is supported directly by the collapse of the three activities' participation (about 64, 56 and 80 of 200 traces down to 1 each), the disappearance of the A27 and A28 transitions into them, and the full-support relation items showing A27, A28 and A29 now occurring without any of the three [OCC001, OCC002, OCC003, DIR004, DIR005, REL003, REL005, REL010, REL012]. Because the three activities are nearly absent in the later window, this indicates that part of the process is no longer executed rather than a re-weighting between existing paths. Limitations: the later-window profiles of A19, A20 and A25 rest on a single trace each, so their residual outgoing edges (to A44, A08 and A42) and their positions cannot be interpreted; and an unobserved activity is not proven removed — the evidence cannot rule out that the three activities still execute in a very small share of cases, below about 1 in 200 [DIR001, DIR002, DIR003, POS001, POS002, POS003, OCC001, OCC002, OCC003].\n\nOther differences: A29 occurs in every trace in both windows and sits slightly earlier within the trace in the later window (mean relative position about 0.56 versus 0.55) [POS004].",
+  "case_id": "case_c20f0115c62d65b0",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

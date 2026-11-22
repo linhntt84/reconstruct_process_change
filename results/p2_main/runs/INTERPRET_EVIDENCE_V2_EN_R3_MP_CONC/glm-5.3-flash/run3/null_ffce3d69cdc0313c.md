@@ -1,0 +1,15 @@
+### Observed differences
+
+- The dominant order of the segment between A27 and A28 flipped. In the earlier window the typical sequence was A27 → A32 → A31 → A28: A32 followed A27 at distance 1 in about 64 in 100 traces containing the pair, A31 followed A27 at distance 2 in about 64 in 100, and A28 followed A31 at distance 1 in about 64 in 100. In the later window the typical sequence was A27 → A31 → A32 → A28: A31 followed A27 at distance 1 in about 62 in 100, A32 at distance 2 in about 62 in 100, and A28 followed A32 at distance 1 in about 62 in 100. [LAG001, LAG002, LAG003, LAG004]
+- The successor shares of the two middle activities flipped in the matching direction. From A31, transitions to A28 fell from about 64% to about 38% of observed outgoing transitions, while transitions to A32 rose from about 36% to about 62%. From A32, transitions to A31 fell from about 64% to about 38%, while transitions to A28 rose from about 36% to about 62%. [DIR001, DIR002]
+- Both orderings coexist in both windows: the non-dominant order accounts for roughly 36–38% of cases in each window, so the later window shows the majority order reversed rather than one order replacing the other outright. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+- Participation was stable: each item rests on about 90 of 200 traces in the earlier window and about 91 of 200 in the later window (roughly 45 in 100 traces), and all observed distances stay within 1–2 steps, so this is not a change in how often these activities occur or in how often they repeat. [DIR001, LAG001]
+- Scale of the signal: 6 control-flow items qualified, roughly 20 times the 0.3 items expected by chance if nothing had changed, and each item's difference exceeded about 995 of 1000 random re-splits of the pooled traces. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A31 and A32 exchanged their typical positions in the sequence between A27 and A28: in the earlier window A32 typically came directly after A27, A31 one step later, and A28 directly after A31; in the later window A31 typically came directly after A27, A32 one step later, and A28 directly after A32. The support is direct and consistent: all four lag distributions flipped between distances 1 and 2, the successor shares from A31 and A32 flipped in exactly the matching direction, every item rests on about 90 observations per window, and six qualifying items is many times the number expected from chance alone. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: the six items describe one underlying change rather than independent confirmations, and because both orderings appear in both windows at roughly 36–38% versus 62–64%, the evidence cannot distinguish a genuine exchange of the two activities' positions from a shift in the relative frequency of two alternative orders that already coexisted before the change. Behaviour outside this four-activity segment, and pairs more than five steps apart, are not observed. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]

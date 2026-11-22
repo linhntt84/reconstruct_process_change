@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_5f69f27320a9a3d6.json",
+  "evidence_sha256": "999f4e83a3c507e89601d486cfc572e976040cd9474a0de0a16d94b0468e28d0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:44:19.820937+00:00",
+  "finished_at_utc": "2026-11-16T02:45:08.924167+00:00",
+  "latency_seconds": 49.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7425,
+    "prompt_tokens": 14314,
+    "total_tokens": 21739,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6329,
+      "text_tokens": 1096
+    },
+    "cost": 0.0058595999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20908,
+  "text": "### Observed differences\n\n- A01 was completely absent in the earlier window (0 of 200 traces) but is executed exactly once in every trace in the later window (200 of 200), at a variable point in the trace: median relative position 0.4, middle half between 0.2 and 0.6. [OCC001, POS001]\n- A04 shows the reverse: it was executed once in every trace in the earlier window (200 of 200, always at relative position 0.8) and is absent from the later window (0 of 200). [OCC002, POS003]\n- Before, A03 was always followed by A04 and A04 always by A07; in the later window A03 is always followed directly by A07, and A01's outgoing transitions go to A05 (about 39 in 100), A03 (about 34 in 100) and A06 (about 28 in 100). [DIR003, DIR004, DIR001]\n- Before, A02 led only to A05 (about 51 in 100) or A06 (about 49 in 100); in the later window it leads to A01 in about 38 in 100 cases, with A05 and A06 taking the remainder. [DIR002]\n- Before, A01 co-occurred with none of A02, A03, A05, A06, A07; in the later window it co-occurs with all of them — always after A02, always before A03 and A07, and in mixed order with A05 and A06 (A01 first in about 55 and 49 in 100 cases respectively). A04's relations collapsed in the opposite direction: with A02 and A03 it went from always co-occurring (after them) to never co-occurring, and likewise with A05, A06 and A07. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]\n- Step distances shift exactly as this behaviour implies: the distance from A02 to A03 moved from always 3 steps to always 4 steps, and from A03 to A07 from always 2 steps to always 1 step; A05 and A06, previously always 1 step apart, are now 2 steps apart in roughly 20–35 in 100 cases. [LAG001, LAG004, LAG006, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 is executed once per case at a flexible position between A02 and A03 — sometimes directly after A02, sometimes before or after the A05/A06 pair — while A04 is no longer executed, so the former fixed chain A03 → A04 → A07 now runs directly from A03 to A07. The support is direct and consistent across all indicator families: participation flips from 0 to 200 of 200 traces for A01 and from 200 of 200 to 0 for A04; the successor profiles change accordingly (A03 now always followed by A07, A01 with outgoing edges to A03, A05 and A06); the relational items place A01 consistently after A02 and before A03/A07 with mixed order against A05/A06; and every lag distance moves by exactly the one step predicted by adding A01 before A03 and dropping A04 after A03. All qualifying items point to the same structural difference with empirical strength of about 0.995, and the sample sizes (200 traces per window, with all-or-nothing participation) rule out a rare-variant explanation. [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, REL002, REL003, REL006, LAG001, LAG004]\n\nAn important competing explanation remains: the evidence cannot distinguish a genuinely new activity A01 plus a removal of A04 from a replacement of A04 by A01 under a different code with changed placement, since the identifiers are anonymous. The branch shares around A01 (for example A02 → A01 at about 38 in 100) are also point estimates from 200 traces per window.\n\nOther differences: the relative order of A05 and A06 is essentially unchanged (about 50/50 in both windows; that item's difference is within chance variation, strength 0.08), and their positions shifted about 0.1 later in the trace, which is consistent with A01 being inserted into that segment rather than a separate reordering. [REL012, POS004, POS005]",
+  "case_id": "case_5f69f27320a9a3d6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

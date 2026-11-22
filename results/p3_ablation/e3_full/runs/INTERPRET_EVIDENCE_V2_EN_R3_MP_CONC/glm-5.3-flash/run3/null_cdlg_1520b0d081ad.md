@@ -1,0 +1,12 @@
+### Observed differences
+
+- Activities A01 and A03 behave as strict alternatives: in both windows every trace contains exactly one of them and they never occur together. Before, A01 appeared in about 53 in 100 traces and A03 in about 47; in the later window the shares reversed, with A01 at about 48 in 100 and A03 at about 53 in 100 [OCC001, OCC003, REL002].
+- Mirroring that reversal, A01's co-occurrence with each of the ever-present activities A02, A05, A06 and A07 fell by about 5 percentage points (for example with A02 from 52.5 to 47.5 in 100 traces), while A03's co-occurrence with the same activities rose by about 5 points [REL001, REL004, REL005, REL006, REL007, REL013, REL014, REL015].
+- A04 appeared in about 53 in 100 traces before and about 50 in 100 after, while traces containing neither A01 nor A04 (that is, A03 without A04) rose from about 20 to about 29 in 100 [OCC004, REL003, REL012].
+- Among the four activities present in every trace (A02, A05, A06, A07), execution shifted slightly away from interleaved or repeated orderings toward a single fixed order (A02, then A07, then A06, then A05): each of the six pairs moved from roughly 47 in 100 traces in fixed order to roughly 50 in 100, and the recurrence share of A02, A06 and A07 fell from 0.53 to about 0.50 [OCC002, OCC005, OCC006, REL009, REL010, REL011, REL019, REL020, REL021].
+- The distance from A03 to A02 shortened slightly: pairs one step apart rose from about 45% to about 54% of A03–A02 pairs, the largest single difference in the evidence (empirical strength 0.94), while the corresponding A01–A02 measure moved the opposite way, from about 51% to about 47% [LAG003, LAG001].
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. The most striking pattern, the reversal between the alternatives A01 and A03 (about 53/47 before versus 48/52 after), differs by only about 5 percentage points, and its reference comparisons show differences of this size arise in roughly a third of random no-change splits, while the many agreeing relation items largely re-express this same single participation shift rather than confirming it independently [OCC001, OCC003, REL002, LAG003].

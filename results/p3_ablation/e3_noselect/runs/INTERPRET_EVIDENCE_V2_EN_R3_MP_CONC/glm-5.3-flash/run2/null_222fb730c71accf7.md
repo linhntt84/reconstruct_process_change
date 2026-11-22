@@ -1,0 +1,22 @@
+### Observed differences
+
+- The clearest difference is a mirror-image shift in how often two complementary groups of activities run. In the earlier window, A01, A05, A07 and A09 each appeared in about 43 in 100 traces, while A03, A11, A12 and A13 each appeared in about 57–58 in 100. In the later window this reversed: the first group about 53 in 100, the second about 47–48 in 100. Each cross-pair (e.g. A01 with A03) sums to almost exactly 100 in 100 in both windows, and none of the eight activities repeats (mean occurrences ≈ participation), which fits two alternative branches whose selection shares moved by roughly 10 in 100. All eight differences are unusual for random re-splits (strengths about 0.90–0.97). [OCC001, OCC003, OCC005, OCC007, OCC009, OCC010, OCC011, OCC012]
+
+- Within the first group, A07 and A09 exchanged places. Earlier, A01's most common successor was A07 (about 41 of 100 outgoing transitions) and A09 typically closed into A14 (about 35 of 100); in the later window A01's most common successor is A09 (about 37), A09 most often leads to A07 (about 41), and A07 most often leads directly to A14 (about 44, up from 28). A07→A14 pairs at distance 1 rose from about 28 to about 45 in 100 while distance-3 pairs fell from about 41 to about 23, and A07's position became slightly later and about half as spread out. [DIR001, DIR007, DIR009, LAG001, POS001, REL001]
+
+- A36 and A37 swapped order. Earlier, when both occurred (about 45 in 100 traces), A37 preceded A36 in about 29 in 100 traces versus about 16 for the reverse; in the later window the preference flipped (about 17–18 versus about 27–28). Successor profiles flipped accordingly: earlier A36 led mostly to A33 (about 64 of 100) and A37 to A36 (about 64); later A36 leads mostly to A37 (about 60) and A37 to A33 (about 58). The A36→A37 pair within five steps appears in 32 traces earlier versus 56 later, and A37's mean position moved slightly later, while both activities' participation stayed at about 45–46 in 100. [REL006, DIR036, DIR037, LAG002, POS004, OCC031, OCC032]
+
+- A40 and A41 were executed and repeated more in the later window: A40's participation rose from about 18 to about 26 in 100 traces (mean occurrences 0.31 to 0.43), and A41's mean occurrences rose from 0.83 to 0.94 with repetition in about 26 in 100 traces (up from about 18) while its participation stayed near 51 in 100; A41's outgoing share to A40 rose from about 37 to about 45 in 100. [OCC034, OCC035, DIR041]
+
+- A few routing profiles at rarely observed activities (A02, A04, A06, A10, A48 — each seen in fewer than about 15 traces per window) also differ, but these rest on very few observations. [DIR002, DIR004, DIR006, DIR010, DIR048]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the selection frequency between two alternative branches changed: in the earlier window the branch containing A01, A05, A07 and A09 was executed in about 43 in 100 cases and the alternative branch containing A03, A11, A12 and A13 in about 57 in 100, whereas in the later window the shares are about 53 versus 47 in 100. The change is direct (every involved activity appears in a substantial share of traces in both windows, and only the shares move — no activity appears, disappears or changes repetition), consistent (the eight activities move as two exact mirror-image groups whose pair shares sum to about 100 in 100 in both windows), and corroborated by the shifted successor profiles at A01 and A03. Limitations: no screening baseline is included, so the comparison with chance-expected items rests on the empirical strengths alone, and the evidence cannot rule out that the eight activities are four independent optional steps whose probabilities shifted in a coordinated way rather than two branches behind a single choice. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC010, OCC011, OCC012, DIR001, DIR003]
+
+Other differences:
+- Within the more frequently selected branch, A07 and A09 swapped places, with A07 now typically the last step before A14 — a separate structural change from the frequency shift, shown directly by successor and distance evidence. [DIR001, DIR007, DIR009, LAG001, POS001]
+- A36 and A37 swapped their order in front of A33 (earlier A37 → A36 → A33 dominated; later A36 → A37 → A33) with essentially unchanged participation. [REL006, DIR036, DIR037, LAG002]
+- A40 and A41 occurred and repeated more often in the later window. [OCC034, OCC035, DIR041]

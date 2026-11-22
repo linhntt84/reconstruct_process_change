@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_3e135c8ad53638a4.json",
+  "evidence_sha256": "4d6785a531a1d317cce74a5b555bcb6db8810952a6b3b3c7636961dca55672ba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:44:10.493857+00:00",
+  "finished_at_utc": "2026-11-15T12:45:58.552089+00:00",
+  "latency_seconds": 108.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15804,
+    "prompt_tokens": 20852,
+    "total_tokens": 36656,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14172,
+      "text_tokens": 1632
+    },
+    "cost": 0.0110298
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47801,
+  "text": "### Observed differences\n\n- A group of four activities became intermittent. In the earlier window, A22, A31, A32 and A37 each appeared exactly once in every trace (200 of 200); in the later window, A22 appears in about 54 of 100 traces and each of A31, A32 and A37 in about 47 of 100, still at most once per trace, while A20, A21, A23 and A26 remain in every trace. [OCC001, OCC002, OCC003, OCC004]\n- A22 and the three activities A31/A32/A37 changed from always running together to being alternatives. Earlier, A22 co-occurred with each of the three in every trace; in the later window they share a trace in only about 1 of 200 cases — A22 runs without the block in about 53 of 100 traces, the block runs without A22 in about 47 of 100. [REL011, REL012, REL013, REL020, REL021, REL022]\n- The block changed sides relative to A23 and A21. Earlier, A31/A32/A37 always ran before A23 and before A21; in the later window, A23 and A21 precede the block in virtually every trace containing it, and the earlier order survives in only about 1 of 200 traces. [REL006, REL007, REL008, REL014, REL015, REL016]\n- A23 now directly follows A20. Earlier, the A20→A23 gap was 4 positions in every trace and A20's outgoing transitions split roughly into thirds towards A31, A32 and A37; in the later window the gap is 1 position in about 99.5 of 100 traces and A20 leads to A23 in about 99.5 of 100 transitions. [LAG001, DIR001]\n- A21's routing split. Earlier, A21 always led to A22; in the later window it leads to A22 in about 54 of 100 transitions and into the block (A31, A32 or A37, about 14–17 of 100 each) in the remainder. [DIR002]\n- The block no longer exits to A23. Earlier, about 32–39 of each block activity's outgoing transitions went to A23; in the later window that share is about 1 of 100 or less, with transitions going to the other block members and to A26 instead. [DIR003, DIR004, DIR005]\n- The A21→A26 distance, previously always 2 positions (via A22), is now 2 positions in about 54 of 100 traces and 4 positions in about 47 of 100 (via the three block activities). [LAG005]\n- Mean relative positions shifted accordingly: A31/A32/A37 from about 0.39–0.40 to about 0.58, A23 from about 0.45 to about 0.39, A21 from about 0.60 to about 0.54, A22 from about 0.63 to about 0.59. The block's internal order remains unfixed (both orders in similar shares) in both windows. [POS002, POS003, POS004, POS006, POS007, POS008, REL020, REL021, REL022]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the three-activity block A31/A32/A37 was relocated and made an optional alternative to A22. In the earlier window, every trace ran A20, then the block in varying internal order, then A23, then A21, then A22, then A26; in the later window, traces run A20 → A23 → A21 and then take either A22 (about 54 of 100 cases) or the block (about 47 of 100), never both, before converging on A26. [REL011, REL012, REL013, REL006, REL007, REL008, REL014, REL015, REL016, DIR001, DIR002, LAG001, LAG005, OCC001, OCC002, OCC003, OCC004]\n\nThe hypothesis rests on direct relational and positional evidence rather than marginal frequencies: the co-occurrence collapse between A22 and each block member, the order flips of the block against A23 and A21, the successor changes at A20 and A21, and the distance changes at A20→A23 and A21→A26 all show the restructuring directly, and the participation drops and position shifts describe the same behaviour. With 47 qualifying items against roughly 0.5 expected by chance for the 102 tested units, the ensemble is not a plausible sampling artefact, and the fully deterministic before-window pattern (participation and co-occurrence at 1.0 across 200 of 200 traces) makes pure sampling noise an unlikely competing explanation. [REL011, REL012, REL013, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG005, POS004, POS006, POS007, POS008]\n\nLimitations: the evidence cannot distinguish one single restructuring from two coinciding changes (the block becoming optional and the block being relocated), and a few lag items concerning A20-to-block and block-to-A23 distances rest on a single after-window observation and were not relied upon. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008]\n\nOther differences: A20's mean relative position moved slightly later (about 0.34 to 0.36) and A26's slightly earlier (about 0.66 to 0.63); these small shifts are consistent with the restructuring above but are not independently interpretable. [POS001, POS005]",
+  "case_id": "e4a_3e135c8ad53638a4",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

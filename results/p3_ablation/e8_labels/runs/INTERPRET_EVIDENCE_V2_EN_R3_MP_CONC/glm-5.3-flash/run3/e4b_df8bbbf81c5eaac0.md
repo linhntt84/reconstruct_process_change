@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the later window, work on all three application activities was carried out by a different and more dispersed set of resources. For A01, the most frequent resource before (User_19, about 12% of executions) fell to about 4%, several other previously leading resources dropped out of the leading group, new resources appeared at roughly 3–5% each, and the share handled by the long tail of occasional resources rose from about 45% to about 54%. A03 shows the same pattern: User_19 (about 11% before) left the leading group entirely, and the long-tail share rose from about 46% to about 53%. [ASSIGN001, ASSIGN002]
+- A07 shows near-complete turnover of its leading resources: before, ten resources each handled roughly 6–11% of its executions and only about 18% fell to the long tail; in the later window only three of those ten remain (with smaller shares), seven new resources lead (top resource User_126 at about 13%), and the long-tail share grew to about 31%. [ASSIGN003]
+- All three allocation differences are large relative to random re-splits of the pooled traces: each exceeded all but about 1 of 2,000 reference re-splits, and the profiles rest on substantial support (A01 in 200 of 200 traces in both windows, A03 in about 198–199 of 200, A07 in about 148 before and 140 after). [ASSIGN001, ASSIGN002, ASSIGN003]
+- The validation activity A24 occurred less often in the later window: about 0.36 occurrences per trace versus about 0.60 before, appearing in about 29 of 100 traces versus about 40 of 100, and repeating within a trace in about 6 of 100 traces versus about 14 of 100; the difference exceeded all but about 1 of 200 random re-splits. [OCC001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that resource allocation changed between the windows: A01, A03 and A07 were executed by a substantially different and more dispersed set of resources in the later window, with previously dominant resources losing most of their share or leaving the leading group (User_19 from about 11–12% to about 4% or less), new resources taking their place, and a larger share of executions going to the long tail of occasional resources (for A07, from about 18% to about 31%). This rests on three allocation profiles that all moved in the same direction, on a resource family that produced 3 qualifying items where about 0.004 would be expected if nothing had changed, and on differences larger than random re-splits produce. [ASSIGN001, ASSIGN002, ASSIGN003]
+
+Limitations: the three items may reflect one underlying reallocation rather than three independent shifts, and the evidence cannot distinguish a change in allocation behaviour from a mere difference in which resources were active in each window, since the resource codes are anonymous and no roles can be inferred. [ASSIGN001, ASSIGN002, ASSIGN003]
+
+Other differences: A24 occurred less often per trace, in fewer traces, and with fewer within-trace repeats in the later window [OCC001]; however, the control-flow family produced 1 item where about 0.16 would be expected by chance, which is what an unchanged process typically produces, so this difference does not by itself support a structural change.

@@ -1,0 +1,19 @@
+### Observed differences
+
+- Activity A22 ran in every trace in the earlier window (200 of 200) but in only about 57 in 100 traces in the later window (113 of 200), exactly once per trace when it runs. [OCC001]
+- Five activities — A27, A28, A33, A34 and A35 — were not observed at all in the earlier window; in the later window each runs in about 44 in 100 traces (87 of 200), once per trace. [OCC002, OCC003, OCC004, OCC005, OCC006]
+- These five always run together: each pair co-occurs in about 44 in 100 traces, matching each activity's own participation, and their internal order is mixed — each pair appears in both orders in similar shares (roughly 20 in 100 traces each way), so there is no fixed order inside the group. [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+- After A21, the earlier window always continued to A22; in the later window about 57 in 100 of A21's outgoing steps still go to A22, while the remaining about 43 in 100 go to the five activities (A35 about 11 in 100, A27 about 10, A34 and A28 about 8 each, A33 about 7). [DIR001]
+- The five activities were not observed as sources in the earlier window; in the later window each leads mostly to the other group members, with roughly 17–23 in 100 of its outgoing steps going to A23 (for example from A27: A28 about 28 in 100, A34 about 25, A23 about 17). [DIR002, DIR003, DIR004, DIR005, DIR006]
+- A22 and the five activities never occur in the same trace in the later window (co-occurrence 0 in 100), and their shares sum to all traces; A21 precedes the group and the group precedes A23 in the about 44 in 100 traces where the group runs, while A22 still precedes A23 in the about 57 in 100 traces where it runs. [REL008, REL009, REL010, REL011, REL012, REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017, REL007]
+- A21's mean relative position moved slightly earlier (about 0.49 to about 0.46), and the five activities sit near the middle of the trace (mean about 0.52), consistent with events added after A21. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the segment between A21 and A23 has two alternative executions: in about 44 in 100 cases A22 does not run and is replaced by a group of five activities — A27, A28, A33, A34 and A35 — which run together as a set, once per trace and in no fixed internal order, between A21 and A23; in the remaining about 57 in 100 cases the earlier sequence A21 → A22 → A23 runs unchanged. A21 and A23 themselves still run in every trace in both windows. Because the five activities were absent from the earlier window, this is the appearance of a new alternative segment, not a re-weighting of previously observed paths. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL007, REL008, REL013, REL018, POS001]
+
+The screening produced 45 qualifying control-flow items against roughly 0.5 expected if nothing had changed, so chance alone cannot account for the pattern; participation, routing, relational and positional indicators all agree, and the exact complementarity (A22 in about 57 in 100 later traces, the group in about 44, never both) directly shows the two behaviours are alternatives. [DIR001, REL002, REL008, REL013, REL018, POS001]
+
+Limitations: zero participation in the earlier window strictly means only that the five activities were not observed there, so a competing explanation the evidence cannot rule out is that this group existed before as a very rare variant that the 200-trace sample missed and later became frequent; the evidence also cannot show what determines which branch a case takes. [OCC002, OCC003, OCC004, OCC005, OCC006]

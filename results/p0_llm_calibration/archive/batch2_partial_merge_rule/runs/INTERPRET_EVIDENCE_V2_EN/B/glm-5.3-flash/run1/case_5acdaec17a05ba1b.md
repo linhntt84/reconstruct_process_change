@@ -1,0 +1,18 @@
+### Observed differences
+
+- A25 and A26 appear in every trace in both windows. Before, the eight activities between them split into two mutually exclusive blocks: A28, A29, A31 and A32 always occurred together, in about 54 in 100 traces, and A33, A34, A35 and A36 always occurred together, in about 46 in 100 traces; no trace contained activities from both blocks. [POS001, REL009, REL017, REL020, REL039]
+- In the later window, each of these eight activities participates in about 199 of 200 traces (up from 108 and 92 of 200 respectively), still at most once per trace. [OCC001, OCC005]
+- A new, consistent order between the blocks appears: each first-block activity precedes each second-block activity in about 99 in 100 traces — a relation never observed before, since the blocks never co-occurred. [REL020, REL026, REL031, REL035]
+- Successor profiles changed accordingly. Before, about 22–29 in 100 outgoing transitions of each first-block activity went to A26, and A25's outgoing transitions were spread over both blocks; in the later window the transitions from the first block to A26 are near zero or no longer observed, small new transitions to A33–A36 (about 4–8 in 100) appear, and A25's outgoing transitions go almost exclusively to A28, A29, A31 and A32. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Positions and spacings shifted consistently with the second block now sitting after the first: A25's mean relative position moved from about 0.66 to 0.58, the first block from about 0.74 to 0.65, and the second from about 0.74 to 0.77; the step distance from A25 to second-block activities and from first-block activities to A26, previously spread over 1–4 steps in every containing trace, is within five steps in only about 43–56 of 200 traces in the later window, and there almost always exactly five steps. [POS001, POS002, POS006, LAG001, LAG005]
+- Order inside each block remains variable, with pairwise orders split roughly 50/50 in both windows. [REL017, REL044]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the process moved from running exactly one of the two four-activity blocks between A25 and A26 in each case to running both blocks in every case — first A28/A29/A31/A32, then A33/A34/A35/A36 — with A25 ahead of both and A26 after both. [REL020, DIR002, OCC005, LAG001]
+
+The support is direct and consistent: the cross-block precedence is observed directly (co-occurrence rising from 0 in 200 traces to about 99 in 100, always in the same order), the rerouting is visible in the successor profiles of all four first-block activities and of A25, and the participation, position and spacing shifts all point the same way. With 157 units screened, only about 0.78 qualifying items would be expected by chance if nothing had changed, and every item here exceeds about 99.5 in 100 random re-splits of the pooled data, so this coherent set of findings is unlikely for an unchanged process. [REL020, DIR002, POS002, LAG005]
+
+Limitations: each window holds only 200 traces, so the evidence cannot show whether the old one-block behaviour still occurs at low rates in the later window, nor whether a rare both-blocks variant already existed before but escaped the before-window sample; a shift in the mix of pre-existing variants is a competing explanation the samples cannot fully rule out. The lag findings rest on about 43–56 observed pairs per activity pair in the later window, many items describe the same underlying difference rather than independent confirmations, and the variable order inside each block leaves its internal arrangement undetermined. [LAG001, REL020]

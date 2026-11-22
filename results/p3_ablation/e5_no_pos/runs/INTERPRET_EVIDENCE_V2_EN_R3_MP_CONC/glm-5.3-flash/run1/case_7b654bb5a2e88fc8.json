@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_7b654bb5a2e88fc8.json",
+  "evidence_sha256": "ccddb88fa9fce3cd8a2ae89834fc97294597aa7ccdfada15ab4cda9eb9000921",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:14:10.839099+00:00",
+  "finished_at_utc": "2026-11-14T12:16:31.461393+00:00",
+  "latency_seconds": 140.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20104,
+    "prompt_tokens": 8414,
+    "total_tokens": 28518,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18732,
+      "text_tokens": 1372
+    },
+    "cost": 0.011314099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57002,
+  "text": "### Observed differences\n\n- Before, A40 routed each case to one of A14 (about 38 in 100 of its observed outgoing transitions), A15 (about 31) or A20 (about 32), with A21 following two positions later; in the later window A40 always leads directly to A21, one position apart. [DIR006, LAG004]\n- Before, the branch activities always ran before A21, A22 and A23 — for example, A14 preceded A21, A22 and A23 in every trace containing A14 (about 38 in 100 traces). In the later window this is reversed: A21 and A22 precede A14, A15 and A20 in every trace in which those occur (about 31, 33 and 37 in 100 traces respectively). [REL001, REL002, REL004, REL005, REL006, REL007]\n- Successors changed accordingly. Before, A14, A15 and A20 always led to A21; in the later window they lead to A23 (about 39–54 in 100) or straight to A27 (about 46–61 in 100). A22, previously always followed by A23, now goes to A23 in about 52 in 100 of its observed outgoing transitions and to A14, A15 or A20 in the rest (about 16, 18 and 15 in 100); A23, previously always followed by A27, now goes to A27 in about 48 in 100 and to A14, A15 or A20 in about 52. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- The order between the branch activity and A23 is no longer fixed: A14 and A23 now occur in both orders (A14 first in about 16 in 100 traces, A23 first in about 15), and A20 and A23 likewise (about 15 vs about 23), whereas before, the branch activity always came first. [REL003, REL008]\n- Position gaps moved with them: A22 to A23 was always adjacent and is now one step apart in about 52 in 100 cases and two steps in about 48; A23 to A27 was always adjacent and is now one step in about 48 and two steps in about 52; A22 to A27 is now always three positions apart, previously two. [LAG001, LAG002, LAG003]\n- Overall, participation is stable while the sequence changed: A40, A21, A22, A23 and A27 still appear in all traces, exactly one of A14/A15/A20 occurs per case (about 30, 33 and 37 in 100), and the later window is consistent with two path shapes after A22 — A22 → A23 → branch activity → A27 in about 52 in 100 cases and A22 → branch activity → A23 → A27 in about 48. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL004, REL006, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reordering as the main hypothesis: the alternative step — one of A14, A15 or A20, still executed once per case — moved from before A21 to the segment between A22 and A27. In the earlier window cases ran A40, then the branch activity, then A21, A22, A23, A27; in the later window cases run A40, A21, A22, and then either A23 followed by the branch activity (about 52 in 100) or the branch activity followed by A23 (about 48 in 100), so the previously fixed order between the branch activity and A23 became an either-order relation. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004]\n\nSupporting signs: 18 control-flow items qualified where fewer than one (0.36) would be expected by chance in a stable process, so the pattern as a whole is far beyond random re-splitting; every item's difference exceeds about 995 of 1000 random re-splits; successor profiles, pairwise orders and position gaps all move in the same direction; and participation is unchanged, which rules out the activities being added, removed, made optional or repeated. [DIR001, DIR004, REL001, LAG001, LAG002]\n\nLimitations: the two path shapes and the A21–A22 order are reconstructed from aggregate transition and gap distributions rather than observed as explicit variants, and the evidence cannot distinguish a genuine per-case choice of order between A23 and the branch activity from two stable, case-dependent path shapes. [DIR004, DIR005, LAG001, LAG003]\n\nOther differences: the choice among the three branch activities shifted somewhat — A14 from about 38 to about 30 in 100 cases and A20 from about 32 to about 37 — a frequency shift that with 200 traces per window may be sampling noise rather than a routing change. [DIR001, DIR002, DIR003, REL001, REL004, REL006]",
+  "case_id": "case_7b654bb5a2e88fc8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "9938569540ed765829504b10776c70f9b55fa2a93ce5a8466cc1ea3f5bfc4d20",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:03:02.833968+00:00",
+  "finished_at_utc": "2026-11-14T11:04:08.933248+00:00",
+  "latency_seconds": 66.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10463,
+    "prompt_tokens": 7196,
+    "total_tokens": 17659,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9603,
+      "text_tokens": 860
+    },
+    "cost": 0.0063108999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34677,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained A36, A14, A20, A15 and A21 exactly once, always in the order A36 → A14 → A20 → A15 → A21, with A21 four steps after A36. [OCC001, OCC002, OCC003, REL002, REL004, REL005, REL006, LAG001]\n- In the later window, A14, A15 and A20 each appear in about 53 in 100 traces (106 of 200), still exactly once when present, while A36 and A21 still appear in every trace. [OCC001, OCC002, OCC003, REL003, REL004]\n- A36's outgoing transitions changed: before, all observed transitions from A36 led to A14; in the later window about 53% still lead to A14 and about 47% lead directly to A21. [DIR001]\n- Correspondingly, the distance from A36 to A21, previously always four steps, is one step in about 47 in 100 later-window traces and four steps in the remaining traces. [LAG001]\n- The relation profiles mirror this split: pairs among A14, A15 and A20 now show neither activity present in about 47 in 100 traces, pairs of A21 or A36 with one of those three show only A21 or A36 present in about 47 in 100 traces, and whenever the activities do co-occur their mutual order is unchanged. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- A21's mean relative position moved only slightly earlier, from about 0.43 to about 0.40. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window an alternative route is followed in which A36 leads directly to A21 and A14, A20 and A15 are not executed; this direct succession occurs in about 47 in 100 later-window traces and was not observed in the earlier window, where A36 was always followed by A14 and A21 came four steps later. [DIR001, LAG001, REL003, REL004]\n\nThe support is direct and internally consistent rather than cumulative: the rerouting is observed in A36's successor shares, in the A36–A21 distance, and in the participation of exactly the three activities that disappear from those traces, with the same 53/47 split recurring across all fifteen items; each item's difference also exceeds those of about 995 in 1000 random re-splits, and fifteen qualifying items is many times the roughly 0.35 expected by chance alone in this screening. [DIR001, LAG001, OCC001, OCC002, OCC003, REL003]\n\nA competing explanation the evidence cannot fully rule out is a shift in the frequency of two pre-existing variants rather than a new route: the direct A36–A21 succession could have existed at a very low rate before and risen in frequency, although its complete absence from 200 earlier traces makes a substantial prior rate implausible. The evidence also covers only the observed activities, and A21's overall relative position barely moves, so the change reads as a local rerouting after A36 rather than a relocation of A21. [POS001, OCC001, LAG001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

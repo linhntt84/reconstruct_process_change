@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_9c8e6698f338a04b.json",
+  "evidence_sha256": "88ac2d79b0ac3d93f4e2605f8989e616c8493223b3251c4badf2b7b9e15ebb04",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:36:29.476493+00:00",
+  "finished_at_utc": "2026-11-15T08:38:20.462510+00:00",
+  "latency_seconds": 110.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15752,
+    "prompt_tokens": 31832,
+    "total_tokens": 47584,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14337,
+      "text_tokens": 1415
+    },
+    "cost": 0.0126508
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48332,
+  "text": "### Observed differences\n\n- In the earlier window, A01 is unobserved (0 of 200 traces); in the later window, A01 runs in about 77 of 200 traces (roughly 38 in 100), at most once per trace, positioned around the middle of the trace (median relative position about 0.45). [OCC001, POS001]\n- In the later window, A01 is wired into the flow on both sides: about 27% of its outgoing transitions go to A09, about 23% to A07 and about 19% to A12, and activities such as A02, A04, A09, A11 and A13 now send part of their outgoing transitions to A01 (for A13 about 21%); before, no transitions to or from A01 were observed. [DIR001, DIR002, DIR009, DIR011, DIR013]\n- A17 runs in about 105 of 200 traces in the earlier window (about 52 in 100, twice per trace on average, repeated in some traces) and is unobserved in the later window; its outgoing transitions, mainly to A15 (about 53%) and A14 (about 46%), disappear with it. [OCC013, POS006, DIR017]\n- A12's routing changes accordingly: before, about 52% of its outgoing transitions went to A17 and about 47% to A16; in the later window, A16 keeps about 44% while A15 (about 29%) and A14 (about 22%) take over roughly the share previously routed to A17. [DIR012]\n- Co-occurrence patterns move in step: A17 co-occurred with A02, A12, A14 or A15 in roughly 30–53 of 100 traces before and in none after, while A01, which never co-occurred with them before, now co-occurs with A02 in about 38 of 100 traces (always after or interleaved with A02, never before it), with A12 and A15 in about 19 of 100 and with A14 in about 11 of 100. [REL001, REL002, REL003, REL004, REL005, REL009, REL012, REL014, REL015]\n- Pairwise distances within the A12/A14/A15 group shorten by about one step: A12→A14 and A12→A15 are typically two positions apart before and one after, A14→A15 moves from about three to two, A15→A14 from about four to three, and the A14/A15 self-distances shorten similarly. [LAG007, LAG008, LAG011, LAG012, LAG015, LAG016]\n- Two activities are executed in fewer traces: A06 in about 52 of 100 traces before versus about 31 after, and A08 in about 47 versus about 30; repetitions of A12 (about 3.7 versus 3.2 occurrences per trace) and A16 (about 1.8 versus 1.4) also become less frequent. [OCC004, OCC005, OCC008, OCC012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural reconfiguration in which A17 disappeared and A01 was added. Earlier, A17 was a repeated step in about half of the traces, typically directly after A12 and leading on to A14 or A15; in the later window A17 is unobserved and A12 passes straight on to A15, A14 and A16, with the share previously routed to A17 (about 52%) reappearing as transitions to A15 and A14. At the same time, A01 — previously unobserved — runs at most once per trace in about 38 of 100 traces, receives transitions from many activities (including A02, A04, A09, A11 and A13) and leads mainly to A09, A07 and A12. The change is shown directly at the edge level, consistently across occurrence, direction, relation, position and lag indicators, and on substantial samples (77 of 200 traces with A01 after versus 0 before; 105 of 200 with A17 before versus 0 after), which makes sampling variation or a rare one-window variant implausible; the shortening of pairwise distances in the A12/A14/A15 group by about one step also fits the disappearance of an intermediate activity. A limitation is that the evidence cannot distinguish a genuine removal and insertion from these activities being relabelled, and it cannot show whether the reduced participation of A06 and A08 belongs to the same reconfiguration.\n\nOther differences: A06 (about 52 versus 31 in 100 traces) and A08 (about 47 versus 30) run in fewer traces, and repetitions of A12 and A16 decrease slightly (about 3.7 to 3.2 and 1.8 to 1.4 occurrences per trace); A13's outgoing transitions also shift away from A02 toward A01, A06 and A10, but this rests on only about 19 outgoing transitions per window and is weak. [OCC004, OCC005, OCC008, OCC012, DIR013]",
+  "case_id": "case_9c8e6698f338a04b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

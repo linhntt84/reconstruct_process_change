@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_76bd72de6b5bbb58.json",
+  "evidence_sha256": "4c8610a873e93c9cf2555fc38f7f72f5f73aa4f43bfd3ff1aeef64f6df0b458f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:09:51.597448+00:00",
+  "finished_at_utc": "2026-11-15T10:11:34.564269+00:00",
+  "latency_seconds": 102.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15438,
+    "prompt_tokens": 10809,
+    "total_tokens": 26247,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14107,
+      "text_tokens": 1331
+    },
+    "cost": 0.00934035
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49379,
+  "text": "### Observed differences\n\n- In the earlier window, A03 was a regular mid-trace step: it appeared in about 45 in 100 traces (about 0.95 occurrences per trace, recurring in about 25 in 100 of those), sat around the middle of the trace by event order (median about 0.39 of the trace's events), and its observed outgoing transitions went mainly to A11 (about 45%), A10 (about 18%), A09 (about 18%) and A12 (about 14%). In the later window, A03 is not observed in any of the 200 traces and has no observed outgoing transitions. [OCC002, POS002, DIR002]\n- A01 shows the mirror image. It was not observed in the earlier window; in the later window it appears in about 50 in 100 traces (about 1.0 occurrence per trace, recurring in about 28 in 100 of the traces containing it), at almost exactly the relative position A03 used to occupy (median about 0.38 vs about 0.39, with a similar spread). [OCC001, POS001]\n- A01's observed outgoing transitions in the later window closely match A03's earlier profile: mainly A11 (about 46%), A12 (about 16%), A09 (about 15%) and A10 (about 15%). Upstream flow rerouted accordingly: A09's outgoing transitions went about 52% to A03 before and about 55% to A01 after, and A11's went about 22% to A03 before and about 18% to A01 after. [DIR001, DIR002, DIR003, DIR004]\n- A01 also inherited A03's partners. Before, A03 co-occurred with A11 and A09 in about 45 in 100 traces, with A05 in about 38, with A10 in about 33 and with A12 in about 28; after, A01 co-occurs with the same partners at similar rates (A11 and A09 about 50, A05 about 44, A10 and A12 about 34 in 100), typically in mixed order (with A11, for example: A01 first in about 18, A11 first in about 4, interleaved or repeated in about 28). Every A03 relation fell to zero, with its partners now appearing without it (A05 alone in about 74 in 100 traces, A11 alone in about 50), and A01 and A03 are never seen in the same trace in either window. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 has taken over the place A03 used to occupy. In the earlier window, A03 ran in about 45 of 100 cases as a mid-trace step with observed outgoing flow mainly to A11, A10, A09 and A12; in the later window, A03 is not observed, while A01 runs in about 50 of 100 cases at the same relative position, with nearly the same successor profile, with the incoming flow from A09 and A11 redirected from A03 to A01, and co-occurring with A03's former partners (A11, A09, A05, A10, A12) at similar rates. A01 and A03 never appear in the same trace, consistent with one step occupying the same spot rather than two steps running side by side. [OCC001, OCC002, POS001, POS002, DIR001, DIR003, DIR004, REL001, REL005]\n\nThis pattern is unlikely to be a sampling artefact: 19 control-flow items qualified where fewer than 1 would be expected by chance across the 67 tested units, every item's difference exceeds those of about 199 of 200 random re-splits of the pooled data, and the occurrence, position, direction and relation indicators all describe the same underlying shift rather than unrelated fluctuations. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]\n\nLimitations: the evidence cannot distinguish a genuine substitution from a relabelling of the same step (A03 renamed to A01), since only anonymous activity codes are available; the new step also runs slightly more often than the old one (about 50 vs about 45 in 100 cases), so the takeover is not exactly one-for-one. [OCC001, OCC002]\n\nOther differences: A05 appears in somewhat more traces in the later window (about 74 in 100 vs about 64 in 100 before); no dedicated occurrence item flags A05, so part of this shift could be sampling variation. [REL002, REL007]",
+  "case_id": "case_76bd72de6b5bbb58",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

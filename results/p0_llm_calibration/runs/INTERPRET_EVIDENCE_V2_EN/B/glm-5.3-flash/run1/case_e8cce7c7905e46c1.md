@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, A19 runs in about 26 in 100 traces, down from about 50 in 100, and A20 in about 28 in 100, down from about 51 in 100; mean occurrences per trace roughly halve for both (A19 about 0.50 to 0.27, A20 about 0.53 to 0.28) [OCC001, OCC002].
+- Before, essentially every trace contained exactly one of A19 or A20 (about 99 in 100; the two practically never run together); in the later window only about 54 in 100 traces contain one of them, and about 46 in 100 contain neither, which was not observed earlier [REL001].
+- Out of A40, transitions to A20 (about 43 in 100) and A19 (about 40 in 100) dominated before; in the later window a direct A40 → A25 transition, not observed earlier, takes the largest share at about 40 in 100 of A40's outgoing transitions, while transitions to A19 and A20 fall to about 22 and 24 in 100. A40's own occurrence is stable, with about 200 outgoing transitions recorded in each window [DIR001].
+- A25 follows A40 much sooner: before, it came two positions later in about 82 in 100 cases and never immediately; in the later window it immediately follows A40 in about 40 in 100 cases and comes two positions later in about 51 in 100 [LAG001].
+- When A19 or A20 do run in the later window, their placement is unchanged: they still co-occur with A25 at rates matching their reduced participation (about 26–28 in 100, down from about 50–51), A40 still precedes them, and they still precede A25 [REL002, REL003, REL004, REL005].
+- A25 sits slightly earlier within traces in the later window (mean relative position about 0.41 to 0.39) and its position varies less (spread about 0.09 to 0.06); this concerns event positions, not clock time [POS001].
+- A small separate shift: among A43's outgoing transitions, the share to A44 rises from about 75 to 89 in 100 [DIR002].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the branch in which A40 leads to A19 or A20 and then to A25 is frequently shortened, so that A40 passes directly to A25 and A19 and A20 are not executed in roughly 46 in 100 traces. The direct signs are the newly observed dominant A40 → A25 outgoing transition and the rise of immediate A40 → A25 succession from never observed to about 40 in 100 cases, together with the halved participation of A19 and A20 while A40 itself runs at a stable rate. The branch is not reordered: when A19 or A20 do run, A40 still precedes them and they still precede A25, and A25's slight advance in relative position is consistent with more direct completions [OCC001, OCC002, DIR001, POS001, REL001, REL002, REL003, REL004, REL005, LAG001].
+
+The number of flagged items (11) is many times the roughly 0.5 expected by chance in an unchanged process, but the items largely describe one underlying shift and are not independent confirmations, and any single item could still be what an unchanged process occasionally produces. The competing explanation that cannot be ruled out is sampling variation in variant frequencies: with 200 traces per window, a rare direct A40 → A25 path may have gone unobserved before and risen by chance, and part of the A19/A20 decline could be sampling noise, although the size and cross-indicator consistency make a purely random origin unlikely. The minor rise of A44 among A43's outgoing transitions is separate and not covered by this hypothesis [OCC001, OCC002, DIR001, DIR002, POS001, REL001, REL002, REL003, REL004, REL005, LAG001].

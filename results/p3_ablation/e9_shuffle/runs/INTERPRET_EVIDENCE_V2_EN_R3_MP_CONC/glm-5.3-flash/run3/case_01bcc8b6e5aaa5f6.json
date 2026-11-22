@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_01bcc8b6e5aaa5f6.json",
+  "evidence_sha256": "76587924842cfdffed421fb5c7207fa8b596b3b91e9a274b01ed1d1d425e21af",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:03:18.923597+00:00",
+  "finished_at_utc": "2026-11-15T10:03:59.696753+00:00",
+  "latency_seconds": 40.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5834,
+    "prompt_tokens": 4693,
+    "total_tokens": 10527,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5180,
+      "text_tokens": 654
+    },
+    "cost": 0.00362095
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21175,
+  "text": "### Observed differences\n\n- In the earlier window, A02 was executed in every case — 200 of 200 traces, exactly once per case on average — and always near the start of the case (mean relative position about 0.05). In the later window, A02 is not observed in any of the 200 traces. [OCC001, POS001]\n- Before, A02 and A03 occurred together in every case, with A02 first in about 89 in 100 cases; afterwards they never co-occur, and A03 appears without A02 in every case. The same pattern holds for A02 and A04: always together before, A02 first in about 88 in 100 cases; afterwards A04 occurs alone in every case. [REL001, REL002]\n- A02's outgoing transitions, which before led to A03 in about 48 in 100 cases and to A04 in about 42 in 100 (with small shares to A06, A05 and A07), are no longer observed, because A02 itself no longer occurs. [DIR001]\n- A03 and A04 still occur in every case in both windows, but they sit earlier in the case afterwards: A03's mean relative position fell from about 0.27 to 0.18, and A04's from about 0.29 to 0.15 (median from about 0.33 to 0.0). This shift is consistent with the loss of the early A02 rather than an independent rearrangement. [POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02, previously executed once in every case at the start of the process, is no longer executed in the later window — in behavioural terms, the step is skipped in all observed cases. Participation fell from 200 of 200 traces to 0 of 200, and the relational items show the direct consequence: A03 and A04, which previously ran after A02 in about 89 and 88 in 100 cases respectively, now run without it in every case. Chance is an unlikely explanation for the set of differences as a whole: 7 control-flow items qualified where only about 0.07 were expected for the 15 units tested, and each item's difference exceeds about 99 of 100 random re-splits. Note that the occurrence, position, relation and direction items all describe this single disappearance, so they converge on one difference rather than confirming it independently. [OCC001, POS001, REL001, REL002, DIR001, screening]\n\nThe earlier positions of A03 and A04 in the later window fit the same hypothesis as a consequence of losing the early A02, not as a separate change. [POS002, POS003]\n\nCompeting explanation: zero participation only means A02 was not observed in the later window; the evidence cannot exclude that A02 still executes in a share of cases too small to appear in a 200-trace sample, nor distinguish a permanent removal from a routing change that bypasses A02 in every observed case. [OCC001]",
+  "case_id": "case_01bcc8b6e5aaa5f6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

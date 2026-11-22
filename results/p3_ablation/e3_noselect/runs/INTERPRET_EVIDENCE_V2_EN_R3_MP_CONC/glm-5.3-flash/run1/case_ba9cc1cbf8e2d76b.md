@@ -1,0 +1,21 @@
+### Observed differences
+
+- Three activities that were completely absent earlier now run regularly: A19 appears in about 29 in 100 later traces (58 of 200) versus 0 before, A20 in about 41 in 100 (82 of 200) versus 0, and A25 in about 30 in 100 (61 of 200) versus 0; together they appear in about 70 in 100 later traces. [OCC019, OCC020, OCC025, REL001]
+- The three new activities are mutually exclusive alternatives: each trace contains at most one of them, and they practically never occur together (co-occurrence about 0–1 in 200 traces). [REL001, REL002, REL006]
+- Each new activity is always preceded by A27 and always followed by A29; relative to A28 the order is mixed, with the new activity before A28 in roughly half of the cases and after it in the other half. [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011]
+- The successor profiles of the surrounding activities changed accordingly: A27 led almost exclusively to A28 before (about 97 in 100 of its outgoing transitions) and now leads to A19, A20 or A25 in about half of its transitions; A28 led almost exclusively to A29 before (about 98 in 100) and now leads to one of the new activities in about 41 in 100 transitions. [DIR027, DIR028, DIR019, DIR020, DIR025]
+- Event distances in the segment grew by one step: A27→A28 was adjacent in about 98 in 100 earlier traces and is two steps apart in about 52 in 100 later traces; A28→A29 was adjacent in about 98 in 100 and is two steps apart in about 41 in 100; A27→A29 moved from two steps (about 96 in 100) to three steps (about 92 in 100). [LAG001, LAG003, LAG002]
+- The new activities sit just past the middle of the trace (median position about 0.52 of the event sequence) in the later window. [POS001, POS002, POS003]
+- A27, A28 and A29 themselves still occur in every trace in both windows, and their fixed mutual order (A27 before A28 before A29) is preserved. [POS004, OCC027, OCC028, REL013, REL015]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that an extra optional step was inserted into the existing sequence between A27 and A29, the segment that also contains A28. The step is executed under three alternative labels — A19, A20 and A25 — which were unobserved in the earlier window and now each run in roughly 29–41% of traces, never together; the step always follows A27, always precedes A29, and is placed before A28 in about half of the cases and after A28 in the other half. [OCC019, OCC020, OCC025, REL001, REL003, REL005, REL007, REL009, REL010, REL012, DIR027, DIR028, LAG001, LAG002, LAG003]
+
+Supporting signs: the activities appear from zero with 58–82 traces each; their own outgoing transitions lead to A28/A29; A27 and A28 redirect to them; all three segment distances grow by exactly one step while A27, A28 and A29 remain mandatory and keep their order. [DIR019, DIR020, DIR025, DIR027, DIR028, LAG001, LAG002, LAG003, POS004, OCC027, OCC028, REL013, REL015]
+
+Limitations: the evidence cannot show whether A19, A20 and A25 are genuinely new steps or re-labels of behaviour previously recorded under other identifiers, since they were simply not observed before; the main competing explanation — rare variants surfacing only in the later sample — is made implausible by the scale (up to about 41 in 100 traces) and the coordinated distance changes, but cannot be fully excluded. [OCC019, OCC020, OCC025, LAG001, LAG002, LAG003]
+
+Other differences: After A42, the split between the two following activities moved — A43 received about 53 in 100 of A42's outgoing transitions before versus about 43 in 100 after, while A44 rose from about 44 to about 54 in 100; accordingly A43 ran in about 63 in 100 traces before versus about 56 after, A44 in about 56 versus about 68, and A45 in about 58 versus about 67. [DIR042, OCC041, OCC042, OCC043] Participation in A06 rose from about 15 to about 23 in 100 traces, and A39 occurs somewhat more often per trace with more repetition. [OCC006, OCC037] A47's outgoing profile also looks reshaped, but only 9 and 4 observations back the two windows, so this is weak. [DIR047]

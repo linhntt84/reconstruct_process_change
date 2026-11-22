@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "ddcdd951897552fa6c61d148f54b6caedde4a530758948ae54ef1fb9be6650ea",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:40:19.359591+00:00",
+  "finished_at_utc": "2026-11-14T13:41:58.047295+00:00",
+  "latency_seconds": 98.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14891,
+    "prompt_tokens": 28954,
+    "total_tokens": 43845,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13150,
+      "text_tokens": 1741
+    },
+    "cost": 0.0117886
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47150,
+  "text": "### Observed differences\n\n- In the earlier window this segment ran as a fixed chain: A21 appeared in every trace and its only observed successor was A22, A22 co-occurred with A23 in all traces and always preceded it, and A23 followed A21 exactly two event steps later in every case. [DIR014, REL001, REL005, LAG001]\n- In the later window, A22 appears in only about half of the traces (102 of 200, down from 200 of 200; mean occurrences per trace fell from 1.0 to 0.51). [OCC018, POS002]\n- Three activities that were absent earlier — A27, A28 and A33 — each appear in about 49 in 100 later traces (98 of 200), around the middle of the trace (mean relative position about 0.49). [OCC019, OCC020, OCC025, POS004, POS005, POS006]\n- In the later window, A21's outgoing transitions split: about 51 in 100 still go to A22, and roughly 15–18 in 100 each go to A27, A28 and A33. [DIR014]\n- The three new activities always appear together and never alongside A22: each pair of them co-occurs in about 49 in 100 traces (never one without the others), in both orders in similar proportions (for example A27 before A28 in about 23 in 100 and A28 before A27 in about 27 in 100), and each has observed outgoing transitions to the other two and to A23. [REL012, REL013, REL014, DIR017, DIR018, DIR023]\n- The relations with the surrounding activities changed accordingly: A21–A22 co-occurrence fell from all traces to about 51 in 100; A21 now co-occurs with each of A27, A28 and A33 in about 49 in 100 traces, always with A21 first; A22 and each of the three are mutually exclusive (about 51 vs 49 in 100, never together); A23 occurs without A22 in about 49 in 100 traces, and each of A27, A28 and A33 precedes A23 in about 49 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]\n- The event distance from A21 to A23 changed from always 2 steps to 2 steps in about 51 in 100 cases and 4 steps in about 49 in 100, consistent with two extra activities lying between them in the latter cases. [LAG001]\n- Outside this segment the differences are small: participation moved by about 4–6 percentage points for several activities (A01, A03, A04 and A05 down from about 56 to 51 in 100 traces; A02, A06, A07 and A08 up from about 44 to 49; A16 down and A17 up by about 5 points; A29 and A30 up and A31 and A32 down by about 4 points), and a few successor shares shifted by up to about 14 percentage points (A17 sends more to A18, A18 more to A25, A31 and A32 more to A26, A40 more to A37). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC014, OCC015, OCC021, OCC022, OCC023, OCC024, DIR011, DIR012, DIR021, DIR022, DIR028]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process gained an either-or choice in the segment between A21 and A23: in the earlier window every trace ran the fixed sequence A21 → A22 → A23, whereas in the later window about half of the traces still run A21 → A22 → A23 and the other half replace A22 with the three previously unobserved activities A27, A28 and A33, which execute between A21 and A23 in varying order (no fixed order among the three, each of them preceding A23 in the traces where it appears); A22 and the trio never occur in the same trace. The change is shown directly and consistently: relational items record flips of about 0.49 on a 0–1 scale in co-occurrence and order for A21, A22 and A23 versus the trio; the successor redistribution at A21 and the new outgoing edges of A27, A28 and A33 show the new routing; participation shows A22 falling from all traces to about half and the trio rising from none to about half; and the A21→A23 distance moved from always 2 event steps to 2 or 4 steps, matching an insertion of two extra activities. Evidence from all five indicator types (occurrence, direction, position, relation, lag) describes this one difference. An important competing explanation the evidence cannot rule out is that the trio path existed before as a rare variant that was not exercised in the earlier 200-trace sample, so the change could be a shift in the mix of two pre-existing variants rather than a newly inserted block; the exact split (about 51/49) is also a sample estimate. [OCC018, OCC019, OCC020, OCC025, DIR014, DIR017, DIR018, DIR023, POS004, REL001, REL005, REL006, REL009, REL012, LAG001]\n\nOther differences: the small participation shifts (about 4–6 percentage points) and moderate successor-share shifts (up to about 14 percentage points) involving A01–A08, A16–A19, A24, A29–A32 and A40 are not part of this hypothesis; their size and reference strength are also compatible with sampling variation between two 200-trace windows. [OCC001, OCC014, OCC021, OCC023, DIR011, DIR012, DIR021, DIR028]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

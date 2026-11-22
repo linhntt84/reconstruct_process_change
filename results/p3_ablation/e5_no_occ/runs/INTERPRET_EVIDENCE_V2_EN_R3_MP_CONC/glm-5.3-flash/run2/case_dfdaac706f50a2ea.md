@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, every trace (200 of 200) contained the same eight activities in one fixed sequence: A25, then the block A36–A37–A42 (internal order varying), then A28, then A26, then A27, then A31. A25 was followed directly by one of A36/A37/A42 in about 99 in 100 of its outgoing transitions, and A26 was followed by A27 in about 97 in 100 of its transitions [REL002, REL005, REL006, REL009, REL010, REL014, DIR001, DIR002, LAG001, LAG005].
+- In the later window, A25, A28, A26 and A31 still occur in every trace, but A27 appears in only about 54 in 100 traces (107 of 200) and the block A36/A37/A42 in about 47 in 100 (94–95 of 200). A27 and each block member now co-occur in only about 1–2 of 200 traces (down from 200 of 200), so a case runs either A27 or the block, essentially never both [POS003, POS006, POS007, POS008, REL011, REL012, REL013].
+- The block still executes as a group with mixed internal order (block pairs co-occur in about 47 in 100 later traces and are jointly absent in about 53 in 100), but its wiring changed: A25 now leads directly to A28 in about 99 in 100 of its outgoing transitions (before: to the block), A26 now leads to A27 in about 53 in 100 transitions and to one of A36/A37/A42 in about 46 in 100 (before: almost only A27), and each block activity now leads to A31 in about three in ten of its transitions (before: to A28) [DIR001, DIR002, DIR003, DIR004, DIR005, REL020, REL021, REL022].
+- Event distances agree: the gap from A25 to A28 fell from typically 4 steps (94 in 100 cases, block in between) to 1 step (99 in 100); the gap from A26 to A31 changed from almost always 2 steps to 2 steps in about 51 in 100 and 4 steps in about 46 in 100 of cases; the block now follows A26 within 1–3 steps in about 93 of 200 traces, which was almost never observed before [LAG001, LAG005, LAG006, LAG007, LAG008].
+- Mean event positions shifted: the block from about 0.40 to about 0.58 of the trace, A28 from 0.45 to 0.39, A26 from 0.60 to 0.54, and A27 from 0.62 to 0.58 on the traces where it appears [POS002, POS003, POS004, POS006, POS007, POS008].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural routing change involving A27 and the block A36–A37–A42. In the earlier window both were mandatory parts of one sequence (the block between A25 and A28, A27 between A26 and A31); in the later window they behave as mutually exclusive alternatives after A26 — about 54 in 100 cases execute A27, about 47 in 100 execute the block, and almost none execute both — with the block relocated from before A28 to after A26 and now closing into A31 [REL011, REL012, REL013, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG005].
+
+This is supported directly and consistently: 46 control-flow items qualified against about 0.5 expected if nothing had changed, so chance sampling cannot account for the flagged behaviour as a whole; the central claims rest on relational evidence (near-zero co-occurrence between A27 and the block, reversed order between A26/A28 and the block, successor changes at A25, A26 and the block), with position and distance indicators agreeing rather than carrying the claim alone [screening, REL006, REL011, REL012, REL013, REL014, DIR001, DIR002, LAG001, LAG005].
+
+Limitations: the aggregate evidence cannot distinguish one process with a new exclusive branch from a mixture of two trace variants (one containing A27, one containing the block), and with 200 traces per window the exact split of about 54/47 carries sampling uncertainty [REL011, REL012, REL013].
+
+Other differences: a few rare outgoing transitions appear only in the later window at low shares (A25 to A12 or A24, A36 to A12, A37 to A22 or A33, A42 to A08, each about 1 in 100 or less of that activity's transitions), and the mean relative positions of A25 (0.34 to 0.36) and A31 (0.65 to 0.63) shifted slightly [DIR001, DIR003, DIR004, DIR005, POS001, POS005].

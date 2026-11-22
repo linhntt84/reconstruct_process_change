@@ -1,0 +1,20 @@
+### Observed differences
+
+- Two blocks of activities exchanged their place in the case. In the earlier window, a choice among A14, A16 and A19 — one of the three per case, with counts summing to 200 of 200 traces (about 30, 35 and 36 in 100 cases) — ran about a third of the way into the trace (mean relative position about 0.34), while A15, A17 and A18, present in every case, ran about two thirds in (about 0.64). In the later window the loop block sits about 38 percent in and the choice block about two thirds in (about 0.67). [POS001, POS002, POS003, POS004, POS005, POS006]
+- Every pairwise order between the blocks flipped. Earlier, A14, A16 and A19 each preceded A15, A17, A18, A20 and A24 in all co-occurrences (for example A14 before A15 in about 30 in 100 cases, never afterwards); in the later window they follow them (about 29 to 39 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL010, REL011, REL012, REL013, REL014, REL017, REL020, REL021]
+- A20 and A24 also flipped relative to the loop block: earlier each preceded A15, A17 and A18 in 100 in 100 co-occurrences; later each follows them in 100 in 100. [REL008, REL009, REL015, REL016, REL018, REL019]
+- Entry and exit connections moved with the blocks. A35 led to A16, A14 and A19 (about 35, 30 and 36 in 100 of its outgoing transitions) and now leads to A17, A15 and A18 (about 36, 33 and 31); A24 led to A15, A18 and A17 (about 37, 33 and 30) and now leads to A19, A16 and A14 (about 39, 29 and 33). [DIR007, DIR008]
+- The blocks' exits changed targets: A14, A16 and A19 each led to A20 in 100 in 100 observed cases and now lead to A25 in 100 in 100; the loop's exit moved from A25 (about 30 to 38 in 100 of the loop activities' outgoing transitions) to A20 (about 28 to 37 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- A20 and A24 themselves shifted slightly later (mean position about 0.38 to 0.44 and 0.57 to 0.64), consistent with remaining between the two blocks. [POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+A specific structural reordering is supported: the two segments of the flow exchanged their order. In the earlier window the case ran A35 → one of {A14, A16, A19} → A20, and later A24 → the loop over {A15, A17, A18} → A25; in the later window A35 enters the loop block {A15, A17, A18}, which exits to A20, and A24 enters the choice block {A14, A16, A19}, which exits to A25. In short, the choice block and the loop block swapped places, each carrying its entry and exit connections. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL008, REL015, REL020]
+
+The volume of flagged items (37 control-flow items against roughly 0.42 expected without a change) rules out chance sampling as an overall explanation [DIR001-DIR008, POS001-POS008, REL001-REL021]. The change is shown directly by three indicator types that agree — successor changes, complete order flips across all 21 pair relations with no counter-directional item, and position shifts of about 26 to 33 percent of the trace [REL001-REL021, POS001, POS002]. Both blocks are well observed: the choice activities each appear in about 58 to 77 of 200 traces per window, and the loop activities, A20 and A24 in all 200 [POS001, POS002, POS003, POS006, POS007]. Note that many REL items restate the same underlying flip, so they corroborate the pattern but do not multiply the evidence independently.
+
+The evidence cannot distinguish between the two activity groups exchanging segments and an equivalent rewiring in which the connections after A35 and A24 (and the exits A20 and A25) were reassigned while the groups kept their positions; both produce the same observed behaviour. POS is based on event positions rather than clock time, so no claim about timing is made. [DIR007, DIR008, POS001, POS002]
+
+Other differences: the split among the three alternatives shifted slightly (A16 about 35 to 29 in 100 cases, A19 about 36 to 39 in 100, A14 about 30 to 33 in 100), which may be sampling variation rather than a separate change. [POS001, POS003, POS006, DIR007]

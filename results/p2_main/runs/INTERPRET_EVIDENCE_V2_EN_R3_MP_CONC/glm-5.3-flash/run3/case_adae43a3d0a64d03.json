@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "9950072958eddd1cd3d45d992dd8a823f174ad45e8b1749460f566f1539ecfa6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:23:04.958735+00:00",
+  "finished_at_utc": "2026-11-15T03:24:58.093228+00:00",
+  "latency_seconds": 113.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16748,
+    "prompt_tokens": 8382,
+    "total_tokens": 25130,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15551,
+      "text_tokens": 1197
+    },
+    "cost": 0.009631299999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54839,
+  "text": "### Observed differences\n\n- In the later window, A01 occurs exactly once in every trace (200 of 200), while in the earlier window it was not observed at all (0 of 200). A05 shows the mirror image: exactly once in every earlier trace (200 of 200, never repeated) and absent from all later traces. [OCC001, OCC002]\n- Both activities occupy one fixed event position when they occur: mean position 0.5 with no spread, identical for A05 in the earlier window and A01 in the later window. [POS001, POS002]\n- The link to A03 is preserved: earlier, A05 was always followed by A03; in the later window, A01 is always followed by A03, and A03 itself runs in every trace in both windows. [DIR003, DIR001, REL002, REL007]\n- Predecessors re-route from A05 to A01 with nearly unchanged shares: A02's outgoing transitions led to A05 in about 72 of 100 cases earlier and lead to A01 in about 75 of 100 later; A07's led to A05 in about 71 of 100 and lead to A01 in about 66 of 100; A06's led to A05 in about 29 of 100 and lead to A01 in about 30 of 100. [DIR002, DIR005, DIR004]\n- A01 also inherits A05's co-occurrence pattern: earlier, A06 always co-occurred with A05 and always preceded it; later, A06 always co-occurs with A01 and always precedes it. A02 co-occurred with A05 in 47 of 100 traces (always before it) and now co-occurs with A01 in 50 of 100 (always before it); A07 shows the same pattern (53 of 100 earlier, 50 of 100 later, always before). [REL004, REL008, REL006, REL009, REL001, REL005]\n- The rest of the skeleton is unchanged: A06 appears in every trace in both windows, A02 and A07 remain optional predecessors in roughly half of the traces, and the side branches A06→A02, A06→A07, A02→A06 and A07→A06 persist with similar shares (for example A02→A06 at about 28 of 100 earlier versus 25 of 100 later). [REL004, REL001, REL005, DIR002, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 has taken over the position A05 held earlier, with A05 no longer executed: in the earlier window every trace ran A06, then optionally A02 (47 of 100 traces) or A07 (53 of 100), then A05 and finally A03; in the later window the same flow runs with A01 in A05's place — always after A06, after A02 or A07 in about half of the traces, and always before A03. The support is direct and consistent rather than merely frequency-based: A01 inherits all of A05's relations (with A06, A02, A07 and A03) at nearly the same strengths, appears at A05's exact former event position, and the two participations swap completely (0 versus 200 of 200 traces in both directions). [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nThe volume of flagged evidence also exceeds what an unchanged process typically produces: 18 control-flow items qualified where about 0.13 would be expected by chance, and each item's difference exceeds about 995 of 1000 random re-splits of the pooled data. [screening]\n\nWhat the evidence cannot rule out is that this is one substitution rather than two independent changes (A05 removed and A01 inserted at the same point), or simply a relabelling of the activity — these look behaviourally identical here. Strictly, A05's absence in the later window means only that it was not observed in those 200 traces, so a residual very rare use of A05 cannot be excluded.\n\nOther differences: only minor shifts accompany the swap — A02 appears in 47 of 100 traces earlier versus 50 of 100 later, A07 in 53 versus 50, and A07 routes to the swapped activity in about 71 of 100 earlier versus 66 of 100 later; these are small enough that sampling variation between the two windows cannot be excluded. [REL001, REL005, DIR002, DIR005]",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

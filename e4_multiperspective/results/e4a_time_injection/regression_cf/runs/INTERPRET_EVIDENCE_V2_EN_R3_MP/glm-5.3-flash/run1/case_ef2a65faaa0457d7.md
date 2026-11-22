@@ -1,0 +1,23 @@
+### Observed differences
+
+- The alternative step A19/A20 all but disappeared. In the earlier window A19 ran in about 46 of 100 traces and A20 in about 55 of 100, always as mutually exclusive alternatives (they never occurred in the same trace); in the later window A19 appears in 0 of 200 traces and A20 in about 2 of 100. [OCC002, OCC003, REL008]
+
+- The A26/A27/A28 region became a tight, fixed chain. Earlier, A26's outgoing transitions split between A27 (about 47 in 100), A20 (about 27) and A19 (about 24); in the later window about 99 in 100 go to A27. A27's outgoing transitions similarly concentrated on A28 (about 51 in 100 earlier, about 99 later). The A26→A27 and A27→A28 gaps collapsed to the immediately following event (from roughly half at one step and half at two steps to about 98–100 in 100 at one step), and the typical distance from A26 to A28 shortened from three steps (96 in 100) to two steps (about 98 in 100). [DIR004, DIR005, LAG003, LAG004, LAG005]
+
+- The relation profiles mirror the same restructuring: earlier, A19 and A20 each co-occurred with A26, A27 and A28 in roughly half of the traces, in mixed orders; in the later window A26, A27 and A28 almost always appear without either of them (in at or near 100 of 100 traces only one side of each pair is present). [REL009, REL010, REL011, REL014, REL015, REL016]
+
+- A08 became more frequent and shifted towards the end of the trace: participation rose from about 7 to about 28 of 100 traces, and its typical event position moved from mid-trace (mean about 0.55) to late (mean about 0.82, median about 0.89). [OCC001, POS001]
+
+- A08's neighbourhood changed accordingly: in the later window about 88 in 100 of A08's outgoing transitions go to A44 (about 6 earlier, when they were spread over many activities such as A16, A46 and A14), and A43 now sends about 35 in 100 of its outgoing transitions to A08 (about 1 earlier) while A44's share falls from about 93 to about 64; the A43→A08 gap is now typically one step (about 75 in 100), whereas the sparse earlier observations (only 4) clustered at three to four steps. [DIR001, DIR006, LAG006]
+
+- A08 also now co-occurs with A26, A27 and A28 in about 28 of 100 traces (about 7 earlier), usually after A26, and precedes A44 in about 20 of 100 traces (about 2 earlier). [REL003, REL004, REL005, REL006, REL007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the step carried out by A19 or A20 — earlier, exactly one of the two was executed in virtually every trace, between A26 and the A27/A28 region — stopped being executed in the later window, and that A26 now bypasses it into a fixed, immediate sequence A26 → A27 → A28. The change is shown directly and consistently across participation (A19 from 91 to 0 of 200 traces, A20 from 109 to 2), successor redistribution at A26 and A27, and the collapse of the A26→A27 and A27→A28 distances to one step; the many relation items largely reflect this same disappearance rather than adding independent confirmation. With 31 qualifying items against fewer than one expected for an unchanged process, and every item's difference exceeding about 199 of 200 random re-splits, chance sampling in finite windows is an implausible explanation. [OCC002, OCC003, DIR004, DIR005, LAG003, LAG004, LAG005, REL008]
+
+Limitations: zero participation only shows that A19 and A20 were not observed in the later sample — they could have become extremely rare rather than being removed entirely — and the evidence cannot separate whether the tightened A26→A27→A28 ordering is a consequence of the step disappearing or an independent change. Residual after-window behaviour of A20 (successors A28/A38) and the A19/A20 and A26→A20 lag items rest on only 1–2 observations and were not relied upon. [DIR003, LAG001, LAG002]
+
+Other differences: A08's role changed independently of the removed step: in the later window it occurs in about 28 of 100 traces (about 7 earlier), sits late in the trace, typically immediately after A43, and is followed by A44; A43's outgoing transitions now split between A44 (about 64 in 100) and A08 (about 35), where A44 received about 93 earlier. This is consistent with A08 being inserted into the A43→A44 transition in roughly a third of traces, though the before-side of the A43→A08 lag rests on only 4 observations, so that detail is weaker than the rest. [OCC001, POS001, DIR001, DIR006, LAG006, REL006, REL007]

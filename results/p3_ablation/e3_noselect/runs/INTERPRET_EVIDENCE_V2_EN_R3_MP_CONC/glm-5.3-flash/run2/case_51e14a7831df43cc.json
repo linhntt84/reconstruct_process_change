@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_51e14a7831df43cc.json",
+  "evidence_sha256": "aae39aa73b897e0644f2d933b6cfa5aff88501fe0853cb397fbae872828c408f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:33:01.800062+00:00",
+  "finished_at_utc": "2026-11-15T08:35:19.652850+00:00",
+  "latency_seconds": 137.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21262,
+    "prompt_tokens": 40785,
+    "total_tokens": 62047,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18985,
+      "text_tokens": 2277
+    },
+    "cost": 0.01674875
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61575,
+  "text": "### Observed differences\n\n- The dominant difference is a role exchange between A09 and A16. In the earlier window, A09 ran in every one of the 200 traces, about 2.0 times per trace with repetitions in about 48 in 100 traces, and sat late in the case (mean relative position about 0.68); in the later window it runs in only about 97 of 200 traces (about 49 in 100), exactly once when it runs, with no repetitions, and earlier (mean position about 0.45). [OCC007, POS004]\n- A16 moved the opposite way: earlier it ran in about 100 of 200 traces, once per trace, early (mean position about 0.39); in the later window it runs in all 200 traces, about 1.85 times per trace, with repetitions in about 44 in 100 traces, and late (mean position about 0.70). [OCC013, POS008]\n- The wiring around the two activities swapped. A04 and A10 earlier led exclusively to A09 (100% of their 192 and 206 outgoing transitions) and in the later window exclusively to A16 (183 and 187 transitions). [DIR004, DIR007]\n- A09's outgoing transitions earlier went to A06 (about 50 in 100), A05 (about 25) and A14 (about 24); in the later window they go to A10 (about 35), A04 (about 29), A01 (about 25) and A13 (about 11). A16's outgoing transitions earlier went to A10 (about 33), A04 (about 30), A01 (about 21) and A13 (about 16); in the later window to A06 (about 54), A05 (about 24) and A14 (about 22) — each activity now feeds the other's former successors. [DIR006, DIR011]\n- Other predecessors flipped as well: A01, A13 and A18 dropped their edges to A16 (from about 20, 23 and 7 in 100 outgoing transitions to none) and gained edges to A09 (about 18, 27 and 4 in 100). [DIR001, DIR009, DIR012]\n- Co-occurrence with the always-executed activities mirrored the swap: A01, A06 and A13 each co-occurred with A09 in 100 in 100 traces earlier versus about 49 in 100 later, and with A16 in about 50 in 100 earlier versus 100 in 100 later; A09 and A16 still co-occur in about 49 in 100 later traces, so both remain in the process. [REL003, REL007, REL021, REL024, REL026, REL028, REL033]\n- Neighbour distances flipped in the same direction: A01→A09 moved from gaps of 2–4 steps to gaps of 1–2 steps while A01→A16 moved from 1–2 to 2–4 steps; A09→A06 was immediate before (gap 1 in all traces) and A16→A06 is immediate now (gap 1 in all 200 traces); the same mirror image holds for the pairs with A13, A04, A10, A05 and A14. [LAG004, LAG008, LAG013, LAG028, LAG022, LAG025, LAG011, LAG026, LAG014, LAG029, LAG012, LAG027, LAG015, LAG030]\n- Away from this swap, A07 became less frequent (mean 1.33 → 0.85 occurrences per trace; present in 36% versus 28.5% of traces), A12 repeats less (mean 2.32 → 1.7) and shifted its output from A07 (57% → 50% of outgoing transitions) toward A08 (20% → 25%) and A11 (23% → 25%), and A05 repeats less at unchanged participation (mean 1.24 → 0.89 at 38.5% in both) while sitting slightly later (median position 0.54 → 0.58). [OCC005, OCC010, DIR008, OCC004, POS003]\n- Smaller shifts: A02, A11 and A14 are slightly less present (participation down about 3–5 in 100 traces), A03 and A17 slightly more. [OCC001, OCC009, OCC011, OCC002, OCC014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A09 and A16 exchanged their places in the flow. In the earlier window A09 was the mandatory, usually repeated, late activity — fed by A04 and A10 and leading to A05, A06 and A14 — while A16 was an optional, once-only, early activity fed by A01, A13 and A18 and leading to A04, A10, A01 and A13; in the later window these roles are reversed, with A16 the mandatory, often repeated, late activity preceded by A04/A10 and followed by A05/A06/A14, and A09 the optional, once-only, earlier activity reached from A01/A13/A18 and leading to A01, A04, A10 and A13. [OCC007, OCC013, DIR004, DIR006, DIR007, DIR011, POS004, POS008]\n\nThe change is shown directly by the successor and predecessor rewiring and is consistent across every indicator family: participation, recurrence and position profiles are mirror images, co-occurrence with the always-executed activities flips in the same direction, and neighbour distances swap accordingly; the underlying observation counts agree (A09's observed outgoing transitions fall from 398 to 97 while A16's rise from 100 to 370, matching the participation swap). Nearly 40 items reach an empirical strength of about 0.995 — differences larger than in about 199 of 200 random re-splits — although many of the relation and lag items describe the same underlying trace behaviour and are not independent confirmations. [DIR006, DIR011, OCC007, OCC013, POS004, POS008, REL003, REL007, LAG004, LAG008, LAG013, LAG028]\n\nLimitations: the evidence cannot distinguish a genuine exchange of positions from A16 replacing A09 in the late segment while A09 is newly added as an optional earlier step — both fit these observations. No screening expectation for the number of qualifying items is provided, so the judgement rests on the directness and coherence of the rewiring rather than a chance-expectation comparison; and the milder participation changes elsewhere could partly reflect sampling variation between two 200-trace windows. [DIR004, DIR006, DIR011, OCC007, OCC013]\n\nOther differences: A07 is executed less often and in fewer traces, A12 repeats less and routes less to A07 and more to A08 and A11, and A05 repeats less and sits slightly later; A02, A11 and A14 show small participation decreases and A03 and A17 small increases. These are not explained by the A09/A16 exchange. [OCC005, OCC010, DIR008, OCC004, POS003, OCC001, OCC009, OCC011, OCC002, OCC014]",
+  "case_id": "case_51e14a7831df43cc",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

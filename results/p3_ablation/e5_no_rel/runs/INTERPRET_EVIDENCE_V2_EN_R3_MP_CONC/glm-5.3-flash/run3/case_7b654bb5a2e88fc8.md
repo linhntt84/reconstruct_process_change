@@ -1,0 +1,19 @@
+### Observed differences
+
+- Before, A40 branched to one of three alternatives — A14 in about 38 of 100 traces, A15 in about 31 and A20 in about 31 — and each of A14, A15 and A20 led on to A21 in every observed case. In the later window, A40 leads directly to A21 in all traces, and A14, A15 and A20 are no longer observed as successors of A40 or as predecessors of A21. [DIR001, DIR002, DIR003, DIR006, LAG004]
+- Before, A22 was always directly followed by A23, A23 directly by A27, and A27 came two steps after A22. In the later window, A27 comes three steps after A22 in all traces: A22 is followed directly by A23 in about 52 of 100 cases and by A14, A15 or A20 in the remaining 48, and A23 is followed directly by A27 in about 48 of 100 and by one of the three alternatives in the other 52. [LAG001, LAG002, LAG003, DIR004, DIR005]
+- In the later window, A14, A15 and A20 each lead either to A23 or to A27 (for example A14 to A23 in about 52 of 100 cases and to A27 in about 48), so the three can sit either before or after A23. [DIR001, DIR002, DIR003]
+- A14, A15 and A20 moved much later within the trace: their mean position went from about 0.31–0.33 of the trace length to about 0.59–0.60, while their participation stayed roughly stable (A14 in about 38% of traces before and 30% after, A15 about 31% to 33%, A20 about 32% to 37%; the three shares sum to about 100 in 100 in both windows, consistent with exactly one of them running per case). A21, A22 and A23 each shifted slightly earlier (A21 about 0.35 to 0.32, A22 about 0.58 to 0.55, A23 about 0.61 to 0.59). [POS001, POS002, POS003, POS004, POS005, POS006]
+- In total 16 control-flow items qualified, against roughly 0.36 expected by chance for the 73 tested units, and every item's difference exceeded about 995 of 1,000 random re-splits of the pooled data. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of three alternative activities A14, A15 and A20 — exactly one of which executes per case — was relocated from before A21 to the segment between A22/A23 and A27: before, A40 routed each case to one of the three, which then ran on to A21; in the later window A40 leads directly to A21, and the block instead runs after A22 and A23 and before A27, directly after A22 in about half the cases and directly after A23 in the other half. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003]
+
+Supporting signs: the successor profiles of A40, A14, A15, A20, A22 and A23 changed exactly as this move implies; the step gaps A40→A21, A22→A23, A23→A27 and A22→A27 changed coherently; the positions of the three activities moved from about a third to about three-fifths of the trace while their participation stayed stable; and 16 qualifying items against about 0.36 expected by chance makes a chance origin of the pattern as a whole implausible. [DIR001, DIR006, LAG004, LAG002, POS001, POS002, POS003]
+
+Limitations: the 16 items largely express one underlying rearrangement rather than independent confirmations; POS is based on event positions rather than clock time, although the successor and gap changes show the move directly; and the evidence cannot rule out that the rerouting of A40 and the insertion of the block are two separate changes, nor determine whether the block's varying position relative to A23 reflects one flexible ordering or two stable variants. [DIR004, DIR005, LAG001, LAG003, POS004, POS005, POS006]
+
+Other differences: none beyond the above; the small backward shifts of A21, A22 and A23 (about 0.02–0.03 in mean position) are consistent with side effects of the block's insertion rather than independent moves. [POS004, POS005, POS006]

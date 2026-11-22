@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_e8fce8200b2376ed.json",
+  "evidence_sha256": "026faa11099384b99f4869504066428137aaea8d6aa9dc0a40035204f2b22342",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:18:30.797552+00:00",
+  "finished_at_utc": "2026-11-16T02:21:34.433931+00:00",
+  "latency_seconds": 183.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29157,
+    "prompt_tokens": 119790,
+    "total_tokens": 148947,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26747,
+      "text_tokens": 2410
+    },
+    "cost": 0.032547
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 87068,
+  "text": "### Observed differences\n\n- In the earlier window, A07, A15, A16 and A17 do not appear in any of the 200 traces; in the later window A16 occurs in about 70 in 100 traces, A07 in about 48 in 100, A15 in about 39 in 100 and A17 in about 33 in 100. [OCC006, OCC014, OCC015, OCC016]\n- In the later window the new activities have outgoing transitions that were not observed before: A07 leads to A18 (all 181 observed outgoing transitions), A15 leads back to A10 (all 199), A16 leads to A02 and A03 (about half each), and A17 leads to A09. [DIR005, DIR009, DIR010, DIR011]\n- Several established handovers are rerouted: A08 now passes to A07 (about 46% of its outgoing transitions) where it previously passed to A05 (about 52%); A10 now leads only to A16 and A15 (about half each) where it previously repeated itself (about 48%) or led to A03 (27%) and A02 (25%); A18 now leads to A17 (about 54%) and A14 (about 46%) where it previously led only to A02; A12 now leads to A05 (about 49%) where it previously led to A18; and A05 now leads to A02 (about 47%) where it previously led to A09 (about 26%) and A14 (about 23%). [DIR006, DIR007, DIR012, DIR008, DIR003]\n- Repetition changes for three established activities: A05 rises from about 1.9 to about 4.0 occurrences per trace while its trace participation falls from 48% to 39%; A13 rises from about 1.0 to about 2.1; A18 falls from about 1.8 to about 0.9 per trace while its participation rises from 40% to 48%. [OCC004, OCC012, OCC017]\n- The new activities co-occur with established ones only in the later window: A16 with A03 in about 70 in 100 traces (never before), A07 with A01 in about 40 in 100 (never before), and A15 with A16 in about 39 in 100 (before, neither appeared in any trace). [REL045, REL006, REL147]\n- A05 and A13 now occur earlier in the trace (median position about 0.69 to 0.45 and 0.66 to 0.44) and A18 later (about 0.39 to 0.71). [POS004, POS012, POS017]\n- Pair distances move accordingly: A08 followed by A05 within five steps, common before (96 traces, mostly at distance 1), is now rare (37 traces) and sits at distance 4; A18 followed by A14, previously 11 traces at distance 5, now appears in 59 traces at distance 1. [LAG038, LAG084]\n- The remaining activities (A01, A02, A04, A06, A08, A09, A14) show only small occurrence and routing differences of the size random re-splits also produce. [OCC001, OCC005, OCC008, OCC013, DIR001, DIR002, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window the control flow was reconfigured around four newly observed activities (A07, A15, A16, A17) together with a rerouting of their neighbours. Before, A08 passed to A05, A12 passed to A18, A18 passed only to A02, and A10 mostly repeated itself or exited to A03 and A02; in the later window A08 passes to A07, which leads to A18; A18 exits via A14 and via A17, which leads to A09; A10 alternates with A15 and exits through A16 to A02 and A03; and A12 passes to A05, which now leads to A02 and A13. Alongside this, A05 and A13 repeat more often per case, and A18 repeats less often while appearing in more traces. [DIR003, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, OCC004, OCC012, OCC017]\n\nSupporting signs: the four activities move from 0 of 200 traces to 65–139 of 200, a shift far outside the range of the 200 random re-splits used as reference; the new and the no-longer-observed transitions are seen directly in the direction profiles; the co-occurrence items show the new activities integrated with nearly every established activity only in the later window; and the repetition and position changes fit the same rewiring. [OCC006, OCC014, OCC015, OCC016, DIR007, DIR012, REL045, REL095, POS017]\n\nLimitations: the many relation items largely restate the same appearance of the four activities rather than independent confirmations; the insertion points suggested by the distance items rest partly on small samples (some under 40 traces per window); and the evidence cannot show whether this was one coordinated rewiring or several independent edits. A competing explanation the evidence cannot fully exclude is that the earlier window missed a rare variant containing A07, A15, A16 and A17 — unlikely at zero occurrences in 200 traces against a third to two thirds later, but the windows are finite samples. [LAG002, LAG006, LAG053, OCC006, OCC016]\n\nOther differences: A02, A11 and A12 now occur slightly later in the trace and A10 slightly earlier (median shifts of about 0.03 to 0.15 of the trace); as position shifts alone they do not show that these activities were moved. [POS002, POS009, POS010, POS011] Small occurrence increases for A02 (about 7.1 to 8.0 per trace), A04 (0.9 to 1.1) and A11 (3.5 to 4.1) fall within the range random re-splits produce. [OCC002, OCC003, OCC010]",
+  "case_id": "case_e8fce8200b2376ed",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

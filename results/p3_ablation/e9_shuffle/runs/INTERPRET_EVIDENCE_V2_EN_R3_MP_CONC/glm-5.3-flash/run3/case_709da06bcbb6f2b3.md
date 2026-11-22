@@ -1,0 +1,18 @@
+### Observed differences
+
+- Activity A01 was not observed in any of the 200 earlier traces. In the later window it runs in about 60 in 100 traces, exactly once per trace when present, and early in the case (median position about one-sixth of the trace length). [OCC001, POS001]
+- In the later window, A01's observed outgoing transitions lead to A03 (about 32 in 100), A10 (about 27), A04 (about 23) and A07 (about 18); earlier, no outgoing transitions of A01 were observed. Conversely, A10 and A03 now lead to A01 in about 40 and 34 in 100 of their outgoing transitions, which was not observed earlier. [DIR001, DIR003, DIR002]
+- A03 and A10 each appeared in about 56 in 100 traces before, never together with A01; in the later window each appears only together with A01 (about 60 in 100 traces), with A01 first in roughly a quarter of cases and A03/A10 first in about a third — both orders occur, so there is no fixed order between them. [REL001, REL004]
+- A04 and A07 previously appeared in about 28 in 100 traces each, always without A01; in the later window they were observed only in traces that also contain A01 and always after it, while their overall participation stayed nearly the same (about 29→32 and 28→28 in 100). [REL002, REL003, POS002, POS003]
+- Step distances between the A03/A10 activities and A04/A07 stretched: A03→A07 and A03→A04 moved from gaps of 1–2 steps to gaps of 1–3 steps (gap 3 is now the largest share at about 40 in 100), and A10→A04 shows the same spread; A03→A10 and A10→A03, previously adjacent in every observed case (gap 1), now show a gap of 2 steps in about a third of cases. [LAG002, LAG001, LAG005, LAG003, LAG004]
+- A04, A07 and A10 sit slightly later in the trace than before (A04 median position about 0.22→0.33, A07 about 0.50→0.75, A10 mean about 0.08→0.16 of trace length). [POS002, POS003, POS004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window A01 became an executed activity and was embedded into the existing flow between the A03/A10 stage and the A04/A07 stage: A01 runs once in about 60 in 100 cases at an early position, appears both before and after A03 and A10, and always precedes A04 and A07, which now execute only alongside it. Its insertion stretched the step distances between A03/A10 and A04/A07 and pushed A04, A07 and A10 to later positions. The support is direct (occurrence, position and successor profiles for A01 itself, all empty in the earlier window with 0 of 200 traces), relational (co-occurrence and order for all four pairs) and consistent (all five lag items and three position items point the same way); with 17 qualifying items against roughly 0.19 expected for an unchanged process, chance sampling cannot account for the pattern as a whole, and every item's difference exceeds about 995 in 1000 random re-splits. [OCC001, POS001, DIR001, DIR002, DIR003, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005, POS002, POS003, POS004]
+
+Limitations: zero participation in the earlier window only establishes that A01 was not observed before, so the evidence cannot fully exclude that A01 existed previously but was never triggered in the sampled cases. Also, because A01 occurs in both orders relative to A03 and A10, the data do not fix a single insertion slot — A01 may occupy one of several positions within the A03/A10 stage rather than one fixed place. [OCC001, REL001, REL004]
+
+Other differences: none; every evidence item relates to the appearance of A01 and its effect on A03, A04, A07 and A10. [DIR001, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG005]

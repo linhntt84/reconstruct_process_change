@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "39d03fce5b283ea1e9809f7c3deea3c1f2b013b1fdaece369368e604fdcdbcc3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:04:40.137800+00:00",
+  "finished_at_utc": "2026-11-14T13:05:32.379638+00:00",
+  "latency_seconds": 52.24,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8397,
+    "prompt_tokens": 7341,
+    "total_tokens": 15738,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7593,
+      "text_tokens": 804
+    },
+    "cost": 0.0052996499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30274,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each ran exactly once in every trace (participation 100%, no repetitions). In the later window, each of the three appears in about 53 in 100 traces (106 of 200) and still never repeats. [OCC001, OCC002, OCC003]\n- In the earlier window, every observed outgoing transition of A36 led to A14. In the later window, about 53 in 100 of A36's outgoing transitions lead to A14, while about 47 in 100 lead directly to A21 — a successor A36 did not have before. [DIR001]\n- In the earlier window, A36, A14, A15, A20 and A21 always occurred together in a single fixed order (A36, then A14, A15, A20, then A21). In the later window, in about 47 in 100 traces A14, A15 and A20 are all absent while A36 and A21 still occur, with A36 before A21; the three activities always drop out together (no traces contain only one or two of them), and when they do appear their internal order is unchanged. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- A21's relative position moved slightly earlier in the later window (mean about 0.43 to about 0.40 of the trace), consistent with the block preceding it being absent in some traces rather than indicating a repositioning on its own. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the consecutive block A14 → A15 → A20, which previously always executed between A36 and A21, became skippable: in the later window about 53 in 100 traces still run the full sequence A36 → A14 → A15 → A20 → A21, while in about 47 in 100 traces the whole block is skipped and A36 leads directly to A21. [OCC001, OCC002, OCC003, DIR001, REL003, REL004, REL006, REL007, REL008, REL009]\n\nSupporting signs: the participation of all three block activities fell from 100% to about 53% with no change in repetition; a new direct A36 → A21 transition appeared alongside the original A36 → A14; and the relational items show A36 and A21 occurring without the block in about 47 in 100 traces, while the three block activities always appear or disappear together and keep their internal order when present. Because the block is wholly absent in the skipping traces, this is a bypass of a group of activities rather than a shift of frequency between existing alternative paths. Screening also found 14 qualifying control-flow items where roughly 0.35 would be expected by chance without a change, and every item's difference exceeds about 995 in 1000 random re-splits of the pooled data. [DIR001, REL001, REL002, REL005, OCC001, OCC002]\n\nLimitations: all 14 items describe one trace-level difference, so they are not independent confirmations, and the evidence cannot distinguish a single runtime skip decision covering the whole block from two coexisting process variants (one with the block, one without); it also shows nothing about what precedes A36 or follows A21. [OCC001, DIR001, REL001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

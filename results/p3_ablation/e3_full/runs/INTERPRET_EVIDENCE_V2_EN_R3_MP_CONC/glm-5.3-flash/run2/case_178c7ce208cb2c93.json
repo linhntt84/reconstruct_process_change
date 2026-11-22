@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_178c7ce208cb2c93.json",
+  "evidence_sha256": "582a6cd063261034d1ef7251ef6657228ca6051f61b4a6a7b3de78885e6c0e22",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:12:06.909910+00:00",
+  "finished_at_utc": "2026-11-16T02:13:10.861421+00:00",
+  "latency_seconds": 63.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9864,
+    "prompt_tokens": 6496,
+    "total_tokens": 16360,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8965,
+      "text_tokens": 899
+    },
+    "cost": 0.0059064
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31676,
+  "text": "### Observed differences\n\n- A01 was not observed in any of the 200 earlier traces; in the later window it is executed exactly once in every trace (200 of 200), always at the same relative position, about two-thirds through the trace. [OCC001, POS001]\n- The earlier window showed two trace shapes over A02, A03 and A04: in about 78 in 100 traces the order was A04, then A02, then A03; in about 22 in 100 it was A02, then A04, then A03 — A03 always directly followed the A02/A04 pair. In the later window the same two shapes occur in nearly the same proportions (about 76 and 24 in 100), but A01 now sits between the pair and A03. [REL004, LAG001, LAG002]\n- Routing changed accordingly: earlier, A02's observed outgoing transitions led to A03 (about 78 in 100) or A04 (about 22 in 100), and A04's led to A02 (about 78) or A03 (about 22); in the later window, A02 leads to A01 (about 76) or A04 (about 24), A04 leads to A02 (about 76) or A01 (about 24), and A01's only observed outgoing transition leads to A03. Direct transitions from A02 or A04 to A03 are no longer observed. [DIR001, DIR002, DIR003]\n- The relational evidence matches: earlier, A02, A03 and A04 each always appeared without A01; in the later window A01 co-occurs with each of them in all traces, always after A02 and after A04, and always before A03. [REL001, REL002, REL003]\n- Step distances shifted by one: A02 to A03 went from 1 step apart (about 78 in 100) to 2–3 steps apart, and A04 to A03 from mostly 2 steps to mostly 3 steps; the mean relative positions of A02 (0.39 to 0.25) and A04 (0.11 to 0.08) moved slightly earlier, consistent with every trace gaining one event. The order between A02 and A04 itself barely moved (A04 first in about 78 vs 76 in 100 traces, a difference well within random re-split variation). [LAG001, LAG002, POS002, POS003, REL004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added to the process as a new, mandatory step: in the later window every trace executes A01 once, after both A02 and A04 and before A03, so the previously direct transitions A02→A03 and A04→A03 are replaced by routes through A01, while the choice between the two orderings of A02 and A04 (about 78/22 earlier, 76/24 later) is preserved. [OCC001, DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002]\n\nThe support is direct and consistent: the relational items show A01's position relative to all three existing activities, not merely its frequency, and the occurrence, position, routing and distance items all describe the same single insertion; a behaviour present in 200 of 200 later traces but absent from 200 earlier traces, with differences larger than in about 99 of 100 random re-splits, is hard to attribute to sampling variation. [OCC001, POS001, REL001, REL002, REL003, DIR002]\n\nLimitations: no screening expectations were supplied, so the number of qualifying items could not be checked against a chance baseline; and the evidence cannot distinguish a genuinely new activity from one that previously occurred so rarely (below roughly 1 in 100 earlier traces) that it went unsampled. [OCC001]",
+  "case_id": "case_178c7ce208cb2c93",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

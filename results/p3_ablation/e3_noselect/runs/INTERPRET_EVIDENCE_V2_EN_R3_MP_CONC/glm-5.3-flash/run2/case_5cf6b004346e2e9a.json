@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_5cf6b004346e2e9a.json",
+  "evidence_sha256": "9d54dd592504329eccfc64340bbd920a74d2d6967979dbf864ccfce633c8b8ac",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:32:23.158964+00:00",
+  "finished_at_utc": "2026-11-15T08:35:39.169865+00:00",
+  "latency_seconds": 196.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29674,
+    "prompt_tokens": 24767,
+    "total_tokens": 54441,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27835,
+      "text_tokens": 1839
+    },
+    "cost": 0.01855205
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 87119,
+  "text": "### Observed differences\n\n- The successors of A10 and A11 changed completely. In the earlier window, A10's outgoing transitions split about evenly between A06 (about 51%) and A07 (about 49%), and A11's between A06 (about 58%) and A07 (about 42%); in the later window, every observed outgoing transition of both activities goes to A08 (55 of 55 for A10, 39 of 39 for A11), a target not observed for either activity before. [DIR009, DIR010]\n- A08 is repeated much more often within the traces that contain it: participation is nearly unchanged (about 26 in 100 traces before, 25 in 100 in the later window), but mean occurrences per trace rose from about 0.62 to about 1.0 — roughly 2.4 to 4 occurrences per trace containing A08. Ordered A08→A08 pairs within five steps doubled (21 vs 42 pair observations) and the dominant gap between consecutive A08s shortened from 3 to 2 events; A08's mean position within traces also moved slightly later (about 0.45 to 0.50). [OCC007, LAG011, POS003]\n- A08's outgoing transitions now also reach A06 and A07, which were not observed as its successors before: in the later window about 29% of A08's outgoing transitions go to A06 and about 24% to A07, alongside A10 (about 27%) and A11 (about 19%); before, A10 (about 50%) and A11 (about 48%) received almost all of them. [DIR007]\n- The activities that used to follow A08 appear less often in the later window: A10 in about 20% vs 12.5% of traces, A11 about 19% vs 12%, A06 about 23% vs 19.5% (mean occurrences about 0.66 vs 0.51), A07 about 34% vs 33% (mean about 0.55 vs 0.49). A08 also almost never strictly precedes A07, A10 or A11 anymore (A08-before-A10 fell from about 6.5% of traces to 0, A08-before-A11 from 6% to 0, A08-before-A07 from 9% to 2%), while interleaved or repeated orderings of these pairs became more common. [OCC005, OCC006, OCC009, OCC010, REL005, REL008, REL009]\n- Co-occurrences that depended on the old links weakened: A07 and A10 appear together in about 19.5% vs 12.5% of traces, A07 and A11 about 19% vs 12%, A10 and A11 about 12.5% vs 6%; gaps from A10/A11 to A06/A07 lengthened (A10→A07: dominant gap 1 before, gaps 2–4 after; A11→A06: gap 1 before, gap 2 after). [REL006, REL007, REL010, LAG015, LAG019]\n- Other differences: A05 and A04 appear in more traces (about 30% vs 39.5% and 45% vs 52%), and among existing routes the A05→A04 share rose from about 21% to 31% of A05's outgoing transitions (A05→A01 fell from 79% to 69%) while A04→A01 rose from about 10% to 18%; A02 and A09 occur somewhat less often (each about 27% vs 24.5% of traces, mean about 0.59 vs 0.45 per trace), with A02's outgoing mix essentially unchanged and A09's shifted somewhat from A06 (about 32% to 24%) toward A07 (about 25% to 31%). [OCC003, OCC004, DIR003, DIR004, OCC002, OCC008, DIR002, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the paths around A08 were rerouted and its execution made more repetitive: in the earlier window A08 led almost exclusively to A10 and A11, which in turn led to A06 or A07, whereas in the later window A10 and A11 lead back to A08 in every observed case, A08's outgoing transitions now include A06 and A07, and A08 occurs about 65% more often per trace at unchanged participation, while A06, A07, A10 and A11 appear in fewer traces and A08 rarely precedes them strictly. The signs are direct and mutually consistent: the successor profiles of A10, A11 and A08 changed completely (differences larger than in about 199 of 200 random re-splits, each profile based on at least about 40 outgoing transitions in both windows), A08→A08 repetitions within five steps doubled with a shorter typical gap, and the drops in participation and co-occurrence of A06/A07/A10/A11 match the lost links. Limitations: the evidence provides no screening baseline, so the number of qualifying items cannot be checked against a chance expectation, and several gap and co-occurrence proportions rest on few observations (as few as about 5–15 traces in the later window). A competing explanation the evidence cannot rule out is that the increased repetition of A08 and the rerouting of A10 and A11 are two separate changes rather than one; the evidence shows them together but cannot establish them as a single modification. [OCC007, DIR007, DIR009, DIR010, LAG011, OCC005, OCC006, OCC009, OCC010, REL008, REL009]\n\nOther differences: A05 and A04 participate more often and existing routes are taken with different frequencies (A05→A04 and A04→A01 shares up, A05→A01 down); A02 and A09 occur somewhat less often with largely unchanged routing. These may be independent of the changes around A08. [OCC003, OCC004, DIR003, DIR004, OCC002, OCC008, DIR002, DIR008]",
+  "case_id": "case_5cf6b004346e2e9a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

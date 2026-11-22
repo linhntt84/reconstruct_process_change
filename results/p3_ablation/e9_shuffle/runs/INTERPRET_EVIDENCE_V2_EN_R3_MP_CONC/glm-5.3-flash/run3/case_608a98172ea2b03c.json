@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_608a98172ea2b03c.json",
+  "evidence_sha256": "fc6e1768547cd075a65b5ef9b856d92154efc4129551236e2344b7e734183eeb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:49:08.958884+00:00",
+  "finished_at_utc": "2026-11-15T09:52:03.874005+00:00",
+  "latency_seconds": 174.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25573,
+    "prompt_tokens": 9353,
+    "total_tokens": 34926,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23845,
+      "text_tokens": 1728
+    },
+    "cost": 0.01418945
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 80467,
+  "text": "### Observed differences\n\n- The order of A01 and A04 was not fixed in the earlier window: the two co-occurred in every trace, with A01 first in about 25 in 100 cases, A04 first in about 28, and the two interleaved or repeated in about 47. In the later window A01 precedes A04 in about 58 in 100 cases, an exclusive A04-first order is no longer observed, and interleaving or repetition remains in about 42. [REL001]\n- Routing out of A01 changed: earlier, of roughly 383 observed outgoing transitions, about half went to A04, about 29 in 100 to A03 and about 22 in 100 to A02; in the later window all roughly 380 observed outgoing transitions go to A04. [DIR001]\n- Routing out of A04 changed: earlier, about half of its roughly 383 outgoing transitions returned to A01, with about 26 in 100 to A02 and about 24 in 100 to A03; in the later window no transition to A01 is observed — about 53 in 100 go to A03 and about 47 in 100 to A02. [DIR002]\n- Routing out of A06 changed from an even split between A04 and A01 (about 50 in 100 each) to transitions to A01 only. [DIR003]\n- A01 now appears at the very start of traces (median relative position from about 0.45 to 0; mean from 0.40 to 0.29), while A04 sits later (its lower-quartile position rises from 0 to about 0.27; mean from 0.39 to 0.50). [POS001, POS002]\n- A01 is followed by A04 within one step in about 53 in 100 of the later occurrences, and the ordered pair appears within five steps in all 200 later traces (144 of 200 earlier); the earlier near-immediate A04→A01 return (about 31 in 100 of that pair's earlier occurrences) is no longer observed, and A04→A01 now occurs only at a distance of four steps, within the roughly 84 later traces where the two activities interleave or repeat. [LAG004, LAG008]\n- Many pair distances consolidated from two adjacent values to one: A01→A03 from a 55/45 split between one and two steps to always two; A04→A03 from a 45/55 split to always one; A01→A02 to always two; A04→A02 to always one; A06→A01 to always one; A06→A04 to always two; A04→A06 from a 55/45 split between three and four to always three; A01→A06 to always four; A02→A01 to always three; A02→A04 to always four. [LAG003, LAG010, LAG002, LAG009, LAG013, LAG014, LAG012, LAG005, LAG006, LAG007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA possibility directly supported by the evidence is that the ordering constraints between A01 and A04 changed from largely unfixed to a predominantly fixed A01-before-A04 sequence, with the routing around them consolidated. In the earlier window A01 and A04 were interleaved or repeated in about 47 in 100 traces and A04 preceded A01 in about 28, whereas in the later window A01 precedes A04 in about 58 and an exclusive A04-first order no longer appears; A01 now leads only to A04 (earlier about half of its transitions also went to A02 or A03), A04 no longer leads back to A01 (earlier about half did), and A06 now leads only to A01. Since A01 moved to the start of traces while A04 moved later, this is a change in ordering constraints and routing, not an exchange of the two activities' positions. [REL001, DIR001, DIR002, DIR003, POS001, POS002]\n\nThe distance evidence points the same way: A01 reaches A04 within one step in about half of the later occurrences with the pair present in every later trace, the near-immediate A04→A01 return has disappeared, and about ten activity pairs that were previously split across two adjacent step distances now occur at a single distance — a coherent picture of one fixed, partly repeating execution order in the later window. The volume of qualifying items (20, against roughly 0.13 expected if nothing had changed) cannot be explained by chance as a whole. [LAG004, LAG008, LAG003, LAG010, LAG012, LAG005]\n\nThe evidence cannot rule out that the later window merely samples a different mix of pre-existing execution variants: the vanished transitions are unobserved rather than proven removed, and several items describe the same underlying trace behaviour, so they are not independent confirmations. The fixed order is also dominant rather than universal, since about 42 in 100 later traces still interleave or repeat the two activities. [REL001, DIR001, DIR002, LAG001]\n\nOther differences: self-repetitions of A01 and of A04, earlier spread across step distances of four and five, now occur only at a distance of five, while the share of traces containing such repetitions stayed similar (about 83–89 of 200 earlier, 84 of 200 later). [LAG001, LAG011]",
+  "case_id": "case_608a98172ea2b03c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

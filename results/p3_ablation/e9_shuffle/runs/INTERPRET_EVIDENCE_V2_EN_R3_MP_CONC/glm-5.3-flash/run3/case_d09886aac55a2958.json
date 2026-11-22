@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_d09886aac55a2958.json",
+  "evidence_sha256": "65c0c6aa5cad7ca82c06df14ccbb35c7c9e280eca57445347e359b982072d9a5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:00:40.100225+00:00",
+  "finished_at_utc": "2026-11-15T10:01:53.405108+00:00",
+  "latency_seconds": 73.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10924,
+    "prompt_tokens": 14057,
+    "total_tokens": 24981,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9679,
+      "text_tokens": 1245
+    },
+    "cost": 0.00757055
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33905,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it runs in about 101 of 200 traces (roughly 51 in 100), about 1.1 times per trace on average, with repeated occurrences in about 25 in 100 traces [OCC001].\n- When it occurs, A01 sits roughly a third of the way into the trace (median position about 0.32, quartiles about 0.20–0.53); in the earlier window it had no observed positions [POS001].\n- In the later window A01 passes flow on mainly to A05 (about 35 in 100 of its outgoing transitions), A03 (about 19), A06 (about 15) and A15 (about 14); in the earlier window A01 had no observed outgoing transitions [DIR001].\n- Activities that previously never led to A01 now do: about 36 in 100 of A09's outgoing transitions, about 28 in 100 of A08's, about 22 in 100 of A06's and about 11 in 100 of A12's go to A01 in the later window, versus none in the earlier window [DIR004, DIR005, DIR006, DIR007].\n- A01's relations flip from never co-occurring to frequent co-occurrence: with A05 and A12 it co-occurs in about 51 in 100 later-window traces (0 before), with A09 about 46, A08 about 40, A06 about 34, and with A15 and A03 about 32; A01 is typically first (e.g., before A05 in 20 in 100 versus A05 first in 6 in 100) or interleaved with its partner (about 18–33 in 100) [REL001, REL002, REL003, REL004, REL005, REL006, REL007].\n- Step gaps between activity pairs changed: A09→A03 was adjacent in about 50 in 100 earlier cases and never is later, now most often 5 steps apart (about 35 in 100); A08→A03 similarly went from about 49 in 100 adjacent to none, with 5-step gaps in about 30 in 100; A03→A08 moved the other way, from 5-step gaps (about 43 in 100) to 2-step gaps (about 40 in 100); A08→A05, A09→A05, A08→A12 and A09→A12 also shifted to larger gaps [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008].\n- Outgoing shares were also redistributed at A16 and A03: A16 now goes to A02 in about 43 in 100 of its transitions (about 9 before) and to A05 in about 10 (about 34 before); A03 now goes to A12 in about 17 in 100 (about 1 before) and to A02 in about 17 (about 6 before), while A05 falls from about 44 to about 27 [DIR008, DIR002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 became part of the executed process in the later window: unobserved in the earlier window, it now runs in about half of the traces, roughly a third of the way into each trace, receiving flow mainly from A09, A08, A06 and A12 and handing flow on mainly to A05, A03, A06 and A15, while pairs upstream and downstream of it are now separated by larger step gaps [OCC001, POS001, DIR001, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, LAG002, LAG003, LAG005].\n\nThe hypothesis is shown directly and consistently: participation, position, direction and relation items all concern A01 and agree with one another, and the 25 qualifying items far exceed the roughly 0.43 expected by chance among the 86 tested units, so the pattern as a whole is not what an unchanged process typically produces. Limitations: zero participation in the earlier window strictly shows only that A01 was not observed there, and the evidence pins down A01's attachment points but not the complete set of altered paths; the step-gap changes are consistent with A01's presence but do not by themselves prove where it sits. An important competing explanation that cannot be fully ruled out is that A01 belonged to a rare earlier-window path that sampling missed, although its appearance in about 101 of 200 later traces with a stable relational structure makes a pure sampling artefact unlikely [OCC001, REL002, LAG001].\n\nOther differences: routing shares from A16 and A03 shifted toward A02 (and, for A03, toward A12) and away from A05; the evidence does not tie this redistribution to A01 [DIR008, DIR002].",
+  "case_id": "case_d09886aac55a2958",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

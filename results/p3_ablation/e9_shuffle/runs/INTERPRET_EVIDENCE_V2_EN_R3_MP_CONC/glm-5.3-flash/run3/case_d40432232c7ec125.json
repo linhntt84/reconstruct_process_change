@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "038319c9cf4c591b5281ee535dd150be933173e3f12b1d839c3b5cfd9161faad",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:47:47.687260+00:00",
+  "finished_at_utc": "2026-11-15T09:52:27.073946+00:00",
+  "latency_seconds": 279.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 40784,
+    "prompt_tokens": 46486,
+    "total_tokens": 87270,
+    "completion_tokens_details": {
+      "reasoning_tokens": 38260,
+      "text_tokens": 2524
+    },
+    "cost": 0.027364899999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 121910,
+  "text": "### Observed differences\n\n- **The order of two activity groups around A25 and A29 reversed.** Before, A19, A21 and A24 typically executed before A25 and A29, and A25 and A29 typically executed before A20, A22 and A23; in the later window every one of the 21 tested pairs among these eight activities points the opposite way. For example, A25 preceded A22 in about 97 in 100 traces before, while A22 precedes A25 in about 98 in 100 after; A29 preceded A20 in about 98 in 100 before, while A20 precedes A29 in about 99 in 100 after; and A24 preceded A20 in all co-occurring traces before, while A20 precedes A24 in all after. [REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030, REL031, REL032, REL033, REL034, REL035, REL036]\n\n- **Event positions moved accordingly.** The median position of A20, A22 and A23 moved from about 0.65 to about 0.38 of the trace length, and that of A19, A21 and A24 from about 0.35 to about 0.67; A25 and A29 stayed in between with only a small later shift (medians about 0.39→0.45 and 0.59→0.65). A20, A22, A23, A25 and A29 occur in every trace in both windows, while A19, A21 and A24 each occur in about 29–38 in 100 traces — together about one occurrence per trace. [POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]\n\n- **Hand-overs moved with the groups.** Before, about 93–97 in 100 of the observed outgoing transitions of A19, A21 and A24 went to A25, and about 29–37 in 100 of those of A20, A22 and A23 went to A30; in the later window this is inverted — A19, A21 and A24 lead mainly to A30 (about 92–97 in 100) and A20, A22 and A23 lead mainly to A25 (about 28–37 in 100). A29 now leads to A24, A19 and A21 instead of A20, A23 and A22, and A40 now leads to A22, A20 and A23 instead of A21, A24 and A19. [DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013]\n\n- **Spacing between the anchor points changed.** The gap from A40 to A25 grew from typically 2 steps (about 91 in 100) to typically 4–5 steps (about 99 in 100), and the gap from A29 to A30 shrank from typically 4 steps (about 94 in 100) to 2 steps (about 94 in 100). [LAG029, LAG026]\n\n- **Participation changes outside this pattern.** A08 appeared in about 64 in 100 traces before but about 29 in 100 after, and its outgoing transitions spread from almost only A16 (about 93 in 100) across many targets (A16 about 31, A15 about 15, A44 about 10 in 100); the share of A15's outgoing transitions going to A08 fell from about 39 to about 7 in 100. A04, A06 and A10 became roughly three times as common, from about 7–9 in 100 traces to about 19–24 in 100, with substantially changed successor profiles. [OCC003, OCC001, OCC002, OCC004, DIR002, DIR005, DIR001, DIR003]\n\n- Numerous further gap items point in the same direction but rest on only 1–3 observations in one window and carry little weight individually. [LAG023, LAG024, LAG016, LAG019, LAG022]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the two activity groups on either side of A25 and A29 exchanged their places: in the later window the always-executed trio A20, A22 and A23 runs early, between A40 and A25, while the single occurrence drawn from A19, A21 and A24 runs late, between A29 and A30 — the mirror image of the earlier window — and the hand-overs moved with the groups (A19/A21/A24 now lead to A30 rather than A25, A20/A22/A23 lead to A25 rather than A30, and A29 and A40 now connect to the opposite group). [REL030, REL024, POS002, POS003, POS004, POS007, DIR006, DIR010, DIR012, DIR013, LAG029, LAG026]\n\nThis rests on direct within-trace evidence: all 21 tested pairs among the eight activities reverse their dominant order, with the A25/A29 pairs measured on essentially every trace in both windows; the position shifts (about 0.26–0.33 of the trace, each in the predicted direction) and the successor changes match; and 94 items qualified against roughly 1 expected for an unchanged process, so the collection as a whole is not a chance artefact. [REL030, REL033, POS002, POS003, DIR011, DIR007]\n\nThe evidence cannot distinguish a re-routing within individual traces from a changed mixture of pre-existing trace variants with different orderings, and the reading of how many activities separate the anchors rests on only two gap items plus presence shares; many other gap items rest on 1–3 observations in one window. [LAG029, LAG024, LAG022, LAG016, LAG019]\n\nOther differences: A08 became much rarer (about 64 to about 29 in 100 traces) and redirected its outgoing work away from A16 toward many other activities, while A04, A06 and A10 roughly tripled their presence and changed successors; these participation and routing changes are not covered by the reordering hypothesis. [OCC003, DIR002, OCC001, OCC002, OCC004, DIR001]",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

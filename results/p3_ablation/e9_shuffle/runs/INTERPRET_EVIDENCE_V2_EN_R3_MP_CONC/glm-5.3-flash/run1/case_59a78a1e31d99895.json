@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_59a78a1e31d99895.json",
+  "evidence_sha256": "689e82093c0b06f373794410ed63342a362880cce1ba8ff969e654a7a2e0cc59",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:55:55.209003+00:00",
+  "finished_at_utc": "2026-11-14T10:58:51.079809+00:00",
+  "latency_seconds": 175.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31193,
+    "prompt_tokens": 20832,
+    "total_tokens": 52025,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29133,
+      "text_tokens": 2060
+    },
+    "cost": 0.0187213
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 93669,
+  "text": "### Observed differences\n\n- The sharpest change concerns three activities, A04, A06 and A10. Earlier, each appeared in about 50 in 100 cases, and together they covered every case as two mutually exclusive branches: A04 alone in about half the cases, A06 together with A10 in the other half (A04 never occurred alongside A06 or A10). In the later window, each appears in only about 20–22 in 100 cases, in about 66 in 100 cases none of the three occurs at all, and A04 now co-occurs with A06/A10 in about 8 in 100 cases, so the either/or branch pattern dissolved. [OCC001, OCC002, OCC003, REL007, REL010, REL013]\n\n- A02 still appeared in every case in both windows, but its successors changed. Earlier, about 25 in 100 of its observed outgoing transitions led to A04, 23 to A05, 13 to A10 and 13 to A06 (seven distinct successors in all); in the later window, no transitions from A02 to A04, A06 or A10 were observed, while A05 received about 46 in 100 and A03 and A09 about 21 each. [DIR001, POS001]\n\n- The block gained new predecessors: A03 earlier led only to A07 (about 53 in 100 transitions) or A08 (47), and A09 only to A08 (62) or A07 (37); in the later window both lead mainly to A07 (about 55 and 50) and send roughly 45–50 in 100 of their transitions directly to A04, A06 or A10, with no observed transitions to A08. [DIR002, DIR005]\n\n- A08 moved downstream of the block: in the later window all 47 observed outgoing transitions of A04 go to A08 (earlier only one outgoing transition of A04 was seen at all, so its earlier profile is weak), and A06 and A10 split their transitions between each other and A08. A08's participation stayed at about 33 in 100 cases, but its median relative position moved later (about 0.63 to about 0.83), as did A02's (about 0.50 to about 0.73), while A04/A06/A10 moved from the end of the case (mean relative positions 0.88–0.99) to about 0.60–0.64. [DIR003, DIR004, DIR006, POS002, POS003, POS004, POS005]\n\n- Distances changed accordingly: the pairs A03→A04/A06/A10 and A09→A04/A06/A10, previously 3–5 event positions apart, are now mostly 1–2 apart, whereas A02→A04, previously adjacent (1 step in about 61 in 100 observed pairs), is now 2–4 apart or the pair does not co-occur; A02 co-occurs with each block activity in only about 21 in 100 cases (earlier about 50), and when they co-occur the order is mixed rather than A02-first. [LAG001, LAG006, LAG007, LAG009, LAG013, LAG014, LAG016, REL001, REL002, REL003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the closing branch built around A04, A06 and A10 was re-routed and made far less frequent: earlier it ran in every case directly after A02 (A04 alone in about half the cases, A06 with A10 in the other half) and formed the end of the case; in the later window it runs in only about a third of cases, is entered directly from A03 or A09 instead of from A02, is typically followed by A08 (mainly A04 → A08), and interleaves with A02 without a fixed order when both occur. A02 now typically continues to A05, A03, A09 or A01 without the block, and A08 is no longer reached directly from A03 or A09. [DIR001, DIR002, DIR003, DIR005, OCC001, OCC002, OCC003, REL001, REL002, REL003, REL007, REL010, REL013, LAG001, LAG006, LAG013, POS002, POS004]\n\nScreening puts this well beyond chance: 45 control-flow items qualified where roughly 0.34 would be expected if nothing had changed, and the items agree across occurrence, routing, relation, distance and position indicators rather than resting on a single signal. [OCC001, DIR001, DIR002, REL007, LAG006, POS002]\n\nLimitations: several lag profiles rest on few observations (for example A08→A04 with 26 vs 8 supporting pairs, A08→A10 with 37 vs 9), A04's earlier outgoing profile is based on a single transition, and an unobserved edge does not prove absence; positions and lags reflect event order, not clock time. A competing explanation the evidence cannot fully rule out is that the later occurrences of the block belong to a newly attached path rather than the same branch in a new position, although the preserved A06-with-A10 pairing and the direct A03/A09→block transitions favour the latter reading. [LAG010, LAG011, DIR003, REL013, DIR002]\n\nOther differences: the remaining flagged items fit the same restructuring rather than pointing elsewhere — distances from A02, A03 and A09 to A08 and to the block lengthened, A03 and A09 now sit further before A02, the block activities now almost never occur without A03 or A09 nearby (for example A04 without A09 fell from about 40 to about 3 in 100 cases), and A08 co-occurs with the block in essentially all of its later appearances (A04 and A06 never appear without A08 in the later window). [LAG002, LAG003, LAG004, LAG005, LAG008, LAG012, LAG015, REL004, REL005, REL006, REL008, REL009, REL011, REL012, REL014, REL015]",
+  "case_id": "case_59a78a1e31d99895",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

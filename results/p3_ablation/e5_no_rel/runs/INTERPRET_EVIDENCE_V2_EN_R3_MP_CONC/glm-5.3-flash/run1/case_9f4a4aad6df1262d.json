@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_9f4a4aad6df1262d.json",
+  "evidence_sha256": "251aa617b3fdfb8a9d4532d3d0ad1793be6bae556dbe7b513f5a307a0f1f2fef",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:47:54.652732+00:00",
+  "finished_at_utc": "2026-11-14T12:49:00.927019+00:00",
+  "latency_seconds": 66.27,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9750,
+    "prompt_tokens": 18693,
+    "total_tokens": 28443,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8410,
+      "text_tokens": 1340
+    },
+    "cost": 0.007678949999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27015,
+  "text": "### Observed differences\n\n- In the earlier window, the activities A31, A22, A20, A23, A24, A26, A25 and A32 formed a fixed chain (A31→A22→A20→A23→A24→A26→A25→A32): each source sent essentially all of its outgoing transitions to one successor — A23→A24 in all observed cases, A24→A26 and A26→A25 in about 99 in 100, A25→A32 in about 93 in 100. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- In the later window, these activities fan out to several successors: A20→A23 drops from about 99 in 100 to about 67 in 100 with new transitions to A24, A25 and A26 (about 10–11 in 100 each); A23→A24 falls from all cases to about 15 in 100 while A23→A32 appears at about 49 in 100; A24→A26 falls to about 60 in 100 with new edges back to A22 (about 23 in 100) and A20 (about 11 in 100); A31 splits between A22 (about 52 in 100) and A24 (about 47 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- Bypassing appeared: the distance from A23 to A32 was 4 steps in about 94 in 100 earlier cases (via A24, A26, A25) but is 1 step in about 49 in 100 later cases; A31 reaches A24 directly in about 47 in 100 later cases, where earlier it was always 4 steps away via the chain. [LAG013, LAG027]\n- New backward (rework) transitions appeared: A24 before A22 occurs in about 95 of 200 later traces (about 1 before), A24 before A20 in about 150 of 200 (about 1 before), A25 before A20 in about 65 of 200 (about 1 before), and A26 before A20 in about 100 of 200 (about 1 before); pairs such as A20/A24 and A22/A24 now occur in both orders, where earlier the order was fixed. [LAG014, LAG015, LAG019, LAG021, LAG002, LAG008]\n- Distances that were constant became spread: A20→A23 moved from lag 1 in all cases to lag 1 in about 68 in 100 with the rest at lags 2–4; A22→A23 moved from lag 2 in all cases to lags 2–5. [LAG001, LAG007]\n- Positions shifted mildly: A20, A22 and A23 occur somewhat later within the trace (mean relative position up about 0.03–0.06), while A24, A25 and A26 occur somewhat earlier (down about 0.02–0.06). [POS001, POS002, POS003, POS004, POS005, POS006]\n- Scale check: 41 control-flow items qualified, against roughly 0.6 expected by chance in an unchanged process, so this set of differences is far larger than random re-splitting of stable traces would produce. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reorganisation of the control flow around A20, A22, A23, A24, A25 and A26 (entered from A31, closing at A32): in the later window the previously fixed sequence is loosened, with A23 bypassing A24, A26 and A25 by leading directly to A32 in about half of its outgoing transitions, A31 and A22 able to skip ahead to A24, and new backward transitions (A24→A22, A24→A20, A25→A20, A26→A20) introducing rework, so that several activity pairs that previously followed one fixed order now occur in both orders and at varying step distances. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG002, LAG008, LAG013, LAG014, LAG015, LAG019, LAG021, LAG027]\n\nThe change is shown directly by successor profiles and ordered-pair distances rather than inferred indirectly, it is consistent across the whole segment, and the volume of qualifying items (41 versus about 0.6 expected without change) rules out sampling variation as an explanation for the set as a whole. [DIR003, LAG013, LAG014, LAG015, screening]\n\nLimitations: the evidence cannot rule out that the two windows sample different proportions of coexisting process variants rather than a single modified process, and the direction shares are computed over outgoing transitions rather than cases, so exact per-case routing probabilities are not established. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\nOther differences: the small position shifts of A20, A22, A23 (later) and A24, A25, A26 (earlier) fit the same restructuring but come from the same traces, so they are consistent corroboration rather than independent confirmation. [POS001, POS002, POS003, POS004, POS005, POS006]",
+  "case_id": "case_9f4a4aad6df1262d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

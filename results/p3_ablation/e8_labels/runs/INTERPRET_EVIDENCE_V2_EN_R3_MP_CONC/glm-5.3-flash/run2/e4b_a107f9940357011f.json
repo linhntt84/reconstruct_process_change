@@ -1,0 +1,59 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e8_labels/evidence/e4b_a107f9940357011f.json",
+  "evidence_sha256": "10c4b91d2829e17a3a09ba90676584b94530a6c0777203bb8de027d193728c62",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:30:43.540805+00:00",
+  "finished_at_utc": "2026-11-15T07:33:02.445088+00:00",
+  "latency_seconds": 138.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19899,
+    "prompt_tokens": 8989,
+    "total_tokens": 28888,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18742,
+      "text_tokens": 1157
+    },
+    "cost": 0.01129785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 79090,
+  "text": "### Observed differences\n\n- **Work on the offer-handling steps is distributed differently over resources.** In the earlier window, the assignments for application acceptance (A01), application completion (A03), offer creation (A13 / A14), offer sending (A17) and the work item A22 were spread over a broad pool of resources: the largest single resource held roughly 7–13 in 100 of each step's assignments, and a long tail of resources held about 38–48 in 100. In the later window, a different pool carries these steps: for offer creation and sending, User_71's share rose from about 6 in 100 to about 24–25 in 100, while User_76, previously the largest contributor at about 11–13 in 100, no longer appears among the leading resources; across these steps several earlier contributors lost shares of roughly 4–8 in 100 to resources that previously held little. The assignment profiles differ by 0.43–0.46 for the offer steps and 0.27–0.40 for the other steps, each difference larger than in all but about 1 in 2000 random re-splits. [ASSIGN001, ASSIGN002, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007]\n\n- **Cancellations became concentrated on a single resource.** Earlier, A12 assignments were spread over 44 distinct resources, with the most frequent holding about 40 in 100 (concentration index about 0.18). In the later window, one resource (User_36) holds every observed cancellation assignment (top share 1.0, concentration index 1.0), across 189 later traces containing A12 versus 199 earlier. [ASSIGN003, CONC001]\n\n- **The interval between application completion and offer creation shortened.** The elapsed time from a completion of A03 to the next completion of A13 had a median of about 168 hours in the earlier window (mean about 167; middle 50% about 115–195 hours; 58 occurrences). In the later window the median is about 66 hours (mean about 72; middle 50% about 48–77 hours; 80 occurrences) — a drop of roughly 95–100 hours. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening comparison: 8 of the 10 tested resource units qualified where about 0.005 items were expected without change, and 1 of 41 time units qualified where about 0.02 were expected; no control-flow unit qualified (0 of 36, about 0.18 expected). The resource count is far beyond what an unchanged process typically produces, so the resource differences as a whole cannot be a sampling artefact. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001, TWAIT001]\n\nMain hypothesis: the evidence supports the possibility that the allocation of work to resources was changed across the offer-handling steps. In the earlier window, A01, A03, A13 / A14, A17 and A22 were each executed by a broad, flat pool of resources; in the later window a different pool performs them — most visibly, User_71 now takes about a quarter of offer-creation and offer-sending assignments (up from about 6 in 100) while User_76 and several other previous contributors lost their shares — and A12 moved from being spread over 44 resources to being assigned entirely to User_36. The items measure allocation directly and point in the same direction across activities, and the steps themselves still run at similar rates in both windows (A12 appears in 199 of 200 earlier and 189 of 200 later traces; 343 versus 342 offer-creation assignment observations), so the difference lies in who performs the work, not in how often the steps run. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]\n\nLimitations: the resource codes are anonymous, and the assignment items overlap (the profiles for A13 and A14 are identical), so they are not independent confirmations; the evidence also cannot rule out that the two windows simply cover periods with a different case mix or a different set of active resources, which would produce similar shifts without any change to how work is allocated. [ASSIGN004, ASSIGN005, CONC001]\n\nOther differences: the elapsed time between the completions of A03 and A13 fell by roughly 95–100 hours at the median (about 168 to about 66 hours), with more observed gaps (58 versus 80); this is a consistent timing change in its own right, but it rests on a single qualifying item (about 0.02 expected by chance in its family), and the evidence shows no direct link between it and the resource reallocation. [TWAIT001]",
+  "case_id": "e4b_a107f9940357011f",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis",
+  "text_original": "### Observed differences\n\n- **Work on the offer-handling steps is distributed differently over resources.** In the earlier window, the assignments for application acceptance (A_Accepted), application completion (A_Complete), offer creation (O_Create Offer / O_Created), offer sending (O_Sent (mail and online)) and the work item W_Complete application were spread over a broad pool of resources: the largest single resource held roughly 7–13 in 100 of each step's assignments, and a long tail of resources held about 38–48 in 100. In the later window, a different pool carries these steps: for offer creation and sending, User_71's share rose from about 6 in 100 to about 24–25 in 100, while User_76, previously the largest contributor at about 11–13 in 100, no longer appears among the leading resources; across these steps several earlier contributors lost shares of roughly 4–8 in 100 to resources that previously held little. The assignment profiles differ by 0.43–0.46 for the offer steps and 0.27–0.40 for the other steps, each difference larger than in all but about 1 in 2000 random re-splits. [ASSIGN001, ASSIGN002, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007]\n\n- **Cancellations became concentrated on a single resource.** Earlier, O_Cancelled assignments were spread over 44 distinct resources, with the most frequent holding about 40 in 100 (concentration index about 0.18). In the later window, one resource (User_36) holds every observed cancellation assignment (top share 1.0, concentration index 1.0), across 189 later traces containing O_Cancelled versus 199 earlier. [ASSIGN003, CONC001]\n\n- **The interval between application completion and offer creation shortened.** The elapsed time from a completion of A_Complete to the next completion of O_Create Offer had a median of about 168 hours in the earlier window (mean about 167; middle 50% about 115–195 hours; 58 occurrences). In the later window the median is about 66 hours (mean about 72; middle 50% about 48–77 hours; 80 occurrences) — a drop of roughly 95–100 hours. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening comparison: 8 of the 10 tested resource units qualified where about 0.005 items were expected without change, and 1 of 41 time units qualified where about 0.02 were expected; no control-flow unit qualified (0 of 36, about 0.18 expected). The resource count is far beyond what an unchanged process typically produces, so the resource differences as a whole cannot be a sampling artefact. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001, TWAIT001]\n\nMain hypothesis: the evidence supports the possibility that the allocation of work to resources was changed across the offer-handling steps. In the earlier window, A_Accepted, A_Complete, O_Create Offer / O_Created, O_Sent (mail and online) and W_Complete application were each executed by a broad, flat pool of resources; in the later window a different pool performs them — most visibly, User_71 now takes about a quarter of offer-creation and offer-sending assignments (up from about 6 in 100) while User_76 and several other previous contributors lost their shares — and O_Cancelled moved from being spread over 44 resources to being assigned entirely to User_36. The items measure allocation directly and point in the same direction across activities, and the steps themselves still run at similar rates in both windows (O_Cancelled appears in 199 of 200 earlier and 189 of 200 later traces; 343 versus 342 offer-creation assignment observations), so the difference lies in who performs the work, not in how often the steps run. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]\n\nLimitations: the resource codes are anonymous, and the assignment items overlap (the profiles for O_Create Offer and O_Created are identical), so they are not independent confirmations; the evidence also cannot rule out that the two windows simply cover periods with a different case mix or a different set of active resources, which would produce similar shifts without any change to how work is allocated. [ASSIGN004, ASSIGN005, CONC001]\n\nOther differences: the elapsed time between the completions of A_Complete and O_Create Offer fell by roughly 95–100 hours at the median (about 168 to about 66 hours), with more observed gaps (58 versus 80); this is a consistent timing change in its own right, but it rests on a single qualifying item (about 0.02 expected by chance in its family), and the evidence shows no direct link between it and the resource reallocation. [TWAIT001]",
+  "label_replacements": {
+    "O_Sent (mail and online)": 2,
+    "W_Complete application": 2,
+    "O_Create Offer": 5,
+    "O_Cancelled": 4,
+    "A_Accepted": 2,
+    "A_Complete": 4,
+    "O_Created": 3
+  },
+  "label_leftovers": []
+}

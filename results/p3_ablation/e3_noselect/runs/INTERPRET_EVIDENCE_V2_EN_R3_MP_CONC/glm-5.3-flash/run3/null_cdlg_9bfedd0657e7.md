@@ -1,0 +1,13 @@
+### Observed differences
+
+- From A02, outgoing transitions split evenly between A03 and A05 in the earlier window (50/50); in the later window about 57 in 100 go to A05 and about 43 to A03, a 7.5-point shift toward A05 [DIR001].
+- From A03, the split between A04 and A05 was even before; in the later window about 57 in 100 go to A04 and about 43 to A05 [DIR002].
+- From A05, the split between A03 and A04 was even before; in the later window about 57 in 100 go to A03 and about 43 to A04 [DIR003].
+- Taken together, the three shifts are consistent with roughly 7–8 in 100 cases switching from the route A02→A03→A05→A04 to the route A02→A05→A03→A04; both alternatives remain in use at every branch in both windows [DIR001, DIR002, DIR003].
+- All three source activities appear in every trace of both windows (200 of 200), so the involved paths are well observed on both sides; each shift alone is modest — about 81 in 100 random re-splits of the pooled data show a smaller difference, so about 19 in 100 would show one this large without any change [DIR001, DIR002, DIR003].
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that the frequencies of two existing routes between A02 and A04 shifted: in the later window, from A02 about 57 in 100 outgoing transitions go to A05 (previously 50), from A05 about 57 in 100 go to A03 (previously 50), and from A03 about 57 in 100 go to A04 (previously 50) — a pattern consistent with about 7–8 in 100 cases moving from A02→A03→A05→A04 to A02→A05→A03→A04, with A03 and A05 exchanging order for a small share of cases [DIR001, DIR002, DIR003]. Supporting signs are the mutual consistency of the three shifts (all exactly 7.5 points, in directions that fit one rerouting) and the fact that every involved activity and both alternatives at each branch were observed throughout both windows, so only the shares between existing paths changed rather than a path appearing or disappearing [DIR001, DIR002, DIR003]. What is missing: each shift on its own is unremarkable against random re-splits, the three items share activities and likely traces and are therefore not independent confirmations, and no screening baseline is provided to compare the number of qualifying items with chance expectation; with no relational or positional evidence (REL, LAG, POS), the swapped-segment reading is an interpretation of the successor shares rather than a directly observed order change [DIR001, DIR002, DIR003]. An important competing explanation the evidence cannot rule out is sampling variability in an unchanged process, which can produce three small, correlated share fluctuations of this size.

@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the later window, the elapsed time between consecutive completions of A10 and A11 is about twice as long as before: these intervals averaged about 1.0 hours in the earlier window (median about 0.99; middle half between about 0.88 and 1.10 hours) and about 2.0 hours in the later window (median about 2.0; middle half between about 1.76 and 2.20 hours) — a shift of roughly 1 hour [TWAIT001].
+- The two distributions barely overlap: the later window's lower quartile (about 1.76 hours) sits above the earlier window's upper quartile (about 1.10 hours), and the spread grew in proportion (standard deviation from about 0.16 to about 0.32 hours), which fits a consistent slowdown of this interval rather than a few extreme cases [TWAIT001].
+- How often the interval occurs hardly changed: 344 intervals were observed in the earlier window versus 365 in the later one (200 traces in each, roughly 1.7 versus 1.8 intervals per trace), so the change lies in the duration of the A10→A11 gap, not in how often the pair occurs [TWAIT001].
+- The difference is unusually large for an unchanged process: it exceeds all but about 1 in 2000 of the random re-splits of the pooled data, and the time screening, which tested 10 units, expected roughly 0.005 qualifying items by chance (about 1 in 200) yet produced this one item [TWAIT001].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing: the elapsed time between the completion of A10 and the completion of A11 roughly doubled, from about 1 hour per interval in the earlier window to about 2 hours in the later window. The hypothesis rests on a direct measurement of exactly this interval, a shift of about 1 hour present across the median and both quartiles, a substantial sample behind both profiles (344 versus 365 intervals), and a difference larger than all but about 1 in 2000 random re-splits, in a screening family where an unchanged process would produce even one qualifying item only about 1 time in 200 [TWAIT001]. Limitations: the evidence covers only this one interval, so it cannot show whether other steps' timing also changed, and because it is a single qualifying item from finite windows, an unusual random split of an unchanged process cannot be excluded entirely — only quantified as rare [TWAIT001].

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_bd4005f5cb9f9f4c.json",
+  "evidence_sha256": "ee67e3394d36a3d651ad9737d76d47d314dd4b0908f3dab37d38373aa732b58f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:57:23.460448+00:00",
+  "finished_at_utc": "2026-11-15T01:58:26.705944+00:00",
+  "latency_seconds": 63.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8909,
+    "prompt_tokens": 2513,
+    "total_tokens": 11422,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8360,
+      "text_tokens": 549
+    },
+    "cost": 0.00483145
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36172,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completion events of A28 and A33 roughly halved. In the earlier window a typical gap was about 0.91 hours (middle half about 0.82–0.99 hours); in the later window it was about 0.46 hours (middle half about 0.42–0.50 hours), a drop of about 0.45 hours. [TWAIT001]\n- The shift affects the whole distribution: median and both quartiles fell by roughly half, and the spread narrowed from about 0.13 hours to about 0.06 hours, so gaps became both shorter and more uniform. [TWAIT001]\n- The consecutive A28–A33 pair was observed somewhat less often: 58 gaps in the earlier window versus 45 in the later one, roughly 29 versus 23 in 100 traces (200 traces per window). [TWAIT001]\n- Screening context: no control-flow indicator qualified (0 items against about 0.28 expected by chance), while the time family produced 1 item against about 0.01 expected — about 100 times the chance expectation. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completions of A28 and A33 is about half of what it was in the earlier window (median about 0.46 hours versus about 0.91 hours). The signal is direct, since TWAIT measures exactly this elapsed time, and consistent: mean, median, both quartiles and the spread all decreased together, which fits an across-the-board shortening of the gaps rather than the disappearance of only the slow cases. It rests on 58 and 45 observed gaps, and a difference of this size exceeded all but about 1 of 2,000 random re-splits of the pooled data; the time family also yielded 1 qualifying item where about 0.01 would be expected if nothing had changed, while control flow yielded none. A consistent change in these elapsed times is a hypothesis in its own right and needs no structural counterpart, and none is observed. [TWAIT001]\n\nLimitations: TWAIT is elapsed time between consecutive completion events, so the evidence cannot show whether the reduction lies in waiting, processing or scheduling between the two events, and it covers a single activity pair; an unlucky random split of an unchanged process cannot be fully excluded, although both the screening excess and the reference comparison make it unlikely. [TWAIT001]\n\nOther differences: the consecutive A28–A33 pair occurred in a somewhat smaller share of traces in the later window (about 23 in 100 versus about 29 in 100), a modest participation change that did not qualify as a control-flow difference. [TWAIT001]",
+  "case_id": "e4a_bd4005f5cb9f9f4c",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

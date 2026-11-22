@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_26055cf0ce197a19.json",
+  "evidence_sha256": "b80258bdd812a0764ef0b0277f87755de96f143fd53a2f1ccf13d1db54a79c84",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:06:32.794879+00:00",
+  "finished_at_utc": "2026-11-15T14:10:20.960046+00:00",
+  "latency_seconds": 228.16,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31460,
+    "prompt_tokens": 28811,
+    "total_tokens": 60271,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29105,
+      "text_tokens": 2355
+    },
+    "cost": 0.02005165
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 96373,
+  "text": "### Observed differences\n\n- A01 and A07 exchanged their overall occurrence behaviour. In the earlier window A01 appeared in about 28 in 100 traces (about 0.5 occurrences per trace, repeated within a trace in about 11 in 100 of the traces containing it), while A07 appeared in about 50 in 100 traces (about 1.0 occurrence per trace, repeated in about 28 in 100). In the later window the profiles are reversed: A01 appears in about 53 in 100 traces (about 1.1 occurrences, repeated in about 29 in 100) and A07 in about 29 in 100 (about 0.6 occurrences, repeated in about 14 in 100). [OCC001, OCC007]\n\n- The direct hand-over between the two reversed direction. Earlier, about 94 in 100 of A01's outgoing transitions went to A07, and A01 was immediately followed by A07 in about 28 in 100 of that pair's observations; in the later window A01 almost never precedes A07 directly, while about 94 in 100 of A07's outgoing transitions go to A01 and immediate A07-then-A01 makes up about 25 in 100 of that pair's observations. [DIR001, DIR006, LAG006, LAG025]\n\n- The redistribution point moved from A07 to A01. Earlier, A07 passed its outgoing transitions on to A05 (about 43 in 100) and A06 (about 41 in 100) and received transitions from A03 (about 51 in 100 of A03's outgoing) and A04 (about 41 in 100); in the later window A01 shows this distribution (to A05 about 57 in 100, to A06 about 18 in 100, receiving from A03 about 34 in 100 and from A04 about 39 in 100), while A07's transitions go almost only to A01. A05's hand-over flipped from about 96 in 100 to A01 earlier to about 91 in 100 to A07 later. [DIR001, DIR002, DIR003, DIR004, DIR006, LAG017, LAG022]\n\n- Co-occurrence ties swapped accordingly. Earlier, A03, A04 and A06 each co-occurred with A07 in about 50 in 100 traces and never appeared without it; in the later window each co-occurs with A01 in about 53 in 100 traces, again never separately, while their co-occurrence with A07 fell to about 29 in 100, with the partner appearing alone in about 24 in 100 traces. Conversely, A07 earlier often appeared without A01 (about 23 in 100 traces), whereas later A01 appears without A07 in about 24 in 100 traces. [REL001, REL002, REL004, REL005, REL009, REL012, REL015]\n\n- Pair distances shifted with this rewiring: A03→A07 and A04→A07, previously seen mostly one to two steps after the source, now sit mostly three to five steps apart, while A03→A01 and A04→A01 became mostly immediate, and A01's own steps to A03, A04, A05 and A06 moved to shorter lags. [LAG011, LAG016, LAG007, LAG012, LAG002, LAG003, LAG004, LAG005]\n\n- A06 changed its placement: earlier it was the closing activity (median position at the very end of the trace, only about 11 outgoing transitions observed across its roughly 101 traces, mostly to A03 and A04); in the later window its median position is about 0.44 of the trace with about 83 outgoing transitions, leading mostly to A01 (about 31 in 100), A03 (about 28 in 100) and A04 (about 14 in 100), and its order with A05 flipped (earlier A05 preceded A06 in about 17 in 100 of their joint traces; later A06 precedes A05 in about 10 in 100 versus about 6 in 100 the other way). [POS005, DIR005, REL013, LAG021]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 and A07 exchanged their positions in the control flow. In the earlier window A01 was the minority activity (about 28 in 100 traces) that handed over almost exclusively to A07, and A07 was the frequent, often repeated activity (about 50 in 100 traces, about 1.0 occurrences per trace) that distributed to A05 and A06 and received from A03 and A04; in the later window the mirror image holds — A07 is the minority activity (about 29 in 100) handing over almost exclusively to A01, and A01 is the frequent, often repeated activity (about 53 in 100 traces, about 1.1 occurrences) distributing to A05 and A06 and receiving from A03 and A04. [OCC001, OCC007, DIR001, DIR006, DIR004, DIR002, DIR003]\n\nThis is shown directly by relational and positional evidence rather than inferred from frequencies alone: the immediate A01→A07 hand-over disappeared while an immediate A07→A01 hand-over appeared, A05's successor flipped from A01 to A07, and the exclusive couplings that earlier bound A03, A04 and A06 to A07 now bind them to A01. Occurrence, direction, position, relation and lag items all describe the same rewiring rather than unrelated differences, and 34 of the 64 items show differences larger than in about 199 of 200 random re-splits of the pooled traces, which an unchanged process rarely produces across the board. The evidence cannot distinguish a literal exchange of the two activities' positions from a re-wiring in which A01 simply took over A07's connections while A07 kept only the return edge, since both produce the same observable pattern; the evidence set also does not state how many qualifying items an unchanged process would produce, so the item count cannot be checked against a chance expectation, and a few directional and lag items rest on few observations. [LAG006, LAG025, DIR004, REL001, DIR005, LAG021, LAG027]\n\nOther differences: A06's repositioning goes beyond the exchange between A01 and A07 — it changed from a closing activity into a mid-process one that hands back to A01, A03, A04 and A05, which a pure swap of A01 and A07 would not produce; A05's occurrences also sit slightly later in the trace than before (mean position about 0.47 to 0.57), as do A07's remaining occurrences (about 0.51 to 0.69). [POS005, DIR005, REL013, POS004, POS006]",
+  "case_id": "case_26055cf0ce197a19",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

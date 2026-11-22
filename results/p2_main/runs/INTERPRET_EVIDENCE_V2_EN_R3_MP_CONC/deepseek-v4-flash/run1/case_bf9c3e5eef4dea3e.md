@@ -1,0 +1,17 @@
+### Observed differences
+
+- A08 participation rose from about 21% to 71% of traces, and its mean occurrences per trace rose from 0.25 to 0.77. A02, A06 and A10 fell from about 26%, 22% and 23% to about 7%, 8% and 9% respectively. [OCC001, OCC002, OCC003, OCC004]
+- A08's outgoing transitions changed: before, A16 received about 9% of them, A15 19%, A53 17% and A51 11%; after, A16 receives about 86% and A15 about 1%. A15's outgoing transitions changed from about 89% to A16 to about 54% to A16 and 45% to A08. A14's outgoing transitions went from about 85% to A15 to about 98% to A15. [DIR004, DIR005, DIR006]
+- A19, A20, A25, A26 and A27 previously sent most of their outgoing transitions to A28 (roughly 87–98%). In the later window they send them mainly to A30 and A34, e.g. A19 to A34 53% and A30 43%, A25 to A34 47% and A30 47%, A26 to A30 49% and A34 49%, A27 to A30 60% and A34 30%, A20 to A34 59% and A30 31%. [DIR007, DIR008, DIR009, DIR010, DIR011]
+- A08 now co-occurs with A14, A15, A16, A28, A29, A30, A34, A47, A52 and A53 in about 71% of traces, up from 21%, and in most of those traces A08 occurs before the other activity. For example, A08 before A28 rose from 9% to 64%, and A08 before A16 rose from 4% to 43%. [REL001, REL002, REL003, REL009, REL010, REL011, REL012, REL013, REL014, REL015]
+- The order between A19/A25/A27 and A28/A29 reversed: before, A19 preceded A28 in 21% of traces and followed it in 0.5%; after, A19 follows A28 in 23% and precedes it in 0%. Similar reversals appear for A25–A28, A27–A28, A19–A29, A25–A29 and A27–A29. [REL016, REL017, REL018, REL019, REL020, REL021]
+- A08's mean relative position moved from 0.56 to 0.24, i.e. earlier in traces. A19, A20, A25, A26 and A27 moved later, from means around 0.33–0.35 to 0.58–0.62. [POS001, POS002, POS003, POS004, POS005, POS006]
+- Lags changed accordingly: A08–A16 within one step rose from 21% to 97%; A08–A28 at lag 4 rose from 0% to 87%; A08–A47 at lag 3 rose from 43% to 84%; A14–A08 at lag 2 rose from 12% to 73%; A15–A08 at lag 1 rose from 25% to 55%; A47–A28 at lag 1 rose from 0% to 96%. [LAG001, LAG002, LAG003, LAG004, LAG009, LAG033]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A08 became a frequent early activity, and that the downstream routing shifted from A28 to A30/A34 for several activities. In the later window, A08 appears in most traces, occurs early, and is followed by A16 and then later by A28, A29, A30, A34, A47, A52 and A53; meanwhile A19, A20, A25, A26 and A27, which previously led into A28, now lead into A30/A34, and their order relative to A28/A29 reversed. This is supported by 84 control-flow evidence items against about 1 expected by chance, with consistent OCC, DIR, REL, POS and LAG signals. A competing explanation that cannot be fully ruled out is that some of the rare lag profiles rest on very few observations, but the overall pattern is far too large to be explained by sampling alone.
+
+Other differences: A02, A06 and A10 decreased in participation, and A15's outgoing split changed from mostly A16 to a mix of A16 and A08. These are not part of the main hypothesis but are consistent with the same reordering of the process.

@@ -1,0 +1,20 @@
+### Observed differences
+
+- Before, the six activities A28, A30, A31, A32, A33 and A34 each ran exactly once in every trace (200 of 200). In the later window, A28, A30 and A31 each appear in only about 47 in 100 traces (93 of 200) and A32, A33 and A34 in about 56 in 100 traces (111 of 200); none of them repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- The two groups of three became mutually exclusive. Before, an activity of the first group (e.g., A28) and one of the second (e.g., A32) co-occurred in every trace, with the first group always before the second. In the later window such cross-group pairs co-occur in only about 2 in 100 traces; in about 45 in 100 traces only the first-group activity runs, and in about 54 in 100 only the second-group activity runs. [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]
+- Relations with the surrounding activities are preserved: A25 and A26 still occur in every trace, A25 still precedes whichever group runs, and the group still precedes A26 in every co-occurring case, in both windows. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+- Within each group nothing changed: A28, A30 and A31 still always run together when they run (co-occurrence about 47 in 100, equal to their participation) in mixed order, and A32, A33 and A34 likewise (about 56 in 100). [REL013, REL014, REL018, REL025, REL026, REL027]
+- Distances collapsed consistently with a skipped group: the gap from A25 to A32/A33/A34 was 4–5 event positions in essentially all before-window cases and is 1–3 positions in about 96 in 100 of later cases; the gap from A28/A30/A31 to A26 likewise fell from 4–5 to 1–3 positions. [LAG001, LAG002, LAG003, LAG004, LAG008, LAG011]
+- Mean relative positions shifted only slightly (A25 from about 0.62 to 0.67, A26 from 0.83 to 0.81, the six group activities by 0.02–0.06 on a 0–1 position scale), consistent with traces now containing only one of the two groups rather than with any activity being relocated. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of work between A25 and A26 changed from two always-executed groups into an exclusive choice: previously every trace executed the group A28/A30/A31 followed by the group A32/A33/A34; in the later window about 47 in 100 traces execute only the first group, about 55 in 100 only the second, about 2 in 100 both, and none neither — that is, one of the two groups is skipped in roughly half of the cases, while A25, A26 and the order around and within the groups stay unchanged. [OCC001, OCC004, REL015, REL022, REL001, REL010, LAG001, LAG004]
+
+The screening found 54 qualifying control-flow items against about 0.49 expected for an unchanged process — roughly a hundred times the chance expectation — so sampling noise cannot account for the ensemble; the participation drop is observed directly for all six activities, the cross-group co-occurrence collapse shows the exclusive pattern directly, and the distance collapse occurs exactly where the skipped group would have sat. [OCC001, OCC004, REL015, LAG001, screening]
+
+Limitations: there is no direct edge evidence, so the new adjacencies (for example, A25 being directly followed by A32 when the first group is skipped) are inferred from position distances rather than observed transitions; the about 2 in 100 traces containing both groups rest on roughly 4 traces; and the evidence cannot show where the choice between the two groups is made or what determines it. Several items describe the same underlying trace behaviour and are not independent confirmations.
+
+Other differences: minor shifts in relative position (A25 somewhat later, A26 slightly earlier) accompany the main change but add no separate hypothesis; several LAG items on cross-group pairs have only about 4 supporting observations in the later window and were not used as support. [POS001, POS002, LAG005, LAG006, LAG007]

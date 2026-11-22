@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "c830288d573ab38f6ed2f1880e71c56f6eb77d79c0fbebc65a6726eb32d544a5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:54:28.047676+00:00",
+  "finished_at_utc": "2026-11-15T04:55:49.664131+00:00",
+  "latency_seconds": 81.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11642,
+    "prompt_tokens": 14779,
+    "total_tokens": 26421,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10468,
+      "text_tokens": 1174
+    },
+    "cost": 0.00803785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38104,
+  "text": "### Observed differences\n\n- In the earlier window, traces split into two patterns of nearly equal size: about 52 in 100 traces run A21, then A22, then A23, while the remaining about 48 in 100 traces run A21, then A27, A28 and A33 together (each of the three appears in about 49 in 100 traces and always alongside the other two), with A23 following afterwards. [OCC001, OCC002, OCC003, OCC004, REL001, REL005, REL002, REL009, REL012, LAG001]\n- In the later window, A22 appears in essentially every trace (199 of 200), whereas A27, A28 and A33 each appear in only 1 of 200 traces. [OCC001, OCC002, OCC003, OCC004]\n- Routing out of A21 consolidated: earlier, observed transitions from A21 went to A22 in about 52% of cases and to A33, A28 or A27 in the rest (roughly 14–18% each); in the later window, about 99.5% of transitions from A21 go to A22. [DIR001]\n- Order relations moved the same way: A21 before A22 and A22 before A23 hold in about 995 of 1,000 later traces; A21, A22 and A23 now occur without any of A27, A28 or A33 in nearly all later traces; and pairs among A27, A28 and A33 no longer co-occur. [REL001, REL005, REL002, REL006, REL009, REL012, REL013, REL014]\n- The distance from A21 to A23 narrowed: earlier, A23 followed A21 two positions later in about 52% of traces and four positions later in about 48%; in the later window the two-position gap holds in about 99.5% of traces, and A23's mean relative position moved slightly earlier (about 0.55 to about 0.53). [LAG001, POS001]\n- Within the disappearing branch, earlier transitions from A27, A28 and A33 led to one another and to A23 in varying shares; in the later window these routings rest on a single trace and can no longer be characterised. [DIR002, DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the branch containing A27, A28 and A33, which in the earlier window ran between A21 and A23 in about 48 in 100 cases, is no longer exercised in the later window, with essentially all executions now passing from A21 through A22 to A23. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL005, LAG001]\n\nSupporting signs: 34 qualifying items against fewer than 1 expected by chance if nothing had changed; the participation, routing, order and lag indicators all describe the same shift, with the main items backed by roughly 100 traces per window; and the disappearing branch was common before (about 49 in 100 traces), so its near-absence afterwards (1 in 200) is not the kind of one-window rare variant that sampling alone typically produces. [OCC002, DIR001, REL012, LAG001]\n\nLimitations: near-zero participation only shows that the branch was not observed beyond a single later trace, so the evidence cannot distinguish complete removal of the branch from a sharp drop in how often it runs, and the current internal routing of A27, A28 and A33 rests on that one trace. [OCC002, OCC003, OCC004, DIR002, DIR003, DIR004] A competing explanation the evidence cannot rule out is that the two windows draw on different case mixes with different variant frequencies; with 200 traces per window, a fall from about 49 in 100 to about 1 in 200 is hard to attribute to sampling alone, but the windows cannot show whether the change lies in the process routing itself or in the mix of cases it served. [OCC002, OCC003, OCC004]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

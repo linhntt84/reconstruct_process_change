@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_22dbc417b25c86aa.json",
+  "evidence_sha256": "5441e0c796fc733c473ac30f47902555d96691f6f3bc04ce729064446cf19f88",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:32:21.065881+00:00",
+  "finished_at_utc": "2026-11-15T03:32:50.647473+00:00",
+  "latency_seconds": 29.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4390,
+    "prompt_tokens": 5012,
+    "total_tokens": 9402,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3751,
+      "text_tokens": 639
+    },
+    "cost": 0.0029468
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 14653,
+  "text": "### Observed differences\n\n- Activity A06 disappeared from the sample: in the earlier window it ran exactly once in every one of the 200 traces (100% participation), while in the later window it was not observed in any of the 200 traces. [OCC001, POS003]\n- The flow out of A05 changed: earlier, every observed transition out of A05 went to A06; in the later window, every such transition goes directly to A01. Correspondingly, A06's only observed outgoing transition earlier went to A01, and in the later window A06 has no observed outgoing transitions at all. [DIR001, DIR002]\n- Both relations involving A06 collapsed: A01 co-occurred with A06 in 100% of earlier traces (always with A06 before A01) but in 0% of later traces, where A01 appears without A06; likewise A05 co-occurred with A06 in 100% of earlier traces (always A05 first) and in 0% of later traces. [REL001, REL002]\n- The distance from A05 to A01 shortened: earlier, A01 followed A05 two positions later in all cases; in the later window it follows immediately, one position later, in all cases. [LAG001]\n- Event positions shifted slightly: A05's mean position moved from about 0.17 to 0.20 and A01's from 0.50 to 0.40, consistent with one step having dropped out of the sequence. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A06 is no longer executed between A05 and A01: in the earlier window every case ran A05 → A06 → A01, while in the later window A05 leads directly to A01 and A06 was not observed in any of 200 traces. This is shown directly by the successor change at A05 (100% of its outgoing transitions to A06 before, 100% to A01 after) and corroborated consistently by A06's disappearance, the collapse of both the A05–A06 and A01–A06 relations from always co-occurring to never co-occurring, and the A05→A01 distance shortening from two positions to one. Nine qualifying items from nine tested control-flow units, against roughly 0.04 expected if nothing had changed, makes chance sampling implausible as an explanation for the set. [DIR001, DIR002, OCC001, REL001, REL002, LAG001, POS003, POS001, POS002]\n\nLimitation: zero participation only establishes that A06 was not observed in the later window; the evidence cannot fully rule out that A06 still occurs so rarely that it missed all 200 later traces, or that it was replaced by a different, unobserved step. [OCC001]\n\nOther differences: none — the small position shifts of A05 and A01 are consistent consequences of the same shortened sequence rather than separate changes. [POS001, POS002]",
+  "case_id": "case_22dbc417b25c86aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

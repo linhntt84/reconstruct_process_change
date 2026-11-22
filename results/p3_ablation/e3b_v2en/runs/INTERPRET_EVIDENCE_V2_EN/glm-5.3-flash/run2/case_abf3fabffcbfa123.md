@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, cases split roughly evenly: A27 appeared in about 52 of 100 cases and never co-occurred with A32, while A32, A33 and A38 appeared together in about 48 of 100 cases. In the later window, A32, A33 and A38 each appear in only 1 of 200 cases, and the A27-type behaviour is essentially the only one observed. [REL022, REL028, OCC004, OCC005, OCC006, OCC007]
+- A27 became near-universal in the later window: present in 199 of 200 cases (about 52 in 100 before), occurring about once per case, preceding A28 in about 97 in 100 cases (about 51 in 100 before), and receiving about 98 in 100 of A26's outgoing transitions, where before about half went to A27 and half to A32/A33/A38. [OCC004, REL021, REL017, DIR006]
+- The flow after A14 changed: A14 precedes A27 in about 97 in 100 later cases (about 51 in 100 before); its outgoing transitions now go to A15 in about 82 in 100 cases (about 36 before) instead of A04 (about 10 in 100, versus 63 before), and one-step A14→A04 successions fell accordingly. A15 still passes to A16 in about 92 in 100 cases (about 98 before). [REL009, DIR004, LAG001, LAG002, DIR005]
+- A04 appears in about 22 of 100 later cases (about 68 before) and, when it occurs, sits later in the case: mean position about 0.21 to 0.40 of the trace, upper quartile about 0.19 to 0.70. [OCC002, POS001]
+- A02 and A08 occur more often (about 5 to 15 and 5 to 21 of 100 cases) with visibly redistributed outgoing transitions; these profiles rest on few observations (10 to 30 and 8 to 40 outgoing transitions). [OCC001, OCC003, DIR001, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the choice between two paths around the A14/A15/A26 stage was restructured: the path containing A32, A33 and A38, previously taken in about half of the cases, is no longer observed, while A27 became a near-universal step running between A14/A26 and A28. This is shown directly by relational and directional evidence — A27 before A28 in about 97 in 100 cases, A26→A27 in about 98 in 100 of A26's outgoing transitions, A14 before A27 in about 97 in 100 — and is consistent across the occurrence, position and relation indicators for the same activities, with 62 qualifying items against fewer than 1 expected for an unchanged process. [REL021, DIR006, REL009, REL017, OCC004, OCC005, OCC006, OCC007]
+
+A second directly observed change is the rerouting after A14, from A04 to A15, with A04 dropping to about 22 of 100 cases and appearing later in the case when it occurs; the downstream A15→A16 flow is essentially preserved. [DIR004, OCC002, POS001, DIR005]
+
+Limitations: zero participation means only that A32, A33 and A38 were not observed in the later window, not that they are absent from the process; many qualifying items describe the same underlying behaviour and are not independent confirmations; and the apparent changes at A02 and A08 rest on few observations and may reflect sampling differences. [OCC005, OCC006, OCC007, OCC001, OCC003, DIR001, DIR003]
+
+An important competing explanation the evidence cannot rule out is a difference in the mix of case variants between the two finite samples of 200 traces — the A32/A33/A38 behaviour simply not appearing in the later sample — rather than a modification of the process; the magnitudes involved (about 49 of 100 falling to 1 of 200 for three activities, and about 52 of 100 rising to 199 of 200 for A27) make pure sampling variation hard to sustain, but the evidence shows behaviour only, not the underlying model. [OCC004, OCC005, OCC006, OCC007]

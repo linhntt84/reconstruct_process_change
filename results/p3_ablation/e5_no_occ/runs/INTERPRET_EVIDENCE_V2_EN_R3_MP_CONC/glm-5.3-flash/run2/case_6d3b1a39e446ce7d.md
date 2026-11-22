@@ -1,0 +1,21 @@
+### Observed differences
+
+- **Participation:** In the earlier window, A27 appeared in about 55 in 100 traces and each of A36, A37 and A42 in about 46–47 in 100, with A27 and the trio essentially never in the same trace (about 1 in 100 at most). In the later window, A27 appears in all 200 traces and the trio in about 199 in 200, together in almost every trace. A25, A26, A28 and A31 were present in every trace in both windows. [POS003, POS006, POS007, POS008, REL011, REL012, REL013]
+
+- **Routing after A26:** In the earlier window, A26 led to A27 in about 54 in 100 of its outgoing transitions (then A27 preceded A31 in about 54 in 100 traces), and directly to A36/A37/A42 in about 45 in 100, with the trio running in varying order and followed by A31. In the later window, A26 leads to A27 in about 98 in 100 outgoing transitions, and A27 precedes A31 in about 97–98 in 100 traces. [DIR002, DIR003, DIR004, DIR005, REL005, REL006, REL007, REL008, REL010, LAG003]
+
+- **Order reversals around the trio:** In the earlier window, A26 preceded the trio (about 46 in 100 traces) and A28 preceded the trio (about 45–46 in 100); in the later window, the trio precedes A26 in about 98–99 in 100 traces and precedes A28 in about 97–99 in 100. [REL006, REL007, REL008, REL014, REL015, REL016]
+
+- **A25's successor and A28's placement:** In the earlier window, A25 was immediately followed by A28 in about 96 in 100 traces; in the later window, A25 leads instead to A36, A37 or A42 (roughly 31–34 in 100 outgoing transitions each), and A28 follows A25 only after 4–5 event positions (about 99 in 100 traces), i.e. after the trio. [DIR001, LAG001, POS004]
+
+- **Within the trio and relative positions:** A36, A37 and A42 keep both orders in similar proportions in both windows (no fixed order among them), but their co-occurrence rose from about 46 in 100 traces to about 995 in 1000. Mean event positions shifted accordingly: the trio from about 0.59 to about 0.41 of the trace, A28 from about 0.40 to about 0.46, A26 from about 0.54 to about 0.60, A27 from about 0.58 to about 0.63 (event positions, not clock time). [REL020, REL021, REL022, POS002, POS003, POS004, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the process moved from two mutually exclusive paths after A26 — one running A27 and then A31 (about 55 in 100 traces), the other running the group A36/A37/A42 followed by A31 (about 45 in 100) — to a single sequence executed in nearly every trace: A25 → A36/A37/A42 (in varying order) → A28 → A26 → A27 → A31. A27 and the trio changed from alternatives to jointly mandatory activities, the trio moved from after A26 to between A25 and A28, and A28 shifted from directly after A25 to after the trio, while A31 remained terminal after A27. [REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, DIR001, DIR002, LAG001, LAG003, POS003, POS006, POS007, POS008]
+
+The order reversals and the change from alternatives to joint execution are shown directly by relational evidence, the successor profiles of A25 and A26 and the A25→A28 distance change agree with them, and the participation shifts are large. With 44 qualifying items against roughly 0.5 expected for an unchanged process, chance is implausible as an explanation of the ensemble. Limitations: the items describe largely the same traces and are not independent confirmations; POS and LAG reflect event positions rather than clock time; and the evidence cannot rule out that the later pattern existed as a rare variant (at most about 1–2 in 200 traces) beforehand and simply became dominant. [DIR001, DIR002, LAG001, POS003, POS006, POS007, POS008, REL011, REL012, REL013]
+
+Other differences: A25's mean position decreased slightly (about 0.37 to 0.35) and A31's increased slightly (about 0.63 to 0.66), consistent with the restructuring above rather than separate changes; LAG002 and LAG007–LAG009 rest on only 1–2 observations in one window and are weak on their own, though their direction fits the main hypothesis. [POS001, POS005, LAG002, LAG007, LAG008, LAG009]

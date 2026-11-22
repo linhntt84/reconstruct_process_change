@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran in every single case (200 of 200 traces, exactly once per case); in the later window they appear in only about 1 in 200 cases — effectively gone. [OCC004, OCC005, OCC006]
+- A14, A15 and A16 were not observed at all in the earlier window; in the later window they run in about 30%, 33% and 37% of cases respectively, each at most once per case. [OCC001, OCC002, OCC003]
+- In the later window, A14, A15 and A16 never occur in the same case: their shares sum to essentially 100% and the share of cases containing neither of a pair matches the third activity's share, so each case runs exactly one of the three. [REL001, REL002, REL010]
+- In the earlier window, A21, A22 and A23 always ran together within the same case, but in varying order (roughly 46–53% of cases in either direction) — no fixed order among them. [REL025, REL026, REL031]
+- The new activities occupy the same stage of the case that the old trio did: A14/A15/A16 appear at about 35% of the trace length, where A21–A23 previously sat at about 37%. [POS001, POS002, POS003, POS004, POS005, POS006]
+- The surrounding activities are unchanged: A24, A39 and A40 still occur in every case in both windows. The chosen one of A14/A15/A16 always falls after A39 and before A24, mirroring the old trio's placement, and the ordered pair A39→A24 went from always 4 event positions apart to always 2 — two fewer events between them, consistent with three activities being replaced by one. [REL006, REL007, REL014, REL015, REL021, REL022, LAG010, POS007, POS008]
+- A41 now appears in about 69% of cases, up from about 59% in the earlier window. [REL009, REL017, REL024, REL030]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a block of three activities that every case previously executed together — A21, A22 and A23, run once per case in varying order — was replaced by an exclusive choice among three activities, A14, A15 and A16: in the later window each case runs exactly one of the three (about 30%/33%/37%), at the same stage of the case, while the surrounding flow (A39 before, A24 after) and the activities A24, A39, A40 themselves are unchanged. This is a replacement of activities — some removed, alternatives added — not a re-weighting of existing paths, since the old activities are (nearly) absent and the new ones were unobserved before. The screening context supports this reading: 64 control-flow items qualified, versus fewer than one expected by chance in an unchanged process, and the picture is consistent across participation, relational and positional indicators with substantial support (200 traces per window; 60–74 cases behind each new activity). [OCC001, OCC004, REL001, REL025, POS001, LAG010]
+
+Limitations: zero participation only means an activity was not observed in that window, so the evidence cannot exclude that the old trio or the new trio existed unobserved earlier or later — one later case still contains A21–A23, so a rare residual path cannot be ruled out. The evidence also cannot distinguish genuinely new steps from a relabelling of the same steps, and the positional claims rest on event positions, not clock time. [OCC004, POS001, LAG010]
+
+Other differences: A41 became more frequent, from about 59% to about 69% of cases, and now co-occurs with the chosen one of A14/A15/A16 in about 21–26% of cases (previously it co-occurred with A21); A24 and A39 shifted slightly in relative position (A24 mean ~0.43→~0.39, A39 ~0.31→~0.33), consistent with cases becoming two events shorter, while A40 is essentially unchanged (~0.85→~0.84). [REL009, REL017, REL024, REL030, POS007, POS008, POS009]

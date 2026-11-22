@@ -1,0 +1,14 @@
+### Observed differences
+
+- In the earlier window, the dominant route from A26 towards A27 passed through A31 first and A30 second: A31 followed A26 one step later in about 60 in 100 of the roughly 103 observed cases, while A30 followed A26 two steps later in about 60 in 100. In the later window this reversed: A30 followed A26 one step later in about 62 in 100 (of about 87 cases), and A31 followed two steps later in about 62 in 100. [LAG001, LAG002]
+- The successors of A30 and A31 flipped by the same margin. Earlier, A30 was followed by A27 in about 60 in 100 of its observed outgoing transitions and A31 was followed by A30 in about 60 in 100; in the later window, A30 was followed by A31 in about 62 in 100 and A31 was followed by A27 in about 62 in 100. [DIR002, DIR003]
+- Consistently, A27 now follows A31 one step later in about 62 in 100 cases (earlier about 40 in 100) and follows A30 two steps later in about 62 in 100 (earlier about 40 in 100). [LAG003, LAG004]
+- A26's direct-successor mix shifted as part of the same pattern: A31 fell from about 31 to about 17 in 100, A30 rose from about 21 to 27, and A32 rose from about 22 to 30, while A33 stayed at about 26 in 100. [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A30 and A31 exchanged positions in the sequence between A26 and A27: in the earlier window the dominant chain ran A26 → A31 → A30 → A27, with each link present in about 60 in 100 of the relevant cases, while in the later window it ran A26 → A30 → A31 → A27, with each link in about 62 in 100. This is shown directly by relational evidence — the one-step versus two-step gap profiles for A26→A30 and A26→A31 reversed, the successor shares of A30 and A31 flipped complementarily, and A26's direct share of A31 fell while its direct share of A30 rose. Seven items were flagged where about 0.33 would be expected by chance across the 66 tested units, and every item's difference exceeded about 199 of 200 random re-splits, so sampling noise alone is a poor explanation of the pattern as a whole. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: the six pair-level items rest on the same underlying observations (about 103 before, 87 after), so they form one coherent signal rather than independent confirmations, and the evidence cannot distinguish a genuine reordering within individual traces from a shift in the mix of pre-existing variants between the two windows. The rise of A32 as a direct successor of A26 (about 22 to 30 in 100) is a secondary redistribution that this reordering does not explain. [DIR001, DIR002, LAG001]

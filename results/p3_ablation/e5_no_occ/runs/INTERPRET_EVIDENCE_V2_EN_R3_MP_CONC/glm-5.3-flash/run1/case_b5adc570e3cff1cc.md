@@ -1,0 +1,19 @@
+### Observed differences
+
+- Early segment rerouted: in the earlier window, A40 always led directly to A21 (one step apart in every trace); in the later window, A40's outgoing transitions go to A14 (about 34 in 100), A15 (about 35 in 100) and A20 (about 32 in 100), and A21 now follows A40 two steps later in every trace. [DIR006, LAG004]
+- In the later window, A14, A15 and A20 always lead to A21, whereas before, their outgoing transitions split between A23 (about 50–56 in 100) and A27 (about 44–50 in 100). [DIR001, DIR002, DIR003]
+- The order between the block A14/A15/A20 and A21/A22 flipped completely: before, A21 and A22 came first in all of the roughly 31–38 in 100 traces where they co-occurred; in the later window, A14/A15/A20 come first in all co-occurrences (about 31–35 in 100). [REL001, REL002, REL003, REL004, REL005, REL006]
+- A14, A15 and A20 now run much earlier: their mean relative position fell from about 0.60 to about 0.32 of the trace, while A21, A22 and A23 stayed in place, shifting only about 0.01–0.03 later. [POS001, POS002, POS003, POS004, POS005, POS006]
+- The late segment became a fixed chain: before, A22 led to A23 in about 48 in 100 of its outgoing transitions and to one of A14/A15/A20 in about 52 in 100, and A23 led to A27 in about 52 in 100 and to one of A14/A15/A20 in about 48 in 100; in the later window, A22 always leads to A23 and A23 always to A27. [DIR004, DIR005]
+- Late-segment distances collapsed: A22→A23 and A23→A27 are now one step apart in every trace (previously mixed between one and two steps), and A22→A27 shortened from always three steps to always two. [LAG001, LAG002, LAG003]
+- Participation did not change: exactly one of A14/A15/A20 runs per case in both windows (each in about 30–38 in 100 cases). [POS001, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of three alternative activities A14, A15 and A20 — exactly one of which executes in each case — was relocated from the late segment, where it appeared between A22/A23 and A27, to the early segment between A40 and A21: in the later window, A40 leads to one of the three, the chosen activity leads to A21, and A22, A23 and A27 form a fixed, directly consecutive chain. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004]
+
+The change is shown directly by successor changes (A40 now feeds the block, the block now feeds A21, and A22 and A23 lost their alternative successors), by a complete order flip between the block and A21/A22, and by step distances that move exactly as a relocation predicts; positions corroborate this, with the block at about 0.32 of the trace instead of 0.60 while A21, A22 and A23 shift only marginally later. Participation shares are essentially unchanged, so this is a relocation of existing behaviour rather than activities becoming more or less frequent, optional or repeated. The volume of qualifying evidence (22 items against roughly 0.25 expected by chance among the 50 tested control-flow units) cannot be explained by sampling variation as a whole, and each item's difference is larger than in about 995 of 1,000 random re-splits. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: POS and LAG use event positions rather than clock time, so the hypothesis concerns order and adjacency, not timing; and the evidence cannot distinguish a single relocation of the block from two independent changes (an insertion before A21 plus a removal from the late segment), which would look identical here. [POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002, LAG003, LAG004]

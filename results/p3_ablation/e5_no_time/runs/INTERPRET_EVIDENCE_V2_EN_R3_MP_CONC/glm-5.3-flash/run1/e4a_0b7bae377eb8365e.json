@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_0b7bae377eb8365e.json",
+  "evidence_sha256": "f8bf90a3c891584fbd18ee7f49ed66a12ebab8f368527fddd3b135f9aa419a44",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:21:12.788983+00:00",
+  "finished_at_utc": "2026-11-14T13:22:49.809145+00:00",
+  "latency_seconds": 97.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16142,
+    "prompt_tokens": 12595,
+    "total_tokens": 28737,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14535,
+      "text_tokens": 1607
+    },
+    "cost": 0.00996025
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50931,
+  "text": "### Observed differences\n\n- In the earlier window every trace ran the same fixed core: A22 was immediately followed by A23, and A23 immediately by A24, so A24 always sat two event positions after A22; A14, A15 and A20 were not observed at all (0 of 200 traces). [LAG001, LAG002, LAG003, DIR004, DIR005, OCC001, OCC002, OCC003]\n\n- In the later window a new step appears in almost every trace: A14 in about 29 in 100 traces, A15 in about 41 in 100 and A20 in about 30 in 100, each at most once per trace; the three never occur together, and together they cover about 995 in 1000 later traces, so essentially every trace contains exactly one of them. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n\n- The new step is spliced into the former chain. A22, which previously always led directly to A23, now does so in only about 44 in 100 of its outgoing transitions and instead leads to A15 in about 24, A20 in about 17 and A14 in about 16; A23, which previously always led directly to A24, now does so in about 57 in 100 and leads to A15, A14 or A20 in about 18, 14 and 13 in 100. Each new activity in turn leads to A23 (about 53–58 in 100 of its outgoing transitions) or to A24 (about 42–47 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]\n\n- The insertion point varies: in about 56 in 100 later traces the new step sits between A22 and A23, and in about 44 in 100 between A23 and A24. Accordingly the new activity always comes after A22 and before A24, and A24 is now three event positions after A22 in about 995 in 1000 traces instead of two; the order between the new activity and A23 is mixed, matching the two insertion points. [LAG001, LAG002, LAG003, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n\n- Consistent with traces becoming one event longer, A22's mean event position shifts slightly earlier (about 0.48 to 0.46) and A24's slightly later (about 0.55 to 0.56), while the new activities sit near the middle of the trace (mean about 0.51). [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening tested 81 control-flow units and about 0.4 qualifying items would be expected by chance alone; 28 qualified, roughly 70 times that expectation, so the pattern as a whole is not what an unchanged process typically produces. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003]\n\nMain hypothesis: the evidence supports the possibility that in the later window one additional step is executed inside the previously rigid sequence A22 → A23 → A24. The step is performed as exactly one of the three alternative activities A14, A15 and A20 — never more than one per trace and never two of them together — and it is always placed between A22 and A24: directly after A22 in about 56 in 100 traces (A22 → new step → A23 → A24) or directly after A23 in about 44 in 100 (A22 → A23 → new step → A24). A22, A23 and A24 still occur in every trace, so the former chain is not replaced but interrupted by the new step. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003, REL001, REL002, REL006, POS004, POS005]\n\nSupporting signs: participation in the new step rises from zero to about 29–41 in 100 traces; activities that previously had a single successor each now route to the new activities; the new activities always co-occur with A22 before them and A24 after them but never with each other; and the distance from A22 to A24 grows from two to three positions in almost every trace, with the mixed order versus A23 matching the two insertion points. These are direct relational observations, not only frequency shifts, and they are consistent across occurrence, direction, position, relation and lag indicators. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011, LAG001, LAG002, LAG003]\n\nLimitations: the evidence cannot show whether A14, A15 and A20 are three distinct steps or variants of one new step, what determines the choice among them or of the insertion point, or why about 1 in 200 later traces contains none of them; and because the evidence contains no case attributes, a difference in the mix of cases between the two windows cannot be ruled out as an alternative to a modification of one process. [OCC001, OCC002, OCC003, LAG002]\n\nOther differences: none — the remaining qualified items are the slight position shifts of A22 and A24, which follow from the same insertion rather than being independent changes. [POS004, POS005]",
+  "case_id": "e4a_0b7bae377eb8365e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

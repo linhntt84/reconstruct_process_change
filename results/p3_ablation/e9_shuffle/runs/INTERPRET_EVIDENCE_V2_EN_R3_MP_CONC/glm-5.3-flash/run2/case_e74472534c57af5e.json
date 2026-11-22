@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_e74472534c57af5e.json",
+  "evidence_sha256": "db397587cd8ac09d07ac65f9943d19641fa874f88689c48813d436d3edc7b44a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:10:08.785787+00:00",
+  "finished_at_utc": "2026-11-15T04:12:13.216022+00:00",
+  "latency_seconds": 124.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17733,
+    "prompt_tokens": 10744,
+    "total_tokens": 28477,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16407,
+      "text_tokens": 1326
+    },
+    "cost": 0.010478099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59681,
+  "text": "### Observed differences\n\n- In the earlier window, A30, A31 and A36 each appeared in every trace but essentially only once (mean about 1.0 occurrence per trace; repeats in at most about 1 in 100 traces). In the later window, each averages about 3.5 occurrences per trace and recurs in about 68–69 of 100 traces, while participation remains at 100 in 100 traces. [OCC001, OCC002, OCC003]\n- A36's follow-on behaviour changed: before, about 98 in 100 of A36's observed outgoing transitions led to A25; in the later window about 71 in 100 lead back to A30 and about 28 in 100 to A25. Matching this, the ordered pair A36 followed by A30 within five steps, seen in only 1 of 200 earlier traces (a single, weak observation), appears in 136 of 200 later traces. [DIR005, LAG002]\n- The chain itself is intact in both windows: about 97–99 in 100 of A30's outgoing transitions lead to A31, and of A31's lead to A36, before and after. [DIR003, DIR004]\n- Order relations flipped from a fixed order to interleaved-or-repeated: A30 preceded A36 in about 98–99 of 100 traces before, versus about 32 of 100 in the later window, with interleaved-or-repeated rising from about 1–2 to about 68 in 100. The pairs A14–A30, A14–A36 and A05–A30/A36 show the same flip (e.g., A05 before A30 fell from about 54 to 17 in 100 of the traces where both occur). [REL005, REL003, REL004, REL001, REL002]\n- The gap from A30 to A36, previously almost always two positions (about 97 in 100), became dispersed in the later window (about 12 in 100 at two positions, with gaps of five appearing). The positions of A30, A36 and A14 keep similar means (A36 near the middle of the trace, about 0.48) but their spread roughly doubled (A36 std about 0.06 → 0.12); these are event positions, not clock times. [LAG001, POS003, POS004, POS002]\n- Separately, A05 — present in about 55% of traces in both windows — shifted its outgoing mix: A07 rose from about 19% to 39% of its outgoing transitions, A14 fell from about 35% to 18%, and A09 stayed near 40%; A05 also sits slightly earlier (mean position about 0.07 → 0.05). A14 itself still runs in every trace and still leads mainly to A15 (about 96% → 90%). [DIR001, POS001, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports one specific possibility: in the later window the block A30 → A31 → A36, which previously executed exactly once per trace in that fixed order, recurs about three to four times within a trace in roughly 68–69 of 100 cases, with A36 re-entering the block by leading back to A30 (about 71 in 100 of its outgoing transitions, versus about 0.5 in 100 earlier) while the exit towards A25 persists at a much reduced share (about 28 in 100). The repetition is shown directly by the occurrence counts and by the appearance of the backward pair A36→A30 (136 of 200 traces versus 1 of 200), the internal edges A30→A31 and A31→A36 are essentially unchanged, and the relation items consistently flip from fixed order to interleaved-or-repeated. With 19 qualifying control-flow items against about 0.5 expected without change, and every item's difference exceeding about 995 of 1,000 random re-splits, sampling variation is an unlikely explanation for the pattern as a whole. [OCC001, OCC002, OCC003, DIR005, DIR003, DIR004, LAG002, REL005, REL003, REL004]\n\nLimitations: the evidence does not show whether A14 or A15 take part in the repeated block or still run once per trace, how the number of repetitions is distributed beyond the average of about 3.5, or whether A25 follows only the final cycle. An important competing explanation that cannot be ruled out is that the flips to interleaved-or-repeated for pairs involving A14 and A05 are a byproduct of how the repeats of A30/A36 are counted rather than a genuine change in those activities' placement, although A14's position spread did widen. [REL001, REL002, POS002]\n\nOther differences: A05's routing among its existing successors shifted towards A07 (about 19% → 39%) and away from A14 (about 35% → 18%), with A05 positioned slightly earlier in the later window; this is a change in the shares of existing outgoing paths at A05 and is not covered by the repetition hypothesis. [DIR001, POS001]",
+  "case_id": "case_e74472534c57af5e",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

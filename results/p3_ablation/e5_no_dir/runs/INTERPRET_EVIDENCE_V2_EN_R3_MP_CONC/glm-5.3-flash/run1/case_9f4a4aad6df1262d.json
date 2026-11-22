@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_9f4a4aad6df1262d.json",
+  "evidence_sha256": "41f5c4b06ca0b67579c02c9001cc5ccebde224d0b9686775d747ad2f47bc6ec1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:56:41.752025+00:00",
+  "finished_at_utc": "2026-11-14T11:58:07.470765+00:00",
+  "latency_seconds": 85.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12548,
+    "prompt_tokens": 18577,
+    "total_tokens": 31125,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11123,
+      "text_tokens": 1425
+    },
+    "cost": 0.009060549999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40445,
+  "text": "### Observed differences\n\n- Participation was stable: A20, A22, A23, A24, A25 and A26 each appeared in essentially every trace in both windows (200 of 200), and every observed pair of these activities co-occurred in 100% of traces in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- The previously fixed order between the two groups broke down. In the earlier window, A20, A22 or A23 preceded A24, A25 or A26 in about 98–99 in 100 traces for all eight observed pairs, and the reverse order never occurred. In the later window the reverse order became common: A24 preceded A20 in about 73 in 100 traces (before: 0) and A23 in about 84 in 100 (before: 0); A26 preceded A23 in about 68 in 100 (before: 0) and A20 in about 51 in 100 (before: 0); A20/A26 and A22/A24 became roughly even (about 49/51 and 53/47), while A20 still usually preceded A25 (about 67 in 100) and A22 usually preceded A26 (about 77 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- Spacing between activities changed from fixed to variable. Earlier, each pair sat at one distance in virtually every trace (A20–A23 always adjacent, A20–A24 always two positions apart, A20–A25 always four apart, A22–A23 always two apart). In the later window these concentrated distributions spread over one to five positions: A20–A23 were adjacent in only about 68 in 100 cases, A20–A25 spread across distances one to four with none above about 35 in 100, and A22–A23 sat two apart in only about 35 in 100. [LAG001, LAG002, LAG003, LAG007, LAG011]\n- Relative positions shifted modestly and in opposite directions for the two groups: A20, A22 and A23 moved later in the trace (mean relative position about 0.59 to 0.63, 0.56 to 0.59 and 0.62 to 0.68), while A24, A25 and A26 moved earlier (about 0.65 to 0.59, 0.70 to 0.68 and 0.67 to 0.64). [POS001, POS002, POS003, POS004, POS005, POS006]\n- A few lag results rest on almost no earlier-window data: the A24→A22, A25→A20 and A26→A20 distances were observed in only 1 of 200 earlier traces, so their before-distributions are weakly grounded. [LAG015, LAG019, LAG021]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraint between the group A20–A22–A23 and the group A24–A25–A26 was relaxed: earlier, the first group always executed before the second at fixed distances, whereas in the later window the pairs are executed in mixed orders — A24 and A26 frequently precede A20 and A23, some pairs are roughly evenly ordered, and the previously fixed distances between activities spread across one to five positions. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG003, LAG007]\n\nThe change is shown directly by relational evidence on all eight pairs, all moving in the same direction with large shifts (0.24–0.84 on the order-share scale); the lag distributions corroborate it, changing consistently from a single fixed distance to a spread; and the small, opposite positional shifts fit a loosening of the order rather than a wholesale swap of the two blocks. Participation and co-occurrence stayed at 100%, so no activity was added, removed or made optional. Chance is an unlikely explanation overall: 42 control-flow items qualified where about 0.42 would be expected in an unchanged process (roughly 100 times the chance expectation), and all qualified items showed differences larger than in about 99 of 100 random re-splits. [REL001, REL006, LAG001, LAG013, POS001, POS004, screening]\n\nLimitations: the evidence cannot show which specific ordering rule was removed or what the new routing rule is — after-window order shares range from mostly reversed (A24 before A23) to about even (A20 and A26) to still mostly original (A22 before A26) — and a few lag items rest on a single earlier-window trace. All order and distance measures use event positions, so no conclusion about clock-time timing is possible. [REL001, REL003, REL005, LAG015, LAG019, LAG021]\n\nOther differences: distances involving A31 and A32, which appear only in the lag evidence, changed in the same direction: A31 to A20 was always two positions apart and later spread over two to five; A31 to A24 was always four apart and later adjacent in about 47 in 100 traces; A23 to A32 moved from mostly four apart to adjacent in about 49 in 100; A24 to A32 moved from mostly three apart to five apart in about 52 in 100. [LAG024, LAG027, LAG013, LAG018]",
+  "case_id": "case_9f4a4aad6df1262d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

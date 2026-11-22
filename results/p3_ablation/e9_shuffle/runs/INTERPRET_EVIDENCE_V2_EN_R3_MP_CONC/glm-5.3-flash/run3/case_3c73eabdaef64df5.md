@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, each of the 200 traces contained only two activities in a fixed order: A04 followed directly by A07 — A07 came exactly one step after A04 in all traces, and A04's only observed outgoing transition led to A07. [DIR002, LAG001, POS003, POS006]
+- In the later window, every trace contains six activities in the same fixed order: A04, A03, A05, A06, A07, A01, with the direct successions A04→A03, A03→A05, A05→A06, A06→A07 and A07→A01 each observed in all 200 after-traces. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- A01, A03, A05 and A06 were not observed at all in the earlier window (0 of 200 traces) and now occur exactly once in every trace (200 of 200, mean one occurrence per trace). [OCC001, OCC002, OCC003, OCC004]
+- A04 now leads to A03 instead of to A07, and A07 now leads on to A01; the distance from A04 to A07 grew from one step to four steps. [DIR002, DIR004, DIR005, LAG001]
+- Every pair combining a previously present activity with a new one changed from "only one partner present" (or neither present) to co-occurrence in all traces with a single fixed order — for example A04 before A03, A05 and A06; A03 before A05, A06 and A07; A07 before A01. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]
+- Relative positions are consistent with this picture: A07's mean relative position moved from the end of the trace (1.0) to about 0.83, A04's from 0.5 to about 0.17, and the new activities occupy the intermediate positions (roughly 0.17–0.67). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural change in which four activities that previously never ran — A01, A03, A05 and A06 — are now executed in every case between A04 and A07, which were previously directly consecutive. In the earlier window a case consisted of A04 followed immediately by A07; in the later window every case runs A04, A03, A05, A06, A07, A01 in that fixed order, so A04's direct successor changed from A07 to A03 and A07 gained the new successor A01. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, OCC001, OCC002, OCC003, OCC004]
+
+The support is direct and consistent: the successor change at A04 and the new edges along the chain show the reordering directly, the A04→A07 distance grew from one to four steps, the four new activities went from 0 of 200 to 200 of 200 traces with exactly one occurrence each, and all pair relations show the same fixed-order co-occurrence. The volume of qualifying evidence (30 items against roughly 0.15 expected if nothing had changed, each with an empirical strength of about 0.995, i.e. larger than in about 995 of 1000 random re-splits) far exceeds what an unchanged process typically produces. [OCC001, OCC002, OCC003, OCC004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, POS001, POS002, POS003, POS004, POS005, POS006]
+
+Limitations: the 30 items largely restate one underlying difference rather than independent confirmations; zero participation in the earlier window establishes only that A01, A03, A05 and A06 were not observed there, so an earlier variant executing them in well under 1 in 200 cases cannot be fully excluded; and the evidence cannot distinguish a modified process from a complete replacement of the traced case mix between the windows. The evidence covers control flow only, and behaviour before A04 or after A01 is not observed. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, POS004, POS005, POS006]

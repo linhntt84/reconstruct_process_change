@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_9948039d09c39982.json",
+  "evidence_sha256": "dba3b112e520dc7b7637b2df54afba85deb26cfe88f969f14d29e997febc71ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:08:09.244739+00:00",
+  "finished_at_utc": "2026-11-15T10:09:51.595830+00:00",
+  "latency_seconds": 102.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15157,
+    "prompt_tokens": 9484,
+    "total_tokens": 24641,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13907,
+      "text_tokens": 1250
+    },
+    "cost": 0.0090011
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47978,
+  "text": "### Observed differences\n\n- A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it appears exactly once in every trace (200 of 200), typically about three-quarters of the way through the trace (median relative position 0.80, middle half roughly 0.67–0.83). [OCC001, POS001]\n- In the earlier window, traces containing A04 (about 52 in 100) or A09 (about 49 in 100) usually led directly into A08, which itself appeared in every trace in both windows; A06 (about 55 in 100) and A07 also reached A08 within a few steps. [REL004, DIR002, DIR003, LAG003, LAG007, LAG004, LAG005]\n- In the later window the outgoing transitions flipped: A04 leads to A01 in about 88 in 100 of its observed transitions (previously to A08 in about 60 in 100), and A09 leads to A01 in about 91 in 100 (previously to A08 in about 69 in 100). A01 in turn leads to A08 in about 73 in 100 of its transitions, to A07 in about 17 and to A06 in about 11. [DIR002, DIR003, DIR001]\n- Ordering changed accordingly: A01 and A08 never shared a trace before and now co-occur in every trace, always with A01 first; A04 and A09, when present, now always run before A01 (about 54 and 47 in 100 traces respectively); A06 precedes A01 in about 36 in 100 traces and follows it in about 11. [REL004, REL001, REL005, REL002]\n- Distances to A08 grew by roughly one step: A04–A08 was 1 step apart in about 60 in 100 observations before, versus 2 steps (about 51 in 100) or 3 steps (about 49 in 100) after; A09–A08 moved from 1 step (about 69 in 100) to 2 steps (about 74 in 100); A06–A08 at 4–5 steps rose from about 2 to about 38 in 100, and A07–A08 similarly spread to larger gaps. Pairs that were adjacent before (A04–A06, A04–A07, A09–A06, each based on only about 20–33 observations) are now typically 2 steps apart. [LAG003, LAG007, LAG004, LAG005, LAG001, LAG002, LAG006]\n- Participation of the surrounding activities stayed similar (A04 about 52→54 in 100 traces, A06 about 55→47, A09 about 49→47), and their relative positions moved slightly earlier (A04 median 0.75→0.60; A09 0.80→0.67). [REL001, REL002, REL005, POS002, POS003]\n- For scale: 19 control-flow items qualified against roughly 0.18 expected by chance among the 36 tested units, and every item's difference exceeds that seen in about 199 of 200 random re-splits — far more than an unchanged process typically produces. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 appears as a new, mandatory step near the end of the process: activities that previously ran into A08 — chiefly A04 and A09, with A06 and A07 also affected — now lead to A01, which continues to A08 directly in about 73 in 100 of its transitions or via A07/A06 otherwise. The signs are direct and consistent: A01 went from unobserved to present in all 200 later traces at a stable position; the successor profiles of A04 and A09 switched from A08 to A01; A01 always precedes A08; and pairwise distances to A08 grew by about one step. With 19 flagged items against about 0.18 expected without change, chance sampling cannot account for the set as a whole. Limitations: most items re-describe one underlying rerouting rather than confirming it independently; zero earlier participation strictly shows only that A01 was not observed before, so a pre-existing but extremely rare A01 cannot be fully excluded; and the exact placement of A01 relative to the A07/A06 tail varies between traces. [OCC001, POS001, DIR001, DIR002, DIR003, REL004, LAG003, LAG007, screening]\n\nOther differences: none that stand apart from the addition of A01; the remaining flagged pairs (A04–A06, A04–A07, A09–A06) fit the same one-step shift. [LAG001, LAG002, LAG006]",
+  "case_id": "case_9948039d09c39982",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

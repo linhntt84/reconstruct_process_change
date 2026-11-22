@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_c970eeadeab7c20e.json",
+  "evidence_sha256": "53bb30417e691edc988137d4aa7b3edc081cdcde66124418efae9efbd2aba230",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:29:17.410489+00:00",
+  "finished_at_utc": "2026-11-16T02:31:27.955341+00:00",
+  "latency_seconds": 130.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18738,
+    "prompt_tokens": 36705,
+    "total_tokens": 55443,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17326,
+      "text_tokens": 1412
+    },
+    "cost": 0.014874749999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58792,
+  "text": "### Observed differences\n\n- A06 disappeared from execution: before, it occurred exactly once in every trace (present in 200 of 200 traces, mean 1.0 occurrence per trace); in the later window it appears in 0 of 200 traces, and its position distribution collapsed accordingly. [OCC005, POS006]\n- Before, A06 sat at the very end of the process next to A03: the two co-occurred in every trace, with A03 before A06 in about 53 in 100 traces and A06 before A03 in about 47 in 100, never interleaved; A03's only observed outgoing transition was to A06, and A06's only observed outgoing transition was back to A03. In the later window, A06 co-occurs with no other activity. [REL018, DIR002, DIR004]\n- In the later window, A03 always closes the trace: it sits at the final position in 100% of traces with no spread (before: mean relative position about 0.94 with visible spread, so it was not always last) and shows no observed outgoing transitions. [POS003, DIR002]\n- A04 no longer routes into A06: before, about 23% of A04's outgoing transitions went to A06 and about 26% to A03 (about 52% to A02); in the later window the A06 share is gone, A03's share rose to about 50%, and A02 stayed roughly unchanged at about 50%. [DIR003]\n- Distances to A03 shortened by one step: the lag distributions for A01→A03, A04→A03, A05→A03 and A08→A03 each previously split between a shorter lag (about 53%) and a one-step-longer lag (about 47%); in the later window only the shorter lag remains — matching the share of traces in which A06 previously came before A03. [LAG002, LAG014, LAG019, LAG025]\n- Knock-on shifts: mean relative positions of most remaining activities moved slightly later (for example A04's median from 0.60 to 0.75, A09's mean from 0.34 to 0.40), consistent with traces being about one event shorter. [POS001, POS002, POS004, POS005, POS008, POS009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence directly and consistently supports the hypothesis that A06 was removed from the closing block of the process, or at minimum is no longer executed in any observed case. Before, every trace ran exactly one A06 adjacent to A03 at the end — A03 → A06 in about 53 in 100 traces, A06 → A03 in about 47 in 100 — and A04 reached this ending either directly (about 26% of its outgoing transitions to A03) or through A06 (about 23%). In the later window, A06 appears in none of 200 traces, A04 leads straight to A03 (about 50% of its outgoing transitions), and A03 ends every trace at the final position with no observed successor; the one-step shortening of the A01/A04/A05/A08 → A03 distances in exactly the previously-routed share corroborates this. The change is observed directly by occurrence, position, direction and relation indicators, the core items all reach empirical strength of about 0.995, and a participation drop from 200 of 200 traces to 0 of 200 is not what sampling an unchanged process produces. Limitations: the evidence cannot distinguish a genuine removal of A06 from it merely never being triggered (for example, if its ending branch became unreachable) or a relabelling outside the observed activity set; also, no screening baseline was provided to compare the item count against a formal chance expectation. [OCC005, POS006, POS003, DIR002, DIR003, DIR004, REL018, LAG002, LAG014, LAG019, LAG025]\n\nOther differences:\n- The slightly later relative positions of A01, A02, A04, A05, A08 and A09 are best read as a consequence of traces becoming about one event shorter, not as a separate repositioning. [POS001, POS002, POS004, POS005, POS008, POS009]\n- Small lag redistributions of roughly 10–20 points between lags 2–3 and lags 4–5 for A02→A07, A02→A09, A04→A07, A04→A09 and A07→A07 rest on only about 30–50 observations each and may be secondary effects of the shorter traces or sampling noise. [LAG010, LAG012, LAG015, LAG017, LAG022]\n- Minor 3–5 point shifts in participation and order shares (for example A02 participation from about 57 to 53 in 100 traces, A04 before A03 from about 44 to 47 in 100) point in the same direction but are not decisive on their own. [OCC002, REL016, REL002]",
+  "case_id": "case_c970eeadeab7c20e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

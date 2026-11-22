@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_88246f43af7f2567.json",
+  "evidence_sha256": "2f73d748aed6b0189066500a08eb756154117961b85a2e07bbc1eec7249276b4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:43:18.118335+00:00",
+  "finished_at_utc": "2026-11-15T04:45:31.472862+00:00",
+  "latency_seconds": 133.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19688,
+    "prompt_tokens": 8524,
+    "total_tokens": 28212,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18225,
+      "text_tokens": 1463
+    },
+    "cost": 0.011122599999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63077,
+  "text": "### Observed differences\n\n- **A12 moved from the end to the start of the flow.** Earlier, A12 always occurred together with A03 — co-occurring in about 49 in 100 traces (A03 before A12 in about 26, interleaved or repeated in about 24, never A12 first) — and sat at the very end of the trace (mean relative position about 0.97). In the later window, A03 and A12 never occur together: A12 appears in about 45 in 100 traces, always without A03, and now sits near the start (mean position about 0.71, with at least a quarter of its occurrences at the very first position, versus none earlier). [REL004, POS003]\n\n- **A02 and A04 now lead to A12 instead of A03.** Earlier, about 91 in 100 of A02's outgoing transitions and about 67 in 100 of A04's went to A03; in the later window both lead exclusively to A12 (previously about 6 and 20 in 100 respectively), and the pair is adjacent — within one step — in all observed cases, versus about 8 in 100 for A02→A12 and about 24 in 100 for A04→A12 earlier. [DIR001, DIR003, LAG001, LAG002]\n\n- **A03 occurs less often, later, and with new successors.** A03 now appears in about 30 in 100 traces (about 49 earlier) and later within the trace (mean relative position about 0.44 → 0.67). Its outgoing transitions shifted from A11 (about 45 in 100) and A12 (about 45) to A11 (about 55) and A10 (about 45); A12, A02 and A04 are no longer observed as successors, and A03 no longer co-occurs with A02 or A04 (each about 25 in 100 traces earlier, none now). [POS001, DIR002, REL001, REL002]\n\n- **A03 joined the A16/A10 branch.** Earlier, A03 never co-occurred with A16 or A10: A03 appeared in about 49 in 100 traces, A16 and A10 each in about 27, always in traces disjoint from A03, with A16 immediately followed by A10 in about 85 in 100 of the cases where the pair occurred. In the later window, A03, A16 and A10 always occur together (about 30 in 100 traces): A16 precedes A03 in about 7 in 100 (interleaved or repeated in about 24), A03 precedes A10 in about 13 in 100; A16's outgoing transitions changed from A10 (about 52 in 100) and A09 (about 48) to A09 (about 50) and A03 (about 50), and A16→A10 is no longer adjacent — where the pair is still seen within five steps, gaps of two to five steps dominate. [REL005, REL003, DIR004, LAG003]\n\n- Smaller shifts: A16 now appears slightly earlier in the trace (mean relative position about 0.53 → 0.43) and A10 slightly later (about 0.83 → 0.90), while both keep a similar share of traces (about 27 → 30 in 100). [POS004, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering around these activities changed as follows. In the earlier window, A02 or A04 led into A03, A12 followed A03 at the end of the trace, and A16 fed directly into A10 or A09 in traces disjoint from A03. In the later window, A02 and A04 lead immediately and exclusively to A12 near the start, while A03 appears later, never together with A02, A04 or A12, and instead always together with A16 and A10 — typically after A16 and before A10 — so that A03 now leads to A10 (A16's former direct successor) and A16 no longer leads directly to A10. [REL004, REL005, REL003, DIR001, DIR002, DIR003, DIR004, LAG001, LAG002, LAG003, POS001, POS003]\n\nThis is not a sampling artefact at the set level: 16 items qualified across 42 tested control-flow units against roughly 0.21 expected without a change, and each item's difference exceeds about 99.5 of 100 random re-splits; successor changes, co-occurrence flips between \"never together\" and \"always together\", lost adjacency and position shifts all describe the same reordering. [REL001, REL002, REL003, REL004, REL005, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, LAG001, LAG002, LAG003]\n\nLimitations: the items largely describe one underlying difference, so they are not independent confirmations, and some later-window relations rest on modest support (for example A02→A12 on 28 traces, A04→A12 on 35). The directional evidence covers only A02, A03, A04 and A16 as source activities, so A12's other predecessors are unobserved — A12 occurs in about 45 in 100 traces while A02 and A04 together appear in only about 31 in 100. A competing explanation the evidence cannot fully rule out is that the two windows sample two pre-existing variants in different proportions (a previously rare ordering becoming common), although the later pattern — A02→A12 adjacency, A16→A03, A03→A10 — was absent or nearly absent in the earlier window. [POS003, DIR001, DIR003, DIR004, LAG001, LAG002, REL003, REL005]",
+  "case_id": "case_88246f43af7f2567",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

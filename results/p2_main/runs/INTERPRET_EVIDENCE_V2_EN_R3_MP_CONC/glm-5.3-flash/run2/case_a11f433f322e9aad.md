@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window the traces were uniform: A26 was followed by A27 in about 99 in 100 of A26's outgoing transitions, A27 occurred exactly once in every one of the 200 traces, and A27 in turn led to A28 in about 99 in 100 of its outgoing transitions, with A26, A27 and A28 co-occurring in all traces in that order. [OCC001, DIR001, DIR002, REL001, REL005]
+- In the later window, A27 appears in only about 51 in 100 traces, while three activities that were not observed before — A32, A33 and A38 — each occur once in about 49–50 in 100 traces (98–99 of 200). [OCC001, OCC002, OCC003, OCC004]
+- A26's outgoing transitions are now split: about 50 in 100 still go to A27, with most of the rest going to A33 (about 17 in 100), A38 (about 16 in 100) and A32 (about 15 in 100). [DIR001]
+- The new activities sit between A26 and A28: A26 precedes each of them in about 49 in 100 traces, each of them precedes A28 in about 49 in 100 traces, and each occurs around the midpoint of the trace (median event position about 0.5). [REL002, REL003, REL004, REL009, REL010, REL011, POS001, POS002, POS003]
+- Each new activity leads either to one of the other two or to A28; for example, about 35 in 100 of A32's outgoing transitions go to A38, about 34 to A33 and about 28 to A28. [DIR003, DIR004, DIR005]
+- A27 and the new activities are mutually exclusive: A27 co-occurs with A32, A33 or A38 in at most about 1 in 200 later traces. [REL006, REL007, REL008]
+- Accordingly, A26–A27 and A27–A28 co-occurrence fell from essentially all traces to about 51 in 100, and A28 — which still occurs in essentially every trace — now appears without A27 in about 49 in 100 traces. [REL001, REL005]
+- The three new activities run together in about 49 in 100 traces but without a fixed order among themselves: A32 precedes A33 in about 23 in 100 traces while A33 precedes A32 in about 27 in 100, with similar mixed splits for the other pairs. [REL012, REL013, REL014]
+- The event distance from A26 to A28 changed from almost always 2 steps (about 98 in 100 earlier traces) to a bimodal pattern: 2 steps in about 50 in 100 later traces and 4 steps in about 48 in 100, consistent with three events now lying between them. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural hypothesis involving A26, A27, A28 and the three activities A32, A33 and A38: in the later window, roughly half of the traces still execute A26 → A27 → A28 as before, while in the other half A27 does not run and A32, A33 and A38 each execute once, in varying order, between A26 and A28. The signs are direct and consistent across indicator families: the new activities rise from zero participation to about half of traces on substantial support (98–99 traces each), A26's outgoing transitions split between A27 and the new block, relational evidence places the block between A26 and A28 (A26 before each new activity, each new activity before A28, mutual exclusivity with A27), and the A26–A28 distance becomes bimodal at 2 and 4 steps, consistent with this arrangement. The screening context also supports a real difference: 27 control-flow items qualified against fewer than 1 expected without a change (0.57), well beyond what an unchanged process typically produces. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL005, REL006, REL009, LAG001]
+
+The evidence cannot rule out that the two windows sample different mixtures of pre-existing case variants rather than a single process whose behaviour changed at this point, nor can it show whether the choice between the A27 path and the new block is governed by a routing decision or by case characteristics. [OCC002, OCC003, OCC004, REL012]
+
+Other differences: A27's outgoing profile shows only a marginal diversification in the later window — about 2 in 100 of its outgoing transitions now go to A09, and about 1 in 100 each to A34 and A25, instead of A28 — a difference that is negligible in size on its own scale. [DIR002]

@@ -1,0 +1,21 @@
+### Observed differences
+
+- Before, A30, A31 and A36 each occurred about 3.4 times per trace and appeared in every one of the 200 traces; in the later window all three still appear in every trace, but only about once per trace (about 1.05 occurrences), and traces with repeated occurrences of these activities fell from about 75 in 100 to about 1–2 in 100. [OCC001, OCC002, OCC003]
+- Before, A30 and A36 were interleaved or repeated within 75 in 100 traces (A30 strictly before A36 in the remaining 25 in 100); in the later window A30 precedes A36 in 98 in 100 traces, with interleaving nearly gone (2 in 100). The two activities still co-occur in all traces in both windows. [REL001]
+- In the later window A36 follows A30 within two steps in about 89 in 100 traces, compared with about 12 in 100 before; the reverse order (A36 before A30 within five steps) was seen in 75 in 100 traces before and in only 1 of 200 traces after. [LAG002, LAG003]
+- Repeats of the same activity within five steps (A30→A30 and A36→A36) were observed in 150 of 200 traces before and in only 2 of 200 after. [LAG001, LAG004]
+- At A36, the outgoing mix changed: before, about 70 in 100 of A36's outgoing transitions returned to A30 and about 29 in 100 went to A25; in the later window about 93 in 100 go to A25 and only about 4 in 100 return to A30 (689 vs 209 outgoing transitions observed). [DIR003]
+- The edges A30→A31 and A31→A36 remain dominant in both windows (about 97–99 in 100 of each source's outgoing transitions); the observed transition counts fell from about 690 to about 210, in line with the drop in occurrences. [DIR001, DIR002]
+- The average relative positions of A30 and A36 barely moved (about 0.44 → 0.42 and 0.49 → 0.49), but their positions became more consistent (A30's spread narrowed from about 0.12 to about 0.07, A36's from about 0.12 to about 0.06); these are event positions, not clock times. [POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeating cycle involving A30, A31 and A36 stopped repeating: earlier, the sequence A30 → A31 → A36 looped back to A30 and ran about three to four times per trace, whereas in the later window each of the three activities runs once per trace in the fixed order A30 → A31 → A36, after which A36 typically continues to A25 instead of returning to A30. Participation of all three activities is unchanged, so this is a change in repetition, not in whether the activities execute. [OCC001, OCC002, OCC003, REL001, LAG002, LAG003, DIR003]
+
+The change is shown directly by three views of the same behaviour — occurrence counts (repeats collapsed while participation stayed at 100 in 100 traces), the successor profile at A36 (loop-back to A30 largely replaced by the exit to A25), and the pairwise relation of A30 and A36 (from mostly interleaved to a fixed order) — and is corroborated by the lag and position items: A36 now follows A30 within two steps in about 89 in 100 traces, self-repeats within five steps nearly vanished, and position spread narrowed while average positions stayed put. These items likely reflect one underlying difference rather than independent confirmations, but 13 qualifying items against about 0.46 expected for an unchanged process means chance alone cannot explain the set. [OCC001, OCC003, DIR003, REL001, LAG002, LAG001, LAG004, POS001, POS002]
+
+Limitations: the after-profiles of the self-repeat and reverse-order lag items rest on only 1–2 observed traces, so their exact shapes are weak, and the small residual share of A36→A30 transitions (about 4 in 100) means the evidence cannot rule out that the loop-back still exists but is now rarely taken rather than having been removed; either way, the collapse from roughly three to four passes per trace to one is directly supported. [LAG001, LAG003, LAG004, DIR003, OCC001]
+
+Other differences: minor redistributions among the rare outgoing targets of A30 and A31, each worth a few tenths of a percent of transitions, with no clear behavioural meaning on their own. [DIR001, DIR002]

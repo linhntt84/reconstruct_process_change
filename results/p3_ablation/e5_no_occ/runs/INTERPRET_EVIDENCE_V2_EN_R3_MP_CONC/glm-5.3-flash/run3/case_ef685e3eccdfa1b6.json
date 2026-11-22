@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_ef685e3eccdfa1b6.json",
+  "evidence_sha256": "12f366a9e3784eafc55730eeef7e1eb618a5ecc5ea49bb9e2a8cd252299ab1e0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:40:33.186308+00:00",
+  "finished_at_utc": "2026-11-15T10:42:18.199494+00:00",
+  "latency_seconds": 105.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15179,
+    "prompt_tokens": 24084,
+    "total_tokens": 39263,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13704,
+      "text_tokens": 1475
+    },
+    "cost": 0.0112021
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48467,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained the same eight activities in a fixed macro sequence: A25 (mean relative position about 0.62 of the trace), then the trio A28/A30/A31 (about 0.68), then the trio A32/A33/A34 (about 0.77), then A26 (about 0.83). Within each trio the order was mixed (both orders in roughly equal shares), but A25 always preceded the first trio, and the first trio always preceded both the second trio and A26. [POS001, POS003, POS006, POS008, REL001, REL007, REL013, REL015, REL025]\n- In the later window, A25 and A26 still appear in every trace, but A28, A30 and A31 each appear in only about 47 in 100 traces (93 of 200), and A32, A33 and A34 each in about 55 in 100 (111 of 200). [POS003, POS004, POS005, POS006, POS007, POS008]\n- The two trios became mutually exclusive: any pairing of one first-trio activity with one second-trio activity fell from co-occurrence in all traces to about 2 in 100; in about 45 in 100 later traces only the first trio runs, in about 53 in 100 only the second trio, while within each trio the three activities still always run together. [REL013, REL015, REL022, REL025]\n- A25's outgoing transitions split: earlier they went only to the first trio (about 34, 37 and 30 in 100 to A28, A30 and A31); in the later window about 47 in 100 still go to the first trio and about 53 in 100 go to the second trio (about 16, 18 and 20 in 100 to A32, A33 and A34). [DIR001]\n- The first trio now bypasses the second: A28, A30 and A31 lead directly to A26 in about 34, 35 and 26 in 100 of their outgoing transitions respectively — transitions not observed earlier — while their transitions into the second trio have nearly disappeared (about 1 in 100 each). [DIR002, DIR003, DIR004]\n- Step distances shrank accordingly: from A25 to each second-trio activity the gap fell from 4–5 steps (about half each) to 1–3 steps (roughly a third each), and from each first-trio activity to A26 it fell from 4–5 steps to 1–3 steps. [LAG001, LAG003, LAG004, LAG008, LAG011]\n- Mean relative positions moved only slightly: A25 later (about 0.62 to 0.67) and A26 earlier (about 0.83 to 0.81), with the six middle activities converging on about 0.74. [POS001, POS002, POS003, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A25 and A26 changed from a fixed sequence into an exclusive choice between two blocks: in the earlier window every case executed A28, A30 and A31 (in either order) and then A32, A33 and A34 (in either order); in the later window about 47 in 100 cases execute only the A28/A30/A31 block, which then connects directly to A26, and about 55 in 100 execute only the A32/A33/A34 block, reached directly from A25 — so each block is skipped in roughly half the cases, A25 and A26 remain mandatory, and the order within each block stays unfixed. The exclusivity and the preserved within-block co-occurrence are observed directly in the relation profiles [REL013, REL015, REL022, REL025], the new edges from A25 into the second block and from A28, A30 and A31 straight to A26 are observed in the direction profiles [DIR001, DIR002, DIR003, DIR004], and the shortened step gaps corroborate the bypass [LAG001, LAG004, LAG008, LAG011]. With 52 qualifying items against roughly 0.5 expected by chance for the 97 units tested, the pattern as a whole cannot be explained by sampling variation between the windows. [POS003, REL015, DIR001]\n\nThe evidence cannot rule out that the later window pools two case types whose routing decision lies upstream of A25, rather than a new choice point at A25 itself; nor does it explain the about 2 in 100 later traces that still contain both blocks, which a strictly exclusive choice would not produce. [REL015]\n\nOther differences: the remaining gap items concern pairs that rarely co-occur in the later window (about 4 observations each, for example A28→A32, A30→A33 and A31→A34) and are too weak to characterise; they are consistent with the small residue of traces containing both blocks. [LAG005, LAG009, LAG013]",
+  "case_id": "case_ef685e3eccdfa1b6",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

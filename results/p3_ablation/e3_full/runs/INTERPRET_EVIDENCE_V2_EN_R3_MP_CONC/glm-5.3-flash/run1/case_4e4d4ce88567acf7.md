@@ -1,0 +1,19 @@
+### Observed differences
+
+- Activity A01 was not observed at all in the earlier window (0 of 200 traces), while in the later window it occurs exactly once in every trace (200 of 200, mean 1.0 occurrence per trace, never repeated). [OCC001]
+- In the later window A01 sits at the end of the case: its mean relative position is 0.94 and in about half of traces it is the final event (median position 1.0). [POS001] All other activities A02–A08 shifted slightly earlier (mean positions down by roughly 0.03–0.12), consistent with an extra event lengthening traces; these are event positions, not clock times. [POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+- Before, each of A02–A08 appeared without A01 in 100 per cent of traces; in the later window A01 co-occurs with each of them in 100 per cent of traces and follows them in the large majority: after A03, A07 and A08 in 100 in 100 traces, after A02 and A04 in about 99 in 100, after A05 in about 87 in 100 and after A06 in about 75 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007]
+- Routing into A01 changed directly: A08's outgoing transitions, previously mainly to A05 (about 51 in 100), A02 (24 in 100) and A06 (20 in 100), now go to A01 in about 83 in 100 cases; A06 now sends about 11 in 100 and A05 about 6 in 100 of its outgoing transitions to A01. A08 also has a recorded successor far more often than before (200 observed outgoing transitions versus 75), as expected if A01 now follows it. [DIR008, DIR006, DIR005]
+- A01's own outgoing transitions (53 observed in the later window) lead to A05 in about 45 in 100 cases and to A06 in about 45 in 100, rarely to A02 or A04, matching the minority of traces where A01 runs before A05 or A06. [DIR001, REL004, REL005]
+- Spacing out of A08 lengthened by roughly one step: the A08→A05 gap moved from mostly one step to mostly two, and the A08→A06 gap from mostly two to mostly three steps. [LAG035, LAG036]
+- Apart from A01's insertion, the mutual order and spacing of A02–A08 is broadly stable: order shares shift by at most about 7 percentage points (for example A02 before A07 rises from about 85 to 90 in 100) and most of these items show low reference strength. [REL008, REL010, REL017, REL019, LAG011, LAG032]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a step A01 was added near the end of the process and is now executed exactly once in every case. In the earlier window no trace contained A01; in the later window every trace does, almost always after the existing activities — most often directly after A08, whose exits now route to A01 in about 83 in 100 cases — and A01 either closes the case or, in a minority of traces, is followed by A05 or A06. The signs are direct and consistent across indicator families: participation moving from 0 to 100 per cent of traces [OCC001], end-of-case placement [POS001], co-occurrence and ordering with every existing activity [REL001, REL002, REL003, REL004, REL005, REL006, REL007], new incoming edges from A08, A06 and A05 [DIR008, DIR006, DIR005], and A01's own outgoing edges to A05 and A06 [DIR001].
+
+A competing explanation the evidence cannot rule out is that A01 already existed in the process but was simply never executed in the earlier window; zero participation only means it was not observed there, and the position data cannot show whether the added step consumed clock time. [OCC001, POS001]
+
+Other differences: small redistributions among the original activities, such as A05's exits to A06 falling from about 76 to 63 in 100 and A02's exits to A07 rising from about 10 to 15 in 100, together with small lag shifts; most of these have low reference strength and may be sampling variation, and the lengthened gaps out of A08 are plausibly side effects of A01's insertion rather than independent changes. [DIR005, DIR002, LAG021, LAG035]

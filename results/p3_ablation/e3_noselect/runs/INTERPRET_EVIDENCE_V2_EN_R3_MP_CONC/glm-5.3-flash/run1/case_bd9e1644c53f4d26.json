@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_bd9e1644c53f4d26.json",
+  "evidence_sha256": "8bfd95fdb9d0db273d3183bc2cc710ba05e1fd1ea203febeb780fb138011fa67",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:11:42.643895+00:00",
+  "finished_at_utc": "2026-11-14T14:13:09.027787+00:00",
+  "latency_seconds": 86.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13936,
+    "prompt_tokens": 16970,
+    "total_tokens": 30906,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12707,
+      "text_tokens": 1229
+    },
+    "cost": 0.0095135
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45804,
+  "text": "### Observed differences\n\n- Activity A02 separates the two windows most clearly: in the earlier window none of the 200 traces contain A02, while in the later window every one of the 200 traces contains it exactly once (mean 1.0 occurrence per trace, never repeated within a trace). A difference of this size arises in fewer than 1 of 200 random re-splits of the pooled data. [OCC001, POS002]\n\n- In the later window A02 sits inside the existing flow rather than at its ends. A01's observed outgoing transitions now include A02 in about 24 in 100 cases (never before), with A04's share falling from about 36 to 19 in 100; A03, A04, A05 and A06 also gained outgoing edges to A02 (roughly 24, 8, 28 and 18 in 100 of their outgoing transitions, the A05 figure resting on only about 46 observations). A02's own outgoing transitions, unobserved before, now lead to A04 (about 26 in 100), A06 (25), A01 (19), A03 (19), A07 (7) and A05 (4). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n\n- A02's relations changed from \"never together\" to \"always together\": before, A02 never co-occurred with A01, A03, A04 or A06; in the later window it co-occurs with each of them in every trace. The order is mixed for A01 (A01 first in about 56 in 100), A03 (about 45 in 100) and A06 (about 50 in 100), while A02 precedes A04 in about 69 in 100 cases. [REL001, REL005, REL006, REL007]\n\n- The other activities now occur slightly later in the trace and their mutual step distances grew by roughly one position: the median position of A01, A03 and A06 moved from 0.2 to 0.33 of the trace length, A01→A04 occurs within one step in about 47 in 100 cases before versus 26 in 100 after (a four-step gap appears in about 23 in 100), and A03→A04 and A06→A04 show comparable new four-step gaps (about 15 and 20 in 100). These figures use event positions, not clock time. [POS001, POS003, POS004, POS005, LAG002, LAG005, LAG012]\n\n- Routing among the original activities is otherwise nearly stable: A04 still leads to A07 in about 74 in 100 of its outgoing transitions (73 before) and A07 still leads to A05 in about 80 in 100 (82 before). [DIR004, DIR007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 was introduced into the process as a step now executed exactly once in every case and inserted inside the existing flow: in the earlier window A02 was not observed in any of the 200 traces, whereas in the later window every trace contains it once, it receives edges from A01, A03, A04, A05 and A06 and leads on mainly to A04, A06, A01 and A03, and the remaining activities (A01, A03, A04, A06) occur about one position later with correspondingly longer step distances between them. [OCC001, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL005, REL006, REL007, POS001, POS003, POS004, POS005, LAG002, LAG005, LAG012]\n\nSupporting signs: the participation change is categorical (0 of 200 versus 200 of 200 traces), the new edges and the co-occurrence reversal are observed directly rather than inferred from positions alone, and the occurrence, direction, relation, position and lag indicators all describe the same insertion. Note that the many items largely reflect this single underlying difference and are not independent confirmations of it. [OCC001, DIR002, REL001, LAG002]\n\nLimitations and competing explanation: zero participation only shows that A02 was not observed in the earlier window, so \"newly added\" cannot be distinguished from \"previously so rare that 200 traces missed it, now performed in every case\"; and because positions and lags are measured in event positions, the later positions of A01, A03, A04 and A06 do not establish a shift in clock time. [OCC001, POS002, POS004]\n\nOther differences: small order shifts not central to the hypothesis, such as A03 preceding A04 slightly more often in the later window (about 73 in 100 versus 66 before), are minor and may be side effects of the insertion. [REL008]",
+  "case_id": "case_bd9e1644c53f4d26",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

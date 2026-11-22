@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_45451fa650a0116c.json",
+  "evidence_sha256": "99473514b2b1a4119f992ce325e655035dbda35f30c7f31f7c84bb7892b3383f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:36:21.514249+00:00",
+  "finished_at_utc": "2026-11-15T12:37:44.729096+00:00",
+  "latency_seconds": 83.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11782,
+    "prompt_tokens": 32090,
+    "total_tokens": 43872,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10518,
+      "text_tokens": 1264
+    },
+    "cost": 0.010704499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36869,
+  "text": "### Observed differences\n\n- The choice of activity block after A20 flipped between the windows. In the earlier window, about 82 in 100 traces ran A24, A25 and A26 together after A20 (A20 preceded A24 in about 80% of traces), while the alternative block A21/A22/A23 ran together in only about 19 in 100 traces. In the later window, about 79 in 100 traces run A21, A22 and A23 together after A20 (A20 precedes A21 in about 78%), while A24/A25/A26 fell to about 21 in 100 traces. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, DIR005, REL011, REL012, REL013, REL014, REL015, REL016]\n- The two blocks are mutually exclusive in both windows (A21 and A24 share no more than about 1 in 100 traces in either window), each block occurs only together with A20 (which itself appears in every trace in both windows), and whichever block runs is followed by the end activities A30/A34/A35 in both windows (A21 before A34 rose from about 20% to about 78% of traces, while A24 before A34 fell from about 80% to about 21%). Within each block the three activities co-occur without a fixed internal order. [REL019, REL026, REL032, REL017, REL025, REL038, REL043, REL023, REL030, REL041, REL045, REL022]\n- A06 became much rarer and changed its place: it appeared in about 46 in 100 traces in the earlier window but only about 12 in 100 in the later window; when it occurs in the later window it sits earlier in the trace (mean relative event position about 0.91 before vs about 0.52 after), its outgoing transitions spread over many successors (previously about 92% went to A35; later A15 about 23% and A35 about 15%), and the share of A34 transitions leading into A06 fell from about 44% to about 2%. The later profile rests on only about 24–26 observations. [OCC003, POS001, DIR001, DIR006, REL009, REL010]\n- Smaller shifts: A02 and A04 participation roughly doubled from low bases (about 8% to 17% and 5% to 19%); A08's successor mix changed but is based on very few transitions (9 before, 23 after); A34's position spread widened slightly while its participation stayed at 100%. [OCC001, OCC002, DIR002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the routing after A20 changed: of two alternative three-activity blocks, the A24/A25/A26 block that followed A20 in about 82 in 100 traces in the earlier window was largely replaced by the A21/A22/A23 block, which now follows A20 in about 79 in 100 traces. This is shown directly and consistently: the six block activities' participation flipped in mirror image, A20's outgoing transitions moved from about 81% to A24/A25/A26 to about 78% to A21/A22/A23, the blocks remain mutually exclusive and tied to A20 in both windows, and the chosen block still precedes A30/A34/A35 — a shift in how often two existing alternative paths are taken, not an addition or removal of activities. Screening corroborates the scale of the signal: 67 items qualified where roughly 0.63 would be expected if nothing had changed. A competing explanation the evidence cannot rule out is that the flip reflects a different mix of cases entering the later window rather than a changed routing decision itself; the roughly 1-in-5 residual share of each block shows both paths still exist in both windows. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, DIR005, REL011, REL014, REL019, REL023, REL041]\n\nOther differences: A06 became rare (about 46% to 12% of traces), appears earlier in the trace when it does occur, and lost its strong A34→A06→A35 embedding, which looks like a separate structural change around A06, though the later profile rests on about 24 traces; A02 and A04 rose modestly from low bases, and A08's successor mix changed on very few observations. [OCC003, POS001, DIR001, DIR006, OCC001, OCC002, DIR002]",
+  "case_id": "case_45451fa650a0116c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

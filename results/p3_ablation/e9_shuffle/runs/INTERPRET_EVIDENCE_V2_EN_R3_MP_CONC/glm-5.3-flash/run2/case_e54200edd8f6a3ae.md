@@ -1,0 +1,16 @@
+### Observed differences
+
+- **A03 appears in every trace in the later window.** In the earlier window, A03 was not observed in any of the 200 traces; in the later window it occurs in all 200 traces, exactly once per trace, always at the same early position (normalized position about 0.22, with no variation) [OCC001, POS002].
+- **A07 lost its direct successors.** Earlier, A07's outgoing transitions went to A02 in about 33 in 100 cases, to A06 in about 32, and to A10 in about 36; in the later window, A07 leads to A03 in 100 in 100 cases [DIR002].
+- **A03 took over that branching.** In the later window, A03's outgoing transitions go to A02 in about 39 in 100 cases, to A06 in about 33, and to A10 in about 29 — the same three activities A07 used to feed, at broadly similar shares [DIR001, DIR002].
+- **Co-occurrence and order changed completely.** Earlier, A02, A06 and A10 each always occurred without A03; in the later window, each co-occurs with A03 in every trace, with A03 placed after A07 and before A02, A06 and A10 in every trace [REL001, REL002, REL003, REL004].
+- **Distances shifted by one step.** The gap from A07 to A02, A06 and A10 moved from mostly 1–3 positions earlier to mostly 2–4 positions in the later window, for all three pairs [LAG001, LAG002, LAG003].
+- **Positions are consistent with one insertion.** A02, A06 and A10 sit slightly later in the trace (median normalized position from 0.375 to about 0.44), while A07 sits slightly earlier (0.125 to 0.111), as expected when one activity is added early in each trace [POS001, POS003, POS004, POS005].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, A03 runs as a step inserted directly after A07 and before A02, A06 and A10: previously A07 passed control directly to one of A02, A06 or A10 in roughly equal thirds, whereas now A07 always leads to A03, which occurs once in every trace and then branches to A02 (about 39 in 100), A06 (about 33) or A10 (about 29) [OCC001, POS002, DIR001, DIR002, REL001, REL002, REL003, REL004]. The placement change is shown directly by the successor profiles and the participation reversal, and the ordering, distance and position items all shift by exactly the single step this insertion predicts, in the same direction [LAG001, LAG002, LAG003, POS001, POS003, POS004, POS005]. The screening result also exceeds what chance would produce: 15 control-flow items qualified where about 0.12 would be expected if nothing had changed, though all items describe one underlying trace behaviour rather than independent confirmations [OCC001, DIR001, DIR002, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, POS001, POS002, POS003, POS004, POS005].
+
+Limitations: zero participation in the earlier window means only that A03 was not observed there, so the evidence cannot distinguish a genuinely new activity from an existing one that was never triggered in the earlier sample; and whether the branch shares among A02, A06 and A10 are truly unchanged cannot be confirmed from these two windows [OCC001, DIR001, DIR002].

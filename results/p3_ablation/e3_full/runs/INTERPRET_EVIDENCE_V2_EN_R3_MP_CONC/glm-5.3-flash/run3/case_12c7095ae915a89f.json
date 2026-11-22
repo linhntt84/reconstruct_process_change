@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "89ffe6b2f826b37b8c085ee5dfa1bf5b536727cdd69aeeec0be76a03afd7a28d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:47:16.711694+00:00",
+  "finished_at_utc": "2026-11-16T03:49:16.318812+00:00",
+  "latency_seconds": 119.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13244,
+    "prompt_tokens": 15930,
+    "total_tokens": 29174,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11929,
+      "text_tokens": 1315
+    },
+    "cost": 0.009011499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39487,
+  "text": "### Observed differences\n\n- The order of A02 and A04 changed from fixed to mixed. In the earlier window A02 preceded A04 in 100% of traces; in the later window about 54 in 100 traces still run A02 first, while about 46 in 100 now run A04 before A02 [REL006].\n- Routing around this pair shifted accordingly. In the later window, A01 passes next to A04 in about 43 in 100 of its outgoing transitions (about 6 in 100 before), while its share continuing to A02 fell from about 87 to about 50 in 100 [DIR001]. From A02, a direct transition to A03, not observed in the earlier window, now accounts for about 44 in 100, and A02→A04 fell from about 94 to about 50 in 100 [DIR002]. From A04, a direct transition to A02, also not observed earlier, now accounts for about 41 in 100, while A04→A03 fell from about 96 to about 49 in 100 [DIR004].\n- Distances changed as if the A02/A04 block were swapped. A01→A04 is now adjacent (distance 1) in about 49 in 100 of cases versus about 6 in 100 before [LAG003]; A02→A03 at distance 1 rose from 0 to about 44 in 100 [LAG007]; A04→A03 at distance 1 fell from about 96 to about 49 in 100, with distance 2 now about 43 in 100 [LAG015]; A01→A02 at distance 1 fell from 100% to about 57 in 100 [LAG001]. When A02 does precede A04, the pair remains adjacent as before (distance 1 in about 92 in 100) [LAG008]. Downstream, A02 now reaches A05 and A06 about one step sooner [LAG009, LAG010] and A04 about one step later [LAG016, LAG017].\n- Event positions moved only for the swapped pair: A04's typical position moved earlier (median 0.4 to 0.2, mean 0.39 to 0.28) and A02's later (mean 0.17 to 0.27, upper quartile 0.2 to 0.4), while A01, A03, A05 and A06 kept their positions [POS002, POS004, POS001, POS003, POS005, POS006].\n- The tail of the process is unchanged: A03 still splits between A06 (about 55 in 100) and A05 (about 44 in 100) with nearly identical shares in both windows [DIR003], and A05/A06 remain adjacent and in mixed order throughout [REL007, LAG018, LAG019].\n- A minor shift: transitions from A04 back to A01 rose from about 4 to about 10 in 100 of A04's outgoing transitions, and A04 precedes A01 in about 14 in 100 later traces versus about 7 in 100 earlier; the observation counts behind this are modest [DIR004, REL003, LAG014].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the fixed sequencing between A02 and A04 was relaxed into a mixed order: the earlier uniform block A01→A02→A04→A03 now alternates with the reverse block A01→A04→A02→A03, which accounts for roughly 45 in 100 later traces, while the original order persists with unchanged adjacency in the rest. The change is shown directly by the order relation between A02 and A04 (from 100% fixed to about 54/46) and by the new direct successions A01→A04, A04→A02 and A02→A03; the position shifts of exactly these two activities and the one-step shifts in their distances to A05/A06 are consistent with the same single underlying difference, and the rest of the process (A03's routing, the A05/A06 pair) shows no comparable movement [REL006, DIR001, DIR002, DIR004, LAG001, LAG003, LAG007, LAG008, LAG015, LAG009, LAG010, LAG016, LAG017, POS002, POS004, DIR003]. Fourteen evidence items sit at the very top of their reference distributions (empirical strength about 0.995); they share traces and are not independent confirmations, but they all describe this one coherent difference of a magnitude random re-splits do not typically produce. Limitations: the evidence cannot distinguish whether a new alternative route was added or an ordering constraint was removed, and it cannot rule out that the later window simply mixes case groups with different variant shares rather than reflecting a changed routing rule; no screening baseline is included, so the comparison against chance rests on the reference strengths alone [REL006, DIR002, DIR004].\n\nOther differences: the somewhat more frequent returns from A04 to A01 noted above, based on modest counts [DIR004, REL003, LAG014].",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

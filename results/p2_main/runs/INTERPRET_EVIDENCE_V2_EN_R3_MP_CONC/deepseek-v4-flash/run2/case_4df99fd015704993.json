@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_4df99fd015704993.json",
+  "evidence_sha256": "24708221a41f1cd86bfbff6c79b5bc85c52e8ae9d79a66beb2805ada8d830bfe",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:47:04.895094+00:00",
+  "finished_at_utc": "2026-11-15T00:47:27.297655+00:00",
+  "latency_seconds": 22.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3728,
+    "prompt_tokens": 17290,
+    "total_tokens": 21018,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2991
+    },
+    "cost": 0.0033159640000000002
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 10004,
+  "text": "### Observed differences\n\n- A14 disappears: in the earlier window it appeared in about 26% of traces (mean 0.525 per trace, with 13% recurrence); in the later window it is absent (0% participation). [OCC007, DIR004, POS002, REL011, REL021, REL022]\n- A02 appears: in the later window it occurs in 39% of traces (mean 0.39), while it was absent before. [OCC002, POS001, REL001, REL006]\n- A01 appears: in the later window it occurs in 27.5% of traces, absent before. [OCC001]\n- A03's outgoing routing changes: before it went to A12 (51%) and A13 (49%); after it goes to A02 (54%) and A12 (46%). [DIR002]\n- A12's outgoing routing changes: before it always went to A14; after it always goes to A03. [DIR003]\n- A05, A07, A10, A11 participation drops from about 50% to about 34% of traces. [OCC003, OCC004, OCC005, OCC006]\n- A02 and A13 now co-occur in 39% of traces, always with A02 before A13; before A13 occurred alone in 50.5% of traces and A02 was absent. [REL006]\n- A02 and A03 now co-occur in 39% of traces, with A03 before A02 in 20.5% and interleaved/repeated in 18.5%; before A03 occurred alone in 50.5% and A02 was absent. [REL001]\n- A12 and A03 now have a lag of 1 step in 27.9% of traces (before lag 2 in 25.9%); A03 and A13 now have a lag of 2 steps in 51.7% (before lag 1 in 49.7%). [LAG003, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which A14 is removed and A02 is introduced, with the routing re-wired: A12 now leads to A03 instead of A14, A03 now leads to A02 instead of A13, and A02 leads to A13. This is directly shown by the successor changes (DIR002, DIR003, DIR004), the co-occurrence and order of A02 with A03 and A13 (REL001, REL006), and the lag shifts (LAG002, LAG003). The disappearance of A14 is consistent across OCC, DIR, POS, and REL. A01 also appears as a new activity, but its position and relations are not evidenced, so its role is unclear. The decrease in participation of A05, A07, A10, and A11 is a separate difference, possibly reflecting that these activities became less frequent, but it is not part of the main routing change.\n\nOther differences: A05, A07, A10, A11 participation drops from about 50% to about 34% of traces. [OCC003, OCC004, OCC005, OCC006]\n\nA competing explanation that cannot be fully ruled out is that the observed differences are due to sampling variation, but the number of qualifying items (40) far exceeds the 0.32 expected by chance, and the pattern is internally consistent across multiple indicators.",
+  "case_id": "case_4df99fd015704993",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

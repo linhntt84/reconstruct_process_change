@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_cf38f33e1cdfc390.json",
+  "evidence_sha256": "22bac4c1fea665a956c6fc904b31637c17842549cbff3087dca306250ebd5f17",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:23:22.391663+00:00",
+  "finished_at_utc": "2026-11-15T12:24:42.193586+00:00",
+  "latency_seconds": 79.8,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11586,
+    "prompt_tokens": 15743,
+    "total_tokens": 27329,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10378,
+      "text_tokens": 1208
+    },
+    "cost": 0.008154449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37887,
+  "text": "### Observed differences\n\n- The main change is a flip in which block of activities runs per case. In the earlier window, A16, A17 and A18 each appeared in about 150 of 200 traces (at most once per trace), while A19, A20 and A21 each appeared in about 50 of 200; in the later window these shares reversed, with A16–A18 each in about 49 of 200 traces and A19–A21 each in about 151 of 200. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- Routing out of A15 moved in step. Earlier, about 75 in 100 of A15's outgoing transitions went to A16 (about 27 in 100), A17 (about 23) or A18 (about 26), and about 25 went to A19, A20 or A21 combined; later, about 75 in 100 went to A19 (about 25), A20 (about 22) or A21 (about 28), and only about 24 went to A16–A18 combined. [DIR001]\n- The two blocks behave as alternatives that never share a trace. Pairs such as A16 with A19 show zero co-occurrence in both windows; earlier the A16-side activity was the one present in about 75 in 100 traces and the A19-side in about 25, later this is reversed. [REL009, REL010, REL011, REL014, REL015, REL016, REL018, REL019, REL020]\n- Within-block co-occurrence flipped as well. Earlier, A16, A17 and A18 ran together in about 75 in 100 traces (both orders in similar proportions, so no fixed order among them) while A19–A21 co-occurred in only about 25 in 100; later, A19–A21 co-occur in about 75 in 100 traces (again both orders) and A16–A18 in about 25. [REL007, REL008, REL013, REL022, REL023, REL025]\n- A15 precedes whichever block runs: earlier it co-occurred with A16, A17 or A18 in about 75 in 100 traces, always before them, and with A19–A21 in about 25; later it co-occurs with A19–A21 in about 75 in 100 (again A15 first) and with A16–A18 in about 25. [REL001, REL002, REL003, REL004, REL005, REL006]\n- A25 is present in essentially every trace in both windows; earlier it co-occurred with A16–A18 in about 75 in 100 traces (with mixed or interleaved ordering), later with A19–A21 in about 75 in 100 (likewise mixed). [REL012, REL017, REL021, REL024, REL026, REL027]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the choice between two alternative paths after A15 flipped: earlier, roughly three in four cases ran the path containing A16, A17 and A18 — executed together in no fixed order, alongside A25 — and roughly one in four ran the path containing A19, A20 and A21; in the later window the shares reversed to roughly one in four and three in four. Chance is an unlikely explanation for the pattern as a whole: 34 control-flow items qualified where about 0.4 would be expected if nothing had changed, and all items describe the same flip, each with a difference larger than in about 199 of 200 random re-splits. The routing change is visible directly in A15's outgoing transitions, and the participation and relational profiles agree with it; all involved activities occur in substantial shares in both windows, no activity appears or disappears, activities still occur at most once per trace, and the two blocks never co-occur in either window — so the pattern fits a shift in how often existing alternative paths are taken rather than activities being added, removed or reordered. The evidence cannot rule out that the two windows simply captured a different mix of cases reaching A15 (for example different case types) instead of a changed routing decision; both would look identical here. [OCC001, OCC004, DIR001, REL001, REL004, REL009, REL022]\n\nOther differences: none beyond this flip; the order within each block remains unfixed (both orders in similar proportions) in both windows, and A25's near-universal presence is unchanged. [REL007, REL013, REL022, REL025, REL012, REL024]",
+  "case_id": "case_cf38f33e1cdfc390",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

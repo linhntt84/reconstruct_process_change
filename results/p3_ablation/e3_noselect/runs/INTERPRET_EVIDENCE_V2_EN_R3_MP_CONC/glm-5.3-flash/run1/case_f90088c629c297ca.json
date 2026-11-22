@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "bffa2cd5d5b38ebad19dcab8be89fdd41574a7d04695dea580bc8248ab1fa5bb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:45:17.728856+00:00",
+  "finished_at_utc": "2026-11-14T13:46:33.754143+00:00",
+  "latency_seconds": 76.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12013,
+    "prompt_tokens": 26118,
+    "total_tokens": 38131,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10709,
+      "text_tokens": 1304
+    },
+    "cost": 0.0099242
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38528,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 were not observed in any of the 200 traces; in the later window A14 runs in about 37 in 100 traces, A20 in about 34 in 100 and A15 in about 29 in 100 [OCC013, OCC014, OCC019].\n- In the later window the three never occur in the same trace (co-occurrence is zero for every pair), and their shares add up to about 99 in 100, so exactly one of them executes in almost every trace [REL001, REL002, REL005].\n- Before, every observed outgoing transition of A36 went to A21, and A36 reached A21 in one step in 100 in 100 traces; in the later window A36's outgoing transitions go to A14 in about 37 in 100, to A20 in about 34 and to A15 in about 29, with a direct step to A21 in only about 1 in 100, and the A36→A21 distance is now two steps in about 99 in 100 traces [DIR027, LAG001].\n- Each of A14, A15 and A20 is followed by A21 in all of its observed occurrences, and each co-occurs with A21 — always with the new activity first — in exactly its participation share; A36 likewise precedes each of them in exactly those shares, while A21 itself still runs in every trace in both windows [DIR010, DIR011, DIR016, REL003, REL004, REL006, REL007, REL008, REL009, DIR017].\n- Event positions match this picture: the new activities sit at about 0.35 of the trace on average, A21 moved slightly later (mean about 0.37 to 0.39) and A36 slightly earlier (about 0.33 to 0.32); these are event positions, not clock times [POS001, POS002, POS003, POS004, POS005].\n- Away from this, routing among existing activities shifted modestly: after A26, transitions moved from A30 (about 30 to 18 in 100) toward A31 and A32 (each to about 30 in 100); after A30 the preferred successor flipped from A31 (about 55 in 100) to A27 (about 62 in 100), with mirror flips after A31, A32 and A33; A13's participation rose from about 20 to 27 in 100 traces while A34 and A35 declined slightly [DIR019, DIR022, DIR023, DIR024, DIR025, OCC012, OCC024, OCC025].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA specific possibility supported by the evidence is that, in the later window, a mutually exclusive three-way choice between A14, A15 and A20 sits between A36 and A21: traces that previously ran A36 immediately followed by A21 now run A36, then exactly one of the three, then A21. This is shown directly by the successor change at A36, by each new activity always leading to A21, by the A36→A21 distance moving from one to two steps, by the three never co-occurring while together covering about 99 in 100 traces, and by the matching position shifts; the key items exceed about 995 of 1000 random re-splits, and the many agreeing items describe one underlying difference rather than independent confirmations [DIR027, DIR010, DIR011, DIR016, LAG001, REL001, REL002, REL005, POS004, POS005, POS001].\n\nLimitations: zero participation in the earlier window strictly establishes only non-observation, so a stable presence of A14, A15 or A20 below the detection rate before the change point cannot be fully excluded, although with 200 traces per window and later shares of 29–37 in 100 this is unlikely; the evidence also cannot tell whether the residual direct A36→A21 step (about 1 in 100) is a retained rare alternative or sampling noise [OCC013, OCC014, OCC019, DIR027].\n\nOther differences: the modest rerouting after A26 and in the A30–A33 region, the participation increase of A13 and the slight declines of A34 and A35 are separate from this hypothesis and may partly reflect sampling variation between the two windows [DIR019, DIR022, DIR024, OCC012, OCC024, OCC025].",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

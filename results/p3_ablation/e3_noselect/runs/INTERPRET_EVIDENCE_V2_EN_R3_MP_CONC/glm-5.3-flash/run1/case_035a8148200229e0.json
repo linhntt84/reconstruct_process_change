@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_035a8148200229e0.json",
+  "evidence_sha256": "cbba56d09fd96497e62c6c97eab954f7b6962bb29abb093393ae7f3f3870c0f4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:13:58.621665+00:00",
+  "finished_at_utc": "2026-11-14T14:15:06.713939+00:00",
+  "latency_seconds": 68.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11113,
+    "prompt_tokens": 11346,
+    "total_tokens": 22459,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9994,
+      "text_tokens": 1119
+    },
+    "cost": 0.0072584
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36878,
+  "text": "### Observed differences\n\n- In the earlier window, A04 ran in about 49 in 100 traces (98 of 200), always directly followed by A03 and always before A03; in the later window A04 is not observed in any trace. [OCC003, DIR003, REL003, POS003]\n- In the earlier window, A01 is not observed at all; in the later window it runs in about 50 in 100 traces (99 of 200), always as the first event of the trace and always directly followed by A03. [OCC001, POS001, DIR001]\n- These two changes mirror each other: before, roughly half of the traces contained A04 together with A03 in the order A04 then A03, and the other half A03 alone; in the later window roughly half contain A01 together with A03 in the order A01 then A03, and the other half A03 alone. A01 and A04 never occur in the same trace in either window. A03 itself appears in every trace in both windows at an essentially unchanged average position (about 0.51 of the trace before, 0.50 after). [REL001, REL002, REL003, POS002]\n- In the later window, successors are redistributed around A05, A13 and A07: A13 is now followed by A07 in about 32 in 100 of its outgoing transitions (not observed before), A07 is now followed by A03 in about 29 in 100 (not observed before) while its \"followed by A13\" share falls from about 92 to about 56 in 100, and A05's transitions to A07 fall from about 42 to about 21 in 100 while transitions to A13 appear at about 21 in 100. [DIR004, DIR005, DIR010]\n- Several other activities shift participation by only a few percentage points (for example A02 from about 18 to 14 in 100 traces, A10 from about 27 to 21, A07 and A13 up from about 24 to 30); random re-splits of a stable process produce differences this large in roughly 25 to 45 of 100 cases (empirical strengths about 0.5–0.76). [OCC002, OCC004, OCC005, OCC006, OCC008, OCC009, OCC010, OCC011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the activity preceding A03 in about half of the cases was replaced: cases that previously began with A04, always directly followed by A03, now begin with A01, also always directly followed by A03, while A04 no longer appears and A03's position is unchanged. Because A01 is absent from the earlier window and A04 from the later one, this is a replacement of one activity by another rather than a change in how often existing paths are taken. The pattern is shown directly and consistently by occurrence, position, direct-successor and relation indicators, concerns about 98–99 of 200 traces in each window (so it is not a rare one-window variant), and each supporting item has an empirical strength of about 0.995 — a difference this large arises in about 1 in 200 random re-splits of a stable process. [OCC001, OCC003, POS001, POS003, DIR001, DIR003, REL001, REL002, REL003]\n\nThe evidence cannot rule out that A01 and A04 are the same step recorded under different labels in the two windows rather than a genuine replacement; also, no chance-expectation baseline accompanied this evidence, so the judgement rests on the directness and consistency of the relational and positional items rather than on a comparison with the number of items expected without change. [OCC001, OCC003, REL002]\n\nOther differences:\n- A new route through A13 and A07 appears in the later window (A13 → A07 and A07 → A03 gains, A07 → A13 and A05 → A07 losses offset by A05 → A13); the evidence shows this only as successor redistribution and does not tie it to the A01/A04 replacement. [DIR004, DIR005, DIR010]\n- Small participation decreases for A02, A09, A10, A12, A14 and A15 (a few percentage points each) are within the range that random splits of an unchanged process produce. [OCC002, OCC005, OCC006, OCC008, OCC010, OCC011]",
+  "case_id": "case_035a8148200229e0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_985448163fb22b6c.json",
+  "evidence_sha256": "2eeaf952fed671e48d338c6a0cbb6c1bb0cf1244034192c181e3ed246337ebcb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:03:05.098333+00:00",
+  "finished_at_utc": "2026-11-15T02:04:27.998022+00:00",
+  "latency_seconds": 82.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11751,
+    "prompt_tokens": 13991,
+    "total_tokens": 25742,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10630,
+      "text_tokens": 1121
+    },
+    "cost": 0.00797415
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41859,
+  "text": "### Observed differences\n\n- The five activities A25, A26, A31, A32 and A33 each occurred exactly once per case in the earlier window (in 100 in 100 cases, never repeated); in the later window each occurs about 3 times per case on average (3.06) and recurs within the same case in about 67 in 100 cases, while still appearing in every case. [OCC001, OCC002, OCC003, OCC004, OCC005]\n- Routing out of A33 changed: in the earlier window all of A33's observed outgoing transitions went to A20; in the later window about 67 in 100 go to A25 — a transition not observed earlier — and about 33 in 100 still go to A20 (612 outgoing transitions observed). [DIR001]\n- Before, the five activities always co-occurred, with A25 ahead of all the others and A33 after all of them in every case, and no fixed order among A26, A31 and A32 (each pair split roughly 50/50 between the two orders); in the later window, in about 67 in 100 cases each pair among them is interleaved or repeated rather than executed in a single order. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]\n- Execution gaps between A26, A31 and A32 spread out: before, one followed the other within 1–2 event positions (immediately adjacent in about 64–69 in 100 observations); in the later window only about 10–13 in 100 are adjacent, and gaps of 3–5 steps now appear. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]\n- The event positions of the five activities became much more variable (standard deviation from about 0.05 to about 0.14) and slightly later on average, consistent with the added repetitions rather than a relocation. [POS001, POS002, POS003, POS004, POS005]\n- Elapsed time between consecutive completions roughly doubled on two other activity pairs: A09→A10 from about 1.0 h to about 2.0 h (median about 0.98 h to about 1.99 h), and A11→A10 from about 1.0 h to about 2.0 h. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, the sequence A25 → A26/A31/A32 (in no fixed order) → A33 appears to be executed repeatedly within the same case: A33, which previously always passed control to A20, now routes back to A25 in about 67 in 100 of its outgoing transitions, and each of A25, A26, A31, A32 and A33 runs about three times per case instead of once, recurring in about 67 in 100 cases while remaining mandatory in every case. [DIR001, OCC001, OCC002, OCC003, OCC004, OCC005]\n\nThe hypothesis is supported directly and consistently: the occurrence and recurrence changes are identical across all five activities, the new A33→A25 routing is observed outright, and the shift of every pair among the five to interleaved-or-repeated order, the spread of execution gaps from 1–2 steps to 1–5 steps, and the roughly threefold widening of the position spreads all match a repeated block (these indicators partly reflect the same underlying behaviour, so they agree rather than independently confirm); with 27 qualifying control-flow items against about 0.44 expected if nothing had changed, chance sampling cannot account for the pattern as a whole. [REL001, LAG001, POS001, screening.by_family]\n\nLimitations: the evidence shows that the block repeats but not what prompts the extra iterations, and in about a third of cases each activity still occurs only once; a competing explanation the evidence cannot rule out is that the block runs several times per case for different items rather than as rework of the same case, which would look identical here. [OCC001, DIR001]\n\nOther differences: A timing change on activities outside this block — elapsed time between consecutive completions roughly doubled for A09→A10 and for A11→A10 (about 1.0 h to about 2.0 h in both, with 2 time items against about 0.01 expected without change); this is a consistent timing change in its own right, and the evidence cannot show whether it is connected to the repeated block. [TWAIT001, TWAIT002, screening.by_family]",
+  "case_id": "e4a_985448163fb22b6c",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

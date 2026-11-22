@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_2573016e760ecea1.json",
+  "evidence_sha256": "5c18fbbbaeb1315ee239a69446bdb940f5c174d5fb3e5fc7d03d19e7182fb517",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:58:15.551474+00:00",
+  "finished_at_utc": "2026-11-16T03:59:13.804647+00:00",
+  "latency_seconds": 58.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7538,
+    "prompt_tokens": 10896,
+    "total_tokens": 18434,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6519,
+      "text_tokens": 1019
+    },
+    "cost": 0.005403399999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23320,
+  "text": "### Observed differences\n\n- Activity A06 disappeared from the sample: in the earlier window it ran in about 52 in 100 traces (104 of 200), while in the later window it was observed in 0 of 200 traces. [OCC006, POS003]\n- The routing around A06 changed: in the earlier window, all observed outgoing transitions of A05 went to A06, and all observed outgoing transitions of A06 went to A04; in the later window, all observed outgoing transitions of A05 go directly to A04, and A06 has no observed outgoing transitions, consistent with its non-occurrence. [DIR001, DIR002]\n- Before, A06 co-occurred with A02, A03, A04 and A05 in the same roughly 52-in-100 traces, always after A05 and before A03/A04; in the later window these co-occurrences drop to zero and the partner activities appear without A06 (for example, A02 occurs in about 50 in 100 later traces, never together with A06). [REL004, REL007, REL009, REL010]\n- Every measured distance across A06's former position shortened by exactly one step: A02→A03 went from 4 to 3, A02→A04 from 3 to 2, A05→A03 from 3 to 2, and A05→A04 from 2 to 1. [LAG001, LAG002, LAG003, LAG004]\n- Mean event positions shifted as expected if traces became one event shorter: A05 from 0.25 to about 0.33 and A04 from 0.75 to about 0.67, while the relative order of A05 before A04 is unchanged in both windows. [POS001, POS002, REL008]\n- Participation of the other activities barely moved: A01 went from about 48 to about 50 in 100 traces, and A02–A05 from about 52 to about 50–51 in 100; these differences have low empirical strength (about 0.12), typical of random re-splits of an unchanged process. [OCC001, OCC002, OCC003, OCC004, OCC005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A06 is no longer executed: traces that previously contained the block A02 → A05 → A06 → A04 → A03 now contain A02 → A05 → A04 → A03, with A05 leading directly to A04. The share of traces containing this block is essentially unchanged (about 52 in 100 traces earlier, about 50–51 in 100 later), so the evidence points to A06 being removed from an existing path rather than the path being taken more or less often. The supporting signs are direct and mutually consistent: the successor change is observed directly on A05's outgoing transitions; A06's absence is complete (0 of 200 later traces against 104 of 200 earlier); and the occurrence, relation, lag and position items all describe the same single structural difference, with each distance across A06's former slot contracting by one step. [OCC006, DIR001, DIR002, POS003, REL004, REL007, REL009, REL010, LAG001, LAG002, LAG003, LAG004]\n\nA limitation: strictly, zero participation shows only that A06 was not observed in the later window, so the evidence cannot fully exclude that A06 survives in variants outside this sample — though its earlier participation of about 52 in 100 traces makes a pure sampling explanation unlikely. No screening baseline is present in the evidence, so the judgement rests on the directness and consistency of the directional and relational items rather than on a comparison with a chance expectation. [OCC006]\n\nOther differences: the remaining items show only small participation and co-occurrence fluctuations of about 1.5 percentage points for A01–A05, with empirical strength around 0.12; these are consistent with sampling noise rather than a separate behavioural change. [OCC001, OCC002, OCC003, OCC004, OCC005, REL001, REL002, REL003, REL005, REL006, REL008]",
+  "case_id": "case_2573016e760ecea1",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

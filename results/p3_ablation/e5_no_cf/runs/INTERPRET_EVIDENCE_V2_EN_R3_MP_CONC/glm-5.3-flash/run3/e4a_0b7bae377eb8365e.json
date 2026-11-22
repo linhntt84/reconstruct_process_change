@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_0b7bae377eb8365e.json",
+  "evidence_sha256": "4029962282e0a78140481630507626983ed0c4998756eaf4f7c15a0ab2f594b5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:51:36.593198+00:00",
+  "finished_at_utc": "2026-11-15T12:52:07.864176+00:00",
+  "latency_seconds": 31.27,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4447,
+    "prompt_tokens": 2970,
+    "total_tokens": 7417,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3818,
+      "text_tokens": 629
+    },
+    "cost": 0.002669
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16160,
+  "text": "### Observed differences\n\n- The elapsed time between the completions of A26 and A32 roughly doubled. In the earlier window these gaps typically lasted about 0.9 hours (median ~0.88 h, middle half between ~0.78 and ~0.99 h); in the later window they typically lasted about 1.8 hours (median ~1.85 h, middle half between ~1.62 and ~2.04 h). The spread also grew, from a standard deviation of about 0.14 hours to about 0.29 hours. [TWAIT001]\n- The elapsed time between the completions of A33 and A32 also roughly doubled: from a typical ~0.15 hours (mean ~0.17 h) in the earlier window to ~0.28 hours (mean ~0.35 h) in the later window, with the middle half moving from about 0.06–0.26 hours to about 0.18–0.49 hours. [TWAIT002]\n- How often these consecutive pairs occurred hardly changed (42 vs 46 observed gaps for A26→A32; 48 vs 46 for A33→A32), so the difference lies in the duration of the gaps, not in how often the pairs occur. [TWAIT001, TWAIT002]\n- Both differences are unusual for random variation: across 2,000 random re-splits of the pooled traces, only about 1 in 2,000 produced a difference this large for either pair, and screening found 2 qualifying time items where about 0.01 would be expected if nothing had changed. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completion events increased roughly twofold for the steps ending at A32, both from A26 (about 0.9 to 1.8 hours on average) and from A33 (about 0.17 to 0.35 hours on average). The two time items agree in direction and in the pattern of change, each rests on 42–48 observed gaps, differences of this size arose in only about 1 in 2,000 random re-splits, and the number of qualifying items (2) is far above the roughly 0.01 expected by chance. A consistent change in these elapsed times is a timing hypothesis in its own right and needs no structural counterpart. [TWAIT001, TWAIT002]\n\nLimitations: TWAIT measures elapsed time between consecutive completions, so the evidence cannot show whether the extra time is waiting, batching, or longer execution; and both measured pairs end at A32, so the change is established only for steps into A32, not for the process as a whole. A competing explanation the evidence cannot rule out is that A32 is now executed later after its predecessors (a shift in placement) rather than the steps themselves taking longer, since no positional or relational evidence is available to distinguish these. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_0b7bae377eb8365e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

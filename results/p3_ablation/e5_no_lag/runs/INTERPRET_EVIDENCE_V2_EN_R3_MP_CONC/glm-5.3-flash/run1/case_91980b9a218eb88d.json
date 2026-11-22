@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_91980b9a218eb88d.json",
+  "evidence_sha256": "a08fd1262a05e23f9c67dd4b02006a9f50e05fb738d5c75d70701f69ffaa9546",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:08:29.714110+00:00",
+  "finished_at_utc": "2026-11-14T13:10:11.744884+00:00",
+  "latency_seconds": 102.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16348,
+    "prompt_tokens": 11512,
+    "total_tokens": 27860,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15075,
+      "text_tokens": 1273
+    },
+    "cost": 0.009900800000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54216,
+  "text": "### Observed differences\n\n- The three activities A19, A20 and A25, which behave as a group, swapped order with A26 and A27. In the earlier window, A19 preceded A26 in about 36 in 100 traces while A26 preceded A19 in almost none; in the later window this is reversed — A26 precedes A19 in about 31 in 100 traces and A19 precedes A26 in almost none. The same reversal holds for A20 and A25 against A26 and A27 (for example A20 before A26: about 24 in 100 → 0; A26 before A20: 0 → about 37 in 100). Co-occurrence levels stayed similar (roughly 25–39 in 100 traces in both windows), so the activities still run together — only their order changed. [REL001, REL002, REL003, REL004, REL006, REL007]\n- The group now appears much later within traces: mean relative position moved from about 0.33 to about 0.59–0.61 for A19, A20 and A25, while A26 (about 0.35 → 0.33) and A27 (about 0.58 → 0.56) stayed essentially in place. [POS001, POS002, POS003, POS004, POS005]\n- Routing around the group was rewired. Earlier, about 92–99% of the observed outgoing transitions of A19, A20 and A25 went to A26; in the later window they go mainly to A32 and A28 (A20: about 56% to A32, 43% to A28). Conversely, A28 — earlier leading almost only to A32 (99%) — now sends about 53% of its outgoing transitions to A19/A20/A25, and A27 sends about 43% to them. A45 now leads to A26 in about 94% of its outgoing transitions, where earlier about 95% went to A25/A19/A20. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n- Relative to A28 the group no longer has a fixed order: in the later window A20 precedes A28 in about 17 in 100 traces and follows it in about 21 (earlier about 24 vs 0); A25 shows the same mixed pattern. [REL005, REL008]\n- Participation of the group changed little: A19 appears in about 38 vs 33 in 100 traces, A20 in about 25 vs 38, A25 in about 39 vs 30 — all remain frequent in both windows, so the difference is where they run, not whether they run. [POS001, POS002, POS003]\n- A24 is now observed in about 58 in 100 traces, up from about 43 (mean occurrences per trace 0.43 → 0.58). [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the group of activities A19, A20 and A25 — which in the earlier window ran early in the trace, before A26 and the following A26–A27–A28 sequence, and fed into A26 — is now executed after A26 and A27, with no fixed order relative to A28, and flows on mainly to A32; A45, which earlier fed this group, now leads directly into A26. The order reversal is shown directly in six activity pairs, the group's position shift occurs while A26 and A27 stay in place, and the successor changes match the same picture; twenty items qualified where an unchanged process would produce about 0.55, and each difference exceeds essentially all random re-splits, so the pattern as a whole is not a sampling artefact. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n\nLimitations: positions are event positions, not clock time, so the evidence shows reordering within traces, not a change in clock timing; and the wiring after the move is not fully resolved — A28 now leads to the group in about 53% of its outgoing transitions while the group also leads back to A28 in about 39–48%, so a repeat or feedback of the group around A28 cannot be distinguished from a simple reinsertion. A competing explanation the evidence cannot rule out is that the later window draws a different mix of process variants in which the group runs late, rather than the same surrounding flow with the group relocated. [DIR001, DIR004, DIR005, REL005, REL008, POS001]\n\nOther differences: A24 is now observed in about 58 in 100 traces, up from about 43 (mean occurrences per trace 0.43 → 0.58); this participation increase is not part of the ordering hypothesis above. [OCC001]",
+  "case_id": "case_91980b9a218eb88d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

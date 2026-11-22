@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_0b7bae377eb8365e.json",
+  "evidence_sha256": "4a51f30541c7c3e3719a1a1e677cd8792d935dcd9509813d65a1fbf4afaa9bd9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:43:44.714012+00:00",
+  "finished_at_utc": "2026-11-15T03:45:32.273364+00:00",
+  "latency_seconds": 107.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15869,
+    "prompt_tokens": 13640,
+    "total_tokens": 29509,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14614,
+      "text_tokens": 1255
+    },
+    "cost": 0.0099805
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51859,
+  "text": "### Observed differences\n\n- In the earlier window, every case ran the same fixed chain: A22 was always followed directly by A23, and A23 always directly by A24, so A24 came two steps after A22. In the later window, A22, A23 and A24 still occur in all 200 cases, but these direct successions are no longer the only pattern. [DIR004, DIR005, POS005, LAG001, LAG002, LAG003]\n- Three activities that were not observed at all in the earlier window (0 of 200 cases) — A14, A15 and A20 — occur regularly in the later window: A15 in about 41 of 100 cases, A14 in about 29 and A20 in about 30, each at most once per case. [OCC001, OCC002, OCC003]\n- The three behave as mutually exclusive alternatives: no later case contains two of them, and about 199 of 200 later cases contain exactly one of the three. [REL001, REL002, REL006]\n- Each of the three always executes after A22 and before A24; in about 56 of 100 later cases it sits between A22 and A23, in about 44 between A23 and A24. [REL003, REL005, REL007, REL009, REL010, REL012, LAG001, LAG003]\n- Routing shifted accordingly: A22's outgoing transitions, previously all leading to A23, now lead to A23 in about 44 of 100 and to one of the three new activities in about 56; A23's, previously all leading to A24, now lead to A24 in about 57 of 100 and to one of the three in about 43. Each new activity is followed by A23 or A24 in roughly equal shares. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- The distance from A22 to A24 grew from two steps in all earlier cases to three steps in about 995 of 1000 later cases; the new activities sit near the middle of the case (relative position about 0.51), with A22 slightly earlier and A24 slightly later than before. [LAG002, POS001, POS002, POS003, POS004, POS005]\n- The elapsed time between consecutive completions into A32 roughly doubled: from A26 the median rose from about 0.9 to about 1.8 hours (42 vs 46 observations), and from A33 from about 0.15 to about 0.28 hours (48 vs 46). [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which a mutually exclusive choice among three activities — A14, A15 and A20 — was inserted into the segment between A22 and A24. Earlier, every case ran A22 → A23 → A24 directly; in the later window essentially every case executes exactly one of the three, placed either between A22 and A23 (about 56 in 100 cases) or between A23 and A24 (about 44 in 100), lengthening the A22-to-A24 distance from two to three steps. The support is direct and consistent across indicator families: participation rose from 0 to 58–82 of 200 cases per activity, the relation profiles show each new activity always after A22 and before A24 and split around A23, the outgoing transitions of A22 and A23 redistributed in matching proportions, and the lag and position profiles fit an insertion; the volume of qualifying items (28 control-flow, 2 time) far exceeds what an unchanged process would produce (about 0.4 and 0.01 expected). A limitation: the earlier window shows zero occurrences, so the evidence cannot fully distinguish a newly added block from a pre-existing variant that was absent from that sample, and it cannot show what determines the choice among the three activities or between the two insertion positions. [OCC001, OCC002, OCC003, REL001, REL003, REL004, REL005, DIR004, DIR005, LAG001, LAG002, LAG003, POS001]\n\nOther differences: The elapsed time between consecutive completions into A32 roughly doubled from both of its predecessors (A26: median about 0.9 to about 1.8 hours; A33: about 0.15 to about 0.28 hours). This is a consistent timing change that supports a timing hypothesis in its own right; the evidence cannot establish whether it is connected to the inserted activities or has a separate cause. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_0b7bae377eb8365e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

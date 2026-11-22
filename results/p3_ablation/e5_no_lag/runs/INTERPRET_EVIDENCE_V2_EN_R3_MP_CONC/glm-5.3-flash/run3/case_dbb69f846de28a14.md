@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A27, A36, A37 and A42 each appeared in every trace (mean occurrences about 1.0 per trace); in the later window each appears in only about half of the traces (47–54 in 100), with mean occurrences about 0.5. [OCC001, OCC002, OCC003, OCC004]
+- The later traces split into two disjoint groups: A27 co-occurred with A36, A37 and A42 in practically every earlier trace, but in the later window they share a trace in only about 1 in 100 cases, with A27 alone in about 53 in 100 and a trio activity alone in about 47 in 100. A36, A37 and A42 still always appear together, in no fixed order among themselves, in both windows. [REL011, REL012, REL013, REL020, REL021, REL022]
+- Routing around the trio changed: earlier, A25 led into the trio (about 32–34 in 100 of its outgoing transitions to each of A42, A36, A37) and each trio member led on to A28 (about 31–35 in 100); in the later window A25 leads almost always directly to A28 (about 97 in 100), and the trio members lead to A31 (about 26–35 in 100) instead of A28 (about 1 in 100). [DIR001, DIR003, DIR004, DIR005]
+- A26 earlier led to A27 in about 99 in 100 of its outgoing transitions; in the later window it leads to A27 in about 52 in 100 and directly to A36, A37 or A42 in about 45 in 100. [DIR002]
+- The trio moved from before A28 and A26 to after them: earlier, A36 preceded A26 in 100 in 100 and A28 in about 995 in 100 of joint occurrences; in the later window A26 precedes A36 in about 45 in 100 and A28 precedes A36 in about 46 in 100. The trio's mean event position moved from about 0.40 to about 0.57 of the trace, while A28 (0.46 to 0.39) and A26 (0.60 to 0.54) moved earlier. [REL006, REL007, REL008, REL014, REL015, REL016, POS006, POS007, POS008, POS004, POS002]
+- A28 and A31, which earlier always co-occurred with A27 (A28 before A27 in about 98 in 100 traces), now also run without it: A28 appears without A27 in about 47 in 100 later traces, and A31 similarly. [REL009, REL010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the flow around the trio A36/A37/A42 and the activity A27 was restructured into two alternatives. Earlier, traces consistently ran A25, then the trio in mixed order, then A28, A26, A27 and A31. In the later window, in roughly half of the traces the trio is skipped — A25 passes directly to A28 and the trace continues through A26 and A27 to A31 — while in the other half A27 is skipped and the trio executes after A26 and A28, handing over to A31 instead of A28. [OCC001, REL011, DIR001, DIR002, DIR003, REL006, REL014, REL010]
+
+This is a structural change, not merely a shift in how often existing paths are taken: the trio and A27 went from mandatory (100 in 100 traces) to optional (about 50 in 100), and A25 now bypasses the trio altogether. Chance is an unlikely explanation for the pattern as a whole: 39 control-flow items qualified where fewer than 1 would be expected without a change, and each item's difference exceeds about 199 of 200 random re-splits. The relational evidence shows the reordering directly, and the participation, routing and position items all describe the same restructuring — though they partly restate one underlying difference rather than confirming it independently. [OCC001, DIR001, REL006, POS006]
+
+A competing explanation the evidence cannot rule out is that the later window mixes two coexisting case types (for example an old and a new variant) rather than rerouting a single process; nothing in the data shows why a trace takes one branch or the other.
+
+Other differences: minor position shifts accompany the restructuring — A25's mean event position moved slightly later (about 0.34 to 0.37) and A31's slightly earlier (about 0.65 to 0.63) — while both remain in every trace in both windows. [POS001, POS005]

@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, A01 and A02 each run exactly once in every case (200 of 200 traces), while neither was observed in any of the 200 earlier traces; A01 typically falls about three-quarters of the way through the case, and A02 is always the final event. [OCC001, OCC002, POS001, POS002]
+- The route into A04 changed: earlier, A06 sent about half of its outgoing transitions to A04 (about 51 in 100) and half to A13, and A13 split similarly (about 50 in 100 to A04); later, those transitions to A04 are gone and go to A01 instead (about 48 and 52 in 100), and A01 itself always leads on to A04. A04 is no longer observed as the immediate successor of A06 or A13 (immediate-follow share fell from about 21 and 20 in 100 to 0). [DIR002, DIR004, DIR001, LAG001, LAG003]
+- A02 was appended after A12: earlier, A12 ended every case (final position in all traces, no outgoing transitions observed); later, A12 leads to A02 in all of its observed outgoing transitions, A02 is always last, and A12's mean position slips to about 0.94. A12 also now sits 3–5 steps after A06 and A13 rather than 2–3 (the 2-step share fell from about 33 and 30 in 100 to 0). [DIR003, POS005, POS002, LAG002, LAG004]
+- In the later window the new activities sit in fixed relations: A06 and A13 always precede A01, A01 always precedes A12 and A02, and A06, A12 and A13 always precede A02. [REL003, REL005, REL001, REL004, REL007, REL008, REL009]
+- A04, A06 and A13 each occupy slightly earlier normalised positions than before (for example A04 from about 0.84 to 0.81, A06 from about 0.73 to 0.65), consistent with the cases simply containing more events rather than with reordering among them. [POS003, POS004, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two activities were added to the execution of every case: A01 was inserted between the alternating A06/A13 pair and A04 — the exit that earlier led from A06 or A13 directly to A04 now passes through A01 and always continues to A04 — and A02 was appended as a new final step after A12, which earlier closed every case. [OCC001, OCC002, DIR002, DIR004, DIR001, DIR003, POS002, POS005]
+
+The support is direct and consistent: participation in A01 and A02 went from 0 of 200 traces to 200 of 200; the outgoing shares of A06 and A13 moved from A04 (about half each) to A01 (about half each) on full 200-trace support in both windows; A04 lost its immediate-successor role, A12 lost its terminal position to A02, and the occurrence, direction, position, relation and lag indicators all describe the same insertion and append. With 25 qualifying control-flow items against roughly 0.19 expected if nothing had changed, sampling fluctuation cannot account for the pattern as a whole. [OCC001, OCC002, DIR002, DIR004, LAG001, LAG003, POS005, POS002]
+
+An important competing explanation remains: zero earlier participation alone cannot distinguish a newly added activity from a previously rare or optional one that became mandatory, since the earlier window might simply have missed rare executions of A01 and A02; the simultaneous rerouting observed on all 200 traces in both windows makes pure sampling fluctuation unlikely, but not impossible. [OCC001, OCC002, DIR002, DIR004]
+
+Other differences: in about half of the later traces the pairs A01–A04 and A04–A02 are recorded as interleaved or repeated (about 51 in 100) rather than in one fixed order; since A01 and A02 each occur exactly once per case, this hints that A04 may occur more than once in those traces, but the evidence does not show whether such repetition is new. [REL002, REL006]

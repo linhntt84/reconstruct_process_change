@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_5128c7bc9bcdf516.json",
+  "evidence_sha256": "ee1900d514d25e0f6663e19092fb1bc43960c28ac58a452631f12d41eeda0719",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:02:50.962531+00:00",
+  "finished_at_utc": "2026-11-15T12:04:30.066857+00:00",
+  "latency_seconds": 99.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14220,
+    "prompt_tokens": 17269,
+    "total_tokens": 31489,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12873,
+      "text_tokens": 1347
+    },
+    "cost": 0.00970035
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45212,
+  "text": "### Observed differences\n\n- In the earlier window, the activities A15, A17, A18, A19, A20 and A21 followed one another in a flexible order: each of them split its outgoing transitions across three or four different successors — for example, after A15 the next activity was A18 in about 62 in 100 transitions, and A19, A21 or A20 in about 12–14 in 100 each; after A26 the next activity split evenly between A19 and A17. Each of these activities appeared in about 200 of 200 traces in both windows. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- In the later window, the same activities run in one near-fixed sequence, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27: each of these steps now carries about 995–1000 in 1000 of its source activity's outgoing transitions, while formerly common alternatives (such as A15→A19, A18→A27 and A26→A19) are observed in about 5 in 1000 transitions or fewer. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- The earlier flexibility ran in both directions between pairs: before, A15 preceded A19 within five steps in about 51 traces while A19 preceded A15 in about 149; after, A15→A19 occurs at exactly two steps in all 199 supporting traces and A19→A15 in only about 1 trace. [LAG002, LAG014]\n- Pairwise distances collapsed to the chain's exact values: A17 reaches A21 exactly four steps later (about 995 in 1000) versus a spread over one to four steps before; A26 reaches A19 exactly four steps later versus one step in about half of the earlier transitions; A15 reaches A27 exactly five steps later versus two to five before. [LAG010, LAG027, LAG005]\n- A27's direct predecessor changed: before it directly followed A18 in about 53 in 100 of A18's outgoing transitions; after it directly follows A20 (about 995 in 1000) and is reached from A18 four steps later via the chain. [DIR003, DIR005, LAG013, LAG020]\n- Relative event positions shifted consistently with this reordering: A18's mean position moved earlier (about 0.68 to 0.62 of trace length) and A19's later (about 0.59 to 0.65), with A20 and A21 slightly later and A15 and A17 slightly earlier; since positions are event-based, this corroborates rather than independently proves the reordering. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints between A15, A17, A18, A19, A20 and A21 — with A26 upstream and A27 downstream — changed from a largely unfixed order, in which these activities followed one another in varying orders with both directions common, to a single fixed sequence A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 executed in essentially every later-window case, while each activity's participation stayed at about 200 of 200 traces in both windows. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG002, LAG014]\n\nThe change is shown directly by relational evidence rather than inferred from frequencies alone: successor distributions collapsed from three or four alternatives to one (A17 now leads to A15 in about 995 in 1000 of its outgoing transitions versus about 56 in 100 before), and pairwise distances collapsed to the exact chain distances. [DIR002, LAG002, LAG010] The volume of flagged evidence far exceeds what chance produces: 42 control-flow items qualified where about 0.43 would be expected without a change across 87 tested units, the items describe one consistent chain rather than scattered differences, and each item's difference exceeds about 995 in 1000 random re-splits of the pooled data. [DIR001, DIR003, LAG013, LAG027]\n\nLimitations: the evidence shows aggregate ordering across traces, so it cannot distinguish a genuine tightening of the ordering constraint within individual cases from the earlier window simply pooling several fixed variants of which only one remains in the later window. A few flagged distance items rest on a single later-window observation and carry no weight. [LAG014, LAG015, LAG019, LAG021, LAG028]\n\nOther differences: none beyond the reordering above; the positional shifts in POS001–POS006 reflect the same behaviour and are not treated as independent confirmations. [POS001, POS002, POS003, POS004, POS005, POS006]",
+  "case_id": "case_5128c7bc9bcdf516",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_119be22bafaf14b3.json",
+  "evidence_sha256": "f82a4b82b107366b6de8876403838135a01d40773f3776a5b07a7d4569ff70a8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:35:39.703786+00:00",
+  "finished_at_utc": "2026-11-15T03:36:56.568171+00:00",
+  "latency_seconds": 76.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11203,
+    "prompt_tokens": 4939,
+    "total_tokens": 16142,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10238,
+      "text_tokens": 965
+    },
+    "cost": 0.00634235
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37261,
+  "text": "### Observed differences\n\n- The outgoing transitions of A30 flipped: in the earlier window about 60 in 100 went to A27 and about 40 to A31; in the later window about 62 went to A31 and only about 38 to A27. [DIR002]\n- A31 shows the mirror-image flip: earlier about 60 in 100 of its outgoing transitions went to A30 and about 40 to A27; later about 62 went to A27 and about 38 to A30. [DIR003]\n- The branch shares at A26 moved accordingly: A31 fell from about 31 to about 17 in 100 and A30 rose from about 21 to 27, while A32 rose from about 22 to 30 and A33 stayed near 27 in 100. A26 occurs in all 200 traces of both windows. [DIR001]\n- Step gaps agree with this reversal: A26→A30 is now typically 1 step apart (about 62 in 100, previously about 60 in 100 at 2 steps), A26→A31 typically 2 steps (about 62, previously 1 step at 60), A30→A27 typically 2 steps (about 62, previously 1 at 60), and A31→A27 typically 1 step (about 62, previously 2 at 60). Each pair is observed in about 103 of 200 earlier traces and about 87 of 200 later traces. [LAG001, LAG002, LAG003, LAG004]\n- The elapsed time between consecutive completions of A01 and A03 roughly doubled, from a mean of about 0.9 hours to about 1.7 hours (medians about 0.84 vs 1.75 hours), with barely overlapping spreads (earlier upper quartile about 0.95 h, later lower quartile about 1.5 h) on similar counts (39 vs 41 pairs). [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the preferred traversal direction of the loop between A30 and A31 reversed. In the earlier window the dominant route ran A26 → A31 → A30 → A27, exiting to A27 from A30; in the later window it runs A26 → A30 → A31 → A27, exiting from A31. The conditional transition shares at A30 and A31 each flipped from roughly 60/40 to 38/62, the entry shares at A26 shifted the same way, and all four step-gap distributions moved exactly as this reversal predicts. All involved activities appear with substantial support in both windows (A26 in every trace; the loop pairs in roughly 44–52 in 100 traces), so this is a shift between existing paths rather than a path replacement or removal. Chance is also an unlikely explanation: 7 control-flow items qualified where about 0.31 would be expected without a change, and each difference exceeds all but about 1 in 200 random re-splits. Limitations: the DIR and LAG items largely view the same underlying change rather than independent confirmations, the evidence covers only transitions out of A26, A30 and A31 (so an upstream shift in the mix of cases reaching A26 cannot be ruled out), and the drop in loop-pair support from about 103 to 87 of 200 traces may be sampling noise. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]\n\nOther differences:\n- The elapsed time between consecutive completions of A01 and A03 increased by about 0.8 hours on average (mean about 0.9 → 1.7 hours); this is a timing change in its own right on a different part of the process, far above its chance expectation (1 item vs about 0.008, exceeding all but about 1 in 2,000 re-splits), and the evidence does not link it to the routing reversal. [TWAIT001]\n- Within A26's branches, the rise of A32 from about 22 to 30 in 100 (with A33 stable near 27) is not corroborated by any other item. [DIR001]",
+  "case_id": "e4a_119be22bafaf14b3",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,25 @@
+
+
+### Observed differences
+
+- A02 becomes more frequent and earlier: it appears in about 8 in 100 traces before and about 34 in 100 after, with median event position falling from about 0.53 to 0.33; A40 precedes A02 in about 31 in 100 traces after, versus about 5 in 100 before, and when A40 and A02 occur within five steps, A40 is immediately before A02 in about 100 in 100 later observations. [OCC001, POS001, REL009, LAG005]
+- A02's successor profile shifts from a spread over A44, A15 and A23 (largest about 19 in 100) to A19, A24 and A21 (about 37, 27 and 24 in 100), based on 16 earlier and 70 later outgoing observations. [DIR001]
+- A40's successors shift from A22, A23 and A20 (about 37, 30 and 27 in 100) to A02, A19, A21 and A24 (about 31, 29, 20 and 18 in 100). [DIR009]
+- A29's successors change from A21, A19 and A24 (about 38, 31 and 31 in 100) to A20, A22 and A23 (about 30, 34 and 33 in 100). [DIR008]
+- A19, A21 and A24 are present in both windows (about 31, 38 and 31 in 100 before; about 44, 29 and 29 in 100 after); they lead to A30 in the earlier window (about 97-99 in 100 of their outgoing transitions) but to A25 in the later window (about 95-100 in 100), and they move from after A25/A29 to before A25/A29 (about 30-38 in 100 before to about 28-44 in 100 after). [DIR002, DIR004, DIR007, REL013, REL014, REL021, REL022, REL029, REL030, POS002, POS004, POS007, POS008, POS009]
+- A20, A22 and A23 are present in all traces in both windows; they lead to A25/A20/A23 in the earlier window but to A30 in the later window, and they move from before A25/A29 to after A25/A29 (about 98-100 in 100 before to about 98-100 in 100 after). [DIR003, DIR005, DIR006, REL017, REL018, REL024, REL025, REL027, REL028, POS003, POS005, POS006, POS008, POS009]
+- The same reversal is seen directly between A19/A21/A24 and A20/A22/A23: before A20/A22/A23 precede A19/A21/A24 in about 28-38 in 100 co-occurring traces, after A19/A21/A24 precede A20/A22/A23 in about 28-44 in 100. [REL010, REL011, REL012, REL015, REL016, REL019, REL020, REL021, REL022, REL023, REL026]
+- A25 and A29 move earlier (median positions fall from about 0.44 to 0.38 for A25 and from about 0.67 to 0.59 for A29); A29 is 1-4 steps before A20 in about 100 in 100 later observations, while the earlier window has only one such observation at 5 steps, and A29 is 4-5 steps before A30 in about 99 in 100 later observations, versus 2 steps before in about 97 in 100 earlier observations. [POS008, POS009, LAG003, LAG004]
+- A40's distance to A25 shortens: A40 is 4-5 steps before A25 in about 99 in 100 earlier observations, but 2-3 steps before A25 in about 100 in 100 later observations. [LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+- The main hypothesis is that the later window reorders the sequence around A25 and A29: A19, A21 and A24, when present, are executed before A25/A29 and before A20/A22/A23, while A20, A22 and A23 are executed after A25/A29; A02 becomes more frequent and, when present, is an early predecessor of A19/A21/A24, and A40 routes to this early block instead of directly to A20/A22/A23. [OCC001, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009, LAG003, LAG004, LAG005, LAG007]
+- The signs are direct: A29's successors change from A21/A19/A24 to A20/A22/A23; A19/A21/A24 change from leading to A30 to leading to A25; A20/A22/A23 change from leading to A25/A20/A23 to leading to A30; and the REL items show the corresponding order reversals. [DIR008, DIR002, DIR004, DIR007, DIR003, DIR005, DIR006, REL013, REL014, REL021, REL022, REL029, REL030, REL017, REL018, REL024, REL025, REL027, REL028]
+- The signs are consistent: positions of A19/A21/A24 move earlier, positions of A20/A22/A23 move later, A25/A29 move earlier, A02 becomes more frequent and earlier, and A40's successors shift to the early block. [POS002, POS004, POS007, POS003, POS005, POS006, POS008, POS009, OCC001, POS001, DIR009, DIR001]
+- Limitation: the evidence is control-flow only, so it does not identify a cause; A02 was rare in the earlier window (about 8 in 100 traces), so it may have been a previously rare path that became more common rather than a newly added activity, and the order changes may reflect routing choices rather than a fixed new sequence. [OCC001, REL009, DIR001, DIR009]
+
+Other differences:
+- A41 is present in all traces in both windows, but its mean occurrences per trace rise from about 1.5 to 1.8 and its recurrence support rises from about 33 in 100 to 40 in 100. [OCC002]

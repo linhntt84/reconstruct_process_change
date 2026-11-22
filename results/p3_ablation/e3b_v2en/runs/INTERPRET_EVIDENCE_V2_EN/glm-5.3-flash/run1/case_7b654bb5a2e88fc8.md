@@ -1,0 +1,21 @@
+### Observed differences
+
+- Participation is essentially unchanged: in both windows every case contains A21, A22 and A23, and the three optional activities A14, A15 and A20 appear in shares that sum to about 1 (about 38, 31 and 32 per 100 cases before; about 31, 33 and 37 per 100 in the later window), consistent with exactly one of them running in each case. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- Their placement relative to the backbone reversed: before, A14, A15 and A20 always ran before A21 and before A22 (for example, A14 preceded A21 in 38 of 100 cases and never followed it); in the later window A21 precedes them in every co-occurrence (in about 31, 33 and 37 of 100 cases respectively, never the reverse), and A22 likewise always precedes them. [REL001, REL002, REL004, REL005, REL006, REL007]
+
+- The optional activities' mean relative event position moved from about 0.31–0.33 to about 0.59–0.60 of the case, while A21, A22 and A23 stayed nearly in place (means about 0.35 to 0.32, 0.58 to 0.55, and 0.61 to 0.59). [POS001, POS002, POS003, POS004, POS005, POS006]
+
+- Routing followed the same pattern: before, A40 passed to one of the three optional activities (about 38, 31 and 32 per 100) and each of them always led to A21, while A22 always led to A23 and A23 always to A27; in the later window A40 leads directly to A21, the optional activities lead to A23 in about 39–54% of their outgoing transitions or straight to A27 in the rest (i.e., they sometimes sit before A23 and sometimes after it), A22 leads to A23 in about 52 of 100 transitions and to an optional activity in the rest, and A23 leads to A27 in about 48 of 100 and to an optional activity in the rest. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL003, REL008]
+
+- Step distances changed accordingly: A40 reaches A21 in one step instead of two, A22 reaches A27 in three steps instead of two, and the previously always-adjacent pairs A22–A23 and A23–A27 now have one event between them in about 48 and 52 of 100 cases respectively. [LAG001, LAG002, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the three-way choice among A14, A15 and A20 now runs after A22 — inserted between A22 and A27, before A23 in roughly half the cases and after A23 in the rest — whereas it previously ran between A40 and A21; consequently A40 now flows directly into A21. [REL001, REL002, REL004, REL005, REL006, REL007, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004]
+
+The support is direct and consistent: 24 qualifying items against about 0.4 expected without change (roughly 60 times the chance expectation); the order reversals run from 100% to 0% with roughly 60–76 supporting traces per window for the optional activities and all 200 traces for the backbone pairs; the new routing shares and step distances match the relocation quantitatively; and the backbone's own positions and pairwise order barely moved, arguing against a general reshuffling of the case. Every item's difference exceeded those seen in about 99.5 of 100 random re-splits of the pooled data. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: the REL, DIR, LAG and POS items largely describe the same traces, so they corroborate one another but are not independent confirmations; sampling differences in variant frequencies remain a competing explanation in principle, although a complete order reversal across 60–76 paired observations per activity is far outside what random re-splits produce. The evidence also cannot establish whether the split placement around A23 (A20 lands after A23 in about 6 of 10 of its runs, A14 about evenly) is a fixed new routing or case-by-case variation, and the position shifts (optional activities about +0.27, backbone about -0.02 to -0.03) favour reading this as the optional block moving later rather than the backbone moving earlier, without proving it. [REL003, REL008, DIR001, DIR002, DIR003, POS001, POS002, POS003, POS004, POS005, POS006]

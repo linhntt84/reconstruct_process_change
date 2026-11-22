@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_974f121318182c8d.json",
+  "evidence_sha256": "41ff9c9c1549cf242b3566d1dd52da8138a6ce663e7b3d752ee22377924ab0f2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:50:43.545716+00:00",
+  "finished_at_utc": "2026-11-15T01:51:58.896724+00:00",
+  "latency_seconds": 75.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10625,
+    "prompt_tokens": 2498,
+    "total_tokens": 13123,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9887,
+      "text_tokens": 738
+    },
+    "cost": 0.0056872
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41766,
+  "text": "### Observed differences\n\n- In the earlier window, the elapsed time between consecutive completion events of A10 and A11 centred on about 1.0 hour (mean ≈ 1.0 h, median ≈ 1.0 h, middle half between ≈ 0.9 and 1.1 h). In the later window it centred on about 2.0 hours (mean ≈ 2.0 h, median ≈ 2.0 h, middle half between ≈ 1.8 and 2.2 h) — an increase of about 0.98 hours, close to a doubling, based on 334 measured intervals before and 305 after. [TWAIT001]\n- The shift is uniform across the whole distribution: the 25th percentile, median and 75th percentile each rose by roughly 0.9–1.1 hours, and the spread grew in proportion (standard deviation 0.17 h → 0.35 h), so the distribution kept its shape and the entire segment moved up by about an hour rather than a few cases becoming extreme outliers. Only about 1 in 2000 random re-splits of the pooled data produced a larger difference. [TWAIT001]\n- This was the only item to qualify among 72 tested units: the timing family produced 1 item against roughly 0.009 expected without a change (about a hundred times its chance expectation), while the control-flow family produced 0 items against about 0.26 expected, so no structural difference accompanies the timing shift. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a timing change in the segment from A10 to A11: in the later window, the elapsed time from the completion of A10 to the following completion of A11 was about twice as long as before (mean about 1.0 h → about 2.0 h, +0.98 h). The change is direct, since this indicator measures exactly that elapsed time; it is consistent, since all quartiles rose by a similar 0.9–1.1 hours with a proportional spread, which argues against a few outliers or a reshaped distribution; and it is unlikely to be a sampling artefact, as the timing family yielded about a hundred times its chance expectation (1 item vs ~0.009) and the difference exceeded about 999 of 1000 random re-splits. Control-flow screening found nothing beyond chance (0 items vs ~0.26 expected), which fits a change confined to timing; a consistent change in these elapsed times is a hypothesis in its own right and needs no structural counterpart. [TWAIT001]\n\nLimitations: the evidence rests on a single indicator for a single activity pair, and elapsed time between consecutive completions cannot show whether the extra hour is waiting or processing; a subtle compositional change, such as a rare path with longer times that stays below the control-flow thresholds, cannot be ruled out. [TWAIT001]\n\nOther differences: the number of measured consecutive A10–A11 completion intervals fell slightly, from 334 to 305 (about 9% fewer); with no relational evidence on ordering or participation, this small shift may be sampling variation. [TWAIT001]",
+  "case_id": "e4a_974f121318182c8d",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

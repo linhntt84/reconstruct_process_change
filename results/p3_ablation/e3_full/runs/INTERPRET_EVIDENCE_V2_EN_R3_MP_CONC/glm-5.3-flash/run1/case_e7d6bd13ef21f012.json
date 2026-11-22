@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_e7d6bd13ef21f012.json",
+  "evidence_sha256": "31e5a501c5e6c4916a230a5d571109aac9086f1f2620a895ada44413f219a97d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:06:20.807318+00:00",
+  "finished_at_utc": "2026-11-16T01:07:58.613631+00:00",
+  "latency_seconds": 97.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11833,
+    "prompt_tokens": 10534,
+    "total_tokens": 22367,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10641,
+      "text_tokens": 1192
+    },
+    "cost": 0.0074966
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38818,
+  "text": "### Observed differences\n\n- In the earlier window, every trace ran the same fixed sequence A02 → A04 → A05 → A06: all of A02's outgoing flow went to A04, all of A04's went to A05, and A04, A05 and A06 each appeared in all 200 traces, at roughly one-third, two-thirds and the final position of the trace. [DIR001, DIR003, POS003, POS004, POS005, REL007, REL011, REL012]\n- In the later window, A04 has disappeared (0 of 200 traces, down from 200 of 200) while A03 now appears in every trace (200 of 200, up from 0): A02 flows to A03 in 100% of cases, A03 flows to A05 in 100%, and A03 runs about a quarter into the trace, where A04 used to be. [OCC002, OCC003, DIR001, DIR002, DIR003, POS002, POS003, REL006, REL008, REL009, REL010]\n- A01, not observed earlier (0 of 200 traces), now closes every trace: A06 leads to A01 in 100% of its later outgoing transitions, A01 sits at the final position, and A06 moved from last to second-to-last (normalized position about 1.0 to 0.75). [OCC001, DIR004, POS001, POS005, REL001, REL002, REL004, REL005]\n- The rest of the chain is unchanged: A05 still occurs in all traces and still precedes A06; its position shift (about two-thirds to one-half) is consistent with the trace simply gaining one step. [POS004, POS005, REL004, REL005, REL011, REL012]\n- All 24 evidence items show differences larger than in about 199 of 200 random re-splits, and each rests on 200 observations in the window where its activities occur, so the picture is one consistent signal rather than a scatter of weak ones. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the flow after A02 was restructured: A04 stopped executing and A03 now runs in its place, turning the sequence A02 → A04 → A05 → A06 into A02 → A03 → A05 → A06. The change is shown directly: participation flipped completely for A04 (200 of 200 traces to 0) and A03 (0 to 200 of 200), A02's successor changed from A04 to A03, the A04→A05 edge was replaced by A03→A05, and the relation items confirm A03 now co-occurs with and precedes A05 and A06 while A04 no longer co-occurs with A02, A05 or A06. Occurrence, direction, position and relation indicators all describe this one difference, and every item is backed by 200 observations. A competing explanation the evidence cannot fully rule out is that A04, A03 and A01 were always optional and the two windows merely caught opposite extremes of triggering, although complete 0-to-100% flips in 200-trace samples make that implausible; zero participation also strictly means only that an activity was not observed, and no chance-expectation baseline was provided to quantify how unusual this item count would be without a change. [OCC002, OCC003, DIR001, DIR002, DIR003, POS002, POS003, REL003, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n\nOther differences: A01 was appended as a new final step — absent from the earlier window, it now follows A06 in every trace, extending the sequence by one step; this addition is distinct from the A04-to-A03 substitution but is equally direct and consistent in the evidence. [OCC001, DIR004, POS001, POS005, REL001, REL002, REL004, REL005]",
+  "case_id": "case_e7d6bd13ef21f012",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

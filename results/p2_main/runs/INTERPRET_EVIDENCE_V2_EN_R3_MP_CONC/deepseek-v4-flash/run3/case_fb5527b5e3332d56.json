@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "c830288d573ab38f6ed2f1880e71c56f6eb77d79c0fbebc65a6726eb32d544a5",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:58:42.938528+00:00",
+  "finished_at_utc": "2026-11-15T01:59:04.831515+00:00",
+  "latency_seconds": 21.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3852,
+    "prompt_tokens": 15008,
+    "total_tokens": 18860,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3022
+    },
+    "cost": 0.003043408
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 10131,
+  "text": "### Observed differences\n\n- In the earlier window, activity A22 occurred in about 52% of traces; in the later window it occurred in about 99.5% of traces. [OCC001]\n- Activities A27, A28 and A33 each occurred in about 48.5% of traces earlier, but in only about 0.5% of traces later. [OCC002, OCC003, OCC004]\n- From A21, the outgoing transition to A22 increased from about 52% to about 99.5% of observed transitions, while transitions to A27, A28 and A33 (together about 48.5% earlier) almost disappeared. [DIR001]\n- A21 and A22 co-occurred in about 52% of traces earlier and about 99.5% later, always with A21 before A22. [REL001]\n- A21 co-occurred with each of A27, A28, A33 in about 48.5% of traces earlier, but in about 0.5% later. [REL002, REL003, REL004]\n- A22 and each of A27, A28, A33 were mutually exclusive in both windows (co-occurrence 0), but earlier A22 was present in about 52% and each of the others in about 48.5% of traces; later A22 is present in about 99.5% and the others in about 0.5%. [REL006, REL007, REL008]\n- A23 co-occurred with each of A27, A28, A33 in about 48.5% of traces earlier, with those activities before A23; later co-occurrence dropped to about 0.5%. [REL009, REL010, REL011]\n- A27, A28 and A33 co-occurred with each other in about 48.5% of traces earlier, in mixed order; later they almost never co-occur (about 0.5%). [REL012, REL013, REL014]\n- The lag between A21 and A23 was 2 steps in about 52% of traces and 4 steps in about 48.5% earlier; later it was 2 steps in about 99.5% and 4 steps in about 0.5%. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the process changed from having two alternative paths between A21 and A23 — one via A22 and one via a group of activities A27, A28 and A33 — to almost always taking the A22 path, with A27, A28 and A33 becoming nearly absent. In the earlier window, about half the traces went A21→A22→A23 and about half went A21→(A27/A28/A33)→A23; in the later window, about 99.5% of traces follow the A22 path. This is directly shown by the increase in A22 participation, the decrease in A27/A28/A33 participation, the shift in A21's outgoing transitions, the co-occurrence changes, and the lag change between A21 and A23. The number of qualifying items (34) far exceeds the 0.45 expected by chance, so the overall pattern is unlikely to be a sampling artefact.\n\nA limitation is that the later window contains only one trace with A27/A28/A33, so the exact routing after those activities is based on a single observation; however, their near-disappearance itself is supported by items with full support in both windows.\n\nOther differences: The relative position of A23 shifted slightly earlier (mean from about 0.55 to 0.53 of trace length), consistent with the shorter path. [POS001] The order among A27, A28 and A33 was mixed before (no fixed order) and is now essentially unobservable. [REL012, REL013, REL014]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

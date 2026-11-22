@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_99097bac282e202d.json",
+  "evidence_sha256": "5f9bb1a57c0e840a7692472abc9d8db79c0db925b9f33c3b12bcf142a8a855e0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:01:40.347446+00:00",
+  "finished_at_utc": "2026-11-15T05:03:19.961568+00:00",
+  "latency_seconds": 99.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14801,
+    "prompt_tokens": 28367,
+    "total_tokens": 43168,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13113,
+      "text_tokens": 1688
+    },
+    "cost": 0.01165555
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45894,
+  "text": "### Observed differences\n\n- The activities A21, A22 and A23 each ran in about 75 in 100 traces in the earlier window but only about 25 in 100 in the later window (about 150 vs 49 of 200 traces each), while A24, A25 and A26 moved in the opposite direction, from about 25 in 100 to about 76 in 100 (about 50 vs 151 traces). [OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]\n- The two groups behave as alternatives: in the earlier window traces typically contained A21–A23 without A24–A26 (e.g., A21 without A24 in about 75 in 100 traces) and A21–A23 appeared together in about 75 in 100; in the later window traces typically contain A24–A26 without A21–A23 (about 76 in 100) and A24–A26 appear together in about 76 in 100. A25's relative position barely moved (mean about 0.70 vs 0.67 of the trace), so this is a change in how often the block runs, not where it sits. [REL013, REL014, REL021, REL015, REL022, REL028, REL034, REL035, REL039, POS002]\n- Routing out of A20 flipped accordingly: before, about 75 in 100 of A20's outgoing transitions went to A21, A22 or A23 (roughly 26, 23 and 25 in 100); in the later window, about 75 in 100 go to A24, A25 or A26 (roughly 25, 22 and 28 in 100), on about 200 outgoing transitions per window. [DIR003]\n- Downstream co-occurrence flipped in the same direction: A30 co-occurred with A21–A23 in about 75 in 100 traces before but with A24–A26 in about 76 in 100 after, and A32/A33 shifted from co-occurring mainly with A21–A23 (about 48 in 100) to mainly with A24–A26 (about 52 in 100). [REL018, REL025, REL031, REL036, REL040, REL043, REL019, REL026, REL032, REL037, REL041, REL044]\n- A10 became more frequent and later: it appears in about 21 in 100 traces, up from about 6 in 100; its mean relative position moved from about 0.57 to about 0.82 of the trace with much less spread; about 90 in 100 of its outgoing transitions now go to A33 (about 18 in 100 before, on 42 vs 11 outgoing transitions); A32 now sends about 20 in 100 of its outgoing transitions to A10, up from about 1 in 100; and A10 typically co-occurs with A24–A26 (about 17 in 100 traces) with those activities usually preceding it. [OCC002, POS001, DIR002, DIR004, REL004, REL005, REL006]\n- Spacing changed modestly where the new routing runs: A20→A24 is now more often 2–3 steps apart (one-step share down from about 54 to about 33 in 100) and A32→A33 more often 2 steps apart (up from about 3 to about 14 in 100). [LAG001, LAG002, LAG003]\n- A02 participation fell from about 9 to about 1 in 100 traces, but this rests on only 18 vs 2 observations, and its later-window transition profile is based on 2 outgoing transitions. [OCC001, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the majority of cases route through the A24–A26 block where they previously routed through the A21–A23 block: the two three-activity blocks act as mutually exclusive alternatives whose roles reversed (about 75 vs 25 in 100 traces), A20's outgoing transitions moved from A21–A23 to A24–A26, and the downstream activities A30, A32 and A33 now co-occur with A24–A26 instead of A21–A23. A secondary supported difference is the larger role of A10, which now participates in about 21 in 100 cases, sits later in the trace, typically leads to A33, and is reached from A32 in about 20 in 100 of that activity's outgoing transitions. [OCC003, OCC006, DIR003, REL015, REL022, REL028, REL036, REL037, OCC002, POS001, DIR002, DIR004]\n\nThe volume of qualifying items (62, against roughly 1 expected if nothing had changed) is far beyond what an unchanged process produces, and the key changes rest on large support — about 150 vs 49 traces for the participation flips and about 200 outgoing transitions per window for A20's routing — with every item's difference exceeding 199 of 200 random re-splits of the pooled data. The participation, routing and co-occurrence items largely describe one underlying shift rather than independent confirmations, but they agree in direction and magnitude. [OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR003, REL007, REL010, REL015]\n\nThe evidence cannot distinguish a modified routing rule from a shift in the mix of pre-existing process variants (for example a changed case mix), which would produce the same reversal in variant frequencies; the A02 decrease and A10's earlier-window profile rest on very few observations (18 vs 2 traces, and 11 outgoing transitions) and could reflect rare-variant sampling; and the internal order within each block is established only loosely through the small lag shifts. [OCC001, DIR001, OCC002, DIR002, LAG001, LAG003]",
+  "case_id": "case_99097bac282e202d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

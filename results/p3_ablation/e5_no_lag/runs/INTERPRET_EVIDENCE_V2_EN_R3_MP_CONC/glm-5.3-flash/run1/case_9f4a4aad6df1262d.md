@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window the six activities ran in a near-fixed chain: A31 always continued to A22, A22 led to A20 in about 99 in 100 of its outgoing transitions, A20 to A23 (about 99 in 100), A23 to A24 (essentially all), A24 to A26 (about 99 in 100), A26 to A25 (about 99 in 100), and A25 to A32 (about 93 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- In the later window this chain is loosened in both directions: A31 now splits between A22 (about 52 in 100) and A24 (about 47 in 100); A20 still mostly leads to A23 (about 67 in 100) but also to A24, A25 and A26 (about 10–11 in 100 each); and A24, A25 and A26 each send a sizable share back to the first group (for example A24 to A22 about 23 in 100, A25 to A20 about 20 in 100, A26 to A20 about 13 in 100). [DIR001, DIR002, DIR004, DIR005, DIR006, DIR007]
+
+- The route to A32 moved: A23, which previously never led to A32, now does so in about 49 in 100 of its outgoing transitions (its share to A24 fell from all to about 15 in 100), while A25's share to A32 dropped from about 93 in 100 to about 43 in 100. [DIR003, DIR005]
+
+- The clearest difference is the order between the two groups A20/A22/A23 and A24/A25/A26. Earlier, the first group preceded the second in about 98–99 in 100 traces for every one of the eight pairs; in the later window the order is mixed or reversed: A24 precedes A23 in about 83 in 100 traces (previously about 1–2 in 100) and A20 in about 73 in 100, A26 precedes A23 in about 67 in 100, A20 with A26 and A23 with A25 are close to even, while A22 still precedes A24 in about 53 in 100 and A26 in about 77 in 100. Both activities of every pair still occur together in essentially all traces in both windows, and interleaved-or-repeated orders remain rare (about 1–2 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- Relative event positions shifted consistently with this: A20, A22 and A23 now appear later in the trace (mean relative position about 0.59 to 0.63, 0.56 to 0.59 and 0.62 to 0.68), A24, A25 and A26 earlier (about 0.65 to 0.59, 0.70 to 0.68 and 0.67 to 0.64); these are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the strict sequencing between the two activity groups was relaxed: A20/A22/A23 no longer always run before A24/A25/A26 — A24 in particular now precedes A23 in about 83 in 100 traces and A20 in about 73 in 100, where previously the reverse order held in about 98–99 in 100 traces — and the surrounding routing changed accordingly, with the entry activity A31 now feeding either A22 or A24, and the path to A32 now often taken from A23 rather than mainly from A25. [REL001, REL006, DIR007, DIR003, DIR005]
+
+The order change is shown directly by the relation indicator, consistently in one direction across all eight activity pairs, each backed by about 200 traces per window; co-occurrence is complete in both windows, so participation of all six activities is unchanged and only their order changed; the transition and position items corroborate the same picture. The 21 qualified control-flow items are roughly forty times the number expected for an unchanged process (about 0.5), and every item's difference exceeds about 995 of 1,000 random re-splits, so the pattern as a whole is unlikely to be a sampling artefact. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006]
+
+Limitations: the evidence cannot distinguish a genuinely loosened ordering constraint within one flow from a coexistence of the original flow with a new, partly reversed variant, because the original order still occurs in a substantial share of later traces (for example A20 before A24 in about 25 in 100) and the new flexibility is partial (A22 still precedes A26 in about 77 in 100). Whether individual activities may now repeat or interleave cannot be established, as interleaved-or-repeated orders remain at about 1–2 in 100, and the transition shares are shares of outgoing transitions rather than of cases. [REL001, REL005, REL006]

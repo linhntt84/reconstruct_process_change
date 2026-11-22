@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_91980b9a218eb88d.json",
+  "evidence_sha256": "667a4154a2897191aede4e589b8e5a9ec26e461579f969866bfa90dc39aed94b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:10:58.765409+00:00",
+  "finished_at_utc": "2026-11-15T04:12:55.643616+00:00",
+  "latency_seconds": 116.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17562,
+    "prompt_tokens": 15457,
+    "total_tokens": 33019,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16007,
+      "text_tokens": 1555
+    },
+    "cost": 0.01109955
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52054,
+  "text": "### Observed differences\n\n- The order between A26 and the trio A19/A20/A25 flipped: in the earlier window each of the trio ran before A26 (in about 24–38 of 100 traces, depending on the pair) and practically never after it; in the later window A26 runs before each of them in about 29–37 of 100 traces, while the old order survives in at most about 1 of 200 traces. [REL001, REL003, REL006]\n- The same trio also swapped order with A27: before, A19/A20/A25 preceded A27 in about 24–38 of 100 traces; after, A27 precedes them in about 29–37 of 100. Pairs with A28 that were previously fixed (A20 then A28; A25 then A28) now appear in both orders in similar shares (roughly 13–21 of 100 each way). [REL002, REL004, REL005, REL007, REL008]\n- Positions moved accordingly: A19, A20 and A25 shifted from about one-third of the trace (mean 0.32–0.33) to about three-fifths (0.59–0.61), while A26 (0.35 to 0.33) and A27 (0.58 to 0.56) stayed in place; A26 and A27 occur in every trace in both windows. [POS001, POS002, POS003, POS004, POS005]\n- Successors were rewired. Before, A19, A20 and A25 led almost exclusively to A26 (92–99% of their outgoing transitions); after, they lead mainly to A32 and A28 (together about 85–99%). A45, which previously split into A25/A19/A20 (about 35/35/24 of its transitions), now leads to A26 in about 94%. A27 and A28, previously leading almost only to A28 and A32, now also lead into A19/A20/A25 (roughly 40–55% of their transitions). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n- Distances changed consistently: A45→A26 shortened from two steps (94 of 100 traces) to one (94 of 100); A27→A32 lengthened from two steps (97 of 100) to three (93 of 100). The old adjacencies A19→A26 (74 traces) and A45→A25 (76 traces) practically disappeared (2 and 1 traces), while new one-to-two-step links appeared where 1–2 observations existed before: A27→A19 and A27→A20 (65 and 75 traces), A28→A20 (42), A19→A32 (65). A27→A28 and A28→A32 are no longer uniformly immediate (one step in 98 of 100 falling to 55, and 99 falling to 45). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011]\n- A24 occurs in about 58 of 100 traces in the later window, up from about 43 (mean occurrences per trace 0.43 to 0.58). [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative branch formed by A19, A20 and A25 — one of which runs in each case, since their co-occurrences with A26 add up to about one per trace in both windows — was relocated. In the earlier window it sat between A45 and A26 (A45 → one of the trio → A26) at about one-third of the trace; in the later window A45 leads directly into A26, and the branch runs later in the trace, after A27 and interleaved with A28, from where the flow reaches A32. This is shown directly by the order flips with A26 and A27, the position shift of the trio while A26 and A27 stayed put, the successor rewiring at A45, A19/A20/A25, A27 and A28, and the matching distance changes; with 31 qualifying control-flow items against about 0.62 expected for an unchanged process, and every item exceeding about 995 of 1000 random re-splits, chance sampling cannot account for the pattern as a whole. [REL001, REL003, REL006, POS001, POS002, POS003, DIR001, DIR002, DIR003, DIR006, LAG001, LAG006, LAG010, LAG011]\n\nLimitations: the internal arrangement of the relocated branch is not fixed — A20 and A25 each occur both before and after A28 in similar shares, and A27 leads both directly to A28 and into the branch — so the evidence supports the relocation itself but not one single new sequence. A competing reading the evidence cannot fully exclude is that the same order statistics arise from a different routing change without a physical move of the branch; the near-disappearance of the old adjacencies makes a pure shift in path frequencies unlikely, but the exact new control flow cannot be reconstructed from these indicators alone. A few new-pair lag profiles rest on only 1–2 before-window observations, though the conclusion rests on the high-support items. [REL005, REL008, DIR004, LAG003, LAG004]\n\nOther differences: A24 participates more often (about 43 to 58 of 100 traces), which is independent of the branch relocation; the mix inside the branch also shifted, with A20 running in about 38 of 100 traces (was 25) and A25 in about 30 (was 39). [OCC001, POS002, POS003]",
+  "case_id": "case_91980b9a218eb88d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

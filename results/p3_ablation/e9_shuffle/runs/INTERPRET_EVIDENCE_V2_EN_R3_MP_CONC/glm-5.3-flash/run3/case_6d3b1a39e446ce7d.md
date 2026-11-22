@@ -1,0 +1,22 @@
+### Observed differences
+
+- Participation: in the earlier window, A36, A37 and A42 each ran in about 47 in 100 traces and A27 in about 55 in 100; in the later window all four run in essentially every trace (about 99–100 in 100), roughly once per case. [OCC001, OCC002, OCC003, OCC004]
+- Alternatives became companions: earlier, A27 shared a trace with A36, A37 or A42 in only about 1 in 100 cases (they were mutually exclusive); in the later window they occur together in about 99–100 in 100 cases. [REL011, REL012, REL013]
+- A36, A37 and A42 went from co-occurring in about 46 in 100 traces to about 99.5 in 100, in both windows without a fixed order among themselves (both orders in roughly equal shares). [REL020, REL021, REL022]
+- Ordering reversed around the group: earlier, A26 preceded A36/A37/A42 (about 46 in 100 traces) and A28 preceded them (about 45 in 100); in the later window A36/A37/A42 precede A26 (about 98–99 in 100), A28 (about 97–99 in 100) and A31 (about 99 in 100), while A25 precedes them (about 98 in 100). [REL002, REL003, REL004, REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019]
+- Successors changed: A25 earlier led almost only to A28 (about 97 in 100 of its outgoing transitions) and now leads to A36/A37/A42 (about 31–34 each); A26 earlier led to A27 in about 54 in 100 cases and to the group for the rest, and now leads to A27 in about 98 in 100; A36/A37/A42 now commonly lead to A28 and to each other instead of to A31. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Distances: A25→A28 moved from one step apart (about 96 in 100) to four–five steps apart (about 91 and 8 in 100); the ordered pairs A26→A36/A37/A42, seen in about 92 traces earlier, now appear in only 1–2 traces, while A36→A28, A37→A28, A42→A28 and A25→A42 appeared (from 1–2 to about 199 traces). [LAG001, LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+- The A26→A31 distance consolidated from a mix of two and four steps to almost always two steps. [LAG003]
+- Event positions: A36/A37/A42 moved from a mean position near 0.59 to near 0.41, A26 from about 0.54 to 0.60, A27 from about 0.58 to 0.63, and A28 from about 0.40 to 0.46. [POS002, POS003, POS004, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural reordering in which A36, A37 and A42 stopped being an optional alternative to A27 and became always-executed, earlier-placed activities. In the earlier window a trace ran A25 → A28 directly at the start, then A26, and then either A27 (about 54 in 100 traces) or the group A36/A37/A42 in mixed order (about 46 in 100), with A31 last; in the later window essentially every trace runs A25, then A36/A37/A42 in mixed order, then A28, with A26 and A27 following and A31 last — both former alternatives now execute in the same case. [OCC001, OCC002, OCC003, OCC004, REL005, REL006, REL009, REL010, REL011, REL013, DIR001, DIR002, LAG001]
+
+Supporting signs: 48 evidence items qualified where about 0.74 would be expected if nothing had changed, so the pattern as a whole is far beyond random re-splitting, and every item's difference exceeded those in about 199 of 200 reference splits; participation, co-occurrence, ordering, successor, distance and position indicators all describe the same restructuring, with the key relations resting on about 200 traces per window. Agreeing items largely reflect the same trace behaviour rather than independent confirmations. [OCC004, REL013, REL006, DIR001, LAG001, POS006]
+
+Limitations: event positions establish relative order, so the data show that A36/A37/A42 now run before A26 and A28 but cannot distinguish the group moving earlier from the rest of the flow moving later; the gap profiles of the vanished A26→A36/A37/A42 pairs rest on only 1–2 later-window observations (their order relations are fully supported), and it cannot be ruled out that the earlier two-route pattern reflected two separate case streams rather than an in-case choice. [LAG004, LAG005, LAG006, POS006, POS007, POS008]
+
+Other differences: minor position drifts — A25 slightly earlier (mean about 0.37 to 0.35) and A31 slightly later (about 0.63 to 0.66) — consistent with the overall restructuring rather than separate changes. [POS001, POS005]

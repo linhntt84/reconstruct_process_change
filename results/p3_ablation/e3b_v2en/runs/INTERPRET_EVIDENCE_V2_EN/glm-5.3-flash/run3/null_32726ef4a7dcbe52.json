@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/null_32726ef4a7dcbe52.json",
+  "evidence_sha256": "f91e04cd9206ce9ea322275547161adcb6b7a15aed1ba76da9c89f0898dea46e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:38:14.194856+00:00",
+  "finished_at_utc": "2026-11-15T10:39:37.898843+00:00",
+  "latency_seconds": 83.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12343,
+    "prompt_tokens": 4734,
+    "total_tokens": 17077,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11416,
+      "text_tokens": 927
+    },
+    "cost": 0.0068816
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41805,
+  "text": "### Observed differences\n\n- In the later window, A36's outgoing transitions go to A37 in about 62 in 100 cases, up from about 34 in 100, while transitions to A33 fall from about 59 to about 38 in 100; the rare successors seen before (A08, A19, A23, A39, A47, roughly 1–2 in 100 each) no longer appear among A36's observed transitions. [DIR001]\n- A37's outgoing transitions shift the opposite way: A33 rises from about 34 to about 58 in 100 and A36 falls from about 62 to about 37 in 100, with a few new rare successors (A04, A10, A15, A40, A45, about 1 in 100 each) appearing. [DIR002]\n- The relations between A32, A36 and A37 reverse: A32 reaches A36 at a distance of one step in about 62 in 100 cases (about 34 before) but now reaches A37 mainly at two steps (about 62 in 100, versus one step in about 63 before); the A36→A37 pair occurs in about 28 in 100 traces, up from about 17 in 100, and in the later window always at a distance of one step. Distances are in event steps, not clock time. [LAG002, LAG003, LAG004]\n- A07 occurs in about 54 in 100 traces in the later window, up from about 43 in 100 (107 vs 85 of 200 traces), sits slightly later and more variably within traces (mean relative position about 0.07 vs 0.05), and the gap from A07 to A14 shortens: one step in about 46 in 100 cases versus about 28, while three-step gaps fall from about 42 to 25 in 100. [POS001, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nSeven control-flow items were flagged across the 96 tested units, where about 0.48 would qualify by chance if nothing had changed, and each difference exceeds roughly 199 of 200 random re-splits of the pooled data, so chance is an unlikely explanation for the set as a whole. The items converge, through successor shares and pair distances, on one directly observed possibility: in the segment following A32, the order of A36 and A37 is reversed in the later window. Before, the dominant reading is A32 → A37 → A36 → A33 (A32 reached A37 immediately in about 63 in 100 cases, A37 was followed by A36 in about 62 in 100, and A36 exited to A33 in about 59 in 100); in the later window it reads A32 → A36 → A37 → A33 (A32 reaches A36 immediately in about 62 in 100, A36 is followed by A37 in about 62 in 100, and A37 exits to A33 in about 58 in 100). Every link of this chain moves in the expected direction, which is the kind of consistency a genuine rerouting would produce. [DIR001, DIR002, LAG002, LAG003, LAG004]\n\nLimitations: the chain wording is an interpretation of pairwise distances and successor shares, not a traced sequence, and the windows show only aggregate shares — a shift in the mix of pre-existing variants, with the A36→A37 ordering simply occurring more often in the later sample, would look identical, so true rerouting cannot be separated from variant-frequency sampling. The rare successors (about 1–2 in 100 transitions) appearing or disappearing between windows is consistent with ordinary sampling noise on rare behaviour. The A07 change — higher participation and a shorter A07→A14 gap — is not relationally linked to the rerouting; it may be a separate participation change or a sampling difference, and the evidence does not establish it as part of the same structural change. [POS001, LAG001, DIR001, DIR002]",
+  "case_id": "null_32726ef4a7dcbe52",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

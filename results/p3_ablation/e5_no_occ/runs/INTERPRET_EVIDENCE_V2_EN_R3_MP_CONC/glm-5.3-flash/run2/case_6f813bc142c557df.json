@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "e709cc295806c54785c8730b39efec2ccbed0ddf50fcbf58f1a5718340d5f956",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:30:21.817650+00:00",
+  "finished_at_utc": "2026-11-15T05:32:08.943795+00:00",
+  "latency_seconds": 107.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16244,
+    "prompt_tokens": 25640,
+    "total_tokens": 41884,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14609,
+      "text_tokens": 1635
+    },
+    "cost": 0.011968
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45544,
+  "text": "### Observed differences\n\n- The six activities A20, A22, A23, A24, A25 and A26 occur in every trace in both windows, but their relative order changed. In the earlier window several pairs ran in both orders: A24 came before A20 in about 75 in 100 traces (A20 first in about 25), A22 and A24 were split roughly 50/50, and A20/A26 and A23/A25 were near even splits. In the later window every one of these pairs follows a single order in about 98–99 in 100 traces, always with A20, A22 and A23 before A24, A25 and A26. [REL002, REL004, REL005, REL007, REL008, REL009]\n- In the later window the block runs as one rigid sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: consecutive pairs occur at a fixed distance in nearly every trace (A22→A20, A20→A23, A24→A26 and A26→A25 at lag 1 in about 99–100 in 100 traces; A31→A22 at lag 1 in 100 in 100). In the earlier window these distances were spread over 2–5 positions and the reverse directions were common — for example A24 before A20 was observed in about 149 of 200 traces before, but in only 1 trace after. [LAG003, LAG008, LAG009, LAG018, LAG019, LAG024, LAG027, LAG029, LAG016, LAG017]\n- Routing out of each block activity collapsed accordingly. Before, the observed exits of A20 split about 62/13/12/12 in 100 between A23/A24/A25/A26, A23's exits went about 46 in 100 to A32 with the rest to A26/A25/A24, and A31 led to A24 or A22 about 50/50. In the later window each has essentially one successor: A20→A23 about 99 in 100, A22→A20 about 99, A23→A24 about 99, A24→A26 about 99, A26→A25 about 100, A31→A22 about 100, and the exit to A32 now follows A25 in about 92 in 100 cases instead of following A23 or A25 indiscriminately. [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, LAG015, LAG022]\n- Event positions shifted consistently with the new sequence: A20, A22 and A23 now sit earlier in the trace (mean relative position about 0.64→0.59, 0.59→0.56 and 0.68→0.62), while A24, A25 and A26 sit later (about 0.59→0.65, 0.68→0.70 and 0.64→0.68), each in essentially all traces of both windows. [POS002, POS003, POS004, POS005, POS006, POS007]\n- Separately, A08 became much rarer: it appeared in about 32 in 100 traces before but only about 13 in 100 after, and its mean relative position moved later (about 0.18→0.34). A14's observed exits to A08 fell from about 29 in 100 to about 7 (exits to A15 rose from about 70 to 90), and A08–A32 co-occurrence fell from about 32 to 13 in 100 traces. A08's own exits, seen only about 27 times after, spread from almost exclusively A15 to A15 about 48 in 100 with A16, A46 and several others taking the rest. [POS001, DIR002, REL001, LAG001, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering of the block A31, A22, A20, A23, A24, A25, A26 (exiting to A32) changed from a flexible, mixed ordering to a single fixed sequence: in the earlier window these activities ran in every trace but in varying orders with several alternative successions, while in the later window they execute as A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32 in about 99 in 100 traces. This is a change in ordering constraints (a mixed order becoming fixed), not a swap of two activities and not a change in which activities run, since all of them appear in every trace in both windows. The relational evidence shows the change directly — order shares flip or tighten by 0.22–0.87 and reverse-direction pairs drop to about 1 observation — the successor profiles agree, and the position shifts point the same way; with 56 qualifying items against roughly 0.56 expected if nothing had changed, the body of evidence is far beyond what an unchanged process typically produces. The evidence cannot distinguish a genuine change in ordering constraints from a changed mix of trace variants that concentrates on one dominant sequence, nor determine whether the A08 decline belongs to the same change. [REL002, REL005, REL007, LAG003, LAG008, LAG019, LAG024, DIR003, DIR005, DIR009, POS002, POS005]\n\nOther differences: A08's participation fell from about 32 to 13 in 100 traces, its position moved later, and A14 now routes to A15 in about 90 in 100 of its exits instead of sending about 29 in 100 to A08. [POS001, DIR002, REL001, LAG001, DIR001]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

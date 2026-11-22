@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_6e134634720305a2.json",
+  "evidence_sha256": "f43495a3ecc6267c7470d510c0f771b5a6b230a26640ae13e9b28b934515d226",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:12:50.489475+00:00",
+  "finished_at_utc": "2026-11-14T11:13:17.877328+00:00",
+  "latency_seconds": 27.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4515,
+    "prompt_tokens": 6749,
+    "total_tokens": 11264,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3670,
+      "text_tokens": 845
+    },
+    "cost": 0.00326985
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 14279,
+  "text": "### Observed differences\n\n- In the later window, A30, A31 and A36 each occur about once per trace instead of about 3.5 times; all three still appear in every trace, but repetition collapses — before, each of the three repeated within a trace in roughly 75 in 100 traces, afterwards in only about 1–2 in 100. [OCC001, OCC002, OCC003]\n- Routing out of A36 changes sharply: before, about 70 in 100 of A36's outgoing transitions returned to A30 and about 28 in 100 went to A25; in the later window about 92 in 100 go to A25 and only about 4 in 100 return to A30. [DIR002]\n- Routing out of A30 is essentially stable: about 99 in 100 of its outgoing transitions went to A31 before and about 97 in 100 afterwards, with only small shifts among rare edges. [DIR001]\n- The ordered pair \"A36 followed by A30 within five steps\", observed in about 150 traces before, is observed once in the later window; \"A36 followed by itself within five steps\" drops from about 150 observations to 2. [LAG002, LAG003]\n- The relation between A30 and A36 changes from mostly interleaved or repeated (about 76 in 100 traces) to a strict order, with A30 before A36 in about 98 in 100 later traces; the two activities still co-occur in every trace in both windows. [REL001]\n- When A30 is followed by A36, the gap is now almost always two event positions (about 89 in 100 later observations, up from about 12 in 100 before). [LAG001]\n- The relative positions of A30 and A36 barely move (mean positions about 0.42–0.49 in both windows), but their position distributions become noticeably tighter, with standard deviations falling from roughly 0.12 to 0.07. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the repetition cycle linking A30, A31 and A36 was removed or strongly reduced, so that these activities now execute once per trace in a fixed sequence — A30 (still followed by A31) and then A36 about two positions later — with A36 exiting to A25 instead of looping back to A30. [OCC001, OCC002, OCC003, DIR002, REL001, LAG001, LAG002, LAG003]\n\nSupporting signs: eleven qualifying items were raised against roughly 0.5 expected by chance in an unchanged process, so the set of findings is unlikely to be a chance product. The collapse of repetition is seen directly in occurrence counts and recurrence support; the loop-back edge A36→A30 loses most of its share while A36→A25 takes it over; the ordered pairs A36→A30 and A36→A36 practically disappear; and the A30→A31 link is unchanged, isolating the difference to the cycle. Every item shows an empirical strength of about 0.995, meaning differences of this size are rare under random re-splits of the pooled traces. [OCC001, OCC002, OCC003, DIR001, DIR002, LAG002, LAG003]\n\nLimitations: each window holds only 200 traces, and a large shift in the mix of process variants — for example a loop-free variant becoming dominant — could produce the same pattern without any modification to the process definition; the evidence cannot separate removal of the cycle from such a case-mix change. Several items also describe the same underlying looping behaviour (occurrence recurrence and the A30/A36 interleaving measure overlap), so they are not fully independent confirmations. [OCC001, OCC003, DIR002, REL001]",
+  "case_id": "case_6e134634720305a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

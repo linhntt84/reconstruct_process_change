@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_91980b9a218eb88d.json",
+  "evidence_sha256": "34fbc8394ecc52bad42efc94b84b8a9d979a04ac3167e28c39b019aa5ae0705b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:43:27.556417+00:00",
+  "finished_at_utc": "2026-11-15T06:45:13.654824+00:00",
+  "latency_seconds": 106.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16202,
+    "prompt_tokens": 11904,
+    "total_tokens": 28106,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14752,
+      "text_tokens": 1450
+    },
+    "cost": 0.0098866
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49761,
+  "text": "### Observed differences\n\n- The three alternative activities A19, A20 and A25 — each present in roughly a third of traces in both windows — moved from about a third of the way into the trace (mean event positions about 0.33) to about three-fifths in (about 0.59–0.61) in the later window. [POS001, POS002, POS003]\n- In the earlier window, A19, A20 and A25 each led to A26 in about 92–99% of their observed outgoing transitions. In the later window, A19 led mainly to A28 (about 48%) and A32 (about 45%), A20 to A32 (about 56%) and A28 (about 43%), and A25 to A32 (about 56%) and A28 (about 39%), with A26 the successor in only about 1–2% of transitions. [DIR001, DIR002, DIR003]\n- A45 rewired: earlier its outgoing transitions went to A25 (about 35%), A19 (about 35%) and A20 (about 24%); later it led directly to A26 in about 94% of transitions. The A45→A25 adjacency disappeared (present in 76 traces before, 1 after), and A45→A26 moved from two steps away (about 93% of traces) to immediately adjacent (about 94%). [DIR006, LAG010, LAG011]\n- A27 and A28 now feed the group: earlier A27 led to A28 in about 98% and A28 to A32 in about 99% of transitions; later A27 led to A28 (about 54%) but also to A19 (16%), A20 (15%) and A25 (11%), and A28 led to A32 (about 44%) but also to A20 (21%), A25 (17%) and A19 (16%). The adjacencies A27→A19/A20 and A28→A19/A20 were almost absent before (1–2 traces) and appear in 32–75 traces after; the span A27→A32 stretched from two steps (about 97% of traces) to three steps (about 93%). [DIR004, DIR005, LAG003, LAG004, LAG006, LAG007, LAG008]\n- The old adjacency A19→A26 essentially disappeared (about 94% of relevant traces before at one step, 2 traces after), while a new A19→A32 relation appeared (1 trace before, 65 after). A27→A28 became less uniformly immediate (one step in about 98% before vs about 55% after, two steps in about 43%), and A28→A32 now shows a two-step gap in about 54% of traces (about 1% before). [LAG001, LAG002, LAG005, LAG009]\n- A26 and A27 occurred in every trace in both windows; A26's mean position shifted slightly earlier (about 0.35 to 0.33), A27's was nearly unchanged (about 0.58 to 0.56). [POS004, POS005]\n- A24 occurred in about 43 in 100 traces before and about 58 in 100 after (mean occurrences per trace 0.43 to 0.58). [OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of three alternative activities — A19, A20 and A25 — was relocated. In the earlier window it ran between A45 and A26 (A45 → one of A19/A20/A25 → A26) while A27 → A28 → A32 formed a separate span; in the later window A45 leads directly to A26, and the block runs in the later span, inserted either between A27 and A28 or between A28 and A32, before reaching A32. The successor profiles of all six anchor activities changed accordingly, the block's mean event position moved from about 0.33 to about 0.6, and the pairwise relations match: the old adjacencies A19→A26 and A45→A25 vanished, new adjacencies A27→A19/A20, A28→A19/A20 and A19→A32 appeared, and spans shifted by one step (A45→A26 from two steps to one, A27→A32 from two to three). A shift in how often existing paths are taken cannot explain this, because the successor sets themselves changed rather than only their shares; and with 23 qualifying control-flow items against roughly 0.58 expected for an unchanged process, chance sampling cannot explain the pattern as a whole. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, LAG001, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011]\n\nLimitations: positions are event positions rather than clock times, and the block's new placement is not uniform — in the later window A27 still leads directly to A28 in about 54% of transitions and A28 directly to A32 in about 44%, so traces without the inserted block coexist with traces containing it; the evidence cannot distinguish one new route with an optional block from two coexisting routes. [LAG005, LAG009, DIR004, DIR005]\n\nOther differences: A24's participation rose from about 43 to about 58 in 100 traces; no relational evidence covers A24, so any connection to the relocated block remains unclear. The choice among the three alternatives also shifted somewhat (A20 in about 38 in 100 traces after vs about 25 before, A25 about 30 vs about 39, A19 about 33 vs about 38). [OCC001, POS001, POS002, POS003]",
+  "case_id": "case_91980b9a218eb88d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

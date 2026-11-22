@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_c7d7fbfa4da92243.json",
+  "evidence_sha256": "5e5c021f10806298907e97e9a0cc87853a603dcc7619ce4fe6fa8619ff3162a8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:11:36.038543+00:00",
+  "finished_at_utc": "2026-11-15T03:12:23.162995+00:00",
+  "latency_seconds": 47.12,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6540,
+    "prompt_tokens": 5623,
+    "total_tokens": 12163,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5723,
+      "text_tokens": 817
+    },
+    "cost": 0.004113449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21503,
+  "text": "### Observed differences\n\n- In the earlier window, A10 was executed in about 44 in 100 traces (88 of 200), typically in the first half of the trace (mean relative position about 0.38); in the later window, A10 is not observed in any of the 200 traces. [OCC001, POS001]\n- Before, A10's observed outgoing transitions led mostly to A12 (about 82 in 100); in the later window A10 has no observed outgoing transitions, consistent with its absence. [DIR003]\n- A04's successor mix changed: before, about 55 in 100 of its observed outgoing transitions went to A10 and only about 10 in 100 to A12 (78 transitions observed); in the later window, about 73 in 100 go to A12 and A10 no longer appears as a successor (107 transitions observed). [DIR002]\n- The A04→A12 pair became immediate: before, the two activities usually sat two positions apart (about 56 in 100 pairs) and were directly adjacent in about 11 in 100; in the later window they are directly adjacent in about 75 in 100 pairs (104 pairs observed). [LAG001]\n- A10's relationships vanished: A04–A10 and A10–A12 co-occurred in about 44 in 100 traces before and in none afterwards; in the later window A04 appears without A10 in about 58 in 100 traces, and A12 appears without A10 in about 58 in 100 traces. [REL001, REL002]\n- A03 and A11 now lead elsewhere: before, their few observed outgoing transitions went to A10 and A02; in the later window they go to A04 and A12. This rests on only 5 outgoing transitions before and 9–10 after, so these proportions are unreliable. [DIR001, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A10 dropped out of the process, and that the flow which previously ran A04 → A10 → A12 now passes directly from A04 to A12. In the earlier window A10 sat between the two: it occurred in about 44 in 100 traces, A04's dominant successor was A10 (about 55 in 100 of outgoing transitions), and A04 reached A12 mostly two positions later. In the later window A10 is unobserved, A04's dominant successor is A12 (about 73 in 100), and A04 is immediately followed by A12 in about 75 in 100 cases. [OCC001, DIR002, DIR003, LAG001, REL001, REL002]\n\nThis reads as a removal or bypass of A10 rather than a shift in how often existing paths are taken, because A10 is absent from the later window and a predecessor now connects directly to its successor. The nine qualifying control-flow items far exceed the roughly 0.15 expected by chance for that family, and every item aligns with the same underlying difference — though several indicators describe the same trace behaviour, so they are not independent confirmations. The main competing explanation the evidence cannot rule out is that A10 still executes but has become rare enough to be missed in 200 traces, since zero participation only means \"not observed\". [OCC001, DIR002, LAG001]\n\nOther differences: A03 and A11 now lead to A04 and A12 instead of A10 and A02, which is consistent with traffic rerouting around the vanished A10, but with only 5 outgoing transitions observed before and 9–10 after, this rerouting is only weakly supported. [DIR001, DIR004]",
+  "case_id": "case_c7d7fbfa4da92243",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

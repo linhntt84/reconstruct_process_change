@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_32726ef4a7dcbe52.json",
+  "evidence_sha256": "092d92ce2ce260d7564d1db56c25a5c6613b848d933b3c7833059c2991529466",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:33:48.254794+00:00",
+  "finished_at_utc": "2026-11-15T14:37:32.218121+00:00",
+  "latency_seconds": 223.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29669,
+    "prompt_tokens": 50238,
+    "total_tokens": 79907,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27497,
+      "text_tokens": 2172
+    },
+    "cost": 0.0223702
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 93198,
+  "text": "### Observed differences\n\n- The clearest shift is between two groups of activities. In the earlier window, A01, A05, A07 and A09 each appeared in about 43 in 100 traces; in the later window, about 53 in 100. Over the same period, A03, A11, A12 and A13 each fell from about 58 in 100 traces to about 48 in 100. All eight were well observed in both windows and none changed how often it repeats, and the two groups' shares together cover essentially every trace in each window (about 101 and 100 per 100, counting overlap), so this looks like two largely exclusive existing routes being taken with different frequency rather than activities appearing or disappearing. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013]\n\n- Routing inside the two groups moved with this shift. From A01, the share of outgoing transitions to A07 fell from about 40 in 100 to about 23 while the share to A09 rose from about 26 to about 37; from A09, the share to A07 rose from about 32 to about 40; from A07, the share going straight on to A14 rose from about 28 to about 45. In the other group, from A03 the share to A13 rose from about 31 to about 39, from A12 the share to A11 rose from about 26 to about 36, and from A13 the share to A12 rose from about 29 to about 40. Both groups still exit towards A14, which is present in every trace in both windows. [DIR001, DIR007, DIR009, DIR003, DIR012, DIR013, DIR011, OCC014]\n\n- A07 now occurs slightly later in the trace (mean position about 0.052 to 0.070) and is followed by A14 within one step in about 46 in 100 of their co-occurrence pairs, up from about 28. [POS001, LAG001, REL001]\n\n- The predominant order of A36 and A37 reversed. Earlier, A37 preceded A36 in about 28 in 100 traces versus about 16 the other way round; in the later window, A36 preceded A37 in about 28 versus about 17. Both orders still occur in both windows, so the dominant order flipped rather than a fixed sequence changing. [REL008]\n\n- The pair's surroundings moved consistently with that flip: from A32, the share of outgoing flow to A36 rose from about 16 in 100 to about 28 while flow to A37 fell from about 29 to about 17; A32 reached A36 within one step in about 62 in 100 of their pairs (previously about 34) and reached A37 typically two steps later (about 62, previously about 33). Downstream, A36's main successor changed from A33 (about 59 in 100) to A37 (about 62), and A37's changed from A36 (about 62) to A33 (about 58). In short, the typical sequence changed from A32 → A37 → A36 → A33 to A32 → A36 → A37 → A33, while both activities' overall frequency stayed at about 45 in 100 traces. [DIR032, LAG002, LAG003, LAG004, LAG005, DIR036, DIR037, POS004, POS005]\n\n- Smaller shifts: A40 appeared in about 27 in 100 traces, up from about 18 (36 versus 54 supporting traces), and A41 repeated somewhat more often (mean occurrences 0.83 to 0.93), with more of its outgoing flow returning to A40 (about 37 to 45 in 100); A08 slipped from about 76 to 72 in 100 traces; A15 and A16 repeated slightly less often (mean occurrences about 1.73 to 1.63, still present in every trace). A few successor-profile changes (A04, A06, A10, A48) look large but rest on only about 4 to 19 observed outgoing transitions per window and should not be interpreted. [OCC033, OCC034, DIR041, OCC008, OCC015, OCC016, DIR004, DIR006, DIR010, DIR048]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the split between two existing alternative routes moved: the route through A01, A05, A07 and A09 — whose activities feed one another and then hand over to A14 — is taken in about 53 in 100 traces in the later window, up from about 43, while the alternative route through A03, A11, A12 and A13, which likewise converges on A14, falls from about 58 to about 48 in 100. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013]\n\nSupporting signs: the participation moves are mirrored and of similar size across all eight activities, each difference exceeding roughly 93 in 100 random re-splits of the same data; the successor profiles show each group internally connected with no flow between the groups; and the combined shares of the two groups remain near one per trace, as expected for two alternatives whose split moved. Limitations: no relational item compares the two groups directly, so their mutual exclusivity and the single-rerouting reading are inferred from the mirrored pattern, and the internal routing changes (A07 exiting to A14 sooner, A12 and A13 exchanging successor shares) could be partly independent of the shift. An important competing explanation the evidence cannot rule out is that these are several independent usage shifts rather than one decision between two paths. [DIR001, DIR003, DIR007, DIR009, DIR012, DIR013]\n\nOther differences: the predominant order of A36 and A37 reversed (typically A32 → A37 → A36 → A33 before, A32 → A36 → A37 → A33 afterwards), a directly and consistently observed ordering change across successor, co-occurrence and lag evidence, with both activities' frequency unchanged. [DIR032, DIR036, DIR037, REL008, LAG002, LAG003, LAG004, LAG005, POS004, POS005] Separately, A40 and A41 occur and repeat somewhat more often, while A08, A15 and A16 occur or repeat slightly less often. [OCC033, OCC034, DIR041, OCC008, OCC015, OCC016]",
+  "case_id": "null_32726ef4a7dcbe52",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

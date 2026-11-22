@@ -1,0 +1,15 @@
+### Observed differences
+
+- **Participation and repetition stayed essentially the same.** No activity entered or left the observed behaviour: the least common profiled activity (A14) still appears in about 32 in 100 traces in both windows, and most others in about 35–64 in 100 with changes of at most about 2 in 100 (A10: about 62 before, 64 after). Average occurrences per trace also moved only slightly; the largest change is A02, from about 8.5 to about 7.9 occurrences per trace (roughly 7% fewer, while its trace share stayed at about 49 in 100), with A11 falling from about 4.3 to 3.9. None of these occurrence differences stood out against random re-splits of the pooled data (empirical strengths all at or below about 0.6). [OCC001, OCC008, OCC009, OCC012]
+
+- **Routing shares shifted by a few percentage points at three activities.** Among A08's observed outgoing transitions, the share continuing to A05 rose from about 45% to about 50% (A04 falling from about 55% to 50%); at A10 the share to A16 rose from about 45% to 49% (A15 falling); at A06 the share to A01 rose from about 51% to 55% (A10 falling). Only the A08 shift was somewhat uncommon for random splits; the others were not. [DIR004, DIR005, DIR006]
+
+- **Several activities sit slightly earlier within traces in the later window, with a little more spread.** A14's mean relative position fell from about 0.71 to 0.62 and its lower quartile from about 0.53 to 0.39; A16's mean fell from about 0.55 to 0.49; A05, A06 and A09 show the same pattern (means down by roughly 0.04–0.09 on a 0-to-1 scale). A few activities moved slightly later instead (A02, A07, A11, A18). These are event-order positions, not clock times, so a shift here does not by itself show an activity was moved. [POS013, POS015, POS004, POS005, POS008, POS002, POS010]
+
+- **Pairwise relations and distances are close to unchanged.** Co-occurrence and ordering shares stayed within a few points of their earlier values; the largest single change is A15 running before A03 in about 17 in 100 traces in the later window, up from about 10 in 100. Lag distributions wobbled a few points between distance bands in mixed directions — for example A04-to-A08 pairs at distance 3 rose from about 29% to 50% of observed pairs, while A17-to-A03 pairs at distance 4 fell from about 87% to 66% in favour of distance 5. [REL045, LAG016, LAG092]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. Every observed difference is small, runs in a different direction for different activities, and lies within the range that random re-splits of a stable process produce, so the slightly earlier positions of some activities cannot be separated from sampling variation or from the small, unremarkable changes in how often high-frequency activities such as A02 repeat [OCC001, POS013, DIR005, LAG016].

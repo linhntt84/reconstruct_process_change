@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_a861c8e586471d84.json",
+  "evidence_sha256": "f73a83776a6fbac87c1bc16eed5890a2c9693920c65bd4b2e820df21819644f2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:48:36.250329+00:00",
+  "finished_at_utc": "2026-11-14T12:49:52.003125+00:00",
+  "latency_seconds": 75.75,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10325,
+    "prompt_tokens": 7913,
+    "total_tokens": 18238,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9450,
+      "text_tokens": 875
+    },
+    "cost": 0.00634945
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36806,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 each ran in roughly 3 in 10 traces (71, 61 and 70 of 200 traces); in the later window they are essentially unobserved — A19 and A25 in 0 of 200 traces, A20 in 1 of 200. [OCC001, OCC002, OCC003]\n- Earlier, each of the three activities led almost invariably to A26 (about 97–99 in 100 of their observed outgoing transitions); in the later window no outgoing transitions were observed for A19 or A25, and A20 was observed only once. [DIR001, DIR002, DIR003]\n- A41's routing changed fundamentally: earlier, about a third of its observed outgoing transitions went to A25, a third to A19 and a quarter to A20, with A26 not among its observed successors; in the later window about 92 in 100 go directly to A26. [DIR004]\n- The distance between A41 and A26 contracted: earlier the pair was typically two positions apart (about 94 in 100 pair observations), later typically one position apart (about 93 in 100). [LAG002]\n- Two minor position shifts accompany this: A26 now occurs slightly earlier within traces (mean relative position about 0.39 vs 0.37) and A41 slightly later (about 0.32 vs 0.33). [POS005, POS006]\n- Two further small shifts appear unrelated to the above: the gap between A24 and A31 is now typically one position instead of two (about 59 in 100 pair observations each way), and A14 occurs slightly later (mean relative position 0.140 vs 0.145). [LAG001, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nOne possibility directly supported by the evidence is that the three-way segment formed by A19, A20 and A25 between A41 and A26 is no longer executed, so that A41 now leads directly to A26. In the earlier window, roughly 9 in 10 traces passed from A41 through exactly one of the three activities (each branch about a third of A41's transitions) before reaching A26; in the later window A41 connects straight to A26 in about 92 in 100 of its transitions, the three intermediate activities are observed in essentially no traces, and the A41–A26 distance shrank from typically two positions to one. This is a case of a predecessor now leading directly to a successor, so a group of activities is bypassed — not a re-weighting of surviving paths. [OCC001, OCC002, OCC003, DIR004, LAG002]\n\nChance is an unlikely explanation for the evidence set as a whole: 15 control-flow items qualified where roughly 0.5 would be expected if nothing had changed, and every item's difference exceeds about 995 of 1,000 random re-splits. The items converge on one structural picture, though several describe the same underlying traces (for example the A19 items) and are therefore not independent confirmations. [OCC001, DIR001, POS002]\n\nAn important competing explanation cannot be ruled out: zero participation only means the activities were not observed, so the evidence cannot distinguish a full removal of A19/A20/A25 from these activities becoming optional and skipped in every later case. The after-window profile of A20 also rests on a single observation and should not be interpreted. [OCC002, DIR002]\n\nOther differences: the A24→A31 gap is now typically one position instead of two, suggesting a second pair of activities became directly adjacent, but the evidence does not show what previously lay between them; A14 occurs slightly later within traces. [LAG001, POS001]",
+  "case_id": "case_a861c8e586471d84",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

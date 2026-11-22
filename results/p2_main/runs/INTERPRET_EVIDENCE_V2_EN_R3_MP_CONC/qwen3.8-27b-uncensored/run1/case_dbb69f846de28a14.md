@@ -1,0 +1,26 @@
+
+
+### Observed differences
+
+- In the earlier window, A25 led to A36, A37 or A42 in about 96 in 100 of its observed outgoing transitions; in the later window, A25 led to A28 in about 97 in 100 [DIR001].
+- A27, A36, A37 and A42 were each present in about 100 in 100 earlier traces; in the later window, A27 was present in about 54 in 100 traces, while A36, A37 and A42 were each present in about 47 to 48 in 100 traces [OCC001, OCC002, OCC003, OCC004].
+- A27 and the A36/A37/A42 group were almost always together before, but in the later window they are almost never together: A27 occurred without A36/A37/A42 in about 53 in 100 traces, and A36/A37/A42 occurred without A27 in about 47 in 100 traces [REL011, REL012, REL013].
+- A36, A37 and A42 remained strongly co-occurring in the later window: each pair was present in about 47 in 100 traces and absent in about 53 in 100 traces, and they still appeared in mixed order rather than a fixed order [REL020, REL021, REL022].
+- The order of A26 relative to A36/A37/A42 reversed: before, A36/A37/A42 preceded A26 in about 99 in 100 co-occurring traces; after, A26 preceded them in about 45 to 46 in 100 traces and they preceded A26 in about 1 in 100 [REL006, REL007, REL008].
+- A28 also moved from after A36/A37/A42 to before them: before, A36/A37/A42 preceded A28 in about 99 in 100 co-occurring traces; after, A28 preceded them in about 45 to 46 in 100 traces and they preceded A28 in about 1 in 100 [REL014, REL015, REL016].
+- A25 and A28 became immediate: before, A28 followed A25 after 4 or 5 steps in about 100 in 100 observed pairs; after, A28 followed A25 after 1 step in about 98 in 100 observed pairs [LAG001].
+- A26's outgoing choices changed from almost always A27 to a split: before, A26 led to A27 in about 99 in 100; after, it led to A27 in about 52 in 100 and to A36, A37 or A42 in about 44 in 100 [DIR002].
+- A36, A37 and A42 no longer lead to A28 and now lead to A31: before, they led to A28 in about 31 to 35 in 100 of their outgoing transitions; after, they led to A31 in about 26 to 35 in 100 and to A28 in about 1 in 100 [DIR003, DIR004, DIR005].
+- Positions shifted consistently with the re-routing: A28 remained present in all traces but moved earlier (mean position about 0.46 to 0.39), A26 moved earlier (about 0.60 to 0.54), and A36/A37/A42 moved later (about 0.40 to 0.57) while becoming less frequent [POS002, POS004, POS006, POS007, POS008, OCC002, OCC003, OCC004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+- Main hypothesis: In the later window, the path after A25 appears to be re-routed so that A25 mostly goes to A28, A26 mostly splits between A27 and the A36/A37/A42 group, A28 and A26 precede the chosen branch, and A31 follows the chosen branch; in the earlier window, A25 mostly went to A36/A37/A42, which then preceded A28, A26 and A27, and A27 was mandatory [DIR001, DIR002, DIR003, DIR004, DIR005, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, LAG001, OCC001, OCC002, OCC003, OCC004].
+- Supporting signs: A25's successor changed from A36/A37/A42 to A28; A26's successor changed from A27 to a split between A27 and A36/A37/A42; A27 and A36/A37/A42 changed from co-occurring to alternatives; A28 became immediate after A25 and before the branch; A31 remains present in all traces and follows the branch [DIR001, DIR002, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, LAG001, LAG005, POS004, POS005].
+- Limitation: The evidence cannot rule out that the later window reflects a new optional path rather than a confirmed modification of the process definition, and some lag distances involving A25 to A36/A37/A42 and A36/A37/A42 to A28 are based on very few later observations [LAG002, LAG003, LAG004, LAG006, LAG007, LAG009].
+
+Other differences:
+- A25's position shifted slightly later (mean about 0.34 to 0.37), A27's position shifted slightly earlier in the traces where it occurred (about 0.62 to 0.59), and A31's position shifted slightly earlier (about 0.65 to 0.63) [POS001, POS003, POS005].
+- A31 remained after A26, but the gap widened: before, A31 followed A26 after 2 steps in about 98 in 100 observed pairs; after, about 53 in 100 followed after 2 steps and about 43 in 100 after 4 steps [LAG005].

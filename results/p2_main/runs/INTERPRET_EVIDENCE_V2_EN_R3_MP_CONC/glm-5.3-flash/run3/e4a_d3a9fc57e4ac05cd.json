@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_d3a9fc57e4ac05cd.json",
+  "evidence_sha256": "0917defc9aa70b7f01db4cea5cd29947449df1cb8782e8baabf09b07c8be8213",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:37:39.092356+00:00",
+  "finished_at_utc": "2026-11-15T03:38:24.017297+00:00",
+  "latency_seconds": 44.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6513,
+    "prompt_tokens": 3007,
+    "total_tokens": 9520,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5900,
+      "text_tokens": 613
+    },
+    "cost": 0.00370755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24978,
+  "text": "### Observed differences\n\n- Both qualifying differences concern elapsed time between consecutive completions, and both lead into A31. The gap from the completion of A20 to the completion of A31 roughly doubled: median about 0.83 hours in the earlier window versus about 1.66 hours in the later window (mean 0.82 vs 1.66, an increase of about 0.84 hours). The whole distribution shifted: three quarters of gaps were below about 0.94 hours before, while three quarters were above about 1.50 hours after. The pair occurs in 38 of 200 traces in each window (about 19 in 100). [TWAIT001]\n- The gap from the completion of A37 to the completion of A31 also roughly doubled: median about 0.07 hours (about 4 minutes) before versus about 0.17 hours (about 10 minutes) after, with roughly twice the spread afterwards (standard deviation about 0.07 vs 0.13 hours). The pair occurs in 43 traces before and 42 after (about 21 in 100). [TWAIT002]\n- Each of these differences was larger than in all but about 1 in 2,000 random re-splits of the pooled traces. [TWAIT001, TWAIT002]\n- No control-flow difference passed the screening thresholds: 0 qualifying items among 56 units, against about 0.28 expected by chance. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA change in timing is a possibility supported by the evidence: in the later window, the elapsed time between the completion of the preceding activity and the completion of A31 roughly doubled on both observed inbound pairs — from A20 (about 0.8 to about 1.7 hours) and from A37 (about 0.1 to about 0.2 hours). Supporting signs: the time family produced 2 qualifying items where only about 0.02 were expected if nothing had changed; both differences exceed essentially all random re-splits of the pooled data; both point to the same successor activity, A31; and the A20–A31 gap shifted as a whole rather than only in its tail. The absence of qualifying control-flow items (0 versus about 0.28 expected) is consistent with a pure timing change, which needs no structural counterpart. [TWAIT001, TWAIT002, screening]\n\nLimitations: only two activity pairs were measured, both ending at A31, so the change is established only for these intervals; the two items share A31 and may reflect one underlying difference rather than two independent confirmations; and with 200 traces per window a window-specific fluctuation cannot be fully excluded. An important competing explanation the evidence cannot rule out is that the longer gaps arise because A20 and A37 complete at different points relative to the rest of the case, rather than from a delay immediately before A31. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_d3a9fc57e4ac05cd",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

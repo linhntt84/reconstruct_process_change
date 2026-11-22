@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_906deabc7c8aeaf5.json",
+  "evidence_sha256": "82a2861bdd88475f1add5eeac84065a162e41f5da0034afd11fa86dee550493d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:46:47.531257+00:00",
+  "finished_at_utc": "2026-11-15T01:47:24.532987+00:00",
+  "latency_seconds": 37.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5224,
+    "prompt_tokens": 4598,
+    "total_tokens": 9822,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4659,
+      "text_tokens": 565
+    },
+    "cost": 0.0033017
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 17848,
+  "text": "### Observed differences\n\n- In the earlier window, activity A05 appeared exactly once in every one of the 200 traces; in the later window it appears in none of the 200 traces. [OCC001, POS002]\n- A01's routing changed completely: in the earlier window all of A01's observed outgoing transitions led to A05, while in the later window all of them lead directly to A02. [DIR001]\n- A05's own outgoing transition to A02, previously seen in all traces, is no longer observed, because A05 itself no longer occurs. [DIR002]\n- A01 and A02 are now directly consecutive: the gap from A01 to A02 was two steps in the earlier window and is one step in the later window, and A02's mean position moved earlier, from about 0.5 to about 0.33 of the trace. [LAG001, POS001]\n- In the earlier window A05 always co-occurred with A01 (always A01 first) and with A02 (always A05 first), in all 200 traces; in the later window A01 and A02 each occur without A05 in all traces. [REL001, REL002]\n\nIn short, the earlier pattern A01 → A05 → A02 became A01 → A02, with A05 entirely absent from the later sample.\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A05 was dropped from the flow between A01 and A02 — either removed or bypassed in every case — so that A01 now leads directly to A02. The supporting signs are direct and consistent: A05 fell from full participation (all 200 traces, once per trace) to zero, A01's outgoing transitions moved entirely from A05 to A02, the A01-to-A02 distance shortened from two steps to one, and A02 now sits earlier in a shorter trace. All eight qualifying items fit this single change, and eight items is far above the roughly 0.04 expected by chance for the eight units tested, so chance sampling cannot explain the pattern as a whole. [OCC001, DIR001, DIR002, POS001, POS002, REL001, REL002, LAG001]\n\nLimitations: the eight items are not independent — the occurrence, position and relation items largely reflect the same disappearance of A05. Zero participation strictly means only that A05 was not observed in the later window: the evidence cannot distinguish a permanent removal from A05 becoming optional and skipped in every later case, nor rule out that its role was taken over by an activity outside the analysed units. A02's earlier position is a consequence of the shorter trace, not an independent relocation.\n\nOther differences: none — every qualifying item describes the same underlying change.",
+  "case_id": "case_906deabc7c8aeaf5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

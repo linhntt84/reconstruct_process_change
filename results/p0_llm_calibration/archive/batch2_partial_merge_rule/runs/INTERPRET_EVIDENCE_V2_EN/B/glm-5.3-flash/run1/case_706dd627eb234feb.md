@@ -1,0 +1,19 @@
+### Observed differences
+
+- Out of A25: in the earlier window, A25's outgoing transitions were spread almost evenly over A35, A36, A41 and A42 (about 24–25% each, roughly 97 in 100 combined); in the later window, about 98 in 100 go to A27 instead. [DIR001]
+- Out of A26: in the earlier window, about 96 in 100 of A26's outgoing transitions went to A30; in the later window they go to A35, A36, A41 and A42 (about 19–29% each, roughly 96 in 100 combined). [DIR002]
+- Exit of the four-activity block: in the earlier window, A35, A36, A41 and A42 each sent about 22–26% of their outgoing transitions to A27; in the later window they send about 22–25% to A30 and none to A27. [DIR003, DIR004, DIR005, DIR006]
+- Order flip: in the earlier window, A35/A36/A41/A42 came before A26 in about 98–99 in 100 traces and before A27 similarly; in the later window, A26 and A27 each come before the block activities in about 97–99 in 100 traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- Positions: mean relative position moved earlier for A27 (0.48 → 0.37) and A26 (0.62 → 0.51), and later for A35, A36, A41 and A42 (about 0.41 → 0.58). [POS001, POS002, POS003, POS004, POS005, POS006]
+- Adjacency within five steps: A25 followed by A27 in one step went from never observed (all 172 earlier pairs sat at the largest gap) to about 98 in 100; A26 followed by A30 went from one step (96 in 100) to five steps (all 181 later pairs), i.e., with the four block activities in between. A26 followed by a block activity within five steps rose from about 1 in 200 traces to about 200 in 200, and A41 followed by A27 fell from about 199 in 200 to 1 in 200. [LAG001, LAG004, LAG005, LAG006, LAG007, LAG009]
+- Further five-step co-occurrences flipped in the same direction (A25–A35 and A25–A42 fell from about 199–200 in 200 traces to 1–2 in 200; A35–A30 rose from 2 to about 200 in 200), though several of these rest on only 1–2 observations in one window. [LAG002, LAG003, LAG008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the block of four activities A35, A36, A41, A42 changed its placement in the flow: in the earlier window it executed directly after A25 and exited to A27, while A26 passed directly on to A30; in the later window A25 passes directly to A27, and the block executes after A26 and exits to A30. In effect, the block and the A26/A27 segment swapped their relative order, with A26 and A27 each about 0.11 earlier in relative position and the block about 0.17 later. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005, POS006]
+
+The support is direct and consistent: the order reversal is shown relationally with about 200 traces behind each window's profile, the new adjacencies are shown by lag evidence (A25→A27 now immediate; A26→A30 now five steps apart with the block between), and the successor redistributions match a rewired entry and exit of the same block. The items group into about three distinct differences (the exits of A25, of A26, and of the block activities), which exceeds the roughly 0.7 items expected by chance across the 141 tested units, and every item exceeds 199 of 200 random re-splits, so sampling noise alone is a poor explanation. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG004, REL001, REL008]
+
+The main competing explanation that two finite samples cannot rule out is a shift in the mix of pre-existing trace variants: both orderings could have existed in both periods with the later window drawing almost exclusively from the other one. The near-total flips (97–99 in 100 in each window) make a pure sampling fluctuation unlikely but do not exclude it, and the lag items resting on 1–2 observations were deliberately not relied upon. [REL001, REL008, LAG002, LAG003, LAG008, LAG009]

@@ -1,0 +1,23 @@
+### Observed differences
+
+- Three activities nearly disappear: in the earlier window A19 ran in about 33 in 100 traces, A20 in about 29 in 100 and A25 in about 40 in 100; in the later window each appears in only about 1 in 200 traces. [OCC018, OCC019, OCC023, POS001, POS002, POS003]
+
+- In the earlier window these three formed an optional detour between A27/A28 and A29: about 44 in 100 of A27's outgoing transitions went to A19, A25 or A20 (roughly 13, 20 and 10 in 100), and about 52 in 100 of A28's outgoing transitions went to them (roughly 18, 19 and 16 in 100), with the detour activities then leading on to A29 or back to A28 (A25 always immediately after A28). In the later window A27 is followed by A28 in about 98 in 100 of its transitions and A28 by A29 in about 96 in 100, with no observed transitions to A19, A20 or A25. [DIR027, DIR028, DIR019, DIR020, DIR025, LAG003]
+
+- The relational picture matches: before, A19, A20 and A25 each co-occurred with A27, A28 and A29 in about 28–41 in 100 traces and essentially always ran before A29; after, they co-occur with these activities in only about 1 in 200 traces, and pairs of them (e.g. A19 with A20) run together in essentially no trace ("neither" about 99 in 100, up from 28–40 in 100). [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, REL001, REL002, REL006]
+
+- The step gaps closed: A27→A28 became immediate in about 98–99 in 100 cases (about 52 in 100 before), A28→A29 immediate in about 96 in 100 (about 43 in 100 before), and A27→A29 moved from mostly three steps apart (about 90 in 100) to two steps apart (about 96 in 100). Positional distributions shifted only slightly (A27 relatively later, A29 relatively earlier), consistent with the missing intervening steps rather than a relocation. [LAG001, LAG004, LAG002, POS004, POS006]
+
+- The backbone itself is unchanged: A27, A28 and A29 still run in every trace in both windows, co-occur in 100 in 100 traces, and keep the fixed order A27→A28→A29 (A before B in 96–99 in 100 cases). [REL013, REL014, REL015, POS004, POS005, POS006]
+
+- Separately, A15 and A16 still run in every trace but repeat less often: mean occurrences per trace fell from about 1.43 to about 1.31 and repeat support from about 31 to about 24 in 100 traces. A few low-frequency activities rose modestly (A10, A39 and A06 each in about 5 more traces per 100; A10's outgoing mix also changed noticeably). [OCC014, OCC015, OCC010, OCC036, OCC006, DIR010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the optional detour through A19, A20 and A25 between A27/A28 and A29 is no longer executed, so cases now run directly A27→A28→A29; in terms of behaviour, part of the process (this detour) is skipped in the later window, while the surrounding backbone is untouched. The supporting signs are direct and mutually consistent: participation collapsed from 57–81 of 200 traces to 1 of 200 for each of the three activities; their co-occurrence with A27, A28 and A29 fell to about 1 in 200 traces; A27 and A28 lost their outgoing transitions to them; and the step gaps between A27, A28 and A29 closed to immediate succession. The key items show differences larger than in 199 of 200 random re-splits of the same data. [OCC018, OCC019, OCC023, REL003, REL007, REL010, DIR027, DIR028, LAG001, LAG004, LAG002]
+
+Limitations: zero participation only means the activities were not observed, so the evidence cannot distinguish whether the detour was removed from the process or simply never triggered in the later 200 cases. The later outgoing profiles of A19, A20 and A25 each rest on a single trace and cannot be interpreted. No screening expectation was provided, so the formal comparison of evidence-item counts against the chance expectation could not be made; however, three related activities disappearing simultaneously while the relational and lag structure closes in step is difficult to explain as sampling variation of a stable process. [OCC018, OCC019, OCC023, DIR019, DIR020, DIR025]
+
+Other differences: A15 and A16 repeat less often per trace (mean about 1.43 to about 1.31; repeat support about 31 to 24 in 100), and A10, A39 and A06 participate slightly more often, with A10's outgoing mix also changing; these are separate from the main hypothesis, and the smaller shifts may lie within sampling variation. [OCC014, OCC015, OCC010, OCC036, OCC006, DIR010]

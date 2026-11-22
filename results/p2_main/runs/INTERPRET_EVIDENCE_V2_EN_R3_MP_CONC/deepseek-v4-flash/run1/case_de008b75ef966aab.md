@@ -1,0 +1,15 @@
+### Observed differences
+
+- A06 participation dropped from 30% to 12% of traces, and its mean position shifted from 0.36 to 0.49 of the trace length [OCC001, POS001].
+- Activities A19, A23, A26, A27, A28 moved from early positions (mean around 0.31–0.36) to later positions (mean around 0.68–0.71) [POS002, POS006, POS009–POS011]. Their outgoing transitions changed from A29 to A34: e.g., A19 went from 100% to A29 to 91% to A34; A23 from 96% to A29 to 98% to A34; A26 from 93% to A29 to 90% to A34; A27 from 98% to A29 to 100% to A34; A28 from 97% to A29 to 98% to A34 [DIR003, DIR007, DIR010–DIR012].
+- The main block A20, A21, A22, A24, A25 moved earlier: mean position from about 0.63 to 0.39 [POS003–POS008]. Their outgoing transitions to A34 dropped to near zero, and new transitions to A29 appeared: e.g., A20→A34 from 24% to 0%, A20→A29 from 0% to 18%; A21→A34 from 26% to 0%, A21→A29 from 0% to 20%; A22→A34 from 13% to 0%, A22→A29 from 0% to 24%; A24→A34 from 15% to 0.5%, A24→A29 from 0% to 17%; A25→A34 from 21% to 0%, A25→A29 from 0% to 20% [DIR004–DIR006, DIR008–DIR009].
+- A29 and A33 moved later: A29 mean from 0.36 to 0.48, A33 from 0.54 to 0.67 [POS012–POS013]. Their order relative to the main block reversed: before, A29 and A33 came after A20–A25 in about 99% of traces; after, they come before in about 98–99% [REL016–REL017, REL022–REL023, REL028–REL029, REL037–REL038, REL042–REL043].
+- The early group (A19, A23, A26, A27, A28) used to come before A29 and the main block; now they come after A29 and the main block. For example, A19 before A20 in 21% of traces before, now A20 before A19 in 16% [REL005–REL011, REL044–REL049].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a hypothesis that the order of two blocks reversed. In the earlier window, activities A19, A23, A26, A27, A28 occurred early, followed by A29, then the main block A20–A25 and A33, with A34 after the main block. In the later window, the main block and A33 occur early, followed by A29, and then A19, A23, A26, A27, A28 occur later, with A34 after them. This is directly shown by the reversal of outgoing transitions (DIR) and the reversal of order relations (REL) between these groups. The large number of qualifying items (93 vs 1 expected by chance) rules out chance as a whole. A competing explanation of sampling variation is unlikely given the consistency across many activities and indicators. A limitation is that some LAG items have very low support in one window, but the DIR and REL evidence is based on substantial support (200 traces for most).
+
+Other differences: A06 participation dropped from 30% to 12% and its position shifted later; its relation with A44 also changed (A44 used to precede A06 in 27.5% of traces, now only 6.5%). This is not part of the main reversal hypothesis.

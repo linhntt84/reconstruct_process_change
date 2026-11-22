@@ -1,0 +1,14 @@
+### Observed differences
+
+- Before, the dominant local flow through A27, A31, A32 and A28 ran A27 → A32 → A31 → A28: A32 followed A27 one step later in about 64 in 100 cases while A31 followed two steps later in about 64 in 100, A31 routed mainly to A28 (about 64 in 100 of its outgoing transitions), A32 routed mainly to A31 (about 64 in 100), and A28 followed A32 two steps later in about 64 in 100. [LAG001, LAG002, LAG003, LAG004, DIR001, DIR002]
+- In the later window, these shares flipped to about 62 in 100 the opposite way: A31 followed A27 one step later (about 62 in 100, up from about 36) and A32 two steps later (about 62 in 100, up from about 36), A31 routed mainly to A32 (about 62 in 100) and A32 mainly to A28 (about 62 in 100), consistent with the dominant chain becoming A27 → A31 → A32 → A28. [LAG001, LAG002, LAG003, LAG004, DIR001, DIR002]
+- The minority routing persisted in both windows at roughly 36–38 in 100, so both orders were observed before and after; the change is a redistribution of shares, not the appearance or disappearance of a route. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+- Each item shows a component shift of about 26 percentage points, and each difference exceeds those seen in about 99.5 in 100 random re-splits of the pooled traces; the shares rest on roughly 90 outgoing transitions or pair occurrences per window (about 45 in 100 of the 200 traces per window). [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the order of A31 and A32 between A27 and A28 was swapped: before, A32 typically followed A27 directly with A31 after it and A28 last, while in the later window A31 typically follows A27 directly with A32 after it, still ending in A28. This rests on direct relational evidence — the successor shares of A31 and A32 and the step-gap distributions for A27→A31, A27→A32, A31→A28 and A32→A28 all flipped in a mirrored, mutually consistent way — and six qualifying items is many times the roughly 0.31 expected by chance when screening 63 units, with every difference unusual for random re-splits. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: the six items describe one underlying difference rather than independent confirmations, and both orderings occur in both windows, so the evidence shows the dominant share moving from about 64 in 100 to about 62 in 100 the other way. A competing explanation the evidence cannot rule out is sampling differences in variant frequencies — the later window may simply contain more of a second routing variant that already existed before — although a flip of this size with about 90 observations per window is unusual under random splitting. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]

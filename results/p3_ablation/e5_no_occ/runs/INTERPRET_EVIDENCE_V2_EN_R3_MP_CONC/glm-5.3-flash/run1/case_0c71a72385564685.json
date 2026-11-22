@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_0c71a72385564685.json",
+  "evidence_sha256": "9373294c3aa70827edf29cf66afeb3492809a025d58f8d27522b7246acf5dc7e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:43:35.974598+00:00",
+  "finished_at_utc": "2026-11-14T11:45:08.120357+00:00",
+  "latency_seconds": 92.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11781,
+    "prompt_tokens": 11280,
+    "total_tokens": 23061,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10653,
+      "text_tokens": 1128
+    },
+    "cost": 0.0075825
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40372,
+  "text": "### Observed differences\n\n- In the earlier window, A19 and A25 were not observed in any of the 200 traces and A20 appeared in only 1; in the later window, A19 appears in about 38 in 100 traces, A25 in about 35 in 100 and A20 in about 30 in 100, each around 36–37% of the way through the trace. [POS001, POS002, POS003]\n- A41's successors changed: before, about 82 in 100 of its observed outgoing transitions went directly to A26; in the later window about 33 go to A19, 30 to A25 and 24 to A20, while A26 receives only about 2 in 100. [DIR004]\n- The new activities sit between A41 and A26: A41 precedes A19, A20 or A25 in about 28–38 in 100 traces, and each of the three in turn precedes A26 in a nearly identical share; A19's outgoing transitions lead to A26 in about 95 in 100 cases and A25's in about 90 in 100. [REL003, REL004, REL006, REL007, REL008, REL009, DIR002, DIR003]\n- The three are per-case alternatives rather than a chain: A19 and A20, A19 and A25, and A20 and A25 co-occur in only about 1–2 in 100 traces, so typically exactly one of them is present. [REL001, REL002, REL005]\n- The A41–A26 gap widened by one step: the two were adjacent in about 83 in 100 traces before, but at distance 2 in about 83 in 100 after (distance 3 in about 14 in 100). A26 still occurs in every trace in both windows, its mean relative position moving only slightly from about 0.37 to about 0.40. [LAG001, POS004]\n- A02's outgoing mix also differs: A26, about 26 in 100 of A02's outgoing transitions before, is not observed as a successor in the later window, which instead spreads over roughly 21 successors with shares of about 2–18 in 100; this rests on only about 35–44 traces. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a step was inserted between A41 and A26: in the earlier window A41 was followed directly by A26 (adjacent in about 83 in 100 traces, with A19 and A25 unobserved and A20 in 1 of 200 traces), while in the later window exactly one of A19, A20 or A25 — chosen per case, since the three almost never co-occur — runs between them, with A41 before it and it before A26, and A26 still present in every trace, slightly later in the trace. [REL003, REL004, REL006, REL007, REL008, REL009, LAG001, DIR004, POS001, POS002, POS003, POS004]\n\nThe screening qualified 18 items where about 0.31 would be expected if nothing had changed, so the set of differences is far beyond what a stable process typically produces, and the insertion is shown directly rather than inferred: the successor change at A41, the new activities' outgoing edges into A26, and the one-step increase in the A41–A26 distance all describe the same behaviour. Limitations: the many relation items reflect one underlying insertion, not independent confirmations; positions are event positions, not clock time, so nothing can be said about elapsed time; and the direct A41→A26 edge is still observed rarely (about 2 in 100 outgoing transitions). An important competing explanation the evidence cannot rule out is what determines the choice among A19, A20 and A25 in a given case, and whether further unflagged activities occasionally sit between A41 and A26 (distance 3 in about 14 in 100 traces). [DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, LAG001]\n\nOther differences: A02's outgoing transitions were redistributed, with A26 no longer observed as a successor and many low-share successors appearing; given the modest support (about 35–44 traces) and the diffuse pattern, the evidence cannot establish whether this belongs to the same insertion or is a separate difference. [DIR001]",
+  "case_id": "case_0c71a72385564685",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "89622a0ea7bd97dea5dbfd43652b2bad3da4e46b645506c9ac24057219be6c26",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:35:07.441258+00:00",
+  "finished_at_utc": "2026-11-14T11:37:47.142065+00:00",
+  "latency_seconds": 159.7,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23001,
+    "prompt_tokens": 27545,
+    "total_tokens": 50546,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21183,
+      "text_tokens": 1818
+    },
+    "cost": 0.01563225
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69847,
+  "text": "### Observed differences\n\n- The relative order of two groups of activities reversed. In the earlier window, A20, A22 and A23 each ran before A25 in 98–99 in 100 co-occurring traces, and A20/A22/A23 ran before A19/A21/A24 in 30–38 in 100 co-occurrences; in the later window, A25 ran before A20/A22/A23 in 99–100 in 100, and A19/A21/A24 ran before A20/A22/A23 in 28–44 in 100. [REL010, REL015, REL017, REL019, REL023, REL024, REL027, REL029]\n- Successors were re-pointed. Earlier, A19, A21 and A24 led to A30 in about 97–99 in 100 of their outgoing transitions; later, they lead to A25 in about 95–100 in 100. Earlier, A20, A22 and A23 each led to A25 in about 30–39 in 100 (besides transitions among themselves); later, they lead to A30 in about 32–34 in 100 and practically never to A25. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG002]\n- The feeding activities swapped their downstream sets. Earlier, A29 led to A19, A21 or A24 (about 30–38 in 100 each) and A40 led to A20, A22 or A23 (about 27–37 in 100 each); later, A29 leads to A20, A22 or A23 (about 30–33 in 100 each) and A40 leads to A02, A19, A21 or A24 (about 31, 29, 20 and 18 in 100). [DIR008, DIR009]\n- Positions moved with the same exchange: A19, A21 and A24 shifted from mean relative positions of about 0.67–0.69 to about 0.35–0.37, while A20, A22 and A23 shifted from about 0.39–0.40 to about 0.64; A25 (0.45 to 0.39) and A29 (0.65 to 0.58) also occur somewhat earlier. [POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]\n- A02 became a regular step: it appeared in about 8 in 100 traces earlier and about 34 in 100 later; later it typically follows A40 directly (within one step in essentially all 62 later traces containing both) and is followed by A19/A21/A24 and then A25 within two steps (98 in 100 of 63 pair traces). Earlier, A02 was rare and led to a scatter of activities (A15, A44, A23 and others at 6–19 in 100). [POS001, DIR001, LAG001, LAG005, REL009]\n- Distances changed accordingly: A29→A30 stretched from two steps (97 in 100) to four steps (94 in 100); A40→A25 shortened from four–five steps to two–three steps; the pairs A22→A25 and A40→A22 within five steps, present in about 200 traces earlier, nearly vanished (1 trace later), while A29→A20 within five steps rose from 1 to 200 traces. [LAG002, LAG003, LAG004, LAG006, LAG007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nFifty-six control-flow items qualified, against roughly 0.54 expected if nothing had changed, so chance re-sampling of the two windows cannot account for the pattern as a whole [DIR001, DIR008, POS003, REL017, REL024, LAG003, LAG004].\n\nMain hypothesis: the evidence supports that the two middle segments exchanged places and re-targeted their exits. In the earlier window, A29 opened a segment in which one of A19, A21, A24 ran (around two-thirds into the trace) and each of them led almost always to A30, while A40 opened a segment of A20, A22 and A23 (around four-tenths into the trace) that led to A25. In the later window, A29 opens the A20/A22/A23 segment, which now exits to A30, and A40 opens the A19/A21/A24 segment — in about a third of cases via A02 — which now exits to A25; A19 also appears in more traces (44 vs 31 in 100), A21 and A24 in slightly fewer (28 vs 38, and 29 vs 32). [DIR002, DIR004, DIR007, DIR008, DIR009, POS002, POS004, POS007, REL017, REL024, LAG004, LAG007]\n\nSupporting signs: every tested pair of activities from the two segments reversed its order almost completely; the successor changes at the six moved activities and at A29/A40 are near-total; the position and distance shifts point the same way; and the picture is consistent across direction, position, relation and lag indicators rather than resting on a single item. [REL010, REL011, REL012, REL014, REL015, REL016, REL018, REL021, REL022, REL023, REL025, REL026, REL028, REL030]\n\nLimitations: the indicators describe pairwise orders, marginal positions and local distances, not complete variants, so a different global rearrangement producing the same pairwise picture (for example additional untested entry or exit points around the two segments) cannot be excluded; nor can these windows show whether A02 is a newly inserted step or an existing rare step that was re-used. [POS001, DIR001, REL010, LAG004]\n\nOther differences: A43 occurs in more traces later (about 92 vs 69 in 100) but its outgoing behaviour is essentially unchanged, still leading to A44 in about 93–98 in 100 transitions; the flagged item reflects only small shifts among rare edges. [DIR010]",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

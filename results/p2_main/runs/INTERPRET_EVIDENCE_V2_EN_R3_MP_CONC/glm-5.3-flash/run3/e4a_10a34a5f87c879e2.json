@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_10a34a5f87c879e2.json",
+  "evidence_sha256": "c91dc2d5f228e138887844e285273ce7b3f09c905ed1dd5c1b6d648f2df5be3d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:35:13.017046+00:00",
+  "finished_at_utc": "2026-11-15T03:36:07.062827+00:00",
+  "latency_seconds": 54.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7803,
+    "prompt_tokens": 3023,
+    "total_tokens": 10826,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7191,
+      "text_tokens": 612
+    },
+    "cost": 0.00435495
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30219,
+  "text": "### Observed differences\n\n- The elapsed time between the completion of A23 and the subsequent completion of A29 roughly doubled: in the earlier window these gaps averaged about 0.9 hours (median about 0.92 hours, typical range roughly 0.84–0.96 hours), while in the later window they averaged about 1.8 hours (median about 1.75 hours, typical range roughly 1.6–2.0 hours); the spread also grew, from a standard deviation of about 0.13 to about 0.28 hours. The pair was observed in about 48 of 200 traces before and about 42 of 200 after. [TWAIT001]\n- The same pattern appears at a smaller scale for A30 followed by A29: gaps averaged about 0.16 hours (roughly 10 minutes; median about 0.13 hours) in the earlier window and about 0.33 hours (roughly 20 minutes; median about 0.30 hours) in the later window, again roughly doubling, with the spread rising from about 0.13 to about 0.25 hours; observed in about 51 of 200 traces before and 48 of 200 after. [TWAIT002]\n- Both differences are larger than in about 999.5 of 1,000 random re-splits of the pooled data, so they are unusual for finite samples of this size even without any change. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change around A29 as a possibility: in the later window, the elapsed time from the preceding activity's completion to A29's completion roughly doubled on both observed incoming gaps — after A23 from about 0.9 to about 1.8 hours on average, and after A30 from about 0.16 to about 0.33 hours. Supporting signs: the time family produced 2 qualifying items where about 0.009 would be expected by chance in a stable process, a gap far too large to attribute to sampling; both items point to the same successor activity and the same direction of change; and the pairs still occur at similar rates (about 48 versus 42 and 51 versus 48 observations per 200 traces), so the durations shifted rather than the pairs appearing or disappearing. [TWAIT001, TWAIT002]\n\nLimitations: TWAIT measures elapsed time between consecutive completion events, so the evidence cannot show whether the extra time is waiting, handover, or longer processing, and because both items share A29 they may reflect one underlying shift rather than two independent ones. No control-flow items qualified (0 observed against about 0.26 expected by chance), so the hypothesis has no structural counterpart, and a change in how work around A29 is sequenced or interleaved — which could produce the same timing pattern — cannot be ruled out. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_10a34a5f87c879e2",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

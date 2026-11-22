@@ -1,0 +1,18 @@
+### Observed differences
+
+- The A14/A15/A20 block ran at a different point in the trace: in the later window these three activities occur at about one third of the trace length (mean relative position about 0.32 each), against about 0.60 before, while their participation stayed nearly unchanged (A14 in about 38 in 100 traces before vs 34 after; A15 about 32 vs 35; A20 about 31 vs 32) and they still account for about one occurrence per trace combined. [POS001, POS002, POS003]
+- The block's wiring changed completely. Before, A22 and A23 fed it (about 53 in 100 of A22's observed outgoing transitions went to A14/A15/A20, and about 48 in 100 of A23's), and the block exited about half to A23 and half to A27. In the later window, A40 feeds the block (roughly one third each) and A14, A15 and A20 always lead to A21. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- The remaining A22–A27 route became rigid and shorter: all observed A22 transitions now go to A23 (before about 48 in 100), all A23 transitions go to A27 (before about 53 in 100), A23 immediately follows A22 in every case (before sometimes one step later), and the A22→A27 distance shortened from three steps to two. [DIR004, DIR005, LAG001, LAG002, LAG003]
+- The order relative to A21 and A22 flipped in every co-occurrence: before, A21 preceded A14, A15 and A20 (in about 31–38 in 100 traces) and A22 likewise; after, each block activity precedes A21 and A22. [REL001, REL002, REL003, REL004, REL005, REL006]
+- A40 now reaches A21 in two steps instead of one, with one of the block activities in between; A21, A22 and A23 each shifted slightly later (for example A21 from about 0.33 to 0.35 in relative position). [LAG004, DIR006, POS004, POS005, POS006]
+- A10 and A11 still appear in every trace but repeat less: mean occurrences per trace fell from about 1.9 to about 1.6, and repetition support from about 47 in 100 to about 38 in 100. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the A14/A15/A20 block, which previously executed in the A22–A23 segment (fed by A22 or A23, exiting to A23 or A27), now executes earlier, between A40 and A21 (fed by A40 and always leading to A21), while A22 → A23 → A27 runs as a fixed adjacent sequence. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003]
+
+The support is direct and consistent: the block's order relative to both A21 and A22 flips in 100% of co-occurrences, an extra step appears between A40 and A21, the successor profiles of six activities change coherently, and the block's position shifts while its participation stays roughly constant — the kind of relational and positional evidence needed for an order/placement hypothesis. With 24 qualifying items against about 0.39 expected without change, and every item's difference larger than in about 99.5 in 100 random re-splits, chance alone cannot account for the ensemble. [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: the windows are finite samples, so a shift in the mix of trace variants (block executed late versus early) could in principle produce a similar picture without a structural change, although the complete flip in every relation and the deterministic lag changes make pure sampling variation unlikely. The reduced repetition of A10 and A11 is not explained by this hypothesis and may be a separate change or sampling noise; positions and lags reflect event order, not clock time. [OCC001, OCC002, POS001, LAG004]

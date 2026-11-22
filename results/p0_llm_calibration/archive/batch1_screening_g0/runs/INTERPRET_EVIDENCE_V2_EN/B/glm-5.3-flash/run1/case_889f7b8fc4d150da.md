@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, A32 appears in about 52 in 100 traces (previously in essentially all), and A33 and A34 each appear in about 64 in 100 traces (previously about 995 in 1000); A29 still appears in essentially every trace. [OCC001, OCC002, OCC003, REL010, REL011]
+- The outgoing flow of A28 is redistributed: before, about 97 in 100 of A28's outgoing transitions went to A32; in the later window about 51 in 100 go to A32 and about 47 in 100 go to A33 or A34. [DIR002]
+- A33 and A34 now often lead straight into A29: about 37–38 in 100 of their outgoing transitions go to A29, while transitions from A33/A34 to A26 fall from about 46–53 in 100 to about 11–13 in 100. A32's own outgoing behaviour is essentially unchanged, still leading to A29 in about 97 in 100 of its transitions. [DIR004, DIR005, DIR003]
+- A25 now feeds A26 directly: about 84 in 100 of A25's outgoing transitions go to A26 (before, about 97 in 100 went to A33 or A34), and A26 follows A25 within 1 step in about 84 in 100 cases, versus 3 steps in about 94 in 100 before. [DIR001, LAG001]
+- The order around A26 flips: A26 now precedes A33 and A34 in about 48 in 100 traces, whereas before A33/A34 preceded A26 in about 98–99 in 100. [REL005, REL006, REL008, REL009]
+- A32 and A33/A34 have become near-exclusive alternatives: they co-occur in about 16 in 100 traces (previously about 995 in 1000); in about 48 in 100 traces only A33/A34 occur, and in about 36 in 100 only A32. [REL013, REL014]
+- A29 now follows A33/A34 within 1–2 steps in about 86–89 in 100 pair observations (before, it came 5 steps later in about 99 in 100); A33/A34 sit later in the trace (mean relative position about 0.43 to about 0.52) and now lie 4–5 steps after A25 rather than 1–2. [LAG008, LAG009, POS004, POS005, LAG004, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the route between A28 and A29 is re-routed in the later window: in roughly half of the executions A32 is skipped and the flow runs A28 → A33/A34 → A29 with A33/A34 immediately before A29, while A25 now connects directly to A26 and A33/A34 no longer sit between A25 and A26. The distinct differences (the A28 routing split, the direct A25–A26 link, and the relocation of A33/A34 next to A29) are more numerous than the roughly 0.66 items expected by chance when nothing changed, and each item's difference exceeds those seen in about 995 of 1000 random re-splits of the same data. [OCC001, DIR001, DIR002, LAG008, REL013]
+
+The signs are direct and consistent across indicator types: successor redistribution at A28, A33 and A34; order flips between A26 and A33/A34; adjacency changes in the A33/A34-to-A29 and A25-to-A26 distances; and A32's participation halving while A29 still occurs in every trace and A32 still leads to A29 whenever it occurs — together this points to a change in how A29 is reached, not whether it happens. Note that many REL items restate the same participation and order changes and are not independent confirmations. [DIR002, DIR004, DIR005, REL005, LAG001, LAG009, OCC001, DIR003, REL010]
+
+Limitations: the windows are finite samples of 200 traces each, so a shift in the mix of process variants — for example a previously rare route becoming over-represented — could contribute, although behaviour present in about half of the later traces is hard to attribute to sampling alone. About 15 in 100 later traces still show the old A33/A34-before-A26 order, suggesting a mixture of old and new behaviour rather than a clean replacement, and the evidence cannot establish whether the through-A33/A34 route is new or was previously rare. One lag item (A25–A29) rests on only about 2 before-window observations and was not relied upon. [REL005, REL006, LAG003]

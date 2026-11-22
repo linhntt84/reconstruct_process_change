@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_dfdaac706f50a2ea.json",
+  "evidence_sha256": "b3ea2fe2600ef7df5a355e92af5eade76e6c6514235af4b43e3818506a496937",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:47:43.092927+00:00",
+  "finished_at_utc": "2026-11-14T13:51:34.139053+00:00",
+  "latency_seconds": 231.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 34818,
+    "prompt_tokens": 66677,
+    "total_tokens": 101495,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31785,
+      "text_tokens": 3033
+    },
+    "cost": 0.02741055
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 103673,
+  "text": "### Observed differences\n\n- Four activities that ran in every case before now run in only about half of the cases: A36 in 94 of 200 traces (about 47%), A37 and A42 in 95 each (about 48%), and A27 in 107 (about 54%); before, each appeared in 200 of 200 traces. The trio still runs jointly whenever it runs (co-occurrence about 47 in 100, neither in about 52). [OCC025, OCC032, OCC033, OCC037, REL025, REL026, REL027]\n- A25's successor behaviour changed completely: before, its outgoing transitions split almost evenly across A42 (about 34%), A36 (about 34%) and A37 (about 31%); in the later window, about 98–99 in 100 lead straight to A28. The A25→A28 distance fell from usually 4 steps (about 94 in 100) to a single step (about 98 in 100); before, the trio followed A25 within 1–3 steps in nearly every case, while in the later window only about 1 trace in 200 shows such a pair within five steps. [DIR025, LAG001, LAG002, LAG003, LAG004]\n- A26's successor behaviour changed: before, about 97–98 in 100 of its outgoing transitions led to A27; in the later window, about 52–53 in 100 lead to A27 and about 46 in 100 lead into A36, A37 or A42 (about 14–16% each). [DIR026]\n- The trio now leaves towards A31 instead of A28: before, each of A36, A37 and A42 led to A28 in about 32–33% of its outgoing transitions; in the later window that share is at most about 1%, while A31 appears at about 28–36% of each member's transitions. [DIR036, DIR037, DIR042]\n- The trio's order relative to its surroundings flipped: before, it ran before A26 in about 98–99 of 100 co-occurring cases and before A28 in about 99–100; in the later window A26 runs before it (about 46–47 in 100) and A28 before it (about 46–47 in 100), while it still runs before A31. [REL011, REL012, REL013, REL019, REL020, REL021, REL022, REL023, REL024]\n- A27 and the trio changed from being executed together to being alternatives: co-occurrence fell from 100 to about 1–2 in 100 cases, with A27 alone in about 52–53 and the trio alone in about 46–47; likewise the trio now co-occurs with A25 in only about 47 of 100 cases (previously 100). [REL016, REL017, REL018, REL002, REL005, REL006, REL007]\n- Distances and positions agree: the A26→A31 distance, previously almost always 2 steps (about 96–97 in 100), is now split between 2 steps (about 51 in 100, via A27) and 4 steps (about 46 in 100, via the trio), and the trio follows A26 within 1–3 steps in about 46–47 of 100 cases. The trio's median position moved from about 0.39–0.40 to about 0.58–0.59 of the trace, while A28 (0.45→0.39), A26 (0.61→0.55) and A27 (0.64→0.59) moved earlier; position shifts alone are only corroborative. [LAG006, LAG007, LAG008, LAG009, POS002, POS003, POS004, POS006, POS007, POS008]\n- The rest of the backbone is stable: activities such as A14, A15, A28, A29 and A31 kept 100% participation and near-zero successor-profile changes in both windows. [OCC013, OCC014, OCC026, OCC027, OCC028, DIR014, DIR028, DIR029]\n- Separate from this, participation shifted between two alternative front-end loops: A01, A05, A07, A09 and A21 each lost about 6–9 cases in 100 (e.g., A01 from 56% to 47%), while A03, A11, A12 and A13 each gained about 7–9 (e.g., A03 from 45% to 54%) — roughly a 55/45 split before versus 47/53 after. Smaller shifts of a few cases in 100 concern A48/A49 (up to about 63%), A10 (down to 9%, 28→18 traces) and A22 (up about 5 in 100). [OCC001, OCC003, OCC005, OCC007, OCC008, OCC009, OCC010, OCC011, OCC012, OCC020, OCC021, OCC042, OCC043, DIR003, DIR011, DIR013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the always-joint trio A36/A37/A42 no longer runs between A25 and A28. In the earlier window essentially every case went A25 → trio → A28 → … → A26 → A27 → A31; in the later window A25 leads directly to A28 in almost every case, and the trio instead runs after A26, where it alternates with A27 — about 52–53 of A26's outgoing transitions in 100 go to A27 and about 46 go into the trio, with both routes continuing to A31 (A27 directly, the trio after looping). Consequently A27 is skipped in the roughly 46–47 of 100 later cases that run the trio, and the trio is skipped in the roughly 52–53 that run A27. [DIR025, DIR026, DIR036, DIR037, DIR042, LAG001, LAG006, REL011, REL016, REL019, REL022, OCC025, OCC032, OCC033, OCC037]\n\nThe hypothesis is supported directly and consistently: the rewiring is visible in the successor profiles of A25, A26 and the trio's members; the trio's order relative to A26 and A28 flipped while it still precedes A31; A27 and the trio moved from always co-occurring to near-perfect mutual exclusivity; and the lag changes (A25→A28 from about 4 steps to 1; A26→A31 split between 2 and 4 steps) match the two routes. Occurrence, direction, position, relation and lag indicators all point to the same structure, with empirical strengths of about 0.995 on the key items, making sampling variation an unlikely explanation. [DIR025, DIR026, DIR036, DIR037, DIR042, LAG001, LAG006, REL011, REL016, REL017, REL018, REL019, REL022, POS006, POS007, POS008]\n\nOther differences: the front-end shift described above — A01, A05, A07, A09 and A21 down about 6–9 in 100 cases, A03, A11, A12 and A13 up about 7–9 — looks like a change in how often two existing entry loops are taken, since all involved activities remain common in both windows; with no chance expectation available for comparison, a sampling difference cannot be fully excluded. Smaller shifts of a few cases in 100 concern A48/A49, A10 and A21/A22. [OCC001, OCC003, OCC005, OCC007, OCC008, OCC009, OCC010, OCC011, OCC012, OCC020, OCC021, OCC042, OCC043, DIR003, DIR011, DIR013]\n\nLimitations: the samples expose only the dominant transitions, so rare entries into or exits from the trio cannot be excluded, and the evidence cannot distinguish a shift of the trio from dropping it after A25 and inserting a new branch after A26, nor rule out that the two post-A26 routes reflect a stable mix of case types rather than a per-case choice. Items resting on a single co-occurrence in one window (several lag pairs) and A51's completely changed but thinly supported successor profile (12 versus 3 observed transitions) were not used as support. [LAG002, LAG011, DIR051, DIR025, DIR026]",
+  "case_id": "case_dfdaac706f50a2ea",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

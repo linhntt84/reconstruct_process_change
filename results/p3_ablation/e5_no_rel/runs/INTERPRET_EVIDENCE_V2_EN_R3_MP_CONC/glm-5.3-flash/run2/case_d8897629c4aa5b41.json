@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "363237e7598325167b577fb574a00a36b4a2f59ea205e92e99005142a1916e69",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:37:16.227900+00:00",
+  "finished_at_utc": "2026-11-15T06:38:39.940866+00:00",
+  "latency_seconds": 83.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12320,
+    "prompt_tokens": 6905,
+    "total_tokens": 19225,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11145,
+      "text_tokens": 1175
+    },
+    "cost": 0.00719575
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38453,
+  "text": "### Observed differences\n\n- The three activities A14, A15 and A20 are not observed at all in the earlier window (0 of 200 traces); in the later window A14 appears in about 29 in 100 traces, A15 in about 41 in 100 and A20 in about 30 in 100, each at most once per trace (mean occurrences equal participation, no repeats). [OCC001, OCC002, OCC003]\n- In the earlier window the chain A22 → A23 → A24 ran consecutively in essentially every trace: all of A22's observed outgoing transitions went to A23, all of A23's to A24, with A22→A23 and A23→A24 always 1 step apart and A22→A24 always 2 steps apart. [DIR004, DIR005, LAG001, LAG002, LAG003, POS004]\n- In the later window this rigidity dissolves: A22 leads to A23 in only about 44 in 100 transitions, otherwise to A15 (about 24), A20 (about 17) or A14 (about 16); A23 leads to A24 in about 57 in 100 transitions, otherwise to A15 (about 18), A14 (about 14) or A20 (about 13). [DIR004, DIR005]\n- The new activities sit inside the chain: each of A14, A15 and A20 leads to A23 in about 53–58 in 100 of its outgoing transitions and to A24 in the remaining about 42–47 in 100. [DIR001, DIR002, DIR003]\n- Spacing stretches accordingly: A22→A23 is now 2 steps apart in about 56 in 100 cases (previously never), A23→A24 is 2 steps apart in about 43 in 100 cases, and A22→A24 grows from always 2 steps to 3 steps in about 995 in 1000 cases. [LAG001, LAG002, LAG003]\n- The new activities occur around position 0.51 of the trace (medians about 0.52), just after A22, whose own position shifts slightly earlier (median about 0.48 to about 0.46). [POS001, POS002, POS003, POS004]\n- The numbers cross-check: the three participation shares sum to about 99.5 in 100 traces, matching one inserted activity per trace, and the lag splits match A23 sitting either directly after A22 (about 44 in 100) or directly before A24 (about 57 in 100). [OCC001, OCC002, OCC003, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window one of the previously unobserved activities — A14, A15 or A20, with A15 the most frequent — is inserted into the formerly fixed sequence A22 → A23 → A24, either directly after A22 (before A23) or directly after A23 (before A24), so that the plain chain with no insert almost never occurs any more. This is an addition of new steps into the sequence, not a re-weighting of existing paths, since the inserted activities were not observed at all in the earlier window. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nThe signs are direct and mutually consistent: appearance from zero participation, new edges from A22 and A23 into the new activities and from them onward to A23 or A24, the A22→A24 distance growing from 2 to 3 steps in nearly every trace, and participation shares summing to about one insertion per trace. The volume of qualified evidence also far exceeds chance: 15 items qualified where roughly 0.3 would be expected without a change in the control-flow family, and every item's difference exceeds about 995 of 1000 random re-splits. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, LAG001, LAG002, LAG003]\n\nLimitations: the evidence uses event positions within traces, not clock time, so it locates the insertions in the sequence but says nothing about timing; direction shares are over transitions rather than cases; and zero participation in the earlier window means only that the activities were not observed there, so a pre-existing rare behaviour cannot be fully ruled out, although its consistent appearance across occurrence, direction, position and lag indicators makes sampling noise unlikely. The small residue of traces with A22→A24 only 2 steps apart (about 5 in 1000) is not explained by this hypothesis. [LAG002, OCC001, OCC002, OCC003]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

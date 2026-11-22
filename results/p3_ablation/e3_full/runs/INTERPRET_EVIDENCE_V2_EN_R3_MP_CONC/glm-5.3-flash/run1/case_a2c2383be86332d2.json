@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_a2c2383be86332d2.json",
+  "evidence_sha256": "3a01ba0752ab2d79ca25a13f7b86108ebfbd820d93607a3a85cecd2e6211dd59",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:34:51.399274+00:00",
+  "finished_at_utc": "2026-11-16T01:36:49.786843+00:00",
+  "latency_seconds": 118.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14746,
+    "prompt_tokens": 25314,
+    "total_tokens": 40060,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13432,
+      "text_tokens": 1314
+    },
+    "cost": 0.011170099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45039,
+  "text": "### Observed differences\n\n- A07 disappeared from execution: it ran in every one of the 200 earlier traces (about 2.1 occurrences per trace, repeated in about half of them) but in none of the 200 later traces. [OCC004, POS004]\n- The branch point moved from A07 up to A08. Earlier, all of A08's observed outgoing transitions went to A07, and A07 passed on to A05 (about 52 in 100) or A06 (about 48 in 100); in the later window A08 passes directly to A05 (about 52 in 100) or A06 (about 48 in 100). [DIR002, DIR003]\n- A07's relations collapsed across the board: A03–A07 and A06–A07 went from co-occurring in every trace to A03/A06 alone, A07–A08 from always together to A08 alone, and A04–A07 from about 53 in 100 to none. [REL017, REL026, REL028, REL021]\n- Distances across the removed step shortened by exactly one position: A08→A06 from 2 to 1, A03→A06 and A08→A03 from 3 to 2, A02/A04→A05/A06 from 4 to 3, and the self-distances of A03, A05 and A08 from 4 to 3. [LAG019, LAG007, LAG002, LAG011, LAG020, LAG005, LAG014]\n- A new activity A01 appeared at the very start of traces: not observed earlier, it occurs once in about 35 in 100 later traces (69 of 200) and every observed occurrence is directly followed by A03. [OCC001, POS001, DIR001]\n- A01 never occurs together with A02 or A04, and both declined: A02 from about 48 to about 28 in 100 traces, A04 from about 53 to about 38; in the later window about 35 in 100 traces contain neither A02 nor A04 (before: none). [REL001, REL003, OCC002, OCC003, REL009]\n- A03 and A08 sit slightly later within traces (mean position 0.38→0.42 and 0.50→0.58); these are event ranks, not clock times. [POS002, POS005]\n- A05's participation rose from about 50 to about 55 in 100 traces, a difference within the range random re-splits produce (empirical strength 0.56). [POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A07 was removed from the flow between A08 and the A05/A06 branch. Earlier, every trace executed A08 → A07 → A05 or A06, with A07 running about twice per trace; in the later window A07 is never observed and A08 passes directly to A05 (about 52 in 100) or A06 (about 48 in 100). The signature is direct and consistent: the disappearance is seen on participation (200 of 200 traces to 0 of 200), the successor change at A08 is observed directly, A07's relations with the other activities all collapse in the same direction, and every measured distance across the removed step shortens by exactly one position — a coherent structural pattern rather than isolated indicators, and far beyond what a rare variant appearing in one window would produce. Limitations: zero participation only shows A07 was not observed in the later window, so a permanent removal cannot be distinguished from the later window drawing only on traces of a variant that skips A07; directly-follows shows only observed edges, so unobserved intermediate steps between A08 and A05/A06 cannot be excluded; and positions/lags are event ranks, so no claim about clock timing is made. [OCC004, DIR002, DIR003, REL017, REL026, LAG019, LAG002]\n\nOther differences: A01 was added as a new first activity in about 35 in 100 later traces, always leading into A03, and it never co-occurs with A02 or A04, whose participations fell (A02 about 48→28, A04 about 53→38 in 100) while about 35 in 100 later traces contain neither — consistent with a new alternative entry branch replacing part of the earlier A02/A04 choice, though because A01 was absent in the earlier window this is an addition/replacement rather than a re-weighting of previously existing paths [OCC001, DIR001, REL001, REL003, REL009, OCC002, OCC003]. The slightly later positions of A03 and A08 fit A01's insertion ahead of them but are position-based only [POS002, POS005]. A05's participation rose by about 5 in 100 traces, within random-split variation [POS003].",
+  "case_id": "case_a2c2383be86332d2",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_7535c771ea572495.json",
+  "evidence_sha256": "653886ee7571aea7b98ddc99978753da93c7d23e14e2afd8d2ed1905bfb9d479",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:19:32.716236+00:00",
+  "finished_at_utc": "2026-11-16T02:20:52.009900+00:00",
+  "latency_seconds": 79.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11630,
+    "prompt_tokens": 18900,
+    "total_tokens": 30530,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10429,
+      "text_tokens": 1201
+    },
+    "cost": 0.00865
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33995,
+  "text": "### Observed differences\n\n- Two activities disappeared. In the earlier window A01 and A03 each ran exactly once in all 200 traces, with A03 always in the final position; in the later window neither appears in any trace, and the former A01→A03 hand-off is gone. [OCC001, OCC003, POS001, POS003, DIR001]\n- Two activities appeared. A05 and A07 were absent from all earlier traces and now occur exactly once in every trace; A07 always takes the final position (mean normalized position 1.0, the slot A03 used to occupy), while A05 sits near the middle of the trace (mean about 0.51). [OCC005, OCC006, POS005, POS007]\n- Successors changed around A06. A06's only observed outgoing transition was A01 before and is A07 now (100% of transitions in both windows); A02's outgoing traffic moved from A06 (about 53 in 100 transitions) to A05 (about 50 in 100), while A02→A04 stayed roughly stable (about 47 → 50 in 100); A05's only observed successor is A06. [DIR002, DIR003, DIR004]\n- Pairwise relations flip consistently. A01 co-occurred with A02, A03, A04 and A06 in essentially all earlier traces and with none of them later; A05 and A07 now co-occur with A02 and with each other in all traces, with A05 always before A06 and A06 always before A07. [REL001, REL004, REL005, REL006, REL009, REL011, REL019, REL020, REL021]\n- Positions and distances shifted as if A05 were inserted before A06. A06's mean normalized position moved from about 0.50 to about 0.75, and the A02→A06 and A04→A06 distances moved from lags 1–2 to lags 2–3. [POS006, LAG003, LAG006]\n- A04's role was stable: it ran in about 48.5 in 100 earlier traces and 48 in 100 later ones, and its ordering with A02 and A06 is essentially unchanged. [OCC004, REL008, REL017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the closing segment of the process was restructured. In the earlier window, traces ran A02 (repeated in about 48 in 100 traces, optionally via A04) into A06 → A01 → A03, with A03 last. In the later window, A01 and A03 are no longer observed; A05 now runs between the A02/A04 stage and A06 (A02 or A04 → A05 → A06), and A07 closes every trace directly after A06. This rests on direct, mutually consistent signs: all-or-nothing participation flips with full support (200 of 200 traces) on both sides, observed successor changes at A06 and A02 plus the new A05→A06 edge, ordering relations that flip coherently across every affected pair, and position/lag shifts that match an insertion before A06; nearly all of these differences exceed those seen in any of the 200 random re-split comparisons. Limitations: zero participation only means an activity was not observed in that window, and the evidence cannot distinguish genuine addition and removal of A01/A03 and A05/A07 from a relabelling or replacement of activities, since activity codes are anonymous. [OCC001, OCC003, OCC005, OCC006, DIR002, DIR003, DIR004, REL019, REL021, POS006, POS007]\n\nOther differences: A02's mean occurrences per trace rose slightly (about 1.87 → 2.01) and its median position moved a little later; A04's mean occurrences rose slightly (about 0.87 → 1.01) with repetition in a somewhat larger share of its traces (about 22 → 29 in 100); small lag redistributions appear for A02→A02, A02→A04 and A04→A04. These are minor and may reflect sampling variation between the windows. [OCC002, OCC004, POS002, POS004, LAG001, LAG002, LAG004, LAG005]",
+  "case_id": "case_7535c771ea572495",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

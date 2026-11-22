@@ -1,0 +1,18 @@
+### Observed differences
+
+- After A22, the choice of next activity shifted. In the earlier window, A25 was the most common successor (about 53 in 100 of A22's observed outgoing transitions, versus about 29 for A23 and about 18 for A21). In the later window, A21 dominates (about 58 in 100), A23 holds at about 29, and A25 falls to about 13. The later profile rests on fewer observations (about 31 transitions versus about 49). [DIR002]
+- The relative position of A22 and A25 changed in step. Earlier, when A25 followed A22 within five steps, it did so immediately in about 53 in 100 cases (about 24 at two steps' distance, about 22 at three). In the later window, only about 13 in 100 are immediate, while two-step (about 45) and three-step (about 42) gaps now dominate. [LAG001]
+- After A16, traffic moved from A18 to A17: A18 fell from about 38 in 100 of A16's outgoing transitions to about 23, A17 rose from about 27 to about 42, and A20 stayed near 35. Both profiles are well backed (about 151 versus 169 traces). [DIR001]
+- The elapsed time between the consecutive completions of A33 and A34 roughly halved: from a mean of about 1.0 hour (median about 1.02, middle half about 0.92–1.10 hours) to about 0.50 hours (median about 0.50, middle half about 0.44–0.55), with the spread also narrowing. The measurement covers all 200 traces in both windows. [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+In the later window, the handover after A22 changed: A21 replaced A25 as the typical next activity (about 18% to about 58% of A22's outgoing transitions, with A25 dropping from about 53% to about 13%), and A25, when it still follows A22, now appears two to three event positions later instead of immediately. All successors involved remain observed in both windows, so this reads as a redistribution of routing shares among existing alternatives rather than a removed path. The change is shown directly by the successor shares and, consistently, by the positional lag distribution; both differences are larger than almost all random re-splits (strength about 0.995), and the control-flow family produced three qualifying items (this A22 change plus a separate A16 redistribution) against roughly 0.29 expected without a change — a yield an unchanged process would rarely produce. [DIR002, LAG001]
+
+Limitations: the A22 profiles rest on about 49 (before) and about 31 (after) observed transitions, and the two indicators draw on the same traces, so they are two views of one difference rather than independent confirmations. The evidence does not show what now executes between A22 and A25, and the fall in observed A22 transitions (about 49 to 31) leaves open a reduced frequency of A22 itself. The main competing explanation — a sampling fluctuation concentrated in one window — is made unlikely for control flow as a whole by the screening yield but cannot be excluded for this pair alone. [DIR002, LAG001]
+
+Other differences:
+- A separate redistribution after A16 shifts shares from A18 to A17 (about 38% to about 23%, and about 27% to about 42%); it is not part of the hypothesis above. [DIR001]
+- The elapsed time between consecutive completions of A33 and A34 fell from about 1.0 to about 0.5 hours across the whole distribution; as the only time item, where roughly 0.005 time items would qualify by chance, a single qualification cannot establish a timing change at these thresholds, so it is reported as an observed difference rather than an inferred one. [TWAIT001]

@@ -1,0 +1,21 @@
+### Observed differences
+
+- Executions of the A30–A31–A36 chain dropped sharply: earlier, each of the three activities logged about 690 outgoing transitions across 200 traces (roughly 3.4 per trace); in the later window, only about 210 (roughly one per trace). [DIR001, DIR002, DIR003]
+- The exit taken at A36 changed: earlier, about 70 in 100 of A36's outgoing transitions returned to A30 and about 29 in 100 went to A25; in the later window, about 93 in 100 go to A25 and only about 4 in 100 return to A30. [DIR003]
+- The chain itself is intact in both windows: A30 led to A31 in about 99 in 100 of its transitions earlier (about 97 in 100 later), and A31 led to A36 in about 99 in 100 earlier (about 98 in 100 later). [DIR001, DIR002]
+- The relation between A30 and A36 tightened from mixed to fixed: they co-occur in every trace in both windows, but earlier they were interleaved or repeated in about 75 in 100 traces (A30 first in 25 in 100), while in the later window A30 precedes A36 in about 98 in 100 traces and the mixed/repeated pattern remains in about 2 in 100. [REL001]
+- Repetitions and the backward step all but disappeared: earlier, A30 was repeated within five steps in about 150 of 200 traces, A36 was repeated within five steps in about 150 of 200, and A30 followed A36 within five steps in about 150 of 200; in the later window, each of these ordered pairs was observed in only 1–2 of 200 traces. [LAG001, LAG003, LAG004]
+- The distance from A30 to the following A36, observed in essentially all traces in both windows, became concentrated at two events: about 89 in 100 of the observed mass in the later window, against about 12 in 100 earlier, with the earlier five-step share (about 5 in 100) gone. [LAG002]
+- Placement stayed roughly the same but became far more consistent: the mean relative position of A30 moved only from about 0.44 to 0.42 and A36 stayed at about 0.49, while the spread roughly halved (standard deviation about 0.12 to 0.07 for A30 and 0.12 to 0.06 for A36). [POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeated execution of the A30 → A31 → A36 cycle largely stopped: in the earlier window the cycle typically ran three to four times per trace, with A36 returning to A30 in about 70 in 100 of its outgoing transitions, while in the later window it typically ran once and A36 passed the flow on to A25 in about 93 in 100 of its transitions. A30 and A36 still occur in every trace in both windows, so the activities did not become optional — the number of repetitions per trace fell. [DIR001, DIR002, DIR003, REL001, POS001, POS002]
+
+The signs are direct and mutually consistent: the routing change at A36 is observed on large supports (689 vs 209 transitions); the collapse of within-five-step self-repetitions and of the A36-to-A30 step (about 150 of 200 traces down to 1–2), the near-universal fixed A30-before-A36 order, the concentration of A30→A36 at two steps and the halved position spread all match one underlying loop reduction; and ten items qualified where roughly 0.26 would be expected by chance among the 52 tested units, so the set is unlikely for an unchanged process, with every item's difference exceeding about 199 of 200 random re-splits. [DIR003, LAG001, LAG002, LAG003, LAG004, REL001, POS001, POS002]
+
+Limitations: the evidence shows a drastic reduction rather than certain removal of the cycle — A36 still returned to A30 in a small share of later transitions (about 4 in 100, roughly 8 transitions) and two traces still show A30 repetitions — so a competing explanation the evidence cannot rule out is that the cycle remains in place and is now almost always exited after a single pass. The after-profiles of the repetition items rest on only 1–2 observations, and the relational, lag and position items reflect the same loop change rather than independent confirmations. [DIR003, LAG001, LAG003, LAG004, REL001]
+
+Other differences: the only remaining signals are noise-level redistributions among rare outgoing transitions of A30 and A31 (each component well under 1 in 100 of that activity's transitions, e.g. about 0.5 in 100 in the later window versus about 0.15 in 100 earlier), consistent with the smaller number of executions rather than with a routing change. [DIR001, DIR002]

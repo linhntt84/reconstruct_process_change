@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_d04d1f22a1f6d97f.json",
+  "evidence_sha256": "fc4df490e4645a7e434b4c160bc1b28e55dc7bbd87ff6bc4f67ae697a10d04ba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:42:39.753328+00:00",
+  "finished_at_utc": "2026-11-15T03:43:44.712911+00:00",
+  "latency_seconds": 64.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9375,
+    "prompt_tokens": 12890,
+    "total_tokens": 22265,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8198,
+      "text_tokens": 1177
+    },
+    "cost": 0.006621
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30096,
+  "text": "### Observed differences\n\n- **A22 became intermittent.** Earlier, A22 appeared in every trace (participation 100%, mean 1.0 occurrence per trace); in the later window it appears in about 51 in 100 traces (mean 0.51). [OCC001]\n- **Three activities appeared mid-process.** A27, A28 and A33 were not observed in the earlier window; in the later window each occurs once in about 49 in 100 traces, around the middle of the trace (mean position ≈0.49 of trace length for all three). [OCC002, OCC003, OCC004, POS001, POS002, POS003]\n- **Routing out of A21 split.** Earlier, every observed outgoing transition of A21 went to A22; in the later window about 51% go to A22, with the rest going to A28 (~18%), A33 (~17%) and A27 (~15%). [DIR001]\n- **The new activities form a block between A21 and A23.** Earlier, A21, A22 and A23 always co-occurred in the order A21 → A22 → A23 and the trio never appeared; in the later window A21 precedes each of A27, A28 and A33 in about 49 in 100 traces, the three co-occur with one another in about 49 in 100 traces in both orders (no fixed order among them), and each of them precedes A23 in about 49 in 100 traces. Internally, A27 next leads to A33 (~36%), A28 (~35%) or A23 (~30%); A28 to A27 (~43%), A33 (~31%) or A23 (~27%); A33 to A23 (~44%), A28 (~30%) or A27 (~27%). [REL002, REL003, REL004, REL012, REL013, REL014, REL009, REL010, REL011, DIR002, DIR003, DIR004]\n- **A22 and the trio are now alternatives.** In the later window, A22 never occurs in the same trace as any of A27/A28/A33 (A22 alone in ~51% of traces, the trio activity alone in ~49%), whereas earlier A22 always co-occurred with A21 and A23; A23 now runs without A22 in about 49 in 100 traces, preceded by one of the trio. [REL001, REL005, REL006, REL007, REL008]\n- **The detour shows in step distance.** The gap from A21 to A23 was always 2 steps earlier; in the later window it is 2 steps in about 51% of traces and 4 steps in about 49%, consistent with three activities inserted between them. [LAG001]\n- **Elapsed times around A29 roughly halved.** The elapsed time between consecutive completion events from A25 to A29 fell from a mean of about 0.9 hours to about 0.5 hours (56 vs 57 observations), and from A30 to A29 from about 0.2 hours to about 0.1 hours (41 vs 48 observations). [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, an alternative branch consisting of A27, A28 and A33 — executed together in no fixed order — sits between A21 and A23 and is taken in about half of the cases, replacing the former A21 → A22 → A23 segment (A22 skipped) in those traces, while the original segment with A22 still runs in the remaining ~51 in 100 traces. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL005, REL009, REL010, REL011, LAG001]\n\nThe change is shown directly and consistently across occurrence, direction, relation and lag indicators rather than resting on a single item, and its volume far exceeds what an unchanged process produces: 26 control-flow items against about 0.4 expected by chance, and 2 time items against about 0.008. A limitation is that zero participation earlier only means A27/A28/A33 were not observed, so they could have existed at a very low rate below detection rather than being genuinely new; the evidence also cannot show what constrains the trio's internal order beyond its being mixed. [OCC002, OCC003, OCC004, REL012, REL013, REL014]\n\nOther differences: The elapsed time between consecutive completion events around A29 roughly halved in the later window (A25→A29 from about 0.9 to about 0.5 hours; A30→A29 from about 0.2 to about 0.1 hours, each based on only some 40–60 observations) — a timing change in its own right that the evidence does not connect to the branch change above. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_d04d1f22a1f6d97f",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

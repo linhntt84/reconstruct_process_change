@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_a383e8d05880f209.json",
+  "evidence_sha256": "22941f256769bcb5962ad8c2102d3946f6d2aba325a8821cd877774969ceee68",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:23:10.451498+00:00",
+  "finished_at_utc": "2026-11-14T14:24:43.601599+00:00",
+  "latency_seconds": 93.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15448,
+    "prompt_tokens": 19371,
+    "total_tokens": 34819,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13772,
+      "text_tokens": 1676
+    },
+    "cost": 0.010629650000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46579,
+  "text": "### Observed differences\n\n- In the later window, A01 runs much later in each case: its mean relative position moved from about 0.26 (median about 0.17, roughly the first quarter of the trace) in the earlier window to about 0.65 (median about 0.67, roughly two-thirds in); this difference exceeds about 199 of 200 random re-splits. [POS001]\n- The order between A01 and each of A02, A04, A05 and A07 flipped. Earlier, A01 preceded A04 in about 49 in 100 of their shared traces and followed it in about 52 (no fixed order); in the later window A04 precedes A01 in 100 in 100. Against A07 the split went from about 68/32 in A01's favour to 0/100; against A02 from about 55/45 to about 19/81; against A05 from about 81/19 to about 37/63. Every pair still co-occurs in all traces in both windows. [REL001, REL002, REL003, REL004]\n- A01's observed outgoing transitions changed accordingly: earlier they went mainly to A05 (about 31 in 100), A02 (about 29) and A04 (about 18); in the later window they go mainly to A03 (about 47) and A05 (about 27), with A04 and A07 no longer observed as successors. [DIR001]\n- Successor profiles of other activities moved consistently with a late A01: A07 now leads to A01 in about 68 in 100 of its observed outgoing transitions (about 18 before) and no longer to A03; A04 leads to A07 more often (about 54 vs 70 in 100) and no longer to A01; A02 leads to A05 more often (about 27 vs 40) and to A01 less (about 26 vs 11); A06 leads to A01 more often (about 5 vs 15). [DIR006, DIR003, DIR002, DIR005]\n- Gaps agree: A07 is followed by A01 within one step in about 68 in 100 of later cases (about 54 before), now across all 200 traces (65 before); A04 is followed by A01 within five steps in all 200 later traces (103 before) but never within one step (about 31 in 100 before); A02→A01 within one step fell from about 57 to 13 in 100; A01→A02 within five steps appears in 109 earlier traces but only 38 later, while A05→A01 rises from 39 to 126; A01→A03 is now within one step in about 47 in 100 (about 10 before), across all 200 traces (143 before). [LAG019, LAG009, LAG004, LAG001, LAG014, LAG002]\n- The relative order among A02, A04, A05 and A07 barely moved (e.g., A02 before A05 about 75 vs 76 in 100; A05 against A07 about 50/50 in both windows); differences of this size occur routinely in random re-splits (strengths about 0.14–0.83). [REL005, REL006, REL007, REL008, REL009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 moved from an early stage to a late stage of the process. In the earlier window A01 ran near the start (mean relative position about 0.26) and typically preceded A02, A04, A05 and A07, with no fixed order against A04 and A07; in the later window it runs near the end (about 0.65), after A04 and A07 in every trace and after A02 in about 8 of 10 traces, typically directly after A07 and followed mainly by A03. The internal order of A02, A04, A05 and A07 stayed essentially the same, so the difference is confined to A01's placement. [REL001, REL002, REL003, REL004, POS001, DIR001, DIR006, LAG019, LAG002]\n\nSupporting signs: the reversal is shown directly by relational evidence in four activity pairs, and it agrees with A01's positional shift, with the successor changes at A01, A07, A04, A02 and A06, and with the gap changes; co-occurrence remained at 100 in 100 traces for every pair in both windows, so participation did not change, and every activity is observed in both windows, so none was added or removed. [REL001, REL002, REL003, REL004, POS001, DIR001, DIR002, DIR003, DIR005, DIR006, LAG001, LAG002, LAG004, LAG009, LAG014, LAG019]\n\nLimitations: POS and LAG measure event positions, not clock time, so the change concerns sequence position rather than timing; DIR shares cover observed outgoing transitions, so the unobserved A01→A04 and A01→A07 edges mean \"no longer observed\", not proven removal; and the indicator families partly describe the same trace behaviour, so they are not independent confirmations. An alternative the evidence cannot fully rule out is that the block A02–A07 shifted earlier as a group rather than A01 moving later, although the small position decreases of the other activities against A01's large increase favour the latter reading. [POS001, POS002, POS003, POS004, POS005, DIR001]\n\nOther differences: A02, A04, A05 and A07 each occur slightly earlier in the later window (mean position lower by about 0.05–0.10), and A07 is now directly followed by A03 far less often (within one step about 27 vs 0 in 100), both consistent with A01 vacating early positions and sitting between A07 and A03. [POS002, POS003, POS004, POS005, LAG021, DIR006]",
+  "case_id": "case_a383e8d05880f209",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

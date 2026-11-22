@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_f4b4178c2bc39c78.json",
+  "evidence_sha256": "f33fb82e0cc7763cb71c5e0a599ad4350ca9a8be2c090a8123537002a734d179",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:20:27.256197+00:00",
+  "finished_at_utc": "2026-11-14T13:21:12.786403+00:00",
+  "latency_seconds": 45.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6745,
+    "prompt_tokens": 4844,
+    "total_tokens": 11589,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6010,
+      "text_tokens": 735
+    },
+    "cost": 0.0040991
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24742,
+  "text": "### Observed differences\n\n- In the earlier window, A25, A26 and A31 each occurred exactly once in every trace (mean 1.0 occurrence per trace, present in all 200 traces, never repeated within a trace). In the later window they still appear in every trace, but average about 3.5 occurrences per trace and repeat within a trace in about 68 in 100 cases. [OCC001, OCC002, OCC003]\n- The routing out of A31 changed: in the earlier window all of its observed outgoing transitions led to A20; in the later window about 71 in 100 lead to A25 and about 29 in 100 to A20 (based on 697 outgoing transitions). [DIR001]\n- The relationship between A25 and A31 changed from a strictly fixed order to a mixed one: earlier, A25 preceded A31 in all 200 traces; in the later window that fixed order remains in only about 32 in 100 traces, while the two activities are interleaved or repeated in about 68 in 100. [REL001]\n- The tight spacing between them dissolved: earlier the ordered pair A25→A31 sat exactly two event positions apart in essentially every trace; in the later window a two-step gap appears in only about 12 in 100 traces, and a five-step gap in about 5 in 100. [LAG001]\n- A25 and A31 now occur across a much wider range of event positions (spread roughly doubled, standard deviation from about 0.06 to about 0.12 for both, median only slightly later); this is consistent with the repetition above and is based on event positions, not clock time. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment containing A25, A26 and A31, previously a single fixed pass executed once per trace, became a repeated cycle: A31, which previously always moved on to A20, now returns to A25 in about 71 in 100 of its executions, so the three activities run about 3.5 times per trace on average, and their fixed order dissolves into interleaving in about 68 in 100 traces. [OCC001, OCC002, OCC003, DIR001, REL001, LAG001]\n\nSupporting signs: eight control-flow items qualified against an expectation of only 0.3 without change, far too many to attribute to chance sampling; the repetition is observed directly in every trace rather than in a rare variant, since participation is 100% in both windows and the earlier window shows exactly one occurrence in all 200 traces; the routing change fits the repetition quantitatively, because an exit taken in about 29 in 100 of A31's executions implies about 3.5 passes per trace, matching the observed mean; and every difference is larger than in about 995 of 1,000 random re-splits of the pooled data. [DIR001, OCC001, REL001, LAG001]\n\nLimitations: only A31's outgoing routing was measured, so the precise path of the cycle — including whether A26 lies inside it, which is inferred from its identical repetition pattern rather than from direct edges — is not directly observed, and the evidence cannot fully rule out that the repetition is produced by a loop other than an A31→A25 back-edge. [OCC002, DIR001]",
+  "case_id": "e4a_f4b4178c2bc39c78",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

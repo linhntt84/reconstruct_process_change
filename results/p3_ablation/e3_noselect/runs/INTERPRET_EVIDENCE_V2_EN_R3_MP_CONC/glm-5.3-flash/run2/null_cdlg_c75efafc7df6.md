@@ -1,0 +1,11 @@
+### Observed differences
+
+- Routing out of A02 and A10 shifted between the same alternatives: in the earlier window about 45 in 100 of A02's outgoing transitions went to A10, 26 to A03 and 29 to A06, whereas in the later window about 55 in 100 went to A10, 18 to A03 and 27 to A06; correspondingly, A10's transitions to A02 fell from about 55 to 45 in 100 while its transitions to A03 rose from about 19 to 29 in 100. [DIR001, DIR006]
+- A few rare edges seen in the earlier window were not seen in the later one: A03 led to A08 in about 6 in 100 of its transitions (3 transitions), and A07 led to A13 and A14 in about 4 and 2 in 100 (2 and 1 transitions); in the later window A03 led only to A07 and A07 only to A08. [DIR002, DIR004]
+- Trace participation moved by 3–4 in 100 cases for a few activities: A02 and A10 were present in about 55–56 in 100 traces before and 52 in 100 in the later window, A01 and A09 rose from about 44–45 to 48 in 100, and A04 and A06 fell from 26 to 22 and from about 31 to 28 in 100; the A01/A09 and A02/A10 pairs have identical profiles, so each pair likely reflects one behaviour rather than two. [OCC001, OCC002, OCC004, OCC006, OCC009, OCC010]
+- Smaller movements: A06's transitions to A04 fell from about 49 to 40 in 100 while those to A11 rose from about 20 to 27 in 100; A08 repeated slightly less often (recurrence in about 13 vs 10 in 100 traces) and A13's participation fell from about 13 to 10 in 100 traces, each based on roughly 50 and 25 traces. [DIR003, OCC008, OCC013]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. Every observed difference is small — routing shifts of about 8–10 in 100 transitions whose empirical strengths (0.42–0.75) are exceeded by a quarter to a third of random re-splits, participation shifts of 3–4 in 100 traces, and rare edges disappearing on the basis of only 1–3 transitions — so sampling variation between the two 200-trace windows remains a plausible explanation. [DIR001, DIR002, DIR004, DIR006, OCC002, OCC004, OCC010]

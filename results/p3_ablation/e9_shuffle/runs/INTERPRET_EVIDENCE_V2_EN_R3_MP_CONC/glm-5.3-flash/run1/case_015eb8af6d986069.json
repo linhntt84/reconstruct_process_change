@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_015eb8af6d986069.json",
+  "evidence_sha256": "4254ad18d34efb14e1eaa770d4f65920543a454504fee160b9d162a226625a69",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:42:44.411891+00:00",
+  "finished_at_utc": "2026-11-14T10:44:48.628252+00:00",
+  "latency_seconds": 124.22,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20648,
+    "prompt_tokens": 40264,
+    "total_tokens": 60912,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18657,
+      "text_tokens": 1991
+    },
+    "cost": 0.0163636
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57991,
+  "text": "### Observed differences\n\n- The mid-process block A31, A22, A20, A23, A24, A26, A25, A32 was re-sequenced. In the earlier window these activities appeared in a variable order: A24 came before A20 in about 73 of 100 traces, A26 before A23 in about 70, and A20/A26 as well as A22/A24 were roughly 50/50. In the later window they follow one fixed sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: each pair order holds in about 96–99 of 100 traces, each successor receives about 90–99 of 100 of the predecessor's outgoing transitions, and pair distances collapsed to a single value (e.g., A23 to A26 always 2 steps, previously 1–2). The reverse directions (A24→A20, A24→A23, A25→A23, A26→A22, A26→A23) fell from 45–176 of 200 traces to about 1 of 200, and A31 no longer reaches A25 within five steps (106→1 of 200), consistent with A25 now sitting deeper in the chain. [REL019, REL021, REL014, REL016, REL017, LAG017, LAG012, LAG022, LAG029, LAG019, LAG020, LAG025, LAG027, LAG035, DIR013, DIR008, DIR007, DIR009, DIR010, DIR012, DIR011]\n- Along with the re-sequencing, A20, A22 and A23 now occur slightly earlier in the trace (mean relative position about 0.64→0.59, 0.60→0.57 and 0.69→0.62), while A24 and A26 occur slightly later (about 0.60→0.65 and 0.64→0.67); all of them still appear in every trace in both windows. [POS002, POS003, POS004, POS005, POS006]\n- A08 became much rarer: it appeared in 72 of 100 traces before versus 29 of 100 in the later window (mean occurrences per trace 0.75→0.32), it now occurs later within traces (mean relative position about 0.24→0.41), and it co-occurs with partners such as A16, A22, A23, A24, A25, A26, A31 and A32 in only 29 of 100 traces (previously 72, almost always with A08 first). Where A08 still occurs, its outgoing work diversified: A16 took 90 of 100 of its outgoing transitions before, about 39 of 100 now, with A48 (16) and A15 (14) newly prominent; and A15 led to A08 in 42 of 100 before versus 7 of 100 now. [OCC001, POS001, REL011, REL003, REL005, DIR003, DIR006, LAG001]\n- A10, A02 and A04 gained ground: A10 appears in 22 of 100 traces (previously 7.5), and the successor profiles of A02 and A04 were almost completely reshaped (A02: previously led mainly to A29 at 27 of 100, now to A46 at 16, A15 at 13 and A48 at 11; A04: previously A47 at 16, now A15 at 22, A16 at 15, A48 at 12). A14, A45 and A47, which previously continued almost exclusively to a single activity (97–98 of 100), now also branch in roughly 2–7 of 100 cases to A02, A04, A06, A08 or A10. [OCC002, DIR001, DIR004, DIR002, DIR005, DIR015, DIR014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints in the mid-process segment changed: A31, A22, A20, A23, A24, A26, A25 and A32, previously executed in a variable order, are now executed as the fixed chain A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32. The support is direct and consistent: the pairs still co-occur in 100 of 100 traces in both windows, so participation is unchanged and only the order shifted (A24 before A20 fell from 73 to 0.5 of 100 while A20 before A24 rose to 98.5); lag distributions collapsed from spreads to single distances; every successor profile along the chain converged to one dominant target; and the position shifts agree with the new sequence. With 82 qualifying items against roughly 1 expected by chance, this volume of flagged behaviour cannot be explained by random re-sampling, though several items describe facets of the same shift rather than independent confirmations. [REL019, REL021, REL014, REL016, LAG017, LAG012, LAG022, LAG029, DIR013, DIR008, DIR007, DIR009, DIR010, DIR012, DIR011]\n\nThe evidence cannot rule out that only the mix of pre-existing trace variants shifted rather than the ordering rule itself, since the \"new\" order already occurred in a minority of earlier traces (A23 before A26 in 30 of 100); the lag and position indicators also use event positions, so no claim about clock timing is possible. [REL021, LAG017]\n\nOther differences: A08 became far less frequent and later-positioned with diversified successors — a participation and placement change outside the main hypothesis; A10 occurs in more traces (7.5→22 of 100) and A02/A04 show largely new successor profiles, with A14, A45 and A47 gaining small new branches; these latter observations rest on roughly 15–50 observed transitions each and could partly reflect sampling variation between two finite windows. [OCC001, POS001, DIR003, OCC002, DIR001, DIR004, DIR002, DIR005, DIR015, DIR014]",
+  "case_id": "case_015eb8af6d986069",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f8a4b76de97b739a.json",
+  "evidence_sha256": "a19129aea2117d35ed4ff9725bac4a96e657b92ee18d4ca056da55833c011f9e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T00:51:27.946591+00:00",
+  "finished_at_utc": "2026-11-16T00:54:02.040680+00:00",
+  "latency_seconds": 154.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18223,
+    "prompt_tokens": 214370,
+    "total_tokens": 232593,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16476,
+      "text_tokens": 1747
+    },
+    "cost": 0.041267
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53628,
+  "text": "### Observed differences\n\n- Two activities that were absent from all 200 earlier traces are now common: A01 runs in about 59 in 100 later traces (mean roughly 1.5 times per trace, around the middle of the trace), and A02 in about 87 in 100 (never more than once, early in the trace). [OCC001, OCC002, POS001, POS002]\n- A09 has disappeared: it ran in about 54 in 100 earlier traces (mean roughly 1.5 times per trace, mostly leading on to A03) and in none of the later traces. [OCC008, POS009, DIR009]\n- The newcomers took over existing connections. Earlier, A16 sent about 45 in 100 of its outgoing transitions to A09, which led to A03 in about 82 in 100 of its own transitions; later, A16 sends about 43 in 100 to A01, A01 leads to A03 in about 83 in 100, and A09 has no outgoing traffic at all. [DIR001, DIR009, DIR016]\n- A02 now sits before A12 where A05 and A13 used to feed A12 directly: A05 and A13 sent about 20 and 21 in 100 of their outgoing transitions to A12 earlier and none later, while they now send about 37 and 35 in 100 to A02; A02 in turn leads to A12 in about 63 in 100 and to A03 in about 19 in 100. In traces containing both, A04 precedes A02 in about 85 in 100 cases, and A02 precedes A12 in about 87 in 100. [DIR002, DIR005, DIR013, REL021, REL029]\n- A09's co-occurrences vanished: A03 and A09 occurred together in about 54 in 100 earlier traces and never later (A03 now runs without it), and the same holds for A09 with A10 (about 49 in 100 earlier, none later). [REL043, REL125]\n- A14 became far more frequent and now couples with A17: participation rose from about 39 to 89 in 100 traces and mean occurrences from about 0.4 to 1.7; A14 now leads to A17 in about 68 in 100 of its transitions (earlier mostly A08 at 56 in 100), A17 leads back to A14 in about 89 in 100 (earlier mostly A08), and A08 feeds A14 in about 65 in 100 of its transitions (was 28). A17 also repeats more often (mean about 0.4 to 0.8 per trace at roughly unchanged participation of about 43 in 100). [OCC013, OCC016, DIR008, DIR014, DIR017, POS014, REL172]\n- Smaller shifts: several mid-trace activities (A07, A08, A10, A12, A16, A20) occur slightly earlier in the later window, and some step distances grew (for example, A16 to A17 is now usually 5 events apart instead of 4). [POS007, POS008, POS010, POS012, POS016, POS020, LAG180]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two activities were added to the process and one was removed: A01 now runs between A16 and A03, in the position A09 previously occupied, and A02 now runs between the A04–A05–A13 region and A12 (continuing to A12 and A20); A09 is no longer executed at all. Earlier the route ran A16→A09→A03 and A05/A13 fed A12 directly; later it runs A16→A01→A03 and A05/A13→A02→A12. [OCC001, OCC002, OCC008, DIR001, DIR002, DIR005, DIR009, DIR013, DIR016, REL021, REL029, REL043]\n\nSupporting signs: the participation changes are large and directly observed (0 of 200 traces rising to 117 and 173 of 200 for A01 and A02; 108 of 200 falling to 0 for A09), the successor profiles show the new and lost edges directly, and the relational items confirm the new orderings (A04 before A02 in about 85 in 100 joint traces, A02 before A12 in about 87 in 100, A03–A09 co-occurrence falling from about 54 in 100 to zero). Occurrence, direction, position and relation indicators agree, each backed by roughly 100–200 traces per window, with differences larger than in about 199 of 200 random re-splits. [OCC001, OCC002, OCC008, DIR001, DIR002, DIR005, DIR013, DIR016, POS001, POS002, POS009, REL021, REL029, REL043]\n\nLimitations: this evidence file contains no screening counts, so the number of qualifying items cannot be compared with the number expected for an unchanged process; the judgement rests on the size and directness of the participation and routing changes. A competing explanation the data cannot rule out is that A01 and A02 are re-coded or renamed versions of existing activities (and A09 likewise renamed) rather than genuinely new or removed steps, since the evidence shows presence, order and routing but not activity identity or cause. [OCC001, OCC002, OCC008, DIR001, DIR002, DIR009]\n\nOther differences: A14 and A17 changed in ways not covered by the main hypothesis — A14 became near-universal and repeating (participation about 39 to 89 in 100 traces, mean about 0.4 to 1.7, now near the end of the trace), A14 and A17 now co-occur in about 42 in 100 traces (never before) with A14→A17 and A17→A14 as their dominant transitions, and A17 repeats about twice as often per trace. The small position advances and longer step distances elsewhere accompany these changes but are not independent findings. [OCC013, OCC016, DIR008, DIR014, DIR017, POS014, REL172]",
+  "case_id": "case_f8a4b76de97b739a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_7535c771ea572495.json",
+  "evidence_sha256": "653886ee7571aea7b98ddc99978753da93c7d23e14e2afd8d2ed1905bfb9d479",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:07:58.614926+00:00",
+  "finished_at_utc": "2026-11-16T01:09:47.327241+00:00",
+  "latency_seconds": 108.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12721,
+    "prompt_tokens": 18900,
+    "total_tokens": 31621,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11512,
+      "text_tokens": 1209
+    },
+    "cost": 0.009195499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38902,
+  "text": "### Observed differences\n\n- A01 and A03 disappear from the traces: in the earlier window every one of the 200 traces contained A01 once and A03 once, with A03 always the final event; in the later window neither activity appears in any trace. [OCC001, OCC003, POS001, POS003, REL002, REL007]\n- A05 and A07 appear: absent from the earlier window, each is executed exactly once in every trace of the later window, and A07 always occupies the last position (relative position 1.0 in 100% of traces) — the closing role A03 had earlier. [OCC005, OCC006, POS005, POS007]\n- The sequence around A06 is rewired: earlier, A06 was followed only by A01 (100% of its outgoing transitions) and A01 led only to A03; later, A06 is followed only by A07, A05 precedes A06 in 100% of traces, and the fixed chain A05 → A06 → A07 appears in every trace. [DIR001, DIR003, DIR004, REL019, REL020, REL021]\n- A02's routing changed: earlier its outgoing transitions led to A06 in about 53 in 100 cases and to A04 in about 47; later they lead to A04 in about 50 and A05 in about 50, with no direct A02→A06 transitions left. A02 and A06 still co-occur in every trace, but the distance between them grew (previously mostly 1 step, about 42 in 100; now mostly 2–4 steps). [DIR002, LAG003, REL010]\n- A04's branch persists largely unchanged: A04 appears in about 48 in 100 traces in both windows, its order relative to A06 is similar (before A06 in about 27 in 100 co-occurrences earlier, about 19 later, otherwise interleaved), but its distance to A06 grew by roughly one step, consistent with A05 now running between A04 and A06. [OCC004, REL017, LAG006]\n- A06 sits later in the trace than before: its median relative position moved from about one-third to about two-thirds of the trace length. [POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a restructuring of the process tail between the windows: A01 and A03, which every trace previously executed in the fixed sequence A06 → A01 → A03 with A03 closing the case, are no longer observed, while A05 and A07 are now executed in every trace — A05 inserted before A06 and A07 after A06 as the new final activity — and A02 now reaches the A06 segment via A04 or A05 instead of directly. Supporting signs: the participation flips are complete (200 of 200 traces in each window), the directly-follows profiles rewire exactly at the affected points (A06→A01 replaced by A06→A07, a new A05→A06 edge, A02's successors changed), the relation items show the strict new order A05 → A06 → A07 in all later traces, and A07 takes over the always-final position from A03. Because these are direct observations of activities appearing and disappearing plus rewired successions — not shifts in the shares of pre-existing paths — and they agree across occurrence, direction, position, relation and lag indicators, sampling fluctuation is not a plausible account. Limitations: \"no longer observed\" means not observed in these samples, and the evidence cannot show whether the new pattern replaced the old abruptly or gradually, nor that A05/A07 serve the same purpose A01/A03 did. [OCC001, OCC003, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, REL019, REL020, REL021, POS003, POS007]\n\nOther differences: A02 repeats slightly more often (mean 1.88 vs 2.01 occurrences per trace, with the share of traces containing repetitions stable at about 48–49 in 100), and A04 occurs somewhat more per trace that contains it (mean 0.88 vs 1.01; repeated in about 29 vs 22 in 100 traces), with small lag redistributions within the A02/A04 pair; these minor shifts could also be sampling variation. [OCC002, OCC004, LAG001, LAG002]\n\nAn important competing explanation the evidence cannot rule out: each window shows essentially exclusive use of one pattern, so it remains possible that both patterns coexist outside the sampled periods or that the windows capture the endpoints of a gradual transition rather than a single switch. [OCC001, OCC005]",
+  "case_id": "case_7535c771ea572495",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

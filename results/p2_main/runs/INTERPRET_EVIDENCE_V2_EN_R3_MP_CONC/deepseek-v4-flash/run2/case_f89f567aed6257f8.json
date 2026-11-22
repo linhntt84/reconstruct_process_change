@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f89f567aed6257f8.json",
+  "evidence_sha256": "6ccd88460ae16a0841c19d6e09e2cd0d009985cee670f32bcf1b52033231ce68",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:09:06.475479+00:00",
+  "finished_at_utc": "2026-11-15T01:09:35.682155+00:00",
+  "latency_seconds": 29.21,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3888,
+    "prompt_tokens": 51612,
+    "total_tokens": 55500,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3207
+    },
+    "cost": 0.007957992
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 12414,
+  "text": "### Observed differences\n\n- In the later window, activity A01 appears in about 56% of traces with an average of 2.4 occurrences per trace, and it is repeated in about 46% of traces; in the earlier window it was completely absent. [OCC001, POS001, REL001]\n- Activity A14, which occurred in every trace in the earlier window, is completely absent in the later window; its outgoing transitions also disappear. [OCC003, DIR002, DIR010, POS006]\n- Activity A05 drops from about 62% to 29% of traces, and its most common successor changes from A16 (about 49% of its outgoing transitions) to A13 (about 49%). [OCC002, DIR003]\n- Several activities that previously had multiple successors now route to A01: A09 (from A11/A02 to A01), A13 (from A11/A02/A07 to A01), A17 (from A13/A06/A09 to A01/A06), A08 (from A06/A13/A09/A04 to A01/A06), and A10 (from A06/A13/A09/A04/A07 to A01/A06). [DIR006, DIR009, DIR011, DIR005, DIR007]\n- Activity A03 now always appears at the final position (mean position 1.0) and has no outgoing transitions, whereas before it could be followed by A14. [POS002, DIR002]\n- Activity A11's most common successor changes from A05 (about 54%) to A16 (about 50%), and A11 moves later in the trace (mean position from 0.36 to 0.46). [DIR008, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in the process: a new activity A01 was introduced and activity A14 was removed, with a corresponding rerouting of successors. In the earlier window A01 was absent and A14 was present in every trace; in the later window A01 appears in about 56% of traces (often repeated) and A14 is absent. Many activities that previously had outgoing transitions to A14 or to a set of alternatives now lead to A01 (e.g., A09, A13, A17, A08, A10). The number of qualifying evidence items (129) far exceeds the expected 0.98 under no change, so this is not a chance fluctuation. The main limitation is that the evidence does not reveal the semantic meaning of A01 or A14, so the exact nature of the replacement (e.g., whether A01 is a renamed or repurposed activity) cannot be determined; however, A01's repeated execution and partial participation distinguish it from a simple one-to-one replacement of A14.\n\nOther differences: Activity A05's participation decreased and its successor changed from A16 to A13; activity A11's successor changed from A05 to A16 and its position shifted later; activity A03 now always occurs at the end with no outgoing transitions. These changes are consistent with the overall restructuring but are not part of the main A01/A14 hypothesis. [OCC002, DIR003, DIR008, POS005, POS002]",
+  "case_id": "case_f89f567aed6257f8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

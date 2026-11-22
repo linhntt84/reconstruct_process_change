@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_cea1d232b21258e9.json",
+  "evidence_sha256": "efd30c7f99c242407ad6f201fd13b89a786eb408edf0d1f6ce6d56bbde1f9a2b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:46:08.730070+00:00",
+  "finished_at_utc": "2026-11-15T04:48:26.911806+00:00",
+  "latency_seconds": 138.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20079,
+    "prompt_tokens": 30115,
+    "total_tokens": 50194,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18324,
+      "text_tokens": 1755
+    },
+    "cost": 0.01455675
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61098,
+  "text": "### Observed differences\n\n- A02 is no longer observed at all in the later window: it ran in about 97 of 200 traces before (roughly one occurrence per trace, with about 200 outgoing transitions recorded) and in 0 of 200 traces after, with no observed positions or outgoing edges. [OCC001, POS001, DIR001]\n- A03 and A14 became rare: each dropped from about 97 to about 37 of 200 traces (mean occurrences per trace from about 0.9 to about 0.4), and when they occur they sit later in the trace (A03 median position about 0.36 to 0.55; A14 about 0.44 to 0.63). [OCC002, OCC003, POS002, POS005]\n- A formerly inseparable group dissolved. In the earlier window A02, A03, A13 and A14 always occurred together — every pair among them co-occurred in about 48 in 100 traces and neither partner ever appeared alone. In the later window A03 and A14 appear only alongside A13 (co-occurrence about 18 in 100, never without it), while A13 keeps a similar overall frequency (about 46 in 100) and now also occurs without A03/A14 (about 27 in 100). [REL001, REL007, REL008, REL014, REL015, REL025]\n- Every observed relation involving A02 collapsed to zero co-occurrence, while its former partners (A03, A07, A08, A09, A10, A11, A13, A14, A15) continue and now appear without it in about 18 to 46 in 100 traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- Successor shares moved from A02/A03 towards A10: for A15, transitions to A03 fell from about 60 in 100 to zero while A10 rose to about 63 in 100; A09 moved from A03/A14 (about 35 and 25 in 100) to A10 (about 47 in 100); A06 moved from A03 (about 47 in 100) to A10 (about 43 in 100); A11 moved from A03 (about 27 in 100) to A10 (about 22 in 100). A13, which previously led mostly to A02 and A03, now leads mostly to A09, A08 and A10, and A14 now leads almost exclusively to A13 (about 76 in 100). [DIR011, DIR006, DIR004, DIR008, DIR009, DIR010]\n- A10's involvement roughly doubled, from about 48 to about 92 of 200 traces, and it now co-occurs with A09 in about 45 in 100 traces (previously 24), with A07 in about 44 (previously 23) and with A13 in about 46 (previously 24); A10 itself now leads mainly to A07 and A11 instead of A02 and A13. [POS003, REL021, REL017, REL023, DIR007]\n- Gap profiles between the remaining activities shifted consistently with this: A13 was immediately followed by A03 in about 38 in 100 such pairs before and never after, and A14 to A09 now occurs mostly two steps apart (about 83 in 100) rather than immediately or five steps apart. [LAG009, LAG014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the process executes A02 no longer and A03 and A14 only exceptionally: A02 fell from about half of all traces to unobserved, A03 and A14 from about 97 to about 37 of 200 traces, and the previously rigid group (A02, A03, A13, A14 always together) dissolved, with A13 continuing at about its earlier frequency (about 46 in 100 traces) but no longer bound to A03/A14. Flow into this part of the process was redirected towards A10, whose participation roughly doubled, with transitions from A15, A09, A06 and A11 now leading to A10 where they previously led to A03. [OCC001, OCC002, OCC003, REL014, REL025, DIR011, DIR006, DIR004, DIR008, POS003]\n\nThis rests on direct participation counts for A02, A03 and A14, on the complete and uniform collapse of all nine observed A02 relations while every partner continues, and on successor, co-occurrence and position shifts that all point the same way; 60 qualifying items against fewer than 1 expected if nothing had changed rules out chance as an explanation of the pattern as a whole. [OCC001, REL004, REL007, DIR011, POS003]\n\nThe evidence cannot distinguish a genuine removal of A02 (and the near-removal of A03/A14) from these activities simply never being triggered in the later sample — for example a different variant mix in which this branch is almost never taken — and many items re-describe one underlying difference (each A02 pair reflects the same disappearance), so they are not independent confirmations; the position and gap shifts are largely downstream consequences of the participation changes rather than separate moves. [OCC001, REL001, POS002]\n\nOther differences: A08 regrouped — before it occurred only together with A10 (co-occurrence about 24 in 100, never apart) and led mostly to A10 (about 81 in 100 of its outgoing transitions), whereas in the later window it always co-occurs with the rare A03/A14 group (about 18–19 in 100 traces) and leads mostly to A03 (about 69 in 100). [REL019, REL011, REL020, DIR005]",
+  "case_id": "case_cea1d232b21258e9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

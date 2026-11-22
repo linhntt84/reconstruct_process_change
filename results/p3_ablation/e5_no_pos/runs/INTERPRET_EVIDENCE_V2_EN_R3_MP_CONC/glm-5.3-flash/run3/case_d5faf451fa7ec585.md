@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, every case executed exactly one of three alternative activities: A14 in about 32 in 100 cases, A15 in about 28, and A20 in about 40; the three never occurred together in one case. In the later window, none of the three appears in any of the 200 cases. [OCC001, OCC002, OCC003, REL001, REL002, REL006]
+- The chosen alternative was always placed between A22 and A24: A22 preceded it and it preceded A24 in every case containing it, sitting between A22 and A23 in about 45 in 100 cases and between A23 and A24 in about 55. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, DIR004, DIR005]
+- As a result, A22 led directly to A23 in only about 55 in 100 earlier cases (otherwise to A20 in about 21, A14 in about 14, A15 in about 11), and A23 led directly to A24 in only about 46 in 100 (otherwise to one of the three). In the later window, A22 is followed only by A23 and A23 only by A24, with no other outgoing transitions observed. [DIR003, DIR004, DIR005, DIR001, DIR002, DIR003]
+- The positional distance from A22 to A24 was three steps in every earlier case and is two steps in every later case; the pairs A22–A23 and A23–A24, earlier adjacent in about 55% and 46% of cases respectively, are now adjacent in all cases (event positions, not clock time). [LAG001, LAG002, LAG003]
+- A22, A23 and A24 themselves continue to appear in every case in both windows; their participation is unchanged. [REL003, REL007, REL010, DIR004, DIR005]
+- For scale: 23 control-flow items qualified in screening, where about 0.36 would be expected if nothing had changed. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of three alternative activities A14, A15 and A20 — of which every earlier case executed exactly one, inserted either between A22 and A23 or between A23 and A24 — is no longer executed in the later window, so that observed cases run directly A22 → A23 → A24 and are one event shorter. Because the three activities are absent rather than reduced, this is a disappearance of activities rather than a shift of shares between surviving paths. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG002]
+
+The hypothesis is direct and consistent: participation of all three activities fell from about 28–40 in 100 cases to 0 in 200; the successor profiles of A22 and A23 collapsed to a single transition each; every pair relation between an alternative and A22, A23 or A24 changed from "exactly one alternative present, ordered between them" to "neither present"; and the A22→A24 distance shortened from three to two positions in all cases. The 23 qualifying items against roughly 0.36 expected by chance cannot be explained by sampling variation as a whole, and the items all describe this one underlying difference — the routing and distance changes are consequences of the same disappearance, not independent changes. [OCC001, OCC002, OCC003, REL003, REL005, REL012, DIR004, DIR005, LAG001, LAG002, LAG003, screening]
+
+An important competing explanation remains: zero participation strictly means only that the activities were not observed in the later sample, so the evidence cannot exclude that they still run in cases outside these windows or were replaced by an activity outside the tested units — although no replacement successor is observed at A22 or A23. [DIR004, DIR005, OCC001, OCC002, OCC003]

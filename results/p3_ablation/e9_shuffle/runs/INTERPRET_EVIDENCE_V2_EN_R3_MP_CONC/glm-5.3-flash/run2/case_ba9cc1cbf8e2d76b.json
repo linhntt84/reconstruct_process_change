@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_ba9cc1cbf8e2d76b.json",
+  "evidence_sha256": "c9b0367b263c53f3bc0eda0c9a1ec13e0dc25879eacbe016837854e0fbe0e41f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:21:09.442203+00:00",
+  "finished_at_utc": "2026-11-15T04:23:03.483885+00:00",
+  "latency_seconds": 114.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16063,
+    "prompt_tokens": 13953,
+    "total_tokens": 30016,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14951,
+      "text_tokens": 1112
+    },
+    "cost": 0.010124449999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50895,
+  "text": "### Observed differences\n\n- Three activities that do not appear at all in the earlier window occur regularly in the later one: A19 in about 29 of 100 traces, A20 in about 41 and A25 in about 31 (each was 0 of 200 before). They almost never occur in the same trace, and their participation shares sum to roughly 100 in 100, so a later trace typically contains exactly one of the three. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n- In the later window these activities sit around the middle of the trace (mean relative position about 0.52) and always fall between A27 and A29: A27 precedes each of them, and each precedes A29, in essentially every co-occurring trace. Relative to A28 the order is mixed — each new activity runs before A28 in somewhat more than half of the co-occurring traces and after it in the rest. [POS001, POS002, POS003, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n- Routing around A27 and A28 shifted accordingly. Earlier, about 97 of 100 of A27's outgoing transitions went to A28 and about 98 of 100 of A28's went to A29; in the later window A27 leads to A20 in about 22 of 100 transitions, A25 in about 16 and A19 in about 14 (A28 down to about 43), and A28 now leads to one of the new activities in about 41 of 100 transitions while A29 falls to about 57. The new activities themselves lead mostly to A28 (about 53–56 of 100) or to A29 (about 41–47). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Step distances in this region widened by one position: A27 to A28 went from one step in about 98 of 100 cases to one step (43) or two steps (52); A28 to A29 from one step (98) to one step (56) or two (41); A27 to A29 from two steps (about 96) to three steps (about 92). [LAG001, LAG002, LAG003]\n- Small knock-on shifts: A29's mean relative position moved slightly later (about 0.55 to 0.57) and A27's slightly earlier (about 0.48 to 0.46), consistent with an extra event after A27. [POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a new step is executed inside the sequence between A27 and A29: nearly every trace runs exactly one of the three alternative activities A19, A20 or A25 (chosen in roughly a 40/30/30 split), placed between A27 and A28 in about 55 of 100 traces and between A28 and A29 in about 44, whereas earlier the flow went from A27 directly to A28 and straight on to A29. The screening context makes chance an implausible explanation overall — 28 items qualified where roughly 0.56 would be expected without a change — and the signs are direct and mutually consistent: participation rising from zero, the successor profiles of A27 and A28 rewiring towards the new activities, strict betweenness of the new activities between A27 and A29, and step distances widening by exactly one position. [OCC001, OCC002, OCC003, DIR004, DIR005, REL008, LAG001, LAG002, LAG003]\n\nLimitations: zero participation in the earlier window strictly means only that A19, A20 and A25 were not observed in those 200 traces, and the indicators use event positions, so the change is established in sequence order rather than clock time. A competing explanation the evidence cannot fully rule out is that these activities already existed on a very rare path that the earlier 200-trace sample missed; even then, their near-universal execution in the later window would remain a real behavioural difference. [OCC001, OCC002, OCC003, POS001, POS002, POS003]",
+  "case_id": "case_ba9cc1cbf8e2d76b",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

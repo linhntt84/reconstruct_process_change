@@ -1,0 +1,19 @@
+### Observed differences
+
+- The repeating segment around A05 and A15 ran more often per trace in the later window: each occurred about 2.3 times per trace versus about 1.9 before, appeared in about 43 in 100 traces versus about 40, and repeated within traces more often (recurrence support about 0.38 versus 0.30); about 66 in 100 random re-splits showed a smaller difference. [OCC004, OCC013]
+- A13 took part in more traces in the later window: about 35 in 100 versus about 26 in 100 earlier (69 versus 51 of 200 traces), with about 1.2 occurrences per trace versus about 0.9; strength about 0.65. [OCC011]
+- A14 moved in the same direction, more weakly: about 1.1 occurrences per trace versus about 1.0, and about 43 in 100 traces versus about 40; strength about 0.62. [OCC012]
+- At A01, the mix of outgoing transitions shifted away from A06 toward the loop: exits to A06 fell from about 52% to 46%, while exits to A05 rose from about 26% to 29% and to A15 from about 23% to 25%; strength about 0.75, the highest in the evidence. [DIR001]
+- A06 was executed slightly less often in the later window: about 0.96 occurrences per trace versus about 1.0, in about 65 in 100 traces versus about 69; strength about 0.40. [OCC005]
+- Smaller movements elsewhere: A10 recurred somewhat less (recurrence support about 0.33 versus 0.37; strength 0.17), and A11's outgoing transitions tilted slightly toward A08 (about 52% versus 50%; strength 0.55). [OCC008, DIR006]
+- The remaining occurrence and routing items show negligible differences (for example A04 and A12 essentially unchanged with strength about 0.03; routing dissimilarities below 0.01). [OCC001, OCC002, OCC003, OCC006, OCC007, OCC009, OCC010, DIR002, DIR003, DIR004, DIR005, DIR007, DIR008, DIR009]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that in the later window the cyclic segment involving A05, A15 and A13 (with A14 attached) was executed more often: A13 appeared in about 35 in 100 traces versus about 26 in 100 before, A05 and A15 were repeated about 2.3 times per trace versus about 1.9, and at their entry point A01 the share of outgoing transitions leading to the alternative A06 fell from about 52% to 46% in favour of A05 and A15, with A06 itself occurring slightly less often (about 65 in 100 traces versus 69). Supporting signs: the occurrence increases for A05/A15, A13 and A14 all point the same way with strengths around 0.62–0.66, the routing shift at A01 is the strongest single item (about 0.75), and A13's own exits also tilted toward A15 (about 53% versus 50%). [OCC004, OCC011, OCC012, OCC013, DIR001, DIR008, OCC005]
+
+The hypothesis does not clearly rule out sampling variation between the two 200-trace windows: the key differences exceed only about 62–75 in 100 random re-splits, A05 and A15 have identical profiles and so do not confirm each other independently, A13 rests on 51 versus 69 traces, and no screening baseline is provided to compare the number of qualifying items with a chance expectation. [OCC004, OCC013, OCC011, DIR001]
+
+Other differences: A10 recurred somewhat less often (recurrence support about 0.33 versus 0.37) and A11's outgoing transitions shifted slightly toward A08 (about 52% versus 50%); both are small and could be sampling noise. [OCC008, DIR006]

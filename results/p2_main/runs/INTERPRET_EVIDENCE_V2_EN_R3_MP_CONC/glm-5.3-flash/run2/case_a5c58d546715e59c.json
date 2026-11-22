@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_a5c58d546715e59c.json",
+  "evidence_sha256": "3256fb6b767b78693ed6d5e64146fb21d7a9b1b5abeae56f1fbc36c56d345e7c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:58:08.538369+00:00",
+  "finished_at_utc": "2026-11-15T01:02:13.409464+00:00",
+  "latency_seconds": 244.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33220,
+    "prompt_tokens": 62240,
+    "total_tokens": 95460,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31012,
+      "text_tokens": 2208
+    },
+    "cost": 0.025945999999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 105536,
+  "text": "### Observed differences\n\n- The dominant difference concerns two mutually exclusive activity blocks whose frequencies exchanged roles. In the earlier window, A21–A25 each ran in about 85 in 100 traces while A26–A30 each ran in about 16 in 100; in the later window, A26–A30 each run in about 82 in 100 while A21–A25 each run in about 18–19 in 100. The two blocks still almost never share a trace (co-occurrence about 0–2 in 100 in both windows). [OCC006, OCC007, OCC008, OCC009, OCC010, OCC011, OCC012, OCC013, OCC014, OCC015, REL029, REL040, REL067, REL075]\n- A20, which still occurs in every trace in both windows (as do A34, A38 and A39), flipped its main successor: about 84 in 100 of its outgoing transitions went to A24 earlier and about 15 to A29, whereas in the later window about 82 in 100 go to A29 and about 18 to A24, with A29 following A20 within one step in essentially all later cases. [DIR006, LAG002, REL015, REL020, REL097, POS003, REL014]\n- The paths themselves keep their shape; only their take-up changed. In the A26–A30 block, A29 precedes A26/A27/A28 and A30 follows them in about 81 in 100 of all later traces (essentially every run of the block, mirroring its rare earlier runs), A26–A28 remain unordered among themselves, and A30 still leads to A34 in about 99 in 100 of its transitions (about 94 earlier); in the now-rare A21–A25 path, A24 still precedes A21 and A25 as before. [REL077, REL083, REL088, REL078, REL089, REL093, REL075, REL082, DIR008, REL027, REL058]\n- A04 fell from about 56 in 100 traces to about 12 in 100, moved from a consistent position near the trace end (mean relative position about 0.94) to mid-trace (about 0.50, far more spread out), and its outgoing transitions, about 95 in 100 to A39 earlier, are now thinly spread (largest share about 25 in 100, to A19). [OCC002, POS001, DIR002]\n- The earlier chain A38 → A04 → A39 largely disappeared: A38's transitions to A04 dropped from about 54 in 100 to about 2, while those to A39 rose from about 45 to about 89 (A38 followed by A39 within one step in about 90 in 100 of later traces, before about 46), and A04 co-occurs with A39 in only about 12 in 100 traces (before 55 in 100). [DIR011, LAG010, REL013, REL014]\n- A02, A06, A08 and A10, earlier seen in about 2–4 in 100 traces, now appear in about 13–18 in 100, mostly followed by A37, A15, A19, A16 or A39; their earlier outgoing profiles rest on only 5–8 observed transitions. [OCC001, OCC003, OCC004, OCC005, DIR001, DIR003, DIR004]\n- Smaller shifts: A38 sits slightly later and more variably in the trace, A30 is now typically four steps before A39 (earlier mostly five), and A27's transitions spread more evenly over A26/A28/A30 than before. [POS003, LAG007, DIR007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe 138 qualifying control-flow items are roughly one hundred times the 1.3 expected by chance without a change, so sampling noise cannot explain the flagged set as a whole. The evidence supports the possibility that the two existing alternative branches around A20 exchanged how often they run: earlier, the branch A20 → A21–A25 (A20 leading to A24, A25 last) carried about 85 in 100 cases and the branch A20 → A26–A30 about 16 in 100; in the later window, the branch A20 → A29 → A26–A28 (no fixed order) → A30 → A34 carries about 82 in 100 and the A21–A25 branch about 18 in 100. Because every activity involved is observed in a substantial share of traces in both windows, the blocks remain mutually exclusive, and their internal order is preserved, this is a change in how often existing paths are taken rather than a replacement of one path by another; participation, co-occurrence, direct-successor and adjacency evidence all agree. [OCC006, OCC011, DIR006, LAG002, REL015, REL020, REL029, REL077, REL078, REL093, DIR008]\n\nLimitations: the later-window picture of the now-rare A21–A25 path rests on only about 36–39 traces, and the position and lag indicators use event positions rather than clock time, so nothing follows about real timing. An important competing explanation the evidence cannot rule out is that the two windows contain different mixes of the same two case types rather than a changed routing decision. [OCC006, OCC007, OCC008, OCC009, OCC010, POS002, LAG002]\n\nOther differences:\n- A04 was largely bypassed: beyond running in far fewer traces (about 12 in 100 versus 56), it no longer sits between A38 and A39 — A38 leads directly to A39 in about 89 in 100 of its transitions (before about 45) and to A04 in about 2 (before about 54) — and its few remaining occurrences sit mid-trace with varied successors instead of near the end leading to A39. [OCC002, POS001, DIR002, DIR011, LAG001, LAG010, REL013, REL014]\n- A02, A06, A08 and A10 are executed far more often (about 13–18 in 100 traces, before about 2–4 in 100) and now receive edges from several established activities such as A14, A33 and A36; because these activities were rare earlier, their before-behaviour is only weakly supported. [OCC001, OCC003, OCC004, OCC005, DIR001, DIR003, DIR004, DIR005, DIR009, DIR010]",
+  "case_id": "case_a5c58d546715e59c",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

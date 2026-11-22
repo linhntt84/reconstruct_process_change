@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_6b862ed7b1edd0b4.json",
+  "evidence_sha256": "60ce1d70b8b324f6d1e7bc9af27c8145b859db0d66186f67ce1ac6c9ce22be61",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:34:15.150554+00:00",
+  "finished_at_utc": "2026-11-14T12:36:41.977024+00:00",
+  "latency_seconds": 146.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20780,
+    "prompt_tokens": 29676,
+    "total_tokens": 50456,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19131,
+      "text_tokens": 1649
+    },
+    "cost": 0.0148414
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64528,
+  "text": "### Observed differences\n\n- The segment A19 → A25 → A20 ran far more often in the later window: earlier, each of A19, A20 and A25 appeared in about 48 in 100 traces, always together and in that fixed order, while about 52 in 100 traces contained none of them; in the later window each appears in about 199 of 200 traces, still together and in the same order. [OCC003, OCC004, OCC005, REL018, REL019, REL022]\n- The direct branch A41 → A26 was largely abandoned: earlier, about 45 in 100 of A41's outgoing transitions went to A26 and about 37 in 100 to A19; in the later window about 96 in 100 go to A19, almost always immediately (lag 1 in about 98 in 100 of 199 observed pairs), and the formerly immediate A41 → A26 transitions (about 46 in 100) have practically disappeared, with A26 now following about four positions after A41. [DIR006, LAG018, LAG021]\n- A26 changed from an alternative that usually appeared without the segment to a step after it: earlier, about 52 in 100 traces contained A26 without A19; in the later window A26 co-occurs with A19, A25 and A20 in essentially every trace and follows each of them in about 97–99 in 100 traces. [REL020, REL023, REL025]\n- A06 became more frequent and changed its successor: it appeared in about 24 in 100 traces earlier versus about 73 in 100 in the later window; earlier its outgoing transitions were spread over many activities (largest shares A15 about 21 in 100, A47 about 15, A45 about 13), whereas in the later window about 88 in 100 go to A16, immediately (lag 1 in about 97 in 100 of 136 observed pairs). A14 and A15 now typically precede A06, which in turn precedes A41 and the segment by about three to five positions. [OCC001, DIR001, LAG002, REL001, LAG006, DIR003, LAG003, LAG004, LAG005]\n- A08 was executed much less often in the later window: about 8 in 100 traces versus about 20 in 100 earlier. [OCC002]\n- Several successor profiles stayed essentially stable — for example A14 → A15 (about 85 then 97 in 100), A44 → A45 and A46 → A47 — so the differences concentrate on the branch at A41 and on A06 rather than reflecting a general reshuffle. [DIR002, DIR007, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the branch at A41 was rerouted and the A19 → A25 → A20 segment became part of nearly every execution: in the earlier window A41 split its outgoing transitions between A26 (about 45 in 100) and A19 (about 37 in 100) and the segment ran in only about 48 in 100 traces; in the later window A41 leads to A19 in about 96 in 100 of its transitions — almost always immediately — the segment runs in about 995 in 1000 traces in its previous internal order, and A26 now follows the segment instead of replacing it. [DIR006, LAG018, LAG021, OCC003, OCC004, OCC005, REL018, REL019, REL022, REL020, REL023, REL025, DIR004, DIR005]\n\nThe change is shown directly on the routing indicator at A41 and consistently across participation, co-occurrence, order and adjacency indicators, while the segment's internal order and unrelated successor profiles barely moved — fitting a shift in how often the existing full path is taken rather than a reordering of activities. The volume of qualifying items (60 control-flow items against roughly 0.8 expected without change) cannot be explained by random re-splits of a stable process, although many items describe the same underlying rerouting and are not independent confirmations. [DIR006, DIR002, DIR007, DIR008, REL009, OCC003]\n\nLimitations: with 200 traces per window, a small residual A41 → A26 branch of a few percent could still exist and would be hard to separate from noise (one such transition is observed in the later window); the evidence also cannot distinguish a modification of the process from a shift in the mix of pre-existing execution variants, and distances are in event positions, not clock time. [DIR006, LAG021]\n\nOther differences: A06 — participation up from about 24 to 73 in 100 traces, its outgoing transitions now concentrated on A16 (about 88 in 100, immediately), typically preceded by A14 and A15; and A08 — participation down from about 20 to 8 in 100 traces. These are not part of the main hypothesis above. [OCC001, OCC002, DIR001, LAG002, REL001, DIR003]",
+  "case_id": "case_6b862ed7b1edd0b4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

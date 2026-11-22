@@ -1,0 +1,19 @@
+### Observed differences
+
+- Activity A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it runs in about 46 in 100 traces, with roughly one occurrence per trace on average, and about a quarter of the traces containing it show it more than once. [OCC001]
+- When it appears, A01 sits early in the trace: its median position is about 0.38 of the trace length (middle half roughly between 0.22 and 0.63). [POS001]
+- Routing into A01 is new. In the earlier window A03 split its outgoing transitions between A11 (about 49 in 100) and A05 (about 51 in 100), A06 went only to A05, A11 split between A05 and A03, and A05 went only to A10. In the later window A03 sends about 35 in 100 of its outgoing transitions to A01, A06 about 48 in 100, A11 about 24 in 100, and A05 about 47 in 100. [DIR002, DIR003, DIR004, DIR005]
+- A01's observed outgoing transitions go to A05 (about 53 in 100) and A10 (about 47 in 100); it had no observed outgoing transitions before, since it did not run. [DIR001]
+- A01 now co-occurs with the established activities: with A05 in about 46 in 100 traces (A01 first in about 10, A05 first in about 10, interleaved in about 26), with A10 in about 46 in 100 (A01 first in about 21 or interleaved in about 26, never A10 first), with A06 in about 33 in 100 and with A03 in about 28 in 100. Before, A01 never co-occurred with any of them. [REL001, REL002, REL003, REL004]
+- Pairs of pre-existing activities are now observed about one step further apart: A05→A10 moved from lag 1 (about 56 in 100) to lags 1–2 (about 24 and 25 in 100), A06→A10 from lag 2 (about 76 in 100) to lag 3 (about 61 in 100), A06→A05 from lag 1 (about 76 in 100) to lags 1–2, A03→A10 from lags 2–3 to lags 3–4, A03→A05 from lags 1–2 to lags 2–3, and A05→A06 from lag 4 (about 76 in 100) to lags 4–5. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]
+- A10 itself occurs slightly later (mean position about 0.51 versus 0.47) and in somewhat fewer traces (about 46 versus 53 in 100). [POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a new step, A01, appeared between the front activities (A03, A06, A11) and the later activities (A05, A10). In the earlier window, A03, A06 and A11 routed only among themselves and into A05, which closed into A10; in the later window they frequently route to A01 instead (about 24–48 in 100 of their outgoing transitions), A01 in turn leads to A05 or A10, and every pair of pre-existing activities is observed about one position further apart — exactly the footprint of an additional step sitting on the paths between them. A01 is optional (about 46 in 100 traces) and sometimes repeats. The screening context makes chance an implausible explanation: 18 items qualified where about 0.17 would be expected if nothing had changed, and the items agree across occurrence, direction, co-occurrence and distance indicators. [OCC001, DIR001, DIR002, DIR003, DIR004, DIR005, LAG006, REL004]
+
+Limitations: the mixed ordering between A01 and A05 (each first in about 10 in 100 of their joint traces, interleaved in about 26 in 100) means the evidence cannot distinguish a single insertion point from a small inserted fragment or a partly parallel placement; and A01's absence from the earlier window shows only that it was not executed there, not that it was absent from the process definition. [REL002]
+
+Other differences: A10's participation declined from about 53 to 46 in 100 traces while its position shifted slightly later; the later position fits the main hypothesis, but the participation decline is not explained by it and could be a sampling difference between the windows. [POS002]

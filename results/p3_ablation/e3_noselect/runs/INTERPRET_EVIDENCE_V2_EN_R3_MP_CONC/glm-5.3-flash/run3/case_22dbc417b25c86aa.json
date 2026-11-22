@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_22dbc417b25c86aa.json",
+  "evidence_sha256": "81652dba2905eae36814942a1b60eb3959773c6212fe90754bc66b2702ce9f85",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:14:52.728448+00:00",
+  "finished_at_utc": "2026-11-15T14:15:43.280067+00:00",
+  "latency_seconds": 50.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6813,
+    "prompt_tokens": 4941,
+    "total_tokens": 11754,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6107,
+      "text_tokens": 706
+    },
+    "cost": 0.00414765
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24156,
+  "text": "### Observed differences\n\n- In the earlier window, A06 was executed exactly once in every trace — it appeared in 200 of 200 traces, with a mean of 1.0 occurrence per trace at a stable event position about one third into the trace. In the later window, A06 is not observed at all (0 of 200 traces). [OCC001, POS003]\n- A05's successor changed completely: earlier, every observed outgoing transition of A05 went to A06; in the later window, every one goes to A01. [DIR001]\n- A06's outgoing transition to A01, previously its only observed outgoing transition, is no longer observed, consistent with A06 not occurring in the later window. [DIR002]\n- Both relations involving A06 collapsed from full co-occurrence to separation: A01 and A06 occurred together in 100 in 100 traces earlier (always A06 first), while in the later window A01 occurs alone in 100 in 100 traces; A05 and A06 show the same pattern (always A05 first earlier, A05 alone later). [REL001, REL002]\n- The distance from A05 to A01 shrank from a fixed two steps (one activity in between) to a fixed one step — the two activities are now directly consecutive in every trace. [LAG001]\n- A01's mean event position moved earlier (0.5 to 0.4) and A05's slightly later (about 0.17 to 0.2); both shifts are consistent with traces containing one event fewer, not with an independent relocation of either activity. [POS001, POS002]\n\nAll nine items show differences larger than in about 995 of 1,000 random re-splits of the pooled traces, and they all describe one coherent pattern rather than separate changes. [OCC001, DIR001, DIR002, POS001, POS002, POS003, REL001, REL002, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A06 was removed from the flow between A05 and A01: in the earlier window every trace ran A05 → A06 → A01, while in the later window A06 is not executed and A05 leads directly to A01. The change is shown directly by the successor shift at A05 [DIR001] and by the A05→A01 gap closing from two steps to one [LAG001], and it is consistent across A06's participation and position [OCC001, POS003] and both of its relations [REL001, REL002]. The small position shifts of A01 and A05 match traces shortening by one event rather than a separate move [POS001, POS002]. Limitations: the items are not independent confirmations — they largely re-describe the same trace-level difference — and the evidence file contains no screening expectation, so the judgement rests on the all-or-nothing pattern (200 of 200 traces versus 0 of 200) and the direct relational evidence.\n\nCompeting explanation: zero participation only establishes that A06 was not observed in the later window; the evidence cannot fully distinguish a complete removal from A06 still occurring at a very low rate that 200 traces would rarely capture, although the complete rewiring of A05 in all 200 later traces fits removal better than rarity. [OCC001, DIR001]",
+  "case_id": "case_22dbc417b25c86aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

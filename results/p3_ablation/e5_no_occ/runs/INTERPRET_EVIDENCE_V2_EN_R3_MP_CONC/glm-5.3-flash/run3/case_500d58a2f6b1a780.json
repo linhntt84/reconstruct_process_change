@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_500d58a2f6b1a780.json",
+  "evidence_sha256": "cdb919348e5615d62191cc0980e380bd2975a6a730b47a9b2af4d8220febb617",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:42:09.374449+00:00",
+  "finished_at_utc": "2026-11-15T10:43:26.509023+00:00",
+  "latency_seconds": 77.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10824,
+    "prompt_tokens": 4384,
+    "total_tokens": 15208,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10028,
+      "text_tokens": 796
+    },
+    "cost": 0.0060696
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39950,
+  "text": "### Observed differences\n\n- **Repetition between A25 and A31 largely stopped.** In the earlier window, A31 generated about 3–4 outgoing transitions per trace (689 over 200 traces) and returned to A25 in about three of four traces (the ordered pair A31→A25 within five steps in 150 of 200 traces). In the later window, A31 generates about one outgoing transition per trace (208 over 200 traces), and the return to A25 appears in only 1 of 200 traces. [DIR001, LAG002]\n- **Routing at A31 flipped.** Earlier, about 71% of A31's outgoing transitions went to A25 and about 29% to A20; in the later window, about 96% go to A20 and only about 4% to A25. [DIR001]\n- **The order between A25 and A31 changed from mixed to fixed.** The two activities co-occur in every trace in both windows. Earlier, about 75 in 100 traces showed them interleaved or repeated and about 25 in 100 had A25 before A31; in the later window, about 995 in 1000 traces have A25 before A31. [REL001]\n- **The two activities became adjacent.** A31 follows A25 within two steps in about 92 in 100 later-window traces, against about 12 in 100 earlier (plus about 5 in 100 at a distance of five steps). [LAG001]\n- **Sequence positions became more consistent.** Average positions barely moved (A25 median about 0.43 → 0.40; A31 about 0.48 → 0.48), but the spread around them roughly halved for both activities (standard deviation about 0.12 → 0.06). [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repetition loop between A25 and A31 stopped. In the earlier window, most traces cycled through the two activities several times — A31 returned to A25 in about three of four traces and about 71% of its outgoing transitions went to A25 — while about a quarter of traces already ran a single A25→A31 pass. In the later window, A25 and A31 each occur about once per trace in a fixed order (A25, then A31 within about two steps), after which A31 proceeds to A20. The exit to A20 already existed earlier (about 29% of A31's outgoing transitions), so the shift in A31's routing shares follows from the loop disappearing rather than from a new exit being introduced. The signs are direct and mutually consistent: relational evidence shows the order change (REL001, LAG001), the directional evidence shows the return path collapsing (DIR001, LAG002), and the halved position spread fits the same stabilisation (POS001, POS002); six items qualified against roughly 0.15 expected without change, and every item's difference exceeds 99.5% of random re-splits. Limitations: LAG002 rests on a single after-window observation (though DIR001 corroborates it), and the items describe largely the same traces, so they are not independent confirmations. A competing explanation the evidence cannot rule out is that the repeating path still exists but is now almost never taken — traces shifted to the single-pass behaviour already present in about a quarter of earlier traces — rather than the path having been removed. [DIR001, LAG001, LAG002, POS001, POS002, REL001]\n\nOther differences: none beyond the above; the tighter position spread of A25 and A31 is treated as a byproduct of the same stabilisation rather than a separate change. [POS001, POS002]",
+  "case_id": "case_500d58a2f6b1a780",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

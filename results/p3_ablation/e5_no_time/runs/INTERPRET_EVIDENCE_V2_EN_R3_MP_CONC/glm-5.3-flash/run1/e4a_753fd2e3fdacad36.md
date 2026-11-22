@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window the flow ran A42 → one of five activities (A14, A15, A20, A21, A22) → A23 → A24 → A25 → A29: all of A42's outgoing transitions went to one of the five (about 18–23 in 100 each), each of the five always exited to A23, A24 always led to A25, and A25 always led to A29. In the later window, A42 leads directly to A23. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG004]
+
+- The five activities now run late in the flow: in the earlier window each of them preceded A23 and A24 in every trace where they co-occurred (about 18–23 in 100 traces), whereas in the later window A23 and A24 always precede them, consistently across all eight activity pairs. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- New detours appear around A24 and A25: in the later window about 51 in 100 of A24's outgoing transitions and about 49 in 100 of A25's go to the five activities (previously none did), and the five activities now exit to A25 (about 37–68 in 100, depending on the activity) or A29 (about 33–63 in 100) instead of to A23. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- Positions and distances shifted accordingly: the five activities' mean relative position moved from about 0.30–0.33 to about 0.58–0.61 of the trace, while A23, A24 and A25 each shifted slightly earlier (about 0.02–0.04); the A42→A23 distance shortened from 2 to 1 steps, the A24→A29 distance lengthened from 2 to 3 steps in every trace, and the A24→A25 and A25→A29 distances, previously always 1 step, now split roughly half at 1 and half at 2 steps — the extra step falls between A24 and A25 in about 51 in 100 later-window cases and between A25 and A29 in about 49 in 100. [LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+- Participation is stable: each of the five activities appears in about 15–22 of 100 traces in both windows (the five shares sum to about 100 in 100 in each window, consistent with exactly one of them running per case), and A23, A24 and A25 appear in all traces in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the single activity chosen per case from the five alternatives A14, A15, A20, A21, A22 is now executed later in the flow: in the earlier window it ran between A42 and A23, while in the later window A42 connects directly to A23 and the chosen activity runs between A24 and A29, inserted after A24 in about half of the cases and after A25 in the other half. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG001, LAG002, LAG003, LAG004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+The hypothesis is shown directly and consistently: successor profiles changed at A42, at the five activities and at A24/A25; all eight order relations with A23/A24 reversed completely; and the distance and position shifts match the same rewiring. Participation of every involved activity is stable, so this is a change in where an existing step executes, not activities becoming optional, repeated or more frequent. Screening expected about 0.43 qualifying items if nothing had changed, but 28 qualified — roughly 65 times that expectation — and most items describe this one underlying difference rather than independent changes, with each difference exceeding about 995 in 1,000 random re-splits of the pooled traces. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+Limitations: the evidence cannot show whether the choice among the five activities, or between the two insertion points after A24 and after A25, follows a rule or is random, nor can it distinguish a moved step from the early execution being removed and a separate late execution introduced; small shifts in the mix among the five (for example A15 appearing in about 19 of 100 traces before and about 15 of 100 after) may be sampling noise in these finite windows. [DIR006, DIR007, POS001, POS002, POS003, POS004, POS005]

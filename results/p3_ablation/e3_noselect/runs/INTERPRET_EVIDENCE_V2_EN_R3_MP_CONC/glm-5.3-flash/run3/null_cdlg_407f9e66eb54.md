@@ -1,0 +1,19 @@
+### Observed differences
+
+- After A13, the choice among the three following branches shifted toward A05: A05 received about 47% of A13's outgoing transitions in the earlier window and about 54% in the later window, while A06 fell from about 28% to 23% and A10 from 25% to 23%; this is the largest distributional difference in the evidence, exceeding about 93 of 100 random re-splits [DIR008].
+- The participation figures move in the same direction: A05 appeared in about 34 of 100 traces before and 39 of 100 after (mean occurrences per trace 1.0 → 1.2), A06 in about 37 → 33 of 100, and A10 in about 36 → 35 of 100 (a small change) [OCC004, OCC005, OCC009].
+- After A02, transitions to A03 fell from about 50% to 45% of A02's outgoing transitions, while transitions to A07 rose from about 20% to 24% [DIR002].
+- A04 appeared in about 57 of 100 traces before and 50 of 100 after, whereas A07 appeared in about 44 of 100 before and 51 of 100 after; both differences are larger than in roughly 77 of 100 random re-splits [OCC003, OCC006].
+- A01 routed slightly less to A04 (about 4% → 2.5% of its outgoing transitions) and slightly more to A03 (about 7.5% → 9%) [DIR001].
+- A02 occurred about 2.13 times per trace before and 2.0 times after, remaining present in every trace in both windows [OCC001].
+- A single A07→A01 transition appears in the later window with no outgoing transitions from A07 observed before; based on one observation this does not establish a new edge [DIR004].
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that the branch frequencies after A13 changed: the path A13 → A05 was taken more often in the later window (about 47% → 54% of A13's outgoing transitions, with A05 appearing in about 39 of 100 traces versus 34 before), while the paths to A06 and A10 were taken less often (A06 about 28% → 23%, appearing in 33 of 100 traces versus 37). All involved activities are observed in a substantial share of traces in both windows and A13 still reaches all three branches, so this reads as a shift between existing alternatives rather than a path being added or removed [DIR008, OCC004, OCC005, OCC009].
+
+Supporting signs: the direct routing indicator shows the shift with the highest empirical strength in the set, and the participation changes of A05 and A06 point the same way. What is missing: no screening baseline is provided to compare the number of qualifying items against chance expectations; the corroborating participation items are individually unremarkable (strengths around 0.56–0.66); the occurrence and direction items describe the same traces and are not independent confirmations; and the participation supports are modest (67–78 traces for A05 and A06). An important competing explanation the evidence cannot rule out is sampling variability between two 200-trace windows of an unchanged process — the direct difference is unusual but not extreme, and a single strong item can arise by chance [DIR008, OCC004, OCC005].
+
+Other differences: A second, weaker signal concerns flow after A02 and A01 — A02 routed less to A03 and more to A07, A07 appeared in more traces (about 44 → 51 of 100) and A04 in fewer (about 57 → 50 of 100), and A01 routed slightly away from A04. The relational evidence here is mixed, since A02's decrease falls mainly on A03 rather than on A04, so this is reported as an observation rather than part of the main hypothesis [DIR002, OCC003, OCC006, DIR001]. A02 also repeated slightly less often (about 2.13 → 2.0 occurrences per trace) [OCC001].

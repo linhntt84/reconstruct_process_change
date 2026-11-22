@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_e07b405df3bcc38d.json",
+  "evidence_sha256": "ccd30b6c192eb7ee2a0e8e5693f862e12277bdfa7811032e2132db40a16a2b81",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:46:39.183923+00:00",
+  "finished_at_utc": "2026-11-15T12:48:16.739745+00:00",
+  "latency_seconds": 97.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13684,
+    "prompt_tokens": 44309,
+    "total_tokens": 57993,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12102,
+      "text_tokens": 1582
+    },
+    "cost": 0.01348835
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42759,
+  "text": "### Observed differences\n\n- Before, each of the ten activities A28, A29, A30, A32, A33, A34, A35, A36, A37 and A38 ran in only about half of the cases (48–52 in 100; 96–104 of 200 traces), at most once per case. In the later window each runs in about 98–100 in 100 cases (196–199 of 200), still at most once per case. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- Before, these ten activities formed two mutually exclusive groups of five — {A28, A29, A30, A32, A33} and {A34, A35, A36, A37, A38} — and no case contained activities from both groups (cross-group co-occurrence 0 in 100; one group or the other, about 48 vs 52). In the later window, cross-group pairs occur together in about 97–98 in 100 cases. [REL025, REL026, REL033, REL040, REL046, REL051, REL055]\n- A fixed order between the groups is new: in the later window a first-group activity precedes a second-group activity (e.g., A28 before A34) in about 97–98 in 100 cases, with the reverse never observed; before, the two never shared a case at all. [REL025, REL029, REL033, REL037, REL040, REL044, REL046, REL050, REL051, REL055]\n- Inside each group the behaviour is unchanged in kind: members co-occur (within-group co-occurrence about 48–52 in 100 before, 98–100 after) and appear in both orders in similar proportions in both windows, i.e., no fixed order within a group in either window. [REL021, REL030, REL038, REL045, REL056, REL060, REL065]\n- Both groups sit between A25 and A26 in both windows: A25 precedes first-group members in about 48 → 99.5 in 100 cases, and first-group members precede A26 in about 48 → 99.5 in 100; the same holds for second-group members (about 52 → 98 in 100). [REL001, REL006, REL011, REL016]\n- Routing follows suit: before, A25's outgoing transitions split across both groups (about 48 in 100 to first-group members, 52 to second-group members); in the later window A25 leads almost only to first-group members (about 15–24 in 100 each, one residual second-group edge at about 0.5 in 100). Direct transitions from first-group members to A26 largely disappeared (A28→A26 from about 28 in 100 to unobserved; A30→A26 and A32→A26 down to about 0.5 in 100), replaced by small shares (about 2–5 in 100) into second-group members. [DIR001, DIR002, DIR003, DIR004]\n- Relative event positions moved consistently with this: A25 earlier (mean 0.64 → 0.55), A26 later (0.82 → 0.84), first-group activities earlier (about 0.73 → 0.63) and second-group activities later (about 0.72 → 0.77). [POS001, POS002, POS003, POS005, POS008, POS012]\n- Adjacent-span evidence agrees: the ordered pairs A25→A34–A38 within five steps fell from 104 traces to 1, and A29→A26 / A33→A26 within five steps from 96 traces to 4 each; the after-side profiles rest on only 1–4 observations. [LAG001, LAG002, LAG006, LAG007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the routing between A25 and A26 changed from a choice between two five-activity groups to the sequential execution of both: before, a case ran either {A28, A29, A30, A32, A33} (about 48 in 100) or {A34, A35, A36, A37, A38} (about 52 in 100) between A25 and A26; in the later window essentially every case runs the A28-group first and then the A34-group, with no fixed order inside either group, so all ten activities became effectively mandatory and the second group now sits between the first group and A26. [REL025, REL011, OCC001, DIR001, POS003, POS008]\n\nSupporting signs: the change is shown directly by relational evidence (cross-group co-occurrence from 0 to about 97–98 in 100 with a one-way inter-group order), it is consistent across occurrence, direction, position and adjacency indicators, and each activity's participation is backed by 96–104 versus 196–199 traces; screening produced 98 qualifying items against about 1 expected if nothing had changed, so the pattern as a whole is not what a stable process typically yields. [REL025, OCC001, DIR001, POS003, LAG001]\n\nLimitations: the evidence cannot rule out that the two windows sample different case populations rather than a modified routing rule, and the adjacency (LAG) profiles after the change rest on only 1–4 observations, so their distance details should be read with care; positions are event positions, not clock times. [LAG001, LAG002, LAG006, LAG007]\n\nOther differences: none — all qualifying items describe this single restructuring around A25, A26 and the two five-activity groups. [OCC001, DIR001, POS001, REL025, LAG001]",
+  "case_id": "e4a_e07b405df3bcc38d",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A03 appeared in about 45 in 100 traces — roughly twice per trace when present, around 40% of the way through the trace. In the later window, A03 is not observed at all. [OCC002, POS002]
+- In the earlier window, A01 is not observed. In the later window, A01 appears in about 50 in 100 traces, also roughly twice per trace when present, at a median position about 38% into the trace — essentially where A03 used to sit — and it recurs within the trace in about 28 in 100 of the traces containing it (A03: about 25 in 100). [OCC001, POS001]
+- The flow into this position changed accordingly: before, about 52 in 100 of A09's outgoing transitions led to A03; after, about 55 in 100 lead to A01. A11 sent about 22 in 100 of its outgoing transitions to A03 before, and about 18 in 100 to A01 after. [DIR003, DIR004]
+- The flow out of the position is nearly unchanged: A01 now leads mainly to A11 (about 46 in 100 of its outgoing transitions), then to A12, A09 and A10 (about 15–16 in 100 each), closely matching A03's earlier profile (A11 about 45, A10 and A09 about 18, A12 about 14). [DIR001, DIR002]
+- A01 and A03 never occur in the same trace in either window: before, about 45 in 100 traces contained A03 without A01; after, about 50 in 100 contain A01 without A03. A01 also always appears together with A09 and with A11 (co-occurrence equals A01's participation), exactly as A03 did before. [REL001, REL003, REL005]
+- A01's wider relations mirror A03's old ones: it now co-occurs with A10 in about 35 in 100 traces (A03 previously 33), with A12 about 35 (28) and with A05 about 44 (38), in mixed orders in both windows; A03's former partners now appear without it, e.g. A05 without A03 in about 75 in 100 of the traces containing either (previously together in 38). [REL002, REL004, REL006, REL007, REL008, REL010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, A01 has taken over the mid-trace step that A03 performed in the earlier window: A03 is no longer observed in any trace, while A01 appears in about half of the traces at the same position, is entered mainly from A09 (and partly from A11), leads mainly to A11, and co-occurs with A05, A09, A10, A11 and A12 at rates close to A03's earlier ones. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006]
+
+The change is shown directly and consistently: the rerouting is visible one step upstream and downstream of the position, the two activities are mutually exclusive across both windows, and the successor and co-occurrence profiles match closely. The screening context fits: 19 control-flow items qualified against roughly 0.33 expected for an unchanged process — many times the chance expectation — and each item's difference exceeds about 995 of 1000 random re-splits, so the pattern as a whole is unlikely to be a sampling artefact. [DIR001, DIR002, DIR003, DIR004, REL001, OCC001, OCC002]
+
+Limitations: the activity codes are anonymous, so the evidence cannot show whether A01 is a renamed A03 or a different activity taking over the same step, and the characterisation rests on immediate succession and co-occurrence rather than longer-range behaviour. An important competing explanation the evidence cannot rule out is that A03 was dropped and A01 separately inserted at a similar point; the mirrored predecessor, successor and co-occurrence profiles make a simple takeover the most direct reading. [REL001, DIR003, DIR004]
+
+Other differences: beyond the A03/A01 change, A11's outgoing shares show small shifts (A12 up from about 26 to 31 in 100, A10 down from about 28 to 25, A09 up from about 5 to 9) that are too small to interpret separately and may reflect sampling variation. [DIR004]

@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A22 ran in every trace (200 of 200) and always sat between A21 and A23: A21's only observed successor was A22, and A22 always preceded A23. In the later window, A22 appears in only about 57 in 100 traces (113 of 200). [OCC001, DIR001, REL001, REL007]
+- Five activities — A27, A28, A33, A34, A35 — were not observed at all in the earlier window, but in the later window each appears in about 44 in 100 traces (87 of 200), exactly once per trace when present. [OCC002, OCC003, OCC004, OCC005, OCC006]
+- In the later window, A21 leads directly to each of the five new activities (roughly 7–11 in 100 of its observed outgoing transitions to each, about 44 in 100 overall), while the A21→A22 transition keeps about 57 in 100; before, all of A21's observed outgoing transitions went to A22. Each of the five new activities in turn has observed outgoing transitions to A23 and to the other four new activities (roughly 13–29 in 100 each). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- Relationally, in about 44 in 100 later-window traces A21 co-occurs with and precedes each of the new activities (before, they never co-occurred), and A23 now occurs without A22 in about 44 in 100 traces, where previously that never happened; each new activity also precedes A23 in about 44 in 100 traces. [REL002, REL003, REL004, REL005, REL006, REL007, REL013, REL014, REL015, REL016, REL017]
+- Within the new group, every pair of the five activities co-occurs (about 44 in 100 traces) and appears in both orders in similar proportions (for example, A27 before A28 in about 24 in 100 traces versus A28 before A27 in about 20 in 100), so the five run together without a fixed internal order. [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+- The new activities sit around the middle of the trace (mean relative position about 0.52 on the event-order scale), and A21's mean relative position moved slightly earlier, from about 0.49 to 0.46; these are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window, in about 44 in 100 traces, a block of five activities — A27, A28, A33, A34, A35 — executes between A21 and A23 in place of the previously mandatory A22 step: A21 leads directly into the block, the five activities each run once in no fixed order among themselves, and the block closes at A23, which then occurs without A22. In the remaining about 57 in 100 traces, the original A21 → A22 → A23 sequence is unchanged. [OCC001, OCC002, DIR001, REL007, REL018]
+
+This goes beyond what chance sampling would produce: 45 control-flow items qualified against roughly 0.49 expected if nothing had changed (99 units tested), and each difference is larger than in about 99 in 100 random re-splits of the pooled traces. The change is shown directly by relational and successor evidence — A21 preceding the new activities, the new activities preceding A23, and A23 occurring without A22 — rather than inferred from frequency shifts alone, and the participation, routing and relation items all describe one coherent structural difference. [screening, DIR001, REL002, REL007]
+
+Limitations: with 200 traces per window and zero observations of the five activities before, the evidence shows only that they were absent or extremely rare earlier; it cannot rule out that the same block existed as a very rare variant before the change. The internal sequencing of the block is also unconstrained in the data, so the exact order structure among the five activities cannot be pinned down. [OCC002, REL018]

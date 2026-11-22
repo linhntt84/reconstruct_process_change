@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A30, A31 and A36 each occurred about 3.4 times per trace and appeared in every trace; in the later window each occurs about once per trace, still in every trace, while the share of traces in which they repeat fell from about 75 in 100 to about 1–2 in 100 [OCC001, OCC002, OCC003].
+- The successor profile of A36 changed sharply: earlier, about 70 in 100 of A36's outgoing transitions led back to A30 and about 29 in 100 to A25; in the later window, about 93 in 100 lead to A25 and only about 4 in 100 to A30 [DIR003].
+- A30 and A36 still co-occur in every trace in both windows, but their order changed: earlier they were interleaved or repeated in about 75 in 100 traces, whereas in the later window A30 precedes A36 in about 98 in 100 traces [REL001].
+- The spacing of the pair changed accordingly: in the later window A36 follows A30 two positions later in about 89 in 100 cases, against about 12 in 100 earlier when the gaps were spread; conversely, A30 following A36 within a few steps, seen earlier in roughly 13 in 100 of pairs, is almost unobserved later (one observation) [LAG002, LAG003].
+- Self-repeats of A30 and of A36, typically three positions apart earlier, are nearly absent later, with only about two observed pairs each [LAG001, LAG004].
+- The transitions A30→A31 and A31→A36 remain dominant in both windows (about 97–99 in 100 of each activity's outgoing transitions); only rare successors, each well under 1 in 100, differ [DIR001, DIR002].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the repeated cycle A30 → A31 → A36 → A30 stopped repeating: in the earlier window the block ran about three to four times per trace, with A36 returning to A30 in about 70 in 100 of its outgoing transitions, whereas in the later window each of A30, A31 and A36 executes about once per trace and A36 leads on to A25 in about 93 in 100 of its outgoing transitions. The supporting signs are direct and mutually consistent: the drop from about 3.4 to about 1 occurrence per trace while participation stayed at 100 in 100 (so the activities did not become optional), the replacement of the loop-back edge A36→A30 by the exit to A25, the change from an interleaved or repeated order to a fixed A30-before-A36 order, and the concentration of the A30→A36 gap at two positions, matching a single remaining pass A30→A31→A36 [OCC001, OCC002, OCC003, DIR003, REL001, LAG002].
+
+The volume of qualifying evidence also exceeds what an unchanged process produces: 11 control-flow items qualified where about 0.45 would be expected by chance, so the differences as a whole are not a sampling artefact [screening]. The main limitation is that repetition did not vanish completely — about 1–2 in 100 later traces still show repeats, and the self-lag items rest on only about two later observations each — so the evidence shows the cycle became rare but cannot establish that it stopped in every trace; an important competing explanation the evidence cannot rule out is that the loop-back at A36 became rare rather than removed, since about 4 in 100 of A36's outgoing transitions still led to A30 in the later window [OCC001, OCC002, OCC003, DIR003, LAG001, LAG004].
+
+Other differences: the rare outgoing transitions of A30 and A31 were slightly redistributed (each affected successor carries well under 1 in 100 of transitions in either window), a pattern consistent with sampling variation around the same loop change rather than a separate structural difference [DIR001, DIR002].

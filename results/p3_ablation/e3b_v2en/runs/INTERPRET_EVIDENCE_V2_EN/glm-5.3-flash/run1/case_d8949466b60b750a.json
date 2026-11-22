@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "9540dedc5aeca72f4590f16fc7ae31efed362804a7bd21271cd3cb4e89149bbf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:05:12.082269+00:00",
+  "finished_at_utc": "2026-11-14T11:06:00.892410+00:00",
+  "latency_seconds": 48.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7515,
+    "prompt_tokens": 15940,
+    "total_tokens": 23455,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6559,
+      "text_tokens": 956
+    },
+    "cost": 0.0061484999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22663,
+  "text": "### Observed differences\n\n- In the later window, A27 occurs in almost every case — about 199 in 200 traces, roughly once per trace — whereas before it appeared in about 103 in 200 (mean occurrences per trace about 0.5 vs 1.0). [OCC001]\n- Three activities nearly disappear: A32, A33 and A38 each occurred in about 97–98 of the 200 earlier traces but in at most 1 of the 200 later traces. [OCC002, OCC003, OCC004]\n- A26's routing collapsed onto A27: before, about 51 in 100 of its outgoing transitions went to A27, with 14–18 in 100 each to A32, A33 and A38; in the later window about 97 in 100 go to A27. [DIR001]\n- The A27 → A28 transition stays dominant and direct in both windows (about 97 in 100 before, 98–99 in 100 after, with lag 1 in essentially all later cases). [DIR002, LAG004]\n- Ordered relations change accordingly: A26–A27 and A27–A28 co-occurrence rise from about 52 in 100 to 99.5 in 100 (A26 before A27 in about 96.5 in 100 later cases), while every co-occurrence involving A32, A33 or A38 — with A26, with A27, with A28, or among the three themselves — falls from about 48–49 in 100 to about 0.5 in 100. [REL001, REL005, REL002, REL003, REL004, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]\n- The distance from A26 to A28, previously split between 2 steps (about 50 in 100) and 4 steps (about 47 in 100), concentrates at 2 steps (about 97 in 100) in the later window. [LAG001]\n- A28 itself occurs in every trace in both windows and sits only slightly earlier (mean relative position about 0.55 vs 0.53). [POS001]\n- A caveat on the later window: the routing and position profiles for A32 and A38 rest on a single trace each, so they carry little weight. [DIR003, DIR004, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the alternative branch in which A32, A33 and A38 executed together between A26 and A28 is no longer taken, so that in the later window control flow runs almost uniformly A26 → A27 → A28. The signs are direct rather than incidental: A26's outgoing share to A27 rose to about 97 in 100, the A26–A28 distance collapsed to the two-step path through A27, and all co-occurrence involving A32, A33 or A38 fell from about half of cases to nearly zero while A27 became near-universal. With 35 qualifying items against roughly 0.6 expected if nothing had changed, the pattern as a whole cannot be attributed to chance, and sampling differences in variant frequencies cannot explain three activities each present in about half of the earlier traces all vanishing from the later one. [OCC001, OCC002, OCC003, OCC004, DIR001, LAG001, REL012, REL013, REL014]\n\nLimitations remain: the later routing of A32 and A38 is observed in only one trace each, and the evidence cannot exclude that the branch still executes in rare cases outside these windows, since each of the three activities still appears once in the later sample. The conclusion is also specific to the observed window pair; behaviour further from the change point is not covered by this evidence. [DIR003, DIR004, OCC002, OCC003, OCC004]",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

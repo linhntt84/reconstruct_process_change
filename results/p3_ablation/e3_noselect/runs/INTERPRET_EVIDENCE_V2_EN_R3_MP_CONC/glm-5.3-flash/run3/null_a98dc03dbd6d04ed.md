@@ -1,0 +1,17 @@
+### Observed differences
+
+- Two groups of activities moved in mirror image: earlier, A01, A05, A07 and A09 each appeared in about 50 in 100 traces, and A03, A11, A12 and A13 also in about 50 in 100; in the later window the first group appeared in about 55–56 in 100 traces and the second in about 45–46 in 100. [OCC001, OCC002, OCC004, OCC006, OCC008, OCC010, OCC011, OCC012]
+- Within the first group, A01's dominant continuation changed: earlier about 43 in 100 of A01's outgoing transitions led to A09 and about 27 to A07; in the later window about 29 led to A09 and about 41 to A07. [DIR001]
+- A15 and A16 still appeared in every trace in both windows, but each occurred about 1.67 times per trace earlier versus about 1.53 times later; the share of A16's transitions returning to A15 fell from about 39 to 34 in 100, while the exits from A16 to A17 and to A18 grew by about 3–4 in 100 each, and A17 and A18 themselves rose from about 22–24 to about 26–28 in 100 traces. [OCC013, OCC014, DIR015, DIR016, OCC015, OCC016]
+- Further along, A44 appeared in about 55 in 100 traces earlier versus about 48 in 100 later (about 0.98 versus 0.84 occurrences per trace), and A43's mean fell from about 0.43 to 0.36 occurrences per trace. [OCC037, OCC038]
+- The trio A36, A37 and A42, present in essentially every trace, circulated the other way round: from A36 the share continuing to A42 fell from about 39 to 26 in 100 while the share to A37 rose from about 28 to 37; from A37 the share to A42 rose from 29 to 38 and to A36 fell from 38 to 29; from A42 the share to A36 rose from 30 to 36 and to A37 fell from 36 to 30. [DIR036, DIR037, DIR042]
+- At the branch after A31, the share continuing to A21 rose from about 24 to 31 in 100 outgoing transitions while A22's fell from about 29 to 23; A21 then appeared in about 47 versus 56 in 100 traces and A22 in about 54 versus 47. [DIR031, OCC019, OCC020]
+- After A45 the split between its two continuations evened out: to A20 from about 53 to 47 in 100, and to A19 from about 40 to 47 in 100. [DIR045, OCC017, OCC018]
+- The rare activity A06 appeared in about 15 in 100 traces earlier versus about 9 in 100 later; its incoming edge from A50 (about 8 of roughly 205 transitions) and its most used outgoing edge to A51 (about 8 of 31) were not observed in the later window, though these proportions rest on few observations. [OCC005, DIR006, DIR050]
+- Elsewhere the differences stay within about two percentage points in mixed directions; for example A25, A27 and A28 kept exactly one occurrence per trace in both windows. [OCC023, OCC024, OCC025, OCC033, OCC034, OCC035]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. Every difference above is of a size that random re-splits of the same traces also produce: the mirrored shifts of about 5 in 100 cases sit only at the 51st–70th percentile of their reference comparisons [OCC001, OCC010, OCC012], the A15–A16 repetition difference at about the 83rd–86th [OCC013, OCC014], and even the strongest items — the rerouting at A01, the reversed circulation of A36–A37–A42 and the fading A06 path — were matched or exceeded by 2–4 in 100 random re-splits, the last resting on only about 17–31 observations [DIR001, DIR036, DIR050, DIR006].

@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A25, A36, A37, A42, A28, A26, A27 and A31 each ran in all 200 cases in a fixed chain: A25 first (mean relative position about 0.34), then A36, A37 and A42 in no fixed order among themselves (about 0.40), then A28 (about 0.45), A26 (about 0.60), A27 (about 0.62) and A31 (about 0.65). [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, REL020, REL021, REL022]
+- In the later window, A36, A37, A42 and A27 each run in only about 47–54 in 100 cases (94–107 of 200 traces), while A25, A26, A28 and A31 still run in every case. [OCC001, OCC002, OCC003, OCC004]
+- A27 and each of A36, A37, A42, which co-occurred in every earlier case, now share a case in about 1 in 100 or fewer: about 53 in 100 later cases contain A27 but none of the trio, and about 47 in 100 contain A36, A37 and A42 together but not A27, with the trio keeping its mixed internal order — two mutually exclusive variants, with A28 and A31 present in both. [REL009, REL010, REL011, REL012, REL013, REL020, REL021, REL022]
+- The trio's placement reversed relative to its neighbours: before, A36, A37 and A42 each preceded A26 and preceded A28 in roughly 98–100 in 100 of the cases containing both; in the later window A26 and A28 each precede them in about 98–99 in 100 such cases. [REL006, REL007, REL008, REL014, REL015, REL016]
+- Successors changed accordingly: about 99 in 100 of A25's outgoing transitions now go to A28 (before, about 35, 34 and 31 in 100 went to A42, A36 and A37); A26 now leads to A27 in about 53 in 100 transitions and to A36, A37 or A42 in about 46 in 100 combined (before, about 98 in 100 led to A27); and the trio members now send about 28–36 in 100 of their transitions to A31, where before about 32–33 in 100 went to A28. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Relative positions moved consistently: the trio's mean position shifted from about 0.40 to about 0.58, A27's from about 0.62 to about 0.58, A26's from about 0.60 to about 0.54 and A28's from about 0.45 to about 0.39. [POS002, POS003, POS004, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block A36–A37–A42 became optional and was repositioned: in the earlier window all three always executed between A25 and A28, with A27 always following A26, whereas in the later window about 53 in 100 cases run A25 → A28 → A26 → A27 → A31 and about 47 in 100 run A25 → A28 → A26 → A36/A37/A42 (in mixed order) → A31, the trio now being mutually exclusive with A27. [OCC001, OCC002, OCC003, OCC004, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016]
+
+The hypothesis is shown directly and consistently: the reversed order against A26 and A28, the near-zero co-occurrence of A27 with each trio member, the stable relations to A25 and A31, the successor changes at A25, A26 and the trio, and the participation drop from every case to about half all describe the same restructuring; the screening context also supports it, with 39 items qualifying against fewer than 1 (0.63) expected by chance among 126 tested units. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL010, REL017, REL018, REL019]
+
+A competing explanation the evidence cannot rule out is that the A27-only routing already existed earlier as a rare or unobserved path (0 of 200 earlier cases) that merely became frequent, rather than being newly introduced; the many agreeing items also describe one underlying difference rather than independent confirmations. [OCC001, OCC002, OCC003, OCC004]
+
+Other differences: only minor shifts accompany the restructuring — A25's mean position moved slightly later (about 0.34 to 0.36) and A31's slightly earlier (about 0.65 to 0.63) — consistent with the changed case composition rather than an independent change. [POS001, POS005]

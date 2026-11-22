@@ -1,0 +1,21 @@
+### Observed differences
+
+- The dominant direction of flow among A36, A37 and A42 reversed. In the earlier window the largest outgoing shares were A36→A42 (about 39 in 100 of A36's outgoing transitions), A42→A37 (about 36 in 100) and A37→A36 (about 38 in 100), so flow tended to circulate A36→A42→A37→A36; in the later window the largest shares are A36→A37 (about 37 in 100), A37→A42 (about 38 in 100) and A42→A36 (about 36 in 100) — the opposite circulation. The share leaving each of the three towards A28 stayed at about 32–34 in 100 throughout, all three activities were heavily executed in both windows (about 200 outgoing transitions each per window), and each successor-profile difference was larger than in about 96, 89 and 72 of 100 random re-splits. [DIR036, DIR037, DIR042, OCC031]
+
+- The repeated block A15/A16 ran fewer times per case: both activities still appeared in every trace in both windows, but average executions per trace fell from about 1.67 to about 1.53 for each, with recurrence support down from 0.38 to 0.36 (differences larger than in about 83–86 of 100 random re-splits). [OCC013, OCC014]
+
+- A01 and A03 moved in opposite directions: A01 appeared in about 56 in 100 later-window traces (previously 50) and A03 in about 45 (previously 50). Within the loop around A01, A01 sent about 41 in 100 of its outgoing transitions to A07 (previously 27) and about 29 to A09 (previously 43); A05 sent more to A09 (about 37 vs 27 in 100); A09 sent more to A14 (about 32 vs 26 in 100) and less to A07 (about 29 vs 39 in 100). [OCC001, OCC002, DIR001, DIR005, DIR009]
+
+- A21 became more frequent and A22 less frequent: A21 appeared in about 56 in 100 traces (previously 47) and A22 in about 47 (previously 54); A31 routed about 31 in 100 of its transitions to A21 (previously 24) and about 23 to A22 (previously 29). [OCC019, OCC020, DIR031]
+
+- A06 and A44 were executed less often: A06 in about 9 in 100 traces (previously 15) and A44 in about 48 in 100 (previously 55, mean occurrences 0.98→0.84). A06's observed successor mix also changed (A51 and A16 no longer observed as successors, relatively more to A15 and A49), but this rests on only about 31 versus 16 outgoing transitions, and the A50→A06 transition was no longer observed. [OCC005, OCC038, DIR006, DIR050]
+
+- Smaller shifts: A45 split differently between A20 (about 47 in 100, previously 53) and A19 (about 47, previously 40), and A50 concentrated further on A51 (about 94 in 100, previously 89). [DIR045, DIR050]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the shares between the existing alternative paths around A36, A37 and A42 shifted so that the dominant circulation reversed: in the earlier window flow most often ran A36→A42→A37→A36, while in the later window it most often runs A36→A37→A42→A36, with the exits from all three activities to A28 essentially unchanged. This is shown directly by the successor distributions of all three activities, each based on about 200 outgoing transitions per window; the three changes interlock (each activity's gain around the triangle is the next activity's loss), every involved activity and edge was well observed in both windows, and no path disappeared or was bypassed — so this is a re-weighting of existing alternatives rather than paths being added, removed or bypassed. Limitations: the evidence cannot show whether the reversal originates at these three activities or is a downstream effect of a changed case mix arriving from earlier in the process, and with many activity pairs examined, an unusually aligned chance fluctuation cannot be fully excluded. [DIR036, DIR037, DIR042, OCC031]
+
+Other differences: the A15/A16 block repeated less often per case; A01 became more frequent while A03 became less frequent, with corresponding shifts in the loop around A01, A05, A07 and A09; A21 became more frequent while A22 became less frequent, with A31 routing more to A21; A06 and A44 were executed less often, A06 with a changed successor mix that is only weakly supported; A45 and A50 show smaller routing shifts. These differences are not part of the main hypothesis above. [OCC013, OCC014, OCC001, OCC002, DIR001, DIR005, DIR009, OCC019, OCC020, DIR031, OCC005, OCC038, DIR006, DIR050, DIR045]

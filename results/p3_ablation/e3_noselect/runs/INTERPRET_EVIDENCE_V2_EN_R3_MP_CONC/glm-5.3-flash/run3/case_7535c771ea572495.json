@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7535c771ea572495.json",
+  "evidence_sha256": "9a6c2760d7f4052ff2d744e0d8d86d5f149256e2735c2579267100a1a1ab0324",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:54:06.361141+00:00",
+  "finished_at_utc": "2026-11-15T13:55:22.442317+00:00",
+  "latency_seconds": 76.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10367,
+    "prompt_tokens": 14161,
+    "total_tokens": 24528,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9254,
+      "text_tokens": 1113
+    },
+    "cost": 0.00730765
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32577,
+  "text": "### Observed differences\n\n- A01 and A03 disappeared: in the earlier window each appeared exactly once in all 200 traces, A01's only observed successor was A03, and A03 was the last activity (position 1.0 in every trace); in the later window neither appears in any of the 200 traces. [OCC001, OCC003, DIR001, POS001, POS003, REL002, REL006]\n- A05 and A07 appeared: neither was observed earlier (0 of 200 traces), while in the later window each appears exactly once in all 200 traces; A05's only observed successor is A06, A06's is A07, and A07 is now the last activity (position 1.0 in every trace). [OCC005, OCC006, DIR003, DIR004, POS004, POS006, REL013, REL014, REL015]\n- The exit from A02 was rerouted: earlier, about 53 in 100 of A02's outgoing transitions went to A06 and about 47 in 100 to A04; later, about 50 in 100 go to A05 and about 50 in 100 to A04, with no direct A02→A06 transition observed. The A02→A06 distance moved from one step in about 42 of 100 weighted cases earlier to two steps in about 51 of 100 later, consistent with A05 now lying between them. [DIR002, LAG002, REL007, REL008, REL009]\n- A06 shifted position: its mean position moved from about 0.50 to about 0.75 of the trace, and its successor changed from A01 (100 of 100 outgoing transitions) to A07 (100 of 100). [DIR004, POS005, REL004, REL011]\n- The repetition loop between A02 and A04 is essentially unchanged: A02 ran about 1.9 times per trace earlier and about 2.0 later, A04 appeared in about 48–49 of 100 traces in both windows, and the A02→A02 lag profile is similar. [OCC002, OCC004, LAG001, REL008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in the later segment of the process involving A01, A03, A05, A06 and A07: in the earlier window traces ran A02 (with an optional A04→A02 repeat) → A06 → A01 → A03, ending at A03, whereas in the later window they run A02 → A05 → A06 → A07, ending at A07, with A01 and A03 no longer observed and A05 and A07 now present in every trace. This is shown directly by the successor changes at A02 and A06, the new A05→A06→A07 chain observed in all later traces, and participation flipping between all 200 and 0 traces; differences of this size (empirical strength 0.995, exceeding all 200 random re-splits) are not plausible for activities that participated in every trace. The relation items agree with one another but largely describe the same underlying trace change, so they are consistent rather than independent confirmations. [OCC001, OCC003, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, POS003, POS004, POS006, LAG002, REL013, REL014, REL015]\n\nThe main limitation is that zero participation only means an activity was not observed: the evidence cannot exclude that A01 and A03 still occur on rare paths or outside these windows, and no chance expectation for the number of qualifying items is provided, so the judgement rests on the directness and consistency of the relational and participation evidence. [OCC001, OCC003, OCC005, OCC006]\n\nOther differences: A04 repeated slightly more often in the later window (mean 0.875 → 1.01 occurrences per trace; recurrence in about 22% → 29% of traces) and A02's median position moved slightly later; these shifts are small and could reflect sampling variation between the windows. [OCC002, OCC004, LAG001, POS002]",
+  "case_id": "case_7535c771ea572495",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

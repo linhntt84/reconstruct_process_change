@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "4809f8d9736c2a4d9d9d049f529c0fb29ba0fef14326725cad0a3ab136308087",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:47:52.652473+00:00",
+  "finished_at_utc": "2026-11-14T13:49:14.927354+00:00",
+  "latency_seconds": 82.27,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12449,
+    "prompt_tokens": 50219,
+    "total_tokens": 62668,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10900,
+      "text_tokens": 1549
+    },
+    "cost": 0.01375735
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37848,
+  "text": "### Observed differences\n\n- In the earlier window, A27 ran in every trace (200 of 200) and sat directly between A26 and A28: A26 preceded A27 in about 99 in 100 traces, A27 preceded A28 in about 99 in 100, and A26 and A28 themselves appeared in every trace. In the later window, A27 appears in only about half of the traces (102 of 200). [OCC027, OCC026, OCC028, REL001, REL006, LAG002, LAG004]\n- Three activities that were absent from the earlier window — A32, A33 and A38 — each appear in about 49 in 100 later traces (98–99 of 200), once per trace when present, and they occur together whenever any of them occurs. [OCC030, OCC031, OCC036, REL013, REL014, REL015]\n- The new activities occupy the gap where A27 used to be: A26 precedes each of them in about 49 in 100 traces, each precedes A28 in about 49–50 in 100, and they never occur together with A27 (co-occurrence near zero). [REL003, REL004, REL005, REL010, REL011, REL012, REL007, REL008, REL009]\n- A26's outgoing transitions shifted accordingly: the share leading to A27 fell from about 99 to about 51 in 100, while about 48 in 100 now lead to A32, A33 or A38. [DIR026]\n- The three new activities lead to one another and on to A28, with no fixed internal order: each pair occurs in both orders in similar shares (roughly 22–27 in 100 each way). [DIR032, DIR033, DIR038, REL013, REL014, REL015]\n- The distance in event steps from A26 to A28 was 2 in about 98 in 100 earlier traces; in the later window it is 2 in about 50 in 100 and 4 in about 48 in 100, matching the traces that route through the three new activities. [LAG003]\n- The new activities sit around the middle of the trace (mean relative position about 0.49–0.50), and A28's mean position moves slightly later (about 0.53 to 0.55). [POS004, POS005, POS006, POS003]\n- Smaller shifts exist elsewhere: A01's successors moved toward A09 (about 38 to 47 in 100 of its outgoing transitions) and away from A07 (about 31 to 23); after A22 the share leading to A23 rose (about 18 to 31 in 100) while the share to A30 fell (about 55 to 47); after A23 the share to A30 rose (about 43 to 57) while the share to A22 fell (about 30 to 23). [DIR001, DIR022, DIR023]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process gained an alternative branch between A26 and A28: in the later window, roughly half of the traces run A26 → A27 → A28 as before, while the other half skip A27 and instead execute the three activities A32, A33 and A38 together between A26 and A28, in no fixed internal order. [OCC027, OCC030, OCC031, OCC036, REL001, REL006, DIR026, LAG003]\n\nThe change is shown directly and consistently: A27 fell from all 200 traces to 102 while each new activity rose from 0 to about 98–99 traces in an exactly complementary pattern (A27 and the new group never share a trace); relational items show A26 before each new activity and each new activity before A28 in about 49 in 100 traces; the A26→A28 step distance doubles from 2 to 4 exactly in the traces without A27; and the new activities appear at mid-trace positions. Occurrence, successor, relation, lag and position indicators all agree. [OCC027, OCC030, OCC031, OCC036, REL007, REL008, REL009, REL003, REL010, LAG003, POS004, POS005, POS006]\n\nLimitations: the earlier window contains no observation of A32, A33 or A38, so the evidence cannot exclude that this branch already existed as a variant that the 200 earlier traces happened not to sample; given its appearance in about half of the later traces and the complementary drop of A27, sampling fluctuation alone is unlikely, but a shift in the mix of two pre-existing variants cannot be distinguished from a newly added branch. The evidence also cannot show what determines which branch a trace takes. [OCC030, OCC031, OCC036, OCC027, REL007]\n\nOther differences: the modest successor redistributions after A01, A22 and A23 listed above concern paths that already existed in both windows, are not part of the main hypothesis, and could reflect sampling differences between the two windows. [DIR001, DIR022, DIR023]",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

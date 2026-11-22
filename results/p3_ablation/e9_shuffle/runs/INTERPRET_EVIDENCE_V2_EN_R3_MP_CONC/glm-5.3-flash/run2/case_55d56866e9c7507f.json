@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_55d56866e9c7507f.json",
+  "evidence_sha256": "2559a437371cb50f4ce92eb5553dd6f9ab71a96d5bc487daa5a70f0f3e2729d2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:39:34.366109+00:00",
+  "finished_at_utc": "2026-11-15T04:42:54.595203+00:00",
+  "latency_seconds": 200.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 30425,
+    "prompt_tokens": 9212,
+    "total_tokens": 39637,
+    "completion_tokens_details": {
+      "reasoning_tokens": 28762,
+      "text_tokens": 1663
+    },
+    "cost": 0.0165943
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 100049,
+  "text": "### Observed differences\n\n- A11 became far more frequent: it appears in about 29 in 100 traces in the earlier window and about 56 in 100 in the later window, in each case at most once per trace (mean occurrences per trace 0.29 vs 0.57). [OCC001]\n- A11's route changed. In the earlier window, A11 always ran in a trace that also contained A08 and always after it (A08 before A11 in 29% of traces, the reverse never), usually within one step of A08 (about 66 in 100 observed A08→A11 pairs) and late in the trace (median event position 1.0). In the later window, A11 appears without A08 in about 27 in 100 traces, the fixed order became mixed (over all traces, A08 precedes A11 in 15.5% and A11 precedes A08 in 14.5%), one-step A08→A11 gaps dropped to about 39 in 100 while gaps of four or five steps appeared (about 23 in 100), and the median position moved earlier to about 0.67. [REL002, LAG004, POS003]\n- The connection from A06 to A11 strengthened: co-occurrence rose from 29% to 56.5% of traces (always with A06 first), A06→A11 pairs one step apart rose from 13% to 55%, and A11 went from about 4 to about 31 in 100 of A06's observed outgoing transitions, while A03 (28% → 17%) and A02 (18% → 8%) lost share. [REL001, LAG003, DIR002]\n- A09 also became more frequent and earlier: about 30 in 100 traces before versus about 44 in 100 after (median position 1.0 → 0.8); A06→A09 pairs one step apart rose from 22% to 53%, and A09's share of A06's outgoing transitions rose from about 6 to about 23 in 100. [POS002, LAG002, DIR002]\n- A09 and A11 never occurred in the same trace in either window, but the share of traces containing neither fell from about 42 in 100 to zero, so in the later window every trace contains exactly one of them; in the earlier window that \"neither\" share matched the share of traces without A08 (about 42 in 100). [REL003, POS001]\n- A08's outgoing behaviour shifted: transitions to A11 and A09 fell from about 33 and 31 in 100 to about 17 and 11 in 100, while transitions to A02 and A06 grew from about 15 and 9 to about 33 and 23 in 100; A06→A08 gaps lengthened (one or two steps: 80% → 38% of pairs). [DIR003, LAG001]\n- Thinly supported successor shifts: A09's outgoing transitions spread from mainly A02 (57% of only 7 observed) across seven targets (A04, A08 and A02 at about 19 in 100 each of 53); A11's spread from mainly A02 and A06 (80% of 10) across seven targets (68 observed); A05's moved from mainly A01 (67% of 9) to mainly A09 and A11 (about 38 in 100 each of 26). [DIR004, DIR005, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the routing into A11 was restructured while the alternative branch through A09 was taken more often. In the earlier window, A11 ran in about 29 in 100 traces, always shortly after A08 and late in the trace, and A06 reached it typically only across three or four steps; A09 and A11 were mutually exclusive alternatives that together appeared in about 59 in 100 traces, the same share as traces containing A08. In the later window, A11 runs in about 56 in 100 traces, usually immediately after A06 (about 31 in 100 of A06's observed outgoing transitions, up from about 4 in 100), earlier in the trace, and in about 27 in 100 traces without A08 at all; A09 runs in about 44 in 100 traces, also earlier and typically one step after A06; the two activities still never occur together, but every trace now contains one of them. A08, which previously handed over to A11 or A09, now sends most of its outgoing transitions to A02 and A06. Taken together, this is consistent with A06 now leading directly to A11 (and to A09) where previously these activities were reached through intermediate steps around A08. The relational items show the co-occurrence, order and gap changes directly on 54–200 supporting traces per window, each difference exceeds about 199 of 200 random re-splits of the pooled data, and 16 qualifying control-flow items against roughly 0.16 expected without change makes a chance origin of the overall pattern implausible. [REL001, REL002, REL003, LAG002, LAG003, LAG004, DIR002, DIR003, OCC001, POS002, POS003]\n\nLimitations: several successor profiles rest on few observed transitions (A09: 7 before; A11: 10 before; A05: 9 before and 26 after), so their exact new targets are uncertain; several items describe overlapping behaviour of the same traces and are not independent confirmations; and positions are event ranks, so \"earlier\" refers to sequence placement rather than a proven shift in clock time. [DIR004, DIR005, DIR001, POS002, POS003]\n\nOther differences: A08 itself ran slightly less often and somewhat later and more variably within the trace (about 59 in 100 traces before versus 54 in 100 after; upper-quartile position 0.8 → 1.0), and the successor mixes of A09, A11 and A05 broadened or changed on small observation counts. [POS001, DIR004, DIR005, DIR001]\n\nAn important competing explanation the evidence cannot rule out: it remains unclear why traces that previously contained neither A09 nor A11 (about 42 in 100) now always contain one of them — for example, whether this choice became mandatory for all cases or whether those traces were rerouted for reasons the indicators do not capture. [REL003]",
+  "case_id": "case_55d56866e9c7507f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,25 @@
+### Observed differences
+
+- The routing around two anchor pairs reversed. Before, A26 was directly followed by one of A14, A17, A20, A21 (about 24–26 in 100 of its observed outgoing transitions each) and A27 came two positions after A26, while A37 led into the A15/A16/A18/A19 group and A22 came five positions after A37. In the later window this is reversed: A26 is directly followed by the A15/A16/A18/A19 group (about 22–27 in 100 each) with A27 five positions after A26, and A37 is followed by one of A14, A17, A20, A21 with A22 two positions after A37. [DIR010, DIR011, LAG006, LAG011]
+
+- The block activities' outgoing edges retargeted accordingly. Before, A14, A17, A20 and A21 led to A27 in all of their observed outgoing transitions; in the later window they lead to A22 in about 98–100 in 100. Before, A15, A16, A18 and A19 led to A22 in roughly 20–30 in 100 of their outgoing transitions; in the later window they lead to A27 in roughly 17–29 in 100. [DIR002, DIR005, DIR008, DIR009, DIR003, DIR004, DIR006, DIR007]
+
+- Order relations between the two groups and the anchors flipped almost completely. Before, each of A15, A16, A18, A19 preceded A22 and preceded A26 in every trace where both ran (100 in 100), and A15 preceded A14 in about 26 of 100 co-occurring traces; in the later window, A22 and A26 precede that group in about 995 in 1000 traces, and A14 precedes A15 in about 20 of 100 co-occurring traces, with the same reversal for A17, A20 and A21 against the group. [REL010, REL011, REL015, REL016, REL023, REL024, REL027, REL028, REL001, REL007]
+
+- Relative positions moved in opposite directions: A14, A17, A20 and A21 moved from about 69 to about 34 per cent of the way through the trace, A15, A16, A18 and A19 from about 39 to about 64 per cent, and the anchors A22 and A26 both moved earlier (about 47 to 38 per cent, and 66 to 56 per cent). [POS001, POS004, POS007, POS008, POS002, POS003, POS005, POS006, POS009, POS010]
+
+- Participation itself barely moved: A15, A16, A18 and A19 appear in every trace in both windows, and A14, A17, A20 and A21 each appear in roughly 20–29 of 100 traces in both windows, so the difference lies in ordering and routing, not in whether the activities run. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+- Upstream of this region, A05's outgoing mix shifted (A04 from about 24 to 48 in 100 of its outgoing transitions, A09 from about 41 to 22) and the gap from A01 to A05 shortened (mostly 2–3 positions before, 1–2 after). [DIR001, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two activity blocks exchanged the segments they occupy. Before, exactly one of A14, A17, A20, A21 ran between A26 and A27, while A15, A16, A18 and A19 — all four present in every case, in varying order — ran between A37 and A22; in the later window the contents of these two segments are exchanged, with the A15/A16/A18/A19 group between A26 and A27 and a single A14/A17/A20/A21 activity between A37 and A22. [DIR010, DIR011, LAG006, LAG011, REL010, REL011]
+
+This is a hypothesis about order and placement, and it is shown directly by relational and positional evidence rather than by frequency shifts: the successor sets of A26 and A37 changed over [DIR010, DIR011]; order relations against the anchors A22 and A26 reversed from 100 in 100 to about 995 in 1000 in the opposite direction [REL010, REL011, REL015, REL016, REL023, REL024, REL027, REL028]; the two groups' positions moved in opposite directions [POS001, POS002, POS004, POS005, POS007, POS008]; and the anchor-to-anchor distances swapped, A26 to A27 going from 2 to 5 positions and A37 to A22 from 5 to 2 [LAG006, LAG011]. Participation of every involved activity is essentially unchanged, so the same activities and paths occur but are sequenced differently, and 64 qualifying items against about 0.64 expected for an unchanged process means sampling variation cannot explain the pattern as a whole; every item's difference also exceeds about 995 of 1000 random re-splits of the same data. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+Limitations: the profiles cannot distinguish the two blocks physically exchanging places from the anchor activities A26, A27, A37 and A22 being rewired around stationary blocks — both would produce the same picture, and this competing reading cannot be ruled out. The within-block lag items rest on a single after-window observation each and add little weight [LAG002, LAG003, LAG004, LAG005, LAG007, LAG008, LAG009, LAG010], and small residuals (for example, A19 still led to A22 in about 0.5 in 100 of its outgoing transitions afterwards) suggest the exchange may not be perfectly clean [DIR007].
+
+Other differences: A05's outgoing transitions shifted toward A04 (about 24 to 48 in 100) and away from A09 (about 41 to 22), with a correspondingly shorter A01-to-A05 gap; this upstream change is not part of the block exchange. [DIR001, LAG001]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_cbf221947af6ad5e.json",
+  "evidence_sha256": "b18cf9c85ed751bf3e5aabbbbfb692102b4e26054e1906b0e3b8325ebbb4ba3a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:19:08.075755+00:00",
+  "finished_at_utc": "2026-11-15T01:21:31.392445+00:00",
+  "latency_seconds": 143.32,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19520,
+    "prompt_tokens": 30847,
+    "total_tokens": 50367,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18191,
+      "text_tokens": 1329
+    },
+    "cost": 0.014387049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 66066,
+  "text": "### Observed differences\n\n- Two blocks of activities exchanged their place in the trace. Before, A14, A18, A21, A22 and A23 each occurred at about 32–33% of the trace (mean relative event position, not clock time), while A15, A16, A17, A19 and A20 occurred at about 62–63%. In the later window, the second block runs at about 38–39% and the first at about 68–71%. [POS001, POS005, POS008, POS009, POS010, POS002, POS003, POS004, POS006, POS007]\n- The order between the blocks reversed completely. Before, A24 preceded A15 in every trace (the two co-occur in all 200 per window); in the later window, A15 precedes A24 in every trace. The same full reversal holds between A28 and A15, and in every measured pair across the two blocks — for example, A14 preceded A15 in all of the roughly 21 in 100 traces where both ran before, and follows it in all of the roughly 17 in 100 after. [REL012, REL013, REL001, REL009, REL026, REL033, REL040, REL044]\n- Handovers moved with the blocks. Before, A14, A18, A21, A22 and A23 led exclusively to A24; in the later window they lead exclusively to A29. A15, A16, A17, A19 and A20 sent about 14–27 in 100 of their outgoing transitions to A29 before and none after; about 17–25 in 100 now go to A24. A28's outgoing transitions switched entirely from the second block to the first, and A39's from the first to the second. [DIR001, DIR005, DIR008, DIR009, DIR010, DIR002, DIR003, DIR004, DIR006, DIR007, DIR011, DIR012]\n- Participation was essentially stable, so no activity was added, removed or became optional or mandatory: the first block's activities ran in roughly 16–23 in 100 traces in both windows, and A15, A16, A17, A19, A20, A24 and A28 ran in all traces in both windows. A24's mean position moved from about 0.36 to about 0.48 and A28's from about 0.54 to about 0.66, remaining between the two blocks. [POS001, POS005, POS008, POS009, POS010, POS002, POS011, POS012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two blocks of activities exchanged their execution order: the block A14, A18, A21, A22, A23, which previously ran before the block A15, A16, A17, A19, A20 (and before A24 and A28), now runs after it, while the second block now runs early. Accordingly, the first block now hands over to A29 instead of A24 and the second to A24 instead of A29, A28 now precedes the first block, and A39's outgoing transitions now point to the second block. [REL012, REL013, DIR001, DIR011, DIR012, POS001, POS002]\n\nSupporting signs: 69 control-flow items qualified, against roughly 0.65 expected if nothing had changed, so chance sampling cannot account for the pattern as a whole; each item's difference also exceeds those seen in about 99.5 in 100 random re-splits of the pooled data. The order reversals are direct relational evidence and are complete rather than partial (100% one order before, 100% the other after, for pairs present in every trace), the two blocks' position shifts are large and opposite, and participation of every involved activity is stable, ruling out activities appearing, disappearing or changing between optional and mandatory as competing explanations. [screening, REL012, REL013, POS002, POS011, POS001, POS005]\n\nLimitations: the indicators summarise pairwise orders, event positions and single successors rather than complete traces, so a broader re-routing that produces the same pairwise reversals cannot be distinguished from a clean exchange of the two blocks; this is the main competing explanation the evidence cannot rule out. The items also largely describe one underlying difference, so they are not independent confirmations. [REL012, DIR002]\n\nOther differences: within the second block, routing shares shifted somewhat — A17's transitions to A15 fell from about 28 in 100 to about 14 in 100, while A16's transitions to A15 rose from about 18 in 100 to about 27 in 100; these modest redistributions accompany the exchange but are not part of the main hypothesis. [DIR004, DIR003, DIR002]",
+  "case_id": "case_cbf221947af6ad5e",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

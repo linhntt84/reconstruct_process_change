@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the later window, A16, A17 and A18 each occur in only about 25 in 100 traces, down from about 75 in 100 in the earlier window (mean occurrences per trace 0.75 → 0.245, a drop of about 0.5). Each of the three occurs at most once per trace in both windows, with no repetition in either. [OCC001, OCC002, OCC003]
+- Conversely, A19, A20 and A21 each rise from about 25 in 100 traces earlier to about 76 in 100 in the later window (mean occurrences per trace 0.25 → 0.755). [OCC004, OCC005, OCC006]
+- The redirection is visible at A15: earlier, roughly three quarters of A15's observed outgoing transitions led to A16 (about 27%), A18 (about 26%) and A17 (about 23%), with only about a quarter going to A19 (about 14%), A21 (about 8%) and A20 (about 4%); in the later window this reverses — about 76% lead to A21 (about 29%), A19 (about 25%) and A20 (about 22%), and only about 24% to A16, A17 and A18 (about 8% each). [DIR001]
+- The A15→A20 pair occurs at shorter distances in the later window: earlier the gap was 3 event positions in about half of observed cases (about 52%) and 1–2 positions in about 48%; later, 1–2 position gaps make up about two thirds (about 29% plus 36%) and 3-position gaps fall to about 34%. These are event positions, not clock times. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the choice between two alternative paths after A15 changed: the path through A19, A20 and A21, previously the minority choice (about 25 in 100 cases), became the majority choice (about 76 in 100), while the path through A16, A17 and A18 fell from about 75 to about 25 in 100. The change is shown directly at the decision point, since A15's outgoing shares flipped in near mirror image with the participation changes; both branches remain well observed in both windows, so this is a shift between existing alternatives rather than a path being added, removed or bypassed; no activity became repeated or stopped repeating; and the A15→A20 relational item agrees with A20 lying on the now-dominant branch. Eight control-flow items qualified against roughly 0.39 expected by chance in an unchanged process, so the set as a whole is unlikely under chance, and each item's difference exceeds those seen in about 99.5 of 100 random re-splits of the pooled data. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, LAG001]
+
+The items largely describe one underlying difference from different angles and are not independent confirmations; the only relational item is the A15→A20 lag, so the evidence cannot show whether the two branches are mutually exclusive within a single trace, nor distinguish a changed routing rule from a changed mix of cases reaching A15; the after-window estimate for the declining branch also rests on a moderate base of about 49 traces. [LAG001]
+
+Other differences: beyond the routing swap, the A15→A20 distance itself shifted toward shorter gaps (from about half of cases at 3 positions to about two thirds at 1–2 positions), which may simply follow from the changed branch composition rather than a relocation of A20. [LAG001]

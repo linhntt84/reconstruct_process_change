@@ -1,0 +1,16 @@
+### Observed differences
+
+- A19 and A20 do not occur at all in the earlier window (0 of 200 traces each). In the later window, A19 appears in about 48 in 100 traces (96 of 200) and A20 in about 52 in 100 (103 of 200), in each case at most once per trace. [OCC001, OCC002]
+- The two activities are mutually exclusive: in the later window about 48 in 100 traces contain A19 without A20, about 52 in 100 contain A20 without A19, and essentially none contain both (0 of 200) or neither (about 1 in 200). [REL001]
+- The segment A26 → A27 → A28, which earlier ran almost exclusively edge-to-edge (A26 to A27 in 98 of 100 outgoing transitions; A27 to A28 in about 99 of 100), is re-routed in the later window: about 24 and 27 in 100 of A26's outgoing transitions now go to A19 and A20 (A27 down to about 47), and about 23 and 24 in 100 of A27's outgoing transitions go to A19 and A20 (A28 down to about 51). [DIR003, DIR004]
+- A19 and A20 themselves hand over roughly half to A27 and half to A28 (A19 about 49 in 100 each; A20 about 53 to A27 and 44 to A28). [DIR001, DIR002]
+- Relational and distance evidence locates the new behaviour: A26 always precedes A19/A20, and A19/A20 always precede A28; the A26→A28 gap moves from mostly 2 steps (about 97 in 100) to mostly 3 steps (about 94 in 100); A26→A27 and A27→A28 each split between direct adjacency (about 47–52 in 100) and a one-step gap (about 46–51 in 100); and the order of A19/A20 versus A27 is mixed (about 23–27 in 100 each way). [REL002, REL003, REL004, REL005, REL006, REL007, LAG001, LAG002, LAG003]
+- When present, A19 and A20 sit near the middle of the trace (median relative position about 0.50–0.52). [POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, about half of the executions include one additional step — an exclusive choice between A19 and A20 — executed between A26 and A28, in roughly equal measure directly after A26 (before A27) or directly after A27 (before A28). The number of qualifying items (18) is many times the roughly 0.5 expected for an unchanged process, and the placement is shown directly by relational and positional evidence rather than by frequency alone: A26 precedes and A28 follows the new activity in every case where it occurs, the A26→A28 distance widens by exactly one step, the adjacency splits of A26→A27 and A27→A28 match the two alternative positions, and A19/A20 rejoin the flow toward A27 or A28 in about equal shares. [OCC001, OCC002, REL001, REL002, REL004, REL005, REL007, LAG001, LAG002, LAG003, DIR001, DIR002, DIR003, DIR004]
+
+The evidence cannot rule out that A19 or A20 already existed at very low frequency earlier — zero participation only means they were not observed in the first 200 traces — and ordinary sampling differences in variant and routing shares remain possible, although no sampling effect plausibly produces an appearance in about half of all traces from zero. The split between the two alternative positions is estimated from roughly 100 observed executions of each activity and may vary in another sample. [OCC001, OCC002, DIR003, DIR004]

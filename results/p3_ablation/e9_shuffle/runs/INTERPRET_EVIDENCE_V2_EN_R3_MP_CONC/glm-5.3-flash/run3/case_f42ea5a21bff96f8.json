@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f42ea5a21bff96f8.json",
+  "evidence_sha256": "00bcd42de71718e810f71dc12c26ee3736c4a60628ac32602d3702bd9ef9fba8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:41:41.531045+00:00",
+  "finished_at_utc": "2026-11-15T09:44:21.928070+00:00",
+  "latency_seconds": 160.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23889,
+    "prompt_tokens": 42694,
+    "total_tokens": 66583,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21998,
+      "text_tokens": 1891
+    },
+    "cost": 0.0183486
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 71281,
+  "text": "### Observed differences\n\n- The dominant change is a swap between two groups of activities. In the earlier window, A21, A22 and A23 each run in about 75 of 100 traces; in the later window, each runs in only about 25 of 100. The mirror image holds for A24, A25 and A26: about 25 of 100 traces earlier, about 76 of 100 later. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n- The two groups act as alternatives in both windows: cross-group pairs such as A21 with A24 or A23 with A26 share a trace in at most about 2 of 100 cases, while activities within each group run together (A21 with A22 in about 75 of 100 earlier traces; A24 with A25 or A26 in about 76 of 100 later traces). [REL025, REL027, REL034, REL035, REL042, REL049, REL055]\n- Both groups keep the same neighbours, so only the choice between them moves. A19 and A20 co-occur with A21–A23 in about 75 of 100 earlier traces but with A24–A26 in about 76 of 100 later traces; A29, A30, A34 and A35 co-occur with A21–A23 earlier (about 75 of 100) and with A24–A26 later (about 76 of 100). A20's outgoing transitions shift accordingly: about 75% led to A21/A22/A23 earlier versus about 25% later, while A24/A25/A26 rise from about 25% to about 75%. [REL013, REL016, REL019, REL022, REL031, REL032, REL047, REL051, REL053, REL062, DIR002]\n- A06 becomes a frequent, late detour. It appears in about 53 of 100 later traces (about 17 earlier) and its mean position moves from about 0.57 to about 0.90 of the trace. A34 now sends about half of its outgoing transitions to A06 (about 2% earlier) instead of directly to A35 (about 89% earlier, about 48% later); A06 leads to A35 in about 90% of its outgoing transitions (about 12% earlier), with A35 immediately next in about 97 of 100 observed pairs, and A35 now follows A34 with one event in between in about half of the traces (directly in 90 of 100 earlier). [OCC002, POS001, POS002, DIR001, DIR005, LAG001, LAG011, LAG013, REL011, REL012]\n- Smaller shifts: A02 and A08 appear in fewer traces (about 17 to 8 and 13 to 5 in 100), and a few pair gaps redistribute slightly (A29→A19 and A29→A20 concentrate a little more at 1–2 steps; A30→A35 gaps stretch slightly later). [OCC001, OCC003, LAG007, LAG008, LAG012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, two existing alternative activity blocks are taken with different frequencies: the block A21–A23, previously executed together in about 75 of 100 traces between A19/A20 and the stable activities A29/A30/A34/A35, runs in only about 25 of 100 later traces, while the alternative block A24–A26 rises from about 25 to about 76 of 100, keeping the same neighbours and the same mutual exclusivity — a shift in how often existing paths are taken, not the addition or removal of activities. The signs are direct and consistent: reciprocal participation changes each backed by roughly 150 versus 50 traces, co-occurrence flips with every stable partner, and the matching redirection of A20's successors; overall, 92 control-flow items qualified against roughly 1 expected for an unchanged process (about 80 times the chance expectation), and every item's difference exceeded about 99.5 of 100 random re-splits. The evidence cannot rule out that the two windows simply contain different mixes of case types rather than a rerouting of the same cases, and it says nothing about why the shares moved. [OCC004, OCC007, REL013, REL016, REL019, REL025, REL027, REL049, REL053, DIR002]\n\nOther differences:\n- In the later window, A06 is inserted between A34 and A35 in roughly half of the traces (A34 → A06 → A35), replacing the previously direct A34 → A35 step there; its participation triples and it sits much later in the trace. Whether this detour belongs to the same underlying variant shift as the block swap cannot be determined from the evidence. [OCC002, POS001, POS002, DIR001, DIR005, LAG001, LAG013, REL011, REL012]\n- A02 and A08 participate less often in the later window, and small gap redistributions around A29, A30 and A35 accompany the rerouting. [OCC001, OCC003, LAG007, LAG008, LAG012]",
+  "case_id": "case_f42ea5a21bff96f8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

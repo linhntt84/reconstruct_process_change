@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "a55c14f8322d7e6146d22f83acdcd8172193d6a6d558f8fada2a3996a9aef7fd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:09:11.427494+00:00",
+  "finished_at_utc": "2026-11-15T11:10:12.301268+00:00",
+  "latency_seconds": 60.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8682,
+    "prompt_tokens": 10788,
+    "total_tokens": 19470,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7628,
+      "text_tokens": 1054
+    },
+    "cost": 0.0059592
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28154,
+  "text": "### Observed differences\n\n- In the earlier window, activities A14, A15 and A20 were not observed in any of the 200 traces. In the later window, A14 runs in about 29 in 100 traces (58/200), A15 in about 41 in 100 (82/200) and A20 in about 30 in 100 (59/200), each occurring at most once per trace. [OCC001, OCC002, OCC003]\n- The three new activities are mutually exclusive: the pairs A14–A15, A14–A20 and A15–A20 show zero co-occurrence in the later window, whereas in the earlier window neither activity of any pair was present. Combined, exactly one of the three appears in about 199 of 200 later traces. [REL001, REL002, REL006, OCC001, OCC002, OCC003]\n- When present, each new activity sits around the middle of the trace (mean relative position about 0.51 for all three, with narrow quartiles); no positional data exists for the earlier window because the activities were absent. [POS001, POS002, POS003]\n- Each new activity always executes after A22 (A22 first in every later trace where the pair co-occurs) and always before A24 (the new activity first in every such co-occurrence). Relative to A23 there is no fixed order: across the three new activities, the new activity precedes A23 in about 56 in 100 traces and follows it in about 44 in 100. In the earlier window, A22, A23 and A24 were present in all traces while the new activities never were. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n- Step distances shifted accordingly: the A22→A24 distance was always 2 steps in the earlier window and is 3 steps in about 199 of 200 later traces; A22→A23 moved from always 1 step to 2 steps in about 56 in 100 traces; A23→A24 moved from always 1 step to 2 steps in about 44 in 100. [LAG001, LAG002, LAG003]\n- A22's mean relative position shifted slightly earlier, from about 0.48 to about 0.46, a small but consistent redistribution. [POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: in the later window, a new step was inserted into the previously fixed sequence between A22 and A24. The inserted step is realized as exactly one of three mutually exclusive activities — A14, A15 or A20 — present in about 199 of 200 later traces; it always runs after A22 and before A24, placed between A22 and A23 in about 56 in 100 traces and between A23 and A24 in about 44 in 100. This is shown directly by the relational and distance evidence, not merely by frequency shifts: the 56/44 split of the new activities around A23 matches the observed gap changes almost exactly, and the A22→A24 distance growing from 2 to 3 steps in nearly all traces corroborates a single insertion per trace. The three activities appear from zero participation with substantial support (58–82 traces each), are never co-observed, and hold a stable mid-trace position; A22's slight positional shift is consistent with an event added after it. The volume of qualifying evidence (22 control-flow items against roughly 0.25 expected without change) cannot be explained by random re-splitting of an unchanged process. [OCC001, OCC002, OCC003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003, POS001, POS002, POS003, POS004]\n\nLimitations: the evidence cannot show what determines which of A14, A15 or A20 executes in a given case, since case attributes are not captured, and it cannot distinguish one new step with three alternative realisations from three alternative new steps; the exact shares (about 29/41/30 in 100) also carry sampling uncertainty from the finite 200-trace windows. [OCC001, OCC002, OCC003, REL001, REL002, REL006]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

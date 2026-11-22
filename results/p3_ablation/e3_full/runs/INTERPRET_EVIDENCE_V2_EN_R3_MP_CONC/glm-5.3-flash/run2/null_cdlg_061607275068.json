@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_061607275068.json",
+  "evidence_sha256": "992850d84dfe226fdf49a2780ebdc17c79472a2e15d9342518b58c8d32f62d41",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:07:17.915722+00:00",
+  "finished_at_utc": "2026-11-16T03:09:10.330278+00:00",
+  "latency_seconds": 112.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17847,
+    "prompt_tokens": 44704,
+    "total_tokens": 62551,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16219,
+      "text_tokens": 1628
+    },
+    "cost": 0.0156291
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51097,
+  "text": "### Observed differences\n\n- The two alternative branches kept nearly stable shares. In the earlier window, the branch built from A02, A05, A08 and A09 ran in about 49 in 100 traces and the branch built from A04, A06, A07 and A10 in about 51 in 100; in the later window this is about 45 versus 55 in 100. All eight occurrence differences have an empirical strength of about 0.47, i.e. they are typical of random re-splits of the two windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]\n\n- Within the A02/A05/A08/A09 branch, the balance between the two execution orders of A02 and A09 tipped. Earlier, A02 preceded A09 in about 26 in 100 traces overall and A09 preceded A02 in about 23 in 100; in the later window, A09 preceded A02 in about 27 in 100 and A02 preceded A09 in only about 19 in 100, while the share of traces containing both activities barely moved (about 49% to 45%). The count of traces with A02 immediately before A09 fell from about 52 to 37, while A09 immediately before A02 rose from about 46 to 53. [REL015, LAG013, LAG034, OCC001, OCC007]\n\n- Successor shares moved accordingly. In the later window, A02's transitions to A09 fell from about 50% to 38% of its observed outgoing transitions while its transitions to A05 rose from about 46% to 58%; A09's transitions to A02 rose from about 44% to 52% and its transitions to A05 fell from about 53% to 41%. [DIR002, DIR009]\n\n- The hand-off from A03 and the event positions shifted in the same direction. In the later window, A03 passes more often directly to A09 (immediately-following share about 47% to 59%) and less often to A02 (about 56% to 47%); A02's median event position moved later (0.4 to 0.6) and A09's moved earlier (0.6 to 0.4). [LAG020, LAG014, POS001, POS008]\n\n- Distances are consistent with this reordering: in the later window the gap from A02 to A08 shortened (three steps: 52% to 39%; two steps: 45% to 58%), the gap from A01 to A09 shortened (two steps: 42% to 50%) and the gap from A01 to A02 lengthened (two steps: 52% to 40%). [LAG012, LAG008, LAG001]\n\n- Minor differences: A07 routed to A10 in about 94% of its observed transitions before and about 97% after; and one after-window trace shows A08 followed by A03, an edge not observed earlier (a single observation). [DIR007, LAG033, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, within the branch containing A02, A05, A08 and A09, the relative execution order of A02 and A09 changed: earlier the branch typically ran A03 → A02 → A09 → A05 → A08, whereas in the later window it more typically runs A03 → A09 → A02 → A05 → A08, with the subsequent A05 → A08 sequence unchanged. Both orders still occur in both windows and both activities still co-occur in about half of the traces, so this is a re-weighting of two existing orders rather than a path being replaced. The change is shown directly by the order shares of the pair and consistently corroborated by successor redistribution, adjacency and distance shifts, and position movements, most with empirical strength above 0.85 [REL015, DIR002, DIR009, LAG001, LAG008, LAG011, LAG012, LAG020, LAG036, LAG037, POS001, POS008]. Limitations: all of these items describe one underlying trace behaviour and are not independent confirmations, and the order shares rest on roughly 90–100 co-occurring traces per window; sampling variation between the two 200-trace windows is a competing explanation the evidence cannot fully rule out, although it is an unlikely account of this coherent pattern.\n\nOther differences: the slight shift in branch frequencies (about 49/51 to 45/55 in 100) remains within the range produced by random re-splits (empirical strength about 0.47) and is not part of the hypothesis [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]; the A08 → A03 transition rests on a single after-window observation [DIR008], and the tightening of A07 → A10 involves only a handful of traces taking the alternative edge [DIR007, LAG033].",
+  "case_id": "null_cdlg_061607275068",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

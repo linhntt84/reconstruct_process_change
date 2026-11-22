@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4b_0f2c30b771bad132.json",
+  "evidence_sha256": "81d7262e1e2f794f1f6e09372006c2f54d7529bd3e7e25d856f7d414189c4489",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:53:39.804257+00:00",
+  "finished_at_utc": "2026-11-15T03:55:27.148189+00:00",
+  "latency_seconds": 107.34,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15306,
+    "prompt_tokens": 5217,
+    "total_tokens": 20523,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14439,
+      "text_tokens": 867
+    },
+    "cost": 0.00843555
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60487,
+  "text": "### Observed differences\n\n- **A11 became concentrated on a single resource.** In the earlier window, A11's occurrences were spread across about 21 different resources: the busiest (User_102) handled about 14 in 100, and about 20 in 100 went to a long tail of occasional handlers. In the later window, every observed occurrence of A11 (113 traces, against 96 before) was handled by one resource, User_123; the top-resource share rose from about 14 in 100 to 100 in 100, and the concentration index from about 0.08 to 1.0. [ASSIGN002, CONC001]\n\n- **A03 and A21 tilted toward fewer handlers, above all User_3.** User_3's share of A03 rose from about 8 in 100 to about 19 in 100, and its share of A21 from about 11 in 100 to about 30 in 100; on both activities several previously used resources lost share or dropped out of the leading group, and a few new codes appear at low shares. The unattributed remainder fell from about 45 to about 39 in 100 for A03 and from about 35 to about 27 in 100 for A21. [ASSIGN001, ASSIGN003]\n\n- **The gap between consecutive completions of A04 and A01 shortened.** In the earlier window, the median elapsed time from A04's completion to the immediately following A01 completion was about 70 hours (upper quarter beyond about 92 hours); in the later window it was about 12.5 hours (upper quarter beyond about 43 hours). Means fell from about 53 to about 23 hours, while the fastest quarter stayed near zero in both windows (about 0.1 vs 0.2 hours), so the shortening comes from the slower half of cases; the overall distribution shift is about 31 hours. The pair occurs in all 200 traces in both windows. [TWAIT001]\n\n- **No structural difference qualified.** No participation, routing or ordering indicator passed the screening thresholds (0 control-flow items, against about 0.17 expected by chance alone). [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that resource allocation changed: A11, previously shared across about 21 resources with no handler above about 14 in 100 occurrences, came to be handled exclusively by User_123, and A03 and A21 shifted toward User_3 (from about 8 to about 19 in 100 for A03, and from about 11 to about 30 in 100 for A21). Supporting signs: the assignment and concentration indicators describe A11 consistently; all resource items point toward concentration on fewer resources; every item's difference exceeds those seen in about 999.5 of 1000 random re-splits; and the resource family produced 4 qualifying items where about 0.006 were expected without a change (time: 1 against about 0.017; control flow: 0 against about 0.17), so the pattern as a whole is not what an unchanged process typically produces. [ASSIGN001, ASSIGN002, ASSIGN003, CONC001, screening]\n\nLimitations: the two A11 items view the same traces and are not independent confirmations; the evidence cannot rule out that the later window covers a different mix of cases, or a change in how assignments were recorded, rather than a reallocation of the same work; and the anonymous resource codes allow no inference about roles or teams. [ASSIGN002, CONC001]\n\nOther differences: the elapsed time from A04's completion to the following A01's completion fell markedly (median about 70 to about 12.5 hours; mean about 53 to about 23). This is a timing change in its own right; the evidence contains no structural items linking it to the resource changes, so whether the two belong to one underlying change cannot be determined. [TWAIT001]",
+  "case_id": "e4b_0f2c30b771bad132",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

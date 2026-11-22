@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_45451fa650a0116c.json",
+  "evidence_sha256": "c55a496b09c24c560de4a3fcc758e56e456ff844fd72b5b5e1cd0bcdc0b5203f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:22:51.593443+00:00",
+  "finished_at_utc": "2026-11-15T11:24:34.484404+00:00",
+  "latency_seconds": 102.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14427,
+    "prompt_tokens": 30114,
+    "total_tokens": 44541,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12856,
+      "text_tokens": 1571
+    },
+    "cost": 0.011730599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45218,
+  "text": "### Observed differences\n\n- The largest change is a swap in how often two alternative activity blocks run. In the later window, A21, A22 and A23 each appear in about 4 of 5 traces (participation 79–80%, up from about 1 in 5, i.e. 19–20%, in the earlier window). [OCC004, OCC005, OCC006]\n- The mirror image holds for A24, A25 and A26: in the later window each appears in only about 21–22% of traces, down from about 82% earlier. [OCC007, OCC008, OCC009]\n- Both blocks keep their internal shape across windows. Earlier, A24, A25 and A26 typically ran together (pairwise co-occurrence about 82 in 100 traces, in mixed order); in the later window A21, A22 and A23 typically run together (pairwise co-occurrence about 79 in 100, mixed order — e.g. A21 before A22 in about 41% and A22 before A21 in about 38% of traces), while the A24–A26 pairs now show \"neither present\" in about 77–78 of 100 traces. The two blocks are mutually exclusive: A21 and A24 (likewise A22/A24, A23/A24) practically never co-occur in either window. [REL017, REL018, REL025, REL038, REL039, REL043, REL019, REL026, REL032]\n- A06 drops from about 46% to about 12% participation. Earlier it typically ran after A34 (A34 before A06 in about 42% of traces) and immediately before A35 (one-event gap in about 98% of observed A06→A35 pairs); in the later window these relations largely vanish (co-occurrence with A34 about 12%, A06 before A35 about 11%), and A34 now leads directly to A35, with a one-event gap in about 92% of traces versus about 56% earlier. [OCC003, REL009, REL010, LAG001, LAG006]\n- The surrounding activities are stable: A20, A30, A34 and A35 appear in essentially every trace in both windows, and the active block sits between them (A20 before the block in about 78–81% of traces; block before A34 in about 78–81%); A34's relative position is essentially unchanged (mean about 0.93 in both windows). [POS003, REL011, REL014, REL022, REL023, REL024, REL041]\n- Smaller shifts: A02 (8% → 17%) and A04 (5% → 19%) participation roughly doubled but remain rare, and the A30→A35 gap shifted slightly toward shorter lags. [OCC001, OCC002, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the choice between two existing alternative blocks flipped and an adjacent activity became rarely executed. In the earlier window the block A24–A26 was the standard path, running together in about 4 of 5 traces, while A21–A23 ran together in only about 1 of 5; in the later window this is reversed, with A21–A23 together in about 4 of 5 traces and A24–A26 in about 1 of 5. Both blocks run as co-occurring triples with mixed internal order and occupy the same slot between the stable activities A20 (before) and A34/A35 (after), which fits a change in how often existing paths are taken rather than the appearance of a new path. Alongside this, A06, previously executed in nearly half the traces between A34 and A35, is now executed in only about 12% of traces, so A34 now leads directly to A35 in about 92 of 100 traces. [OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, REL011, REL014, REL017, REL019, REL023, REL026, REL032, REL038, REL041, LAG006]\n\nSupporting signs: the screening tested 145 control-flow units and flagged 67 evidence items where fewer than one (0.72) would be expected if nothing had changed, so the overall volume of flagged behaviour cannot be explained by random re-splits of stable behaviour; participation and relational indicators agree in direction and size across every pair within and across the two blocks; and every involved activity is observed in a substantial share of traces in both windows, which is the condition under which a shift in path frequencies can be read directly from the shares. [OCC004, OCC007, REL017, REL019, REL038]\n\nLimitations: with 200 traces per window the evidence cannot rule out that the two windows reflect a shift in the mix of two process variants that already coexisted (the A21–A23 block did occur in about 1 of 5 earlier traces) rather than a rerouting within one process; and the gap changes around A06 rest on very few later-window observations (about 1–7 traces), so those positional details are tentative. [OCC004, LAG001, LAG002, LAG003, LAG004]\n\nOther differences: A02 and A04 participation roughly doubled but remain rare (about 17% and 19% of traces); A06's relative position moved much earlier (mean relative position about 0.91 → 0.52), though this rests on about 24 later-window traces and is confounded with its rarity; the A30→A35 gap shifted slightly toward shorter lags. [OCC001, OCC002, POS001, LAG005]",
+  "case_id": "case_45451fa650a0116c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

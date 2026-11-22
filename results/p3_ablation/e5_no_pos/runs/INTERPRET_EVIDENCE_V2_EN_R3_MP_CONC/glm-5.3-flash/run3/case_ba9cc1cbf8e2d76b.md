@@ -1,0 +1,19 @@
+### Observed differences
+
+- Three activities that never appeared in the earlier window — A19, A20 and A25 (0 of 200 traces each) — occur in the later window in about 29, 41 and 31 in 100 traces respectively, once per trace when present [OCC001, OCC002, OCC003].
+- In the later window these three act as mutually exclusive alternatives: A19 and A20 never occur in the same trace (A19 alone about 29 in 100, A20 alone about 41, neither about 30), and the same holds for A19 with A25 and for A20 with A25; together the three cover essentially every trace in the later window [REL001, REL002, REL006].
+- Each of the three always runs inside the A27–A29 span: it always co-occurs with A27 and executes after it, and always co-occurs with A29 and executes before it (for example, A27 precedes A19 in every trace containing A19, and A19 precedes A29 in every such trace). Relative to A28 there is no fixed order — A19 runs before A28 in about 15 in 100 traces and after it in about 14, with similar mixed orders for A20 and A25 [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011].
+- Routing shifted accordingly. In the earlier window about 97 in 100 of A27's outgoing transitions went to A28; in the later window only about 43 in 100 do, while about 52 in 100 go to A19, A20 or A25. A28's outgoing shifted from about 98 in 100 to A29 to about 57, with about 41 in 100 now leading to the new activities, which themselves lead to A28 (about 53–56 in 100) or A29 (about 41–47 in 100) [DIR004, DIR005, DIR001, DIR002, DIR003].
+- Event-position distances in the A27–A28–A29 backbone stretched by one step: A27→A28 adjacency fell from about 98 in 100 at distance 1 to about 43 (about 52 now at distance 2), A28→A29 fell from about 98 to about 56 (about 41 at distance 2), and A27→A29 moved from distance 2 (about 96 in 100) to distance 3 (about 92 in 100) [LAG001, LAG003, LAG002].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window a new step is inserted into the formerly direct sequence A27 → A28 → A29: after A27, exactly one of three alternative activities — A19, A20 or A25 — executes and the flow then continues to A29, with the inserted activity placed before A28 in roughly half of the traces and after A28 in the other half. The two former direct edges each keep only about half of their earlier share (A27→A28 from about 97 to 43 in 100; A28→A29 from about 98 to 57 in 100), and the A27→A29 distance shifts from two to three positions [OCC001, OCC002, OCC003, DIR004, DIR005, REL003, REL007, REL010, LAG001, LAG002, LAG003].
+
+The screening context supports this reading: 23 qualifying items against roughly 0.5 expected if nothing had changed, every item at empirical strength near the maximum, and the participation, routing, relational and lag evidence all quantitatively cohere into one insertion pattern (for example, the remaining direct-share of A28→A29, about 56 in 100, matches the share of traces where the new activity runs before A28) rather than to unrelated shifts [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG003, REL004, REL008, REL011].
+
+Limitations: the evidence cannot rule out that the two windows sample different case mixes or process variants — for instance, that traces with the extra step existed before only at a share too small to appear in 200 traces — rather than a change taking effect at the boundary; and whether the new activity is inserted at two distinct points around A28 or the ordering around A28 simply became flexible is not fully determined [REL004, REL008, REL011].
+
+Other differences: the residual outgoing edges of A27 and A28, each well under 1 in 100 transitions, changed identity between the windows (for example A27→A31, A27→A09 and A27→A15 in the earlier window versus A27→A06, A27→A08 and A27→A10 in the later); these are marginal and not part of the main hypothesis [DIR004, DIR005].

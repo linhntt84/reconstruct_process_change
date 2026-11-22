@@ -1,0 +1,25 @@
+### Observed differences
+
+- The order of a recurring block of activities is reversed in the later window. In the earlier window, traces ran the always-present trio A20/A22/A23 (in no fixed internal order), then A25 → A29, then one of the alternatives A19/A21/A24, then A30: A20 preceded A25 in about 98 of 100 traces, and A22 and A23 each preceded A29 in all traces. In the later window, A25 and A29 run before the trio (A25 precedes A20 in essentially all traces; A29 precedes A22 in about 98 of 100), and the alternative step runs before A25 (A19 precedes A20 in about 44 of 100 traces, up from none). [REL011, REL024, REL025, REL037, REL038, REL042, REL043]
+
+- The directly-follows profiles shift at every boundary of this block: in the later window A19, A21 and A24 each lead to A25 (about 95–100 of their outgoing transitions) where they previously led to A30; A20, A22 and A23 now lead to A30 (about 28–34) where they previously led to A25; A29 now leads to the trio where it previously led to the alternative; and A40 now leads to A02 and the alternative where it previously led to the trio. [DIR019, DIR020, DIR021, DIR022, DIR023, DIR024, DIR029, DIR040]
+
+- Event positions moved accordingly: the mean position of A19, A21 and A24 fell from about 0.69, 0.67 and 0.69 to about 0.35, 0.35 and 0.37, while A20, A22 and A23 rose from about 0.39–0.40 to about 0.64; the gap from A29 to A30 grew from about 2 to about 4 steps, and from A40 to A25 it shrank from 4–5 to 2–3 steps. [LAG017, LAG022, POS002, POS003, POS004, POS005, POS006, POS007]
+
+- A02 became a frequent step in this segment: it appears in 34 of 100 traces in the later window versus 8 before, its mean event position moved from 0.51 to 0.35, it directly follows A40 in about 62 traces, its outgoing transitions now go mainly to A19, A21 and A24, and it reaches A25 two steps later in about 63 traces; previously its successors were scattered. [DIR002, LAG001, LAG020, OCC002, POS001]
+
+- Within the alternative, the choice shifted toward A19: A19 occurs in 44 of 100 traces (31 before), A21 in 28 (38 before) and A24 in 29 (31 before); the three practically never occur together, so exactly one of them runs per trace in both windows. [OCC019, OCC021, OCC024, REL012, REL015, REL030]
+
+- The A41 → A43 → A44 loop repeats more in the later window: A41's mean occurrences per trace rose from 1.51 to 1.77 and A43's and A44's from about 0.69 and 0.70 to 0.92, with recurrence support roughly doubling (A43 from 0.10 to 0.22); A44 returns to A41 more often (0.31 → 0.46 of its outgoing transitions) and to A45 less often (0.66 → 0.54). [DIR043, DIR044, OCC037, OCC039, OCC040]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a reordering of the segment between A40 and A30. In the earlier window a trace ran A40 → A20/A22/A23 (mixed order) → A25 → A29 → exactly one of A19/A21/A24 → A30; in the later window it runs A40 → (in about a third of traces, A02) → exactly one of A19/A21/A24 → A25 → A29 → A20/A22/A23 (mixed order) → A30, with the alternative now chosen as A19 more often (44 vs 31 in 100 traces) and A21 less often (28 vs 38). The blocks keep their internal order — A20/A22/A23 remain unordered among themselves and A25 still precedes A29 — so the difference is where the blocks sit, not their content. [DIR002, DIR040, OCC019, OCC021, REL021, REL035, REL050]
+
+The reordering is shown directly and consistently: the order reversals are complete rather than partial (A20 before A25 falls from about 98 in 100 traces to none; A19 before A20 rises from none to about 44), they occur across roughly twenty activity pairs at once, every boundary activity's directly-follows profile changes accordingly, and positions and step gaps move in the same direction (A29 → A30 from about 2 to about 4 steps). Empirical strengths for these items are at or near the maximum, meaning such differences hardly arise when the pooled windows are split at random. [DIR019, DIR020, DIR021, DIR022, DIR023, DIR024, DIR029, DIR040, LAG017, LAG022, POS002, POS003, POS005, POS006, REL011, REL024, REL037, REL042]
+
+Limitations: the evidence is aggregated over 200 traces per window, so a shift in the mix of pre-existing trace variants between the windows cannot be excluded with certainty, although reversals of this completeness are hard to produce by sampling alone; and the evidence cannot show whether the newly frequent A02 step and the block reordering are one modification or two. [DIR002, OCC002, REL024]
+
+Other differences: the A41 → A43 → A44 loop repeats more often in the later window (A41 mean 1.51 → 1.77 occurrences per trace; A43/A44 recurrence support roughly doubled; A44 routes back to A41 more often and to A45 less often); the evidence does not tie this to the reordering. [DIR043, DIR044, OCC037, OCC039, OCC040] Minor participation shifts at A10 (13 → 6 in 100 traces), A06 (9 → 4) and A08 (4 → 8) rest on only 8–15 supporting traces each and carry little weight. [OCC006, OCC008, OCC010]

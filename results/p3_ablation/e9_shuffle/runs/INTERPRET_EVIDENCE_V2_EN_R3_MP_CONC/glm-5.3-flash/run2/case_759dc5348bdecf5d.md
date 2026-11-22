@@ -1,0 +1,16 @@
+### Observed differences
+
+- Two activities stopped appearing: A03, previously present in about 29 in 100 traces (57 of 200, about 1.2 occurrences per trace), and A11, previously in about 20 in 100 traces (39 of 200), do not appear in any of the 200 later traces [OCC001, OCC002, POS001, POS002].
+- In the earlier window these two formed a loop reached from A06: A06 led to A03 in about 86 in 100 of its outgoing transitions, A11 led back to A03 in about 97 in 100, and A03 led on to A11 (about 44 in 100), A19 (about 28 in 100) and A12 (about 22 in 100) [DIR001, DIR002, DIR003].
+- In the later window, A06 (now in about 22 in 100 traces, down from about 29 in 100) no longer connects to A03 or A11; its outgoing transitions go to A19 in about 58 in 100 cases and to A12 in about 37 in 100 [DIR002, REL001].
+- A12 and A19 now follow A06 much sooner within the trace: the A06→A12 gap is 1–2 positions in about 40 in 100 later cases versus about 18 in 100 before, and A06→A19 sits at gap 1 in about 24 in 100 later cases versus about 2 in 100 before [LAG002, LAG003].
+- A12 and A19 themselves appear in about 22 in 100 later traces (43 of 200) instead of about 29 in 100 (57 of 200), and at earlier positions (mean position about 0.23 and 0.22, versus about 0.33 and 0.32 before) [POS003, POS004, REL003, REL004].
+- The relations confirm the disappearance: A03 co-occurred with A06, A12 and A19 in about 29 in 100 earlier traces and with A11 in about 20 in 100, whereas in the later window A03 never co-occurs with any of them and A12/A19 appear without it in about 22 in 100 traces [REL001, REL002, REL003, REL004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the A03–A11 loop reached from A06 was removed or bypassed: in the later window A06 leads directly to A12 and A19, which now occur sooner after A06 and slightly earlier in the trace, while A03 and A11 are no longer observed at all [DIR002, OCC001, OCC002, LAG002, LAG003]. The rerouting is shown directly by A06's outgoing transitions, which shifted from about 86 in 100 towards A03 to about 58 in 100 towards A19 and 37 in 100 towards A12, and the disappearance is corroborated by the loss of all outgoing edges and co-occurrences of A03 and A11 [DIR001, DIR002, DIR003, REL001, REL002, REL003, REL004]. With 18 qualifying items against roughly 0.22 expected by chance in the control-flow family, the volume of findings far exceeds what an unchanged process would typically produce, and every item is unusual for random re-splits of the pooled data [screening]. Limitations: zero participation only means A03 and A11 were not observed in the later sample, so removal cannot be distinguished from these activities becoming unreachable under the conditions of that period; the position and gap indicators use event positions, so "sooner" and "earlier" refer to relative order, not clock time; and many items describe the same trace-level change, so they are not independent confirmations.
+
+Other differences: the spacing of self-repeats tightened for A06, A12 and A19 — for example A06→A06 repeats sit at gap 4 in about 52 in 100 later cases versus gap 5 in about 66 in 100 before — which is consistent with the removed intermediate block but is a distinct repetition-spacing change [LAG001, LAG004, LAG005].

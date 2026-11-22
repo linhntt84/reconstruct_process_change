@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_3c35695958e6de14.json",
+  "evidence_sha256": "ae994490f2bf298e42101e873391566be39e7c4266abe9dc17fd8df138785550",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:38:29.247747+00:00",
+  "finished_at_utc": "2026-11-15T04:41:23.661259+00:00",
+  "latency_seconds": 174.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25925,
+    "prompt_tokens": 17099,
+    "total_tokens": 43024,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24411,
+      "text_tokens": 1514
+    },
+    "cost": 0.01552735
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 78955,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in the earlier window (0 of 200 traces); in the later window it runs in every trace, about twice per trace on average (mean 2.1 occurrences), repeats in about 53 of 100 traces, and sits early in the case (median relative position about 0.25). [OCC001, POS001]\n- The immediate hand-over to the A03/A12 stage moved: before, A02, A09 and A13 each sent roughly half of their outgoing transitions to A03 and half to A12 (A02 48/52, A09 45/55, A13 46/54), and A08 led only to A13; in the later window A02 and A09 lead exclusively to A01, A13 leads exclusively to A08, A08 leads to A01 (about 51 in 100) or back to A13 (about 49 in 100), and A01 leads to A12 (about 52 in 100) or A03 (about 48 in 100). [DIR002, DIR004, DIR005, DIR003, DIR001]\n- In the later window A01 co-occurs with A02, A03 and A12 in every trace; a fixed order (A02 before A01, A01 before A03, A01 before A12) appears in about 47 of 100 traces each, with the remaining pairs interleaved or repeated. [REL001, REL002, REL005]\n- Distances to the A03/A12 stage stretched by roughly one to two steps: A02→A03 and A02→A12 moved from lags 1–2 to lags 2–3, A09→A03/A12 likewise, A13→A03/A12 from lags 1–2 to lags 3–4, and the spacings among A02, A09 and A08 moved from lag 4 to lag 5. [LAG001, LAG004, LAG011, LAG014, LAG016, LAG018, LAG002, LAG003, LAG012]\n- The A08–A13 relation inverted and now repeats: before, A13 followed A08 within one step in about 75 of 100 observed pairs; in the later window such immediate succession dropped to about 16 in 100, the clear A08-before-A13 ordering disappeared, and self-repeats of A08 and A13 at lag 2 appeared (small supports: about 5 traces before, 19–35 after). A13 now appears in about 17 of 100 traces (about 38 before), while A08 stays around 34–38 in 100. [LAG010, LAG008, LAG019, REL009, REL006, REL008, REL010, POS003]\n- A03 and A12 still occur in every trace but sit slightly later (mean relative position about 0.50 to 0.55 for A03, 0.49 to 0.54 for A12). [POS002, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new activity, A01, was added as an early routing step between the upstream activities and the A03/A12 stage: A02 and A09, which previously passed directly to A03 or A12 about half each, now run exclusively through A01, which has taken over the A03-versus-A12 hand-over with a similar split, while A13's route now runs through A08 and a short A13–A08 repeat loop before exiting to A01, with A13 consequently appearing in far fewer traces. This rests on direct successor changes at A02, A09, A13 and A08, on A01 appearing from zero to universal participation with outgoing edges only to A03 and A12, and on consistent relational and distance evidence; with 39 qualifying control-flow items against roughly 0.31 expected for an unchanged process, chance sampling cannot account for the ensemble. [DIR002, DIR003, DIR004, DIR005, DIR001, OCC001, POS001, REL001, REL002, REL005, LAG001, LAG016, LAG018]\n\nLimitations: only part of the process is observed, so other predecessors of A03/A12 and A13's entry point are unseen; the exact shape of the A13–A08 loop and the reason A01 executes about twice per trace (one repeated step versus two distinct visits) rest on small supports; and a changed case mix in the later window cannot be ruled out for the unobserved parts, although A01's presence in all 200 later traces argues against pure sampling variation for the main difference. [LAG008, LAG019, LAG017]\n\nOther differences: A09 participates somewhat more often (about 33 of 100 traces before versus about 39 in the later window), and A08 sits slightly later in the trace (mean relative position about 0.55 to 0.62) with roughly stable participation; both may be side effects of the rerouting rather than independent changes. [REL004, POS003]",
+  "case_id": "case_3c35695958e6de14",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,14 @@
+### Observed differences
+
+- Activities that recur within a case occurred more often per trace in the later window, while the share of traces containing them stayed roughly flat: A07 rose from about 3.8 to about 4.6 occurrences per trace (in about 23 vs 25 in 100 traces), A15 from about 1.8 to about 2.4, A16 from about 2.0 to about 2.3, A11 from about 1.0 to about 1.2, A12 from about 0.5 to about 0.6, and A10 from about 0.4 to about 0.5. [OCC007, OCC010, OCC011, OCC012, OCC014, OCC015]
+- At the branch after A04, the share of A04's observed outgoing transitions going to A07 rose from about 42 in 100 before to about 50 in 100 in the later window (roughly 77 vs 100 transitions), while the share going to A08 fell from about 50 to about 42 in 100 (roughly 91 vs 85); both alternatives were well observed in both windows. [DIR003]
+- A03's observed outgoing transitions moved away from A01 (about 27 in 100 before vs 16 in 100 after) and toward a direct transition to A08 (about 3 vs 11 in 100, i.e., roughly 3 vs 10 transitions), while the share continuing to A04 stayed at about 65–67 in 100; the order of A01 and A03 also tilted, with A01 first in about 40 in 100 traces in the later window vs 35 before, and A03 first in about 9 vs 15 in 100. [DIR002, REL001]
+- A01 appeared slightly earlier within traces (mean relative position about 0.08 before vs 0.03 after) and A03 slightly later (about 0.17 vs 0.22); these are event positions, not clock times. [POS001, POS002]
+- A02 was observed in more traces in the later window (about 22 in 100 before vs 29 in 100 after, i.e., 44 vs 58 of 200), and A05 in fewer (about 16 vs 10 in 100, i.e., 32 vs 19). [OCC002, OCC005]
+- Within the repeating block, the choice between A09 and A10 shifted toward A10 at all three observed predecessors (from A12 about 39 vs 47 in 100, from A13 about 45 vs 49, from A14 about 49 vs 53), while A09 kept a flat occurrence count (about 0.56 per trace) but appeared in fewer traces (about 16 vs 12.5 in 100). [DIR005, DIR006, DIR007, OCC009]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The differences above are coherent in direction but ordinary in size: the occurrence increases rank only between about the 35th and 65th percentile of their 200 reference comparisons, each indicator family contains about as many strongly ranked items as random re-splits of these two windows would produce for its number of tests (for example, 2 of 15 occurrence items and 2 of 8 routing items above the 80th–85th percentile), and the strongest single item is a small position shift, which on its own does not establish that an activity was moved; sampling variation between the two 200-trace windows therefore remains a complete explanation. [OCC007, OCC010, OCC014, DIR003, DIR002, POS001, OCC002, OCC005]

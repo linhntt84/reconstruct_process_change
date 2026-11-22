@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_6919c4b2550dc2eb.json",
+  "evidence_sha256": "d1fb6d31e5089cc5ff48504a4fbb2cbe77bb6efcdc39901dc85bb5192ba4f47f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:00:34.919930+00:00",
+  "finished_at_utc": "2026-11-15T10:01:55.668186+00:00",
+  "latency_seconds": 80.75,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12012,
+    "prompt_tokens": 10081,
+    "total_tokens": 22093,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10866,
+      "text_tokens": 1146
+    },
+    "cost": 0.0075181499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37210,
+  "text": "### Observed differences\n\n- A01 and A05 were not observed at all in the earlier window (0 of 200 traces); in the later window each is executed exactly once in every trace (200 of 200). [OCC001, OCC002, POS001, POS003]\n- The flow around the pre-existing activities was rewired. Earlier, A04's outgoing transitions went mostly to A06 (about 74 in 100) and A06's went to A02, A04 or A03 (about 53, 29 and 19 in 100), with A06 ending the case in roughly 70 in 100 traces; in the later window A04 leads mostly to A01 (about 52 in 100), A06 leads to A05 in about 84 in 100 of its transitions and now always has a successor, A03 leads to A01 in about 45 in 100, and A01 itself leads to A06 in about 80 in 100. [DIR003, DIR005, DIR002, DIR001]\n- New fixed-order relations appear: in the later window A01 precedes A06 and A01 precedes A05 in every trace, and A06 precedes A05 in every trace, whereas earlier A06 ran without them and the pair A01/A05 was never observed together. A03 precedes A01 in about 87 in 100 later traces and A04 precedes A01 in about 69 in 100. [REL003, REL004, REL007, REL001, REL002]\n- A05 sits near the end of the case (mean position about 0.96 of the trace) and has an observed successor in only about 15 in 100 traces; there it is followed by A04 (about 59 in 100 of those transitions), A02 or A03, so A04 precedes A05 in about 87 in 100 traces but follows it in about 13 in 100. [POS003, DIR004, REL006]\n- Existing activities shifted position: A04 now occurs earlier in the trace (mean position about 0.68 before vs 0.47 after) and A06 slightly earlier (0.83 vs 0.72), while A01 appears mid-trace (mean about 0.47). [POS002, POS004, POS001]\n- Distances between previously close activities stretched: A04 to A06 was 1–2 steps apart in essentially all earlier traces but is now mostly 2–3 steps; A03 to A06 now extends to 4 steps in about 31 in 100 cases, and A03 to A04 reaches 4–5 steps in about 28 in 100. [LAG003, LAG002, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window every case runs through two activities that were absent earlier, A01 and A05, woven between the existing steps: A03 and A04 typically lead into A01, the chain A01 → A06 → A05 is executed in a fixed order in every case, and A05 closes the case, occasionally followed by A04, A02 or A03. [OCC001, OCC002, DIR001, DIR002, DIR003, REL003, REL004, REL007, POS003]\n\nThe support is direct and consistent: participation of A01 and A05 moved from 0 to all 200 traces; the direct-successor profiles of A03, A04 and A06 changed to the new links; the affected pairs moved from never co-occurring to always co-occurring with a stable order; and the earlier positions of A04 and A06, together with the stretched pair distances, match activities being added between existing steps rather than one path replacing another. Screening also qualified 21 control-flow items where roughly 0.13 would be expected if nothing had changed, so the differences as a whole are far beyond what an unchanged process typically produces. [OCC001, OCC002, DIR002, DIR003, DIR005, REL001, REL002, POS002, POS004, LAG001, LAG002, LAG003]\n\nLimitations: zero participation only shows that A01 and A05 were not observed earlier, so the evidence cannot rule out that these steps existed before without ever being triggered, or that activity codes were relabelled between the windows; A05's successor profile also rests on only about 29 observed transitions. [OCC001, DIR004]",
+  "case_id": "case_6919c4b2550dc2eb",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

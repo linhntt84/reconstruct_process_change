@@ -1,0 +1,18 @@
+### Observed differences
+
+- Three activities dropped out of execution: A19 ran in about 33 in 100 cases before (65 of 200 traces) and in only 1 of 200 afterwards; A20 fell from about 29 in 100 (57 traces) to 1 in 200; A25 fell from about 40 in 100 (81 traces) to 1 in 200. [OCC001, OCC002, OCC003]
+- A27's follow-up behaviour collapsed onto A28: earlier about 52 in 100 of A27's outgoing transitions led to A28 and about 44 in 100 led to A19, A20 or A25; in the later window about 98 in 100 lead to A28. [DIR005]
+- A28's follow-up behaviour collapsed onto A29: earlier about 43 in 100 of its outgoing transitions led to A29 and about 53 in 100 led to A19, A20 or A25; later about 97 in 100 lead to A29. [DIR006]
+- The gaps became immediate: A28 now follows A27 directly in about 98 in 100 cases (earlier about 52), and A29 follows A28 directly in about 96 in 100 (earlier about 43). [LAG001, LAG004]
+- The distance from A27 to A29 shortened by one position: earlier A29 typically came three positions after A27 (90 in 100 cases); later it comes two positions after (96 in 100). [LAG002]
+- A27's mean position moved slightly later (about 0.46 to 0.48 of the trace) and A29's slightly earlier (about 0.57 to 0.55); both activities still occur in every trace in both windows, consistent with the block between them shrinking. [POS004, POS005]
+- A10's outgoing transitions were redistributed: earlier they concentrated on A15 (about 20 in 100), A47 and A16 (about 17 each) and A21 (about 9); later they spread over roughly twice as many successors, the largest being A26 (about 17), A45 (about 15) and A41 and A16 (about 9 each), based on 35 versus 53 observed transitions. [DIR001]
+- The later-window successor and position profiles of A19, A20 and A25 each rest on a single trace, and the A28→A25 pair appeared in 38 traces before but only 1 afterwards; these profiles are weak on their own. [DIR002, DIR003, DIR004, POS001, POS002, POS003, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the intermediate activities A19, A20 and A25 — which earlier each ran in roughly 30–40 in 100 cases, typically inserted between A27/A28 and A29 — were no longer executed in the later window, so that A27 now leads directly to A28, A28 leads directly to A29, and A29 runs one position earlier after A27. Screening flagged 18 items where roughly 0.5 would be expected if nothing had changed, so the set of differences is far beyond what an unchanged process produces. The signs are direct and consistent: the participation collapse is measured on 65, 57 and 81 before-traces, the successor collapse of A27 and A28 on about 200 outgoing transitions per window each, and the gap and distance changes on all 200 traces, with occurrence, direction and lag indicators all pointing to the same rewiring. A limitation is that with only 1 of 200 after-traces containing each of A19, A20 and A25, the evidence cannot distinguish complete removal from a reduction to well under 1 in 100 cases, and the later-window profiles of these three activities rest on single traces. [OCC001, OCC002, OCC003, DIR005, DIR006, LAG001, LAG002, LAG004, POS004, POS005]
+
+Other differences: A10's outgoing transitions were redistributed from a concentration on A15, A47 and A16 to a wider spread over more successors, largest A26, A45 and A41; this is not explained by the hypothesis above, and the evidence cannot show whether it shares an underlying cause with it. [DIR001]

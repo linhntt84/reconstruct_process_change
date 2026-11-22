@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the later window, the activities A08, A09, A12 and A13 occur more often and are repeated more often: mean occurrences per trace rose for A09 from 0.065 to 0.23 (roughly a threefold increase), for A12 from 0.025 to 0.125 (about fivefold), for A13 from 0.04 to 0.105 and for A08 from 0.12 to 0.185, while trace participation stayed low and nearly flat (A09, for example, in about 2–3 in 100 traces before and about 4–5 in 100 after), so the growth comes from more repeats within the few traces that reach them; recurrence support rose for all four (A12 from about 1 to about 5 in 200 traces). [OCC008, OCC009, OCC011, OCC012]
+- The extra executions flow through the loop rather than out of it: A08's outgoing transitions to A09 rose from about 21% to about 46% of its outflow (about 5 to 17 transitions) while its transitions to A10 stayed at about 14 in both windows (share falling from 58% to 38% only because the total grew); A09's outflow to A12 rose from about 38% to about 54% (about 5 to 25 transitions); in the later window A12 always continued to A09 and A13 always to A08, whereas before, single transitions (about 20% and 13% of small outflows) went to A11. [DIR004, DIR005, DIR008, DIR009]
+- Around A03, A07 and A11 the behaviour moved the other way: A03's participation fell from about 12 in 100 traces to about 6–7 in 100, and its remaining outflow shifted from A07 (52% to 18%) to A01 (35% to 65%); A11's participation fell from about 17 in 100 to 12 in 100 traces and its outflow shifted from A01 (41% to 18%) toward A03 (21% to 33%); A07 still leads almost exclusively to A11 (about 76–82%) with little change. [OCC003, OCC007, OCC010, DIR002, DIR003, DIR007]
+- A01 routed to A06 more often in the later window (about 18% to 25% of A01's outflow) and A06's participation rose from about 12 in 100 to 17 in 100 traces. [OCC006, DIR001]
+
+### Inference
+
+Support level: Weak hypothesis
+
+In the later window, the rework loop through A08, A09, A12 and A13 appears to be repeated more intensively: traces that reach this region cycle through it more times (A09 from about 2.6 to about 5 occurrences per participating trace; A12 from about 1.3 to about 3.6), and the additional cycles run A08→A09→A12/A13 rather than exiting via A08→A10. The occurrence, recurrence and routing items all point at the same loop, and the key items show high empirical strength (roughly 0.83–0.96). [OCC008, OCC009, OCC011, OCC012, DIR004, DIR005]
+
+What is missing: the earlier window contains very few observations of these activities (A09 in 5 traces with about 13 occurrences, A12 in 4 traces, A13 in 5 traces), so rare bursty behaviour can swing their means substantially between two 200-trace samples; the apparent disappearance of the A12→A11 and A13→A11 edges rests on a single transition each; and no screening baseline is provided, so the number of qualifying items cannot be compared with the number expected by chance. The occurrence and direction items also overlap (direction support counts track occurrence counts), so they are not independent confirmations. [OCC009, OCC011, OCC012, DIR008, DIR009]
+
+The main competing explanation the evidence cannot rule out is chance sampling of rare activities, amplified by the many activities and edges that were tested. [DIR002, DIR008, DIR009]
+
+Other differences: the changes around A03, A07 and A11 (lower participation; A03 now returning to A01 instead of continuing to A07; A11 feeding A03 instead of A01) and the increased use of A06 after A01 are not part of the main hypothesis; they could reflect the same reorganisation or separate routing changes, and their supports (about 17–39 outgoing transitions) are modest. [OCC003, OCC006, OCC007, OCC010, DIR001, DIR002, DIR007]

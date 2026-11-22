@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_c14769ce8b24a474.json",
+  "evidence_sha256": "6b148dd72b7ad0295ac4a79f954b27606bf684029b875796282c4c9329fb7333",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:20:29.158933+00:00",
+  "finished_at_utc": "2026-11-15T01:22:32.769748+00:00",
+  "latency_seconds": 123.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17694,
+    "prompt_tokens": 36419,
+    "total_tokens": 54113,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16073,
+      "text_tokens": 1621
+    },
+    "cost": 0.01430985
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52057,
+  "text": "### Observed differences\n\n- Two groups of activities exchanged their place around the A29–A33 segment. In the earlier window, five activities that each occur in only about a fifth of traces — A19, A23, A26, A27, A28 — ran at roughly one-third of the trace and led into A29 (A19's outgoing transitions went to A29 in about 95 in 100 cases, A27's in all observed cases). In the later window they run at roughly two-thirds of the trace and lead into A34 instead (about 91 in 100 for A19, 90 in 100 for A27). [DIR001, DIR005, DIR008, DIR009, DIR010, POS001, POS005, POS008, POS009, POS010]\n- The five activities present in every trace — A20, A21, A22, A24, A25 — moved the opposite way: their mean relative position fell from about 0.62–0.63 to about 0.39–0.40, and their outgoing transitions into A34 (roughly 13–26 in 100) were replaced by transitions into A29 (roughly 16–25 in 100). [DIR002, DIR003, DIR004, DIR006, DIR007, POS002, POS003, POS004, POS006, POS007]\n- Every measured order relation between the two groups flipped. In the earlier window A19, A23, A26 and A27 ran before A20/A21/A22/A24/A25 whenever they co-occurred (e.g., A19 before A20 in about 22 of 100 traces, the reverse in none), and A29 and A33 also preceded that group (A29 before A20 in about 99 of 100 traces). In the later window all these relations are reversed (A20 before A29 in about 99 of 100; A20 before A19 in about 16 of 100). [REL001, REL003, REL008, REL011, REL012, REL023, REL029, REL035]\n- The fixed neighbours rewired accordingly: A44's outgoing transitions moved from the rare group (about 84 in 100 to A19/A23/A26/A27/A28) to the ever-present group (about 82 in 100 to A20/A21/A22/A24/A25), while A33's outgoing moved from the ever-present group (about 97 in 100) to the rare group (about 95 in 100). [DIR011, DIR012, LAG011]\n- A29 and A33 themselves stayed in every trace but shifted moderately later (mean relative position about 0.36 to 0.48 for A29, about 0.54 to 0.66 for A33). [POS011, POS012]\n- Adjacency in the later window matches the new arrangement: A34 immediately follows A23 in about 98 of 100 of 42 observed pairs, A23 immediately follows A33 (about 95 of 100 of 41 pairs), and A29 follows A20 within five steps in about 198 of 200 traces — practically never seen before (1 observation). Several other lag items rest on only 1–2 observations in one window and carry little weight. [LAG002, LAG003, LAG008]\n- For context: 73 control-flow items qualified, against roughly 1 expected by chance (0.9 out of 180 tested units), so the volume of flagged items far exceeds what an unchanged process typically produces; nearly all describe this single rearrangement from different angles. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks of activities exchanged their placement between the fixed points A44, A29, A33 and A34: in the earlier window the flow ran A44 → {A19, A23, A26, A27, A28} → A29 → … → A33 → {A20, A21, A22, A24, A25} → A34, whereas in the later window the mandatory block A20/A21/A22/A24/A25 sits between A44 and A29, and the optional block A19/A23/A26/A27/A28 sits between A33 and A34. [DIR001, DIR002, DIR011, DIR012, POS001, POS002, POS011, POS012, REL001, REL011]\n\nThe support is direct and consistent: relational evidence shows the order reversal itself (all 38 relation items flip in the same direction), positional evidence shows the two groups moving in opposite directions in line with their membership, and the successor profiles switch from A29 to A34 and vice versa in a matching pattern; the 73 flagged items against roughly 1 expected by chance make a chance origin of the overall pattern implausible, though the items largely reflect one underlying difference rather than independent confirmations. [REL001, REL035, POS002, POS008, DIR003, DIR006, screening]\n\nLimitations: the exact immediate adjacencies rest partly on lag items with only 1–2 supporting observations in one window, and because the activity codes are anonymous, the evidence cannot fully distinguish a true resequencing of the flow from a re-mapping of the recorded labels — although the unchanged occurrence rates of each label (the rare group still about 20 in 100 traces, the mandatory group still in all traces) make a simple exchange of the two groups' labels unlikely. [LAG001, LAG004, POS001, POS002]\n\nOther differences: the participation of the rare activities shifted slightly (A19 in about 22 of 100 traces before versus 17 after; A26 about 21 versus 24; A28 about 17 versus 21), and a few minor outgoing transitions of roughly 2–3 in 100 appeared or disappeared at A19, A23 and A27; these are within what sampling of rare activities produces and are not part of the main hypothesis. [POS001, POS008, POS010, DIR001, DIR005, DIR009]",
+  "case_id": "case_c14769ce8b24a474",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

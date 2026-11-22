@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, nearly every case ran one chain: A26 was followed by A27 in about 99 in 100 of A26's outgoing transitions, A27 was followed by A28 in about 99 in 100 of A27's outgoing transitions, and A28 came two event positions after A26 in about 98 in 100 cases [REL001, REL005, DIR001, DIR002, LAG001].
+- In the later window, A27 occurs in only about 51 in 100 traces, down from essentially all 200, while three activities that were not observed at all before — A32, A33 and A38 (0 of 200 traces) — each occur in about 49 in 100 traces, once per trace [OCC001, OCC002, OCC003, OCC004].
+- In the later window, a trace contains either A27 or the trio of new activities, almost never both: A27 co-occurs with A32, A33 or A38 in at most about 1 in 200 traces, whereas before, A27 co-occurred with A28 in every trace and the trio never appeared [REL006, REL007, REL008].
+- In the later window, the three new activities run together as one block: each pair co-occurs in about 49 in 100 traces (never before), in varying order — each ordered direction covers roughly 22–27 in 100 traces, so there is no fixed order inside the block [REL012, REL013, REL014].
+- In the later window, the block sits between A26 and A28: it always follows A26 and always precedes A28 (about 49 in 100 traces each way, never the reverse), and A26's outgoing transitions now split about half to A27 and roughly 15–17 in 100 each to A32, A33 and A38; A28 itself remains in essentially every trace in both windows [REL002, REL003, REL004, REL009, REL010, REL011, DIR001, REL005, REL009].
+- Within the block, each activity is followed by one of the other two or by A28; of A32's outgoing transitions, about 35 in 100 go to A38, about 34 to A33 and about 28 to A28 [DIR003, DIR004, DIR005].
+- The distance from A26 to A28 changed from two event positions in about 98 in 100 cases to two positions in about 50 in 100 and four positions in about 48 in 100 — the gap widens by exactly the three positions the new block occupies; the trio sits around the middle of the trace (median relative position about 0.48–0.50) [LAG001, POS001, POS002, POS003].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window about half of the cases take a new path in which A27 is not executed and a block of three activities — A32, A33 and A38 — is run between A26 and A28 in varying order, while the remaining cases still run the original A26 → A27 → A28 sequence [OCC001, OCC002, OCC003, OCC004, REL006, REL007, REL008, LAG001].
+
+The change is shown directly and consistently: the new activities go from zero participation to about 49 in 100 traces each while A27 falls from all traces to about 51 in 100; relational items place the block after A26 and before A28 and make it mutually exclusive with A27; and the A26-to-A28 distance widens from two to two-or-four event positions, exactly the size of the new block. With 27 qualifying items against roughly 0.57 expected by chance in an unchanged process, sampling variation cannot explain the pattern as a whole [OCC001, REL002, REL009, LAG001]. The evidence cannot rule out that the later window mixes in traces from a different variant or case population rather than a modified version of this same process, and it shows the block's internal order as unfixed rather than a fixed sub-sequence [REL012, REL013, REL014].
+
+Other differences: minor rerouting accompanies the change — A27 now occasionally leads to A09, A34 or A25 (about 1–2 in 100 of its outgoing transitions each, where previously about 0.5 in 100 went to A04), and rare outgoing edges from A26, A32 and A38 to A23, A06, A02 or A25 appear at about 1 in 100 or less [DIR002, DIR001, DIR003, DIR005].

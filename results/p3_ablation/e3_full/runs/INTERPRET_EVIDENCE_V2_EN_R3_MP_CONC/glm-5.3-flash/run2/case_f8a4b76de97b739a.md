@@ -1,0 +1,23 @@
+### Observed differences
+
+- In the earlier window, A09 appeared in about 54 in 100 traces — roughly 1.5 times per trace, often repeated, around the middle of the trace, and leading mainly to A03; in the later window, A09 is not observed in any trace. [OCC008, POS009, DIR009]
+- In the later window, A01 — not observed earlier — appears in about 59 in 100 traces with almost the same profile A09 had: about 1.5 occurrences per trace, frequent repetition, a mid-trace position, and transitions to A03 in about 83 in 100 of its outgoing moves (A09 earlier: about 82 in 100). [OCC001, POS001, DIR001, DIR009]
+- The exchange is visible at trace level: earlier, A09 occurred without A01 in about 54 in 100 traces; later, A01 occurs without A09 in about 59 in 100, while the share of traces containing neither stays at about 42–46 in 100. A16's outgoing traffic switched from A09 (about 45 in 100) to A01 (about 43 in 100). [REL008, DIR016]
+- In the later window, A02 — not observed earlier — appears in about 87 in 100 traces, typically in the first half. A12 is no longer reached directly from A05 or A13: earlier those two sent about 20 and 21 in 100 of their outgoing transitions to A12, later neither sends any; instead A05 leads to A02 (about 37 in 100) and A13 to A02 (about 35 in 100), and A02 leads mainly to A12 (about 63 in 100). The immediate A05→A12 step, earlier present in about 44 in 100 eligible cases, never occurs later, and A02 precedes A12 in every later trace containing both. [OCC002, POS002, DIR005, DIR013, DIR002, LAG039, REL029]
+- Several downstream pairs are now typically one step further apart than before: A04→A12 and A04→A20 moved from common distances of 2 and 3 steps to 3 and 4, and A11→A20 and A19→A20 shifted later in the same way. [LAG024, LAG030, LAG114, LAG222]
+- A14 grew from about 39 in 100 traces (never repeated, positioned at the very end) to about 89 in 100 (about 1.7 occurrences per trace, repeated in many traces). A14 and A17, which never co-occurred earlier, now co-occur in about 42 in 100 traces and alternate: A14 leads to A17 in about 68 in 100 of its outgoing transitions and A17 leads back to A14 in about 89 in 100, whereas earlier both led mainly to A08; A08 in turn now leads mainly to A14 (about 65 in 100, up from about 28). [OCC013, OCC016, POS014, DIR014, DIR017, DIR008, REL172]
+- Elsewhere behaviour is broadly stable: A03 still occurs in every trace with an almost unchanged position and successor profile, and participation shifts for other activities amount to only about 6–8 in 100 traces. [OCC003, DIR003, POS003, OCC004, OCC010, OCC018]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the control flow was restructured: A09 is no longer observed and A01 now appears in the slot A09 used to occupy — fed by A16, leading mainly to A03, with a similar rate of repetition and a similar mid-trace position — and A02 appears as a new step between A05/A13 and A12, so that transitions which previously ran directly into A12 now pass through A02. [OCC001, OCC008, DIR001, DIR009, DIR016, DIR005, DIR013, DIR002, LAG039, REL029]
+
+The hypothesis rests on direct relational evidence rather than volume alone: the successor profiles of A16, A05 and A13 were rewired towards A01 and A02 while their transitions into A12 disappeared, the trace-level relation between A01 and A09 flips complementarily with a stable neither-share, and the immediate A05→A12 adjacency drops to zero while a two-step distance becomes typical. Occurrence, position, relation and distance indicators all agree, the key profiles rest on roughly 110–200 traces per window, and the largest differences exceed all but about 1 in 200 random re-splits of the pooled data. [REL008, DIR005, DIR013, DIR002, LAG039, OCC001, OCC002]
+
+An important competing reading cannot be ruled out: the data show that A09 vanished and A01 appeared with a matching profile, but not whether A01 is A09 under a new label or a different activity that took over the same point in the flow. A02 also occurs without A05 in about 33 in 100 later traces, so it is reached from more predecessors than A05 alone. [REL022]
+
+Other differences:
+- A14 turned from an occasional end-of-trace step into a frequent, repeating one that alternates with A17 (A14→A17, A17→A14), replacing the earlier pattern in which both led mainly to A08; this is a distinct change from the main hypothesis. [OCC013, OCC016, DIR014, DIR017, REL172]
+- Participation slipped by about 6–8 in 100 traces for A05, A11 and A19, and rose by about 6–7 in 100 for A10, A12 and A20. [OCC004, OCC010, OCC018, OCC009, OCC011, OCC019]

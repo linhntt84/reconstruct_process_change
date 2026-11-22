@@ -1,0 +1,20 @@
+### Observed differences
+
+- A04 was present in about 68 in 100 traces in the earlier window but only about 22 in 100 in the later window (mean occurrences per trace 0.71 → 0.24); among its remaining occurrences, the share of outgoing transitions aimed at A15 fell from about 90% to about 48%, spreading over many other targets. [OCC002, DIR002]
+- A14's routing flipped: before, about 63% of its outgoing transitions went to A04 and about 36% to A15; in the later window about 82% go directly to A15 and only about 10% to A04. A04 used to follow A14 after exactly 1 step in about 99 in 100 paired occurrences, but later the distance is spread over 1–5 steps (only 29 paired occurrences), and the A14–A15 distance moved from typically 2 steps to typically 1. [DIR004, LAG001, LAG002]
+- The three activities A32, A33 and A38 each ran in about 49 in 100 traces earlier and always together (co-occurrence about 48–49 in 100); in the later window each appears in only about 1 in 200 traces. [OCC005, OCC006, OCC007, REL028, REL029, REL030]
+- A27 rose from about 52 in 100 traces to essentially all traces (mean occurrences 0.52 → 1.0). Earlier, A27 and the A32/A33/A38 block were strict alternatives that never ran together; later, A26 routes to A27 in about 98% of its outgoing transitions (previously about 50%, with A32/A33/A38 sharing the rest), A14, A15 and A26 each precede A27 in about 97–99 in 100 co-occurrences, A27 precedes A28 in about 97 in 100, and the A26–A28 distance collapsed from an even split between 2 and 4 steps to almost always 2. [OCC004, DIR006, REL022, REL023, REL024, REL009, REL013, REL017, REL021, LAG003]
+- A14, A15, A26 and A28 occur in every trace in both windows, but their tie to A04 dissolved: A14 running without A04 rose from about 32 to about 78 in 100 traces, and A04 now shares no trace with A32/A33/A38 in about 78 in 100 cases. [REL001, REL002, REL003, REL005, REL006, REL007, REL008]
+- A02 and A08 became more frequent (about 5 to about 15–20 in 100 traces) with almost entirely different outgoing transitions; these profiles rest on few observations (about 10→30 and 8→40 outgoing transitions). [OCC001, OCC003, DIR001, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural restructuring of the mid-process: in the later window the joint block A32+A33+A38 is no longer executed, its former strict alternative A27 runs in essentially every case (entered from A26 almost always, preceded by A14/A15/A26, and itself preceding A28), and A04 — previously a standard step between A14 and A15 — is usually skipped, with A14 now leading directly to A15. [OCC002, OCC004, OCC005, OCC006, OCC007, DIR004, DIR006, REL009, REL017, REL021, REL022]
+
+The participation changes are large and well observed (A04 in 136→43 traces, A27 in 103→199, the block activities in 97–98→1), the relational items cover all 200 traces per window, and the concentration of the A26–A28 distance on 2 steps fits the block's disappearance. The screening produced 56 qualifying items against roughly 0.74 expected for an unchanged process, so the pattern as a whole is far beyond what random re-splits yield. [OCC002, OCC004, OCC005, DIR006, LAG003]
+
+Limitations: the later-window picture of A32/A33/A38 rests on a single trace each, so a rare residual variant cannot be excluded, and the shift could in principle be a strongly changed mix of pre-existing variants rather than a removed path; several items describe the same underlying trace behaviour and are not independent confirmations. [OCC005, OCC006, OCC007, REL028, REL029, REL030]
+
+Other differences: A02 and A08 occur more often (about 5 to about 15–20 in 100 traces) and their outgoing transitions changed almost completely, but these profiles rest on few outgoing transitions, so their direction remains uncertain. [OCC001, OCC003, DIR001, DIR003]

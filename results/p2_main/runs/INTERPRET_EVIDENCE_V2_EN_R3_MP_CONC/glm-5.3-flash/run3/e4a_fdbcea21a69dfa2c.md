@@ -1,0 +1,14 @@
+### Observed differences
+
+- The elapsed time from the completion of A15 to the completion of A16 fell sharply: in the earlier window it averaged about 0.11 hours (median about 0.10 hours, roughly 6–7 minutes) across 39 observed pairs (about 20 in 100 traces); in the later window it averaged about 0.04 hours (median about 0.03 hours, roughly 2–3 minutes) across 42 pairs (about 21 in 100) — roughly a third of the earlier level. [TWAIT001]
+- The same pattern appears for A19 to A16: mean elapsed time dropped from about 0.12 hours (median about 0.12 hours) to about 0.05 hours (median about 0.04 hours), with similar pair counts (39 vs 46 of 200 traces). [TWAIT002]
+- For A28 to A16 the elapsed time roughly halved, from a mean of about 0.80 hours (median about 0.81 hours, roughly 48 minutes) to about 0.40 hours (median about 0.43 hours, roughly 25 minutes), and somewhat fewer traces show the pair (39 vs 31 of 200, about 20 vs 16 in 100). [TWAIT003]
+- All three differences point the same way — shorter elapsed times into A16 in the later window — and each is larger than in all but about 1 of 2000 random re-splits of the pooled traces. [TWAIT001, TWAIT002, TWAIT003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a timing change centred on A16: in the later window, A16 is completed markedly sooner after the completion of A15, A19 and A28 than in the earlier window — elapsed times fall to roughly a third for A15→A16 and A19→A16 (from about 7 minutes to about 2–3 minutes) and by about half for A28→A16 (from about 48 to about 25 minutes). The change is direct (T_WAIT measures exactly these inter-completion times), consistent in direction across all three predecessor pairs, and each difference exceeds all but about 1 of 2000 random re-splits; the time family produced 3 qualifying items against roughly 0.014 expected without change, while the control-flow family produced none (0 against about 0.27 expected), fitting a timing change with no structural counterpart at these thresholds. [TWAIT001, TWAIT002, TWAIT003]
+
+Limitations: T_WAIT is elapsed time between consecutive completion events, so the evidence cannot show whether the saving lies with the predecessors, with A16 itself, or in between; all three items share A16 and may reflect one underlying change rather than three independent confirmations; and each pair is observed in only about 16–23% of traces per window. An important competing explanation the evidence cannot fully rule out is an undetected change in the events between these completions — for example a positional or routing shift below the control-flow thresholds — which could shorten the elapsed times without a pure timing change. [TWAIT001, TWAIT002, TWAIT003]

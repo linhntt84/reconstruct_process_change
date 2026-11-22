@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_c538b1a8bfd3f758.json",
+  "evidence_sha256": "64d7cad8987b8c09d0531993c9903bc236b81c57d605724fa816c802871514f2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:38:13.079741+00:00",
+  "finished_at_utc": "2026-11-15T03:38:38.065157+00:00",
+  "latency_seconds": 24.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3683,
+    "prompt_tokens": 3020,
+    "total_tokens": 6703,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3083,
+      "text_tokens": 600
+    },
+    "cost": 0.0022944999999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 13043,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completion events on the A11 → A39 segment roughly halved: in the earlier window it averaged about 0.97 hours (median about 0.94 hours), while in the later window it averaged about 0.49 hours (median about 0.50 hours) — a decrease of roughly 0.48 hours. The segment was observed in about 55 in 100 traces before and about 48 in 100 after. [TWAIT001]\n- The same pattern appears on the A38 → A39 segment: from an average of about 1.02 hours (median about 1.03 hours) in the earlier window to about 0.50 hours (median about 0.50 hours) in the later window, a decrease of roughly 0.52 hours, observed in about 43 in 100 traces before and about 36 in 100 after. [TWAIT002]\n- Both segments converge to about half an hour in the later window, and the spread of the times also narrowed (standard deviation from about 0.15–0.16 hours to about 0.08–0.09 hours). Each difference exceeds those seen in about 999.5 of 1,000 random re-splits of the pooled data. [TWAIT001, TWAIT002]\n- The only items that qualified are the two time items above; no control-flow indicator did (0 of 53 tested units, against about 0.26 expected by chance), so no structural, participation or ordering difference is signalled at these thresholds. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA change in timing is supported: the elapsed time between consecutive completion events on the transitions into A39 — from A11 and from A38 — roughly halved, from about 1 hour in the earlier window to about 0.5 hours in the later one. The two time items agree in direction and magnitude, each difference is larger than in about 999.5 of 1,000 random re-splits, and the time family produced 2 items where only about 0.01 would be expected if nothing had changed; the absence of any control-flow item is consistent with a timing change without a structural counterpart. [TWAIT001, TWAIT002]\n\nLimitations: TWAIT measures elapsed time between consecutive completion events, so the evidence cannot show whether the reduction lies in waiting, processing or batching. Because both items share A39, they may reflect one underlying change rather than two independent ones, and the evidence cannot localise the change to A39 itself rather than to its predecessors A11 and A38. The modest drop in how often the segments are observed (about 55 to 48 in 100 traces, and about 43 to 36 in 100) is not backed by any control-flow item and may be sampling variation. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_c538b1a8bfd3f758",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

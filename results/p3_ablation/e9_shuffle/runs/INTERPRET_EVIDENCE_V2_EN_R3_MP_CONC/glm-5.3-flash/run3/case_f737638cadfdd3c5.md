@@ -1,0 +1,21 @@
+### Observed differences
+
+- Activities A19, A20 and A25 were not observed at all in the earlier window. In the later window A19 runs in about 37 in 100 traces (74 of 200), A25 in about 34 in 100 (68 of 200) and A20 in about 29 in 100 (57 of 200), once per trace where it appears. [OCC001, OCC002, OCC003]
+- The three behave as mutually exclusive alternatives: in the later window each pair co-occurs in at most about 1 in 200 traces, and their participation shares sum to roughly 100 in 100, so nearly every later trace runs exactly one of them (in about 1 in 100 later traces none runs). In the earlier window, no trace contained any of them. [REL001, REL002, REL007, OCC001, OCC002, OCC003]
+- The direct link from A41 to A26 largely disappeared. Earlier, about 93 in 100 of A41's outgoing transitions went straight to A26, and the pair was one step apart in about 94 in 100 traces. In the later window, A41's outgoing transitions go to A19 in about 34 in 100 cases, A25 in about 31 in 100 and A20 in about 27 in 100, with a direct edge to A26 in only about 1 in 100; the distance from A41 to A26 is now two steps in about 90 in 100 traces and three steps in about 9 in 100. [DIR004, LAG002]
+- In every later trace where one of the new activities runs, A41 comes before it and it comes before A26; they also precede A31 whenever they run. [REL003, REL004, REL006, REL008, REL009, REL010, REL011, REL012, REL014]
+- The new activities lead back to A26 almost always: about 96 in 100 of A19's outgoing transitions, 98 in 100 of A20's and 97 in 100 of A25's go directly to A26. [DIR001, DIR002, DIR003]
+- A26 and A31 still occur in every trace in both windows; when the new activities run, they sit at a mean relative position of about 0.36, roughly a third into the trace. [POS001, POS002, POS003, POS004, POS005]
+- Smaller shifts: the A31-to-A35 gap moved from mostly one step (about 55 in 100) to mostly two steps (about 62 in 100), and A35 appeared in about 54 in 100 traces earlier versus about 48 in 100 later. [LAG001, REL005, REL013]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, a new step executes between A41 and A26 in nearly every trace, taking the form of exactly one of three previously unobserved activities: A19 in about 37 in 100 traces, A25 in about 34 in 100 and A20 in about 29 in 100, which never run together. Earlier, A41 led directly to A26 (about 93 in 100 of A41's outgoing transitions, one step apart in about 94 in 100 traces); later, that direct link remains in only about 1 in 100 of A41's outgoing transitions, which now go to the three new activities in about 92 in 100 cases, while the new activities lead to A26 in about 96–98 in 100 of their outgoing transitions and the A41-to-A26 distance moved from one to two steps. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, REL003, REL006, REL008, REL010, REL011, REL014]
+
+The placement is shown directly by relational, successor and lag evidence rather than inferred from frequencies alone, the items agree on one coherent picture, and the volume of qualifying evidence (28 control-flow items against roughly 0.6 expected without change) is far beyond what an unchanged process typically produces. [screening]
+
+Limitations: the evidence cannot show whether A19, A20 and A25 are three variants of a single new step or three distinct steps that happen to be mutually exclusive, nor what decides which of them runs in a given trace; in about 9 in 100 later traces an additional event also lies between A41 and A26, and in about 1 in 100 later traces none of the three runs. [DIR004, LAG002, REL001, REL002, REL007]
+
+Other differences: A26 and A31 now sit slightly later within the trace (mean relative position about 0.37 to 0.39 for A26 and about 0.69 to 0.71 for A31), consistent with the new step pushing later events one position down, though a position shift alone does not establish movement; the A31-to-A35 gap shifted slightly toward two steps and A35's presence dipped modestly, which may be sampling variation. [POS004, POS005, LAG001, REL005, REL013]

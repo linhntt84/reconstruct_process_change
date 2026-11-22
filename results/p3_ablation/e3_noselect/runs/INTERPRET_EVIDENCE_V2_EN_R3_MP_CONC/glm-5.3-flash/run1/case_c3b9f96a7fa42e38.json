@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c3b9f96a7fa42e38.json",
+  "evidence_sha256": "fdb4cb40fdf448b7907bf69da896ab12bc8cfb58a93346de18fa2b2c6bd380f5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:53:47.335938+00:00",
+  "finished_at_utc": "2026-11-14T13:55:43.946516+00:00",
+  "latency_seconds": 116.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18052,
+    "prompt_tokens": 81969,
+    "total_tokens": 100021,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16257,
+      "text_tokens": 1795
+    },
+    "cost": 0.021321350000000003
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50874,
+  "text": "### Observed differences\n\n- The three activities A35, A36 and A41 — each still executed exactly once in every trace — changed their place in the sequence relative to A25, A26, A27 and A30. In the earlier window A35 preceded A26 in essentially all 200 traces, and A35/A36/A41 preceded A27 in about 98–99 in 100 traces; in the later window this is reversed, with A26 preceding A35/A36/A41 in about 97–98 in 100 and A27 preceding them in about 98–99 in 100 traces [REL032, REL033, REL034, REL036, REL037, REL038].\n- Successor choices moved in step. In the earlier window about 98 in 100 of A25's outgoing transitions led into A35/A36/A41, and about 99 in 100 of A26's led to A30; in the later window about 98 in 100 of A25's transitions lead directly to A27, and about 96 in 100 of A26's lead into A35/A36/A41. A27 disappeared as a successor of A35/A36/A41 (previously about 29–37 in 100 of their outgoing transitions), while A30 now receives about 30–35 in 100 of them [DIR025, DIR026, DIR035, DIR036, DIR041].\n- Five-step adjacency confirms this: A25 reached A27 four steps later in about 94 in 100 cases before and immediately after it in about 99 in 100 cases later; A26 reached A30 immediately in about 99 in 100 cases before versus four steps later in about 91 in 100 after. Pairs linking A25 to the block and the block to A27 within five steps fell from about 200 to about 2 of 200 traces, while A36 followed by A30 rose from 1 to about 198 of 200 [LAG019, LAG024, LAG020, LAG021, LAG022, LAG033, LAG038, LAG034].\n- Event positions shifted consistently: A26 and A27 now occur earlier in the trace (mean relative position about 0.62 to 0.53 and 0.47 to 0.38), while A35, A36 and A41 occur later (about 0.41–0.42 to 0.58–0.59) [POS005, POS006, POS008, POS009, POS010].\n- A06 was executed in about 27 in 100 traces in the earlier window and about 13 in 100 in the later one; when it occurs it sits later in the trace (mean relative position about 0.25 to 0.44). Its incoming transition from A15 fell from about 15 to 3 in 100 of A15's outgoing transitions, and its outgoing transition to A16 fell from about 86 to 39 in 100 of A06's own outgoing transitions [OCC006, POS001, DIR015, DIR006, REL001, LAG003, LAG008].\n- The rare activities A02, A04, A08 and A10 each roughly doubled in participation, from roughly 4–5 in 100 traces to roughly 8–12 in 100, but these shares rest on only 8–25 observations per window [OCC002, OCC004, OCC008, OCC010].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block A35–A36–A41 changed its placement along the main sequence: in the earlier window it ran between A25 and A27 (A25 passed into the block, which then ended in A27), whereas in the later window it runs between A26 and A30 (A26 passes into the block, which then ends in A30), while the chain A25 → A27 → A28 → A29 → A33 → A34 → A26 itself is essentially unchanged. This rests on direct and mutually consistent relational evidence: near-complete order reversals between A26/A27 and each block activity, matching successor redistributions at A25, A26, A35, A36 and A41, matching five-step adjacency changes, and consistent position shifts, with the key pairs observed in all 200 traces of both windows [DIR025, DIR026, DIR035, DIR036, DIR041, REL032, REL033, REL034, REL036, REL037, REL038, LAG019, LAG024, POS005, POS006, POS008, POS009, POS010]. Limitations: all three block activities remain mandatory in every trace and their internal order stays mixed in both windows (A35 and A36 occur in both orders in roughly half of traces each time), so this is a change of placement, not of participation; and the indicators cannot distinguish the block having moved downstream past the A27–A26 chain from the equivalent description of that chain having moved upstream past a fixed block — both fit the same evidence [OCC034, OCC035, OCC040, REL042, REL043].\n\nOther differences: A06 was skipped about twice as often in the later window (about 13 in 100 traces versus about 27 in 100), occurs later when it does run, and its links from A15 and to A16 are much weaker; this participation change is not part of the placement hypothesis above [OCC006, POS001, DIR006, DIR015]. In addition, the rare activities A02, A04, A08 and A10 appear in roughly twice as many traces, though the small observation counts keep this tentative [OCC002, OCC004, OCC008, OCC010].",
+  "case_id": "case_c3b9f96a7fa42e38",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, activities A14, A15, A20, A21 and A22 do not appear in any of the 200 traces. In the later window each of them occurs in about 17–23% of traces (33–45 of 200), always at most once per trace. Their shares sum to almost exactly 100%, and no two of them ever occur in the same trace, so together they appear in essentially every later trace, one of the five per trace. [OCC001, OCC002, OCC003, OCC004, OCC005, REL001, REL002, REL003, REL007, REL008, REL012]
+
+- In the earlier window the chain A24 → A25 → A26 is fully fixed: every observed outgoing transition of A24 goes to A25, every outgoing transition of A25 goes to A26, and A26 always sits two steps after A24. In the later window, A24 is followed directly by A25 in only about 49 in 100 of its outgoing transitions and by one of the new activities in about 51 in 100; A25 is followed directly by A26 in about 52 in 100 and by one of the new activities in about 48 in 100. [DIR006, DIR007, LAG002]
+
+- The new activities are always preceded by A24 and always precede A26; they occur around the middle of the trace (relative position about 0.5). Their outgoing transitions split roughly evenly between A25 (about 45–60%) and A26 (about 40–55%). Relative to A25, both orders occur in similar proportions (for example A14 before A25 in about 12 in 100 traces, after it in about 11 in 100), while A26 always comes after the new activity. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004]
+
+- Direct adjacency drops accordingly: A24 and A25 are immediate neighbours in only about 49 in 100 later traces (previously all), A25 and A26 in about 52 in 100 (previously all), and the distance from A24 to A26 grows from two steps to three in about 995 in 1000 later traces. [LAG001, LAG002, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new step was inserted into the previously fixed sequence A24 → A25 → A26: in the later window, exactly one of five previously unobserved activities — A14, A15, A20, A21 or A22 — is executed in nearly every trace, always after A24 and before A26, placed between A24 and A25 in about half of the traces and between A25 and A26 in the other half, with the five acting as mutually exclusive alternatives. The signs are direct and mutually consistent: participation rises from zero to 17–23% per activity; A24 and A25 gain outgoing edges to exactly these activities in complementary shares to their old edges; the new activities lead to A25 or A26; the lag distributions shift exactly as an insertion predicts; and the qualifying items (34 against roughly 0.44 expected if nothing had changed) cannot be explained by sampling variation as a whole. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL004, REL006, REL009, REL011, REL013, REL015, LAG001, LAG002, LAG003]
+
+Limitations: the items cover only this local fragment, so behaviour elsewhere in the trace is not established; the evidence also cannot distinguish five genuinely alternative activities from one step recorded under several labels, since the five never co-occur; and positions are event positions, so "middle of the trace" is relative, not clock time. [REL001, POS001]

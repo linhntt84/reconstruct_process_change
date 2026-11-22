@@ -1,0 +1,24 @@
+
+
+### Observed differences
+
+- In the later window, A09 occurs more often and is repeated more often: mean occurrences per trace rise from about 1.9 to 4.3, recurrence from about 39 in 100 traces to 60 in 100, and trace participation from about 62 in 100 to 68 in 100. [OCC002]
+- In the later window, routing around A09, A13 and A15 shifts toward A09: A09 is followed by A15 in about 37 in 100 of its outgoing transitions before and about 48 in 100 after; A15 is followed by A09 in about 41 in 100 before and about 95 in 100 after; A13 is followed by A09 in about 35 in 100 before and about 71 in 100 after; A09 is followed by A13 in about 22 in 100 before and about 11 in 100 after. [DIR003, DIR004, DIR006]
+- In the later window, A09 and A13 co-occur in more traces and are more often interleaved or repeated rather than in a fixed order: cooccurrence rises from about 62 in 100 traces to 68 in 100, interleaved_or_repeated rises from about 39 in 100 to 60 in 100, A13 before A09 falls from about 16 in 100 to 4 in 100, and A09 before A13 falls from about 7 in 100 to 4 in 100. [REL003]
+- In the later window, event-position gaps for repeated A09 and A15 become shorter: among observed A09-A09 pairs within five steps, distance 2 rises from about 3 in 100 to 5 in 100 while distances 3-5 fall; among observed A15-A15 pairs within five steps, distance 2 rises from about 4 in 100 to 11 in 100 while distances 3-5 fall. [LAG007, LAG013]
+- In the later window, A03 and A14 occur less and are no longer repeated: mean occurrences per trace fall from about 1.1 to 0.5, recurrence from about 28 in 100 traces to 0, and trace participation from about 51 in 100 to 47 in 100. [OCC001, OCC003]
+- In the later window, A03 and A14 appear earlier in traces: A03's median position falls from about 36 in 100 of the trace to 17 in 100, and A14's median position falls from about 32 in 100 to 20 in 100. [POS001, POS003]
+- In the later window, A11 appears in more traces and earlier: trace participation rises from about 28 in 100 to 47 in 100, and median position falls from about 40 in 100 of the trace to 11 in 100. [POS002]
+- In the later window, relations among A03, A11 and A14 become more ordered: A11 before A03 rises from 0 to about 33 in 100 traces, A11 before A14 rises from 0 to about 39 in 100 traces, and A03/A14 interleaved_or_repeated falls from about 28 in 100 to 0 while A03 before A14 rises from about 10 in 100 to 27 in 100 and A14 before A03 rises from about 13 in 100 to 21 in 100. [REL001, REL002, REL004]
+- In the later window, some earlier routing changes: A06 is followed by A01 in about 86 in 100 of its outgoing transitions before and about 99 in 100 after; A14 is followed by A12 in about 10 in 100 before and 34 in 100 after, and by A11 in about 18 in 100 before and 4 in 100 after; A01 is followed by A13 in about 26 in 100 before and 32 in 100 after, and by A15 in about 9 in 100 before and 0 after. [DIR001, DIR002, DIR005]
+- In the later window, some event-position gaps become more immediate: among observed A14-A03 pairs within five steps, distance 1 rises from about 15 in 100 to 68 in 100, and among observed A03-A11 pairs within five steps, distance 1 rises from about 14 in 100 to 61 in 100. [LAG005, LAG010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+- The main hypothesis is that, in the later window, a repeated loop involving A09, A13 and A15 is executed more often: A09 is repeated more often, A15 is almost always followed by A09, A13 is more often followed by A09, and A09/A13 are more often interleaved or repeated. [OCC002, DIR003, DIR004, DIR006, REL003, LAG007, LAG013]
+- The supporting signs are direct: A09's mean occurrences per trace rise from about 1.9 to 4.3 and recurrence from about 39 in 100 traces to 60 in 100, while A09 followed by A15, A15 followed by A09 and A13 followed by A09 all increase and A09 followed by A13 decreases. [OCC002, DIR003, DIR004, DIR006]
+- A09's trace participation rises only from about 62 in 100 to 68 in 100, so the hypothesis is mainly about repeated A09 within cases rather than A09 becoming common in many new cases. [OCC002]
+- A limitation is that the evidence is control-flow only and the windows are finite samples; the same signs could also arise if the later window contained more traces that already required repeated A09 work, rather than a new structural loop, although the consistent routing changes make the repeated A09/A13/A15 cycle the more direct explanation. [OCC002, DIR003, DIR004, DIR006, REL003]
+- Other differences: in the later window, A03 and A14 become less frequent, less repeated and earlier, while A11 becomes more frequent and earlier; A14 becomes more often followed by A12 and A06 more often followed by A01. [OCC001, OCC003, POS001, POS002, POS003, REL001, REL002, REL004, DIR002, DIR005]

@@ -1,0 +1,17 @@
+### Observed differences
+
+- A03 vanished from execution: in the earlier window it ran in all 200 traces, about twice per trace, with its outgoing transitions split roughly 50/50 between A05 and A04; in the later window it does not appear in any of the 200 traces. [OCC003, DIR003, POS003]
+- A01 and A02 appeared: neither was observed in the earlier window, while in the later window each runs exactly once in every trace. A02 sits at the very start (median event position 0) and A01 about two-thirds to three-quarters in (median 0.75), with A02 before A01 in about 98 of 100 traces. [OCC001, OCC002, POS001, POS002, REL001]
+- Routing around these steps changed. Earlier, A06 was always followed by A03; in the later window A06 is followed by A01 (about 53 in 100 of its outgoing transitions) or A04 (about 46 in 100). A01 now leads to A05 in 199 of its 200 observed outgoing transitions, and A02 leads to A04 (about 51 in 100) or A01 (about 48 in 100). [DIR004, DIR001, DIR002]
+- A05 still runs in every trace, but its relation changed: earlier it always co-occurred with A03 (A03 earlier in 56 of 100 traces, interleaved in 44); in the later window it always co-occurs with A01 and follows it in a fixed order. [REL004, REL011]
+- A04 and A06 continue in roughly half the traces, with participation edging up from about 44 to 50 in 100 — a gap small enough to arise between two samples of this size — still placed before the A01/A05 part (A04 before A01 in 28 of 100 later traces, interleaved or repeated in 22). A04's repetition spacing tightened from typically 3 events apart to 2. [POS004, POS005, REL003, REL007, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A03 was removed from the process and A01 and A02 were introduced in its place: A03, previously executed about twice in every case as the step routing work onward to A05 or A04, is no longer observed, while A02 now opens each case, A01 runs once per case and leads to A05 — the activity that previously followed A03 — and A06, which previously always fed into A03, now feeds into A01 or A04. The signs are direct and consistent: participation flips between 0 and 200 of 200 traces for A01/A02 and back for A03, A06's successor profile changes from exclusively A03 to A01/A04, and the A03–A05 pair moves from always co-occurring to never co-occurring while A01–A05 moves from never co-occurring to always co-occurring in a fixed order. Screening also qualified 29 control-flow items where fewer than 1 would be expected without a change, and each item's difference exceeds about 995 of 1,000 random re-splits of the pooled data, so the pattern as a whole cannot be explained by sampling variation or a rare variant. [OCC001, OCC002, OCC003, DIR004, REL004, REL011, REL002]
+
+Limitations: many of the 29 items describe the same few trace-level differences rather than independent confirmations, and the evidence cannot establish that the removal of A03 and the addition of A01/A02 are one coordinated replacement rather than two separate modifications, nor distinguish a replacement from an insertion plus deletion. [OCC001, OCC002, OCC003]
+
+Other differences: the spacing between repeated and related events shifted — A04–A04 repetitions are now typically 2 events apart instead of 3, A06→A04 typically 1 apart instead of 2, and A04→A05 now sometimes 5 apart where it was uniformly 3 — consistent with the later positions having shifted after A03's two occurrences disappeared. [LAG001, LAG002, LAG003, LAG004]

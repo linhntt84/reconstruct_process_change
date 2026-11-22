@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_40958c0cbab56a95.json",
+  "evidence_sha256": "bd7ff50dc42a3ff678c74d45253465a9c9d53c6d7fff837f57e6586b572727ad",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:14:04.752421+00:00",
+  "finished_at_utc": "2026-11-15T05:15:36.132210+00:00",
+  "latency_seconds": 91.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13708,
+    "prompt_tokens": 37268,
+    "total_tokens": 50976,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12086,
+      "text_tokens": 1622
+    },
+    "cost": 0.012444199999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40021,
+  "text": "### Observed differences\n\n- In the earlier window, A26, A27 and A28 each ran in every trace (about 200 of 200, typically once per trace); in the later window, each appears in only about 1–2 of 200 traces. [OCC005, OCC006, OCC007]\n- In the later window, A19, A20 and A21 — nearly absent before (2–4 traces out of 200) — each take part in about 30–38 of 100 traces (60, 65 and 75 of 200 respectively). [OCC002, OCC003, OCC004]\n- The three newcomers are mutually exclusive: in the later window A19 and A20 never occur in the same trace (co-occurrence 0, each appearing without the other in about 30–33 of 100 traces), and the same holds for A20 with A21. [REL013, REL014, REL021]\n- A44's outgoing transitions shifted: before, about 82 in 100 went to A26, A27 or A28; in the later window, about 79 in 100 go to A19, A20 or A21 (roughly 25–27 in 100 each). [DIR007]\n- The old block sat between A44 and A29: before, A44 preceded A26/A27/A28 in about 97–99 of 100 traces and the block preceded A29 in about 97–99 of 100; in the later window both relations have practically disappeared (A29 now runs without A26 in about 98 of 100 traces). [REL038, REL039, REL043, REL044, REL047, REL048]\n- The new activities occupy the same slot: in the later window A44 precedes A19/A20/A21 in about 30–37 of 100 traces, and A19/A20/A21 precede A29 in about 30–37 of 100 traces. [REL018, REL019, REL025, REL026, REL032, REL033]\n- The span from A44 to A29 shortened: before, A29 typically followed A44 four to five positions later (about 78 in 100 at distance 4); in the later window, typically two to three positions later (about 79 in 100 at distance 2). [LAG009]\n- A11 and A12, which previously preceded the old block (about 46 of 100 traces for A11 with A26), in the later window precede A19/A20/A21 in about 16–21 of 100 traces. [REL001, REL002, REL003, REL004, REL007, REL008, REL009, REL010]\n- The newcomers' typical position (median about 0.36 of the trace) matches where the old block used to sit (median about 0.37). [POS001, POS002, POS003, POS004]\n- Secondary changes: A10's participation rose from about 14 to about 23 of 100 traces; A29 and A44 still run in every trace in both windows, with A29's typical position slightly earlier (mean about 0.44 to 0.40 of the trace) and A44's slightly later (about 0.31 to 0.33). [OCC001, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment in which A44 was followed by the block A26 → A27/A28 and then A29 is no longer executed, and that in roughly a third of later cases a single activity chosen among A19, A20 and A21 now runs between A44 and A29. This rests on direct relational and directional evidence, not only on frequencies: A44's successors switched from the old block to the new activities, the A44-before-block and block-before-A29 relations collapsed while the corresponding relations with A19/A20/A21 appeared, and the A44→A29 distance shortened from about 4–5 steps to 2–3, consistent with the span now containing one activity instead of three. [DIR007, LAG009, REL018, REL019, REL025, REL026, REL032, REL033, REL038, REL039, REL043, REL044, REL047, REL048]\n\nThe sizes involved make sampling noise implausible for the core change: the old block fell from 200 of 200 traces to 3 of 200, and the 81 flagged items far exceed the roughly 0.89 expected if nothing had changed. The newcomers' position (median about 0.36 of the trace) also matches the old block's position (about 0.37), supporting like-for-like placement. [OCC005, OCC006, OCC007, POS001, POS002, POS003, POS004]\n\nLimitations: the evidence does not show what, if anything, occupies the A44→A29 span in the remaining ~60% of later traces, and the old block's residual behaviour in the later window rests on only 3 traces, as do several flagged routing and distance details (for example DIR004–DIR006 and LAG001–LAG008), which should not be over-interpreted. A shift in the mix of pre-existing variants cannot be fully ruled out — A19/A20/A21 had only 2–4 supporting traces before — although that would itself mean variant shares moved from near zero to about a third, a behavioural shift rather than random fluctuation. [OCC002, OCC003, OCC004, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]",
+  "case_id": "case_40958c0cbab56a95",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

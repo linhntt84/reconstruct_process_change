@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_91980b9a218eb88d.json",
+  "evidence_sha256": "15e9671b27a66892c9f49cdd2c56142de5ed96d9ca507e816a4ecdd6b2789d96",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:06:36.977640+00:00",
+  "finished_at_utc": "2026-11-14T11:08:53.915062+00:00",
+  "latency_seconds": 136.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23460,
+    "prompt_tokens": 14986,
+    "total_tokens": 38446,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21451,
+      "text_tokens": 2009
+    },
+    "cost": 0.013977899999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 71663,
+  "text": "### Observed differences\n\n- A24 takes part in more cases in the later window: about 58 in 100 traces versus about 43 in 100 before, with repeated occurrences still rare [OCC001].\n- A19, A20 and A25 now occur much later in the case and reroute. In the earlier window they sat at about one-third of the case (median event position roughly 0.30-0.31) and about 92-99 in 100 of their observed outgoing transitions went to A26; in the later window they sit at about three-fifths of the case (median roughly 0.60-0.62) and their transitions go to A32 (about 45-56 in 100) or A28 (about 39-48 in 100), with A26 almost no longer observed as target (about 1-2 in 100) [DIR001, DIR002, DIR003, POS001, POS002, POS003].\n- A27 and A28 now often route through A19, A20 or A25: A27 still goes to A28 in about 54 in 100 observed transitions (down from about 98), with the rest going to A19 (about 16), A20 (about 15) and A25 (about 11); A28 goes to A32 in about 45 in 100 (down from about 99), with A20 (about 21), A25 (about 17) and A19 (about 16) as new targets [DIR004, DIR005].\n- A45 changed in the opposite direction: its outgoing transitions, previously split across A25 (about 35), A19 (about 35) and A20 (about 24) in 100, now go to A26 in about 94 in 100; the immediate A45-then-A25 succession is nearly unobserved (76 observed pairs before, 1 after) and A45-then-A26 became immediate instead of two steps apart [DIR006, LAG010, LAG011].\n- Order relations reversed: before, A19/A20/A25 preceded A26 or A27 in roughly 24-38 in 100 traces and almost never followed them; in the later window A26/A27 precede A19/A20/A25 in about 28-37 in 100 traces while the original direction toward A26/A27 nearly disappears (about 0.5 in 100 or less). Relative to A28, A20 and A25 now occur both before and after it (for example A20 before A28 in about 17 in 100 traces and after it in about 21) [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].\n- Lags match this rerouting: new direct successions appear (A28 then A19 at one step in about 92 in 100 of 32 observed pairs, A28 then A20 in about 98 of 42; A19 then A32, A27 then A19 and A27 then A20 observed 65-75 times after versus 1-2 before), while A27-then-A28 and A28-then-A32 now often have one event in between (two steps in about 43 and 54 in 100) and A27-then-A32 shifted from two to three steps (about 93 in 100) [LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009].\n- A26 and A27 themselves only shift slightly earlier (A26 median about 0.34 to 0.31; A27 about 0.59 to 0.56) [POS004, POS005].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the activities A19, A20 and A25 execute after A27 and A28 instead of before A26, and now hand over to A28 or A32 instead of A26, while A45 reaches A26 directly instead of through A19/A20/A25 and A24 participates in more cases. This placement change is shown directly by relational and positional evidence, not only by frequency shifts: the order between A19/A20/A25 and A26/A27 flipped (for example, A20 preceded A26 in about 24 in 100 traces before and in none after, while A26 now precedes A20 in about 37 in 100) [REL001, REL002, REL003, REL004, REL006, REL007]; the three activities occur about 0.26-0.28 later in the case while A26 and A27 barely move [POS001, POS002, POS003, POS004, POS005]; and their successor profiles switched from A26 to A28 and A32 [DIR001, DIR002, DIR003].\n\nThe lag changes are consistent with the same rerouting rather than a separate phenomenon: A27 and A28 often reach A28/A32 through one of A19/A20/A25 (A27-then-A28 and A28-then-A32 stretched by one step, A27-then-A32 from two to three steps), A28 now directly precedes A19/A20 in over 90 in 100 of the observed pairs, and A45-then-A26 became immediate [LAG005, LAG006, LAG007, LAG008, LAG009, LAG011, DIR006]. The volume of evidence also exceeds what an unchanged process typically produces: 31 items qualified against roughly 0.62 expected, and each item's difference was larger than those seen in about 995 of 1,000 random re-splits of the pooled traces [OCC001, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, REL001, REL003, LAG005, LAG006, LAG009].\n\nLimitations remain: the windows are samples of 200 traces each, so a shift in the mix of process variants — for instance a variant in which A19/A20/A25 run after A28/A32 becoming more frequent — could produce the same behavioural picture without a structural modification, and the evidence cannot exclude this. The items also overlap heavily, since the order, position and lag indicators partly describe the same traces and are not independent confirmations, and some lag profiles rest on only 1-2 observations on one side [LAG001, LAG002, LAG003, LAG004, LAG007, LAG008, LAG010].\n\nA24's higher participation is not connected to the reordering by the available evidence [OCC001].",
+  "case_id": "case_91980b9a218eb88d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

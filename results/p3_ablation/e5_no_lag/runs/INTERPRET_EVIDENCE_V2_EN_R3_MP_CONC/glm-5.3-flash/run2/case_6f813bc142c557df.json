@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "6c6dc4e86b3764a6416449cdce10d09053b9c744e104f0ecc1df240439c4e729",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:05:56.267273+00:00",
+  "finished_at_utc": "2026-11-15T07:07:45.575359+00:00",
+  "latency_seconds": 109.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16889,
+    "prompt_tokens": 14703,
+    "total_tokens": 31592,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15244,
+      "text_tokens": 1645
+    },
+    "cost": 0.010649949999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54246,
+  "text": "### Observed differences\n\n- In the earlier window, A20, A22, A23, A24, A25 and A26 each appeared in every trace, but with no single fixed order between them: A24 preceded A20 in about 75 in 100 traces, A24 preceded A23 in about 88, A23 preceded A26 in about 70, while A20/A26 and A22/A24 split both orders almost evenly (about 49–51 in 100 each way). [REL002, REL004, REL005, REL007, REL009]\n- In the later window, one fixed order dominates the same block: A20 precedes A24 in about 99 in 100 traces (before about 25), A23 precedes A24 in about 98 (before about 12), A23 precedes A26 in about 98 (before about 30), A22 precedes A24 and A26 in about 99 each, and A20 precedes A25 in about 99 (before about 68); every pair still co-occurs in 100 in 100 traces, so participation in these activities did not change. [REL002, REL003, REL005, REL006, REL007, REL009]\n- Outgoing transitions consolidated onto this sequence: before, A20's outgoing transitions went about 62 in 100 to A23 and about 12–13 each to A24, A25 and A26, and A24's went about 56 to A26, 28 to A22, 10 to A20 and 7 to A23; in the later window, about 99 in 100 of the outgoing transitions of each of A20, A23, A24 and A26 go to a single successor (A23, A24, A26 and A25 respectively), about 93 of A25's go to A32, about 99 of A22's go to A20, and A31 now leads only to A22 (before split about 50/50 between A22 and A24). [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009]\n- Mean event positions moved consistently with the new sequence: the six activities overlapped before (about 0.59–0.68 of the trace) and now spread from A22 (about 0.56) through A20, A23, A24 and A26 up to A25 (about 0.71), with shifts of only about 0.03–0.06; these are event positions, not clock times. [POS002, POS003, POS004, POS005, POS006, POS007]\n- A08 became much rarer and its routing changed: it appears in about 13 in 100 later traces versus about 32 in 100 earlier (mean occurrences per trace 0.33 to 0.14); its outgoing transitions, about 91% to A15 before, now go about 48% to A15 with new successors such as A16 (about 15%) and A46 (about 11%); A14 leads to A08 in about 7% of its transitions versus about 29% before; and A08 co-occurs with A32 in about 13 in 100 traces versus about 32 before. [OCC001, DIR001, DIR002, REL001]\n- A10 appears in about 12 in 100 later traces versus about 3 in 100 earlier, but this rests on only 6 traces before and 25 after. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints among A20, A22, A23, A24, A25 and A26 changed: a block of activities that previously appeared together in every trace but in varying, partly unordered sequences now executes in one fixed sequence, roughly A22 → A20 → A23 → A24 → A26 → A25, with A31 upstream of A22 and A32 as the common successor of A25. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009]\n\nThe support is direct and consistent: all eight measured pairs moved from mixed or reversed order to about 98–99 in 100 traces in one direction while co-occurrence stayed at 100 in 100, which is a change in ordering constraints rather than a participation change or an exchange of positions, and each difference is larger than in about 995 of 1000 random re-splits of the pooled data. [REL002, REL004, REL005, REL007, REL008, REL009]\n\nThe volume of qualifying evidence also exceeds what an unchanged process produces: 27 control-flow items qualified where about 0.54 were expected by chance, so the set of differences cannot be explained as random re-splits; note, however, that the DIR and POS agreement reflects the same underlying reordering rather than independent confirmations. [OCC001, DIR003, POS002, REL002]\n\nThe evidence cannot rule out that the earlier varying order was a mixture of several fixed variants rather than flexible ordering within individual cases; either reading is a tightening of ordering constraints, but the mechanism differs, and since positions are event positions no claim about clock-time timing is possible. [REL002, REL007, POS002, POS005]\n\nOther differences: A08 occurs in far fewer cases (about 13 vs 32 in 100 traces) and its successors redistributed away from A15 toward several new targets, with A14 feeding it much less often; its position moved later and spread out, though on few observations (64 vs 26 traces). A10 appears in about 12 vs 3 in 100 traces, on very few observations. These are participation and routing changes around A08 and A10, separate from the ordering hypothesis. [OCC001, OCC002, DIR001, DIR002, REL001, POS001]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

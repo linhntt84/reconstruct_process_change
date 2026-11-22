@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_224f2535ec137d05.json",
+  "evidence_sha256": "49098a0227b0206ee56e24c0db2ad9f8377de72f242dd96dc6edbba91f93ef49",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:10:36.589528+00:00",
+  "finished_at_utc": "2026-11-16T02:11:59.640876+00:00",
+  "latency_seconds": 83.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11287,
+    "prompt_tokens": 96657,
+    "total_tokens": 107944,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10058,
+      "text_tokens": 1229
+    },
+    "cost": 0.020142049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36628,
+  "text": "### Observed differences\n\n- Activity A01 does not occur in any of the 200 earlier-window traces, while in the later window it appears exactly once in every one of the 200 traces. [OCC001]\n- In the later window A01 always occupies the final position of a trace (mean, median and both quartiles at the last position, with no spread); it had no observed positions before. [POS001]\n- A16 was previously the fixed last event: it appeared in every trace at the last position with no spread and had no observed outgoing transitions. In the later window A16 sits slightly earlier (mean relative position about 0.92 instead of 1.0) and all of its observed outgoing transitions now lead to A01. [POS016, DIR009]\n- A01 now co-occurs with every other activity. A04, A13 and A16 each precede A01 in all 200 later traces; the repeating activities A09, A11 and A14 precede A01 in about half of the traces and are interleaved with it in the rest, and A02 in about 30 in 100 — as expected for activities that occur several times per trace. [REL003, REL012, REL015, REL008, REL010, REL013, REL001]\n- Several existing activities shifted slightly earlier in relative position (A04 from about 0.83 to 0.77, A13 from about 0.91 to 0.85, A11 and A14 by about 0.02), the pattern expected when one event is appended at the end of every trace. [POS004, POS013, POS011, POS014]\n- Two small routing shifts appear: at A08 the share of outgoing transitions to A02 rose from about 10 in 100 to about 16 in 100 (A09 fell from 90 to 84), and at A03 the split between A05 and A06 moved from about 47/53 to 52/48; both are a few percentage points and could be sampling variation. [DIR004, DIR002]\n- Minor lag redistributions appear, for example the A06→A09 lag-3 share rising from about 4% to 8% and the A02→A10 lag-1 share falling from about 15% to 11%; some of these rest on very few observations (the A09→A08 pair has only 5 observations per window). [LAG030, LAG007, LAG045]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new final activity, A01, was appended at the end of the process. In the earlier window traces ended with A16, which sat at the last position in every trace with no observed successor; in the later window every trace contains A01 exactly once as the final event, A16's only observed outgoing transition is to A01, and A01 consistently follows A04, A13 and A16. Occurrence, position, direction and relation indicators all show this directly and consistently — each of the key items shows a difference larger than in about 995 of 1,000 random re-splits — and the slight earlier shift of the other activities' relative positions fits one event being appended to each trace, although many of these items describe the same underlying difference rather than independent confirmations. The limitation is that zero participation in the earlier window strictly means only that A01 was not observed there, so the evidence cannot distinguish a genuinely added activity from a change in what was recorded or labelled; the small routing shifts at A08 and A03 are not part of this hypothesis. [OCC001, POS001, DIR009, POS016, REL003, REL012, REL015, POS004, POS013]\n\nOther differences: the routing share shifts at A08 (A02 up from about 10% to 16% of A08's outgoing transitions) and A03 (A05 up from about 47% to 52%), together with minor lag redistributions such as A06→A09 and A02→A10, are not explained by the appended final activity; their magnitudes are a few percentage points and the evidence cannot confirm them as real changes rather than sampling differences. [DIR004, DIR002, LAG030, LAG007]",
+  "case_id": "case_224f2535ec137d05",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

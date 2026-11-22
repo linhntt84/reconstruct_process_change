@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_959be1124672665e.json",
+  "evidence_sha256": "7e1dbedc4da3b78510a26ff6516162383092ed72277a682fc92fa2e7cee1e2d6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:18:39.174344+00:00",
+  "finished_at_utc": "2026-11-15T08:20:34.284540+00:00",
+  "latency_seconds": 115.11,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16653,
+    "prompt_tokens": 100322,
+    "total_tokens": 116975,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14928,
+      "text_tokens": 1725
+    },
+    "cost": 0.023374799999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49082,
+  "text": "### Observed differences\n\n- Three activities are no longer observed at all in the later window: A02 and A08, each present in about 47 in 100 traces before (94 of 200, about 0.84 occurrences per trace), and A03, present in about 21 in 100 traces before (41 of 200), all fall to zero participation and zero occurrences. [OCC002, OCC008, OCC003, POS002, POS003, POS007]\n\n- Two activities became much rarer: A07 drops from about 47 in 100 traces to about 17 in 100 (94 → 34 traces) and A14 from about 47 to about 31 in 100 (94 → 61); both were already late-stage before (mean relative position about 0.97) and now occur only at the very end of a trace. [OCC007, OCC014, POS006, POS012, DIR006, DIR012]\n\n- The flow around the vanished activities was rewired. Before, A10 was always followed by A08, A08 always by A11, and A01 was followed by A06 (about 44% of its outgoing transitions), A07 (about 31%) or A14 (about 25%), with A16 always leading into A01. In the later window, A10 is always followed by A01, A01 is always followed by A11, and A16 now leads directly to A06 (about 43%), A14 (about 37%) or A07 (about 20%). [DIR009, DIR007, DIR001, DIR013]\n\n- Entry points moved as well. Before, A05 led to A02 (about 50% of its outgoing transitions) and A18 to A02 (about 53%), while A13 and A19 always led to A03; in the later window A05 leads to A10 (about 46%), A18 leads to A10 (about 59%), and A13 and A19 lead to A05 (about 59% and 50%) and A18 (about 41% and 50%). [DIR004, DIR015, DIR011, DIR016]\n\n- A09 and A17 now alternate with each other: before, A09 led to A05 (about 52%) or A18 (about 48%) and A17 to A05 (about 60%) or A18 (about 40%); in the later window A09 leads to A17 (about 51%) and A17 to A09 (about 49%), the two co-occur in about 29 in 100 traces (up from about 15 in 100) and each is almost never seen without the other, with occurrences per trace rising (A09 about 0.44 → 0.76; A17 about 0.34 → 0.76). [DIR008, DIR014, REL090, OCC009, OCC017]\n\n- Co-occurrence collapsed exactly where activities vanished: A01 with A02 and A01 with A08 co-occurred in about 47 in 100 traces before and in none after (A01 now appears alone in those traces), and A02 with A10 co-occurred in about 47 in 100 before versus A10-only after. [REL001, REL006, REL022]\n\n- Positions and lags shift consistently with this rewiring: A01 now occurs earlier in traces (median relative position about 0.46 versus about 0.80) and A16 somewhat later (mean about 0.70 versus 0.61); the A10→A01 pair now occurs at lag 1 in about 57 of 100 observed pairs (before it sat mainly at lag 4), A16→A01 collapsed from 94 observed pairs at lag 1 to 15 at lag 5, and A16→A07 and A16→A14 now occur at lag 1 where they previously sat at lags 2–3. [POS001, POS013, LAG029, LAG047, LAG050, LAG052]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural rerouting in which A02, A03 and A08 dropped out of the executed behaviour and the paths that ran through them were rewired: the chain A10 → A08 → A11 became A10 → A01 → A11; A16, which previously fed A01's branch to A06/A07/A14, now leads directly to A06, A14 and A07; A05 and A18 now feed A10 instead of A02; A13 and A19 feed A05/A18 instead of A03; A09 and A17, which previously both flowed into A05/A18, now alternate with each other; and A07 and A14 became rare, terminal occurrences. [OCC002, OCC003, OCC008, DIR001, DIR009, DIR013, DIR004, DIR015, DIR011, DIR016, DIR008, DIR014, REL090, OCC007, OCC014]\n\nThe signs are direct and mutually consistent: the disappearances rest on large before-samples (94, 94 and 41 of 200 traces) with exactly zero observations afterwards; every successor replacement is observed directly on the source activity's outgoing transitions; and the relation and lag items change precisely on the rewired pairs while unaffected parts stay stable (for example A11's split to A15/A16 and the A10-before-A11 relation are unchanged in both windows), so the differences form one coherent rewiring rather than scattered fluctuations. [DIR010, REL093, REL001, REL006, REL022, LAG029, LAG047, LAG050, LAG052]\n\nLimitations: zero participation only shows that A02, A03 and A08 were not observed in the later sample, not that they were removed from the process definition, and both windows are finite samples of 200 traces. An important competing explanation the evidence cannot rule out is a shift in case mix — the later window could contain only a subpopulation of variants that never executes A02, A03 and A08 — which would produce the same picture without any modification to the process. [OCC002, OCC003, OCC008]\n\nOther differences: small occurrence and recurrence movements for A06, A12, A13 and A19 (changes of roughly 0.02–0.06 on their own scales, empirical strength at or below about 0.64) and minor position drifts for A05 and A06 fall within what random re-splits of a stable process produce and are not part of the main hypothesis. [OCC006, OCC012, OCC013, OCC019, POS004, POS005]",
+  "case_id": "case_959be1124672665e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

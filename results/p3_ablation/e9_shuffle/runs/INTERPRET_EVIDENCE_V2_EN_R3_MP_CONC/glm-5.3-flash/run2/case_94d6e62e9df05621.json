@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_94d6e62e9df05621.json",
+  "evidence_sha256": "93fdecabe97dd3a50527fccf5b08d513c528cbb0a0181e8e387bc8be93453849",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:32:59.327576+00:00",
+  "finished_at_utc": "2026-11-15T04:34:03.275954+00:00",
+  "latency_seconds": 63.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8232,
+    "prompt_tokens": 4085,
+    "total_tokens": 12317,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7519,
+      "text_tokens": 713
+    },
+    "cost": 0.00472875
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30820,
+  "text": "### Observed differences\n\n- In the earlier window, A07 and A08 each ran in about 53 of 100 traces and always together: they co-occurred in about 53 of 100 traces, never appeared alone, and had no fixed order between them (A07 before A08 in about 28 of 100 traces, A08 before A07 in about 25 of 100). In the later window, the two never share a trace: A07 appears alone in about 23 of 100 traces and A08 alone in about 29 of 100, while traces containing neither stayed at about 47–49 of 100. [OCC001, OCC002, REL001]\n- The pair's overall footprint is roughly unchanged (about 53 of 100 traces earlier, about 51 of 100 later); what changed is that this block now runs as a single activity instead of both together. [OCC001, OCC002, REL001]\n- Handovers redirected: earlier, about 65% of A07's observed outgoing transitions went to A08 and about 61% of A08's went to A07; in the later window these mutual transitions are not observed at all, and both activities lead mainly to A01 (about 72% from A07, about 71% from A08) and secondarily to A05 (about 28–29% each). These later profiles rest on few observations (18 and 17 outgoing transitions). [DIR001, DIR002]\n- A08's observed event positions sit slightly later in the later window (median from about two-thirds to the final position), but most of this indicator's difference is its support falling from about 53 to about 29 of 100 traces, mirroring the participation drop; positions are event-order based, so this alone does not show a relocation. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A07 and A08 changed from being executed together — co-occurring in about half of the traces, in either order, with mutual handovers — to being mutually exclusive alternatives that never appear in the same trace, each now handing over mainly to A01 instead of to the other, while the share of traces containing either activity stayed at about half. The relational change is shown directly with substantial support in both windows (co-occurrence from about 53 to 0 of 100 traces, profiles backed by 106 and 102 traces), the directional items are consistent with it, and each activity's later participation matches its \"alone\" share; six control-flow items qualified against roughly 0.11 expected by chance, so this set of differences is unlikely for an unchanged process. [REL001, DIR001, DIR002, OCC001, OCC002]\n\nCompeting explanation the evidence cannot rule out: a rare or transient variant confined to the later window. Each item's empirical strength (about 0.995) cannot by itself separate a real change from a rare variant, and the later routing shares between A01 and A05 in particular rest on only about 17–18 outgoing transitions each, so the exact new handover proportions are uncertain. [DIR001, DIR002, OCC001, OCC002, REL001]\n\nOther differences: A08's observed positions shifted slightly later in event order (median from about two-thirds to the final position); this largely reflects its lower participation and does not establish that the activity was moved. [POS001]",
+  "case_id": "case_94d6e62e9df05621",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

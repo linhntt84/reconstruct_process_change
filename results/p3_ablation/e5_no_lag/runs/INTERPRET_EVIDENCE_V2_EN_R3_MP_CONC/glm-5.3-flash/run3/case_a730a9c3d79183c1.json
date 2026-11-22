@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_a730a9c3d79183c1.json",
+  "evidence_sha256": "81d43a959d068874574ce4bd9ecf58bf39ef083b420338b98d789dcad5dbe38a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:35:34.219035+00:00",
+  "finished_at_utc": "2026-11-15T12:38:23.615493+00:00",
+  "latency_seconds": 169.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24639,
+    "prompt_tokens": 46518,
+    "total_tokens": 71157,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22555,
+      "text_tokens": 2084
+    },
+    "cost": 0.0192972
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75065,
+  "text": "### Observed differences\n\n- In the earlier window, each of the six activities A33, A35, A36, A37, A38 and A39 ran in about 49–53 in 100 traces, roughly once per trace when present; in the later window each runs in about 98–100 in 100 traces, still about once per trace [OCC005, OCC006, OCC007, OCC008, OCC009, OCC010].\n- In the earlier window these six formed two mutually exclusive trios: A33/A35/A36 ran together in ~49 in 100 traces and A37/A38/A39 together in ~52 in 100, while an activity from one trio shared a trace with one from the other in only about 0.5–1.5 in 100 cases — almost every case ran exactly one trio. In the later window all six run together in ~98 in 100 traces, with the A33/A35/A36 trio before the A37/A38/A39 trio in ~95–98 in 100 of them; within each trio both orders still appear in similar proportions [REL037, REL044, REL055, REL059, REL039, REL041, REL045, REL047, REL050, REL052].\n- A30 preceded the trios in both windows but now does so in nearly every case (co-occurrence ~49–53 → ~98–100 in 100, A30 first in ~94–98 in 100); A31 followed them and now also does so in nearly every case (co-occurrence ~49–53 → ~98–100, trios first in ~95–99 in 100); A47 and A48, present throughout, now run after the block in ~98–99 in 100 traces instead of ~49 [REL025, REL027, REL030, REL031, REL033, REL036, REL042, REL048, REL053, REL057, REL060, REL062].\n- Routing matches this: A30's outgoing transitions were previously spread roughly evenly over the six activities (~14–18% each) and now go about 36% to A35, 31% to A33 and 29% to A36, with its edges into A37–A39 no longer observed; the edges from A33, A35 and A36 into A31, previously 27–34% of their outgoing transitions, are also no longer observed, while new edges into A37/A38/A39 appear [DIR005, DIR006, DIR007, DIR008].\n- A04 became much less frequent: it ran in ~59 in 100 traces earlier versus ~26 in 100 later, and when present sits later in the trace (mean event position about 0.20 → 0.38). A14 now continues directly to A15 in ~79 in 100 of its outgoing transitions (previously ~43) and to A04 in only ~12 (previously ~57); A04's own outgoing transitions, ~90% into A15 before, are now spread over many targets; A14, A15, A30, A31, A47 and A48 now usually appear without A04 (~74 in 100 traces) [OCC002, POS001, DIR002, DIR004, REL001, REL002, REL003, REL004, REL011, REL012].\n- A02, A08 and A10 occur in more cases than before, rising from about 5–8 in 100 traces to about 18–23 in 100; event positions of A30 and A33/A35/A36 moved slightly earlier and those of A37/A38/A39 and A31 slightly later, consistent with the block now being longer [OCC001, OCC003, OCC004, POS003, POS004, POS005, POS008, POS010].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the exclusive choice between the two trios was removed: in the earlier window a case executed either A33/A35/A36 or A37/A38/A39 (roughly 50/50, with cross-trio co-occurrence in only ~1 in 100 cases), whereas in the later window both trios run in sequence in almost every case — A33/A35/A36 in mixed internal order, then A37/A38/A39 — with A30 before and A31 after the combined block. This rests on direct relational evidence (cross-trio co-occurrence rising from ~0–2 to ~98 in 100 with a stable order between the trios), consistently echoed by the participation, routing and position items above; the screening context also fits, with 94 qualifying items against fewer than one (0.84) expected for an unchanged process [REL039, REL041, REL045, REL047, REL050, REL052, REL025, REL031, OCC005, OCC008, DIR005, DIR006].\n\nAn important competing explanation remains: the all-six sequence appears in only about 1–3 of 200 earlier traces, so the windows cannot distinguish a removed exclusive constraint from a rare pre-existing path that simply became dominant (a shift in the mix of case variants). The many relational items also describe overlapping behaviour of the same traces and are not independent confirmations [REL039, REL040, REL041, REL045, REL046, REL047, REL050, REL051, REL052].\n\nOther differences: A04 — participation fell from ~59 to ~26 in 100 traces, A14 now typically continues to A15 without passing through A04 (A14→A15 ~43% → ~79% of outgoing transitions; A14→A04 ~57% → ~12%), and A04 sits later in the trace when it occurs; this is consistent with A04 having become skippable or bypassed, but a change in the mix of case types cannot be ruled out. Separately, A02, A08 and A10 occur in more cases than before (~5–8 → ~18–23 in 100) [OCC002, POS001, DIR002, DIR004, REL001, OCC001, OCC003, OCC004].",
+  "case_id": "case_a730a9c3d79183c1",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

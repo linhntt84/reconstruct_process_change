@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_4438bcd12da8a472.json",
+  "evidence_sha256": "1d456b3a471d33bf84bfeb0188d8e3a745acca7b3ccbb3764e49b28bf13f0fa4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:01:34.583842+00:00",
+  "finished_at_utc": "2026-11-15T07:02:55.759337+00:00",
+  "latency_seconds": 81.18,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11092,
+    "prompt_tokens": 10589,
+    "total_tokens": 21681,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9946,
+      "text_tokens": 1146
+    },
+    "cost": 0.007134349999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37790,
+  "text": "### Observed differences\n\n- The three activities A14, A15 and A20 each appeared in about 47 in 100 traces in the earlier window (at most once per trace); in the later window each appears in about 199 in 200 traces, still at most once per trace. [OCC001, OCC002, OCC003]\n- At the branching point A36 (present in all traces in both windows), the outgoing flow was split roughly 47% to A14 and 53% to A21 in the earlier window; in the later window about 995 in 1000 outgoing flows go to A14 and only about 1 in 200 to A21. [DIR001]\n- The group's internal order and embedding are unchanged: A14, A20 and A15 always occur together in the order A14 before A20 before A15, A36 precedes A14, and A14 precedes A21, in both windows. What changed is only how often the group executes: its members' co-occurrence rose from about 47 in 100 traces to about 199 in 200. [REL001, REL002, REL007, REL003, REL004, REL012]\n- A14 and A37 were interleaved or repeated in about 17 in 100 traces in the earlier window versus about 46 in 100 in the later window, with A14-before-A37 rising from about 30 to about 54 in 100 traces; A37 itself occurs in all traces in both windows. [REL005, REL010, REL014]\n- A40 occurs in about 60 in 100 traces in both windows, but in the earlier window it appeared without A14 in about 33 in 100 traces, while in the later window it essentially never appears without A14. [REL006, REL011, REL015]\n- A21's mean event position moved slightly later (about 0.41 to 0.43 of the trace) and A36's slightly earlier (about 0.33 to 0.30); these are small, position-based shifts. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA specific possibility supported by the evidence is that the fixed sequence A14 → A20 → A15 became effectively mandatory. In the earlier window this group executed in about 47 in 100 cases as one of two outcomes of A36, the other leading directly on to A21; in the later window the group executes in essentially every case, and the direct A36 → A21 transition is down to about 1 in 200 of A36's outgoing flows. The group's internal order and its relations to A36 (before) and A21 (after) are unchanged between the windows, so the difference lies in how often the group executes, not in its placement. [OCC001, OCC002, OCC003, DIR001, REL001, REL002, REL007, REL003, REL004, REL012]\n\nSupporting signs: all three activities moved in lockstep (participation 47% to 99.5%, no within-trace repetition in either window), the routing redistribution at A36 matches the participation change almost exactly, and the screening produced 21 qualifying items where roughly 0.39 would be expected if nothing had changed, so sampling variation alone cannot account for the pattern as a whole. [OCC001, DIR001, REL001]\n\nLimitations: the evidence cannot distinguish between the direct A36 → A21 path having been removed and that branch simply no longer being taken, nor can it rule out that the later window contains almost no cases of the skipping variant (a case-mix difference) rather than a routing modification. The OCC, DIR and REL items also describe overlapping aspects of the same traces, so they are not independent confirmations. [DIR001, OCC001]\n\nOther differences:\n- A14 and A37 now interleave or repeat in about 46 in 100 traces, up from about 17 in 100, with A14-before-A37 rising from about 30 to about 54 in 100; the evidence cannot tell whether this follows from the main change or is a separate ordering change. [REL005, REL010, REL014]\n- A40's disappearance from traces without A14 (about 33 in 100 traces before, essentially none after) is consistent with a knock-on effect of A14 becoming near-universal rather than an independent change to A40, whose overall frequency stayed at about 60 in 100 traces. [REL006, REL011, REL015]\n- The slight position shifts of A21 (later) and A36 (earlier) are consistent with the group now always sitting between them, but a position shift alone does not show that either activity was moved. [POS001, POS002]",
+  "case_id": "case_4438bcd12da8a472",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

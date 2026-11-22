@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_c1314f04cc975c09.json",
+  "evidence_sha256": "158c0e23ac337d0b5c1dab0570a673c0d9707e07aabd70dc4a5d6e508611a8d6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:22:33.615137+00:00",
+  "finished_at_utc": "2026-11-14T11:23:33.938320+00:00",
+  "latency_seconds": 60.32,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7900,
+    "prompt_tokens": 3978,
+    "total_tokens": 11878,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7189,
+      "text_tokens": 711
+    },
+    "cost": 0.004546700000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29727,
+  "text": "### Observed differences\n\n- Routing out of A31 changed: in the earlier window, every observed outgoing transition of A31 went to A20; in the later window, about 71% of A31's outgoing transitions go to A25 while about 29% still go to A20 (based on roughly 700 outgoing transitions of A31 in the later window). [DIR001]\n- The relationship between A25 and A31 changed from a fixed sequence to repetition: in both windows the two activities occur together in essentially every trace, but earlier A25 came before A31 in essentially all traces, whereas in the later window only about 32 in 100 traces keep that strict order and about 68 in 100 show the two interleaved or repeated. [REL001]\n- The spacing between A25 and A31 spread out: earlier, A31 followed A25 exactly two event positions later in essentially every trace; in the later window that two-step gap accounts for only about 12 in 100 observations, about 5 in 100 pairs sit five steps apart, and no other measured distance dominates. [LAG001]\n- Both activities' positions became more variable without moving much on average: A25's mean position shifted from about 0.41 to about 0.44 of the trace with its spread roughly doubling (about 0.06 to 0.12), and A31's mean stayed near 0.48 while its spread also roughly doubled. These are event positions, not clock times. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the control flow around A25 and A31 changed from a single fixed pass to a repeat loop: previously each trace ran A25, then A31 two positions later, with A31 always continuing to A20; in the later window A31 typically returns to A25 (about 71% of its outgoing transitions), so A25 and A31 are executed interleaved or repeatedly in about 68 in 100 traces, while the direct continuation from A31 to A20 is retained in about three in ten of its transitions. [DIR001, REL001, LAG001]\n\nThe successor change at A31 and the order change are observed directly rather than inferred from position shifts alone; the disappearance of the universal two-step gap and the roughly doubled positional spread of both activities are consistent with repetition; and participation itself is unchanged, since A25 and A31 still occur together in essentially every trace in both windows. The five qualifying items far exceed the roughly 0.14 expected by chance in the screening of 29 units, and each difference is larger than in about 995 of 1,000 random re-splits of the pooled data. [DIR001, REL001, LAG001, POS001, POS002]\n\nLimitations: the indicators partly describe the same underlying trace behaviour, so they are not independent confirmations; the evidence does not show A25's outgoing transitions, so an important competing explanation — that the interleaving arises through repeated execution via other paths rather than specifically a A31-to-A25 loop — cannot be fully ruled out; and the later-window lag distribution is not pinned down beyond the measured distances. DIR shares are over outgoing transitions, not cases, so no conclusion is drawn about how often A20 itself runs. [DIR001, REL001, LAG001]",
+  "case_id": "case_c1314f04cc975c09",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

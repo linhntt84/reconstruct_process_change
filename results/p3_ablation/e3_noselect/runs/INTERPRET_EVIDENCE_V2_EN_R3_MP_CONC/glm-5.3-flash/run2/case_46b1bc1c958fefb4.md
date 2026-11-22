@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A02 disappears: it ran in about 92 of 200 earlier traces (roughly 46%, once per case, early in the case at a mean relative event position of about 0.14) and is not observed in any of the 200 later traces. [OCC002, POS002]
+- Activity A01 shows the mirror image: absent from all earlier traces, it runs in about 101 of 200 later traces (roughly half, once per case, similarly early at a mean relative position of about 0.19). [OCC001, POS001]
+- The two activities never occur in the same case in either window: earlier, A02 appeared without A01 in 46% of cases; later, A01 appears without A02 in about 50% of cases. [REL001]
+- Their roles look similar: earlier, about 32% of A02's outgoing transitions went to A03 and about 22% to A06 (then A11 ~14%, A13 ~11%, A04 ~9%); later, about 24% of A01's outgoing transitions go to A06 and about 19% to A03 (then A10 ~15%, A11 ~15%, A13 ~11%). [DIR001, DIR002]
+- Neighbouring activities rewired accordingly: A03's handovers to A02 (about 7% of its outgoing transitions) are gone and handovers to A01 (about 8%) appear; A11 shows the same pattern (A02 ~9% before, A01 ~11% after). [DIR003, DIR011]
+- Partnerships mirror each other: A02 co-occurred with A03 in 46% of earlier cases versus about 50% for A01 with A03 later; A02 with A06 in 26% earlier versus about 26% for A01 with A06 later. [REL002, REL003, REL004, REL005]
+- Two activities are executed more often in the later window: A03 rises from about 1.9 to 2.2 executions per case (repeated within a case in about 45% versus 53% of cases), and A10 from about 0.9 to 1.2 per case (present in about 45% versus 53% of cases). [OCC003, OCC010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 took over the role previously played by A02: in the later window A02 is no longer executed, while A01 appears in about half of the cases at a similarly early position, with a largely overlapping set of successors (A03, A06, A11, A13, A04) and similar co-occurrence with A03 and A06, and the two activities never share a case in either window; downstream activities such as A03 and A11 now hand over to A01 where they previously handed over to A02. The change is shown directly by occurrence, position, direction and relation indicators and is consistent across them, with the key differences exceeding all but about 1 in 200 random re-splits. The evidence cannot prove a true substitution rather than a coincidental removal of one activity and insertion of another with a similar profile, and no screening baseline is included to bound what chance alone would produce. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR011, REL001, REL002, REL003, REL004, REL005]
+
+Other differences: A03 and A10 are executed more frequently per case and appear in more cases in the later window; this is plausibly connected to the new A01 flows (A01 hands over to A10 about twice as often as A02 did), but the evidence does not establish that link. Smaller shifts include A04 handing over to A03 more often (about 3% versus 10% of A04's outgoing transitions) and minor changes in the event-step spacing between A03 and A06 occurrences. [OCC003, OCC010, DIR001, DIR002, DIR004, LAG002, LAG004]

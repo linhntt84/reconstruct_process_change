@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_bdfbe014f3fad895.json",
+  "evidence_sha256": "cb5dc2897e6c670caa01d3ca003b2d34538eacc79d557c8fb75865078c7255ff",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:12:40.872374+00:00",
+  "finished_at_utc": "2026-11-14T13:13:56.535947+00:00",
+  "latency_seconds": 75.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12309,
+    "prompt_tokens": 26876,
+    "total_tokens": 39185,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10815,
+      "text_tokens": 1494
+    },
+    "cost": 0.010185900000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37721,
+  "text": "### Observed differences\n\n- In the earlier window, A27 ran in every trace: it always followed A14 (100 in 100 traces) and A26 (about 99 in 100, the rest interleaved), usually followed A15 (about 64 in 100, the rest interleaved), and preceded A28 in about 98 in 100 traces. In the later window, A27 appears in only about 52 in 100 traces (103 of 200). [OCC003, REL009, REL013, REL017, REL021]\n- Three activities that never appeared earlier — A32, A33 and A38 — now each run in about 49–50 in 100 traces, around the middle of the trace (mean relative position about 0.51). They run together in about 49 in 100 traces, with both orders in similar shares (A32 before A33 in about 23 in 100, A33 before A32 in about 26), so they show no fixed internal order. [OCC004, OCC005, OCC006, POS003, POS004, POS005, REL028, REL029, REL030]\n- A27 and the new block behave as alternatives: they co-occur in at most about 1–2 in 100 traces. When the block runs, it co-occurs with A14, A15 and A26 in about 49–50 in 100 traces (essentially never earlier), running after A14/A26 and after or interleaved with A15, and it precedes A28 in about 48 in 100 traces — the slot A27 used to fill. A28 itself still runs in every trace in both windows. [REL010, REL011, REL012, REL014, REL015, REL016, REL018, REL019, REL020, REL022, REL023, REL024, REL025, REL026, REL027, POS002]\n- Routing matches this: before, about 95 in 100 of A26's outgoing transitions went to A27; in the later window about 50 in 100 go to A27 and about 50 in 100 to the new activities (A33 about 18, A38 about 17, A32 about 15). The new activities' outgoing transitions lead mostly to each other and to A28. [DIR006, DIR007, DIR008, DIR009]\n- A04 became far more prominent: about 19 in 100 traces earlier versus about 60 in 100 later, and it now sits early in the trace (mean relative position about 0.21 versus 0.54). Its outgoing transitions, previously spread over many successors (largest share, A15, about 20 in 100), now go to A15 in about 87 in 100 of cases, and A14 now leads to A04 in about 54 in 100 of its outgoing transitions (previously about 4). A04 typically co-occurs with A14, A15, A26 and A28, running after A14 and before A15, A26 and A28. [OCC001, POS001, DIR001, DIR004, REL001, REL002, REL003, REL005]\n- A06 nearly disappeared: about 20 in 100 traces earlier versus about 4 in 100 later; its later routing profile rests on only 8 observed outgoing transitions and is weakly supported. [OCC002, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, the previously mandatory A27 step between the A14/A15/A26 portion of the trace and A28 appears to have become skippable: in roughly half the traces A27 is omitted, and in those traces a new block of A32, A33 and A38 runs in its place — after A14/A15/A26, around mid-trace, before A28, with no fixed internal order among the three. Supporting signs are the mirrored participation shift (A27 from 100 to about 52 in 100 traces; the new activities from 0 to about 49–50 in 100), near-zero co-occurrence between A27 and the block, the roughly 50/50 split of A26's outgoing transitions, and consistent ordering relations on both sides of the slot in each window. The screening result (52 qualifying items against about 0.65 expected if nothing had changed) makes chance sampling implausible as an overall explanation. Limitations: the many relation items largely mirror one underlying trace-level shift rather than independent confirmations, and because zero participation only means \"not observed\", the evidence cannot distinguish a newly added branch from one that existed but was never executed in the earlier window. [OCC003, OCC004, OCC005, OCC006, REL017, REL021, REL022, REL023, REL024, REL025, REL026, REL027, DIR006, POS003, POS004, POS005]\n\nOther differences:\n\n- A04 became about three times as common and now occurs early in traces, feeding almost exclusively into A15; this looks like a separate change in participation and routing rather than part of the A27 replacement. [OCC001, POS001, DIR001, DIR004, REL001, REL002, REL003, REL005]\n- A06 fell from about 20 to about 4 in 100 traces; with only 8 supporting traces in the later window, this could still be a rare variant sampled in one window only. [OCC002, DIR002]",
+  "case_id": "case_bdfbe014f3fad895",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

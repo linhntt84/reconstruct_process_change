@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_e7d6bd13ef21f012.json",
+  "evidence_sha256": "c28a57c17ee651c372022e0c46bfc0996f4eed86e599e40e2b3e008747d9f8cd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:33:51.926821+00:00",
+  "finished_at_utc": "2026-11-15T01:35:07.560725+00:00",
+  "latency_seconds": 75.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10675,
+    "prompt_tokens": 10605,
+    "total_tokens": 21280,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9730,
+      "text_tokens": 945
+    },
+    "cost": 0.0069282499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36393,
+  "text": "### Observed differences\n\n- Participation flipped for three activities: in the earlier window A04 ran exactly once in every trace (200 of 200), while A01 and A03 were not observed at all; in the later window A04 is not observed (0 of 200) while A01 and A03 each run exactly once in every trace (200 of 200). [OCC001, OCC002, OCC003]\n- The routing around A02 changed completely: earlier, every observed departure from A02 went to A04, and every departure from A04 went to A05; later, every departure from A02 goes to A03, every departure from A03 goes to A05, and A06 — which earlier had no observed successor — now always leads to A01. [DIR001, DIR002, DIR003, DIR004]\n- Order and co-occurrence changed accordingly: earlier A02 preceded A04, and A04 preceded both A05 and A06; later A02 precedes A03, A03 precedes A05 and A06, and A05 and A06 both precede A01, co-occurring with it in every trace. [REL006, REL007, REL009, REL010, REL001, REL004, REL005, REL011, REL012]\n- Event positions are consistent with traces growing from four to five events: A04 always sat about one third into the trace earlier and is unobserved later; A03 now sits at about one quarter and A01 at the final position; A05 moved from about two thirds to one half and A06 from the last position to three quarters. [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural control-flow change in the fragment formed by A02, A03, A04, A05, A06 and A01: in the earlier window every trace ran A02 → A04 → A05 → A06, while in the later window every trace runs A02 → A03 → A05 → A06 → A01 — A04 no longer executes, A03 has taken over its position between A02 and A05, and A01 was added as a new final step after A06. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL006, REL011, POS001, POS002]\n\nThe screening found 24 qualifying items where fewer than one (about 0.12) would be expected if nothing had changed, so the pattern as a whole cannot be explained by random sampling; all items describe one and the same re-sequencing, each comparison rests on all 200 traces in both windows, and the successor changes (A02 leading to A04 versus A03, A06 gaining A01 as successor) show the structural change directly rather than as a mere shift in how often existing paths are taken. [DIR001, DIR004, REL011, POS003]\n\nAn important competing explanation remains: zero participation only shows that an activity was not observed, so it cannot be fully excluded that A04 still exists but is never triggered, or that A01 and A03 existed earlier but were never sampled — implausible at 0 versus 200 of 200 traces, but not logically excluded. The evidence also covers only the control flow of these six activities, so behaviour elsewhere is untested. [OCC001, OCC002, OCC003]\n\nOther differences: none beyond this change; the position shifts of A05 (from about two thirds to one half) and A06 (from the last position to three quarters) follow from A03 replacing A04 and A01 extending the traces, not from independent relocations. [POS004, POS005]",
+  "case_id": "case_e7d6bd13ef21f012",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

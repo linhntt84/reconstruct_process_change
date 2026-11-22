@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f6501839553b5b85.json",
+  "evidence_sha256": "44d2140f8f4b7efd3490a48de08b52b7242829f81ebd249294f8582d32a31ea9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:17:17.363572+00:00",
+  "finished_at_utc": "2026-11-15T08:19:46.056848+00:00",
+  "latency_seconds": 148.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20878,
+    "prompt_tokens": 15472,
+    "total_tokens": 36350,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19375,
+      "text_tokens": 1503
+    },
+    "cost": 0.0127598
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 68288,
+  "text": "### Observed differences\n\n- **A01 appears.** In the earlier window, A01 was not observed in any of the 200 traces; in the later window, it appears in about 30 in 100 traces (59 of 200), with roughly 0.66 occurrences per trace, placed on average around 40% of the way through the trace. This difference is larger than in about 995 of 1,000 random re-splits of the pooled data. [OCC001, POS001]\n- **A12 now always leads to A01.** In the earlier window, A12's outgoing transitions split between A04 (about 52 in 100) and A13 (about 48 in 100); in the later window, all observed outgoing transitions of A12 (131) go to A01, and A01's transitions go to A04 (about 53%) or A13 (about 47%). [DIR007, DIR001]\n- **A01 and A12 occur together.** In the later window, both activities appear in about 30 in 100 traces and co-occur in all of those; A12 precedes A01 in about 16 in 100 traces and the two interleave or repeat in about 14 in 100. In the earlier window, A12 appeared in about 33 in 100 traces and A01 never did. [OCC001, OCC009, REL002]\n- **Step distances moved one position later.** The pairs A12→A04 and A12→A13, previously mostly 1–2 steps apart, are now 2–3 steps apart with no 1-step occurrences left; self-repetition gaps lengthened similarly (A12 from a 4-step to a 5-step gap; A04 and A13 shifted from lags 3–5 towards 4–5, with 5-step shares roughly doubling to about 25%). [LAG004, LAG006, LAG005, LAG001, LAG009]\n- **Fewer repetitions around the new step.** A04 and A13 fell from about 1.8 to about 1.5 occurrences per trace while still appearing in about 50 in 100 traces in both windows; A07 and A12 fell from about 0.9 to about 0.7 occurrences per trace, with participation easing from about 33 to about 30 in 100 traces. [OCC004, OCC010, OCC005, OCC009]\n- **Elsewhere behaviour is stable.** A02 still routes mainly to A05 (about 51–53%) with A04 and A13 as minor targets, A03 splits about evenly between A10 and A11, the positions of A04 and A13 are unchanged, and A04–A13 co-occurrence stays at about 50 in 100 traces. [DIR002, DIR003, POS002, POS004, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new activity, A01, was inserted between A12 and the A04/A13 steps inside a repeating section of the process. In the earlier window, A12 handed over directly to A04 (about 52 in 100 outgoing transitions) or A13 (about 48); in the later window, A12 leads to A01 in all observed transitions and A01 leads on to A04 (about 53%) or A13 (about 47%), with A01 present in about 30 in 100 traces at around 40% of the trace length [DIR007, DIR001, OCC001, POS001]. The placement is corroborated beyond the direct successor change: the A12→A04 and A12→A13 step distances shifted exactly one position later, the self-repetition gaps of A04, A12 and A13 lengthened by about one step, and occurrences per trace of A04 and A13 fell (about 1.8 to about 1.5) while their trace participation stayed roughly stable — the pattern expected when a lengthened cycle fits fewer iterations per trace [LAG004, LAG006, LAG001, LAG005, LAG009, OCC004, OCC010].\n\nLimitations: the direction profiles are shares of outgoing transitions rather than of cases, the evidence does not show what precedes A12 or the rest of the model, and A01's absence from the earlier window strictly means only that it was not observed there; several items describe the same underlying behaviour and are not independent confirmations. A competing explanation the evidence cannot rule out is that the reduction in repetitions is an independent change in repetition behaviour rather than a consequence of the inserted step. [OCC004, OCC010, OCC005, OCC009]\n\nOther differences: A07 shows the same drop in occurrences as A12 (about 0.9 to about 0.7 per trace; participation about 33 to 30 in 100), which fits the lengthened-cycle reading but is not directly linked to A01 by any observed transition; small routing shifts at A08/A09 and at A13's outgoing transitions (about 2–4 percentage points, low empirical strength) are consistent with sampling noise in an unchanged process. [OCC005, DIR005, DIR006, DIR008]",
+  "case_id": "case_f6501839553b5b85",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_01e7ee155471e5d7.json",
+  "evidence_sha256": "275608a1b64ca33dd72fc436e0d51b89fe494c6060d2ae2a05e62af161fcabd3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:51:09.681339+00:00",
+  "finished_at_utc": "2026-11-14T11:52:52.093042+00:00",
+  "latency_seconds": 102.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13583,
+    "prompt_tokens": 9494,
+    "total_tokens": 23077,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12579,
+      "text_tokens": 1004
+    },
+    "cost": 0.0082156
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45060,
+  "text": "### Observed differences\n\n- The relative order of two groups of activities reversed. In the earlier window, A21 came before A30, A31 and A36, and A22 came before A30, A31 and A36, in every one of the 200 traces; in the later window, A30, A31 and A36 each come before A21 and A22 in all but about 1 in 200 traces (about 99.5%). The activities still occur together in every trace in both windows, so participation itself did not change. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Relative positions moved consistently with this reversal: in the later window A21 sits at about 0.62 of the trace length (previously about 0.53) and A22 at about 0.47 (previously about 0.38), while A30, A31 and A36 each moved earlier to about 0.41 (previously about 0.59). All five activities appear in every trace in both windows, with slightly more position spread in the later window. [POS001, POS002, POS003, POS004, POS005]\n- Two step-distances changed: A22 followed A20 immediately (1 step) in every earlier trace but follows it 4 steps later in all but about 1 in 200 later traces, and A21 followed A25 four steps later in every earlier trace but follows it immediately in all but about 1 in 200 later traces. [LAG001, LAG002]\n- The old-direction pairs (A21 to A30/A31/A36, and A30/A31/A36 to A25) were previously 1–3 steps apart in all 200 traces; in the later window each of these ordered pairs occurs within five steps in only 1 trace, so their later distance profiles rest on a single observation. [LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the sequencing of these activities reversed: A30, A31 and A36, which previously ran after A21 and A22, now run before them, and the connections around them changed accordingly — A21 now follows A25 immediately (previously four steps later) and A22 now follows A20 four steps later (previously immediately). The order change is shown directly by the relation indicators: all six pairs between the two groups flipped from a unanimous order to the opposite order in about 99.5% of later traces while co-occurrence stayed at 100%, and each difference is larger than in about 995 of 1,000 random re-splits of the pooled traces. [REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002]\n\nThe position shifts and distance changes corroborate the same picture, and the screening context makes chance an implausible explanation: 19 control-flow items qualified where only about 0.27 would be expected if nothing had changed. [POS001, POS002, POS003, POS004, POS005, LAG001, LAG002]\n\nLimitations: the evidence shows the reversed order but not the exact new arrangement — the trio moved about 0.17 of the trace earlier while A21 and A22 moved only about 0.09 later, so the two groups did not simply exchange places — and the later distance profiles of the old-direction pairs rest on one trace each. [POS001, POS002, POS003, POS004, POS005, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008] A competing explanation the evidence cannot rule out is that the underlying flow is unchanged and only the way concurrent activities are written into each trace (their linearisation) differs between the windows; the unanimity of the flip makes pure sampling variation implausible, but a true sequencing change cannot be distinguished from such a linearisation change with this evidence. [REL001, REL002, REL003, REL004, REL005, REL006]",
+  "case_id": "case_01e7ee155471e5d7",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

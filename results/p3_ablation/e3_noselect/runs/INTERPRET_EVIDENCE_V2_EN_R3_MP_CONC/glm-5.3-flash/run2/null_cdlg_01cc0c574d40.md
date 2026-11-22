@@ -1,0 +1,12 @@
+### Observed differences
+
+- Activity participation was essentially stable: activities such as A02, A05, A06, A08, A09 and A12 each appeared in about 49 in 100 traces in both windows, and the largest movement anywhere is A10 and A16, each rising from about 62 to 64 in 100 traces in the later window; no activity appeared or disappeared. [OCC001, OCC008, OCC014]
+- Repetition intensity shifted only slightly: in the later window A02 occurs about 7.9 times per trace, down from about 8.5, A11 about 3.9, down from about 4.3, and A12 about 4.0, down from about 4.3, while A05, A13 and A14 rose slightly (for example A05 from about 1.9 to 2.0); these are shifts of roughly 5–10 in 100 occurrences on activities that remain well observed. [OCC001, OCC009, OCC010, OCC003, OCC011, OCC012]
+- Routing between existing alternatives moved by a few percentage points at three decision points: in the later window the share of A08's outgoing transitions to A05 is about 50 in 100, up from about 45 (A04 correspondingly down from about 55 to 50); the share of A10's transitions to A16 is about 49 in 100, up from about 45 (A15 down from about 55 to 51); and the share of A06's transitions to A01 is about 55 in 100, up from about 51. The remaining routing points stayed within about 1–3 in 100 of their earlier shares. [DIR005, DIR006, DIR004, DIR001, DIR002, DIR003, DIR007, DIR008]
+- A small, mutually consistent movement appears around A05: in the later window its outgoing share to A17 is about 24 in 100, down from about 27, while the shares to A13 and A14 each rise slightly, matching the small rises in A13 and A14 occurrences and the small fall in A17 occurrences. [DIR003, OCC003, OCC011, OCC012, OCC015]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. All differences are small — participation moves by at most about 3 in 100 traces and routing shares by at most about 5 in 100 transitions — and even the strongest item, the A08 routing split that exceeds about 86 in 100 random re-splits, is roughly what the largest of eight routing comparisons reaches when nothing has changed, so sampling variation between the two windows remains a full explanation. [DIR005, DIR006, DIR004, OCC008, OCC014]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5e44f83d5c50d725.json",
+  "evidence_sha256": "3b52d438c324336ea051f5e6a0789065a622ae1ee9114f2b65077b2e5f66901d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:52:02.499344+00:00",
+  "finished_at_utc": "2026-11-15T04:52:58.260555+00:00",
+  "latency_seconds": 55.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8086,
+    "prompt_tokens": 5790,
+    "total_tokens": 13876,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7176,
+      "text_tokens": 910
+    },
+    "cost": 0.004911499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26469,
+  "text": "### Observed differences\n\n- Activity A01 disappeared from the later window: in the earlier window it was executed exactly once in every trace (200 of 200 traces, mean 1.0 occurrence per trace) at roughly two-thirds of the trace's length; in the later window it appears in 0 of 200 traces. [OCC001, POS001]\n- A01's relations collapsed accordingly: earlier, A01 and A07 always co-occurred with A01 first (100 of 100 traces); later, A07 always occurs without A01. Earlier, A01 and A05 always co-occurred (A05 first in about 55 of 100 traces, interleaved in about 45); later, A05 always occurs without A01. [REL001, REL002]\n- A01's outgoing flow vanished: earlier about 98 in 100 of its outgoing transitions went to A07 (the rest to A04); later A01 has no observed outgoing transitions at all. [DIR001]\n- A05 was rerouted: earlier its outgoing transitions went about 51% to A01 and 46% to A06; later about 49% go directly to A07 and 45% to A06 — the share that previously went through A01 now goes straight to A07 (based on roughly 377–378 observed outgoing transitions per window). [DIR003]\n- The gap between A05 and a following A07 shrank: earlier the pair occurred mostly at distance 2 (about 50 of 100 occurrences, never directly adjacent); later the most common distance is 1 (about 40 of 100, i.e. direct succession). [LAG001]\n- Secondary shifts: A07 now occurs slightly earlier in the trace (median position 0.80 → 0.75, with more spread), and A05 slightly later (median 0.40 → 0.50). [POS003, POS002]\n- A04's outgoing mix shifted slightly: A05 fell from about 92% to 87%, A07 rose from about 1.5% to 7%, and the small A01 share (about 3.5%) is gone. [DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was removed from the executed flow: the earlier behaviour, in which every trace ran A05 → A01 → A07 with A01 mandatory and always preceding A07, became a behaviour in which A05 leads directly to A07 and A01 is not executed at all. [OCC001, REL002, DIR003, LAG001]\n\nThe change is shown directly and consistently across indicators: A01's participation fell from 200 of 200 traces to 0 of 200; both of its relations flipped from full co-occurrence to \"A01 absent\" in every trace; A05's dominant successor switched from A01 (about 51%) to A07 (about 49%); and the A05→A07 distance moved from typically 2 positions (mediated) to typically 1 (direct). Screening found 10 qualifying items from 16 tested units where only about 0.08 would be expected if nothing had changed, so the ensemble is far beyond what random re-splits of a stable process produce (each item also sits at about the 99.5th percentile of reference comparisons). [OCC001, REL001, REL002, DIR001, DIR003, LAG001]\n\nLimitations: zero participation only establishes that A01 was not observed in the later window, so a complete removal cannot be distinguished from A01 becoming very rare (executed in only a small share of traces). The items also describe largely the same traces, so they are not independent confirmations of one another. [OCC001]\n\nOther differences: A04's outgoing transitions shifted slightly (A05 about 92% → 87%, A07 about 1.5% → 7%, A01 about 3.5% → 0), and A07 and A05 moved slightly earlier and later in the trace respectively — all consistent with the rerouting around A01 but not part of the main hypothesis. [DIR002, POS002, POS003]",
+  "case_id": "case_5e44f83d5c50d725",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "8e26dfcb200ae5f49e40545cf27d6d3a949bfa497791b49afea6a80f741e8eec",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:29:07.245639+00:00",
+  "finished_at_utc": "2026-11-15T09:30:02.802553+00:00",
+  "latency_seconds": 55.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8328,
+    "prompt_tokens": 9656,
+    "total_tokens": 17984,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7335,
+      "text_tokens": 993
+    },
+    "cost": 0.005612399999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27377,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 were not observed in any of the 200 traces. In the later window, A14 appears in about 37 of 100 cases, A20 in about 34, and A15 in about 29, each occurring once per trace where it is present. [OCC001, OCC002, OCC003]\n- In the earlier window, A36 was always followed immediately by A21 (distance 1 in 100 in 100 cases). In the later window, A21 follows A36 two positions later in about 99 of 100 cases, and A36's direct transition to A21 has dropped from all of its outgoing transitions to about 1 in 100. [LAG001, DIR004]\n- In the later window, A36's outgoing transitions go to A14 (about 37%), A20 (about 34%) and A15 (about 28%); each of these three activities in turn leads to A21 in all of its observed outgoing transitions. [DIR004, DIR001, DIR002, DIR003]\n- The three new activities behave as alternatives: A36 precedes each of them (in about 37, 34 and 29 of 100 traces respectively), each of them precedes A21, and no two of them ever occur in the same trace. [REL004, REL009, REL007, REL003, REL008, REL006, REL001, REL002, REL005]\n- A21 still occurs in every trace in both windows; its mean relative position moved slightly later, from about 0.37 to about 0.39 of the trace, while the new activities sit at roughly one-third of the trace. [POS004, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a block of three alternative activities — A14, A15 and A20 — was added between A36 and A21. In the earlier window every case moved directly from A36 to A21; in the later window A36 leads to exactly one of A14, A15 or A20 (chosen in roughly 37, 34 and 29 of 100 cases), which then leads on to A21, while the direct A36→A21 transition survives only in about 1 of 100 of A36's outgoing transitions. [DIR004, DIR001, DIR002, DIR003, REL004, REL009, REL007, REL003, REL008, REL006, REL001, REL002, REL005, LAG001, OCC001, OCC002, OCC003]\n\nChance is an unlikely explanation for the evidence as a whole: 21 control-flow items qualified where fewer than 1 would be expected if nothing had changed, and the relational, directional, lag and participation evidence all point to the same structure directly — the participation shares of the three new activities even sum to about one choice per trace, consistent with a three-way alternative. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, LAG001, POS001, POS002, POS003, POS004]\n\nLimitations: zero participation in the earlier window only means A14, A15 and A20 were not observed there, so the competing explanation that these activities already existed as very rare steps cannot be ruled out; positions and lags are measured in event positions rather than clock time, so no statement about timing is possible; and many items describe the same underlying traces, so they are not independent confirmations. [OCC001, OCC002, OCC003, POS001, POS002, POS003, POS004, LAG001]",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

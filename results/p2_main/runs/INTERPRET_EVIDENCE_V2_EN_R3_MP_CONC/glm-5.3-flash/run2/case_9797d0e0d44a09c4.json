@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_9797d0e0d44a09c4.json",
+  "evidence_sha256": "5a3f286e666680f5a63050ed529cf1be8b8f1813824eeced3bfe82f0314bd986",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:38:44.994680+00:00",
+  "finished_at_utc": "2026-11-15T00:40:11.400835+00:00",
+  "latency_seconds": 86.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12614,
+    "prompt_tokens": 11919,
+    "total_tokens": 24533,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11580,
+      "text_tokens": 1034
+    },
+    "cost": 0.00809485
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40674,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 each ran in about 47 in 100 traces, always together as a block in the fixed order A19 → A25 → A20; in the later window each of the three runs in about 199 of 200 traces, roughly once per trace. [OCC001, OCC002, OCC003, REL001, REL002, REL007]\n- The branching at A41 flipped: earlier, about 52 in 100 of A41's observed outgoing transitions went straight to A26 and about 45 in 100 to A19; later, about 92 in 100 go to A19 and only about 1 in 200 still go to A26. [DIR002]\n- The gap between A41 and A26 changed accordingly: earlier, A26 immediately followed A41 in about 52 in 100 cases (and sat four positions later in about 42 in 100); later it is almost never adjacent (about 1 in 200) and sits four positions after A41 in about 89 in 100 cases. [LAG001]\n- The surrounding order is stable in both windows: A41 precedes A19, A25 and A20, each of A19, A25 and A20 precedes A26, and A20 still leads almost exclusively to A26 (about 96 in 100 of its outgoing transitions earlier, about 99 in 100 later). [REL004, REL009, REL013, REL003, REL008, REL012, DIR001]\n- A26 and A41 themselves appear in essentially every trace in both windows, with only small position shifts (A26's median relative position 0.40 → 0.42; A41's mean 0.33 → 0.31). [POS001, POS002, REL003, REL004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A19 → A25 → A20 block, which in the earlier window was executed in only about 47 in 100 traces while the remaining traces went directly from A41 to A26, became a mandatory part of the process: in the later window virtually every trace runs A41 → A19 → A25 → A20 → A26, and the direct A41 → A26 transition that skipped this block is chosen in only about 1 in 200 of A41's outgoing transitions. The signs are direct and mutually consistent — participation of all three activities rose from about 47 to about 99.5 in 100 traces on 94–200 supporting traces per window, A41's outgoing distribution flipped from mostly A26 to mostly A19, and the typical A41–A26 distance moved from one step to four steps — and the 23 qualifying items are many times the fewer than 1 expected by chance among the 129 tested units, so the set as a whole is not what an unchanged process typically produces. [OCC001, OCC002, OCC003, DIR002, LAG001, REL001, REL007, REL008]\n\nLimitations: all items describe one underlying difference, so they are not independent confirmations of each other; and because the direct A41 → A26 edge is still observed in a few transitions, the evidence cannot distinguish a removed bypass from one that is now chosen only very rarely. [DIR002, LAG001]\n\nOther differences: A42 keeps no fixed order relative to the block in either window (in the later window about 53 in 100 traces run A19 first, about 46 in 100 interleaved or repeated), and A45 remains optional at about 60 in 100 traces earlier and about 62 in 100 later — their rising co-occurrence with A19/A20/A25 follows from those three becoming universal rather than from a change of their own; the small position shifts of A26 and A41 are consistent with the block now always sitting between them. [REL005, REL010, REL014, REL006, REL011, REL015, POS001, POS002]",
+  "case_id": "case_9797d0e0d44a09c4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

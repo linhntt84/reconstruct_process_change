@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_59d6c6d03bc5ac58.json",
+  "evidence_sha256": "3cc9f7f5dcfde2b9e3a73c1052fe1a67df0271ed7636ac2ea1386292b7b037ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:43:59.864963+00:00",
+  "finished_at_utc": "2026-11-15T08:45:55.772388+00:00",
+  "latency_seconds": 115.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16389,
+    "prompt_tokens": 8368,
+    "total_tokens": 24757,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15286,
+      "text_tokens": 1103
+    },
+    "cost": 0.0094497
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53894,
+  "text": "### Observed differences\n\n- In the earlier window, A02 occurred in every trace, always as the final event, and was reached directly from A01 in about 50 in 100 traces and directly from A04 in the remaining 50; A01 and A04 never occurred in the same trace, acting as mutually exclusive entry paths. [POS002, REL001, REL002, REL004, DIR001, DIR002]\n- In the later window, A01 is not observed in any of the 200 traces (previously about 101 in 200), while A05 — not observed at all earlier — now appears in about 46 in 100 traces. [OCC001, OCC004]\n- A04's outgoing behaviour flipped: before, all of its observed outgoing transitions led to A02; after, all lead to A05, and A05 in turn always leads to A02. The distance from A04 to A02 grew from one step to two. [DIR002, DIR003, LAG001]\n- A02 still occurs in every trace, but its placement changed: it is now the first event in about 54 in 100 traces and the final event (after A04 and A05) in about 46, whereas earlier it was always final and always preceded by A01 or A04. A05 sits late in its traces (around three-quarters of the trace length), between A04 and A02. [POS002, POS004, REL005, REL006]\n- Minor shifts: A03, A04 and A06 each appear slightly less often (about 92 vs 99 of 200 traces); a difference of this size arises routinely in random re-splits (strength about 0.46), so it is consistent with sampling noise. [OCC002, OCC003, OCC005, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the routing into A02 was restructured: A01, previously one of two direct predecessors of A02 (about 50 in 100 traces, the other being A04), is no longer observed, and the newly observed A05 is now inserted between A04 and A02, so A04 reaches A02 through A05; correspondingly, A02 — previously always the closing event — now opens about 54 in 100 traces with no observed predecessor. [OCC001, OCC004, DIR002, DIR003, POS002, POS004, REL005, REL006, LAG001]\n\nSupporting signs: the change is shown directly by relational evidence rather than by frequencies alone — A04's successor changed from A02 to A05, A05's successor is A02, the A01–A02 co-occurrence fell from about 50 in 100 traces to none, and the A04→A02 distance moved from one to two steps; the participation swings (A01 from 101 to 0 of 200 traces, A05 from 0 to 92) and each strong item lie far outside the range produced by random re-splits of these windows (strength about 0.995). Limitations: most items describe this one underlying rerouting from different angles rather than serving as independent confirmations; the evidence cannot show what the former A01-traces now contain beyond a leading A02 (other, unmonitored activities could be involved), and A01's zero participation strictly means only that it was not observed in this 200-trace sample. A competing explanation the evidence cannot rule out is that the disappearance of the A01 path and the insertion of A05 are two independent edits rather than one coordinated rerouting — both are directly observed, but nothing ties them into a single change. [OCC001, DIR001, DIR002, DIR003, LAG001, POS002, REL001, REL005]\n\nOther differences: A03, A04 and A06 each occur slightly less often in the later window (about 92 vs 99 of 200 traces), and A04 sits slightly earlier within its traces (about half vs two-thirds of the trace length), consistent with one event (A05) having been added after it; the participation dip is within the range of random window-to-window variation (strength about 0.46). [OCC002, OCC003, OCC005, POS003, POS004]",
+  "case_id": "case_59d6c6d03bc5ac58",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

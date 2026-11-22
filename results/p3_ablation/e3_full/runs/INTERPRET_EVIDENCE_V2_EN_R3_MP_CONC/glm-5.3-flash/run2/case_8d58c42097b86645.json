@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_8d58c42097b86645.json",
+  "evidence_sha256": "ea3191c37cc0e8298443218cef47c1945f9947e8c3618df845c9c8353088dd3c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:19:49.485799+00:00",
+  "finished_at_utc": "2026-11-16T02:22:27.257596+00:00",
+  "latency_seconds": 157.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24500,
+    "prompt_tokens": 73727,
+    "total_tokens": 98227,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22638,
+      "text_tokens": 1862
+    },
+    "cost": 0.023309049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 74942,
+  "text": "### Observed differences\n\n- Activity A01 does not appear in any of the 200 earlier traces, but occurs in about 21 in 100 later traces (42 of 200; about 0.26 occurrences per trace), positioned around the middle of the trace (median relative position about 0.5). [OCC001, POS001]\n- In the later window, all observed outgoing transitions of A01 (about 51) lead to A10, and A01 precedes A10 in about 18 of the 21 in 100 traces where they co-occur; in the earlier window A01 co-occurred with no activity at all. [DIR001, REL009, REL001, REL003]\n- A08's routing changed while its participation stayed at about 21 in 100 traces: earlier, roughly 55 in 100 of its observed outgoing transitions went to A10 and 45 to A09; later, roughly 55 go to A01 and 45 to A09, so the direct A08→A10 transitions disappeared. A10 itself still occurs in about 21 in 100 traces in both windows. [DIR004, OCC007, OCC009]\n- Step distances downstream of A08 grew by about one event: A08→A10 moved from mostly 1 step to mostly 2, A08→A02 from 3 to 4, A08→A05 from 2 to 3, and distances from A09 to A02, A05 and A10 also shifted one step later (each based on roughly 20–42 traces per window). [LAG048, LAG040, LAG043, LAG050, LAG051, LAG054]\n- A second rewiring appears around A03, A12 and A13: earlier, A12 always led to A03 (about 16 transitions) and A03 led to A13 in about two thirds of its transitions and back to A12 in the rest; later, A12 leads directly to A13 (all of about 17 transitions, typically 1 step away) and A03 leads only to A13. A03 now appears in fewer traces (about 12.5 in 100 earlier vs 9 in 100 later), A12 and A13 sit earlier within traces (mean relative position about 0.37→0.24 and 0.50→0.38), and distances from A12 to later activities shortened by about one step. [DIR005, DIR003, OCC003, POS011, POS012, LAG069, LAG063, LAG066, REL030]\n- Minor: A07, A08, A09 and A10 occur at slightly later relative positions in the later window (mean shifts of roughly 0.05), and the self-repetition gaps of A02 and A05 stretch slightly. [POS006, POS007, POS008, POS009, LAG001, LAG020]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was added to the flow between A08 and A10 in the later window, so that cases that previously ran A08 → A10 now run A08 → A01 → A10. The direction data shows this directly: A08's outgoing share to A10 (about 55 in 100) was replaced by a share to A01 of the same size while the share to A09 stayed at about 45, and every observed A01 transition leads to A10. The relation and lag data agree: A01 occurs only in the about 21 in 100 traces that contain A08 and A10, always after A08 and before A10, and the step distance from A08 (and A09) to later activities grew by about one event, as expected when one activity is inserted on the path; A01's mid-trace position and A10's slightly later position fit the same picture. [OCC001, POS001, POS009, DIR001, DIR004, OCC007, REL007, REL009, LAG048, LAG040, LAG043]\n\nLimitations: zero participation in the earlier window shows only that A01 was not executed there, not that it was absent from the process, so an activity that was always possible but never triggered earlier cannot be ruled out — although a difference of this size (0 vs 42 of 200 traces, and a coordinated swap in A08's transitions over about 84–92 observed transitions) is larger than in about 995 in 1000 random re-splits and is unlikely to be sampling noise alone. The evidence also cannot establish whether A01 sits on every exit from A08 or only on the former A08→A10 branch, since A09 remains a direct successor of A08 while A09's own downstream distances also shifted by about one step. [OCC001, DIR004, LAG050, LAG054]\n\nOther differences: The rewiring around A03, A12 and A13 — A12 no longer routes through A03 but leads straight to A13, A03 has become less frequent and leads only to A13, and both occur earlier in traces — is a separate difference and is not part of the main hypothesis. It is consistent across direction, occurrence, position, relation and lag items, but it rests on small samples (about 16–17 outgoing A12 transitions and about 20 A03 outgoing transitions per window), so a rare routing variant appearing in one window only cannot be ruled out. The small position shifts for A07–A10 and the slightly longer self-repetition gaps of A02 and A05 are additional minor differences not tied to a specific activity by this evidence. [DIR003, DIR005, OCC003, POS011, POS012, LAG063, LAG066, LAG069, REL030, POS006, LAG001, LAG020]",
+  "case_id": "case_8d58c42097b86645",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

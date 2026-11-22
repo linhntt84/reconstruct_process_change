@@ -1,0 +1,12 @@
+### Observed differences
+
+- The largest differences are in how often activities repeat, not in whether they occur. A03 and A12 each occurred about 2.2 times per trace in the earlier window versus about 1.8 times in the later window, while the share of traces containing them barely moved (about 52 in 100 cases earlier, 50 in 100 later) [OCC003, OCC009]. A06 and A11 show the same shape: about 1.2 occurrences per trace earlier versus about 0.9 later, with participation slipping only from about 35 to about 33 in 100 cases [OCC004, OCC008].
+- A07 and A08 were essentially flat (about 1.0 occurrences per trace in both windows; participation about 52 vs 50 in 100), as was A01 (about 2.0 occurrences, present in every trace in both windows) [OCC005, OCC006, OCC001]. Small increases appeared for A02 (about 1.9 → 2.0 occurrences per trace, present in all traces) and A09 (about 0.9 → 1.0; participation about 50 → 52 in 100) [OCC002, OCC007].
+- Branch choice within the A03/A12 cycle shifted by a few percentage points between successors that were all observed in both windows: from A03, the share of outgoing transitions to A06 fell from about 25% to about 21% while the share to A08 rose from about 10% to about 15%; from A12, the share to A08 fell from about 14% to about 9% and the share to A07 rose from about 12% to about 16% [DIR003, DIR007].
+- A07 and A08 each split their outgoing transitions roughly half between A01 and the partner activity in both windows, moving about 3–4 percentage points toward A08 (from A07) and toward A01 (from A08) [DIR004, DIR005]. A02's split between A10 and A09 flipped from a slight A10 preference (about 52% vs 48%) to a slight A09 preference (about 49% vs 51%), while A01's and A11's outgoing splits changed by at most 1–3 percentage points [DIR002, DIR001, DIR006].
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. Every difference is small on its own scale and none stands out from random re-splits of the same traces — the strongest item (A06 and A11, about 1.2 vs 0.9 occurrences per trace) is matched or exceeded in about 20 of 100 random re-splits, and no item does better — while the identical profiles of pairs such as A03/A12, A06/A11 and A07/A08 mean the agreeing items reflect the same traces rather than independent confirmations [OCC004, OCC008, OCC003, OCC009].

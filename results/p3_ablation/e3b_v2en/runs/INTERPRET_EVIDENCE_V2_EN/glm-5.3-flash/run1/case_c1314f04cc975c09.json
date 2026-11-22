@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_c1314f04cc975c09.json",
+  "evidence_sha256": "38ac736cc4c50c928e946e7303570bb60de210089fda4328fc053a3aa04c4a88",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:00:34.429934+00:00",
+  "finished_at_utc": "2026-11-14T11:01:15.185048+00:00",
+  "latency_seconds": 40.75,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6456,
+    "prompt_tokens": 4369,
+    "total_tokens": 10825,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5638,
+      "text_tokens": 818
+    },
+    "cost": 0.00388335
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22863,
+  "text": "### Observed differences\n\n- In the later window, A25, A26 and A31 each occur about 3.5 times per trace on average, up from exactly once per trace before; all three still appear in every trace in both windows, so the change is in repetition, not participation. In about 68 in 100 later traces each of these activities recurs, which never happened before. [OCC001, OCC002, OCC003]\n- The routing out of A31 changed: before, every observed outgoing transition of A31 went to A20; in the later window about 71 in 100 go to A25 and about 29 in 100 still go to A20. A31 had 697 observed outgoing transitions in the later window versus 200 before, matching its higher frequency. [DIR001]\n- The relationship between A25 and A31 changed from a single fixed pass to repetition: before, A25 preceded A31 exactly once in every trace; in the later window the pair is interleaved or repeated in about 68 in 100 traces, with a single A25-before-A31 pass remaining in about 32 in 100. [REL001]\n- The once-fixed spacing dissolved: before, A31 followed A25 exactly two positions later in every trace; in the later window only about 12 in 100 pairs sit at lag 2 and about 5 in 100 at lag 5, with most pairs no longer within five positions of each other. [LAG001]\n- The average relative position of A25 and A31 barely moved (A25 about 0.41 to 0.44; A31 about 0.48 to 0.48), but their spread roughly doubled (standard deviation from about 0.06 to about 0.12), which is consistent with the activities occurring multiple times rather than being relocated. [POS001, POS002]\n- Each of the eight differences exceeds about 199 of 200 reference comparisons from random re-splits of the pooled data, so none is typical of sampling noise alone; however, the items largely describe one underlying behaviour rather than independent findings. [OCC001, OCC002, OCC003, DIR001, POS001, POS002, REL001, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a cycle from A31 back to A25 now repeats a block containing A25, A26 and A31 in most cases. Before, each of the three activities ran exactly once per trace and A31 always handed over to A20; in the later window A31 routes back to A25 in about 71 in 100 of its outgoing transitions, the three activities recur in about 68 in 100 traces at roughly 3.5 occurrences each, and the fixed two-step A25-to-A31 spacing is gone. The successor change is direct relational evidence, and the occurrence, relation and lag items all point the same way; with eight qualifying items against roughly 0.3 expected by chance in a stable process, the set of findings is not a typical chance outcome. [DIR001, REL001, OCC001, OCC002, OCC003, LAG001]\n\nLimitations: the eight items largely describe the same underlying repetition, so they are not independent confirmations, and A26 has no direct relational evidence — its place in the repeated block is inferred only from its statistics matching A25 and A31. A competing explanation the evidence cannot rule out is a sampling shift in variant frequencies: a rare looping variant could have existed before the change point without appearing in the 200 before-traces, since the earlier window shows no repetition at all. The positional items use event positions rather than clock time, and their small mean shifts do not show that any activity was moved. [OCC002, POS001, POS002, REL001]",
+  "case_id": "case_c1314f04cc975c09",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

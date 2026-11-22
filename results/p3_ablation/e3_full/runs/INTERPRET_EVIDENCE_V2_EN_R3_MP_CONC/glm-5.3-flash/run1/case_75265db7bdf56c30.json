@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_75265db7bdf56c30.json",
+  "evidence_sha256": "563fae7ecec564d13b1534bd38c2f4f8d5e414ca412df8605b7714746b40fafc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:09:25.278897+00:00",
+  "finished_at_utc": "2026-11-16T01:11:51.376152+00:00",
+  "latency_seconds": 146.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18879,
+    "prompt_tokens": 64068,
+    "total_tokens": 82947,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17570,
+      "text_tokens": 1309
+    },
+    "cost": 0.0190497
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57390,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in the earlier window (0 of 200 traces) and appears exactly once in every trace of the later window (200 of 200, mean 1.0 occurrence per trace) [OCC001].\n- In the later window A01 always sits at the last position of the trace (position 1.0 in all 200 traces, no spread); it had no observed position in the earlier window [POS001].\n- A03 closed every trace in the earlier window (last position in 200 of 200 traces, no outgoing transitions observed); in the later window A03's only observed successor is A01 (100 in 100 of its outgoing transitions) and A03 has moved to second-to-last (median position about 0.86) [DIR002, POS003].\n- Every other activity now co-occurs with A01 exactly as often as it occurs at all, and always before it: the mandatory A03, A05, A07, A08 and A09 co-occur with A01 in 100 in 100 traces, and the optional A02, A04, A06, A10 and A11 each appear together with A01 in about their own participation share (for example A02 in 49 in 100, A04 in 52 in 100) [REL002, REL004, REL006, REL007, REL008, REL001, REL003, REL005, REL009, REL010].\n- Participation of the pre-existing activities is otherwise stable: A02 in about 50 in 100 traces in both windows, A04 about 52, A10 about 50, and A05, A07, A08, A09 in all traces in both windows [OCC002, OCC003, OCC005].\n- Positions of the pre-existing activities shifted only slightly earlier (A05 median 0.67 to 0.57, A09 median 0.80 to 0.67), the rescaling expected when one event is appended at the end, and pairwise orders among them barely moved (A04 before A09 in about 52 in 100 traces in both windows) [POS005, POS009, REL028].\n- The mutually exclusive alternatives A06 and A11 traded share: A06 fell from about 25 to 21 in 100 traces and A11 rose from about 24 to 30 in 100, while A02 held at about 50 in 100; the three never occur together in either window [OCC004, OCC006, REL014, REL019, REL041].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new closing activity, A01, was appended to the end of every process execution, so that each case now ends with A03 followed by A01. In the earlier window A01 was not observed in any of 200 traces and A03 terminated every trace; in the later window A01 runs exactly once per case at the final position and is the only observed successor of A03 (100 in 100 of A03's outgoing transitions). Occurrence, positional, directional and relational indicators all show this directly and consistently, and the remaining activities keep their participation and mutual order, with position shifts of only about 0.05–0.14 that match the rescaling caused by one extra final event rather than any reordering [OCC001, POS001, DIR002, POS003, REL002, POS005, POS009, REL028]. One competing explanation remains: zero participation before only shows A01 was not recorded, so a logging or recording change that previously suppressed A01 cannot be ruled out.\n\nOther differences: the mutually exclusive alternatives A06 and A11 exchanged a modest share of cases (A06 about 25 to 21 in 100, A11 about 24 to 30 in 100, A02 stable at about 50 in 100); a shift of this size (roughly 9 and 12 cases out of 200) could also arise from sampling between two 200-trace windows, and the related successor and lag wobbles around A06 and A11 rest on small observation counts of roughly 10–60 cases [OCC004, OCC006, REL014, REL019, REL041, DIR005, LAG027].",
+  "case_id": "case_75265db7bdf56c30",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

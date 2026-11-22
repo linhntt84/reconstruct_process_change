@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_a89f13ae9dd1ca91.json",
+  "evidence_sha256": "4fefc5a03dfc9ae677de341c036200b36ce6f2c9f17f9252e9857391a0bb67b9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:04:57.311406+00:00",
+  "finished_at_utc": "2026-11-15T12:06:02.459655+00:00",
+  "latency_seconds": 65.15,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8771,
+    "prompt_tokens": 13016,
+    "total_tokens": 21787,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7738,
+      "text_tokens": 1033
+    },
+    "cost": 0.0063379
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28781,
+  "text": "### Observed differences\n\n- In the earlier window, A21, A22 and A23 each ran exactly once in every one of the 200 cases; in the later window each appears in only about 1 in 200 cases. [OCC004, OCC005, OCC006]\n- A14, A15 and A16 were not observed at all in the earlier window; in the later window A14 runs in about 30 in 100 cases, A15 in about 33 in 100 and A16 in about 37 in 100, once per case where present. Their combined participation (about 99.5 in 100) is consistent with exactly one of the three running in nearly every case. [OCC001, OCC002, OCC003]\n- A39's outgoing transitions moved from a roughly even split over A23, A22 and A21 (about 35, 30 and 35 in 100) to A16 (about 37 in 100), A15 (about 33 in 100) and A14 (about 30 in 100); this comparison is backed by all 200 traces in both windows. [DIR007]\n- When they occur, A14, A15 and A16 lead exclusively to A24. [DIR001, DIR002, DIR003]\n- The distance from A39 to A24 was always 4 steps in the earlier window and is 2 steps in about 199 of 200 later cases, so two fewer events now sit between them. [LAG010]\n- A24 now occurs slightly earlier in the case (mean position about 0.43 to about 0.39) and A39 slightly later (about 0.31 to about 0.33); A40's position is essentially unchanged (about 0.85 in both windows). [POS007, POS008, POS009]\n- The after-window routing and lag profiles of A21, A22 and A23 each rest on a single trace and are too weak to characterise any remaining behaviour of the old block. [DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A39 and A24 was restructured: earlier it consisted of the three activities A21, A22 and A23, each executed once per case in varying order, while in the later window it consists of exactly one activity chosen per case from A14, A15 and A16 (roughly 30, 33 and 37 in 100), which then leads on to A24. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR007, LAG010] Supporting signs: the participation swap is near-complete (200 of 200 to about 1 of 200, and 0 to 60–74 of 200); A39 now routes into the new trio and the trio routes exclusively to A24, with full support on the A39 comparison; the A39-to-A24 distance shortened from 4 to 2 steps in almost all cases, confirming the segment shrank by two events; and 32 qualifying items against roughly 0.44 expected without change means the set of differences is far beyond what random re-splits of stable traces produce. [DIR007, LAG010, OCC001, OCC002, OCC003] Because the new activities were absent earlier and the old ones are nearly absent later, this is a replacement of one block by another, not a re-weighting of shares between existing paths. [OCC001, OCC004]\n\nLimitations: the anonymous activity codes cannot show whether A14, A15 and A16 are genuinely new activities or relabelled successors of A21, A22 and A23; the single later trace still containing A21, A22 and A23 leaves open whether the old block can still run occasionally; and the mutual exclusivity of the new trio is inferred from their shares summing to about one rather than observed through a direct relation indicator. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]",
+  "case_id": "case_a89f13ae9dd1ca91",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

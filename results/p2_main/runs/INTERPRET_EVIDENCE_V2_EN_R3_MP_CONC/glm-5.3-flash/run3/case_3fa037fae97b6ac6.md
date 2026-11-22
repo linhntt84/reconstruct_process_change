@@ -1,0 +1,19 @@
+### Observed differences
+
+- Activity A01 was completely absent in the earlier window (0 of 200 traces) and appears in the later window exactly once in every trace (200 of 200, mean 1.0 occurrence per trace, no repeats), at an early position: median at about 0.2 of the trace length, middle half of positions between roughly 0.11 and 0.4. [OCC001, POS001]
+- In the later window A01 has a spread of successors: about 30 in 100 of its outgoing transitions go to A02 and about 27 to A12, with smaller shares to A04 (~14), A05 (~11) and A03 (~9); in the earlier window A01 had no observed outgoing transitions because it never occurred. [DIR001]
+- New transitions into A01 appeared: about 32 in 100 of A02's outgoing transitions now go to A01 (A02→A12 fell from about 40 to 25 in 100, A02→A05 from 23 to 12); about 26 in 100 of A06's outgoing transitions go to A01 (A06→A02 fell from about 45 to 27); about 30 in 100 of A12's outgoing transitions go to A01 (A12→A02 fell from about 39 to 28). [DIR002, DIR003, DIR004]
+- Pairs involving A01 changed from "never together" to "always together": A01–A04 and A01–A05 co-occurred in 0 of 200 traces before and in 200 of 200 after, always with A01 first; A01–A02 and A01–A12 now always co-occur in mixed order (about 50/50 and 46/54); A01–A06 moved from A06 alone in about 48 in 100 traces (both absent in about 52) to co-occurrence in about 59 in 100 and A01 alone in about 41, again in mixed order. [REL001, REL002, REL003, REL004, REL005]
+- Downstream displacement is visible: A05 now occurs at later positions (mean 0.63 → 0.73; upper quartile 0.83 → 1.0) and A12 slightly later (mean 0.20 → 0.24); step distances stretched, e.g. A06→A05 at distance 5 rose from 0 to about 37 in 100, and immediate A02→A12 succession fell from about 82 to 53 in 100. [POS002, POS003, LAG006, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that activity A01 was added to the process and is now executed exactly once in every case, placed early in the flow (around the first quarter of the trace), after A02 and A12 in varying order and always before A04 and A05; the later positions of A05 and A12 and the stretched step distances to A04 and A05 follow from this insertion. [OCC001, POS001, REL002, REL003, REL005, DIR002, POS002, LAG006]
+
+The screening found 23 qualifying items against fewer than 1 expected by chance if nothing had changed — roughly 100 times the expectation — so the ensemble cannot be explained as random sampling; the addition itself is shown directly by participation (0 → 200 of 200 traces), by the relational shift from never co-occurring to always co-occurring with a fixed order before A04 and A05, and by the new transitions into A01 from A02, A06 and A12. [OCC001, REL002, REL003, DIR002, DIR003, DIR004]
+
+Limitations: the exact insertion point is not pinned to a single predecessor, since A01 follows A02, A06 or A12 with mixed order relative to A02 and A12 (about 50/50 and 46/54), and the many distance items largely restate the same insertion rather than confirming it independently. An important competing explanation the evidence cannot rule out is that A01 existed in the earlier window but was not observed under this label, since zero participation only means the activity was not seen; the 0-of-200 versus 200-of-200 contrast makes a pure sampling explanation unlikely, but it cannot be excluded. [REL001, REL005, LAG003]
+
+Other differences: none beyond the above — the position and distance shifts are downstream consequences of the same insertion rather than separate changes. [POS002, POS003, LAG003, LAG006]

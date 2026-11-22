@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_178c7ce208cb2c93.json",
+  "evidence_sha256": "582a6cd063261034d1ef7251ef6657228ca6051f61b4a6a7b3de78885e6c0e22",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:48:50.129556+00:00",
+  "finished_at_utc": "2026-11-15T13:50:11.287210+00:00",
+  "latency_seconds": 81.16,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11516,
+    "prompt_tokens": 6496,
+    "total_tokens": 18012,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10440,
+      "text_tokens": 1076
+    },
+    "cost": 0.0067324
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36604,
+  "text": "### Observed differences\n\n- Activity A01 was completely absent in the earlier window (0 of 200 traces) and occurs exactly once in every trace of the later window (200 of 200; mean 1.0 occurrence per trace). [OCC001]\n- In the earlier window, each trace contained A02, A03 and A04 once, in one of two orders: A04 → A02 → A03 in about 78 in 100 cases, and A02 → A04 → A03 in about 22 in 100, with A02 (or A04) leading directly to A03. [DIR002, DIR003, REL004, LAG001, LAG002]\n- In the later window, the same two orders of A02 and A04 persist (about 76 vs 24 in 100), but A01 now sits between them and A03: A02 leads to A01 in about 76 in 100 of its outgoing transitions (previously about 78 in 100 led directly to A03), A04 leads to A01 in about 24 in 100 (previously about 22 in 100 to A03), and A01's only observed successor is A03. [DIR001, DIR002, DIR003, REL004]\n- The relationship between A01 and the other three activities flipped completely: before, A01 never co-occurred with A02, A03 or A04 (in 100% of traces only the other activity was present); in the later window, A01 co-occurs with each of them in 100% of traces, always after A02, after A04, and before A03. [REL001, REL002, REL003]\n- The distance to A03 grew by exactly one step: A02 → A03 moved from one step apart in about 78 in 100 cases (two steps in the rest) to two steps in about 76 in 100 (three steps in the rest); A04 → A03 similarly shifted from one–two steps to two–three steps. [LAG001, LAG002]\n- A01 always occupies the same position, about two-thirds through the trace (third of four events); A02's median position moved from 0.5 to 0.33, which is consistent with the trace growing by one event rather than with A02 itself being moved. [POS001, POS002]\n- Essentially unchanged: the split between the two A02/A04 orders (A04 first in about 78 in 100 before, 76 in 100 after — a difference well within random-split variation) and A04's position (mean 0.11 vs 0.08). [REL004, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added to the process and placed between the A02/A04 stage and A03, so that A03 is now always preceded by A01. Before, A02 led directly to A03 in about 78 in 100 cases (or via A04 in the remaining ~22 in 100); in the later window, A02 leads to A01 in about 76 in 100 of its transitions and A04 to A01 in about 24 in 100, with A01 leading only to A03. This is shown directly by the relational and successor evidence: the pairs (A01,A02), (A01,A03) and (A01,A04) change from never executing together to always executing together in the fixed orders A02 → A01 → A03 and A04 → A01, and the A02–A03 and A04–A03 distances each increase by exactly one step. The participation change (0 of 200 vs 200 of 200 traces, exactly once each) and the coherence of all five indicator families around one structure make sampling variation an unlikely explanation; ten of the twelve items show differences larger than in about 995 of 1000 random re-splits. Limitations: no screening baseline was provided to compare the number of qualifying items against the chance expectation, positions reflect order within the trace rather than clock time, and the finite windows cannot fully exclude the competing explanation that A01 existed before but fell below the observation threshold in the earlier sample — implausible given its presence in every later trace, but not strictly ruled out. [OCC001, DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002]\n\nOther differences: none beyond the insertion itself — the choice between the two orders of A02 and A04 persisted with a nearly identical split, and A04's position barely moved. [REL004, POS003]",
+  "case_id": "case_178c7ce208cb2c93",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

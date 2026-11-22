@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "80abad09918a0f71c299c778feef0272b2b6feaddd58101795240d7f44bc6ed9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:59:41.275206+00:00",
+  "finished_at_utc": "2026-11-15T08:04:35.193817+00:00",
+  "latency_seconds": 293.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 42638,
+    "prompt_tokens": 75986,
+    "total_tokens": 118624,
+    "completion_tokens_details": {
+      "reasoning_tokens": 39574,
+      "text_tokens": 3064
+    },
+    "cost": 0.03271689999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 116849,
+  "text": "### Observed differences\n\n- The clearest difference concerns a one-of-three choice. In the earlier window, A29 was followed directly by exactly one of A19, A21 and A24 (about 38 in 100 of A29's outgoing transitions went to A21, 31 to A19 and 31 to A24), and each of the three then led to A30 (97–99 in 100). In the later window, A29 instead leads into A20, A22 and A23 (about 30–34 in 100 each), while A40 leads directly into A19, A21, A24 or A02 (together about 98 in 100 of A40's outgoing transitions), and each of A19, A21 and A24 now leads to A25 (95–100 in 100). [DIR029, DIR040, DIR019, DIR021, DIR024]\n\n- The three-activity block moved the opposite way. A20, A22 and A23 each occurred once in every trace in both windows, without a fixed order among themselves in either window. Earlier they followed A40 directly (about 94 in 100 of A40's outgoing transitions) and preceded A25 (98–99 in 100); in the later window A29 precedes them (about 98 in 100) and they precede A30 (about 99 in 100). [OCC020, OCC022, OCC023, DIR040, REL021, REL024, REL025, REL035, REL038, REL043, REL026]\n\n- A02 took on a new optional role. Its participation rose from about 8 to about 34 in 100 traces; earlier its few occurrences were scattered (outgoing transitions spread over many activities, largest share about 19 in 100), whereas in the later window it typically sits directly after A40 (62 traces at one step's distance) and leads to one of A19/A21/A24 in about 89 in 100 of its outgoing transitions, two steps before A25. [OCC002, DIR002, LAG020, LAG001, REL010]\n\n- Positions and step distances moved consistently with this exchange: the mean relative position of A19/A21/A24 moved from about 0.67–0.69 to about 0.35–0.37 and that of A20/A22/A23 from about 0.39–0.40 to about 0.64, while A40 (0.32 → 0.31) and A30 (0.72 → 0.71) stayed in place; the A40→A25 distance shortened (usually 4 steps earlier, 2–3 steps later) and the A29→A30 distance lengthened (2 → 4 steps). [POS002, POS003, POS004, POS005, POS006, POS007, POS010, POS011, LAG022, LAG017]\n\n- Within the relocated choice, selection shifted toward A19: it ran in 31 vs 44 in 100 traces, while A21 ran in 38 vs 28.5 and A24 in 31.5 vs 29; the three remained mutually exclusive (pairwise co-occurrence about 0 in both windows). [OCC019, OCC021, OCC024, REL012, REL015, REL030]\n\n- The chain A25 → A32/A33 (in either order) → A26 → A27 → A28 → A29 behaved the same in both windows. [DIR025, DIR026, DIR027, DIR028, DIR032]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two segments appear in exchanged positions around the unchanged A25–A29 chain, and that A02 runs as a new optional step before the moved choice: in the earlier window the flow after A40 ran A20/A22/A23 (all three, in varying order), then A25 through A29, then exactly one of A19/A21/A24, then A30; in the later window it runs one of A19/A21/A24 — preceded by A02 in roughly one case in three — then A25 through A29, then A20/A22/A23, then A30. [DIR040, DIR029, DIR019, DIR021, DIR024, DIR002, REL011, REL024, REL025, REL038, LAG016, LAG022]\n\nThis is shown directly by relational and successor evidence, not by frequencies alone: the outgoing profiles of the boundary activities flipped almost completely (A29 from the choice activities to the three-activity block, A40 the other way, A19/A21/A24 from A30 to A25), about thirty relation items consistently reverse the order between the two segments and the chain while each segment's relations to A40 and A30 stay fixed (for example A20 before A25 in 98 of 100 earlier traces versus A25 before A20 in 100 of 100 later traces), and position and step-distance measures move the same way. Participation of every mandatory activity stayed at 100 in 100 in both windows and the choice stayed mutually exclusive, so this is a relocation of existing segments rather than activities appearing, disappearing or changing status; flips of this near-deterministic size (empirical strength 0.995) are not produced by random re-splits of these windows. The many agreeing items largely mirror this one rearrangement rather than constituting independent confirmations. [DIR029, DIR040, DIR019, DIR021, DIR024, REL011, REL019, REL018, REL026, REL024, OCC020, OCC022, OCC023, REL012, REL015, REL030]\n\nThe evidence cannot establish whether the two segment moves together with A02's new role were one coordinated rearrangement or separate changes, and A02's earlier behaviour rests on only 16 traces, so its previous role is weakly characterized; no chance-expectation baseline is reported for the screening, though the magnitude of the flips makes sampling noise implausible. [OCC002, DIR002]\n\nOther differences:\n\n- The rework cycle around A41–A44 repeated more often in the later window: A41 rose from 1.51 to 1.77 mean occurrences per trace, A43 from 0.69 to 0.92, A44 from 0.70 to 0.92, and A44 returned to A41 in about 46 vs 31 in 100 of its outgoing transitions. [OCC037, OCC039, OCC040, DIR044]\n- A few rarely observed activities shifted participation (A10 13 → 5.5 in 100 traces, A06 9 → 4, A08 3.5 → 7.5, A18 23 → 28), and A15/A16 repeated slightly less often (means 1.70 → 1.61 and 1.69 → 1.61). [OCC010, OCC006, OCC008, OCC018, OCC015, OCC016]",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

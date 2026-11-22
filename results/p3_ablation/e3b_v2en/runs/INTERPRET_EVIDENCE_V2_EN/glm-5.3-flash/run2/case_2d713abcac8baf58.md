@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the later window, A26, A27 and A28 each occur in essentially every trace (200 of 200, about once per trace with almost no repetition); in the earlier window none of the three was observed (0 of 200). [OCC004, OCC005, OCC006]
+- A19, A20 and A21 show the reverse: each previously ran in about 30–36% of traces (roughly 60–72 of 200) and pairs of them almost never co-occurred (at most about 1 in 200), while in the later window each appears in only 1–2 of 200 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL008]
+- A44's routing moved with them: before, about 85% of its outgoing transitions went to A19 (~31%), A21 (~30%) and A20 (~25%); after, about 85% go to A26 (~31%), A27 (~27%) and A28 (~26%). [DIR007]
+- In the later window, A44 precedes each of A26, A27 and A28 in about 98–99% of traces, and each of the three precedes A29 in about 98–99% of traces; before, A44 instead preceded A19/A20/A21, and A29 followed them (in roughly 30–36% of traces). [REL021, REL022, REL024, REL025, REL026, REL027, REL006, REL012, REL017, REL007, REL013, REL018]
+- A26, A27 and A28 always co-occur in the later window but with no stable order between each pair (each direction roughly 50 in 100, about 1–2% interleaved or repeated), and each sends most of its outgoing flow to the other two and to A29 (about 30–36% per target). [REL019, REL020, REL023, DIR004, DIR005, DIR006]
+- The observed distance from A44 to A29 grows from mostly 2 steps (about 84 in 100 earlier) to mostly 4 steps (about 82 in 100 later), and A29 sits slightly later within traces (mean relative position about 0.40 vs 0.44). [LAG001, POS007]
+- The new activities occupy a similar relative position in the trace (mean about 0.38) to where A19/A20/A21 used to occur (about 0.37). [POS004, POS005, POS006, POS001, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment between A44 and A29 was restructured: in the earlier window each trace executed exactly one of A19, A20 or A21 there (mutually exclusive alternatives, about 30–36% each), whereas in the later window A19/A20/A21 are almost never observed and A26, A27 and A28 instead all execute in every trace in that segment, in varying order. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL019]
+
+The support is direct and consistent: A44 now feeds the new trio instead of the old one, A44 precedes each of A26/A27/A28 and each of them precedes A29 in about 98–99% of later traces, the A44→A29 distance shifted from mostly 2 to mostly 4 steps (consistent with three activities now running between them), and the new activities occupy much the same relative trace position (about 0.38) that A19/A20/A21 held (about 0.37). [DIR007, REL021, REL022, REL024, REL025, REL026, REL027, LAG001, POS004, POS005, POS006, POS001, POS002, POS003]
+
+The volume of qualifying items (48, against roughly 0.65 expected if nothing had changed) is far beyond what an unchanged process typically produces, so chance cannot account for the pattern as a whole — though many items describe the same underlying trace behaviour and are not independent confirmations. [OCC004, OCC005, OCC006, DIR007, REL019, LAG001]
+
+Limitations: the near-50/50 order between each pair of A26/A27/A28 (with about 1–2% interleaving) cannot distinguish an unordered or parallel block from a sequence whose order varies case by case, and the old A19/A20/A21 path may still exist but be taken rarely (near-zero participation only means rarely observed, at 1–2 of 200 traces). An important competing explanation the evidence cannot rule out is that both behaviours pre-existed as variants and only their mix shifted between the windows, although a swing from 0/200 to 200/200 participation is difficult to attribute to finite-sample variation alone; the apparent new successors of A19/A20/A21 in the later window rest on only 1–2 observations each and should not be read as new preferred edges. [REL019, REL020, REL023, OCC001, OCC002, OCC003, DIR001, DIR002, DIR003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_759dc5348bdecf5d.json",
+  "evidence_sha256": "f81ea25c3e647df54c961197827db518a9b76d038392ae03a8c6b3b8065fff52",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:16:33.189911+00:00",
+  "finished_at_utc": "2026-11-15T14:18:08.183419+00:00",
+  "latency_seconds": 94.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12419,
+    "prompt_tokens": 20589,
+    "total_tokens": 33008,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10784,
+      "text_tokens": 1635
+    },
+    "cost": 0.00929785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36500,
+  "text": "### Observed differences\n\n- Two activities disappeared from the later window. Earlier, A03 appeared in about 29 in 100 traces (about 1.2 occurrences per trace) and A11 in about 20 in 100 (about 0.6 per trace); in the later window neither appears in any of the 200 traces. [OCC003, OCC009, POS001, POS003]\n- Their connections disappeared with them. Earlier, A03's outgoing transitions went mainly to A11 (about 44%), A19 (about 28%) and A12 (about 22%), and A11 led back to A03 in about 97% of its outgoing transitions; in the later window neither activity shows any outgoing transition. [DIR003, DIR006]\n- Predecessors now route around them. Earlier, A06 sent about 86% of its outgoing transitions to A03 and about 7% to A11; in the later window it sends none to either, instead about 58% to A19 and 37% to A12. A02 earlier sent about 9% of its outgoing transitions to A03; in the later window that share is zero, A02 → A04 rose from about 46% to 57%, and small direct edges to A12 and A19 (about 2% each) appeared. [DIR005, DIR002]\n- The tightly coupled group A06/A12/A19, which earlier always co-occurred with A03 (in about 29 in 100 traces) and with A11 (about 20 in 100), now runs without them: co-occurrence with A03/A11 is zero, and the group appears in about 22 in 100 traces (43 of 200, down from 57), with mean occurrences per trace down from about 0.61 to 0.39 and repeat support halved (about 0.18 to 0.10). [OCC005, OCC010, OCC016, REL001, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]\n- Spacing within the remaining group compressed. A06 → A12 pairs now sit 1–2 positions apart in about 40 in 100 observed cases (about 18 in 100 earlier), A06 → A19 within 1 position in about 24 in 100 (about 2 in 100 before), and self-repeats of A12 and A19 moved from typically 5 positions apart to 3–4. The group members also appear earlier in traces (mean relative position for A12 about 0.33 → 0.23, A19 about 0.32 → 0.22). These lag/position rests are based on only about 19–50 paired observations each, so they are indicative rather than firm. [LAG001, LAG002, LAG003, LAG005, LAG009, POS002, POS004, POS005]\n- Minor shifts elsewhere: A02 occurred slightly less often per trace (about 1.12 → 0.91, participation unchanged at about 52 in 100), A01 slipped from about 0.96 to 0.87 occurrences per trace with its outgoing split moving a few points from A07 to A08, and A09/A18 and A14/A15 show occurrence increases of about 0.05 per trace — all within the range random re-splits produce. [OCC001, OCC002, OCC007, OCC012, OCC015, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the iterative segment around A03 and A11 was removed or bypassed in the later window. Earlier, A03 and A11 formed a cycle (A03 → A11 in about 44% of A03's outgoing transitions, A11 → A03 in about 97% of its), fed by A06 (about 86% of whose outgoing transitions went to A03) and reachable from A02 (about 9%); in the later window A03 and A11 were not observed at all (0 of 200 traces each, no outgoing transitions), A06 leads directly to A19 and A12, and A02 leads mainly to A04 with small direct edges to A12/A19 — the former entry points now connect straight to the activities that previously followed the loop. [OCC003, OCC009, DIR002, DIR003, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL008, REL009]\n\nConsistently with this, the remaining group A06/A12/A19 runs in fewer traces (about 22 in 100 vs 29 in 100), repeats less often, is spaced more tightly (A06 → A12/A19 typically 1–2 positions apart; self-repeats 3–4 instead of 5), and A02 occurs slightly less often per trace (about 1.12 → 0.91). Because A03 and A11 are absent from the later window, this reads as a removal or bypass of activities rather than a re-weighting of shares between existing alternatives. [OCC002, OCC005, OCC010, OCC016, LAG001, LAG002, LAG003, LAG005, LAG009, POS002, POS004, POS005]\n\nLimitations: the evidence cannot rule out that the A03/A11 behaviour continues under other activity codes, since zero participation only means the activities were not observed; no screening baseline is included, so the comparison against chance rests on the size of the shifts (57 and 39 of 200 traces down to 0) rather than a formal expectation; and the reduced frequency of the A06/A12/A19 group could partly be an independent change rather than purely a consequence of the loop's removal. [OCC003, OCC009, OCC005, OCC010, OCC016]\n\nOther differences: small, noise-level shifts elsewhere — A01 occurred slightly less often per trace with its outgoing split moving a few points from A07 to A08, and A09/A18 and A14/A15 show slight occurrence increases; their empirical strengths (about 0.17–0.73) are within the range random re-splits produce. [OCC001, OCC004, OCC007, OCC012, OCC015, DIR001, DIR008, DIR009]",
+  "case_id": "case_759dc5348bdecf5d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

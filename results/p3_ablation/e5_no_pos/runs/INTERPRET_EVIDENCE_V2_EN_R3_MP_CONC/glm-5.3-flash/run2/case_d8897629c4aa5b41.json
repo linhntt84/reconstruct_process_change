@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "a84157d488902aed4447fb8ec583e1dd2e057df9629c2fd31b73b224f5c7fe69",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:12:33.616912+00:00",
+  "finished_at_utc": "2026-11-15T06:14:02.514881+00:00",
+  "latency_seconds": 88.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13175,
+    "prompt_tokens": 10325,
+    "total_tokens": 23500,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11918,
+      "text_tokens": 1257
+    },
+    "cost": 0.00813625
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40852,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained the same consecutive fragment: A22 was always followed directly by A23, A23 always directly by A24, and A22 and A24 were therefore always exactly two steps apart. [DIR004, DIR005, LAG001, LAG002, LAG003]\n- In the later window, three activities that were not observed at all before (0 of 200 traces) now run in a large share of cases: A14 in about 29 in 100 traces, A15 in about 41 in 100, and A20 in about 30 in 100, each at most once per case. [OCC001, OCC002, OCC003]\n- In the later window, these three are strict alternatives: no trace contains two of them together, and taken together they run in about 199 of 200 after-traces, so exactly one of the three executes in almost every case. [REL001, REL002, REL006, OCC001, OCC002, OCC003, LAG002]\n- A22, A23 and A24 still occur in every trace in both windows, but their successors changed: earlier, A22 always led to A23 and A23 always to A24; in the later window A22 leads directly to A23 in about 44 in 100 traces and to A15, A20 or A14 in about 24, 17 and 16 in 100, while A23 leads directly to A24 in about 57 in 100 traces and to A15, A14 or A20 in about 18, 14 and 13 in 100. [DIR004, DIR005, REL003]\n- Each new activity is followed by A23 in about 53–58 in 100 of its occurrences and by A24 in the remaining about 42–47 in 100. [DIR001, DIR002, DIR003]\n- The new activities sit inside the old fragment: A22 always comes before whichever of them runs, that activity always comes before A24, and its position relative to A23 is mixed (for example, A14 precedes A23 in about 16 in 100 traces and follows it in about 14 in 100). [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]\n- Distances match: A22→A23, previously always adjacent, is now two steps apart in about 56 in 100 traces; A23→A24 is two steps apart in about 44 in 100; and A22→A24, previously always two steps, is now three steps in about 199 of 200 after-traces, meaning exactly one event lies between them in almost every case. [LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural addition: in the later window, almost every case (about 199 in 200) executes exactly one of three activities that were not observed before — A14, A15 or A20, acting as mutually exclusive alternatives — inside the previously fixed consecutive sequence A22 → A23 → A24, in about 56 in 100 of these cases between A22 and A23 and in about 44 in 100 between A23 and A24, with A22 always before and A24 always after the inserted activity. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003]\n\nThe support is direct and consistent: 23 control-flow items qualified where only about 0.37 would be expected by chance for the 75 tested units, so the ensemble is far beyond what random re-splits of an unchanged process produce; the placement is established by relational and distance evidence rather than frequencies alone; and the successor redistribution of A22 and A23, the pairwise orders and the lag shifts all agree numerically with one and the same structure. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003]\n\nLimitations: zero participation in the earlier window means only that A14, A15 and A20 were not observed in those 200 traces — they could have existed at a very low frequency that the before-window failed to sample, and the evidence cannot show what determines the choice among the three activities or between the two positions. The many relation items also largely re-describe the same insertion behaviour and are not independent confirmations. [OCC001, OCC002, OCC003]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

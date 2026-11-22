@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_178c7ce208cb2c93.json",
+  "evidence_sha256": "582a6cd063261034d1ef7251ef6657228ca6051f61b4a6a7b3de78885e6c0e22",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:00:31.988923+00:00",
+  "finished_at_utc": "2026-11-16T01:01:43.802679+00:00",
+  "latency_seconds": 71.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7787,
+    "prompt_tokens": 6496,
+    "total_tokens": 14283,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6973,
+      "text_tokens": 814
+    },
+    "cost": 0.0048679
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24872,
+  "text": "### Observed differences\n\n- Activity A01 was absent from the earlier window (0 of 200 traces) and occurs in every trace of the later window (200 of 200), exactly once per trace and always at the same event position — the third of four events (normalized mean about 0.67, no spread). [OCC001, POS001]\n- In the earlier window, A02's outgoing transitions led to A03 in about 78 in 100 cases and to A04 in the remainder; in the later window they lead to A01 in about 76 in 100 and to A04 in about 24 in 100, with no direct A02→A03 transition observed. A04 shows the mirror image: earlier to A02 (about 78 in 100) and A03 (about 23 in 100); later to A02 (about 76 in 100) and A01 (about 24 in 100). A01's only observed successor is A03. [DIR001, DIR002, DIR003]\n- Earlier, A01 never co-occurred with A02, A03 or A04; later it co-occurs with each of them in all traces, always after A02 and after A04, and always before A03. [REL001, REL002, REL003]\n- The step distance from the opening pair to A03 grew by exactly one: A02 reached A03 at lag 1 in about 78 in 100 traces earlier versus lag 2 in about 76 in 100 later; A04 reached A03 at lag 2 in about 78 in 100 earlier versus lag 3 in about 76 in 100 later. [LAG001, LAG002]\n- The order of the opening pair itself is essentially unchanged: A04 precedes A02 in about 78 in 100 traces earlier and about 76 in 100 later, and A04's position shows only a marginal shift. [REL004, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports that A01 became a mandatory step inserted between the opening pair and A03. In the earlier window, traces ran A04→A02→A03 (about 78 in 100) or A02→A04→A03 (about 23 in 100); in the later window the same opening pair is kept, but A03 is now reached only through A01, which sits as the third event in every trace. Supporting signs: A01's participation went from 0 to 100 in 100 traces with exactly one occurrence at a fixed position; its sole observed successor is A03; the direct A02→A03 and A04→A03 transitions disappeared in favour of transitions to A01; both A02→A03 and A04→A03 distances increased by exactly one step; and the A02/A04 order split stayed essentially the same, so the opening structure was preserved and only the step before A03 changed. [OCC001, POS001, DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002, REL004]\n\nLimitations: positions are event positions, not clock time, so no timing conclusion can be drawn; and the evidence cannot rule out that A01 was already executed in the earlier window but only became recorded in the later one, which would look identical here. Other differences: none beyond the insertion — the remaining items (A02/A04 mutual order, A04's position) indicate stability consistent with this being the only behavioural change. [POS001, OCC001, REL004, POS003]",
+  "case_id": "case_178c7ce208cb2c93",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_dbb69f846de28a14.json",
+  "evidence_sha256": "2d44375ae9bd8f8d2f0e166cbf7051720b23ab1f62bb8630e9aaf4eb620e7b5d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:09:10.241211+00:00",
+  "finished_at_utc": "2026-11-15T07:11:22.255226+00:00",
+  "latency_seconds": 132.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19312,
+    "prompt_tokens": 20127,
+    "total_tokens": 39439,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17530,
+      "text_tokens": 1782
+    },
+    "cost": 0.01267505
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57254,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained all of A25, A26, A27, A28, A31, A36, A37 and A42 in a fixed chain: A25 first, then A36/A37/A42 in varying order, then A28, A26, A27 and A31; each of these ordering relations held in about 97–100 in 100 traces. [REL001, REL005, REL006, REL009, REL010, REL014, REL017, REL020]\n- In the later window, A25, A26, A28 and A31 still occur in every trace, but A27 occurs in only about 54 in 100 traces, and A36, A37 and A42 in about 47–48 in 100, down from 100 in 100. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS004, POS005]\n- A27 and each of A36/A37/A42, which co-occurred in every earlier trace, now almost never run together (about 1 in 100 traces or fewer), while A36, A37 and A42 still always appear jointly when they appear (together in about 47 in 100 traces, neither in about 52 in 100). [REL011, REL012, REL013, REL020, REL021, REL022]\n- Routing changed accordingly: A25, which earlier spread its outgoing transitions roughly equally over A42, A36 and A37 (about 34/32/30 in 100), now leads to A28 in about 97 in 100; A26, which earlier led to A27 in about 99 in 100, now leads to A27 in about 52 in 100 and to A36/A37/A42 in about 13–16 in 100 each. [DIR001, DIR002]\n- The group's relations flipped: earlier, A36/A37/A42 each ran before A28, A26 and A27 in about 99–100 in 100 of the relevant traces; in the later window A28 and A26 precede them (about 45–46 in 100) while they still precede A31 (about 46 in 100). [REL006, REL007, REL008, REL014, REL015, REL016, REL017, REL018, REL019]\n- The group's exits moved from A28 to A31 (about 26–35 in 100 of each member's outgoing transitions in the later window, versus about 31–35 in 100 to A28 earlier, with A28 now about 1 in 100), and mean relative positions shifted: A36/A37/A42 from about 0.40 to about 0.57, A28 from about 0.46 to 0.39, A26 from about 0.60 to 0.54; A27 kept its place between A26 and A31 in the traces where it runs. [DIR003, DIR004, DIR005, POS002, POS004, POS006, POS007, POS008, REL005, REL010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a choice was introduced between A27 and the group A36/A37/A42, and that the group moved later in the flow: in the earlier window every case executed A25, then A36/A37/A42 in varying order, then A28, A26, A27 and A31; in the later window, cases execute A25, A28 and A26 in every trace and then take exactly one of two mutually exclusive branches — A27 alone, or the group A36/A37/A42 followed by A31 — each in roughly half of the traces. [OCC001, OCC002, OCC003, OCC004, REL011, REL012, REL013, REL020, DIR001, DIR002, REL006, REL014, REL017]\n\nThis is shown directly by relational and routing evidence, not by frequencies alone: co-occurrence of A27 with each group member fell from 100% to about 0–1%, the group's order relative to A26 and A28 flipped, and the successor profiles of A25 and A26 changed; participation, direction and position items all agree, 39 control-flow items qualified where about 0.6 would be expected without change (many times that expectation), and every item's difference exceeds about 995 of 1,000 random re-splits. These items describe one coherent underlying difference rather than independent confirmations. The evidence cannot rule out that the two windows sample two differently composed case populations (a case-mix difference) rather than a single modification, and positions are event-index based, so the relocation concerns order, not clock time. [REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, DIR001, DIR002, POS004, POS006, POS007, POS008]\n\nOther differences: a few rare edges (about 1–2 in 100 of the source's outgoing transitions) appear only in the later window — from A36 to A13/A35, from A37 to A09/A10/A12 and from A42 to A07/A45 — and A25's mean position is slightly later (about 0.34 to 0.37) while A27's and A31's are slightly earlier; these are minor and consistent with the branch restructuring above. [DIR003, DIR004, DIR005, POS001, POS003, POS005]",
+  "case_id": "case_dbb69f846de28a14",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

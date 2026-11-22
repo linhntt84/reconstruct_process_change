@@ -1,0 +1,9 @@
+### Observed differences
+
+For activities A01, A03, A13, A14, A17, and A22, the distribution of assignments across resources changed between the windows. In the later window, previously frequent resources (e.g., User_49) dropped sharply or disappeared (e.g., from about 11% to 0% for A01, from 10% to 0% for A03, from 8% to 0% for A13/A14, from 8.5% to 0% for A17, from 9.6% to 0% for A22). New resources (e.g., User_3, User_32) appeared with notable shares (e.g., User_3 reached about 8–9% for all six activities; User_32 reached about 6–9%). The share of "OTHER" (unlisted resources) increased by about 6 to 11 percentage points across these activities (e.g., from 37.5% to 47.5% for A01, from 39% to 48.2% for A03, from 44% to 50.6% for A13/A14, from 41.9% to 50% for A17, from 27.9% to 38.8% for A22). [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in resource allocation for activities A01, A03, A13, A14, A17, and A22. In the later window, these activities were assigned to a different set of resources: previously frequent resources (e.g., User_49) were used much less or not at all, while new resources (e.g., User_3, User_32) took on a substantial share, and the overall spread across resources increased (higher "OTHER" share). This pattern is consistent across all six activities and far exceeds the number of items expected by chance (6 items vs 0.004 expected for the resource family). A competing explanation that cannot be ruled out is that the resource pool itself changed (e.g., new staff joined and others left), which would produce the same observed redistribution without a change in the process logic.

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_e73af4b6228f3807.json",
+  "evidence_sha256": "f1cbd3a023c7e64cb53f9cfb6284f2e8f8f2d73f85407dd6a6fcd23a735d8ac8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:07:15.293015+00:00",
+  "finished_at_utc": "2026-11-16T02:09:35.856530+00:00",
+  "latency_seconds": 140.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16162,
+    "prompt_tokens": 40421,
+    "total_tokens": 56583,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14770,
+      "text_tokens": 1392
+    },
+    "cost": 0.01414415
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49386,
+  "text": "### Observed differences\n\n- Activity A10 was not observed in any of the 200 earlier traces; in the later window it appears in about 47 in 100 cases (94 of 200), typically between one quarter and one half of the trace's event positions. [OCC008, POS007]\n- The routing around A10 changed accordingly. Earlier, A11's outgoing transitions went almost exclusively to A07 (about 96 in 100); in the later window only about 44 in 100 go to A07 while about 52 in 100 go to A10, and A10 in turn leads mainly to A07 (about 53 in 100) or to A11 (about 45 in 100). A05, which previously sent no transitions to A10, now sends about 20 in 100. [DIR005, DIR004, DIR002]\n- The new order relations match: in the later window A10 runs before A07 in about 47 in 100 traces (the two never co-occurred earlier), A05 precedes A10 in about 43 in 100, and A10 and A11 now co-occur in about 47 in 100 traces in both orders (roughly 22 vs 26 in 100). A10 also never occurs together with A01: in the later window every trace contains exactly one of the two (about 53 vs 47 in 100), whereas earlier A01 appeared in about 49 in 100 traces and A10 in none. [REL048, REL039, REL055, REL009]\n- Downstream activities are pushed about one event position later: A11→A07 at distance 1 fell from about 96 in 100 to about 44, with distance 2 rising to about 53; A05→A03 at distance 3 fell from about 91 to about 46 while distance 4 rose to about 44; similar one-step shifts appear for A05/A11 to A04 and A08. [LAG017, LAG006, LAG007, LAG008, LAG009, LAG014, LAG015, LAG018]\n- Three further activities appear only in the later window: A06 in about 11 in 100 traces, A09 in about 6 in 100 and A02 in about 4–5 in 100, mainly as new successors of A07 (about 9, 6 and 4.5 in 100 of A07's outgoing transitions), while A07→A04 fell from about 34 to about 24 in 100. [OCC005, OCC007, OCC002, DIR003]\n- Participation shifts of only 2–4 in 100 for A01, A03, A04, A08 and A11 are of the size that random re-splits of unchanged data produce and do not indicate separate changes. [OCC001, OCC003, OCC004, OCC006, OCC009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window a new activity, A10, is executed in about 47 in 100 cases and is inserted into the flow between the A05/A11 stage and A07, in the roughly half of cases that do not contain A01: A11 now hands over to A10 in about half of its outgoing transitions (previously about 96 in 100 went straight to A07), A05 feeds A10 directly in about 20 in 100 of its transitions, A10 leads mainly on to A07 (or back to A11), and A10 precedes A07 in about 47 in 100 traces. The one-step delay of A03, A04, A07 and A08 after A05 and A11 corroborates an insertion rather than a replacement of existing paths, and the appearance of an activity in 94 of 200 traces after zero in 200 cannot be explained as sampling of a rare variant. Limitations: positions are event indexes, so only relative placement, not clock timing, is established; and the evidence cannot fully determine the local shape around A11 and A10, since the two follow one another in either order (about 22 vs 26 in 100), nor can it fully exclude that A10 is existing behaviour that simply was not exercised in the earlier sample, although its complete absence from 200 earlier traces makes pure sampling fluctuation unlikely. [OCC008, DIR002, DIR004, DIR005, REL039, REL048, REL055, REL009, LAG006, LAG008, LAG017]\n\nOther differences: in the later window A06 (about 11 in 100 traces), A09 (about 6 in 100) and A02 (about 4–5 in 100) appear as new successors of A07, with A07's share leading to A04 reduced from about 34 to about 24 in 100; these rare additions are not part of the main hypothesis. [OCC002, OCC005, OCC007, DIR003]",
+  "case_id": "case_e73af4b6228f3807",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

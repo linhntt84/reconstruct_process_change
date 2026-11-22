@@ -1,0 +1,50 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "d8a15b5bf5f575ef3cd0e60e3ff75866b9cd281ff2144450912a3fbcf88c0ce6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:43:21.094908+00:00",
+  "finished_at_utc": "2026-11-15T01:45:48.407928+00:00",
+  "latency_seconds": 147.31,
+  "transport": "curl-stream",
+  "attempt_errors": [
+    "empty content (finish stop)"
+  ],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10204,
+    "prompt_tokens": 5531,
+    "total_tokens": 15735,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9263,
+      "text_tokens": 941
+    },
+    "cost": 0.00593165
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33207,
+  "text": "### Observed differences\n\n- At A01, outgoing traffic moved from almost exclusively one successor to a near-even split: in the earlier window about 87 in 100 observed transitions went to A02 and about 6 in 100 to A04; in the later window about 50 in 100 go to A02 and about 43 in 100 to A04. [DIR001]\n- A02 and A04 each gained a strong new successor: A02 led to A04 in about 94 in 100 transitions before, versus about 50 in 100 after, with A03 newly receiving about 44 in 100; A04 led to A03 in about 96 in 100 before, versus about 49 in 100 after, with A02 newly receiving about 41 in 100. [DIR002, DIR003]\n- The order of A02 and A04 changed from fixed to mixed: in the earlier window A02 preceded A04 in 100 in 100 traces containing both; in the later window A02 comes first in about 54 in 100 and A04 first in about 46 in 100, while the two activities still occur together in essentially every trace and never interleave. [REL001]\n- Step distances shifted accordingly: A01→A02 was immediate in 100 in 100 cases before but two steps apart in about 43 in 100 later cases; A01→A04 was two steps apart in about 94 in 100 before but immediate in about 49 in 100 later; A02→A03 was usually two steps apart before (about 90 in 100) but immediate in about 44 in 100 later; A04→A03 was immediate in about 96 in 100 before but in only about 49 in 100 later, with about 43 in 100 at two steps. [LAG001, LAG002, LAG003, LAG004]\n- A02 now tends to occur later within traces (mean relative position about 0.17 versus 0.27; upper quartile 0.2 versus 0.4) and A04 earlier (mean about 0.39 versus 0.28; median 0.4 versus 0.2), each with roughly doubled spread. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window the single fixed chain A01 → A02 → A04 → A03, which was the only observed order earlier, is joined by a reversed chain A01 → A04 → A02 → A03 in roughly half of the cases: the strict ordering constraint between A02 and A04 became a mixed order, with A04 preceding A02 in about 46 in 100 traces containing both. [REL001, DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]\n\nThe change is shown directly by the A02–A04 relation and is consistently mirrored by the routing, distance and position items: A01's transitions split from about 87 in 100 to A02 into roughly 50/43 between A02 and A04; A02 gained A03 as a successor at about 44 in 100 and A04 gained A02 at about 41 in 100, exactly the transitions the reversed chain requires; and the step-distance and position shifts match the two chains. All ten items exceed the difference seen in about 995 of 1000 random re-splits, and ten qualifying items is about 100 times the 0.1 expected by chance in the control-flow family, so sampling variation alone cannot account for the set. [DIR001, DIR002, DIR003, POS001, POS002, REL001, LAG001, LAG002, LAG003, LAG004]\n\nAll items are control-flow views of one underlying trace behaviour, so they are mutually consistent rather than independent confirmations. The evidence cannot distinguish whether the reversed order is a separate variant followed by about half of the cases or a relaxed constraint that lets A02 and A04 run in either order within the same cases; both would produce the observed mixed order. [REL001, LAG001, LAG002, LAG003, LAG004]",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

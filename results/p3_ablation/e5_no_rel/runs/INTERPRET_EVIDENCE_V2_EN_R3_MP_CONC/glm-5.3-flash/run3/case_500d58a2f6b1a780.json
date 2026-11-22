@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_500d58a2f6b1a780.json",
+  "evidence_sha256": "98c5b30f6bc649067c8bfbe0546d285104d0f83995e2db4ae46a54702563f9a5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:01:19.736392+00:00",
+  "finished_at_utc": "2026-11-15T12:02:31.814772+00:00",
+  "latency_seconds": 72.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9122,
+    "prompt_tokens": 4827,
+    "total_tokens": 13949,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8265,
+      "text_tokens": 857
+    },
+    "cost": 0.0052850499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34373,
+  "text": "### Observed differences\n\n- The main difference is in repetition. In the earlier window, A25, A26 and A31 each occurred in every trace, on average about 3.4 times per trace, with repeats in about 75 in 100 traces. In the later window, all three still occur in every trace, but on average only about once per trace, and repeats have essentially disappeared (about 1 in 200 traces still shows a repeat). [OCC001, OCC002, OCC003]\n- The cyclic hand-back from A31 to A25 disappeared. Before, about 71 in 100 of A31's observed outgoing transitions went to A25 and about 29 in 100 to A20; in the later window, about 96 in 100 go to A20 and only about 4 in 100 to A25. The number of observed outgoing transitions from A31 also fell from about 689 to about 208, matching the drop in occurrences. [DIR001]\n- Consistently, the ordered pair \"A31 followed by A25 within five steps\" was seen in 150 of 200 traces in the earlier window but in only 1 of 200 traces in the later window. [LAG002]\n- The forward pair tightened into a fixed local pattern: before, \"A25 followed by A31\" sat two steps apart in only about 12 in 100 pairings (about 5 in 100 at five steps); in the later window, about 92 in 100 pairings are exactly two steps apart. [LAG001]\n- The positions of A25 and A31 within the trace barely moved (mean relative position about 0.43–0.48 in both windows), but their spread roughly halved (standard deviation about 0.12 before vs about 0.06 after), which fits a single occurrence at a fixed spot instead of several scattered ones. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeated cycle over A25, A26 and A31 stopped: in the earlier window these three activities each ran about 3–4 times per trace and A31 repeatedly handed control back to A25 (about 71 in 100 of its outgoing transitions; the pair A31→A25 within five steps in 150 of 200 traces), whereas in the later window each of the three runs exactly once per trace, A31 continues to A20 in about 96 in 100 transitions, and A25 is followed by A31 two positions later in about 92 in 100 cases — a single fixed pass instead of a repeating loop. The signs are direct and consistent: participation stayed at 100% while occurrence counts and recurrence collapsed [OCC001, OCC002, OCC003]; the routing redistribution and the near-disappearance of the reverse pair show the cycle edge vanishing directly [DIR001, LAG002]; the forward pair converged to a constant two-step gap [LAG001]; and the position distributions narrowed without any shift in location [POS001, POS002]. Eight items qualified against roughly 0.3 expected for an unchanged process, far beyond what chance sampling typically produces. [OCC001, OCC002, OCC003, DIR001, POS001, POS002, LAG001, LAG002]\n\nLimitations: all evidence is control-flow at one threshold, and the eight items describe one underlying difference rather than independent confirmations; the after-window side of LAG002 rests on a single trace, so the near-disappearance of A31→A25 relies mainly on DIR001. A competing explanation the evidence cannot rule out is that the later traces simply capture less of each case (only one pass over a still-existing cycle) rather than the repetition genuinely ending; the stable participation and positions cannot separate these. Other differences: none — the positional and lag items corroborate the same repetition change rather than pointing to separate behaviours. [OCC001, OCC002, OCC003, DIR001, POS001, POS002, LAG001, LAG002]",
+  "case_id": "case_500d58a2f6b1a780",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

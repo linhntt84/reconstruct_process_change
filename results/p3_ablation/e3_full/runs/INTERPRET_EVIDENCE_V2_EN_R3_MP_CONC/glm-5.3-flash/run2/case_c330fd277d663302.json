@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_c330fd277d663302.json",
+  "evidence_sha256": "f62877d65f2f02b709acc523e329d5e7e797031edd7b1e588e1142364e1e6759",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:43:54.922825+00:00",
+  "finished_at_utc": "2026-11-16T02:44:54.063805+00:00",
+  "latency_seconds": 59.14,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8983,
+    "prompt_tokens": 13066,
+    "total_tokens": 22049,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8008,
+      "text_tokens": 975
+    },
+    "cost": 0.0064513999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27969,
+  "text": "### Observed differences\n\n- Activity A03 has disappeared from execution: in the earlier window every one of the 200 traces contained A03 exactly once, always as the final event of the trace; in the later window A03 appears in none of the 200 traces. [OCC001, POS003]\n- The hand-off into A03 is gone: before, all of A02's outgoing flow (100 in 100) went to A03; in the later window A02 shows no observed outgoing transitions at all and now sits at the end of the trace, its mean normalized position moving from 0.8 to 1.0. [DIR002, POS002]\n- Every activity pair involving A03 flipped from always co-occurring in a fixed order (A03 last) to never co-occurring — for example A01–A03 co-occurrence fell from 100 in 100 to 0, with A01 now appearing without A03; the same pattern holds for A02, A04, A05 and A06 with A03. [REL001, REL005, REL006, REL007, REL008]\n- The five remaining activities kept their mutual order: their normalized positions moved later only because traces lost their final event (A04 median 0.2 → 0.25, A05 0.4 → 0.5, A06 0.6 → 0.75), and typical distances such as A01→A02 (lag 4, about 72 in 100) and A04→A02 (lag 3, about 72 in 100) are essentially unchanged. [POS004, POS005, POS006, LAG001, LAG005]\n- Routing among the surviving activities is stable within sampling noise: A01→A04 about 72 in 100 in both windows, A04→A05 about 76–77 in 100, A05→A06 and A06→A02 about 97–99 in 100, with tiny observed differences and low empirical strength. [DIR001, DIR003, DIR004, DIR005]\n- Minor: the share of A04 being followed by A01 within one step rose from about 81 to about 89 in 100, but this rests on only about 57 and 55 observations respectively. [LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process no longer executes its closing activity A03: traces that previously ran A01/A04 → A05 → A06 → A02 → A03, with A03 always last, now end with A02, while the order and routing of the remaining activities A01, A04, A05, A06 and A02 are unchanged. [OCC001, DIR002, POS002, POS003, REL005] The support is direct and consistent: A03's participation fell from 200 in 200 traces to 0 in 200, the sole observed transition into A03 disappeared, A02 became the terminal activity, and every relational indicator involving A03 changed from always co-occurring to never co-occurring, while all indicators among the surviving activities — routing shares, co-occurrence and lag distributions — stayed within the range of random variation. [OCC001, DIR002, REL001, REL006, REL007, REL008, DIR001, LAG001] The evidence cannot distinguish a genuine removal of A03 from it being skipped in every single case, since zero participation only means A03 was not observed in the later window, and an extremely rare continued execution cannot be fully excluded. [OCC001, POS003]\n\nOther differences: small fluctuations in routing shares (for example A01→A05 up about 1.5 points in 100) and in lag distributions, including the A04→A01 one-step share noted above and a similar shift based on very few observations (about 11 and 6), all within chance levels. [DIR001, DIR003, LAG004, LAG008]",
+  "case_id": "case_c330fd277d663302",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

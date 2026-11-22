@@ -1,0 +1,15 @@
+### Observed differences
+
+- Out of activity A36, the successor mix flipped between the windows: in the earlier window about 64 in 100 of A36's outgoing transitions led to A33 and about 34 to A37, while in the later window about 60 lead to A37 and about 37 to A33. A36 appears in about 90 of 200 earlier and 93 of 200 later traces, and the difference exceeds about 995 of 1,000 random re-splits of the pooled data. [DIR001]
+- Out of A37 the shift mirrors this: earlier, about 64 in 100 outgoing transitions returned to A36 and about 35 went to A33; later, about 58 go to A33 and about 38 return to A36. Support is 91 vs 93 traces, again with a difference larger than in about 995 of 1,000 random re-splits. [DIR002]
+- The ordered pair A36 then A37 occurs in about 32 of 200 earlier traces but about 56 of 200 later traces; within those occurrences it sits directly adjacent (distance 1) in about 97 of 100 earlier cases and in all later cases. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the two-step route A36 → A37 → A33 carries a larger share of the flow while the direct transition A36 → A33 and the return edge A37 → A36 carry less. From A36, the branch to A37 rose from about 34 to about 60 in 100 outgoing transitions at the expense of the direct branch to A33 (about 64 down to about 37); from A37, the continuation to A33 rose from about 35 to about 58 while the return to A36 fell from about 64 to about 38. All involved activities (A36, A37, A33) and all these transitions remain in use with substantial shares in both windows, so this is a redistribution between existing alternatives rather than a path being added, removed or bypassed. Supporting signs: the two directional profiles change as mirror images of each other, the A36→A37 pair becomes both more frequent (about 16 to about 28 in 100 traces) and uniformly adjacent, and three control-flow items qualified where about 0.48 would be expected if nothing had changed. [DIR001, DIR002, LAG001]
+
+Limitations: the directional shares are computed over outgoing transitions, not whole cases; the two DIR items and the LAG item all describe one underlying redistribution, so they are not independent confirmations. A competing explanation the evidence cannot fully rule out is that the two windows sampled different mixes of pre-existing variants, although the screening result (three items against roughly 0.48 expected by chance) and the consistently high reference strength make pure sampling noise unlikely. [DIR001, DIR002, LAG001]
+
+Other differences: a handful of successor components of about 1 in 100 transitions each appear only in the later window (A01, A27, A30 after A36; A10, A22, A32, A43 after A37) while A07 and A14 disappear from the profiles; at this size they are consistent with sampling noise and are not part of the hypothesis. The distance-2 share of the A36→A37 pair (about 3 in 100 earlier occurrences, none later) is similarly minor. [DIR001, DIR002, LAG001]

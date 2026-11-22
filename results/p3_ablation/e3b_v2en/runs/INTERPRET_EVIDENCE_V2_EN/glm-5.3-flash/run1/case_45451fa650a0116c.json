@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_45451fa650a0116c.json",
+  "evidence_sha256": "3c817ea45d6ac97fe9a5d06aa86448bd052ef241c3fd857b53de942cdf90a459",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:12:25.516038+00:00",
+  "finished_at_utc": "2026-11-14T11:14:05.371197+00:00",
+  "latency_seconds": 99.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17144,
+    "prompt_tokens": 33819,
+    "total_tokens": 50963,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15290,
+      "text_tokens": 1854
+    },
+    "cost": 0.01364485
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51318,
+  "text": "### Observed differences\n\n- In the later window, A21, A22 and A23 each appear in about 79 in 100 traces, up from about 19–20 in 100, while A24, A25 and A26 each fall to about 21–22 in 100 from about 82 in 100; A06 falls from about 46 to about 12 in 100. A02 (about 8 to 17 in 100) and A04 (about 5 to 19 in 100) rise modestly. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n- Routing out of A20 flips: before, about 82 in 100 of A20's outgoing transitions went to A24, A25 or A26 (A24 about 29, A26 about 29, A25 about 24 in 100); after, about 78 in 100 go to A21, A22 or A23 (A23 about 29, A21 about 28, A22 about 21 in 100). [DIR005, REL011, REL012, REL013, REL014, REL015, REL016]\n- The two activity groups mirror this: A21, A22 and A23 now co-occur in about 79 in 100 traces (before about 18–19), in either order, whereas A24, A25 and A26 co-occur in only about 21 in 100 (before about 82). [REL017, REL018, REL025, REL038, REL039, REL043]\n- The late A06 step largely disappears: A34's outgoing transitions to A06 fall from about 45 to about 2 in 100, A34→A35 rises to about 90 in 100 and the gap between them is now one step in about 92 in 100 cases (before about 56); A06's co-occurrence with A20, A30, A34 and A35 falls from about 46 to about 12 in 100, and A06's own outgoing transitions, previously about 92 in 100 to A35, are now spread over many targets (based on 26 transitions). [DIR006, LAG006, REL001, REL008, REL009, REL010, DIR001]\n- A24, A25 and A26 no longer precede A30, A34 or A35 (co-occurrence about 21 in 100 versus about 82, with A30/A34/A35 now appearing without them in about 78 in 100), while A21, A22 and A23 now co-occur with A30, A34 and A35 in about 79 in 100 traces; A06 and A24/A25/A26 now rarely appear together (about 4 in 100 versus about 38). [REL005, REL006, REL007, REL022, REL023, REL024, REL029, REL030, REL031, REL035, REL036, REL037, REL040, REL041, REL042, REL044, REL045, REL046, REL047, REL048, REL049]\n- A34 and A35 still appear in essentially every trace in both windows, so their presence is unchanged; among the 24 traces that still contain A06, its relative position is earlier and more variable (mean about 0.91 to about 0.52 of the trace). A few flagged items rest on very few observations (A08's outgoing profile on 9 versus 23 transitions; the A25→A06 and A26→A06 gaps on 2 and 1 observations after) and carry little weight. [POS003, DIR006, POS001, DIR002, LAG002, LAG003, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the path after A20 runs through A21, A22 and A23 (about 79 in 100 traces, up from about 19) instead of through A24, A25 and A26 (about 21 in 100, down from about 82), and that the late A06 step between A34 and A35 is largely dropped, with A34 now typically followed immediately by A35. This is shown directly by relational and directional evidence — A20 precedes A21/A22/A23 in about 77–78 in 100 of their joint appearances (before about 18–19), A34→A06 drops from about 45 to about 2 in 100 of A34's outgoing transitions, and the A34→A35 gap collapses to one step in about 92 in 100 cases — and the occurrence, relation, direction, position and lag indicators all agree; the new A21/A22/A23 group still precedes A34/A35 in about 79 in 100 traces, as the old A24/A25/A26 group did. With 73 qualifying items against roughly 1 expected in an unchanged process, the pattern as a whole is unlikely to be a sampling artefact. [DIR005, REL011, REL012, REL013, REL014, REL015, REL016, REL023, REL030, REL036, DIR006, LAG006, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n\nLimitations: the many relation items largely restate one underlying shift rather than confirming it independently; A06's outgoing profile in the later window rests on 26 transitions and the A06→A35 gap on 7, so the details of A06's remaining role are uncertain; and the evidence cannot rule out that the two windows simply sampled different proportions of already-existing process variants (for example a stable mix of an A21–A22–A23 path and an A24–A25–A26 path), although a swing from about 19 to about 79 in 100 traces with 200 traces per window far exceeds what the random re-split comparisons produce. The modest rises of A02 and A04 are not accounted for by this hypothesis. [DIR001, LAG001, OCC001, OCC002, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]",
+  "case_id": "case_45451fa650a0116c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

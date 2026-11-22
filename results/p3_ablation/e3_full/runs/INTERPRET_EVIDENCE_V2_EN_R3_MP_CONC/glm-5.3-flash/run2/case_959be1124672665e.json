@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_959be1124672665e.json",
+  "evidence_sha256": "457bf7642fe6ed0e91382e534b6f2c86767b4b8ce1babc8cbec9f7076133c86f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:07:42.102249+00:00",
+  "finished_at_utc": "2026-11-16T02:12:34.939237+00:00",
+  "latency_seconds": 292.84,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 39464,
+    "prompt_tokens": 125541,
+    "total_tokens": 165005,
+    "completion_tokens_details": {
+      "reasoning_tokens": 37105,
+      "text_tokens": 2359
+    },
+    "cost": 0.03856315
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 105799,
+  "text": "### Observed differences\n\n- Three activities are no longer observed in the later window: A02 and A08, which each appeared in about 47 of 100 earlier traces, and A03, which appeared in about 21 of 100, occur in none of the 200 later traces. [OCC002, OCC003, OCC008, POS002, POS003, POS007]\n\n- The detour through them is gone. Earlier, about half of A05's outgoing transitions and about half of A18's went to A02, and A10 led to A08; in the later window A05 sends about 46 in 100 of its outgoing transitions to A10, A18 about 59 in 100, and A10 leads to A01 instead of A08. [DIR004, DIR015, DIR009, REL019, REL032, REL089]\n\n- A01's neighbours changed completely: earlier A01 followed A16 and led to A06 (about 44 in 100 of its outgoing transitions), A07 (about 31) and A14 (about 25); in the later window A01 follows A10 and leads exclusively to A11, while A16 — which earlier led only to A01 — now leads to A06 (about 43 in 100), A14 (about 37) and A07 (about 20). The order relations flip accordingly: A11 preceded A01 in about 14 of 100 earlier traces and now follows it, and A16 preceded A01 in about 27 of 100 and now follows it. [DIR001, DIR009, DIR013, REL009, REL014]\n\n- The closing pair A07/A14 became rarer, terminal and mutually exclusive. Earlier both appeared in about 47 of 100 traces, always in the same trace and adjacent after A01 (A07 before A14 in about 26 of 100, A14 before A07 in about 21); in the later window they never share a trace, A07 appears in about 17 and A14 in about 31 of 100 traces, both sit at the very end of traces, and they are reached from A16 rather than from A01. [OCC007, OCC014, DIR006, DIR012, DIR013, REL005, REL012, REL082, POS006, POS013]\n\n- A13 and A19 now bypass A03: earlier both led exclusively to A03; in the later window A13 leads to A05 (about 59 in 100) and A18 (about 41), and A19 leads to A18 and A05 (about 50 each). [DIR011, DIR016, REL034, REL042, REL048]\n\n- A09 and A17 are executed more often and hand over to each other: mean occurrences per trace rise from about 0.44 to 0.76 (A09) and from about 0.34 to 0.76 (A17); in the later window about 51 in 100 of A09's outgoing transitions go to A17 and about 49 in 100 of A17's go to A09, where earlier both mostly returned to A05 or A18. [OCC009, OCC017, DIR008, DIR014, REL106]\n\n- Step distances match this rewiring: A10 reaches A01 in 1 step (about 57 of 100 observed pairs) instead of 4 (about 76); A16 reaches A07 and A14 in 1 step instead of 2–3; A13 reaches A10 in 2 steps instead of 4; A05 and A18 reach A11 one step earlier. Distances the rewiring should not affect (A10→A11, A10→A16) stayed the same. A01 also appears earlier within traces (mean relative position about 0.48 vs 0.66) and A16 later (about 0.70 vs 0.61). [LAG032, LAG073, LAG076, LAG058, LAG012, LAG088, LAG040, LAG044, LAG035, LAG038, POS001, POS015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural rewiring of the control flow around the removal of A02, A03 and A08. The directional profiles are consistent with an earlier cycle A16→A01→A06→A13/A19→A03→A05/A18→A02→A10→A08→A11→A16, with A07/A14 as an exit after A01; in the later window the cycle appears to run A10→A01→A11→A16→A06→A13/A19→A05/A18→A10, with A07/A14 as exits after A16, and A09/A17 as a new, more frequent mutual handover inside the A05/A09/A17/A18 cluster. [DIR001, DIR004, DIR008, DIR009, DIR011, DIR013, DIR014, DIR015, DIR016, OCC002, OCC003, OCC008, OCC009, OCC017]\n\nThe support is direct and consistent: the successor replacements are observed in the directional profiles themselves; the disappearances are complete (0 of 200 traces, not just rarer); the order flips between A01/A11 and A01/A16 match the rewiring; and the step-distance changes agree with the removed two-activity segment almost exactly, including distances that should stay unchanged. Note that the OCC, POS, REL and LAG items largely describe this same rewiring, so they are consistent rather than independent confirmations. [REL009, REL014, LAG032, LAG073, LAG076, LAG058, LAG012, LAG088, LAG035]\n\nLimitations: the evidence cannot rule out that the two windows sample different variants of an unchanged process (for example a shifted case mix) rather than a modified process — the complete disappearance of activities that earlier appeared in about 47 of 100 traces makes pure sampling noise implausible, but the window design alone cannot exclude it. Zero participation also only shows an activity was not observed in that window. In addition, no outgoing profiles for A12 and A15 appear in the directional evidence, so their connections are inferred only indirectly. [OCC002, OCC003, OCC008, DIR005, DIR010]\n\nOther differences: A06's outgoing mix shifted slightly (A19 from about 34 to 25 in 100, A13 from about 16 to 23), A12 occurs somewhat more often (about 15 vs 12 of 100 traces, a weak signal), A19 shows slightly fewer occurrences per trace, and A09, A17, A18 and A19 appear slightly later within traces; A04 and the A11→A15/A16 split stayed essentially unchanged. These shifts are small and may be side effects of the rewiring above. [DIR005, OCC012, OCC019, POS008, POS016, POS017, POS018, OCC004, DIR010]",
+  "case_id": "case_959be1124672665e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

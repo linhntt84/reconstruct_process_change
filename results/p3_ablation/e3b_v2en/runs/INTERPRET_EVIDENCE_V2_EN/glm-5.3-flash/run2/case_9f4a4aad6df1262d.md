@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window the sampled activities formed a near-fixed chain, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: each step carried about 93–100 in 100 of the source activity's outgoing transitions (A23 led to A24 in essentially all of its ~200 observed transitions; A20 led to A23 in about 99 in 100), and each pair of chain members always appeared at the same fixed distance. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG001, LAG006, LAG017]
+
+- In the later window these edges weakened and skips appeared: A23 now leads to A32 in about 49 in 100 transitions (jumping straight to the final activity) and to A24, A25 or A26 in about 15–17 in 100 each; A22 goes directly to A24, A26 or A25 in about 44 in 100 of its transitions; A31 goes straight to A24 in about 47 in 100. [DIR002, DIR003, DIR007, LAG008, LAG013, LAG027]
+
+- Backward, repeating flow emerged in the later window: A24 returns to A22 in about 23 in 100 of its transitions and to A20 in about 11; A25 returns to A20, A23 or A22 in about 52 in 100 combined; A26 returns to A20, A22 or A23 in about 33 in 100. Traces in which A24 is followed by A20 within five steps rose from 1 in 200 to about 148 in 200, A25 followed by A20 from 1 to about 64, and A26 followed by A20 from 1 to about 101. [DIR004, DIR005, DIR006, LAG014, LAG015, LAG019, LAG021]
+
+- Pairwise order reversed or evened out in the later window: A24 precedes A20 in 73 in 100 traces (previously 0) and precedes A23 in 84 in 100 (previously 0); A26 precedes A23 in 68 in 100 (previously 0); A20–A26 and A23–A25 are now near even splits. Every tested pair still co-occurs in all traces, so participation itself did not change. [REL001, REL006, REL008, REL003, REL007, REL002, REL004, REL005]
+
+- Positions and distances spread out: A24 now appears earlier in the trace (mean relative position about 0.59 versus 0.65) while A20, A22 and A23 appear later; formerly fixed distances became variable — A20 to A23 was always adjacent and is now adjacent in about 68 in 100 cases, and A23 to A32 moved from typically four steps apart to directly adjacent in about 49 in 100. [POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG013]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the fixed sequential chain through A31, A22, A20, A23, A24, A26, A25 and A32 was restructured into a more flexible flow with skips (A31→A24, A22→A24/A26/A25, A23→A32) and repetitions (A24, A25 and A26 looping back to A20, A22 or A23), so that the former strict order among A20–A26 is reversed or weakened in a majority of later traces. The support is direct and consistent: the order reversals are observed relationally rather than inferred from position shifts alone, successor redistribution is observed at all seven sampled source activities, and the routing, order, distance and position indicators tell the same story; 49 items qualified against roughly 0.66 expected if nothing had changed, and each item's difference exceeded about 199 of 200 random re-splits. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL006, REL008, LAG013, LAG027, POS004]
+
+The evidence cannot rule out that both windows draw from the same process with a shifted mix of pre-existing variants: looping and skipping behaviour was almost absent earlier (about 1 in 200 traces) and common later, so a large change in variant frequencies rather than a modified control structure would produce a similar picture. Routing shares are also measured over outgoing transitions rather than cases, and several indicators describe the same underlying trace behaviour, so the agreeing items are not independent confirmations. [LAG014, LAG015, LAG019, LAG021, DIR002]

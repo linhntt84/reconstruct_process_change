@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, the activities A15, A17, A18, A19, A20 and A21 formed a flexible block: each had several successors with substantial shares (A15 went to A18 in about 62% of its observed transitions but to A19, A20 or A21 in about 12–14% each; A18 went to A27 in about 53% and to A21, A20 or A19 in about 12–19% each), and several pairs appeared in both orders across traces (A15/A21 and A17/A19 close to 50/50; A19 preceded A15 in about 75 in 100 traces and A18 in about 88 in 100). [DIR001, DIR002, DIR003, DIR004, REL001, REL003, REL004, REL006]
+
+- In the later window the same block runs as one fixed sequence: A26 now always leads to A17 (before, its transitions split about 50/50 between A17 and A19), and the edges A17→A15, A15→A18, A18→A19, A19→A21, A21→A20 and A20→A27 each carry about 99–100% of the observed transitions out of their source activity, while former alternatives such as A18→A27 (about 53% before) have practically disappeared (under 1%). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- Pairwise order is now fixed where it previously varied: A15 precedes A19 in about 99.5% of traces (before about 26%), A18 precedes A19, A20 and A21 in about 99.5% (before, A19 usually preceded A18), and A15 before A20, A15 before A21, A17 before A19 and A17 before A21 hold in essentially all traces (before 49–78 in 100). Both activities of every tested pair co-occur in all traces in both windows, so participation did not change — only the relative order did. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- Event positions shifted consistently with this reordering: A15, A17 and A18 now occur slightly earlier within the trace (mean relative position about 0.64 to 0.59, 0.59 to 0.56 and 0.68 to 0.62), while A19, A20 and A21 occur slightly later (about 0.59 to 0.65, 0.68 to 0.71 and 0.64 to 0.68); these are positions among events, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of activities A15, A17, A18, A19, A20 and A21 — entered from A26 and exiting to A27 — changed from a variable execution order to a single fixed sequence in the later window, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27, with every step now taken in essentially every trace. This is a change in ordering constraints (a mixed order became fixed), not an exchange of two activities' positions and not a change in participation: all six activities appear in every trace in both windows. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+The volume and consistency of the evidence exceed what an unchanged process typically produces: 21 control-flow items qualified where about 0.33 were expected by chance across the 66 tested units, all items describe the same picture (successor sets collapsing to one edge, pair orders becoming fixed), and each shows empirical strength of about 0.995 with 200 traces behind each window. The positional shifts move in exactly the directions this reordering predicts. [DIR003, DIR007, REL003, REL006, POS003, POS004]
+
+An important competing explanation remains: the earlier variability could reflect several fixed orderings coexisting before, of which only one remains in the later window, rather than a tightening of order constraints within cases — the two produce the same split pair orders and multiple successors in the before-window. The positional items alone could not establish movement, since they use event positions rather than clock time, but the hypothesis rests on the direct relational and successor evidence. [REL003, REL004, POS001]

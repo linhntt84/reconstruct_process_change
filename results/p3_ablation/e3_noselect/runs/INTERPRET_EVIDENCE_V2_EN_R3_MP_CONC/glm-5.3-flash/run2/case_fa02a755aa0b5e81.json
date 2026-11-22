@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_fa02a755aa0b5e81.json",
+  "evidence_sha256": "54e5fa42b2f7f275b8cda23e4ef4f226ab2a242eb30e28f77f4e8abd879146d0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:45:14.556015+00:00",
+  "finished_at_utc": "2026-11-15T08:48:06.971716+00:00",
+  "latency_seconds": 172.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25394,
+    "prompt_tokens": 23702,
+    "total_tokens": 49096,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23646,
+      "text_tokens": 1748
+    },
+    "cost": 0.0162523
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 78408,
+  "text": "### Observed differences\n\n- A01 changed place sharply. In the earlier window it appeared in about 27 in 100 traces (54 of 200), sat late in the trace (mean relative position about 0.82), and every observed outgoing transition went to A05. In the later window it appears in about 21 in 100 traces (43 of 200), always occupies the first position, and every observed transition goes to A06. [OCC001, POS001, DIR001]\n\n- The segment around A01 was reordered. Before, A11 sent about 57 in 100 of its outgoing transitions to A01 and A12 about 43 in 100; A11 and A12 always preceded A01 when they co-occurred, and A06 preceded or interleaved with A01. In the later window, A01 precedes A11 and A12 in every co-occurrence and precedes or interleaves with A06; A11 passes to A05 immediately in about 70 in 100 transitions (A12 reaches A05 via A11), and the distance from A01 to A05 grew from one step to four steps. [DIR007, DIR008, REL003, REL005, REL006, LAG001, LAG007, LAG008]\n\n- A02 was not observed at all in the later window (0 of 200 traces, against 53 of 200 — about 27 in 100 — before), even though in the earlier window it still had outgoing transitions to A03, A07, A08, A13 and A05 and always co-occurred with A05. [OCC002, DIR002, POS002, REL007]\n\n- Flow that previously ran through A02 was rerouted: A07's transitions to A03 rose from about 21 to about 48 in 100 and to A13 from about 8 to about 29; A08's transitions to A05 rose from about 30 to about 62; A13's transitions to A08 rose from about 37 to about 62; A03 now passes to A05 in about 85 in 100 transitions (about 65 before) and no longer to A02. A07 also runs earlier (mean relative position about 0.24 before, about 0.06 after), with its gap to A05 concentrated at two to three steps where it was previously spread over one to four. [DIR003, DIR005, DIR006, DIR009, POS004, LAG006]\n\n- Participation fell moderately for several activities: A05 from about 54 to about 46 in 100 traces, A06 from about 27 to about 21 (with fewer repetitions per trace), A10 from about 15 to about 11; A06's exits also shifted somewhat toward A12 (about 26 to about 35 in 100) and A06 runs slightly later in the trace. [OCC005, OCC006, OCC010, DIR004, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was re-placed on its route: in the earlier window it ran at the end of the sequence, after the A11/A12 pair and immediately before A05 (pattern A06 → A11/A12 → A01 → A05), while in the later window it opens the trace and passes to A06, with A11 and A12 now closing the sequence into A05 (pattern A01 → A06 → A11/A12 → A05). The change is shown directly and consistently: A01's successor switched entirely from A05 to A06 while A11 and A12 switched from A01 to A05; the order of A01 relative to A06, A11 and A12 flipped in their co-occurrences; A01's position moved from about 0.82 of the trace length to the first position while A11 and A12 moved later; and the step distances changed exactly as this reordering predicts (A01 to A05 from one step to four, A11/A12 to A05 now mostly one to two steps). The evidence cannot distinguish A01 itself moving to the front from an equivalent resequencing of the whole block, and positions reflect event order rather than clock time. [DIR001, DIR007, DIR008, REL003, REL005, REL006, POS001, POS005, POS006, LAG001, LAG007, LAG008]\n\nOther differences: A02's disappearance is a second, separate change — A02 was an alternative to the A01/A06/A11/A12 branch (it never co-occurred with A01, A06, A11 or A12), and its former neighbours A03, A07, A08 and A13 now route more directly toward A05, which fits A02 having been dropped or skipped on that route, though zero participation strictly means only that it was not observed in the later window. [OCC002, DIR002, DIR003, DIR005, DIR006, DIR009, POS002, POS004, LAG006, REL008, REL010, REL011]\n\nThe moderate participation decreases for A05, A06 and A10 and the small shift in A06's exits are consistent with these two changes but, with 200 traces per window and no chance-expectation baseline provided, they may partly reflect sampling variability. [OCC005, OCC006, OCC010, DIR004]",
+  "case_id": "case_fa02a755aa0b5e81",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

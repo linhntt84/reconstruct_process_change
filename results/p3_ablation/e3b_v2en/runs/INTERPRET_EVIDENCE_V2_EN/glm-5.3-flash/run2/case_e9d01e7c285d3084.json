@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_e9d01e7c285d3084.json",
+  "evidence_sha256": "0e0316cc8f52c614405f83e52b367b3e7e8c470be7aa357bee9065d69c75ebc8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:10:53.225490+00:00",
+  "finished_at_utc": "2026-11-15T05:12:06.477348+00:00",
+  "latency_seconds": 73.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9801,
+    "prompt_tokens": 7664,
+    "total_tokens": 17465,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8822,
+      "text_tokens": 979
+    },
+    "cost": 0.0060501
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34488,
+  "text": "### Observed differences\n\n- In the earlier window, A30, A31 and A36 each occurred about once per case (mean ≈ 1.0 occurrences per trace); in the later window each occurs about 3.5 times per case on average, appearing more than once in about 68 in 100 cases, versus roughly 0–3 in 200 cases earlier. Participation is unchanged: every case contains each of these activities in both windows. [OCC001, OCC002, OCC003]\n- The flow out of A36 was redirected: earlier, about 97 in 100 of A36's observed outgoing transitions went to A25; later, about 70 in 100 go to A30 and about 28 in 100 to A25, with several weak new targets appearing. The number of observed outgoing transitions from A36 rose from about 200 to about 700, consistent with its increased repetition. [DIR001]\n- Previously strict orderings dissolved into interleaving or repetition: \"A14 before A30\" fell from about 99 in 100 cases to 32 in 100, with interleaved/repeated rising to 68 in 100; the same pattern holds for A14–A36 and A30–A36 (about 98–99 in 100 strict earlier, 32 in 100 later). [REL003, REL004, REL005]\n- For A05, which appears in about half of the cases in both windows, the strict \"A05 before A30/A36\" ordering fell from about 53–54 in 100 co-occurring cases to 16 in 100, with interleaved/repeated rising to about 35 in 100. [REL001, REL002]\n- Spacing changed accordingly: about 97–98 in 100 observed A30→A36 successions were exactly two steps apart earlier, but only about 12 in 100 later, with the profile no longer concentrated at short gaps; A05→A14 gaps shifted from mostly one step towards two-to-three steps (based on roughly 105 pair observations per window). [LAG002, LAG001]\n- A30 and A36 now sit at slightly later relative positions with roughly 60–70% more spread (A30's position standard deviation rose from about 0.07 to about 0.12 of trace length), and A14 sits slightly earlier with more spread. [POS002, POS003, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the segment containing A30, A31 and A36 is re-executed within individual cases — about 2.5 additional executions per case, in roughly 68 in 100 cases — where previously these activities ran once in a fixed chain (A14 → A30 → A36, then on to A25, with A05 preceding when present). The repetition itself is measured directly through occurrence counts and recurrence, and it is corroborated by the rerouting of A36's dominant successor from A25 to A30, the collapse of the strict pairwise orderings into interleaved/repeated relations, the disappearance of the tight two-step A30→A36 spacing, and the wider positional spread of A30 and A36. [OCC001, OCC002, OCC003, DIR001, REL003, REL004, REL005, LAG002, POS002, POS003]\n\nLimitations: the evidence does not show what triggers the repeats or the exact set of repeated activities; A31 shows the same occurrence profile but has no direct routing or relational evidence, so its place in the repeated segment is inferred only from its counts. An important competing explanation that cannot be ruled out is a shift in the mix of pre-existing process variants — a repeating variant that was already present but rare (about 1–3 in 200 cases earlier) becoming the majority behaviour — rather than a newly added repetition structure, since variant frequencies can differ between finite windows even without a structural change. Note also that several items describe the same underlying traces (for example the 68-in-100 recurrence and the 68-in-100 interleaved share), so they are not independent confirmations. [OCC001, OCC002, OCC003, REL003, REL005]",
+  "case_id": "case_e9d01e7c285d3084",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

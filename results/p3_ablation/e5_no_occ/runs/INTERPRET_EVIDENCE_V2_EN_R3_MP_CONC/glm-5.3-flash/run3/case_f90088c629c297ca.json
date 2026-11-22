@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "e855318abe1aa51f3926e098cd985ce5b48a00c8f4d026d4d5ed6f7d42d053a0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:45:10.513260+00:00",
+  "finished_at_utc": "2026-11-15T10:46:14.086893+00:00",
+  "latency_seconds": 63.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8928,
+    "prompt_tokens": 8793,
+    "total_tokens": 17721,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7995,
+      "text_tokens": 933
+    },
+    "cost": 0.00578295
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30725,
+  "text": "### Observed differences\n\n- In the earlier window, A36 and A21 each appeared in all 200 traces, A36 was always immediately followed by A21 (a one-step gap in every case), and A14, A15 and A20 were not observed in any trace. [DIR004, LAG001, POS001, POS002, POS003]\n- In the later window, A36 and A21 still appear in every trace, but A36's observed outgoing transitions are redistributed: they now lead to A14 in about 37 in 100 cases, to A20 in about 34 in 100, to A15 in about 29 in 100, and directly to A21 in only about 1 in 100. [DIR004]\n- In the later window the three activities behave as mutually exclusive alternatives: A14 and A15, A14 and A20, and A15 and A20 never occur in the same trace, and together they appear in about 99 in 100 traces. [REL001, REL002, REL005]\n- In the later window each of the three sits between A36 and A21: A36 precedes it in every trace where both occur, and A21 is its only observed successor (A14 in 74 traces, A20 in 67, A15 in 57). [REL003, REL004, REL006, REL007, REL008, REL009, DIR001, DIR002, DIR003]\n- Consistent with one step being inserted, the distance from A36 to A21 grew from one step to two steps in about 99 in 100 traces, and A21's mean relative position moved slightly later, from about 0.37 to about 0.39 of the trace. [LAG001, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a per-case choice among three mutually exclusive activities — A14, A15 and A20 — now takes place between A36 and A21: traces that previously ran directly from A36 to A21 now pass through exactly one of the three in the order A36 → (A14 or A15 or A20) → A21, with A14 the most frequent choice (about 37 in 100 traces), then A20 (about 34 in 100) and A15 (about 29 in 100), while about 1 in 100 traces still go directly from A36 to A21. [DIR001, DIR002, DIR003, DIR004, REL003, REL004, REL006, REL007, REL008, REL009, LAG001]\n\nThis is supported directly and consistently: relational, directional, positional and lag evidence all describe the same placement, each with a difference larger than in about 99.5 in 100 random re-splits of the pooled data; the three activities occur in substantial shares (29–37%) of the later window after being absent from all 200 earlier traces, which rules out a rare-variant explanation; and the 18 qualifying items far exceed the roughly 0.22 expected by chance among the 45 tested units, so the pattern as a whole is not what random re-splits of unchanged behaviour produce. [DIR004, POS001, POS002, POS003, POS004, LAG001, REL001]\n\nLimitations: because A14, A15 and A20 were simply not observed in the earlier window, the evidence cannot distinguish between activities that were newly added and activities that already existed but were never executed before — a previously untaken path being opened is a competing explanation it cannot rule out. The items also overlap heavily, as they largely describe the same traces rather than independent confirmations, and the exact split among the three choices (roughly 37/34/29) is estimated from a single 200-trace window. [POS001, POS002, POS003, REL001]",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

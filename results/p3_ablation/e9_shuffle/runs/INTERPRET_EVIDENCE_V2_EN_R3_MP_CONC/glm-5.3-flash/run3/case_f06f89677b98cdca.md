@@ -1,0 +1,19 @@
+### Observed differences
+
+- A01 was not observed in any of the 200 earlier traces; in the later window it occurs in about 48 in 100 traces (95 of 200), always exactly once when present. [OCC001]
+- When it occurs in the later window, A01 runs late in the trace: its median position is about 85% of the way through the trace's events (mean about 77%). [POS001]
+- A18's observed outgoing transitions were earlier spread over many successors (about 19% to A10, 13% each to A06 and A12, 12% each to A16 and A19); in the later window about 65 in 100 of them lead to A01, which was not observed as a successor earlier, while each former successor fell to roughly 1–7%. [DIR004]
+- The relationship between the two activities changed accordingly: earlier they never shared a trace (A18 appeared without A01 in about 40 in 100 traces, neither in about 60); in the later window both occur together in about 48 in 100 traces, and in every such trace A18 comes before A01. [REL001]
+- From A01 the later flow continues into many different activities, with the largest observed outgoing shares going to A10 (about 17%) and A07 (about 15%); earlier A01 had no observed outgoing transitions because the activity itself was not observed. [DIR001]
+- Repetition shifted in opposite directions: A02 now repeats (mean occurrences per trace about 0.5 → 1.0; traces with repeats from none to about 26 in 100, participation roughly stable at 48% vs 54%), while A08 stopped repeating (repeats in about 20 in 100 traces earlier, none later; mean about 0.87 → 0.48, participation stable at about 47%). [OCC002, OCC003]
+- Routing shares moved at two activities: at A09, transitions to A02 rose from about 37% to about 65% of observed outgoing transitions, while those to A07 (about 17% earlier) were no longer observed and those to A04 fell from about 24% to about 14%; at A14, transitions to A08 fell from about 63% to about 24%, A15 appeared at about 19%, and A06 grew from about 5% to about 21%. [DIR002, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A01 was added to the process as a step executed after A18. Earlier, A01 was not observed in any trace and A18 led to a spread of other activities; in the later window A01 runs once in about half of the traces, late in the trace, A18 leads to A01 in about two thirds of its observed outgoing transitions, and the two always occur together with A18 first, after which the flow rejoins various existing activities. [OCC001, POS001, DIR004, REL001, DIR001]
+
+This hypothesis rests on relational, successor, positional and participation evidence that all describe the same shift, and with 9 qualifying items against roughly 0.2 expected if nothing had changed, chance sampling cannot account for the evidence set as a whole; each individual difference is also larger than in about 995 of 1000 random re-splits. The main limitation is that zero participation in the earlier window strictly means only that A01 was not observed then, so a newly added activity cannot be distinguished from one previously too rare to sample, and the routing shares are computed over outgoing transitions rather than cases. A competing explanation the evidence cannot rule out is that A01's appearance is one facet of a broader restructuring that also produced the repetition and routing shifts below, rather than an isolated addition. [OCC001, DIR004, OCC002, OCC003, DIR002, DIR003]
+
+Other differences: A02 became a repeated activity (about 26 in 100 traces now contain it more than once, mean about 1.0 occurrences per trace) while A08 ceased repeating (mean about 0.48 per trace, no repeats), with the participation of both roughly unchanged; routing shares also shifted at A09 (more to A02, less to A04 and A07) and at A14 (much less to A08, more to A15 and A06). [OCC002, OCC003, DIR002, DIR003]

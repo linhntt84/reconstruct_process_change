@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_6980dd0b98c5301b.json",
+  "evidence_sha256": "d63bc5ebef546261656b6f9082832f4b8baf839870bd7899390da12deb00bb9f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:16:08.630423+00:00",
+  "finished_at_utc": "2026-11-14T14:17:01.503128+00:00",
+  "latency_seconds": 52.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7800,
+    "prompt_tokens": 5590,
+    "total_tokens": 13390,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6941,
+      "text_tokens": 859
+    },
+    "cost": 0.0047385
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26992,
+  "text": "### Observed differences\n\n- The closing sequence of activities differs between the windows. In the earlier window, every trace ended with the fixed sequence A08 → A06 → A07 → A01: A06, A07 and A01 sat at about 71%, 86% and 100% of the normalized trace position, with no spread across traces. In the later window, every trace ends with A08 → A01 → A06 → A07: A01 now sits at about 71% of the trace, A06 at about 86%, and A07 is the final event. [POS001, POS002, POS003, LAG001, LAG002, LAG003]\n- The order between A01 and the other two flipped completely: in the earlier window A06 preceded A01 and A07 preceded A01 in all 200 traces; in the later window A01 preceded A06 and A01 preceded A07 in all 200 traces, while A01 still co-occurs with both in every trace. [REL001, REL002]\n- Successor relations changed accordingly. A08 was always followed by A06 and is now always followed by A01. A07 was always followed by A01 and now has no observed successor (it ends the trace). A01 had no observed successor in the earlier window (it ended the trace) and now always leads to A06. [DIR001, DIR002, DIR003]\n- The step distances from A08 changed exactly as this reordering implies: A06 moved from 1 step after A08 to 2, A07 from 2 to 3, and A01 from 3 to 1. [LAG001, LAG002, LAG003]\n- Participation is unchanged: A01, A06 and A07 each appear in all 200 traces in both windows, so this is a reordering of mandatory steps, not activities becoming optional, repeated or replaced. [POS001, POS002, POS003, REL001, REL002]\n- All eleven evidence items describe this one difference, and each difference is larger than those seen in about 995 of 1,000 random re-splits of the pooled traces. [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, LAG001, LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the order of the final three activities changed: A01, which previously ran last in every case after A06 and A07, now runs immediately after A08 and before them, so the closing sequence changed from A08 → A06 → A07 → A01 to A08 → A01 → A06 → A07, with A06 and A07 each shifted one step later while keeping their mutual order. The signs are direct and mutually consistent: the pairwise order relations flipped in 100% of traces, the successor of A08 changed from A06 to A01, A01 gained a successor and A07 lost its successor, and the lag distances from A08 shifted by exactly one step; participation of all three activities remained at 100% in both windows, which rules out activities being added, removed or made optional as alternative readings. [REL001, REL002, DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, POS001, POS002, POS003]\n\nLimitations: the evidence covers only A01, A06, A07 and A08, so any accompanying changes elsewhere in the trace would not be visible. The competing explanation that a previously rare variant replaced the dominant behaviour cannot be fully excluded, although the perfectly uniform windows (100% shares, zero position spread, 200 traces each) make sampling noise implausible; no screening baseline was provided to compare the item count against a chance expectation.",
+  "case_id": "case_6980dd0b98c5301b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

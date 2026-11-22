@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_628f1da9b8574270.json",
+  "evidence_sha256": "55ed8cf8d582af4427934897d254447f26a41abb1cb562bdf5cf4313f5e5529f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:49:30.400492+00:00",
+  "finished_at_utc": "2026-11-15T00:51:27.940388+00:00",
+  "latency_seconds": 117.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16647,
+    "prompt_tokens": 31728,
+    "total_tokens": 48375,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14925,
+      "text_tokens": 1722
+    },
+    "cost": 0.0130827
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52128,
+  "text": "### Observed differences\n\n- Participation dropped sharply for six activities. Before, A22 and each of A31, A32, A37, A38 and A39 ran in every trace; in the later window A22 runs in about 46 in 100 traces and each of the five others in about 55 in 100, while A20, A21, A23 and A26 still run in all traces. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002, POS004, POS005]\n- The group's entry and exit routing changed. Before, A20 was followed by one of the five group activities in roughly equal shares (about 17–24 in 100 of its outgoing transitions each), and each group activity led back to its peers and to A23 (about 17–26 in 100 transitions to A23); in the later window essentially all of A20's outgoing transitions (about 995 in 1000) go directly to A23, A23 no longer appears among the group's successors, and A26 does (about 14–26 in 100 of each group activity's transitions). [DIR001, DIR003, DIR004, DIR005, DIR006, DIR007]\n- A21's routing split. Before, A21 was always followed by A22; in the later window about 46 in 100 of A21's outgoing transitions go to A22 and about 54 in 100 go to one of the five group activities. [DIR002]\n- Order relations around the group flipped. Before, the group ran before A21 and before A23 in every trace; in the later window A21 precedes the group and A23 precedes the group in about 55 in 100 traces each. The group's internal order shows no fixed sequence in either window. [REL008, REL009, REL010, REL011, REL012, REL020, REL021, REL022, REL023, REL024, REL030, REL039]\n- A22 and the group became alternatives. Before, A22 co-occurred with each group activity in all traces; in the later window they co-occur in about 1 in 200 traces, with A22 alone in about 45 in 100 and the group alone in about 55 in 100. The five group activities now appear only together or not at all (co-occurrence about 55 in 100, versus all traces before). [REL015, REL016, REL017, REL018, REL019, REL030, REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039]\n- Positions moved consistently with this: the group's mean relative position shifted from about 0.40 to about 0.57–0.59 (later in the trace), A23 from about 0.48 to about 0.38, and A21 from about 0.62 to about 0.53; A20 moved slightly later (about 0.32 to 0.35) and A26 slightly earlier (about 0.67 to 0.65). [POS001, POS002, POS004, POS005, POS006, POS007, POS008, POS009, POS010]\n- The old adjacencies within five steps (A20 to a group activity, a group activity to A23), previously observed in all traces with lags spread over 1–5 steps, appear in only about 1 in 200 later-window traces; each of these lag profiles rests on a single observation, so they are weak on their own. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the case branches after A21: in about 55 in 100 cases the group A31, A32, A37, A38, A39 executes in a variable order between A21 and A26, while in about 45 in 100 cases A22 executes in that slot instead, making the group and A22 mutually exclusive alternatives. Before, every trace ran the fixed chain A20 → group → A23 → A21 → A22 → A26; in the later window A20 leads directly to A23, A23 and A21 run earlier, and the group runs later than before. [DIR001, DIR002, REL007, REL008, REL013, REL014, REL015, REL020, REL025, OCC001, OCC002, POS004, POS006]\n\nThe hypothesis is shown directly rather than inferred from frequencies alone: the direction items capture the successor changes at A20, A21 and the group's exit, the relation items capture the order flips and the near-zero co-occurrence between A22 and each group activity, and the occurrence and position items match the same relocation and optionality. Screening qualified 72 items where about 0.72 would be expected if nothing had changed, and every item's difference exceeds about 995 of 1000 random re-splits of the pooled traces, so chance sampling cannot account for the pattern as a whole. [DIR001, DIR002, REL015, REL020, OCC001, POS006]\n\nLimitations: the branch split (about 45 versus 55 in 100) is an estimate from 200 traces per window and carries sampling error; the lag-based items add little because their later-window profiles rest on a single observation each; and the evidence cannot rule out that the later window reflects a shifted mix of two coexisting case types rather than one modified process, since only aggregate behaviour is observed. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]",
+  "case_id": "case_628f1da9b8574270",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the before window, activities A14, A15, A20 and A21 were not observed at all (0 of 200 traces). In the later window they each appear in a minority of traces — A14 in about 61 in 200, A15 in about 51 in 200, A21 in about 46 in 200 and A20 in about 42 in 200 — and each occurs at most once per trace. [OCC001, OCC002, OCC003, OCC004]
+- Before, A37 led directly to A22: all of A37's observed outgoing transitions went to A22, and A22 immediately followed A37 (lag 1) in all traces. In the later window, A37 no longer leads to A22 at all; its transitions are split across A14 (about 31%), A15 (about 26%), A21 (about 23%) and A20 (about 21%), and A22 now follows A37 two positions later in all traces. [DIR005, LAG001]
+- When they occur, each of A14, A15, A20 and A21 leads only to A22 (100% of their observed outgoing transitions in the later window). [DIR001, DIR002, DIR003, DIR004]
+- The four activities never occur together: every pair among them has zero co-occurrence, and their participation shares sum to 1.0, so each later trace contains exactly one of them. [REL001, REL002, REL003, REL006, REL007, REL010]
+- The order relations match a chain: in the later window A37 precedes each of these activities, and each of them precedes A22, in exactly the traces where it appears (for example, A37 before A14 and A14 before A22 in about 31 in 100 traces each). The new activities sit at a relative event position (median about 0.35) just before A22's, which itself shifted only slightly later (median about 0.36 to about 0.38). [REL004, REL005, REL008, REL009, REL011, REL012, REL013, REL014, POS001, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the direct step from A37 to A22 is replaced by a path through exactly one of four activities: every later trace runs A37, then one of A14, A15, A20 or A21 — chosen exclusively, occurring once — and then A22, whereas before, A37 was immediately followed by A22 in all traces. [DIR005, LAG001, REL004, REL005, REL010, OCC001]
+
+The supporting signs are strong and coherent: 29 evidence items qualified, far above the roughly 0.41 expected for an unchanged process; the change is shown directly by relational and lag evidence (A37 before the intermediate activity, the intermediate activity before A22, and the A37-to-A22 lag moving from 1 to 2 in all traces); the four participation shares sum exactly to 1.0 with zero co-occurrence, consistent with an exclusive choice; and the only observed outgoing transition of each intermediate activity is to A22. Note that many of these items describe the same underlying trace behaviour rather than independent confirmations. [DIR005, LAG001, REL001, REL010, DIR001]
+
+Limitations remain: the exact branch shares (about 31/26/23/21 in 100) are estimates from 200 traces and could vary under sampling; zero participation before only means these activities were not observed in that window; and the competing explanation that the before window simply missed rare variants that already existed cannot be fully excluded — although four previously unobserved activities covering all 200 later traces in disjoint, exactly complementary sets, together with the uniform lag shift, makes pure sampling variation an implausible account of the whole pattern. [OCC001, OCC002, OCC003, OCC004, REL001, LAG001]

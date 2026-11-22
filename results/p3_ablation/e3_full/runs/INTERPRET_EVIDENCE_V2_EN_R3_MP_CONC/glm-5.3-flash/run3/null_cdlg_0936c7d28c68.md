@@ -1,0 +1,12 @@
+### Observed differences
+
+- The five activities A02–A06 behave as a single block in both windows: they occur together in about 101 of 200 traces (about 50 in 100) in the earlier window and about 104 of 200 (about 52 in 100) in the later window. Whenever they occur, they occur together (no trace contains only some of them) and in one fixed order — A02, then A05, then A06, then A04, then A03 — with no reversed or interleaved cases in either window. [OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]
+- A01 appears in about half of the traces in both windows (about 99 of 200 earlier, about 96 of 200 later) and never recurs within a trace. [OCC001]
+- The only numerical differences are very small participation shifts: roughly +1.5 percentage points for each of A02–A06 and −1.5 percentage points for A01 (about 3 traces out of 200 each). Each difference is smaller than the differences seen in about 87 of 100 random re-splits of the pooled data (empirical strength about 0.13), so all of them lie within the range produced by sampling variation alone. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]
+- No relational pattern changed: for every pair among A02–A06, the shares of co-occurrence, one-sided occurrence and fixed order are essentially identical across the windows; only the share of traces containing neither activity of a pair moved, from about 50 in 100 to about 48 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The structure — A02–A06 always occurring together in the same fixed order, and A01 appearing independently in about half of the traces — is identical in both windows, and the only differences are about 1.5-percentage-point participation shifts that are empirically weaker than typical random re-splits, which is what an unchanged process produces. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]

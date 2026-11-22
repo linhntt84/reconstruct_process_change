@@ -1,0 +1,18 @@
+### Observed differences
+
+- Three activities that never appeared in the earlier window occur regularly in the later one: A19 in about 37 in 100 traces, A25 in about 34 in 100 and A20 in about 29 in 100, in each case exactly once per trace (no repetitions observed). [OCC001, OCC002, OCC003]
+- The routing out of A41 changed fundamentally: in the earlier window about 93 in 100 of its observed outgoing transitions went directly to A26, while in the later window only about 1 in 100 does; instead about 34 in 100 go to A19, about 31 in 100 to A25 and about 27 in 100 to A20. [DIR004]
+- Each of the three new activities leads almost exclusively to A26: about 96 in 100 of A19's outgoing transitions, about 98 in 100 of A20's and about 97 in 100 of A25's. [DIR001, DIR002, DIR003]
+- A41 and A26 were executed back-to-back in about 94 in 100 cases before; in the later window they are separated by exactly one step in about 90 in 100 cases and adjacent in only about 1 in 100. [LAG002]
+- By event order (not clock time), the three new activities sit at a mean relative position of about 0.36 — roughly a third into the trace — and A26 itself now appears slightly later (mean position about 0.37 before vs about 0.39 after), while still occurring in every trace. [POS001, POS002, POS003, POS004]
+- A minor separate difference: the gap between A31 and A35 shifted from mostly one step (about 55 in 100) to mostly two steps (about 62 in 100), and A31's mean position moved slightly later (about 0.69 to about 0.71). [LAG001, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a choice among three activities — A19, A20 and A25 — is inserted between A41 and A26. Previously A41 led almost always directly to A26; now it leads to one of the three (about 34, 31 and 27 in 100 of its outgoing transitions respectively) and almost never directly to A26, while each of the three leads almost exclusively on to A26. Their participation shares (about 37, 29 and 34 in 100) together cover nearly every later trace, which is consistent with exactly one of the three being executed per case, although co-occurrence was not directly observed, so mutual exclusivity remains an inference rather than an observation. The A41–A26 distance growing from one step to two, and A26's slight shift to a later event position, corroborate the same picture. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, POS001, POS002, POS003, POS004]
+
+Screening produced 14 qualifying items against roughly 0.5 expected for an unchanged process, so the set of differences is far larger than random re-splits would typically produce, and each item is individually unusual for such splits. The evidence is direct (successor redistribution at A41, adjacency change, positions) and mutually consistent. Two limitations remain: most items describe one underlying behaviour rather than independent confirmations, and zero participation in the earlier window strictly means the three activities were not exercised there — the evidence cannot distinguish activities newly added to the process from ones that existed but were not observed before. [OCC001, OCC002, OCC003, DIR004, LAG002]
+
+Other differences: the A31–A35 gap shifted from mostly one step to mostly two steps and A31's event position moved slightly later; these are small and not part of the main hypothesis. [LAG001, POS005]

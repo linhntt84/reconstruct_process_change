@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c05e0a1af5aec5ea.json",
+  "evidence_sha256": "22fc5a5bcdbb329e65753b21033047e38a5856f5aff76aa8ac0294075a123c2b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:40:12.658805+00:00",
+  "finished_at_utc": "2026-11-15T08:44:47.609657+00:00",
+  "latency_seconds": 274.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 38733,
+    "prompt_tokens": 38909,
+    "total_tokens": 77642,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36740,
+      "text_tokens": 1993
+    },
+    "cost": 0.02520285
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 121916,
+  "text": "### Observed differences\n\n- The handovers around A08, A16 and A17 changed completely. Earlier, all of A16's observed outgoing transitions led back to A05 (62 of 62) and A08 led to A13 (about 53 in 100) and A04 (about 47 in 100); in the later window, all of A16's transitions lead to A08 (53 of 53) and A08 leads to A16 (about 51 in 100) and A17 (about 49 in 100). A17, not observed in any of the 200 earlier traces, appears in about 13 in 100 later traces, and every one of its 51 occurrences is followed by A09. A08's occurrences per trace roughly tripled (0.16 to 0.52) and it now repeats within the same trace in about 10 in 100 traces, up from about 3.5. [DIR006, DIR011, DIR012, OCC008, OCC017]\n- A05 receded sharply and changed partners. Earlier it appeared in about 21 in 100 traces (136 occurrences, repeated in about 14 in 100 traces) and led to A01 (about 54 in 100) and A16 (about 46 in 100); in the later window it appears in about 6 in 100 traces (26 occurrences, repeats about 3 in 100) and leads to A13 (about 54 in 100) and A04 (about 46 in 100). [OCC005, DIR003]\n- A01 no longer takes part in the connected flow. Earlier it appeared in about 21 in 100 traces, every one of its 74 occurrences led directly to A09, and it co-occurred with A04, A05, A09, A13 and A16 (about 9–21 in 100 traces per pair); in the later window it occurs in about 34 in 100 traces, exactly once per trace, never together with any of A04, A05, A08, A09, A13, A16 or A17, no outgoing transition was observed for any of its 67 occurrences, and all occurrences sit at one fixed position (normalized position 0, previously a mid-trace median of about 0.7). [OCC001, DIR001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007]\n- A09 and the A04/A13 pair retargeted. Earlier, A09 led to A06 (about 47 in 100) and A08 (about 43 in 100); later it leads to A05 (about 51 in 100) and A06 (about 33 in 100). Earlier, A04 and A13 led mainly to each other (about 47–53 in 100) and to A05 (about 28 in 100 each); later they lead to each other and to A07, and now also to A08 (about 23–24 in 100) but no longer to A05 — the A04–A05 co-occurrence fell from about 21 to about 6 in 100 traces. [DIR007, DIR002, DIR009, REL008]\n- Step distances between pairs moved consistently with this rewiring: A08 to A04 and A08 to A13 went from about 1–2 steps apart to 4–5, A04/A13 to A08 from 4–5 to 1–3, A09 to A05 from about 4 steps to 1, A09 to A08 from 1 to 4, A05 to A04 from 4–5 to 1–2, and A04/A13 to A05 from 1–3 to 4–5, with the observations behind that last pair collapsing from 42 to 6 traces. [LAG012, LAG015, LAG003, LAG023, LAG018, LAG019, LAG007, LAG002]\n- Participation dropped broadly for activities outside this cluster: A02 from about 50 to 38 in 100 traces, A03 from about 29 to 16, A06 from about 21 to 12.5, A12 from about 10.5 to 6.5 and A18 from about 10.5 to 6, while A06's split between A12 and A18 stayed nearly unchanged. [OCC002, OCC003, OCC006, OCC012, OCC018, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the core sequence is routed differently: the link between the A04/A13 pair and A09 that earlier ran through A05, A16 and A01 (A04 and A13 handed over partly to A05; A05 led to A16, which returned to A05, and to A01, which always led to A09) now runs through A08 and the newly observed A17 (A04 and A13 hand over to A08; A08 leads to A16, which returns to A08, and to A17, which leads to A09), with A09 now handing on to A05, which leads back to A04 and A13. Within the same rerouting, A01 is observed only as an isolated step (once per trace, at a fixed position, with no observed successor, in about 34 in 100 traces), A05 falls from about 21 to about 6 in 100 traces and loses its repeats to A08, whose occurrences per trace roughly tripled. [DIR002, DIR003, DIR006, DIR007, DIR009, DIR011, DIR012, OCC001, OCC005, OCC008, OCC017, REL007, LAG012, LAG018]\n\nThe successor changes are observed directly on sizable samples (A16: 62 vs 53 transitions; A08: 32 vs 104; A09: 74 vs 51; A05: 136 vs 26; A01: 74 vs 0), and the co-occurrence and step-distance items shift in the same direction, although they are computed from the same traces and so corroborate rather than independently confirm one another. The competing explanation the evidence cannot rule out is that both wirings already existed and only their frequencies shifted between the windows: with 200 traces per window, an absent edge or a zero share only shows a behaviour was not sampled, not that it was impossible earlier. [DIR001, DIR003, DIR006, DIR007, DIR011, REL007, LAG002, LAG012]\n\nOther differences: participation fell for A02 (about 50 to 38 in 100 traces), A03 (about 29 to 16), A06 (about 21 to 12.5), A12 (about 10.5 to 6.5) and A18 (about 10.5 to 6), with no qualifying change in their observed routing — A06's split between A12 and A18 barely moved. [OCC002, OCC003, OCC006, OCC012, OCC018, DIR004]",
+  "case_id": "case_c05e0a1af5aec5ea",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

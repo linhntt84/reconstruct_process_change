@@ -1,0 +1,18 @@
+### Observed differences
+
+- Activity A01 is completely absent from the earlier window — 0 of 200 cases, mean 0 executions per trace — while in the later window it is executed exactly once in every case (200 of 200, 100% participation, no repeats). [OCC001]
+- In the later window, A01 always sits at the final position of the case (mean position 1.0 with no spread); it had no observed positions earlier. [POS001]
+- A04 previously closed the case: it occurred in all 200 earlier cases at the last position (mean 1.0) and no outgoing transitions from it were observed. In the later window it sits earlier (mean position 0.75) and all 200 of its observed outgoing transitions lead to A01. [POS003, DIR001]
+- A01 now co-occurs with A02, A03, A04 and A05 in every later case and follows each of them in every case; earlier, each of these four activities ran in 100% of cases while A01 never did. The pairs changed from "one activity only" to "always together, A01 last". [REL001, REL002, REL003, REL004]
+- The pre-existing activities keep their relative order but shift earlier — A03 from about 0.33 to 0.25, A05 from about 0.67 to 0.50, A04 from 1.0 to 0.75 (mean positions) — the pattern expected when one event is appended at the end rather than the steps being reordered. [POS002, POS003, POS004]
+- All ten evidence items show an empirical strength of about 0.995: each difference exceeds what is seen in roughly 995 of 1000 random re-splits of the pooled cases, and they all describe this one behaviour. [OCC001, DIR001, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a mandatory closing step, A01, was appended at the end of the process. In the earlier window, every case contained A02, A03, A05 and A04 with A03 before A05 before A04 and A04 last, and A01 was never observed; in the later window, every case additionally executes A01 exactly once as the final step, after A02, A03, A05 and A04, with A04 now leading directly to A01. The participation change is categorical (0 of 200 versus 200 of 200 cases, one execution each), and the placement is shown directly by the relational evidence (A01 after each of the four activities in 100% of later cases), the successor change (A04 leading to A01 in all later cases) and A01's constant final position; because the existing activities keep their relative order, this is an appended step rather than a swap or reordering. [OCC001, POS001, DIR001, REL001, REL002, REL003, REL004]
+
+The evidence cannot rule out that A01 already existed earlier as a path that happened to go unobserved in 200 cases — zero participation only means "not observed" — and it cannot show why the step now runs in every case. The position figures are event positions rather than clock times, although the placement claim rests on the relational and successor evidence rather than on positions alone. [OCC001, POS001, POS002, POS003, POS004]
+
+Other differences: none — the position shifts of A03, A05 and A04 follow from the same appended final step rather than being independent changes. [POS002, POS003, POS004]

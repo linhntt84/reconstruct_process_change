@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_40d3cc43e31a6f22.json",
+  "evidence_sha256": "101c2f36db625b69aa29781483bd3dc12bfec39868df71f34fd21fc90dda48cb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:38:35.622201+00:00",
+  "finished_at_utc": "2026-11-15T03:39:25.900921+00:00",
+  "latency_seconds": 50.28,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7446,
+    "prompt_tokens": 3536,
+    "total_tokens": 10982,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6680,
+      "text_tokens": 766
+    },
+    "cost": 0.0042534
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26650,
+  "text": "### Observed differences\n\n- In the earlier window, the elapsed time between the completion of A29 and the completion of A41 was about 1.0 hours on average (median about 1.0 hours); in the later window it is about 0.49 hours (median about 0.49) — roughly half, a decrease of about 0.52 hours. This pair was observed 200 times in each 200-trace window. [TWAIT001]\n- The same halving appears for A41's other predecessors: A42→A41 fell from about 1.00 to about 0.50 hours, and A44→A41 from about 0.99 to about 0.50 hours. [TWAIT002, TWAIT003]\n- The later elapsed-time distributions are tighter and barely overlap the earlier ones: the spread roughly halved (standard deviation about 0.17–0.19 hours to about 0.08 hours), and the later upper quartiles (about 0.55–0.56 hours) lie below the earlier lower quartiles (about 0.86–0.90 hours). Each of the three differences is larger than in 1,999 of 2,000 random re-splits of the pooled data. [TWAIT001, TWAIT002, TWAIT003]\n- How often the pairs occur barely moved: A42→A41 consecutive completions rose from about 28 to about 36 in 100 traces, A44→A41 fell from about 43 to about 38 in 100, and A29→A41 stayed at one per trace. [TWAIT001, TWAIT002, TWAIT003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change centred on A41: in the later window, the elapsed time from the completion of each predecessor — A29, A42 and A44 — to the completion of A41 is consistently about half an hour instead of about an hour, a reduction of roughly 0.5 hours in all three pairs. The time family produced 3 evidence items where about 0.01 would be expected if nothing had changed, far beyond what an unchanged process typically yields, while the control-flow family produced none (0 of 56 units, about 0.28 expected), so the shift comes without structural change — which a pure timing change does not require. The three differences agree in direction and size, each exceeds 1,999 of 2,000 random re-splits, and the A29→A41 pair occurs in every trace in both windows, so the shift is not an artefact of a rare path. [TWAIT001, TWAIT002, TWAIT003]\n\nLimitations: T_WAIT measures elapsed time between consecutive completion events, so the evidence cannot show whether the reduction lies in waiting, handover or processing, nor whether A41 now completes sooner after its predecessors or the predecessors complete closer to A41. A change in the mix of cases could in principle produce such a distributional shift, but a uniform halving across three different predecessors with largely non-overlapping quartiles makes that hard to maintain; it cannot be fully ruled out. [TWAIT001, TWAIT002, TWAIT003]\n\nOther differences: only the small frequency shifts noted above (A42→A41 up about 8 in 100 traces, A44→A41 down about 5 in 100), which stayed below the control-flow thresholds and are not part of the main hypothesis. [TWAIT002, TWAIT003]",
+  "case_id": "e4a_40d3cc43e31a6f22",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

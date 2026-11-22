@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A07 appeared in about 53 in 100 traces (mean occurrences per trace about 0.5, never repeated within a trace); in the later window, A07 is not observed in any of the 200 traces. [OCC001]
+- Before, A07 sat between A03 and A06: of A03's observed outgoing transitions, about 56 in 100 went to A05, about 39 in 100 to A07 and only about 5 in 100 directly to A06, while about 92 in 100 of A07's outgoing transitions went to A06. In the later window, A03 no longer leads to A07 at all; its transitions split about evenly between A05 (about 49 in 100) and A06 (about 51 in 100). [DIR001, DIR002]
+- The pairwise relations changed from "executed together" to "never together": A03 and A07 co-occurred in 53 in 100 earlier traces (A03 first in about 24, interleaved or repeated in about 29) but never co-occur in the later window, where A03 appears without A07 in about 52 in 100 traces; the same holds for A06 and A07 (co-occurrence 53 in 100 before, usually A07 first or interleaved; zero afterwards, with A06 alone in about 52 in 100 traces). [REL001, REL002]
+- The spacing between A03 and A06 changed: before, A06 followed A03 mostly two or four positions later (about 23 and 20 in 100 observed pairs); in the later window those even distances disappear and A06 follows at one, three or five positions (about 19, 11 and 6 in 100). [LAG001]
+- A03 itself still occurs at the same rate (about 53 in 100 traces before, 52 after) but sits slightly later within its traces: its median relative position moved from about 0.39 to about 0.45. [POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A07 is no longer executed in the later window, so that the routing that previously ran from A03 via A07 on to A06 now goes directly from A03 to A06, while the A03→A05 branch continues. The occurrence, position, direction and relation indicators all show the same picture: A07 fell from about 53 in 100 traces to none, A03's transitions to A07 (about 39 in 100 of its outgoing transitions) disappeared in favour of direct transitions to A06 (up from about 5 to about 51 in 100), A07's own outgoing edge to A06 vanished with it, and both the A03–A07 and A06–A07 relations dropped from frequent co-occurrence to none. [OCC001, DIR001, DIR002, POS002, REL001, REL002]
+
+This is unlikely to be a sampling artefact: eight items qualified where about 0.1 would be expected if nothing had changed, and an activity present in 106 of 200 earlier traces would practically never be absent from all 200 later traces by chance. The shift of the A03→A06 distances from even (2, 4) to odd (1, 3, 5) steps fits the loss of a single intermediate activity between them. Note, however, that the eight items describe one underlying difference on largely the same traces, so they are consistent rather than independent confirmations. [LAG001, OCC001, DIR001, DIR002, POS001, POS002, REL001, REL002]
+
+The evidence shows only that A07 was not observed in the later window; it cannot distinguish a genuine removal from A07 being renamed or its role absorbed into another anonymous activity code. [OCC001, REL001, REL002]
+
+Other differences: A03 occurs slightly later within its traces in the later window (median relative position about 0.39 versus 0.45) at an unchanged participation rate; the evidence does not establish whether this is a byproduct of A07's disappearance or an independent shift. [POS001]

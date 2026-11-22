@@ -1,0 +1,19 @@
+### Observed differences
+
+- A01 and A02 are no longer executed: in the earlier window each took part in about 50 in 100 traces (roughly one occurrence per such trace, A01 around two-thirds into the case and A02 around the middle); in the later window neither appears in any of the 200 traces. [OCC001, OCC002, POS001, POS002]
+- A09 appears for the first time: unobserved before, it runs in about 24 in 100 later traces around the middle of the case, with its observed outgoing transitions going mainly to A11 (about 46 in 100) and A12 (about 44 in 100). [OCC005, POS005, DIR007]
+- A14's successor changed: before, A14 was followed by A01 in essentially all of its roughly 195 observed outgoing transitions; in the later window it leads to A08 (about 56 in 100), A07 (about 35 in 100) and rarely to A12, A09 or A04. [DIR011]
+- A06 and A13 now feed A14 directly: before, A06 split between A13 (about 51 in 100) and A02 (about 49 in 100) while A13 led back to A06; in the later window both lead to A14 in every observed transition, and the A06→A14 gap compressed to one step, cutting A02 out of the path. [DIR004, DIR010, LAG012]
+- A08 occurs about twice as often and earlier (participation about 24 → 50 in 100 traces; mean position about 0.91 → 0.72 of the case length) and now leads to A10 instead of A05; A10's participation likewise rose from about 26 to 50 in 100 traces. [OCC004, POS004, DIR006, OCC006, POS006]
+- A06 and A13 repeat less: A06's mean occurrences per trace fell from about 2.0 to 0.5 (participation about 50 → 36 in 100) and A13's from 1.0 to about 0.4 (participation about 35 → 28 in 100). [OCC003, OCC007]
+- Relation and lag items agree with this rewiring: A01/A02 pairs moved from co-occurrence in about half of the traces to not co-occurring, A14 now co-occurs with A08/A09/A10 without A01/A02, and A08–A10 changed from separate traces to A08 preceding A10 in about half of the traces. [REL001, REL012, REL023, REL039, LAG034]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the chain A06 → A02 → A14 → A01, executed in the earlier window, is no longer executed in the later window: A01 and A02 (previously in about half of the traces) are unobserved, A14 now connects the upstream part (A06, A13) directly to the downstream activities A08, A07 and A12 that A01 used to feed, and the previously unseen A09 appears mid-process between A12/A07 and A11. This rests on direct participation and successor evidence (A01/A02 at zero participation with empty outgoing profiles; the successor profiles of A14, A06 and A13 changed exactly where A01 and A02 used to sit), on the consistent shift of dozens of relation items in the same direction, and on the qualified-item count (107 control-flow items against roughly 0.64 expected without change), so chance sampling cannot account for the pattern as a whole. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR011, DIR004, DIR010, DIR007, OCC005, REL001, REL012, REL023]
+
+Limitations: zero participation only shows that A01 and A02 were not observed in the later sample, and a renaming cannot be ruled out — for example, A09 could be a relabelled A01 or A02, since its successors (A11, A12, A07) only partially overlap A01's (A07, A10, A08, A12) and its position differs from both. [DIR007, DIR001, POS005, POS001]
+
+Other differences: A08 now leads to A10 rather than A05 and occurs about twice as often and earlier in the case; A10's participation doubled to about 50 in 100 traces; and the A06–A13 repetition shrank (A06 about twice per trace before versus about once when present afterwards, A13 about 0.4 occurrences per trace). [DIR006, OCC004, POS004, OCC006, POS006, OCC003, OCC007]

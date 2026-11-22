@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_f737638cadfdd3c5.json",
+  "evidence_sha256": "a64bbec7f26846b0b5c99cd7949d4c3fc04991d60b1cf38546f5dc91886628f7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:45:22.353516+00:00",
+  "finished_at_utc": "2026-11-15T06:46:14.114528+00:00",
+  "latency_seconds": 51.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7458,
+    "prompt_tokens": 7542,
+    "total_tokens": 15000,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6521,
+      "text_tokens": 937
+    },
+    "cost": 0.0048603
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24843,
+  "text": "### Observed differences\n\n- Three activities that never appeared in the earlier window occur regularly in the later one: A19 in about 37 in 100 traces, A25 in about 34 in 100 and A20 in about 29 in 100, in each case exactly once per trace (no repetitions observed). [OCC001, OCC002, OCC003]\n- The routing out of A41 changed fundamentally: in the earlier window about 93 in 100 of its observed outgoing transitions went directly to A26, while in the later window only about 1 in 100 does; instead about 34 in 100 go to A19, about 31 in 100 to A25 and about 27 in 100 to A20. [DIR004]\n- Each of the three new activities leads almost exclusively to A26: about 96 in 100 of A19's outgoing transitions, about 98 in 100 of A20's and about 97 in 100 of A25's. [DIR001, DIR002, DIR003]\n- A41 and A26 were executed back-to-back in about 94 in 100 cases before; in the later window they are separated by exactly one step in about 90 in 100 cases and adjacent in only about 1 in 100. [LAG002]\n- By event order (not clock time), the three new activities sit at a mean relative position of about 0.36 — roughly a third into the trace — and A26 itself now appears slightly later (mean position about 0.37 before vs about 0.39 after), while still occurring in every trace. [POS001, POS002, POS003, POS004]\n- A minor separate difference: the gap between A31 and A35 shifted from mostly one step (about 55 in 100) to mostly two steps (about 62 in 100), and A31's mean position moved slightly later (about 0.69 to about 0.71). [LAG001, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a choice among three activities — A19, A20 and A25 — is inserted between A41 and A26. Previously A41 led almost always directly to A26; now it leads to one of the three (about 34, 31 and 27 in 100 of its outgoing transitions respectively) and almost never directly to A26, while each of the three leads almost exclusively on to A26. Their participation shares (about 37, 29 and 34 in 100) together cover nearly every later trace, which is consistent with exactly one of the three being executed per case, although co-occurrence was not directly observed, so mutual exclusivity remains an inference rather than an observation. The A41–A26 distance growing from one step to two, and A26's slight shift to a later event position, corroborate the same picture. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, POS001, POS002, POS003, POS004]\n\nScreening produced 14 qualifying items against roughly 0.5 expected for an unchanged process, so the set of differences is far larger than random re-splits would typically produce, and each item is individually unusual for such splits. The evidence is direct (successor redistribution at A41, adjacency change, positions) and mutually consistent. Two limitations remain: most items describe one underlying behaviour rather than independent confirmations, and zero participation in the earlier window strictly means the three activities were not exercised there — the evidence cannot distinguish activities newly added to the process from ones that existed but were not observed before. [OCC001, OCC002, OCC003, DIR004, LAG002]\n\nOther differences: the A31–A35 gap shifted from mostly one step to mostly two steps and A31's event position moved slightly later; these are small and not part of the main hypothesis. [LAG001, POS005]",
+  "case_id": "case_f737638cadfdd3c5",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

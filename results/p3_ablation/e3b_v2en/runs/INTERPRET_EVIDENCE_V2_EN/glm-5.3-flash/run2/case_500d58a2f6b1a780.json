@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_500d58a2f6b1a780.json",
+  "evidence_sha256": "79c191aaeaa170cea2718014ae0a2889912e7f4f76686b2ef475cdb843ed8cd8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:56:04.039045+00:00",
+  "finished_at_utc": "2026-11-15T04:56:32.698016+00:00",
+  "latency_seconds": 28.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3977,
+    "prompt_tokens": 4784,
+    "total_tokens": 8761,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3279,
+      "text_tokens": 698
+    },
+    "cost": 0.0027061
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 12996,
+  "text": "### Observed differences\n\n- A25, A26 and A31 still appear in every trace in both windows, but their repetition collapsed: mean occurrences per trace fell from about 3.4 to about 1.0, and the share of traces in which these activities recur fell from about 75 in 100 to essentially zero (about 1 in 200). [OCC001, OCC002, OCC003]\n- The routing out of A31 changed sharply: before, about 71 in 100 of its observed outgoing transitions went to A25 and about 29 in 100 to A20; in the later window, about 96 in 100 go to A20 and only about 4 in 100 to A25. [DIR001]\n- The relative order of A25 and A31 changed from mostly interleaved or repeated to strictly sequential: before, the pair was interleaved or repeated in about 75 in 100 traces (A25 strictly first in about 25 in 100); in the later window, A25 precedes A31 in about 995 in 1000 traces, and the two still co-occur in every trace. [REL001]\n- The spacing became fixed: among observed A25→A31 pairs within five steps, the gap is two events in about 92 in 100 later cases versus about 12 in 100 before; the reverse pair (A31 before A25 within five steps) is almost unobserved afterwards, with only one supporting observation. [LAG001, LAG002]\n- The positions of A25 and A31 within the trace shifted only slightly (A25 mean relative position about 0.43 to 0.41; A31 about 0.485 to 0.484), but both position distributions tightened, with their spread roughly halved. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a repetition structure involving A25, A26 and A31 was removed or strongly reduced. In the later window, these activities each execute about once per trace instead of recurring several times, they run in a fixed sequence with A25 preceding A31 by two events, and A31 now proceeds to A20 rather than returning to A25. The change is shown directly by relational and positional evidence — the order flip for A25/A31, the fixed two-step gap, and the successor redistribution at A31 — and it is consistent with the disappearance of recurrence for all three activities. The nine evidence items far exceed the roughly 0.3 expected by chance in this screening, although they largely describe one underlying behaviour and are not independent confirmations. [OCC001, OCC002, OCC003, REL001, LAG001, DIR001]\n\nLimitations remain: A26's role is inferred only from its occurrence profile, with no relational evidence placing it in the sequence; the near-absence of the reverse A31→A25 pair rests on a single observation in the later window; and the two windows are finite samples, so the evidence cannot rule out that the highly repetitive behaviour still exists but is rare in the later sample rather than structurally removed. [LAG002, OCC001, REL001]",
+  "case_id": "case_500d58a2f6b1a780",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

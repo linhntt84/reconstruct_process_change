@@ -1,0 +1,23 @@
+### Observed differences
+
+- The relative order of A26 and the three alternative activities A19, A20 and A25 flipped. In the earlier window each of the three appeared in about 32–37 in 100 traces and, whenever one of them appeared together with A26, A26 came first (31–36 in 100 traces; the reverse order in at most about 1 in 200). In the later window the three still appear at similar rates (31–36 in 100 traces) but now come before A26 in 29–35 in 100 traces, while the A26-first order has nearly disappeared (0–1 in 100). [REL005, REL006, REL007, REL008, REL009, REL010]
+
+- The three activities also changed what follows them: earlier, their outgoing transitions went mainly to A28 and A32 (A19 about 52% to A28 and 44% to A32; A20 about 52% to A32 and 47% to A28; A25 about 56% to A32 and 41% to A28), whereas in the later window they go almost exclusively to A26 (96–100%), typically immediately — A19 is followed by A26 at a one-step distance in 69 traces, against a single observation at distance 4 earlier. [DIR002, DIR003, DIR004, LAG007]
+
+- Event positions shifted accordingly: the mean position of A19, A20 and A25 moved from about 0.59–0.61 to about 0.32–0.33, while A26 moved slightly later (mean 0.32 to 0.35) and A27 from 0.56 to 0.59. [POS002, POS003, POS004, POS005, POS006]
+
+- Entry into the block changed: A45 earlier led to A26 (about 92% of its outgoing transitions, at one-step distance in about 91 in 100 cases) and now leads to A20 (26%), A08 (25%), A19 (23%) and A25 (23%), reaching A26 only at two to three steps (72% at two, 27% at three). A08 now occurs in about 30 in 100 traces (earlier about 13 in 100); its outgoing transitions, earlier spread over A16, A26, A15 and A49, now go mainly to A19 (38%), A20 (29%) and A25 (21%), and A08 reaches A26 two steps later in about 53 traces (96% of observed pairs). [DIR001, DIR007, LAG002, LAG014, POS001]
+
+- The A27/A28 section became a rigid two-step chain: A27 now leads to A28 in about 98% of its outgoing transitions (earlier 50%, with about 46% going directly to A19/A20/A25) and A28 leads to A32 in about 99% (earlier 48%, with about 52% to A19/A20/A25); both hops are now at one-step distance (98–99% of pairs), so A27 reaches A32 in two steps (97%) instead of three (96.5%). The former direct links into the block disappeared: A27 → A25 fell from 72 to 2 observed pairs, A28 → A25 from 41 to 2, and A25 → A32 from 72 to 1. [DIR005, DIR006, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013]
+
+- On other routes the distance to A26 grew: A16 reached A26 mostly three steps earlier and now four to five steps, and A18 reached A26 two steps earlier and now three to four. [LAG004, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the alternative block A19, A20 and A25 swapped position with A26: in the earlier window the block ran after A26 and closed into A28 and A32, while in the later window it runs before A26, leads directly into it, and is entered from A45 and from A08, whose participation roughly doubled; at the same time A27 and A28 now pass to A32 as a fixed two-step chain instead of routing into the block. The order flip is shown directly by six activity-pair relations and is far too large for sampling (from 0 to about 34 in 100 traces, with 200 traces per window), the successor, position and step-distance indicators all agree, participation of every involved activity remains substantial in both windows (so activities were neither added nor removed), and the screening result (39 qualifying control-flow items against roughly 0.5 expected for an unchanged process, each item exceeding the differences of about 995 in 1,000 random re-splits) rules out chance as an overall explanation. [REL005, REL006, REL007, REL008, REL009, REL010, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, LAG007, LAG008, LAG009, LAG012, LAG014]
+
+Limitations: the many items largely describe one restructuring rather than independent confirmations; the evidence cannot distinguish a single relocation of the block together with its feeding edges from a coincidence of separate reroutings (A08 and A45 feeding the block while A27 and A28 bypass it), since both would leave the same traces; and positions and step distances refer to event order, not clock time, so no timing claim is implied. [REL005, DIR005, DIR007, POS002, LAG014]
+
+Other differences: the step distance from A16 to A26 grew from about three to four–five steps and from A18 to A26 from two to three–four steps, consistent with the block now sitting between them and A26. [LAG004, LAG005]

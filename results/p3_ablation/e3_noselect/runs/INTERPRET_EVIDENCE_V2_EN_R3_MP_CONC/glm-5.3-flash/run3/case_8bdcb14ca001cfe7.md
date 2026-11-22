@@ -1,0 +1,25 @@
+### Observed differences
+
+- **The repeating block A09/A13/A15 was rewired.** In the earlier window, A15's outgoing transitions went to A09 in about 41 of 100 cases and to A01 in about 38; A13 went to A15 (about 36), A09 (about 35) and A01 (about 22). In the later window, about 95 of 100 A15 transitions go to A09 (A01 is no longer observed as its successor), and A13 leads to A09 in about 71 of 100 and to A15 in only about 8; A09 itself now leads to A15 in about 48 of 100 (37 before) and to A13 in about 11 (22 before). [DIR009, DIR013, DIR015, DIR001]
+
+- **A09 repeats far more often.** Its mean occurrences per trace rose from about 1.9 to about 4.3, while participation rose only from 62 to 68 in 100 traces; its self-repetition gaps shortened from typically 3–5 positions to about 2. A15 tightened similarly (self-gaps now about 2) and, although it appears in fewer traces (53 vs 62 in 100), its mean occurrences per trace rose to about 2.2 from 1.9. A15 still never appears without A09, but A09 now appears without A15 in about 14 of 100 traces (never before). [OCC009, OCC015, LAG016, LAG045, REL015]
+
+- **The block's coupling to A01 weakened.** A15 co-occurs with A01 in 53 of 100 traces (62 before), A01→A15 disappeared from A01's successor profile, and the remaining A01–A15 successions sit at larger positional gaps (3–5 instead of 1–2). The A09–A13, A09–A15 and A13–A15 pairs, previously partly in fixed order, are now almost purely interleaved (A09–A13 interleaved in 60 of 100 traces vs 39), and traces with A13 but without A15 appeared (about 14 in 100). [DIR001, REL006, REL013, REL015, REL020, LAG007, LAG040]
+
+- **A03, A11 and A14 became a fixed trio.** Earlier, A03 and A14 always appeared together (51 of 100 traces) and repeated in about 28 of 100, with A11 joining in 28 of 100; in the later window, all three occur together in 47 of 100 traces, none of the three repeats anymore, and none appears without the others. [OCC003, OCC011, OCC014, REL008, REL010, REL017]
+
+- **The trio runs earlier and tighter.** Mean event position fell for A11 (0.43 to 0.18 of the trace), A03 (0.40 to 0.25) and A14 (0.39 to 0.26); pairs previously interleaved without fixed order now run in fixed orders (A11 before A14 in about 39 of 100 traces, A11 before A03 in about 33) and mostly back-to-back (A14 followed by A03 one position later in about 68 of 100 such pairs; A03 followed by A14 in about 57). [POS002, POS004, POS006, REL008, REL010, REL017, LAG010, LAG012, LAG022, LAG035]
+
+- **Routing around the trio shifted.** A14 now leads to A12 in about 34 of 100 of its outgoing transitions (about 10 before) and A03 to A12 in about 21 (about 9); A02, A05 and A08 each now lead to A11 in about 11–14 of 100 (previously unobserved); A11's outgoing transitions are less concentrated on A03 and A14 (about 45 of 100 vs 70). [DIR002, DIR003, DIR005, DIR008, DIR011, DIR014]
+
+- **Smaller shifts elsewhere.** A06 now leads almost exclusively to A01 (about 99 of 100 vs 86); A07 and A10 appear in all traces (95 and 96 of 100 before); A01 occurs slightly more often (about 4.2 vs 3.8 per trace) with shorter self-gaps (3 vs 4 positions dominant). [DIR006, OCC001, OCC007, OCC010, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the iteration structure of the repeating block involving A09, A13 and A15 changed: A15, which previously split its outgoing transitions between returning to A09 and exiting to A01, now returns to A09 in almost all cases; A13 now hands over to A09 instead of to A15; and A09 consequently repeats about 2.3 times as often per trace (about 1.9 to about 4.3 occurrences), while A15 appears in fewer traces but with more repetitions and no longer couples back to A01. The successor changes are observed directly on large samples (about 374 vs 444 outgoing transitions for A15, 374 vs 409 for A13), each larger than in about 995 of 1000 random re-splits, and they agree with the relation items (A09–A15 and A13–A15 co-occurrence down, interleaving up, A09-only traces appearing) and with the shortened A09 and A15 self-gaps expected from a tight A09–A15 cycle. [DIR009, DIR013, DIR015, DIR001, OCC009, OCC015, REL013, REL015, REL020, LAG016, LAG045]
+
+Limitations: positions and gaps are event ranks, not clock times, and the absence of A15→A01 from the later successor profile does not prove that path is gone — it may have become too rare to surface in 200 traces; the evidence also provides no chance-expectation baseline, so the judgement rests on the directness and consistency of the items rather than on an item count. [DIR001, DIR015]
+
+Other differences: The A03/A11/A14 restructuring — a loosely ordered, sometimes-repeated pair that became a fixed, once-only, earlier-positioned trio with A12 as a frequent successor and new inputs from A02, A05 and A08 — is a coherent second difference outside the main hypothesis; the shifts at A01, A06, A07 and A10 are small in comparison. [OCC003, OCC011, OCC014, POS002, POS004, POS006, REL008, REL010, REL017, DIR002, DIR003, DIR005, DIR008, DIR011, DIR014, LAG010, LAG012, LAG035, DIR006, OCC001, OCC007, OCC010, LAG001]

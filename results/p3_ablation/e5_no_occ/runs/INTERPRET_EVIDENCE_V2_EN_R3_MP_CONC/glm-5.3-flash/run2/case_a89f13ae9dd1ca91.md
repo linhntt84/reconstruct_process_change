@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran in all 200 traces, at roughly position 0.37 of the trace, always together within a trace and in no fixed order among themselves (A21 before A22 in about 52 in 100 traces, the reverse in about 48 in 100). In the later window, each of the three appears in only about 1 in 200 traces. [DIR004, DIR005, DIR006, POS004, POS005, POS006, REL025, REL026, REL031]
+- A14, A15 and A16 were not observed in the earlier window (0 of 200 traces each). In the later window, A14 appears in 60 of 200 traces, A15 in 65 and A16 in 74, around position 0.35, and no trace contains more than one of them — they behave as mutually exclusive alternatives. [POS001, POS002, POS003, REL001, REL002, REL010]
+- The outgoing transitions of A39 (present in all traces in both windows) changed completely: earlier its outgoing flow went to A21 (about 35 in 100), A22 (about 30) and A23 (about 35); in the later window it goes to A14 (30 in 100), A15 (about 33) and A16 (37). [DIR007]
+- The distance from A39 to A24 shrank from 4 event positions in all earlier traces to 2 positions in about 995 in 1000 later traces; A24 itself ran in all traces in both windows, with its mean position moving earlier from about 0.43 to about 0.39. [LAG010, POS007]
+- A41 occurred in about 59 in 100 traces in the earlier window and about 69 in 100 in the later window; earlier it always co-occurred with A21, whereas in the later window it co-occurs with A14, A15 or A16 in most of its occurrences. [REL009, REL017, REL024, REL030, REL035, REL039]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A39 and A24 was restructured: in the earlier window every trace executed the three activities A21, A22 and A23 between A39 and A24 in varying order, while in the later window each trace executes exactly one of the three mutually exclusive activities A14, A15 or A16 there, so that A24 now follows two steps after A39 instead of four. [DIR007, POS001, POS002, POS003, POS004, POS005, POS006, POS007, REL025, REL027, LAG010]
+
+The support is direct and consistent across indicator families: A39's successor set switched wholesale from A21/A22/A23 to A14/A15/A16 [DIR007]; participation flipped from 200 of 200 traces for A21–A23 to about 1 of 200, and from 0 to 60–74 of 200 for A14–A16 [POS001, POS002, POS003, POS004, POS005, POS006]; co-occurrence relations flipped from always-together to never-together in the same direction [REL003, REL011, REL018, REL025, REL027]; and the A39-to-A24 distance contracted in line with a three-activity block becoming a single activity [LAG010]. With 65 qualifying evidence items against roughly 0.48 expected by chance in an unchanged process, the pattern as a whole cannot be a sampling artefact. The main limitations: near-zero participation only means A21, A22 and A23 were not observed in the later sample, so removal versus extreme rarity cannot be decided, and a single replacement of the block versus two independent changes (one removing the old activities, one inserting the new alternatives) cannot be distinguished from this evidence.
+
+Other differences: A41 became more frequent (about 59 in 100 traces earlier, about 69 in 100 later) and now coincides with A14, A15 or A16 rather than with A21, while A40's participation and position stayed essentially stable. [REL009, REL017, REL024, REL030, REL035, REL039, POS009]

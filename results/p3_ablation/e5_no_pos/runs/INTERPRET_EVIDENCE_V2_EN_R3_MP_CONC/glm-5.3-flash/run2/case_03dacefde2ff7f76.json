@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_03dacefde2ff7f76.json",
+  "evidence_sha256": "5449febd52637f5ca7c1b1c86938a75227d64035e2be64f4822db0f6dffcdd53",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:27:03.307438+00:00",
+  "finished_at_utc": "2026-11-15T06:28:54.590557+00:00",
+  "latency_seconds": 111.28,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15757,
+    "prompt_tokens": 11877,
+    "total_tokens": 27634,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14257,
+      "text_tokens": 1500
+    },
+    "cost": 0.00966005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48019,
+  "text": "### Observed differences\n\n- In the earlier window, A45 split its outgoing transitions almost evenly over A19, A20 and A25 (about 31, 26 and 28 in 100), and each of these three led almost exclusively to A26 (about 97, 89 and 98 in 100 of their transitions). In the later window, A45 leads to A26 in about 89 in 100 transitions, while A19, A20 and A25 now lead mainly to A28 and A32 (roughly 38–51 and 43–58 in 100) and practically never to A26. [DIR001, DIR002, DIR003, DIR006]\n- The sequence between the group A19/A20/A25 and A26/A27 reversed. Earlier, when a group activity and A26 or A27 occurred together (about 31–38 in 100 traces), the group activity came first in nearly all such cases (about 30–38 in 100) and the reverse order was essentially absent; in the later window, A26 or A27 comes first in about 31–36 in 100 traces and the group-first order has almost disappeared, while co-occurrence stayed at a similar level (about 31–38 in 100 in both windows). [REL001, REL002, REL004, REL005, REL006, REL007]\n- The group's relation to A28 changed from a fixed order to a mixed one: earlier, A19 and A25 each preceded A28 in about 36 and 32 in 100 of the co-occurring traces with no reverse cases; in the later window both orders appear in similar shares (about 15–22 in 100 each). [REL003, REL008]\n- Adjacent placements shifted accordingly: A25 immediately followed by A26, seen in 63 pairs earlier, is nearly gone later (1 pair, then at a distance of five positions); A45 to A26 became immediate (gap of one position in about 89 in 100 cases, versus a gap of two in about 84 before); one step is now inserted between A27 and A28 in about 49 in 100 traces (gap one in about 51, versus about 98 before), between A28 and A32 in about 51 in 100 (versus about 96 at gap one), and the distance from A27 to A32 grew from two to three positions (about 96–97 in 100 in both windows). [LAG003, LAG004, LAG005, LAG007, LAG008]\n- A27 and A28, previously near-exclusive chain steps, now fan out to the group: in the later window A27 leads to A28 in about 51 in 100 transitions and to A20, A25 or A19 in about 15–18 each, and A28 leads to A32 in about 48 in 100 and to A25, A20 or A19 in about 14–22 each. [DIR004, DIR005]\n- The group now sits next to A28 on both sides: A20 immediately precedes A28 in 36 observed pairs and immediately follows it in 30, and A20 reaches A32 either directly (gap one, about 45 in 100) or with A28 in between (gap two, about 53 in 100). These gap items rest on only 1 observation in the earlier window, so they are weakly supported on their own. [LAG001, LAG002, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block of activities A19, A20 and A25 changed its sequence position relative to the chain through A26, A27 and A28: in the earlier window the flow ran from A45 via one of the block activities into A26, with the block always preceding A26, A27 and A28, and the process continuing A27 → A28 → A32; in the later window A45 leads to A26, A26 and A27 run before the block, and the block is executed around A28 — inserted between A27 and A28 in about half of the traces and between A28 and A32 in the rest — with its activities now leading to A28 or A32 instead of A26. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG003, LAG004, LAG005, LAG007, LAG008]\n\nThe hypothesis is supported directly and consistently: 22 control-flow items qualified against roughly 0.59 expected by chance (about 37 times the expectation, with every item's difference exceeding about 199 of 200 random re-splits), the order reversal is shown directly by pairwise relations computed over all 200 traces per window, and the successor and gap changes agree with it; the stable co-occurrence shares (about 31–38 in 100 in both windows) rule out the competing reading that the block simply became rarer or optional. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG003, LAG004, LAG005, LAG007, LAG008]\n\nLimitations: the evidence cannot distinguish a genuine reversal of the two blocks from the block being removed from its old position and re-inserted after the chain, and the adjacency of A20 to A28 in both directions leaves open whether some traces contain the block on both sides of A28; the exact gap profiles for the A20–A28 and A20–A32 pairs rest on a single earlier-window observation. [LAG001, LAG002, LAG004, LAG006, LAG007]",
+  "case_id": "case_03dacefde2ff7f76",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

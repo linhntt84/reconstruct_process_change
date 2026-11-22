@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_2573016e760ecea1.json",
+  "evidence_sha256": "f0b0ce4a3ae0003809f419f1ced821e9a30e6d1866c623e3ed0ff8c31b8f426d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:36:12.348614+00:00",
+  "finished_at_utc": "2026-11-14T14:37:12.939221+00:00",
+  "latency_seconds": 60.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9811,
+    "prompt_tokens": 6869,
+    "total_tokens": 16680,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8944,
+      "text_tokens": 867
+    },
+    "cost": 0.0059358499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33851,
+  "text": "### Observed differences\n\n- In the earlier window, about 52 in 100 traces (104 of 200) contained A05, A06 and A04 together, always in the order A05 → A06 → A04: every observed outgoing transition of A05 went to A06, every observed outgoing transition of A06 went to A04, and A06 sat one event between them. Traces without this fragment contained none of the three activities. [DIR001, DIR002, REL002, REL003, LAG001]\n- In the later window, A06 was not observed in any of the 200 traces (participation fell from about 52 in 100 to 0), while A04 and A05 still appeared in about 50 in 100 traces each — essentially the same participation as before. [OCC004, OCC005, OCC006]\n- In the later window, A05 leads directly to A04: all of A05's observed outgoing transitions now go to A04 (previously all went to A06), and the distance between the pair A05 → A04 shrank from two event positions to one. [DIR001, LAG001]\n- Accordingly, A04 and A05 — which in the earlier window never appeared without A06 — now co-occur in about 50 in 100 traces with no A06 present. Their mean event positions shifted slightly (A04 from about 0.75 to about 0.67, A05 from about 0.25 to about 0.33), consistent with one event having been dropped from these traces; these are event positions, not clock times. [REL002, REL003, POS001, POS002]\n- Every item describing this change has an empirical strength of about 0.995, i.e. a difference larger than about 199 of 200 random re-splits. The remaining items — participation of A01, A02 and A03, each moving by only about 3 traces in 200 (e.g. A02 from 52 to about 50 in 100) — are within the range that random re-splits routinely produce. [OCC006, DIR001, OCC001, OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A06 was dropped from the sequence between A05 and A04. In the earlier window, roughly half of all traces executed A05 → A06 → A04; in the later window, A06 is unobserved (0 of 200 traces, down from 104) and A05 flows directly to A04 in the same roughly half of traces. The change is shown directly by the redirection of A05's successor and by the closing of the A05 → A04 gap from two event positions to one, and it is consistent across the occurrence, direction, relation, position and lag indicators. Importantly, the A05-before-A04 ordering itself persisted (still about 50 in 100 traces, always A05 first), which fits A06 alone dropping out rather than a broader reordering. [DIR001, LAG001, OCC006, REL001, REL002, REL003]\n\nA limitation is that zero participation only establishes that A06 was not exercised in the later sample of 200 traces; the evidence cannot rule out that A06 still occurs very rarely outside this sample, and the finite windows leave room for sampling error. [OCC006]\n\nOther differences: only small participation fluctuations for A01, A02 and A03 (about 3 traces in 200 each), which fall within the range produced by random re-splits and are not part of the hypothesis. [OCC001, OCC002, OCC003]",
+  "case_id": "case_2573016e760ecea1",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

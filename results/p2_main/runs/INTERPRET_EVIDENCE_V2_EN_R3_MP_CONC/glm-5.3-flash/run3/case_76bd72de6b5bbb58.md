@@ -1,0 +1,17 @@
+### Observed differences
+
+- A03 was a regular step in the earlier window: it appeared in about 45 in 100 traces (roughly once per trace when present, repeated in about a quarter of the traces containing it) and sat early-to-middle in the case (median relative event position about 0.39). In the later window it was not observed in any of the 200 traces. [OCC002, POS002]
+- A01 shows the mirror image: not observed at all earlier, in the later window it appears in about 50 in 100 traces, about once per trace, repeated in about 28 in 100 of the traces containing it, at a very similar early-to-middle position (median about 0.38). [OCC001, POS001]
+- The flow into this point was rewired: earlier, A09 led to A03 in about 52 in 100 of its outgoing transitions and A11 led to A03 in about 22 in 100; in the later window A09 leads to A01 in about 55 in 100 and A11 to A01 in about 18 in 100, while their other successors stay nearly unchanged. [DIR003, DIR004]
+- The flow out was carried over as well: earlier, A03's outgoing transitions went mainly to A11 (about 45 in 100), then A10, A09 and A12 (about 14–18 each); in the later window A01's outgoing transitions go mainly to A11 (about 46 in 100), then A12, A09 and A10 (about 15–16 each). [DIR001, DIR002]
+- A01 also inherited A03's company: earlier, A03 shared traces with A05, A09, A10, A11 and A12 in roughly 38, 45, 33, 45 and 28 in 100 cases; in the later window A01 shares traces with the same activities in roughly 44, 50, 35, 50 and 35 in 100 cases, with similarly mixed orderings (mostly interleaved or repeated, and A01 typically before A11). A01 and A03 never occur in the same trace in either window. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 was inserted at the point A03 had occupied and A03 was removed — in effect, A01 took over A03's role. Earlier, A03 ran in about 45 in 100 traces, was fed mainly by A09 and A11, and led mainly to A11 (then A10, A09, A12); in the later window A01 runs in about 50 in 100 traces, is fed by the same activities, leads to the same main successors, occupies the same relative event position, and shows the same co-occurrence pattern with A05, A09, A10, A11 and A12. The volume of qualifying evidence (19 items against roughly 0.33 expected by chance for the 67 tested units) cannot be explained by sampling, and the items converge on this one structural difference rather than on scattered unrelated changes. [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, POS001, POS002, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]
+
+An important competing explanation remains: the evidence cannot distinguish a genuine replacement of the step by a new activity from a relabelling of the same activity under a new code, since A03 and A01 are never observed in the same window; it also cannot establish that A01 performs the same work. The modest participation difference (about 45 vs 50 in 100 traces) is within what two 200-trace samples allow. [OCC001, OCC002]
+
+Other differences: beyond the A03-to-A01 handover, A11's outgoing transitions shifted slightly among their remaining targets (A09 from about 5 to 9 in 100, A12 from about 26 to 31 in 100, A10 from about 28 to 25 in 100); this is small and largely a by-product of the A03 edge disappearing. [DIR004]

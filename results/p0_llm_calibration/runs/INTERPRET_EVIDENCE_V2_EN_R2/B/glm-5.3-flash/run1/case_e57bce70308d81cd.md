@@ -1,0 +1,19 @@
+### Observed differences
+
+- **Participation split.** In the earlier window, A27, A28 and A29 each appeared in every one of the 200 cases. In the later window, A27 appears in about 46 in 100 cases and A28 and A29 in about 55 in 100; each still occurs at most once per case in both windows. [OCC001, OCC002, OCC003]
+- **From always-together to mutually exclusive.** Earlier, A27 always co-occurred with A28 and with A29, and A28/A29 always appeared together, in either order (roughly 47 vs 53 in 100). In the later window, A27 never co-occurs with A28 or A29: cases contain either A27 alone (about 46 in 100) or the A28/A29 pair (about 55 in 100, still in either order). [REL013, REL014, REL015]
+- **Routing out of A20 changed.** Earlier, A20 was followed by A28 in about 47 in 100 cases and by A29 in about 53, with A21 reached three steps later. In the later window, A20 is always followed directly by A21 (gap of 1 step instead of 3). [DIR001, LAG001]
+- **Routing around A23 and A24 changed.** Earlier, A23 was always followed by A27, and A28/A29 never led to A24 (they led to A21 or to each other). In the later window, A23 is followed by A27 in about 46 in 100 of its occurrences, by A28 in about 30 and by A29 in about 24, and A28 and A29 each lead to A24 in about 45 in 100 of their occurrences, within 1–2 steps instead of 5. [DIR002, DIR003, DIR004, LAG007, LAG008]
+- **The pair now sits later in the case.** A20 reaches A28/A29 only after 4–5 steps in the later window (previously 1–2) and reaches A23 after 3 steps (previously 5); the mean relative position of A28/A29 moves from about 0.43 to about 0.55, while A27 sits slightly earlier (about 0.58 to 0.54). A23 reaches A24 in 2 steps in A27-cases and 3 steps in pair-cases (previously always 2). [LAG002, LAG003, LAG004, LAG005, LAG006, POS005, POS006, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a reorganisation of the segment between A20 and A24: in the later window, the unordered pair A28/A29 no longer runs directly after A20 but after A23, where it alternates with A27. Earlier, every case ran A20 → A28/A29 (in either order) → A21 → … → A23 → A27 → A24; in the later window, cases run A20 → A21 → … → A23 and then either A27 → A24 (about 46 in 100 cases) or the A28/A29 pair → A24 (about 55 in 100), with A27 and the pair never occurring in the same case. [REL013, REL014, REL015, DIR001, DIR002, LAG001, LAG003, LAG007]
+
+The change is shown directly on relations rather than inferred from frequencies alone: co-occurrence of A27 with A28 and A29 drops from every case to none, the successor sets of A20, A23, A28 and A29 change, and the lag profiles of the pair shift consistently with a relocation. The participation drops (A27 to about 46 in 100, A28/A29 to about 55 in 100) match the branch split exactly. With 37 qualifying items against roughly 0.4 expected if nothing had changed, and every item's difference exceeding about 99.5 in 100 random re-splits, chance sampling is implausible as an overall explanation. [OCC001, OCC002, OCC003, REL013, REL015, DIR001, DIR003, LAG003, LAG007]
+
+Limitations: the positional and lag indicators use event order, not clock time, so "moved" refers to sequence position only; and the evidence cannot separate one coordinated reconfiguration from two coupled changes (the pair relocating plus A27 becoming skippable), nor establish the exact branch shares beyond this sample. [POS006, LAG003, REL015]
+
+Other differences: small shifts in relative position — A20 slightly later (about 0.38 to 0.40) and A21, A23 and A24 slightly earlier (about 0.48 to 0.43, 0.54 to 0.50, 0.61 to 0.59) — are consistent with the pair leaving the early segment and need no separate explanation. [POS001, POS002, POS003, POS004]

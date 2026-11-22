@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_ffce3d69cdc0313c.json",
+  "evidence_sha256": "8d8a6617315560e46a9f58a01f86cfba3858f67cab9bf4d3606fdd679235405f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:48:03.896272+00:00",
+  "finished_at_utc": "2026-11-14T14:52:21.277899+00:00",
+  "latency_seconds": 257.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 41708,
+    "prompt_tokens": 24172,
+    "total_tokens": 65880,
+    "completion_tokens_details": {
+      "reasoning_tokens": 39270,
+      "text_tokens": 2438
+    },
+    "cost": 0.0244798
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 127088,
+  "text": "### Observed differences\n\n- The order of A31 and A32 between A27 and A28 reversed. In the earlier window A32 typically followed A27 directly (one step later in about 64 in 100 of the relevant traces) and A31 followed two steps after A27 (about 64 in 100), with A31 passing directly on to A28 in about 64 in 100 of its observed outgoing transitions. In the later window A31 typically followed A27 directly (about 62 in 100) and A32 two steps later (about 62 in 100), with A32 now passing directly on to A28 (about 62 in 100). [LAG001, LAG002, LAG003, LAG004, DIR023, DIR024]\n- Corroborating this reversal: A27's continuations to A31 rose from about 16% to 28% of its observed outgoing transitions while continuations to A32 fell from about 29% to 17%; traces with A31 before A32 went from about 16 in 100 (versus about 29 in 100 with A32 first) to about 28 in 100 (versus about 18); and the position distributions of both activities narrowed markedly (standard deviation from about 0.08 to about 0.05), with A32's median position moving later (about 0.78 to 0.81). [DIR020, REL005, POS003, POS004]\n- Participation shifted in mirror image between two four-activity groups: in the later window A01, A03, A04 and A05 each ran in about 52–53 in 100 traces, up from about 42–43, while A02, A06, A07 and A08 each ran in about 47–48, down from about 57–58. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]\n- Within those groups the transition mix also shifted: from A01, continuations to A04 fell from about 42% to 24% of observed outgoing transitions while continuations to A05 rose from about 26% to 40%; A04 passed directly to A09 in about 46% of cases, up from about 28%; A07 continued to A06 in about 38% of cases (from about 27%) and A08 continued to A07 in about 41% (from about 30%). [DIR001, DIR004, DIR007, DIR008]\n- The segment around A35 and A36 ran more: A35 appeared in about 26 in 100 traces (from about 18) and about 0.43 times per trace (from about 0.31); A36 still appeared in about half of the traces but averaged about 0.93 occurrences per trace (from about 0.82) with more repetition, and passed directly to A35 in about 46% of its observed outgoing transitions, up from about 37%. [OCC019, OCC020, DIR027]\n- Smaller movements: A10 and A11 still ran in every trace but slightly less often (about 1.7 versus 1.6 occurrences per trace), and a few other transition shares moved by a few points with only weak support (for example around A22/A29/A30 and A26). [OCC009, OCC010, DIR018, DIR019]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A31 and A32 exchanged their typical order within the segment between A27 and A28: in the earlier window the dominant sequence was A27 → A32 → A31 → A28, while in the later window it was A27 → A31 → A32 → A28. The change is shown directly and consistently: all four lag relations between A27/A28 and A31/A32 flipped their dominant step distance, the successor mixes of A31 and A32 swapped almost exactly (A31 to A28 fell from about 64% to 38% of observed outgoing transitions while A31 to A32 rose from about 36% to 62%, mirrored at A32), the directly observed A31-before-A32 versus A32-before-A31 shares reversed, and both activities' position distributions changed markedly at the same time. [LAG001, LAG002, LAG003, LAG004, DIR020, DIR023, DIR024, REL005, POS003, POS004]\n\nThe difference is specific to ordering: participation of A31 and A32, their co-occurrence with A27 and A28, their repetition, and the positions of the anchor activities A27 and A28 all stayed essentially flat, so a change in how often the activities run cannot explain the pattern. Limitations: both orders occur in both windows, so the change is a reversal of the preferred order (roughly two to one before in favour of A32 first, roughly two to one after in favour of A31 first) rather than a strict re-sequencing; and the evidence cannot rule out that the two orderings belong to two coexisting variants whose mix shifted, for example with case characteristics, rather than to a re-routing within one behaviour. [OCC015, OCC016, REL001, REL002, REL003, REL004, POS001, POS002]\n\nOther differences: the route through A01/A03/A04/A05 was taken in about 52–53 in 100 traces (from about 42–43) while the route through A02/A06/A07/A08 fell to about 47–48 (from about 57–58) — mirror-image shifts consistent with the first alternative being selected more often, although the sequencing inside both routes also shifted, so the change is not limited to the route choice; the A35/A36 segment ran and repeated more often; and A10/A11 repeated slightly less. These differences are separate from the main hypothesis. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR001, DIR004, DIR007, DIR008, OCC019, OCC020, DIR027, OCC009, OCC010]",
+  "case_id": "null_ffce3d69cdc0313c",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

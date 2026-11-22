@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_9797d0e0d44a09c4.json",
+  "evidence_sha256": "21c54d3274703b4307f42f12c44821f4b99edaa5bccbacadf8f3e0c2afef02e6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:32:30.181136+00:00",
+  "finished_at_utc": "2026-11-15T05:34:15.809915+00:00",
+  "latency_seconds": 105.63,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15278,
+    "prompt_tokens": 11039,
+    "total_tokens": 26317,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14089,
+      "text_tokens": 1189
+    },
+    "cost": 0.00929485
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48589,
+  "text": "### Observed differences\n\n- In the earlier window, the sequence A19 → A25 → A20 ran in about 47 in 100 traces (the three activities co-occurred in 47% of traces, always in that order); in the later window it ran in about 995 in 1000 traces, with the same internal order A19 before A25 before A20. [REL001, REL002, REL007]\n- Traces containing A26 but not A19 fell from about 53 in 100 to about 1 in 200; the same holds for A41 and A42 appearing without the A19/A25/A20 block (about 53 in 100 down to about 1 in 200 or less). [REL003, REL004, REL005, REL008, REL012, REL013]\n- A41's outgoing transitions flipped: in the earlier window about 52 in 100 led to A26 and about 45 in 100 to A19; in the later window about 92 in 100 lead to A19 and only about 1 in 200 to A26. [DIR002]\n- The gap between A41 and A26 changed from immediate adjacency (1 step, about 52 in 100 traces) to a 4-step gap (about 89 in 100, plus about 11 in 100 at 5 steps); immediate adjacency now occurs in about 1 in 200 traces. [LAG001]\n- The block's exit is unchanged: A20 led to A26 in about 96 in 100 of its outgoing transitions before and about 99 in 100 after. [DIR001]\n- A45 appeared in about 60 in 100 traces in both windows, but in the earlier window it appeared without A19 in about 33 in 100 traces, whereas in the later window it never appeared without A19. [REL006, REL011, REL015]\n- A42 appeared in every trace in both windows, but alongside A19 in only about 47 in 100 traces before versus about 995 in 1000 after; its order relative to A19 is now more mixed (A19 first in about 53 in 100, interleaved in about 46 in 100). [REL005, REL010, REL014]\n- Minor shifts: A26's mean relative position moved slightly later (about 0.41 to 0.43 of the trace) and A41's slightly earlier (about 0.33 to 0.31); A20 shows two new rare successors, A03 and A06, at about 1 in 200 each. [POS001, POS002, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the block A19 → A25 → A20 between A41 and A26 is executed in essentially every case, whereas in the earlier window it ran in about 47 in 100 cases and the remaining cases went directly from A41 to A26, skipping the block; in other words, A19, A25 and A20 changed from optional to (near-)mandatory and the direct A41 → A26 transition all but disappeared, while the block's internal order and its exit to A26 stayed the same. [REL001, REL002, REL003, REL007, REL008, DIR002, LAG001, DIR001]\n\nThe change is shown directly by relational evidence (co-occurrence of A19 with A20, A25, A26 and A41 rising from about 47 to about 995 in 1000 traces, with \"block absent\" shares falling from about 53 in 100 to nearly zero), by the successor profile at A41, and by the A41→A26 distance distribution; every item points the same way, and each difference exceeds about 995 of 1000 random re-splits of the pooled data. At the screening level, 20 control-flow items qualified where only about 0.42 would be expected without a change, far beyond what a stable process produces. [REL001, REL003, DIR002, LAG001]\n\nLimitations: the evidence cannot distinguish whether the direct A41 → A26 path was removed altogether or remains available but is now chosen in only about 1 in 200 cases; the many relation items describe one underlying block and are not independent confirmations; and positions are event indexes, not clock times, so no timing claim is made. [DIR002, LAG001]\n\nOther differences: A42 and A45 no longer appear without the block (A42 without A19 fell from about 53 in 100 traces to about 1 in 200; A45 without A19 fell from about 33 in 100 to none, while A45's overall frequency stayed at about 60 in 100); A26 and A41 shifted slightly in mean relative position; A20 gained the rare successors A03 and A06. [REL005, REL010, REL014, REL006, REL011, REL015, POS001, POS002, DIR001]",
+  "case_id": "case_9797d0e0d44a09c4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

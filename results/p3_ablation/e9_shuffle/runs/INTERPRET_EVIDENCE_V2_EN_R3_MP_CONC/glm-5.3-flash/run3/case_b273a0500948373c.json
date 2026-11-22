@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_b273a0500948373c.json",
+  "evidence_sha256": "b59214767eaa145772df7f703e75abf6626347186a7d153434b3af32768688fe",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:26:17.849474+00:00",
+  "finished_at_utc": "2026-11-15T09:27:35.447350+00:00",
+  "latency_seconds": 77.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11634,
+    "prompt_tokens": 15752,
+    "total_tokens": 27386,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10405,
+      "text_tokens": 1229
+    },
+    "cost": 0.0081798
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36509,
+  "text": "### Observed differences\n\n- The choice of path after A15 largely reversed between the windows. Earlier, about 82 in 100 traces continued from A15 to A19, A20 and A21, and about 19 in 100 to A16, A17 and A18; in the later window, about 79 in 100 continued to A16, A17 and A18 and only about 21 in 100 to A19, A20 and A21. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001]\n- Trace participation moved accordingly: A16, A17 and A18 each appeared in about 19 in 100 traces earlier versus about 79 in 100 later (37 vs 158 of 200 traces), while A19, A20 and A21 each fell from about 82 in 100 to about 21 in 100 (163 vs 42 of 200). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The two groups remained mutually exclusive alternatives: cross-group pairs such as A16 with A19 or A18 with A21 never occurred in the same trace in either window (co-occurrence 0.0 before and after); only the choice between the groups changed. [REL009, REL010, REL011, REL014, REL015, REL016, REL018, REL019, REL020]\n- Ordering within each group did not change: the three activities of the taken group co-occur and appear in both orders in similar proportions (later window: A16 before A17 in about 42 of 100 traces, A17 before A16 in about 38; earlier: A19 before A20 in about 48, A20 before A19 in about 34), so neither group has a fixed internal order in either window. [REL007, REL008, REL013, REL022, REL023, REL025]\n- A25 was present throughout and ran with whichever group was taken: its co-occurrence with A19/A20/A21 dropped from about 82 to about 21 in 100 traces, and with A16/A17/A18 rose from about 19 to about 79 in 100, typically after that group's activities (later, A16 preceded A25 in about 45 of 100 shared traces, with about 34 in 100 interleaved or repeated). [REL012, REL017, REL021, REL024, REL026, REL027]\n- The screening flagged 34 control-flow items where roughly 0.5 would be expected if nothing had changed (104 units tested), and each item's difference exceeds about 995 of 1,000 random re-splits of the pooled traces. [OCC001, OCC004, REL001, REL009, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two existing alternative paths out of A15 swapped in how often they are taken: the path A15 → A16/A17/A18 → A25, taken in about 19 of 100 traces earlier, was taken in about 79 of 100 in the later window, while the path A15 → A19/A20/A21 → A25 fell from about 82 to about 21 of 100. All six branch activities are observed in substantial shares in both windows, each group keeps its internal no-fixed-order execution, A15 and A25 remain present in essentially every trace, and no activity is bypassed or newly repeated — so this reads as a change in the frequencies of existing paths, not a replacement, addition or removal of a path. [OCC001, OCC004, REL001, REL004, REL007, REL022, DIR001]\n\nSupporting signs: occurrence, relation and direct-succession indicators all shift by the same margin (about 60 percentage points) and in mutually consistent directions, and the 34 qualifying items are roughly 65 times the number expected by chance for the units tested, so the ensemble is not what a stable process typically produces. [OCC001, OCC006, REL009, DIR001]\n\nLimitations: all items come from a single control-flow family and many describe the same traces, so they are not independent confirmations; and the evidence cannot distinguish a changed routing decision after A15 from a changed mix of pre-existing case types between the two windows. [OCC001, REL009, DIR001]",
+  "case_id": "case_b273a0500948373c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,49 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_ca2ce64391868894.json",
+  "evidence_sha256": "3c86733260c15538ab23a5dab65a272f668170fa0d5a8a2c4c66fe284036770e",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:34:53.453023+00:00",
+  "finished_at_utc": "2026-11-15T03:05:30.455622+00:00",
+  "latency_seconds": 1836.99,
+  "transport": "curl-stream",
+  "attempt_errors": [
+    "OSError: curl exit 28: curl: (28) Operation timed out after 1800006 milliseconds with 15615468 bytes received"
+  ],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5752,
+    "prompt_tokens": 18696,
+    "total_tokens": 24448,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5047
+    },
+    "cost": 0.004046800000000001
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 15119,
+  "text": "### Observed differences\n\n- In the earlier window, A01, A02, and A03 appeared in all 200 traces (A03 on average 2.1 times per trace); in the later window they appear in no trace. A04, absent earlier, appears in every later trace. [OCC001, OCC002, OCC003, OCC004]\n- A05's successor changed from A02 (all 200 traces) to A04 (all 200 traces). [DIR003]\n- A08's successor changed from A03 (all 223 observed transitions) to A06 (about 46%) and A07 (about 54%) of its 187 observed transitions. [DIR004]\n- A04 now co-occurs with A05 and A07 in all traces (A05 before A04, A07 before A04), and with A06 in about half the traces; earlier A04 was absent. [REL019, REL021, REL020]\n- A01, A02, and A03 no longer co-occur with any activity; earlier they co-occurred with A05, A06, A07, and A08. [REL001, REL002, REL004, REL005, REL006, REL007, REL008, REL010, REL011, REL012, REL013, REL015, REL016, REL017, REL018]\n- A04 now occupies the last position (mean 1.0); A07 moved earlier on average (mean position from 0.48 to 0.30). [POS004, POS006]\n- Distances between remaining activities shortened: e.g., A06–A07 lag changed from 3 steps to 2 or 4 steps; A08–A07 lag from 2 to 1 or 3. [LAG003, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process was restructured: activities A01, A02, and A03 were removed, and a new activity A04 was added at the end of the process. The routing changed accordingly—A05 now leads to A04 instead of A02, and A08 now leads to A06/A07 instead of A03. The overall flow shifted from a path A08→A03→(A05→A02→A01) with A03 also branching to A06/A07, to a path A08→A06/A07→A04 and A08→A05→A04. This is directly supported by the complete disappearance of A01/A02/A03, the appearance of A04 in all traces, the successor changes for A05 and A08, and the new co-occurrence patterns of A04 with A05, A06, and A07. The screening expected 0.24 items by chance; 43 items were observed, far exceeding that, so the evidence is not a chance artifact. A competing explanation—that the process was replaced by a completely different one—is weakened by the persistence of A05, A06, A07, and A08 in both windows.\n\nOther differences: The relative order among the remaining activities shifted slightly (e.g., A06–A07 and A08–A07 lags shortened), and A06 occurs in slightly fewer traces (56% to 50.5%). These are secondary to the main structural change.",
+  "case_id": "case_ca2ce64391868894",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_178c7ce208cb2c93.json",
+  "evidence_sha256": "5683e581dbc5626508ef2de51fc20aaebe6e431940010ebc2e4193c2dd0a17d3",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:35:50.749153+00:00",
+  "finished_at_utc": "2026-11-15T02:36:09.878564+00:00",
+  "latency_seconds": 19.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3069,
+    "prompt_tokens": 5786,
+    "total_tokens": 8855,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2471
+    },
+    "cost": 0.0015978160000000002
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 7595,
+  "text": "### Observed differences\n\n- In the earlier window, activity A01 was absent from all 200 traces; in the later window it appears exactly once in every trace (100% participation, mean 1.0 per trace). [OCC001]\n- In the later window, A01 is always followed by A03 (100% of its outgoing transitions); before, A01 did not exist. [DIR001]\n- The outgoing transitions of A02 changed: before, A02 went to A03 in about 78% of cases and to A04 in 22%; after, A02 goes to A01 in 76% and to A04 in 24%, and no longer directly to A03. [DIR002]\n- The outgoing transitions of A04 changed: before, A04 went to A02 in 78% and to A03 in 22%; after, A04 goes to A02 in 76% and to A01 in 24%, and no longer directly to A03. [DIR003]\n- In the later window, A01 co-occurs with A02, A03, and A04 in every trace, with fixed order: A02 before A01, A04 before A01, and A01 before A03. Before, A01 was absent, so these co-occurrences were zero. [REL001, REL002, REL003]\n- The distance between A02 and A03 increased: before, they were within 1 step in 78% of cases and within 2 steps in 22%; after, they are within 2 steps in 76% and within 3 steps in 24%. [LAG001]\n- The distance between A04 and A03 increased similarly: before, within 1 step in 22% and within 2 steps in 78%; after, within 2 steps in 24% and within 3 steps in 76%. [LAG002]\n- A02's mean relative position in the trace moved earlier, from about 0.39 to 0.25. [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new activity, A01, was inserted into the process as a mandatory step between the A02/A04 loop and A03. Before, A02 and A04 could lead directly to A03; after, they lead to A01, which then always leads to A03. This is directly shown by A01 appearing in every trace, its fixed order after A02/A04 and before A03, and the one-step increase in the lag between A02/A04 and A03. The evidence cannot rule out that A01 existed but was unobserved before, but with 200 traces showing zero occurrences, that is unlikely. All 11 control-flow items point to the same single structural change, far exceeding the 0.06 items expected by chance.",
+  "case_id": "case_178c7ce208cb2c93",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

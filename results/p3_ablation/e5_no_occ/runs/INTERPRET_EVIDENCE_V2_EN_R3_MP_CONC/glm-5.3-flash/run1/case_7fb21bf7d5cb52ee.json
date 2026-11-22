@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_7fb21bf7d5cb52ee.json",
+  "evidence_sha256": "f1a46a28897bfa2499022f6e5f0d3727fa48bc9ef0c82160ba4ea1905865129c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:41:25.559838+00:00",
+  "finished_at_utc": "2026-11-14T11:43:42.779914+00:00",
+  "latency_seconds": 137.22,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18107,
+    "prompt_tokens": 35772,
+    "total_tokens": 53879,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16034,
+      "text_tokens": 2073
+    },
+    "cost": 0.0144193
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53079,
+  "text": "### Observed differences\n\n- **A10 became far more frequent and much earlier in the case.** In the earlier window it appears in about 19 in 100 traces, around the middle of the case (mean relative position about 0.55, median 0.34); in the later window it appears in about 70 in 100 traces, near the start (mean position about 0.19, median 0.15). [POS001]\n- **Routing into and out of A10 changed.** Before, A10's outgoing transitions were spread across A16 (~20%), A46 (~20%), A48 (~18%) and A21 (~13%); in the later window about 85 in 100 go to A15. A14, which previously sent about 86 in 100 of its transitions directly to A15, now sends about 66 in 100 to A10 (about 33 in 100 still to A15). A10 follows A14 within one step in about 98 in 100 later cases (about 18 in 100 before, on few observations), and A15 now typically follows A14 two steps later rather than immediately, with its mean position shifting slightly later (0.17 to 0.19). [DIR002, DIR003, POS002, LAG001, LAG002, LAG003]\n- **A10's relations with the rest of the process flipped.** With A15 and with A20, A22, A23, A24, A25, A26, A31, A32, A47 and A48, co-occurrence rises from about 19 in 100 traces to about 70 in 100, and A10 now comes first in roughly 60 in 100 of those traces (about 9 in 100 before); with A14 the order reverses, A14 coming first in about 60 in 100 (about 17 in 100 before). A10 also now co-occurs with A45/A46 in about 48 in 100 traces (about 15 in 100 before) and typically precedes them. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]\n- **The strict mid-block sequence loosened and partly reversed.** A20 preceded A24 in about 98 in 100 traces before but only about 25 in 100 later (A24 first in about 74 in 100); A23 preceded A24 in about 98 in 100 before versus about 15 in 100 later; A23 preceded A26 in about 97 in 100 before versus about 32 in 100 later; pairs such as (A20, A26) and (A23, A25) became mixed with no dominant order. [REL015, REL017, REL018, REL020, REL021, REL022]\n- **New and redirected transitions appeared around the block.** A20 now also leads to A24, A25 and A26 (about 10% each, previously almost only A23 at 99.5%); A22 leads to A24 in about 27% (previously almost only A20); A24 returns to A22 in about 23%; A25 goes back to A20/A23/A22 in about half of its transitions (previously about 88% to A32); A26 returns to A20/A22 in about a quarter (previously about 98% to A25); A31 splits between A22 (52%) and A24 (46%, previously 99.5% A22); and A23 now exits directly to A32 in about 47 in 100 transitions (about 0.5 in 100 before). [DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, LAG016]\n- **Positions and gaps became less rigid.** A20, A22 and A23 occur slightly later in the case (mean position +0.04 to +0.06) while A24 and A26 occur slightly earlier (−0.03 to −0.05); previously deterministic gaps became variable (e.g. A20 to A25 was always four steps apart, now spread over one to four; A22 to A24 was always three, now usually one). [POS003, POS004, POS005, POS006, POS007, POS008, LAG006, LAG011]\n- **Minor tail changes.** A45 now leads to A46 in about 98% of its transitions (about 78% before) and A47 to A48 within one step in about 99% (about 87% before); A08 became rare (about 8 outgoing transitions observed versus about 41) with a redistributed successor mix, though this rests on very few later observations. [DIR011, LAG031, LAG032, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening found 74 qualifying control-flow items where fewer than one would be expected if nothing had changed, so the overall volume of differences is not what a stable process typically produces. Within that, the evidence directly and consistently supports one main hypothesis: in the later window, A10 acts as a frequent early step that sits between A14 and the rest of the process — it runs in about 70 in 100 cases (about 19 in 100 before), follows A14 almost immediately, and typically precedes A15, which now receives about 85 in 100 of A10's outgoing transitions, as well as A20, A22, A23, A24, A25, A26, A31, A32, A47 and A48; before, A10 was a rare mid-trace activity whose transitions were spread across many successors. This rests on participation and position, routing at A10 and A14, adjacency, and consistent co-occurrence/order reversals, with substantial observation counts (for example 140 traces containing A10 later versus 38 before). Limitations: the many relation items all express the same underlying participation change and are not independent confirmations, and positions and gaps are event-sequence positions, not clock times. An important competing explanation the evidence cannot rule out is that the two windows draw on a different mix of cases rather than a modified routing; the evidence shows the behavioural difference, not its origin. [POS001, DIR002, DIR003, LAG001, LAG002, REL002, REL003]\n\nOther differences: the previously fixed chain A20 → A22 → A23 → A24 → A25 → A26 became loosely ordered, with several pairs reversed or mixed, new transitions into and back within the block (A20 to A24/A25/A26, A22 to A24, A24 to A22, A25 and A26 back to A20/A22/A23, A31 to A24) and a new frequent exit from A23 to A32; whether this reordering belongs to the same change as A10's new role or is a separate modification cannot be determined from the evidence. In the tail, A45 and A47 concentrate further on A46 and A48, and A08 becomes rare with a changed successor profile (based on very few later observations). [DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, REL015, REL017, REL018, REL020, REL021, REL022, POS003, POS004, POS005, POS006, POS008, DIR011, LAG031, LAG032, DIR001]",
+  "case_id": "case_7fb21bf7d5cb52ee",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

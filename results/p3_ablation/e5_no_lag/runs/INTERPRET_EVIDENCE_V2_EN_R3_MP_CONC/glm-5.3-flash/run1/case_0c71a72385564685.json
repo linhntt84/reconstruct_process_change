@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_0c71a72385564685.json",
+  "evidence_sha256": "65be29f8b280953d791d7c5db7025fc642776966e74b7979f6bd964043ff718c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:16:55.041635+00:00",
+  "finished_at_utc": "2026-11-14T13:18:22.351398+00:00",
+  "latency_seconds": 87.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12661,
+    "prompt_tokens": 11755,
+    "total_tokens": 24416,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11461,
+      "text_tokens": 1200
+    },
+    "cost": 0.008093749999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42364,
+  "text": "### Observed differences\n\n- Three activities appear only in the later window: A19 rises from 0 of 200 traces to about 38 in 100, A25 from 0 to about 35 in 100, and A20 from 1 of 200 traces to about 30 in 100. None of the three repeats within a trace (recurrence support about 0–1 in 100). [OCC001, OCC002, OCC003]\n- The three behave as mutually exclusive alternatives: in the later window each pair occurs together in only about 1 in 100 traces, and their shares (about 38 + 30 + 35) sum to roughly one occurrence per trace, so almost every trace contains exactly one of them; earlier they were essentially never observed. [OCC001, OCC002, OCC003, REL001, REL002, REL005]\n- A41, which occurs in virtually every trace in both windows, rerouted: earlier about 82 in 100 of its observed outgoing transitions went directly to A26; in the later window only about 1–2 in 100 do, while about 33 in 100 go to A19, about 30 in 100 to A25 and about 24 in 100 to A20. [DIR004]\n- The new activities connect back to A26: about 95 in 100 of A19's and about 90 in 100 of A25's observed outgoing transitions lead to A26; in the later window each of A19, A20 and A25 comes after A41 in nearly all co-occurrences (about 94–99 in 100) and before A26 in nearly all co-occurrences. [DIR002, DIR003, REL003, REL004, REL006, REL007, REL008, REL009]\n- The new activities occupy a similar relative position, around 0.35–0.37 of the trace length, immediately before A26's position. [POS001, POS002, POS003]\n- A26 still occurs in every trace in both windows; its relative position moved slightly later (mean about 0.37 to about 0.40), consistent with one step now preceding it, though a position shift alone does not establish movement. [POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural addition: in the later window, a block of three mutually exclusive activities — A19, A20 and A25 — is executed between A41 and A26, one of the three per case in roughly equal shares (about 38, 30 and 34 in 100 traces), whereas in the earlier window the flow ran directly from A41 to A26 and none of the three occurred. The placement is shown directly: A41's outgoing transitions shifted from A26 (about 82 in 100) to the three new activities (about 87 in 100 combined); each new activity follows A41 and precedes A26 in essentially all of its co-occurrences; the three rarely co-occur, so they are alternatives rather than a parallel block; and A26 remains universal with a slightly later relative position. The screening result (20 qualifying items against about 0.5 expected for an unchanged process, roughly 40 times the chance expectation) rules out random splitting as an explanation for the pattern as a whole. [OCC001, OCC002, OCC003, DIR002, DIR003, DIR004, REL003, REL004, REL006, REL007, REL008, REL009]\n\nLimitations: the outgoing profiles of A19 and A25 could only be measured in the later window, so their earlier behaviour is unobserved and the before picture of the direct A41–A26 link rests on A41's profile; and the evidence cannot show whether the choice among the three activities is unconditional or driven by case attributes not included here. A competing reading — that the three activities are placed elsewhere and the A41/A26 orderings arise indirectly — cannot be fully excluded, although the pairwise orderings hold within the same traces and make it unlikely. [DIR002, DIR003, DIR004, REL003, REL004, REL007, REL008, REL009]\n\nOther differences: A02, a rare activity (about 35–44 observed outgoing transitions per window), no longer shows A26 among its successors — earlier about 26 in 100 of its outgoing transitions went to A26, in the later window none do, with small shares now going to A19, A20 and A25 among others. This is weakly supported but consistent with the rerouting above. [DIR001]",
+  "case_id": "case_0c71a72385564685",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

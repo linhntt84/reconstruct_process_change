@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_5128c7bc9bcdf516.json",
+  "evidence_sha256": "643d45650f722cd81a192c3d224ab34d4a007c71e8da7f7011354b2c0349779d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:43:17.179434+00:00",
+  "finished_at_utc": "2026-11-14T13:45:17.726473+00:00",
+  "latency_seconds": 120.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20212,
+    "prompt_tokens": 34765,
+    "total_tokens": 54977,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18363,
+      "text_tokens": 1849
+    },
+    "cost": 0.015320750000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57966,
+  "text": "### Observed differences\n\n- The main difference concerns the six activities A15, A17, A18, A19, A20 and A21, which in both windows run in every single case between A26 and A27. In the earlier window their internal order was variable: A19 preceded A15 in about 75 in 100 cases and preceded A18 in about 88 in 100; A15 and A21 preceded each other about equally often (roughly 50/50), as did A17 and A19; A18 was followed directly by A27 in about 53 in 100 of its executions, and A26 was followed by A17 or A19 about equally often. [REL001, REL003, REL004, REL007, DIR014, DIR018]\n\n- In the later window the same block runs as one fixed chain, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. Each block activity now has essentially one successor: A15→A18 rose from about 62% to 99.5%, A18→A19 from about 12% to 99.5%, A21→A20 from about 66% to 100%, and A26→A17 from 50% to 100%; the direct A18→A27 shortcut practically disappeared (from about 53% to under 1 in 100), and reverse orders such as A19 before A15 remain in only about 1 in 200 cases. Step distances also became fixed (for example A15→A19 now always at 2 steps, A15→A20 at 4 steps), where they were previously spread over 1–5 steps. [DIR012, DIR013, DIR014, DIR015, DIR016, DIR017, DIR018, REL001, LAG002, LAG003, LAG004, LAG016, LAG017, LAG020, LAG022, LAG025]\n\n- Event positions agree: in the later window A15, A17 and A18 occur earlier in the trace (A18's mean relative position fell from about 0.68 to 0.62), A19, A20 and A21 occur later (A19 rose from about 0.59 to 0.65), while A26 (about 0.54) and A27 (about 0.74) kept their positions. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- Separately, A10 and A11 are executed more often per case in the later window: mean occurrences per trace rose from about 1.62 to 1.81 for both, the share of traces in which they repeat rose from about 38 in 100 to 46 in 100, and A11's outgoing transitions to A10 increased from about 38% to 45%; both activities still appear in every trace in both windows. [OCC009, OCC010, DIR009]\n\n- Smaller shifts appear elsewhere: A35 now runs in about 22 in 100 cases (previously about 26 in 100) and A36 slightly less often per case, with A36's exits shifting from A35 towards A37 (about 46% to 59%); A38 and A39 repeat slightly more often; and routing shares moved a few points after A01/A05 (A04 down from 42% to 24% after A05, up from 24% to 38% after A01) and after A31/A32 (towards A28, from about 38% to 50%). These differences are small and weak enough that ordinary sampling variation between two windows of 200 traces remains plausible. [OCC017, OCC018, DIR024, OCC019, OCC020, DIR001, DIR005, DIR020, DIR021]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering of the block A15, A17, A18, A19, A20, A21 — six activities that every case contains between A26 and A27 — changed from a variable, largely unordered execution to one fixed sequence A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. The support is direct and consistent: pairwise orders flipped from mixed to near-deterministic (for example A17 before A19 from 50 in 100 to 100 in 100 cases, A18 before A19 from 12 in 100 to 99.5 in 100), successor profiles collapsed to a single successor per activity, step distances became fixed, and the position shifts (A15/A17/A18 earlier, A19/A20/A21 later, A26 and A27 unchanged) match the new chain. Participation is 100% for all six activities in both windows, so this is a reordering of always-present activities, not activities being added, removed or skipped; the many agreeing items describe one structure on the same traces and are not independent confirmations. An important competing explanation the evidence cannot rule out is a changed mix of trace variants — traces with other internal orders no longer occurring — which would look identical here; and although the order flips are larger than in 199 of 200 random re-splits of the pooled data, the two finite windows cannot exclude an extreme fluctuation outright. [REL001, REL004, REL007, DIR012, DIR014, DIR017, DIR018, LAG002, LAG003, POS003, POS004]\n\nOther differences: A10 and A11 appear to repeat more often per case (mean occurrences per trace 1.62 → 1.81; repeats in 38.5% → 46% of traces; A11→A10 share 38% → 45%), a repetition change not part of the main hypothesis. The small shifts around A35/A36, A38/A39, A01/A05 and A31/A32 are weak and could equally reflect sampling variation between the windows. [OCC009, OCC010, DIR009, OCC017, OCC018, DIR024, DIR001, DIR005, DIR020, DIR021]",
+  "case_id": "case_5128c7bc9bcdf516",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

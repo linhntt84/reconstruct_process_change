@@ -1,0 +1,16 @@
+### Observed differences
+
+- A03 was not observed in any of the 200 earlier traces; in the later window it occurs exactly once in every trace, always at the same normalized position (about 0.22) [OCC001, POS002].
+- In the earlier window, A07's observed outgoing transitions were split roughly evenly between A02 (about 33 in 100), A06 (about 32 in 100) and A10 (about 36 in 100); in the later window, A07 leads only to A03 [DIR002].
+- In the later window, A03's observed outgoing transitions lead to A02 (about 39 in 100), A06 (about 33 in 100) and A10 (about 29 in 100) [DIR001].
+- In the earlier window, A02, A06 and A10 each appeared in traces without A03; in the later window, A03 co-occurs with each of them in all traces, always after A07 and always before A02, A06 and A10 [REL001, REL002, REL003, REL004].
+- The distance from A07 to each of A02, A06 and A10 shifted about one step later: before, these pairs occurred at lags 1–3 (roughly a third each) and never at lag 4; in the later window, lag 1 disappears and lags 2–4 appear (for A07→A10, lag 1 accounted for about 36 in 100 before, while lag 4 accounts for about 37 in 100 after) [LAG001, LAG002, LAG003].
+- A02, A06 and A10 now occur later within traces (mean normalized position about 0.44–0.45, up from about 0.37–0.38), while A07 occurs slightly earlier (about 0.11 versus 0.125) [POS001, POS003, POS005, POS004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A03 was inserted as a new, mandatory step between A07 and the activities A02, A06 and A10. In the earlier window, a trace went from A07 to one of A02, A06 or A10, chosen in roughly equal shares, without A03; in the later window, A07 always leads to A03, A03 runs exactly once per trace, and A03 then leads to one of A02, A06 or A10 in similar shares. This is shown directly by the successor change at A07 [DIR002], A03's successors [DIR001], the strict ordering A07 before A03 before A02, A06 and A10 in every later trace [REL001, REL002, REL003, REL004], and the one-step increase in spacing between A07 and each of the three activities [LAG001, LAG002, LAG003]. The later positions of A02, A06 and A10 and the slightly earlier position of A07 are consistent with this insertion rather than separate changes [POS001, POS003, POS004, POS005]. Screening qualified 15 control-flow items against a chance expectation of about 0.12, so this set of differences is not what an unchanged process typically produces, and each difference is larger than in about 995 of 1000 random re-splits of the pooled traces [OCC001, DIR001, DIR002, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003].
+
+Limitation: the evidence cannot establish whether A03 is a genuinely new activity or a relabelled step that existed before under a different code, since A03 was simply not observed in the earlier window; the routing choice among A02, A06 and A10 is also observed only through A03's outgoing transitions in the later window [OCC001, DIR001].

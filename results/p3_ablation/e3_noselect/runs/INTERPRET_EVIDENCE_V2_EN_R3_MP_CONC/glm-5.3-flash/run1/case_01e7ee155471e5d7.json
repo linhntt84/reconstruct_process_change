@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_01e7ee155471e5d7.json",
+  "evidence_sha256": "4ea2b4795f7e4c4b6d18bea854743fe8d488a68487a1a1aa24de9267d316cce2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:44:43.984074+00:00",
+  "finished_at_utc": "2026-11-14T13:47:43.091105+00:00",
+  "latency_seconds": 179.11,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28696,
+    "prompt_tokens": 31281,
+    "total_tokens": 59977,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26406,
+      "text_tokens": 2290
+    },
+    "cost": 0.01904015
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 87264,
+  "text": "### Observed differences\n\n- The place of the activity block A30/A31/A36 within the case changed. In the earlier window, A20 was followed immediately by A22 in all 200 traces (100% of A20's outgoing transitions), A21 was followed by one of A30/A31/A36 (about 34%, 28% and 38% of its outgoing transitions), and A25 followed exactly four steps after A21 in every trace. In the later window, A20 leads to A30, A31 or A36 in roughly equal shares (about one third each; A22 in only about 1 in 200 cases), A22 follows A20 four steps later in about 199 of 200 traces, and A21 is followed immediately by A25 in about 199 of 200 traces. [DIR014, DIR015, DIR018, DIR019, DIR024, LAG001, LAG002]\n\n- The order between this block and A21/A22 reversed. Earlier, A21 came before A30/A31/A36 and A22 came before them in 100% of traces; later, the three activities come before A21 and before A22 in about 99.5 in 100 traces. All seven activities still occur together in every trace in both windows, so presence did not change — only order did. [REL001, REL002, REL003, REL004, REL005, REL006]\n\n- Event positions shifted accordingly: A30/A31/A36 moved from a mean position of about 0.59 to about 0.41 of the trace, A21 from about 0.53 to 0.62 and A22 from 0.38 to 0.47, while A20 (about 0.35) and A25 (about 0.65) stayed in place; the spacing between A22 and A21 is unchanged at about 0.15 of the trace. [POS002, POS003, POS005, POS006, POS007, POS001, POS004]\n\n- The old adjacencies vanished: the ordered pairs A21→A30/A31/A36 and A30/A31/A36→A25 within five steps, present in all 200 earlier traces, each appear in only 1 later trace. [LAG003, LAG004, LAG005, LAG006, LAG009, LAG012]\n\n- The block's internal behaviour and A25's outgoing behaviour are essentially unchanged: the three activities still run in no fixed order among themselves (each pair split roughly 50/50 between the two orders in both windows), and A25's transitions to A16/A17/A18/A19 stay within about 2–3 percentage points — consistent with an intact block being relocated rather than reshuffled. [REL007, REL008, REL009, DIR016, POS004]\n\n- Participation shifted for four later activities: A16 and A18 became more common (about 54→60 and 46→55 in 100 traces) while A17 and A19 became less common (about 47→41 and 54→46), with small matching redirections of transitions between them. [OCC015, OCC016, OCC017, OCC018, DIR010, DIR011, DIR012, DIR013]\n\n- Remaining differences are small: A10 and A11, present in every trace, repeat slightly more often (about 1.6 vs 1.7 occurrences per trace), A13 became less common (about 28→21 in 100 traces, with transitions from A11 to A13 falling from about 17% to 12%), and a few other participation or routing shares moved by several percentage points in both directions (e.g., A01 up from 45% to 51%, A02 down from 56% to 50%; out of A03, the share leading to A09 rose from about 26% to 39%). [OCC009, OCC010, OCC012, DIR009, OCC001, OCC002, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the block of three activities A30, A31 and A36 is executed at a different position: between A20 and A22, whereas in the earlier window it ran between A21 and A25. Earlier, a typical case went A20 → A22 immediately, then later A21 → the three activities in varying order → A25; in the later window it goes A20 → the three activities → A22, and A21 → A25 directly. Since A20, A21, A22, A25 and the three block activities all still occur in every trace in both windows, and the block keeps its internal order flexibility, this reads as a relocation of an intact block rather than activities being added, removed or made optional. [DIR014, DIR015, DIR018, DIR019, DIR024, LAG001, LAG002, REL001, REL002, REL003, REL004, REL005, REL006]\n\nThe support is direct and consistent: the order reversal is observed relationally on six activity pairs with co-occurrence unchanged at 100%, the successor profiles change exactly at the block's boundaries (A20 now feeds the block, the block now feeds A22, A21 feeds A25), positions and step distances move in matching directions while the anchors A20 and A25 stay fixed, and the old within-five-step adjacencies drop from 200 traces to 1. [REL001, REL002, REL003, REL004, REL005, REL006, DIR014, DIR015, DIR018, DIR019, DIR024, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG009, LAG012, POS001, POS002, POS003, POS004, POS005, POS006, POS007]\n\nAn important limitation: the evidence cannot decide whether the block moved earlier or A21 and A22 moved later — both descriptions fit the same data, as does a reading of two separate order swaps rather than one relocation. It also does not show which activities now surround A22 and A21 (no outgoing profile for A22 is available), so the re-wiring immediately around the relocated block is only partially observed. [REL001, REL004, POS002, POS003, POS005, POS006, POS007, DIR014, DIR015]\n\nOther differences: the participation shifts around A16/A17/A18/A19 (A16 and A18 up, A17 and A19 down, by about 6–9 in 100 traces, with small matching redirections) and the slight increase in repetitions of A10/A11 together with the decrease of A13 are not part of this hypothesis; they are modest, point in mixed directions across the log, and the evidence cannot establish whether they belong to the same change or are sampling variation between the two windows. [OCC015, OCC016, OCC017, OCC018, DIR010, DIR011, DIR012, DIR013, OCC009, OCC010, OCC012, DIR009]",
+  "case_id": "case_01e7ee155471e5d7",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

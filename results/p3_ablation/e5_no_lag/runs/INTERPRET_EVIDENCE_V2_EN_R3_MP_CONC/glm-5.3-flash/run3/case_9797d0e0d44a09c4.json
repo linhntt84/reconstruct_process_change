@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_9797d0e0d44a09c4.json",
+  "evidence_sha256": "6f5f8609cd2df5b798c1178f577c53c0efe8508c49df9a1d0084736ec46a8011",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:33:03.491849+00:00",
+  "finished_at_utc": "2026-11-15T12:34:36.689247+00:00",
+  "latency_seconds": 93.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13113,
+    "prompt_tokens": 11530,
+    "total_tokens": 24643,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11859,
+      "text_tokens": 1254
+    },
+    "cost": 0.008286
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41902,
+  "text": "### Observed differences\n\n- The activities A19, A20 and A25 went from optional to near-universal: in the earlier window each appeared in about 47 in 100 traces (roughly half an occurrence per trace), while in the later window each appears in 199 of 200 traces, about once per trace [OCC001, OCC002, OCC003].\n- In the earlier window these three always ran together or not at all (each pair co-occurred in about 47 in 100 traces, and one-without-the-other was essentially unobserved); in the later window they co-occur in about 995 in 1000 traces in a fixed order A19 → A25 → A20 (A19 before A25 in about 98 in 100, A25 before A20 in about 995 in 1000) [REL001, REL002, REL007].\n- Routing into the block changed at A41: earlier, about 52 in 100 of A41's outgoing transitions led to A26 and about 45 in 100 led to A19; in the later window about 92 in 100 lead to A19 and only about 1 in 200 still lead to A26 — the direct A41 → A26 step that skipped the block has nearly disappeared [DIR002].\n- The block's placement is now consistent: A41 precedes A19/A25/A20 in about 96–98 in 100 traces and the block precedes A26 in about 97–99 in 100; earlier this held only within the ~47 in 100 traces containing the block, while A26 ran without it in about 53 in 100. A20's dominant transition to A26 is unchanged (about 96 in 100 earlier, about 99 in 100 later) [REL003, REL004, REL008, REL009, REL012, REL013, DIR001].\n- A45 remains optional (about 60 in 100 traces earlier, about 62 in 100 later), but earlier it ran without the block in about 33 in 100 traces, whereas in the later window it always co-occurs with the block (A19 before A45 in about 42 in 100, interleaved in about 21 in 100) [REL006, REL011, REL015].\n- A42 still appears in every trace, but its order relative to A19 became more mixed: interleaved-or-repeated rose from about 17 in 100 to about 46 in 100 traces [REL005, REL010, REL014].\n- Small positional shifts: A26's mean event position moved slightly later (0.41 → 0.43 of the trace) and A41's slightly earlier (0.33 → 0.31); these are event positions, not clock times [POS001, POS002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the three-step sequence A19 → A25 → A20, executed between A41 and A26, changed from an optional branch taken in about 47 in 100 cases to a step performed in nearly every case (199 of 200), while the direct A41 → A26 route that bypassed it shrank from about half of A41's outgoing transitions to about 1 in 200 [OCC001, OCC002, OCC003, DIR002, REL003, REL004, REL008, REL009, REL012, REL013].\n\nThe support is direct and consistent: the participation rise is measured on the activities themselves, every pairwise relation among the three and with A41 and A26 shows the same co-occurrence jump with a stable internal order, and the rerouting is visible in A41's outgoing transitions. The volume of qualifying evidence (22 items against roughly 0.56 expected if nothing had changed) rules out chance sampling as a whole, though many items describe the same underlying trace behaviour rather than independent confirmations [OCC001, OCC002, OCC003, DIR002, REL001, REL002, REL007].\n\nLimitations: the evidence cannot show whether the bypass route was removed from the process or still exists as a rarely chosen alternative (about 1 case in the later window), and the block's internal order is inferred from pairwise relations. A competing explanation the data cannot exclude is that the branch still exists but is now almost never selected [DIR002].\n\nOther differences: A45 is still optional but no longer occurs without the A19/A20/A25 block, which it did in about 33 in 100 traces earlier [REL006, REL011, REL015]. A42's ordering relative to A19 became more mixed (interleaved-or-repeated about 17 → 46 in 100) [REL005, REL010, REL014]. A26 and A41 show small shifts in mean event position (later and earlier, respectively) [POS001, POS002].",
+  "case_id": "case_9797d0e0d44a09c4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_486f0456dc5c10b4.json",
+  "evidence_sha256": "291562657f028f46f5f0e800dab180e79bf3c6b20b0bad1bb7429d05f23a2528",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:20:40.862135+00:00",
+  "finished_at_utc": "2026-11-15T03:21:13.509659+00:00",
+  "latency_seconds": 32.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4649,
+    "prompt_tokens": 5041,
+    "total_tokens": 9690,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4010,
+      "text_tokens": 639
+    },
+    "cost": 0.00308065
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16086,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces, mean 0 occurrences per trace); in the later window it occurs exactly once in every trace (200 of 200). [OCC001]\n- In the earlier window, A07's only observed outgoing transition led to A04 (100% of A07's observed outgoing edges); in the later window it leads to A01 instead, and A01's only observed successor is A04. [DIR002, DIR001]\n- The pairwise relations changed accordingly: earlier, A04 and A07 each appeared in traces without A01 (in 100 in 100 of their traces); later, A01 co-occurs with A04 in every trace and always precedes it, and co-occurs with A07 in every trace and always follows it. [REL001, REL002]\n- The distance from A07 to A04 grew from one step (100 in 100 cases) in the earlier window to two steps (100 in 100) in the later window, consistent with one activity being inserted between them. [LAG001]\n- Mean event positions shifted slightly: A07 moved from 0.40 to 0.33 of the trace and A04 from 0.60 to 0.67, while A01 sits at 0.50 in the later window — the pattern expected when a single step is added between the two. [POS003, POS002, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: in the later window, A01 is executed as a new mandatory step inserted between A07 and A04 — traces that previously went from A07 directly to A04 now go A07, then A01, then A04. [DIR002, DIR001, REL001, REL002, LAG001]\n\nSupporting signs: A01 went from unobserved (0 of 200 traces) to present exactly once in all 200 later traces; the ordering relations place it between A07 and A04 in every later trace; the A07-to-A04 distance grew from one to two steps; and the position shifts of A07 (0.40 to 0.33) and A04 (0.60 to 0.67) match a single insertion at the midpoint. The nine qualifying items far exceed the roughly 0.04 expected by chance for the nine units tested, so the pattern as a whole is unlikely if nothing had changed. [OCC001, REL001, REL002, LAG001, POS001, POS002, POS003]\n\nLimitations: all nine items describe one underlying difference and are not independent confirmations. Zero participation in the earlier window strictly means only that A01 was not observed there, so the evidence cannot rule out that A01 already existed in the process as a step that was simply not executed in the earlier sample (for example an optional step that became mandatory). The evidence also covers only the relations among these activities, so additional changes elsewhere in the process would not be visible. [OCC001]",
+  "case_id": "case_486f0456dc5c10b4",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_ca2ce64391868894.json",
+  "evidence_sha256": "ea9d90be68942690a400886c4ba7c0dd76963f080c4cbf129abbc219e4a177cf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T00:57:04.456891+00:00",
+  "finished_at_utc": "2026-11-16T00:59:05.284453+00:00",
+  "latency_seconds": 120.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13799,
+    "prompt_tokens": 22763,
+    "total_tokens": 36562,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12520,
+      "text_tokens": 1279
+    },
+    "cost": 0.01031395
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41048,
+  "text": "### Observed differences\n\n- The closing segment was replaced. In the earlier window every case ended with A05 followed by A02 and then A01 in the last position (A01 at relative position 1.0 in all 200 before-traces, A02 just before it); in the later window A01 and A02 are not observed at all, and A05 leads directly to A04, which runs exactly once per case, also in the final position. [OCC001, OCC002, POS001, POS002, DIR003, OCC004, POS004, REL019]\n- Three activities dropped out entirely: A01, A02 and A03 each appeared in all 200 before-traces but in none of the 200 after-traces. A03 previously ran about 2.1 times per trace and recurred in about 55 in 100 traces. [OCC001, OCC002, OCC003]\n- A03's routing disappeared with it: before, A03's outgoing transitions went to A06 (about 53%) and A07 (about 47%), and A08 led to A03 in essentially all of its transitions; after, A08 leads directly to A06 (about 46%) and A07 (about 54%). [DIR002, DIR004]\n- Relations confirm the removal: pairs such as A01–A05, A01–A07, A02–A05, A02–A07 and A03–A05 co-occurred in every before-trace (with A05/A07 executed first), whereas afterwards these activities no longer share any traces. [REL004, REL006, REL010, REL012, REL015, REL003]\n- The middle of the process is largely unchanged: A05 and A07 still run in every trace in both windows, and A06 and A08 still run in about 55 in 100 before-traces versus about 50 in 100 after-traces (about 1.1 vs 0.9 occurrences per trace). The observed gaps between the remaining activities each shortened by roughly one step (for example A06 to A05: 4 steps in all before-traces, 3 steps in about half of the after-traces), and the surviving activities' relative positions moved earlier (A07 mean position about 0.48 to 0.30). [OCC005, OCC006, POS005, POS007, LAG001, LAG003, LAG005, LAG007, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the closing part of the process was rebuilt: A03, A02 and A01 — previously executed in every case, with A03 repeated and cases closing with A05 → A02 → A01 — are no longer executed, and a new activity A04 now closes every case exactly once, directly after A05. As part of the same restructuring, A03 no longer sits between A08 and A06/A07, so A08 now hands over directly to A06 or A07, and the spacing between the remaining activities tightened by about one step. [OCC001, OCC002, OCC003, OCC004, DIR002, DIR003, DIR004, REL019, LAG005, LAG007]\n\nThe supporting signs are direct and mutually consistent: participation flips are absolute (200 of 200 traces to 0 of 200, and 0 to 200), the successor change at A05 is observed directly rather than inferred, and the relation, position and lag items all point to the same restructuring; every item lies at the top of its reference distribution (strength about 0.995), so sampling variation between the two 200-trace windows cannot plausibly explain the pattern. [OCC001, OCC004, DIR003, REL003, POS004]\n\nLimitations: with anonymous activity codes the evidence cannot show whether A04 is a genuinely new step or effectively takes over the role of the removed closing activities, and it cannot show what prompted the change. The slight drop in A06/A08 participation (about 55 to about 50 in 100 traces) could also be ordinary sampling variation. [OCC005, OCC006]\n\nOther differences: the self-distances of repeating A06 and A08 changed (about 3 steps apart before, about 2 with some 4 after), and the small shifts among A05–A08 relations (about 5 in 100 cases, reference strength near 0.5) are consistent with noise rather than change. [LAG002, LAG008, REL023, REL025, REL027]",
+  "case_id": "case_ca2ce64391868894",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

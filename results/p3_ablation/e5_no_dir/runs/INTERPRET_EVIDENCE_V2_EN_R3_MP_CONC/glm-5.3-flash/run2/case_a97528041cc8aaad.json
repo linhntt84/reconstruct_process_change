@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_a97528041cc8aaad.json",
+  "evidence_sha256": "ff14dae8be656d0545cf90bc3b4ab55b6507d8ef8b2eaefaef2cf57ca89b694d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:07:46.587933+00:00",
+  "finished_at_utc": "2026-11-15T06:10:20.661604+00:00",
+  "latency_seconds": 154.07,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26458,
+    "prompt_tokens": 32344,
+    "total_tokens": 58802,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24582,
+      "text_tokens": 1876
+    },
+    "cost": 0.0180806
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 81918,
+  "text": "### Observed differences\n\n- In the later window, A02 appears in about 65 in 100 cases (129 of 200 traces) versus about 15 in 100 before (30 of 200), and it has moved towards the front of the case: its median relative position fell from about 0.41 to about 0.16 of the trace length. It now runs immediately after A14 (one event apart in about 98 of 100 later-window cases, versus mixed gaps of two to five events in the few earlier cases) and typically before steps such as A20, A22, A23, A25 and A29 (about 9 of 10 joint occurrences, whereas the order was mixed before). [OCC001, POS001, REL001, REL004, REL009, LAG005]\n\n- The execution order among A19, A20, A21, A22, A23, A24, A25 and A29 reversed: all 21 measured pairs between these activities flipped their dominant order. Before, A20 ran before A25 in about 99 of 100 traces and before A21 in about 37 of 100; in the later window A25 runs before A20 in about 98 of 100 and A21 before A20 in about 27 of 100. Likewise, A22 before A21 (about 38 in 100) became A21 before A22 (about 28 in 100), and A25 before A24 (about 32 in 100) became A24 before A25 (about 27 in 100). [REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030, REL031, REL032, REL033, REL034, REL035]\n\n- Positions agree with the reversal: the median relative position of A19, A21 and A24 moved from about 0.69–0.70 to about 0.34–0.36 of the trace, while A20, A22 and A23 moved from about 0.39 to about 0.66; A25 and A29 shifted only slightly (about 0.45 to 0.38 and 0.66 to 0.59) and were overtaken by the others. [POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]\n\n- Typical gaps between consecutive steps changed too: A29 to A30 grew from about two events apart (about 95 in 100 cases) to about four (about 94 in 100), and A40 to A25 shrank from about four (about 82 in 100) to about two (about 95 in 100); both rest on roughly 200 traces in each window. [LAG019, LAG025]\n\n- A06 and A10 are now rarely executed: about 5 in 100 later-window traces contain A06 (10 of 200) versus about 22 in 100 before (43 of 200); A10 appears in about 6 in 100 (12 of 200) versus about 17 in 100 (33 of 200). [OCC002, OCC003]\n\n- Smaller spacing shifts: A15 now follows A14 mostly two events later (about 35 in 100) rather than one (about 21 in 100, previously about 41 in 100 at lag 1), consistent with A02 now sitting between them; A45 and A46 are immediately consecutive in about 98 of 100 cases (previously about 86). [LAG006, LAG026, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the later window executes a reordered flow: A02, previously an occasional step around the middle of the case, now runs in most cases near the start — directly after A14 and ahead of steps such as A20, A22, A23, A25 and A29 — and the relative order of the group A19, A21, A24 versus the group A20, A22, A23, A25, A29 is reversed, with the former group now running first where it previously ran last; the internal order of A20/A22/A23 versus A25/A29 flipped as well. [OCC001, POS001, REL015, REL020, REL022, REL024, REL029, REL032, LAG005]\n\nThe order change is shown directly by relational evidence, with every involved activity observed in a substantial share of traces in both windows (A20, A22, A23, A25 and A29 in all 200 traces; A19, A21 and A24 in about 28–44 in 100), all 21 measured pairs flipping in the same direction, and the positional shifts pointing the same way. The screening qualified 73 control-flow items where fewer than 1 (0.77) would be expected if nothing had changed, and every item's difference exceeds about 995 of 1000 random re-splits, so the ensemble is far beyond what a stable process typically produces. [REL015, REL020, REL022, REL024, REL029, REL032, POS002, POS003, POS005, POS006, POS007, OCC001]\n\nAn important competing explanation remains: the two windows could be sampling two pre-existing execution variants with shifted frequencies (one in which A02 is rare and the A19/A21/A24 group runs last, one in which A02 is common and runs first), rather than a single flow being reordered; the pairwise evidence cannot separate these. Positions and gaps are measured in event positions, not clock time, so no conclusion about timing is drawn, and several lag items rest on very few observations in one window (as few as one or two traces) and were not used. [LAG007, LAG012, LAG015, LAG017]\n\nOther differences: A06 and A10 are now observed in only about 5 and 6 in 100 traces (from about 22 and 17 in 100), so these steps are now rarely executed; minor spacing changes affect A14→A15 and A45→A46. [OCC002, OCC003, LAG006, LAG026]",
+  "case_id": "case_a97528041cc8aaad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

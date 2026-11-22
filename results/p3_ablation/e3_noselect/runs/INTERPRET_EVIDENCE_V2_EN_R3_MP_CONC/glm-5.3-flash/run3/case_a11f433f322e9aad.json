@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "4809f8d9736c2a4d9d9d049f529c0fb29ba0fef14326725cad0a3ab136308087",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:14:26.866119+00:00",
+  "finished_at_utc": "2026-11-15T13:16:05.428061+00:00",
+  "latency_seconds": 98.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13942,
+    "prompt_tokens": 50219,
+    "total_tokens": 64161,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12143,
+      "text_tokens": 1799
+    },
+    "cost": 0.014503849999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42488,
+  "text": "### Observed differences\n\n- In the earlier window the chain A26 → A27 → A28 ran in essentially every trace: A27 occurred in all 200 traces, A26 preceded A27 in about 99.5% of traces, and A27 was directly followed by A28 in about 99.5% of cases. [OCC027, REL001, LAG002, LAG004]\n- In the later window, A27 appears in only about half of the traces (about 102 in 200, 51%), while three activities that were not observed at all earlier — A32, A33 and A38 — each appear in about 49% of traces (about 98–99 in 200). [OCC027, OCC030, OCC031, OCC036]\n- A26 still occurs in every trace. Earlier, about 98.5% of its outgoing transitions led to A27; in the later window about 50% lead to A27 and about 48% lead to one of the new activities (A33 about 17%, A38 about 16%, A32 about 15%). A27 itself still leads to A28 in about 96% of its transitions. [DIR026, DIR027]\n- The new activities run as a group between A26 and A28: A26 precedes each of them in about 49% of traces, each of them precedes A28 in about 49%, and they co-occur with one another in about 49% of traces in no fixed order (A32 before A33 in about 23% of traces, A33 before A32 in about 27%). Their outgoing transitions lead mainly to each other and to A28. [REL003, REL004, REL005, REL010, REL011, REL012, REL013, REL014, REL015, DIR032, DIR033, DIR038]\n- A27 and the new block behave as alternatives: A27 co-occurs with A32, A33 or A38 in at most about 0.5% of later traces, and about half of the later traces contain A26 without A27, or A28 without A27. [REL001, REL006, REL007, REL008, REL009]\n- The distance from A26 to A28 was 2 steps in about 98% of earlier cases; in the later window it is 2 steps in about 50% and 4 steps in about 48% of cases, matching a three-activity block lying between them in roughly half of the traces. [LAG003]\n- Event positions agree: the new activities sit near the middle of the trace (medians about 0.48–0.50), A28's mean position moved later (about 0.53 to 0.55) and A26's slightly earlier (about 0.46 to 0.44). [POS004, POS005, POS006, POS003, POS001]\n- Outside this segment the differences are small: several activities' participation moved by roughly 4–7 percentage points in both directions (for example A03, A11, A12, A13 and A22 up; A01, A05, A07, A09 and A21 down), a few moderate successor-share shifts appear at A22 and A23, and rarely observed sources (A02, A04, A06, A08, A47, with only about 2–24 outgoing transitions per window) show unstable successor profiles. [OCC003, OCC005, OCC011, OCC013, OCC021, OCC022, DIR022, DIR023, DIR002, DIR004, DIR047]\n\n### Inference\n\nSupport level: Supported hypothesis\n\n- Main hypothesis: in the later window, executions split after A26 into two routes. About half of the traces keep the original A26 → A27 → A28 sequence, while in the other half A27 is replaced by a block of three activities, A32, A33 and A38, which run between A26 and A28 in varying order. A27, previously executed in every trace, thus became an alternative taken in about half of the cases, and the three new activities appear only on the other route. [OCC027, OCC030, OCC031, OCC036, REL001, REL007]\n- Supporting signs: the change is shown directly and consistently across indicator families — A26's successor profile splits roughly in half [DIR026]; the new activities' transitions lead to each other and to A28 [DIR032, DIR033, DIR038]; the pairwise relations show A26 before each new activity and each new activity before A28 in about half of the traces, with the three co-occurring in mixed order and A27 co-occurring with them almost never [REL003, REL010, REL013, REL007]; and the A26→A28 distance doubles to 4 steps in about half of the later cases, with the new activities positioned mid-trace [LAG003, POS004]. All key items score about 0.99 in empirical strength, and the participation changes (A27 from 100% to 51%; the new activities from not observed to about 49%) are far larger than the small fluctuations seen elsewhere. Note that these agreeing items largely describe one underlying difference and should be read as one line of evidence, not independent confirmations. [OCC027, OCC030, LAG003]\n- Limitations and competing explanation: zero participation in the earlier window only shows that A32, A33 and A38 were not observed in the 200 earlier traces, not that they were newly introduced; a pre-existing rare route that surfaced only later cannot be fully excluded, although about 98–99 occurrences per 200 later traces against none earlier makes pure sampling variation unlikely. The evidence also cannot say why the split arose. [OCC030, OCC031, OCC036]\n- Other differences: the small participation shifts of a few percentage points across many activities, the moderate successor-share shifts at A22 and A23, and the unstable profiles of rarely observed sources are not part of the main hypothesis and are consistent with ordinary sampling variation between two windows of 200 traces. [OCC003, OCC005, OCC021, OCC022, DIR022, DIR023, DIR002, DIR004, DIR047]",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,25 @@
+### Observed differences
+
+- The dominant difference is a reversal of execution order between two groups of activities. In the earlier window, the four activities A15, A16, A18 and A19 — each present in all 200 traces — ran before A22 in all 200 traces and before A26 in all 200 traces; in the later window the order is reversed, with A22 and A26 running before them in about 199 of 200 traces [REL010, REL011, REL015, REL016, REL023, REL024, REL027, REL028, POS002].
+
+- The same reversal appears in every measured pair between this group and the optional activities A14, A17, A20 and A21 (each occurring in about 20–29 of 100 traces, together about one per trace): for example, A15 preceded A17 in about 25 of 100 traces before and in none after, while A17 preceded A15 in about 27 of 100 after; A22 ran before A20 in about 24 of 100 before, and A20 ran before A22 in about 25 of 100 after [REL007, REL012, REL017, REL018, REL019, REL020, REL029, REL030, REL031, REL032, POS001, POS004, POS007, POS008].
+
+- Relative positions moved accordingly in the later window: A14, A17, A20 and A21 now appear at about one third of the trace length (before about 0.68–0.69), A15, A16, A18 and A19 at about two thirds (before about 0.39), A22 at about 0.38 (before about 0.47) and A26 at about 0.56 (before about 0.66) [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009, POS010].
+
+- Outgoing routing at the group boundaries was rewired: in the later window A14, A17, A20 and A21 lead to A22 (before, to A27 in all their observed transitions), A15, A16, A18 and A19 lead to A27 in about 17–29 of 100 outgoing transitions (before, to A22), A26 now leads to A15/A16/A18/A19 (before, to A14/A17/A20/A21), and A37 now leads to A14/A17/A20/A21 (before, to A15/A16/A18/A19) [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011].
+
+- Distances between anchor activities changed consistently with an exchange of a four-activity block and a one-activity block: A26 to A27 grew from 2 to 5 steps, A37 to A22 shrank from 5 to 2 steps, and the ordered pairs from each of A15/A16/A18/A19 to A22, and from A37 to each of them, previously present in all 200 traces, now appear in only 1 trace each [LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011].
+
+- A separate difference concerns A05 (present in about 52–55 of 100 traces): in the later window its outgoing transitions go to A04 in about 48 of 100 cases (before about 24) and to A09 in about 22 of 100 (before about 41), and A05 follows A01 within 1–2 steps in about 78 of 100 cases (before about 59, most often 3 steps) [DIR001, LAG001].
+
+- These differences are far outside random-split variation: the cited items each show differences larger than those of about 995 of 1000 random re-splits of the pooled traces [DIR001, POS002, REL010, LAG006].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two segments of the process exchanged their places. In the earlier window the flow ran from A37 through the four always-executed activities A15, A16, A18 and A19 (in varying internal order) to A22, and later from A26 through exactly one of A14, A17, A20 and A21 to A27; in the later window A37 leads through one of A14/A17/A20/A21 to A22, and A26 leads through the four activities A15/A16/A18/A19 to A27 [REL010, DIR003, DIR010, DIR011, LAG006, LAG011].
+
+The support is direct and consistent: the order changes are observed relationally (all 32 measured activity pairs flip in the direction the exchange predicts) rather than inferred from participation shares; the successor rewiring at A14/A17/A20/A21, A15/A16/A18/A19, A26 and A37 matches the new neighbourhoods; the distance changes match the block sizes exactly (2↔5 steps); and the position shifts of about 0.09–0.35 of the trace agree with a four-activity and a one-activity block trading places. Most of the 64 qualifying items reflect this single difference; together with the separate A05 change this gives two distinct differences, clearly more than the roughly 0.64 items expected by chance when nothing has changed [REL010, REL017, DIR003, DIR010, LAG006, LAG011, POS002, POS004, DIR001, LAG001].
+
+Limitations: the evidence cannot show how the change came about. A previously rare or unobserved variant in which the two segments appear in reversed order could have come to dominate the case mix between the windows, and with 200 traces per window such a shift in variant frequencies is behaviourally indistinguishable from a structural modification. The A05 difference is consistent with a redistribution of routing shares and an earlier position after A01 rather than a demonstrable rewiring, and all position and distance statements refer to event order, not clock time [DIR001, LAG001, REL010].

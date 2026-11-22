@@ -1,0 +1,16 @@
+### Observed differences
+
+- The share of traces containing A07, A15 or A16 hardly moves (about 23–25 in 100 in both windows), but in the later window each occurs more often per trace: A07 from about 3.8 to about 4.6 occurrences, A15 from about 1.8 to about 2.4, and A16 from about 2.0 to about 2.3 — increases of roughly 15–30%. [OCC007, OCC014, OCC015]
+- Matching this, the choice after A07 tips slightly toward A15: about 48 of A07's 100 outgoing transitions led to A15 in the earlier window versus about 51 in the later one (A16 correspondingly 52 → 49), estimated from 756 versus 923 observed transitions. [DIR004]
+- Downstream of A16, A11 and A12 also occur more often per trace (A11 about 0.99 → 1.17; A12 about 0.49 → 0.58) while their trace participation stays flat at about 19–20 in 100. [OCC011, OCC012]
+- Participation moves in opposite directions elsewhere: A02 appears in about 22 of 100 traces before and 29 of 100 after, while A05 appears in about 16 of 100 before and 10 of 100 after. [OCC002, OCC005]
+- The successor choice after A12, A13 and A14 shifts from A09 toward A10 (after A12: A09 about 61 → 53 of 100, A10 about 39 → 47); A10 occurs more often per trace (about 0.42 → 0.53) while A09 appears in fewer traces (about 16 → 13 of 100). [DIR005, DIR006, DIR007, OCC010, OCC009]
+- Rework targets around A01, A03 and A04 reshuffle: A03 returns to A01 in about 27 of 100 of its outgoing transitions before and 16 of 100 after, while reaching A08 rises from about 3 to 11 of 100; A04 reaches A07 more often (about 42 → 50 of 100) and A08 less often (about 50 → 42); the direct step A01 → A08 nearly disappears (about 6 → 1 of 100). [DIR001, DIR002, DIR003]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests, as a possibility, that the repetitive region around A07 — involving A07, A15 and A16 — is executed with more iterations per affected trace in the later window, with the extra iterations favouring A15 over A16. All three activities keep a roughly unchanged share of participating traces while their occurrences per trace rise, the branch split after A07 moves toward A15 on a large base of observed transitions, and the same upward pattern appears in A11 and A12 downstream of A16. [OCC007, OCC014, OCC015, DIR004, OCC011, OCC012] The hypothesis remains weak because the empirical strengths are only moderate (about 0.36–0.71), the evidence provides no screening baseline to judge how many qualifying items an unchanged process would produce, and an important competing explanation cannot be ruled out: the later window may simply contain somewhat more repetitive traces, or several small sampling fluctuations may coincide, without any change to the process. [OCC007, OCC014, OCC015, DIR004]
+
+Other differences: A02 is observed in more traces and A05 in fewer; the routing after A12, A13 and A14 shifts from A09 toward A10; and the rework targets after A01, A03 and A04 reshuffle as described above. These are not covered by the main hypothesis. [OCC002, OCC005, DIR005, DIR006, DIR007, OCC010, OCC009, DIR001, DIR002, DIR003]

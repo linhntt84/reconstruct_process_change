@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_03dacefde2ff7f76.json",
+  "evidence_sha256": "be7540ada407e9e1957b9fafcfc493719e0f07ab810b1c0aab5ec35b7143fbd6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:32:31.141559+00:00",
+  "finished_at_utc": "2026-11-15T13:35:07.576879+00:00",
+  "latency_seconds": 156.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21583,
+    "prompt_tokens": 71283,
+    "total_tokens": 92866,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19558,
+      "text_tokens": 2025
+    },
+    "cost": 0.021483949999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61203,
+  "text": "### Observed differences\n\n- The clearest difference concerns the block of mutually exclusive alternatives A19/A20/A25 (in both windows, one of the three runs in nearly every case). In the earlier window, about 85 in 100 of A45's outgoing transitions went to one of A19/A20/A25, and each of the three led almost exclusively to A26 (A19 in 97 in 100, A20 in 89 in 100, A25 in 98 in 100 of its outgoing transitions). In the later window, A45 leads directly to A26 in about 89 in 100 of its outgoing transitions, while A19, A20 and A25 now lead to A28 and A32 in roughly equal halves. [DIR019, DIR020, DIR025, DIR045, REL001, REL002]\n- The neighbours of the block changed accordingly: A27, which earlier sent about 98 in 100 of its outgoing transitions straight to A28, now sends about 47 in 100 to A19/A20/A25; A28, which earlier sent about 94 in 100 straight to A32, now sends about 51 in 100 to A19/A20/A25. [DIR027, DIR028]\n- Adjacency evidence confirms this: A45 and A26 were mostly two steps apart earlier (84 in 100 cases) and are immediately adjacent later (89 in 100); the A25→A26 near-adjacency fell from 63 observed cases to 1; and new adjacencies appeared that were practically absent before (A20→A28 in 36 cases, A20→A32 in 66, A28→A20 in 30). [LAG012, LAG004, LAG002, LAG003, LAG008]\n- The block's position within the case moved from about one-third to about three-fifths of the trace (mean event position 0.33→0.59 for A19, 0.34→0.58 for A20, 0.31→0.59 for A25), while A26, A27 and A28 shifted slightly earlier; these are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006]\n- Order relations flipped: earlier, A19/A20/A25 preceded A26 and A27 in nearly every shared trace (e.g., A25 before A26 in 32 in 100 traces, never the reverse); later, A26 and A27 precede the block (A26 before A25 in 36 in 100). Against A28, the earlier fixed order became mixed (A19 before A28 in 16 in 100 and A28 before A19 in 15 in 100, versus a fixed A19-first order in 37 in 100 earlier). [REL003, REL004, REL009, REL010, REL014, REL015, REL005, REL011, REL016]\n- Participation of the block stayed essentially stable (A19 38→31, A20 32→34, A25 32→38 per 100 traces), so the block did not become more or less frequent — it changed its place and its neighbours. [OCC019, OCC020, OCC025]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block A19/A20/A25 was relocated from between A45 and A26 to a later position between A27/A28 and A28/A32: earlier the flow ran A45 → (A19|A20|A25) → A26 → … → A27 → A28 → A32; later it runs A45 → A26 → … → A27 → (optionally through A19/A20/A25) → A28/A32, with both A27 and A28 able to route through the block. The block still executes about once per case with one of the three alternatives chosen, so its participation did not change — only where it sits in the flow and what precedes and follows it. [DIR019, DIR020, DIR025, DIR045, DIR027, DIR028, POS001, POS002, POS003, REL003, REL014, LAG004, LAG012, OCC019, OCC020, OCC025]\n\nSupporting signs: four indicator families show the same relocation directly and consistently — complete successor replacement at A45, A19, A20 and A25 (dissimilarity near 1.0, more extreme than in about 995 of 1,000 random re-splits), flipped order relations against A26 and A27, gained and lost adjacencies with substantial support, and a position shift of roughly a quarter of the trace length for all three activities. The stable participation of the block argues against it having become optional, mandatory, or replaced by different activities. [DIR019, DIR045, POS001, POS002, POS003, REL014, LAG004, LAG012, OCC019, OCC020, OCC025]\n\nLimitations: the evidence shows that the block's neighbours and position changed; it cannot distinguish a move of the block from a removal plus re-insertion of an identical block at the new position, and the exact shape of the new routing (single pass versus possible repetition through the block) remains only partly constrained because repeated executions of the block and of A28 remain rare. A few other flagged items rest on very few observations (for example A51's outgoing profile, with 11 and 4 observations) and were not used. [REL005, OCC019, OCC028, DIR051]\n\nOther differences: A46 now repeats more often (mean occurrences per trace 1.74→1.87; recurrence in 48 versus 43 in 100 traces), with smaller increases for A47–A49 — a change in repetition frequency rather than placement. [OCC041, OCC042, OCC043, OCC044] Downstream of A32, choice shares shifted: A23 runs in 54 versus 45 in 100 traces and A24 in 47 versus 56; within that group A24 now hands to A33 in about 39 versus 51 in 100 of its outgoing transitions, while A22 does so in about 43 versus 36 in 100. [OCC023, OCC024, DIR022, DIR024] A10 participation fell from 26 to 20 in 100 traces. [OCC010]",
+  "case_id": "case_03dacefde2ff7f76",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

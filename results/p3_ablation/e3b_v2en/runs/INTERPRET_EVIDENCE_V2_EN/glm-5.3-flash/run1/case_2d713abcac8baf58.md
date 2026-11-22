@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the later window, three activities that each ran in roughly a third of cases in the earlier window are almost gone: A19 appears in about 2 of 200 traces instead of about 70 (roughly 1% vs 35%), A20 in about 1 instead of 60 (0.5% vs 30%), and A21 in about 1 instead of 72 (0.5% vs 36%). [OCC001, OCC002, OCC003]
+- In the later window, three previously unobserved activities now run in every single case, about once per trace: A26, A27 and A28 each went from 0 of 200 traces to 200 of 200. [OCC004, OCC005, OCC006]
+- In the earlier window, A19, A20 and A21 were near-exclusive alternatives — they co-occurred in only about 0.5 in 100 cases — and each occurrence sat between A44 and A29: A44 preceded and A29 followed the chosen activity in close to the same share of cases (about 30–36 in 100). [REL001, REL002, REL008, REL006, REL007, REL012, REL013, REL017, REL018]
+- In the later window, A44's outgoing routing moved wholesale: before, about 85 in 100 of its outgoing transitions went to A19, A20 or A21 (roughly 30%, 30%, 25%); now about 85 in 100 go to A26, A27 or A28 (roughly 31%, 27%, 26%). [DIR007]
+- The new trio occupies the same slot: A44 precedes each of A26, A27, A28 in about 98–99 of 100 cases, each of them precedes A29 in about 98–99 of 100, and each new activity is followed by the other two and by A29 in roughly equal shares (about 30–36% each). The three always co-occur, with near-balanced pairwise order (for example A26 before A27 in about 51 of 100 cases). [REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, DIR004, DIR005, DIR006]
+- The A44-to-A29 distance grew from mostly 2 steps (about 84 in 100 cases) to mostly 4 steps (about 82 in 100, plus about 18 in 100 at 5 steps), and A29 — present in all traces in both windows — now sits slightly later in the trace (mean relative position about 0.40 vs 0.44). [LAG001, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment between A44 and A29, which formerly ran exactly one of three alternative activities (A19, A20 or A21, chosen per case), now runs a block of three activities — A26, A27 and A28 — each once per case in varying order, in the same position between A44 and A29. Participation of the old trio collapsed from roughly a third of cases to 1–2 traces in 200, while the new trio rose from unobserved to present in every trace. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+
+The placement is shown directly, not only through frequencies: A44's routing moved wholesale from the old to the new trio with about 200 observations on each side, relational items put A44 before each new activity and each new activity before A29 in about 98–99 of 100 cases, and the A44-to-A29 distance widened by about two steps, matching the two extra activities in the block. [DIR007, REL021, REL022, REL024, REL025, REL026, REL027, LAG001]
+
+The volume of evidence also exceeds what an unchanged process typically produces: 48 items qualified against roughly 0.65 expected by chance, and a shift such as an activity going from 0 to 200 of 200 traces is far beyond what sampling variation between two 200-trace windows can produce. [OCC004, OCC005, OCC006]
+
+Limitations: the old branch is not strictly gone — A19, A20 and A21 still appear in 1–2 traces each, so a genuinely rare residual alternative cannot be ruled out, and zero participation in a window only means the activity was not observed there. The internal order of the new block varies (pairwise orders split near 50/50), so the evidence cannot distinguish a sequence run in varying order from another interleaving of the three. The apparent new successors of the residual A19/A20/A21 occurrences rest on only 1–2 observations and should not be read as reliable routing; note also that the occurrence, relation and position items largely describe the same underlying traces, so their agreement is not independent confirmation. [OCC001, OCC002, OCC003, REL019, REL020, REL023, DIR001, DIR002, DIR003]

@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the later window, several later, partly optional activities appear in slightly fewer traces: A11 in about 47 in 100 cases (previously about 52), A14 about 47 (previously 52), A15 about 37 (previously 42), A16 about 47 (previously 52) and A09 about 34 (previously 37), while A04 rose to about 36 in 100 (previously 33). None of these shifts stands out against random re-splits of the pooled traces — for A11, not one of the 200 re-splits produced a smaller difference. [OCC002, OCC005, OCC006, OCC008, OCC009, OCC010]
+- The same slip shows up as slightly lower co-occurrence between the early backbone activities and A11/A14/A15/A16 (for example A01 with A11: about 53 in 100 traces before, 47 after); this mirrors the participation change rather than adding an independent difference. [REL010, REL013, REL015, REL083, REL088]
+- Event positions are essentially stable. A12 still sits at the end of the trace in practically every case (median position 1.0 in both windows, only a slightly wider spread); A08's typical position moved a little earlier (median about 0.78 to 0.72 of the trace) and A09's a little later (about 0.30 to 0.36). [POS008, POS009, POS012]
+- Routing shares barely moved. The largest routing difference is at A12, where the share of outgoing transitions to A07 fell from about 26% to 3% and to A01 rose from about 9% to 21% — but this rests on only about 25 outgoing transitions per window; every other source activity's outgoing mix differs by a cosine dissimilarity of about 0.03 or less. [DIR001, DIR012]
+- Pairwise orderings are stable (A03 precedes A06 in about 83% of traces before and 86% after; A02 precedes A12 in about 97% in both windows), and the scattered lag-distribution shifts — e.g., A02 is followed by A09 within one step in about 23% of pairs (previously 10%), while A02 is followed by A08 at five steps in about 86% (previously 71%) — are isolated, several rest on fewer than about 60 observed pairs, and point in different directions. [LAG023, LAG024, REL022, REL029]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. The small participation dips (A09, A11, A14, A15, A16 each down a few traces in 100) and the scattered lag shifts are of the size that random re-splits of the pooled traces routinely produce, and the few lag comparisons with high empirical strength rest on few observations and do not converge on a single structural, ordering or participation behaviour. [LAG023, LAG024, OCC005, OCC006, OCC008, OCC009, OCC010]

@@ -1,0 +1,21 @@
+### Observed differences
+
+- A01 and A02 disappeared from the flow. In the earlier window each appeared in about half of the traces (about 99 of 200, roughly one occurrence per containing trace, with some repetition); in the later window neither is observed in any of the 200 traces, and they no longer co-occur with former partners such as A14 or A04, which now appear without them in about half of the traces. [OCC001, OCC002, REL012, REL023]
+
+- The flow around them was rewired. Earlier, A06's outgoing transitions split between A13 (about 51 in 100) and A02 (about 49 in 100), A02 led only to A14, A14 led only to A01, and A01 branched to A07, A10, A08 and A12. In the later window A06 leads only to A14, A13 leads only to A14 (previously about 99 in 100 back to A06), and A14 branches to A08 (about 56 in 100 of its outgoing transitions), A07 (about 35 in 100) and small shares to A12 and A09, with no edge to A01. [DIR001, DIR002, DIR004, DIR010, DIR011]
+
+- Distances shortened consistently with the A02/A01 segment being cut out: A14 to A08 went from two positions apart to immediately consecutive, A06 to A14 is now immediate in about 74 in 100 of observed pairs (previously never at distance 1), and A04 to A14 moved from 3–5 steps to exactly 2. [LAG034, LAG012, LAG006]
+
+- A09 is new: absent earlier, it now appears in about 47 of 200 traces (about 24 in 100) around the middle of the trace and is wired between A07/A12 and A11 — A07 now sends about 48 in 100 of its outgoing transitions to A09 (previously about 92 in 100 went to A12), A12 sends about 42 in 100 to A09, and A09 leads to A11 and A12 in similar shares. [OCC005, POS005, DIR005, DIR007, DIR009]
+
+- A08's routing flipped from entirely A05 to entirely A10, and A08 and A10 now each appear in about 50 of 200 traces (previously about 24 and 26); A08 also sits earlier in the trace (mean relative position about 0.91 to 0.72), A08 precedes A10 in about half of the traces where they now co-occur (they never shared a trace before), and A05 now follows A08 two positions later instead of one. [DIR006, OCC004, OCC006, POS004, REL039, LAG016]
+
+- A06 and A13 occur less and repeat less: A06 participation fell from about 50 in 100 traces to about 36, with mean occurrences per trace dropping from about 2.0 to 0.5; A13 fell from about 35 to 28 in 100 traces (mean about 1.0 to 0.4). A04 now routes about 39 in 100 of its outgoing transitions to A13 (previously about 2 in 100), and A04 to A06 is now immediately consecutive in all observed pairs. [OCC003, OCC007, DIR003, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural change in which A01 and A02 are no longer executed and the flow was reconnected around them: the earlier chain A06 → A02 → A14 → A01, which branched to A07, A10, A08 and A12 while A13 fed back into A06, is replaced in the later window by A06 and A13 leading directly to A14, which now branches to A08, A07 and A12. This is shown directly by the disappearance of A01 and A02 (about 99 of 200 traces to none), the successor changes at A06, A13 and A14, and distance shifts such as A14 → A08 moving from two positions to one. The volume of qualifying evidence also far exceeds what an unchanged process produces: 107 control-flow items qualified where fewer than 1 was expected by chance. Limitations: zero participation strictly means the activities were not observed in the later sample rather than proven removed, direction shares are computed over outgoing transitions rather than cases, and the evidence cannot distinguish a removal of A01/A02 from a rerouting that leaves them unreachable in the observed variants. [OCC001, OCC002, DIR004, DIR010, DIR011, LAG034]
+
+Other differences: A09 appeared and was inserted between A07/A12 and A11; A08 now leads to A10 instead of A05, with both A08 and A10 occurring in about twice as many traces; A06 and A13 occur in fewer traces and with fewer repetitions, and A04 gained a direct route to A13. These may belong to the same restructuring, but the evidence does not tie them to the A01/A02 removal beyond their adjacency in the flow. [OCC005, DIR006, DIR003, OCC003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_6b862ed7b1edd0b4.json",
+  "evidence_sha256": "9d15b3078b210ec54b19f38ac37a3806f8e006ace5e389f50fed6f94099421a0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:36:15.712497+00:00",
+  "finished_at_utc": "2026-11-15T10:38:14.192894+00:00",
+  "latency_seconds": 118.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17280,
+    "prompt_tokens": 30148,
+    "total_tokens": 47428,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15552,
+      "text_tokens": 1728
+    },
+    "cost": 0.013162199999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48642,
+  "text": "### Observed differences\n\n- In the later window, A19, A20 and A25 each appear in 199–200 of 200 traces, up from about 95–96 of 200 (roughly 48 in 100); A06 appears in about 73 in 100 traces, up from about 24 in 100 (mean occurrences per trace about 0.25 → 0.76); A08 falls from about 20 in 100 traces to about 8 in 100. A14, A15, A16, A26 and A41 appear in all traces in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005]\n\n- Outgoing routing concentrates at three points in the later window: A06 leads to A16 in about 88 in 100 of its outgoing transitions (before, its transitions were spread over many targets, the largest being A15 at about 21 in 100); A41 leads to A19 in about 96 in 100 cases (before it split between A26 at about 45 in 100 and A19 at about 37 in 100); and A15 leads to A06 in about 40 in 100 cases (before about 1 in 100, with A16 at about 94 in 100). [DIR001, DIR003, DIR006]\n\n- In the later window, traces typically run A41, then A19, then A25, then A20, then A26: A41 precedes A19, A25 and A20 in about 96–97 in 100 traces, A19 precedes A20 and A25 and A25 precedes A20 in about 97–99 in 100, and A20 and A25 precede A26 in about 97–99 in 100. Step distances fit one fixed chain (A41 to A19 after 1 step in about 98 in 100 observed pairs, to A25 after 2, to A20 after 3, to A26 after 4 in about 93 in 100), whereas before, A41 was followed directly by A26 within one step in about 46 in 100 observed pairs. [REL018, REL019, REL020, REL021, REL022, REL023, REL025, LAG018, LAG019, LAG020, LAG021]\n\n- A06 now typically sits before the A41-led chain and between A15/A14 and A16: it precedes A19, A20 and A25 in about 65 in 100 traces (before about 6 in 100), A14 precedes A19, A20 and A25 in about 97 in 100 traces (before about 47 in 100, with A14 often appearing without them), A06 is immediately followed by A16 in about 97 in 100 observed pairs, and A06's mean relative position moves earlier in the trace, from about 0.50 to about 0.25. [REL004, REL005, REL006, REL009, REL010, REL011, LAG002, LAG006, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the outgoing routing at A41 almost always enters the sequence A41 → A19 → A25 → A20 → A26, so that this segment — previously executed in about half of the cases, with A41 often bypassing it straight to A26 — now executes in nearly every trace. A related possibility is that A06 now typically executes between A15/A14 and A16 (A15 → A06 → A16), raising its participation from about 24 to about 73 in 100 traces, while A08 is executed in only about 8 in 100 traces, down from about 20. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR001, DIR003, DIR006, REL004, REL018, REL021, LAG018, LAG021]\n\nThe support is direct and consistent: the order change is shown relationally (A41 before A19/A25/A20, and A06 before A19/A20/A25, in about 65–97 in 100 traces, with matching step distances), not inferred from frequency alone, and the participation, routing and positional indicators all point to the same block of activities. The number of qualifying items (62, against fewer than 1 expected if nothing had changed) and the fact that every item's difference exceeds 99.5% of 200 random re-splits make chance an implausible overall explanation; the main participation changes rest on 95–200 traces per window. [REL004, REL018, LAG018, DIR006, OCC003, OCC004, OCC005]\n\nLimitations: the windows are finite samples of 200 traces each, so exact shares and distances carry sampling variation, and a shift in the mix of process variants is a competing explanation the evidence cannot fully exclude — although differences of this size (about 48 vs essentially all traces, with 95–96 supporting traces before and 199 after) far exceed what random re-splits produce. Many items describe the same underlying block (the many A19/A20/A25 pairs), so they are not independent confirmations; a few distance estimates rest on almost no data (the A15–A26 and A16–A26 pairs have only 1 supporting observation in the later window); and A08's near-absence means only that it was rarely observed, not that it is absent from the process. [OCC002, OCC003, LAG012, LAG017]",
+  "case_id": "case_6b862ed7b1edd0b4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

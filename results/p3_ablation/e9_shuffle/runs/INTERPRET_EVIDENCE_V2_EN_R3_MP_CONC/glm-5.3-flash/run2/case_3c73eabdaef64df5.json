@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_3c73eabdaef64df5.json",
+  "evidence_sha256": "baa7e464bfe276ff5992b131643bb93af37eb3de3c70cc0dc557a663e638f429",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:49:33.162207+00:00",
+  "finished_at_utc": "2026-11-15T04:51:00.690256+00:00",
+  "latency_seconds": 87.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12854,
+    "prompt_tokens": 12752,
+    "total_tokens": 25606,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11671,
+      "text_tokens": 1183
+    },
+    "cost": 0.0083398
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41703,
+  "text": "### Observed differences\n\n- In the earlier window, each of the 200 traces contained only two of the monitored activities: A04 followed immediately by A07, with A07 as the final event (mean event positions 0.50 and 1.00 with no variation; every observed exit of A04 led to A07, and A07 showed no successor). [POS003, POS006, DIR002, DIR005, LAG001]\n- In the later window, every trace contains six activities in one fixed order — A04, A03, A05, A06, A07, A01 — at mean event positions of about 0.17, 0.33, 0.50, 0.67, 0.83 and 1.00, and each of these activities has exactly one observed successor (A04→A03, A03→A05, A05→A06, A06→A07, A07→A01). [POS001, POS002, POS003, POS004, POS005, POS006, DIR001, DIR002, DIR003, DIR004, DIR005]\n- A01, A03, A05 and A06 were not observed in any of the 200 earlier traces; in the later window each occurs exactly once in all 200 traces. [OCC001, OCC002, OCC003, OCC004]\n- A04 and A07 still appear in every trace, but A07 is no longer the last step: it moved from the final position to about position 0.83, and A01 now ends the trace. The former direct A04→A07 step is gone — earlier A07 followed A04 within one step in 200 of 200 traces, now the gap is four steps, filled by A03, A05 and A06. [POS001, POS006, DIR004, DIR005, LAG001, DIR002]\n- All 14 monitored activity pairs that did not co-occur before now co-occur in 200 of 200 later traces, always in the same order (for example A04 before A03, A03 before A05, A05 before A06, A06 before A07, A07 before A01). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window the process runs a longer fixed sequence: A04 is followed by A03, then A05, then A06, then A07, and A01 closes the trace, whereas earlier each trace went directly from A04 to A07 and ended there. A01, A03, A05 and A06, unobserved in the earlier sample, now take part in every trace exactly once; A07 has lost its terminal position to A01; and the direct A04→A07 step is replaced by a route through A03, A05 and A06. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS006, LAG001]\n\nThe supporting signs are direct and consistent: participation for the four added activities moves from 0 to 200 of 200 traces with exactly one occurrence each; every monitored pair co-occurs in all later traces in a single order; the five successor profiles each show one uniform successor; and the position and lag shifts (A07 from position 1.00 to 0.83, A04 from 0.50 to 0.17, A04→A07 distance from 1 to 4 steps) match this sequence exactly. With 30 qualifying items against roughly 0.15 expected if nothing had changed, and every item's difference exceeding about 995 of 1,000 random re-splits, sampling noise cannot explain the pattern as a whole. Because the four activities were unobserved earlier, this is an addition of steps to the observed behaviour, not a shift in how often existing paths are taken. [screening, OCC001, LAG001, REL001, REL014, DIR001, DIR005]\n\nLimitations: the evidence covers only the tested activities, so changes involving other activities below the thresholds cannot be excluded; zero participation earlier only means these activities were not observed in that sample, so it remains possible they previously occurred in a variant too rare to appear in the earlier 200 traces. The many indicators also describe the same traces, so they are not independent confirmations. [OCC001, OCC002, OCC003, OCC004]",
+  "case_id": "case_3c73eabdaef64df5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

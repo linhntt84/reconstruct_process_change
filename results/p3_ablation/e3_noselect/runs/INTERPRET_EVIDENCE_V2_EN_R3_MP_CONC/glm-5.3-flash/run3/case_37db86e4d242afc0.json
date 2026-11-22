@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_37db86e4d242afc0.json",
+  "evidence_sha256": "1c4f328d87dd6bf4c7f8bd099affc12efb180b82e45364d5d397d34b1c66205e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:03:16.718051+00:00",
+  "finished_at_utc": "2026-11-15T14:05:29.748550+00:00",
+  "latency_seconds": 133.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19190,
+    "prompt_tokens": 10871,
+    "total_tokens": 30061,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18100,
+      "text_tokens": 1090
+    },
+    "cost": 0.01122565
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63070,
+  "text": "### Observed differences\n\n- In the earlier window, every trace ran A02 → A01 → A07: A01 appeared exactly once in each of the 200 traces, directly after A02 (100% of A02's observed outgoing transitions) and directly before A07 (100% of A01's outgoing transitions), at a relative event position of about 0.2. In the later window, A01 is not observed in any trace, A02's outgoing transitions go entirely to A03, and A03 leads directly to A07 in every trace. [OCC001, DIR001, DIR002, DIR003]\n- A03 was not observed in the earlier window; in the later window it occurs exactly once in every trace at relative position 0.2 — the same slot A01 previously occupied (median position 0.2 in both windows). [OCC002, POS001, POS002, REL002]\n- A06 was not observed in the earlier window; in the later window it occurs in about 46 in 100 traces (93 of 200), always as the final event and always after A05. Earlier, A05's outgoing transitions were observed in only about 101 of 200 traces — always to A08 — so roughly half the traces ended at A05; in the later window A05 always has an outgoing transition, to A06 in about 47 in 100 cases and to A08 in about 54 in 100. [OCC003, POS004, DIR004, REL011]\n- A08's participation is essentially unchanged, from about 51 in 100 traces to about 54 in 100; this difference is within what random re-splits of unchanged behaviour produce (empirical strength about 0.40). [OCC004]\n- The later window is positionally uniform: A03, A07 and A05 sit at fixed relative positions (0.2, 0.4 and 0.8) with no spread, whereas earlier A05 and A07 varied across two trace shapes (A05 median 0.8 but the last event in about half the traces; A07 between 0.4 and 0.5). [POS003, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A03 has taken over the slot A01 previously held between A02 and A07: in the earlier window every trace executed A02 → A01 → A07 with A01 once per trace at relative position about 0.2, while in the later window A01 is entirely absent and A02 leads directly to A03, which leads directly to A07 at the same relative position. This rests on direct successor evidence (A02's outgoing profile flips from 100% A01 to 100% A03; A01 → A07 disappears while A03 → A07 appears at 100%), complete participation flips (200 of 200 traces to 0, and 0 to 200 of 200), and agreement across the occurrence, direction, position and relation indicators. Uneven sampling of a rare variant cannot explain an activity present in all 200 earlier traces disappearing from all 200 later ones. What the evidence cannot rule out is that A01 and A03 are the same step under different activity codes (a relabelling) rather than a routing change, and it says nothing about activities not covered by the evidence. [OCC001, OCC002, DIR001, DIR002, DIR003, POS001, POS002, REL001, REL002]\n\nOther differences: A06 appears as a new final step — not observed earlier, now in about 46 in 100 traces, always last and always after A05, so that A05, which previously ended about half of the traces, now always has a successor. A08's participation stayed essentially stable (about 51 vs 54 in 100 traces), so A06 did not displace it. A caveat: A06's zero participation in the earlier window strictly means only that it was not observed in those 200 traces. [OCC003, OCC004, POS004, DIR004, REL011]",
+  "case_id": "case_37db86e4d242afc0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

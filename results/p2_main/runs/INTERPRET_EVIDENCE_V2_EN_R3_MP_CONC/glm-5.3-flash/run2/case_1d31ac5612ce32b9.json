@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "659dc72efd3ac03178a25c7f0823a34e56a533f4eb0c0a5d800ff4ffb5fc2e7c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:38:38.676199+00:00",
+  "finished_at_utc": "2026-11-15T01:39:58.232307+00:00",
+  "latency_seconds": 79.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11229,
+    "prompt_tokens": 6029,
+    "total_tokens": 17258,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10080,
+      "text_tokens": 1149
+    },
+    "cost": 0.00651885
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37623,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A02, A04 and A03 exactly once, always in the fixed order A02 → A04 → A03: all of A02's outgoing transitions went to A04, all of A04's went to A03, and the step gaps were constant (A02→A04 and A04→A03 always directly adjacent, A02→A03 always two steps apart). [OCC001, DIR001, DIR002, LAG001, LAG002, LAG003, REL001, REL002, REL003]\n- In the later window, A02 still appears in every trace but about 2.1 times per trace on average (previously 1.0), recurring within the same trace in about 50 in 100 traces (previously never). [OCC001]\n- A04 now appears in only about 50 in 100 traces (previously in all), and its outgoing transitions changed completely: from always leading to A03 to always leading back to A02. [DIR002, POS002, REL002, REL003]\n- A02's outgoing transitions are now split: about 53 in 100 go to A04 and about 47 in 100 go directly to A03 (previously all went to A04). [DIR001]\n- The A02–A03 pair still co-occurs in every trace, but the strict A02-before-A03 order (all cases before) now holds in only about 50 in 100 cases, with interleaving or repetition in the rest; the A02→A03 gap, previously always 2 steps, is now most often 1 (about 40 in 100 observed pairs), and gaps of 3 and 5 also appear while the constant gap of 2 has disappeared. [REL001, LAG001]\n- A02 and A04 now co-occur in only about 50 in 100 traces (previously all), and when they do, their order is interleaved or repeated rather than the fixed A02-before-A04; likewise, A04 precedes A03 in only about 22 in 100 later traces (previously all), with about 28 in 100 interleaved and about 50 in 100 containing A03 without A04. [REL002, REL003]\n- The A04→A03 gap, previously always 1 step, is now typically 2 (about 46 in 100 observed pairs) or 4 (about 18 in 100), consistent with A04 now being followed by A02 before A03; the A02→A04 gap is 1 in only about 18 in 100 observed pairs (previously always 1). [LAG003, LAG002]\n- Positions spread out: A02, previously fixed at relative position 0.5, now has a median around 0.67 with a spread of about 0.21; A04, previously fixed at 0.75, now sits earlier on average (mean about 0.56) with spread. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the control flow around A02, A04 and A03 was restructured from a single fixed pass (A02 → A04 → A03 in every trace) into a loop with an exit: A04 now leads back to A02, and A02 either loops via A04 again or proceeds directly to A03. The visible consequences are that A02 is executed about twice per trace and recurs in about half the traces, A04 is executed in only about half the traces (and, when present, more than once — 222 outgoing A04 transitions across 200 later traces), and the previously fixed orderings become mixed or interleaved. [OCC001, DIR001, DIR002, POS002, REL001, REL002, REL003, LAG001, LAG003]\n\nThis hypothesis is direct and consistent: the successor changes at A02 and A04 are observed directly in the routing profiles, and the occurrence, participation, relational and gap changes all match the same loop reading. Chance is effectively ruled out for the pattern as a whole: 11 of 12 control-flow units qualified against roughly 0.06 expected without change in that family, and every item's difference exceeds about 995 of 1,000 random re-splits of the pooled data. [DIR001, DIR002, OCC001, POS001, POS002, REL001, REL002, REL003, LAG001, LAG002, LAG003]\n\nThe main limitation is that the items overlap heavily — several describe the same underlying restructuring (for example, A04's reduced presence shows in POS002, REL002, REL003 and LAG002 alike) — so they are not independent confirmations. The evidence also cannot show whether the roughly half of later traces without A04 reflect a skip choice within one process or a split into two trace populations, nor how many loop iterations a single trace can contain. [POS002, REL002, REL003, LAG002]",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

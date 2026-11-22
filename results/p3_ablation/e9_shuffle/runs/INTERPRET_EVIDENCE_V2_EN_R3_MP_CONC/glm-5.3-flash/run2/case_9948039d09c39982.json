@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_9948039d09c39982.json",
+  "evidence_sha256": "dba3b112e520dc7b7637b2df54afba85deb26cfe88f969f14d29e997febc71ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:45:02.917798+00:00",
+  "finished_at_utc": "2026-11-15T04:46:18.497965+00:00",
+  "latency_seconds": 75.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10936,
+    "prompt_tokens": 9484,
+    "total_tokens": 20420,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9824,
+      "text_tokens": 1112
+    },
+    "cost": 0.0068906
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35050,
+  "text": "### Observed differences\n\n- In the earlier window, A01 was not observed at all (0 of 200 traces); in the later window it appears in every trace (200 of 200), exactly once per case, at about 76% of the trace length on average (median 0.8) — near the end. [OCC001, POS001]\n- In the later window, A01 is followed by A08 in about 73 in 100 of its outgoing transitions, by A07 in about 17 and by A06 in about 11; in the earlier window A01 had no observed outgoing transitions. [DIR001]\n- A04 and A09 now lead into A01: earlier, A04's outgoing transitions went to A08 in about 60 in 100 cases (A07 about 20, A06 about 19), while in the later window about 88 in 100 go to A01; A09 went to A08 in about 69 in 100 cases earlier and goes to A01 in about 91 in 100 later. [DIR002, DIR003]\n- The A01–A08 relation flipped: earlier, A08 always occurred without A01 (100 in 100); in the later window the two always co-occur and A01 always comes first. [REL004]\n- Step distances across the surrounding activities grew by roughly one step: A04→A08 was 1 step apart in about 60 in 100 cases earlier and is 2–3 steps apart in all cases later; A09→A08 was 1 step apart in about 69 in 100 earlier and is 2–3 steps apart later. [LAG003, LAG007]\n- A04 and A09 now sit slightly earlier within traces (A04 median 0.75→0.60; A09 0.80→0.67) while their participation stayed roughly stable (about 52–54 and 47–49 in 100 traces), consistent with something being inserted after them. [POS002, POS003]\n- A06 and A07, each present in roughly half of traces in both windows, now usually precede A01 when they co-occur with it (A06 before A01 in 36 of 100 traces, A07 in 37), whereas earlier they never co-occurred with A01. [REL002, REL003]\n- Smaller one-step distance increases also appear for A07→A08 and A06→A08, and for A04→A06, A04→A07 and A09→A06, though these last three rest on fewer than about 35 observations per window. [LAG005, LAG004, LAG001, LAG002, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe screening flagged 19 control-flow items where about 0.18 would be expected by chance if nothing had changed, so the volume of flagged behaviour is far beyond what an unchanged process typically produces. [screening]\n\nMain hypothesis: a new activity, A01, was added and inserted late in the process, predominantly between the activities A04, A06, A07 and A09 and the activity A08. Earlier, A01 was absent, A04 and A09 typically ran directly into A08, and A08 always ran without A01; in the later window A01 runs once in every case, A04 and A09 route to it in about 88 and 91 in 100 of their outgoing transitions, A06 and A07 usually precede it, and it leads to A08 in about 73 in 100 cases. The one-step growth of the A04→A08 and A09→A08 distances and the slight forward shift of A04 and A09 within traces match an insertion between them directly. [OCC001, POS001, DIR001, DIR002, DIR003, REL004, REL001, REL005, REL002, REL003, LAG003, LAG007, POS002, POS003]\n\nLimitations: zero participation in the earlier window only shows that A01 was not observed there, so a pre-existing but extremely rare A01 cannot be ruled out; the many items also largely re-describe one underlying insertion from different angles rather than independent confirmations; and the insertion point is not perfectly uniform, since A01 precedes A07 in about 17 and A06 in about 11 in 100 traces. [OCC001, DIR001, REL002, REL003]\n\nOther differences: none that stand apart — the remaining flagged items describe the same one-step insertion. [LAG005, LAG004, LAG001, LAG002, LAG006]",
+  "case_id": "case_9948039d09c39982",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

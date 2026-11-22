@@ -1,0 +1,19 @@
+### Observed differences
+
+- Participation did not change: in both windows every trace contained all of A15, A17, A18, A19, A20 and A21 together (200 of 200 traces for each measured pair). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+
+- In the later window, routing became deterministic: A26 leads to A17, A17 to A15, A15 to A18, A18 to A19, A19 to A21, A21 to A20 and A20 to A27 in essentially every case (about 199–200 of 200 observed transitions each). In the earlier window the same activities had several possible successors: A15 went to A18 in about 62 in 100 cases but also to A19, A20 or A21 (about 12–14 in 100 each); A18 went to A27 in about 53 in 100 but also to A19, A20 or A21; A19 went to A21 in about 55 in 100 and to A17 in about 28 in 100; A26 split about evenly between A19 and A17. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- Ordering between the activities changed from mixed or reversed to one fixed direction. Earlier, A19 preceded A15 in about 75 in 100 cases and preceded A18 in about 88 in 100, A21 preceded A18 in about 70 in 100, and A15/A21 as well as A17/A19 appeared in both orders about equally often; in the later window A15 precedes A19, A17 precedes A19, A18 precedes A19 and A21, and A15 precedes A21 in all but about 1 of 200 cases. [REL001, REL003, REL004, REL006, REL007, REL008]
+
+- Pairwise separations became fixed. In the later window each pair sits at one characteristic distance consistent with a single chain — for example A15→A18 at 1 step (about 995 in 1000), A15→A19 at 2, A15→A21 at 3, A15→A20 at 4, A15→A27 at 5 and A26→A21 at 5 — whereas earlier the same pairs were spread over 1 to 5 steps (for instance A15→A27 over 2–5 steps and A17→A20 mostly at 4–5). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG009, LAG029]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in ordering constraints as the main hypothesis: the block of activities A15, A17, A18, A19, A20 and A21, entered from A26 and closing at A27, was executed in a flexible and partly reversed order in the earlier window, while in the later window it runs as one fixed sequence A26→A17→A15→A18→A19→A21→A20→A27, each activity immediately followed by the next. A19 and A21, which earlier often ran before A15 and A18, now always run after them, and A18 no longer proceeds directly to A27 but only via A19, A21 and A20. [DIR001, DIR003, DIR005, REL001, REL006, REL008, LAG001, LAG013]
+
+Supporting signs: the order change is shown directly by the relational items rather than inferred from positions alone; the collapse of each activity's successor set and the fixed pairwise distances agree with the same single chain; participation stayed at 100 percent of traces for every activity in both windows, so the difference is not activities becoming optional, added or removed; and 44 items qualified in total against roughly 0.43 expected if nothing had changed (all in the control-flow family), far beyond what random re-splits of stable behaviour produce. [DIR002, DIR006, REL001, REL004, LAG004, LAG013, LAG029]
+
+Limitations and competing explanation: the pairwise evidence cannot show whether each individual case re-sequenced its own steps or whether the earlier window mixed several order variants that were all replaced by the single sequence; in addition, the later-window profiles for the vanished reverse directions rest on very few observations (about 1 trace for several reverse pairs), although the corresponding relations are carried by full-support relational items. [LAG014, LAG015, LAG019, LAG021, LAG028, REL001, REL006]

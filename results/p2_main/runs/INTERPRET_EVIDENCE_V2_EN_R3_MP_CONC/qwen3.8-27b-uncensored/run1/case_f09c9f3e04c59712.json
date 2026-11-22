@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "qwen3.8-27b-uncensored",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "45119538402d2bd9b1ec6d7d8319d7b6c477355474201b0813c2d081b9b1089b",
+  "request_settings": {
+    "model": "qwen3.8-27b-uncensored",
+    "temperature": 0,
+    "top_p": 0.9,
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T04:48:02.996927+00:00",
+  "finished_at_utc": "2026-11-14T05:14:39.892827+00:00",
+  "latency_seconds": 1596.89,
+  "transport": "curl-stream",
+  "attempt_errors": [
+    "OSError: curl exit 18: curl: (18) transfer closed with outstanding read data remaining",
+    "OSError: curl exit 18: curl: (18) transfer closed with outstanding read data remaining",
+    "HTTP 524: error code: 524\n"
+  ],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26094,
+    "prompt_tokens": 21689,
+    "total_tokens": 47783,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24543
+    }
+  },
+  "response_model": "qwen3.8-27b-uncensored",
+  "reasoning_chars": 67905,
+  "text": "\n\n### Observed differences\n\n- A14 becomes more frequent and earlier: about 44 in 100 traces versus 31, with mean event position about 0.34 versus 0.69 [OCC001, POS001]\n- A16 and A19 become less frequent and earlier: about 29 and 28 in 100 traces versus 38 and 32, with mean event positions about 0.35 versus 0.68 [POS003, POS006]\n- A15, A17, and A18 remain in all traces but become later: mean event positions about 0.64 versus 0.39 [POS002, POS004, POS005]\n- A20 and A24 remain in all traces but become earlier: mean event positions about 0.38 versus 0.46 for A20, and about 0.57 versus 0.65 for A24 [POS007, POS008]\n- A24's successors change from A14, A16, and A19 (about 31, 38, and 32 in 100 outgoing transitions) to A15, A17, and A18 (about 32, 35, and 34 in 100) [DIR007]\n- A35's successors change from A15, A17, and A18 (about 29, 39, and 33 in 100) to A14, A16, and A19 (about 44, 29, and 28 in 100) [DIR008]\n- A14, A16, and A19 change their successor from A25 to A20 in all observed outgoing transitions [DIR001, DIR003, DIR006]\n- A15, A17, and A18 change their exit from A20 to A25, while their internal outgoing shares among A15, A17, and A18 also shift [DIR002, DIR004, DIR005]\n- For fully cooccurring pairs, the order of A15/A17/A18 relative to A20 and A24 reverses from A15/A17/A18 before A20/A24 in 100 in 100 traces to A20/A24 before A15/A17/A18 in 100 in 100 traces [REL008, REL009, REL015, REL016, REL018, REL019]\n- The order of A14/A16/A19 relative to A15/A17/A18, A20, and A24 also reverses: earlier A14/A16/A19 were before those activities in 0 in 100 traces, while later they were before them in about 28-44 in 100 traces [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL010, REL011, REL012, REL013, REL014, REL017, REL020, REL021]\n- The step distance from A24 to A25 increases from 2 to 4, and the step distance from A35 to A20 decreases from 4 to 2 [LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\n- The main hypothesis is that the later window contains a control-flow reordering in which the A14/A16/A19 group and the A15/A17/A18 group swap their placement around A20, A24, and A25: earlier A35 led to A15/A17/A18, A15/A17/A18 preceded A20, A24 led to A14/A16/A19, and A14/A16/A19 reached A25; later A35 leads to A14/A16/A19, A14/A16/A19 precede A20 and A24, A24 leads to A15/A17/A18, and A15/A17/A18 reach A25 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, LAG001, LAG002]\n- The supporting signs are direct successor changes for A24 and A35, complete order reversals for fully cooccurring pairs, and consistent position and step-distance changes [DIR007, DIR008, REL008, REL009, REL015, REL016, REL018, REL019, POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, LAG001, LAG002]\n- The 40 qualified control-flow items are far above the 0.46 expected without change, so the pattern is not what an unchanged process typically produces [screening]\n- Other differences: A14 becomes more frequent (about 44 in 100 traces versus 31), while A16 and A19 become less frequent (about 29 and 28 in 100 versus 38 and 32) [OCC001, POS003, POS006]\n- A competing explanation is that the later window contains a different process variant, which the evidence cannot rule out because the activity codes are anonymous, the windows are finite samples, and the evidence covers control flow only [screening, DIR007, DIR008, REL008, LAG001, LAG002]",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "GLM_API_KEY",
+  "support_level": "supported hypothesis"
+}

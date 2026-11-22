@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "074767ebb2d46ba443e71244ea26684776a69f2ca94036b2cc40fa10861b1e64",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:24:02.920748+00:00",
+  "finished_at_utc": "2026-11-15T05:25:01.815242+00:00",
+  "latency_seconds": 58.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8482,
+    "prompt_tokens": 6811,
+    "total_tokens": 15293,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7691,
+      "text_tokens": 791
+    },
+    "cost": 0.00526265
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28168,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces contained the same five activities in one fixed order: A36 → A14 → A20 → A15 → A21. Every tested pair of these activities co-occurred in 100% of traces and always appeared in a single order. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- In the later window, about 47 in 100 traces contain A36 and A21 but none of A14, A20 and A15, while the remaining ~53 in 100 still contain all five activities in the original order. The three middle activities always appear or disappear together, never partially. [REL001, REL003, REL004, REL005, REL008, REL009]\n- A36's outgoing transitions changed: before, all of them led to A14; in the later window, about 53 in 100 lead to A14 and about 47 in 100 lead directly to A21. [DIR001]\n- A36 and A21 were always 4 steps apart in the earlier window; in the later window they are directly consecutive events (1 step apart) in about 47 in 100 cases and 4 steps apart in the rest. [LAG001]\n- A21 sits slightly earlier within traces in the later window (mean relative position about 0.40 versus about 0.43, with somewhat more spread). [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports that in the later window roughly half of the executions take a shortcut from A36 directly to A21, bypassing the block A14 → A20 → A15, while the other half still execute the full sequence A36 → A14 → A20 → A15 → A21. The bypass is shown directly and consistently: A36 now leads to A21 in about 47 in 100 of its observed outgoing transitions [DIR001], A36 and A21 are consecutive in the same share of traces [LAG001], and in exactly those traces A14, A20 and A15 are absent while A36 and A21 remain present [REL001, REL003, REL004, REL005, REL008, REL009]. Twelve control-flow items qualified against roughly 0.21 expected without change, so chance alone cannot account for the set, and all items describe one coherent difference rather than unrelated shifts [DIR001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, LAG001].\n\nLimitations: the roughly 47/53 split rests on finite samples of 200 traces per window, so the exact share is approximate, and a rare pre-existing shortcut variant that did not appear in the earlier window cannot be ruled out. The evidence also cannot distinguish a new routing option at A36 from the block A14/A20/A15 simply becoming skippable as a whole, as the two are behaviourally equivalent here [DIR001, LAG001, REL003].\n\nOther differences: none beyond the above; the small forward shift of A21's position within traces is consistent with the same bypass [POS001].",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

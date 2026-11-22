@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_ca91098f5a58bd6f.json",
+  "evidence_sha256": "6ccb3289488bfadd90a5320b782bc454e8604cab460e058decb220edaec37065",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:30:47.318015+00:00",
+  "finished_at_utc": "2026-11-15T00:31:48.846572+00:00",
+  "latency_seconds": 61.53,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8531,
+    "prompt_tokens": 12672,
+    "total_tokens": 21203,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7551,
+      "text_tokens": 980
+    },
+    "cost": 0.0061663
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27339,
+  "text": "### Observed differences\n\n- Three activities disappeared from the later window. Earlier, A14 ran in about 35 in 100 traces (70 of 200), A15 in about 30 in 100 (60 of 200) and A20 in about 35 in 100 (70 of 200); in the later window none of the 200 traces contains any of them [OCC001, OCC002, OCC003]. They were mutually exclusive alternatives: earlier, every trace contained exactly one of the three, never two together [REL001, REL003, REL008].\n- The step sat between A36 and A21. Earlier, A36's observed outgoing transitions split roughly 35% to A20, 30% to A15 and 35% to A14; in the later window all of A36's observed outgoing transitions go to A21 [DIR004]. Earlier, each of A14, A15 and A20 led exclusively to A21; those transitions are no longer observed [DIR001, DIR002, DIR003].\n- The A36→A21 pair (within five steps) sat at a distance of two steps in essentially all earlier traces and at a distance of one step in all later traces [LAG001].\n- Downstream activities changed company: earlier, A21 and A26 each co-occurred with one of the three in roughly 30–35 in 100 traces (with A36 running before the intermediate, and the intermediate before A21/A26); in the later window A21 and A26 still occur in every trace but never together with any of the three [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015].\n- A19 changed company as well: earlier it appeared in about 48 in 100 traces and always together with exactly one of the three (about 16 in 100 each); in the later window it appears in about 56 in 100 traces and never with them [REL002, REL007, REL012].\n- Minor shifts in relative event position (not clock time) are consistent with traces containing one event fewer: A21's median relative position moved from about 0.38 to 0.36, A36's from about 0.31 to 0.32 [POS004, POS005].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window the intermediate step between A36 and A21 is bypassed: earlier, every trace executed exactly one of A14, A15 or A20 between A36 and A21 (each leading on to A21), while in the later window A36 leads directly to A21 and A14, A15 and A20 are not observed at all. This rests on direct relational evidence — the A36→A21 distance changed from always two steps to always one step [LAG001] and A36's outgoing transitions moved entirely from the three intermediates to A21 [DIR004] — together with the three activities' participation falling from about 30–35 in 100 traces to zero [OCC001, OCC002, OCC003]. The picture is consistent across occurrence, direction, position and relation indicators, and 28 qualifying items against roughly 0.41 expected by chance cannot be explained by random re-splitting of an unchanged process [screening]. Limitation: zero participation only shows the activities were not observed in the later window; the evidence cannot distinguish complete removal from a branch that has become too rare to sample, and it says nothing about why the step is no longer executed.\n\nOther differences: A19's participation rose from about 48 to about 56 in 100 traces, and it no longer co-occurs with A14, A15 or A20, whereas earlier it always co-occurred with one of them [REL002, REL007, REL012]; this increase is not explained by the bypass alone and may partly reflect sampling variation. The small relative-position shifts of A21 and A36 are consistent with the main difference rather than independent changes [POS004, POS005].",
+  "case_id": "case_ca91098f5a58bd6f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

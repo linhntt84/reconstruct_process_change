@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_119be22bafaf14b3.json",
+  "evidence_sha256": "f82a4b82b107366b6de8876403838135a01d40773f3776a5b07a7d4569ff70a8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:51:58.898980+00:00",
+  "finished_at_utc": "2026-11-15T01:53:11.503569+00:00",
+  "latency_seconds": 72.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10911,
+    "prompt_tokens": 4939,
+    "total_tokens": 15850,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10071,
+      "text_tokens": 840
+    },
+    "cost": 0.00619635
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37054,
+  "text": "### Observed differences\n\n- The order of A30 and A31 between A26 and A27 flipped. In the earlier window the dominant sequence was A26 → A31 → A30 → A27: A31 immediately followed A26 in about 60 in 100 observed pairs, and A30 followed A31 in about 60 in 100. In the later window the dominant sequence was A26 → A30 → A31 → A27: A30 immediately followed A26 in about 62 in 100 pairs, and A31 followed A30 in about 62 in 100. Both orders occur in both windows, so only the shares between two existing alternative orders changed. [DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]\n- The step gaps match this flip: A26 reached A30 within two steps in about 60 in 100 pairs before but within one step in about 62 in 100 after, while A26→A31, A30→A27 and A31→A27 moved the opposite way (one step in about 60 in 100 before, two steps in about 62 in 100 after). [LAG001, LAG002, LAG003, LAG004]\n- A26's immediate-successor mix shifted accordingly: A31 fell from about 31% to about 17% of A26's outgoing transitions, while A30 rose from about 21% to about 27% and A33 held at about 27%. A32 also rose, from about 22% to about 30%, which the A30/A31 flip alone does not explain. [DIR001]\n- The elapsed time between consecutive completion events of A01 and A03 roughly doubled: the median went from about 0.84 hours (39 observations) to about 1.75 hours (41 observations), with every quartile about 0.7–0.95 hours higher. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the preferred execution order of A30 and A31 — the two activities linking A26 to A27 — flipped: in the earlier window about 60 in 100 of the relevant traces ran A26 → A31 → A30 → A27, while in the later window about 62 in 100 ran A26 → A30 → A31 → A27. Both orders were already present in both windows, no activity was added, removed or bypassed, and the gaps stay at one or two steps, so this is a change in how often two existing alternative orders are taken rather than a replacement of paths. The control-flow family produced 7 qualifying items where about 0.31 would be expected if nothing had changed, and all seven describe the same flip from both the successor side and the gap side rather than unrelated differences; each difference is larger than in about 99.5 of 100 random re-splits, and every involved activity and both orders are observed in both windows, with the pairs present in roughly half of the traces (103 of 200 before, 87 of 200 after). An important limitation: the share of traces containing these pairs within five steps also fell from about 52% to about 44%, so the evidence cannot rule out that an additional participation change in this subset contributes to, or partly masks, the observed flip.\n\nOther differences:\n- A32's share of A26's outgoing transitions rose from about 22% to about 30%, a redistribution beyond what the A30/A31 order flip explains. [DIR001]\n- The elapsed time between consecutive completion events of A01 and A03 roughly doubled (median about 0.84 hours to about 1.75 hours, all quartiles up), which is a timing change in its own right; it rests on only about 40 observations per window. [TWAIT001]",
+  "case_id": "e4a_119be22bafaf14b3",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

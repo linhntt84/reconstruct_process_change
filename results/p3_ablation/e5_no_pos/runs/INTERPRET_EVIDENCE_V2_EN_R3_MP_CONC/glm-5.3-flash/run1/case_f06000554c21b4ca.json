@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_f06000554c21b4ca.json",
+  "evidence_sha256": "0ef603f84b7d9869caef898ca03eb731430093b2468c9b79a48421f86d87c272",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:23:54.864215+00:00",
+  "finished_at_utc": "2026-11-14T12:26:53.440384+00:00",
+  "latency_seconds": 178.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24834,
+    "prompt_tokens": 10945,
+    "total_tokens": 35779,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23289,
+      "text_tokens": 1545
+    },
+    "cost": 0.014058750000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 72950,
+  "text": "### Observed differences\n\n- The block of A35, A36 and A41 reversed its order relative to A26: in the earlier window A26 came before each of the three in about 99–100 in 100 traces, while in the later window each of the three came before A26 in about 99 in 100. All of them still occurred together in every trace in both windows. [REL001, REL002, REL003]\n- The same trio also reversed relative to A27: earlier, A27 came before each of A35, A36 and A41 in about 99–100 in 100 traces; later, each of the three came before A27 in about 98–99 in 100. [REL004, REL005, REL006]\n- Direct hand-offs were rewired accordingly. Earlier, A25 passed almost always to A27 (about 99 in 100 of its outgoing transitions) and A26 passed to A41, A35 or A36 (about 37, 34 and 28 in 100); in the later window A25 passed to A35, A36 or A41 in roughly equal thirds (about 33 in 100 each) and A26 passed to A30 in about 98–99 in 100. [DIR001, DIR002]\n- The trio's exits changed accordingly: earlier, each of A35, A36 and A41 led to A30 in about 28–37 in 100 of cases (whichever ran last) and otherwise to another trio member; later, each led to A27 in about 30–34 in 100 and almost never to A30. [DIR003, DIR004, DIR005]\n- Event distances match this flip: A27 followed A25 one step later in about 99 in 100 earlier traces but about four steps later in about 93 in 100 later traces; A30 followed A26 after four to five steps in about 99 in 100 earlier traces but immediately in about 98–99 in 100 later traces. [LAG001, LAG003]\n- Further gap items with very low support in one window (1–2 observations) point the same way: A35 followed A26 within five steps in essentially all 200 earlier traces but about 1 later trace, and followed A25 within five steps in about 1 earlier trace but about 199 later traces. [LAG002, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n- Participation and frequency stayed stable: every pair above co-occurred in 100 in 100 traces in both windows, and the routing profiles rest on about 200 observations per window, so each activity ran about once per trace throughout. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the sequencing around the block A35–A36–A41 was reversed. In the earlier window the segment behaved as A25 → A27, then a stretch of activities the evidence does not identify, then A26 → A35/A36/A41 in varying order → A30; in the later window it behaved as A25 → A35/A36/A41 in varying order → A27, then a further unidentified stretch, then A26 → A30 directly. A25 now enters the trio instead of A27, the trio now hands over to A27, and A30 is reached from A26 instead of from the last trio member. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG003]\n\nThe reversal is shown directly for all six activity pairs, the successor changes at A25, A26 and the trio agree with it, and the distance changes match; co-occurrence stayed at 100 in 100 with about one occurrence per trace, so participation, optionality and repetition changes are ruled out. The volume of qualifying evidence also exceeds what a stable process produces: 21 control-flow items qualified against about 0.59 expected by chance over 119 tested units (roughly 35 times the expectation), and every item's difference exceeded about 995 of 1,000 random re-splits; the items describe one coherent restructuring rather than unrelated shifts. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\nLimitations: no qualifying item covers the relation between A27 and A26 themselves, so their exact placement relative to each other and what runs between them is inferred rather than observed, and the evidence cannot show whether the trio moved forward or the A27/A26 segment moved backward — only that their order reversed. The change is established in event positions, so it demonstrates a reordering of execution, not a shift in clock timing. [REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG003]\n\nOther differences: minor routing tails of about 1 in 200 transitions appear or disappear at the same activities — for example A25 later sometimes exits to A09, A35 later to A11, A25 or A28, and A36 and A41 show single-trace exits to A02, A10, A22, A23, A46 and A06, A08, A43, A44; these involve isolated traces and are not part of the main hypothesis. [DIR001, DIR002, DIR003, DIR004, DIR005]",
+  "case_id": "case_f06000554c21b4ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

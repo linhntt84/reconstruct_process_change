@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "945f796c5408e085bbfdf1b33bc365981b362ba67e3b22ad96bce99f3489a439",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:58:42.938413+00:00",
+  "finished_at_utc": "2026-11-15T01:59:06.751685+00:00",
+  "latency_seconds": 23.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3973,
+    "prompt_tokens": 20586,
+    "total_tokens": 24559,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3368
+    },
+    "cost": 0.003823288
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 10008,
+  "text": "### Observed differences\n\n- A20's outgoing transition changed: before, it went to A37 (35%), A31 (34%), and A32 (31%); in the later window it goes to A23 in about 99.5% of cases and almost never to the others. [DIR001]\n- A31, A32, and A37 each appeared in all 200 traces before, but in only about 47% (94) of traces after. [OCC002, OCC003, OCC004]\n- A22 appeared in all 200 traces before, but in about 53% (107) of traces after. [OCC001]\n- The order between A23 and A31/A32/A37 reversed: before, A31/A32/A37 always preceded A23; after, A23 precedes them in about 46.5% of traces (when they co-occur). [REL014, REL015, REL016]\n- A21 now often occurs without A22 (46.5% of traces) and now precedes A31/A32/A37 instead of following them. [REL005, REL006, REL007, REL008]\n- A22 and A31/A32/A37 almost never co-occur after (0.5% vs 100% before). [REL011, REL012, REL013]\n- A26 now often occurs without A22 (46.5% of traces), and A31/A32/A37 now have outgoing edges to A26. [REL010, DIR003, DIR004, DIR005]\n- Positions shifted: A31/A32/A37 moved later (mean position from about 0.39 to 0.58), while A23 moved earlier (0.45 to 0.39). [POS006, POS007, POS008, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a restructuring of the control flow around A20, A23, and the group A31/A32/A37, with A22 becoming optional. In the earlier window, A20 led to A31/A32/A37, which then led to A23, followed by A22 and A26; in the later window, A20 leads directly to A23, which then leads to A31/A32/A37, and A22 is often skipped. A21's order relative to the group also reversed, now preceding it. The large number of qualifying items (47 vs 0.51 expected by chance) and the direct relational and positional evidence make this a supported hypothesis. A competing explanation that cannot be fully ruled out is that the observed changes reflect a shift in case mix rather than a process modification, but the consistency of the order reversals and the near-total replacement of A20's outgoing edge make that less likely.\n\nOther differences: A26 now appears without A22 and is reached from A31/A32/A37, consistent with the main restructuring.",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

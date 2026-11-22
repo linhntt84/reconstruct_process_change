@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_6e134634720305a2.json",
+  "evidence_sha256": "b9ea1583ef65f01796bdec1c9cd0e92189dd3394f02e5411ce8f4afbe9301f47",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:19:56.219552+00:00",
+  "finished_at_utc": "2026-11-15T04:20:52.029285+00:00",
+  "latency_seconds": 55.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7773,
+    "prompt_tokens": 7220,
+    "total_tokens": 14993,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6891,
+      "text_tokens": 882
+    },
+    "cost": 0.0049695
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26561,
+  "text": "### Observed differences\n\n- Repetition collapsed: in the earlier window, A30, A31 and A36 each occurred about 3.5 times per trace and appeared more than once in about 75 in 100 traces; in the later window, each occurs about once per trace (1.0–1.05) and repeats in only about 1 in 100 traces, while still appearing in every trace in both windows. [OCC001, OCC002, OCC003]\n- The loop-back edge disappeared: earlier, 70% of A36's outgoing transitions went to A30 (about 2.4 returns per trace) and 28% went to A25 (about one exit per trace); in the later window, 92% go to A25 (still about one exit per trace) and only 4% return to A30. [DIR002]\n- The relation between A30 and A36 changed: earlier the two always co-occurred but were interleaved or repeated together in about 76 in 100 traces, with A30 strictly before A36 in about 25 in 100; in the later window A30 precedes A36 in 98 in 100 traces and interleaving/repetition drops to about 2 in 100. [REL001]\n- A36 now follows A30 tightly: in the later window A36 comes within two event positions after A30 in about 89 in 100 traces, versus about 12 in 100 earlier. [LAG001] The close A36→A30 and A36→A36 successions vanish from the later window, but these items rest on only 1 and 2 later observations. [LAG002, LAG003]\n- What did not move: A30's dominant successor remains A31 (about 99% of outgoing transitions before, 97% after), and the average positions of A30 and A36 within the trace are essentially unchanged (means about 0.42–0.49 in both windows), only somewhat less spread out later. [DIR001, POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repeated execution of the block A30 → A31 → … → A36 stopped: in the earlier window this block typically ran three to four times per case, with A36 returning to A30 between repetitions and leaving to A25 once at the end, while in the later window it runs once per case and A36 proceeds to A25. The occurrence profiles show the repetition change directly (about 3.45 → 1.05 occurrences per trace, recurrence about 75 in 100 → 1 in 100 traces, participation unchanged at 100 in 100) [OCC001, OCC002, OCC003]; the successor profile of A36 shows the loop-back edge collapsing while the exit to A25 persists at roughly one per trace [DIR002]; and the pair relation shifts from mostly interleaved/repeated to a fixed A30-before-A36 order with a tight two-position gap [REL001, LAG001]. Screening produced 11 qualifying items against roughly 0.47 expected if nothing had changed, so the pattern as a whole is unlikely under sampling variation, and the unchanged A30→A31 edge together with unchanged activity positions argues against a reordering or relocation of activities [DIR001, POS001, POS002].\n\nLimitations: the LAG002 and LAG003 items are based on only 1–2 later observations and add little on their own [LAG002, LAG003]. The evidence shows that the loop is no longer taken, but cannot distinguish between the repetition option having been removed and the later window simply containing cases in which the loop was never entered, such as a shift in the case mix [DIR002, OCC001].\n\nOther differences: none beyond the above; the slight tightening of the positional spread of A30 and A36 is a byproduct of fewer repetitions rather than a separate positional shift [POS001, POS002].",
+  "case_id": "case_6e134634720305a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

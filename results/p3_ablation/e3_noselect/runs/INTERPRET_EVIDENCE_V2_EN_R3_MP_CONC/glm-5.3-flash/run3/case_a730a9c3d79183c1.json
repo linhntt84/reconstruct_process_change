@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_a730a9c3d79183c1.json",
+  "evidence_sha256": "1f3739147ff2e406453d2acae9d4316e6869525773d19274ce2da31f58a38988",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:29:54.540940+00:00",
+  "finished_at_utc": "2026-11-15T13:34:29.094681+00:00",
+  "latency_seconds": 274.55,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 37009,
+    "prompt_tokens": 113273,
+    "total_tokens": 150282,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34237,
+      "text_tokens": 2772
+    },
+    "cost": 0.03549545
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 107957,
+  "text": "### Observed differences\n\n- In the earlier window, each of the six activities A33, A35, A36, A37, A38 and A39 ran in about half of the traces (roughly 49–53 in 100); in the later window, each runs in about 99 in 100. [OCC029, OCC031, OCC032, OCC033, OCC034, OCC035]\n- Earlier, the six formed two mutually exclusive trios: A33 with A35 and A36 appeared together in about 49 of 100 traces, A37 with A38 and A39 in about 51 of 100, and members of different trios hardly ever met (for example A33 and A37 together in about 2 of 100 traces), so essentially every earlier trace contained exactly one trio. In the later window, both trios run in the same trace in about 98 of 100 cases. [REL049, REL051, REL057, REL062, REL067, REL071]\n- The trios also gained a fixed order between them: in the later window A33, A35 and A36 each come before A37, A38 and A39 in about 95–98 of 100 traces, while the order inside each trio stays mixed (A33 before A35 in about 46 of 100, A35 before A33 in about 50). [REL049, REL051, REL056, REL057, REL062, REL067, REL071]\n- The routing matches: earlier, A30's outgoing transitions spread evenly over all six activities (about 14–18 in 100 each); later, they go almost only to A33, A35 and A36 (about 29–36 in 100 each), and the first trio now also leads into A37, A38 and A39 (about 7–13 in 100 each), which it rarely did earlier. [DIR030, DIR033, DIR035, DIR036]\n- The block keeps its place between A30 and A31 but takes more steps: A30 is followed by A31 within five steps in about 199 of 200 earlier traces but only about 5 later traces, while A30 still precedes A31 in about 97 of 100 traces; A37–A39 now follow A30 about 4–5 positions later instead of 1–3, and A31 follows A33/A35/A36 about 4–5 positions later instead of 1–3. [LAG020, LAG024, LAG025, LAG026, LAG035, LAG043, LAG048, REL033]\n- Event positions agree: A33, A35 and A36 now occur slightly earlier in the trace (mean relative position about 0.74 to 0.67), A37, A38 and A39 slightly later (about 0.73 to 0.76–0.77), with A30 earlier (about 0.67 to 0.62) and A31 later (about 0.80 to 0.82). [POS004, POS005, POS006, POS007, POS008, POS009, POS010, POS011]\n- A04 was largely dropped from the main flow: it ran in about 59 of 100 traces earlier, typically after A14 (which led to it in about 57 of 100 of its outgoing transitions) and before A15 (which it reached in about 90 of 100 of its own outgoing transitions); in the later window it runs in about 26 of 100 traces, A14 leads directly to A15 in about 79 of 100 (A04 only about 12 in 100), and A04 sits later and more variably in the trace, with the main-line activities running without it in about 74 of 100 traces. [OCC004, DIR014, DIR004, REL001, POS001]\n- Smaller shifts: A02, A06, A08 and A10 each ran in about 6–8 of 100 traces earlier and about 18–23 in 100 later, appearing mostly as extra steps after A42, A45 and A47; A15 and A16 repeat slightly more often (A15 about 1.55 to 1.67 executions per trace) and A43 slightly less (about 1.77 to 1.61). [OCC002, OCC006, OCC008, OCC010, DIR042, DIR045, DIR047, OCC015, OCC016, OCC039]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the late block between A30 and A31 was restructured from a choice into a mandatory sequence: in the earlier window, each trace executed exactly one of two alternative trios — either A33 with A35 and A36 (about 49 in 100 traces) or A37 with A38 and A39 (about 51 in 100) — in a mixed internal order; in the later window, all six activities run in almost every trace (about 98–99 in 100), with A33, A35 and A36 preceding A37, A38 and A39 in about 95–98 of 100 traces. In other words, six activities that were optional alternatives appear to have become mandatory and sequentially ordered, while A30 and A31 remain the anchors before and after them. [REL049, REL051, REL057, REL062, OCC029, OCC033, DIR030, DIR033]\n\nThe hypothesis rests on direct relational evidence — cross-trio co-occurrence rising from about 2 to about 98 in 100 traces with a stable cross-trio order — corroborated by the successor changes at A30 and the first trio, by the growing A30-to-A31 distance, and by consistent position shifts; the key items show differences larger than in about 199 of 200 random re-splits. The agreeing indicators largely describe one underlying trace behaviour, so they should be read as one consistent picture rather than independent confirmations, and the many lag items based on only a handful of observations were not needed for it. A competing explanation the evidence cannot rule out is a shift in the mix of case types between the windows rather than a modified routing rule; the near-absence of both-trios traces earlier (about 2 in 100) makes pure sampling noise implausible, but the aggregates cannot show what individual cases did. [REL051, DIR030, LAG020, POS006, POS009]\n\nOther differences: A04 is now usually skipped — it fell from about 59 to about 26 of 100 traces, A14 leads directly to A15 in about 79 of 100 of its outgoing transitions (against about 43 earlier, with A04 at about 57), and A04 appears later and more variably when it does run. A02, A06, A08 and A10 each occur in roughly two to three times as many traces (about 6–8 to about 18–23 in 100), mostly as extra steps after A42, A45 and A47. A15 and A16 repeat slightly more often and A43 slightly less. [OCC004, DIR014, DIR004, REL001, POS001, OCC002, OCC006, OCC008, OCC010, DIR045, DIR047, OCC015, OCC016, OCC039]",
+  "case_id": "case_a730a9c3d79183c1",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

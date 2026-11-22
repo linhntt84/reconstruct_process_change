@@ -1,0 +1,17 @@
+### Observed differences
+
+- Work on A01 and A03 was redistributed across resources in parallel. Earlier, each activity was shared by a broad group of resources with the largest single share at about 11% (resource User_19) and about 45 in 100 executions done by resources outside the leading group. In the later window, User_19's share fell to about 3–4% (on A03 it no longer appears among the leading resources at all), several other previously leading resources lost share, a new group including resource User_28 appeared at about 5% each, and the outside-group share rose to about 53–54 in 100. [ASSIGN001, ASSIGN002]
+- A07 shows an almost complete turnover of resources. Earlier, ten resources each handled roughly 6–11% of its executions and the outside group about 18 in 100. In the later window, most previous leaders no longer appear at the top, a largely new set led by resource User_126 at about 13% took over, and the outside-group share rose to about 31 in 100, meaning the work is spread across more, smaller contributors. The overall allocation difference for A07 (about 0.47 on a 0–1 dissimilarity scale) is roughly twice that of A01 and A03 (about 0.24–0.25). [ASSIGN003]
+- A24 was executed less: it appeared in about 40% of traces earlier versus about 29% in the later window (about 80 vs 58 of 200 traces), its mean occurrences per trace fell from about 0.60 to 0.36, and the share of traces in which it recurred fell from about 14% to 6%. [OCC001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the execution of A01, A03 and A07 was reallocated across a largely different set of resources: on A01 and A03 work moved away from a group that included resource User_19 towards a new group including resource User_28, with more of the work left to long-tail resources (about 45% rising to about 53–54%); on A07 the previous leading resources were almost entirely replaced by a new group led by resource User_126, and the work spread more thinly across the long tail (about 18% rising to about 31%). [ASSIGN001, ASSIGN002, ASSIGN003]
+
+Supporting signs: the resources family produced three qualifying items where about 0.004 would be expected if nothing had changed — a count chance cannot plausibly account for; each allocation difference exceeds 999.5 of 1,000 random re-splits of the pooled traces; the shifts on A01 and A03 are parallel, with the same resources losing and gaining share; and the shares rest on many observations (about 200 assignments for A01, about 199 for A03, and about 140–148 for A07). [ASSIGN001, ASSIGN002, ASSIGN003]
+
+An important competing explanation the evidence cannot rule out is that the two windows simply contain a different mix of cases whose work naturally falls to different resources, rather than a change in how work is assigned; the three items may also express one underlying reallocation rather than three independent changes. [ASSIGN001, ASSIGN002, ASSIGN003]
+
+Other differences: A24 occurred less often and less repeatedly in the later window — participation about 40% versus 29% of traces, mean occurrences per trace about 0.60 versus 0.36, and recurrence about 14% versus 6%. As the only control-flow item, against roughly 0.16 expected by chance in that family, this pattern is also what an unchanged process can produce, so it is reported separately and not added to the main hypothesis. [OCC001]

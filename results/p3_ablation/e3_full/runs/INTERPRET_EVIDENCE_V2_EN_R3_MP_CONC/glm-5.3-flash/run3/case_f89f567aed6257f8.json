@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f89f567aed6257f8.json",
+  "evidence_sha256": "e85056413ac63c5c120d4c741fdf6dffec8cba99e767585eb84438ef9629c354",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:23:16.522163+00:00",
+  "finished_at_utc": "2026-11-16T03:25:49.600929+00:00",
+  "latency_seconds": 153.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20491,
+    "prompt_tokens": 142559,
+    "total_tokens": 163050,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18532,
+      "text_tokens": 1959
+    },
+    "cost": 0.03162935
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64422,
+  "text": "### Observed differences\n\n- **A14 is no longer executed.** In the earlier window A14 ran exactly once in every trace (200 of 200), always in the final positions together with A03: the two occupied the last positions in either order (A03 before A14 in about 53 in 100 traces, A14 before A03 in about 48), A03's only observed outgoing transitions led to A14, and A06 split its outgoing transitions between A03 (about 52 in 100) and A14 (about 48). In the later window A14 appears in 0 of 200 traces, A03 stands at the final position of every trace with no observed outgoing transitions, A06 now always leads to A03, and A14's co-occurrence has fallen to zero with every partner activity (for example A04, A06, A07 and A11). [OCC010, POS003, POS014, DIR003, DIR006, DIR013, REL039, REL052, REL074, REL084, REL114]\n\n- **A01 appears for the first time.** Earlier it was not observed at all (0 of 200 traces, no outgoing transitions); in the later window it runs in about 56 in 100 traces (112 of 200), usually several times per trace (about 2.4 occurrences per trace overall, roughly 4 in the traces that contain it), around the middle of the trace (median position about 0.49 on the position scale). Its observed outgoing transitions split almost evenly over four targets: A09 (about 27 in 100), A02 (25), A11 (24) and A05 (23). It now co-occurs with each other activity in roughly 20–56 in 100 traces, mostly interleaved or repeated rather than in one fixed order. [OCC001, POS001, DIR001, REL001, REL002, REL010]\n\n- **Several activities now route into A01.** A09 and A13, which previously led to A02 or A11, now lead only to A01. A08, A10 and A17, which previously led mainly to A06, A13 and A09, now lead to A01 in about half of their observed outgoing transitions (A08 about 53 in 100, A10 about 53, A17 about 58), with A06 taking most of the remainder. [DIR008, DIR009, DIR010, DIR012, DIR016]\n\n- **Participation and repetition shifted for several activities.** A05 dropped from about 62 in 100 traces to about 29 (123 to 57 traces; mean occurrences about 2.0 to 1.2) and A12 from about 37 to about 20; A11 rose from about 62 to 70 in 100 traces with more repeats (mean occurrences about 1.8 to 2.3), A16 from about 62 to 70, A15 from about 33 to 41, and A09's mean occurrences rose from about 0.44 to 0.66. A02 and A04 were essentially unchanged. [OCC002, OCC003, OCC005, OCC007, OCC008, OCC011, OCC012]\n\n- **Routing around A05, A11 and A16 was rewired.** A05 previously led to A12 or A16 (about 51/49) and now leads to A12 or A13 (about 51/49); A11 previously led to A05 or A15 (about 54/46) and now leads to A15 or A16 (about 50/50). Accordingly, A05 and A11 now co-occur in only about 24 in 100 traces (before about 62), and A05 with A16 in about 24 (before about 62). [DIR005, DIR011, REL061, REL066]\n\n- **Pairwise step distances shifted in step with the above** — for example A02 to A03 is now almost always 3 steps apart (about 96 in 100) versus an even 3/4-step split before, and A02 to A12 and A02 to A16 moved from 5 steps to 4; these largely mirror the structural changes rather than adding independent behaviour. [LAG002, LAG011, LAG014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the control-flow structure changed between the windows: A14, which previously closed every trace alternating with A03 as the final pair, is no longer executed, so A03 now ends each trace; and A01 is newly executed in the middle of traces, usually several times, handing over to A02, A05, A09 or A11 in roughly equal shares, with A09 and A13 now leading exclusively to A01 and A08, A10 and A17 leading to A01 in about half of their outgoing transitions. The support is direct and consistent across indicators: occurrence and position items show A14 going from 200 of 200 traces to 0 and A01 from 0 to 112 of 200 at mid-trace positions; relation items show A14's co-occurrence dropping to zero with every partner while A01 gains co-occurrence with all partners; and the successor changes agree across direction items whose differences exceed about 995 in 1000 random re-splits of the same data. A rare-variant sampling explanation cannot account for an activity present in all 200 earlier traces disappearing from all 200 later traces together with all of its relations. [OCC001, OCC010, POS001, POS003, POS014, DIR001, DIR003, DIR009, DIR012, REL039]\n\nLimitations: zero participation only means an activity was not observed in that window, so the evidence shows that A14 is no longer observed and A01 is newly observed rather than proving a model-level deletion or addition; it also cannot show whether the two structural changes were introduced together or independently, nor whether A01's four-way outgoing split is one routing point or several coexisting variants. [OCC001, OCC010]\n\nOther differences: participation and repetition changed for A05 (down, about 62 to 29 in 100 traces), A12 (down, about 37 to 20), A11 (up, about 62 to 70, mean occurrences about 1.8 to 2.3), A16 (up, about 62 to 70), A15 (up, about 33 to 41) and A09 (mean occurrences about 0.44 to 0.66); successors were rewired between A05, A11, A13 and A16 (A05 now followed by A13 instead of A16, A11 now followed by A16 instead of A05); and many pairwise step-distance distributions shifted consistently with the structural changes above. [OCC003, OCC005, OCC007, OCC008, OCC011, OCC012, DIR005, DIR011, REL061, REL066, LAG002]",
+  "case_id": "case_f89f567aed6257f8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,35 @@
+{
+  "spec_version": "2.0",
+  "spec_document": "docs/PIPELINE_V2_SPEC_VI.md",
+  "window_traces": 200,
+  "guard_traces": 50,
+  "window_rule": "L- = [cp - guard - window, cp - guard), L+ = [cp + guard, cp + guard + window); gradual drift: cp_start for L-, cp_end for L+",
+  "reference": {
+    "mode": "permutation",
+    "pairs_per_stable_window": 100,
+    "ties": "lt",
+    "note": "B = 2 * pairs_per_stable_window = 200 reference pairs; q = #{ref < r} / (B + 1)"
+  },
+  "localization": {
+    "measure": "directly-follows trace-support change",
+    "eps_loc": 0.1,
+    "tau_loc": 0.995
+  },
+  "qualification": {
+    "tau": 0.995,
+    "eps_rel": 0.2,
+    "families": [
+      "CF_OCC",
+      "CF_DIR",
+      "CF_POS",
+      "CF_REL",
+      "CF_LAG"
+    ],
+    "gated_by_localization": [
+      "CF_POS",
+      "CF_REL",
+      "CF_LAG"
+    ]
+  },
+  "anonymize_activities": true
+}

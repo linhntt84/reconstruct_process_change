@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_486f0456dc5c10b4.json",
+  "evidence_sha256": "790c598350fa145098de65ffac7c8dfb6301f6450f406ae68c6817f3a7cd3d67",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:30:39.906464+00:00",
+  "finished_at_utc": "2026-11-15T08:31:28.547178+00:00",
+  "latency_seconds": 48.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7076,
+    "prompt_tokens": 4970,
+    "total_tokens": 12046,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6372,
+      "text_tokens": 704
+    },
+    "cost": 0.0042835
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25371,
+  "text": "### Observed differences\n\n- Activity A01 did not occur in the earlier window (0 of 200 traces, mean 0 occurrences per trace); in the later window it occurs exactly once in every trace (200 of 200, mean 1.0). [OCC001]\n- In the earlier window, every observed outgoing transition of A07 led to A04; in the later window, every observed outgoing transition of A07 leads to A01. [DIR002]\n- In the later window, every observed outgoing transition of A01 leads to A04; earlier, A01 had no observable outgoing transitions because it never occurred (an empty profile does not by itself show the edge was absent from the process). [DIR001]\n- A01 and A04 never co-occurred earlier (A04 appeared without A01 in 100 in 100 traces); in the later window they co-occur in 100 in 100 traces, always with A01 first. The same holds for A01 and A07: from A07 alone in 100 in 100 traces to always together, with A07 first. [REL001, REL002]\n- The distance from A07 to A04 (within five steps) was one step in 100 in 100 cases earlier and two steps in 100 in 100 cases in the later window. [LAG001]\n- Event positions shifted consistently with an insertion: A07's mean position moved from about 0.40 to about 0.33, A04's from about 0.60 to about 0.67, and A01 sits at 0.50 in the later window; these are event positions, not clock times, and they stem from the same traces as the items above. [POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 is executed between A07 and A04: traces that earlier ran A07 directly followed by A04 now run A07, then A01, then A04. The placement change is shown directly by the successor change at A07 (from A04 to A01) and by A01's successor (A04), and it is consistent across the pair relations (A01 now always co-occurs with A07 before it and with A04 after it), the A07-to-A04 distance growing from one to two steps, and the position shifts. The appearance of A01 in 0 versus 200 of 200 traces, with every item at empirical strength about 0.995 and backed by 200 traces per window, is far outside what random re-splits of pooled traces produce. Note that these items all describe one underlying trace difference and are not independent confirmations of it. [OCC001, DIR001, DIR002, REL001, REL002, LAG001, POS001, POS002, POS003]\n\nLimitations: the evidence shows that A01 was not observed in the earlier window, not that it is new to the process; a competing explanation the data cannot rule out is that A01 existed as an optional activity that was always skipped before and is now always executed. The evidence also covers only the neighbourhood of A07, A01 and A04 within finite samples of 200 traces per window. [OCC001]",
+  "case_id": "case_486f0456dc5c10b4",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f537091a8d8f5258.json",
+  "evidence_sha256": "c3dcb2666f3acbd96232af0ae45311101884cca68703fdb89adf3d79a0113893",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:20:23.555962+00:00",
+  "finished_at_utc": "2026-11-16T02:23:39.416993+00:00",
+  "latency_seconds": 195.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29001,
+    "prompt_tokens": 44449,
+    "total_tokens": 73450,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27182,
+      "text_tokens": 1819
+    },
+    "cost": 0.02116785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 91012,
+  "text": "### Observed differences\n\n- The traces split into two mutually exclusive activity groups: A01, A04, A05, A06, A07 and A09 always occur together and never occur together with A03, A08, A10 and A11, which likewise always occur together; about 25 in 100 traces contain neither group, and A02 appears in about 25 in 100 traces in both windows. [OCC001, OCC002, OCC003, OCC004, OCC008, REL001, REL004, REL010, REL012]\n- The two groups' frequencies shifted: the six-activity group ran in about 48 in 100 traces before and about 55 in 100 in the later window, while the four-activity group fell from about 28 to about 21 in 100; traces with neither group stayed at about 25 in 100. [OCC001, OCC003, OCC004, OCC008, REL001, REL010]\n- Inside the six-activity group the order changed. Before, A05 and A06 ran after A09 at the end of the group and in no fixed order between themselves (A05 first in about 25 of 100 traces, A06 first in about 23); in the later window they run as a fixed A05-then-A06 pair between A04 and A07 — A05 now precedes A07 and A09 in essentially every trace where they co-occur, whereas before it never did. [REL025, REL026, REL028, REL031, REL033]\n- Event positions and step distances moved accordingly (positions are relative positions in the trace, 0 = start, 1 = end): A05's mean position fell from about 0.89 to 0.32 and A06's from about 0.89 to 0.65, while A07's rose from about 0.36 to 0.74 and A09's from about 0.59 to 0.98; A04's outgoing transitions now go mostly to A05 (about 51 in 100, against about 80 in 100 to A07 before), A06's go mostly to A07 (about 76 in 100, against about 96 in 100 to A05 before), A04–A05 are now typically 1–2 steps apart (before 3–4), and A01–A09 typically 4–5 steps (before 3). [POS004, POS005, POS006, POS008, DIR003, DIR005, LAG005, LAG010, LAG012, LAG013]\n- The later order is dominant but not uniform: A01's outgoing transitions now split about evenly between A04 and A05 (about 45 in 100 each, against about 76 to A04 and 21 to A07 before), A05 precedes A04 in about 15 of 100 traces (about 1 before), A04 precedes A01 in about 17 of 100 (about 7 before), and A09 precedes A06 in about 5 of 100. [DIR001, REL002, REL018, REL033]\n- In the four-activity group, A03 tends to run later relative to A08, A10 and A11 than before (A03 before A08 in about 15 of 100 traces, down from about 24); this rests on only 35–55 traces per window. [REL014, REL016, REL017, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the execution order within the six-activity group changed: in the later window A05 and A06 run as a fixed A05-then-A06 pair between A04 and A07, so the group typically runs A01 → A04 → A05 → A06 → A07 → A09, whereas before it ran A01 → A04 → A07 → A09 → A05/A06 with the last two in either order, and A07 and especially A09 now sit at the end of the group. The order flip is shown directly by the relational items — A07 preceded A05 in all roughly 96 co-occurring traces before and in none after, while A05 precedes A07 in about 55 of 100 after — and is consistent across the successor changes at A04 and A06, position shifts of 0.25–0.57, and redistributed step distances; the key items exceed about 199 of 200 random re-splits and rest on roughly 50–110 traces per window. [REL025, REL026, REL028, REL031, REL033, DIR003, DIR005, POS004, POS006, POS008, LAG010, LAG012]\n\nLimitations: the new sequence is dominant rather than universal (a minority of later traces shows A05 before A04, A04 before A01, or A09 before A06), A09's outgoing profile rests on only 12 later observations, and the evidence carries no expected-by-chance screening counts, so the judgement rests on the directness and consistency of the relational items; a competing explanation it cannot rule out is that the later window mixes several order variants rather than one new fixed sequence. [REL002, REL018, REL033, DIR008]\n\nOther differences: the two alternative paths are taken with different frequencies — the six-activity path in about 55 of 100 traces (about 48 before) and the four-activity path A03/A08/A10/A11 in about 21 (about 28 before), with neither-path traces stable at about 25 in 100 and A02 stable at about 25 in 100; per-item strength for this shift is moderate (larger than about 70–86 of 100 random re-splits), so sampling variation between the two 200-trace windows alone could produce it, though its block-wide consistency supports a real frequency shift. [OCC001, OCC002, OCC003, OCC004, OCC008, REL001, REL010]",
+  "case_id": "case_f537091a8d8f5258",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

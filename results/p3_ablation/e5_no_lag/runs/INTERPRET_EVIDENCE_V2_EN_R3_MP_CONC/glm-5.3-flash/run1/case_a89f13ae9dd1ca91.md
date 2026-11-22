@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, A21, A22 and A23 each ran in every trace (200 of 200, once per trace); in the later window, each appears in only 1 of 200 traces (about 0.5 in 100). [OCC004, OCC005, OCC006]
+- A14, A15 and A16 were not observed in the earlier window (0 of 200 traces); in the later window each runs once in the traces where it appears — A14 in about 30 in 100 traces (60 of 200), A15 in about 33 in 100 (65 of 200), A16 in about 37 in 100 (74 of 200). [OCC001, OCC002, OCC003]
+- The successors of A39 changed wholesale: in the earlier window its outgoing transitions led to A23 (about 35%), A22 (about 31%) and A21 (about 35%) in roughly equal shares; in the later window they lead to A16 (about 37%), A15 (about 33%) and A14 (about 30%), with A23 nearly gone. [DIR007]
+- In the later window, A14, A15 and A16 behave as mutually exclusive alternatives: no trace contains two of them, and about 37 in 100 traces contain none. In the earlier window, A21, A22 and A23 instead always ran together in the same trace without a fixed order (for example, A21 preceded A22 in about 52% of traces and followed it in about 48%). [REL001, REL002, REL010, REL025, REL026, REL031]
+- Both groups keep the same anchors: earlier, each of A21, A22 and A23 always followed A39 and always preceded A24 (A21 before A24 in all 200 traces); in the later window, each of A14, A15 and A16 follows A39, and all of its observed outgoing transitions lead to A24. [DIR001, DIR002, DIR003, REL006, REL007, REL014, REL015, REL021, REL022, REL027, REL028, REL032, REL033, REL036, REL037]
+- A24 still runs in every trace, but its mean position within the trace (by event order, not clock time) moved slightly earlier, from about 0.43 to about 0.39. [POS007]
+- A41 appeared in about 59 in 100 traces in the earlier window and about 69 in 100 in the later window; where it co-occurs with one of A14/A15/A16 (about 21–26 in 100 traces), the new activity usually comes first. [REL009, REL017, REL024]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the segment between A39 and A24 runs as a single one-of-three step instead of a three-activity block: A21, A22 and A23, previously executed together in every case in no fixed order, are now observed in only about 0.5 in 100 traces, while exactly one of the mutually exclusive alternatives A14, A15 or A16 runs in about 30, 33 or 37 in 100 traces respectively, between A39 and A24. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL002, REL010, REL025, REL026, REL031]
+
+The supporting signs are direct and consistent: the screening produced 61 qualifying items against roughly 0.57 expected for an unchanged process in the control-flow family, so the volume cannot be explained by random splitting; the rerouting is visible directly at the shared predecessor A39; and the relational items show the old trio always co-occurring before and the new trio never co-occurring after, with both anchored between A39 and A24. [DIR007, DIR001, DIR002, DIR003, REL006, REL007, REL014, REL015, REL021, REL022, REL027, REL028, REL032, REL033, REL036, REL037]
+
+Limitations: the evidence cannot rule out that the one-of-A14/A15/A16 behaviour already existed before as a rare variant (it would have to affect well under about 2 in 100 cases to be missed in 200 traces) that became dominant, rather than the segment itself being restructured; and the later-window routing out of A21/A22/A23 rests on a single trace, so the old block is strongly reduced but not provably eliminated. [OCC004, OCC005, OCC006, DIR004, DIR005, DIR006]
+
+Other differences: A41 ran in about 59 in 100 traces before and about 69 in 100 after, and now co-occurs with each of A14/A15/A16 in about 21–26 in 100 traces, usually after the new activity; A39 and A40 show only small shifts in mean trace position (about 0.31 to 0.33, and about 0.85 to 0.84) while remaining in every trace. [REL009, REL017, REL024, POS008, POS009]

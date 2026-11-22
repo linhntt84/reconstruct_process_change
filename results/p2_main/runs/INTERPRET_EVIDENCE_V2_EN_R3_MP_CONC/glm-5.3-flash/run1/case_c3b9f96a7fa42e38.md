@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, the three activities A35, A36 and A41 always ran before both A26 and A27 (e.g., A35 preceded A26 in all 200 traces, A41 preceded A27 in about 98 in 100); in the later window this is reversed — A26 precedes A35, A36 and A41 in about 97–98 in 100 traces, and A27 precedes them in about 98–99 in 100 — while all six activities still occur together in every trace in both windows [REL001, REL002, REL003, REL004, REL005, REL006].
+- Positions shifted accordingly: A26's mean position moved earlier (about 0.62 to 0.53 of the trace) and A27's earlier still (0.47 to 0.38), while A35, A36 and A41 moved later (about 0.41–0.42 to 0.58–0.59); each of these activities appears in every trace in both windows [POS002, POS003, POS004, POS005, POS006].
+- Successor profiles changed as this reversal implies: A25's outgoing transitions went from about 39% to A35, 32% to A36 and 27% to A41 to about 98% to A27; A26 went from about 99% to A30 to about 34% A35, 32% A36 and 30% A41; and A35, A36 and A41, which each previously led to A27 in roughly 28–37% of their outgoing transitions, now lead to A30 in about 30–35%, with A27 no longer among their successors [DIR003, DIR004, DIR005, DIR006, DIR007].
+- Pairwise distances agree: A25 and A27 went from about 4 steps apart (94 in 100) to immediately adjacent (98–99 in 100), while A26 and A30 went from immediately adjacent (99 in 100) to about 4–5 steps apart (98 in 100) [LAG005, LAG009].
+- Outside this block, A06 appears in fewer traces (about 27 in 100 before, 12–13 in 100 after), at a later mean position (0.25 to 0.44), with its outgoing transitions dispersing away from A16 (86% to 39%); A15's transitions to A16 rose from about 85% to 95% while those to A06 fell from 15% to 3% [OCC002, POS001, DIR001, DIR002].
+- A02's trace participation rose from about 4.5% to 11.5%, but this rests on only 9 versus 23 traces [OCC001].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the block of three activities A35, A36 and A41, which previously executed before A26 and A27, now executes after them: the earlier window is consistent with the triple running before A27 and A26 with A30 immediately after A26, while the later window is consistent with A25 leading directly to A27, A26 next, the triple after A26, and A30 following the triple [REL001, REL002, REL003, REL004, REL005, REL006, POS002, POS003, POS004, POS005, POS006, DIR003, DIR004, DIR005, DIR006, DIR007, LAG005, LAG009].
+
+The support is direct and consistent: six activity pairs show a near-universal order flipping to the near-universal opposite order with co-occurrence unchanged (200 of 200 traces in both windows), all five position distributions shift in the predicted directions with full support, the successor changes at A25, A26, A35, A36 and A41 match the reordering, and both distance items move as predicted; screening also qualified 33 control-flow items against well under one (0.76) expected without change, far beyond what an unchanged process produces, and every item exceeds about 199 of 200 random re-splits [REL001, REL002, REL003, REL004, REL005, REL006, POS002, POS003, POS004, POS005, POS006, DIR003, DIR004, LAG005, LAG009]. Limitations: positions are event indices, not clock time, so only ordering — not elapsed timing — is established; and the evidence cannot fully rule out that the two windows sample two process variants at shifting frequencies rather than a reordering within one variant, although a near-complete reversal within co-occurring traces makes pure sampling variation unlikely [REL001, REL002, REL003, REL004, REL005, REL006].
+
+Other differences:
+- A06 participates in fewer traces, appears later, and its transitions disperse away from A16, with A15 correspondingly leading more often to A16; several A16-related distance changes (e.g., A16→A27, A16→A35) rest on only 1–11 observations and are not interpreted [OCC002, POS001, DIR001, DIR002, LAG003, LAG004].
+- A02's participation increase is weakly supported by the few traces behind it [OCC001].

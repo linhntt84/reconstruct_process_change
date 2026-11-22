@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_1407619f4daba9b8.json",
+  "evidence_sha256": "e778584ecf302917d367d4fb42673d6cffb23541c37788d1efdea32115e7474b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:19:47.755770+00:00",
+  "finished_at_utc": "2026-11-15T05:21:18.778678+00:00",
+  "latency_seconds": 91.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13434,
+    "prompt_tokens": 17735,
+    "total_tokens": 31169,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11948,
+      "text_tokens": 1486
+    },
+    "cost": 0.00937725
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39792,
+  "text": "### Observed differences\n\n- The three activities A31, A32 and A37 appeared in about 46 in 100 traces in the earlier window but in essentially all traces (about 199 of 200) in the later window, and their average event position moved from roughly 0.59 to roughly 0.40 of the trace, so they now run much earlier [POS006, POS007, POS008].\n- In the earlier window, A22 and each of A31/A32/A37 were mutually exclusive — never in the same trace, with A22 alone in about 54 in 100 traces and the group alone in about 46 in 100 — whereas in the later window they co-occur in about 995 in 1000 traces, always with the group before A22; A22 itself rose from about 54 in 100 traces to all 200 [REL011, REL012, REL013, POS003].\n- A20's successor changed: before, every observed outgoing transition went to A23, which immediately followed it; after, A20 leads to A31, A32 or A37 in roughly equal thirds (about 32–36 in 100 of outgoing transitions each) and almost never directly to A23, which now follows about 4 event steps later in about 995 in 1000 cases [DIR001, LAG001].\n- The order between the group and A23/A21 flipped: before, A23 preceded A31/A32/A37 and A21 preceded them (in the roughly 46 in 100 traces containing both); after, the group precedes A23 and A21 in about 995 in 1000 traces [REL014, REL015, REL016, REL006, REL007, REL008].\n- A21's routing collapsed to a single path: before, about 54 in 100 of its outgoing transitions went to A22 and the rest to A31/A32/A37; after, all go to A22, and the distance from A21 to A26 is now consistently 2 steps (A21 → A22 → A26) where before it was 2 steps in about 54 in 100 cases and 4 steps in about 46 in 100 [DIR002, LAG002].\n- The group's exits changed: before, A31/A32/A37 led to one another and to A26 (about 26–40 in 100 each); after, they lead to one another and to A23 (about 30–37 in 100 each) with no observed transition to A26, while A26 still follows the group but now in about 995 in 1000 traces versus 46 in 100 before [DIR003, DIR004, DIR005, REL017, REL018, REL019].\n- Within the group there is still no fixed order in either window (A31, A32 and A37 occur in both orders in similar proportions), but the three now co-occur in about 995 in 1000 traces versus 46 in 100 before [REL020, REL021, REL022].\n- Average positions of A23, A21 and A22 moved later, from about 0.39 to 0.46, 0.54 to 0.60, and 0.59 to 0.63 of the trace respectively [POS004, POS002, POS003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block A31–A32–A37, executed together in no fixed order, changed from an optional branch alternative to A22 (running after A21 in about 46 in 100 traces) into a mandatory block executed directly after A20 and before A23, while A22 became mandatory and now always follows A21; the earlier routing \"A20 → A23 → A21 → either A22 or the A31/A32/A37 group → A26\" appears replaced by a single fixed sequence \"A20 → A31/A32/A37 (mixed order) → A23 → A21 → A22 → A26\" [REL011, REL012, REL013, REL014, REL006, DIR001, DIR002, DIR003, LAG001, POS006, POS003].\n\nThis is shown directly and consistently: 37 control-flow items qualified where about 0.33 would be expected without a change, so chance cannot explain the pattern as a whole; the placement change is demonstrated by relational evidence (mutual exclusivity becoming co-occurrence with a fixed order, order flips between the group and A23/A21, the A20→A23 lag moving from 1 to 4 steps) and by successor changes at A20, A21 and the group, with participation and position shifts agreeing across the DIR, POS, REL and LAG items [REL011, REL014, LAG001, DIR001, DIR002, DIR003].\n\nLimitations: the evidence shows relative orders and event positions, not clock time, and it cannot distinguish whether the A31/A32/A37 block moved earlier or A23/A21/A22 moved later — both fit the same relational changes; activities in the position gap between A23 and A21 are not covered, so the exact local wiring there remains unverified [POS002, POS004, LAG001].\n\nOther differences: A20's average position shifted slightly earlier (about 0.36 to 0.34) and A26's slightly later (about 0.63 to 0.66), consistent with the resequencing but not part of the main hypothesis [POS001, POS005].",
+  "case_id": "case_1407619f4daba9b8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

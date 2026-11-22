@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_6b0dfa22c43816cb.json",
+  "evidence_sha256": "3f83a1026da7f4ecaacb80bb12953beb571dba7334438204b0b7124ca9ce96a2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:52:35.002054+00:00",
+  "finished_at_utc": "2026-11-15T06:55:48.725653+00:00",
+  "latency_seconds": 193.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28387,
+    "prompt_tokens": 18651,
+    "total_tokens": 47038,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26697,
+      "text_tokens": 1690
+    },
+    "cost": 0.01699115
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 88991,
+  "text": "### Observed differences\n\n- Routing into and out of the A35/A36/A41 group flipped. In the earlier window, A25 led mostly into this group (about 38 in 100 of its outgoing transitions to A35, 31 to A36, 27 to A41), while A26 led almost always straight to A30 (about 99 in 100). In the later window, A25 leads almost always directly to A27 (about 96 in 100), and A26 leads into the group (about 35, 32 and 31 in 100 to A35, A36 and A41), with a direct A26→A30 transition remaining in only about 1 in 100. Each profile rests on about 200 outgoing transitions in both windows. [DIR005, DIR006]\n- Within the group, A27 gave way to A30. Earlier, A35, A36 and A41 each led roughly a third of the time to each of the other two members and to A27 (about 26–38 in 100 each); in the later window they lead to each other and to A30 (about 30–36 in 100 each), and transitions into A27 have nearly disappeared (about 1 in 100 or fewer). [DIR007, DIR008, DIR009]\n- Step distances moved accordingly. A27, earlier typically 4–5 steps after A25 (gap 4 in about 92 of 100 cases), now follows it immediately (gap 1 in about 98 of 100). A30, earlier the immediate successor of A26 (gap 1 in about 99 of 100), now typically arrives about 4 steps after A26 (gap 4 in about 91 of 100). The pairs A26→A36 and A36→A30, seen in about 1 trace earlier, now occur in about 198–199 of 200 traces, while the earlier common pairs A25→A36, A25→A41 and A36→A27 now appear in only 2–4 traces. [LAG002, LAG005, LAG006, LAG008, LAG003, LAG004, LAG007]\n- Event positions shifted consistently: in the later window the group runs later in the trace (mean relative position about 0.40 to 0.58 for A35, A36 and A41), A27 earlier (about 0.46 to 0.39) and A26 earlier (about 0.60 to 0.53); all these activities occur in essentially every trace in both windows. [POS002, POS003, POS004, POS005, POS006]\n- A02 became rare in the late part of traces. Earlier it appeared in about 75 of 100 traces (mean 0.8 occurrences per trace) near the trace end (mean relative position 0.93), A49 sent about 72 in 100 of its outgoing transitions to A02, and A02 sent about 91 in 100 onward to A50. In the later window A02 appears in about 21 of 100 traces, sits earlier (mean position 0.55, based on about 42 traces), spreads its exits widely (A50 only about 13 in 100), and A49 now leads directly to A50 (about 83 in 100, typically one step away instead of two). [OCC001, POS001, DIR001, DIR011, LAG009]\n- A06 and A10 take part in roughly twice as many traces (about 7 to 19 and 9 to 22 in 100); A06's outgoing transitions, earlier spread evenly over twelve targets (based on only 12 observed transitions), now concentrate on A48 (about 17 in 100) and A50 (about 15 in 100). A47 still leads mostly to A48 but less exclusively (about 97 to 81 in 100). [OCC002, OCC003, DIR002, DIR010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the flow around A25, A26, A27, A30 and the A35/A36/A41 group runs in a changed order: A25 now leads straight to A27, the A35/A36/A41 group now runs after A26 rather than after A25, and A30 has taken over the place A27 held as the group's co-target, so A27 and A30 have effectively exchanged their positions relative to the group. This is shown directly by successor changes (each profile on about 200 outgoing transitions) and by step-gap changes each backed by about 200 traces in both windows, and it agrees with the position shifts; with 30 control-flow items qualifying against fewer than one expected for an unchanged process, the ensemble of differences is far larger than random re-splits of stable traces produce. An important competing explanation remains: a shift in the mix of coexisting case variants (for example a previously rare routing becoming common) would look identical in aggregate windows, and several items describe the same rerouting rather than independent confirmations. [DIR005, DIR006, DIR007, DIR008, DIR009, LAG002, LAG005, LAG006, LAG008, POS002, POS003, POS004, POS005, POS006]\n\nOther differences: outside this hypothesis, A02 was nearly skipped in the later window — the earlier A49→A02→A50 chain now runs A49→A50 directly and A02's participation fell from about 75 to 21 in 100 traces (its later position estimate rests on only about 42 traces) — and A06 and A10 participate in about twice as many traces, while A47→A48 lost part of its dominance. [OCC001, POS001, DIR001, DIR011, LAG009, OCC002, OCC003, DIR002, DIR010]",
+  "case_id": "case_6b0dfa22c43816cb",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

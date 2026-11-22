@@ -1,0 +1,22 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 each appeared in every trace, with A26 before A27 in about 99 in 100 traces and A27 before A28 in about 99 in 100. In the later window, A26 and A28 still appear in every trace, but A27 appears in only about 57 in 100 traces (mean occurrences per trace 1.0 → 0.57). [OCC001, REL001, REL007]
+- Five activities with no occurrences in the earlier window — A32, A33, A38, A39 and A40 — each now appear in about 44 in 100 traces (87–90 of 200 traces). [OCC002, OCC003, OCC004, OCC005, OCC006]
+- These five run as a group: every pair of them co-occurs in about 43–44 in 100 traces (essentially whenever any one of them appears), and each pair occurs in both orders in similar proportions (for example A32 before A33 in about 24 in 100 traces and A33 before A32 in about 20 in 100), so the group has no fixed internal order. [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+- The group sits between A26 and A28: A26 precedes each of the five in about 42–44 in 100 traces, and each of the five precedes A28 in about 42–44 in 100 traces. [REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017]
+- A27 and the new group are near-perfectly mutually exclusive: they share a trace in at most about 2 in 100 cases, while about 43 in 100 traces contain the new activities without A27. [REL008, REL009, REL010, REL011, REL012]
+- A26's outgoing transitions redistributed: earlier about 97 in 100 went to A27; later about 56 in 100 go to A27 and about 43 in 100 combined go to the new activities (A32 about 10, A40 about 10, A39 about 8, A33 about 8, A38 about 7). [DIR001]
+- The new activities lead mainly to one another and to A28 with similar shares; for example, A32's outgoing transitions go to A33 about 27 in 100, A39 about 23, A28 about 17, A40 about 14 and A38 about 12. [DIR002, DIR003, DIR004, DIR005, DIR006]
+- The new activities sit around the middle of the trace (mean relative position about 0.53), and A26's mean relative position moved slightly earlier, from about 0.49 to 0.46. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new alternative segment was inserted between A26 and A28. In the earlier window every trace ran A26 → A27 → A28; in the later window, in about 44 in 100 traces, that segment is replaced by A26, then the group A32/A33/A38/A39/A40 running together in no fixed order, then A28, with A27 absent from those traces. A27 consequently became skippable, executing in about 57 in 100 traces versus all traces earlier. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL001, REL002, REL007, REL008, REL013, REL018]
+
+The relational evidence shows this directly rather than through frequencies alone, and it is consistent across the occurrence, direction and relation indicators: five activities absent from 200 earlier traces each appear in 87–90 later traces, A26 precedes the group and the group precedes A28 wherever they co-occur, A27 and the group exclude each other, and A26's outgoing share to A27 fell from about 97 in 100 to about 56 in 100. The screening comparison also rules out chance for the set as a whole: 45 items qualified where fewer than 1 (0.65) would be expected without a change. [DIR001, OCC002, REL002, REL008, REL013, REL018]
+
+Limitations: the evidence cannot determine the internal organisation of the new group — an unordered block and several fine-grained alternative sub-paths look alike here, because every pair occurs in both orders with similar shares and each member leads to the others with similar shares. Also, "absent earlier" strictly means only "not observed", although zero occurrences in 200 earlier traces against 87–90 in 200 later traces makes a sampling explanation implausible. Items describing the same activities overlap and are not independent confirmations. [REL018, REL027, DIR002, OCC002]
+
+Other differences: A26's mean relative position shifted slightly earlier (about 0.49 to 0.46 of the trace), which is consistent with the inserted segment but is a positional shift only and could not carry the hypothesis on its own. [POS001]

@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, A27 was executed in every trace (participation 100%, mean about 1.0 occurrence per trace, essentially never repeated); in the later window it appears in only about 57 in 100 traces (mean about 0.57 per trace). [OCC001]
+- Five activities that were absent from the earlier window (0 of 200 traces) — A32, A33, A38, A39 and A40 — each appear in about 44 in 100 traces in the later window, once per trace when present. [OCC002, OCC003, OCC004, OCC005, OCC006]
+- The five new activities run together as a group: any pair of them co-occurs in about 44 in 100 traces — the same share as each activity's own participation — and in about 55 in 100 traces neither member of a pair occurs. [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]
+- A27 and the new group are alternatives: they co-occur in at most about 1–2 in 100 traces, while in about 44 in 100 traces the new activities run without A27. [REL008, REL009, REL010, REL011, REL012]
+- A26's outgoing transitions were redistributed: earlier, about 97 in 100 went to A27; later, about 56 in 100 go to A27 and about 43 in 100 are spread across the five new activities. [DIR001]
+- Each new activity counts A28 among its main successors (about 17–22 in 100 of its observed outgoing transitions) and also leads to the other new activities. [DIR002, DIR003, DIR004, DIR005, DIR006]
+- The new branch sits between A26 and A28: A26 precedes each new activity in about 42–44 in 100 traces, and each new activity precedes A28 in about 43 in 100 traces; A28 itself still occurs in every trace, in about 44 in 100 of them without A27. [REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017, REL007]
+- Inside the new group there is no fixed order: for example, A32 precedes A33 in about 24 in 100 traces while A33 precedes A32 in about 20 in 100, and every pair shows both orders in comparable shares. [REL018, REL019, REL020, REL025, REL026, REL027]
+- The new activities occur at a mean relative position of about 0.53 of the trace, just after A26 (mean about 0.46 in the later window). [POS002, POS003, POS004, POS005, POS006, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a new alternative branch between A26 and A28. In the earlier window, every trace ran A26 → A27 → A28. In the later window, in about 44 in 100 traces A27 is skipped and the five previously unobserved activities A32, A33, A38, A39 and A40 execute as a group between A26 and A28, in no fixed order relative to one another; in the remaining about 56 in 100 traces the original sequence with A27 continues. A27 thus changed from mandatory to optional, and the new activities were added as its alternative on this segment. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL007, REL008, REL013, REL018]
+
+The support is direct and consistent: screening produced 45 qualifying control-flow items where fewer than 1 would be expected without a change, so the pattern as a whole cannot be explained by random re-splits of the two windows; participation (OCC), redirection of A26's outgoing transitions (DIR) and relational evidence (REL) all show the same picture, including the mutual exclusivity of A27 and the new group and the mixed order within it. Note that the many REL items largely restate one underlying difference rather than confirming it independently. A competing explanation the evidence cannot fully rule out is that this group is a pre-existing rare path that the earlier 200-trace sample happened to miss, although a later participation of about 44 in 100 traces makes that implausible; the evidence also cannot distinguish truly parallel execution from merely unordered sequencing within the group. [OCC002, OCC006, DIR001, REL008, REL018, REL019]
+
+Other differences: A26's mean relative position moved slightly earlier, from about 0.49 to about 0.46 of the trace, a small shift consistent with the new branch; no further behavioural differences appear at the configured thresholds. [POS001]

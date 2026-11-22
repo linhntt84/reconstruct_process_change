@@ -1,0 +1,21 @@
+### Observed differences
+
+- Participation is unchanged: A15, A17, A18, A19, A20 and A21 each occur in all 200 traces in both windows, and every pair of them co-occurs in 100 in 100 traces in both windows. The change concerns order, not whether activities run. [POS001, POS004, REL001, REL008]
+- In the earlier window these activities had no fixed order. A19 preceded A15 in about 75 in 100 traces and preceded A18 in about 88 in 100; A21 preceded A18 in about 70 in 100; A15/A21 and A17/A19 appeared in both orders in roughly equal shares. [REL001, REL006, REL008, REL003, REL004]
+- In the later window the order is fixed to a single sequence, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27: each adjacent pair occurs back-to-back in 199–200 of 200 traces (e.g., A15→A18 and A19→A21 in 199 of 200; A21→A20 and A26→A17 in 200 of 200). [LAG001, LAG006, LAG017, LAG020, LAG022, LAG025]
+- Successors collapsed accordingly. Before, outgoing transitions from each of these activities spread over three to four targets (from A15 about 62% to A18 with 12–14% each to A19/A20/A21; from A18 about 53% straight to A27; from A26 a 50/50 split between A19 and A17). In the later window each has essentially one successor: A15→A18, A17→A15, A18→A19, A19→A21, A20→A27 and A21→A20 at about 99.5–100 in 100. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+- Pair distances match one chain: in the later window A15 reaches A19 after 2 steps, A21 after 3, A20 after 4 and A27 after 5, each in about 199 of 200 traces, whereas before the same pairs showed scattered distances (A15→A18: gap 1 in about 62 in 100, gap 2 in about 25 in 100; A15→A20 spread over gaps 1–4; A18→A27 mostly gap 1). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG013]
+- Relative positions shifted consistently with this: A15, A17 and A18 now sit slightly earlier in the trace (mean position 0.64→0.59, 0.59→0.56, 0.68→0.62) and A19, A20 and A21 slightly later (0.59→0.65, 0.68→0.71, 0.64→0.68). [POS001, POS002, POS003, POS004, POS005, POS006]
+- Five LAG items on reverse-direction pairs (e.g., A19 before A15, A20 before A18) rest on a single after-window observation each; they fit the reordering but are weak on their own. [LAG014, LAG015, LAG019, LAG021, LAG028]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a specific reordering: A15, A17, A18, A19, A20 and A21 — entered from A26 and ending in A27 — changed from a variable order, in which several successors and both pairwise orders occurred, to one fixed sequence A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 in which each activity directly precedes the next. This is a change in ordering constraints; the participation of every involved activity is unchanged. [REL001, REL006, DIR001, DIR003, LAG001, POS004]
+
+The support is direct and consistent: order relations moved from mixed or reversed to one-sided in the same direction for all observed pairs [REL001, REL003, REL004, REL006, REL008]; successor profiles collapsed from several alternatives to a single successor per activity [DIR001, DIR003, DIR007]; the pairwise gaps in the later window are mutually consistent with exactly one chain across distances 1 to 5 [LAG002, LAG004, LAG005, LAG013, LAG027, LAG029]; and the position shifts point the same way (A19, A20, A21 later; A15, A17, A18 earlier) [POS001, POS003, POS004]. Screening qualified 50 items where roughly 0.36 would be expected without a change, so the pattern as a whole cannot be attributed to sampling variation — while noting that the items largely describe one underlying reordering rather than independent changes. [DIR001, POS004, REL006]
+
+Limitations: the indicators use event positions, not clock time, so the evidence cannot show whether the earlier mixed orders reflect concurrent work that became serialised or several alternative sequential orders of which only one remains; it establishes that the order became fixed, not what produced that. The five reverse-direction LAG items each rest on one after-window observation. [LAG014, LAG015, LAG019, LAG021, LAG028]
+
+Other differences: none — every qualifying item concerns this same group of activities and the same reordering, so the many items corroborate a single behavioural change rather than separate ones. [DIR001, DIR007, POS006, REL008, LAG020]

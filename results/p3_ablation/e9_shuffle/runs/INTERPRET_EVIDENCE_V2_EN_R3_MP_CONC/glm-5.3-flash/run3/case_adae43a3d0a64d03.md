@@ -1,0 +1,20 @@
+### Observed differences
+
+- A05 disappeared: it ran exactly once in every trace before (200 of 200) at a fixed relative position, and it is not observed in any trace afterwards (0 of 200). [OCC002, POS002]
+- A01 appeared where A05 used to be: not observed before (0 of 200), afterwards it runs exactly once in every trace (200 of 200) at the same fixed relative position A05 previously held (mean position 0.5 with no spread in both windows); the A01/A05 pair shows A05 alone in every earlier trace and A01 alone in every later trace. [OCC001, POS001, POS002, REL003]
+- The link to A03 is preserved: before, A05's only observed outgoing transition went to A03 and A05 preceded A03 in every trace; afterwards, A01's only observed outgoing transition goes to A03 and A01 precedes A03 in every trace. [DIR003, DIR001, REL002, REL007]
+- The predecessors redirected from A05 to A01: A02's observed outgoing transitions went to A05 in about 72 of 100 cases (A06 about 28 in 100) before, and go to A01 in about 75 of 100 (A06 about 25 in 100) after; A06's transitions moved from about 29 in 100 to A05 to about 30 in 100 to A01, and A07's from about 71 in 100 to A05 to about 66 in 100 to A01. [DIR002, DIR004, DIR005]
+- Every activity pair involving A05 flipped to the corresponding pair with A01, keeping its order and roughly its frequency: A06 before A05 in all traces before versus A06 before A01 in all traces after; A07 before A05 in about 53 of 100 traces before versus A07 before A01 in about 50 of 100 after; A02 before A05 in about 47 of 100 before versus A02 before A01 in about 50 of 100 after. [REL004, REL008, REL009, REL005, REL006, REL001]
+- The surrounding structure is stable: A06 and A03 occur in every trace in both windows, and A02 (about 47 of 100 traces before, 50 of 100 after) and A07 (about 53 of 100 before, 50 of 100 after) participate at nearly unchanged rates. [REL001, REL005, REL006, REL007, REL008, REL009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A01 took over the role A05 had in the earlier window: the segment in which A02, A06 and A07 all led into A05, and A05 was always followed by A03, now runs with A01 in A05's place — A02, A06 and A07 lead to A01 with nearly the same split they previously had to A05, A01 always precedes A03, and A05 is no longer observed at all. Like A05 before it, A01 runs exactly once per trace at the same fixed position. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL004, REL005, REL006, REL007, REL008, REL009]
+
+The support is direct and consistent: participation flips between 0 and 100 in 100 traces, the positional profile of A05 before matches that of A01 after, and every affected activity pair flips in the same direction while the rest of the structure stays put. Sampling is an unlikely explanation for the pattern as a whole: 18 control-flow items were flagged where an unchanged process would be expected to produce about 0.13, and each item's difference exceeds those seen in about 995 of 1000 random re-splits of the pooled data. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]
+
+The evidence shows the behavioural substitution but cannot establish that A01 is "the same step" as A05: a removal of A05 combined with an insertion of A01 at the same point, or a re-recording of the step under a different code, would look identical here, and the evidence says nothing about what lies behind the change. [OCC001, OCC002, POS001, POS002, DIR001, DIR003]
+
+Other differences: only minor wobbles of a few percentage points in the shares among the preserved predecessors — for example A07's transitions to its main target at about 71 in 100 before versus about 66 in 100 after, and A02 participating in about 47 versus 50 of 100 traces — which are small enough to be sampling variation between two 200-trace windows. [DIR002, DIR004, DIR005, REL001, REL005]

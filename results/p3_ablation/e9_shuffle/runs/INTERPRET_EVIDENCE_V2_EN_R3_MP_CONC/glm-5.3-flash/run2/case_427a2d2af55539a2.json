@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_427a2d2af55539a2.json",
+  "evidence_sha256": "e90c192b5befb764073be54fee438860f11df9817d8fe3f06413b6dd45939041",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:06:40.760680+00:00",
+  "finished_at_utc": "2026-11-15T04:07:33.642491+00:00",
+  "latency_seconds": 52.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7509,
+    "prompt_tokens": 20266,
+    "total_tokens": 27775,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6397,
+      "text_tokens": 1112
+    },
+    "cost": 0.0067944
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22066,
+  "text": "### Observed differences\n\n- The activities filling the segment between A39 and A24 changed completely. In the earlier window, A14, A15 and A16 each ran in about 35, 30 and 36 of 100 traces respectively, with exactly one of the three per trace (their shares sum to all traces and no trace contains two of them); in the later window none of the three is observed at all (0 of 200 traces). [OCC001, OCC002, OCC003, REL001, REL002, REL008]\n- In the earlier window the segment ran A39 → exactly one of A14/A15/A16 → A24: A39's outgoing transitions led to A14 (about 35%), A16 (about 36%) and A15 (about 30%), each of the three was followed by A24 in all of its observations, and A39 always preceded it. [DIR007, DIR001, DIR002, DIR003, REL006, REL007, REL012, REL013, REL017, REL018]\n- In the later window, A21, A22 and A23 — not observed before — each run in every trace (200 of 200, once per trace on average), always after A39 and always before A24; A39's outgoing transitions now lead to A21 (about 36%), A22 (about 33%) and A23 (about 32%). [OCC004, OCC005, OCC006, DIR007, DIR004, DIR005, DIR006, REL021, REL022, REL024, REL025, REL026, REL027]\n- The three new activities have no fixed order among themselves: each pair co-occurs in all traces and appears in both orders in nearly equal shares (about 51 vs 49 in 100). [REL019, REL020, REL023, DIR004, DIR005, DIR006]\n- The positional gap from A39 to A24 doubled: A24 followed A39 two event positions later in essentially all earlier traces, and four positions later in all later traces; A24's median relative position moved from about 0.38 to about 0.43 of the trace, while the new activities sit around 0.36–0.38. [LAG001, POS007, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A39 and A24 was restructured: the earlier pattern, in which A39 was followed by exactly one of A14, A15 or A16 (an exclusive choice, each in roughly 30–36 of 100 traces) and then A24, was replaced in the later window by a block in which A21, A22 and A23 all execute between A39 and A24, in no fixed order among themselves. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR007, LAG001, REL019, REL021, REL022, REL024, REL025, REL026, REL027]\n\nThe change is shown directly rather than only through frequencies: A39's successor set changed from A14/A15/A16 to A21/A22/A23, and the A39-to-A24 distance grew from 2 to 4 positions, matching the insertion of two additional steps; the participation changes are complementary (the three old activities fell from about 30–36 in 100 traces to 0, the three new ones rose from 0 to all 200); and screening produced 48 qualifying control-flow items where fewer than 1 would be expected if nothing had changed, so chance cannot account for the pattern as a whole. [DIR007, LAG001, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n\nLimitations: zero participation only means A14, A15 and A16 were not observed in the later window, so a residual rare occurrence cannot be completely ruled out; and the equal both-orders shares of the new trio are consistent with an unordered block but cannot distinguish truly concurrent execution from a sequential run whose order varies from case to case. [OCC001, OCC002, OCC003, REL019, REL020, REL023]",
+  "case_id": "case_427a2d2af55539a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_545df4cf7e08915b.json",
+  "evidence_sha256": "beaad79bc91a93ab0f0a523e7a2f5f7856d29bf28d347ecd99df2cb9b1d27820",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:12:41.911332+00:00",
+  "finished_at_utc": "2026-11-14T14:14:15.631400+00:00",
+  "latency_seconds": 93.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14873,
+    "prompt_tokens": 49063,
+    "total_tokens": 63936,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13370,
+      "text_tokens": 1503
+    },
+    "cost": 0.01479595
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 47368,
+  "text": "### Observed differences\n\n- Activity A01 ran in about 48 in 100 traces in the earlier window (roughly one occurrence per trace) but was not observed in any of the 200 later traces. [OCC001]\n- Activity A08 shows the mirror image: absent from all 200 earlier traces, it ran in about 48 in 100 traces in the later window (about 1.1 occurrences per trace). [OCC006]\n- A08 also took over A01's connections. A01's outgoing transitions previously went to A09 (about 51 in 100), A10 (about 24) and A16 (about 24); in the later window A08 leads to the same activities with similar shares (about 56, 25 and 19 in 100). A17, previously always followed by A01, is now always followed by A08, and A03 now leads to A08 in about 26 in 100 of its outgoing transitions where it previously led to A01 in about 21 in 100. [DIR001, DIR006, DIR012, DIR003]\n- The co-occurrence patterns mirror as well: before, exactly one of A01 and A05 ran in every trace (A01 alone about 48 in 100, A05 alone about 52); afterwards A08 and A05 show the same either/or pattern (A08 alone about 48, A05 alone about 52). A01 previously co-occurred with A03 in about 48 in 100 traces; A08 now co-occurs with A03 in about 48 in 100 traces, typically after it. [REL002, REL020, REL001, REL012, REL003]\n- A11 and A15 exchanged their places at the end of the process. Before, A11 appeared in about 52 in 100 traces, always at the last position, while A15 appeared in about 32 in 100 traces mid-process and, when it ran, always led back to A03. In the later window, A15 appears in about 52 in 100 traces, always at the last position with no observed outgoing transitions, while A11 appears in about 29 in 100 traces mid-process and leads to A03. [OCC009, OCC011, POS007, POS008, DIR010, DIR008]\n- The predecessors and event distances switched accordingly: A05's exits now go to A15 (about 52 in 100) where they went to A11 before (about 52 in 100), and A18 now leads to A11 (about 26 in 100) where it led to A15 (about 21 in 100). A18 to A11 sat at a separation of 4 events in all earlier observations and A18 to A15 mostly at 1; afterwards A18 to A15 sits at 4 in all observations and A18 to A11 mostly at 1. Likewise, A03 to A11 was mostly at separation 2 (about 70 in 100) and A03 to A15 at separation 3 (about 84 in 100) before, now the reverse. [DIR005, DIR013, LAG023, LAG024, LAG005, LAG006]\n- Some existing blocks repeat less often: A03 about 2.1 times per trace before versus 1.8 after (still in every trace); the A04→A18 step about 2.2 versus 1.6, with participation dropping from about 51 to 45 in 100 traces; A07 present in about 38 versus 27 in 100 traces; A06 about 1.1 versus 0.8 occurrences per trace. [OCC002, OCC003, OCC014, OCC005, OCC004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A08 occupies the structural position A01 occupied before: A01 ran in about 48 in 100 earlier traces and in none afterwards, while A08 shows the exact mirror image and inherits A01's successors (A09, A10, A16), its predecessor A17, its incoming link from A03, and its either/or relationship with A05. This rests on direct occurrence, successor and relational evidence, and a 0-of-200 versus 96-of-200 occurrence contrast is far outside what sampling variation between two 200-trace windows produces; the many relation items mentioning A01 restate this one underlying difference rather than adding independent confirmations. The evidence cannot distinguish a genuine replacement of one activity by another from the same behaviour appearing under a different activity code, and A01's zero participation only shows it was not observed in the later window. [OCC001, OCC006, DIR001, DIR006, DIR012, DIR003, REL003, REL020, REL012]\n\nOther differences: a second, directly evidenced change is an exchange of end-of-process roles between A11 and A15 — A15 is now the terminal activity (always last, reached from A05 and A18) that A11 used to be, while A11 now runs mid-process and leads back to A03, the role A15 used to play; the swapped predecessor links and event-distance profiles show this directly. [POS007, POS008, DIR005, DIR008, DIR010, DIR013, LAG023, LAG024, LAG005, LAG006] In addition, repetitions of A03 and of the A04→A18 block became less frequent and A07 participates less often; these modest decreases could partly reflect ordinary sampling variation between the finite windows, which the evidence cannot rule out. [OCC002, OCC003, OCC014, OCC005]",
+  "case_id": "case_545df4cf7e08915b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

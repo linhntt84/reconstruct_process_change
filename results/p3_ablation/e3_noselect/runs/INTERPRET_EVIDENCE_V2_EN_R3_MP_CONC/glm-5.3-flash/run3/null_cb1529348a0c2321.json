@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_cb1529348a0c2321.json",
+  "evidence_sha256": "4b4e6c03bd444debba6124eff756dc81cb4c7a6aa260b62e7a091f05bc8338a5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:34:07.044992+00:00",
+  "finished_at_utc": "2026-11-15T14:36:42.760239+00:00",
+  "latency_seconds": 155.72,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21670,
+    "prompt_tokens": 40864,
+    "total_tokens": 62534,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19459,
+      "text_tokens": 2211
+    },
+    "cost": 0.0169646
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63794,
+  "text": "### Observed differences\n\n- The clearest difference is in the routing around A11, A12 and A13. In the earlier window, about 51% of A11's outgoing transitions went to A13 (A12 22%, A14 24%), about 46% of A13's transitions went to A12, and A12 led mostly to A14 (40%) and A11 (38%), with only 20% to A13. In the later window these strong preferences largely disappeared: from A11, A12 now takes about 41% and A13 only 26% (A14 up from 24% to 32%); from A13, the three successors are nearly even (A11 33%, A14 33%, A12 30%); from A12, A13 rose to about 34% while A14 and A11 sit at 32% and 33%. All three activities occur in roughly 45–49 in 100 traces in both windows. [DIR011, DIR012, DIR013, OCC011, OCC012, OCC013]\n\n- In the cluster A19–A24, participation shifted: in the later window A20 (55%→47% of traces) and A24 (54%→47%) ran less often, while A19 (46%→53%), A23 (47%→54%) and A21 (46%→50%) ran more often. The routing moved the same way: from A44, transitions to A19 rose from 43% to 52% while those to A20 fell from 54% to 47%; from A24, transitions to A21 rose from 19% to 32% while those to A31 fell from 51% to 44%; from A21 and A22, shares moved toward A31 (50%→58%) and away from A24 (32%→22%). [OCC019, OCC020, OCC021, OCC023, OCC024, DIR043, DIR023, DIR020, DIR021]\n\n- The A42/A43 pair, which repeats within traces, was executed more often: A43 appeared in 51% of traces versus 44% before (about 0.86 versus 0.72 occurrences per trace), A42 rose from 17% to 21% of traces with its recurrence share up from 6% to 11%, A43's outgoing transitions grew from about 143 to 172, and A43 was A42's only observed successor in the later window. [OCC039, OCC040, DIR041, DIR042]\n\n- A06 and A18 were executed less often, each in about 27 in 100 traces in the later window versus 35 and 32 in 100 before. [OCC006, OCC018]\n\n- Smaller routing redistributions: from A01, A05's share fell from 38% to 25% while A09 rose from 29% to 38%; from A07, A05 rose from 30% to 41% while A09 fell from 35% to 25%; from A25, A35 rose from 29% to 39% while A41 fell from 36% to 27%; from A39 and A40, shares moved toward A40 (46%→58%) and then toward A32 (47%→57%); A46 repeated slightly less often (0.82→0.76 occurrences per trace at an unchanged 61% participation), shifting from A45 (38%→33%) toward A49 (58%→66%). [DIR001, DIR007, DIR024, DIR038, DIR039, OCC043, DIR045]\n\n- Large direction changes for the rare sources A02, A04, A08, A10 and A50 rest on only 6–10 outgoing transitions per window and have low empirical strength (0.00–0.37), which is what random re-splits of an unchanged process typically produce; they are not treated as behavioural change. [DIR002, DIR004, DIR008, DIR010, DIR049]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the existing alternative paths through the A11/A12/A13 cluster are taken with different frequencies: the earlier strong successor preferences (A11 mostly followed by A13 at about 51% of its transitions, A13 mostly by A12 at 46%, A12 reaching A13 only 20% of the time) gave way to nearly even thirds among A11, A12, A13 and A14 from each of the three sources. The signs are direct and consistent: three direction profiles over well-used edges (about 90–98 outgoing transitions per window) all describe the same re-routing, with differences larger than in about 88 to 99.5 in 100 random re-splits, and every activity involved remains frequent in both windows (45–49 in 100 traces; A14 in all traces), so only the shares between existing alternatives moved — no activity appeared, disappeared or was bypassed. The limitation is that the evidence covers successor shares only, so nothing can be said about positions or placement, and it cannot show whether this re-routing stands alone or is part of the broader shifts seen elsewhere. [DIR011, DIR012, DIR013, OCC011, OCC012, OCC013, OCC014]\n\nOther differences: the A19–A24 cluster shifted (A20 and A24 less often, A19, A21 and A23 more often, with matching transition-share changes), the repeating A42/A43 pair ran more often, A06 and A18 ran less often, and smaller redistributions occurred around A01/A05/A07/A09, A25/A35/A41 and A39/A40, with A46 repeating slightly less; each cluster is internally consistent, but the evidence cannot establish whether these reflect one coordinated re-routing or independent changes. [OCC019, OCC020, OCC021, OCC023, OCC024, OCC039, OCC040, OCC006, OCC018, DIR043, DIR023, DIR001, DIR024, DIR038, DIR039, OCC043]\n\nAn important competing explanation the evidence cannot fully rule out is sampling variation between the two 200-trace windows; for the main cluster it is unlikely given the size, consistency and support of the differences, but for the weaker items — above all the direction profiles of the rare sources — it remains the most plausible reading. [DIR002, DIR004, DIR008, DIR049]",
+  "case_id": "null_cb1529348a0c2321",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

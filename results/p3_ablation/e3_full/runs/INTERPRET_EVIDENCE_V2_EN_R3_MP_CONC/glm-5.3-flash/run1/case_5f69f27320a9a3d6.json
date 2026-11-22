@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_5f69f27320a9a3d6.json",
+  "evidence_sha256": "999f4e83a3c507e89601d486cfc572e976040cd9474a0de0a16d94b0468e28d0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:33:36.654552+00:00",
+  "finished_at_utc": "2026-11-16T01:34:52.134731+00:00",
+  "latency_seconds": 75.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9784,
+    "prompt_tokens": 14314,
+    "total_tokens": 24098,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8725,
+      "text_tokens": 1059
+    },
+    "cost": 0.0070391
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28410,
+  "text": "### Observed differences\n\n- A01 was not observed at all in the earlier window (0 of 200 traces), but in the later window it occurs exactly once in every trace (200 of 200), at a varying middle position (mean position about 0.39, middle half of its positions between 0.2 and 0.6) [OCC001, POS001].\n- A04 occurred exactly once in every trace before (200 of 200, at position about 0.8) and is not observed in the later window (0 of 200) [OCC002, POS003].\n- A03's successor changed completely: earlier it was always followed by A04; in the later window it is always followed directly by A07, and the A03→A07 distance shortened from two steps to one. A03 itself now sits later in the case (position 0.6 → 0.8) [DIR003, DIR004, LAG004, POS002].\n- The new A01 sits in the middle of the case: it always comes after A02 and before A03 and A07, while against A05 and A06 its order is mixed (A01 first in about 55 of 100 cases versus A05, and about 49 of 100 versus A06) [REL001, REL002, REL006, REL004, REL005]. A02, A05 and A06 now each route a share of their outgoing transitions to A01 (about 38, 26 and 36 in 100 respectively), and A01's outgoing transitions go to A03 (about 34 in 100), A05 (about 39) and A06 (about 28) [DIR001, DIR002, DIR005, DIR006].\n- Distances through the middle segment stretched: A02→A05/A06 and A05/A06→A03 went from lags of 1–2 steps to 1–3 steps, A05 and A06 shifted later (mean positions about 0.30 → 0.40), and A05→A06 is now two steps apart in about 21 of 100 observed ordered-pair occurrences where it was always adjacent before — consistent with A01 being woven into that segment [LAG002, LAG003, LAG005, LAG008, LAG006, POS004, POS005].\n- A05 and A06 still always co-occur with no fixed order between them (about 51/49 before, 52/48 after), so their mutual relationship is essentially unchanged [REL012].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which A04 is no longer executed between A03 and A07 — A03 now leads directly to A07 — and a new activity A01 runs exactly once per case, inserted between A02 and A03 at a varying point within the A05/A06 segment. This is shown directly rather than inferred: participation flips from 0 to 200 of 200 traces for A01 and from 200 of 200 to 0 for A04; A03's outgoing transitions switch entirely from A04 to A07 with the inter-step distance dropping from two to one; and the relational items place A01 consistently after A02 and before A03/A07 while mixed against A05/A06, with the routing and lag changes matching an insertion into that middle segment [OCC001, OCC002, DIR003, DIR004, LAG004, REL001, REL002, REL006, REL004, REL005, DIR001, DIR002].\n\nLimitations: the windows are finite samples, so \"absent\" strictly means \"not observed\", although a 0-versus-200-of-200 flip together with the complete rewiring around A03 makes a sampling artefact unlikely. Because the activity codes are anonymous, the evidence cannot distinguish a genuinely new A01 plus removal of A04 from A04 being relabelled and relocated — both fit the observed behaviour. No screening expectation was provided, so the item count could not be compared against a chance baseline; the judgement rests on the directness and consistency of the control-flow evidence [OCC001, OCC002, DIR003, LAG004].\n\nOther differences: none beyond the above; the A05/A06 relationship (always co-occurring, no fixed order between them) remained stable across the two windows [REL012].",
+  "case_id": "case_5f69f27320a9a3d6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

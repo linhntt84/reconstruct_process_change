@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_d5faf451fa7ec585.json",
+  "evidence_sha256": "e963dfa81f00e7ae98daa0993fe63607c50d8e9d14a59c68178853cdadcab2ca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:08:50.290689+00:00",
+  "finished_at_utc": "2026-11-15T13:09:49.423429+00:00",
+  "latency_seconds": 59.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8417,
+    "prompt_tokens": 27915,
+    "total_tokens": 36332,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7263,
+      "text_tokens": 1154
+    },
+    "cost": 0.00839575
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26218,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each ran in a minority of cases — about 32, 28 and 40 in 100 traces respectively (64, 56 and 80 of 200 traces) — and sat around the middle of the trace. In the later window, none of the 200 traces contains any of the three [OCC013, OCC014, OCC019, POS001, POS002, POS003].\n- Before, A22 and A23 each branched into this block: about 55 in 100 of A22's outgoing transitions went to A23, with the rest split across A20, A14 and A15, and A23 led to A24 in about 46 in 100 transitions and to A14/A15/A20 otherwise. Each of A14, A15 and A20 in turn led only onward to A23 or A24. In the later window, A22 leads only to A23 and A23 only to A24 [DIR017, DIR018, DIR010, DIR011, DIR016].\n- Distances shortened accordingly: A22 reached A24 within three steps in every earlier trace but within two steps in every later trace, and the pairs A22–A23 and A23–A24, previously sometimes two steps apart, are now always directly consecutive [LAG001, LAG002, LAG003].\n- Co-occurrence confirms the block vanished rather than moved: A14, A15 and A20 each co-occurred with A22, A23 or A24 in roughly 28–40 in 100 earlier traces, whereas in the later window every trace shows neither activity of these pairs [REL001, REL002, REL005, REL006, REL010, REL012]. Traces still reach A24 in all cases in both windows, so the later traces are not simply shorter [POS006]. All of these items score above roughly 99 in 100 random re-splits, and they describe one coherent structural difference rather than independent effects.\n- Away from this block the differences are small: A10 and A11 repeat somewhat less often (about 1.43 vs 1.31 executions per trace; repeated in 31 vs 24 in 100 traces) [OCC009, OCC010]; A32's split between A27 and A33 moved from about 47/53 to 58/42 in favour of A27 [DIR023, DIR024]; A34 and A35 occur slightly more often [OCC024, OCC025]. Several other routing shares wobble by a few percentage points with low empirical strength, consistent with sampling variation between two 200-trace windows [DIR001, DIR002, DIR006, DIR008, DIR020, DIR025].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the optional block of activities A14, A15 and A20, which in the earlier window was executed between A22/A23 and A23/A24 in roughly 28–40 in 100 cases, is no longer executed in the later window, leaving the direct route A22 → A23 → A24. The signs are direct and mutually consistent: all three activities fall from 56–80 supporting traces to zero; the branch edges from A22 and A23 into the block disappear so that A22 and A23 each keep a single observed successor; the A22–A24 distance shortens from three steps to two and the adjacent pairs become strictly consecutive; and every co-occurrence relation of the block with A22, A23 or A24 drops to \"neither\" while traces still reach A24 throughout [OCC013, OCC014, OCC019, DIR017, DIR018, LAG001, LAG002, LAG003, REL003, REL005, POS006]. Because these indicators draw on the same traces, they form one coherent picture rather than independent confirmations, but each shows the disappearance directly, and with 56–80 earlier appearances against none in 200 later traces, chance non-appearance is not a plausible reading. The evidence cannot distinguish whether the activities were removed from the process or remain possible but were skipped in every later case, and it offers no insight into why [OCC013, OCC014, OCC019].\n\nOther differences: A10 and A11 repeat less often within traces while still appearing in every trace [OCC009, OCC010]; the A32→A27/A33 split shifted towards A27 [DIR023, DIR024]; A34 and A35 occur slightly more often [OCC024, OCC025]. These smaller shifts are not tied to the main hypothesis and could partly reflect sampling variation between the windows.",
+  "case_id": "case_d5faf451fa7ec585",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

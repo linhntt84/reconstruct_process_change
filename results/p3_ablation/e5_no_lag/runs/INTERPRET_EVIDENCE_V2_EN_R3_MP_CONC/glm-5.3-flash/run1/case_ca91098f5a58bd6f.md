@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A36 — present in every trace — was followed by exactly one of three alternative activities: of A36's observed outgoing transitions, about 35 in 100 went to A20, about 30 in 100 to A15 and about 35 in 100 to A14, and the three never ran together in one trace. In the later window, A36's only observed outgoing transition is to A21, in all 200 traces. [DIR004, REL001, REL003, REL008]
+- The three alternatives disappeared: A14 and A20 each ran in about 70 of 200 traces earlier and in 0 of 200 later, and A15 ran in about 60 of 200 earlier and in 0 later; earlier they sat at roughly one third of the trace (mean relative position about 0.35), later they are unobserved. [OCC001, OCC002, OCC003, POS001, POS002, POS003]
+- Earlier, each of A14, A15 and A20 led exclusively onward to A21 and co-occurred with A21 and with A26 in about 30–35 of 100 traces, always after A36; in the later window none of these relations remains, so A21 and A26 occur only without the three activities. [DIR001, DIR002, DIR003, REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]
+- A21 and A36 still run in every trace in both windows, and their mean relative positions (event indexes, not clock times) moved slightly toward each other: A21 from about 0.39 to about 0.37, A36 from about 0.32 to about 0.33. [POS004, POS005]
+- A19 ran in about 97 of 200 traces earlier (about 49 in 100) and in about 111 of 200 later (about 56 in 100); earlier it occurred only in traces that also contained one of A14, A15 or A20, always after it, whereas later it occurs without any of the three. [REL002, REL007, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the three-way branch after A36 — the alternative activities A14, A15 and A20 — is no longer executed, so that A36 leads directly to A21. Earlier, every trace passed through exactly one of A14 (about 35 in 100 traces), A15 (about 30 in 100) or A20 (about 35 in 100) after A36, and each of the three led on to A21; in the later window the three appear in 0 of 200 traces while A36's outgoing flow goes entirely to A21. Because the three activities are wholly absent later, this is the removal or bypassing of a group of activities, not a shift of shares between paths that still exist. The rerouting is observed directly in A36's outgoing-transition profile with full support in both windows, and each disappearance rests on 60–70 earlier traces. [DIR004, OCC001, OCC002, OCC003, DIR001, DIR002, DIR003]
+
+The volume of evidence is far beyond what an unchanged process typically produces: 27 control-flow items qualified where roughly 0.4 would be expected by chance, although the many relation and position items largely restate the same disappearance from different pairs rather than confirming it independently. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015]
+
+Limitation and competing explanation: zero participation only means an activity was not observed, so the evidence cannot distinguish a removal of the branch from the branch still existing but not being taken in any of the 200 later traces, and it shows nothing about why the two windows differ. [OCC001, OCC002, OCC003]
+
+Other differences: A19's participation rose from about 49 to about 56 in 100 traces and its context changed — earlier it always ran after one of A14, A15 or A20, later without any of them; the evidence does not show which activity precedes A19 in the later window. [REL002, REL007, REL012]

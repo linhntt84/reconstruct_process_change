@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, activities A19, A20 and A25 were not observed in any of the 200 traces. In the later window, A19 occurs in about 29 in 100 traces (58 of 200), A20 in about 41 in 100 (82 of 200) and A25 in about 31 in 100 (61 of 200), in each case essentially at most once per trace. [OCC001, OCC002, OCC003]
+- The three activities are mutually exclusive alternatives in the later window: A19 and A20 never occur in the same trace, and the pairs A19/A25 and A20/A25 co-occur in at most about 0.5 in 100 traces. Their participations sum to roughly 100 in 100 traces, so almost every later trace contains exactly one of the three. In the earlier window, 100 in 100 traces contained neither activity of each pair. [REL001, REL002, REL006]
+- The new activity always sits between A27 and A29: whenever it occurs, A27 runs before it (in about 29–41 in 100 traces, matching its participation) and it runs before A29. [REL003, REL005, REL007, REL009, REL010, REL012]
+- Its position relative to A28 varies: the new activity precedes A28 in about 15–23 in 100 traces and follows it in about 13–18 in 100, so both orders occur. [REL004, REL008, REL011]
+- Routing around this segment changed accordingly. Earlier, A27 led almost exclusively to A28 (about 97 in 100 of its observed outgoing transitions) and A28 almost exclusively to A29 (about 98 in 100). In the later window, A27 leads to A28 in about 43 in 100 and directly to A20, A25 or A19 in about 52 in 100 combined; A28 leads to A29 in about 57 in 100 and to A20, A19 or A25 in about 41 in 100; the new activities lead to A28 (about 53–56 in 100) or to A29 (about 41–47 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Event distances confirm one extra step in the segment: A27→A29 moved from lag 2 in about 96 in 100 traces to lag 3 in about 92 in 100 (lag 4 in about 7 in 100), while A27→A28 and A28→A29, previously almost always directly consecutive (about 98 in 100 at lag 1), now split between lag 1 (about 43 and 56 in 100) and lag 2 (about 52 and 41 in 100). [LAG001, LAG002, LAG003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Main hypothesis: in the later window, a new step is executed between A27 and A29 — in almost every trace exactly one of the three mutually exclusive activities A19, A20 or A25 runs there, either directly after A27 (before A28) or directly after A28 (before A29) — whereas in the earlier window this segment was the direct chain A27 → A28 → A29 and none of the three activities was observed. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL005, REL006, REL007, REL009, REL010, REL012, LAG001, LAG002, LAG003]
+
+The evidence supports this directly and consistently: 23 control-flow items qualified against roughly 0.5 expected if nothing had changed, so the set of differences is far beyond what an unchanged process typically produces; the change is shown directly by occurrence rising from zero, by newly observed outgoing edges of A19, A20 and A25, and by relational and distance evidence that places the new activity after A27 and before A29 with the A27→A29 distance growing by one step. Occurrence, direction, relation and lag indicators all describe the same placement. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, REL003, REL005, REL007, REL009, REL010, REL012, LAG001, LAG002, LAG003]
+
+Limitations: the evidence shows that both placements (before and after A28) occur in similar shares, but it cannot establish what governs the choice of activity or of placement, and it cannot exclude that a small share of later traces still runs the old direct chain; zero participation in the earlier window strictly means "not observed" rather than proven absence. [REL004, REL008, REL011, OCC001, OCC002, OCC003]
+
+Other differences: beyond this insertion, only noise-level shifts remain — a handful of outgoing transitions of A27 and A28 change by about 0.5 in 100 each, and no further structural difference is indicated at these thresholds. [DIR004, DIR005, LAG002]

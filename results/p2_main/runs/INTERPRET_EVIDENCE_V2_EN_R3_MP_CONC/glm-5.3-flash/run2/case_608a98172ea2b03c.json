@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_608a98172ea2b03c.json",
+  "evidence_sha256": "b96baade2e8bcde03bd3ec74f3d31152d2b1f6fd84288a307698a59beb22a311",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:26:27.469709+00:00",
+  "finished_at_utc": "2026-11-15T01:28:07.087086+00:00",
+  "latency_seconds": 99.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14323,
+    "prompt_tokens": 9353,
+    "total_tokens": 23676,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13108,
+      "text_tokens": 1215
+    },
+    "cost": 0.00856445
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46296,
+  "text": "### Observed differences\n\n- **Routing out of A01:** in the earlier window, A01's outgoing transitions went to A04 in about half of the cases (about 50 in 100), with A03 (about 29 in 100) and A02 (about 22 in 100) as other destinations; in the later window, essentially all of the roughly 380 observed A01 transitions go to A04. [DIR001]\n- **Routing out of A04:** earlier, about half of A04's outgoing transitions led back to A01 (about 50 in 100), the rest splitting between A02 (about 26 in 100) and A03 (about 24 in 100); in the later window, none of the roughly 380 observed A04 transitions go to A01 — A04 splits between A03 (about 53 in 100) and A02 (about 47 in 100). [DIR002]\n- **Routing out of A06:** earlier, A06's outgoing transitions split roughly evenly between A01 and A04; in the later window, all observed A06 transitions go to A01. [DIR003]\n- **Order of A01 and A04:** the two activities occurred together in virtually every trace in both windows. Earlier, their order was mixed — A01 first in about 25 in 100 traces, A04 first in about 28 in 100, interleaved or repeated in about 47 in 100; in the later window, A01 came first in about 58 in 100, A04 never came first, and interleaved/repeated executions still account for about 42 in 100. [REL001]\n- **Position in the trace:** A01 now appears earlier — its median relative position fell from about 0.45 to 0.0, so it sits at the very start of the trace in at least half of the cases — while A04 appears later (mean position up from about 0.39 to 0.50, its earliest occurrences moving from the trace start to about a quarter in). [POS001, POS002]\n- **Pair distances:** A01 is now typically followed by A04 immediately (a one-step gap in about 53 in 100 of observed pairs, up from about 30 in 100; the pair occurs within five steps in 200 versus 144 traces), whereas A01 following A04 within five steps now happens about four steps later rather than immediately (84 versus 150 traces). Several other pairs also tightened to one typical distance, e.g. A01–A03 now consistently two steps apart (before one or two) and A06–A01 now immediately consecutive (before one or two). [LAG004, LAG008, LAG003, LAG013]\n- Repetitions of A01 and of A04 now sit about five steps apart, where they previously appeared at four-to-five-step gaps. [LAG001, LAG011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the routing and ordering around A01 and A04 were restructured. In the earlier window, A01 and A04 were mutually connected: A01 branched to A02, A03 or A04, and A04 led directly back to A01 in about half of its transitions, so the two activities appeared in both orders and interleaved. In the later window, A01 — now typically at the start of the case — always flows on to A04, A04 no longer returns directly to A01 but continues to A02 or A03, and A06 consistently feeds into A01. Because the direct A04→A01 transitions and A01's branches to A02/A03 are no longer observed at all (0 of roughly 380 transitions in each case), this is a change in ordering constraints and successor structure, not merely a shift in how often existing alternative paths are taken. [DIR001, DIR002, DIR003, REL001, POS001, POS002, LAG004, LAG008]\n\nThe screening context supports treating this as more than chance: 20 control-flow items qualified against roughly 0.13 expected for an unchanged process, and each item's difference exceeds about 995 of 1,000 random re-splits of the pooled data, with the successor, order, position and distance indicators all pointing to the same restructuring. Several items, however, describe overlapping behaviour of the same traces (for example DIR002, REL001 and LAG008 all reflect the A01–A04 change), so they are not independent confirmations. [DIR002, REL001, LAG008]\n\nThe evidence cannot rule out that the later window samples a shifted mixture of variants that already existed before rather than a modified routing rule, nor can it show whether the A04→A01 connection was removed or only lengthened, since A01 still follows A04 about four steps later in the later window and those after-window distance estimates rest on about 84 traces per pair. [LAG008]",
+  "case_id": "case_608a98172ea2b03c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

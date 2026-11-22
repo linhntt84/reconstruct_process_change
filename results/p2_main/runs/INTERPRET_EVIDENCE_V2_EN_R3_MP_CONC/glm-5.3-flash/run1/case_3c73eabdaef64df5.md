@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, only two of the flagged activities appear: A04 and A07, each in all 200 traces. A04 sits around the middle of the trace (mean relative position 0.5) and A07 at the end (1.0), with A07 immediately following A04 in every trace. [POS003, POS006, LAG001, DIR002]
+- In the later window, four activities that were not observed at all before — A01, A03, A05 and A06 (0 of 200 traces, 0% participation) — each occur exactly once in every trace (200 of 200, 100%). [OCC001, OCC002, OCC003, OCC004]
+- The later flow is fixed in every trace: A04 → A03 → A05 → A06 → A07 → A01. A04 now leads to A03 instead of to A07, and A07 now leads to A01; the transitions A03→A05, A05→A06, A06→A07 and A07→A01 emerge and carry all the flow. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- Every flagged activity pair that previously never shared a trace (or appeared only singly) now co-occurs in one consistent order in all 200 traces, e.g. A03 before A05, A05 before A06, and A07 before A01. [REL001, REL005, REL007, REL012, REL014]
+- The distance from A04 to A07 grew from one step (immediate succession in all traces) to four steps, and A07 is no longer the final event — A01 now closes the trace. [LAG001, POS001, POS006]
+- In total, 30 control-flow items qualified, against roughly 0.15 expected if nothing had changed; each item's difference exceeds about 99.5 in 100 random re-splits of the pooled data. [OCC001, DIR002, POS003, REL001, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a fixed sequential segment was added to the flow of every case: in the later window, A03, A05 and A06 — unobserved in the earlier window — run between A04 and A07, and A01 runs after A07, so each case executes A04 → A03 → A05 → A06 → A07 → A01, whereas earlier cases went directly from A04 to A07. This rests on direct and mutually consistent signs: participation of the four activities rose from 0% to 100% of traces; A04's outgoing transition switched from A07 to A03; four new transitions appeared; all flagged pairs moved from never co-occurring to co-occurring in a single fixed order; and the A04→A07 distance moved from 1 to 4 steps. With 30 qualifying items against about 0.15 expected by chance, the pattern as a whole is not what an unchanged process typically produces. The main limitation is that zero participation in the earlier window only shows these activities were not observed then; the evidence cannot distinguish activities newly introduced into the process from existing ones that were never executed in the earlier sample — for example, a previously rare or optional path that happened to be absent from all 200 earlier traces cannot be ruled out. [OCC001, OCC002, OCC003, OCC004, DIR002, DIR005, REL001, REL012, LAG001]
+
+Other differences: none — the position shifts of A04 (from mid-trace to early) and A07 (from last to second-to-last) follow directly from the inserted activities and form part of the same picture. [POS001, POS003, POS006]

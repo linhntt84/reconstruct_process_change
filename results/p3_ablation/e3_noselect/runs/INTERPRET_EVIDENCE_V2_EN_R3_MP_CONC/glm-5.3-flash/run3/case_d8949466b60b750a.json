@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "5cc044c740d6b7623d54742d30b3111937cb4c0347c426025fef8dbf5c2f16f5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:15:33.348924+00:00",
+  "finished_at_utc": "2026-11-15T13:17:19.255639+00:00",
+  "latency_seconds": 105.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14125,
+    "prompt_tokens": 52956,
+    "total_tokens": 67081,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12554,
+      "text_tokens": 1571
+    },
+    "cost": 0.015005899999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43207,
+  "text": "### Observed differences\n\n- In both windows (200 traces each), A26 and A28 appeared in every single trace. [OCC025, OCC027]\n- In the earlier window, the process branched after A26: in about 52 of 100 traces A27 directly bridged A26 and A28, while in the other 48 of 100 the three activities A32, A33 and A38 all ran between them — always together, in varying order — and A27 was absent. A27 and this three-activity block shared a trace in only about 1 of 200 cases. [REL001, REL006, REL007, REL013, DIR026, LAG002]\n- In the later window, A27 was present in about 995 of 1,000 traces, up from about 515 of 1,000, while A32, A33 and A38 each appeared in only about 1 of 200 traces, down from about 97–98 of 200. [OCC026, OCC028, OCC029, OCC034]\n- The surviving route is tightly ordered: A26 was followed directly by A27 in about 97 of 100 co-occurrences and A27 directly by A28 in essentially all, so A26 and A28 sit two steps apart in about 97 of 100 traces; earlier, this distance was two steps in about 50 of 100 traces and four steps in about 47 of 100. [REL001, REL006, LAG001, LAG002, LAG006]\n- Outgoing flows match: from A26, the share continuing to A27 rose from about 51 of 100 observed transitions to about 97 of 100, while transitions into A32, A33 and A38 (about 48 of 100 combined before) all but disappeared; A28's mean relative position moved slightly earlier, from about 0.55 to about 0.53 of the trace. [DIR026, DIR032, DIR033, DIR038, POS003]\n- Separately, the repeating pair A39–A40 ran less often: A39 appeared in about 39 of 200 traces (previously 51) with about 0.32 occurrences per trace (previously 0.44), and A40 averaged 0.80 occurrences per trace (previously 0.93) with its repeat share down from 0.25 to 0.19 at unchanged participation; A42–A45 show small decreases in repetitions. [OCC035, OCC036, OCC037, OCC038, OCC039, OCC040]\n- A47's outgoing profile changed completely, but only 4–5 outgoing transitions were observed in each window, so this carries little weight. [DIR047]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the branch through A32, A33 and A38 between A26 and A28 was dropped, so that in the later window virtually every case runs A26 → A27 → A28. In the earlier window, about half of the cases inserted the A32/A33/A38 block (the three activities always executed together, in no fixed order) between A26 and A28 and skipped A27, while the other half ran A26 → A27 → A28; in the later window A27 is executed in about 995 of 1,000 traces and A32, A33 and A38 in about 1 of 200 traces each. The rerouting is shown directly and consistently: participation changes of roughly 0.48–0.50 that are larger than in about 995 of 1,000 random re-splits, relation items flipping from mutually exclusive alternatives to near-universal co-occurrence in a fixed A26 → A27 → A28 order, the A26–A28 distance consolidating from two-or-four steps to almost always two, and A26's outgoing share to A27 rising from about half to about 97 in 100. [OCC026, OCC028, OCC029, OCC034, REL001, REL003, REL006, REL007, REL013, LAG002, DIR026, POS002]\n\nLimitations: the evidence cannot distinguish a removed branch from a case-mix shift in which cases that used the branch no longer occur, and it cannot show why the branch disappeared — A32, A33 and A38 still appear in about one trace each, so \"no longer taken\" rather than \"removed\" is the defensible reading. Many items describe the same traces and are therefore not independent confirmations, and no chance-expectation baseline for the number of qualifying items is provided. [OCC028, OCC029, OCC034, REL013]\n\nOther differences: the A39–A40 repetition loop ran less often in the later window (A39 in about 39 of 200 traces versus 51; A40 at 0.80 versus 0.93 mean occurrences), a moderate signal that is not part of the main hypothesis; the remaining small decreases for A42–A45 and the low-support change at A47 are consistent with sampling variation between the windows. [OCC035, OCC036, OCC037, OCC038, OCC039, OCC040, DIR047]",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

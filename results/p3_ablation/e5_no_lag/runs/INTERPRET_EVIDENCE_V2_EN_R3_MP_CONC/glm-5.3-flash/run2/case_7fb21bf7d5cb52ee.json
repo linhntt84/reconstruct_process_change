@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7fb21bf7d5cb52ee.json",
+  "evidence_sha256": "0c18487c8cecf647f2c028b3933b2084c7eadb80255188284c8c1de5ce44892b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:13:37.193368+00:00",
+  "finished_at_utc": "2026-11-15T07:15:12.593509+00:00",
+  "latency_seconds": 95.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14059,
+    "prompt_tokens": 24591,
+    "total_tokens": 38650,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12416,
+      "text_tokens": 1643
+    },
+    "cost": 0.01071815
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42584,
+  "text": "### Observed differences\n\n- A10 became much more frequent: in the earlier window it appeared in about 19 in 100 traces (roughly 0.2 executions per trace), in the later window in about 70 in 100 traces (roughly 0.8 per trace). [OCC003]\n- A10 moved to the front of cases: its median relative position fell from about 0.34 to about 0.15 of the trace (mean 0.55 to 0.19), and the 75th percentile from about 0.92 to 0.16, so occurrences are now tightly clustered early instead of spread across the whole case. [POS001]\n- A10's successors were redistributed: earlier its outgoing transitions spread over A46, A16, A48 and A21 (about 20, 20, 18 and 13 in 100); in the later window about 85 in 100 go to A15. [DIR002]\n- A14 now typically runs into A10: A14→A10 rose from about 1 to about 65 in 100 of A14's outgoing transitions, while A14→A15 fell from about 86 to 33 in 100. [DIR003]\n- A10's relations changed across the board: with A14, A15 and the A20–A26/A31/A32 group, co-occurrence rose from about 19 to about 70 in 100 traces, and A10 now precedes these partners in about 60 in 100 traces (before about 9 in 100, when they usually appeared without A10). [REL001, REL002, REL003, REL005, REL008, REL010, REL013, REL014]\n- The previously strict chain A31→A22→A20→A23→A24→A26→A25 loosened: A20→A23 fell from about 99.5 to 67 in 100 of A20's outgoing transitions, A23→A24 from about 98.5 to 15 (A23→A32 now about 47), A25→A32 from about 87.5 to 41, and A31 now splits between A22 (about 52) and A24 (about 46). [DIR004, DIR005, DIR006, DIR008, DIR010]\n- Several block pairs reversed or became unordered: A24 now precedes A20 in about 73 in 100 traces (before, A20 preceded A24 in about 98); A24 precedes A23 in about 84 (before about 2); A26 precedes A23 in about 66 (before about 3); A20/A26, A22/A24 and A23/A25 now appear in both orders in similar shares. [REL015, REL017, REL018, REL020, REL021, REL022]\n- A04 and A08 became rarer: trace participation fell from about 21 to 10.5 in 100 (A04) and from about 19.5 to 4 in 100 (A08); A08's changed successor profile rests on only 8 observed outgoing transitions in the later window and is weakly supported. [OCC001, OCC002, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: A10 changed from a rare, late activity into a frequent, early step. In the earlier window it ran in about 19 in 100 cases, scattered towards the middle and end; in the later window it runs in about 70 in 100 cases, tightly near the start (median relative position about 0.15), typically after A14 — which now leads to A10 in about 65 in 100 of its outgoing transitions — and before A15, which receives about 85 in 100 of A10's outgoing transitions; A10 also now precedes the A20–A26 block members in about 60 in 100 of their joint appearances. [OCC003, POS001, DIR002, DIR003, REL002, REL003, REL008]\n\nThe hypothesis is supported directly and consistently: occurrence, positional, directional and relational indicators all describe the same shift, with large supports (A10 occurrence 38→140 traces; relations on all 200 traces per window), and the screening result (45 qualifying items against roughly 0.62 expected if nothing had changed) makes chance an implausible explanation for the evidence set as a whole; each item's difference also exceeds about 99.5 in 100 random re-splits. The many relation items are not independent confirmations — they largely re-express the single A10 shift. Limitations: positions are event positions, not clock time, so \"earlier\" means earlier in the case sequence; and the evidence cannot show whether A10's former late occurrences were rescheduled or replaced (about 30 in 100 later traces still show A10 interleaved or repeated with A15). [OCC003, POS001, DIR002, REL002]\n\nAn important competing explanation the evidence cannot fully rule out is a large routing shift onto a different existing variant that happens to contain an early A10, rather than a re-sequencing within otherwise unchanged cases; the new A14→A10 edge and the tight early clustering of A10's positions favour a genuine placement change but do not exclude such a routing shift. [DIR003, POS001]\n\nOther differences: the mid-block activities A20, A22, A23, A24, A25, A26 and A31 changed from a fixed sequence into a partly reversed and partly unordered one — A24 now usually precedes A20 and A23, A26 usually precedes A23, and A20/A26, A22/A24 and A23/A25 occur in both orders in similar shares, which is a change in ordering constraints rather than an exchange of positions; A23 now leads mainly to A32 instead of A24, and A20, A22 and A23 occur later in cases while A24, A25 and A26 occur slightly earlier. [DIR004, DIR005, DIR006, DIR008, DIR010, REL015, REL017, REL018, REL020, REL021, REL022, POS003, POS004, POS005, POS006, POS007, POS008] In addition, A04 and A08 were executed in fewer cases (about 21→10.5 and 19.5→4 in 100 traces), though A08's successor redistribution is based on very few later observations. [OCC001, OCC002, DIR001]",
+  "case_id": "case_7fb21bf7d5cb52ee",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

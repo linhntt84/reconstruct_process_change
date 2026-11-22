@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, the three activities A19, A20 and A25 — each present in every before-window trace — appear in only about 53 in 100 traces, and they drop out together: their pairwise co-occurrence falls from 100% to about 53%, with neither activity present in about 47 in 100 traces. [OCC004, OCC005, OCC006, REL008, REL014, REL019]
+- The omission shows directly in routing and distance: A41's outgoing transitions lead to A19 in about 96 in 100 cases before but only about 51 in 100 after, with A26 becoming the immediate successor in about 44 in 100; matching this, the A41→A26 distance, previously 4 positions in about 93 in 100 cases, becomes split between 1 position (about 44 in 100) and 4 positions (about 49 in 100). [DIR005, LAG002]
+- The internal routing of the segment is essentially unchanged (A25 still leads to A20 in about 98 in 100 of its outgoing transitions, A20 to A26 in about 96 in 100), and A26, A41, A46 and A47 remain in every trace in both windows with nearly unchanged positions (A26 mean position about 0.42 vs 0.41; A41 about 0.30 vs 0.33). [DIR003, DIR004, POS002, POS003, POS004]
+- A02, an optional activity near the end of the trace, falls from about 29 in 100 traces to about 9 in 100; before, A46 was followed by A02 in about 25 in 100 of its outgoing transitions, whereas in the later window A46 leads directly to A47 in about 96 in 100. The later A02 profiles rest on only 17 traces. [OCC001, DIR006, REL006]
+- Two rare activities become somewhat more common: A04 rises from about 5 to about 12 in 100 traces and A06 from about 4 to about 13 in 100, based on small counts (9→24 and 8→25 traces). [OCC002, OCC003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+One possibility supported by the evidence is that the fixed segment A41 → A19 → A25 → A20 → A26 became conditionally skippable: in the later window the three middle activities are omitted together in roughly 45–47 in 100 cases, and A26 then immediately follows A41. This rests on direct relational evidence — the bimodal A41→A26 distance and the split of A41's successors — together with the lockstep fall of A19, A20 and A25 from universal presence to about 53% participation (200 of 200 before-traces down to about 106 of 200), a shift far too large to be a sampling artefact; the volume of qualifying items (41 against fewer than 1 expected if nothing had changed) also cannot be explained by chance as a whole. [DIR005, LAG002, OCC004, OCC005, OCC006, REL008]
+
+Consistency supports reading this as a new skip alternative rather than a reordering: the order inside the segment and the positions of the always-present activities are unchanged, though the many evidence items largely restate this one underlying difference rather than confirming it independently. [DIR003, DIR004, POS002, POS003, POS004]
+
+A secondary, weaker difference concerns A02, which nearly disappears (about 29 to about 9 in 100 traces) as A46→A47 becomes the dominant continuation, alongside the small rises in A04 and A06; these later-window profiles rest on few observations (17, 24 and 25 traces), so sampling differences in variant frequencies — including a rare variant appearing in one window only — cannot be ruled out for these parts. [OCC001, DIR006, OCC002, OCC003]

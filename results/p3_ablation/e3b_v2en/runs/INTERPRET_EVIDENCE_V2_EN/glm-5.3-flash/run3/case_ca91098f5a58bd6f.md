@@ -1,0 +1,16 @@
+### Observed differences
+
+- Before, every trace contained A36, then exactly one of A14, A15 or A20, then A21: the three intermediate activities each ran in about 35%, 30% and 35% of traces (roughly 70, 60 and 70 of 200), never together, each always preceded by A36 and always followed by A21 [OCC001, OCC002, OCC003, REL001, REL003, REL008, REL004, REL006, REL009, REL013, DIR001, DIR002, DIR003].
+- In the later window, A14, A15 and A20 are not observed at all (0 of 200 traces each), while A36, A21 and A26 still occur in every trace [OCC001, OCC002, OCC003, DIR004, POS004, REL005].
+- A36's outgoing transitions changed completely: before, about 35% went to A14, 30% to A15 and 35% to A20; in the later window, all observed outgoing transitions of A36 go to A21 [DIR004].
+- Consistently, the A36→A21 distance fell from two positions in every before-window trace to one position (immediately consecutive) in every after-window trace [LAG001].
+- A21's mean relative position shifted slightly earlier (about 0.39 to 0.37) and A36's slightly later (about 0.32 to 0.33), with both activities' participation unchanged [POS004, POS005].
+- Relations with the remaining activities collapsed accordingly: before, A14, A15 and A20 each preceded A21 and A26 in exactly their participation share and co-occurred with A19 in about 15–17 in 100 traces; in the later window A21, A26 and A19 occur only without them, with A19's own participation changing little (about 49 to 56 in 100 traces) [REL002, REL004, REL005, REL007, REL009, REL010, REL012, REL013, REL014].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the alternative intermediate step between A36 and A21, in which exactly one of A14, A15 or A20 executed, is no longer executed in the later window, so that A36 passes directly to A21 in every case [DIR004, LAG001, OCC001, OCC002, OCC003]. The support is direct rather than only correlational: A36's outgoing transitions are observed to move entirely from the three activities to A21, and the A36→A21 distance is observed to drop from two positions to one in all 200 after-window traces, while A21 and A36 themselves continue in every trace [DIR004, LAG001, POS004, POS005]. The 28 qualifying items far exceed the roughly 0.41 expected if nothing had changed, and the simultaneous disappearance of three activities each present in 60–70 of 200 before traces is difficult to attribute to sampling variation in variant frequencies alone [OCC001, OCC002, OCC003].
+
+Limitations remain: zero participation only shows that A14, A15 and A20 were not observed in the later window, and the evidence cannot distinguish whether the branch was removed outright or folded into A21 (for example by relabelling), since A21 already ran in every trace before the change [OCC001, REL004, LAG001]. With two 200-trace samples, modest variant-frequency differences can also arise without any change, so smaller shifts such as A19's slight participation increase should be treated cautiously [REL002, REL007, REL012].

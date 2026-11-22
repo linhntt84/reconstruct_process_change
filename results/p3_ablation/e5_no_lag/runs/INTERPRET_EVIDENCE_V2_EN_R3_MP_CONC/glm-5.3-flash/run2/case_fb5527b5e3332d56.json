@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "cc1667b60f40da1281f36b026468222d3851c06c88110ea561d6d13f2f06d2ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:57:34.620438+00:00",
+  "finished_at_utc": "2026-11-15T06:58:44.078294+00:00",
+  "latency_seconds": 69.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9703,
+    "prompt_tokens": 12285,
+    "total_tokens": 21988,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8660,
+      "text_tokens": 1043
+    },
+    "cost": 0.00669425
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32215,
+  "text": "### Observed differences\n\n- Participation split differently: in the earlier window, A22 appeared in about 52 in 100 traces while A27, A28 and A33 each appeared in about 48–49 in 100 (97 of 200 traces each). In the later window, A22 appears in about 99.5 in 100 traces (199 of 200), while A27, A28 and A33 each appear in only about 1 in 200. A21 and A23 occur in every trace in both windows. [OCC001, OCC002, OCC003, OCC004]\n- Routing out of A21 changed accordingly: before, about 52% of its observed outgoing transitions went to A22, with roughly 14–18% each going to A27, A28 and A33; in the later window, about 99.5% go to A22. [DIR001]\n- The old branch's internal behaviour, visible only in the earlier window (97 traces): A27, A28 and A33 always occurred together (about 48.5 in 100 traces), in both orders with no fixed sequence among them, each also transitioning onward to A23, and the group ran before A23. In the later window these pairs co-occur in essentially no traces. [REL009, REL010, REL011, REL012, REL013, REL014, DIR002, DIR003, DIR004]\n- A22 and each of A27/A28/A33 were strict alternatives before (never in the same trace; roughly a 52/48 split); in the later window A22 occurs without them in about 99.5 in 100 traces. The ordered relations A21 before A22, and A22 before A23, each rose from about 52 to about 99.5 in 100 traces. [REL001, REL005, REL006, REL007, REL008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the branch running from A21 through A27, A28 and A33 — the three executed together in varying order and completed before A23 — is skipped in almost all cases, with cases proceeding from A21 via A22 to A23 instead. Earlier, the two branches were roughly balanced (about 52 in 100 cases via A22, about 48 via the A27/A28/A33 branch); in the later window the A22 path covers about 995 in 1000 cases, and the other branch appears in only 1 of 200 traces. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL005, REL006, REL007, REL008, REL012, REL013, REL014]\n\nThe screening context supports this reading: 26 of 80 tested control-flow units qualified, far above the 0.4 expected by chance, so the pattern as a whole is not what an unchanged process typically produces; participation, routing and relational indicators all show the same picture directly. Note that many of the qualifying items describe this one underlying branch replacement, so they are consistent rather than independent confirmations. [OCC001, DIR001, REL001, REL012]\n\nLimitations: the later-window outgoing profiles of A27, A28 and A33 rest on a single trace each, so their behaviour after the change cannot be characterised. The evidence also cannot distinguish whether the A27/A28/A33 branch was removed from the process or remains reachable but was almost never taken in this window; the single later trace containing all three activities fits the latter reading. [DIR002, DIR003, DIR004, OCC002, OCC003, OCC004]\n\nOther differences: A23's relative position shifted slightly earlier (mean position about 0.55 to about 0.53 of the trace), observed across all traces in both windows; this is a small positional shift and does not by itself indicate a change in timing. The positional distributions of A27, A28 and A33 in the later window rest on one trace each and are not interpretable on their own. [POS001, POS002, POS003, POS004]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

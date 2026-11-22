@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_65dec17cd0af82bf.json",
+  "evidence_sha256": "59e94bf11f3158013d5484974476da2d0842736c1cdea11ff8b3401cb2960818",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:57:30.235130+00:00",
+  "finished_at_utc": "2026-11-15T09:59:56.774690+00:00",
+  "latency_seconds": 146.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21589,
+    "prompt_tokens": 18346,
+    "total_tokens": 39935,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19951,
+      "text_tokens": 1638
+    },
+    "cost": 0.0135464
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 68584,
+  "text": "### Observed differences\n\n- A02 was not observed in any of the 200 earlier traces; in the later window it appears in 113 of 200 traces (about 57 in 100), exactly once where it occurs, and it is always the final event of the trace (relative position 1.0 in every occurrence). [OCC002, POS002]\n- In the later window, all 30 observed outgoing transitions of A16 and all 44 of A19 lead to A02, and about half of A09's outgoing transitions (about 39 of 76) do so; in the earlier window A16 and A19 always ended their traces (no outgoing transitions were observed) and A09 led only to A13 and A14. [DIR006, DIR008, DIR004, POS007, POS008]\n- A01 was also absent earlier and appears in 30 of 200 later traces (about 15 in 100), at roughly 0.7 of the trace; all of its observed outgoing transitions lead to A16, and it is reached from A10 (about 42 in 100 of A10's outgoing transitions) and A17 (about half), which previously led to A16 directly. The order A01 before A16 before A02 occurs in about 15 in 100 later traces, and the typical A10–A16 gap moved from one step to two. [OCC001, POS001, DIR001, DIR005, DIR007, REL001, REL002, LAG007]\n- Accordingly, A16 and A19, previously always the last events, now sit just before the end (median relative position about 0.85), immediately ahead of A02. [POS007, POS008]\n- A02 now shares traces with activities it never did before: with A14 in about 39 in 100 traces (before 0), A03 about 35 in 100 (before 0), A07 about 28 in 100 (before 0), A19 about 22 in 100 (before 0). [REL008, REL003, REL004, REL010]\n- A09 and A13 are executed far less often: A09 appears in about 37 in 100 traces before versus about 20 in 100 after, with mean occurrences per trace down from about 1.07 to 0.38 (its repeats have largely disappeared); A13 falls from about 23 in 100 to about 9 in 100 traces. A07 now leads to A14 in about half of its outgoing transitions, where it previously led to A09; A09 no longer leads to A14; A09 and A19 no longer co-occur (about 22 in 100 traces before, none after). [OCC003, OCC004, DIR003, DIR004, REL012, REL011]\n- Event positions shifted: A14 and A10 now occur earlier (A14 median about 0.38 to 0.11; A10 about 0.78 to 0.50), while A09 and A13 occur later (A09 about 0.22 to 0.63; A13 about 0.23 to 0.50); typical pair distances changed too, e.g., A07 and A14 moved from mostly 2 or 4 steps apart to mostly adjacent. These are event positions, not clock times. [POS006, POS004, POS003, POS005, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the later window contains a new closing segment at the end of the process: a new activity A02 runs as the final step in about 57 in 100 traces, reached from the previously terminal activities A16 and A19 and from A09, and a second new activity A01 is inserted before A16 in about 15 in 100 traces, so that some runs end A10/A17 → A01 → A16 → A02. The signs are direct and mutually consistent: participation rises from zero to 113 and 30 of 200 traces; A02 occupies the final position in every occurrence; the successions A16→A02, A19→A02 and A01→A16 are observed without exception in the later window and never before; and A02 begins to co-occur with A03, A07, A09, A13, A14, A16 and A19. The volume of qualifying evidence (42 items against roughly 0.44 expected if nothing had changed) cannot be explained by sampling variation as a whole, although many items describe the same underlying difference rather than independent confirmations. [OCC002, POS002, DIR006, DIR008, DIR004, OCC001, POS001, DIR001, DIR005, DIR007, REL001, REL002, REL003, REL004, REL008, REL010, POS007, POS008]\n\nWhat the evidence cannot rule out is that only a subset of cases carries the new closing steps rather than all of them — about 43 in 100 later traces still do not contain A02 — nor can it show whether the reduced execution of A09 and A13 is a consequence of the same rewiring or an independent difference. [OCC002, OCC003, OCC004]\n\nOther differences: the middle of the process was thinned — A09 and A13 occur in far fewer traces and repeat less, A07 bypasses A09 and leads directly to A14 in about half of its outgoing transitions, A09–A14 and A13–A14 co-occurrence fell from about 37 and 23 in 100 traces to about 13 and 4 in 100, and A09, A13, A14 and A10 occupy different positions in the trace (event positions, not clock times). [OCC003, OCC004, DIR003, DIR004, REL011, REL013, POS003, POS004, POS005, POS006]",
+  "case_id": "case_65dec17cd0af82bf",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

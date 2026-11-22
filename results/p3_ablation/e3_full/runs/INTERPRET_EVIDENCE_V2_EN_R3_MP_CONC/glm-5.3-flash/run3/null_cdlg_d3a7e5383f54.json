@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_d3a7e5383f54.json",
+  "evidence_sha256": "9e784be22945e26ef160e7fa70662a832a2e08aba4e2e76b3d9c60f18f754496",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T04:16:23.749595+00:00",
+  "finished_at_utc": "2026-11-16T04:20:57.941834+00:00",
+  "latency_seconds": 274.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 32889,
+    "prompt_tokens": 66639,
+    "total_tokens": 99528,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30517,
+      "text_tokens": 2372
+    },
+    "cost": 0.02644035
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 104151,
+  "text": "### Observed differences\n\n- The two mutually exclusive branches swapped how often they were taken. In the earlier window, the branch containing A04 ran in about 54 of 100 traces while the branch in which A03 and A05 always executed together ran in about 47 of 100; in the later window, the A03+A05 branch ran in about 54 of 100 traces and A04 in about 46 of 100. Neither A03 nor A05 ever shared a trace with A04 in either window. [OCC002, OCC003, OCC004, REL021, REL022, REL030]\n- The optional block in which A09 and A12 always executed together was used less: it appeared in about 48 of 100 traces in the earlier window and about 41 of 100 in the later window. In step, among A02's outgoing transitions the share leading to A09 fell from about 50% to about 47%. [OCC007, OCC009, REL061, DIR002]\n- A11 became more frequent, running in about 22 of 100 traces in the earlier window and about 31 of 100 in the later window. It occurred only in traces that also ran A03 and A05, and within those branch cases it ran in about 46 of 100 before versus about 56 of 100 after. [OCC008, REL028, REL043]\n- A02 still ran in every trace but repeated less often: about 48 of 100 traces contained a second A02 in the earlier window versus about 41 of 100 in the later window (mean about 2.0 versus 1.9 occurrences per trace); in step, the A01–A02, A02–A08 and A02–A10 relations became less interleaved (interleaved share about 48 to about 41 of 100). [OCC001, REL001, REL016, REL018]\n- A04's onward routing changed: of A04's outgoing transitions, the share leading to A08 fell from about 36% to about 23%, while the shares leading to A01 rose from about 27% to about 36% and to A02 from about 37% to about 41%. [DIR004]\n- Distances in event order between activity pairs changed in both directions: A01 reached A05 within 2–3 steps in about 55 of 100 observed pairs in the later window versus about 29 of 100 before, A01-to-A06 and A01-to-A09 gaps lengthened (A01 to A09 at 5 steps: about 14 to about 34 of 100), and A04 was followed by A01 within one step in about 72 of 100 pairs versus about 55 before. These are event-order distances, not clock times. [LAG004, LAG005, LAG008, LAG025]\n- The backbone was stable: A01, A02, A08 and A10 still appeared in every trace, and their mutual order proportions barely moved (for example, A01 before A08 in about 52 of 100 traces in both windows). [REL001, REL007, REL016, REL018]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that existing paths are taken with different frequencies, while the set of activities and their order relations stayed the same. The choice between two mutually exclusive branches — one in which A03 and A05 always execute together, the other containing A04 — moved from roughly 47/53 in favour of A04 to roughly 54/46 in favour of A03+A05. In the same direction, the optional block in which A09 and A12 always execute together was included in about 41 of 100 traces in the later window versus about 48 of 100 before. [OCC002, OCC003, OCC004, OCC007, OCC009, REL021, REL022, REL030, REL061]\n\nThe change is observed directly on participation and co-occurrence shares; every involved activity retains substantial support in both windows (roughly 82–108 of 200 traces per window); the togetherness and mutual-exclusivity relations are unchanged, so only the shares moved; and occurrence, relation, direction and position indicators all shift in lockstep. The stable backbone argues against activities being added, removed or reordered. Limitations: the evidence file contains no screening baseline, so the expected number of chance qualifications cannot be checked; on its own, a swing of about 7–8 in 100 traces between two 200-trace windows is a difference a stable process occasionally produces (empirical strength near 0.8), so the judgement rests on the joint consistency of many indicators rather than any single one, and ordinary sampling variability between the two windows remains a competing explanation that cannot be ruled out. [OCC002, OCC003, OCC004, REL001, REL007, REL030]\n\nOther differences:\n\n- A11's rise is larger than the branch share alone explains, so A11 was also executed more often within the A03+A05 branch (about 46 to about 56 of that branch's cases). [OCC008, REL028, REL043]\n- A02's reduced repetition coincides exactly with the A09+A12 decline (both about 48 to about 41 of 100 traces) and with the A01–A02/A02–A08/A02–A10 relations becoming less interleaved; these items likely reflect the same trace behaviour and are not independent confirmations. [OCC001, OCC007, OCC009, REL001, REL016, REL018, REL061]\n- The redistribution of A04's exits towards A01, together with the rise of immediate A04→A01 succession, is a routing change within the A04 branch that the branch-frequency hypothesis does not cover. [DIR004, LAG025]\n- Pairwise step distances changed in both directions (A01–A05 shorter; A01–A06, A01–A09 and A08–A05 longer), indicating that the internal spacing of traces changed; these are order-based findings and do not establish movement in clock time. [LAG004, LAG005, LAG008, LAG050]",
+  "case_id": "null_cdlg_d3a7e5383f54",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

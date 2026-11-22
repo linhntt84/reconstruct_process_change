@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_753fd2e3fdacad36.json",
+  "evidence_sha256": "9ab8125d4f5906b84558df8aeb308a0ea1a7b61291fb1dd0add70aa2c89dcae3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:47:24.867415+00:00",
+  "finished_at_utc": "2026-11-15T12:49:41.291652+00:00",
+  "latency_seconds": 136.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19314,
+    "prompt_tokens": 12846,
+    "total_tokens": 32160,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17781,
+      "text_tokens": 1533
+    },
+    "cost": 0.0115839
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61959,
+  "text": "### Observed differences\n\n- In the earlier window, A42 never led directly to A23: it was followed by one of five alternative activities (A14, A15, A20, A21, A22 — each appearing in about 18–22 of 100 traces), with A23 two positions later. In the later window, A42 leads directly to A23 in all traces (A23 accounts for 100 in 100 of A42's observed outgoing transitions, and the A42→A23 distance is always 1 instead of 2). [DIR008, LAG004]\n- The five alternatives now run much later in the case: their typical position moved from about 0.30–0.33 of the trace to about 0.58–0.61 (medians about 0.30 to about 0.60), while their participation is essentially unchanged (each in about 15–22 of 100 traces in both windows; together about 100 of 100, consistent with exactly one of the five executing per case in both windows). [POS001, POS002, POS003, POS004, POS005]\n- Their order relative to A23 and A24 reversed: earlier, in the roughly 18–23 of 100 traces where one of the five co-occurred with A23 or A24, it always came first; in the later window it always comes after both. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- Their successors changed: earlier, each of the five led only to A23 (100 in 100 of observed outgoing transitions); in the later window they lead to A25 (about 37–68 in 100, depending on the activity) or straight to A29 (about 32–63 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- A24 and A25 now route into the block: earlier, A24 always went to A25 and A25 always to A29; in the later window A24 goes to A25 in about 49 of 100 transitions and to one of the five in about 51, and A25 goes to A29 in about 51 and to one of the five in about 49. [DIR006, DIR007]\n- The block still executes once per case, but its insertion point varies: the A24→A29 distance is always 3 in the later window (always 2 earlier), with A24→A25 at distance 1 in about 49 of 100 later cases and 2 in about 51, and A25→A29 at distance 1 in about 51 and 2 in about 49 — the single block execution sits between A24 and A25 in about half the later cases and between A25 and A29 in the other half. [LAG001, LAG002, LAG003, DIR006, DIR007]\n- A23, A24 and A25 occur in every trace in both windows and sit slightly earlier in the later window (mean positions about 0.35→0.31, 0.59→0.55 and 0.62→0.60), consistent with the block no longer running before A23. [POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block of five mutually exclusive activities (A14, A15, A20, A21, A22), exactly one of which executes in each case, runs in a different place in the later window: earlier it ran between A42 and A23, whereas in the later window it runs after A24 — inserted between A24 and A25 in about 51 of 100 cases and between A25 and A29 in about 49 — while A42 now reaches A23 directly. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, LAG001, LAG002, LAG003, LAG004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005]\n\nSupporting signs: the order reversal is shown directly by the relation items, and the successor, gap and position changes agree with it numerically — for example, each of the five later splits towards A25 versus A29 almost exactly in proportion to how often it is reached from A24 versus A25, and the placement conclusion rests on the relation and gap items, not on positions alone. Participation of every involved activity is essentially unchanged, so this reads as a relocation of an existing, still-mandatory block rather than activities being added, removed or repeated. With 28 qualifying items against roughly 0.43 expected for an unchanged process, the set of differences is far beyond what random re-splits of these windows produce. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, LAG001, LAG002, LAG003, LAG004]\n\nLimitations and competing explanation: the per-activity routing shares rest on only about 30–45 traces per window for each of the five activities, so the exact 51/49 split between the two insertion points, and the small shifts in how often each of the five is chosen (for example A15 in about 15 of 100 later traces versus about 19 earlier), could partly be sampling variation rather than an additional change; the evidence also cannot show whether the choice among the five, or between the two insertion points, follows any rule. [POS001, POS002, POS003, POS004, POS005, DIR001, DIR002, DIR003, DIR004, DIR005]\n\nOther differences: none beyond the relocation itself; the slight position advances of A23, A24 and A25 (mean positions about 0.35→0.31, 0.59→0.55 and 0.62→0.60) follow from the block no longer running before A23. [POS006, POS007, POS008]",
+  "case_id": "e4a_753fd2e3fdacad36",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

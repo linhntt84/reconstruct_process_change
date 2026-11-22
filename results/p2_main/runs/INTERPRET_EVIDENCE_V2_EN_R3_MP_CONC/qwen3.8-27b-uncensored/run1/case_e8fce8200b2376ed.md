@@ -1,0 +1,26 @@
+
+
+### Observed differences
+
+- In the later window, A16 appears in about 70 in 100 traces, A07 in about 48 in 100, A15 in about 39 in 100, and A17 in about 33 in 100, while all four have zero trace participation in the earlier window. [OCC002, OCC004, OCC005, OCC006]
+- Routing into these activities appears: A08 goes to A07 in about 46 in 100 of its outgoing transitions after, versus A05 in about 52 in 100 before; A10 goes to A16 in about 51 in 100 and to A15 in about 49 in 100 after, versus A10, A03 and A02 before; A18 goes to A17 in about 54 in 100 and to A14 in about 46 in 100 after, versus A02 in all observed outgoing transitions before. [DIR003, DIR004, DIR009]
+- Routing out of these activities is also observed: A07 goes to A18 in all observed outgoing transitions, A15 goes to A10 in all observed outgoing transitions, A16 goes to A03 and A02 in about half of observed outgoing transitions each, and A17 goes to A09 in all observed outgoing transitions. [DIR002, DIR006, DIR007, DIR008]
+- Co-occurrence with existing activities appears: A02 and A16 co-occur in about 41 in 100 traces after versus 0 before; A03 and A16 co-occur in about 70 in 100 after versus 0 before; A10 and A16 co-occur in about 70 in 100 after versus 0 before; A08 and A07 co-occur in about 48 in 100 after versus 0 before. [REL003, REL007, REL029, REL013]
+- Event positions of the appearing activities are observed in the later window: A07 has median position about 0.68, A15 about 0.25, A16 about 0.50, and A17 about 0.71; A05 moves earlier, from median about 0.69 to 0.45, and A18 moves later, from median about 0.39 to 0.71. [POS003, POS004, POS005, POS006, POS002, POS007]
+- Repetition and some existing routing also change: A05 mean occurrences per trace rise from about 1.9 to 4.0 while its trace participation falls from 48 to 39 in 100; A18 mean occurrences per trace fall from about 1.8 to 0.9 while its trace participation rises from 40 to 48 in 100; A13 mean occurrences per trace rise from about 1.0 to 2.1; A05 now goes to A02 in about 47 in 100 of outgoing transitions, and A12 now goes to A05 in about 49 in 100 instead of A18 in about 49 in 100 before. [OCC001, OCC007, OCC003, DIR001, DIR005]
+- Step-distance distributions shift for some existing pairs: for A08 followed by A05 within five steps, the distance-4 component is about 66 in 100 after, versus distance-1 and distance-3 components of about 17 and 6 in 100 before; for A18 followed by A02 within five steps, the distance-5 component is about 85 in 100 after, versus distance-1, distance-3, distance-4 and distance-5 components of about 5, 2, 1 and 2 in 100 before. [LAG008, LAG026]
+
+### Inference
+
+Support level: Supported hypothesis
+
+- The evidence supports the hypothesis that, in the later window, a control-flow segment involving A07, A15, A16 and A17 is executed: A08 enters A07, A10 enters A15 or A16 instead of its earlier A10, A03 and A02 successors, A18 enters A17 or A14 instead of A02, and A07, A15, A16 and A17 lead to A18, A10, A02/A03 and A09. [OCC002, OCC004, OCC005, OCC006, DIR002, DIR003, DIR004, DIR006, DIR007, DIR008, DIR009, REL003, REL007, REL013, REL029]
+- The four activities are absent in the earlier window and present in substantial shares of later traces; their outgoing transitions are observed; they co-occur with existing activities; the control-flow family contains 92 qualifying items versus 0.6 expected without change; and each item has empirical strength about 99 in 100. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, POS001, POS002, POS003, POS004, POS005, POS006, POS007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030, REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039, REL040, REL041, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014, LAG015, LAG016, LAG017, LAG018, LAG019, LAG020, LAG021, LAG022, LAG023, LAG024, LAG025, LAG026, LAG027, LAG028]
+- The evidence cannot rule out that the later window contains a different mix of cases that includes these activities, rather than a modification of the same process. [OCC002, OCC004, OCC005, OCC006, DIR002, DIR003, DIR004, DIR006, DIR007, DIR008, DIR009]
+
+Other differences:
+
+- A05 is repeated more often per trace and appears earlier, A18 is repeated less often per trace and appears later, and A13 is repeated more often per trace. [OCC001, OCC003, OCC007, POS002, POS007]
+- A05 and A12 change successors: A05 now goes to A02 in about 47 in 100 of outgoing transitions, and A12 now goes to A05 in about 49 in 100 instead of A18 in about 49 in 100 before. [DIR001, DIR005]
+- A02's event position shifts slightly later, from median about 0.41 to 0.45. [POS001]
+- Step-distance distributions for some existing pairs shift, for example A08 followed by A05 and A18 followed by A02. [LAG008, LAG026]

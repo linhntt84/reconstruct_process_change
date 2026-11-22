@@ -1,0 +1,12 @@
+### Observed differences
+
+- Branch choice after A01 shifted slightly toward A06: in the earlier window, about 54 in 100 of A01's outgoing transitions went to A05 and about 46 to A06, while in the later window the split is about 51 to A05 and 49 to A06; the difference is larger than in about 84 of 100 random re-splits. A01 itself fired about 4.3 times per trace before versus about 4.1 in the later window, appearing in every trace in both. [DIR001, OCC001]
+- Branch choice after A02 shifted slightly toward A09: about 46 in 100 of A02's outgoing transitions went to A09 in the earlier window (54 to A10), versus about 51 to A09 in the later window (49 to A10); the difference is larger than in about 86 of 100 random re-splits. A02 rose from about 1.9 to 2.1 occurrences per trace, and A09 appeared in about 47 in 100 traces before versus 53 in 100 in the later window (mean 0.85 to 1.06 occurrences). [DIR002, OCC002, OCC008]
+- A05 and A08, which show identical profiles, appeared in about 74 in 100 traces before versus 69 in 100 in the later window, with mean occurrences falling from about 2.3 to 2.05; A06, A07 and A12 (also identical profiles) repeated in about 49 in 100 traces before versus 56 in 100 after, with participation unchanged at every trace. These shifts are modest — random re-splits produce differences at least this large in roughly a third to two thirds of comparisons. [OCC004, OCC007, OCC005, OCC006, OCC009]
+- A03's participation rose from about 49 in 100 traces to 56 in 100, a difference exceeded by about two thirds of random re-splits, while routing out of A04, A07 and A11 is essentially unchanged between the windows. [OCC003, DIR003, DIR004, DIR005]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The candidate signals — slightly shifted branch shares after A01 and A02 with matching small movements in occurrences — reach only moderate empirical strength (random re-splits of the same data produce differences at least this large in about one of seven comparisons), and no screening expectation is provided to judge whether the number of qualifying items exceeds what a stable process typically yields. [DIR001, DIR002, OCC002, OCC008]

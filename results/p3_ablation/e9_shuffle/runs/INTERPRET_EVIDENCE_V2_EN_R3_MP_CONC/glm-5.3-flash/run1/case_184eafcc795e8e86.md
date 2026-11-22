@@ -1,0 +1,19 @@
+### Observed differences
+
+- Two activities are new to the later window: A01 and A02 were not observed in any of the 200 earlier traces, while each occurs exactly once in all 200 later traces [OCC001, OCC002].
+- In the later window, A01 appears at about 73% of the trace length and A02 is the final event of every trace; in the earlier window the final event was always A12, sitting at the last position in all 200 traces [POS001, POS002, POS005].
+- The exit from the repeating A06/A13 block changed. Earlier, A06's outgoing transitions split about 50/50 between A13 and A04, and A13's split about 50/50 between A04 and A06. Later, A06 and A13 each lead to A01 in roughly half of their transitions (48–52 in 100) and no longer lead directly to A04, while every observed outgoing transition of A01 leads to A04 [DIR002, DIR004, DIR001].
+- A12 gained a successor: earlier it ended each trace with no observed outgoing transitions; later all of its outgoing transitions lead to A02 [DIR003, POS005].
+- Existing activities shifted slightly earlier in the trace: mean position fell from about 0.73 to 0.65 for A06, from 0.72 to 0.65 for A13, and from 0.84 to 0.81 for A04 [POS004, POS006, POS003].
+- Spacing changed accordingly: gaps from A13 or A06 to A12 moved from mostly two–three steps to three–five steps (for A13→A12, two-step gaps fell from about 30 in 100 to zero while three- to five-step gaps grew), and the one-step adjacency from A06/A13 to A04, seen in about 20 in 100 cases earlier, disappeared [LAG001, LAG002, LAG003, LAG004].
+- Relations with the new activities: earlier, A01 and A02 never co-occurred with A04, A06, A12 or A13; later they co-occur with each of them in every trace, with stable orders A06 and A13 before A01, A01 before A02, A12 before A02, and A01 before A12 [REL001, REL003, REL004, REL005, REL007, REL008, REL009]. The A01–A04 and A04–A02 orderings are less rigid: A01 precedes A04 in about 49 in 100 later traces and A04 precedes A02 in about 49 in 100, with the remainder showing mixed or repeated order [REL002, REL006].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports one specific structural possibility: A01 was inserted between the repeating A06/A13 block and A04, and A02 was appended as the new closing activity after A12. In the earlier window, traces cycled through A06 and A13, left the block directly to A04 and ended with A12; in the later window the block exits to A01, A01 leads on to A04, and traces close with A12 followed by A02 [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, POS002, POS005].
+
+The supporting signs are direct and mutually consistent: participation in both new activities moved from 0 to 200 of 200 traces; the redirection is visible in the successor profiles of A06, A13 and A12; the relation items show the new activities co-occurring with all existing activities in fixed positions; and the position and gap shifts (A06/A13/A04 moving earlier, loop-to-A12 distances growing, loss of direct A06/A13→A04 adjacency) all follow from one insertion plus one appended final step. The volume of qualifying evidence (25 control-flow items against roughly 0.19 expected without any change) is far beyond what random re-splits of unchanged behaviour produce [OCC001, OCC002, DIR001, DIR002, DIR003, DIR004, REL001, POS001, POS002, POS005, LAG001, LAG004].
+
+Limitations: the exact arrangement of A01 relative to A04 is not fully pinned down, since their order is recorded as A01-first in only about half of the later traces and mixed or repeated in the other half, even though all of A01's observed outgoing transitions lead to A04 [REL002, DIR001]. An important competing explanation the evidence cannot rule out is that the two windows sample different mixes of process variants rather than a single modified process; the evidence also covers control flow only, so no statement about timing or resource allocation is possible [REL002, DIR001].

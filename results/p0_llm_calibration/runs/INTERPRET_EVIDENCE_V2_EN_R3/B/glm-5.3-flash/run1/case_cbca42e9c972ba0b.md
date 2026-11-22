@@ -1,0 +1,27 @@
+### Observed differences
+
+- The clearest difference concerns repetition of four activities. In the earlier window, A30, A31, A36 and A37 each occurred essentially once per trace (mean about 1.0, present in every trace, recurrence support about 0.005); in the later window, each occurs about 3.1 times per trace, so repeats make up roughly two thirds of their occurrences (recurrence support about 0.69), while participation stays at 100% in both windows. [OCC001, OCC002, OCC003, OCC004]
+- The internal order of this group dissolved. Earlier, A30 came before A31, A36 and A37 in about 99 in 100 traces, A36 before A37 similarly, while A31 and A36 appeared in both orders (about 52 vs 48 in 100); in the later window, every pair among the four is interleaved or repeated in about 69 in 100 traces, with "first-before-second" shares of only about 18–31 in 100. [REL009, REL010, REL011, REL012, REL013, REL014]
+- A37's routing changed accordingly: earlier, about 98.5 in 100 of its outgoing transitions led to A25; in the later window, about 67 in 100 lead to A30 and about 32 in 100 to A25, and A37's observed outgoing transitions grew from about 200 to about 621, matching the roughly tripled occurrence count. [DIR004]
+- Immediate succession within the group largely disappeared: earlier, A31 and A36 followed each other directly in whichever order they ran, and A30 reached them within one or two steps; in the later window, adjacency at one step drops to about 10–13 in 100, and only about a quarter of these within-pair successions fall within five steps at all, versus nearly all earlier. [LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+- The relative positions of the four activities became about twice as spread out (e.g., A30's standard deviation about 0.06 before vs 0.13 after) while their mean positions stayed similar (about 0.40–0.50). [POS003, POS004, POS005, POS006]
+- A15 and A16 still co-occur with all four activities in every trace, but the relation shifted from "A15/A16 before the block" in about 56 in 100 traces (interleaved about 44) to interleaved in about 82 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- Around A10, outgoing transitions became much more dispersed — to A16 from about 84% to about 32%, with many additional successors — and A10→A16 within five steps now appears in 18 traces instead of 48, rarely immediately; A10→A30 also lost its typical five-step distance. [DIR002, LAG001, LAG002]
+- Smaller shifts: A15 now leads to A16 in about 92% of its transitions (about 85% before); A43→A44 (about 98% → 91%) and A45→A46 (about 99.5% → 93%) each lost a few percentage points to other successors; A08's successor profile changed completely but rests on only 7 vs 21 observed transitions. [DIR003, DIR005, DIR006, DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the activities A30, A31, A36 and A37 are executed repeatedly rather than once per trace. Earlier, the group ran a single pass — A30 first, then A31 and A36 back-to-back in either order, then A37, which exited to A25 — whereas later the group is traversed about three times per trace, its fixed internal sequence is replaced by interleaved repetitions, and A37 typically leads back to A30 for the next pass, with the exit to A25 remaining for about one third of its transitions, consistent with a single exit after the repeated passes. [OCC001, OCC002, OCC003, OCC004, REL009, REL012, DIR004]
+
+The hypothesis is direct and consistent: the occurrence counts change on the activity's own scale (mean about 1.0 → about 3.1 per trace with participation unchanged at 100%), and the ordering, lag, position and successor evidence all point the same way; the volume of qualifying items (39, against fewer than 1 expected for an unchanged process) also cannot be explained by random re-splitting of the two windows. [OCC001, DIR004, LAG006, POS003, REL009]
+
+Limitations: the exact shape of the repetition is not established — A37→A30 is observed directly, but A30→A31 is rarely immediate in the later window, so the traversals may interleave loosely rather than cycle strictly, and whether other activities belong inside the repeated group is not shown. The main competing explanation the evidence cannot rule out is a shift in the mix of process variants: the repeating behaviour was virtually absent earlier (recurrence support about 0.005), so a rare variant becoming dominant would look similar, although pure sampling noise is implausible given the screening expectation. [OCC001, DIR004, LAG004]
+
+Other differences:
+- A15 and A16 sit slightly earlier in relative position (mean about 0.20 → 0.17 and 0.24 → 0.19), consistent with the later part of the trace being lengthened by the repeated group. [POS001, POS002]
+- A10's outgoing transitions are more dispersed and its immediate succession to A16 is rarer, and A10→A30 lost its typical five-step distance; both rest on moderate to small observation counts (57 vs 37, and 48 vs 18 traces). [DIR002, LAG001, LAG002]
+- A15 leads to A16 somewhat more often (about 85% → 92% of its transitions). [DIR003]
+- A43 and A45 show minor redistributions of their dominant successors. [DIR005, DIR006]
+- A08's successor set changed completely, but with only 7 vs 21 observed transitions this is weakly supported. [DIR001]

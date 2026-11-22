@@ -1,0 +1,22 @@
+### Observed differences
+
+- Three activities that never appeared in the earlier window — A32, A33 and A38 (0 of 200 traces each) — each run in about half of the traces in the later window (98–100 of 200), once per case, around the middle of the case (median event position ≈ 0.5). [OCC004, OCC005, OCC006, POS003, POS004, POS005]
+- The continuation out of A26 was rerouted: earlier, about 95 in 100 of A26's observed outgoing transitions led directly to A27; later, only about 50 in 100 do, while about half go to one of the previously unobserved activities (A33 ≈ 18%, A38 ≈ 17%, A32 ≈ 15%). [DIR006]
+- A27 dropped from running in every trace of the earlier window (200 of 200) to about 52 in 100 traces (103 of 200). [OCC003]
+- The three activities hand over to one another in varying order and then reach A28: from A32 the next activity is A38 (≈35%), A33 (≈34%) or A28 (≈27%); from A33 it is A32 (≈41%), A38 (≈30%) or A28 (≈24%); from A38 it is A28 (≈43%), A33 (≈28%) or A32 (≈26%). [DIR007, DIR008, DIR009]
+- The spacing between A26 and A28 changed accordingly: earlier the pair occurred mostly 2 event positions apart (about 90 in 100 occurrences); later the gaps split between 2 positions (about 50 in 100) and 4 positions (about 46 in 100), consistent with the three activities lying between A26 and A28. [LAG003]
+- In a separate part of the process, A04 became a frequent early step: its trace participation rose from about 19 to 60 in 100, its mean event position moved from ≈0.54 to ≈0.21 of the case, A14 now continues to A04 in about 54 in 100 of its outgoing transitions (A15 falling from ≈86 to ≈44), and A04 in turn leads to A15 in about 87 in 100 of its transitions (earlier its continuations were spread over many activities, the largest being A15 at ≈20). [OCC001, POS001, DIR004, DIR001]
+- The A14→A04 pair is now almost always adjacent (1 position apart in ≈96 of 100 later occurrences; the earlier side rests on only 14 occurrences), and the A14→A15 gap lengthened from mostly 1 position (≈46 in 100) to mostly 2 positions (≈31 in 100, versus ≈24 at 1 position). [LAG001, LAG002]
+- Minor, thinly supported shifts: A06's participation fell from about 20 to 4 in 100 traces (only 8 later traces contain it) with a changed outgoing mix, and A10's outgoing mix shifted on few observations (28 before, 22 after). [OCC002, DIR002, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, about half of the cases run a previously unobserved mid-process stage consisting of A32, A33 and A38: out of A26, the flow that earlier continued almost always straight to A27 now splits, with about half of the continuations passing through these three activities in varying mutual order before reaching A28, while the direct route via A27 remains for the other half; A27 correspondingly fell from running in every case to about half of the cases. The rerouting is visible directly in A26's successor profile, the three activities' outgoing transitions interconnect and lead to A28, their participation and mid-case positions agree, and the changed A26→A28 spacing matches the detour; the 25 qualifying control-flow items far exceed the roughly 0.58 expected for an unchanged process, so chance cannot account for the pattern as a whole. [DIR006, DIR007, DIR008, DIR009, OCC003, OCC004, OCC005, OCC006, POS003, POS004, POS005, LAG003]
+
+Limitations: zero participation in the earlier window shows only that A32, A33 and A38 were not observed then, so a pre-existing but rare branch that later became frequent cannot be ruled out; and the items describing the trio draw on the same traces, so they are not independent confirmations of one another. [OCC004, OCC005, OCC006]
+
+Other differences:
+- A second, separate structural difference: A04 now typically runs immediately after A14 and before A15 in about half of the later cases, where earlier A14 led almost always directly to A15; this rests on the successor change at A14, A04's outgoing concentration on A15, its earlier position, and the lengthened A14→A15 gap. [DIR004, DIR001, OCC001, POS001, LAG001, LAG002]
+- A06 became much rarer (about 4 in 100 traces, from about 20) and A10's outgoing mix shifted, but both rest on very few later observations and are only weakly supported. [OCC002, DIR002, DIR003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "fd74d13b7d9c5b0ab32fcd50be7811562514fdc96eb5dabc0edf1e25a1f4d552",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:29:41.899445+00:00",
+  "finished_at_utc": "2026-11-15T02:32:21.485877+00:00",
+  "latency_seconds": 159.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21700,
+    "prompt_tokens": 28127,
+    "total_tokens": 49827,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19930,
+      "text_tokens": 1770
+    },
+    "cost": 0.01506905
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67269,
+  "text": "### Observed differences\n\n- The execution order of two groups of activities is reversed in the later window. In the earlier window A20, A22 and A23 sat in the first half of the trace (mean relative position about 0.39–0.40) while A19, A21 and A24 sat late (about 0.67–0.69); in the later window A19, A21 and A24 sit at about 0.35 and A20, A22 and A23 at about 0.64. [POS002, POS003, POS004, POS005, POS006, POS007]\n- Pairwise order flips are near-complete wherever the activities co-occur. Before, A20 preceded A25 in about 98 of 100 traces containing both; in the later window A25 precedes A20 in all 200 traces. A20 preceded A19 in essentially every earlier co-occurrence, and now A19 precedes A20 in all 88 of its later co-occurrences; A22 preceded A21 in about 37 of 100 traces before, and now A21 precedes A22 in all of its co-occurrences. A25 and A29 keep a middle position between the groups in both windows (A25 mean position about 0.45 → 0.39; A29 about 0.65 → 0.58), so the two groups exchanged sides around them. [REL010, REL015, REL017, REL019, REL024, REL027, POS008, POS009]\n- Successors at the group boundaries changed accordingly. A19, A21 and A24 led to A30 in about 95–99 of 100 observed outgoing transitions before and now lead to A25; A20, A22 and A23 led to A25 in about 30–39 of 100 outgoing transitions before and now lead to A30 in about 32–34 of 100, with A25 no longer observed as their successor. A29 now leads to A20, A22 and A23 (about 30–33 of 100 each) where it previously led to A19, A21 and A24; A40 now leads mainly to A02 (about 31 of 100) and A19/A21/A24, where it previously led to A20/A22/A23. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009]\n- A02 became far more frequent and now sits early: it appears in about 8 of 100 traces before versus about 34 of 100 in the later window (16 versus 68 of 200 traces), its mean position falls from about 0.51 to 0.35, it follows A40 within one step in essentially all later observations, and its outgoing transitions now go mainly to A19 (about 37 of 100), A24 (27) and A21 (24); its earlier profile rested on only about 16 outgoing transitions spread thinly over many targets. [OCC001, POS001, DIR001, LAG005, REL001, REL002, REL009]\n- Step distances corroborate the reshuffle: A20 now follows A29 within 1–3 steps in 200 later traces (essentially unobserved before, 1 case), A30 follows A29 about two steps later than before (typical gap about 2 → 4), and A25 follows A40 about two steps sooner (typical gap about 4 → 2–3). [LAG003, LAG004, LAG007]\n- A41 recurs more often within traces: about 1.5 → 1.8 occurrences per trace, with recurrence support up from about 0.33 to 0.40, while it still appears in every trace. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the relative execution order of two groups of activities is reversed: A19, A21 and A24, which previously executed after A20, A22 and A23, now execute before them, with A25 and A29 remaining between the two groups; consequently A30, which previously followed A19, A21 and A24, is now reached after A20, A22 and A23 and after A29. The same reshuffle includes A02 becoming a frequent early step between A40 and the A19/A21/A24 group, rising from about 8 to about 34 of 100 traces. [POS002, POS003, POS004, POS005, POS006, POS007, REL010, REL015, REL017, REL019, REL024, REL027, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG004, OCC001, POS001, DIR001, LAG005]\n\nSupporting signs: the order reversals are observed directly within co-occurring traces rather than inferred from positions alone, all group members occur in essentially every trace in both windows (so this is not a rare variant appearing in one window), position shifts and successor changes point in the same direction, and all 30 relation items are consistent with the reversal. The number of qualifying items (58, all control-flow) is many times the roughly 0.75 expected for an unchanged process, so chance sampling cannot account for the ensemble. [REL010, REL017, REL024, DIR002, DIR004, POS003, LAG004]\n\nLimitations: many items describe the same trace-level reshuffle, so they are not independent confirmations; positions are event positions, not clock times; and the evidence cannot establish whether the ordering constraint between the groups itself changed or whether upstream routing (entry via A40 and A29 now feeds A02/A19/A21/A24 first) produces the same reversal — both fit the data. The mix within the early group also shifted (A19 up to about 44 of 100 traces, A21 down to about 28–29), which the order hypothesis alone does not explain. [DIR008, DIR009, POS002, POS004, POS007]\n\nOther differences: A41 now recurs more often within traces (about 1.5 → 1.8 occurrences per trace; recurrence support about 0.33 → 0.40) while still appearing in every trace. [OCC002]",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

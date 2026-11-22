@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_94d6e62e9df05621.json",
+  "evidence_sha256": "aeceaa12ca4675cc97741794ef820429b58e0c725a0f00f4b9db81116ef007fa",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:31:47.363289+00:00",
+  "finished_at_utc": "2026-11-15T01:32:44.392718+00:00",
+  "latency_seconds": 57.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7161,
+    "prompt_tokens": 4085,
+    "total_tokens": 11246,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6430,
+      "text_tokens": 731
+    },
+    "cost": 0.00419325
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27209,
+  "text": "### Observed differences\n\n- In the earlier window, A07 and A08 were always executed together: each appeared in about 53 in 100 traces, and every trace containing one contained both — neither was ever seen alone. Their relative order was not fixed: A07 came before A08 in about 28 in 100 traces and A08 before A07 in about 25 in 100, with no interleaving or repetition. [REL001, OCC001, OCC002]\n- In the later window the two never share a trace: A07 appears alone in about 23 in 100 traces, A08 alone in about 29 in 100, and neither appears in about 49 in 100. [REL001]\n- Both activities also run in fewer cases: A07 fell from about 53 to about 23 in 100 traces and A08 from about 53 to about 29 in 100; neither activity repeats within a trace in either window. [OCC001, OCC002]\n- Their routing changed accordingly. Earlier, about 65 in 100 of A07's outgoing transitions went to A08 and about 61 in 100 of A08's went to A07, with A01 (roughly a quarter) and A05 (roughly an eighth) as minor successors. In the later window no transition between A07 and A08 is observed: both lead mainly to A01 (about 72 in 100) and otherwise to A05 (about 28 in 100). These later routing profiles rest on only 18 and 17 observed outgoing transitions. [DIR001, DIR002]\n- A08's typical event position moved slightly later, from a median of about two-thirds of the trace to the final position (mean about 0.72 to 0.82 on the position scale); positions are event indices, not clock times. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A07 and A08 changed from being executed together in the same cases to being mutually exclusive alternatives. Earlier, every case containing either activity contained both (about 53 in 100 traces), in either order, and each typically led to the other; in the later window they never co-occur, appearing separately in roughly 23 (A07) and 29 (A08) in 100 traces, and both now lead mainly to A01 instead of to each other. Both activities also occur in fewer cases than before. The screening qualified 6 control-flow items where about 0.11 would be expected without a change, so this set of differences is unlikely to be a sampling artefact as a whole; the core relation rests on direct relational evidence with substantial support in both windows (about 106 and 102 traces containing either activity). [REL001, DIR001, DIR002, OCC001, OCC002]\n\nLimitations: the after-window routing shares rest on only about 17–18 outgoing transitions per activity, so the exact new proportions — and the complete absence of transitions between A07 and A08 — are estimated from few observations. A competing explanation the evidence cannot fully rule out is that part of the apparent mutual exclusivity and routing pattern is a finite-sample effect, since a rare variant can appear in only one window. [DIR001, DIR002, REL001]\n\nOther differences: A08's typical event position shifted later (median from about two-thirds of the trace to the final position); this is a positional observation, does not by itself show the activity was moved, and plausibly follows from A08 no longer being paired with A07. [POS001]",
+  "case_id": "case_94d6e62e9df05621",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

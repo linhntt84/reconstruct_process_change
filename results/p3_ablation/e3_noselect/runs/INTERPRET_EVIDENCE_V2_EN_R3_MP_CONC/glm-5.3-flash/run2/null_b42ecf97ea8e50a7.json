@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_b42ecf97ea8e50a7.json",
+  "evidence_sha256": "676a357c17bff0e46e381cd7b83928b337b5d8c6da29877f8ad1311795f45fe3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:02:14.044285+00:00",
+  "finished_at_utc": "2026-11-15T09:05:22.289731+00:00",
+  "latency_seconds": 188.24,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28105,
+    "prompt_tokens": 19018,
+    "total_tokens": 47123,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25926,
+      "text_tokens": 2179
+    },
+    "cost": 0.0169052
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 87501,
+  "text": "### Observed differences\n\n- The two-way branch after A39 reversed its preference: in the earlier window about 54 in 100 continuations of A39 went to A15 and about 46 to A14; in the later window A14 is the more common continuation (about 53 in 100) and A15 falls to about 47. A14 appears in 92 of 200 traces before and 106 of 200 after, A15 in 108 before and 94 after — exactly complementary in both windows, as expected when every case takes one of the two branches. [OCC013, OCC014, DIR025]\n\n- In the later window, the repeating block around A37 and A38 runs more often: A38 appears in about 51 in 100 traces (about 44 before), with mean occurrences per trace up from 0.71 to 0.86 and the share of traces in which it repeats up from about 16 to 21 in 100; A37 rises from about 16 to 21 in 100 traces, with repetition up from about 6 to 11 in 100. Consistently, A11 routes to A38 more often (share of continuations about 0.26 to 0.31) and to A13 less (about 0.19 to 0.16), and A13 itself appears in about 27 in 100 traces versus about 32 before. [OCC012, OCC023, OCC024, DIR009]\n\n- In the later window, the balance inside the A16–A19 group tips toward A16 and A18: A18 appears in about 54 in 100 traces (about 47 before) and A16 in 50 (about 46 before), while A19 falls to 47 (about 54 before) and A17 to 50 (about 54 before); after A25 the share continuing to A18 rises from about 0.22 to 0.29, and A19 continues more often to A16 (about 0.20 to 0.33). [OCC015, OCC016, OCC017, OCC018, DIR012, DIR013, DIR015]\n\n- Smaller share shifts appear at other branch points: after A26 the shares to A33 and A34 rise while those to A32 and A35 fall, and the A32 and A34 splits each move about 10 points (toward A27 and toward A35 respectively), matching A34/A35 participation rising to about 53 in 100 traces and A32/A33 falling to about 47; after A41 the share to A44 rises from about 0.61 to 0.66; around A20, A30 and A31 the splits redistribute (for example A20→A30 up from about 0.30 to 0.40). [OCC019, OCC020, OCC021, OCC022, DIR014, DIR016, DIR017, DIR019, DIR021, DIR027]\n\n- The two alternative activity groups A01/A03/A04/A05 and A02/A06/A07/A08 drift slightly apart: in the later window each activity of the first group appears in about 52 in 100 traces (about 55 before) and each of the second in about 48 (about 45 before), with internal reshuffles such as the share of A06's continuations going to A08 halving (about 0.52 to 0.26) while the share going to A07 doubles — the largest single directional difference in the evidence — and A01→A03 falling from about 0.38 to 0.25. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR001, DIR006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe main hypothesis supported by the evidence is a shift in how often the two existing paths after A39 are taken: in the earlier window the branch to A15 was the more common continuation of A39 (about 54 in 100, versus 46 to A14), while in the later window the branch to A14 is taken more often (about 53 in 100, versus 47 to A15). The change is observed directly in the successor shares at A39 and matches the participation counts exactly — A14 in 92 of 200 traces before and 106 after, A15 in 108 before and 94 after, complementary in both windows — and both alternatives remain common throughout, so this is a re-weighting of existing paths rather than an activity or path being added, removed or bypassed. The main limitation is that the directional and occurrence items describe one underlying behaviour rather than independent confirmations, and with 200 traces per window a swing of about 7 percentage points could in principle be a large sampling fluctuation; that competing explanation cannot be fully ruled out, although the agreement in direction and size across the two views makes the routing shift the best-supported reading. [DIR025, OCC013, OCC014]\n\nOther differences: the block around A37 and A38 is executed more often in the later window — more traces contain it, it repeats within traces more often, and A11 routes to A38 more often and to A13 less often, with A13's participation falling to about 27 in 100 traces; smaller routing rebalances occur inside the A16–A19 group (toward A16 and A18), after A26 and at the A32/A34 splits (toward A33/A34 and toward A27/A35), after A41 (toward A44), around A20/A30/A31, and between the A01–A05 and A02–A08 alternative groups (about 55/45 moving to 52/48). For these smaller shifts, ordinary sampling variation between the two windows remains a competing explanation that the evidence cannot exclude, since several of them carry only moderate empirical strength. [OCC012, OCC015, OCC016, OCC017, OCC018, OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, DIR009, DIR014, DIR015, DIR016, DIR017, DIR018, DIR019, DIR021, DIR027]",
+  "case_id": "null_b42ecf97ea8e50a7",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

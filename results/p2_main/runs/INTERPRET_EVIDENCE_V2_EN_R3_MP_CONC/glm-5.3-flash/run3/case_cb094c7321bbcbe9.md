@@ -1,0 +1,11 @@
+### Observed differences
+
+- In the earlier window, A04 appeared exactly once in every trace (200 of 200 cases, mean 1.0 occurrence per trace) and always as the final activity (mean position 1.0). In the later window, A04 appears in none of the 200 traces. [OCC001, POS002]
+- In the earlier window, every observed outgoing transition of A02 led to A04 (share 1.0). In the later window, A02 still occurs in every trace, but no outgoing transition of A02 is observed at all, and its mean position moved from 0.8 to 1.0 — A02 is now the last event of the trace. [DIR001, POS001]
+- In the earlier window, A02 and A04 co-occurred in 100% of traces, always in the order A02 before A04. In the later window, co-occurrence is 0% and A02 appears without A04 in 100% of traces. [REL001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A04 was removed from the process, or at least ceased to be executed: in the earlier window it was a mandatory final step run once after A02 in every case, while in the later window it is unobserved and A02 has become the terminal event of each trace. The support is direct and consistent — A04's participation fell from 200 of 200 traces to 0 of 200, the fixed A02→A04 succession disappeared entirely, and A02's lack of observed outgoing transitions together with its end-of-trace position indicates it now closes the case. The five qualifying items all describe this one underlying trace-level difference and are not independent confirmations of each other; the screening comparison (5 items against roughly 0.02 expected without change) makes chance sampling implausible as an explanation for the set as a whole. As a limitation, zero participation strictly means only that A04 was not observed in the later sample, so a change that made A04 extremely rare rather than fully removed cannot be entirely excluded; the evidence also covers only A02 and A04, so the behaviour of any other activities remains unseen. [OCC001, POS002, DIR001, POS001, REL001]

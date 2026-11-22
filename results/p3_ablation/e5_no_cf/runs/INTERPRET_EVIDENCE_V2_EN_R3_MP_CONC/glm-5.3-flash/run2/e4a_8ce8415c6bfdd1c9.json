@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_8ce8415c6bfdd1c9.json",
+  "evidence_sha256": "df6977ec1ff7c696678e94c726da9753413b5042be9a43c9d39a775413231d10",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:27:02.614763+00:00",
+  "finished_at_utc": "2026-11-15T07:27:40.081010+00:00",
+  "latency_seconds": 37.47,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5425,
+    "prompt_tokens": 2462,
+    "total_tokens": 7887,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4865,
+      "text_tokens": 560
+    },
+    "cost": 0.0030817999999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 19992,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A39 and A41 roughly doubled: in the earlier window these gaps averaged about 1.0 hours (median about 1.0; middle half from about 0.9 to 1.1 hours), while in the later window they averaged about 2.0 hours (median about 2.0; middle half from about 1.8 to 2.2 hours) — an increase of about 1 hour per occurrence [TWAIT001].\n- The shift affects the whole distribution rather than only slow cases: the 25th, 50th and 75th percentiles each rose by roughly 0.9–1.1 hours, and the spread grew from about 0.17 to about 0.33 hours, roughly in proportion to the level [TWAIT001].\n- The behaviour is common in both windows, with about 157 measured gaps in the earlier window and about 173 in the later one, so this is not a rare variant [TWAIT001].\n- For context: 20 time units were screened, 1 item qualified, whereas about 0.01 would be expected by chance if nothing had changed; the observed difference is larger than in about 9995 of 10,000 random re-splits of the pooled data [TWAIT001].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nOne explanation supported by the evidence is a change in timing between A39 and A41: the elapsed time from the completion of A39 to the completion of A41 increased from about 1 hour per occurrence in the earlier window to about 2 hours in the later window [TWAIT001]. The hypothesis is direct (the indicator measures exactly this interval), consistent (all quantiles moved up together by a similar amount, indicating a level shift of the whole distribution) and well observed (157 versus 173 measurements) [TWAIT001]. Chance is an unlikely explanation: 1 time item qualified where about 0.01 were expected without a change, and the difference exceeds about 9995 of 10,000 random re-splits [TWAIT001].\n\nLimitations: TWAIT is elapsed time between consecutive completion events, so the evidence cannot show whether the extra hour reflects longer waiting, longer processing, or a delay at a handover. An important competing explanation is a change in the mix of cases taking the A39→A41 step (for example a larger share of a slower case type); the evidence set contains only this timing item and cannot rule that out [TWAIT001].\n\nOther differences: the A39→A41 gap was measured slightly more often in the later window (about 173 versus about 157 occurrences), a small difference that sampling variation could explain [TWAIT001].",
+  "case_id": "e4a_8ce8415c6bfdd1c9",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

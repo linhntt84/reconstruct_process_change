@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "ef0e62e93131332207d03eae09d072550897958f76884691e47497a9e0ec37d7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:43:22.060305+00:00",
+  "finished_at_utc": "2026-11-15T07:45:33.392076+00:00",
+  "latency_seconds": 131.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19328,
+    "prompt_tokens": 34223,
+    "total_tokens": 53551,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17455,
+      "text_tokens": 1873
+    },
+    "cost": 0.014797449999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57065,
+  "text": "### Observed differences\n\n- In the earlier window, the activities A26, A17, A15, A18, A19, A21, A20 and A27 formed one fixed chain in that order: each of A15, A17, A18, A19, A20, A21 and A26 sent all of its outgoing transitions to a single successor (A15→A18, A17→A15, A18→A19, A19→A21, A21→A20, A20→A27, A26→A17, each with a 100% share), and distances were constant (for example A15 to A20 always 4 steps apart, A15 to A27 always 5). [DIR012, DIR013, DIR014, DIR015, DIR016, DIR017, DIR019, LAG003, LAG005]\n- In the later window, this chain is rewired: A15 sends about 10 in 100 of its outgoing transitions to each of A19, A20 and A21 (A18 down to about 68 in 100); A17 sends about 27 in 100 to A19 and 11 to A21 (A15 down to 56 in 100); A18 sends about 52 in 100 directly to A27, an edge not observed before, and only about 15 in 100 to A19; A19, A20 and A21 send shares back to A15/A17/A18 (for example A20 to A15 about 20 in 100, A19 to A17 about 24 in 100); and A26 sends about 47 in 100 to A19 instead of always to A17. [DIR012, DIR013, DIR014, DIR015, DIR016, DIR017, DIR019]\n- The order between the two groups reversed or mixed. Before, A15, A17 and A18 preceded A19, A20 and A21 in 100 in 100 traces; after, A19 precedes A18 in about 85 in 100 traces, A19 precedes A15 in about 74 in 100, A21 precedes A18 in about 68 in 100, while A15 and A21 now occur in both orders roughly 50/50. All these pairs still co-occur in every trace and no interleaving is detected, so each trace still has one clean order — it is reversed for many pairs. [REL001, REL003, REL007, REL008, REL009]\n- Relative positions moved consistently: A15, A17 and A18 occur later in the trace (mean relative position up by about 0.03–0.06), A19, A20 and A21 earlier (down by about 0.03–0.06); all eight activities still appear in every trace in both windows, so none was added or removed. [POS001, POS002, POS003, POS004, POS005, POS006]\n- Fixed step distances dissolved and old ordered pairs became rarer: A15 to A18 was always 1 step apart and is now 1 step in about 68 in 100 cases; A18 to A27 was always 4 steps and is now most often 1 step (about 52 in 100); the ordered pair A15-then-A19 within five steps appears in 52 of 200 later traces (200 of 200 before), A18-then-A21 in 64 (before 200), A18-then-A20 in 97 (before 200). [LAG001, LAG013, LAG002, LAG012, LAG011]\n- Outside this block, participation shifted in mirror image between two activity groups: A01, A03, A04 and A05 appear in about 48 in 100 later traces versus 40 in 100 earlier, while A02, A06, A07 and A08 fall from about 60 to 52 in 100; A39 also participates less (about 60 in 100 versus 66 in 100), with A38 routing more to A40 and A39 routing more to A42. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC022, DIR029, DIR030]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints and routing among the block A15, A17, A18, A19, A20, A21, together with its links to A26 and A27, were restructured: a fixed sequence (A26→A17→A15→A18→A19→A21→A20→A27) gave way in the later window to a web in which A15/A17/A18 can pass directly to A19/A20/A21, A19/A20/A21 can precede A15/A17/A18, A18 commonly connects straight to A27, and A26 can enter at A19, while every activity keeps appearing in every trace. The change is shown directly and coherently by four independent views — successor profiles changing from one 100% successor to several (DIR), pair orders flipping from 100%/0% to mixed or reversed (REL), positions shifting in matching directions (POS), and fixed step distances dissolving (LAG); about 46 items, each more extreme than in roughly 199 of 200 random re-splits, all describe this one region, far beyond what an unchanged process typically produces, and the perfectly deterministic earlier profiles make the later spread a qualitative change rather than sampling noise. Limitation: these are aggregate shares, so the evidence cannot show whether every case now draws flexibly among the new transitions or whether the later window mixes cases still following the old chain with cases following a rewired one. [DIR012, DIR014, DIR019, REL001, REL007, POS003, POS004, LAG001, LAG013, LAG002]\n\nOther differences: the mirrored participation shift between A01/A03/A04/A05 and A02/A06/A07/A08 (about 8 in 100 cases each way) is consistent with two existing alternative route groups being taken with different frequencies, but no relational or positional evidence covers these activities, so it stands outside the main hypothesis; milder shifts appear around A38–A42 (A39 less frequent, A38→A40 and A39→A42 more used) and between A12/A13 and A14/A16. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC022, DIR029, DIR030, DIR010, DIR011, OCC013, OCC014, DIR028]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_959be1124672665e.json",
+  "evidence_sha256": "7764aaecefbef74dbfd1c37a46f563c8ef4251f3c599b721e6ea37c9673163a4",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:04:30.128223+00:00",
+  "finished_at_utc": "2026-11-15T01:04:53.821963+00:00",
+  "latency_seconds": 23.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3027,
+    "prompt_tokens": 51545,
+    "total_tokens": 54572,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2474
+    },
+    "cost": 0.0077182660000000005
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 8627,
+  "text": "### Observed differences\n\n- In the later window, activities A02, A03, and A08 are no longer observed at all; they were present in about 47%, 21%, and 47% of traces before, respectively [OCC001, OCC002, OCC004].\n- A07 and A14 are still executed but less often: A07 drops from 47% to 17% of traces, A14 from 47% to 31% [OCC003, OCC005].\n- The routing around A01, A10, and A16 changes: A01's successor shifts from A06/A07/A14 (about 44/31/25%) to A11 (100%) [DIR001]; A10's successor shifts from A08 to A01 [DIR008]; A16's successor shifts from A01 to A06/A07/A14 [DIR011].\n- A05 and A18 no longer lead to A02; instead they lead to A10 (A05: A02 50% to A10 46%; A18: A02 53% to A10 59%) [DIR004, DIR013]. A13 and A19 no longer lead to A03; they now lead to A05/A18 [DIR009, DIR014].\n- A01 moves earlier in the trace (mean position from 0.66 to 0.48), while A16 moves later (0.61 to 0.70) [POS001, POS007]. The lag between A16 and A01 changes from mostly 1 step (56%) to mostly 5 steps (83%) [LAG033].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process was restructured by removing activities A02, A03, and A08, and rerouting the flow so that A10 now leads to A01, A01 leads to A11, and A16 leads directly to A06/A07/A14, bypassing the removed activities. This is supported by the complete disappearance of these activities (OCC, POS, DIR, REL items) and the consistent successor changes. The large number of qualifying items (129 vs 0.85 expected) makes chance an unlikely explanation. A competing explanation that cannot be fully ruled out is that the later window simply does not contain cases that use those activities, but the systematic rerouting of all related edges makes that less plausible.\n\nOther differences: A07 and A14 become less frequent and shift to the very end of the trace (POS004, POS006). Many LAG items show reordering among remaining activities, but these are consistent with the main rerouting.",
+  "case_id": "case_959be1124672665e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

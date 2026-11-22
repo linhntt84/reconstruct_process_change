@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "9bc3fd62e095043d0f8202be0a6793f65c88e31b01451c77ab85ae18f72c1bea",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:39:07.069824+00:00",
+  "finished_at_utc": "2026-11-15T06:39:57.400813+00:00",
+  "latency_seconds": 50.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7140,
+    "prompt_tokens": 3836,
+    "total_tokens": 10976,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6521,
+      "text_tokens": 619
+    },
+    "cost": 0.0041454
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26855,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each appeared exactly once in every trace (participation 100 in 100); in the later window, each appears in about 53 in 100 traces (106 of 200), still at most once per trace and never repeated. [OCC001, OCC002, OCC003]\n- In the earlier window, every observed outgoing transition of A36 went to A14; in the later window, about 53 in 100 of A36's outgoing transitions go to A14 and about 47 in 100 go directly to A21, a successor that was not observed before. [DIR001]\n- In the earlier window, A21 followed A36 four steps later in all observed traces, consistent with A14, A15 and A20 lying between them; in the later window, A21 immediately follows A36 in about 47 in 100 traces, while the four-step gap remains in about 53 in 100. [LAG001]\n- A21 itself still occurs in every trace in both windows; its relative position moved slightly earlier (mean from about 0.43 to about 0.40 of the trace) with somewhat more spread. This matches the new short path but reflects the same traces, so it is not an independent confirmation. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A36 leads directly to A21 in roughly 47 in 100 traces, so the sequence A14 → A15 → A20 is skipped in those traces and these three activities have become optional: they ran in every trace before and in about 53 in 100 traces after. The change is shown directly by relational evidence — A36's routing now includes A21 as a successor for about 47 in 100 of its outgoing transitions, and the A36→A21 distance shifted from always four steps to immediately adjacent in the same share of traces — while the participation drops of A14, A15 and A20 match that share almost exactly and A21 remains mandatory throughout. [DIR001, LAG001, OCC001, OCC002, OCC003, POS001]\n\nThis is unlikely to be sampling noise alone: six control-flow items qualified, many times the roughly 0.3 expected if nothing had changed, and each item's difference exceeds about 995 of 1000 random re-splits of the pooled traces. [OCC001, OCC002, OCC003, DIR001, POS001, LAG001]\n\nLimitations: the windows are 200-trace samples, so the exact 47/53 split carries sampling uncertainty, and the evidence cannot rule out that the direct A36→A21 transition existed before at a rate too low to surface in the earlier window, since a rare variant can appear in only one window. The evidence also cannot show what determines which traces skip the three activities. [DIR001, LAG001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

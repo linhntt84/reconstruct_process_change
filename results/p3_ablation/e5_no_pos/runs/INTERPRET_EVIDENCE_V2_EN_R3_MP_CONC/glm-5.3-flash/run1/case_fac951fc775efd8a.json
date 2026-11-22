@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "42677ea045b191d778f557bb660d402d68abcc8f2fcb8c9daf5dc722b72c4c0a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:26:46.096708+00:00",
+  "finished_at_utc": "2026-11-14T12:28:40.110473+00:00",
+  "latency_seconds": 114.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16702,
+    "prompt_tokens": 23800,
+    "total_tokens": 40502,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14988,
+      "text_tokens": 1714
+    },
+    "cost": 0.011921
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50055,
+  "text": "### Observed differences\n\n- A02 became far more frequent: it appeared in about 8 in 100 traces in the earlier window and about 34 in 100 in the later window (mean occurrences per trace 0.08 vs 0.35). [OCC001]\n- In the later window, A02's observed outgoing transitions go mainly to A19 (37%), A24 (27%) and A21 (24%); earlier they went mainly to A44 (19%), A15 (19%) and A23 (13%). [DIR001]\n- A19, A21 and A24 changed their hand-over: earlier each led almost exclusively to A30 (97–99% of their outgoing transitions); in the later window each leads almost exclusively to A25 (95–100%). [DIR002, DIR004, DIR007]\n- A20, A22 and A23 changed in the opposite direction: earlier each led to A25 in roughly 30–39% of outgoing transitions; in the later window A25 has nearly vanished from their profiles (about 0.5% or less) and A30 receives about 32–34%. [DIR003, DIR005, DIR006]\n- A29 and A40 swapped the groups they feed: earlier A29 fed A21, A19 and A24 (31–38% each) and A40 fed A22, A23 and A20 (27–37%); in the later window A29 feeds A23, A22 and A20 (30–33% each) and A40 feeds A02 (31%), A19 (29%), A21 (20%) and A24 (18%). [DIR008, DIR009]\n- Pairwise orders between these groups reversed almost completely: A20 ran before A25 in 98% of traces earlier and in 0% later (A25 first in 100%, co-occurrence 100% in both); A19 ran before A20/A22/A23/A25/A29 in about 0% earlier versus about 44% later; A21 ran before A22/A23/A25/A29 in about 0.5% earlier versus about 28% later; A24 ran before A25/A29 in 0% earlier versus about 28% later; A22/A23 ran before A24 in about 31% earlier versus about 0.5% later. [REL017, REL010, REL011, REL012, REL013, REL014, REL019, REL021, REL029, REL030, REL015, REL016, REL023, REL026]\n- A02 now co-occurs with and typically precedes these activities: with A20, A22, A23, A25, A29 and A30, co-occurrence rose from 8% to 34% of traces and \"A02 first\" from about 3–5% to about 31–33%; A40 precedes A02 in 31% of traces versus 5% earlier, and immediately precedes it in all 62 later observations of the pair. [REL002, REL004, REL005, REL006, REL007, REL008, REL009, LAG005]\n- Event distances moved consistently with these shifts: the A29→A30 gap changed from mostly 2 steps (about 97% of observations) to mostly 4 steps (about 94%); the A40→A25 gap changed from 4–5 steps (about 99%) to 2–3 steps (100%). [LAG004, LAG007]\n- A41 repeats more often: it is present in all traces in both windows, but mean occurrences per trace rose from about 1.5 to about 1.8 and the share of traces with repeats from about 33 in 100 to about 40 in 100. [OCC002]\n- A few qualifying gap items rest on only 1–2 observations on one side (A02–A25 and A29–A20 earlier; A22–A25 and A40–A22 later) and are not relied on here. [LAG001, LAG002, LAG003, LAG005, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, two blocks of activities exchanged their places in the sequence: A19, A21 and A24, which earlier followed A29 and handed over to A30, now follow A40 and hand over to A25, while A20, A22 and A23, which earlier followed A40 and handed over to A25, now follow A29 and hand over to A30. As part of the same reorganisation, A02 — earlier seen in only about 8 in 100 traces — now occurs in about 34 in 100 and acts as a step between A40 and the A19/A21/A24 block. [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR001, OCC001, REL002, REL009]\n\nThe support is direct and consistent: the successor changes are observed at the source activities themselves, the order reversals are near-complete (often 98–100% one order before and the reverse after, with co-occurrence unchanged or higher), and the distance shifts match the exchange. The screening context reinforces this: 49 control-flow items qualified against roughly 0.7 expected if nothing had changed, so chance alone cannot account for the set. [DIR002, DIR004, DIR007, DIR003, DIR005, DIR006, REL017, REL024, REL025, REL027, REL028, LAG004, LAG007]\n\nLimitations: the evidence shows pairwise relations and local successors but not the complete global sequence, so the exact new ordering (for example, the relative position of A25 and A30, or the internal cycling among A20/A22/A23) is not fully determined; several REL and LAG items describe the same underlying behaviour and are not independent confirmations. A competing reading the evidence cannot rule out is that the two windows sampled a shifted mix of coexisting order variants rather than a single redefined sequence, although the near-deterministic reversals make pure sampling noise unlikely. [REL017, REL024, REL025, LAG004]\n\nOther differences: A41 now repeats more often — present in every trace in both windows, its mean occurrences per trace rose from about 1.5 to about 1.8 and the share of traces with repeated executions from about 33 in 100 to about 40 in 100. [OCC002]",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

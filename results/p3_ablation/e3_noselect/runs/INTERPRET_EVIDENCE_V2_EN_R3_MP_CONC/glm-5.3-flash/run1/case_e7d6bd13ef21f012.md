@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, every one of the 200 traces followed the same chain A02 → A04 → A05 → A06: A04, A05 and A06 each ran in 200 of 200 traces at fixed relative positions (about one-third, two-thirds and last), every observed outgoing transition of A02 went to A04, and every observed outgoing transition of A04 went to A05. [DIR001, DIR003, POS003, POS004, POS005, REL007, REL011, REL012]
+- A01 and A03 were not observed at all in the earlier window (0 of 200 traces each). [OCC001, OCC002, REL002]
+- In the later window, A04 is no longer observed (0 of 200 traces) while A03 appears in every trace (200 of 200), directly after A02: all observed outgoing transitions of A02 now go to A03, A03 always precedes A05, and the A02–A04 and A03–A04 pairs flipped from "together / A04 only" to "A02 only / A03 only". [OCC002, OCC003, DIR001, DIR002, REL006, REL007, REL008, REL009]
+- A01 appears in every later trace (200 of 200) as the final step: A06, which previously sat at the last position with no observed outgoing transitions, now always leads to A01, and both A05 and A06 precede A01 in all traces. [OCC001, DIR004, POS001, POS005, REL004, REL005]
+- A05 and A06 still run in every trace but sit earlier in the trace (A05 from about two-thirds to one-half; A06 from last to three-quarters), which matches one step being swapped and one appended rather than a change in how often they run. [POS004, POS005]
+- Net effect: traces that read A02 → A04 → A05 → A06 in the earlier window read A02 → A03 → A05 → A06 → A01 in the later window, in all 200 traces of each window. [REL001, REL002, REL006, REL009, REL010, POS001, POS002, POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the step between A02 and A05 is carried out by A03 instead of A04, and that a new final step A01 was added after A06 — traces that previously read A02 → A04 → A05 → A06 now read A02 → A03 → A05 → A06 → A01. The change is shown directly from three angles that all point the same way: complete participation flips (A04 from 200 of 200 traces to 0; A03 and A01 from 0 to 200 of 200), successor changes at A02 and A06 exactly where the hypothesis requires them, and relation profiles showing the new ordering in every later trace; all 24 items describe this one structure with none contradicting it, and each difference exceeds those seen in about 995 of 1,000 random re-splits of the pooled data. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+
+Limitations: the evidence cannot distinguish a genuine substitution of A04 by A03 from a relabelling of the same step; "not observed earlier" is strictly a statement about that 200-trace sample, although 0 of 200 makes an occasional occurrence unlikely; the indicator families partly describe the same traces, so they corroborate rather than independently confirm; and no screening baseline is provided, so the judgement rests on the directness and consistency of the items rather than a chance-expectation count. [OCC001, OCC002, OCC003]

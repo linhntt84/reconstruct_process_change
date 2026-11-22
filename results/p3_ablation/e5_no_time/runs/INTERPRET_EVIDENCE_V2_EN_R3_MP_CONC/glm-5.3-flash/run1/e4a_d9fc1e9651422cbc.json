@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_d9fc1e9651422cbc.json",
+  "evidence_sha256": "e6d1ca1784603221f83f3c2f2a7a5d373bf26f3c153bdb95dde22b514f31b115",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:22:49.810590+00:00",
+  "finished_at_utc": "2026-11-14T13:25:05.319163+00:00",
+  "latency_seconds": 135.51,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22450,
+    "prompt_tokens": 31727,
+    "total_tokens": 54177,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20558,
+      "text_tokens": 1892
+    },
+    "cost": 0.01598405
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 74294,
+  "text": "### Observed differences\n\n- In the earlier window every case contained the same activities: A20, the five-activity group A31, A32, A37, A38, A39, A23, A21, A22 and A26 each ran in 200 of 200 traces, with no fixed order among the five group activities. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002, POS004, POS005, REL030]\n- The earlier sequence was A20 → group → A23 → A21 → A22 → A26: the group always ran after A20 and before both A23 and A21, and A22 always followed A21 and A23 and preceded A26. [REL001, REL002, REL007, REL008, REL013, REL014, REL020, POS002, POS004]\n- In the later window, A20, A23, A21 and A26 still run in every trace, but A22 runs in about 91 of 200 traces (about 46 in 100) and each group activity in about 110 of 200 (about 55 in 100); none of these activities repeats within a case in either window. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002, POS004, POS005]\n- A22 and the group, which always co-occurred earlier, are now near-perfect alternatives: they co-occur in about 1 of 200 later traces, about 45 in 100 later traces contain A22 without the group, and about 55 in 100 contain the group without A22. [REL015, REL016, REL017, REL018, REL019]\n- The group changed its placement: earlier it always ran before A23 and before A21; in the later window it runs after A21 (in about 55 of 100 traces, versus never earlier) and still before A26, with its internal order still unfixed. [REL008, REL009, REL010, REL011, REL012, REL020, REL021, REL022, REL023, REL024, REL025, REL030]\n- Successors were rewired: A20 now leads directly to A23 in about 199 of 200 of its observed outgoing transitions (earlier it always led into the group), A21 now leads to the group in about 55 of 100 transitions (earlier always to A22), and each group member now leads to A26 in roughly 14–25 of 100 transitions instead of to A23, which has practically disappeared as their successor. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- Mean event positions moved consistently with this: A23 earlier (0.48 to 0.38), A21 earlier (0.62 to 0.53) and the group later (about 0.40 to about 0.58). [POS002, POS004, POS006, POS007, POS008, POS009, POS010]\n- The lag items point the same way (the group is no longer within five steps after A20 or before A23), but each rests on a single later-window observation, so they carry little weight on their own. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the five-activity group A31, A32, A37, A38 and A39 was repositioned and made an alternative to A22: in the later window a case runs either the whole group or A22 between A21 and A26, whereas earlier every case ran both, with the group placed between A20 and A23. This is shown directly by relational evidence — the group's order relative to A21 and A23 flipped while its relations to A20 and A26 stayed fixed, and A22 and the group became mutually exclusive — together with the successor changes at A20, A21 and the group members; participation and position indicators agree with the same structure. [REL008, REL009, REL010, REL011, REL012, REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS002, POS004, POS006, POS007, POS008, POS009, POS010]\n\nScreening qualified 72 of 144 tested control-flow units, roughly 100 times the fewer-than-one item expected if nothing had changed, so chance sampling cannot account for the pattern as a whole. [screening]\n\nAn important competing explanation remains: the two windows may capture a shifted mix of case populations (for example, different case types routed differently) rather than a modified process, and the lag items — each backed by one later-window observation — are too thin to separate these readings. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\nOther differences: only minor shifts remain — the mean event position of A20 moved slightly later (0.32 to 0.35) and that of A26 slightly earlier (0.67 to 0.65), most plausibly side effects of the group's relocation rather than independent changes. [POS001, POS005]",
+  "case_id": "e4a_d9fc1e9651422cbc",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

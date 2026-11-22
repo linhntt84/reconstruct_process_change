@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_1ed70f47ec8b0ce2.json",
+  "evidence_sha256": "c592bcb4d9b8d6ed4ae35ba2ca4526151dd32513349a85befa68e37135a57523",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:44:59.424807+00:00",
+  "finished_at_utc": "2026-11-14T10:47:07.351513+00:00",
+  "latency_seconds": 127.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17934,
+    "prompt_tokens": 17775,
+    "total_tokens": 35709,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16630,
+      "text_tokens": 1304
+    },
+    "cost": 0.01163325
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56932,
+  "text": "### Observed differences\n\n- The execution order of two groups of activities was reversed. In the earlier window, A14, A16 and A19 always came before A15, A17 and A18, and the two groups sat on opposite sides of the middle activities A20 and A24 (for example, A20 preceded A17 in 100% of traces, and A14 preceded A15 in about 30 in 100 traces). In the later window, all 21 flagged activity pairs show the opposite order: A17 precedes A20 in 100% of traces, A15 precedes A14 in about 33 in 100, and A15, A17 and A18 now precede A14, A16 and A19. [REL001, REL006, REL007, REL008, REL015, REL020]\n\n- The groups also exchanged their typical position in the case: A14, A16 and A19 moved from a mean relative position of about 0.34–0.35 to about 0.67–0.68, while A15, A17 and A18 moved from about 0.64 to about 0.38. A20 and A24 kept their middle place, shifting only slightly later (mean 0.38 to 0.44 and 0.57 to 0.64). Participation was broadly stable: A14 appears in 60 vs 65 of 200 traces, A16 in 69 vs 58, A19 in 71 vs 77, and A15, A17, A18, A20 and A24 in all traces in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- Direct successors were rewired consistently with the reversal: all observed outgoing transitions of A14, A16 and A19 went to A20 in the earlier window and to A25 in the later one; A15, A17 and A18 kept their mutual transitions but their hand-over changed from A25 to A20 (for A15, the A25 share of about 0.30 disappeared and an A20 share of about 0.37 appeared); A35 now feeds A15/A17/A18 instead of A14/A16/A19, and A24 now feeds A14/A16/A19 instead of A15/A17/A18. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n\n- Step distances changed accordingly: the A24→A25 distance shrank from 4 to 2 steps, and the A35→A20 distance grew from 2 to 4 steps. [LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the two three-activity groups exchanged their places in the case flow. In the earlier window, cases ran from A35 through one of A14, A16 or A19 (their support counts sum to exactly 200 in each window, consistent with one of the three per case) to A20 and A24, then through A15, A17 and A18 to A25; in the later window, A15, A17 and A18 run directly after A35 and before A20, while A14, A16 and A19 run after A24 and before A25, with A20 and A24 keeping their middle position and mutual order. [REL008, REL015, POS001, POS002, POS007, POS008, DIR001, DIR007, DIR008, LAG001, LAG002]\n\nThe support is direct and consistent: every flagged pair moves from a single order in 100% of co-occurrences to the single opposite order, which 200-trace samples cannot produce by sampling; positions, successor sets and step gaps all show the same rearrangement; and 39 qualifying items against about 0.46 expected without change is far beyond what an unchanged process produces. [REL015, REL018, POS004, POS005, DIR001, DIR003, LAG001, LAG002]\n\nLimitations: the evidence shows pairwise order, event positions and direct successors, not the complete path model. It cannot fully establish that each group moved as one rigid unit (A15, A17 and A18 kept their mutual transitions, but within-group order is otherwise only partially observed), and it cannot distinguish a genuine reordering of the same steps from a reassignment of the anonymous activity labels between the two windows. [DIR002, DIR004, DIR005]\n\nOther differences: small participation shifts within the relocated group — A16 appears in 69 vs 58 of 200 traces, A14 in 60 vs 65, A19 in 71 vs 77 — are within what sampling between two 200-trace windows can produce and are not part of the main hypothesis. [POS001, POS003, POS006]",
+  "case_id": "case_1ed70f47ec8b0ce2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

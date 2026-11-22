@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "d95a3a43d16f0073ee7734958aa4d9737c55571e1100a68b3629e3552781d69a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:02:45.592109+00:00",
+  "finished_at_utc": "2026-11-14T11:04:16.590313+00:00",
+  "latency_seconds": 91.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14843,
+    "prompt_tokens": 9838,
+    "total_tokens": 24681,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13637,
+      "text_tokens": 1206
+    },
+    "cost": 0.008897200000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48024,
+  "text": "### Observed differences\n\n- Handovers out of A20 changed completely: before, its outgoing transitions split across A30 (about 40 in 100), A31 (about 33) and A36 (about 28); in the later window, about 99 in 100 go to A22, with the previous targets at under 1 in 100. [DIR001]\n- Handovers out of A21 changed: before, all went to A25; in the later window they spread across A30 (about 36 in 100), A31 (about 33) and A36 (about 31), leaving A25 at about 1 in 100. [DIR002]\n- The trio A30, A31, A36 rerouted their exits: handovers to A22 fell from roughly 29–38 in 100 to under 1 in 100, while handovers to A25 of about 30–36 in 100 appeared; the remainder circulates among the three in both windows. [DIR003, DIR004, DIR005]\n- The ordering reversed: before, A30, A31 and A36 each ran before A21 and before A22 in all eligible traces (100 in 100); in the later window, A21 and A22 each run before them in about 99 in 100. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Step distances moved with the reversal: A20 to A22 narrowed from a 4-step gap to an immediate successor (about 99 in 100), and A21 to A25 widened from an immediate successor to a 4-step gap (about 99 in 100). [LAG001, LAG004]\n- Relative event positions shifted accordingly: A21 now occurs earlier in the trace (mean position about 62% to 53%) and A22 earlier (about 47% to 38%), while A30, A31 and A36 occur later (about 41% to 58–59% each). [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment formed by A30, A31 and A36, which previously executed between A20 and the pair A22/A21, now executes after A21 and before A25 — equivalently, A22 and A21 now run ahead of that segment. Before, A20 fed the segment, the segment handed partly to A22, and A21 passed straight to A25; in the later window A20 feeds A22 directly, A21 feeds into the segment, and the segment hands on to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004]\n\nThe order change is shown directly by the pairwise relations, which flip from 100 in 100 to about 99 in 100 for all six activity pairs, and it is consistent with the successor changes at A20, A21, A30, A31 and A36, the step-distance changes and the position shifts. With 22 qualifying items against roughly 0.42 expected if nothing had changed, chance alone cannot account for the pattern as a whole. [REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG004, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: the evidence cannot tell whether the segment moved later or whether A21 and A22 moved earlier, since both readings describe the same relational change; the link from A22 to A21 and the segment's internal order (which varies in both windows) are not directly observed; several items restate the same trace behaviour and are not independent confirmations; and four lag profiles rest on only 2 after-window traces. The main competing explanation is a different mix of trace variants between the two 200-trace windows — the near-deterministic flips at this scale make a pure sampling effect unlikely, but it cannot be ruled out. [DIR003, DIR004, DIR005, LAG002, LAG003, LAG005, LAG006, REL001]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 each ran in essentially every case (200 of 200 traces, about one occurrence per trace); in the later window they are nearly gone, appearing in only 1–2 of 200 traces. [OCC004, OCC005, OCC006]
+- Three activities that were absent earlier appear in the later window: A19 in about 31 in 100 cases, A20 in about 34 in 100 and A21 in about 37 in 100 (62, 67 and 74 of 200 traces), each sitting roughly 36% of the way through the trace. [OCC001, OCC002, OCC003, POS001, POS002, POS003]
+- The three newcomers are mutually exclusive alternatives: any pair of them co-occurs in at most about 1–2 in 100 later cases, while each appears without the others in roughly 30–37 in 100. [REL013, REL014, REL020]
+- Routing around this segment changed: A44's observed outgoing transitions moved from A26/A27/A28 (about 93 in 100 combined) to A19/A20/A21 (about 93 in 100 combined), and A19, A20 and A21 in turn lead to A29 in about 97 in 100 of their observed outgoing transitions. [DIR007, DIR001, DIR002, DIR003]
+- Order relations flipped consistently: earlier, A26, A27 and A28 always co-occurred, each following A44 and preceding A29 in about 98–100 in 100 cases; later, each new activity follows A44 and precedes A29 in roughly 30–37 in 100 cases, and a new activity co-occurs with an old one in about 1 in 100 cases or less. [REL031, REL033, REL036, REL038, REL019, REL025, REL030, REL018, REL024, REL029, REL015]
+- The segment became shorter: the distance from A44 to A29 fell from about 4 steps (93 in 100 cases) to about 2 steps (92 in 100), A29's mean relative position moved earlier (about 0.43 to 0.40) and A44's moved slightly later (about 0.31 to 0.33). [LAG010, POS007, POS008]
+- Secondarily, A11 and A12, which never co-occurred with the new activities earlier, now co-occur with them in about 16–20 in 100 later cases, with A11/A12 coming first. [REL001, REL002, REL003, REL007, REL008, REL009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the fixed block A26 → A27 → A28, which ran in every earlier case between A44 and A29 in varying internal order, was replaced in the later window by a single per-case choice among the three mutually exclusive activities A19, A20 and A21, shortening that segment from three activities to one. The participation flips are near-total (200 of 200 down to about 2 of 200 for the old block; 0 of 200 up to about 62–74 of 200 for the newcomers), the relational evidence shows the new activities share cases neither with the old block nor with each other, the directional evidence shows A44 now feeds the new activities and that they lead to A29, and the A44-to-A29 distance halved — a single coherent picture in which every qualifying item (70 in total, versus roughly 0.8 expected without a change) shows differences larger than about 99.5 in 100 random re-splits of the same data. [OCC004, OCC001, REL015, DIR007, LAG010]
+
+Limitations: zero participation in the later window means A26, A27 and A28 were not observed there, not that they are absent from the process; the after-window routing and lag profiles for the old block rest on only 1–2 traces; and sampling differences in variant frequencies between the two finite windows cannot be fully ruled out, although a fall from 200 of 200 to about 2 of 200 and the coordinated appearance of three roughly one-third-share activities are far outside what random re-splits typically produce. [OCC004, DIR004, LAG001]

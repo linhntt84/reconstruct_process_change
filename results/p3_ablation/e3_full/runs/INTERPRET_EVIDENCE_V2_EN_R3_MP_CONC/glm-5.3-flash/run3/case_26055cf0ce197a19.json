@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_26055cf0ce197a19.json",
+  "evidence_sha256": "b80258bdd812a0764ef0b0277f87755de96f143fd53a2f1ccf13d1db54a79c84",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:45:51.949023+00:00",
+  "finished_at_utc": "2026-11-16T03:48:41.743822+00:00",
+  "latency_seconds": 169.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19744,
+    "prompt_tokens": 28811,
+    "total_tokens": 48555,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17958,
+      "text_tokens": 1786
+    },
+    "cost": 0.014193649999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57182,
+  "text": "### Observed differences\n\n- The activity levels of A01 and A07 essentially swapped. In the earlier window A01 appeared in about 28 of 100 traces (about 0.5 occurrences per trace, repeated in about 11 of 100) and A07 in about 51 of 100 (about 1.0 occurrences, repeated in about 28 of 100); in the later window A01 appears in about 53 of 100 traces (about 1.1 occurrences, repeated in about 29) and A07 in about 29 of 100 (about 0.6 occurrences, repeated in about 14). A07's events also sit later in the trace (mean position about 0.51 → 0.69), while A01's positions spread towards the end (upper quartile at the last position). [OCC001, OCC007, POS001, POS006]\n\n- The direct hand-over between A01 and A07 flipped direction. Earlier, about 94 of 100 observed outgoing transitions of A01 went to A07; in the later window A01→A07 is no longer observed, and A01 routes to A05 (about 57 of 100), A06 (about 18), A04 (about 14) and A03 (about 11). Conversely, A07's outgoing transitions, earlier spread over A05 (about 43) and A06 (about 41), now go to A01 in about 94 of 100 cases. [DIR001, DIR006]\n\n- A05's successor flipped accordingly: earlier about 96 of 100 of its outgoing transitions went to A01, later about 91 of 100 go to A07. [DIR004]\n\n- The return path of the A03/A04 side branch moved from A07 to A01: earlier A03 sent about 51 of 100 of its outgoing transitions to A07 and A04 about 41; later A03 sends about 34 to A01 (A07 about 2) and A04 about 39 to A01 (A07 about 1). [DIR002, DIR003]\n\n- A06 moved from the end of the trace into the middle: earlier its median event position was the final position and an outgoing transition was observed in only about 11 of its roughly 100 occurrences; later its median position is near the middle and it leads to A01 (about 31 of 100), A03 (about 28) and A05 (about 18). The earlier routing profile rests on only 11 transitions and is weak. [POS005, DIR005]\n\n- Lag and relation evidence matches this rewiring: A01→A07 at distance 1 (about 28 of 100 such pairs earlier) disappeared while A07→A01 at distance 1 appeared (about 25 of 100); A01→A05 and A05→A07 at distance 1 appeared (about 20 and 24 of 100) where earlier A05→A01 at distance 1 (about 30 of 100) was the close connection. A03 and A04 now occur without A07 in about 24 of 100 traces each, their co-occurrence with A07 having fallen from about 51 to 29 of 100, while A01–A07 still co-occur in about 29 of 100 traces but A01 now appears without A07 (about 24 of 100) where earlier A07 appeared without A01 (about 23 of 100). [LAG006, LAG025, LAG004, LAG022, LAG017, REL009, REL012, REL005]\n\n- A02 is untouched: about 49 of 100 traces earlier and about 47 later, with no repeats in either window. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reordering of the loop connecting A01, A05 and A07, with the A06–A03/A04 branch attached to it. In the earlier window the flow ran A01 → A07, A07 routed onward to A05 or A06, A05 closed back to A01, and A03/A04 returned to A07, with A06 typically ending the trace; in the later window the same loop runs the other way around the A01–A07 pair: A07 hands over to A01, A01 routes to A05 or A06, A05 closes back to A07, and A03/A04 return to A01, with A06 now taken mid-flow. A01 and A07 thereby exchanged their roles in the loop, which matches A01 becoming the more frequent, repeating activity and A07 the rarer one. [OCC001, OCC007, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS005, LAG004, LAG006, LAG017, LAG022, LAG025]\n\nSupporting signs: the hypothesis rests on direct successor and distance evidence rather than frequencies alone — the close A01→A07 and A05→A01 connections vanished while A07→A01, A01→A05 and A05→A07 close connections appeared — and the occurrence, routing, position, relation and lag items all describe the same rewiring, with substantial supports behind the key links (roughly 60–200 traces or transitions per window). [DIR001, DIR004, DIR006, LAG004, LAG006, LAG017, LAG022, LAG025, REL005]\n\nLimitations: items describing the same link (for example DIR001, LAG006 and REL005 for the A01–A07 connection) are not independent confirmations; positions are event positions, not clock times, so nothing can be said about timing; and the window-level aggregates cannot distinguish a rewired single flow from a shift in which of two pre-existing loop directions dominates the variant mix. [DIR001, LAG006, REL005, POS001]\n\nOther differences: A04's events now sit slightly later in the trace (mean position about 0.20 earlier vs about 0.26 later), consistent with the rewiring but not central to it; A02 and the participation levels of A03/A04 (about 51 vs 53 of 100 traces) were stable, so the difference is confined to the loop around A01, A05 and A07 and its branch. [POS003, OCC002, OCC003, OCC004]",
+  "case_id": "case_26055cf0ce197a19",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

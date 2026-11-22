@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f099fe9f15209e0c.json",
+  "evidence_sha256": "f3d05f51363577b844a68e32d0e6342880d4eb87c7d3452cd060b9561a89badf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:24:07.320935+00:00",
+  "finished_at_utc": "2026-11-16T02:25:56.641399+00:00",
+  "latency_seconds": 109.32,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17030,
+    "prompt_tokens": 28987,
+    "total_tokens": 46017,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15630,
+      "text_tokens": 1400
+    },
+    "cost": 0.012863049999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55433,
+  "text": "### Observed differences\n\n- A02 disappeared from execution: it was observed in all 200 earlier traces (about once per trace, near the start of the case, mean event position ≈ 0.12) and in none of the 200 later traces. [OCC001, POS002]\n- All six monitored relations of A02 flipped from regular co-occurrence to never co-occurring: A01, A03, A04 and A07 each occurred together with A02 in every earlier trace but appear without it in every later trace; A05 and A06 co-occurred with A02 in about 47% and 53% of earlier traces and in none later, now appearing alone in about half of the later traces, with neither activity in the rest. [REL001, REL006, REL007, REL008, REL009, REL010]\n- A02's outgoing transitions (about 38% to A03, 30% to A04, 18% to A01, 12% to A05) are no longer observed, and its former predecessors no longer route to it: the A01→A02 share (12% of A01's outgoing transitions) and the A05→A02 share (about 6%) are gone. [DIR002, DIR001, DIR005]\n- The flow A02 used to carry was absorbed by the remaining successors: A03 now sends about 31% of its transitions to A01 (was 18%), 28% to A04 (was 18%) and 35% to A05 (was 23%), having previously sent 38% to A02; A01 sends about 73% to A04 (was 65%) and A05 about 78% to A01 (was 67%). [DIR003, DIR001, DIR005]\n- Downstream activities run earlier and in tighter succession: A03's mean event position fell from about 0.11 to 0.04, A04's from 0.60 to 0.53, A05's median from 0.40 to 0.25 and A06's mean from 0.59 to 0.55; A03 is followed by A01 within one step in about 31% of cases (was 18%), by A05 within one step in about 69% (was 49%), and A05 is followed by A01 within one step in about 78% (was 67%). [POS003, POS004, POS005, POS006, LAG004, LAG006, LAG015]\n- Two smaller shifts not centred on A02: A07's outgoing transitions moved from A01 to A05 (about 79% → 56% and 12% → 33%, on only ~35 transitions per window), and A04 and A06 repeat slightly less often (means about 2.2 → 1.9 and 1.2 → 0.9 per trace, with A06 interleaved with A01/A03 in about 22% of later traces versus 30% before). [DIR007, LAG025, OCC002, OCC004, REL004, REL013, REL020]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 is no longer executed in the later window, consistent with the activity having been removed from the process or made unreachable. Earlier, A02 was a mandatory early step: it ran exactly once in each of the 200 traces and passed control to A01, A03, A04 or A05; in the later window it is absent from all 200 traces, its four outgoing edges are unobserved, and every monitored A02 relation changed from regular co-occurrence to the partner appearing alone. The rerouting of A01, A03 and A05 away from A02, the earlier positions of A03–A06 and the tighter one-step successions from A03 and A05 all fit the drop of one early, always-present step, and a participation fall from 100% to 0% across 200 traces per window is far larger than random re-splits of the pooled data produce. [OCC001, POS002, DIR002, REL001, REL006, REL007, REL008, REL009, REL010, DIR001, DIR003, DIR005, POS003, POS004, POS005, POS006, LAG004, LAG006, LAG015]\n\nThe evidence cannot rule out that A02 was renamed or that the later window consists only of traces from a variant in which A02 never runs, since zero participation strictly means only non-observation; no screening baseline is included, so the item count could not be compared with a chance expectation. [OCC001]\n\nOther differences: A07's outgoing mix shifted from A01 toward A05, and A04 and A06 repeat slightly less often, with A06 interleaved alongside A01/A03 in about 22% of later traces versus 30% before; these fit, but are not required by, the A02 hypothesis, and the A07 shift rests on only about 35 outgoing transitions per window. [DIR007, LAG025, OCC002, OCC004, REL004, REL013, REL020]",
+  "case_id": "case_f099fe9f15209e0c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

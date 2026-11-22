@@ -1,0 +1,18 @@
+### Observed differences
+
+- A02 was not observed in any of the 200 earlier traces. In the later window it appears in about 58 in 100 traces and occurs about 2.4 times per trace on average — roughly four times within a trace that contains it — around the middle of the trace (median relative position about 0.6, middle half between about 0.34 and 0.83). [OCC001, POS001]
+- A15's handover changed: earlier, its observed outgoing transitions (about 470) went to A07 in about 52 in 100 cases, A08 in about 25 and A12 in about 23; in the later window essentially all of them go to A02. A02's own outgoing transitions in the later window (about 470) closely mirror A15's old profile: A07 about 52 in 100, A08 about 27, A12 about 21. [DIR002, DIR001]
+- Step distances moved one step later: from A15 to A07, A08 or A12 the distance shifted from mostly 1 (about 24–54 in 100 observed pairs) to 2 (about 31–71 in 100); from A07 to A07, A08 or A12, and from A15 to itself, the distance shifted from mostly 4 (about 32–100 in 100) to 5 (about 65–94 in 100). [LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG008]
+- A02 now co-occurs with A15, A07, A08 and A12 whenever they appear: earlier, A07, A08, A12 and A15 each appeared without A02 in about 33–50 in 100 traces (A02 did not occur); in the later window those "without" shares are zero, with co-occurrence in about 35–58 in 100 traces, the order mostly interleaved or repeated rather than fixed, and A15 preceding A02 in about 15 in 100 traces. [REL001, REL002, REL003, REL004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A02 was added as a new, recurring step woven in between A15 and the A07/A08/A12 group. Earlier, A15 passed flow directly to A07, A08 or A12; in the later window A15 hands over to A02, and A02 dispatches to A07, A08 or A12 with almost the same split A15 previously used, while A02 itself recurs about four times per trace that contains it. The signs are direct and consistent: the successor profiles of A15 and A02 swapped as described, A02's participation rose from zero to about 58 in 100 traces, distances from A15 to its former successors and from A07 onward each moved one step later, and A07, A08, A12 and A15 no longer appear without A02. Sixteen qualifying items against roughly 0.2 expected for an unchanged process makes chance sampling implausible as a whole, and the directional and relational items show the rewiring directly rather than resting on frequency shifts alone. [DIR002, DIR001, OCC001, POS001, LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG008, REL001, REL002, REL003, REL004]
+
+Limitations: all items are control-flow and position-based, so nothing can be said about clock-time timing; directional profiles cover only observed transitions, so rare edges could be missed; and the exact arrangement of A02's recurrences (a self-loop, recurrence interleaved with A07/A08/A12, or several insertion points) cannot be determined from this evidence, though the dominance of interleaved/repeated order fits a recurring step. [REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003]
+
+Other differences: the distance from A07 back to A15 changed shape rather than shifting one step: gap 3 rose from about 31 to 45 in 100 observed pairs, while gap-5 cases fell from about 24 to 9 in 100. [LAG004]
+
+Competing explanation: the evidence cannot rule out that A02's repeated occurrences sit at several points in the trace rather than at a single insertion point after A15; the one-step shifts of the A07-centred distances are consistent with, but do not prove, an extra event between those activities as well. [LAG001, LAG002, LAG003, LAG008]

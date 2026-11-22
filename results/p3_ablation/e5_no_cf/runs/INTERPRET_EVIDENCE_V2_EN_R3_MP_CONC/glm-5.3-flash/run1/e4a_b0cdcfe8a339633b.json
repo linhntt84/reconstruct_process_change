@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_b0cdcfe8a339633b.json",
+  "evidence_sha256": "8fd80b27ffe971c93dad220bdd80d82122cd61c2531ed378dfb50cad8bcaa0dd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:27:27.120488+00:00",
+  "finished_at_utc": "2026-11-14T13:28:01.438810+00:00",
+  "latency_seconds": 34.32,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5530,
+    "prompt_tokens": 2978,
+    "total_tokens": 8508,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4980,
+      "text_tokens": 550
+    },
+    "cost": 0.0032117
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21685,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A20 and A27 roughly doubled: about 0.93 hours on average in the earlier window (median about 0.93 h, middle half roughly 0.86–1.00 h) versus about 1.85 hours in the later window (median about 1.84 h, middle half roughly 1.64–2.02 h). The pair still occurred at a similar rate (94 versus 105 occurrences in the 200-trace windows). [TWAIT001]\n- The elapsed time between consecutive completions of A29 and A27 also roughly doubled: about 0.19 hours on average (median about 0.14 h) in the earlier window versus about 0.40 hours (median about 0.33 h) in the later window, with the spread widening from about 0.16 to 0.30 hours standard deviation. Occurrence counts were again similar (106 versus 95). [TWAIT002]\n- Both differences are far larger than random re-splits of the pooled traces produce: each exceeds about 1999 of 2000 reference comparisons, and the screening flagged 2 time items where roughly 0.013 would be expected if nothing had changed. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change centred on A27: in the later window, the elapsed time between the preceding completion and A27 is about twice as long both after A20 (roughly 0.9 h to 1.8 h) and after A29 (roughly 0.2 h to 0.4 h), while both consecutive pairs continue to occur at similar frequencies. Supporting signs: both time items move in the same direction, each rests on a substantial sample (about 94–106 observations per window), each difference is larger than in essentially all reference comparisons, and two qualifying items is many times the chance expectation of about 0.013 for the 27 tested units. [TWAIT001, TWAIT002]\n\nLimitations: both items share A27, so they may describe one underlying shift rather than two independent changes, and TWAIT measures only elapsed time between consecutive completions — it cannot show whether the extra time is waiting, processing or queueing. An important competing explanation the evidence cannot rule out is a structural change that alters which completions are consecutive (for example an activity added between these pairs), which could also lengthen these elapsed times; the evidence contains no control-flow items to check this. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_b0cdcfe8a339633b",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

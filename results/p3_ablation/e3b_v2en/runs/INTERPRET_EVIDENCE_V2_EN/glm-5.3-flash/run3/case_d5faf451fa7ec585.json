@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_d5faf451fa7ec585.json",
+  "evidence_sha256": "f1baf547a5fe3056e82dc3b6210918579fedadce8aedf5d481bb3e36d4e60308",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:20:11.268492+00:00",
+  "finished_at_utc": "2026-11-15T10:22:09.209594+00:00",
+  "latency_seconds": 117.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17693,
+    "prompt_tokens": 11971,
+    "total_tokens": 29664,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16365,
+      "text_tokens": 1328
+    },
+    "cost": 0.010642149999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53877,
+  "text": "### Observed differences\n\n- In the earlier window, A14, A15 and A20 each ran in a minority of traces — about 32 in 100 (64 of 200 traces), 28 in 100 (56 of 200) and 40 in 100 (80 of 200) — and the three never occurred together, so exactly one of them ran in every earlier trace. In the later window, none of the three appears in any of the 200 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n- In the earlier window this block sat between A22 and A24, around A23: A22 led directly to A23 in about 55 in 100 of its outgoing transitions and to A20, A14 or A15 in the remainder; A23 led directly to A24 in about 45 in 100 and to A14, A15 or A20 in the remainder; and the block activities themselves led on to A23 or A24. [DIR001, DIR002, DIR003, DIR004, DIR005, REL003, REL005, REL007, REL009, REL010, REL012]\n- In the later window only a direct chain remains: every observed outgoing transition of A22 goes to A23, and every observed outgoing transition of A23 goes to A24. [DIR004, DIR005]\n- Succession distances tightened accordingly: A23 immediately follows A22 in 100 in 100 later traces (earlier about 55 in 100, the rest one step later), A24 immediately follows A23 in 100 in 100 (earlier about 45 in 100), and A24 now follows A22 two steps later where it previously followed three steps later in all traces. [LAG001, LAG002, LAG003]\n- The remaining activities shifted slightly within traces: A22's mean relative position moved later (about 0.46 to 0.47) and A24's earlier (about 0.57 to 0.55), consistent with one intermediate event disappearing between them. [POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe number of qualifying items (28) is many times the roughly 0.39 expected by chance alone, and every item's difference exceeds about 199 of 200 random re-splits of the pooled windows; since the items cover the same activities across occurrence, routing, position, relation and distance indicators, they describe one coherent behavioural difference rather than independent confirmations. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003]\n\nThe evidence supports the possibility that the optional block of A14, A15 and A20, which in the earlier window executed exactly once per trace between A22 and A24 (in about 45 in 100 traces between A22 and A23, and in about 55 in 100 between A23 and A24), is no longer executed, so that later-window traces run directly from A22 to A23 to A24. The support is direct and consistent: the successor sets of A22 and A23 each collapse from four targets to one, A23 and A24 are now immediate successors in every later trace, A24 moved from three steps to two steps after A22, A14, A15 and A20 no longer co-occur with A22, A23 or A24, and the small position shifts of A22 and A24 point the same way. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003, REL001, REL002, REL006, POS004, POS005]\n\nThe main limitation is that zero participation establishes only that A14, A15 and A20 were not observed in the later window, so the evidence cannot distinguish removing the block from its branch simply never being taken, nor exclude that the activities persist in variants absent from this sample. Sampling differences in variant frequencies can make a variant vanish from one window, but a behaviour present in 56–80 of 200 earlier traces and absent from all 200 later traces, together with the routing collapse at A22 and A23, is difficult to attribute to sampling alone. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005]",
+  "case_id": "case_d5faf451fa7ec585",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

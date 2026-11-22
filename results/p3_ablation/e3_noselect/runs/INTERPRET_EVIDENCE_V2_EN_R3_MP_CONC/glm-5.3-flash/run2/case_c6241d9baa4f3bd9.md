@@ -1,0 +1,16 @@
+### Observed differences
+
+- Activity A07 disappeared from the traces. In the earlier window it ran exactly once in about 53 in 100 traces (106 of 200; it never repeated within a trace); in the later window it is not observed in any of the 200 traces. [OCC005]
+- Before, A07 sat between A03 and A06: about 39% of A03's observed outgoing transitions led to A07, and about 92% of A07's outgoing transitions led to A06; A03 and A07 appeared in the same trace in about 53 in 100 cases (A03 first in about 24, interleaved in about 29). In the later window A07 has no observed outgoing transitions and never co-occurs with A03 or A06, while A03 still runs in about 52 in 100 traces. [DIR002, DIR004, REL002, REL003]
+- A03's handover redistributed accordingly: before, its outgoing transitions went to A05 (about 56%), A07 (about 39%) and A06 (about 5%); in the later window they go to A05 (about 49%) and A06 (about 52%), with no transitions to A07. A06's small edge to A07 (about 3% before) is also gone, while its split between A09 and A10 stays roughly half-half. [DIR002, DIR003]
+- The distance from A03 to A06 shrank: before, A06 followed A03 within five steps mostly at a distance of 2 or 4 positions (about 23% and 20% of observed pairs); in the later window the gaps are 1, 3 or 5 positions (about 19%, 11% and 6%) and the even gaps are gone. [LAG002]
+- Several activities repeat somewhat less often per trace: mean occurrences fell for A03 (1.21 to 1.01), A05 (0.68 to 0.49), A06 (1.17 to 1.01) and A09 (0.64 to 0.49), while the share of traces containing them barely moved (for example A03, 53% to 52%). [OCC001, OCC003, OCC004, OCC006]
+- Everything else is essentially stable: A02's split between A03 and A04 (about 50/50 in both windows), A09's handover to A06, the participation of A04 and A10, and the A03–A06 relation; A03 occurs slightly later within traces (median relative position about 0.39 to 0.45). [DIR001, DIR005, OCC002, OCC007, REL001, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A07 was removed from the process (or is no longer executed). In the earlier window A07 ran once in about half of the traces, taking over from A03 and passing control to A06; in the later window A07 is not observed at all, A03 hands over directly to A06 in about half of its outgoing transitions — roughly the share that previously went to A07 — and the A03→A06 gap shortened by about one position. The disappearance shows up directly and consistently in the occurrence, direction, position and relation indicators, each with empirical strength near 0.995, and the redirection of A03's outgoing transitions and the lag shift fit the same picture. [OCC005, DIR002, DIR004, POS003, REL002, REL003, LAG002] A limitation: zero participation only means A07 was not observed in the later sample, so a drastic reduction below observable frequency cannot be distinguished from complete removal.
+
+Other differences: A03, A05, A06 and A09 repeat somewhat less often per trace with stable participation, and A03 sits slightly later within traces; these may be knock-on effects of A07 no longer running or sampling variation, and the evidence does not decide between the two. [OCC001, OCC003, OCC004, OCC006, POS001]

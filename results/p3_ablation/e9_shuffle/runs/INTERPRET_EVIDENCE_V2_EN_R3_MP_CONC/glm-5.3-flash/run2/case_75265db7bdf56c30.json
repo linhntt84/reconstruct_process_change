@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_75265db7bdf56c30.json",
+  "evidence_sha256": "17dd550ff8ebfb63fde16798f2cf95634dbfe72448ddc6f088c5ebcaef5e4434",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:36:59.393025+00:00",
+  "finished_at_utc": "2026-11-15T04:37:49.333036+00:00",
+  "latency_seconds": 49.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6984,
+    "prompt_tokens": 3632,
+    "total_tokens": 10616,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6457,
+      "text_tokens": 527
+    },
+    "cost": 0.0040368
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26912,
+  "text": "### Observed differences\n\n- Activity A01 is absent from the earlier window (0 of 200 traces) but is executed in every trace of the later window, exactly once per trace and never repeated. [OCC001, POS001]\n- In the earlier window, A03 appeared in every trace but showed no observed outgoing transitions and sat at one constant final position (relative position 1.0); in the later window, all 200 observed outgoing transitions of A03 lead to A01. [DIR001, POS002]\n- The relationship between A01 and A03 changed from \"A03 only\" — about 100 in 100 earlier traces contained A03 without A01 — to the two always occurring together with A03 before A01, in about 100 in 100 later traces. [REL001]\n- A03 itself still occurs in every trace in both windows, but its position shifted from a constant 1.0 earlier to about 0.86 in the later window with almost no spread, consistent with one activity now following it. [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new closing activity, A01, was added directly after A03: in the earlier window traces effectively ended with A03 (no observed outgoing transitions, constant final position), whereas in the later window every trace executes A01 exactly once as the step following A03, making A01 a mandatory end-of-process step while A03 continues to run in every trace. [DIR001, REL001, OCC001, POS001, POS002]\n\nThe placement rests on direct relational and directional evidence — the A03→A01 succession accounts for all of A03's observed outgoing transitions, and the pair is ordered A03-before-A01 in about 100 in 100 later traces — and the five qualifying control-flow items are many times the roughly 0.09 expected by chance among the 19 tested units, so chance sampling cannot account for the set as a whole. [DIR001, REL001, OCC001, POS001, POS002]\n\nLimitations: all five items describe one underlying trace-level difference, so they are not independent confirmations, and zero participation in the earlier window strictly shows only that A01 was not observed there; the evidence cannot fully exclude that A01 existed before at a rate so low that a 200-trace sample missed it. [OCC001, POS001]\n\nOther differences: none — the small backward shift of A03's position is a consequence of the same addition rather than a separate change. [POS002]",
+  "case_id": "case_75265db7bdf56c30",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

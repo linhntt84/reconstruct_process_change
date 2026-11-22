@@ -1,0 +1,19 @@
+### Observed differences
+
+- Two three-activity blocks swapped how often they run. In the earlier window, A16, A17 and A18 each appeared in about 75 in 100 traces, while A19, A20 and A21 each appeared in about 25 in 100; in the later window, A16–A18 each dropped to about 25 in 100 while A19–A21 each rose to about 76 in 100. Each activity still occurred at most once per trace in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- The branch point A15 redirected accordingly. Before, about 75 in 100 of A15's outgoing transitions went to A16, A17 or A18 (roughly 27, 23 and 26 in 100) and about 25 in 100 to A19, A20 or A21; in the later window this reversed, with about 8–9 in 100 to each of A16–A18 and about 22–29 in 100 to each of A19–A21. All six transitions were observed in both windows, and A15 kept preceding whichever block ran (before A16–A18 in about 75 in 100 traces, after A19–A21 in about 76 in 100). [DIR001, REL001, REL004]
+- The block structure itself did not change; only its usage flipped. Pairs spanning the two blocks, such as A16 with A19, never occurred in the same trace in either window, while the three members of the active block ran together: A16–A18 co-occurred in about 75 in 100 traces before versus about 25 in 100 after, and A19–A21 co-occurred in about 25 in 100 before versus about 76 in 100 after, in both cases in no fixed order among the members. [REL007, REL009, REL013, REL022, REL025]
+- A25 travelled with whichever block was active. Before, it co-occurred with A16, A17 or A18 in about 75 in 100 traces (interleaved in about 32 in 100) and appeared without A19–A21 in about 75 in 100; after, it co-occurred with A19, A20 or A21 in about 76 in 100 traces (interleaved in about 36 in 100) and appeared without A16–A18 in about 76 in 100. [REL012, REL024]
+- The positional distance from A15 to A19 spread out: before, about 54 in 100 of these pairs were one step apart; after, the distances spread over one to three steps (about 33, 28 and 39 in 100). This measures event positions, not clock time. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the routing choice after A15 between two existing alternative blocks reversed its frequencies: before, roughly three of four cases ran A16, A17 and A18 together after A15 (with A25 alongside), and about one of four ran A19, A20 and A21 instead; in the later window the shares swapped to about one of four and three of four. All six block activities and A25 remained present at substantial rates in both windows, the blocks stayed mutually exclusive, and A15 kept preceding the active block, so this reads as the same two paths being taken with different frequencies rather than activities being added, removed, bypassed or repositioned. [OCC001, OCC004, DIR001, REL009, REL022]
+
+The signs are direct and consistent: participation moved by about 50 percentage points in opposite directions on large supports (150 vs 49 traces for A16–A18; 50 vs 151 for A19–A21), A15's outgoing distribution shifted in step with all six edges observed in both windows, and the relational items agree with the occurrence items. Screening also produced 35 qualifying control-flow items where about 0.53 would be expected if nothing had changed, far beyond what an unchanged process typically yields. [OCC001, OCC006, DIR001, REL001, REL004]
+
+A competing explanation the evidence cannot rule out is a change in the mix of cases reaching this routing point (case types that prefer different branches), which would look identical on these indicators.
+
+Other differences: the A15→A19 positional gap widened from mostly one step to one-to-three steps; this is consistent with A25 now interleaving around the active block more often and does not by itself show that A19 was moved. [LAG001, REL024]

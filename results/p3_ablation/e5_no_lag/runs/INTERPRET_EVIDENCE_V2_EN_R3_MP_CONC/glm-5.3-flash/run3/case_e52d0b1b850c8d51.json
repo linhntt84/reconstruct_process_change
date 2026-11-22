@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_e52d0b1b850c8d51.json",
+  "evidence_sha256": "16301974705cc59114d093772ef07ca96e0e2bea617a4a1e8ffee901dedb23ff",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:39:59.506537+00:00",
+  "finished_at_utc": "2026-11-15T12:42:55.109697+00:00",
+  "latency_seconds": 175.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27300,
+    "prompt_tokens": 26741,
+    "total_tokens": 54041,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25553,
+      "text_tokens": 1747
+    },
+    "cost": 0.01766115
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 92111,
+  "text": "### Observed differences\n\n- Earlier, A19, A25 and A20 ran in every one of the 200 earlier traces, in the fixed order A19, then A25, then A20, as part of a chain that followed A41 and preceded A26/A46/A47 (A41 preceded A19 and A19 preceded A26 in about 99 in 100 traces). In the later window each of the three appears in only about 53–54 in 100 traces (106–108 of 200), and they drop out together: in about 46 in 100 later traces none of them is present. [OCC005, OCC006, OCC007, REL016, REL017, REL018, REL019, REL022, REL027]\n- The skip shows directly at A41: before, about 96 in 100 of A41's outgoing transitions led to A19; in the later window only about 47 in 100 do, while about 39 in 100 lead straight to A26 — a transition that was essentially absent earlier. [DIR008]\n- When the segment does run, its behaviour is unchanged: A19 precedes A25 and A25 precedes A20 in essentially every trace containing the pair, and A20 still leads to A26 in about 97 in 100 of its outgoing transitions, as before. [REL016, REL017, REL022, DIR007]\n- The surrounding activities are stable: A14, A15, A26, A41, A46 and A47 still occur in about every trace, now in about 46–47 in 100 traces without the segment (earlier they always co-occurred with it), and main transitions elsewhere barely move (for example A15 still leads to A16 in about 93 in 100 of its outgoing transitions, versus about 98 earlier). [REL010, REL013, REL018, REL019, REL021, REL023, REL030, DIR006]\n- A06 is largely bypassed in the later window: it appeared in about 71 in 100 earlier traces but only about 26 in 100 later traces. From A14, the share of outgoing transitions going to A06 fell from about 69 in 100 to about 12 in 100, while the share going directly to A15 rose from about 31 to about 78 in 100, so A15 now usually runs without A06 (74 in 100 later traces versus 29 earlier). A06's own outgoing transitions, about 92 in 100 of which went to A15 earlier, are now scattered (about 37 in 100 to A15, based on 65 outgoing transitions), and within the traces that still contain it, A06 sits later (median relative position about 0.16 versus 0.30; a position shift alone does not show the activity was moved). [OCC002, DIR005, DIR003, REL001, REL002, POS001]\n- Three rarely observed activities became more common: A04, A08 and A10 appeared in about 4–5 in 100 earlier traces and about 15–20 in 100 later traces, though each is still seen in only about 30–40 of 200 traces. [OCC001, OCC003, OCC004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the activities A19, A25 and A20 are skipped in about 46 in 100 executions, whereas earlier they executed in every trace in the fixed order A19, then A25, then A20, between A41 and A26/A46/A47; when the segment is skipped, A41 frequently passes directly to A26. The signs are direct and consistent across participation, relational and successor evidence: the participation of all three fell in step from 100% to about 53%, they vanish jointly while A14, A15, A26, A41, A46 and A47 keep running, A41's outgoing transitions shifted from about 96 in 100 towards A19 to about 39 in 100 straight to A26, and the segment's internal order and its exit to A26 are preserved whenever it does run. [OCC005, OCC006, OCC007, REL016, REL017, REL022, DIR007, DIR008, REL018, REL023]\n\nFor scale, 50 control-flow items qualified in the screening against fewer than 1 expected if nothing had changed, so the pattern as a whole is unlikely to be a sampling artefact. A competing explanation the evidence cannot rule out is that traces without this segment already existed earlier as a rare variant and simply became much more frequent, rather than a new bypass having been introduced; the two windows are finite samples of 200 traces each. [screening, OCC005, OCC006, OCC007]\n\nOther differences: A06 is now largely bypassed — it appeared in about 71 in 100 earlier traces but only about 26 in 100 later traces, A14 now routes directly to A15 in about 78 in 100 of its outgoing transitions (about 31 in 100 earlier), and A06's remaining occurrences sit later in the trace and spread over many successors (a position shift alone does not show the activity was moved); separately, the rarely observed A04, A08 and A10 now appear in about 15–20 in 100 traces versus about 4–5 in 100 earlier, though each rests on only about 30–40 later traces. [OCC002, DIR005, DIR003, REL001, REL002, POS001, OCC001, OCC003, OCC004]",
+  "case_id": "case_e52d0b1b850c8d51",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

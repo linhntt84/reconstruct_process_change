@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_f42ea5a21bff96f8.json",
+  "evidence_sha256": "90a30b52f03c57c6c4429fad5fa3d1ccf545f866f2ca2e9ad878daab13580187",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:09:42.961238+00:00",
+  "finished_at_utc": "2026-11-15T05:11:49.556901+00:00",
+  "latency_seconds": 126.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18797,
+    "prompt_tokens": 42223,
+    "total_tokens": 61020,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17183,
+      "text_tokens": 1614
+    },
+    "cost": 0.01573195
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54035,
+  "text": "### Observed differences\n\n- The largest change is a flip in how often two groups of activities run. In the later window, A21, A22 and A23 each appear in about 25 in 100 traces, down from about 75 in 100 before; A24, A25 and A26 each rise from about 25 in 100 to about 75 in 100 (supports of roughly 150 vs 50 traces per activity). [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]\n- The routing out of A20 flipped accordingly: before, about 75 in 100 of A20's outgoing transitions went to A21, A22 or A23 and about 25 to A24, A25, A26; in the later window these shares are reversed (about 24 vs about 75 in 100). [DIR002]\n- The order relations around these groups flipped with them. Before, A19 and A20 preceded A21/A22/A23 in about 74 in 100 of the traces containing both, and A21–A23 preceded A34/A35 in about 73 in 100; in the later window A19/A20 precede A24/A25/A26 in about 75 in 100, A24–A26 precede A34/A35 in about 73–76 in 100, and A21–A23 now usually appear without A19/A20 and without A29/A30/A34/A35. [REL013, REL016, REL019, REL022, REL030, REL032, REL051, REL053, REL054]\n- A06 behaves differently: it appears in about 52 in 100 later traces (about 17 in 100 before), its median relative position moved from about 0.48 (roughly midway) to about 0.96 (near the end), and about 90 in 100 of its outgoing transitions now go to A35 (about 12 in 100 before), typically immediately afterwards — a one-step gap in about 97 in 100 of the observed A06→A35 pairs, versus a spread over one to five steps before. [OCC002, POS001, DIR001, LAG001]\n- A06 now sits between the late activities and A35: about half of A34's outgoing transitions go to A06 (almost none before, when about 89 in 100 went to A35), A34 precedes A06 in about 46 in 100 traces containing both, and the direct A34→A35 succession stretched from a one-step gap (about 90 in 100 before) to a two-step gap (about 51 in 100); A30 is likewise followed by A06 within three to four steps in about half of the later traces. [DIR005, REL011, REL012, LAG013, LAG011, LAG012]\n- Smaller shifts: A02 and A08 participation fell to about 8 and 5 in 100 traces (from about 17 and 14); routing out of A29 (mainly to A19) and A32 (mainly to A33) is nearly identical in both windows despite being flagged. [OCC001, OCC003, DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a specific restructuring: the choice between two alternative activity blocks after A19/A20 flipped, so that in the later window about three in four cases run A24/A25/A26 between A19/A20 and A34/A35, where they previously ran A21/A22/A23; and A06, previously a mid-trace activity with varied successors, now typically occurs late in the trace, after A34/A30 and immediately before A35. The support is direct — precedence, successor-share and gap evidence rather than frequency shifts alone — consistent across all five indicator families, and the number of flagged items (92, against roughly 1 expected for an unchanged process) far exceeds what chance would produce. [OCC004, OCC007, DIR002, DIR005, POS001, REL013, REL016, REL051, REL053, LAG001, LAG013]\n\nThe items are not independent: most relation items restate the same block flip and the same A06 relocation, so the count overstates the amount of separate confirmation. The two windows are finite samples, so a difference in variant frequencies alone can never be fully excluded, although swings of about 50 percentage points backed by roughly 150 versus 50 traces per activity go well beyond typical sampling noise. The evidence also shows observed behaviour only: A21–A23 still run in about a quarter of later traces, so the change lies in how often and where the blocks execute, not in their removal. Finally, every item's empirical strength sits at the same ceiling (about 0.995), and a few flagged routing changes are near zero in magnitude, so strength values were not treated as confirmation on their own. [OCC004, OCC007, REL013, REL025, DIR003, DIR004]",
+  "case_id": "case_f42ea5a21bff96f8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

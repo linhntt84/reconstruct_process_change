@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_ef685e3eccdfa1b6.json",
+  "evidence_sha256": "dd77a4cf1a06f5a8c740e2e3d570214a901e1f3b095b9db85e2be7a20cfd5122",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:11:45.396139+00:00",
+  "finished_at_utc": "2026-11-14T12:14:10.836421+00:00",
+  "latency_seconds": 145.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19853,
+    "prompt_tokens": 22068,
+    "total_tokens": 41921,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18019,
+      "text_tokens": 1834
+    },
+    "cost": 0.013236699999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59195,
+  "text": "### Observed differences\n\n- In the earlier window, six activities — A28, A30 and A31 in one group, A32, A33 and A34 in the other — each ran exactly once in every trace (participation 100%). In the later window, A28, A30 and A31 each appear in about 47 in 100 traces, and A32, A33 and A34 in about 55 in 100 traces. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The two groups became almost mutually exclusive: cross-group pairs that previously co-occurred in every trace (for example A28 with A32) now share a trace in only about 2 in 100 cases, while pairs inside a group still always occur together when the group runs (A28 with A30 in about 47 in 100 traces; A32 with A33 in about 55 in 100). [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024, REL013, REL018, REL025, REL026, REL027]\n- A25 and A26 still run in every trace and keep their relative positions: A25 still precedes all six activities, and A26 still follows them. What changed is co-participation: in the later window A25 occurs without the A28/A30/A31 group in about 54 in 100 traces, and without the A32/A33/A34 group in about 44 in 100. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n- Routing follows suit. Earlier, A25's observed outgoing transitions led only to A28, A30 and A31 (about 34, 37 and 30 per 100); in the later window they spread across all six activities (roughly 14–20 per 100 each). A26, which was not among the observed successors of A28, A30 or A31 earlier, now receives about 34, 35 and 26 per 100 of their outgoing transitions respectively, while their transitions towards A32, A33 and A34 nearly disappeared (from roughly 10–14 per 100 to about 1 per 100). [DIR001, DIR002, DIR003, DIR004]\n- Event-position distances shrank as expected when a whole block drops out: the distance from A25 to A32 moved from gaps of 4–5 positions (about half each) to gaps of 1–3 positions (about 97 in 100 of observed pairs), and the distances from A28, A30 and A31 to A26 likewise moved from 4–5 to 1–3. [LAG001, LAG002, LAG003, LAG004, LAG008, LAG011]\n- Cross-group distance items (for example A28–A32 or A30–A33) rest on only about 4 observed pairs in the later window and cannot be interpreted on their own. [LAG005, LAG006, LAG007, LAG009, LAG010, LAG012, LAG013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the fixed middle section between A25 and A26 split into two alternative blocks. Earlier, every case ran A25, then A28/A30/A31 in mixed order, then A32/A33/A34 in mixed order, then A26. In the later window, each case runs only one block: about 47 in 100 cases run the A28/A30/A31 block and skip A32/A33/A34, about 55 in 100 run the A32/A33/A34 block and skip A28/A30/A31, and about 2 in 100 still contain both; A25 enters the chosen block directly and A26 follows it. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL013, REL015, REL018, REL025, DIR001, DIR002, LAG001, LAG004]\n\nThe signals are direct and mutually consistent: participation of all six activities fell from 100% to about 47% and 55%; cross-group co-occurrence collapsed from 100% to about 2% while the A25-before-block and block-before-A26 orders persisted; A25 now branches to all six activities and A28, A30 and A31 gained A26 as an observed successor; and the position distances from A25 to the second block and from the first block to A26 shrank from 4–5 to 1–3. With 50 qualifying control-flow items against fewer than 1 expected without change (each item larger than about 995 of 1,000 random re-splits), the pattern as a whole is not what random re-splits of a stable process produce. This is a participation change — each block became skippable in roughly half the cases — not a re-weighting of paths that already existed. [REL001, REL004, REL007, REL010, REL015, REL019, REL022, DIR001, DIR002, DIR003, DIR004, LAG001, LAG008, LAG011]\n\nLimitation: the windows are aggregates, so the evidence cannot show whether each case now chooses one block or whether the later window mixes two case populations that each always run one block, with the earlier both-blocks behaviour surviving in the roughly 2 in 100 overlap traces. [REL015, REL016, REL017]\n\nOther differences: none beyond the above; ordering inside each block stayed mixed (both orders in similar proportions) in both windows, and A25 and A26 kept full participation. [REL013, REL018, REL025, REL026, REL027]",
+  "case_id": "case_ef685e3eccdfa1b6",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

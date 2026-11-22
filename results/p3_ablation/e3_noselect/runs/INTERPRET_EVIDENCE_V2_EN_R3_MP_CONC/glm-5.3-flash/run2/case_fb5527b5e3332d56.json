@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "bf22f9f921d8f2808ed79ec86dd6734b521aec29bf10c3c2f5705d1ff4a9cdd9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:39:04.633388+00:00",
+  "finished_at_utc": "2026-11-15T07:41:16.130154+00:00",
+  "latency_seconds": 131.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18346,
+    "prompt_tokens": 32840,
+    "total_tokens": 51186,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16524,
+      "text_tokens": 1822
+    },
+    "cost": 0.014099
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59505,
+  "text": "### Observed differences\n\n- After A21 the two windows route very differently. In the earlier window, A21's outgoing transitions went to A22 in about 52 in 100 cases, and otherwise to A33 (about 18%), A28 (about 17%) or A27 (about 14%). In the later window, A21 leads to A22 in about 995 in 1000 transitions, with A28 appearing only in a single trace. [DIR014]\n- Participation moved in lockstep: A22 rose from about 52 in 100 traces to 199 of 200, while A27, A28 and A33 each fell from about 49 in 100 traces to 1 in 200. A21 and A23 continue to occur in every trace in both windows. [OCC019, OCC020, OCC021, OCC026, POS001, POS003]\n- In the earlier window, A27, A28 and A33 formed a detour that visited all three, in varying order, before reaching A23: they always occurred together (in about 49 in 100 traces), passed among themselves (A27 to A28 about 38%, A28 to A27 about 41%) and exited to A23 (A33 to A23 about 42%); each of the three preceded A23 in about 48–49 in 100 traces. In the later window this detour is essentially unobserved. [REL012, REL009, REL010, REL011, DIR017, DIR018, DIR023]\n- A22 and A23 became strictly consecutive: earlier, A22 preceded A23 in about 52 in 100 traces while A23 also occurred without A22 in about 49 in 100; later, A22 precedes A23 in about 995 in 1000 traces and A23 without A22 is seen in about 1 in 200. [REL005]\n- The distance from A21 to A23 collapsed from a mixture of two steps (about 52%) and four steps (about 48%) to two steps in about 995 in 1000 cases, i.e., exactly one activity now sits between them. [LAG001]\n- Positions moved only slightly, in the direction expected from a shorter post-A21 route: A23's mean position moved earlier (about 0.55 to 0.53 of the trace) and A21's slightly later (about 0.45 to 0.46); a position shift alone does not prove an activity was relocated. [POS001, POS003]\n- Away from this change the differences are small: A35's exits shifted toward A36 (about 53% to 61%) and away from A34 (about 47% to 39%), A34's participation fell from about 25 to 19 in 100 traces (occurrences per trace 0.43 to 0.31) and A35's occurrences per trace from 0.92 to 0.80; remaining movements (around A16/A17, A29–A32, A37–A41) are 0.01–0.035 with low empirical strength, as expected from sampling. [DIR024, OCC027, OCC028, OCC015, OCC016, DIR028]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in the routing after A21: in the earlier window, cases split between a direct route A21 → A22 → A23 (about 52 in 100) and an alternative route that ran through A27, A28 and A33 — visiting all three in varying order — before reaching A23 (about 48 in 100); in the later window that alternative route is observed in only 1 of 200 traces, and virtually every case executes A21, then A22, then A23 consecutively, so A22 effectively became mandatory between A21 and A23 while A27, A28 and A33 became nearly unobserved. The change is shown directly by relational and directional evidence (the successor distribution of A21, the co-occurrence and order relations between A21/A22/A23 and A27/A28/A33, and the collapse of the A21→A23 distance to a fixed two steps) and is consistent across the occurrence, direction, relation and lag indicators, each with empirical strength of about 0.995; the joint, lockstep movement of four activities (A22 up from 103 to 199 supporting traces, A27/A28/A33 down from about 97 to 1) is not what random re-splits of unchanged behaviour produce. [DIR014, REL001, REL005, LAG001, OCC019, OCC020, OCC021, OCC026]\n\nLimitations: the old route still appears in one later trace (traversing A21 → A28 → A27 → A33 → A23), so the evidence shows it became nearly unobserved rather than proving complete removal, and whether the chain was deleted or simply bypassed via the pre-existing A21 → A22 edge cannot be distinguished; the many qualifying items also overlap heavily and describe one underlying difference rather than independent confirmations, and the evidence set provides no chance-expectation baseline for a count comparison. The competing explanation that the later window merely under-samples rare continued use of the old route cannot be fully excluded, though it would have to explain four activities moving in lockstep. [DIR017, DIR018, DIR023, REL012]\n\nOther differences: a mild, separate reduction around A34/A35/A36 — A35's exits shifted toward A36 (about 53% to 61%) and A34 became less frequent (participation about 25 to 19 in 100 traces; occurrences per trace 0.43 to 0.31; A35 occurrences per trace 0.92 to 0.80) — plus small fluctuations elsewhere (A16/A17, A29–A32, A37–A41) that are consistent with sampling noise; neither belongs to the main hypothesis. [DIR024, OCC027, OCC028, OCC015, OCC016, DIR028]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

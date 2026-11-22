@@ -1,0 +1,20 @@
+### Observed differences
+
+- A03 disappeared: in the earlier window it ran in every trace (about two occurrences per trace, typically early — median position about 0.14 of the trace); in the later window it appears in none of the 200 traces. [OCC003, POS003]
+- A01 and A02 are new: both ran in 0 of 200 earlier traces and in 200 of 200 later traces. In the later window A02 sits at the very start (mean position about 0.02) and A01 in the later part (mean about 0.64). [OCC001, OCC002, POS001, POS002]
+- The new activities form a fixed chain into the ending: A02 precedes A01 in about 98 of 100 later traces, A01 precedes A05 in every trace, and A02 precedes A05 in about 98 of 100; A05 itself remains the final activity in both windows (mean position 1.0 earlier, 0.99 later). [REL001, REL004, REL008, POS005]
+- Successors were redirected: A06, previously always followed by A03, is in the later window followed by A01 in about 53 of 100 of its outgoing transitions and by A04 in about 46; A02 is followed by A04 (about 51 in 100) or A01 (about 48 in 100); A01 leads to A05 in about 995 of 1,000 transitions. [DIR005, DIR002, DIR001]
+- A03's former ties are gone: it previously led to A05 or A04 in roughly equal shares (about 50/50 over some 400 outgoing transitions) and always co-occurred with A05 (A03 first in about 56 of 100 traces, interleaved or repeated in about 44); in the later window A05 always appears without A03, and A03 is likewise never together with A04 or A06, which now each run in about 50 of 100 traces without it. [DIR003, REL011, REL002, REL010, REL012]
+- Smaller shifts: A04 and A06 now appear in 50 of 100 later traces versus 44 of 100 earlier, at nearly unchanged positions and mutual order; the gap between repeated A04–A04 and A06–A06 pairs moved from lag 3 to mostly lag 2, and A06→A04 is now typically immediate (previously lag 2). A05, which previously ended every trace, now shows a rare outgoing transition to A02 (4 observed transitions). [OCC004, OCC005, POS004, POS006, REL014, LAG001, LAG006, LAG004, DIR004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a structural reconfiguration of the trace's frame: A03 — previously mandatory, running about twice per trace and routing on to A04 or A05 — is absent in the later window, and every later trace instead runs A02 at the start and A01 late in the trace, with A01 closing into A05; the optional A04/A06 block is retained and re-wired, since A06 now feeds A01 or A04 and A02 enters either A04 or A01 directly. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR005, REL004, REL008]
+
+Supporting signs: the participation changes are complete rather than partial (0 vs 200 of 200 traces for A01 and A02, and the reverse for A03); the new precedence A02 → A01 → A05 and the redirected successors of A02 and A06 are observed directly rather than inferred; and the same pattern recurs across the occurrence, position, direction and relation indicators. Because activities were added and removed rather than merely reweighted between existing paths, this is not a shift in the frequencies of unchanged paths. [OCC003, POS001, POS002, DIR003, DIR005, REL001, REL004, REL008]
+
+Limitations: with anonymous activity codes the evidence cannot show whether A01 and A02 are genuinely new activities or A03 renamed or split into two steps — a competing explanation it cannot rule out — and the rare A05→A02 transition rests on only 4 observations. [OCC001, OCC003, DIR004]
+
+Other differences: the slight rise in A04/A06 participation (44 → 50 of 100 traces) is weakly supported — the occurrence difference is exceeded in about two thirds of random re-splits — and may be sampling noise; the changed repetition gaps (A04–A04 and A06–A06 from lag 3 to lag 2, A06→A04 now immediate) are consistent with the reconfiguration above but do not add independent confirmation. [OCC004, LAG001, LAG006, LAG004]

@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the later window, A25 and A26 each occur about 1.56 times per trace on average, up from exactly once per trace; both still appear in every trace, but about 37 in 100 later traces now contain a repeated occurrence of each activity, against none before. [OCC001, OCC002]
+- The pairing of the two changed: A25 and A26 still occur together in every trace, but the single clean "A25 then A26" ordering falls from all traces to about 64 in 100, while interleaved or repeated orderings appear in about 37 in 100 traces (none before). [REL001]
+- Placement changed accordingly: before, A25 was always immediately followed by A26 (a gap of one position in every trace); in the later window this holds for only about 37 in 100 of the measured A25→A26 pairs, with about 5 in 100 separated by three positions and about 1 in 100 by five. [LAG001]
+- Routing out of A26 changed: before, all of A26's outgoing transitions went to A20; in the later window about 64 in 100 go to A20 and about 36 in 100 go to A25, a transition not observed in the earlier window. A26 also has more outgoing transitions overall (about 312 versus 200), consistent with its higher occurrence. [DIR002]
+- Routing out of A01 redistributed: transitions to A04 fall from about 42 in 100 to about 20 in 100, while transitions to A05 rise from about 24 in 100 to about 45 in 100, with A03 steady at about 34 in 100; this rests on 97 and 88 outgoing transitions in the earlier and later windows. [DIR001]
+- Each of these differences is larger than those seen in about 995 of 1,000 random re-splits of the pooled data. [OCC001, OCC002, DIR001, DIR002, REL001, LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, roughly one case in three repeats the A25–A26 sequence instead of executing it once: A26 now leads back to A25 in about 36 in 100 of its outgoing transitions (previously it led only to A20), the pair appears interleaved or repeated in about 37 in 100 traces (previously never), both activities average about 1.56 occurrences per trace with repeats in about 37 in 100 traces, and the once-universal adjacent A25→A26 placement survives in only about 37 in 100. Occurrence, relational, positional and routing evidence all point to this same behaviour, and the two distinct differences visible (the A25–A26 repetition and the A01 rerouting) clearly exceed the roughly 0.29 items expected by chance when 58 units are screened. [OCC001, OCC002, REL001, LAG001, DIR002, DIR001]
+
+Limitations: the occurrence, relation, adjacency and routing items largely describe the same traces, so they form one consistent signal rather than independent confirmations; and with 200 traces per window it cannot be excluded that a rare A25–A26 repeat variant existed before at very low frequency and went unobserved, although a behaviour now present in about 73 of 200 later traces would in any case represent a large shift in how often it runs. The A01 shift from A04 to A05 rests on a single indicator with fewer than 100 outgoing transitions per window and is not linked by the evidence to the A25–A26 behaviour, so sampling differences in variant frequencies remain a plausible explanation for that part. [OCC001, REL001, DIR001]

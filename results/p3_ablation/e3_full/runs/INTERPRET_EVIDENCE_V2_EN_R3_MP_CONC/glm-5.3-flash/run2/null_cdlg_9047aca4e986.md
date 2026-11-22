@@ -1,0 +1,17 @@
+### Observed differences
+
+- Outgoing transition shares are essentially stable in both windows. The largest shifts are in A01's transitions: in the later window the share leading to A06 is about 13–14 in 100, down from about 20 in 100, with small increases to A04 and A05; the overall profile difference is tiny, and roughly half of random re-splits of the pooled data produce a difference this large [DIR001]. A04's share to A03 rises from about 8–9 to about 14 in 100, while its share to A05 falls from about 69 to about 64 in 100 [DIR003]. The remaining source activities show even smaller redistributions [DIR002, DIR004, DIR005].
+
+- Activity positions barely move: for all five activities the median and quartile positions are identical in both windows, and mean positions shift by at most about 0.02 on the normalised position scale [POS001, POS002, POS003, POS004, POS005].
+
+- Every activity pair still occurs together in all traces in both windows, with no interleaving, and order shares change little; the largest move is A04 before A06, from about 51 to about 55–56 in 100, with an empirical strength near 0.5 [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].
+
+- The largest differences appear in step gaps between consecutive activities. For A04 followed by A03, immediate succession (gap 1) rises from about 27 to about 41 in 100, with fewer cases at gaps of 2–3 [LAG013]. For A04 followed by A05, immediate succession falls from about 69 to about 64 in 100, with slightly more cases at gaps of 2–4 [LAG014]. For A05 followed by A06, immediate succession rises from about 28 to about 39 in 100 [LAG019]. The first and third of these rest on only about 63–69 observed pairs per window [LAG013, LAG019].
+
+- These lag signals do not form a consistent pattern: for example, A03 followed by A01 shifts the opposite way, from about 40 to about 31 in 100 at gap 1 [LAG006], and the remaining pairs shift by only a few percentage points in mixed directions [LAG001, LAG004, LAG007, LAG010, LAG012, LAG015, LAG017, LAG020, LAG021, LAG022, LAG023]. With 23 activity pairs tested, random re-splits of an unchanged process would typically place about four to five items above a strength of 0.8, so observing two items at 0.84–0.85 is an unremarkable count [LAG013, LAG014].
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The indicators that would directly show structural, routing or placement changes (transition shares, positions, co-occurrence and order) show no differences beyond what random re-splits typically produce [DIR001, DIR003, POS001, POS003, REL007], and the few larger lag-distribution shifts are small in magnitude, inconsistent in direction across pairs, and within the count expected by chance among 23 tested pairs [LAG006, LAG013, LAG014, LAG019].

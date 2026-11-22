@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5f69f27320a9a3d6.json",
+  "evidence_sha256": "a94f4d80ed5e9a701a5f1fbda9892ebdea9896fb2c649b61be0d06652f0a7d2f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:14:01.073715+00:00",
+  "finished_at_utc": "2026-11-15T10:15:32.077489+00:00",
+  "latency_seconds": 91.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13674,
+    "prompt_tokens": 13954,
+    "total_tokens": 27628,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12371,
+      "text_tokens": 1303
+    },
+    "cost": 0.0089301
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38802,
+  "text": "### Observed differences\n\n- In the earlier window, A04 ran exactly once in every case (200 of 200 traces) at about 80% of the trace's event positions, and A01 was not observed in any case; in the later window this is reversed — A01 runs exactly once in every case (200 of 200), on average around 39% of the way through the trace, and A04 appears in no case. [OCC001, OCC002, POS001, POS003]\n- In the later window, A01 receives edges from A02 (about 38 in 100 of A02's outgoing transitions), A06 (about 36 in 100) and A05 (about 26 in 100), and leads on to A05 (about 39 in 100), A03 (about 34 in 100) and A06 (about 28 in 100); earlier, A01 had no recorded edges at all. [DIR001, DIR002, DIR005, DIR006]\n- A03's successor changed from A04 (about 100 in 100 of cases earlier) to A07 (about 100 in 100 later), and A04's edge to A07 disappeared; A03 now sits at position 0.8 of the trace instead of 0.6, its gap from A02 grew from 3 to 4 steps in all cases, and its gap to A07 shrank from 2 steps to 1. [DIR003, DIR004, POS002, LAG001, LAG004]\n- A05 and A06 now sit about 0.1 of a trace-position later (mean about 0.30 to about 0.41 and 0.40); one-step gaps between them are sometimes two (about 21 of 100 later cases for A05→A06, about 35 of 100 for A06→A05); pairs spanning the middle section (A02→A05, A02→A06, A05→A03, A06→A03) show a three-step gap in roughly a third of later cases, which never occurred earlier; and gaps from A05/A06 to A07 now start at 2 steps instead of 3. [POS004, POS005, LAG006, LAG009, LAG002, LAG003, LAG005, LAG008, LAG007, LAG010]\n- Co-occurrence flipped for both activities: A01 now co-occurs with each of A02, A03, A05, A06 and A07 in every later case (always after A02, always before A03 and A07, in mixed order with A05 and A06), where earlier those pairs contained only the other activity; the pairs involving A04 show the mirror image, co-occurring in every earlier case and containing only the other activity later. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011]\n- The screening flagged 34 of the 34 tested control-flow units, against roughly 0.17 items expected by chance in an unchanged process. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural reorganisation around the middle of the process: A01 was added and now executes once per case — entered from A02, A05 or A06, placed on average around 40% of the way through the case, and leading to A03, A05 or A06 — while A04, previously executed in every case between A03 and A07, was dropped, so that A03 now leads directly to A07 and runs one step later (trace position 0.6 to 0.8). The participation flips are complete and consistent (0 versus 100 in 100 traces for both activities), the new and lost edges are observed directly, the co-occurrence flips for A01 and A04 with all five other activities match this picture, and the lag redistributions behave as expected if A01 is inserted into the A02/A05/A06 section. With 34 qualifying items against roughly 0.17 expected without change, sampling noise is implausible as an explanation for the pattern as a whole. Limitation: the evidence cannot distinguish whether A01 functionally replaces A04 (a substitution) or whether an addition and a removal occurred independently, since both change at the same window boundary; the exact later routing among A01, A05 and A06 (their mutual orders are near 50/50) also remains underdetermined. [OCC001, OCC002, POS001, POS003, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL003, LAG001, LAG004, screening]\n\nOther differences: none beyond this hypothesis — the remaining position and lag shifts (A05 and A06 sitting later, occasional extra step between middle-section pairs) are consequences of the same insertion of A01 and removal of A04. [POS004, POS005, LAG002, LAG006, LAG009]",
+  "case_id": "case_5f69f27320a9a3d6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

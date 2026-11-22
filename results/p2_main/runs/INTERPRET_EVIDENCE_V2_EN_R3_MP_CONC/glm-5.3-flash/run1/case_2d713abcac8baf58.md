@@ -1,0 +1,20 @@
+### Observed differences
+
+- The three activities A19, A20 and A21, which each took part in about 35%, 30% and 36% of earlier traces (roughly 70, 60 and 72 of 200), take part in only about 1% of later traces (1–2 traces each). [OCC001, OCC002, OCC003]
+- Three other activities, A26, A27 and A28, are absent from the earlier window but take part in every later trace (200 of 200), once per trace on average. [OCC004, OCC005, OCC006]
+- The old trio behaved as exclusive alternatives: no two of them shared a trace (pairwise co-occurrence in at most about 0.5% of traces), so essentially every earlier trace contained exactly one of them. In the later window A26, A27 and A28 always occur together, and each pair shows both orders in roughly equal shares (about 50/50), i.e. no fixed order among them. [REL001, REL002, REL008, REL019, REL020, REL023]
+- A44 now feeds the new trio: about 85% of its outgoing transitions went to A19 (31%), A21 (30%) and A20 (24%) in the earlier window, while in the later window about 85% go to A26 (31%), A27 (27%) and A28 (26%); A44 precedes each of A26/A27/A28 in about 99 of 100 later traces. [DIR007, REL022, REL025, REL027]
+- The hand-over to A29 moved from the old to the new trio: earlier, each of A19/A20/A21 preceded A29 in essentially all of its traces; later, each of A26/A27/A28 precedes A29 in about 98–99% of traces, while A29 itself is present in all traces of both windows. [REL006, REL012, REL017, REL021, REL024, REL026, POS007]
+- The gap between A44 and A29 grew from mostly 2 steps (about 84% of earlier traces) to mostly 4 steps (about 82%, with 5 steps in the rest); the new trio occupies the trace positions (mean about 0.38) where the old trio used to sit (about 0.37), and A29's mean position moved slightly later, from 0.40 to 0.44. [LAG001, POS001, POS004, POS005, POS006, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was restructured: in the earlier window a case ran A44, then exactly one of the alternatives A19, A20 or A21, then A29, whereas in the later window A44 is followed by all three of A26, A27 and A28 — executed together in no fixed order — before A29. Because A26/A27/A28 were absent earlier and A19/A20/A21 are nearly absent later, this is a replacement of one group of activities by another at the same location, not a shift in how often existing paths are taken. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL019, REL021, REL022]
+
+The support is direct and consistent: the participation changes on both sides rest on all 200 traces per window; the relational items reproduce the old trio's embedding with the new trio (A44 before the block, the block before A29); the A44–A29 distance grew by about two steps, matching one activity being replaced by three; and the new block sits where the old one did. Screening produced 48 qualifying items where fewer than one would be expected without a change, and each item's difference exceeds about 995 of every 1,000 random re-splits; the items largely describe one underlying change and are not independent confirmations, but the ensemble is far beyond what random re-splits produce. [DIR007, LAG001, REL021, REL022, REL024, REL025, REL026, REL027, POS004, POS005, POS006, POS007]
+
+The evidence cannot show whether A19/A20/A21 were removed from the process or only became extremely rare (1–2 residual traces each), nor whether A26/A27/A28 are new activities or were merely unobserved in the earlier sample; the later routing profiles of A19/A20/A21 themselves rest on only 1–2 traces and were therefore not used. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003]
+
+Other differences: the few later traces that still contain A20 or A21 place them at much later positions (about 0.88 and 0.73, versus about 0.37 earlier), and the two later A19 occurrences sit earlier (about 0.11); each of these rests on only one or two traces. [POS001, POS002, POS003]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_be61d59d2e8d65c6.json",
+  "evidence_sha256": "31fc455d7996668fad5aa7436b5cdce6fc7de6b11cf2b91384ef51547ed28b78",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:14:05.373551+00:00",
+  "finished_at_utc": "2026-11-14T11:15:37.435094+00:00",
+  "latency_seconds": 92.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14097,
+    "prompt_tokens": 15440,
+    "total_tokens": 29537,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12845,
+      "text_tokens": 1252
+    },
+    "cost": 0.0093645
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45503,
+  "text": "### Observed differences\n\n- Three activities nearly disappear in the later window: A19 occurred in about 33 in 100 traces before versus about 1 in 200 after (65 → 1 traces), A20 about 29 in 100 versus 1 in 200 (57 → 1), and A25 about 40 in 100 versus 1 in 200 (81 → 1). [OCC001, OCC002, OCC003]\n- In the earlier window these three were near-mutually exclusive (pairwise co-occurrence about 1 in 200 or less), so almost every trace contained exactly one of them; in the later window about 99 in 100 traces contain none of the three. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n- A27, A28 and A29 themselves remained present in essentially every trace in both windows, but their routing concentrated onto a direct spine: A27 now leads to A28 in about 97 in 100 of its outgoing transitions (about 52 in 100 before, with A25, A19 and A20 sharing most of the rest), and A28 leads to A29 in about 97 in 100 (about 43 in 100 before). [DIR005, DIR006, POS004, POS005]\n- Successor distances tighten accordingly: A27→A28 is now at distance 1 in about 99 in 100 cases (before about 52, with 45 at distance 2), A28→A29 at distance 1 in about 96 in 100 (before about 43), and A27→A29 shortens from distance 3 (about 90 in 100 before) to distance 2 (about 96 in 100). [LAG001, LAG004, LAG002]\n- Relations anchored on the dropped activities vanish: A19, A20 and A25 each co-occurred with A27, A28 or A29 in roughly 28–40 in 100 earlier traces but in about 1 in 200 later traces, and the adjacent A28→A25 pair seen in 38 earlier traces is no longer observed. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012, LAG003]\n- One shift outside this pattern: A10's successor mix changed, with A15 falling from about 20 to about 6 in 100 and A47 from about 17 to about 6, while A26 (about 17) and A41 (about 9) appeared among its targets. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the optional activities A19, A20 and A25 — which in the earlier window ran in almost every case, one at a time, inserted directly after A27 or between A28 and A29 — are essentially no longer executed in the later window, so that control flow passes straight from A27 to A28 and on to A29. The participation collapse (from 57–81 of 200 traces to 1 per activity) is far beyond what sampling variation in a stable process produces, and the routing, relational and lag items show the resulting direct A27 → A28 → A29 succession directly and coherently. [OCC001, OCC002, OCC003, DIR005, DIR006, LAG001, LAG002, LAG004, REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012] The volume of qualifying items (30, against roughly 0.56 expected if nothing had changed) also cannot be explained by chance as a whole. [screening]\n\nLimitations: the profiles of the few residual occurrences (A19 followed by A38, A20 by A37, A25 by A31, and the single distant A28→A25 pair) rest on one trace each and may be rare variants rather than new routing; A10's successor redistribution is not explained by this pattern and could be a further difference or sampling variation; and finite windows cannot rule out a different mix of trace variants between the windows, although no sampling explanation accounts for activities present in 57–81 of 200 earlier traces falling to 1 of 200. [DIR002, DIR003, DIR004, LAG003, DIR001, OCC001, OCC002, OCC003]",
+  "case_id": "case_be61d59d2e8d65c6",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

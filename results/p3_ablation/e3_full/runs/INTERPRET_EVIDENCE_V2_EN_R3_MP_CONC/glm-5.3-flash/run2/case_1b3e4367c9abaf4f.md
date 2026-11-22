@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, A02, A06 and A12 each ran in only about half of the cases (96, 104 and 104 of 200 traces), and A02 and A06 were strict alternatives — they never appeared in the same trace. In the later window, all three activities run in every trace, A11's participation roughly doubled (about 26 to about 53 in 100 traces), and A06 now repeats about twice per trace on average (1.09 earlier vs 2.11 later). [OCC002, OCC006, OCC011, OCC012, REL019]
+
+- In the earlier window, A02 led directly to A03 (about 56 in 100 of its outgoing transitions) or A07 (about 44 in 100). In the later window, about 90 in 100 of A02's outgoing transitions go to A06, with only small residual shares to A03, A07, A11 and A12, and A02 now precedes A12 in about 96 in 100 traces (earlier the two were alternatives). [DIR002, REL025]
+
+- The choice between A03 and A07 moved downstream: A03 and A07 now sit 3–5 event positions after A02 (earlier 1–2), while A12's hand-offs to A03 and A07 remain immediately adjacent in both windows (1–2 steps in each). [LAG001, LAG004, LAG064, LAG067]
+
+- A01 is new: it is absent from all 200 earlier traces and occurs exactly once in every later trace, at a mean relative position of about 0.93 (near the end); in roughly 3 in 10 later traces it shows no outgoing transition, so it often closes the case. [OCC001, POS001, DIR001]
+
+- The A15/A16 tail was rewired through A01: earlier, A15 always led to A16 and A16 always to A15, closing every trace in either order (A15 first in about 55 in 100). In the later window, A15 and A16 each route to A01 in about half of their outgoing transitions, A01 leads back to A15 or A16, and the pair is separated by one intervening event in about 35–37 in 100 cases (earlier never). A05 also gained a direct transition to A01 (about 17 in 100 of A05's outgoing transitions). [DIR011, DIR012, DIR001, LAG082, LAG083, REL120, DIR005]
+
+- Smaller shifts: A05 and A14 repeat slightly less often (means 2.27→2.02 and 1.27→1.02), weak new transitions run from A06, A11 and A12 back to A02 (about 3 in 100 of those activities' outgoing transitions), and most mid-process activities sit at slightly later event positions while A15/A16 sit slightly earlier — these are event ranks, not clock times. [OCC005, OCC014, DIR006, DIR009, DIR010, POS003, POS015, POS016]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the routing around A02, A06, A11 and A12 was restructured from two mutually exclusive branches into one sequential pass: earlier, a case either executed A02 (about 48 in 100 traces) and went straight on to A03 or A07, or executed the A06–A11–A12 branch (about 52 in 100); in the later window, every case executes A02, about 9 in 10 of whose outgoing transitions lead to A06, after which A06 loops with A11 and hands over to A12, and the A03-versus-A07 choice is made after A12. The signs are direct and mutually consistent: A02's successor profile changed, A02 and A06 moved from never co-occurring to co-occurring in every trace, participation jumped from about half to all 200 traces, and the lag of A03/A07 behind A02 grew while A12's adjacency to A03/A07 stayed fixed. The main competing explanation — the two windows sampling different mixes of an unchanged process — cannot be excluded with finite samples, but participation moving from zero or half to 200 of 200 traces is larger than in about 99.5 of 100 random re-splits; note also that many items describe this single rerouting, so they are not independent confirmations. [OCC002, OCC006, OCC011, OCC012, DIR002, DIR006, DIR009, DIR010, REL019, REL025, LAG001, LAG004, LAG064, LAG067]
+
+Other differences: a second, separate restructuring placed the previously unobserved A01 once into every later case near the end, fed by A05 and by A15/A16, which previously led only to each other; in the later window A15 and A16 each hand over to A01 in about half of their outgoing transitions, and the always-adjacent A15/A16 pair is separated by one intervening event in about 35 in 100 cases. [OCC001, POS001, DIR001, DIR005, DIR011, DIR012, LAG082, LAG083] The slightly lower repetition of A05 and A14 and the small position shifts of mid-process activities are consistent with these restructurings but are not part of the main hypothesis. [OCC005, OCC014, POS003, POS015]

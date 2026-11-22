@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_b5adc570e3cff1cc.json",
+  "evidence_sha256": "2e36eacaf04fa468d70b9ff3294b9eec389642766ea1875f39cdd1a23e09e2b3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:37:05.622569+00:00",
+  "finished_at_utc": "2026-11-15T06:38:56.932281+00:00",
+  "latency_seconds": 111.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16161,
+    "prompt_tokens": 8344,
+    "total_tokens": 24505,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14843,
+      "text_tokens": 1318
+    },
+    "cost": 0.0093321
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51378,
+  "text": "### Observed differences\n\n- In the earlier window, exactly one of the three alternative activities A14, A15 and A20 ran in each case, placed on average around 60% into the trace; in the later window the same one-of-three pattern holds, but the activity now sits around 32% into the trace — a shift of roughly 0.28 of trace length earlier. [POS001, POS002, POS003]\n- The routing out of these three activities changed completely: earlier, A14 split its outgoing transitions about 50/50 between A23 and A27, A15 about 56/44 and A20 about 52/48; in the later window all three lead to A21 in every observed case, an edge not seen in the earlier profiles. [DIR001, DIR002, DIR003]\n- A40 changed in the matching way: earlier it always led directly to A21; in the later window it leads to A14, A15 or A20 in roughly equal thirds (about 35/34/31 in 100 of its outgoing transitions), and A21 now follows A40 two steps later instead of immediately. [DIR006, LAG004]\n- The A22–A23 section became a fixed chain: earlier, A22 led to A23 in about 48 in 100 of its outgoing transitions and to one of A14/A15/A20 otherwise, and A23 led to A27 in about 52 in 100 and back to A14/A15/A20 otherwise; in the later window A22 always leads to A23 and A23 always to A27, with A23 immediately after A22 and A27 immediately after A23 in all cases, and the A22-to-A27 distance shortening from three steps to two. [DIR004, DIR005, LAG001, LAG002, LAG003]\n- A10 and A11 still occur in every case, but repeat less: about 1.9 occurrences per case earlier versus about 1.6 later, with the share of cases containing a repeat falling from about 47 in 100 to about 38 in 100. [OCC001, OCC002]\n- A21, A22 and A23 each sit slightly later in the trace than before (mean position up by about 0.01–0.03), a much smaller shift than the one above. [POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block A14/A15/A20 — of which exactly one activity executed per case in both windows (the three supports sum to 200 of 200 traces in each) — was rewired and relocated. In the earlier window it ran inside the A22–A23 section, around 60% into the trace, handing control to A23 or A27 in near-even splits while A22 and A23 could also route around it; in the later window A22, A23 and A27 form a fixed chain in every case, and the single A14/A15/A20 execution instead sits between A40 and A21, with A40 routing to one of the three and the three always handing over to A21. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003]\n\nThis is shown directly by successor changes (all three activities now lead only to A21, and A40 now leads only to them), by the A40-to-A21 distance growing from one to two steps, and by the position move from about 0.60 to about 0.32 of trace length. The pattern is consistent across all 18 qualifying items against roughly 0.36 expected by chance for the 73 tested units — about 50 times the chance expectation — and every item's difference exceeds about 995 in 1,000 random re-splits, so the ensemble is not what an unchanged process typically produces. [DIR001, DIR002, DIR003, DIR006, LAG004, POS001, POS002, POS003]\n\nLimitations: positions are event positions, so the relocation reading rests mainly on the successor and lag changes; the evidence contains no outgoing edges for A27 and no predecessors for A40, so the surrounding topology is inferred from pairwise relations, and the three DIR and three POS items describe one underlying difference rather than independent confirmations. A competing explanation the evidence cannot fully rule out is a switch in the mix of pre-existing variants between the windows; the fully deterministic later profiles (100% shares on 61–200 observed transitions per source) make plain sampling fluctuation unlikely, but pairwise indicators cannot reconstruct the complete flow. [DIR001, DIR002, DIR003, POS001, POS002, POS003, LAG004]\n\nOther differences: A10 and A11 still occur in every case but repeat less often (about 1.9 versus about 1.6 occurrences per case; cases with a repeat down from about 47 to about 38 in 100), which is consistent with a shortened loop but whose placement is not directly evidenced, so it may be an independent difference; A21, A22 and A23 each sit slightly later (mean position up about 0.01–0.03). [OCC001, OCC002, POS004, POS005, POS006]",
+  "case_id": "case_b5adc570e3cff1cc",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

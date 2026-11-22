@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_4bb7db3fe137f86e.json",
+  "evidence_sha256": "9529aecd8e2cd76b7ea120ceb44fc69b76f640187f714cca2eca3e77fb95a23e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:51:47.199507+00:00",
+  "finished_at_utc": "2026-11-15T01:53:44.705847+00:00",
+  "latency_seconds": 117.51,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16659,
+    "prompt_tokens": 3244,
+    "total_tokens": 19903,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15946,
+      "text_tokens": 713
+    },
+    "cost": 0.008816099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 66713,
+  "text": "### Observed differences\n\n- Timing between A01 and A03: the elapsed time between consecutive completions of A01 and A03 roughly doubled. In the earlier window it averaged about 0.87 hours (median about 0.86; middle half about 0.77–0.96 hours) over 42 observed successions; in the later window it averaged about 1.78 hours (median about 1.83; middle half about 1.61–1.94 hours) over 26 successions. All quartiles shifted up by roughly 0.8–1.0 hours, and fewer such immediately successive completions were observed (42 versus 26). [TWAIT001]\n- Routing out of A06: in the earlier window, about 52 in 100 of A06's observed outgoing transitions went to A08, about 22 to A07 and about 26 to A09; in the later window, about 42 went to A07, about 32 to A09 and about 26 to A08 (based on 90 transitions before and 96 after). [DIR001]\n- Spacing of A06→A07: among observed A06→A07 pairs within five steps, the gap was one step in about 43 in 100 cases in the earlier window versus about 78 in 100 in the later window, with two-step gaps falling from about 57 to about 22 in 100 (47 versus 51 pairs; event positions, not clock time). [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completions of A01 and A03 is about twice as long as before, with A03 completing roughly 0.9–1.0 hours later after A01 than it did previously (median about 1.83 versus 0.86 hours). The change is measured directly on exactly this succession, is consistent across mean, median and quartiles, and is essentially never produced by random re-splits of unchanged windows (about 1 in 2000 reference comparisons was larger); the time family also produced 1 item where roughly 0.012 would be expected without a change, about 80 times the chance expectation. The main limitation is that the hypothesis rests on a single indicator, and the number of observed A01→A03 successions also fell (42 to 26), so the evidence cannot distinguish a uniform slowdown of this succession from a disappearance of the faster successions — an important competing reading it cannot rule out. [TWAIT001]\n\nOther differences: The two control-flow items show a coherent shift around A06 — A08's share of A06's outgoing transitions fell from about half to about a quarter while A07's rose to about 42 in 100, and A07 followed A06 one step earlier more often — and each looks individually unusual (about 199 of 200 reference comparisons showed a smaller difference). However, the control-flow family produced 2 items where about 0.3 would be expected in an unchanged process, which is what a stable process typically yields, so the evidence does not support inferring a routing or ordering change from them; A06 and A07 are therefore not part of the main hypothesis. [DIR001, LAG001]",
+  "case_id": "e4a_4bb7db3fe137f86e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

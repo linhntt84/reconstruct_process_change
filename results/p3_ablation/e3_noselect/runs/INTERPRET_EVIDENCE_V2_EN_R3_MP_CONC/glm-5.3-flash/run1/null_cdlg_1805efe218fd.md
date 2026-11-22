@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the later window, the rare activities A09, A12 and A13 were executed much more often: A09 rose from about 0.07 to 0.23 occurrences per trace (13 vs 46 events), A12 from about 0.03 to 0.13 (5 vs 25), and A13 from about 0.04 to 0.11 (8 vs 21), while the share of traces containing them stayed low, at roughly 2–5 in 100 in both windows. [OCC009, OCC011, OCC012]
+- Routing around these activities shifted: of A08's outgoing transitions, the share leading to A09 rose from about 21 in 100 to about 46 in 100, while the share leading to A10 fell from about 58 to about 38 in 100; A12's outgoing transitions led back to A09 in all later observations (about 80 in 100 before, the rest to A11), and A13's led to A08 in all later observations (about 88 in 100 before); A09's own split between A12 and A13 moved from roughly 38/62 to 54/46. [DIR004, DIR005, DIR008, DIR009]
+- A08 showed more repeats where it occurs: about 0.12 to 0.19 occurrences per trace at essentially unchanged participation (about 7 in 100 traces in both windows). [OCC008]
+- The side path through A03, A07 and A11 was used less: A03 appeared in about 6 in 100 later traces versus about 12 before, and A07 and A11 in about 12 in 100 versus about 17 before; A03's outgoing transitions moved from A07 (about 52 in 100) to A01 (about 65 in 100), A11 moved away from A01 (about 41 to 18 in 100) toward A03 and A08, and A01 sent about 2 in 100 of its outgoing transitions to A03 versus about 7 before. [OCC003, OCC007, OCC010, DIR001, DIR002, DIR007]
+- A06 was observed more often, in about 17 in 100 later traces versus about 12 before, matching a rise in A01's outgoing transitions leading to A06 from about 18 to 25 in 100. [OCC006, DIR001]
+- The remaining activities (A01, A02, A04, A05, A14) changed little; for example, A04's difference had an empirical strength of only 0.08. [OCC001, OCC002, OCC004, OCC005, OCC013]
+
+### Inference
+
+Support level: Weak hypothesis
+
+Main hypothesis: in the later window, the rarely executed cycle among A09, A12 and A13 — entered from A08 and returning to A08 via A13 — was repeated more often and closed more tightly: A09, A12 and A13 produced several times as many events per trace at nearly unchanged, low trace participation, A12 led back to A09 and A13 back to A08 in all observed later transitions, and A08 fed into this cycle about twice as often (A08→A09 up from about 21% to 46% of A08's outgoing transitions, A08→A10 down from about 58% to 38%), with A08 itself repeating more per trace. The supporting signs are direct routing observations at A08, A12 and A13 together with occurrence increases for all three cycle activities, several of them with high empirical strength (0.83–0.96). [OCC008, OCC009, OCC011, OCC012, DIR004, DIR005, DIR008, DIR009]
+
+What is missing: these profiles rest on very few observations (about 4–9 traces per window for the cycle activities, and 5–46 outgoing transitions behind the routing shares), and no screening baseline is provided, so sampling variability on rare activities in an unchanged process cannot be ruled out; in particular, the disappearance of A12→A11 and A13→A11 from the later profiles may be a sampling effect rather than removed exits. [OCC009, OCC011, OCC012, DIR008, DIR009]
+
+Other differences: the side path A03→A07→A11 was taken less often, with A03 more often returning directly to A01 and A11 rerouting toward A03 and A08, and A06's participation rose from about 12% to 17% of traces with more A01→A06 transitions; these are not part of the main hypothesis. [OCC003, OCC006, OCC007, OCC010, DIR001, DIR002, DIR007]

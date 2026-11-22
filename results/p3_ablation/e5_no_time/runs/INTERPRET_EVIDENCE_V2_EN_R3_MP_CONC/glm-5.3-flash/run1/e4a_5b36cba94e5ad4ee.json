@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_5b36cba94e5ad4ee.json",
+  "evidence_sha256": "313b4ebd907ff8035fe0acb861edeef37d5054c8408c71763a2cb6dae358b88f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:24:20.054280+00:00",
+  "finished_at_utc": "2026-11-14T13:26:12.943318+00:00",
+  "latency_seconds": 112.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18905,
+    "prompt_tokens": 40995,
+    "total_tokens": 59900,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17400,
+      "text_tokens": 1505
+    },
+    "cost": 0.015601749999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 58416,
+  "text": "### Observed differences\n\n- The clearest difference is in the order between two groups of activities. In the earlier window, the groups {A15, A16, A17, A19, A20} and {A21, A22, A23, A24, A25} had no fixed order between them: for example, A15 came before A21 in only about 23 in 100 traces, A20 before A21 in about 3 in 100, and A15 before A24 in about 47 in 100, with both orders occurring regularly. In the later window, all 22 tested cross-group pairs are fixed — the first-group activity precedes the second-group activity in 100 in 100 traces (for A20 and A21 this is a complete reversal, from about 3 in 100 to 100 in 100). Every pair still co-occurs in every trace in both windows, so no activity became optional or disappeared. [REL001, REL003, REL010, REL018, REL022]\n\n- Relative positions moved with the ordering. The mean event position of A15, A16, A17, A19 and A20 moved earlier (A20 from about 0.71 to 0.61 of the trace, A19 from 0.53 to 0.50), while A21–A25 moved later (A21 from about 0.53 to 0.63, A22 from 0.70 to 0.74); before, the positions of all ten activities overlapped broadly (roughly 0.53–0.71). These are event positions, not clock times. [POS001, POS004, POS005, POS006, POS007]\n\n- Spacing became tight and regular. Within the groups, A15, A16 and A17 now follow one another within 1–2 steps in essentially all cases (about 69 in 100 at exactly one step for A15→A16, none beyond two), where before the gap spread over 1–5 steps; A23, A24 and A25 show the same tightening. Between the groups the distance is now constant — A19 is always 5 steps before A21, A20 always 5 before A22, A21 always 4 before A22, A19 always 4 before A20 — whereas before, these gaps varied widely (for A15→A21, the pair was within five steps at all in only 46 of 200 traces, versus 200 of 200 after). [LAG001, LAG004, LAG008, LAG025, LAG026, LAG027, LAG031, LAG037]\n\n- Successor behaviour collapsed to single targets. Before, about 50 in 100 of A20's observed outgoing transitions went to A31 and most of the rest to A21–A25; in the later window, all observed outgoing transitions from A20 go to A21. A22's observed transitions, before split roughly half to A31 and half to A15/A16/A17/A19/A20, now all go to A31; A30's, before split about 54/46 between A21 and A19, now all go to A19; and A15, A16 and A17 no longer show observed outgoing transitions to A21–A25. [DIR001, DIR004, DIR006, DIR010]\n\n- Overall, the later window is consistent with one regular chain — A30, then A19, then A15/A16/A17 in varying order, then A20, then A21, then A23/A24/A25 in varying order, then A22, then A31 — whereas in the earlier window the same activities were interleaved with both orders and variable gaps. [DIR004, DIR005, LAG026, LAG031, LAG051]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the ordering constraints between two groups of activities: in the later window, A15, A16, A17, A19 and A20 always precede A21, A22, A23, A24 and A25, whereas in the earlier window the two groups were interleaved without a fixed order (cross-group pairs in both orders in similar or opposing shares, e.g. A15 before A21 in about 23 in 100 traces, A21 before A20 in about 97 in 100). Within each group the internal order remains flexible, and the ten activities now form the regular chain described above. Participation is unchanged — the direction and position profiles rest on all 200 traces in both windows, and co-occurrence stays at 100 in 100 traces for every pair — so the difference lies in sequencing, not in which activities run. [REL001, REL018, LAG001, LAG004, DIR001, DIR004]\n\nThe screening found 93 control-flow items against fewer than 1 expected if nothing had changed, so chance sampling cannot account for the pattern as a whole; the ordering change is shown directly by the relational evidence and is consistent across the positional, distance and successor evidence, with every item's difference exceeding about 99.5 in 100 random re-splits. Limitations: positions are event positions rather than clock times, so no timing claim is made; the evidence cannot fully distinguish a resequencing within single traces from a replacement of the earlier mixed behaviour by one strictly sequential variant, although the wide, variable step gaps observed before (e.g. A15 to A16 spread over 1–5 steps) favour genuine interleaving; and the many items describe overlapping aspects of the same trace behaviour, so they corroborate rather than independently confirm the change. [LAG001, POS001, REL001, DIR004]",
+  "case_id": "e4a_5b36cba94e5ad4ee",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

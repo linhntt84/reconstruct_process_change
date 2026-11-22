@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_66f99cd29ea9b7e7.json",
+  "evidence_sha256": "99e7f071e8b1112989b90fd6e77850a4f8c2d1a86d7ec0d59a57ce9dbf6d09d9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:44:34.650202+00:00",
+  "finished_at_utc": "2026-11-15T03:47:10.534287+00:00",
+  "latency_seconds": 155.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22122,
+    "prompt_tokens": 11325,
+    "total_tokens": 33447,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20791,
+      "text_tokens": 1331
+    },
+    "cost": 0.01275975
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 74620,
+  "text": "### Observed differences\n\n- The relative order of the group A30, A31, A36 and the pair A22, A21 flipped: in the earlier window, each of A30, A31 and A36 ran before A21 and before A22 in all 200 traces, while in the later window A21 and A22 each run before each of the three in about 99 in 100 traces (the activities still co-occur in every trace in both windows). [REL001, REL002, REL003, REL004, REL005, REL006]\n- Routing around this group changed: in the earlier window, A20's outgoing transitions went to A30, A31 and A36 (about 40, 33 and 28 in 100), A21 was always followed by A25, and the group's activities exited to A22 (about 29–38 in 100); in the later window, A20 leads to A22 (about 99 in 100), A21 leads into the group (about 36, 33 and 31 in 100 to A30, A31 and A36), and the group exits to A25 (about 31–36 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Event positions shifted accordingly: A30, A31 and A36 moved from about 0.41 to about 0.59 of the trace, A21 from about 0.62 to 0.53, and A22 from about 0.47 to 0.38. [POS001, POS002, POS003, POS004, POS005]\n- Pairwise distances changed in the same direction: A20 and A22 were four positions apart in all traces and are now adjacent in about 99 in 100 traces; A21 and A25 were adjacent in all traces and are now about four positions apart in about 99 in 100 traces. [LAG001, LAG004]\n- Two elapsed-time intervals between consecutive completions changed: A01 to A04 roughly doubled (median about 0.85 to about 1.74 hours; 38 observations per window), and A24 to A28 fell from about 1.0 hours to nearly zero (median about 1.01 hours to about 0; 200 observations per window). [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the group of three activities A30, A31 and A36 — executed in varying internal order in both windows — was repositioned: in the earlier window it ran between A20 and the segment A22 then A21, with A25 immediately after A21, whereas in the later window A20 leads directly to A22, A22 and A21 run before the group, A21 leads into the group, and the group exits to A25, which now follows about four positions after A21. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG004]\n\nThe order flip is observed directly for all six activity pairs while A21, A22, A30, A31 and A36 still occur together in every trace in both windows, so the group or the pair did not become optional, removed or bypassed; the successor changes at A20, A21 and the group's activities, the position shifts and the two gap changes all describe the same arrangement; the group's internal routing (each activity followed by the other two or by the exit in roughly equal thirds) is essentially unchanged, consistent with relocation rather than internal restructuring; and 22 control-flow items qualified against roughly 0.4 expected without a change, so chance cannot account for the pattern as a whole, with every item ranking above about 995 in 1,000 random re-splits. These items are facets of one underlying difference, not independent confirmations. [DIR001–LAG006]\n\nLimitations: the evidence shows the two segments swapped relative order but cannot establish which of them moved, since positions are measured relative to trace length; the direct successions group-to-A22 (earlier) and A22-to-A21 (later) are inferred from the consistent pattern rather than observed through direction profiles of A22 or A25; and four lag items rest on only 2 after-window observations and add little weight. [LAG002, LAG003, LAG005, LAG006]\n\nOther differences: two timing changes sit outside this hypothesis — the elapsed time between the consecutive completions of A01 and A04 roughly doubled (median about 0.85 to about 1.74 hours; 38 observations per window), and the elapsed time between the consecutive completions of A24 and A28 fell from about 1.0 hours to nearly zero (200 observations per window). They are timing changes in their own right, and the evidence provides no structural link between them and the reordered group. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_66f99cd29ea9b7e7",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

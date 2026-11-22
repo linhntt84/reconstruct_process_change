@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_224f2535ec137d05.json",
+  "evidence_sha256": "1af06a172d68cf64d426a8e98130305b255a6d7b6f3e97c3088cbc24c1acd2fa",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:31:14.946798+00:00",
+  "finished_at_utc": "2026-11-15T04:31:57.011670+00:00",
+  "latency_seconds": 42.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5904,
+    "prompt_tokens": 3652,
+    "total_tokens": 9556,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5255,
+      "text_tokens": 649
+    },
+    "cost": 0.0034998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20991,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces), while in the later window it is executed exactly once in every trace (200 of 200, mean occurrences per trace 1.0). [OCC001]\n- In the later window, A01 always sits at the end of the trace (mean relative position 1.0); in the earlier window it had no position because it never occurred. [POS001]\n- The relationship between A16 and A01 changed completely: earlier, A16 appeared in all 200 traces while A01 appeared in none, so the two were never seen together; in the later window, both occur together in all 200 traces, and always with A16 before A01. [REL001]\n- A16's outgoing behaviour changed: in the earlier window no outgoing transitions of A16 were observed, whereas in the later window every observed outgoing transition of A16 leads directly to A01 (share 1.0 across 200 traces). [DIR001]\n- A16 itself still occurs in every trace, but its position moved from a constant final position (mean 1.0) to slightly earlier and variable (mean about 0.92, middle half roughly 0.86–0.97), consistent with A01 now following it. [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, a step A01 is executed directly after A16 at the end of every case, whereas earlier cases ended with A16 and A01 was not observed. Earlier, A16 ran in all 200 traces at a constant final position with no observed successors; in the later window, every case runs A16 and then A01 exactly once, A16's observed transitions all lead to A01, and A01 is the final step of the trace [REL001, DIR001, OCC001, POS001, POS002].\n\nThe support is direct and consistent: the new succession is shown directly by relational evidence (co-occurrence and A16-before-A01 both moving from 0 to 100 in 100 cases) and by successor evidence (A16 leading to A01 in all observed transitions), with the occurrence and position items agreeing; each difference is larger than in about 99 of 100 random re-splits, and five items qualified against roughly 0.12 expected if nothing had changed, so the set of items is unlikely for an unchanged process [REL001, DIR001, OCC001, POS001, POS002].\n\nLimitations: all five items describe one underlying difference, so they are not independent confirmations of each other [OCC001, POS001, POS002, REL001, DIR001]. An important competing explanation the evidence cannot fully rule out is that A01 was a pre-existing but rarely executed step that happened not to appear in the earlier 200 traces — zero participation only means it was not observed there [OCC001]. Likewise, the empty successor profile for A16 earlier does not prove A16 had no outgoing edges, although its constant final position is consistent with it ending the case [DIR001, POS002].",
+  "case_id": "case_224f2535ec137d05",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

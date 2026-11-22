@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_e73af4b6228f3807.json",
+  "evidence_sha256": "bd579246e7798a032873405b1a02860abd5fa54eee108cb2fae3d298d5af2514",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:18:37.144204+00:00",
+  "finished_at_utc": "2026-11-15T08:20:00.177936+00:00",
+  "latency_seconds": 83.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11801,
+    "prompt_tokens": 12172,
+    "total_tokens": 23973,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10442,
+      "text_tokens": 1359
+    },
+    "cost": 0.007726299999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36306,
+  "text": "### Observed differences\n\n- Activity A10 was not observed in any of the 200 earlier traces; in the later window it appears in 94 of 200 cases (about 47 in 100), typically around a quarter of the way through the case. [OCC008, POS003]\n- In the earlier window, A11 passed almost always directly to A07 (about 96 in 100 of its outgoing transitions); in the later window only about 44 in 100 do so, while about 52 in 100 now go to A10. [DIR005]\n- A10's outgoing transitions in the later window lead mainly to A07 (about 53 in 100) and A11 (about 45 in 100); whenever A10 and A07 occur in the same case, A10 always comes first (47 in 100 cases). [DIR004, REL004]\n- The distance from A11 to A07 grew from one step (96 in 100 cases before) to mostly two steps (about 53 in 100 after); the distance from A05 to A07 grew from two steps (94 in 100) to three steps (about 44 in 100), while the A05-before-A07 order itself stayed stable at about 95 in 100 in both windows. [LAG004, LAG001, REL001]\n- A05 now routes to A10 in about 20 in 100 of its outgoing transitions, while A05→A11 fell from about 49% to 23%; A05 precedes A10 in about 43 in 100 later cases, and the A05→A11 distance also lengthened (one step in all observed cases before, two steps in about 45 in 100 after). [DIR002, REL002, LAG002]\n- A07 gained new successors in the later window: A06 (about 9 in 100 of its outgoing transitions), A09 (about 6) and A02 (about 4), none of which were observed earlier; their case participation rose from zero to about 11%, 6% and 4% respectively. [DIR003, OCC005, OCC007, OCC002]\n- Smaller movements: A07 now occurs slightly earlier and more regularly (mean position 0.74 to 0.69, spread 0.16 to 0.08) and A11's position became more variable (median 0.33 to 0.25, upper quartile 0.33 to 0.50); participation of A01, A03, A04, A08 and A11 shifted by only 2–4 percentage points with low empirical strength, in line with sampling noise. [POS002, POS004, OCC001, OCC003, OCC004, OCC006, OCC009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new activity, A10, was added and inserted into the existing flow between A11 (and, in some cases, A05) and A07. In the earlier window, cases typically ran A05 → A11 → A07 with A11 leading directly to A07; in the later window, A10 occurs in about 47 in 100 cases, A11 hands over to A10 in about half of its transitions instead of going straight to A07, and A10 in turn leads mainly to A07 or back to A11. [OCC008, DIR005, DIR004, REL004]\n\nSupporting signs: the redirection is visible directly in the routing (A11→A07 fell from 96% to 44% while A11→A10 appeared at 52%), and the one-step lengthening of both the A11→A07 and A05→A07 distances matches an activity inserted between them; the share of A11's transitions still going straight to A07 (about 44 in 100) matches the share of A11→A07 pairs still at distance one. A10's placement is also observed relationally: it always precedes A07, follows A05 in about 43 in 100 cases, and sits around a quarter into the case. [DIR005, LAG004, LAG001, REL004, REL002, POS003]\n\nLimitations: the evidence is control-flow and position-based, so it shows where A10 sits but not what the insertion replaced or its purpose. A competing explanation — that A10 belongs to a separate, newly added parallel branch rather than being inserted into the A11→A07 path — is made unlikely by the redirected A11 transitions and the lengthened distances, but cannot be fully excluded, because A10 and A11 occur in both orders (A10 before A11 in about 22 in 100 later cases, A11 before A10 in about 25), so the exact wiring around A11 is not fully resolved. [REL006, DIR005, LAG001, LAG004]\n\nOther differences: A07 shows three further new, occasional successors in the later window — A06, A09 and A02, each in roughly 4–11% of cases and together about 20 in 100 of A07's outgoing transitions — suggesting additional additions after A07 that are not part of the main hypothesis. [DIR003, OCC005, OCC007, OCC002] The remaining differences (A07's slightly earlier and more regular position, A11's more variable position, and 2–4 percentage-point participation shifts for A01, A03, A04, A08 and A11) are small and weak, consistent with sampling variation between the windows. [POS002, POS004, OCC001, OCC003, OCC004, OCC006, OCC009]",
+  "case_id": "case_e73af4b6228f3807",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

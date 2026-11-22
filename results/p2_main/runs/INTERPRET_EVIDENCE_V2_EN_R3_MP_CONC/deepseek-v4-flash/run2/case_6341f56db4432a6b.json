@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_6341f56db4432a6b.json",
+  "evidence_sha256": "1051bb313d42cf4d275dc28f513b8012ced76676dd2e007f13efa8a9d988e9e2",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:12:16.572343+00:00",
+  "finished_at_utc": "2026-11-15T01:12:33.675850+00:00",
+  "latency_seconds": 17.1,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2902,
+    "prompt_tokens": 4703,
+    "total_tokens": 7605,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2273
+    },
+    "cost": 0.001407938
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 8224,
+  "text": "### Observed differences\n\n- In the later window, activity A01 is no longer observed: its trace participation drops from about 52% (103 of 200 traces) to 0% (0 of 200) [OCC001, POS001, REL001].\n- A12, which previously always occurred after A01 (A12 before A01 in 51.5% of traces) and always had A01 as its successor, now occurs alone in about 51% of traces and has no outgoing transitions; its position shifts from a mean of 0.82 (near the end) to exactly 1.0 (always last) [DIR003, POS002, REL001].\n- The outgoing routing of A06 changes: before, it went to A14 in about 54% of cases and A10 in 46%; after, it goes to A10 in 100% of cases [DIR001].\n- Similarly, A14's outgoing routing changes: before, it went to A10 in 54% and A15 in 46%; after, it goes to A10 in 100% [DIR005].\n- A07's outgoing routing changes: before, it always went to A05; after, it splits evenly between A05 (50%) and A13 (50%) [DIR002].\n- A13's outgoing routing changes: before, it always went to A05; after, it splits among A05 (49%), A07 (30%), and A08 (21%) [DIR004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a hypothesis that the process changed by removing activity A01 and making A12 the final activity, while also reconfiguring the routing after A06, A07, A13, and A14. Specifically, A01 disappears entirely, A12 no longer has a successor and always occurs last, and the previously observed transitions from A12 to A01 are gone. The routing changes for A06 and A14 (now always to A10) and for A07 and A13 (new splits) are consistent with a reconfiguration of the control flow, but they are separate from the removal of A01. The evidence is strong: 9 control-flow items were flagged against an expected 0.13 by chance, and the changes are directly observed in participation, position, and successor relations. A competing explanation that A01's absence is a sampling artifact is ruled out by its high prior frequency (52%) and the consistent disappearance across multiple indicators. The routing changes could be independent adjustments, but they are not explained by the removal of A01 alone.\n\nOther differences: The routing changes for A06, A14, A07, and A13 are additional differences not part of the main hypothesis. They indicate that the process now always routes A06 and A14 to A10, and that A07 and A13 have new alternative successors (A13 and A07/A08 respectively). These could be part of a broader reconfiguration, but the evidence does not tie them to the removal of A01.",
+  "case_id": "case_6341f56db4432a6b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

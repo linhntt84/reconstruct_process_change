@@ -1,0 +1,18 @@
+### Observed differences
+
+- Before, A40 handed over to one of A14, A15 or A20 (about 38, 31 and 32 in 100 of its outgoing transitions respectively), and each of the three always continued to A21. In the later window, A40 leads to A21 in every observed transition, while A14, A15 and A20 instead continue to A23 (about 39–54 in 100) or A27 (about 46–61 in 100). [DIR001, DIR002, DIR003, DIR006]
+- A14, A15 and A20 ran in about 30–38 in 100 traces in both windows (their shares together account for the full sample in both, consistent with exactly one of the three per trace), but their mean event position moved from about one-third of the trace (0.31–0.33) to about three-fifths (0.59–0.60). A21, A22 and A23 occurred in every trace in both windows and shifted only slightly earlier (mean 0.35 to 0.32, 0.58 to 0.55, 0.61 to 0.59). [POS001, POS002, POS003, POS004, POS005, POS006]
+- The order between the three activities and A21/A22 reversed. Before, A14, A15 or A20 always preceded A21 and A22 when they shared a trace (for example A14 before A21 in 38 in 100 traces, never the reverse); in the later window A21 always precedes them (in about 30–37 in 100 traces, never the reverse). Against A23 the later order is mixed: A23 precedes A20 in about 22 in 100 traces and follows it in about 14, and A23 precedes A14 in about 14 in 100 while A14 precedes it in about 16. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- Before, A22 always led to A23 and A23 always led to A27. In the later window, A22 leads to A23 in about 52 in 100 transitions and to one of A14/A15/A20 in about 48 in 100, and A23 leads to A27 in about 48 in 100 and to one of A14/A15/A20 in about 52 in 100. [DIR004, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the three activities A14, A15 and A20 now execute at a later stage of the process. Before, they formed a three-way alternative fed by A40 and always ran before A21, each continuing into A21; in the later window A40 feeds directly into A21, and the three run after A21 and A22 — entered from A22 or A23 in about half of those activities' outgoing transitions — and continue on to A23 or A27. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL004, REL006]
+
+The change is shown directly by three agreeing views: successor profiles changed exactly where a move would imply, the group's event position shifted from about one-third to about three-fifths of the trace while A21–A23 stayed in place, and every measured activity pair flipped from "group first" to "A21/A22 first". The activities involved remain well observed in both windows (roughly 61–76 traces out of 200 each), so this is a move of frequently executed activities rather than activities appearing or disappearing. With 20 qualifying items against roughly 0.38 expected by chance among the 77 tested units, the volume of evidence far exceeds what an unchanged process typically produces. [DIR001, DIR006, POS001, POS002, POS003, POS004, REL001, REL004, REL006]
+
+A competing reading the evidence cannot rule out is that the early branch was removed and a separate late insertion added, rather than one group moved; the mixed order against A23 in the later window is also consistent with more than one insertion point, which the pair-level data cannot resolve. The routing percentages describe outgoing transitions, not whole cases. [REL003, REL008, DIR004, DIR005]
+
+Other differences: the choice among the three activities shifted slightly — A14 ran in about 38 in 100 traces before and about 31 after, while A20 rose from about 32 to about 37 and A15 stayed near 31–33 — a small shift the evidence cannot separate from sampling variation. [POS001, POS002, POS003]

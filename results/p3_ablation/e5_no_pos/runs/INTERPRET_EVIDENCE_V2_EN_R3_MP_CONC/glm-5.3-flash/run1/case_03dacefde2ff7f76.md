@@ -1,0 +1,23 @@
+### Observed differences
+
+- The branching at A45 changed completely. In the earlier window, A45's outgoing transitions split roughly equally among A19 (about 31 in 100), A20 (about 26) and A25 (about 28), and A26 typically followed two positions after A45; in the later window, about 89 in 100 of A45's outgoing transitions go to A26, and A26 immediately follows A45 in about 89 of 100 observed pairs. [DIR006, LAG008]
+
+- A19, A20 and A25 no longer lead to A26. Earlier, A26 received about 97 of 100 outgoing transitions from A19, about 89 from A20 and about 98 from A25, and A25 was immediately followed by A26 in roughly 63 traces; in the later window A19 sends about half of its outgoing transitions to A28 and about 46 in 100 to A32, A20 about 51 and 43, and A25 about 58 to A32 and 38 to A28, while the direct A25–A26 transition appears only once. The pairs (A20, A28) and (A20, A32) had only one observation each in the earlier window, so their earlier spacing is weakly characterised; later, A20 typically precedes A28 by one step and A32 by one or two steps. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003]
+
+- The order between the group {A19, A20, A25} and A26/A27 flipped. Earlier, A19, A20 and A25 each came before A26 (about 30–37 in 100 co-occurring traces) and before A27 (about 31–38 in 100), with the reverse directions essentially absent; in the later window A26 and A27 come first (for example A26 before A19 in about 31 of 100, A27 before A25 in about 36 of 100) while the earlier directions are near zero. [REL001, REL002, REL004, REL005, REL006, REL007]
+
+- A27 and A28 now feed the group. Earlier, A27 led to A28 in about 98 of 100 outgoing transitions and A28 led to A32 in about 94; in the later window A27 sends about 47 of 100 outgoing transitions to A19, A20 or A25 (A28 about 51), A28 sends about 51 of 100 back to A19, A20 or A25 (A32 about 48), and A28 is immediately followed by A20 in about 30 traces, which was hardly observed earlier. [DIR004, DIR005, LAG006]
+
+- Fixed orders became mixed and distances grew. A19–A28 was earlier always A19 first (about 37 in 100, reverse 0) and later shows both orders (about 16 vs 15 in 100); A25–A28 went from one-directional (about 32 in 100) to mixed (about 15 vs 22 in 100). A27–A32 moved from mostly two steps apart to mostly three, and A27–A28 and A28–A32 changed from a single step to one or two steps. [REL003, REL008, LAG004, LAG005, LAG007]
+
+- Participation shifted mildly: A19 appears in about 38 of 100 traces earlier versus about 31 in 100 later, A25 in about 32 versus about 38, and A20 stays near one third. [DIR001, DIR002, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment containing A19, A20 and A25 changed its place in the flow: in the earlier window these three activities ran between A45 and A26, with A45 routing to one of them and each then leading almost exclusively to A26, while A27 and A28 formed a fixed A27→A28→A32 tail; in the later window A45 leads directly to A26, A26 and A27 precede the group, and A19, A20 and A25 lead on to A28 or A32, with A28 often routing back to them so that they appear late in the trace and in no fixed order relative to A28. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG003, LAG006, LAG008]
+
+The signs are direct and consistent: all six order relations between the group and A26/A27 flipped with the old directions near zero, the successor profiles of six source activities changed coherently, and the gap evidence matches step by step (A45–A26 from two steps to one, the direct A25–A26 transition disappearing, A27–A32 growing by one step). In total 22 control-flow items qualified against roughly 0.6 expected without change — many times the chance expectation — and every item's difference exceeded 199 of 200 random re-splits, so the pattern as a whole is not what an unchanged process typically produces; the near-zero overlap of orderings between the windows also argues against the differences being a mere frequency shift between pre-existing variants. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]
+
+Limitations: the connection between A26 and A27 is never observed directly — A26 has no outgoing profile and no A26–A27 pair item exists — so their relative position in each window is inferred indirectly from the flipped relations. With 200 traces per window, a low-frequency variant (a few percent of traces) could also have hidden in either window, which the evidence cannot exclude. [REL001, REL004, REL006, LAG003]

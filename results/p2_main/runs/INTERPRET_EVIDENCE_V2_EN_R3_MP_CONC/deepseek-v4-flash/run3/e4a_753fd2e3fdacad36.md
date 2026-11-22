@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, activities A14, A15, A20, A21 and A22 each had all their outgoing transitions (100%) to A23. In the later window, these transitions are redistributed to A25 and A29, with shares varying by activity (e.g., A14 about 45% to A25 and 55% to A29; A22 about 68% to A25 and 32% to A29). [DIR001–DIR005]
+- A24 previously transitioned only to A25; in the later window it also transitions to A22, A14, A15, A21 and A20, with A25 still the largest share (about 49%). [DIR006]
+- A25 previously transitioned only to A29; in the later window it also transitions to A22, A14, A20, A15 and A21, with A29 still the largest share (about 51%). [DIR007]
+- A42 previously transitioned to A22, A15, A21, A20 and A14 in roughly equal shares; in the later window it transitions only to A23. [DIR008]
+- The mean position of A14, A15, A20, A21 and A22 shifted from about 0.30–0.33 of the trace to about 0.58–0.61. A23, A24 and A25 moved slightly earlier (e.g., A23 from 0.348 to 0.312). [POS001–POS008]
+- For each pair (A14,A23), (A14,A24), (A20,A23), (A20,A24), (A21,A23), (A21,A24), (A22,A23) and (A22,A24), the order reversed: in the earlier window the first activity always occurred before the second; in the later window the second always occurs before the first. [REL001–REL008]
+- The step distance between A24 and A25 changed from always 1 step to about half 1 step and half 2 steps; between A24 and A29 from always 2 steps to always 3 steps; between A25 and A29 from always 1 step to about half 1 and half 2; between A42 and A23 from always 2 steps to always 1 step. [LAG001–LAG004]
+- The elapsed time between A03 and A09, A04 and A09, A05 and A09, A06 and A09, A07 and A09, and A08 and A09 decreased from about 1 hour to about 0.5 hour on average. [TWAIT001–TWAIT006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural change in which activities A14, A15, A20, A21 and A22, which previously occurred before A23 and A24 and then transitioned to A23, now occur after A23/A24 and transition to A25 or A29 instead. This is directly shown by the reversed order in the REL items, the later positions in the POS items, the changed outgoing edges in the DIR items, and the corresponding shifts in step distances in the LAG items. A42 now transitions to A23 instead of to those activities, consistent with the same reordering. The number of control-flow items (28) far exceeds the chance expectation (0.43), and the items are mutually consistent.
+
+Other differences: The elapsed time between A03–A08 and A09 halved from about 1 hour to about 0.5 hour, a separate timing change. [TWAIT001–TWAIT006]
+
+A competing explanation that cannot be fully ruled out is that the observed reordering reflects a change in the relative frequency of two existing variants rather than a single global reordering, but the consistency across many activity pairs and the large excess over chance make this unlikely.

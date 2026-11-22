@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_5f69f27320a9a3d6.json",
+  "evidence_sha256": "119b1891de306411419cadd81d68a78428bcc7519b8bc76f65adc3218daf63d4",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:53:11.337879+00:00",
+  "finished_at_utc": "2026-11-15T02:53:29.125120+00:00",
+  "latency_seconds": 17.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2706,
+    "prompt_tokens": 14075,
+    "total_tokens": 16781,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2103
+    },
+    "cost": 0.002611258
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 7022,
+  "text": "### Observed differences\n\n- In the later window, activity A01 appears in all 200 traces (mean 1.0 per trace) whereas it was absent in the earlier window; activity A04 appears in all 200 traces earlier and in none later. [OCC001, OCC002]\n- The outgoing edge of A03 changed from always going to A04 to always going to A07; A04's outgoing edge to A07 disappeared. [DIR003, DIR004]\n- A01 now has outgoing edges to A03, A05 and A06, and A02, A05 and A06 also lead to A01 in addition to their previous targets. [DIR001, DIR002, DIR005, DIR006]\n- A01 now co-occurs with A02, A03, A05, A06 and A07 in all traces, whereas before those activities occurred without A01. [REL001, REL002, REL004, REL005, REL006]\n- The mean position of A03 shifted from 0.6 to 0.8, A05 from 0.30 to 0.41, A06 from 0.30 to 0.40; A01 appears at mean position 0.39. [POS002, POS004, POS005, POS001]\n- The lag between A02 and A03 increased from 3 to 4 steps, and between A03 and A07 decreased from 2 to 1 step. [LAG001, LAG004]\n- The order between A05 and A06 became less fixed: before A05 always preceded A06, after about 21% of traces have A06 before A05 (and similarly for the reverse). [LAG006, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports that the process changed by removing activity A04 and introducing activity A01, with corresponding routing adjustments. Specifically, A03 now leads to A07 instead of A04, and A01 is connected to A03, A05 and A06, appearing in every trace. The positions of A03, A05 and A06 shifted later, and A01 appears in the middle. This is supported by the complete disappearance of A04 and appearance of A01, the direct successor change from A03 to A07, and the co-occurrence of A01 with all remaining activities. The number of evidence items (34) far exceeds the 0.17 expected by chance, so the overall difference is not a sampling artefact.\n\nA competing explanation that cannot be fully ruled out is that A01 is a renamed A04 with additional changes, but the positional difference (A04 was at 0.8, A01 at 0.39) suggests it is not a simple rename.\n\nOther differences: The order between A05 and A06 became less fixed, and the lag between A02 and A03 increased.",
+  "case_id": "case_5f69f27320a9a3d6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

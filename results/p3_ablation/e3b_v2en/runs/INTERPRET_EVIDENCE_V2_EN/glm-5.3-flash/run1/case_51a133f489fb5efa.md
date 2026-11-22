@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, A08 appears in about 30% of traces, up from about 13% (59 vs 26 of 200 traces), and it occurs earlier in the trace (mean relative position about 0.34 vs 0.49) [OCC001, POS001].
+- In the later window, A08's outgoing transitions are almost completely redirected: before, they spread roughly evenly over A16, A26, A15 and A49 (about 14% each); after, they concentrate on A19 (38%), A20 (29%) and A25 (21%) [DIR001].
+- In the later window, A19, A20 and A25 each occur much earlier (mean relative position about 0.32–0.33, vs about 0.59–0.61 before) [POS002, POS003, POS004], and each now leads almost exclusively to A26 (96–100% of their observed outgoing transitions, versus 44–56% to A28 or A32 before) [DIR002, DIR003, DIR004].
+- In the later window, the order relative to A26 is reversed: before, A26 came before A19, A20 or A25 in about 31–36% of traces and after them in at most 0.5%; after, A26 comes after them in about 30–35% of traces and essentially never before [REL005, REL007, REL009]. The same reversal holds against A27 [REL006, REL008, REL010].
+- In the later window, A45 is rerouted: its transition to A26 falls from about 92% of outgoing transitions to under 1%, replaced by A20 (26%), A08 (25%), A19 and A25 (about 23% each), and the A45→A26 distance moves from mostly 1 step to 2–3 steps [DIR007, LAG014].
+- In the later window, the A27 route tightens around A28: A27 leads to A28 in about 98% of its transitions (from 50%) and A28 leads to A32 in about 99% (from 48%), each at distance 1 in about 99% of cases; the A27→A32 distance shortens from typically 3 steps to 2 [DIR005, DIR006, LAG010, LAG013, LAG011].
+- In the later window, A08 precedes A26, A27, A28 and A32 in about 27% of traces (versus about 6% before), typically with one activity in between (A08→A26 distance 2 in 96% of 53 after-window observations) [REL001, REL002, REL003, REL004, LAG002]. Distances into A26 also lengthen for upstream activities (A16→A26 from mostly 3 to 4–5 steps; A18→A26 from 2 to 3–4 steps), while A26 itself remains in every trace and only sits slightly later (mean relative position 0.35 vs 0.32) [LAG004, LAG005, POS005].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the sequence around A26 was restructured: A19, A20 and A25, which previously ran after A26 and continued into A28 or A32, now run before A26 — reached from A08 and A45 — and lead almost always directly into A26, while A27's routing consolidates into a direct A27→A28→A32 chain [REL005, REL007, REL009, DIR002, DIR003, DIR004, DIR007].
+
+This is a hypothesis about order and placement, and it rests on direct relational and positional evidence rather than frequency shifts alone: the co-occurrence order reversals hold across all 200 traces in both windows, the successor profiles of A19, A20 and A25 converge on A26, and the positions of A19, A20 and A25 move earlier while A26 stays nearly in place [REL005, DIR002, POS002, POS005].
+
+Limitations: several distance items rest on very few observations — for example A19→A26 and A08→A19 have only one before-window observation, and A25→A32 drops to a single after-window observation — so the precise distances are fragile [LAG007, LAG001, LAG008]. An important competing explanation the evidence cannot rule out is sampling differences in variant frequencies between the two 200-trace windows: rare variants can appear in one window only, and part of the pattern, especially the low-support distance shifts, could reflect a different mix of existing variants rather than a relocation of activities. Many items also describe the same underlying trace behaviour and are therefore not independent confirmations [LAG008, LAG009, LAG012].

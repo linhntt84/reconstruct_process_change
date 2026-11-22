@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_cdlg_ada604bab879.json",
+  "evidence_sha256": "1d027a63caa4ad57a71e9dea648c26cb6b2f23bacb884eaa5e760ee0a8442dd9",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T15:00:16.012044+00:00",
+  "finished_at_utc": "2026-11-14T15:02:21.584632+00:00",
+  "latency_seconds": 125.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20218,
+    "prompt_tokens": 9483,
+    "total_tokens": 29701,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18929,
+      "text_tokens": 1289
+    },
+    "cost": 0.011531449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69387,
+  "text": "### Observed differences\n\n- The stretch of activities A04, A05 and A06 is executed more often in the later window: A05 appears in about 26 in 100 traces before and about 37 in 100 after, with mean occurrences per trace up from about 0.4 to 0.6, while A04 and A06 each rise from about 29 in 100 traces to about 34; these differences are larger than in about 81–97 in 100 random re-splits. [OCC003, OCC004, OCC005]\n- More work flows into this stretch from A09, which appears in about two thirds of traces in both windows: before, about 55 in 100 of A09's outgoing transitions went to A03, about 13 to A04 and 7 to A05; after, the A03 share falls to about 43 and A06 to about 16, while A04 rises to about 20 and A05 to about 16. [DIR007]\n- Inside the stretch, A04 hands over to A05 about twice as often (about 17 in 100 of its outgoing transitions before, about 31 after, making A05 — previously behind A02 and A10 — its most common successor), and A05 hands to A06 more often (about 17 to 26 in 100). [DIR003, DIR004]\n- A01 and A11, which already appeared in about 65 in 100 traces and whose most common successor is each other, occur more often and repeat more: mean occurrences per trace rise from about 0.9 to 1.05 and traces with repeats from about 19 to 26 in 100; A06 passes control to A01 about four times as often (about 2 to 9 in 100 of A06's outgoing transitions). [OCC001, OCC010, DIR005, DIR001, DIR009]\n- Routing among A02, A07 and A10 changed while their occurrence stayed effectively flat: before, A02 led mostly to A10 (about 58 in 100) and A10 led mostly to A07 (about 60); after, A02 leads mostly to A07 (about 58) and A10 leads mostly to A02 (about 50). Their participation rose only from about 28 to 33 in 100 traces, a gap that about half of random re-splits exceed. [DIR002, DIR008, OCC002, OCC006, OCC009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, a larger share of cases runs through the stretch A09 → A04/A05 → A06 → A01/A11: A04, A05 and A06 appear in more traces and occur more often per trace, A09 routes clearly more of its hand-offs to A04 and A05 and less to A03 and A06, A04 passes control to A05 about twice as often, and the frequent tail A01/A11 repeats more. Every activity involved is observed in a substantial share of traces in both windows (roughly 26–37 in 100 for A04/A05/A06, about 65 for A01/A11), so this reads as existing paths being taken more often rather than one path replacing another, and the occurrence and routing items all point in the same direction, with the key differences larger than in about 94–99 in 100 random re-splits. [OCC001, OCC003, OCC004, OCC005, OCC010, DIR003, DIR007]\n\nThe evidence shows only aggregate flow, so it cannot show which trace variants carry the extra executions, and the downstream links A05→A06 and A06→A01 rest on moderate strength (larger than in about 67–68 in 100 random re-splits). [DIR004, DIR005] No occurrence item for A03 exists, so the counterpart of A09's reduced hand-off — fewer A03 executions — cannot be confirmed. [DIR007] The main competing explanation, that the two windows are different samples of an unchanged process, is made unlikely but not impossible by these strengths, and no screening baseline is provided to quantify how many such items chance alone would produce. [OCC004, DIR003, DIR007]\n\nOther differences: the rerouting among A02, A07 and A10 described above — before, the dominant route ran A02 → A10 → A07; after, A02 leads directly to A07 and A10 leads to A02. [DIR002, DIR008] This is consistent both with a change in the order of A02 and A10 before A07 and with a shift in choice frequencies within the cluster; without relational order evidence the data cannot distinguish a reordering from a share shift, and the cluster's own participation barely moved. [OCC002, OCC006, OCC009]",
+  "case_id": "null_cdlg_ada604bab879",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

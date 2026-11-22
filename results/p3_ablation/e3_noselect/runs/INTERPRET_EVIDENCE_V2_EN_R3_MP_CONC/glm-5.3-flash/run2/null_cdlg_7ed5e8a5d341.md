@@ -1,0 +1,12 @@
+### Observed differences
+
+- Participation in the activities is essentially unchanged. A02, A03, A04, A06, A09 and A10 each appear in about 53 in 100 traces in the earlier window and about 51–52 in 100 in the later window; A01 and A05 rise slightly from about 47 to about 48–49 in 100; A07 falls from about 24 to 23; A08 rises from about 23 to 25–26. The largest movement is about 2–3 traces in 100, and random re-splits of the pooled data produce differences at least that large in roughly two of three cases, so none of these shifts is unusual. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]
+- Most successor shares are stable. A01 sent about 40% of its outgoing transitions to A08, 20% to A05 and 40% to A07 in the earlier window, versus about 43%, 19% and 39% in the later window; A04 sent about 61% of its outgoing transitions to A10 in both windows; A08 kept a roughly 75–80% versus 20–25% split between A01 and A05; A10's successor mix moved by only a few points. [DIR001, DIR004, DIR008, DIR010]
+- The clearest local shifts involve rarely observed edges. A07: in the earlier window all 13 observed outgoing transitions went to A01; in the later window about 13 of 17 went to A01 and about 4 of 17 went to A05, an edge not observed earlier. A09: transitions to A04 rose from about 35% (14 of 40) to about 53% (20 of 38) of its outgoing transitions, while the rare edge to A02 (about 4 transitions earlier) was not observed later. A03 shifted mildly toward A09, from about 67% to about 76% of its outgoing transitions, with small decreases toward A06 and A10. [DIR007, DIR009, DIR003]
+- A few other routing shares moved by only a few percentage points: A02's transitions to A10 rose from about 3% to about 7% while those to A04 fell from about 47% to about 41%; A06's transitions to A02 rose from about 3% to about 7%; A05's transitions to A07 fell from about 19% to about 14%. [DIR002, DIR005, DIR006]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest routing differences (A07 toward A05, A09 toward A04) rest on only about 13–40 outgoing transitions each and involve rare edges seen in one window only, which a stable process produces occasionally when ten routing units are tested. [DIR007, DIR009]

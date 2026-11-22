@@ -1,0 +1,30 @@
+### Observed differences
+
+- A20: A21 changes from 0.478 to 0.248. [DIR001]
+- A21: A20 changes from 0.512 to 0.287. [DIR002]
+- A23: A21 changes from 0.520 to 0.343. [DIR003]
+- A24: A25 changes from 0.995 to 0.074. [DIR004]
+- A25: A28 changes from 0.542 to 0.305. [DIR005]
+- 76 evidence items qualified; about 0.89 would be expected without any change.
+
+### Inference
+
+Support level: Supported hypothesis
+
+- A20 and A25 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL001]
+- A20 and A26 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL002]
+- A20 and A27 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL003]
+- A20 and A28 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL004]
+- A21 and A25 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL005]
+- A21 and A26 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL006]
+- A21 and A27 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL007]
+- A21 and A28 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL008]
+- A23 and A25 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL009]
+- A23 and A27 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL010]
+- A23 and A28 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL011]
+- A24 and A26 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL013]
+- A24 and A27 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL014]
+- A24 and A28 change from forward behavior to mixed_order behavior. A parallel/sequential change is a candidate, but mixed trace order alone cannot establish concurrency. [REL015]
+- The order of A24 and A25 reverses. The evidence does not determine which activity moved or whether this is a swap. [REL012]
+
+Rule matches are hypotheses based on the qualified evidence, not proof of the underlying process edit; several matches may reflect one change.

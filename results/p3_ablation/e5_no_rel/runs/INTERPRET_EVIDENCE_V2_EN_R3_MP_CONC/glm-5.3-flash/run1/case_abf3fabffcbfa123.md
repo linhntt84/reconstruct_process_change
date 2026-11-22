@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, A32, A33 and A38 are almost never executed: in the earlier window each ran in about 49 in 100 traces (97–98 of 200), afterwards each appears in only 1 of 200 traces. [OCC005, OCC006, OCC007, POS004, POS005, POS006]
+- A27 became near-mandatory: it ran in about 52 in 100 traces before and in about 100 in 100 after, with roughly one execution per trace in the later window (mean occurrences about 0.5 → 1.0). [OCC004]
+- The choice after A26 collapsed onto A27: before, A26's outgoing transitions went to A27 in about 50 in 100 cases and to A32, A33 or A38 in about 14–18 in 100 each; after, about 98 in 100 go to A27. [DIR006]
+- A28 still occurs in every trace in both windows, but it now follows A26 exactly 2 steps later in about 95 in 100 cases (before: about 49 in 100 at 2 steps and about 46 in 100 at 4 steps), and its position within the trace moved slightly earlier (mean about 0.56 → 0.54). [LAG003, POS003]
+- A14's routing shifted towards A15: A14→A04 fell from about 63 to about 10 in 100 of A14's outgoing transitions while A14→A15 rose from about 36 to about 82 in 100; A15 now follows A14 immediately in about 47 in 100 cases (about 19 in 100 before), and A14→A04 is less often immediate (about 99 in 100 before, about 72 in 100 of the remaining pairs after). [DIR004, LAG001, LAG002]
+- A04 participates much less and later: about 68 in 100 traces before, about 22 in 100 after, with its mean position moving from about 0.21 to about 0.40 of the trace. [OCC002, POS001]
+- A08 and A02 participate more often (about 5 → 21 in 100 and about 5 → 15 in 100 traces) and their outgoing transitions are spread over largely different successors; both rest on few before-window observations (8–10 traces). [OCC003, OCC001, DIR003, DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the branch reachable from A26 through A32, A33 and A38 is now skipped. In the earlier window, a case leaving A26 either went to A27 or took one of A32/A33/A38, which led mostly to one another and on to A28 at a variable distance; in the later window A26 is followed by A27 in about 98 in 100 of its transitions, A27 runs in virtually every trace, A32/A33/A38 appear in about 1 in 200 traces each, and A28 — still executed in every trace — now follows A26 two steps later in about 95 in 100 cases. This is directly and consistently shown across occurrence, direction, position and lag indicators, and with 32 qualifying items against roughly 0.64 expected without change (about fifty times the chance level), the differences as a whole are not what an unchanged process produces. Limitations: the after-profiles of A32, A33 and A38 and of their pairwise lags rest on a single observation each, and the evidence cannot rule out that these activities were replaced or relabelled, or that the later window samples a different variant mix, rather than the branch having been removed. [OCC004, OCC005, OCC006, OCC007, DIR006, DIR007, DIR008, DIR009, LAG003, POS003]
+
+Other differences: A14 now routes predominantly to A15 instead of A04; both successors remain substantially observed in both windows, so this is a shift in how often two existing paths are taken, accompanied by A04's lower participation and later position — the evidence does not show whether this shift is downstream of the skipped branch or independent of it. A02 and A08 also participate more often, though their before-window support is thin. [DIR004, OCC002, POS001, LAG001, LAG002, OCC003, OCC001]

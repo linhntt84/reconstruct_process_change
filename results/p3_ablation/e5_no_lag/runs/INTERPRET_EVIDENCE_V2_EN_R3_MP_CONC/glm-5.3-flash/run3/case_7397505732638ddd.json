@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "0c03fe732a2bc1f1a7b72611f409a2b4f52c5a1e4f0687d5b85c5abc3db0ebff",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:24:42.194586+00:00",
+  "finished_at_utc": "2026-11-15T12:27:11.764904+00:00",
+  "latency_seconds": 149.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21399,
+    "prompt_tokens": 10149,
+    "total_tokens": 31548,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19935,
+      "text_tokens": 1464
+    },
+    "cost": 0.01222185
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 68647,
+  "text": "### Observed differences\n\n- In the earlier window the six activities formed one fixed chain: every observed outgoing transition of A17 went to A15, of A15 to A18, of A18 to A19, of A19 to A21 and of A21 to A20, with A26 feeding into A17 and A20 leading to A27 — a single sequence A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- In the later window each of these activities has several successors: A15 still goes mainly to A18 (about 68 in 100 outgoing transitions) but also to A19, A20 and A21 (about 11 each); A17 goes to A15 about 56 in 100 and to A19 about 27; A18 now leads to A27 — not observed as its successor earlier — in about 52 in 100 transitions; A19 keeps A21 as its main successor (about 61 in 100) with A17, A15 and A18 as further options; A21 keeps A20 (about 67 in 100); A20 reaches A27 about 49 in 100 and otherwise A15, A18 or A17; and A26 now starts the block with A17 (about 53 in 100) or A19 (about 47 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- The order between the two three-activity groups {A15, A17, A18} and {A19, A20, A21} was fixed in the earlier window (the first group's activity came first in 100 of 100 cases for all eight pairs) and is mixed in the later window: A18 precedes A19 in only about 15 of 100 cases (A19 first in about 85), A15 precedes A21 in about 50 of 100, A17 precedes A19 in about 53 of 100, while A17 still precedes A21 in about 77 and A15 precedes A20 in about 68 of 100 cases. Both members of every pair still occur together in every case in both windows. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- Relative positions moved accordingly: A15, A17 and A18 now occur later in the trace (mean relative position about 0.59 to 0.64, 0.56 to 0.59 and 0.62 to 0.68), while A19, A20 and A21 occur earlier (about 0.65 to 0.59, 0.71 to 0.68 and 0.68 to 0.64); in the later window the two groups overlap in position (A17 and A19 both near 0.59), whereas earlier the first group lay entirely before the second. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints among A15, A17, A18, A19, A20 and A21 were relaxed: in the earlier window they always ran in the single fixed sequence A17 → A15 → A18 → A19 → A21 → A20 between A26 and A27, while in the later window they behave as two sub-sequences — A17 → A15 → A18 and A19 → A21 → A20 — whose activities interleave in varying order from case to case, with A26 entering the block at A17 or A19 and A27 following either A18 or A20. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005, POS006]\n\nThe order change is shown directly: all eight cross-group pairs went from a fixed order (100 of 100 cases) to mixed orders, which indicates unfixed order rather than a swap of two activities; the successor profiles broaden exactly along the two groups, each activity keeping its within-group successor as the main one and gaining only members of the other group as alternatives; and the position distributions of the two groups move toward each other and overlap. Participation is unchanged — every activity still occurs in all 200 traces of both windows — so this is a reordering, not activities appearing, disappearing or repeating. The 21 qualifying items are about 60 times the roughly 0.35 expected without a change, and every item's difference exceeds those seen in about 995 of 1,000 random re-splits. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005, POS006]\n\nLimitation: the evidence cannot show how the mixed order arises within a single case — free interleaving of the two sub-sequences and a mixture of cases each following a different fixed order can produce similar pair-level and successor shares, and the exact routing logic cannot be pinned down. Positions are event positions rather than clock time, so no conclusion about timing is possible, and DIR shares refer to outgoing transitions rather than cases. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

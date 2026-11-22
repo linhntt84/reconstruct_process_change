@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the later window, A19 and A20 each appear in about 88–89 of 100 traces, up from about 46 of 100 in the earlier window (92 and 91 of 200 traces before, 177 of 200 after). [OCC001, OCC002]
+- A25 and A26 also roughly doubled: A25 from about 26 to 48 of 100 traces, A26 from about 21 to 42 of 100. They still almost never occur together (co-occurrence about 0–1 of 200 traces in both windows), so they remain an either/or choice. [OCC003, OCC004, REL018]
+- The outgoing transitions of A42 were rerouted. Before, about 51 of 100 went to A27 and about 41 to A19; in the later window about 81 of 100 go to A19 and only about 10 to A27. A42 itself occurs about once per trace in both windows, so this is not a frequency effect. [DIR002, POS002]
+- The ordered pair A42 then A27 shifted from mostly immediate (distance 1 in about 51 of 100 cases, distance 4 in about 40) to mostly four steps apart (about 77 of 100), with immediate succession dropping to about 10 of 100. [LAG001]
+- Order relations moved consistently with this: A27 appearing without A19/A20 fell from about 54 to about 11–12 of 100 traces, while A27 now co-occurs with them in about 88–89 of 100, always after them; A42 precedes A19/A20 in about 88 of 100; A19 precedes A25/A26, A25/A26 precede A20 (almost all of A25's observed outgoing transitions go to A20), and A20 precedes A27. [REL004, REL012, REL005, REL013, REL002, REL010, REL019, DIR001]
+- Secondary shifts: A45 and A46 participation rose from about 54 to about 69–70 of 100 traces, with repetition in about 19 of 100 traces; A43's split between A44 and A45 tilted from roughly 56/43 to 44/55 toward A45; A27's mean relative position moved slightly later (about 0.40 to 0.43 of the trace). [OCC005, OCC006, DIR003, POS001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the routing after A42 shifted: the direct hop A42 → A27, which about half of the cases took earlier while skipping A19, A25/A26 and A20, accounts for only about one case in ten in the later window, whereas roughly nine of ten cases now run the full sequence A42 → A19 → (A25 or A26) → A20 → A27. Both behaviours already existed in the earlier window, so the change lies in the shares of the two variants rather than in the appearance of a new one. [DIR002, LAG001, REL004, REL012, OCC001, OCC002]
+
+The supporting signs are direct and mutually consistent: the rerouting is observed in A42's outgoing transitions and in the A42→A27 step distance; participation of all four block activities roughly doubled while the exclusivity between A25 and A26 was preserved; and the pairwise order relations (A42 before A19 before A25/A26 before A20 before A27) agree across pairs. Every item's difference exceeds about 995 of 1,000 random re-splits of the pooled data, and the key items rest on roughly 90–200 observations per window. [DIR002, LAG001, OCC001, OCC002, OCC003, OCC004, REL018, REL002, REL010, REL012, REL005]
+
+The evidence cannot rule out that the two windows sampled different mixes of cases, which can shift variant frequencies without any structural modification; the direct A42 → A27 behaviour still occurs in about 10 of 100 later cases, so the data show a strong shift in variant share rather than the removal of a path. The changes around A45, A46 and A43 are additional behavioural shifts whose connection to this rerouting is not established by the evidence. [DIR002, LAG001, OCC005, OCC006, DIR003]

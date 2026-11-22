@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_4e635c32e1ae04e5.json",
+  "evidence_sha256": "54388d315191833be9af213c1170f668a019894094d775eef51ae71c183003ca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:20:36.551822+00:00",
+  "finished_at_utc": "2026-11-16T01:22:14.866627+00:00",
+  "latency_seconds": 98.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12328,
+    "prompt_tokens": 26005,
+    "total_tokens": 38333,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10987,
+      "text_tokens": 1341
+    },
+    "cost": 0.01006475
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36392,
+  "text": "### Observed differences\n\n- The clearest difference concerns A02. In the earlier window it appears in 0 of 200 traces; in the later window it occurs exactly once in every one of the 200 traces, always at the final position of the trace. [OCC001, POS002]\n- A05 was the last activity in the earlier window (mean relative position 1.0 across all 200 traces); in the later window it sits earlier (mean about 0.85), and every observed outgoing transition of A05 now leads to A02. [POS005, DIR002]\n- In the later window, A02 co-occurs with A01, A03, A04, A05 and A09 in 100% of traces and follows each of them in 100% of traces; A06, A07 and A08 also precede A02 in every trace in which they occur (each of the three appears in about 50 in 100 traces). In the earlier window A02 never co-occurred with any of these activities. [REL001, REL005, REL006, REL007, REL011, REL008, REL009, REL010]\n- All long-standing activities shifted slightly earlier in relative position: A01 from about 0.81 to 0.69, A09 from about 0.63 to 0.54, A04 from about 0.44 to 0.38, and A03 from about 0.04 to 0.03 — the pattern expected when one event is appended at the end of each trace. [POS001, POS009, POS004, POS003]\n- The choice shares between the three mutually exclusive activities A06, A07 and A08 moved by about 6 percentage points (A06 about 44 to 50 in 100 traces, A07 about 56 to 50, A08 about 44 to 50), and A03's outgoing mix shifted a few points between A04, A06 and A07; these are differences two 200-trace samples can easily show without any change. [OCC002, OCC003, OCC004, DIR001]\n- The rare return edge A08→A03 fell from about 7% to about 1% of A08's outgoing transitions (roughly 6 of 88 observations before, 1 of 100 after), with A08's dominant lags correspondingly tightening from about 93% to 99%. [DIR005, LAG015, LAG016, LAG017, LAG018]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new closing step, A02, was appended to the end of every case, executed once immediately after A05, which was previously the final activity. In the earlier window traces ended with A05; in the later window every trace ends with A05 followed by A02, and A02 comes after all established activities, including A01, A03, A04, A09 and whichever of A06, A07 or A08 the case contains. [OCC001, POS002, POS005, DIR002, REL001, REL005, REL006, REL007, REL011]\n\nThe hypothesis rests on direct and mutually consistent evidence: A02's participation rises from 0 to 200 of 200 traces with exactly one occurrence per trace, its position is the last position in every later trace, A05's transitions go to A02 in 100% of cases, and the relational items place A02 after every other activity in 100% of traces. A difference of this size (empirical strength about 0.995, i.e. larger than all but about 1 in 200 random re-splits of the pooled windows) is not what re-splitting stable behaviour produces, and the uniform small position shifts of A01, A03, A04 and A09 fit an event being appended rather than activities being reordered. [OCC001, POS002, DIR002, REL001, REL005, REL006, REL007, REL011, POS001, POS003, POS004, POS009]\n\nAn important competing explanation remains: zero participation in the earlier window only shows that A02 was not observed there, so the evidence cannot distinguish a genuinely newly added step from one that was previously unrecorded or logged under a different label. [OCC001]\n\nOther differences: the routing shares between the alternatives A06, A07 and A08 shifted by about 6 percentage points, A03's outgoing distribution moved slightly, and the rare A08→A03 edge became rarer (about 7% to 1% of A08's outgoing transitions, on 88 and 100 observations). These are not part of the main hypothesis, and the evidence cannot rule out that they are sampling variation of rare branches between two 200-trace windows. [OCC002, OCC003, OCC004, DIR001, DIR005, LAG015, LAG016, LAG017, LAG018]",
+  "case_id": "case_4e635c32e1ae04e5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

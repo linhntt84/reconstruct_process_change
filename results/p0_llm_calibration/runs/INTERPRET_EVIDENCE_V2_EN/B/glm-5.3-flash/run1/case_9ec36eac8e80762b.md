@@ -1,0 +1,18 @@
+### Observed differences
+
+- A30 and A31 still occur in every trace, but their repetition largely stopped: before, each averaged about 1.6 occurrences per trace with repeats in about 37 in 100 traces; in the later window each averages about 1.0 occurrence, with repeats in only about 1 in 200 traces. [OCC003, OCC004]
+- The A30–A31 sequence became strict and immediate: A30 precedes A31 in about 99 in 100 later traces (about 63–64 in 100 before), interleaved or repeated orderings across the A30/A31/A43/A44 pairs fell from about 36–37 in 100 traces to about 1 in 100, and A31 now follows A30 within one step in about 98–99 in 100 traces (about 36 in 100 before). [REL001, REL002, REL003, REL004, REL005, LAG002]
+- The back-and-forth routing between the two stopped: A31→A30 took about 37% of A31's outgoing transitions before and was not observed in the later window, while A31→A25 rose from about 62% to about 99% of those transitions; A30 still routes to A31 in about 98% of its transitions in both windows. [DIR003, DIR002]
+- A02 occurs about twice as often and sits near the end of traces: participation rose from about 12 in 100 traces (24 of 200) to about 25 in 100 (49 of 200), its median event position moved from about 0.67 to about 0.97, and about 84% of its outgoing transitions now go to A44 (about 28% before, previously spread over many targets), at a one-step gap in all 42 later observations. [OCC001, POS001, DIR001, LAG001]
+- A43 now feeds A02: about 21% of A43's outgoing transitions go to A02, up from about 3.5%, while A43→A44 fell from about 90% to about 79%. [DIR004]
+- A04 participation fell from about 10 in 100 traces (20 of 200) to about 3 in 100 (6 of 200); this rests on few observations. [OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the late block of the process was restructured from a repeated, interleaved execution of A30 and A31 into a single ordered pass — A30 once, A31 immediately after, then exiting to A25 — and that A02 now runs late in the process, fed by A43 and leading to A44, in about twice as many cases, while A04 appears only rarely. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, POS001, REL001, REL002, REL003, REL004, REL005, LAG001, LAG002]
+
+The order and repetition change is shown directly by relational evidence: five activity pairs move from roughly 63–64 to about 99 in 100 traces in fixed order, the A31→A30 transition disappears, and the A30→A31 gap collapses to one step, matching the occurrence profiles where repeats in about 37 in 100 traces fall to essentially zero. The A02 change rests on both positional and relational evidence (late median position, A43→A02 and A02→A44 successor shifts, one-step A02→A44 gaps). Fourteen items qualified against roughly 0.5 expected if nothing had changed, and every item's difference exceeds those seen in about 199 of 200 random re-splits, so the pattern as a whole is hard to attribute to chance. [DIR003, LAG002, REL001, REL002, REL003, REL004, REL005, OCC003, OCC004, POS001, DIR001, DIR004, LAG001]
+
+The main competing explanation the evidence cannot rule out is sampling differences in variant frequencies between two finite windows of 200 traces: the later window could simply contain more of a variant with a strict, non-repeating block and a late A02, rather than the same variants behaving differently. The A02 and A04 shifts in particular rest on small bases (24 vs 49 traces; 20 vs 6 traces), and positions are event positions, so A02's late placement is inferred from its relations (A43 before it, A44 right after) rather than from clock time. [OCC001, OCC002, POS001, DIR004, LAG001]

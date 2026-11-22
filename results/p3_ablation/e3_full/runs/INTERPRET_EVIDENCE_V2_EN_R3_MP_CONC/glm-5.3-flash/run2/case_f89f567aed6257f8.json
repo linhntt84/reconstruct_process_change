@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f89f567aed6257f8.json",
+  "evidence_sha256": "e85056413ac63c5c120d4c741fdf6dffec8cba99e767585eb84438ef9629c354",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:13:43.731141+00:00",
+  "finished_at_utc": "2026-11-16T02:18:26.323730+00:00",
+  "latency_seconds": 282.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 34219,
+    "prompt_tokens": 142559,
+    "total_tokens": 176778,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31812,
+      "text_tokens": 2407
+    },
+    "cost": 0.038493349999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 108308,
+  "text": "### Observed differences\n\n- **A01 appears only in the later window.** In the earlier window it is not observed in any of the 200 traces; in the later window it runs in about 56 in 100 traces, averaging about 2.4 executions per trace (roughly four in each trace that contains it), repeating within the trace in about 46 in 100 traces, and sitting around the middle of the trace (mean relative position ≈0.49). [OCC001, POS001]\n- **A01 is wired into the mid-process flow.** Its outgoing transitions split roughly evenly between A09 (~27%), A02 (~25%), A11 (~24%) and A05 (~23%). Several activities that previously continued elsewhere now continue into A01: A09 (before about 57% of its outgoing transitions to A02 and 43% to A11, now entirely to A01), A13 (before about 50/49 between A02 and A11, now entirely to A01), A10 (before mainly A06 at ~58%, now ~53% A01 and ~45% A06), A08 (before A06 ~46%, A13 ~29%, A09 ~25%; now A01 ~53% and A06 ~47%) and A17 (before A06 ~48% and A13 ~33%, now A01 ~58% and A06 ~42%). Since A09 and A13 lead back to A01, the observed edges form loops through A01 (e.g., A01→A05→A13→A01), consistent with its ~4 executions per containing trace. [DIR001, DIR005, DIR008, DIR009, DIR010, DIR012, DIR016]\n- **A14 is not observed in any later trace.** Earlier it appeared exactly once in every trace near the end (mean relative position ≈0.95), alternating with A03 (A03 always led to A14, and A14 led back to A03 where followed); in the later window A03 is the last event of every trace (position 1.0 with no spread), and A06 — which earlier split its exits between A03 (~52%) and A14 (~48%) — now leads only to A03 and sits relatively later (mean position 0.80 → 0.90). [OCC010, POS003, POS006, POS014, DIR003, DIR006, DIR013]\n- **Relation patterns mirror both changes.** Every A14 pair flips from always co-occurring to never (e.g., A03/A14 from co-occurrence in all traces to A03-only in all), while A01, which co-occurred with nothing earlier, now co-occurs with most activities — with A03 in 56 in 100 traces and A02 in 46 in 100, mostly interleaved or repeated. [REL001, REL002, REL013, REL039]\n- **Participation shifts around the changed region.** A05 falls from about 62 to 29 in 100 traces (mean ~2.0 → ~1.2 per trace) and A12 from about 37 to 20 in 100 (mean ~1.0 → ~0.6), while A11 rises from 62 to 70 in 100 (mean 1.8 → 2.3, and later in the trace: 0.36 → 0.46), A15 from 33 to 41 in 100 (mean 0.84 → 1.13, position 0.38 → 0.50) and A16 from 62 to 70 in 100. [OCC003, OCC007, OCC008, OCC011, OCC012, POS011, POS015]\n- **Exit edges were rewired and a block split.** A05 now leads to A13 (~49% of its outgoing transitions) instead of A16 (~49% before), and A11 leads to A15 and A16 (~50% each) instead of A05 (~54%) and A15 (~46%). The earlier block in which A05, A11 and A16 always ran together (~62 in 100 traces) is split: A11 and A16 still always run together (~70 in 100), but A05 usually does not join them (co-occurrence ~24–29 in 100). [DIR005, DIR011, REL061, REL066, REL116]\n- **Gaps between consecutive events shrank slightly.** Several ordered pairs moved from a typical gap of 5 steps to one of 4 (e.g., A11→A02, A11→A03, A12→A02, A12→A11, A15→A06, A16→A12, A02→A12), and A02→A03 tightened from an even split between gaps of 3 and 4 to about 96% at gap 3; per-pair sample sizes are modest (roughly 10–100 observations). [LAG002, LAG011, LAG096, LAG097, LAG109, LAG113, LAG132, LAG147]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural change in the control flow: in the later window, executions are routed through A01 — an activity absent from all 200 earlier traces that now runs in about 56 in 100 traces, about four times per containing trace, preceded by A08, A09, A10, A13 or A17 and leading on to A02, A05, A09 and A11, with loops back through A09 and A13 — while A14, previously executed exactly once per trace in an alternating A03–A14 sequence at the end of every trace, is no longer observed and A03 now ends every trace. [OCC001, OCC010, DIR001, DIR003, DIR009, DIR012, POS001, POS003, POS014, REL039]\n\nThe supporting signs are direct and consistent: the appearance and disappearance show up in occurrence, position, direction and relation indicators alike, the rewired edges (A09 and A13 now exiting only to A01; A06 only to A03) match the same story, and the magnitudes — 0 versus 112 of 200 traces for A01 and 200 versus 0 for A14 — are far outside what random re-splits of a stable process produce (each of these items exceeds about 199 of 200 reference comparisons). [OCC001, OCC010, DIR006, DIR009, DIR012, POS003]\n\nLimitations: zero participation only means an activity was not observed, so the evidence shows A01 appearing and A14 disappearing in these samples rather than proving they were created or deleted; all indicator families are computed from the same 200-trace windows and therefore corroborate rather than independently confirm one another; the evidence set does not report how many items an unchanged process would be expected to flag by chance; and a shift in the mix of pre-existing rare variants between the windows cannot be ruled out, although the 0/200 versus 112/200 and 200/200 versus 0/200 flips make pure sampling noise implausible. [OCC001, OCC010]\n\nOther differences: A05 and A12 are executed in fewer traces (about 62 → 29 and 37 → 20 in 100) and less often per trace; A11, A15 and A16 are executed in more traces and later within the trace; A05 now exits to A13 instead of A16 and A11 exits to A15/A16 instead of A05; the earlier A05–A11–A16 block is split, with A11 and A16 still always together but A05 usually absent; and many ordered pairs now occur one step closer together (typical gap 5 → 4), consistent with the tighter end-of-trace structure after A14 ceased to appear. [OCC003, OCC007, OCC008, OCC011, OCC012, DIR005, DIR011, REL061, REL066, REL116, LAG097]",
+  "case_id": "case_f89f567aed6257f8",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

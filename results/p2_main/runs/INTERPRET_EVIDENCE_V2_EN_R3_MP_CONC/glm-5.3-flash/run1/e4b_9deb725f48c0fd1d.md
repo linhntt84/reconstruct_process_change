@@ -1,0 +1,20 @@
+### Observed differences
+
+- Work assignment was redistributed across at least six activities (A01, A03, A13, A14, A17, A22). In the earlier window, assignments were spread thinly: the most-used resource held only about 7–9 in 100 assignments (User_18 on four of these activities), and a long tail of occasional resources accounted for roughly 37–52 in 100. In the later window, a different set of resources dominates: User_61 became the largest assignee on all six activities at about 9–14 in 100 (up from about 4 in 100 on A22, where it was already active), while User_18 and the other previously leading resources no longer appear among the top assignments. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- The long tail shrank everywhere: assignments going to occasional resources fell by roughly 7–11 in 100 (for example, from about 52 in 100 to about 42 in 100 on A13/A14). [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006]
+- Activity A24 changed most drastically: in the earlier window its work was spread across 21 distinct resources, with the most frequent handling about 22 in 100 of assignments (concentration index about 0.09); in the later window a single resource, User_107, handled every observed assignment (top share 100 in 100, concentration index 1.0). [ASSIGN007, CONC001]
+- The direction of change is consistent across activities — the same resources gain while the same ones lose — and every item's difference exceeds those seen in about 9995 of 10,000 random re-splits of the pooled data. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+- Participation barely moved, so the shift is in who was assigned rather than whether the activities ran: the support behind each profile is similar in both windows (A01: 200 vs 200; A24: 95 vs 83). [ASSIGN001, ASSIGN007]
+- Screening context: 8 resource items qualified where about 0.005 were expected by chance (11 units tested), while no control-flow item (0 vs about 0.17 expected) and no timing item (0 vs about 0.015 expected) qualified — the qualifying differences are confined to resource allocation. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the later window differs in resource allocation, not in structure or timing. On activities A01, A03, A13, A14, A17 and A22, assignments moved from a diffuse set of resources — previously led by User_18 with about 7–9 in 100 — to a different set led by User_61 with about 9–14 in 100, with the earlier leaders dropping out of the top group and the tail of occasional resources shrinking by roughly 7–11 in 100. In addition, A24 went from being spread across about 21 resources (largest share about 22 in 100) to being handled entirely by User_107. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+The screening comparison rules out chance as an explanation for this pattern: 8 resource items qualified against roughly 0.005 expected without change — on the order of a thousand times the chance expectation — while control-flow and timing families produced nothing beyond their chance expectations. [screening]
+
+Limitations: the resource codes are anonymous, so the evidence shows that assignment shares moved but not whether the assignment rule, the available pool of resources, or the mix of cases changed; a different case mix in the later window is a competing explanation the data cannot fully exclude, although the identical gain/loss pattern across six activities makes pure sampling variation unlikely. A13 and A14 show identical profiles and likely reflect one underlying behaviour rather than two independent changes. [ASSIGN003, ASSIGN004]
+
+Other differences: none — no control-flow or timing evidence qualified at the configured thresholds. [screening]

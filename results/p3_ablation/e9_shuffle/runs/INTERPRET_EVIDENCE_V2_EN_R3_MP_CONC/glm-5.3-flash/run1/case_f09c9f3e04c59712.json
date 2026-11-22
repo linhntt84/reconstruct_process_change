@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "7a70ccd2445f741321fb09cfac275b9899dc568e43ebd9ac9a674f5a42b1fd11",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:44:59.425253+00:00",
+  "finished_at_utc": "2026-11-14T10:47:35.396474+00:00",
+  "latency_seconds": 155.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23360,
+    "prompt_tokens": 18026,
+    "total_tokens": 41386,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21913,
+      "text_tokens": 1447
+    },
+    "cost": 0.0143839
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 67280,
+  "text": "### Observed differences\n\n- Both windows show the same chain of activities with two segments exchanged. Before, a case ran A35, then A15, A17 and A18 in varying order, then A20, then A24, then exactly one of A14/A16/A19, then A25. In the later window, a case ran A35, then exactly one of A14/A16/A19, then A20, then A24, then A15, A17 and A18 in varying order, then A25. [REL008, REL016, DIR008, DIR007, LAG001, LAG002]\n- Every tested order relation between the block {A14, A16, A19} and the rest reversed completely: before, A15 preceded A20 and A17 preceded A24 in 100% of traces, and A14/A16/A19 followed A15, A17, A18, A20 and A24; in the later window A20 preceded A15 and A24 preceded A17 in 100% of traces, and A14/A16/A19 precede all of them (A14 before A17 in about 44 of 100 traces, never observed before). [REL008, REL015, REL016, REL018, REL001, REL011, REL020, REL002]\n- Direct successors changed accordingly: A14, A16 and A19, each followed only by A25 before, are now each followed only by A20; A35 now leads to A14/A16/A19 (about 44%/28%/28% of its outgoing transitions) instead of A15/A17/A18 (about 29%/38%/33%); A24 now leads to A15/A18/A17 instead of A16/A14/A19. [DIR001, DIR003, DIR006, DIR008, DIR007]\n- Event distances changed by exactly one block size: A20 followed A35 by four positions before and by two in the later window; A25 followed A24 by two positions before and by four after. [LAG002, LAG001]\n- Mean relative positions moved consistently: A14, A16 and A19 from about 0.68–0.69 to about 0.34–0.35; A15, A17 and A18 from about 0.39 to about 0.64; A20 from 0.46 to 0.38 and A24 from 0.65 to 0.57. [POS001, POS003, POS006, POS002, POS004, POS005, POS007, POS008]\n- Participation changed only within the one-of block: A14 ran in about 44 of 100 cases (previously 31), A16 in about 29 (previously 37.5) and A19 in about 28 (previously 31.5); the three shares still sum to one alternative per case in both windows. [OCC001, POS001, POS003, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative block containing A14, A16 and A19 — exactly one of which executed in every case in both windows — changed its placement: before, it ran at the end of the case between A24 and A25; in the later window it runs at the start between A35 and A20, so the segment A15/A17/A18 → A20 → A24 now executes after the block rather than before it. This rests on direct relational evidence — complete order reversals in 100% of traces for every tested pair spanning the two segments — corroborated by successor changes (A14/A16/A19 now lead to A20 instead of A25; A35 and A24 now border the opposite segments), by event-distance changes equal to the block sizes, and by position shifts in matching directions. With 40 qualifying items against roughly 0.5 expected in an unchanged process, and every item's difference exceeding 99% of random re-splits, chance sampling cannot account for the pattern as a whole. Limitations: positions and distances are event ranks, not clock times, and the evidence cannot show whether the mix of execution orders inside the {A15, A17, A18} trio — which had no fixed internal order in either window — changed alongside the relocation. [REL008, REL016, REL001, DIR001, DIR008, LAG001, LAG002, POS001, POS002]\n\nOther differences: within the relocated block, the alternatives are now taken with different frequencies — A14 in about 44 of 100 cases (previously 31), A16 in about 29 (previously 37.5) and A19 in about 28 (previously 31.5) — a shift between existing alternatives rather than a replacement of one path by another. [OCC001, POS001, POS003, POS006]",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

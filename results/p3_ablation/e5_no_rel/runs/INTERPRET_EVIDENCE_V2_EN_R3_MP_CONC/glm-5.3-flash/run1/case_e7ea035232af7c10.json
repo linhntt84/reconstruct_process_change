@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_e7ea035232af7c10.json",
+  "evidence_sha256": "a7a50af3d656f444a54cf599257789c1d405f64e257be41d8cc61fc33ff6592a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:43:54.892974+00:00",
+  "finished_at_utc": "2026-11-14T12:44:59.698060+00:00",
+  "latency_seconds": 64.8,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9212,
+    "prompt_tokens": 11795,
+    "total_tokens": 21007,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8080,
+      "text_tokens": 1132
+    },
+    "cost": 0.00637525
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27842,
+  "text": "### Observed differences\n\n- The three activities A36, A37 and A42 each ran in about 46 in 100 traces in the earlier window but in essentially all traces in the later window (about 995 in 1000), with roughly one occurrence per trace in both windows [OCC002, OCC003, OCC004].\n- The entry into this block changed: A25's outgoing transitions went from almost only A28 (about 98 in 100) to an even three-way split across A36, A42 and A37 (about 35%, 32% and 32%), while A26 went from splitting its outgoing transitions between A27 (about 54 in 100) and the three block activities (together about 45 in 100) to A27 alone (about 98.5 in 100) [DIR001, DIR002].\n- The exit from the block changed as well: A36, A37 and A42 previously led onward to A31 in roughly a third of their outgoing transitions (29–39 in 100 each); in the later window they lead to A28 instead (about 30–35 in 100), and A31 is reached from A37 or A42 within five steps in only 1 trace after, against 92 traces before [DIR003, DIR004, DIR005, LAG005, LAG006].\n- The step distance from A25 to A28 grew from one step in about 98 in 100 cases to four steps in about 97 in 100 cases [LAG001].\n- By event position, A36, A37 and A42 moved clearly earlier (mean relative position about 0.59 to about 0.40), while A28 (about 0.39 to 0.46) and A26 (about 0.54 to 0.60) moved later [POS006, POS007, POS008, POS004, POS002].\n- A27's participation rose from about 54 in 100 traces to all traces, and the distance from A26 to A31 consolidated at two steps (about 96 in 100 cases, against a mixed two-/four-step pattern before) [OCC001, LAG003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment A36–A37–A42, whose activities follow one another in varying order, changed from a branch executed in about half of the traces, late in the flow, entered from A26 and continuing to A31, to a segment executed in nearly every trace, earlier in the flow, entered from A25 and continuing to A28 — so that A25 and A28 are now separated by the block and A31 no longer follows it [DIR001, DIR003, DIR004, DIR005, LAG001, LAG005, LAG006, POS006, POS007, POS008, OCC002, OCC003, OCC004]. Together with this, A26 now routes almost exclusively to A27, which thereby ran in all traces instead of about half [DIR002, OCC001].\n\nThe screening produced 23 qualifying control-flow items where fewer than 1 would be expected without change, and the successor and step-distance items show the rewiring directly; the participation, direction and position items all describe the same underlying difference consistently, though they are not independent confirmations [DIR001, LAG001, LAG005, OCC002, POS006]. Limitations: the lag items about the block's new surroundings (A25→A36, A36→A28) rest on a single before-window observation, and the loss of A37→A31 and A42→A31 rests on the pair appearing in only 1 later trace, so absence within five steps is shown but absence from the process is not [LAG002, LAG004, LAG005, LAG006]. A competing explanation the evidence cannot rule out is that the old A26-entered, A31-leading branch still exists and is merely taken in about 1 in 100 cases, so the data cannot distinguish a replacement from a strongly dominant new path alongside a rare old one [LAG005, LAG006, DIR002].\n\nOther differences: the A26→A31 distance is now consistently two steps (about 96 in 100 cases, versus a mixed two-/four-step pattern before), and A26, A27, A28 and A31 each sit slightly later by event position, consistent with the block now lying between A25 and A28 [LAG003, POS002, POS003, POS004, POS005].",
+  "case_id": "case_e7ea035232af7c10",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,49 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_b0b2619b96d20b82.json",
+  "evidence_sha256": "dccb675ab1de6494a851e7152db63cd34e4d56a91bbd4e7c2a0249ff34c70508",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:49:36.911022+00:00",
+  "finished_at_utc": "2026-11-15T01:19:58.525856+00:00",
+  "latency_seconds": 1821.61,
+  "transport": "curl-stream",
+  "attempt_errors": [
+    "OSError: curl exit 28: curl: (28) Operation timed out after 1800000 milliseconds with 15669594 bytes received"
+  ],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3316,
+    "prompt_tokens": 7756,
+    "total_tokens": 11072,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2815
+    },
+    "cost": 0.001927992
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 9174,
+  "text": "### Observed differences\n\n- In the later window, activity A01 became much less frequent: its share of traces dropped from about 52% to 20%, and its mean occurrences per trace fell from 0.96 to 0.39. [OCC001]\n- Activity A04 became more frequent: its trace participation rose from 24% to 52%, and its mean occurrences per trace rose from 0.45 to 0.91. [OCC002]\n- The outgoing transition of A01 changed from always going to A06 to always going to A04. [DIR001]\n- The outgoing transition of A04 changed from always going to A01 to always going to A06. [DIR002]\n- The outgoing transitions of A06 changed from going to A05 or A04 to going to A01 or A05. [DIR003]\n- The relative order of A01, A04 and A06 reversed: in the earlier window A04 and A01 were adjacent with A04 before A01, and A01 and A06 were adjacent with A01 before A06; in the later window A01 and A04 are adjacent with A01 before A04, and A04 and A06 are adjacent with A04 before A06. [REL001, REL002, REL003, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the control-flow order: the path that previously ran A04 → A01 → A06 now runs A01 → A04 → A06. This is directly shown by the successor changes for A01, A04 and A06, and is corroborated by the relational and lag evidence, which consistently show that the adjacency between A01 and A04 and between A04 and A06 swapped, while A01 and A06 became farther apart. The frequency changes (A01 decreasing, A04 increasing) are consistent with this reordering. The main limitation is that the evidence covers only control flow; no timing or resource changes are observed, and the frequency shifts could partly reflect a change in how often the new path is taken rather than a pure reordering. Other differences: A06 still leads to A05 in both windows, but its share of outgoing transitions to A05 increased slightly, and it no longer leads to A04. [DIR003]",
+  "case_id": "case_b0b2619b96d20b82",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

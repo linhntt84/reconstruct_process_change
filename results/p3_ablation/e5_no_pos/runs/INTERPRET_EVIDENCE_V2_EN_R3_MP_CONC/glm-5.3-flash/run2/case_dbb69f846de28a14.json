@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_dbb69f846de28a14.json",
+  "evidence_sha256": "785b2bc873b6703066f0b0c07d83f7219554c1e761eb158bfd878fcf74612c95",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:23:43.408867+00:00",
+  "finished_at_utc": "2026-11-15T06:25:31.345852+00:00",
+  "latency_seconds": 107.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15638,
+    "prompt_tokens": 19463,
+    "total_tokens": 35101,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13900,
+      "text_tokens": 1738
+    },
+    "cost": 0.01073845
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45494,
+  "text": "### Observed differences\n\n- Four activities were mandatory earlier and are optional now: A27, A36, A37 and A42 each appeared in every trace in the earlier window, but in the later window they appear in only about 54%, 47%, 48% and 48% of traces respectively. A25, A26, A28 and A31 still appear in all traces in both windows. [OCC001, OCC002, OCC003, OCC004, REL009, REL010]\n- In the earlier window a trace typically ran A25, then the group A36/A37/A42 in varying internal order, then A28, then A26, then A27, then A31: each group member preceded A28 and A26 in about 99–100 in 100 traces, A28 preceded A27 in about 98, A26 preceded A27 in about 98, and A25 reached A28 mostly 4 positions later (about 91 in 100). [REL005, REL006, REL009, REL014, REL020, LAG001, LAG005]\n- In the later window A25 leads almost directly to A28: about 97% of A25's outgoing transitions go to A28 (earlier they split roughly 34% to A42, 32% to A36, 30% to A37), and the A25→A28 distance is 1 step in about 98 in 100 cases, versus 4 steps in about 91 in 100 earlier. [DIR001, LAG001]\n- A26's routing split in two: earlier about 99% of its outgoing transitions went to A27; in the later window about 52% go to A27 and roughly 13–16% each go to A36, A37 and A42. [DIR002]\n- The group A36/A37/A42 still executes as a unit in varying order, but it moved: earlier each member preceded A26 in about 99–100 in 100 traces, while in the later window A26 precedes each member in about 45–46 in 100; the group occurs in about 47% of later traces and is absent as a whole in about 52%. [REL006, REL007, REL008, REL014, REL015, REL016, REL020, REL021, REL022]\n- A27 and the group became mutually exclusive alternatives: earlier A27 co-occurred with each of A36, A37 and A42 in 100% of traces; in the later window co-occurrence is about 1% or less, with A27 alone in about 53% of traces and the group alone in about 46–47%. [REL011, REL012, REL013]\n- The group now exits towards A31 instead of A28: earlier A36, A37 and A42 each led to A28 in about 31–35% of their outgoing transitions; in the later window each leads to A31 in about 26–35% and to A28 in about 1%. A31 follows A37 within 1–3 steps in about 93 later traces, versus 1 earlier trace. [DIR003, DIR004, DIR005, LAG008]\n- The A26→A31 distance changed from 2 steps in about 98 in 100 traces to a mix of 2 steps (about 53%) and 4 steps (about 43%), matching the short A27 branch and the three-activity branch. [LAG005]\n- Several lag items (A25/A36, A25/A37, A25/A42, A36/A28, A37/A28, A42/A28) rest on only 1–2 observations in the later window and carry little weight. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A25/A26 and A31 was re-routed. In the earlier window, every trace executed the group A36, A37, A42 (in varying order) between A25 and A28 and then ran A26 → A27 → A31; in the later window, traces run A25 → A28 → A26 and then take one of two branches — A27 → A31 in about half of the traces, or the group A36/A37/A42 → A31 in the other half — so that A27 and the group, previously both mandatory in sequence, became mutually exclusive alternatives and the group was relocated from before A28/A26 to after A26. Supporting signs: participation fell from 100% to roughly half for exactly these four activities; relational items show the order flip directly and the collapse of A27–group co-occurrence from 100% to about 1%; successor profiles show the new direct A25→A28 edge and the group's new exits to A31; and the bimodal A26→A31 distance matches the two branches. The volume of qualifying items (40 control-flow items versus well under 1 expected without a change) cannot be explained by chance sampling. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL011, REL012, REL013, REL014, LAG001, LAG005, LAG008]\n\nThe evidence does not show where in the process the choice between the two branches is made, and it cannot rule out that each window mixes old-style and new-style trace variants rather than reflecting one uniform routing rule; a few lag items rest on only 1–2 later observations and were not used. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG009]\n\nOther differences: a handful of rare outgoing transitions with roughly 1–2% shares appear only in the later window (for example from A26, A36, A37 or A42 to activities not previously observed as successors); at these sizes they are consistent with sampling noise. [DIR002, DIR003, DIR004, DIR005]",
+  "case_id": "case_dbb69f846de28a14",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_c330fd277d663302.json",
+  "evidence_sha256": "ea3208adb197ab4d294da7f4cfb27b1158cda0e004ce016d5580b5b43064fd09",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:47:38.543388+00:00",
+  "finished_at_utc": "2026-11-15T01:48:16.837905+00:00",
+  "latency_seconds": 38.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5196,
+    "prompt_tokens": 3574,
+    "total_tokens": 8770,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4704,
+      "text_tokens": 492
+    },
+    "cost": 0.0031341
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 19444,
+  "text": "### Observed differences\n\n- Activity A03 disappeared from the executions: in the earlier window it ran in every trace (200 of 200, about once per trace), while in the later window it appears in none (0 of 200). [OCC001, POS002]\n- The pair A02 → A03 changed from always executed together to never: earlier, A02 and A03 co-occurred in 100 in 100 traces, always with A02 before A03; in the later window they never co-occur, and A02 appears alone in every trace. [REL001]\n- A02 itself is unchanged in participation — present in all traces in both windows — but its event position moved from a mean of 0.8 to 1.0, the final position in the trace, where A03 used to run after it. [POS001]\n- A02's outgoing transitions changed: earlier, all of its observed outgoing transitions went to A03; in the later window no outgoing transitions from A02 were observed at all (0 observations), consistent with A02 now ending the trace. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the final step A03, which previously executed in every trace directly after A02, is no longer executed, leaving A02 as the last observed activity: before, every trace ran A02 then A03; in the later window every trace still runs A02, A03 is entirely absent, A02 shows no observed successor, and A02 now occupies the final position. The five items all describe this one underlying difference rather than independent confirmations, but chance is very unlikely as a whole: 5 control-flow items qualified from 9 tested units, against roughly 0.04 expected if nothing had changed (well over a hundred times the chance expectation), and each item's difference exceeds about 995 of 1000 random re-splits of the pooled data. [OCC001, DIR001, POS001, POS002, REL001]\n\nLimitations: the evidence cannot distinguish between A03 having been dropped from the process and A03 still existing but never being selected — zero participation only means it was not observed in the later window. Likewise, whether A02 simply ends the trace or gained an unobserved successor cannot be confirmed, since an empty transition profile does not prove the edge is gone from the underlying process. [OCC001, DIR001]",
+  "case_id": "case_c330fd277d663302",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

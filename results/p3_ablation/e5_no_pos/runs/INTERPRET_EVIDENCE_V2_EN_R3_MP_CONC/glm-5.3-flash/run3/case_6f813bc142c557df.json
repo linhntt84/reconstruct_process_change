@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_6f813bc142c557df.json",
+  "evidence_sha256": "2820a33fa46c327c2f1129ed74e13a95dd11b10dc1e3c856f91794fb060a7201",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:43:04.680158+00:00",
+  "finished_at_utc": "2026-11-15T11:45:42.814869+00:00",
+  "latency_seconds": 158.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22577,
+    "prompt_tokens": 22921,
+    "total_tokens": 45498,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20664,
+      "text_tokens": 1913
+    },
+    "cost": 0.01472665
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69810,
+  "text": "### Observed differences\n\n- A group of activities that occur together in essentially every trace in both windows — A20, A22, A23, A24, A25 and A26 — was executed without a fixed relative order in the earlier window and in one fixed order in the later window. Earlier, most pairs from this group appear in both orders in substantial shares (for example A22 before A24 in about 50 in 100 traces and A24 before A22 in about 50 in 100; A20 before A26 about 49 in 100 versus 51 the other way). In the later window each of these pairs runs in a single direction in about 98–99 in 100 traces, together forming the sequence A20 → A23 → A24 → A26 → A25. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- Several pairs reversed their dominant direction: A24 ran before A20 in about 75 in 100 earlier traces, while in the later window A20 runs before A24 in about 99 in 100; A24 before A23 (about 88 in 100) became A23 before A24 (about 98 in 100); A26 before A23 (about 70 in 100) became A23 before A26 (about 98 in 100). [REL002, REL007, REL009]\n- Successor choices collapsed from several alternatives to essentially one: A20 now leads to A23 in about 99 in 100 of its outgoing transitions (about 62 in 100 before), A22 to A20 (about 55 → 99), A23 to A24 (about 12 → 98), A24 to A26 (about 56 → 99), A26 to A25 (about 66 → 99), A25 to A32 (about 43 → 93) and A31 to A22 (about 50 → 100); A23's transitions towards A32 fell from about 46 to under 1 in 100. [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009]\n- Distances fixed at the values implied by one chain, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: in the later window A20 reaches A23 at 1 event position in about 99.5 in 100 observations (about 62 in 100 before, spread over positions 1–4), A24 at 2, A26 at 3, A25 at 4 and A32 at 5 positions in nearly all cases, and A31 reaches A22, A20, A23, A24 and A26 at positions 1 through 5. The reverse directions practically disappeared: A24 before A20 within five steps occurs in 149 earlier traces but 1 later trace, A24 before A23 in 176 versus 1, A25 before A23 in 106 versus 1, and A26 before A23 in 139 versus 1. [LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG016, LAG017, LAG021, LAG023, LAG026, LAG027, LAG028, LAG029, LAG031]\n- Outside this group, A08's participation fell from about 32 to 13 in 100 traces (mean occurrences per trace from about 0.33 to 0.14) and its outgoing transitions spread from about 91 in 100 towards A15 to about 48 in 100, with new targets such as A16 (about 15 in 100) and A46 (about 11 in 100); A14 now leads to A08 in about 7 in 100 of its transitions (about 29 before) and to A15 in about 90 (about 70 before); A10's participation rose from about 3 to 12 in 100 traces. [OCC001, OCC002, DIR001, DIR002, REL001, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the activities A31, A22, A20, A23, A24, A26 and A25, which in the earlier window appeared in varying relative orders (both orders occur in substantial shares for most pairs), are in the later window executed in one fixed sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25, which then continues to A32. [REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, DIR007]\n\nThe support is direct and consistent: co-occurrence within the group stays at 100 in 100 traces in both windows, so the change concerns ordering rather than participation; the direction items show each group activity now has essentially a single successor; and the distance items collapse to single fixed lags that match this chain at every observed pair. Screening qualified 51 control-flow items against fewer than 1 expected without a change, so the differences as a set are unlikely to be a sampling artefact. [DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG026, LAG027, LAG028, LAG029, LAG031]\n\nOther differences: A08 participates in fewer traces (about 32 → 13 in 100) and its outgoing transitions redistributed from almost exclusively A15 to a spread including A16 and A46; A14 leads to A08 much less often (about 29 → 7 in 100) and to A15 more often (about 70 → 90 in 100); A10 participates more often (about 3 → 12 in 100). These involve activities outside the main hypothesis and rest on fewer observations (A08: 64 versus 26 traces; A10: 6 versus 25). [OCC001, OCC002, DIR001, DIR002, REL001, LAG001]\n\nA competing explanation the evidence cannot rule out is a shift in the mix of case variants — several fixed-order variants earlier versus one dominant variant later — which would produce the same aggregate pattern, because order is measured across traces rather than within single cases. [REL002, REL005, REL007]",
+  "case_id": "case_6f813bc142c557df",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

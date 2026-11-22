@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, A30, A31 and A36 each occur about once per trace (means 1.0–1.1) instead of about 3.4–3.5 times; all three still appear in every trace, but the share of traces in which an activity repeats falls from about 75 in 100 to about 1–2 in 100 [OCC001, OCC002, OCC003].
+- The ordering of A30 and A36 tightens: before, 75 in 100 traces showed the two interleaved or repeated; in the later window A30 precedes A36 in 98 in 100 traces, with both still co-occurring in every trace [REL001].
+- Routing out of A36 changes markedly: transitions from A36 to A30 fall from about 71 in 100 of its outgoing transitions to about 4 in 100, while transitions to A25 rise from about 29 to about 93 in 100 [DIR003].
+- The direct A30→A36 step consolidates: among within-five-step pairs, A30 followed by A36 two positions later rises from about 12 in 100 to about 89 in 100, while A36 followed by A30 within five steps drops from 150 observed pairs to 1 [LAG002, LAG003].
+- The main forward edges are preserved: about 97 in 100 of A30's outgoing transitions still go to A31 (before about 99), and about 98 in 100 of A31's still go to A36 (before about 99); the flagged redistributions for these two activities consist of many one-off transitions and are negligible in magnitude [DIR001, DIR002].
+- The positions of A30 and A36 within traces barely move; their position distributions narrow (standard deviation about 0.12 to about 0.07) with medians essentially unchanged [POS001, POS002].
+- All thirteen items show differences larger than in about 995 of 1,000 random re-splits of the pooled data, but the after-window lag profiles for self-repetition of A30 and A36 rest on only one or two observations [LAG001, LAG003, LAG004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the repeated cycle among A30, A31 and A36 ceased: in the earlier window each of the three ran roughly three to four times per trace with interleaved order and A36 typically returning to A30, whereas in the later window each runs once in the fixed sequence A30 → A31 → A36, after which A36 proceeds to A25 rather than back to A30. Thirteen qualifying items against roughly 0.46 expected for an unchanged process, together with direct relational evidence — the near-disappearance of A36→A30 transitions and of interleaved A30/A36 ordering, and the consolidation of A30→A36 at lag two — make this a coherent reading across occurrence, routing and relation indicators [OCC001, OCC002, OCC003, REL001, DIR003, LAG002, LAG003].
+
+Limitations remain: the occurrence, relation and lag items plausibly reflect one underlying shift in the same traces rather than independent confirmations, and finite windows cannot rule out that the two samples captured different mixes of process variants (for example a looping and a non-looping variant trading dominance) rather than a single modified definition — although the 100% participation of all three activities in both windows and the near-total collapse of repetition make pure sampling fluctuation unlikely. The after-window lag profiles for self-repetition of A30 and A36 rest on only one or two observations and serve only as weak corroboration [OCC001, REL001, LAG001, LAG003, LAG004].

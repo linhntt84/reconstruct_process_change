@@ -1,0 +1,22 @@
+### Observed differences
+
+- The clearest structural difference concerns execution order between two groups of activities that each occur in every trace of both windows: in the earlier window A35, A36 and A41 ran before A26 and A27 in about 97–99 in 100 traces, while in the later window A26 and A27 ran before A35, A36 and A41 in about 97–98 in 100 traces. [REL010, REL011, REL012, REL013, REL014, REL015]
+- Consistent with this reversal, in the later window A26 and A27 sit slightly earlier in the trace (mean relative position about 0.60 to 0.53, and 0.46 to 0.39), whereas A35, A36 and A41 sit later (from about 0.40–0.41 to about 0.58); all five were observed in all 200 traces per window. [POS002, POS003, POS004, POS005, POS006]
+- Spacing within this segment also changed: A27, which previously followed A25 by about four steps (92 in 100 cases), now immediately follows it (gap 1 in about 98 in 100), and A30, which previously immediately followed A26 (about 99 in 100), now follows it by about four steps (91 in 100). [LAG002, LAG005]
+- A02 was executed far less often in the later window: about 21 in 100 traces versus about 75 in 100 before (0.23 versus 0.81 mean occurrences per trace), while its partners A25, A26, A27, A30, A35, A36, A41, A49 and A50 still ran in every trace in both windows; the remaining A02 occurrences now sit around the middle of the trace (median relative position about 0.45) rather than near the end (about 0.97). [OCC001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]
+- The rare activities A06 and A10 appeared roughly three times as often (about 7 to 19 in 100 traces, and about 9 to 22 in 100), though these proportions rest on only 13/38 and 17/43 traces. [OCC002, OCC003]
+- A49 now typically runs immediately before A50 (gap 1 in about 84 in 100 cases) where previously it was typically two steps earlier (gap 2 in about 74 in 100). [LAG009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the execution order between two always-present groups reversed: A35, A36 and A41, which ran before A26 and A27 in nearly every case in the earlier window, now run after them in the later window. The sign is direct and consistent: all six tested pairs between the groups flip together while both activities co-occur in every trace in both windows, the positional shifts of all five activities point in the matching directions, and the spacing changes fit a re-sequenced segment (A27 now directly after A25; A30 about four steps after A26 instead of immediately). [REL010, REL011, REL012, REL013, REL014, REL015, POS002, POS003, POS004, POS005, POS006, LAG002, LAG005]
+
+Chance context and limitations: the control-flow family produced 34 qualifying items against fewer than 1 expected if nothing had changed, and every item's difference exceeds about 995 in 1000 random re-splits, so the ensemble is not what an unchanged process typically produces. The evidence nevertheless fixes only the pairwise order, not the exact internal arrangement or insertion points of the re-ordered activities, and some spacing items rest on very few observations (2–4 later-window observations for the A25–A36, A25–A41 and A36–A27 pairs; a single earlier-window observation for A26–A36 and A36–A30). An important competing explanation that cannot be ruled out is a narrower local re-routing of individual activities that produces the same pairwise orders without the block moving as one unit. [LAG003, LAG004, LAG006, LAG007, LAG008]
+
+Other differences:
+
+- A02 was mostly skipped in the later window (about 21 in 100 traces versus about 75 in 100, with remaining occurrences mid-trace instead of near the end). This is a well-supported participation change in its own right, but the nine A02 pair items mirror this single participation drop rather than independently confirming it, and the A02–A50 spacing item rests on only 14 later-window observations. [OCC001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, LAG001]
+- A06 and A10 participation rose (about 7 to 19 and 9 to 22 in 100 traces); with 13/38 and 17/43 supporting traces, sampling variation of rare activities cannot be excluded. [OCC002, OCC003]
+- A49 is now typically immediately followed by A50, where previously a two-step gap was typical. [LAG009]

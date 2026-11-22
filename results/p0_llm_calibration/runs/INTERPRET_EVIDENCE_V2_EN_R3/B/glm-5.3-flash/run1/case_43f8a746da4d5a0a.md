@@ -1,0 +1,21 @@
+### Observed differences
+
+- Out of A25: in the earlier window, about 99 in 100 of its outgoing transitions went to A26; in the later window only about 1–2 in 100 do, while about 48 in 100 go to A32 and about 48 in 100 to A33. [DIR001]
+- Out of A28, A32 and A33: earlier, A28 led mainly to A32 (about 54 in 100) and A33 (about 44 in 100), and A32 and A33 led mainly to A29 (about 45–53 in 100) or to each other; in the later window about 97 in 100 of A28's transitions go to A29, while A32 and A33 lead about half the time to A26 (about 48–49 in 100) and half to each other, with A29 almost never the successor (about 1 in 100 or less). [DIR002, DIR003, DIR004]
+- The order between the two groups reversed while joint execution stayed: earlier, A26 preceded A32 in about 99 in 100 shared traces and A33 in about 99.5 in 100, and A28 likewise preceded both; in the later window A32 and A33 precede A26 and A28 in about 97–98 in 100. In both windows each of these pairs still occurs together in 100 in 100 traces. [REL001, REL002, REL003, REL004]
+- Step distances moved consistently: A32 and A33 now follow A25 after about 1–2 steps (earlier about 4–5); A26 follows A25 after about 3–4 steps (earlier 1) and A28 after about 5 steps (earlier 3); A29 now follows A28 after 1 step (earlier 3) but follows A32 and A33 only after about 4–5 steps (earlier 1–2), and follows A26 after about 3 steps (earlier 5). [LAG001, LAG002, LAG003, LAG004, LAG005, LAG007, LAG008, LAG009]
+- Relative positions in the trace moved the same way: A32 and A33 occur earlier (mean relative position about 0.55 earlier versus about 0.45 in the later window), while A26 and A28 occur later (about 0.43 to 0.50, and about 0.50 to 0.57). [POS001, POS002, POS003, POS004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A32 and A33 changed their placement relative to A26 and A28: in the earlier window A26 and A28 both came before A32 and A33, with A29 following that pair after about 1–2 steps, whereas in the later window A32 and A33 come directly after A25 and before A26 and A28; A26 and A28 keep their mutual order but are executed later, and A29 still closes the sequence, now directly after A28. [REL001, REL002, REL003, REL004, DIR001, DIR002, DIR003, DIR004, LAG001, LAG002, LAG003, LAG004, LAG005, LAG007, LAG008, LAG009, POS001, POS002]
+
+The reversal is direct relational evidence and near-total on both sides (about 99 in 100 earlier versus about 97–98 in 100 later, direction inverted), while co-occurrence stays at 100 in 100 in both windows, so none of the activities became optional or disappeared; the successor changes at A25, A28, A32 and A33, the distance shifts and the position shifts all point to the same rearrangement. With 19 qualifying items against roughly 0.58 expected for an unchanged process, and every difference larger than about 995 of 1,000 random re-splits, the pattern as a whole cannot be explained by sampling variation. [REL001, REL002, REL003, REL004, DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]
+
+Limitations: distances and positions are measured in event steps within the trace, not clock time; the internal order of A32 and A33 remains flexible in both windows (each leads the other roughly half the time); and the A26–A33 distance item rests on only 3 after-window observations. [DIR003, DIR004, LAG006]
+
+A competing explanation the evidence cannot fully exclude is that the reversal is produced by a broader restructuring involving activities that were not tested; what it does largely rule out is a mere exchange in how often two existing trace variants occur, since each ordering went from about 99 in 100 to about 1–2 in 100 rather than both coexisting at shifted shares, and the dominant successors of A25 and A28 themselves changed. [REL001, REL002, REL003, REL004, DIR001, DIR002]
+
+Other differences: only low-frequency residual transitions (about 0.5–1.5 in 100) to assorted other activities appear or disappear between the windows, and the spread of relative positions changes slightly; neither alters the picture above. [DIR001, DIR002, DIR003, DIR004, POS001, POS002, POS003, POS004]

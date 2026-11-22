@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A32, A33 and A38 were not observed at all (0 of 200 traces); in the later window each occurs in about 50 in 100 traces (98–100 of 200), clustered around the middle of the trace (mean relative position about 0.51, just before A28 at about 0.56). [OCC004, OCC005, OCC006, POS003, POS004, POS005, POS002]
+- A27 was present in every earlier trace, but in only about 52 in 100 later traces (103 of 200). [OCC003]
+- A26's outgoing transitions changed: earlier about 95 in 100 went to A27; in the later window about 50 in 100 go to A27, with the rest split almost evenly over A33 (18 in 100), A38 (17 in 100) and A32 (15 in 100). [DIR006]
+- The three new activities form a block: each pair co-occurs in about 49 in 100 traces and appears in both orders (no fixed order among them); each leads mainly to the other two and to A28, and each precedes A28 in about 48 in 100 of their joint traces. A27 and the new activities hardly ever occur in the same trace (about 1 in 100 or fewer). [REL028, REL029, REL030, DIR007, DIR008, DIR009, REL025, REL026, REL027, REL022, REL023, REL024]
+- A28, which earlier was always reached after A27 (A27 before A28 in 98 in 100 traces), now occurs without A27 in about 49 in 100 traces. [REL021]
+- The distance from A26 to A28, earlier almost always 2 steps (91 in 100), is now split between about 2 steps (50 in 100) and about 4 steps (46 in 100), consistent with extra steps inserted on that segment in roughly half the traces. [LAG003]
+- A04 changed role: participation rose from 19 to 60 in 100 traces and its mean position moved much earlier (about 0.54 to 0.21); A14 now sends about 54 in 100 of its outgoing transitions to A04 (earlier about 4 in 100), A04 immediately follows A14 in about 96 in 100 of the close pairs in the later window, and about 87 in 100 of A04's outgoing transitions now go to A15 (earlier about 20 in 100); the A14→A15 distance shifted about one step later. [OCC001, POS001, DIR004, LAG001, DIR001, REL001, LAG002]
+- A06 participation fell from about 20 to 4 in 100 traces (only 8 traces behind the later profile, so weakly based); A10's outgoing mix changed, based on 28 versus 22 outgoing transitions. [OCC002, DIR002, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the segment after A26 splits into two alternative routes to A28: about half of the cases still run A26 → A27 → A28, while the other half are routed from A26 through the newly observed activities A32, A33 and A38, which run together in varying order and hand over to A28; accordingly, A27 changed from mandatory (in every trace) to optional (about 52 in 100 traces). [OCC003, OCC004, OCC005, OCC006, DIR006, DIR007, DIR008, DIR009, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030, LAG003]
+
+The change is shown directly and consistently in participation, routing shares, co-occurrence and order relations, and the doubled A26→A28 distance, with substantial support in both windows; 55 evidence items qualified against roughly 0.73 expected by chance in an unchanged process, so the ensemble is unlikely to be a sampling artefact. Limitations: positions and lags reflect event order rather than clock time, the evidence cannot show why cases take the new route, and it cannot fully rule out that the later window draws a different case mix rather than the process behaviour itself having changed. [OCC003, DIR006, REL021, LAG003]
+
+Other differences: A04 now acts as an intermediate step between A14 and A15 in roughly half of the traces — A14 hands over to A04, A04 follows A14 almost immediately and then leads almost always to A15 — whereas earlier A04 was a late activity in 19 in 100 traces with successors spread over many activities; A06 nearly disappeared (about 20 to 4 in 100 traces, weakly based in the later window); A10's outgoing mix shifted on moderate support. These differences are reported separately; their activities are not part of the main hypothesis. [OCC001, POS001, DIR004, LAG001, LAG002, DIR001, REL001, OCC002, DIR002, DIR003]

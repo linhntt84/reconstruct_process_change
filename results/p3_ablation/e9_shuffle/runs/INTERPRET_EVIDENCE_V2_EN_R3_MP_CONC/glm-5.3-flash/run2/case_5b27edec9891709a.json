@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "c93ae7e3812ded3c4984656c6e4413b4b4f3b00ba39a4e498f2d993da3c7f4c8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:00:54.813767+00:00",
+  "finished_at_utc": "2026-11-15T04:05:58.715601+00:00",
+  "latency_seconds": 303.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 44925,
+    "prompt_tokens": 20849,
+    "total_tokens": 65774,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42456,
+      "text_tokens": 2469
+    },
+    "cost": 0.02558985
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 130366,
+  "text": "### Observed differences\n\n- **Participation:** before, A22, A31, A32 and A37 each ran in every trace (200 of 200); in the later window A22 runs in about 54 in 100 traces and A31, A32 and A37 in about 47 in 100 each, while A20, A21, A23 and A26 still run in every trace in both windows. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS004, POS005]\n\n- **A22 versus the trio A31/A32/A37:** before, A22 co-occurred with each of A31, A32 and A37 in 100 in 100 traces; in the later window they share a trace in only about 1 in 200 cases — about 53 in 100 traces show A22 without the trio and about 47 in 100 show the trio without A22, so the two groups cover essentially every after-trace. When the trio runs, its members still run together and in no fixed order among themselves, as before. [REL011, REL012, REL013, REL020, REL021, REL022]\n\n- **Relocation of the trio:** before, A20 led into the trio (about 35, 34 and 31 in 100 of A20's outgoing transitions went to A37, A31 and A32) and A23 came after it — A20 reached A23 exactly four positions later, and each trio member led to A23 in roughly a third of its outgoing transitions. In the later window A23 directly follows A20 (one position later, receiving about 199 of 200 of A20's outgoing transitions), A23 precedes each trio member in practically every trio trace, and the trio members now lead to A26 (about 29–36 in 100 of their outgoing transitions) instead of to A23; the close successions from A20 into the trio and from the trio to A23 survive in only about 1 in 200 after-traces. [DIR001, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, REL014, REL015, REL016, REL017, REL018, REL019]\n\n- **A21 swapped sides relative to the trio:** before, each trio member preceded A21 and A21 was always followed by A22; in the later window A21 precedes each trio member in practically all trio traces, A21's outgoing transitions go to A22 in about 54 in 100 of cases and to one of A31/A32/A37 in about 14–17 in 100 each, and the A21-to-A26 distance — previously always two positions — is now two positions in about 54 in 100 traces and four positions in about 47 in 100, with the trio sitting in between. [REL006, REL007, REL008, DIR002, LAG005]\n\n- **Position shifts:** in the later window A23 sits earlier in the trace (mean relative position about 0.45 → 0.39), A21 earlier (about 0.60 → 0.54), A31, A32 and A37 later (about 0.40 → 0.58) and A22 slightly earlier (about 0.63 → 0.59, now measured on 54 in 100 traces). [POS002, POS003, POS004, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural restructuring of the segment between A20 and A26, involving A20, A23, A21, A22, A26 and the trio A31, A32, A37. Before, every trace executed A20, then the trio in mixed order, then A23, then A21, then A22, then A26; in the later window this segment splits into two mutually exclusive variants — in about 47 in 100 traces the trio executes, now after A21 and before A26, and A22 does not run, while in about 54 in 100 traces A22 runs and the trio does not; in both variants A23 immediately follows A20, where it previously followed the trio. [LAG001, LAG005, REL002, REL005, REL006, REL009, REL010, REL011, REL012, REL013, REL014, REL017, DIR001, DIR002]\n\nThe hypothesis is shown directly and consistently: relational items capture both the collapse of A22–trio co-occurrence (from 100 in 100 to about 1 in 200) and the order swap between the trio and A23/A21; successor profiles change exactly where the relocation predicts (A20 now to A23, trio members now to A26, A21 now to A22 or the trio); and the participation and relative-position shifts move in the same direction for every affected activity. [REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, DIR001, DIR002, DIR003, DIR004, DIR005, POS002, POS003, POS004, POS006, POS007, POS008]\n\nThe volume of qualifying evidence also far exceeds what an unchanged process produces: 47 control-flow items qualified against roughly 0.5 expected by chance (about ninety times as many), so the pattern as a whole is not a sampling artefact; most items rest on 94–200 traces per window, though the six lag items documenting the lost close successions rest on a single after-trace each. [OCC001-OCC004, DIR001-DIR005, LAG001-LAG008, POS001-POS008, REL001-REL022]\n\nLimitations: the items are not independent confirmations — the three A22-versus-trio relations and the three occurrence drops describe one and the same split — and, because only executed traces are visible, the evidence cannot rule out that the two after-variants reflect a different mix of incoming cases rather than a change in routing. [REL011, REL012, REL013, OCC002, OCC003, OCC004]\n\nOther differences: A20 sits slightly later in the trace (mean relative position about 0.34 → 0.36) and A26 slightly earlier (about 0.66 → 0.63); both shifts are small and consistent with the restructuring above but are not part of the hypothesis. [POS001, POS005]",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

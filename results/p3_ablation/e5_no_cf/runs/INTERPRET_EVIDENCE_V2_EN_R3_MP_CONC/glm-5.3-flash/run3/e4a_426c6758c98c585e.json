@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_426c6758c98c585e.json",
+  "evidence_sha256": "28c74eafd5000cc78ee32ddcff9e53b1899b6f4a08c99fd43508d39049514f2e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:51:42.409703+00:00",
+  "finished_at_utc": "2026-11-15T12:52:07.716535+00:00",
+  "latency_seconds": 25.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3807,
+    "prompt_tokens": 2972,
+    "total_tokens": 6779,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3239,
+      "text_tokens": 568
+    },
+    "cost": 0.0023493
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 14046,
+  "text": "### Observed differences\n\n- In the later window, the elapsed time between consecutive completion events is longer for both measured activity pairs. The gap from the completion of A22 to the completion of A29 roughly doubled: from about 0.9 hours in the earlier window (median ~0.90 h, the middle half of gaps between ~0.83 and ~1.01 h) to about 1.9 hours (median ~1.88 h, middle half between ~1.73 and ~2.05 h) — an increase of about 1.0 hour, seen in 98 of 200 traces in each window. [TWAIT001]\n- The gap from the completion of A30 to the completion of A29 also roughly doubled, from about 0.2 hours (median ~0.18 h) to about 0.4 hours (median ~0.34 h), and the gaps became more variable (upper quartile from ~0.26 to ~0.54 h); observed in 102 of 200 traces in each window. [TWAIT002]\n- Both shifts are consistent across the whole distribution — median, quartiles and spread all rose — and each difference is larger than in about 999.5 of 1000 random re-splits of the pooled data (2000 reference comparisons). [TWAIT001, TWAIT002]\n- Both measured intervals end at A29, so the two items likely describe the same underlying slowdown into A29 rather than two independent changes. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a timing change: in the later window, the elapsed time between consecutive completion events leading into A29 roughly doubled — after A22 from about 0.9 to about 1.9 hours, and after A30 from about 0.2 to about 0.4 hours. Supporting signs: both items move in the same direction with every distribution component increasing, each difference exceeds about 99.9% of random re-splits, each rests on roughly 100 observations per window, and 2 qualifying time items against roughly 0.006 expected without change (13 units tested) is far above what an unchanged process typically produces. [TWAIT001, TWAIT002]\n\nLimitations: TWAIT measures elapsed time between consecutive completions, not pure waiting or service time, so the lengthening could reflect longer waiting, longer intervening work, or an activity inserted between these pairs; the evidence contains no structural items, so such a structural explanation cannot be ruled out. Because both intervals end at A29, the two items may reflect one underlying difference rather than independent confirmations. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_426c6758c98c585e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_e7ea035232af7c10.json",
+  "evidence_sha256": "bcebff112a7e55f289e200ee14716c425c6c3da13348d95c6a42d00a31db6cc3",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:05:59.079011+00:00",
+  "finished_at_utc": "2026-11-14T13:08:16.973376+00:00",
+  "latency_seconds": 137.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22955,
+    "prompt_tokens": 19120,
+    "total_tokens": 42075,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20986,
+      "text_tokens": 1969
+    },
+    "cost": 0.014345499999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 70508,
+  "text": "### Observed differences\n\n- Four activities became near-universal: A27 ran in about 54 of 100 traces before and in essentially all traces in the later window; A36, A37 and A42 each ran in about 46–47 of 100 traces before and in 199–200 of 200 traces after. Each still occurs once per trace, with no repetition in either window. [OCC001, OCC002, OCC003, OCC004]\n- A25's successors changed completely: before, about 98 in 100 of its outgoing transitions went to A28; in the later window they split almost evenly among A36, A37 and A42 (about 31–35 in 100 each), with A28 down to about 0.5 in 100. [DIR001]\n- A26's routing narrowed: before, about 54 in 100 of its outgoing transitions led to A27 and about 45 combined led into A36/A37/A42; in the later window about 98.5 in 100 lead to A27. [DIR002]\n- The group's exit changed: before, A36, A37 and A42 each led to A31 in about 29–39 of 100 transitions (besides transitions among themselves); in the later window A31 no longer receives from them, and A28 appears instead at about 31–36 in 100 each. [DIR003, DIR004, DIR005]\n- Event positions (not clock time) shifted consistently: A36, A37 and A42 moved from a mean position of about 0.59 to about 0.40 of the trace, while A28 moved later (0.39 to 0.46), as did A26 (0.54 to 0.60), A27 (0.59 to 0.63) and A31 (0.63 to 0.66); A25 stayed at about 0.35. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n- A27 and each of A36/A37/A42 changed from practically never co-occurring (0 in 100 traces, i.e. alternatives) to co-occurring in about 99.5 of 100 later traces, with the group before A27 in about 99 of 100. [REL011, REL012, REL013]\n- The order against A26 flipped from A26-first (about 46 in 100) to group-first (about 99 in 100), and the order against A28 flipped from A28-first (about 46 in 100) to group-first (about 99 in 100); the three group members now co-occur in about 99.5 of 100 traces (before: about 46), without a fixed order among themselves in either window (roughly 50/50 splits). [REL006, REL007, REL008, REL014, REL015, REL016, REL020, REL021, REL022]\n- Relations that held in both windows and now hold at near-100 in 100: A25 before the group and before A27, A26 before A27, A28 before A27, A27 before A31, and the group before A31. [REL001, REL002, REL003, REL004, REL005, REL009, REL010, REL017, REL018, REL019]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the branch made up of A36, A37 and A42 — executed together, in mixed order, in about 46 of 100 earlier traces as an alternative to A27, after A26 and before A31 — now runs in every trace, starting after A25 and finishing before A28 and A26, while A27 always runs after A26 and before A31. Earlier, a trace contained A25, then A28, with A26 later in the trace leading either to A27 alone (about 54 in 100 of its outgoing transitions) or into the group, which closed into A31 (about 46 in 100); in the later window every trace contains A25, the group, A28, A26, A27 and A31, with the group now exiting to A28 instead of A31. The support is direct and consistent: strict order flips between the group and A26/A28, new near-universal co-occurrence with A27 in a fixed order, successor changes at A25, A26 and the group members, participation of all four activities rising to essentially every trace, and matching position shifts. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, REL006, REL007, REL008, REL011, REL012, REL013, REL014, REL015, REL016, POS006, POS007, POS008]\n\nScreening context: 39 items qualified where roughly 0.62 would be expected if nothing had changed — about sixty times the chance expectation — and every item exceeds about 99.5 of 100 random re-splits, so the pattern as a whole is not a sampling artefact. The items nevertheless largely describe one underlying restructuring rather than independent confirmations. [OCC001, DIR001, REL011]\n\nLimitations: the relative order of A28 and A26 after the group is not directly observed — no relation or successor item covers that pair, so it rests on position data only; the group's internal order is unfixed in both windows and the evidence cannot show whether it is fixed within individual traces; and the evidence cannot distinguish the group having been moved from the old branch being removed and a new execution of the same activities inserted earlier, since each occurs at most once per trace. [POS002, POS004, REL020, REL021, REL022, OCC001]\n\nOther differences: only minor shifts remain outside this hypothesis — A25's mean position moved slightly earlier (about 0.362 to 0.346) and A31's slightly later (about 0.630 to 0.657), both consistent with the group now running earlier, and A31's relations (it still follows A27 and the group) are unchanged. [POS001, POS005, REL010, REL017, REL018, REL019]",
+  "case_id": "case_e7ea035232af7c10",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,19 @@
+### Observed differences
+
+- A block of three activities disappeared: A26, A27 and A28 each ran in all 200 earlier traces, but in the later window each appears in only 1–2 of 200 traces. [OCC025, OCC026, OCC027]
+- Three activities appeared in their place: A19, A20 and A21 were observed in 0–1 of 200 earlier traces and in about 31, 34 and 37 of 100 later traces respectively. [OCC018, OCC019, OCC020]
+- The old block ran as a fixed set in varying order: A26, A27 and A28 co-occurred in 100 of 100 earlier traces, with each pair appearing in both orders at roughly 45–55 shares. The new trio almost never shares a trace (co-occurrence in about 1 of 100 pairs), so later traces contain exactly one of A19/A20/A21. [REL036, REL037, REL040, REL018, REL019, REL025]
+- A44's outgoing transitions were rewired: earlier about 33, 28 and 32 of 100 went to A26, A27 and A28; later about 27, 30 and 36 of 100 go to A19, A20 and A21. [DIR044]
+- Both blocks sit between A44 and A29. Earlier, A26/A27/A28 co-occurred with A44 and A29 in every trace, with A44 first and A29 last (e.g., A26 preceded A29 in about 99 of 100 traces). Later, A19/A20/A21 co-occur with A44 and A29 in exactly the traces where they appear, and about 97 of 100 outgoing transitions from each of them lead to A29. [REL038, REL039, REL041, REL043, REL023, REL024, REL029, REL034, DIR019, DIR020, DIR021]
+- The segment shortened: the typical gap from A44 to A29 fell from 4 positions (93 of 100 traces) to 2 positions (92 of 100), and A29's mean relative position moved earlier, from about 0.43 to 0.40. [LAG012, POS009]
+- Outside this segment, A45 and A46 run more often and repeat more (A45: 1.57 → 1.80 occurrences per trace, repeats in about 49 vs 37 of 100 traces; A46: participation about 69 vs 59 of 100), and A11/A12 participate more often (about 57 vs 47 of 100 traces each) with A11 preceding A12 more often (about 30 vs 19 of 100). [OCC042, OCC043, DIR046, DIR048, OCC010, OCC011, REL001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment between A44 and A29 was restructured: earlier, every trace passed through all three of A26, A27 and A28 (once each, in varying order) between A44 and A29, while in the later window traces pass through exactly one of the newly observed A19, A20 or A21, shrinking the segment from three activities to one. The change is shown directly and consistently across indicator families: participation flips from 100% to near 0% for the old trio and from near 0% to 31–37% for the new trio; A44's successor profile switches wholesale from the old to the new trio; relational evidence places the new activities after A44 and before A29; and the A44-to-A29 distance drops from typically 4 to typically 2 positions, with empirical strengths near 0.99 throughout. [OCC018, OCC025, DIR044, DIR019, REL023, LAG012]
+
+An important competing explanation cannot be ruled out: the activity codes are anonymous, so a relabelling of the same work (three always-executed steps becoming one-of-three) would look identical in this evidence. Also, 1–2 later traces still contain A26/A27/A28, so the old block is nearly, but not provably, unobserved. [OCC025, OCC026, OCC027]
+
+Other differences: A45 and A46 are executed and repeated more often (A45 mean 1.57 → 1.80 per trace with repeats in about 49 vs 37 of 100 traces; A46 participation about 69 vs 59 of 100), with successor shares shifting toward A45; A11 and A12 participate more often (about 57 vs 47 of 100 traces each) and A11 now precedes A12 in about 30 vs 19 of 100 traces. These milder shifts in repetition, routing and participation are separate from the main hypothesis. [OCC042, OCC043, DIR046, DIR048, OCC010, OCC011, REL001]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f54ca252b75f3142.json",
+  "evidence_sha256": "cbb5d5cbfae6ac08e0bcf69335044cee36e746f748c4209610f85cd5ca67d89c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:42:12.307428+00:00",
+  "finished_at_utc": "2026-11-15T04:43:58.417624+00:00",
+  "latency_seconds": 106.11,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15170,
+    "prompt_tokens": 7573,
+    "total_tokens": 22743,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13934,
+      "text_tokens": 1236
+    },
+    "cost": 0.00872095
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51044,
+  "text": "### Observed differences\n\n- In the earlier window, A01 ran exactly once in every trace (200 of 200) and was the first event in the large majority of them (median position 0); in the later window A01 was not observed in any of the 200 traces. Its routing disappeared with it: earlier, A01's outgoing transitions led to A03 in about 46 in 100 cases, A04 in about 34, A02 in about 16, and rarely to A05 (~3) or A06 (~2); later, no outgoing transitions of A01 were observed. [OCC001, POS001, DIR001]\n- A04 also disappeared: earlier it ran in about 51 in 100 traces, mid-process (median position between roughly a third and two thirds of the trace), leading mostly back to A02 (~70% of its outgoing transitions), plus A06 (~19%) and A01 (~11%); in the later window A04 was not observed at all. [OCC002, POS004, DIR003]\n- In the later window, every trace begins with A02 (93 of 200 traces, about 46 in 100) or A03 (107 of 200, about 54 in 100), and both always occupy the first event position; earlier, A02 and A03 each appeared in about half of the traces but sat mid-trace (medians about 0.67 and 0.5). [POS002, POS003]\n- A02's routing narrowed: earlier, about 79 in 100 of its outgoing transitions went to A06, with the rest to A04 (~14) and A01 (~7); in the later window, all observed A02 transitions go to A06. [DIR002]\n- Relations changed accordingly: A03 and A04 were strict alternatives earlier (exactly one of them in each trace, about 49 vs 51 in 100, never together), whereas later A03 appears alone in about 54 in 100 traces and A04 never appears. A02 and A04 previously co-occurred in 51 in 100 traces with no fixed order between them (A02 first ~15, A04 first ~37); later they never co-occur. A01 previously co-occurred with A02, A03 and A04 in about half of the traces, usually before them; later it co-occurs with none of them. [REL005, REL004, REL001, REL002, REL003]\n- A06 lost its outgoing edges: earlier, its few observed transitions (14 traces) led to A04 (~71%) or A01 (~29%); in the later window, no outgoing transitions of A06 were observed. [DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, cases begin directly with A02 (about 46 in 100 traces) or A03 (about 54 in 100), always as the first event, whereas earlier every case began with A01, which then routed work to A03, A04 or A02 (rarely A05 or A06). A01 was not observed in any later trace, and A04 — previously in about half of all cases, running together with A02 in no fixed order — was also not observed at all; A02 now always flows on to A06. The evidence supports the possibility that A01 was removed or bypassed as the opening step and A04 dropped out of the process, with cases now entering at A02 or A03. Because A01 and A04 are entirely absent from the later window, this is a difference in participation (activities no longer executed) rather than a shift in how often existing paths are chosen. [OCC001, POS001, DIR001, OCC002, POS004, DIR003, POS002, POS003, DIR002, REL005]\n\nThe signs are direct and consistent: 15 evidence items qualified where only about 0.1 would be expected by chance in an unchanged process, and occurrence, position, direction and relation indicators all describe the same picture across 200 traces per window. [OCC001, POS001, DIR001, OCC002, POS004, DIR003, POS002, POS003, DIR002, REL001, REL002, REL003, REL004, REL005, DIR004]\n\nThe evidence cannot rule out that A01 and A04 still execute but are no longer recorded in the later window, since zero participation only means they were not observed; additionally, no qualifying item shows what follows A03 in the later window, so the shape of the A03 branch after the change remains unknown. [OCC001, OCC002]\n\nOther differences: A06 no longer shows any outgoing transitions (earlier: to A04 in about 71 in 100 of its 14 observed transitions, to A01 in about 29), which would be consistent with A06 now ending cases, although an empty successor profile does not show whether A06 itself still occurs. A05 appeared only as a rare target of A01 (about 3 in 100 of A01's earlier transitions) and has no other supporting evidence. [DIR004, DIR001]",
+  "case_id": "case_f54ca252b75f3142",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f099fe9f15209e0c.json",
+  "evidence_sha256": "faf4487e21457beb36935db5a367fa7042a300dcaf4aa17fb8c6d0068ed5fac6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:22:51.221405+00:00",
+  "finished_at_utc": "2026-11-14T14:24:16.130529+00:00",
+  "latency_seconds": 84.91,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13552,
+    "prompt_tokens": 16397,
+    "total_tokens": 29949,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12432,
+      "text_tokens": 1120
+    },
+    "cost": 0.009235549999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44911,
+  "text": "### Observed differences\n\n- In the earlier window, A02 ran in every one of the 200 traces (about once per trace), always together with A01 — before A01 in about 90 in 100 traces — and always together with A03 and A04. In the later window, A02 is not observed at all: 0 of 200 traces, no outgoing transitions, and no co-occurrence with A01, A03, A04 or A05. [OCC001, DIR002, POS002, REL001, REL004, REL005, REL006]\n- In the earlier window, A03 sent about 38 in 100 of its outgoing transitions to A02; in the later window that share is gone, and A03 now leads mainly to A05 (about 35 in 100), A01 (about 30 in 100) and A04 (about 28 in 100). A03 also sits earlier in the trace (mean relative position about 0.11 → 0.04; upper quartile 0.2 → 0). [DIR003, POS003]\n- A01 no longer passes to A02 (about 12 in 100 of its outgoing transitions before); its share to A04 rose from about 65 to 73 in 100 and to A07 from about 14 to 18 in 100. [DIR001]\n- A04 still runs in every trace but less often per trace (mean about 2.2 → 1.9) and somewhat earlier (mean relative position about 0.60 → 0.53); A06 occurs about 1.2 → 0.9 times per trace, in about 53% → 51% of traces, with repetition down from 30% to 22%. [OCC002, OCC004, POS004]\n- A05 appears in slightly more traces (about 47 → 51 in 100), and A07's outgoing transitions shifted from A01 (about 79 → 56 in 100) toward A05 (about 12 → 33 in 100), the latter based on only about 35 observed transitions per window. [OCC003, DIR007]\n- Several successions became more often immediate: A03→A01 (lag 1: about 18% → 31%), A03→A05 (about 49% → 69%) and A05→A01 (about 67% → 78%). [LAG002, LAG004, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 was removed from the process (or is no longer executed), cutting out the step between A03 and its downstream activities: A02 ran in every trace before and in none after, and A03 — which previously handed over to A02 in about 38 in 100 of its outgoing transitions — now leads directly to A01, A05 and A04, taking place earlier in the trace. This is shown directly and consistently by occurrence, direction, position and relation indicators, each based on all 200 traces per window with empirical strength near the maximum (about 0.995), and the relational items confirm that A01, A03, A04 and A05 now occur without A02. [OCC001, DIR002, POS002, REL001, REL004, REL005, REL006, DIR003, POS003]\n\nAn important competing explanation cannot be ruled out: zero participation only shows that A02 was not observed in the later window, so a relabelling of A02 or a later window drawn from a variant without A02 would look identical. The exact edge-level rewiring is inferred from shifted outgoing shares rather than observed as a single redirection.\n\nOther differences:\n- A04 and A06 repeat less often (A04 mean about 2.2 → 1.9 per trace; A06 mean about 1.2 → 0.9, repetition 30% → 22%), which may be a knock-on effect of shorter traces but could also be sampling variation (empirical strength about 0.88). [OCC002, OCC004, POS004]\n- A05 participation rose slightly (about 47 → 51 in 100 traces), a weak signal. [OCC003]\n- A07's outgoing shifted from A01 toward A05, but the base of about 35 transitions per window is small. [DIR007]\n- Several successions became more often immediate (A03→A01, A03→A04, A03→A05, A05→A01). [LAG002, LAG003, LAG004, LAG009]",
+  "case_id": "case_f099fe9f15209e0c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

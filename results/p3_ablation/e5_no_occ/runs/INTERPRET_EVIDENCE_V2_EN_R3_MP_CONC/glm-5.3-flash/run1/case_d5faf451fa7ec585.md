@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A22, A23 and A24 appeared in every one of the 200 cases, and each case also contained exactly one of three alternative activities: A14 in about 32 of 100 cases, A15 in about 28, and A20 in about 40; the three alternatives never occurred in the same case [POS001, POS002, POS003, REL001, REL002, REL006, DIR004, DIR005].
+- Earlier, the alternative sat either directly after A22 — A22 led to A20, A14 or A15 rather than straight to A23 in about 45 of 100 cases — or directly after A23 — A23 led to one of the three rather than straight to A24 in about 55 of 100 cases — and each alternative then continued to A23 or A24 in roughly equal shares (for example A14: about 58 to A24 vs 42 to A23) [DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG003].
+- In the later window, A14, A15 and A20 were not observed at all (0 of 200 cases, against 56–80 of 200 earlier), and A22 led to A23 in every observed case while A23 led to A24 in every observed case [DIR001, DIR002, DIR003, POS001, POS002, POS003, DIR004, DIR005].
+- The segment accordingly shortened: A22→A23 and A23→A24, which earlier spanned two steps in about 45–55 of 100 cases, are now always one step apart, and A22→A24 moved from always three steps to always two [LAG001, LAG002, LAG003].
+- A22 and A24 still appear in every case; A22's mean position shifted slightly later (about 0.46 to 0.47 of the trace) and A24's slightly earlier (about 0.57 to 0.55) [POS004, POS005].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the alternative activities A14, A15 and A20 are no longer executed in the later window. Earlier, every case inserted exactly one of the three — after A22 in about 45 of 100 cases or after A23 in about 55 — whereas in the later window A22 always leads directly to A23, A23 always leads directly to A24, and none of the three appears in any case. Because the activities themselves are absent from the later window, this is a structural change in which a group of activities is bypassed, not a shift of frequency between paths that all remain in use [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, LAG001, LAG002, LAG003].
+
+Supporting signs: screening qualified 25 items where about 0.24 would be expected if nothing had changed — roughly a hundredfold excess — and the directional, positional, relational and lag indicators all describe one consistent picture: the routing shares collapse to a single successor exactly where the alternatives used to sit, co-occurrence with A22/A23/A24 drops to zero, and all inter-activity distances shorten by one step [DIR001–DIR005, POS001–POS005, REL001–REL012, LAG001–LAG003].
+
+Limitations: zero participation means only that A14, A15 and A20 were not observed in the later window; the evidence cannot rule out that they still run in a very small share of cases below the resolution of the 200 later traces, nor can it distinguish removal of the activities from a routing change that never selects them. The agreeing indicators also reflect overlapping trace behaviour, so they are not independent confirmations [POS001, POS002, POS003, DIR001, DIR002, DIR003].

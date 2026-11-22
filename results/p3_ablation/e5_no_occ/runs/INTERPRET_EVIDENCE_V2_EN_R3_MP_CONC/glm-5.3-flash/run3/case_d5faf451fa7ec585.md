@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, every trace executed exactly one of three alternative activities — A14 in about 32 in 100 traces, A15 in about 28, A20 in about 40 (shares sum to 100) — and the three never occurred together, so they acted as mutually exclusive choices covering all cases, each around the middle of the trace (mean relative position about 0.51–0.52). In the later window, none of the three is observed in any of the 200 traces. [REL001, REL002, REL006, POS001, POS002, POS003]
+- Before, each alternative always ran after A22 and before A24 (e.g. A20 followed A22 and preceded A24 in all of its roughly 40-in-100 co-occurrences), but in no fixed order relative to A23: A14 came before A23 in about 14 in 100 traces and after it in about 19, and the other pairs show both orders similarly. In the later window these relations no longer occur because the alternatives are unobserved. [REL010, REL012, REL003, REL005, REL007, REL009, REL004, REL008, REL011]
+- Before, A22 led directly to A23 in about 55 in 100 of its outgoing transitions and to one of the alternatives in about 45, while A23 led directly to A24 in about 45 and to an alternative in about 55. In the later window, A22 leads only to A23 and A23 only to A24. [DIR004, DIR005]
+- The alternatives' own outgoing transitions, each split between A23 and A24 (e.g. A14 to A24 in about 58 in 100 and to A23 in about 42), have no counterpart in the later window. [DIR001, DIR002, DIR003]
+- Step distances collapsed: A22→A23 went from lag 1 in about 55 in 100 traces (lag 2 otherwise) to lag 1 in all traces; A23→A24 from lag 1 in about 46 (lag 2 otherwise) to lag 1 in all; A22→A24 from always 3 steps to always 2. [LAG001, LAG003, LAG002]
+- A22's mean relative position moved slightly later (about 0.46 to 0.47) and A24's slightly earlier (about 0.57 to 0.55), consistent with the intermediate block disappearing; both activities still occur in every trace in both windows. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the step in which one of three alternative activities — A14, A15 or A20 — was executed between A22/A23 and A24 is no longer executed in the later window: participation fell from every trace (about 32, 28 and 40 in 100 traces respectively) to none of 200, A22 now leads only to A23 and A23 only to A24, and the A22→A24 distance shortened from three steps to two. Because the three activities are entirely unobserved in the later window while A22, A23 and A24 still occur in every trace, this is a participation change (the step is skipped or has disappeared), not a shift of frequency between existing paths. [POS001, POS002, POS003, REL001, REL002, REL006, DIR004, DIR005, LAG001, LAG002, LAG003, POS004, POS005]
+
+The pattern is consistent across all 25 qualifying control-flow items, whereas an unchanged process would be expected to produce about 0.24 such items from the 49 tested units, so the set of differences is far beyond what chance sampling between two 200-trace windows produces — noting that many items describe the same underlying behaviour rather than independent confirmations. [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003]
+
+Competing explanation the evidence cannot rule out: zero participation only shows that A14, A15 and A20 were not observed in the later sample, so the evidence cannot distinguish a removal from the step merely never being triggered in these 200 cases, nor show whether the work moved to activities outside the analysed set. [POS001, POS002, POS003]

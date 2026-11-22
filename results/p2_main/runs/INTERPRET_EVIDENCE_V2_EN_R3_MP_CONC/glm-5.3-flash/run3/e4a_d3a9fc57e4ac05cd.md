@@ -1,0 +1,14 @@
+### Observed differences
+
+- Both qualifying differences concern elapsed time between consecutive completions, and both lead into A31. The gap from the completion of A20 to the completion of A31 roughly doubled: median about 0.83 hours in the earlier window versus about 1.66 hours in the later window (mean 0.82 vs 1.66, an increase of about 0.84 hours). The whole distribution shifted: three quarters of gaps were below about 0.94 hours before, while three quarters were above about 1.50 hours after. The pair occurs in 38 of 200 traces in each window (about 19 in 100). [TWAIT001]
+- The gap from the completion of A37 to the completion of A31 also roughly doubled: median about 0.07 hours (about 4 minutes) before versus about 0.17 hours (about 10 minutes) after, with roughly twice the spread afterwards (standard deviation about 0.07 vs 0.13 hours). The pair occurs in 43 traces before and 42 after (about 21 in 100). [TWAIT002]
+- Each of these differences was larger than in all but about 1 in 2,000 random re-splits of the pooled traces. [TWAIT001, TWAIT002]
+- No control-flow difference passed the screening thresholds: 0 qualifying items among 56 units, against about 0.28 expected by chance. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+A change in timing is a possibility supported by the evidence: in the later window, the elapsed time between the completion of the preceding activity and the completion of A31 roughly doubled on both observed inbound pairs — from A20 (about 0.8 to about 1.7 hours) and from A37 (about 0.1 to about 0.2 hours). Supporting signs: the time family produced 2 qualifying items where only about 0.02 were expected if nothing had changed; both differences exceed essentially all random re-splits of the pooled data; both point to the same successor activity, A31; and the A20–A31 gap shifted as a whole rather than only in its tail. The absence of qualifying control-flow items (0 versus about 0.28 expected) is consistent with a pure timing change, which needs no structural counterpart. [TWAIT001, TWAIT002, screening]
+
+Limitations: only two activity pairs were measured, both ending at A31, so the change is established only for these intervals; the two items share A31 and may reflect one underlying difference rather than two independent confirmations; and with 200 traces per window a window-specific fluctuation cannot be fully excluded. An important competing explanation the evidence cannot rule out is that the longer gaps arise because A20 and A37 complete at different points relative to the rest of the case, rather than from a delay immediately before A31. [TWAIT001, TWAIT002]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_7b13ca4049a2d623.json",
+  "evidence_sha256": "4e47b046485dc928b5fad4f3a44f24ddca2eb26f9468e1568c3732a4d9db4ef0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:39:24.144700+00:00",
+  "finished_at_utc": "2026-11-16T02:40:28.221350+00:00",
+  "latency_seconds": 64.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8911,
+    "prompt_tokens": 9458,
+    "total_tokens": 18369,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7958,
+      "text_tokens": 953
+    },
+    "cost": 0.0058742
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28888,
+  "text": "### Observed differences\n\n- **Activity A02 appears.** In the earlier window, A02 is not observed at all (0 of 200 traces, 0 occurrences per trace); in the later window it occurs exactly once in every trace (200 of 200, mean 1.0), always at the same relative event position (about 0.67 of the trace). [OCC001, POS002]\n- **The step after A06 changes.** In the earlier window, all observed outgoing transitions of A06 led to A01; in the later window they all lead to A02, and all observed outgoing transitions of A02 lead to A01. The direct A06→A01 step is thus replaced by a two-step route through A02. [DIR001, DIR002]\n- **A02 now co-occurs with every other activity, in a fixed order.** In the earlier window, A01, A03, A04, A05, A06 and A07 each appeared without A02 in 100% of traces; in the later window each appears together with A02 in 100% of traces, with A02 running after A03, A05, A06 and A07 and before A01 and A04 in every single trace. [REL001, REL002, REL003, REL004, REL005, REL006]\n- **All measured distances across the A06–A01 gap grow by exactly one step.** A06→A01 goes from 1 to 2 steps, A07→A01 from 2 to 3, A05→A01 from 3 to 4, A03→A01 from 4 to 5, and the pairs from A05, A06 and A07 into A04 each move one step apart, in 100% of traces in both windows. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]\n- **Small position shifts consistent with a longer sequence.** Mean relative event positions (not clock times) shift from 0.80 to 0.83 for A01, 0.60 to 0.50 for A06, 0.40 to 0.33 for A07 and 0.20 to 0.17 for A05, with zero spread in both windows — the pattern expected if the trace gains one event after A06. [POS001, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 became a new, invariable step executed between A06 and A01: in the earlier window, cases ran from A06 directly to A01 and A02 was not observed in any of the 200 traces, while in the later window every case executes A06 → A02 → A01, with A02 exactly once per case, after A03/A05/A06/A07 and before A01/A04. [OCC001, DIR001, DIR002, REL001, REL003, LAG004]\n\nSupporting signs: the change is shown directly by successor, relation and distance evidence rather than inferred from frequencies alone; all items — occurrence, direction, position, relation and lag — describe one and the same difference with no contradicting item; every difference is larger than in any of the 200 random re-splits of the pooled data; and the participation contrast of 0 of 200 versus 200 of 200 traces cannot be explained by sampling variation between windows of this size. [OCC001, DIR002, REL001, LAG004]\n\nLimitations: the many agreeing items largely re-express the same trace behaviour and are not independent confirmations; control-flow evidence alone cannot rule out that A02 events were simply not recorded in the earlier window rather than the flow itself changing; and it cannot show whether A02 occurred at a very low, undetected rate before. [OCC001, DIR002]\n\nOther differences: none — the position and distance shifts listed above follow from A02 entering the sequence between A06 and A01, not from separate changes. [POS001, POS004, LAG001, LAG004]",
+  "case_id": "case_7b13ca4049a2d623",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

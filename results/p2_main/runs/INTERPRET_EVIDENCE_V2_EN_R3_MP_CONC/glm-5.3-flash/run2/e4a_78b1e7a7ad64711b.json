@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_78b1e7a7ad64711b.json",
+  "evidence_sha256": "a23b6d3d2abaea67319b827f8ed345a69f93ccfd6e8fb53af5afa96b0699e72f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:53:44.707991+00:00",
+  "finished_at_utc": "2026-11-15T01:54:21.726837+00:00",
+  "latency_seconds": 37.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5354,
+    "prompt_tokens": 3020,
+    "total_tokens": 8374,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4783,
+      "text_tokens": 571
+    },
+    "cost": 0.00313
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20197,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A14 and A26 roughly doubled: in the earlier window a typical gap was about 1.0 hours (mean and median about 1.0, based on 93 observed gaps), while in the later window it was about 1.9 hours (median about 1.9, based on 101 gaps) — an increase of about 0.9 hours. [TWAIT001]\n- The same pattern appears for A18 to A26: gaps of about 1.0 hours before (107 observed gaps) became about 2.0 hours after (99 gaps), an increase of about 1.0 hours. The number of observed gaps stayed similar in both pairs, so how often these consecutive completions occurred did not noticeably change — only the time between them did. [TWAIT002]\n- In both pairs the spread of the gaps also roughly doubled (standard deviation from about 0.15 to 0.30 hours and from about 0.16 to 0.34 hours), and each difference is larger than in about 1999 of 2000 random re-splits of the pooled data. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing around activity A26: the elapsed time between consecutive completions leading into A26 roughly doubled, both from A14 to A26 (about 1.0 to about 1.9 hours) and from A18 to A26 (about 1.0 to about 2.0 hours), while the frequency of these consecutive-completion pairs remained essentially unchanged. [TWAIT001, TWAIT002]\n\nThis rests on direct and consistent signs: the time family produced 2 qualifying items where only about 0.008 would be expected by chance among 16 tested units — a count many times that expectation — while the control-flow family produced none (0 items among 59 units, against about 0.29 expected), which fits a pure timing change that needs no structural counterpart. Both items agree in direction and magnitude (increases of about 0.9 and 1.0 hours), each rests on roughly 100 observations per window, and each exceeds about 1999 of 2000 random re-splits. [TWAIT001, TWAIT002]\n\nLimitations: the indicator measures elapsed time between consecutive completion events, so the evidence cannot show whether the extra hour is waiting, queueing, or slower handling, nor where exactly it accrues. Because both items share A26 as the later activity, they may reflect one underlying slowdown of the interval before A26 rather than two independent changes, and the comparison rests on finite samples of 200 traces per window. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_78b1e7a7ad64711b",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

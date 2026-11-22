@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_1805efe218fd.json",
+  "evidence_sha256": "729403b8746d4cd3c86980931706c4c700a67902e331b61b90cc7e5a014a0e9c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T04:08:52.059180+00:00",
+  "finished_at_utc": "2026-11-16T04:12:55.902305+00:00",
+  "latency_seconds": 243.84,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29072,
+    "prompt_tokens": 84388,
+    "total_tokens": 113460,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27160,
+      "text_tokens": 1912
+    },
+    "cost": 0.0271942
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 88767,
+  "text": "### Observed differences\n\n- In the later window, A03 appeared in fewer cases: about 6–7 in 100 traces (13 of 200) versus about 12 in 100 (23 of 200) earlier, and it sat later within the traces that contained it (median position from about 0.43 to 0.60 of the trace). [OCC003, POS002]\n- A03's routing changed: earlier, about half of its outgoing steps went to A07 (about 52 in 100) and about 35 in 100 to A01; later, about 65 in 100 went to A01 and only about 18 in 100 to A07. The immediate A03→A07 step (lag 1 in about 9 of 10 observed pairs earlier) and the A03→A11 step (lag 2 in about 8 of 10) were hardly seen later, though only a handful of such pairs were observed in the later window, and the A03→A01 handover moved from typically three steps to typically one. [DIR002, LAG018, LAG020, LAG014]\n- A07 and A11 always occurred together in both windows, and the pair appeared in fewer traces: about 17 in 100 earlier versus 12 in 100 later (34 vs 24 of 200). A07 still exited mostly to A11 (about 82 vs 76 in 100), but the tight one-step A07→A11 succession weakened (lag-1 share from about 74 to 48 in 100), and A11's exits shifted from A01 (about 41 to 18 in 100) toward A03 (about 21 to 33 in 100). [REL054, OCC007, OCC010, DIR003, LAG040, DIR007]\n- A01 appeared slightly more often (about 47 vs 51 in 100 traces) and its ties to A07/A11 loosened: co-occurrence with each fell from about 17 to 12 in 100 traces while A01-only cases rose from about 30 to 39 in 100, and A01's self-repetitions moved closer together (lag-2 share from about 24 to 36 in 100). [OCC001, REL005, REL009, LAG001]\n- The A08–A09–A12/A13 segment was busier and its routing consolidated: A08's exits shifted from A10 (about 58 to 38 in 100) toward A09 (about 21 to 46 in 100); A09's exits flipped from mostly A13 (about 62 in 100) to mostly A12 (about 54 in 100); A12's exits went from roughly 80/20 between A09/A11 to only A09; A13's exits went from roughly 88/12 between A08/A11 to only A08. A09, A12 and A13 also repeated more within the traces containing them (mean occurrences per trace about 0.07→0.23, 0.03→0.13 and 0.04→0.11), while each still appeared in fewer than about 5 in 100 traces. [DIR004, DIR005, DIR008, DIR009, OCC008, OCC009, OCC011, OCC012]\n- A06 appeared in more traces (about 12 vs 17 in 100) and co-occurred more with A05 and A14; A01's exits also shifted somewhat toward A06 (about 18 to 25 in 100). [OCC006, REL034, REL050, DIR001]\n- A02, A04 and A14 were essentially stable, with participation changes of only 1–4 in 100 traces that random re-splits routinely produce. [OCC002, OCC004, OCC013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the chain from A03 through A07 and A11 was traversed less and partly bypassed: A03 ran in fewer cases (about 13 vs 23 of 200 traces) and, when it ran, it returned directly to A01 about twice as often (about 65 vs 35 in 100 of its outgoing steps, against a fall for A07 from about 52 to 18 in 100), with the A03→A07 and A03→A11 successions largely disappearing and the A03→A01 handover moving from typically three steps to one; A07 and A11, which always occurred together, appeared in about 12 vs 17 in 100 traces. The rerouting is observed directly in A03's successor shares and in the lag shift, each larger than in about 98–99 of 100 random re-splits, and the occurrence, position, relation and lag indicators agree in direction for A03, A07 and A11. Limitations: these profiles rest on roughly 13–34 traces per window (some lag items on fewer), the agreeing items partly reflect the same traces, and the evidence cannot rule out that a changed mix of cases reaching A03 — or sampling variation given the modest counts — produces the same signature. [DIR002, LAG014, LAG018, LAG020, OCC003, OCC007, OCC010, REL054]\n\nOther differences: the A08–A09–A12/A13 segment was executed more and its routing consolidated (A08 passed to A09 rather than A10, A09 returned to A12 rather than A13, and A12 and A13 each exited to a single successor), A06 appeared in more traces, A01 repeated itself at shorter gaps, and A10 appeared somewhat later in traces on few observations; these are reported separately and are not folded into the main hypothesis. [DIR004, DIR005, DIR008, DIR009, OCC006, OCC009, OCC011, OCC012, LAG001, POS007]",
+  "case_id": "null_cdlg_1805efe218fd",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

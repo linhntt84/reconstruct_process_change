@@ -1,0 +1,18 @@
+### Observed differences
+
+- Activity A01 was not observed in any of the 200 earlier-window traces; in the later window every trace contains A01 exactly once (mean 1.0 occurrence per trace, no repeats). [OCC001]
+- In the later window, A01 sits about a quarter of the way through the trace (median relative position 0.20, mean 0.25); it had no observed position in the earlier window. [POS001]
+- A01's outgoing flow is new: in the earlier window A01 had no observed outgoing transitions, while in the later window it leads mainly to A02 (about 30% of its outgoing transitions) and A12 (about 27%), with smaller shares to A04 (about 13%), A05 (about 11%) and A03 (about 9%). [DIR001]
+- A02, A12 and A06 now route a large share of their outgoing transitions to A01 — about 32, 30 and 26 in 100 respectively, all from zero before — and their shares to former targets fell accordingly (for example A02→A12 from 40% to 24%, A12→A02 from 39% to 28%, A06→A02 from 45% to 27%). [DIR002, DIR004, DIR003]
+- A01 moved from never co-occurring with A02, A04, A05 or A12 to co-occurring with each in 100 in 100 traces. A01 always comes before A04 and A05, whereas with A02 (about 50/50) and A12 (about 46/54) both orders occur, so there is no fixed order between them; A01 also now co-occurs with A06 in about 59 in 100 traces (before: 0). [REL001, REL002, REL003, REL005, REL004]
+- Positional gaps between previously adjacent pairs stretched: A02→A12 within one step fell from about 82 to about 53 in 100, A06→A02 within one step from about 61 to about 36, A06→A05 at five steps rose from 0 to about 37, and A06→A04 moved from mostly three steps to mostly four to five; smaller shifts in the same direction appear for A02→A05, A12→A05, A02→A04, A12→A04 and A06→A12. The mean relative positions of A05 (0.63 to 0.73) and A12 (0.20 to 0.24) also moved later. [LAG003, LAG004, LAG005, LAG006, LAG002, LAG010, LAG001, LAG009, LAG007, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that activity A01 was added to the process and wired into the existing flow. In the earlier window A01 was not observed at all; in the later window it runs exactly once in every case, about a quarter of the way through the trace, receiving flow from A02, A12 and A06 (about 26–32 in 100 of their outgoing transitions) and passing flow on mainly to A02, A12, A04 and A05. A01 always precedes A04 and A05, and has no fixed order with A02 or A12. [OCC001, POS001, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL005]
+
+The insertion reading is consistent with the remaining evidence: gaps between previously adjacent pairs stretched and A05 and A12 shifted to later positions, as expected if a step was placed between them. All 23 qualifying items (against roughly 0.23 expected if nothing had changed, and each difference larger than in about 995 of 1000 random re-splits) describe this one difference, although the gap and position items largely restate the same insertion rather than confirming it independently. A competing explanation the evidence cannot rule out is that the two windows capture different variant mixes — all later traces following a flow that includes A01 — rather than A01 being inserted into one existing flow; the full set of A01's predecessors and successors is also only partially observed. [LAG003, LAG004, LAG005, LAG006, POS002, POS003]
+
+Other differences: A06 itself appears in more traces in the later window, about 55 in 100 versus about 45 in 100 earlier. [DIR003, REL004]

@@ -1,0 +1,12 @@
+### Observed differences
+
+- The control-flow skeleton is the same in both windows: A03 and A06 occur in every trace (200 of 200 in each window), A03 and A06 still co-occur in 100% of traces, the same successor choices from A03, A05 and A06 are observed, and the same lag patterns hold (A01 reaches A03/A06 at 3–4 steps; A03/A06 reach A02 at 1–2 steps). [POS001, POS002, REL001, DIR001, DIR002, DIR003, LAG001, LAG003, LAG008]
+- The only visible differences are small and uniform: every two-way split that stood at about 55% vs 45% in the earlier window (roughly 109 vs 91 of 200) moved to about 51% vs 49% (102 vs 98) in the later window — a 3.5-percentage-point step toward an even split, in the same direction in all 13 items. For example, of A03's outgoing transitions the share to A06 fell from about 55% to 51% while the share to A02 rose from about 45% to 51%; the share of traces in which A03 precedes A06 fell from about 55% to 51%; and the lag-3 share for A01→A03 fell from about 55% to 51%. [DIR001, DIR002, DIR003, REL001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]
+- Event positions barely moved: A03's mean position went from 0.691 to 0.698 and A06's from 0.709 to 0.702, with medians and quartiles identical in both windows. [POS001, POS002]
+- None of these differences is unusual for a stable process: every item's empirical strength is about 0.44, meaning a majority of random re-splits of the pooled data (about 56 in 100) produce a larger difference. [DIR001, DIR002, DIR003, POS001, POS002, REL001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The only differences are uniform 3.5-percentage-point drifts toward an even split, each with an empirical strength of about 0.44 — well inside the range that random re-splits of a stable process produce — while participation, co-occurrence, ordering, successors and lag structure are unchanged [DIR001, DIR002, DIR003, POS001, POS002, REL001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]. The fact that every share moved toward 50/50 by the same amount is characteristic of sampling variation between two 200-trace windows rather than a directed behavioural change [DIR001, DIR002, DIR003, REL001, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008].

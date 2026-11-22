@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "8df61a86ad11ba68721caf13d071b8e9428fc3b8442126f48404d4470f34789d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:11:45.396777+00:00",
+  "finished_at_utc": "2026-11-14T12:12:51.361233+00:00",
+  "latency_seconds": 65.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8717,
+    "prompt_tokens": 10517,
+    "total_tokens": 19234,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7599,
+      "text_tokens": 1118
+    },
+    "cost": 0.005936049999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27604,
+  "text": "### Observed differences\n\n- In the earlier window, A22 ran exactly once in every trace (200 of 200); in the later window it runs in about 51 of 100 traces, still at most once per trace. [OCC001]\n- A27, A28 and A33 were not observed at all in the earlier window; in the later window each runs in about 49 of 100 traces, and they always run together — every pair of them co-occurs in about 49 of 100 traces and never appears separately. [OCC002, OCC003, OCC004, REL012, REL013, REL014]\n- A22 and the three newer activities are mutually exclusive: they never occur in the same trace; in the later window about 51 of 100 traces contain A22 but none of the trio, and about 49 of 100 contain the trio but not A22. [REL006, REL007, REL008]\n- In the earlier window, all of A21's outgoing transitions went to A22; in the later window about half still go to A22, with the rest split almost evenly among A28 (about 18 in 100), A33 (about 17 in 100) and A27 (about 15 in 100). [DIR001]\n- The trio's outgoing transitions lead to one another and to A23 (roughly 26–44 in 100 of each activity's outgoing transitions); A21 precedes each of the trio in about 49 of 100 traces, and each of the trio precedes A23 in about 49 of 100 traces. [DIR002, DIR003, DIR004, REL002, REL003, REL004, REL009, REL010, REL011]\n- Within the trio there is no fixed order: for each pair both directions occur in similar proportions (for example, A27 before A28 in about 23 of 100 traces versus A28 before A27 in about 27 of 100). [REL012, REL013, REL014]\n- The event-position gap between A21 and A23 was always 2 in the earlier window; in the later window it is 2 in about 51 of 100 traces and 4 in about 49 of 100, consistent with one intermediate activity (A22) versus three. [LAG001, REL001, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that in the later window the previously mandatory step A22 between A21 and A23 is skipped in about half of the executions and replaced by a segment of three activities, A27, A28 and A33, which run between A21 and A23 without a fixed order among themselves: before, every trace ran A21 → A22 → A23, while in the later window about half the traces still take that path and about half run A21 → (A27, A28, A33 in varying order) → A23. [OCC001, OCC002, OCC003, OCC004, DIR001, REL005, REL006, REL009, REL012, LAG001]\n\nThis is not a shift in how often pre-existing paths are taken: A27, A28 and A33 were absent from the earlier window, so the pattern is the addition of a new alternative segment and A22 becoming optional in roughly half of the cases. [OCC002, OCC003, OCC004, REL006, REL007, REL008]\n\nThe screening produced 23 qualifying items against fewer than 1 expected for an unchanged process, so chance alone cannot account for the set; and the items are direct and mutually consistent — exact mutual exclusivity between A22 and the trio, A21's transitions split between A22 and the trio, the trio placed between A21 and A23 both relationally and positionally, and the A21–A23 gap doubling exactly when the trio replaces A22. [DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, LAG001]\n\nLimitations: the evidence cannot rule out that the two windows sample two coexisting process variants in different proportions rather than a modification at the switch point, and the indicators cannot show whether the trio runs in parallel or in an arbitrary sequence — only that no fixed order exists between its activities. [REL012, REL013, REL014]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

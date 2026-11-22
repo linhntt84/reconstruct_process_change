@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, five activities — A14, A15, A20, A21 and A22 — each ran in a minority of cases, about 17–25 in 100 traces (for example A21 in 49 of 200 traces, A14 in 43, A20 in 33), always exactly once when they appeared. In the later window, none of the five is observed in any of the 200 traces. [OCC001, OCC002, OCC003, OCC004, OCC005]
+- In the earlier window these five were mutually exclusive alternatives: no pair of them ever occurred in the same trace (co-occurrence 0 for all ten pairs), with neither member of a typical pair present in roughly 54–66 in 100 traces. In the later window no trace contains any of them. [REL001, REL002, REL003, REL004, REL007, REL008, REL009, REL010, REL011, REL012]
+- Before, A38's observed outgoing transitions split across exactly these five activities (A21 about 25 in 100, A14 about 22, A22 about 20, A15 about 18, A20 about 17), and each of the five was followed by A23, giving the order A38 → alternative → A23. In the later window, A38's outgoing transitions lead to A23 in all cases, and A23 occurs without any of the five in every trace. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL005, REL006, REL013, REL014]
+- The distance from A38 to A23 shortened: before, A23 followed A38 two event positions later in essentially every trace (one activity in between); after, A23 immediately follows A38 in every trace. [LAG001]
+- A23 itself ran in every trace in both windows, with only a slight shift to an earlier mean relative position (about 0.40 to 0.38 of the event sequence). [POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the block of five alternative activities between A38 and A23 is no longer executed: A14, A15, A20, A21 and A22, which previously each ran in about 17–25 in 100 traces as mutually exclusive alternatives in the order A38 → alternative → A23, are not observed at all, and A38 now leads directly to A23 in every trace. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR006, LAG001, REL005, REL013]
+
+The supporting signs are direct and mutually consistent rather than isolated: 32 evidence items qualified against roughly 0.42 expected for an unchanged process, the redirection at A38 is observed on all 200 traces in both windows, the A38→A23 gap shortens from two positions to one, and A23's participation is unchanged while its position moves slightly earlier, as expected if traces became shorter. Because the five activities are absent in the later window, this is a case of activities being bypassed or removed, not a shift in how often existing paths are chosen; the relative choice shares among the five alternatives can no longer be compared. [DIR006, LAG001, POS006, REL005, REL013]
+
+Limitation: zero participation only means the activities were not observed; the evidence cannot fully rule out that the five still occur far more rarely than before and were simply not sampled in the 200 later traces, although a drop from 33–49 traces per window to zero across all five, together with the observed redirection at A38, makes plain sampling noise an unlikely explanation. [OCC001, OCC002, OCC003, OCC004, OCC005, DIR006]

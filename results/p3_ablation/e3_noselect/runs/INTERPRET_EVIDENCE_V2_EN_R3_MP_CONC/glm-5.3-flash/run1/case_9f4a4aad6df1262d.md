@@ -1,0 +1,31 @@
+### Observed differences
+
+- In the earlier window, the eight activities A31, A22, A20, A23, A24, A26, A25 and A32 formed a rigid sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32: each consecutive pair kept a single order in at least 98 in 100 traces with constant step gaps (A20 was followed by A23 after exactly one step in essentially all traces, A23 passed to A24 in all of its outgoing transitions, and A31 reached A24 after exactly four steps in all 200 traces). [REL002, LAG002, LAG008, LAG028, DIR023, LAG030]
+
+- In the later window this fixed order is dissolved. A24 now precedes A20 in about 73 in 100 traces (before: about 2 in 100) and precedes A23 in about 84 in 100 (before: about 2 in 100); A26 now precedes A23 in about 68 in 100 (before: about 2 in 100). [REL002, REL013, REL015]
+
+- Several pairs that had one fixed order now appear in both orders: A20/A26 (before 98 in 100 with A20 first, after about 49 vs 51), A22/A24 (before 98.5 in 100 with A22 first, after about 52 vs 47) and A23/A25 (before 99 in 100 with A23 first, after about 48 vs 52). [REL004, REL008, REL014]
+
+- Successors changed accordingly: A31, which passed to A22 in essentially all of its outgoing transitions, now goes to A22 in about 52 in 100 and directly to A24 in about 47 in 100; A23 now passes to A32 in about 49 in 100 of its transitions; A25 reaches A32 in only about 43 in 100 (before about 93 in 100). [DIR031, DIR023, DIR025]
+
+- Step gaps became variable: A31→A24, previously always four steps apart, now has a one-step gap in about half of the cases; A23→A32, previously almost always four steps, is spread over one to five; the ordered pair A20→A24 within five steps appears in only about 52 of 200 later traces (before: 200 of 200). [LAG030, LAG015, LAG003]
+
+- Event positions moved in the same directions: A20, A22 and A23 occur later in the trace (mean position up by about 0.03–0.06 of trace length), A24, A25 and A26 earlier (down by about 0.02–0.06), while A31 and A32 stayed in place. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+- The frame of the block is stable: A31 still precedes and A32 still follows all block activities in about 99–100 in 100 traces in both windows, A22 still precedes A20 (99 in 100), A26 still precedes A25 (99–100 in 100), and A20 still passes to A23 in about two-thirds of its transitions. [REL005, REL026, REL001, REL022, DIR020]
+
+- Participation and repetition are unchanged: each of the eight activities occurs exactly once in every trace in both windows (participation 1.0, recurrence at most 0.01), so the difference is a reordering, not activities being added, removed or repeated. [OCC020, OCC021, OCC022, OCC025, OCC026, POS001, POS003, POS004]
+
+- Outside this block, the share of traces containing A01, A05, A07 and A09 rose from about 40 to about 48–49 in 100, while A03, A11, A12 and A13 fell from about 60 to about 52 in 100 with largely stable successor profiles; A44 appears in fewer traces (about 66 vs 60 in 100). [OCC001, OCC005, OCC007, OCC008, OCC003, OCC010, OCC011, OCC012, OCC035]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the ordering constraints within the block A20, A22, A23, A24, A25 and A26 — framed by A31 at the start and A32 at the end — were relaxed: the earlier fixed chain A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32 gave way in the later window to a partially flexible order in which A24 typically executes before A20 and before A23, A26 typically before A23, A31 passes directly to A24 in nearly half of its transitions, and the pairs A20/A26, A22/A24 and A23/A25 occur in both orders, while A31-first, A32-last, A22-before-A20 and A26-before-A25 persist. [REL002, REL013, REL015, REL004, REL008, REL014, DIR031, REL005, REL026, REL001, REL022]
+
+The signs are direct and consistent: pairwise order reversals (A20 before A24 fell from 98 to 25 in 100; A23 before A24 from 98.5 to 15 in 100), successor changes at A31, A22, A20, A23, A24, A25 and A26, gap distributions that were deterministic before and spread after, and position shifts in matching directions. Unchanged participation (1.0) and recurrence (≤0.01) for all eight activities rule out added, removed or repeated activities, and the pattern is not a simple exchange of two positions, since A24 now precedes A20 and A31 leads directly to A24. More than 40 items qualify across the relation, lag, direction and position families — even though many describe the same underlying reordering — far beyond the few an unchanged process typically produces. [REL002, REL013, DIR020, DIR022, DIR023, DIR024, DIR025, DIR026, DIR031, LAG009, LAG030, LAG003, POS001, POS004, OCC020]
+
+Limitations: the later window shows a mixture of orders rather than one new fixed sequence, so the exact new routing cannot be specified; the evidence carries no screening baseline, so the comparison with chance rests on the reference comparisons behind the empirical strengths; and minority behaviour (about 25 in 100 later traces still run A20 before A24) is not characterised. An important competing explanation the evidence cannot rule out is a mixture of case subpopulations with different fixed routines — several pairs split roughly 50/50, which fits both a genuinely flexible order and coexisting fixed sequences. [REL002, REL004, REL008]
+
+Other differences: the route blocks around A01/A05/A07/A09 and A03/A11/A12/A13 are taken with different frequencies (about 40 → 48–49 and about 60 → 52 in 100 traces respectively) with largely stable internal routing, and A44 occurs in fewer traces (about 66 vs 60 in 100); the evidence does not connect these shifts to the reordering. [OCC001, OCC005, OCC007, OCC008, OCC003, OCC010, OCC011, OCC012, OCC035]

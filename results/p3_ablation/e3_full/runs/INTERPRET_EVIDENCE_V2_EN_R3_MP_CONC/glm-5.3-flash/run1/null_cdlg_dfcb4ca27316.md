@@ -1,0 +1,15 @@
+### Observed differences
+
+- Activity participation moved by a few percentage points between the windows: A01 appeared in about 27 in 100 traces before and about 22 in 100 in the later window, A08 fell from about 17 to about 11 in 100, and A05 from about 49 to 45 in 100, while A03 rose from about 51 to 55 in 100, A12 from about 51 to 55, and A11 from about 24 to 30 in 100 traces. [OCC001, OCC003, OCC005, OCC008, OCC011, OCC012]
+- Repetition intensity shifted in the same directions: traces containing A03 averaged about 0.96 A03 events before versus about 1.12 in the later window, while A06 fell from about 1.25 to 1.07 and A15 from about 0.72 to 0.54 events per trace, with the shares of traces containing A06 (about 22 in 100) and A15 (about 15–17 in 100) roughly stable. [OCC003, OCC006, OCC015]
+- A03 and A05 never occurred in the same trace, and one of the two appeared in every trace; their split moved from about 51/49 in A03's favour to about 55/45, and the mirror pair A05/A12 moved from about 49/51 to about 45/55 in A12's favour. [REL031, REL061]
+- Among A06's observed outgoing transitions, the share continuing to A15 fell from about 58 in 100 before to about 50 in 100 in the later window, while the share continuing to A16 rose from about 42 to about 50 in 100. [DIR005]
+- A02's observed outgoing transitions went almost entirely to A03 (about 87 in 100) and A12 (about 13 in 100) before; in the later window about 10 in 100 went to A11, a successor not observed for A02 in the earlier window, and A11's co-occurrence with A03 and with A12 rose from about 24 to about 30 in 100 traces. [DIR002, REL024, REL037, REL106]
+- Event positions and separations shifted mildly: A16's events sat earlier in the trace sequence later on (median relative position about 0.58 before versus about 0.46 after), A13 and A14 sat slightly later, A16 followed A06 one step apart in about 13 in 100 of its observed pairs versus about 10 before, and for pairs where A05 followed A07 within five steps the mass at a separation of four steps rose from about 23 in 100 to about 44 in 100. [POS015, POS012, POS013, LAG023, LAG025]
+- The largest single directional shift — A12's observed outgoing transitions splitting 50/50 between A04 and A02 before versus 80/20 towards A04 later — rests on only 2 observed transitions before and 5 after. [DIR007]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. All qualifying differences are small — at most about 6 in 100 traces of participation, successor-share moves of a few points, and mild redistributions of event positions — and the comparatively strongest items (such as the rebalanced A15/A16 split after A06) are isolated results on the indicator's own scale rather than a consistent pattern across independent behaviours, so sampling variation between the two 200-trace windows remains a complete explanation [OCC011, DIR005, POS015, LAG023].

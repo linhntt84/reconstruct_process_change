@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "24284af80305f3c6651a44d9c2e7e4cc448a720aed7ad6d6ce403705a4a744ca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:18:15.177398+00:00",
+  "finished_at_utc": "2026-11-14T13:20:01.757108+00:00",
+  "latency_seconds": 106.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19682,
+    "prompt_tokens": 34643,
+    "total_tokens": 54325,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17743,
+      "text_tokens": 1939
+    },
+    "cost": 0.015037449999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 55603,
+  "text": "### Observed differences\n\n- The dominant difference is a reversal of execution order within a group of activities. In the earlier window A19, A21 and A24 appeared early in the trace (median event position about 0.35), A25 and A29 sat in the middle, and A20, A22 and A23 appeared late (median about 0.65). In the later window A20, A22 and A23 sit at about position 0.38, A25 and A29 slightly later than before, and A19, A21 and A24 at about 0.67–0.69. [POS002-POS007, POS009]\n\n- All 21 activity pairs among A19, A20, A21, A22, A23, A24, A25 and A29 reversed their dominant order, and in each window one order is nearly unanimous. For example, A25 preceded A20 in about 98 in 100 traces before but follows it in about 97–99 in 100 after; A21 preceded A22 in about 33 of the roughly 36 in 100 joint traces before, whereas now A22 precedes A21 in about 28 of roughly 29 in 100; A24 preceded A23 in essentially all of about 36 in 100 joint traces before, and now A23 precedes A24 in essentially all of about 39 in 100. [REL016-REL036]\n\n- The routing at both ends of the group changed accordingly. Before, A40 led mostly to A21 (about 32% of its outgoing transitions), A19 (about 29%) and A24 (about 31%), and A19, A21 and A24 led almost exclusively to A25 (about 93–97%); after, A40 leads mostly to A22 (about 31%), A20 (about 27%) and A23 (about 24%), while A19, A21 and A24 lead almost exclusively to A30 (about 92–95%). A29's successors changed from A20, A23 and A22 to A24, A21 and A19, and A20, A22 and A23 now often continue to A25 (about 28–37%) where before they exited mainly to A30 (about 29–37%). [DIR006-DIR013]\n\n- A08 is executed far less often: about 64 in 100 traces before versus about 29 in 100 after; when it occurs it sits later (mean position about 0.26 versus 0.41) and its outgoing transitions are more varied (A16 falls from about 93% to about 31%, with A15 about 15%, A44 about 10% and A20 about 8% appearing). Its co-occurrence with A14, A15, A16, A20, A22, A23, A25, A29, A30, A40, A45 and A46 fell from about 64 in 100 traces to about 29 in 100. [OCC003, POS001, DIR002, REL001-REL015]\n\n- A04, A06 and A10 became more frequent: participation rose from about 7 to 21, about 7 to 24 and about 9 to 19 in 100 traces respectively, and their outgoing transitions now go mainly to A15, A46 and A23 (A04) and to A46, A15 and A22 (A10). [OCC001, OCC002, OCC004, DIR001, DIR003]\n\n- Smaller shifts: A15 now continues to A16 in about 88% of its outgoing transitions (about 61% before) and rarely to A08 (about 7% versus 39%), consistent with A08's decline; A14, A43 and A45 show only minor successor redistributions. [DIR004, DIR005, DIR014, DIR015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a segment of the process is executed in the opposite order in the later window. Before, the flow entered the segment at A19, A21 and A24 (fed mainly by A40), ran through A25 and A29, and closed with A20, A22 and A23 exiting to A30; in the later window A40 feeds A20, A22 and A23, which continue through A25 and A29 to A19, A21 and A24, which then exit to A30 — the same activities executed in reverse order. [REL016-REL036, POS002-POS007, POS009, DIR006-DIR013]\n\nSupporting signs: 64 control-flow items qualified against about 0.7 expected by chance, so the pattern as a whole is not a sampling artefact; all 21 pairwise orders reversed nearly unanimously rather than becoming mixed orders; the position shifts match the reversal (early activities became late and vice versa); and the successor changes at both ends of the segment match the new flow. Every activity involved is observed in a substantial share of traces in both windows (A20, A22, A23, A25 and A29 in essentially all traces; A19, A21 and A24 in about 30–36 in 100), so this is a reordering of existing paths, not a replacement of one path by another. The REL, POS and DIR items describe the same underlying reordering, so they are consistent but not independent confirmations. [REL016-REL036, POS002-POS007, POS009, DIR006-DIR013]\n\nAn important competing explanation remains: from pairwise orders, positions and successors alone, one cannot distinguish a single wholesale reversal of the segment from an equivalent re-routing (for example rewired entry and exit points) that produces the same pairwise orders, and rare minority paths may be missed in the 200-trace windows. [DIR006-DIR013]\n\nOther differences: A08 is now executed in far fewer cases (about 29 versus 64 in 100 traces), later when it occurs, and with more varied successors; A04, A06 and A10 are executed more often (about 21, 24 and 19 versus 7, 7 and 9 in 100 traces). These participation changes are separate from the ordering hypothesis. [OCC001, OCC002, OCC003, OCC004, POS001, DIR001, DIR002, DIR003]",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

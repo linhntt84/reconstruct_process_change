@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_9b9bc6a5ea43374c.json",
+  "evidence_sha256": "f1c24febae15257aa42904362e145b1361b37e216b260c7cbac854ac3be7ef10",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:20:22.657937+00:00",
+  "finished_at_utc": "2026-11-16T03:23:15.036543+00:00",
+  "latency_seconds": 172.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24964,
+    "prompt_tokens": 54719,
+    "total_tokens": 79683,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23032,
+      "text_tokens": 1932
+    },
+    "cost": 0.02068985
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 73214,
+  "text": "### Observed differences\n\n- Activity A03 was not observed in any of the 200 earlier traces; in the later window it runs in about 103 of 200 traces (roughly 52 in 100), at early-to-middle event positions (mean relative position about 0.36). [OCC003, POS002]\n- In the earlier window the traces that now contain A03 ran without it; in the later window A03 always comes after A05 (strictly before A03 in about 53 in 100 joint traces, otherwise interleaved with A05's repetitions) and after A07 when that runs, and it always precedes A01, A02, A06, A10 and A11; with A08 and A12 both orders occur (A03 first in about 23–26 in 100, they first in about 26–29 in 100). [REL002, REL013, REL025, REL026, REL027, REL030, REL031, REL028, REL032]\n- New direct transitions appear in the later window: A03 leads directly to A12 (~36 in 100 of its observed outgoing), A11 (~35) and A08 (~29); A08 now leads directly to A03 in about 38 in 100 of its outgoing transitions (earlier only to A11 and A12), A12 to A03 in about 33, and A05 to A03 in about 16. [DIR001, DIR003, DIR004, DIR005]\n- Distances in event positions between earlier and later activities grew by about one step: A05→A06 moved from consistently lag 4 to consistently lag 5, A07→A11 from lag 4 to lag 5, A08→A11 from lags 1–2 to 1–3 (lag 3 now about 38 in 100), A08→A06 and A12→A06 from lags 2–3 to 2–4, A08→A10 and A12→A10 from 3–4 to 3–5, and A08→A12 / A12→A08 from always lag 1 to lag 1 in about 60–68 in 100 and lag 2 otherwise; for A08→A02 the observed lags stayed at 4–5, but the traces with that pair within five steps fell from about 102 to 64, i.e. the distance grew beyond five steps in many traces. [LAG002, LAG010, LAG012, LAG013, LAG014, LAG015, LAG016, LAG018, LAG019, LAG020, LAG021]\n- This is an addition, not a replacement: every other activity of this variant kept its participation (about 51 in 100 traces in both windows), and A03 never shares a trace with A04, A09 or A13 — earlier, 51 in 100 traces contained neither A03 nor A04, later every trace contains exactly one of the two (A03 about 52, A04 about 48 in 100). [OCC001, OCC002, OCC004, OCC006, OCC008, OCC010, OCC011, OCC012, REL024, REL029, REL033]\n- Other differences: A07 runs less often (31 → 24 in 100 traces; mean occurrences 0.72 → 0.42) and slightly earlier; A05 still runs in about 51 in 100 traces but repeats less (mean occurrences 1.23 → 0.93; repetition in 31 → 24 in 100 of its traces); within the A04-led variant, exits from A04 shifted toward A09 (about 37 → 53 in 100 of observed outgoing, A13 down from 63 to 47), A04 precedes A09 more often (about 19 vs 11 in 100 traces), and A09's typical relative position moved from the very start to the very end of its traces. [OCC007, POS006, OCC005, LAG001, DIR002, REL038, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a step A03, not observed in the earlier window, became part of roughly half of the executions — those of the variant that does not contain A04. In the later window A03 runs after A05 (and after A07 when present) and before A01, A02, A06, A10 and A11, sits adjacent to the A08/A11/A12 block with new direct transitions in both directions (A05→A03, A08→A03, A12→A03, A03→A12/A11/A08), and its presence pushed downstream activities about one event position later (e.g., A05→A06 from lag 4 to lag 5). This rests on direct, mutually consistent occurrence, order, direction and distance evidence, and on the fact that no other activity of the variant lost participation, so no existing step was swapped out; A03 also remains exclusive to this variant, which continues in the other ~48 in 100 traces essentially unchanged [OCC003, REL002, REL013, REL024, REL025, REL026, REL028, REL031, DIR001, DIR004, DIR005, LAG002, LAG013, LAG015]. Limitations: the exact slot of A03 next to A08/A11/A12 varies (both orders occur), so the hypothesis fixes A03 between A05/A07 and the A01/A02/A06/A10/A11 tail but not a single position within the middle block; zero earlier participation only shows A03 was not observed before, so a newly added step and a previously dormant one cannot be distinguished; no clock-time evidence is present. An important competing explanation the evidence cannot fully exclude is that the two windows sample two coexisting process variants in different proportions rather than a modification — implausible given 0 versus 103 of 200 traces, but not strictly ruled out.\n\nOther differences: A07 occurs less often and repeats less, A05 repeats less at unchanged participation, and the A04-led variant shows a modest internal redistribution (more A04→A09 routing, A09 running later after A04); the evidence does not show whether these are connected to A03's appearance, and the A04-variant shifts rest on only about 50–70 observations. [OCC007, OCC005, DIR002, REL038, POS008]",
+  "case_id": "case_9b9bc6a5ea43374c",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

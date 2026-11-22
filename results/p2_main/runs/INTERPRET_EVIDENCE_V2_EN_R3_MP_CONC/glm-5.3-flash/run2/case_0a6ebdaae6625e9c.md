@@ -1,0 +1,21 @@
+### Observed differences
+
+- The five activities A32, A33, A38, A39 and A40 each ran in about 51 in 100 traces in the earlier window (about 102 of 200 traces each) but in only about 2 in 100 traces in the later window (3–5 of 200). [OCC002, OCC003, OCC004, OCC005, OCC006]
+- A27 moved the opposite way: from about 49 in 100 traces to about 99 in 100. [OCC001]
+- In the earlier window, A26's observed outgoing transitions split between A27 (about 48 in 100) and each of the five activities (about 8–12 in 100 each); in the later window, about 98–99 in 100 go to A27. [DIR001]
+- A26 and A27, which earlier co-occurred in about 49 in 100 traces, now co-occur in about 99 in 100, always with A26 first. [REL001]
+- A27 and A28 earlier co-occurred in about 49 in 100 traces while A28 often ran without A27 (about 51 in 100); in the later window they co-occur in about 99 in 100 traces, always with A27 before A28. [REL007]
+- The five activities were earlier strict alternatives to A27 (each alone in about 51 in 100 traces vs A27 alone in about 49) and sat between A26 and A28 (A26 before each, and each before A28, in about half the traces); in the later window they co-occur with A26, A27 or A28 in only about 2 in 100 traces or fewer. [REL002, REL003, REL004, REL005, REL006, REL008, REL013, REL016]
+- Pairs among the five themselves earlier co-occurred in about 51 in 100 traces with no fixed order (each order roughly 25 in 100); in the later window neither member of these pairs appears in about 97–98 in 100 traces. [REL018, REL020, REL022, REL025, REL027]
+- Minor shifts: A26's mean relative position moved slightly later (0.46 to 0.49) and A28's slightly earlier (0.59 to 0.56); a position shift alone does not show that an activity was moved. [POS001, POS002]
+- The later-window successor profiles of A32–A40 rest on only 3–5 traces each and the gap (LAG) results on 1–3, so they carry little weight. [DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of five activities A32, A33, A38, A39 and A40, which earlier executed between A26 and A28 in about half of all cases, is now almost never executed, while nearly all cases run A26 → A27 → A28 instead. In the earlier window, A26 led about equally often to A27 or into the block, the block's members appeared together in about half the traces in no fixed order, and A28 typically followed them; in the later window, A26 leads almost exclusively to A27 (about 98–99 in 100 of its outgoing transitions), A27 precedes A28 in nearly every trace, and each block activity appears in only 3–5 of 200 traces, down from about 102. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL001, REL007, REL018]
+
+This is supported by 63 qualifying control-flow items against fewer than 1 expected if nothing had changed, and by occurrence, relation and direction indicators that all point the same way on large samples (200 traces per window, with each activity's earlier participation resting on about 102 traces). The evidence cannot show whether the block was removed or still exists but is triggered rarely — near-zero participation only means it was not observed — and a shift in the mix of cases reaching this point is a competing explanation the data cannot rule out. [OCC002, DIR001, REL018]
+
+Other differences: A26 sits slightly later and A28 slightly earlier within traces in the later window (mean relative position 0.46 to 0.49 and 0.59 to 0.56), which is consistent with the changed trace composition rather than an independent relocation; the apparent changes in gaps between the rare activities rest on only 1–3 later-window observations. [POS001, POS002, LAG001, LAG004]

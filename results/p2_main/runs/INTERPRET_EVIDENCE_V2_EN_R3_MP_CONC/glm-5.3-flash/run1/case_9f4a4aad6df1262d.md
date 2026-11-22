@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, six activities formed one fixed chain: about 99 in 100 of A22's outgoing transitions went to A20, A20's to A23, A23's to A24 (100 in 100), A24's to A26, A26's to A25, and about 93 in 100 of A25's to A32; A31 always passed to A22 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007].
+- In the later window this chain is loosened: A23 passes directly to A32 in about 49 in 100 of its outgoing transitions (previously never), A22 goes to A24, A25 or A26 in about 44 in 100 (previously under 1 in 100), A31 goes to A24 in about 47 in 100 (previously never), and A20, A24, A25 and A26 each also lead to A20/A22/A23 in roughly 10–23 in 100 of their transitions [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007].
+- The order between the two groups partly reversed and partly became unfixed: A24 now precedes A20 in about 73 in 100 traces (0 before), A24 precedes A23 in about 84 in 100 (about 1.5 before), A26 precedes A23 in about 68 in 100 (0 before); A20/A26 (about 49 vs 51) and A23/A25 (about 48 vs 52) now appear in both orders, while A22 still precedes A26 in about 77 in 100 [REL001, REL003, REL004, REL005, REL006, REL007, REL008].
+- All six activities still occur together in essentially every trace in both windows (co-occurrence 100 in 100), so participation did not change — only order and routing did [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].
+- Step distances became variable: A20 was immediately followed by A23 in all traces before versus about 68 in 100 after; A23 reached A32 four steps later in about 94 in 100 before but one step after in about 49 in 100; reversed-direction pairs such as A24 before A20, seen in only 1 trace before, appear in about 148 of 200 traces after [LAG001, LAG013, LAG014, LAG015].
+- Positions shifted consistently with the reordering: A24, A25 and A26 occur slightly earlier in the trace (mean relative position about 0.65→0.59, 0.70→0.68, 0.67→0.64) and A20, A22 and A23 slightly later (about 0.59→0.63, 0.56→0.59, 0.62→0.68); these are event positions, not clock times [POS001, POS002, POS003, POS004, POS005, POS006].
+- Scale check: 49 control-flow items qualified against fewer than 1 expected without change (0.66 from 132 units), far beyond what a stable process typically produces [screening].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the ordering constraints between the two groups of activities were relaxed: the fixed sequence A22 → A20 → A23 → A24 → A26 → A25 (leading to A32) became largely unconstrained, with A24, A25 and A26 frequently executing before A20, A22 and A23 (some pairs reversed, others now in both orders), A23 proceeding directly to A32 in about half of its outgoing transitions instead of always via A24, and A31 entering at A24 in about half of the cases instead of always at A22 [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR002, DIR003, DIR007].
+
+Supporting signs: the relational items show the order change directly and consistently, all eight pairs moving from a fixed order to a reversed or mixed one; the new transitions, the spread and reversal of step distances, and the position shifts all agree in direction; participation is unchanged, so this is a reordering rather than activities being added, removed or skipped; and the number of qualifying items is many times the chance expectation [REL006, DIR003, LAG013, LAG014, POS003, POS004, screening].
+
+Limitations: the aggregated evidence cannot fully distinguish a genuinely loosened (partially parallel) order from a different fixed order that varies from case to case; the near-even splits for A20/A26, A22/A24 and A23/A25 support the loosening reading but do not settle the exact new structure [REL003, REL004, REL007]. Positions and lags are event-based, so no claim about clock-time timing is possible [POS001, LAG001].

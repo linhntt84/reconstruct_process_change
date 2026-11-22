@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A03 was completely absent in the earlier window (0 of 200 traces) and appears exactly once in every trace of the later window (200 of 200, mean 1.0 occurrence per trace, never repeated); this difference is larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, POS002]
+- In the later window, A03 sits immediately after A07: A07 is followed by A03 in 100 in 100 cases, whereas earlier A07's outgoing transitions split roughly in thirds between A02, A06 and A10 (about 33, 32 and 36 in 100). A03 in turn is followed by A02 (about 39 in 100), A06 (about 33) and A10 (about 29). [DIR004, DIR002]
+- A03 now co-occurs with every other traced activity in all traces, placed after A04 and A07 and before A01, A02, A05, A06, A08, A09 and A10 in 100 in 100 cases; earlier, A03 never co-occurred with any of them. [REL001, REL002, REL005, REL006, REL007, REL008, REL009, REL010, REL011]
+- Every activity downstream of the new step moved one event later: mean positions of A02, A06 and A10 shifted from about 0.37–0.38 to about 0.44–0.45, A05 from 0.63 to 0.67, A08 from 0.75 to 0.78 and A09 from 0.88 to 0.89, while A07 moved slightly earlier (0.125 to 0.111). Lags crossing the insertion point grew by one step — for example A07→A05 went from exactly 4 steps to exactly 5 steps in all traces, and A04→A02 from 2–4 to 3–5 steps. [POS001, POS003, POS004, POS005, POS006, POS007, POS008, LAG017, LAG007, LAG016]
+- Within the A02/A06/A10 group the relative order shifted by a few percentage points (e.g., A02 before A10 from about 49 to about 55 in 100), and the outgoing shares of A02, A06 and A10 changed by at most about 7 in 100; these are small shifts on otherwise unchanged behaviour. [REL003, REL004, REL012, DIR001, DIR003, DIR005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a new activity A03 is executed exactly once per case, inserted between A07 and the group A02/A06/A10. In the earlier window traces ran A04 → A07 → (A02, A06, A10 in varying order) → A05 → A08 → A09 → A01 with no A03; in the later window A03 appears between A07 and that group. The signs are direct and mutually consistent: participation rose from 0 to 200 of 200 traces with no repetitions, A03 has a fixed early position with a deterministic predecessor (A07) and successors (A02, A06, A10), and all downstream activities and all lags crossing the insertion point shifted by exactly one event. [OCC001, POS002, DIR004, DIR002, REL008, POS001, POS003, POS004, POS006, POS007, POS008, LAG007, LAG016, LAG017]
+
+Limitations: positions and lags are event orders, not clock time, so no conclusion about timing or duration is possible, and the evidence shows the sequence change but not its cause. A competing explanation the evidence cannot fully exclude is that A03 re-codes work previously recorded under another activity, although the unchanged full participation of all other activities in both windows speaks against a pure relabelling. [OCC001, POS001]
+
+Other differences: the mild reordering inside the A02/A06/A10 block (A02 and A06 tend to come slightly earlier, A10 slightly later, by about 4–7 in 100 per pair) and the small redistributions in the outgoing shares of A02, A06 and A10; their empirical strengths (roughly 0.45–0.86) leave room for sampling variation, so they are not part of the main hypothesis. [REL003, REL004, REL012, LAG022, LAG024, LAG025, DIR001, DIR003, DIR005]

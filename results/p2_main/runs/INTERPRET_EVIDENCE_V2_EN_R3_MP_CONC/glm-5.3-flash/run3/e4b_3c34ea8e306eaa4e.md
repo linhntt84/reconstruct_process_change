@@ -1,0 +1,19 @@
+### Observed differences
+
+- **Work on six activities moved to a different group of resources.** In the earlier window, A01, A03, A13, A14, A17 and A22 were each handled by a broad mix of resources: the ten most frequent codes held roughly 4–9 in 100 assignments each (on A01 the top code, User_79, held 8 in 100), with a long tail of others covering about half. In the later window, that leading group no longer appears among the top assignees; a largely different set of about ten codes now holds shares of roughly 4–12 in 100 each (on A01 the top newcomer, User_67, holds about 6 in 100), a few mid-share codes continue in both windows, and the long tail stays at roughly 40–55 in 100. [ASSIGN001, ASSIGN002, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007]
+
+- **A07 became single-resource work.** Earlier, A07 was spread over 29 distinct resources, its most frequent one (User_100) taking about 18 in 100 of its assignments; later, every one of its roughly 160 recorded assignments was by User_100 alone (concentration index from about 0.07 to 1.0). [ASSIGN003, CONC001]
+
+- **Longer gaps between consecutive completions of A09 and A23.** The median elapsed time between consecutive completions of these two activities rose from about 1.5 hours to about 17 hours (mean from about 4 to about 16 hours), and fewer such consecutive completion pairs were observed (26 earlier vs 14 later). [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a resource-allocation change as a specific, well-grounded possibility. In the earlier window, activities A01, A03, A13, A14, A17 and A22 were each performed by a broad mix of resources, and A07 was shared across about 29 resources; in the later window, a group of resources that frequently handled those six activities (including User_79) no longer does, a largely different group (including User_67) has taken over their shares, and A07 is performed exclusively by User_100. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+This goes clearly beyond what an unchanged process typically produces: eight resource items qualified where about 0.006 were expected by chance (the time family produced one item against about 0.013 expected; no control-flow item qualified, against about 0.19 expected), the same replacement pattern recurs on all six activities, the profiles rest on roughly 110–285 observations per activity per window (A01 and A03 appear in nearly all 200 traces in both windows), and every difference is larger than those of about 999.5 in 1000 random re-splits. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001, TWAIT001]
+
+Limitations: the resource codes are anonymous, so the evidence shows which codes gained and lost work, not why; it cannot distinguish a reallocation of work within a stable pool from a change in which resources were available at all (some codes ceasing to appear and new ones appearing) — the main competing explanation. The six swap items describe one coherent reallocation rather than independent confirmations (the A13 and A14 profiles are identical), although the screening comparison does not rely on counting them separately. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+Other differences: the elapsed time between consecutive completions of A09 and A23 lengthened (median from about 1.5 to about 17 hours) while consecutive pairs of these completions became less frequent (26 vs 14); with only 14 later-window observations this is a possible timing change in its own right, but the sample is small and it is not part of the allocation hypothesis. [TWAIT001]

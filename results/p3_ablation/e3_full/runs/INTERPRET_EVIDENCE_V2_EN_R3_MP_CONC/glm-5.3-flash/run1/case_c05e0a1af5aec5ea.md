@@ -1,0 +1,23 @@
+### Observed differences
+
+- A01 changed from a connected, sometimes repeated step to an isolated one. In the earlier window it appeared in about 21 in 100 traces (about 1.8 occurrences per participating trace), was always followed immediately by A09 (all 74 observed outgoing transitions led to A09), and co-occurred with A04, A05, A06, A09 and A13 in every trace containing it. In the later window it appears in about 34 in 100 traces, exactly once per trace, no outgoing transition from it was observed (0 versus 74), it no longer co-occurs with any of A04–A18 (co-occurrence fell from about 21 in 100 traces to 0 in all fifteen of its activity pairs), and it sits at the first position of its traces (mean relative position about 0.63 earlier, 0.0 later). [OCC001, DIR001, REL001, REL006, REL010, POS001]
+
+- The recurring loop through A09, A08, A04/A13 and A05 was rerouted. Earlier the observed flow ran A09 → A08 (about 43% of A09's outgoing transitions), A08 → A13/A04 (53%/47%), A04 and A13 → A05 (about 28% each), A05 → A01 (54%) and A16 (46%), with A16 always leading back to A05. In the later window A09 leads mainly to A05 (51%), A05 leads to A04 and A13 (46%/54%), A04 and A13 lead to A08 (23%/24%) besides A07, A08 leads to A16 and A17 (51%/49%) instead of A04/A13, and A16 always leads to A08. [DIR007, DIR006, DIR002, DIR009, DIR003, DIR011]
+
+- A17 was not observed in any of the 200 earlier traces but appears in about 12 in 100 later traces (25 traces, about two occurrences per participating trace), always followed by A09, at roughly two-thirds of the trace. [OCC017, DIR012, POS015, REL083]
+
+- Pairwise distances moved as the new adjacencies predict: A04→A08 and A13→A08 shifted from lags 4–5 to 1–3, A09→A05 from lag 4 to lag 1, and A16→A08 from lag 4 to 1–3, while A09→A08 moved from lag 1 to lag 4, A08→A04/A13 from lags 1–2 to 4–5, A04→A05 and A13→A05 from short lags to 4–5, and A05→A16 and A16→A05 to lag 4. [LAG005, LAG052, LAG032, LAG069, LAG034, LAG026, LAG002, LAG049, LAG018, LAG067]
+
+- Participation and repetition shifted with the rerouting: A04, A06, A09 and A13 fell from about 21 to about 12–13 in 100 traces and A05 from about 21 to 6, while A08 rose from about 9 to about 12–13 in 100 and became much more repeated (mean occurrences per trace 0.16 to 0.52, about four per participating trace versus about two before). [OCC004, OCC006, OCC009, OCC013, OCC005, OCC008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the routing around A01 and inside the recurring A09–A08–A04/A13–A05 loop was rearranged. In the earlier window A01 was an integral part of that loop: A05 led to A01, A01 always led to A09, and the cycle closed through A08 and A04/A13 back to A05, with A16 feeding A05. In the later window the cycle runs without A01 — A09 passes directly to A05, A05 continues into A04/A13, A04/A13 continue into A08, and A08 continues into A16 or the newly observed A17, which leads back to A09 — A16 now feeds A08 instead of A05, and A01 itself appears in more traces but as a standalone first activity with no observed successor and no co-occurring loop activity. [DIR001, DIR003, DIR006, DIR007, DIR011, DIR012, OCC017, REL001, POS001]
+
+The supporting signs are direct and consistent: every rerouted connection is an observed successor change backed by dozens of transitions (for example, A08's outgoing transitions went from 32 leading to A04/A13 to 104 leading to A16/A17), A01's co-occurrence collapse appears in all fifteen of its activity pairs, and the lag distributions reversed exactly where adjacency changed. [DIR006, REL015, LAG026, LAG032, LAG034]
+
+Limitations: both windows are finite samples of 200 traces, so smaller participation shifts may partly reflect sampling; an unobserved edge is not proof of absence, so A01 may retain a successor that did not occur in the later sample; and the evidence cannot rule out that the earlier A01-connected path still exists but was executed too rarely to appear in the later window. [DIR001, OCC002, OCC003]
+
+Other differences: A02 and A03 participation decreased (about 50 to 38 and 29 to 16 in 100 traces) with no qualifying relational evidence for either [OCC002, OCC003]; A16's participation fell slightly (about 12.5 to 9.5 in 100) and its typical position moved earlier (mean relative position about 0.56 to 0.46) [OCC016, POS014]; A07, A10, A11, A12, A14, A15 and A18 show only small participation or position shifts. [OCC007, OCC010, OCC011, OCC012, OCC018, POS008, POS012]

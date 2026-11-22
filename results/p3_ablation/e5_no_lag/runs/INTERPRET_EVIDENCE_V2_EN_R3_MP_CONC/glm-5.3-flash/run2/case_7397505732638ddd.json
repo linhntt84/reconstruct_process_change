@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "0c03fe732a2bc1f1a7b72611f409a2b4f52c5a1e4f0687d5b85c5abc3db0ebff",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:59:47.850790+00:00",
+  "finished_at_utc": "2026-11-15T07:02:08.834447+00:00",
+  "latency_seconds": 140.98,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20528,
+    "prompt_tokens": 10149,
+    "total_tokens": 30677,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19107,
+      "text_tokens": 1421
+    },
+    "cost": 0.01178635
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63742,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces followed a single fixed chain: A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. Each of these transitions carried 100% of the source activity's observed outgoing transitions, and each cross-group pair (e.g., A15–A19, A18–A21) co-occurred in 100% of traces with the A15/A17/A18-side activity always first. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL006, REL008]\n\n- In the later window, participation is unchanged — every one of these activities still occurs in essentially all traces (co-occurrence 1.0 for all eight pairs, 200 of 200 traces behind each profile) — but the fixed order between the group A17 → A15 → A18 and the group A19 → A21 → A20 is gone: every cross-group pair now occurs in both orders. A18 precedes A19 in only about 15 in 100 later traces (100 in 100 before), A15 precedes A21 in about 50 in 100 (was 100), and A17 precedes A21 in about 77 in 100 (was 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- The change is not a clean exchange of the two blocks: the later splits differ strongly by pair (A19 precedes A18 in about 85 in 100 traces but precedes A17 in only about 47 in 100), and the routing profiles show new cross-transitions in both directions — A15 now also leads to A19/A20/A21 (together about 33% of its outgoing transitions, before 0%), and A19 now also leads back to A15/A17/A18 (together about 39%, before 0%). The dominant within-group transitions persist but no longer exclusively (A17→A15 about 56%, A15→A18 about 68%, A19→A21 about 61%, A21→A20 about 67%). [REL004, REL006, DIR001, DIR002, DIR004, DIR006]\n\n- Entry and exit changed accordingly: A26 now starts with A17 in about 53% of its outgoing transitions and with A19 in about 47% (before: always A17), and the run now reaches A27 from A18 (about 52% of A18's outgoing transitions) or from A20 (about 49%) instead of always from A20. [DIR007, DIR003, DIR005]\n\n- Event positions moved consistently with this mixing: A15, A17 and A18 occur later within the trace (mean relative position up about 0.03–0.06, e.g., A18 from 0.62 to 0.68), while A19, A20 and A21 occur earlier (down about 0.03–0.06, e.g., A19 from 0.65 to 0.59). These are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the sequencing between the two activity groups was relaxed from a fixed order to a variable one. In the earlier window the block A17 → A15 → A18 always ran before the block A19 → A21 → A20 (full chain A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27); in the later window the two groups are executed without a fixed order between each other — cross-group pairs occur in both orders (e.g., A19 before A18 in about 85 in 100 traces, A15 before A21 in about 50 in 100), A26 enters either group (about 53% A17 / 47% A19), and either group can be last before A27. Since all six activities still run in essentially every trace in both windows, this is a change in ordering constraints, not a change in participation and not a swap of two activities' positions. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\nThe screening comparison supports treating the ensemble as more than chance: 21 control-flow items qualified against about 0.35 expected without change for the 71 tested units — roughly 60 times that expectation. The relational items show the change directly and all eight cross-group pairs move the same way (fixed order to both orders); the routing and position items agree in direction but describe the same trace behaviour and are not independent confirmations. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\nLimitations: the evidence does not determine the exact new structure. The heterogeneous pair splits rule out a simple wholesale exchange of the two blocks, but they remain compatible with several mixtures — for example, a small set of fixed interleaved sequences (possibly including some traces still following the old order) rather than free interleaving — and the evidence cannot distinguish these. DIR shares are also measured over outgoing transitions rather than cases, so start and end shares are approximate. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR001, DIR004]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A03 appeared in about 28 in 100 traces (57 of 200; on average 1.2 executions per trace, repeated in about a quarter of them) and A11 in about 20 in 100 traces (39 of 200). In the later window, neither activity is observed at all — 0 of 200 traces for both. [OCC001, OCC002, POS001, POS002]
+- The wiring around A06 changed: earlier, about 86 in 100 of A06's observed outgoing transitions led to A03 (with small shares to A11, A12, A19 and A02); in the later window, A03 and A11 receive none of A06's transitions, which now go to A19 (about 58 in 100) and A12 (about 37 in 100). At the same time, A03's and A11's own outgoing profiles disappeared — A03 previously fed A11 (about 44 in 100), A19 (about 28) and A12 (about 22), and A11 led back to A03 in about 97 in 100 of its transitions. [DIR002, DIR001, DIR003]
+- Relations with A03 collapsed: earlier, A03 co-occurred with A06, A12 and A19 in about 28 in 100 traces each; in the later window A03 never co-occurs with them, while A12 and A19 appear without A03 in about 22 in 100 traces. A03 and A11, which co-occurred in about 20 in 100 traces earlier, are together absent from every later trace. [REL001, REL002, REL003, REL004]
+- A12 and A19 now occur at earlier relative positions (mean position about 0.23 and 0.22, down from about 0.33 and 0.32) and A06 reaches them sooner: A06→A19 within one step in about 24 in 100 observed pairs (about 2 in 100 earlier), and A06→A12 within one to two steps in about 40 in 100 pairs (about 18 in 100 earlier). [POS003, POS004, LAG002, LAG003]
+- Repetition gaps shortened: A06→A06 repetitions were mostly five steps apart earlier (about 66 in 100) and are mostly four steps apart later (about 52 in 100); A12→A12 and A19→A19 shifted similarly from a dominant five-step gap to three-to-four-step gaps. These rest on only about 20 pair observations each. [LAG001, LAG004, LAG005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment containing A03 and A11 was removed or bypassed. Earlier, A03 ran in about 28 in 100 traces, A11 followed it (sending about 97 in 100 of its transitions back to A03), and A06 led into A03 in about 86 in 100 of its transitions; in the later window A03 and A11 are entirely unobserved, and A06 leads directly to A19 and A12, which now follow A06 within one to two steps and sit at earlier trace positions. [OCC001, OCC002, DIR001, DIR002, DIR003, REL002, LAG002, LAG003, POS003, POS004]
+
+Supporting signs: 18 control-flow items qualified where roughly 0.22 would be expected without a change, far beyond what an unchanged process typically produces; the participation drops run from substantial bases (57 and 39 of 200 traces) to zero out of 200; the successor change at A06 (still observed on 78 outgoing transitions in the later window) is direct relational evidence of the rewiring; and the occurrence, direction, relation, position and lag items all describe one coherent difference rather than scattered effects, though they are not independent confirmations of it. [DIR002, REL001, OCC001, OCC002]
+
+A competing explanation the evidence cannot fully rule out is that A03 and A11 became very rare rather than being removed: zero participation only shows they were not observed in the later window, although 0 of 200 traces after about 28 in 100 earlier is difficult to attribute to sampling alone. [OCC001, OCC002]
+
+Other differences: the gaps between repeated executions of A06, A12 and A19 shortened (for example, A06 repetitions mostly five steps apart earlier, mostly four later), based on roughly 20 pair observations each; A12 and A19 also participate in slightly fewer traces (about 28 down to about 22 in 100). [LAG001, LAG004, LAG005, POS003, POS004]

@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the later window, A14, A15 and A20 no longer appear at all: before, each ran exactly once in the traces where it occurred — about 35 in 100 traces for A14 (roughly 70 of 200), about 30 in 100 for A15 (roughly 60 of 200) and about 35 in 100 for A20 (roughly 70 of 200) — whereas none of the 200 later traces contains any of them. [OCC001, OCC002, OCC003]
+- Before, the three were mutually exclusive alternatives: no trace contained two of them together, and each appeared in roughly a third of traces. [REL001, REL003, REL008]
+- Before, they sat on the path from A36 to A21: every observed outgoing transition of A36 went to one of the three (about 35 in 100 to A14, 30 to A15, 35 to A20), each of the three always led on to A21, and A36 consistently preceded them. [DIR004, DIR001, DIR002, DIR003, REL004, REL009, REL013, REL006, REL011, REL015]
+- In the later window, A36 leads directly to A21: all of A36's observed outgoing transitions now go to A21, and the observed distance between the two shrank from consistently two event positions to consistently one. [DIR004, LAG001]
+- A36 and A21 still occur in every trace in both windows, with only small shifts in relative position (A36's mean relative position from about 0.32 to 0.33, A21's from about 0.39 to 0.37). [POS004, POS005]
+- The trio's former combinations with A19 also vanished: before, A19 co-occurred with each of them in about 15–17 in 100 traces; in the later window A19 appears in about 55 in 100 traces, never together with any of the trio. [REL002, REL007, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the mutually exclusive alternative activities A14, A15 and A20, which previously executed between A36 and A21, are no longer executed, so that A36 now passes directly to A21. The 28 flagged items are many times the roughly 0.41 expected by chance in an unchanged process, and the key differences exceed those seen in about 995 of 1,000 random re-splits of the pooled data. The support is direct and consistent rather than a mere frequency shift: A36's successor share moved entirely from the trio to A21, the observed A36–A21 distance contracted from two positions to one — consistent with one intermediate step disappearing — and the trio's participation fell from about 30–35 in 100 traces to zero, with 60–70 supporting traces each before and none after. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG001, REL001, REL003, REL008]
+
+Competing explanations are largely but not fully ruled out. Zero participation means only that the trio was not observed in the later window, so their removal cannot be distinguished from the later sample simply containing no variant in which they run; and because most items describe the same underlying difference, they are not independent confirmations of one another. Sampling differences in variant frequencies remain an unlikely but not impossible account of the trio's complete disappearance, given that each activity was supported by 60–70 of 200 traces before. [OCC001, OCC002, OCC003]

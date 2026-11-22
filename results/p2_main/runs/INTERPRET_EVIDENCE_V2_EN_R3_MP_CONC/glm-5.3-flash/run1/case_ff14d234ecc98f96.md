@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 were executed in every case (200 of 200 traces each, at a mean event position of about 0.37 of the trace); in the later window each appears in only 1–2 of 200 traces. [OCC004, OCC005, OCC006, POS004, POS005, POS006]
+- Earlier, these three always ran together (co-occurrence in 100% of traces) in varying order among themselves, and each ran before A29 and after A44; in the later window they almost never co-occur and these fixed relations to A29 and A44 have disappeared. [REL031, REL032, REL035, REL033, REL036, REL038, REL034, REL037, REL039]
+- Three activities that were absent earlier now each run in roughly a third of cases: A19 in about 62 of 200, A20 in about 67, and A21 in about 74. [OCC001, OCC002, OCC003]
+- The three new activities are almost mutually exclusive — any two of them co-occur in at most about 1–2 in 100 later cases — so a typical later case runs exactly one of them (about 1 execution per case in total, where the old trio contributed about 3). [REL013, REL014, REL020, OCC001, OCC002, OCC003]
+- A44's outgoing transitions shifted almost completely: earlier about 94% went to A26/A27/A28, later about 93% go to A19/A20/A21. A19, A20 and A21 in turn lead to A29 in about 97% of their observed outgoing transitions. [DIR007, DIR001, DIR002, DIR003]
+- A44 precedes each of A19/A20/A21 in about 30–37 of 100 cases, and A11/A12 (each present in roughly half the cases in both windows) precede them in about 17–20 of 100 cases; earlier, A11/A12 when present always ran before A26/A27/A28. [REL019, REL025, REL030, REL001, REL002, REL003, REL007, REL008, REL009, REL004]
+- The new activities occupy a mean event position of about 0.36, close to the 0.37 the old trio held; A29, still present in every case, occurs slightly earlier (mean position about 0.43 → 0.40), and the distance from A44 to A29 shrank from about 4 steps (93% of cases) to 2 steps (92% of cases). [POS001, POS002, POS003, POS007, LAG010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44/A11/A12 and A29 was restructured: earlier every case executed A26, A27 and A28 together (all three, in no fixed order between them), while in the later window that trio is essentially gone and each case instead executes exactly one of A19, A20 or A21 — a one-of-three choice at the same stage, followed by A29. The supporting signs are direct and consistent: the participation reversal rests on large samples in both windows (200 of 200 down to 1–2 of 200; 0 up to about 62–74 of 200), A44's routing moved almost entirely from the old trio to the new activities, the new activities route to A29 and sit at the old trio's position, and the segment shortened from about three activities to one, matching A29's earlier position and the shorter A44→A29 distance. The volume of qualifying evidence (70 items against roughly 0.78 expected without any change) makes chance sampling implausible as an explanation of the ensemble.
+
+Limitations: the post-change routing and position profiles for A26, A27 and A28 rest on only 1–2 observations, and the evidence cannot show what determines which of A19, A20 or A21 is executed in a given case; positions reflect event order, not clock time. [DIR004, DIR005, DIR006, POS004, POS005, POS006, REL013, REL014, REL020]
+
+Other differences: A44's own mean event position moved slightly later (about 0.31 to 0.33), consistent with the shorter segment rather than an independent change. [POS008] A21's earlier-window outgoing profile (towards A07) is based on a single trace and is weakly supported. [DIR003]

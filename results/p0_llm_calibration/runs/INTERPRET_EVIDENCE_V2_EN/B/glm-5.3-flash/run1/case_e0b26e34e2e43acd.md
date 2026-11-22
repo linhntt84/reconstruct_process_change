@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, A19 and A20 are almost never executed: A19 appears in about 0.5% of traces (1 of 200, down from about 49%) and A20 in about 1.5% (3 of 200, down from about 52%). Before, the two were effectively mutually exclusive alternatives — about 49% of traces contained A19 only and about 51% A20 only, with both or neither in almost no trace — whereas afterwards 98% of traces contain neither. [OCC001, OCC002, REL009]
+- A25 and A26, never observed in the earlier window, are each executed in about 99% of later traces (198 of 200), typically once per trace, at a mean relative position of about 0.38 into the trace. [OCC003, OCC004, POS003, POS004]
+- The flow out of A42 changed almost completely: before, about 49% of A42's outgoing transitions went to A20 and about 45% to A19; after, about 45% go to A25 and about 45% to A26, with A19 and A20 no longer receiving any notable share. [DIR006]
+- Before, A19 and A20 led almost exclusively to A27 (about 97% and 96% of their outgoing transitions); in the later window A25's outgoing transitions split between A26 (about 50%) and A27 (about 49%), and A26's between A27 (about 50%) and A25 (about 49%). [DIR002, DIR003, DIR004, DIR005]
+- The new pair sits before A27: A25 precedes A27 in about 98–99% of traces and A26 likewise, the two co-occur in about 99% of traces, and their mutual order varies (A25 first in about half, A26 first in about 48%). [REL018, REL019, REL021]
+- The distance from A42 to A27 grew from mostly 2 steps (about 93% of cases) to mostly 3 steps (about 90%, with about 9% at 4 steps), and A27's mean relative position moved slightly later (about 0.40 to about 0.43), consistent with one extra activity now running between them. [LAG002, POS005]
+- Relations with neighbouring activities shifted onto the new pair: A07 precedes A25 or A26 in about half of later traces (about 52%), where it previously preceded A19/A20 in about 19–24%; A14, which previously co-occurred with A19/A20 in about half of traces, now appears without them in about 99–100%. [REL001, REL002, REL003, REL004, REL005, REL006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the segment A42 → (A19 or A20) → A27 was replaced by a segment A42 → A25/A26 → A27. Previously exactly one of A19/A20 ran per case and passed flow almost solely to A27; in the later window A25 and A26 each run in about 99% of cases in varying order, A42's outgoing transitions moved from A19/A20 to A25/A26, A25/A26 precede A27 in about 98–99% of traces, and the A42→A27 distance grew by about one step. Occurrence, routing, positional and relational indicators all point to the same rerouting, and the 39 evidence items far exceed the roughly 0.64 expected by chance alone. [OCC001, OCC002, OCC003, OCC004, DIR002, DIR003, DIR004, DIR005, DIR006, REL018, REL019, REL021, LAG002]
+
+Limitations remain: the windows are finite samples, so a rare variant containing A25/A26 could in principle have existed before without appearing in 200 traces, and the residual later-window behaviour of A19/A20 rests on only 1 and 3 traces; the evidence also cannot fully separate a rewiring of one flow from a shift in the mix of case variants. In addition, many relational items describe overlapping aspects of the same trace behaviour rather than independent confirmations, and the positional and lag indicators use event positions, not clock time, so no timing claim is made. [OCC003, OCC004, DIR002, DIR003, POS003, LAG002]

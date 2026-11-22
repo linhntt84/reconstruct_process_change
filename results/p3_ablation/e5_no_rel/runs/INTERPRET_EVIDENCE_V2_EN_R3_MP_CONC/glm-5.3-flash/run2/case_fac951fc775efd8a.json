@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_fac951fc775efd8a.json",
+  "evidence_sha256": "910dd211e324902127a3a3c68b9bca80db43c1b4ab694ab8325a10736d08eed1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:47:19.662372+00:00",
+  "finished_at_utc": "2026-11-15T06:50:13.241717+00:00",
+  "latency_seconds": 173.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26131,
+    "prompt_tokens": 14872,
+    "total_tokens": 41003,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24288,
+      "text_tokens": 1843
+    },
+    "cost": 0.0152963
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 82333,
+  "text": "### Observed differences\n\n- In the later window, A02 appears in about 34 in 100 traces, up from about 8 in 100 earlier (mean occurrences per trace 0.35 vs 0.08), and it now occurs around a third of the way into the trace with much less spread (mean relative position 0.35 vs 0.51, standard deviation 0.12 vs 0.35). [OCC001, POS001]\n- The exits of A19, A21 and A24 flipped: earlier, about 97–99 in 100 of their observed outgoing transitions went to A30; in the later window, about 95–100 in 100 go to A25, with A30 no longer observed as their successor. [DIR002, DIR004, DIR007]\n- The exits of A20, A22 and A23 flipped the other way: earlier, about 30–39 in 100 of their outgoing transitions went to A25 and virtually none to A30; in the later window, about 32–34 in 100 go to A30 and A25 is virtually unobserved. [DIR003, DIR005, DIR006]\n- The entries into these groups changed: A29 earlier fed A19, A21 and A24 (about 31–38 in 100 each) and now feeds A20, A22 and A23 (about 30–34 in 100 each); A40 earlier fed A20, A22 and A23 (about 27–37 in 100) and now feeds A02 (about 31 in 100) and A19, A21 and A24 (about 18–29 in 100); A02's own outgoing transitions moved from a wide spread (mainly A15 and A44, about 19 in 100 each) to mainly A19, A24 and A21 (about 37, 27 and 24 in 100). [DIR008, DIR009, DIR001]\n- The two groups now occupy each other's former region of the trace: A19, A21 and A24 moved from a mean position of about 0.67–0.69 to about 0.35–0.37, while A20, A22 and A23 moved from about 0.39–0.40 to about 0.64; A25 and A29 shifted slightly earlier (about 0.45 to 0.39 and 0.65 to 0.58). [POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]\n- Distances changed accordingly: A29 to A30 stretched from about 2 steps (97 in 100 of observed pairs) to 4–5 steps (98 in 100); A40 to A25 shortened from about 4 steps (90 in 100) to 2–3 steps; A29 to A20, seen once before at 5 steps, is now seen in about 200 traces at 1–3 steps; A40 to A02 is now immediate (62 observed pairs vs 2 before); A02 to A25 now sits at 2 steps in about 98 in 100 of observations (63 vs 2 before). [LAG004, LAG007, LAG003, LAG005, LAG001]\n- A41 repeats slightly more often: mean occurrences per trace rose from about 1.5 to 1.8 and the share of traces containing a repeat rose from about 33 to 40 in 100, while it still occurs in every trace. [OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two three-activity groups exchanged their place in the sequence and were rewired. In the earlier window, A29 fed A19, A21 and A24 late in the trace and these led almost always to A30, while A40 fed A20, A22 and A23 early in the trace, which led mostly to A25; in the later window, A19, A21 and A24 run early — entered from A02 and A40 and leading almost always to A25 — while A20, A22 and A23 run late, entered from A29 and leading about a third of the time to A30. A02, previously rare (about 8 in 100 traces), now participates in about 34 in 100 and opens the early group, with A40 to A02 immediate and A02 to A25 two steps later. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, POS001, POS002, POS003, POS004, POS005, POS006, POS007, LAG001, LAG003, LAG004, LAG005, LAG007, OCC001]\n\nThe volume of qualifying evidence far exceeds what an unchanged process produces: 28 control-flow items qualified where about 0.6 would be expected by chance, and the signals are direct and mutually consistent — near-total successor replacement for A19, A21, A24, A29 and A40 (cosine dissimilarity about 1.0), mirrored position shifts of the two groups, and new adjacencies confirmed on large supports (about 200 observations for A29–A20 and A29–A30; 62–63 for A40–A02 and A02–A25). [OCC001, DIR002, DIR004, DIR007, DIR008, DIR009, POS002, POS003, POS004, POS005, POS006, POS007, LAG001, LAG003, LAG004, LAG005]\n\nAn important competing explanation remains: POS and LAG use event positions, so the shifts concern relative order within traces rather than clock time, and the evidence does not show the internal form of each group — whether A19, A21 and A24 (or A20, A22 and A23) run one after another or act as alternatives within a single trace — nor whether traces with the old wiring persist at rates too low for these windows to capture; a per-trace rewiring other than a clean exchange of the two blocks would look the same here. [POS002, POS003, LAG003, LAG004, DIR008, DIR009]\n\nOther differences: A41 now repeats more often — mean occurrences per trace rose from about 1.5 to 1.8 and the share of traces containing a repeat rose from about 33 to 40 in 100, while it still occurs in every trace. [OCC002]",
+  "case_id": "case_fac951fc775efd8a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

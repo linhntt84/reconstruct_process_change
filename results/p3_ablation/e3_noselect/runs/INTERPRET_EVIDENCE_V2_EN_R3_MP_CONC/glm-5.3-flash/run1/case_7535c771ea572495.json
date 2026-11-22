@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7535c771ea572495.json",
+  "evidence_sha256": "9a6c2760d7f4052ff2d744e0d8d86d5f149256e2735c2579267100a1a1ab0324",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:19:36.806109+00:00",
+  "finished_at_utc": "2026-11-14T14:20:29.975302+00:00",
+  "latency_seconds": 53.17,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8755,
+    "prompt_tokens": 14161,
+    "total_tokens": 22916,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7637,
+      "text_tokens": 1118
+    },
+    "cost": 0.0065016499999999994
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26511,
+  "text": "### Observed differences\n\n- The clearest difference is a swap of activities in the middle and end of the trace. In the earlier window, A01 and A03 each appeared in all 200 traces; in the later window neither appears in any trace. The reverse holds for A05 and A07: not observed earlier, each now appears exactly once in every later trace. [OCC001, OCC003, OCC005, OCC006]\n\n- The typical trace shape changed accordingly. Earlier, a trace ran A02 (repeated in about 49 of 100 traces), then in about half of traces A04, then A06 → A01 → A03, with A03 always the final event and A01 around three-quarters into the trace. In the later window, a trace runs A02 (repeated in about 48 of 100 traces), optionally A04 (about 48 of 100), then A05 → A06 → A07, with A07 always the final event, A06 around three-quarters in, and A05 around the middle. [POS001, POS003, POS004, POS005, POS006, REL013, REL015]\n\n- Successor profiles changed directly: A06's outgoing transitions led to A01 in all earlier cases and to A07 in all later cases; A05's transitions now lead to A06 in all cases (a new edge); and A02's outgoing transitions, which earlier split between A06 (about 53 in 100) and A04 (about 47 in 100), now split between A05 (about 50 in 100) and A04 (about 50 in 100) — A06 is no longer reached directly from A02. [DIR002, DIR003, DIR004]\n\n- Pairwise relations match this picture: A02–A05 and A02–A07 now always co-occur with A02 first (about 52 in 100 strictly before, 48 interleaved or repeated — the same pattern A02 previously showed with A06); A05–A06 and A06–A07 always co-occur in that order; A01–A03 went from always co-occurring (A01 first) to never co-occurring. [REL007, REL009, REL013, REL015, REL002]\n\n- The distance from A02 to A06 shifted from mostly one step (about 42 of 100 pairs) to mostly two steps (about 51 of 100), consistent with A05 now sitting between them, and A06's mean position moved from about half to about three-quarters of the trace. [LAG002, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the flow after the A02 block was restructured: in the later window the closing segment runs A05 → A06 → A07 where it previously ran A06 → A01 → A03. A05 is newly executed between the A02 block and A06, A07 is newly the final activity, and A01 and A03 are no longer executed at all, while A02 and A04 continue in their previous roles. This is shown directly by the successor changes (A06 now leads to A07 instead of A01; A02 now leads to A05 instead of A06; the new A05→A06 edge), by participation flipping from all traces to none and none to all, by the consistent relation changes, and by the A02-to-A06 distance moving from one step to two. Nearly all items show an empirical strength of about 99.5 in 100 reference comparisons and point to the same structure. [DIR002, DIR003, DIR004, OCC001, OCC003, OCC005, OCC006, LAG002]\n\nThis is a replacement of activities rather than a re-weighting of existing paths, since both activity sets are wholly absent from one window each. A competing explanation the evidence cannot rule out is that the same work is simply recorded under different activity codes in the later window (re-labelling) rather than activities being removed and added. [OCC001, OCC003, OCC005, OCC006]\n\nOther differences: A04 shows somewhat more repetition within the roughly 48 of 100 traces containing it (recurrence 22% → 29%, mean occurrences 0.875 → 1.01), A02 repeats marginally more often (mean 1.875 → 2.01, recurrence about 48.5% → 48%), and A02's median position moves slightly later. These shifts are small and may reflect sampling variation between the windows. [OCC002, OCC004, POS002, LAG001]",
+  "case_id": "case_7535c771ea572495",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

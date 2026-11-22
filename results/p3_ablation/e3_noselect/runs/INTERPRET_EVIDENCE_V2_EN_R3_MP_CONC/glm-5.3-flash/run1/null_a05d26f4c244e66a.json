@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_a05d26f4c244e66a.json",
+  "evidence_sha256": "2a8f0794e186ddfb589c981213566aaac33f3ba8b576f2bdcc0eebf8c113d612",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:42:14.284468+00:00",
+  "finished_at_utc": "2026-11-14T14:45:22.683097+00:00",
+  "latency_seconds": 188.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31293,
+    "prompt_tokens": 30554,
+    "total_tokens": 61847,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29198,
+      "text_tokens": 2095
+    },
+    "cost": 0.0202296
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 98556,
+  "text": "### Observed differences\n\n- The less frequently executed branch behind A20 — the trio A24, A25, A26 — reversed its traversal order. In the earlier window a typical passage ran A25 → A26 → A24 and then exited to A30: about 43 in 100 of A25's outgoing transitions went to A26, about 49 in 100 of A26's went to A24, and about 39 in 100 of A24's went to A30. In the later window a typical passage runs A24 → A26 → A25 and then to A30: about 41 in 100 of A24's outgoing transitions go to A26, about 46 in 100 of A26's go to A25, and about 51 in 100 of A25's go to A30. [DIR024, DIR025, DIR026]\n- The entry into this branch moved in step: A20 led to A24 in about 5 in 100 of its outgoing transitions in the earlier window and about 13 in 100 in the later window, while A20 → A25 fell from about 10 to about 4 in 100. [DIR020]\n- Slightly more traffic ran through the A24–A26 trio: each of A24, A25 and A26 appeared in about 22 in 100 traces before and about 25 in 100 after, while A21, A22 and A23 each fell from about 78 to about 75 in 100; A23 now passes on to A30 or A22 more often (about 33 → 38 and 30 → 35 in 100 of its outgoing transitions) and to A21 less often (about 37 → 26 in 100). [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, DIR023]\n- Repetition around the A30 loop increased somewhat: A30 rose from about 1.6 to about 1.7 occurrences per trace (it appears in every trace in both windows), A32 from about 0.76 to 0.84 and A33 from about 0.76 to 0.85; A15 and A16 show a similar but weaker rise (about 1.66 → 1.73 each). [OCC028, OCC030, OCC031, OCC015, OCC016]\n- A mild mirror shift between two alternative groups: A01, A05, A07 and A09 each ran in about 56 in 100 traces in the earlier window and about 52 in the later, while A03, A11, A12 and A13 rose from about 44–45 to about 48–49 in 100; the outgoing profiles of these activities barely moved, and a shift of this size is one that random re-splits of a stable log often produce. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, DIR001, DIR003, DIR013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA possible change supported by the evidence is a reversal of the execution order within the branch reached from A20: in the earlier window the passage typically ran A25 → A26 → A24 with the exit to A30 from A24, whereas in the later window it runs A24 → A26 → A25 with the exit to A30 from A25 — A24 and A25 effectively swapped places around A26 — and A20 now enters the branch at A24 about twice as often (about 13 vs 5 in 100 of its outgoing transitions). The three successor profiles of A24, A25 and A26 reversed together, each difference being larger than in about 90–98 of 100 random re-splits, and the entry shift at A20, measured on essentially all traces, agrees with the reversal; all involved activities and edges remain observed in both windows, with each branch activity in about 22–25 in 100 traces [DIR024, DIR025, DIR026, DIR020, OCC022, OCC023, OCC024]. The main limitations are that the shares rest on roughly 45–50 outgoing transitions per activity and window (single edges on some ten to twenty-five transitions), the three direction items describe one underlying difference rather than independent confirmations, and no expected-by-chance baseline for the number of flagged items is provided — so sampling variability in the transition shares remains a competing explanation that cannot be ruled out [DIR024, DIR025, DIR026].\n\nOther differences:\n- The loop behind the branch repeated more often per trace (A30 about 1.6 → 1.7, A32 about 0.76 → 0.84, A33 about 0.76 → 0.85), with a milder similar rise for A15 and A16. [OCC028, OCC030, OCC031, OCC015, OCC016]\n- Slightly more traces ran the A24–A26 trio (about 22 → 25 in 100 each) and slightly fewer the A21–A23 trio (about 78 → 75 in 100 each), with A23 rerouting from A21 toward A22 and A30. [OCC019, OCC020, OCC021, OCC022, OCC023, OCC024, DIR023]\n- A mild mirror shift moved A01, A05, A07 and A09 from about 56 to about 52 in 100 traces while A03, A11, A12 and A13 rose from about 44–45 to about 48–49, with essentially unchanged routing out of these activities. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013]",
+  "case_id": "null_a05d26f4c244e66a",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

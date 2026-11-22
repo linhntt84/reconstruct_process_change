@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5cf6b004346e2e9a.json",
+  "evidence_sha256": "3890a078bf61ff542b9ff4fad090fcf6668f849d595ca6212df78ced2ae71c8c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:39:34.282348+00:00",
+  "finished_at_utc": "2026-11-15T04:42:12.306303+00:00",
+  "latency_seconds": 158.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23664,
+    "prompt_tokens": 9824,
+    "total_tokens": 33488,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22101,
+      "text_tokens": 1563
+    },
+    "cost": 0.013305599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75834,
+  "text": "### Observed differences\n\n- The successors of A10 and A11 changed completely. In the earlier window, A10's observed outgoing transitions split about evenly between A06 (~51 in 100) and A07 (~49 in 100), and A11's between A06 (~58) and A07 (~42); in the later window, A10 and A11 each lead to A08 in every observed case (about 63 and 60 outgoing transitions observed earlier, 55 and 39 later). [DIR002, DIR003]\n- A08's successor profile broadened while A08 became more frequent. Earlier, A08 led almost only to A10 (~50 in 100) and A11 (~48), with A04 rare (~2); in the later window its outgoing transitions spread over A06 (~29), A10 (~27), A07 (~24) and A11 (~19), and A08's observed outgoing transitions rose from about 123 to about 203. [DIR001]\n- Pairs that were adjacent are now separated by one position, and vice versa: A06 and A07 used to follow A10/A11 immediately (gap 1 in about 29–58 of 100 observed pairs) and now follow two positions later (gap 2 in about 33–47); A08 used to follow A10/A11 two positions later (gap 2 in about 28–33 of 100) and now follows immediately (gap 1 in about 13–21). [LAG012, LAG013, LAG015, LAG014, LAG016]\n- A08's own spacing shifted: A07 and A06 used to follow A08 two positions later (gap 2 in about 41 and 23 of 100) and now often follow immediately (gap 1 in about 19 and 13). [LAG008, LAG007]\n- Immediate succession from A08 to A10/A11 became less common (gap 1 in about 37–47 of 100 earlier, about 13–24 later), and A08→A08 repetitions roughly doubled (21 to 42 supporting pairs), with the dominant spacing moving from three positions (~38 in 100) to two (~14) — matching a two-step return A08 → A10/A11 → A08. [LAG010, LAG011, LAG009]\n- Spacing inside the A06/A07 block became less fixed: A06→A07 was almost always three positions apart earlier (~74 in 100) and is now spread over gaps of two to five (gap 3 ~33, gap 2 ~18 in 100), with similar dispersal for A06→A06, A07→A06, A07→A07 and A07→A08; several of these rest on few pairs (6–15 per window). [LAG002, LAG001, LAG004, LAG005, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the relative order of A08 and the A10/A11 stage reversed, with A08 now running between A10/A11 and the A06/A07 block. In the earlier window, execution passed from A08 to A10 or A11 and then to A06 or A07; in the later window, A10 and A11 lead to A08, and A08 leads into A06 or A07 — and sometimes back to A10/A11, forming a short two-step cycle that also accounts for the doubled A08 self-repetitions. [DIR001, DIR002, DIR003, LAG012, LAG014, LAG016, LAG009]\n\nThe routing change is shown directly in the successor profiles of A10, A11 and A08, each backed by dozens to about two hundred outgoing transitions, and the position-gap shifts match it in detail (previously adjacent A10/A11 → A06/A07 pairs now two positions apart; A10/A11 → A08 now immediate). Chance is an unlikely explanation for the pattern as a whole: 20 of 48 tested control-flow units qualified against roughly 0.24 expected for an unchanged process, and every item's difference exceeds those of about 995 in 1,000 random re-splits. This is a rerouting of activities that remain in heavy use — A08 → A06 and A08 → A07 together make up about half of A08's later outgoing transitions — not the removal of A06/A07. [DIR001, DIR002, DIR003, LAG012, LAG014, screening]\n\nLimitations: the evidence uses event positions, not clock time, and cannot show whether A08 moved to after A10/A11 or A10/A11 moved to before A08 — only that their relative order changed. An important competing explanation that cannot be ruled out is that the rise in A08's frequency (about 123 to 203 outgoing transitions) reflects more repetitions of the surrounding loop rather than the reordering itself; several corroborating gap items also rest on few observations (as few as 6–15 pairs per window) and partly restate the same trace behaviour, so they are not independent confirmations. [LAG004, LAG005, LAG009, DIR001]\n\nOther differences: the spacing within the A06/A07 block became more variable (A06→A07 from a dominant three-position gap to a spread over two to five positions), which may be a side effect of the rerouting but is not part of the main hypothesis [LAG002, LAG001, LAG004, LAG005, LAG006]; the already rare direct A08→A04 transition (about 2 in 100 of A08's outgoing transitions earlier) was almost unobserved later (under 1 in 100) [DIR001].",
+  "case_id": "case_5cf6b004346e2e9a",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

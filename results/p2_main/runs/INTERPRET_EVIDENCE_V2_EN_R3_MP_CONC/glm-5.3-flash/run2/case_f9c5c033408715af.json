@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_f9c5c033408715af.json",
+  "evidence_sha256": "9d075137705ac5b7068981eda0e8c0632f6e94c9bc1b9bbae6e6e670bec0611c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:48:22.629068+00:00",
+  "finished_at_utc": "2026-11-15T01:49:31.993465+00:00",
+  "latency_seconds": 69.36,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9884,
+    "prompt_tokens": 4582,
+    "total_tokens": 14466,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9119,
+      "text_tokens": 765
+    },
+    "cost": 0.0056293
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35228,
+  "text": "### Observed differences\n\n- Activity A07 appeared in about 23 in 100 traces in the earlier window (46 of 200) but is not observed in any of the 200 traces in the later window; its mean occurrences per trace fell from about 0.23 to zero. [OCC001]\n- In the earlier window A07 always occurred together with A10 — which itself ran in every trace — and usually after it (A10 first in about 20 in 100 traces versus about 4 in 100 for the reverse); in the later window A10 appears alone in every trace and the two never co-occur. [REL001]\n- When it ran, A07 sat about two-thirds of the way through the trace (median position roughly 0.67) and its outgoing transitions went mostly to A03 (about half) and A13 (about 30 in 100); in the later window neither A07 positions nor outgoing transitions from A07 are observed. [POS001, DIR001]\n- A10 is observed in about 99 in 100 traces in both windows, but its outgoing transitions were redistributed: transitions from A10 to A07 (about 13 in 100 of A10's outgoing transitions earlier) are no longer observed, while A01 rose from about 43 to 52 in 100 and A03 from about 2 to 8 in 100; A04 and A08 declined from about 16 to 9 and 14 to 10 in 100. [DIR002]\n- The gap between A10 and A3 (A03) shortened somewhat: a 1-step gap rose from about 4 to 22 in 100 observed pairs, while 3-step gaps fell from about 38 to 29 and 5-step gaps from about 13 to 5. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A07, previously an optional step executed in about 23 in 100 cases — always alongside A10, usually just after it, about two-thirds through the trace, and leading mostly to A03 — is no longer executed in the later window, with cases proceeding from A10 without it. The structural counterpart is at A10: its transitions to A07 (about 13 in 100 of its outgoing transitions earlier) are no longer observed, and its flow shifted mainly to A01 (about 43% to 52%) and directly to A03 (about 2% to 8%). Supporting signs: A07's participation fell from 46 to 0 of 200 traces, its co-occurrence with A10 disappeared entirely, and its position and outgoing-transition profiles are empty; six control-flow items qualified where fewer than one (about 0.14) would be expected if nothing had changed, and a drop from 46 to 0 of 200 traces is not a plausible sampling fluctuation. [OCC001, REL001, POS001, DIR001, DIR002, screening]\n\nOther differences: minor changes in A10's successor mix beyond A07 — A06 is no longer observed as a successor (about 1 in 100 earlier) and A09 appears (about 2 in 100 later). [DIR002]\n\nThe main competing explanation the evidence cannot fully rule out is that A07 has become very rare rather than truly absent, since non-observation in 200 traces cannot distinguish these; the items also largely reflect the same underlying traces rather than independent confirmations, and the shortened A10–A03 gap, while consistent with A07 no longer sitting between them, could partly reflect reordering unrelated to A07. [OCC001, LAG001]",
+  "case_id": "case_f9c5c033408715af",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

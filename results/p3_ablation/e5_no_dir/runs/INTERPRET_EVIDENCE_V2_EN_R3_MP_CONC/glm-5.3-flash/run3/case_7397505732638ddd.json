@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "f4b8847f5487653ca95938d3cd38bcb38659ba192de05804b3087bea2eee7079",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:10:05.032827+00:00",
+  "finished_at_utc": "2026-11-15T11:11:56.418058+00:00",
+  "latency_seconds": 111.39,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15371,
+    "prompt_tokens": 16682,
+    "total_tokens": 32053,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13758,
+      "text_tokens": 1613
+    },
+    "cost": 0.0101878
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45874,
+  "text": "### Observed differences\n\n- In the earlier window the six activities formed a strictly ordered sequence: every one of the eight pairs between {A15, A17, A18} and {A19, A20, A21} ran in a single fixed order (the first group always before the second) in 100% of the 200 traces, and every measured distance was deterministic — A15 exactly 1 step before A18, A17 exactly 2 steps before A18, A19 exactly 2 steps before A20, A26 exactly 1 step before A17, A27 exactly 1 step after A20. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG007, LAG014, LAG021, LAG017]\n\n- In the later window this fixed precedence is gone and the two groups interleave: A15 precedes A19 in only about 26 in 100 traces (A19 first in 74), A18 precedes A19 in about 15 in 100, A17 precedes A21 in about 77 in 100, while the remaining cross-pairs split near 50/50 (A15/A21 about 50/50, A17/A19 about 53/47, A18/A20 about 49/51, A15/A20 about 68/32, A18/A21 about 32/68). Both activities of every pair still occur together in all traces in both windows, so nothing was added or removed. [REL001, REL006, REL005, REL004, REL007, REL003, REL002, REL008]\n\n- Distances that were fixed became spreads: A15→A18 went from always 1 step to 1 step in about 68% of later traces and 2–4 steps in the rest; A17→A18 from always 2 to spread over 2–5 steps; A19→A20 from always 2 to 2–5 steps; A26→A19 from always 4 to 1 step in about 47% of traces; A18→A27 from always 4 to 1 step in about 52%. [LAG001, LAG007, LAG014, LAG023, LAG013]\n\n- Mean relative positions converged and now overlap: A15, A17 and A18 moved slightly later (about 0.59→0.64, 0.56→0.59, 0.62→0.68), while A19, A20 and A21 moved slightly earlier (about 0.65→0.59, 0.71→0.68, 0.68→0.64); all six activities appear in 100% of traces in both windows. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n- The picture is internally consistent: in the later window, the share of traces in which each cross-group ordered pair still occurs within five steps equals the new order proportion almost exactly (e.g., A15 before A19 within five steps in 52 of 200 traces, matching the 26% order share; A17 before A21 in 153 of 200, matching 77%). [LAG002, LAG003, LAG004, LAG008, LAG010, LAG011, LAG012, REL001, REL005]\n\n- Within-group order is preserved and the boundaries hold: A17→A15, A15→A18, A19→A21, A21→A20 and A19→A20 remain within five steps in all 200 later traces; A26 still precedes A15, A17, A19 and A21 within five steps in all later traces, and A27 still follows A15, A18, A20 and A21 within five steps in all later traces. [LAG006, LAG001, LAG015, LAG018, LAG014, LAG020, LAG021, LAG023, LAG024, LAG005, LAG013, LAG017, LAG019]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraint between two groups of activities was relaxed: in the earlier window A15, A17 and A18 always executed before A19, A20 and A21 in a fixed sequence (with A26 ahead of the block and A27 after it), whereas in the later window the two groups run in either order from case to case — for example A19 now precedes A15 in about 74 in 100 cases and A18 in about 85 in 100 — while each group keeps its internal order (A17 before A15 before A18; A19 before A21 before A20) and every activity still occurs in every trace. [REL001, REL006, REL008, LAG006, LAG001, LAG015, LAG018]\n\nThe change is shown directly by the relational evidence: all eight cross-group pairs flip from a 100% fixed order to mixed orders, the fixed inter-activity distances spread over one to five steps, and the groups' positions converge — three views of the same underlying difference rather than independent confirmations. The 38 qualifying items far exceed the roughly 0.32 expected for an unchanged process, so the set as a whole cannot be attributed to sampling noise, and the mixed two-way proportions (rather than a uniformly reversed fixed order) point to loosened ordering constraints rather than swapped positions. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG007, LAG014, POS001, POS002, POS003, POS004, POS005, POS006]\n\nAn important competing explanation remains: the later mixing could be a mixture of case types that each follow their own fixed order rather than a free per-case order — the window-level proportions cannot distinguish these. A rare fixed-order variant persisting unobserved in the later window also cannot be fully excluded, although a 100% fixed order across 200 earlier traces makes a pure sampling artefact unlikely. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

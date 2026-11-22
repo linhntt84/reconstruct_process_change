@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "2906924fca9b7fc0c29d6654ec3cf9f22761b83199683e1008a87c1f62f46881",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:23:26.173604+00:00",
+  "finished_at_utc": "2026-11-15T10:24:16.103193+00:00",
+  "latency_seconds": 49.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7346,
+    "prompt_tokens": 12216,
+    "total_tokens": 19562,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6250,
+      "text_tokens": 1096
+    },
+    "cost": 0.0055054
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22318,
+  "text": "### Observed differences\n\n- In the earlier window, A27 ran in essentially every case (participation 100%, about one occurrence per trace); in the later window it runs in about 51 in 100 cases, while its own outgoing behaviour is nearly unchanged (about 96 in 100 of its transitions still go to A28, with only small new transitions to A09, A34 and A25 at 1–2%) [OCC001, DIR002].\n- A32, A33 and A38 were not observed at all in the earlier window; in the later window each appears in about 49 in 100 cases, once per case where present, around the middle of the trace (mean position roughly 0.49–0.50) [OCC002, OCC003, OCC004, POS001, POS002, POS003].\n- Out of A26, about 99 in 100 outgoing transitions went to A27 before; in the later window about 50 in 100 go to A27 and the rest split across A33 (about 17%), A38 (about 16%) and A32 (about 15%) [DIR001].\n- In the later window, A27 and each of the three new activities are near-perfectly exclusive: they co-occur in at most about 1 in 200 cases, with roughly half the cases containing A27 only and half containing the new activities [REL006, REL007, REL008].\n- In the later window, A26 precedes A32, A33 and A38 in about 49 in 100 cases each, and each of the three precedes A28 in about 49 in 100 cases; A28 itself still occurs in every case but now runs without a preceding A27 in about 49 in 100 cases [REL002, REL003, REL004, REL009, REL010, REL011, REL005].\n- The order among the three new activities varies from case to case (for example, A32 precedes A33 in about 23 in 100 cases and follows it in about 27), and their outgoing transitions lead to one another and to A28 (for example, A32 goes to A38 in about 35%, A33 in about 34% and A28 in about 28% of its transitions) [REL012, REL013, REL014, DIR003, DIR004, DIR005].\n- The positional gap from A26 to A28 was 2 steps in about 98 in 100 cases before; in the later window it is 2 steps in about 50 cases and 4 steps in about 48 [LAG001].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, about half of the executions replace the segment A26 → A27 → A28 with a segment in which A26 is followed by A32, A33 and A38 — each executed once, in varying order — before the flow continues to A28. This is shown directly by the routing split out of A26 [DIR001], the near-perfect mutual exclusivity between A27 and the three new activities [REL006, REL007, REL008], the precedence relations linking A26 to the new activities and each of them to A28 [REL002, REL003, REL004, REL009, REL010, REL011], and the A26–A28 gap shifting from 2 to 4 steps [LAG001]. The participation changes at A27, A32, A33 and A38 match this roughly 50/50 split [OCC001, OCC002, OCC003, OCC004]. With 27 qualifying items against roughly 0.57 expected if nothing had changed, the set of differences is far beyond what random re-splits of stable behaviour typically produce.\n\nLimitations: the many relation items largely describe one underlying difference rather than independent confirmations; the internal ordering of A32, A33 and A38 varies between cases, so the evidence cannot establish the exact ordering construct of the new segment; and the small new transitions (from A27 to A09/A34, and from the new activities to A06, A02 and A25) rest on a handful of observations and may be sampling noise [REL012, REL013, REL014, DIR002, DIR003, DIR004, DIR005]. The main competing explanation — that a variant of this frequency already existed but was missed by the earlier sample — is implausible given its presence in about 99 of 200 later cases, yet the windows remain finite samples and variant frequencies can differ between them even without a structural change.",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

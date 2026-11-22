@@ -1,0 +1,19 @@
+### Observed differences
+
+- **The choice between two alternative branches flipped.** In the earlier window, about 75 in 100 traces ran the block A21–A22–A23 after A19/A20 (A19 and A21 occurred together in 75% of traces, and roughly 75% of A20's outgoing flow went to A21/A22/A23), while about 25 in 100 traces ran the block A24–A25–A26 instead. In the later window the shares are reversed: A24–A25–A26 together in about 76 in 100 traces (A19–A24 co-occurrence 76.5%; about 75% of A20's outgoing flow) and A21–A22–A23 in about 25 in 100. The two blocks stay mutually exclusive in both windows (A21–A24 co-occurrence at most 2%), and the order inside each block stays mixed in both windows. [DIR002, REL013, REL016, REL025, REL027, REL049]
+
+- **The surrounding sequence is stable.** A29 is followed directly by A19 in about 84% of cases earlier and about 94% later; A29→A20 stays at a distance of two steps in both windows; A34 keeps a near-end position in essentially all traces in both windows. [DIR003, LAG007, LAG008, POS002]
+
+- **A06 became a frequent, late activity.** Earlier it appeared in about 17 in 100 traces around the middle of the case (median position about 0.48), with its outgoing flow spread over more than ten different successors (largest single share about 21%, to A33). Later it appears in about 53 in 100 traces near the end (median position about 0.96), about 90% of its outgoing flow goes to A35, and A35 follows A06 within one step in about 97% of the observed pairs (about 25% earlier). [DIR001, POS001, LAG001]
+
+- **A06 now sits between A34 and A35.** Earlier, A34 led almost directly to A35 (about 89% of A34's outgoing flow; one-step gap in about 90% of pairs). Later, about half of A34's outgoing flow goes to A06 (about 2% earlier), the A34→A35 distance is split roughly evenly between one and two steps, and A06 precedes A35 in about 49 in 100 traces (about 17 earlier). [DIR005, LAG013, REL011, REL012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two existing alternative paths changed how often they are taken: after A19 and A20, the branch through A21, A22 and A23 dropped from about three quarters of traces to about one quarter, while the parallel branch through A24, A25 and A26 rose from about one quarter to about three quarters. The shift is visible directly in A20's successor profile and is mirrored in co-occurrence flips between each block member and A19/A20, and between the blocks and the surrounding activities A29, A30, A34 and A35, while both blocks remain mutually exclusive with unchanged, unordered internal sequencing. Both branches are observed in substantial shares in both windows (roughly 25% and 75%), so this fits a change in how often existing paths are taken rather than activities appearing or disappearing. With 83 qualifying items against fewer than 1 expected if nothing had changed, the ensemble is far beyond what an unchanged process typically produces. [DIR002, REL013, REL016, REL019, REL022, REL025, REL027, REL030, REL034, REL045, REL049, REL051, REL055, REL058]
+
+Limitations: the many relation items overlap heavily — several describe the same trace behaviour — so they are not independent confirmations, and the evidence cannot rule out that the two windows simply contain a different mix of case types rather than a modified routing rule. [REL013, REL019, REL049]
+
+Other differences: A06 — its participation rose from about 17% to about 53% of traces, its position shifted from mid-case to the end, and it is now executed between A34 and A35 in about half of the traces; whether the activity was repositioned or an additional late occurrence was added cannot be distinguished from position-based data. [DIR001, POS001, DIR005, LAG001, LAG013, REL011, REL012] Smaller shifts: A29's outgoing flow to A19 concentrated from about 84% to 94%, and A32's outgoing flow to A33 from about 82% to 96%. [DIR003, DIR004]

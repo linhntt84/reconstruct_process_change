@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "c830288d573ab38f6ed2f1880e71c56f6eb77d79c0fbebc65a6726eb32d544a5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:59:30.648707+00:00",
+  "finished_at_utc": "2026-11-14T11:00:26.303413+00:00",
+  "latency_seconds": 55.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8798,
+    "prompt_tokens": 14779,
+    "total_tokens": 23577,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7771,
+      "text_tokens": 1027
+    },
+    "cost": 0.0066158499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27331,
+  "text": "### Observed differences\n\n- In the later window, A22 appears in about 199 of 200 traces, up from about 103 of 200 before; A27, A28 and A33 each appear in only about 1 of 200 traces, down from about 97 of 200. None of these activities repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004]\n- In the later window, about 995 in 1000 of A21's observed outgoing transitions lead to A22 (the remainder to A28); before, they split between A22 (about 52 in 100), A33 (about 18), A28 (about 17) and A27 (about 14). [DIR001]\n- Before, about 97 of 200 traces contained A27, A28 and A33 together, in varying orders, between A21 and A23; in the later window this block is essentially gone — in about 199 of 200 traces A21 appears without any of the three, and A23 appears without any of them before it. [REL002, REL003, REL004, REL009, REL010, REL011, REL012, REL013, REL014]\n- The retained path is now almost universal: A21 before A22 and A22 before A23 each hold in about 199 of 200 traces (up from about 52 in 100), and the A21-to-A23 distance concentrates on 2 steps (about 199 of 200) instead of splitting between 2 and 4 steps as before. [REL001, REL005, LAG001]\n- A23 sits slightly earlier within traces in the later window (mean relative position about 0.53 versus about 0.55 before). [POS001]\n- All later-window profiles of A27, A28 and A33 — their successors, positions and lags — rest on a single trace each, so details such as A27 leading to A33 are weakly supported. [DIR002, DIR003, DIR004, POS002, POS003, POS004, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the path running from A21 through A27, A28 and A33 (in varying order) before reaching A23 is taken far less often in the later window, while nearly all executions now proceed from A21 directly via A22 to A23; before, roughly half of the traces (about 97 of 200) contained the A27/A28/A33 block, afterwards only about 1 in 200 does. [OCC002, OCC003, OCC004, DIR001, REL012, LAG001]\n\nThe support is direct and consistent: participation, routing, co-occurrence and distance indicators all show the same shift; the 34 flagged items far exceed the roughly 0.45 expected by chance under this screening; and a drop from about 97 to 1 traces out of 200 ranks beyond all 200 random re-split references, so sampling variation alone cannot plausibly account for it. [OCC001, DIR001, REL001, REL005, LAG001]\n\nLimitations remain: the evidence cannot distinguish whether the A27/A28/A33 branch was removed from the process or still exists but is now selected extremely rarely, and its later-window behaviour is characterised by a single trace; the many agreeing items largely describe one trace-level difference rather than independent confirmations; and variant frequencies can differ between finite windows even without a change, although a fall from about 48 in 100 to about 0.5 in 100 traces goes well beyond typical sampling fluctuation. [DIR002, DIR003, DIR004, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, POS002, POS003, POS004]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

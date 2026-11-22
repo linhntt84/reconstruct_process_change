@@ -1,0 +1,16 @@
+### Observed differences
+
+- Three activities largely dropped out of the process. In the earlier window A19 appeared in about 37 in 100 traces, A20 in about 31, and A25 in about 35; in the later window A19 appears in 1 of 200 traces and A20 and A25 in none. None of the three recurred within a trace in either window. [OCC001, OCC002, OCC003]
+- Before, these three activities were the main continuation of A41: together they received about 86 in 100 of A41's outgoing transitions (A25 about 32%, A19 about 29%, A20 about 26%). In the later window, about 86 in 100 of A41's outgoing transitions go directly to A26. [DIR005]
+- Before, each of the three activities led almost exclusively to A26 (about 95–97 in 100 of their outgoing transitions). In the later window A20 and A25 show no observed outgoing transitions, and A19 is seen once, leading to A12. [DIR001, DIR002, DIR004]
+- The separation between A41 and A26 collapsed: before, A26 followed A41 two event positions later in about 85 in 100 cases (three positions later in about 15); after, A26 immediately follows A41 in about 86 in 100 cases. [LAG001]
+- A26 and A41 still occur in every trace in both windows, with only small position shifts: A26's median event position moved from about 0.38 to 0.36 (slightly earlier) and A41's from about 0.31 to 0.32 (slightly later). [POS004, POS005]
+- Separately, routing at A21 shifted: transitions to A24 rose from about 14% to about 35% of A21's outgoing transitions, while transitions to A31 fell from about 54% to about 38% (A23 roughly stable, about 29% vs 25%). [DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative block A19, A20 and A25 between A41 and A26 was bypassed: in the earlier window the process executed, after A41, one of these three activities (each in roughly a third of traces) and then continued to A26, whereas in the later window A41 leads directly to A26 and the three activities are essentially unobserved. The support is direct and consistent — the successor profile of A41 flipped from the three activities to A26, the A41–A26 distance moved from two positions to one, the three activities and their edges to A26 disappeared, and the small position shifts of A26 and A41 fit the loss of an intermediate step. With 14 qualifying items against roughly 0.5 expected by chance in the control-flow family, the pattern as a whole is not what an unchanged process typically produces. The main competing explanation the evidence cannot rule out is that the block was not removed outright but became extremely rare: with 200 traces per window, 0–1 occurrences after the change cannot separate these, and the single post-change observation of A19 (leading to A12) is too thin to show whether any residue of the block remains elsewhere. [DIR005, LAG001, OCC001, OCC002, OCC003, DIR002, DIR004, POS004, POS005]
+
+Other differences: at A21, existing branches are taken with different frequencies — the share of outgoing transitions to A24 roughly doubled (about 14% to 35%) at the expense of A31 (about 54% to 38%), with A21 well observed in both windows (about 114 vs 101 outgoing transitions) and all main successors present throughout; this routing shift stands apart from the main hypothesis. [DIR003]

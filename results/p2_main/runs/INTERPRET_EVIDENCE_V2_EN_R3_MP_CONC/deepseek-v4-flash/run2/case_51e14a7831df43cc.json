@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_51e14a7831df43cc.json",
+  "evidence_sha256": "1efa346b9dcb04f626c5250defda92359d62256b73d5de3942ff52385d3e65dc",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:14:35.500199+00:00",
+  "finished_at_utc": "2026-11-15T01:14:49.143971+00:00",
+  "latency_seconds": 13.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 2002,
+    "prompt_tokens": 17426,
+    "total_tokens": 19428,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1309
+    },
+    "cost": 0.00287162
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 4632,
+  "text": "### Observed differences\n\n- Activity A09 dropped from appearing in every trace to about half of traces (100% to 49%), its mean occurrences per trace fell from about 2.0 to 0.5, and it stopped repeating (recurrence from 47.5% to 0). [OCC001]\n- Activity A16 rose from appearing in half of traces to every trace (50% to 100%), its mean occurrences per trace increased from about 0.5 to 1.85, and it now repeats in about 44% of traces. [OCC002]\n- The outgoing edge of A04 changed from always going to A09 to always going to A16. [DIR002]\n- The outgoing edge of A10 changed from always going to A09 to always going to A16. [DIR004]\n- A09's successors changed from A05/A14/A06 to A01/A04/A10/A13, while A16's successors changed from A13/A10/A04/A01 to A05/A06/A14. [DIR003, DIR006]\n- A09 moved earlier in the trace (mean position from 0.68 to 0.45), while A16 moved later (from 0.39 to 0.70). [POS001, POS002]\n- Co-occurrence of A01 with A09 dropped from 100% to 48.5%, while co-occurrence of A01 with A16 rose from 50% to 100%. Similar swaps appear for A04, A05, A06, A10, A13, and A14 with A09 versus A16. [REL001, REL002, REL003–REL015]\n- The lag between A01 and A09 changed from 3–4 steps to 1–2 steps, while the lag between A01 and A16 changed from 1–2 steps to 3–4 steps, indicating a reversal in their relative order. [LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that activities A09 and A16 effectively swapped their roles in the process. In the earlier window, A09 was a frequent, recurring activity that occurred in every trace and was the target of A04 and A10; in the later window, A16 takes that role, occurring in every trace, repeating, and receiving the same incoming edges, while A09 becomes optional, less frequent, and moves earlier in the trace. The successor sets of A09 and A16 are also exchanged, and the co-occurrence and lag patterns with other activities (A01, A04, A05, A06, A10, A13, A14) consistently reverse. The number of qualifying evidence items (39) far exceeds the 0.39 expected by chance, so this is not a random fluctuation.\n\nOther differences: The specific successor sets of A09 and A16 changed as described, which is consistent with the swap but also indicates a reconfiguration of the surrounding flow. A09's position shifted earlier and A16's later, reinforcing the swap.\n\nA competing explanation that cannot be fully ruled out is that A09 and A16 are two alternative branches whose usage frequencies changed, but the direct successor changes and the reversal of co-occurrence and lag patterns make a simple frequency shift unlikely.",
+  "case_id": "case_51e14a7831df43cc",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

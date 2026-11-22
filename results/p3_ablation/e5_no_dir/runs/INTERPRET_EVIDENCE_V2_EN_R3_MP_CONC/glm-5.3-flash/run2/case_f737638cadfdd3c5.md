@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 were not observed at all (0 of 200 traces). In the later window, A19 runs in about 37 in 100 traces (74/200), A25 in about 34 in 100 (68/200) and A20 in about 29 in 100 (57/200), in each case exactly once per trace. [OCC001, OCC002, OCC003]
+- The three new activities are mutually exclusive alternatives: A19 and A20 never share a trace, A20 and A25 never, and A19 and A25 share only about 1 in 200 later traces — so essentially every later trace contains exactly one of the three. [REL001, REL002, REL007]
+- Each of the three sits in a narrow band about a third into the trace (mean relative position about 0.36 for all three). [POS001, POS002, POS003]
+- Placement is consistent: whenever one of the three occurs, it runs after A41 (in all or nearly all co-occurring traces) and before A26, A31 and A35 (in all co-occurring traces). A41, A26 and A31 themselves occur in every trace in both windows. [REL003, REL004, REL005, REL006, REL008, REL009, REL010, REL011, REL012, REL013, REL014]
+- The gap from A41 to A26 widened by one step: earlier, A26 followed A41 at distance 1 in about 94 in 100 traces; later, it follows at distance 2 in about 90 in 100 (and distance 3 in about 9 in 100). [LAG002]
+- Positions further along the trace drifted slightly later and became less variable: A26's mean relative position moved from about 0.37 to 0.39, A31's from about 0.69 to 0.71. [POS004, POS005]
+- Separately, the distance from A31 to A35 shifted from mostly 1 step (about 55 in 100) to mostly 2 steps (about 62 in 100), and A35's participation slipped from about 54 to about 48 in 100 traces. [LAG001, REL005, REL013]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a new step is executed once per case between A41 and A26, taking one of three mutually exclusive forms (A19, A20 or A25). Earlier, A41 led to A26 in a single step in about 94 in 100 traces and none of the three appeared; later, exactly one event separates them in about 90 in 100 traces, and the new activities sit precisely in that gap — after A41, before A26/A31/A35, about a third into the trace, once per case, together covering virtually every trace. The change is direct (appearance from zero participation, relational order, and the one-step widening of the A41→A26 distance all point to the same insertion) and consistent, and screening expected only about 0.33 qualifying items by chance while 24 qualified, so the pattern as a whole is not what an unchanged process produces. Limitations: zero participation in the earlier window strictly means only that A19/A20/A25 were not observed there, and the evidence cannot show what distinguishes the three variants or what selects between them. [OCC001, OCC002, OCC003, REL001, REL002, REL007, REL006, REL003, LAG002, POS001, POS004]
+
+Other differences: the step distance from A31 to A35 moved from mostly 1 to mostly 2 steps, and A35's participation slipped from about 54 to about 48 in 100 traces; the evidence does not identify what now lies between A31 and A35, and this shift is not explained by the insertion between A41 and A26. [LAG001, REL005, REL013]

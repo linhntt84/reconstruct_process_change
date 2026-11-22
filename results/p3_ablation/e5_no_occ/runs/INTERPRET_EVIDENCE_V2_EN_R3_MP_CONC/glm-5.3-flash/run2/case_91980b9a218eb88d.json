@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_91980b9a218eb88d.json",
+  "evidence_sha256": "c1165dafaa125c9e306feac40b2ee3e4974fd9b304d17972a62cc701b43d9448",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:28:38.582830+00:00",
+  "finished_at_utc": "2026-11-15T05:30:21.815246+00:00",
+  "latency_seconds": 103.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15679,
+    "prompt_tokens": 15157,
+    "total_tokens": 30836,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14193,
+      "text_tokens": 1486
+    },
+    "cost": 0.010113049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45646,
+  "text": "### Observed differences\n\n- In the earlier window, A19, A20 and A25 (each present in roughly 25–38 of 100 traces) sat about one third of the way into the trace (mean positions 0.32–0.33) and sent about 92–99 in 100 of their observed outgoing transitions to A26. In the later window they sit about 60% of the way in (means 0.59–0.61) and send about 93–99 in 100 of those transitions to A28 and A32 instead, with A26 as target almost gone (about 1–2 in 100) [DIR001, DIR002, DIR003, POS001, POS002, POS003].\n- The order between this group and A26/A27 flipped: before, A19, A20 or A25 preceded A26 in about 24–38 of 100 traces and A26 preceded them almost never; after, A26 precedes them in about 29–37 of 100 and they precede A26 in at most about 1 of 100. The same reversal holds against A27 [REL001, REL002, REL003, REL004, REL006, REL007].\n- A27 and A28 gained edges into the group: A27 now sends about 43 in 100 of its outgoing transitions to A19/A20/A25 (about 16/15/11) versus about 2 before, and A28 sends about 53 in 100 (about 16/21/17) versus about 1 before; the direct adjacencies A27→A19, A27→A20, A28→A19, A28→A20 and A19→A32, seen in only 1–2 traces before, now appear in about 32–75 traces [DIR004, DIR005, LAG002, LAG003, LAG004, LAG007, LAG008].\n- Gaps stretched by about one event where the group now sits: A27→A32 went from gap 2 in 97 of 100 traces to gap 3 in 93 of 100; A28→A32 from gap 1 in 99 of 100 to a mix of gap 1 (about 45) and gap 2 (about 54); A27→A28 from gap 1 in 98 of 100 to a mix of gap 1 (about 55) and gap 2 (about 43). Against A28, A20 and A25 now appear in both orders (about 13–21 of 100 each way), so their exact slot varies per trace [LAG005, LAG006, LAG009, REL005, REL008].\n- A45 was rewired: before it led to A25, A19 and A20 (about 35/35/24 of its outgoing transitions) and reached A26 two events later (gap 2 in 94 of 100); after it goes almost exclusively to A26 (about 94 in 100) and reaches it directly (gap 1 in 94 of 100), while A45→A25 is essentially unobserved (1 trace) [DIR006, LAG010, LAG011].\n- A26 and A27 themselves are stable: present in all traces in both windows, with mean positions about 0.35→0.33 and 0.58→0.56 [POS004, POS005].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A19, A20 and A25 were relocated: in the earlier window they ran early in the trace, fed into A26 and were reached from A45; in the later window they run after A27 and A28, are reached directly from A27 or A28, and continue to A28 or A32 — effectively inserted into the former A27 → A28 → A32 segment — while A45 now connects straight to A26 [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, REL001, REL003, REL006, LAG003, LAG004, LAG006, LAG011].\n\nThe reading is direct and consistent: the order flip with A26 and A27 shows the change relationally, the position shift shows it positionally, the routing profiles show A26 replaced by A28/A32 as target while A27/A28 gain edges into the group, and the new adjacencies come with exactly the one-step gap increases an insertion predicts. All 30 qualifying control-flow items far exceed the roughly 0.4 expected by chance for 81 tested units, and each difference is larger than in about 995 of 1000 random re-splits, so the ensemble is not what an unchanged process typically produces [REL001, POS001, DIR001, LAG006].\n\nLimitations: the group's exact slot varies per trace (A20 and A25 appear in both orders relative to A28), so the evidence shows insertion into the A27–A28–A32 region rather than one fixed new position; it also cannot rule out that the earlier variant was wholly replaced by a new one in which these activities run at a different spot, rather than a within-process move. A few edge-level items rest on very few later-window observations (A19→A26 and A45→A25: 2 and 1 traces) [REL005, REL008, LAG001, LAG010].\n\nOther differences: A20 appears in more traces in the later window (about 38 of 100 versus 25), and A19 and A25 slightly fewer (about 33 and 30 versus 38 and 39); this participation shift accompanies the relocation but could also arise from sampling variation between two 200-trace windows [REL001, REL003, REL006].",
+  "case_id": "case_91980b9a218eb88d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

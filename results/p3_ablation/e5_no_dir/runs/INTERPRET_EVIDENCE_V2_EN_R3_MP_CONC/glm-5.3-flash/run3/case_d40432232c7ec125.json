@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "e74b2779afb50037eb8b8a89407ecb67824ab48ae4c647790316fbfc668ef9c1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:28:07.781155+00:00",
+  "finished_at_utc": "2026-11-15T11:31:28.369627+00:00",
+  "latency_seconds": 200.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 32176,
+    "prompt_tokens": 35395,
+    "total_tokens": 67571,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29795,
+      "text_tokens": 2381
+    },
+    "cost": 0.02139725
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 97072,
+  "text": "### Observed differences\n\n- The clearest difference is a reversal of execution order among activities that always run together. In the earlier window, A25 and A29 ran before A20, A22 and A23 — for example, A25 preceded A20 in about 98 of 100 traces, and each of these pairs co-occurred in every trace. In the later window the order is reversed: A20 preceded A25 in about 98 of 100 traces and A20 preceded A29 in about 99 of 100, with co-occurrence still at 100%. [REL023, REL024, REL030, REL031, REL033, REL034]\n- Three optional activities switched sides relative to this group. A19, A21 and A24 each appear in roughly 29–39 of 100 traces in both windows; in the earlier window each of them ran before A20, A22, A23, A25 and A29 in nearly every shared trace (e.g., A19 before A20 in about 29 of 100 traces, essentially all of their co-occurrences), while in the later window the mandatory activities come first (A20 before A19 in about 32 of 100). Their average relative positions moved from about 0.36–0.37 to about 0.67 of the trace, while A20, A22 and A23 moved from about 0.65 to about 0.38; A25 and A29 stayed in between, shifting only slightly later (A25 about 0.39 to 0.45, A29 about 0.58 to 0.64). [REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL025, REL026, REL027, REL028, REL029, REL032, REL035, REL036, POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]\n- Step distances are consistent with this reshuffle: the gap from A29 to A30 shrank from about 4 steps (94 in 100 traces) to about 2 steps (95 in 100), and the gap from A40 to A25 grew from about 2 steps (90 in 100) to about 4–5 steps (about 99 in 100). [LAG026, LAG029]\n- A08 is executed in far fewer cases: it appeared in about 64 of 100 traces in the earlier window and about 29 of 100 in the later one (mean occurrences per trace 0.68 vs 0.32). Its partners (A14, A15, A16, A20, A22, A23, A25, A29, A30, A40, A45, A46) now usually run without it — partner-only traces rose from about 37 to about 72 in 100 — whereas A08 was never observed without the mandatory core in either window. [OCC003, REL001, REL002, REL003, REL005, REL007, REL008, REL010, REL011, REL012, REL013, REL014, REL015]\n- A04, A06 and A10 each take part in roughly twice as many traces as before: A04 about 7 to 21 in 100, A06 about 7 to 24, A10 about 9 to 19. [OCC001, OCC002, OCC004]\n- Smaller shifts: the immediate succession A45 then A46 dropped from about 98 to 84 in 100 traces (a 2-step gap now appears in about 16 in 100), and lag distributions around A14, A15, A16 and A40, including the spacing between repeated A16 executions, changed modestly. [LAG030, LAG007, LAG008, LAG010, LAG013, LAG015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the relative execution order of a segment changed. In the earlier window, traces ran the optional activities A19, A21 and A24 first, then A25 and A29, then A20, A22 and A23; in the later window, A20, A22 and A23 run first, then A25 and A29, and the optional trio last. This rests on direct relational evidence: all 21 tested pairs among these activities reversed in a near-deterministic way (e.g., A25 before A20 in about 98 of 100 traces before, A20 before A25 in about 98 of 100 after), while the five mandatory activities still occurred in every trace in both windows, so this is a change of order rather than activities appearing or disappearing; the position shifts (A20/A22/A23 from about 0.65 to 0.38, A19/A21/A24 from about 0.36 to 0.67) and the step-distance changes (A29-to-A30 from 4 to 2 steps, A40-to-A25 from 2 to 4–5 steps) agree with the pairwise reversals, and interleaved-or-repeated shares stay near zero, so changed repetition does not explain the flips. [REL016, REL021, REL023, REL024, REL030, REL031, REL033, REL035, POS003, POS004, POS005, POS007, LAG026, LAG029]\n\nThe volume of qualified items (79 against roughly 0.8 expected if nothing had changed) is far beyond what a stable process produces, so sampling fluctuation cannot account for the pattern as a whole. Limitations: the pairwise evidence fixes the order of pairs but not the exact rearrangement — the internal order within the A20/A22/A23 group, within the optional trio, and between A25 and A29 was not tested — and several additional lag items rest on only 1–3 observations in one window and were not used as support. An important competing explanation the evidence cannot rule out is a shift in the mix of process variants: a population in which two orderings coexisted could have flipped from about 98-to-2 to about 2-to-98, which would look identical to a single reordered flow. [REL023, LAG002, LAG017, LAG022]\n\nOther differences:\n- A08 is executed in far fewer cases (about 64 to about 29 in 100 traces); this is directly observed, but the evidence cannot distinguish whether A08 became skippable within the main flow or whether cases omitting it simply became more frequent, and its position spread widened (upper quartile from about 0.26 to 0.56 of the trace). [OCC003, POS001, REL001]\n- A04, A06 and A10 participate in roughly twice as many traces as before (from about 7–9 to about 19–24 in 100), though each rests on only tens of traces per window. [OCC001, OCC002, OCC004]\n- Minor distance changes: A45-then-A46 immediate succession became less common (about 98 to 84 in 100), and lags around A14/A15/A16 with A40 and A16's repeat spacing shifted modestly. [LAG030, LAG007, LAG008, LAG010, LAG013, LAG015]",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

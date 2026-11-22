@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_c20f0115c62d65b0.json",
+  "evidence_sha256": "335e029f82d17d97508e2c738bca727bdc10300f69903582e0c2337e2fc97a0c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:29:57.664473+00:00",
+  "finished_at_utc": "2026-11-15T05:31:17.567298+00:00",
+  "latency_seconds": 79.9,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11640,
+    "prompt_tokens": 12484,
+    "total_tokens": 24124,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10508,
+      "text_tokens": 1132
+    },
+    "cost": 0.007692599999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 37793,
+  "text": "### Observed differences\n\n- In the earlier window, every trace executed exactly one of three mutually exclusive activities: A19 in about 32 in 100 traces, A20 in about 28 in 100 and A25 in about 40 in 100; the three never occurred together in one trace. In the later window, each of them appears in only about 1 in 200 traces. [REL001, REL002, REL006, POS001, POS002, POS003]\n\n- In the earlier window these three alternatives sat between A27 and A29: A27 led to one of them in about 44 in 100 of its outgoing transitions (A28 directly in about 53 in 100), and A28 led to one of them in about 54 in 100 (A29 directly in about 45 in 100); each alternative always ran before A29, in varying order relative to A28. In the later window, A27 leads to A28 in about 97 in 100 transitions and A28 leads to A29 in about 99 in 100. [DIR001, DIR002, DIR003, DIR004, DIR005, REL004, REL005, REL008, REL009, REL011, REL012]\n\n- The remaining chain became adjacent: A27 to A28 at one event distance in about 99 in 100 later cases (before about 54 in 100, with about 44 at two steps); A28 to A29 at one step in about 98 in 100 (before split roughly 45 to 53 between one and two steps); A27 to A29 at two steps in about 97 in 100 (before three steps in about 94 in 100). [LAG001, LAG003, LAG002]\n\n- A29 itself occurs in every trace in both windows, at a slightly earlier relative position in the later window (mean about 0.55 of the trace versus about 0.56 before). [POS004]\n\n- In the single later trace containing each of A19, A20 and A25, the activity leads to A44, A08 and A42 respectively; each of these edges is observed once and is too rare to characterise. [DIR001, DIR002, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the choice block formed by A19, A20 and A25 between A27 and A29 is no longer executed: in the earlier window every trace ran exactly one of the three (A19 in about 32 in 100 traces, A20 in about 28, A25 in about 40), placed between A27 and A29 either directly after A27 or after A28; in the later window the flow runs directly from A27 to A28 to A29, and each of the three is observed in only about 1 in 200 traces. [REL001, REL002, REL006, POS001, POS002, POS003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nThe signs are direct and consistent across all indicator families: participation of the three activities collapses from 64, 56 and 80 traces to one each, their outgoing edges disappear while A27 and A28 reroute almost exclusively to each other and to A29, co-occurrence with A27, A28 and A29 falls to about 0.5 in 100, and pairwise distances collapse to adjacency. With 24 qualifying items against roughly 0.35 expected without a change, chance re-splits of stable behaviour cannot account for the set as a whole. The evidence cannot distinguish a full removal of the block from the block having become a rarely taken path, and it cannot show whether anything took over the block's role. [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, REL003, REL010, LAG001, LAG002, LAG003]\n\nOther differences: the three residual single-trace edges A19→A44, A20→A08 and A25→A42 in the later window are not explained by the main hypothesis and rest on one observation each. An important competing explanation the evidence cannot rule out is that the later window samples a variant mix in which the block path is simply rare, rather than a structural modification; the drop from essentially all traces to about 1 in 200 makes pure sampling noise unlikely, but this residual execution with different routing cannot be characterised further. [DIR001, DIR002, DIR003]",
+  "case_id": "case_c20f0115c62d65b0",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

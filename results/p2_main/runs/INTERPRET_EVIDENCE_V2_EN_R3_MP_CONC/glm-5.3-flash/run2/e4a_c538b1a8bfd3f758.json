@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_c538b1a8bfd3f758.json",
+  "evidence_sha256": "64d7cad8987b8c09d0531993c9903bc236b81c57d605724fa816c802871514f2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:54:35.513741+00:00",
+  "finished_at_utc": "2026-11-15T01:55:16.029698+00:00",
+  "latency_seconds": 40.52,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5613,
+    "prompt_tokens": 3020,
+    "total_tokens": 8633,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4951,
+      "text_tokens": 662
+    },
+    "cost": 0.0032595
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21166,
+  "text": "### Observed differences\n\n- In the later window, the elapsed time between the completion of A11 and the completion of A39 roughly halved: the median gap fell from about 0.94 hours (mean about 0.97, middle half roughly 0.85–1.08 hours) in the earlier window to about 0.50 hours (mean about 0.49, middle half roughly 0.43–0.56 hours), a drop of about 0.48 hours. The gap distribution was also tighter afterwards. This was measured on 110 gaps before and 96 after, and the difference exceeded about 999 in 1,000 random re-splits of the pooled data. [TWAIT001]\n- The same pattern holds for A38 to A39: the median gap fell from about 1.03 hours (mean about 1.02) to about 0.50 hours, a drop of about 0.52 hours, likewise larger than in about 999 of 1,000 reference comparisons, on 85 gaps before and 71 after. [TWAIT002]\n- Both pairs were well observed in both windows (roughly 55 in 100 traces before and 48 in 100 after for A11→A39; roughly 43 and 36 in 100 for A38→A39), so the profiles do not rest on rare behaviour. [TWAIT001, TWAIT002]\n- Screening found no control-flow items (0 among 53 units, where about 0.26 were expected by chance) but 2 time items, where only about 0.01 were expected if nothing had changed. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change as a possibility: in the later window, the elapsed time from the completion of A11 and of A38 to the subsequent completion of A39 is roughly half of what it was, dropping from about one hour to about half an hour in both cases. The support is direct (T_WAIT measures exactly these elapsed times), consistent in direction and magnitude across the two pairs (about −0.48 and −0.52 hours), and the time family produced 2 qualifying items against an expectation of about 0.01 without a change, so chance alone cannot account for the family as a whole. Limitations: T_WAIT is elapsed time between consecutive completion events, not pure waiting or service time, so the reduction could reflect any clock-time behaviour between the two completions; both measured pairs end at A39, so the two items may describe one underlying difference around A39 rather than two independent changes, and the evidence cannot localise the saving to A39, to A11 or A38, or to the interval between them. A competing explanation the evidence cannot rule out is a general change in the clock-time behaviour of A39's inflows versus a change specific to these two pairs. [TWAIT001, TWAIT002, screening]\n\nOther differences: both consecutive pairs were observed somewhat less often in the later window (110→96 and 85→71 gaps out of 200 traces per window); no control-flow item qualified, so this modest drop may be sampling variation rather than a participation change. [TWAIT001, TWAIT002, screening]",
+  "case_id": "e4a_c538b1a8bfd3f758",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

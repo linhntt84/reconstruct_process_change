@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_fb5527b5e3332d56.json",
+  "evidence_sha256": "cc1667b60f40da1281f36b026468222d3851c06c88110ea561d6d13f2f06d2ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:00:29.683964+00:00",
+  "finished_at_utc": "2026-11-14T13:01:18.324991+00:00",
+  "latency_seconds": 48.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7593,
+    "prompt_tokens": 12285,
+    "total_tokens": 19878,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6713,
+      "text_tokens": 880
+    },
+    "cost": 0.005639249999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25256,
+  "text": "### Observed differences\n\n- Before, traces split roughly evenly between two routes after A21: in about 52 in 100 traces A21 was followed by A22 and then A23, while in about 48 in 100 the flow ran through A27, A28 and A33, which occurred together before reaching A23. In the later window the A22 route dominates: A22 appears in about 100 in 100 traces (199 of 200), up from about 52 in 100. [OCC001, REL001, REL005]\n- A27, A28 and A33 each dropped from about 49 in 100 traces to about 1 in 200. In the earlier window the three always co-occurred (about 49 in 100 traces) and appeared in both orders relative to each other, i.e. with no fixed internal sequence, each typically leading on to A23 or to another member of the group. In the later window they co-occur only in that single remaining trace. [OCC002, OCC003, OCC004, REL012, REL013, REL014, DIR002, DIR003, DIR004]\n- Routing out of A21 changed accordingly: before, about half of A21's outgoing transitions went to A22 and the remainder split fairly evenly to A27, A28 and A33 (roughly 14–18 in 100 each); in the later window about 995 in 1000 go to A22. A21 and A23 themselves were present in every trace in both windows. [DIR001, POS001]\n- A23's relative event position shifted slightly earlier (mean about 0.55 to about 0.53); this is a small positional shift and does not by itself show that the activity was moved. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the alternative route after A21 through A27, A28 and A33 is skipped in nearly all cases, so that almost every trace runs A21 → A22 → A23, whereas before about half of the traces took each route. Participation, routing and relational evidence all show the same difference directly: A22 rose from about 52 in 100 traces to essentially all traces, A27/A28/A33 fell from about 49 in 100 to about 1 in 200, A21 now leads almost exclusively to A22, and A22 and A23 now co-occur in nearly every trace with A22 first while A27/A28/A33 co-occur in almost none. The volume of qualifying evidence (26 items against roughly 0.4 expected for an unchanged process) also cannot be explained as chance sampling of an unchanged process. [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL005, REL006, REL012, REL013, REL014]\n\nAn important competing explanation remains: the evidence cannot distinguish a branch that was removed from one that still exists but is selected only rarely — the single later trace (which runs A21 → A28 → A27 → A33 → A23) shows the branch is still executable, and the after-window picture of its internal order rests on that one trace, so proportions based on it are weak. [OCC002, DIR002, DIR003, DIR004, REL012]\n\nOther differences: the slight advance of A23's relative event position (mean about 0.55 to about 0.53), which is a positional shift only and may simply accompany the changed trace structure. [POS001]",
+  "case_id": "case_fb5527b5e3332d56",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

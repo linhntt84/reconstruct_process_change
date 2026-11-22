@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_eb1ade11ddfbccc0.json",
+  "evidence_sha256": "16cfa172fbad5b744671ce2b64122bea3e0981c330947ba420f183f21d0814c6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:02:48.671298+00:00",
+  "finished_at_utc": "2026-11-16T01:05:46.210145+00:00",
+  "latency_seconds": 177.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20290,
+    "prompt_tokens": 18497,
+    "total_tokens": 38787,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18873,
+      "text_tokens": 1417
+    },
+    "cost": 0.012919549999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61176,
+  "text": "### Observed differences\n\n- A03 and A07 flipped presence categorically: in the earlier window A03 occurred exactly once in every trace (200 of 200) and A07 never occurred, while in the later window A03 occurs in no trace (0 of 200) and A07 occurs exactly once in every trace (200 of 200), at the fourth of five positions. [OCC001, OCC004, POS003, POS007]\n- In the earlier window, traces typically ran A03 → A02 → (A05 or A06) → A04 → A01: A03 preceded A02 in about 86 of 100 traces (in about 14 the order was reversed), A02's outgoing transitions went to A05 in about 42 of 100 cases, to A06 in about 48 and to A03 in about 11, and A04 led to A01 in about 99 of 100 of its outgoing transitions. [REL005, DIR002, DIR003, DIR004, POS002]\n- In the later window, every trace runs A02 → (A05 or A06) → A04 → A07 → A01: A02 is the first event in all 200 traces (previously usually the second), it leads only to A05 (about 53 in 100) or A06 (about 47), A04 leads to A07 in all traces (previously to A01), and A07 leads to A01 in all traces. [POS002, DIR002, DIR004, DIR007, REL015, REL004]\n- Downstream distances grew by one step, as expected if one activity was removed at the start and one inserted before the end: A04 → A01 went from a 1-step gap in about 99 of 100 cases to always 2 steps, A05 and A06 → A01 from 2 to 3 steps, and A02 → A01 from mostly 3 to always 4 steps; the minor before-window variability in these gaps (roughly 10–14 in 100 traces) disappeared. [LAG005, LAG006, LAG008, LAG001, LAG002, LAG003]\n- A05 and A06 remain mutually exclusive alternatives in both windows (never in the same trace); their shares moved slightly, A05 from about 47 to about 53 in 100 traces and A06 from about 53 to about 47. [REL016, OCC002, OCC003]\n- A01 remains the final activity in both windows (last position in essentially all traces, with no outgoing transitions in the later window). [POS001, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in the control flow: A03 was removed from the beginning of the process and A07 was added as a new mandatory step between A04 and A01, with A02 becoming the first activity. Earlier, traces typically began A03 → A02 and ended A04 → A01; in the later window A02 starts every trace and leads directly to the retained exclusive choice between A05 and A06, and A04 is always followed by A07 and then A01. [OCC001, OCC004, DIR002, DIR003, DIR004, DIR007, REL009, REL015]\n\nThe support is direct and consistent: participation changed categorically (200 of 200 to 0 of 200 for A03, 0 of 200 to 200 of 200 for A07, each at one occurrence per trace), the routing change is observed on the edges themselves rather than inferred from positions alone, and the position and lag shifts of A02, A04, A05, A06 and A01 match the one-step shifts this removal and insertion imply. A 200-of-200 to 0-of-200 flip is not plausibly produced by sampling in windows of this size, and the many strongly flagged items (differences larger than in about 95–100 of 100 random re-splits) all describe this one difference rather than scattered unrelated ones. [OCC001, OCC004, DIR004, DIR007, LAG005, POS004, REL012]\n\nLimitations: zero participation only means A03 was not observed in the later window, so the evidence shows it is no longer executed but cannot distinguish deletion from renaming or from becoming unreachable; and no screening baseline is provided, so the expected number of flagged items under no change cannot be compared formally. The evidence also cannot rule out that the A03 disappearance and the A07 appearance are two independent changes rather than one coordinated restructuring. [OCC001, DIR003]\n\nOther differences: the split between the alternatives A05 and A06 shifted by about 6 in 100 cases toward A05 — a difference of a size that random re-splits of a stable process produce fairly often (empirical strength about 0.72) — so it may be sampling noise rather than part of the change; the earlier minority ordering in which A02 preceded A03 (about 14 in 100 traces) disappeared, which is absorbed by A03's removal rather than being a separate change. [OCC002, OCC003, REL016, REL005]",
+  "case_id": "case_eb1ade11ddfbccc0",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

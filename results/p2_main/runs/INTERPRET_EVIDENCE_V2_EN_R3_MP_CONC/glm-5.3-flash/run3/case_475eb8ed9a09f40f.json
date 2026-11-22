@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_475eb8ed9a09f40f.json",
+  "evidence_sha256": "6a002c40dddc6680a7bec00099391046caf04387a1370881ad2fd96e57c0d03e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:45:58.893791+00:00",
+  "finished_at_utc": "2026-11-15T02:48:02.390274+00:00",
+  "latency_seconds": 123.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17294,
+    "prompt_tokens": 56078,
+    "total_tokens": 73372,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15397,
+      "text_tokens": 1897
+    },
+    "cost": 0.0170587
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54340,
+  "text": "### Observed differences\n\n- The routing at A20 flipped. A20 occurs in essentially every trace in both windows. In the earlier window, about 81 in 100 of A20's outgoing transitions led to A29 and about 18 in 100 to A24; in the later window, about 77 in 100 lead to A24 and about 24 in 100 to A29. [DIR002, REL011]\n- Two five-activity blocks swapped how often they run. A21–A25 each appeared in about 19 in 100 traces earlier and in about 77 in 100 in the later window; A26–A30 each appeared in about 82 in 100 traces earlier and in only about 24 in 100 in the later window. [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, OCC011]\n- The two blocks remained mutually exclusive alternatives throughout: earlier, traces typically contained A26–A30 without A21–A25 (for the pair A21/A26, about 81 in 100 traces had only A26 and about 1 in 100 had both); in the later window, traces typically contain A21–A25 without A26–A30 (about 76 in 100 only A21, about 24 in 100 only A26, both together in at most about 1 in 100). [REL025, REL036, REL055, REL063]\n- A20 now precedes the A21–A25 block: earlier, A20 ran without any of A21–A25 in about 81 in 100 traces, whereas in the later window A20 co-occurs with each of them in about 77 in 100 traces, with A20 first in about 76 in 100, and the direct step A20 → A24 occurs at a distance of one event in essentially all observed cases. Conversely, A20 co-occurred with each of A26–A30 in about 82 in 100 traces earlier (A20 first) and in only about 24 in 100 in the later window. [REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, LAG003]\n- Companion activities switched blocks as well. A34 co-occurred with A26–A30 in about 82 in 100 traces earlier but with A21–A25 in about 77 in 100 in the later window; A36 and A37 moved from co-occurring with A26–A30 (about 53 in 100) to co-occurring with A21–A25 (about 52 in 100). A30 still leads to A34 in both windows, and A34 → A37 occurs at similar rates in both. [REL030, REL031, REL032, REL075, REL076, REL077, DIR003, LAG009]\n- A02 declined separately: it appeared in about 25 in 100 traces earlier and about 10 in 100 in the later window; its outgoing transitions shifted from about 81 in 100 leading to A37 to a spread over many targets (none above about 20 in 100, based on only about 20 outgoing transitions in the later window); it now occurs earlier in traces by event position (mean relative position about 0.75 to about 0.50); and A36's edge back to A02 fell from about 26 in 100 of its outgoing transitions to about 1 in 100. Lag items involving A02 rest on only 1–6 later-window observations. [OCC001, DIR001, POS001, DIR005, LAG008, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the relative use of two existing alternative paths changed. The process contains two mutually exclusive activity blocks, A21–A25 and A26–A30, branching at A20: in the earlier window the path through A29 into A26–A30 was taken in about 82 in 100 traces while the path through A24 into A21–A25 ran in about 19 in 100; in the later window the shares reversed to about 24 in 100 and about 77 in 100. The flip is directly visible in A20's outgoing transition shares, and the participation and co-occurrence items consistently show the same reversal, with A34, A36 and A37 now accompanying the A21–A25 path where they previously accompanied A26–A30. [DIR002, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, OCC011, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL030, REL031, REL032, REL075, REL076, REL077]\n\nThe hypothesis is direct and consistent: the branch-point change is measured on about 200 outgoing transitions per window, every involved activity was observed in a substantial share of traces in both windows (the rarer block at about 19–24 in 100), no activity was added or removed, and no new edge bypasses either block, so this is a change in how often existing paths are taken rather than a replacement of one path by another. The screening produced 125 qualifying items against about 1.3 expected if nothing had changed, far beyond what an unchanged process typically yields. [DIR002, REL011, REL016, OCC002, OCC007]\n\nLimitations: most items re-express one block-level reversal through heavily correlated activity pairs, so the number of independent observations is smaller than the item count suggests, and the aggregate shares cannot show whether individual cases changed their routing or the mix of concurrent variants shifted. The evidence also contains no information about what precedes A20, so a change in the composition of cases reaching A20, rather than in A20's own routing, cannot be ruled out. [DIR002, REL011, REL016]\n\nOther differences: A02 became rarer (about 25 in 100 traces earlier to about 10 in 100 later), its outgoing transitions redistributed from mostly leading to A37 to a spread over many targets, it now occurs earlier in traces by event position, and A36's edge back to A02 nearly disappeared; the lag items involving A02 rest on very few later-window observations. These changes are not part of the main hypothesis. [OCC001, DIR001, POS001, DIR005, LAG008, LAG010]",
+  "case_id": "case_475eb8ed9a09f40f",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

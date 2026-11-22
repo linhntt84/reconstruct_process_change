@@ -1,0 +1,56 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e8_labels/evidence/e4b_8ff1786b17bdd92f.json",
+  "evidence_sha256": "63cf4aed24ef991b6861c419dc07f028ed472be1c0d8da64b7a257dcd9b99bca",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:36:17.678578+00:00",
+  "finished_at_utc": "2026-11-15T07:37:57.877379+00:00",
+  "latency_seconds": 100.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14366,
+    "prompt_tokens": 4498,
+    "total_tokens": 18864,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13479,
+      "text_tokens": 887
+    },
+    "cost": 0.0078577
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 57563,
+  "text": "### Observed differences\n\n- **A13 moved from a wide resource pool to a single resource.** In the earlier window, its roughly 270 recorded assignments were spread over 46 distinct resources: the largest handled fewer than 7 in 100, and about 55 in 100 went to a long tail of occasional resources. In the later window, all roughly 280 recorded assignments were attributed to one resource, User_134. The assignment profile changed completely (dissimilarity 1.0), the concentration index rose from about 0.03 to 1.0, the top-resource share from about 7 in 100 to 100 in 100, and distinct resources fell from 46 to 1; each difference exceeds all 2000 random re-splits. [ASSIGN001, CONC001]\n\n- **A22 kept a wide pool, but its resource mix changed.** In the earlier window the top contributor (User_49) handled about 10 in 100 assignments and about half went to a long tail; in the later window User_49 handled about 4 in 100, several earlier contributors no longer appear, several new ones appear at about 5–7 in 100 each, and the long tail covers about 43 in 100. The profile rests on about 120 assignments in each window. [ASSIGN002]\n\n- **Elapsed time between the completions of A04 and A01 grew.** The median rose from about 25 to about 42 hours, the mean from about 27 to about 46 hours, and the 75th percentile from about 38 to about 66 hours; the overall distributional difference is about 21 hours. The pair was observed in all 200 traces of each window, and no random re-split produced a larger difference. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the resource allocation of A13: in the earlier window the activity was executed by a pool of 46 resources with no dominant one (top share under 7 in 100), while in the later window a single resource, User_134, carried every recorded assignment. The change is shown directly by the assignment profile (complete dissimilarity) and the concentration statistics (index about 0.03 to 1.0; 46 resources to 1), both stronger than every random re-split; the resource family produced 3 items against roughly 0.006 expected when nothing changes — several hundred times the chance expectation — so sampling variation cannot account for the count as a whole. Participation barely moved (about 270 vs 280 assignments) and no control-flow item qualified (0 vs about 0.19 expected), which fits a reallocation of who executes the activity rather than a structural or participation change. Limitations: the two A13 items describe the same underlying behaviour and are not independent confirmations, and the evidence cannot show whether the single code reflects a genuine concentration of work or a change in how the executing resource was recorded. [ASSIGN001, CONC001]\n\nOther differences:\n- The resource mix for A22 shifted while the activity remained spread over many resources; on its own this is a redistribution without a clear single direction, and it is not part of the main hypothesis. [ASSIGN002]\n- The elapsed time between the completions of A04 and A01 rose by about 17 hours at the median. This rests on a single time item, and the time family produced 1 item against about 0.014 expected without change, so by itself it is the kind of result a stable process still produces occasionally at this screening strictness; it is best read as a possible timing change that the current evidence cannot confirm on its own. [TWAIT001]",
+  "case_id": "e4b_8ff1786b17bdd92f",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis",
+  "text_original": "### Observed differences\n\n- **O_Create Offer moved from a wide resource pool to a single resource.** In the earlier window, its roughly 270 recorded assignments were spread over 46 distinct resources: the largest handled fewer than 7 in 100, and about 55 in 100 went to a long tail of occasional resources. In the later window, all roughly 280 recorded assignments were attributed to one resource, User_134. The assignment profile changed completely (dissimilarity 1.0), the concentration index rose from about 0.03 to 1.0, the top-resource share from about 7 in 100 to 100 in 100, and distinct resources fell from 46 to 1; each difference exceeds all 2000 random re-splits. [ASSIGN001, CONC001]\n\n- **W_Complete application kept a wide pool, but its resource mix changed.** In the earlier window the top contributor (User_49) handled about 10 in 100 assignments and about half went to a long tail; in the later window User_49 handled about 4 in 100, several earlier contributors no longer appear, several new ones appear at about 5–7 in 100 each, and the long tail covers about 43 in 100. The profile rests on about 120 assignments in each window. [ASSIGN002]\n\n- **Elapsed time between the completions of A_Concept and A_Accepted grew.** The median rose from about 25 to about 42 hours, the mean from about 27 to about 46 hours, and the 75th percentile from about 38 to about 66 hours; the overall distributional difference is about 21 hours. The pair was observed in all 200 traces of each window, and no random re-split produced a larger difference. [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in the resource allocation of O_Create Offer: in the earlier window the activity was executed by a pool of 46 resources with no dominant one (top share under 7 in 100), while in the later window a single resource, User_134, carried every recorded assignment. The change is shown directly by the assignment profile (complete dissimilarity) and the concentration statistics (index about 0.03 to 1.0; 46 resources to 1), both stronger than every random re-split; the resource family produced 3 items against roughly 0.006 expected when nothing changes — several hundred times the chance expectation — so sampling variation cannot account for the count as a whole. Participation barely moved (about 270 vs 280 assignments) and no control-flow item qualified (0 vs about 0.19 expected), which fits a reallocation of who executes the activity rather than a structural or participation change. Limitations: the two O_Create Offer items describe the same underlying behaviour and are not independent confirmations, and the evidence cannot show whether the single code reflects a genuine concentration of work or a change in how the executing resource was recorded. [ASSIGN001, CONC001]\n\nOther differences:\n- The resource mix for W_Complete application shifted while the activity remained spread over many resources; on its own this is a redistribution without a clear single direction, and it is not part of the main hypothesis. [ASSIGN002]\n- The elapsed time between the completions of A_Concept and A_Accepted rose by about 17 hours at the median. This rests on a single time item, and the time family produced 1 item against about 0.014 expected without change, so by itself it is the kind of result a stable process still produces occasionally at this screening strictness; it is best read as a possible timing change that the current evidence cannot confirm on its own. [TWAIT001]",
+  "label_replacements": {
+    "W_Complete application": 2,
+    "O_Create Offer": 3,
+    "A_Accepted": 2,
+    "A_Concept": 2
+  },
+  "label_leftovers": []
+}

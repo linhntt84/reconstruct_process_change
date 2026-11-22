@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_ada604bab879.json",
+  "evidence_sha256": "8c22a7103149d1b13afbc5d4b4d4c89f34a846a51bf814664686a67cad91a473",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T04:03:26.328623+00:00",
+  "finished_at_utc": "2026-11-16T04:08:52.056563+00:00",
+  "latency_seconds": 325.73,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 38482,
+    "prompt_tokens": 82148,
+    "total_tokens": 120630,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36224,
+      "text_tokens": 2258
+    },
+    "cost": 0.0315632
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 119295,
+  "text": "### Observed differences\n\n- In the later window, every measured activity is executed more often per case: mean occurrences per trace rose for A05 from 0.39 to 0.58 (roughly half as many again), A04 from 0.42 to 0.55, A06 from 0.43 to 0.56, the always-together pair A01/A11 from 0.88 to 1.06, A08/A09 from 0.97 to 1.05, and the block A02/A07/A10 from 0.46 to 0.53. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- The activities also reach more cases: A05 appears in about 37 of 100 traces versus about 26 before, A04 and A06 in about 34 versus 29, A01/A11 in about 69 versus 65, and A02/A07/A10 in about 33 versus 28; A08/A09 stay flat at about 66 in 100, and A03 is present in every trace in both windows. [OCC001, OCC003, OCC004, OCC005, OCC007, OCC010, REL002, REL015, REL024]\n- Repetition within a case increased: the share of traces with repeated occurrences rose for A01/A11 from about 19 to 26 in 100, A08/A09 from 18 to 24 and A05 from 9 to 13, and self-pairs within five steps became more frequent (A01→A01 in 27 versus 18 traces, A04→A04 15 versus 8, A11→A11 27 versus 17). [OCC001, OCC004, OCC007, LAG001, LAG026, LAG105]\n- Pair relations mirror these participation gains rather than adding independent signals: for pairs involving the activities above, co-occurrence rose while \"neither present\" fell (A02–A05: co-occurrence about 20 versus 13 in 100, neither 50 versus 59; A03–A05: co-occurrence 37 versus 26 in 100), whereas pairs among A03, A08 and A09 barely move. [REL013, REL021, REL024, REL050]\n- Routing shares moved at several points: from A02, transitions to A07 rose from about 35% to 58% of its outgoing transitions while those to A10 fell from 58% to 39%; from A10, transitions to A02 rose from 35% to 50% and those to A07 fell from 60% to 38%; from A04, transitions to A05 rose from 17% to 31% while those to A02 fell from 30% to 17%; from A09, transitions to A03 fell from 55% to 43% while those to A04 and A05 rose from 13% to 20% and from 7% to 16%. [DIR002, DIR003, DIR007, DIR008]\n- Some orderings loosened: A08 precedes A09 in 42 of 100 traces versus 49 before, with more interleaving (24 versus 18 in 100); A09→A03 pairs within one step fell from 84% to 69% while gap-5 pairs rose from 10% to 22%; A02→A07 immediate pairs rose from 20% to 34%. A06's median event position moved from about a third to a half of the trace (positions are event ranks, not clock time). [LAG018, LAG076, POS005, REL050]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the activities of the process are executed more often: most activities occur in a larger share of cases and several repeat more often within a case. A05 shows this most clearly (about 37 of 100 traces versus 26 before; mean occurrences per trace 0.39→0.58), with A04 and A06 following the same pattern more modestly (about 29→34 in 100 traces), the inseparable pair A01+A11 rising from 65 to 69 in 100 traces with repeats up from 19 to 26 in 100, and A08+A09 keeping their participation (about 66 in 100) while repeating more (18→24 in 100). The signs are direct and consistent: all ten measured activities show more occurrences per trace, co-occurrence rises exactly where participation rises (e.g., A03–A05 from 26 to 37 in 100, with A03 present throughout), and self-pairs within five steps become more common. Limitations: each window holds 200 traces, so the smaller gains (A02/A07/A10, about 28→33 in 100) are weak alone; the many agreeing items need not be independent; and the evidence cannot rule out that a single trace-level difference — cases simply containing more executions — underlies all of these shifts rather than separate per-activity changes. [OCC001, OCC003, OCC004, OCC005, OCC007, OCC010, REL021, LAG001, LAG105]\n\nOther differences:\n- Routing shares shifted without any involved activity disappearing: from A02 the outflow moved from A10 (about 58%→39%) to A07 (35%→58%), and from A10 from A07 (60%→38%) to A02 (35%→50%); from A04 toward A05 (17%→31%) and away from A02 (30%→17%); from A09 away from A03 (55%→43%) toward A04 and A05 (13%→20% and 7%→16%). A by-product of the higher repetition cannot be ruled out as the source of these share shifts. [DIR002, DIR003, DIR007, DIR008]\n- The fixed A08→A09 order loosened (42 versus 49 in 100 traces, more interleaving) and A09→A03 became less immediate (84%→69% within one step). [LAG076, REL050]\n- A06's median event position moved later in the trace (about a third to a half of the trace length). [POS005]",
+  "case_id": "null_cdlg_ada604bab879",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

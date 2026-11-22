@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, A30, A31 and A36 each occurred about 3.4–3.5 times per trace and were repeated within about 75 in 100 traces; in the later window each occurs about once per trace (about 1.05) and repeats in only about 1–2 in 100 traces, while all three still appear in every trace in both windows. [OCC001, OCC002, OCC003]
+- The outgoing routing of A36 changed sharply: earlier, about 70 in 100 of A36's outgoing transitions returned to A30 and about 29 in 100 went to A25; in the later window, about 93 in 100 go to A25 and only about 4 in 100 return to A30. The observed outgoing transitions of A36 fell from about 690 to about 210, matching the drop in occurrences. [DIR003]
+- Routing from A30 to A31 and from A31 to A36 remained dominant in both windows (about 97–99 in 100 transitions in each), with only small shifts among rare edges. [DIR001, DIR002]
+- The relationship between A30 and A36 changed from repeated or interleaved execution to a single fixed pass: the two activities co-occur in every trace in both windows, but earlier their execution was interleaved or repeated in 75 in 100 traces, whereas in the later window A30 runs before A36 in a single pass in 98 in 100 traces. [REL001]
+- The event positions of A30 and A36 became much less variable (spread about 0.12 to about 0.07 for A30 and about 0.12 to about 0.06 for A36) while their mean relative positions stayed nearly the same (A30 about 0.44 to 0.42, A36 about 0.49 in both); these are event positions, not clock times. [POS001, POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the repeated execution of the block A30 → A31 → A36 largely stopped. Earlier, this block ran about three times per case, with repeats in about 3 of 4 cases and A36 returning to A30 in about 70 in 100 of its outgoing transitions; in the later window it typically runs once per case, A36 continues to A25 in about 93 in 100 of its transitions, and the return to A30 survives in only about 4 in 100. A30 and A31 keep their roles in the chain (A30 → A31 → A36) in both windows. The change is shown directly by the collapse in occurrences and recurrence for all three activities [OCC001, OCC002, OCC003], by the shift of A36's outgoing edge from A30 to A25 [DIR003], and by the change from interleaved/repeated to a single fixed A30-before-A36 order [REL001]; the strongly reduced positional spread [POS001, POS002] fits the same behaviour. These items likely reflect one underlying trace behaviour rather than independent confirmations. Nine items qualified against roughly 0.44 expected by chance (about 20 times the expectation, all in the control-flow family), so chance alone cannot explain the set as a whole. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, POS001, POS002, REL001]
+
+A competing explanation the evidence cannot rule out: the loop may still exist but fire only rarely — about 1–2 in 100 traces still show repeats and about 4 in 100 of A36's transitions still return to A30 — so this could be a strongly reduced loop probability rather than a complete removal of the repetition. [OCC001, OCC002, OCC003, DIR003]
+
+Other differences: only minor redistributions among the rare outgoing edges of A30 and A31 (each below about 0.5 in 100 transitions in both windows), which are not part of the main hypothesis. [DIR001, DIR002]

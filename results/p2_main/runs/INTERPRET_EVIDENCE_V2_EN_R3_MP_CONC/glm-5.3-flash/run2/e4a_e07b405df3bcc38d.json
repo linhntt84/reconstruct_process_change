@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_e07b405df3bcc38d.json",
+  "evidence_sha256": "f2a55424a24fdffe3729d2ffe3a301bec0226bf1b943656fa3f62417e01f62f8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:02:34.095559+00:00",
+  "finished_at_utc": "2026-11-15T02:03:49.045357+00:00",
+  "latency_seconds": 74.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10091,
+    "prompt_tokens": 45365,
+    "total_tokens": 55456,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8720,
+      "text_tokens": 1371
+    },
+    "cost": 0.01185025
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32057,
+  "text": "### Observed differences\n\n- Two blocks of activities became near-universal. A28, A29, A30, A32 and A33 each ran in about 48 in 100 traces in the earlier window and in about 199 of 200 traces in the later window; A34–A38 each ran in about 52 in 100 traces before and about 98 in 100 after. None of these activities repeats within a trace in either window, so the change is participation, not repetition. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- In the earlier window the two blocks were mutually exclusive alternatives: cross-block pairs such as A28 with A34, or A30 with A38, never occurred in the same trace (0 of 200 traces). In the later window they co-occur in about 97–98 in 100 traces, always with the A28-side activity before the A34-side activity. [REL025, REL029, REL033, REL037, REL044, REL055]\n- The blocks sit between A25 and A26 in both windows. Before, A25's outgoing transitions split about 48/52 between the two blocks, and first-block activities led directly on to A26 (about 28 in 100 of A28's outgoing transitions, about 21 in 100 for A32). In the later window A25 leads almost exclusively into the first block (about 99 in 100 of its transitions), the direct edges from the first block to A26 disappear, and small shares of about 2–5 in 100 go from first-block activities to second-block activities instead. [REL001, REL006, REL011, REL016, DIR001, DIR002, DIR003, DIR004]\n- Within each block there is no fixed order in either window: member pairs appear in both orders in similar proportions (for example A28 before A29 in about 50 in 100 later co-occurrences and A29 before A28 in about 50 in 100). [REL021, REL030, REL045, REL056, REL065]\n- Relative positions shifted consistently with an inserted second block: A25 moved earlier (mean relative position about 0.64 to about 0.55), first-block activities earlier (about 0.73 to about 0.63), second-block activities later (about 0.72 to about 0.76) and A26 later (about 0.82 to about 0.84). [POS001, POS002, POS003, POS008, POS012]\n- The ordered pair A25 followed by a second-block activity within five steps fell from about 104 of 200 traces to a single trace; the after-profiles of these gap items rest on only 1–4 observations, so their specific gap values are not reliable. [LAG001, LAG002, LAG003, LAG004, LAG005]\n- The elapsed time between consecutive completion events roughly halved for two pairs around A20: A14→A20 from about 1.0 to about 0.48 hours and A15→A20 from about 1.0 to about 0.51 hours, with similar event counts in both windows (89 vs 93 and 111 vs 107). [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe screening comparison makes a chance explanation implausible: the control-flow family produced 98 qualifying items against about 1 expected without change, and the time family 2 items against about 0.03 expected [OCC001, REL025, TWAIT001]. The evidence supports the hypothesis that two blocks of activities that were previously alternatives became a single sequence executed in every case: before, each case ran either the block A28, A29, A30, A32, A33 (about 48 in 100 cases) or the block A34, A35, A36, A37, A38 (about 52 in 100), never both, while in the later window nearly every case runs both blocks in order — first the A28-side block, then the A34-side block — between A25 and A26. The support is direct and consistent: relational items show the change from \"never together\" to \"almost always together, in a fixed relative order\" [REL025, REL033, REL044], participation of all ten activities rose from about half of traces to near-universal [OCC001, OCC006], and the redirection of edges at A25 and towards A26 matches the second block being inserted after the first [DIR001, DIR002, DIR003, DIR004]. Limitations: the evidence shows co-occurrence and relative order of anonymous activities, not the underlying model, so it cannot distinguish a removed routing choice from a case mix in which only traces running both blocks appear; the internal order within each block remains unordered in both windows; and the gap-based items in the later window rest on 1–4 observations [LAG001, LAG005].\n\nOther differences: a timing change in its own right, without a structural counterpart among the reported items — the elapsed time between consecutive completion events around A20 (pairs A14→A20 and A15→A20) fell to roughly half, from about 1.0 hour to about 0.5 hours, at comparable event counts in both windows [TWAIT001, TWAIT002].",
+  "case_id": "e4a_e07b405df3bcc38d",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

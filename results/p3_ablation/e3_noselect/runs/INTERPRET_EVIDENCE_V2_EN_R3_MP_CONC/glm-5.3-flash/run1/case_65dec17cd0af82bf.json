@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_65dec17cd0af82bf.json",
+  "evidence_sha256": "a4dcbe9e77e1b0cbe38be9addd74c05ea6896fa78ec8e307581d24ec156777ba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:17:49.381529+00:00",
+  "finished_at_utc": "2026-11-14T14:21:10.307414+00:00",
+  "latency_seconds": 200.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33070,
+    "prompt_tokens": 49095,
+    "total_tokens": 82165,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31252,
+      "text_tokens": 1818
+    },
+    "cost": 0.02389925
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 105196,
+  "text": "### Observed differences\n\n- In the later window, two activities appear that were not observed at all in the earlier window: A02 in about 57 in 100 traces (113 of 200) and A01 in about 15 in 100 (30 of 200). A02 sits at the final position of every trace containing it; A01 occurs about two-thirds to four-fifths of the way through its traces. [OCC001, OCC002, POS001, POS002]\n- A02 behaves as a new common ending reached by three disjoint routes: after A01 and A16 (15 in 100 traces), after A19 (22 in 100), and after A09 (about 20 in 100). A16 and A19, which in the earlier window were observed only at the last position of their traces (no outgoing transitions were observed from either), now lead to A02 in every observed outgoing transition (30 and 44 transitions); A09, which previously continued to A14, now sends about half of its outgoing transitions to A02. [DIR006, DIR011, DIR014, REL012, REL016, REL017, REL034, REL035, REL045]\n- A01 is placed immediately before A16: earlier, A16 received about half of A10's outgoing transitions and about a third of A17's; later, A10 and A17 send about 42% and 50% of their transitions to A01 instead, A01 leads to A16 in all 30 observed cases, and the gap between A10 and A16 moved from predominantly one step to two. [DIR001, DIR007, DIR012, LAG020, REL008]\n- Routing in the A03–A07–A09–A14 loop was rewired: earlier, A07 led to A09 in about half of its outgoing transitions and A09 continued to A14; later, A07 leads directly to A14 (about half) and A09 no longer appears among its observed successors, while A09 is now reached from A03 (about 19% of A03's outgoing transitions) and from A14 (about 14%). A09 became much rarer (mean occurrences per trace 1.07 → 0.38; participation 37 in 100 → 20 in 100), A13 fell from 23 in 100 to about 8–9 in 100 traces and now occurs later within traces, and formerly frequent pairings largely vanished (A09 with A14: 37 in 100 → 13 in 100; A09 with A19: 22 in 100 → 0). [DIR002, DIR004, DIR006, DIR009, OCC009, OCC013, POS005, POS007, REL025, REL033, LAG011, LAG014]\n- Most other activities show only modest participation shifts of roughly 3–8 in 100 traces — for example the A04/A06/A12 group from 51 in 100 to 43–44 in 100 and A08/A19/A20 from 29 in 100 to 22 in 100, with rises for A03 (30 → 35 in 100) and A07 (23 → 28 in 100); several of these differences fall within the range that random re-splits of unchanged behaviour produce. [OCC003, OCC004, OCC006, OCC007, OCC012, OCC019, OCC020]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the later window contains a new concluding fragment: traces that previously ended at A16 or A19 now continue to a new final activity A02, and a new activity A01 is inserted immediately before A16, so that A10 and A17 reach A16 only through A01; in addition, A09 — which previously continued to A14 — now exits to A02 on about half of its outgoing transitions. The three routes into A02 (via A01→A16, via A19, via A09) are disjoint and together account for every trace containing A02, about 57 in 100. [OCC001, OCC002, DIR001, DIR006, DIR007, DIR011, DIR012, DIR014, POS002, REL012, REL016, REL017, REL034, REL035, REL045, LAG020]\n\nThe hypothesis rests on direct, mutually consistent signals from every indicator family rather than on the number of items: appearance from zero participation, successor changes that show the new ending and the insertion directly, the order relations A01 before A16 before A02 and A19 before A02, and the A10→A16 distance shifting from one step to two. A02 appearing in 113 of 200 later traces but in none of 200 earlier traces makes sampling variation implausible. What the evidence cannot rule out is that this reflects a new mix of trace variants (a variant with this ending appearing in the later sample) rather than a modification of one process, or that A02 is a relabelled existing end-step; no screening baseline was included, so the number of qualifying items could not be checked against a chance expectation. [OCC002, DIR007, DIR011, DIR014, REL008, LAG020]\n\nOther differences: the rewiring of the A03–A07–A09–A14 loop described above, together with the sharp decline of A09 (mean per trace 1.07 → 0.38) and A13 (participation 23 in 100 → 8–9 in 100), and small participation declines of about 3–8 in 100 traces for several other activities (e.g., A04/A06/A12 from 51 to 43–44 in 100). The evidence cannot show whether these shifts are consequences of the same restructuring of the process tail or separate changes. [DIR002, DIR004, DIR009, OCC004, OCC006, OCC009, OCC012, OCC013, LAG011, LAG014]",
+  "case_id": "case_65dec17cd0af82bf",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

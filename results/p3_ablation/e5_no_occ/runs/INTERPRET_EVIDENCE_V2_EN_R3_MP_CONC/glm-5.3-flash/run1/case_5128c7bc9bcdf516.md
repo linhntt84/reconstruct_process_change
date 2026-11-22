@@ -1,0 +1,22 @@
+### Observed differences
+
+- Participation is unchanged: A15, A17, A18, A19, A20 and A21 each appear in 200 of 200 traces in both windows, and every measured pair of them co-occurs in all traces in both windows, so no activity was added, removed or made optional. [POS001, POS002, POS003, POS004, POS005, POS006, REL001]
+- In the earlier window there was no fixed order between many of these activities: A19 ran before A15 in about 75 in 100 traces and before A18 in about 88 in 100, while A15/A21 and A17/A19 were split roughly 50/50. In the later window every measured pair follows one single order in about 995 of 1,000 traces (for example A15 before A19, A17 before A19, A18 before A19). [REL001, REL006, REL003, REL004, REL002, REL005, REL007, REL008]
+- Successor choices collapsed from several options to one. Earlier, from A15 about 62 in 100 outgoing transitions led to A18 with the rest split across A19, A20 and A21; from A18 about 53 in 100 led to A27; from A19 about 56 in 100 led to A21 and 28 in 100 back to A17. In the later window each source keeps one successor in essentially all cases: A26→A17, A17→A15, A15→A18, A18→A19, A19→A21, A21→A20, A20→A27. [DIR001, DIR003, DIR004, DIR002, DIR005, DIR006, DIR007]
+- Pairwise distances now match one chain, A26→A17→A15→A18→A19→A21→A20→A27: A15 reached A18 in one step in about 62 in 100 earlier traces versus about 995 in 1,000 later; A17 reached A20 at distance five in about 995 in 1,000 later traces after being spread over one to five steps earlier; A26 reached A21 at exactly distance five in about 995 in 1,000 later traces. [LAG001, LAG009, LAG029, LAG003, LAG005]
+- Relative positions shifted slightly and consistently with the new sequence: A15, A17 and A18 sit a little earlier (A18 mean position about 0.68 to 0.62) and A19, A20 and A21 a little later (A19 about 0.59 to 0.65); these are event positions, not clock times. [POS003, POS004, POS001, POS006]
+- Five reverse-direction distance items (A19→A15, A19→A18, A20→A18, A21→A18, A26→A20) each rest on a single after-window observation and only reflect that the reversed ordered pair no longer occurs once the fixed sequence is in place. [LAG014, LAG015, LAG019, LAG021, LAG028]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Screening context: 50 control-flow items qualified against about 0.36 expected if nothing had changed, and every item's difference exceeds about 995 of 1,000 random re-splits, so this volume of differences cannot be explained by sampling variation in a stable process. [screening]
+
+Main hypothesis: the ordering constraints among A15, A17, A18, A19, A20 and A21 — entered from A26 and closing at A27 — changed from an unfixed order to one fixed sequence. In the later window these activities run as A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27 in essentially every trace, whereas in the earlier window the same activities occurred just as often but in varying orders, with several possible successors for each activity. [REL001, REL004, REL006, DIR001, DIR003, DIR004, LAG001, LAG009, LAG029]
+
+Supporting signs: the change is shown directly by relational evidence — all eight measured pairs move from split or reversed orders to one consistent order — and is corroborated by successor distributions collapsing to single successors and by every after-window distance matching the same chain. Constant participation and co-occurrence rule out activities being added, removed, made optional or repeated differently, so the difference lies in ordering, not in which activities run. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR006, LAG018]
+
+Limitations: the evidence cannot distinguish whether the earlier mixed order was interleaving within individual cases or a mixture of different fixed orders across cases; both would produce the observed split pair orders, so the hypothesis concerns ordering constraints rather than within-case behaviour before the change. [REL003, REL004]
+
+Other differences: none beyond the reordering itself. The small position shifts of A15/A17/A18 (earlier) and A19/A20/A21 (later) are part of the same change, and the five low-support reverse-distance items are artifacts of the new fixed order rather than separate changes. [POS001, POS003, POS004, POS006, LAG014, LAG015, LAG019, LAG021, LAG028]

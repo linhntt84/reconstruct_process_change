@@ -1,0 +1,74 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "0699b58e09da09650333cce51ba90bb8547dd4ba1c3a1acb86f218e9a9b2e284",
+  "sent_prompt_sha256": "48e14479c1071fbe0287ad12acf421a744cc81ed5f62a273f8b271998ff8cc98",
+  "evidence_path": "results/p0_llm_calibration/evidence/B/case_3b7178906b357512.json",
+  "evidence_sha256": "b614cd718d28a47f56940251af59057d832e693f0bfdf19d0f9d9171c82f1304",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": false
+  },
+  "started_at_utc": "2026-11-11T12:40:02.382685+00:00",
+  "finished_at_utc": "2026-11-11T12:40:24.730939+00:00",
+  "latency_seconds": 22.35,
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1380,
+    "prompt_tokens": 3103,
+    "total_tokens": 4483,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1003
+    }
+  },
+  "response_model": "deepseek-v4-flash",
+  "transport": "curl",
+  "text": "### Observed differences\n\n- In the later window, activities A25 and A26 each occur exactly once per trace, whereas before they occurred on average 1.58 times per trace, with about 36.5% of traces containing more than one occurrence of each. [OCC001, OCC002]\n- The successor distribution of A26 changed: before, about 37% of its outgoing transitions went to A25 and 63% to A20; after, all observed transitions go to A20. [DIR001]\n- The relation between A25 and A26 changed: before, A25 preceded A26 in about 64% of traces, and the two were interleaved or repeated in about 37%; after, A25 always precedes A26 and there is no interleaving or repetition. [REL001]\n- The gap between A25 and A26 became fixed: before, the gap was one event in about 36% of cases, with some longer gaps; after, the gap is always one event. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process changed so that activities A25 and A26 are no longer repeated or interleaved; they now occur exactly once per case, with A25 immediately preceding A26. All five indicators point consistently to the same underlying difference: the recurrence of A25 and A26 disappeared, A26 no longer routes back to A25, and the order became strictly A25 then A26 with no intervening events. The number of distinct differences (one) clearly exceeds the 0.29 items expected by chance under screening. A competing explanation—that the before window simply captured an unusual sample with a recurring variant—cannot be fully excluded, but the consistency across occurrence, routing, relation, and lag makes that unlikely.",
+  "raw_response": {
+    "id": "chatcmpl-bc09df41b8a4b547",
+    "created": 1794400802,
+    "model": "deepseek-v4-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "vllm-0.28.0-tp2-ep-b3976021",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "### Observed differences\n\n- In the later window, activities A25 and A26 each occur exactly once per trace, whereas before they occurred on average 1.58 times per trace, with about 36.5% of traces containing more than one occurrence of each. [OCC001, OCC002]\n- The successor distribution of A26 changed: before, about 37% of its outgoing transitions went to A25 and 63% to A20; after, all observed transitions go to A20. [DIR001]\n- The relation between A25 and A26 changed: before, A25 preceded A26 in about 64% of traces, and the two were interleaved or repeated in about 37%; after, A25 always precedes A26 and there is no interleaving or repetition. [REL001]\n- The gap between A25 and A26 became fixed: before, the gap was one event in about 36% of cases, with some longer gaps; after, the gap is always one event. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process changed so that activities A25 and A26 are no longer repeated or interleaved; they now occur exactly once per case, with A25 immediately preceding A26. All five indicators point consistently to the same underlying difference: the recurrence of A25 and A26 disappeared, A26 no longer routes back to A25, and the order became strictly A25 then A26 with no intervening events. The number of distinct differences (one) clearly exceeds the 0.29 items expected by chance under screening. A competing explanation—that the before window simply captured an unusual sample with a recurring variant—cannot be fully excluded, but the consistency across occurrence, routing, relation, and lag makes that unlikely.",
+          "role": "assistant",
+          "reasoning_content": "We need to answer with sections. Evidence list has 5 items. Need to describe differences, then inference. Screening: units_tested 59, expected without change 0.29. So expected few items. We have 5 items, but they are about same activities A25 and A26. OCC001 and OCC002 are identical for A25 and A26. DIR001 about A26 successor. REL001 about A25-A26 relation. LAG001 about lag between A25 and A26. So distinct differences: one underlying change: A25 and A26 used to be repeated/interleaved, now each occurs exactly once, A26 always after A25, no repetition. So count as one distinct difference. That is >0.29, so not just chance. But need to judge support. The evidence strongly suggests that the process changed: before, A25 and A26 each occurred on average 1.58 times per trace, with recurrence support 0.365 (i.e., in about 36.5% of traces they occurred more than once). After, each occurs exactly once per trace (mean 1.0, recurrence 0). Also DIR: before A26 had successors A25 (36.7%) and A20 (63.3%), after only A20 (100%). So A26 no longer followed by A25. REL: before A25 before A26 in 63.5% of traces, interleaved/repeated 36.5%, after A25 before A26 100%, no interleaving. LAG: before lag 1 in 35.7%, lag 3 in 5.1%, lag 5 in 1.3%, after lag 1 in 100%. So the pattern is consistent: the repetition and interleaving of A25 and A26 disappeared; now each occurs once, A25 immediately before A26 (lag 1). This is a structural change in the process: the loop or repetition involving A25 and A26 was removed, and the order became fixed A25 then A26. However, we must be careful: the hypothesis is about a structural change. The evidence directly shows changes in occurrence, routing, relation, and lag. All point to the same change. So support level: Supported hypothesis. But we need to state as possibility, not confirmed. Also mention competing explanation: sampling differences? But the changes are large and consistent across multiple indicators. However, note that the windows are finite samples, but the empirical strength is high (0.995) for each. Also screening expected 0.29, we have one distinct difference. So supported.\n\nNeed to write observed differences concisely. Use numbers: before, A25 and A26 each occurred on average 1.58 times per trace, and in about 36.5% of traces they occurred more than once; after, each occurs exactly once per trace (mean 1.0, no recurrence). [OCC001, OCC002] Also, before, A26 was followed by A25 in about 37% of its outgoing transitions, and by A20 in about 63%; after, A26 is always followed by A20. [DIR001] Before, A25 preceded A26 in about 64% of traces, and the two were interleaved or repeated in about 37%; after, A25 always precedes A26 and there is no interleaving or repetition. [REL001] Before, the gap between A25 and A26 was one event in about 36% of cases, with some longer gaps; after, the gap is always one event. [LAG001] So the main difference: the repetition and interleaving of A25 and A26 disappeared; now each occurs once, with A25 immediately before A26.\n\nInference: Support level: Supported hypothesis. State hypothesis: The process changed so that activities A25 and A26 are no longer repeated or interleaved; they now occur exactly once per case, with A25 immediately preceding A26. Supporting signs: all indicators agree. Limitation: The evidence is from two windows of 200 traces each; the change is consistent and large, but we cannot rule out that the before window captured a temporary variant. However, the consistency across indicators supports a structural change. Also mention that the change is not just a shift in variant frequencies but a change in the underlying behaviour.\n\nNeed to follow instructions: first line exactly one of the three. Then bullet or paragraph. Also mention competing explanation: sampling differences in variant frequencies? But here the change is not just a rare variant; it's a systematic change in occurrence and order. However, we can mention that the before window had a recurring pattern that is absent after, and the evidence cannot rule out that the before window was an unusual sample, but the consistency makes that unlikely.\n\nLet's write.",
+          "provider_specific_fields": {
+            "refusal": null,
+            "reasoning": "We need to answer with sections. Evidence list has 5 items. Need to describe differences, then inference. Screening: units_tested 59, expected without change 0.29. So expected few items. We have 5 items, but they are about same activities A25 and A26. OCC001 and OCC002 are identical for A25 and A26. DIR001 about A26 successor. REL001 about A25-A26 relation. LAG001 about lag between A25 and A26. So distinct differences: one underlying change: A25 and A26 used to be repeated/interleaved, now each occurs exactly once, A26 always after A25, no repetition. So count as one distinct difference. That is >0.29, so not just chance. But need to judge support. The evidence strongly suggests that the process changed: before, A25 and A26 each occurred on average 1.58 times per trace, with recurrence support 0.365 (i.e., in about 36.5% of traces they occurred more than once). After, each occurs exactly once per trace (mean 1.0, recurrence 0). Also DIR: before A26 had successors A25 (36.7%) and A20 (63.3%), after only A20 (100%). So A26 no longer followed by A25. REL: before A25 before A26 in 63.5% of traces, interleaved/repeated 36.5%, after A25 before A26 100%, no interleaving. LAG: before lag 1 in 35.7%, lag 3 in 5.1%, lag 5 in 1.3%, after lag 1 in 100%. So the pattern is consistent: the repetition and interleaving of A25 and A26 disappeared; now each occurs once, A25 immediately before A26 (lag 1). This is a structural change in the process: the loop or repetition involving A25 and A26 was removed, and the order became fixed A25 then A26. However, we must be careful: the hypothesis is about a structural change. The evidence directly shows changes in occurrence, routing, relation, and lag. All point to the same change. So support level: Supported hypothesis. But we need to state as possibility, not confirmed. Also mention competing explanation: sampling differences? But the changes are large and consistent across multiple indicators. However, note that the windows are finite samples, but the empirical strength is high (0.995) for each. Also screening expected 0.29, we have one distinct difference. So supported.\n\nNeed to write observed differences concisely. Use numbers: before, A25 and A26 each occurred on average 1.58 times per trace, and in about 36.5% of traces they occurred more than once; after, each occurs exactly once per trace (mean 1.0, no recurrence). [OCC001, OCC002] Also, before, A26 was followed by A25 in about 37% of its outgoing transitions, and by A20 in about 63%; after, A26 is always followed by A20. [DIR001] Before, A25 preceded A26 in about 64% of traces, and the two were interleaved or repeated in about 37%; after, A25 always precedes A26 and there is no interleaving or repetition. [REL001] Before, the gap between A25 and A26 was one event in about 36% of cases, with some longer gaps; after, the gap is always one event. [LAG001] So the main difference: the repetition and interleaving of A25 and A26 disappeared; now each occurs once, with A25 immediately before A26.\n\nInference: Support level: Supported hypothesis. State hypothesis: The process changed so that activities A25 and A26 are no longer repeated or interleaved; they now occur exactly once per case, with A25 immediately preceding A26. Supporting signs: all indicators agree. Limitation: The evidence is from two windows of 200 traces each; the change is consistent and large, but we cannot rule out that the before window captured a temporary variant. However, the consistency across indicators supports a structural change. Also mention that the change is not just a shift in variant frequencies but a change in the underlying behaviour.\n\nNeed to follow instructions: first line exactly one of the three. Then bullet or paragraph. Also mention competing explanation: sampling differences in variant frequencies? But here the change is not just a rare variant; it's a systematic change in occurrence and order. However, we can mention that the before window had a recurring pattern that is absent after, and the evidence cannot rule out that the before window was an unusual sample, but the consistency makes that unlikely.\n\nLet's write."
+          }
+        },
+        "provider_specific_fields": {
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      }
+    ],
+    "usage": {
+      "completion_tokens": 1380,
+      "prompt_tokens": 3103,
+      "total_tokens": 4483,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1003
+      }
+    }
+  },
+  "case_id": "case_3b7178906b357512",
+  "kind": "drift",
+  "config": "B",
+  "run_index": 1,
+  "support_level": "supported hypothesis"
+}

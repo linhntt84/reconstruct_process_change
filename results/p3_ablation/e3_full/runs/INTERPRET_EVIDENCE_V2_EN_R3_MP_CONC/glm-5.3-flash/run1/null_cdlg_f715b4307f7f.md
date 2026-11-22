@@ -1,0 +1,25 @@
+### Observed differences
+
+- The sharpest change concerns the two alternative activities A06 and A12. In both windows they never appear in the same trace, exactly one of them appears in every trace, and it sits at the very end of the trace (median relative position 1.0). In the earlier window A12 ran in about 56 in 100 traces and A06 in about 45; in the later window A06 ran in about 57 and A12 in about 43. [OCC005, OCC011, REL066, POS006, POS012]
+- Their common predecessor A03 flipped its choice: about 57 in 100 of its observed outgoing transitions went to A12 before (about 43 to A06), and about 44 went to A12 after (about 56 to A06), based on roughly 150–160 outgoing transitions per window. A03 also precedes A06 more often overall (about 32 to 45 in 100 traces) and A12 less often (about 43 to 35 in 100). [DIR003, REL030, REL036]
+- The same movements show against nearly every other activity: A06 co-occurs more with A02, A04, A05, A07–A11 and A13–A15 (for example A06 without A10 rose from about 25 to 37 in 100 traces), while A12 co-occurs less with the same activities (for example A12 without A02 fell from about 39 to 26 in 100). [REL018, REL024, REL041, REL047, REL051, REL057, REL064, REL065, REL068, REL069, REL092, REL101]
+- A01 became more frequent: about 62 in 100 traces before versus about 67 after, with mean occurrences per trace up from about 0.9 to 1.0, and its occurrences sit earlier in the trace (median relative position 0.0 versus about 0.29). It increasingly appears without A10, A13, A14 and A15 (for example A01 without A10 rose from about 40 to 51 in 100). [OCC001, POS001, REL009, REL012, REL013, REL014]
+- A10, A13 and A14 became less frequent: participation fell from about 41 to 37, about 43 to 36 and about 34 to 30 in 100 traces respectively, and traces containing neither A10 nor A13 rose from about 29 to 40 in 100. [OCC009, OCC012, OCC013, REL093]
+- A07's outgoing mix moved from A02 towards A03 (about 18 to 12 in 100 versus about 36 to 46), and A07 is now followed directly by A03 more often (lag-1 share about 72 to 82 in 100); A08, by contrast, now precedes A03 less often (about 49 to 36 in 100), with more interleaving between the two. [DIR006, LAG056, REL032]
+- Many other activity pairs show small redistributions of their within-five-step lag patterns (for example A04→A10: the share at lag 2 fell from about 42 to 27 in 100 while lag 4 rose from about 18 to 33); most rest on only a few dozen paired observations. [LAG035, LAG050, LAG108]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the routing choice between the two mutually exclusive end-of-trace activities A06 and A12 shifted in favour of A06. Both activities run at most once per trace, always near the end, and exactly one of them runs in every trace in both windows; the split moved from roughly 45/57 (A06/A12) to roughly 57/43, a swing of about 13 percentage points, and the branch point A03 went from sending a majority of its observed outgoing transitions to A12 to sending a majority to A06. All activities involved remain frequent in both windows (A03 in every trace), keep their positions, and neither gains repetitions, so this reads as the two existing alternative paths being taken with different frequencies rather than a path being replaced, added or removed. [DIR003, OCC005, OCC011, REL066, POS006, POS012]
+
+The change is visible directly in the successor shares at A03 (a difference larger than about 99 in 100 random re-splits of the pooled data produce) and is mirrored consistently in participation counts and co-occurrence shares with A02, A04, A05, A07–A11 and A13–A15, where A06's shares rise and A12's fall by matching amounts. [DIR003, REL030, REL036, REL018, REL024, REL041, REL047, REL051, REL057, REL064, REL065, REL068, REL069, REL092, REL101]
+
+Limitations: each window holds 200 traces, so the size of the swing carries sampling uncertainty, and the evidence file provides no screening baseline against which to judge how many qualifying items an unchanged process would produce. The evidence also cannot show why the split moved. An important competing explanation it cannot rule out is that this shift is one facet of a broader restructuring — A01 grew while A10, A13 and A14 shrank at the same time — which the A06/A12 hypothesis does not cover. [OCC001, OCC009, OCC012, OCC013]
+
+Other differences:
+- A01's participation rose from about 62 to 67 in 100 traces and its occurrences sit earlier in the trace, so it increasingly appears without A10, A13, A14 and A15. [OCC001, POS001, REL009, REL012, REL013, REL014]
+- A10, A13 and A14 each lost roughly 4 to 7 participation points per 100 traces. [OCC009, OCC012, OCC013]
+- A07's outgoing traffic shifted from A02 towards A03, while A08 precedes A03 less often. [DIR006, LAG056, REL032]
+- Many activity pairs show small, weakly supported lag redistributions. [LAG035, LAG050, LAG108]

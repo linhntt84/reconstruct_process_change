@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, activity A01 was not observed at all (0 of 200 traces); in the later window it runs in about 95 of 200 traces (roughly 48%), exactly once per trace, late in the case (median position about 0.85 of the trace length), and is followed by a spread of activities — most often A10 (~17%), A07 (~15%) and A12 (~14% of its outgoing transitions). [OCC001, POS001, DIR001]
+
+- In the later window, A08, A14, A15, A18 and A01 all occur in the same ~48% of traces and form a fixed closing sequence: A08 and A14 run in either order, then A15, then A18, then A01, with each predecessor preceding its successor in every shared trace. Before, A15→A18 was already fixed but only in ~40% of traces, A14 appeared in only ~20% of traces with no fixed order relative to A15/A18, and A01 was absent. A14's participation roughly doubled (20% → 48% of traces) and it stopped repeating; A18 now leads directly to A01 in ~65% of its outgoing transitions (0% before), and A14's transitions shifted away from A08 (63% → 24%) towards A15 (~19%) and A06 (~21%). The paired lags confirm the activities now run close together: A08→A14 lands within one to two steps in the large majority of cases, and A14→A15 / A14→A18 are observed in ~83 and ~68 traces, up from ~28 and ~25. [OCC008, OCC014, OCC015, OCC018, REL006, REL012, REL013, REL016, REL093, REL139, REL142, REL146, DIR013, DIR017, LAG084, LAG162, LAG165]
+
+- A02 gained repetitions: it ran once per containing trace before (mean ~0.48 occurrences, no repeats) and now averages ~1.01, repeating in about 26% of traces, with its position shifted slightly later (mean ~0.10 → ~0.19). [OCC002, POS002]
+
+- A09 became rarer and more detached: participation fell from ~48% to ~26% of traces (it now repeats in ~12%), its position moved later (mean ~0.09 → ~0.26), and its co-occurrence with A02, A04, A06, A07, A08, A13, A15 and A18 dropped from roughly 40–48% to about 20–26% of traces; A09 now leads to A02 in ~65% of its transitions (was ~38%) and no longer to A07. [OCC009, POS008, DIR008, REL023, REL038, REL065, REL077, REL088, REL102, REL104, REL107]
+
+- A08 still occurs in ~47% of traces in both windows but no longer repeats (repeated in ~20% of traces before, none after) and sits slightly earlier (mean position ~0.51 → ~0.43). [OCC008, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new closing block was added to the process, centred on the previously unobserved activity A01 and executed in about half of the cases as A08/A14 (either order) → A15 → A18 → A01. In the earlier window A01 never appeared, A14 ran in only ~20% of traces, and A15/A18 co-occurred in ~40% of traces without A01; in the later window all five activities run together in ~48% of traces in a fixed order, A14's participation has roughly doubled, and A18 leads directly to A01 in ~65% of its transitions. The change is visible directly and consistently across occurrence, position, direction and relation indicators, and the paired-lag evidence shows the new predecessors now run within a few steps of A01's block rather than being an artefact of one indicator. [OCC001, OCC014, OCC015, OCC018, REL006, REL012, REL013, REL016, REL139, REL142, REL146, DIR001, DIR017, POS001, LAG084, LAG162, LAG165]
+
+A competing explanation the evidence cannot fully rule out is that A01 existed earlier but was not sampled in the before window; zero participation only means the activity was not observed, although its appearance in ~95 of 200 later traces, always coupled one-to-one with A14, A15, A18 and A08 in a fixed order, makes a pure sampling artefact unlikely. [OCC001, REL012]
+
+Other differences: A02 gained repetitions (repeated in ~26% of traces after, none before, mean occurrences ~0.48 → ~1.01) and shifted slightly later; A08 and A14 lost their repetitions; A09's participation fell from ~48% to ~26% of traces and it now co-occurs far less often with most other activities, suggesting it became detached from the main flow in many cases. These are reported separately because the evidence does not tie them to the new A01 block. [OCC002, OCC008, OCC009, POS002, POS008, DIR008, REL023, REL038, REL065, REL077, REL088, REL102, REL104, REL107]

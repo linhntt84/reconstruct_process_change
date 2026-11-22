@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_40958c0cbab56a95.json",
+  "evidence_sha256": "662a7e6ee351cb398466ea62954e8a2eb6bbc081087aa4a47b66825f13035a7e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:24:27.446672+00:00",
+  "finished_at_utc": "2026-11-15T04:26:12.155038+00:00",
+  "latency_seconds": 104.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14972,
+    "prompt_tokens": 37739,
+    "total_tokens": 52711,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13455,
+      "text_tokens": 1517
+    },
+    "cost": 0.013146849999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44651,
+  "text": "### Observed differences\n\n- In the earlier window, A26, A27 and A28 each ran in every one of the 200 traces (about one occurrence per trace); in the later window they appear in only about 3 of 200 traces (~2 in 100) [OCC005, OCC006, OCC007, POS004, POS005, POS006].\n- The opposite happened for A19, A20 and A21: from 4, 3 and 2 of 200 traces earlier to about 60, 65 and 75 of 200 later (~30, 33 and 38 in 100). They hardly ever occur together (pairwise co-occurrence at most ~0.5 in 100 traces), so a later case typically contains exactly one of the three [OCC002, OCC003, OCC004, REL013, REL014, REL021].\n- The new trio occupies the old trio's place: A44's outgoing transitions, which earlier went almost entirely to A26/A27/A28 (~25–28 in 100 each), now go ~25–27 in 100 each to A19/A20/A21, and A19/A20/A21 lead to A29 in about 95 in 100 of their outgoing transitions [DIR007, DIR001, DIR002, DIR003].\n- Ordering around the segment is preserved: earlier, A44 preceded A26/A27/A28 in ~97–99 in 100 traces and the trio preceded A29 in ~97–99 in 100; now A44 precedes A19/A20/A21 in ~30–37 in 100 traces and the new activity precedes A29 in ~30–37 in 100, matching its participation. Among themselves, the old three had no fixed order (each pair appears in both orders in roughly equal shares) [REL039, REL044, REL048, REL038, REL043, REL047, REL026, REL019, REL033, REL025, REL018, REL032, REL036, REL042, REL037].\n- The segment got shorter: the gap from A44 to A29 was 4 steps in ~78 in 100 earlier cases and 5 steps in ~22, and is now 2 steps in ~79 and 3 steps in ~19 (about 195–200 cases per window). Consistently, A29's mean relative position moved slightly earlier (0.44 → 0.40) and A44's slightly later (0.31 → 0.33) [LAG009, POS007, POS008].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A44 and A29 was restructured: the three activities A26, A27 and A28, which earlier executed in every case (in no fixed order among themselves), no longer appear, and a single activity chosen per case from A19, A20 and A21 now runs in that position, so this part of the process executes with one activity instead of three. The signs are direct and consistent across indicators: the participation flip (200/200 → ~3/200 for the old trio; 2–4/200 → 60–75/200 for the new trio with near-zero mutual co-occurrence), the successor change at A44 and the convergence of A19/A20/A21 onto A29, the preserved A44-before-middle-before-A29 ordering, and the A44-to-A29 distance falling from ~4–5 steps to ~2 steps [OCC005, OCC006, OCC007, OCC002, OCC003, OCC004, REL013, REL014, REL021, DIR007, DIR001, DIR002, DIR003, LAG009]. The screening produced 81 qualifying items where about 0.89 would be expected without any change, so the pattern as a whole cannot be explained by sampling noise [screening].\n\nLimitations: zero participation only shows that A26/A27/A28 were not observed in the later window, so the evidence cannot distinguish their removal from their being skipped in every sampled case; and the \"exactly one of three\" reading rests on near-zero mutual co-occurrence, so rare traces containing none or two of the trio cannot be excluded. An important competing explanation the evidence cannot rule out is that the two windows capture a shifted mix of pre-existing case types rather than a modification of a single process, although the all-or-nothing participation shift makes pure sampling variation implausible.\n\nOther differences:\n- A10 now runs in about 45 of 200 traces versus 27 earlier (~14 → ~23 in 100), with mean occurrences up from 0.14 to 0.26 [OCC001].\n- A46 changed company: it co-occurred with A26/A27/A28 in about 59 in 100 earlier traces, and now co-occurs with A20 in ~22 and with A21 in ~27 in 100 traces while its own presence rose from ~59 to ~70 in 100 traces [REL050, REL046, REL041, REL028, REL035].",
+  "case_id": "case_40958c0cbab56a95",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, all 200 traces followed the same fixed chain of four activities: A02 was directly followed by A04 (all of A02's observed outgoing transitions), A04 directly by A05, and A06 always occupied the last position; A01 and A03 did not occur in any trace. [DIR001, DIR003, POS003, POS005, OCC001, OCC002, REL002]
+- In the later window, all 200 traces follow a fixed chain of five activities, A02 → A03 → A05 → A06 → A01: A03 sits directly after A02, A05 directly after A03, and A01 closes the trace at the final position. [DIR001, DIR002, DIR004, POS001, POS002, POS004]
+- Participation flipped completely rather than shifting in shares: A04 ran exactly once in each of the 200 earlier traces but in none of the later ones, while A03 and A01 each run exactly once in every later trace after being absent earlier. [OCC001, OCC002, OCC003]
+- The pairwise relations rewire accordingly: before, A02 preceded A04, and A04 preceded both A05 and A06, in every trace; after, A02 precedes A03, A03 precedes A05 and A06, and A01 co-occurs with A02, A03, A05 and A06, always as the later activity of each pair. [REL006, REL007, REL009, REL010, REL011, REL012, REL001, REL002, REL004, REL005]
+- Positions moved as expected when one step is inserted before A05 and one appended at the end: A05 shifted from about two thirds to one half of the trace and A06 from the last position to about three quarters, while A05 and A06 still occur once in every trace in both windows. [POS004, POS005]
+- Within each window the behaviour is completely uniform — every occurrence and position item shows 0% or 100% participation with zero spread — and each item's difference exceeds about 199 of 200 random re-splits of the pooled data. [OCC001, OCC002, OCC003, POS001, POS002, POS003, POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a structural change in the sequential backbone: in the later window, cases run A02 → A03 → A05 → A06 → A01 where they previously ran A02 → A04 → A05 → A06. A04 is no longer executed at all, A03 has taken over its position between A02 and A05 — A02 now leads to A03 instead of A04, and A03 leads on to A05 as A04 previously did — and A01 was added as a new final step after A06. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL006, REL009, REL011]
+
+The change is shown directly by routing and relation evidence, not by occurrence counts alone: A02's outgoing flow moved from 100% A04 to 100% A03, the A04→A05 transition was replaced by A03→A05, and A06 gained a transition to A01; all 24 evidence items fit this single reconstruction without exception, each with an empirical strength of about 0.995 and support from all 200 traces per window — a magnitude that random re-splits of unchanged data almost never reach. [DIR001, DIR002, DIR003, DIR004, OCC001, OCC002, OCC003, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+
+Limitations: the two windows cannot show whether the transition was abrupt or gradual, and the evidence cannot distinguish a genuine replacement of A04 by a new activity A03 from a renaming of A04 to A03 in the records (with A01 newly introduced) — either way, the executed sequence changed as described. The evidence file also provides no screening baseline, so the flagged-item count could not be compared with a chance expectation; the judgement rests on the directness and consistency of the routing and relation evidence. [OCC002, OCC003, DIR001, DIR002]

@@ -1,0 +1,19 @@
+### Observed differences
+
+- The relative order of two groups of activities reversed. In the earlier window, A35, A36 and A41 each ran before A26 and before A27 in 98–100 in 100 of the traces where they co-occurred, and every one of these six pairs co-occurred in every trace; in the later window, A26 and A27 ran before A35, A36 and A41 in 97–99 in 100, with co-occurrence still universal. [REL001, REL002, REL003, REL004, REL005, REL006]
+- A25 changed successor: earlier its outgoing transitions went to A35 (about 39%), A36 (about 32%) and A41 (about 27%); in the later window about 98% go directly to A27. [DIR003]
+- A26 changed successor in the opposite direction: earlier about 99% of its outgoing transitions went to A30; in the later window they split across A35 (about 34%), A36 (about 32%) and A41 (about 30%). [DIR004]
+- The group A35/A36/A41 changed its own successors: transitions to A27 fell from about 28–37% to about 0.5%, transitions to A30 appeared at about 30–35%, and transitions among the three continued at similar shares. [DIR005, DIR006, DIR007]
+- Event distances match this: A25 to A27 shortened from mostly 4 steps (94 in 100) to 1 step (about 99 in 100); A26 to A30 lengthened from 1 step (99 in 100) to 4–5 steps (about 98 in 100). Two long-range pairs are newly observed: A36 to A30 within 1–3 steps in about 198 traces (1 trace earlier) and A16 to A27 at 5 steps in about 149 traces (1 trace earlier). [LAG005, LAG009, LAG011, LAG003]
+- The route through A06 after A15 became rarer: A06 appeared in about 27 in 100 traces earlier versus about 12–13 in 100 later; A15's transitions to A06 fell from about 15% to about 3% while A15 to A16 rose from about 85% to about 95%; A06's own outgoing transitions, earlier concentrated on A16 (about 86%), later spread over many targets (about 39% to A16) on few observations. [OCC002, DIR002, DIR001, LAG001]
+- A02 appeared in more traces, from about 4–5 in 100 earlier to about 11–12 in 100 later, based on only 9 versus 23 traces. [OCC001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment A35–A36–A41 changed its placement relative to A26 and A27: in the earlier window it ran after A25 and before A27 (A25 branched to one of the three, which then led on to A27) while A26 ran directly before A30; in the later window A25 runs directly before A27, and A26 runs before the segment, which in turn runs before A30. The order reversal is observed directly for all six activity pairs with full co-occurrence in both windows, the successor changes at A25, A26, A35, A36 and A41 each rest on about 200 outgoing transitions per window, and the distance changes at A25–A27 and A26–A30 are consistent with the new arrangement. The 27 qualifying items far exceed the roughly 1 expected without a change, so chance cannot explain the pattern as a whole, although many items describe this same underlying difference and are not independent confirmations. [REL001, REL002, REL003, REL004, REL005, REL006, DIR003, DIR004, DIR005, DIR006, DIR007, LAG005, LAG009]
+
+The evidence cannot distinguish whether the segment moved later or the pair A26/A27 moved earlier, since both readings fit the same reversal, and it does not show whether A25 and A26 are alternatives or sequential; a few lag items rest on only 1–2 observations in one window and add little weight. [LAG003, LAG011, LAG006, LAG007, LAG008, LAG010, LAG012]
+
+Other differences: the A15–A06–A16 route is used in fewer cases, with A06 participation down from about 27% to about 12–13% of traces and A15 now routing almost exclusively to A16 [OCC002, DIR002, DIR001, LAG001]; A02 participation roughly doubled to about 11–12 in 100 traces, on small numbers [OCC001].

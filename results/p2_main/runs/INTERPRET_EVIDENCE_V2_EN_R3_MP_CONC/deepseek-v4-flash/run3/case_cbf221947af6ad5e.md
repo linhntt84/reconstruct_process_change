@@ -1,0 +1,14 @@
+### Observed differences
+
+- The relative order of two groups of activities reversed. In the earlier window, A14, A18, A21, A22, and A23 occurred early (mean position about 0.33 of the trace), while A15, A16, A17, A19, and A20 occurred later (mean about 0.63). In the later window, the first group moved to about 0.70 and the second group to about 0.39. [POS001, POS005, POS008, POS009, POS010, POS002, POS003, POS004, POS006, POS007]
+- Relational evidence confirms the reversal: A14 used to precede A15, A16, A17, A19, A20, A24, and A28 in all co-occurring traces; in the later window it follows them. Similarly, A15, A16, A17, A19, and A20 used to follow A18, A21, A22, and A23 and now precede them. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL014, REL015, REL016, REL017, REL020, REL021, REL022, REL023, REL026, REL027, REL030, REL031, REL032, REL035, REL036, REL037, REL040, REL041, REL042, REL043, REL044, REL045]
+- The outgoing transitions of A14, A18, A21, A22, and A23 changed from always going to A24 to always going to A29. Conversely, A15, A16, A17, A19, and A20 now have A24 as a successor where they previously had A29. [DIR001, DIR005, DIR008, DIR009, DIR010, DIR002, DIR003, DIR004, DIR006, DIR007]
+- A28's successors changed from A15–A20 to A14, A18, A21, A22, and A23, while A39's successors changed in the opposite direction. [DIR011, DIR012]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the process reversed the order of two blocks of activities: an early block (A14, A18, A21, A22, A23) and a later block (A15, A16, A17, A19, A20, A24, A28). In the later window, the later block now occurs before the early block. This is supported by consistent positional, relational, and successor evidence across many items, far exceeding the number expected by chance (69 items vs. 0.65 expected). The reversal is directly shown by the change in relative order within co-occurring traces, not merely by a shift in variant frequencies. A competing explanation that the two blocks simply swapped which variant is more common is ruled out because the order within co-occurring traces changed. A limitation is that the early-block activities appear in only about 20–25% of traces, but the pattern is consistent across all of them.
+
+Other differences: A28 and A39 swapped their successor sets, and the final successor of the early block changed from A24 to A29, while the later block changed from A29 to A24. These may be part of the same reordering but are not directly explained by the order reversal.

@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A08 was executed in about 74 in 100 traces, early in the trace (mean event position about 0.24), and about 95% of its outgoing transitions went to A16; in the later window it appears in only about 24 in 100 traces, later in the trace (mean about 0.45), with its outgoing transitions spread over many targets (A16 about 44%, A53 about 13%, A51 about 13%, A15 about 10%). [OCC003, POS001, DIR001]
+- Activities that previously usually ran together with A08 — A14, A15, A16, A28, A29, A30, A34, A47 — now usually run without it: co-occurrence with A08 fell from about 74 to about 24 in 100 traces for each of them, and A15 now leads to A16 in about 86% of its outgoing transitions (before about 60%) and to A08 in about 6% (before about 40%). [REL001, REL002, REL003, REL010, REL011, REL012, REL013, REL014, DIR003]
+- The order between the group A19, A20, A25, A26, A27 and A28/A29/A30 reversed: in the earlier window, in traces containing both, A28/A29/A30 came first in nearly every case (e.g. A28 before A20 in 20 of 100 traces, never the reverse); in the later window the group came first in nearly every case (A20 before A28 in 20 of 100, the reverse in at most about 2). [REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024]
+- In the later window the group members run earlier (mean event position about 0.61 down to about 0.31–0.34) and lead almost exclusively to A28 (about 92–97% of their outgoing transitions, versus mostly A30 and A34 before, e.g. A20: A34 58% and A30 40% before, A28 93% after). [POS002, POS003, POS004, POS005, POS006, DIR004, DIR005, DIR006, DIR007, DIR008]
+- The downstream chain tightened: A29 now leads to A30 in about 95% of its transitions (before about 51%), A30 leads to A34 in about 97% (before about 47%), and A47 switched from leading to A28 (about 97%) to leading into the group (about 84% combined), so A47 reaches A28 in 2–3 steps instead of one. [DIR009, DIR010, DIR011, LAG023, LAG026, LAG027]
+- Several other activities were executed in a larger share of traces: A02 about 6 up to 21 in 100, A04 about 4 up to 17, A10 about 8 up to 24, A17 about 20 up to 33. [OCC001, OCC002, OCC004, OCC005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the relative order of two blocks of activities changed: in the earlier window A28, A29 and A30 ran before the group A19, A20, A25, A26, A27, which then continued mainly into A30 and A34, whereas in the later window the group runs before A28 and continues into it, with A29, A30 and A34 following. The order flip is observed directly and consistently on all ten tested activity pairs between the two groups, with the previous order essentially vanishing and the new order becoming near-exclusive. [REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024]
+
+The reversal is corroborated by independent indicators: the group's mean event position moved from about 0.61 to about 0.33 of the trace, its members' outgoing transitions now go to A28 in about 92–97% of cases, A47 now feeds the group, and the A29→A30→A34 chain consolidated; overall, 74 evidence items qualified against fewer than one expected for an unchanged process, so sampling variation cannot account for the pattern as a whole. [POS002, POS003, POS004, POS005, POS006, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, LAG027]
+
+Limitations: the evidence shows the new order and routing but cannot establish that this reordering and the sharp decline of A08 (about 74 down to 24 in 100 traces, with later positions and dispersed successors) stem from one coordinated change rather than two independent ones; positions and lags are event positions, so no claim about clock-time timing is implied. [OCC003, POS001]
+
+Other differences: A02, A04, A10 and A17 were executed in a larger share of traces in the later window (e.g. A02 about 6 up to 21 in 100), and A15's outflow shifted from A08 towards A16; these are not part of the main hypothesis. [OCC001, OCC002, OCC004, OCC005, DIR003]

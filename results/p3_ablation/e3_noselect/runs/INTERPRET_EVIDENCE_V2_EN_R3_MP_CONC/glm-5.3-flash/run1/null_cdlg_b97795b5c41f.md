@@ -1,0 +1,11 @@
+### Observed differences
+
+- The clearest difference concerns the successors of A06. In the earlier window, about 58 in 100 of A06's outgoing transitions went to A04 and about 42 in 100 to A01; in the later window the split was nearly even, about 50 in 100 to each. This is a shift of roughly 8 percentage points on the A01 share, based on about 180 outgoing transitions per window, and it is larger than in about 88 of 100 random re-splits of the pooled data. [DIR003]
+- A06 itself was otherwise stable: it appeared in about 47 in 100 traces before (95 of 200) and about 47 in 100 after (94 of 200), with about 0.9 occurrences per trace in both windows, and its occurrence profile shows a negligible difference (empirical strength 0.0). [OCC005]
+- Participation and repetition of the other activities barely moved. A01 and A04 appeared in every trace in both windows, about 1.9 times per trace, recurring in about 47–48 in 100 traces; A02 and A05 appeared in about 47–48 in 100 traces with about 0.9 occurrences per trace. All of these differences are about half a percentage point or less and no random re-split produced a smaller difference (empirical strength 0.0). [OCC001, OCC002, OCC003, OCC004]
+- The outgoing transition mixes of A01 and A04 were nearly identical across windows: from A01, roughly 50% to A04, 28% to A03 and 22–23% to A02 in both windows; from A04, roughly 50% to A01, 25–26% to A02 and 23–25% to A03. These differences are larger than in only about 5–7 of 100 random re-splits, i.e. well within normal variation. [DIR001, DIR002]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. The only elevated signal — A06's successor split moving from about 58/42 in favour of A04 to about 50/50 — rests on a single indicator whose difference is matched or exceeded in roughly one of eight random re-splits of unchanged data, and no other indicator covers A06's outgoing edges to corroborate it, so ordinary sampling variation between the two 200-trace windows cannot be ruled out. [DIR003, OCC005]

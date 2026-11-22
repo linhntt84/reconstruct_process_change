@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_ba9cc1cbf8e2d76b.json",
+  "evidence_sha256": "d08779f3c794477c905632f22e44aa2709d7bd6623b6882d2897b616cb6e55b0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:12:47.019208+00:00",
+  "finished_at_utc": "2026-11-15T07:13:53.554994+00:00",
+  "latency_seconds": 66.54,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9337,
+    "prompt_tokens": 12798,
+    "total_tokens": 22135,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8406,
+      "text_tokens": 931
+    },
+    "cost": 0.0065882
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29499,
+  "text": "### Observed differences\n\n- In the earlier window, activities A19, A20 and A25 were not observed in any of the 200 traces. In the later window, A19 appears in about 29 in 100 traces, A20 in about 41 in 100, and A25 in about 31 in 100. [OCC001, OCC002, OCC003]\n- In the later window these three activities are mutually exclusive alternatives: they practically never occur in the same trace (co-occurrence in at most about 0.5 in 100 traces), and their shares sum to essentially every trace, so each case now executes exactly one of them. [REL001, REL002, REL006]\n- Before, the sequence A27 → A28 → A29 dominated: about 97 in 100 of A27's observed outgoing transitions went to A28, and about 98 in 100 of A28's went to A29. In the later window these shares fell to about 43 in 100 and about 57 in 100 respectively, with the remainder leading to the new activities (about 52 in 100 of A27's transitions now go to A19/A20/A25, and about 41 in 100 of A28's). [DIR004, DIR005]\n- The new activities themselves lead mainly to A28 and A29 (for example A19: about 53 in 100 of its outgoing transitions to A28, about 47 in 100 to A29). [DIR001, DIR002, DIR003]\n- Relationally, each new activity always follows A27 and precedes A29 (in essentially 100 in 100 of the traces where both occur). Relative to A28 there is no fixed order: for example A19 comes before A28 in about 15 in 100 traces and after it in about 13–14 in 100, so the new step is inserted either directly after A27 or directly before A29. [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011]\n- The new activities sit around mid-trace (mean position about 0.52 of the trace); A27 shifted slightly earlier (mean about 0.48 to 0.46) and A29 slightly later (about 0.55 to 0.57), consistent with one extra step lengthening each trace. [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new step was inserted into the existing A27 → A28 → A29 sequence: in the later window, every case executes exactly one of three mutually exclusive activities — A19 (about 29 in 100 cases), A20 (about 41 in 100) or A25 (about 31 in 100) — placed between A27 and A29, either directly after A27 or directly before A29 in roughly equal shares. The support is direct and consistent: the activities appear from zero participation, their successor profiles emerge from empty ones, A27's and A28's outgoing transitions redistribute accordingly, and the relational items pin each new activity after A27 and before A29. The number of qualifying items (25, all control flow) is far above the roughly 0.55 expected for an unchanged process, so the pattern as a whole is not what random re-splits typically produce. A competing explanation the evidence cannot fully rule out is that A19, A20 and A25 existed before at a rate too low to appear in 200 traces and merely surfaced in the later sample; the evidence also does not show what selects between the three alternatives or the two insertion points.\n\nOther differences: none beyond the above; the slight position shifts of A27 (earlier) and A29 (later) are consistent with the same insertion rather than a separate change. [POS004, POS005]",
+  "case_id": "case_ba9cc1cbf8e2d76b",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

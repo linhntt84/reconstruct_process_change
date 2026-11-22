@@ -1,0 +1,15 @@
+### Observed differences
+
+- Branch shares drifted slightly: A01 and A09 each run in about 45 in 100 traces in the earlier window and 48 in 100 in the later window, while A02 and A10 each fall from about 56 to 52 in 100; downstream, A04 and A06 slip from about 26 to 22 and 31 to 28 in 100. Every shift is 3–4 in 100 and scores near the middle of the random-split reference range (strengths 0.37–0.58). [OCC001, OCC009, OCC002, OCC010, OCC004, OCC006]
+- The branch structure itself is stable: in both windows every trace contains exactly one of the two branch markers — A01 always together with A09 (about 44.5, later 48, in 100) and A02 together with A10 (about 55.5, later 52, in 100) — and the two branches never share a trace. [REL001, REL008, REL009, REL020, REL077]
+- Inside the second branch, the two possible orders of A02 and A10 traded frequency: among traces containing both (about 55 in 100), A02 ran first in 45 of 100 in the earlier window and 55 of 100 in the later window, while A10-first fell from 55 to 45 in 100; both orders remain in use, so this is a shift in order frequencies, not a new fixed sequence. [REL021]
+- Event-step distances moved in line with that flip: from A02, the lags to A03, A07 and A13 shifted towards larger values (A02→A03 at one step: 58 of 100 before vs 39 after; A02→A07 at two steps: 54 vs 39; A02→A13 at four steps: 60 vs 35), while the corresponding lags from A10 shifted towards smaller values (A10→A03 at one step: 42 vs 61; A10→A07 at two steps: 40 vs 61; A10→A13 at four steps: 40 vs 65). [LAG001, LAG005, LAG008, LAG029, LAG033, LAG036]
+- Event positions match: A02's median position moves from about 0.09 to the very start of the trace, and A10's from the start to about 0.10, while other activities' position distributions change little. [POS002, POS009, POS003, POS007, POS013]
+- Outgoing transitions redistributed over the same edges: from A02, the share to A10 rises from 45% to 55% and to A03 falls from 26% to 18%; from A10, the share to A02 falls from 55% to 45% and to A03 rises from 19% to 29%. [DIR001, DIR006]
+- Smaller fluctuations elsewhere: A03's outgoing transitions all go to A07 in the later window (94 of 100 before; a difference of about 3 traces), and from A06 the share to A04 falls from 49% to 40% while A11 rises from 20% to 27%. [DIR002, LAG010, DIR003]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest coherent pattern — a modest shift in how often A02 runs before A10, with matching lag and position shifts and small participation changes — moves only about 7–14 traces in each 200-trace window, and no difference stands out against the random-split references (the highest strength of all 172 items is 0.95, a value random re-splits of a stable process still reach, and most items stay below 0.6), so sampling variation between the two windows remains a complete explanation. [REL021, LAG001, LAG029, LAG033, OCC002]

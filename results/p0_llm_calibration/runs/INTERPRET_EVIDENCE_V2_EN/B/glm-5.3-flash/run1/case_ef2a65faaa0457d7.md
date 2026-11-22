@@ -1,0 +1,18 @@
+### Observed differences
+
+- A19 and A20, which each ran in roughly half of the earlier traces (about 91 and 109 of 200), are essentially gone in the later window: A19 appears in 0 of 200 traces with no observed outgoing transitions, and A20 in about 2 of 200. [OCC002, OCC003, DIR002, DIR003, POS002, POS003]
+- A26 and A27 no longer route into A19/A20: in the later window about 99 in 100 of A26's outgoing transitions go to A27 (previously about 47, with about 51 going to A19 or A20), and about 99 in 100 of A27's outgoing transitions go to A28 (previously about 51, with about 48 to A19 or A20). [DIR004, DIR005]
+- The new handovers are immediate: A27 follows A26 within one step in about 98 of 100 cases (previously about 47), A28 follows A27 within one step in essentially all cases (previously about 52), and A28 now follows A26 two steps later where it previously followed three steps later. [LAG003, LAG005, LAG004]
+- A08, previously rare (about 14 of 200 traces, mean 0.09 occurrences per trace), runs in about 56 of 200 later traces (mean 0.29) and now appears late in the trace (median relative position about 0.89 versus about 0.44 before). [OCC001, POS001]
+- A08 also gained a defined place in the flow: about 35 in 100 of A43's outgoing transitions now go to A08 (previously under 1 in 100), about 88 in 100 of A08's outgoing transitions go to A44, A43 precedes A08 in about 19 of 100 traces (previously about 0.5), A08 precedes A44 in about 20 of 100 (previously 2), and A08 immediately follows A43 in about 75 of 100 later observations. [DIR006, DIR001, REL006, REL007, LAG006]
+- A08's co-occurrence with A26, A27 and A28 rose from about 7 to about 28 in 100 traces, with A26/A27/A28 preceding A08 in about 26 of 100; pairs combining A19 or A20 with A26/A27/A28 lost nearly all overlap (for example A20 with A28 fell from about 55 to about 1 in 100). [REL003, REL004, REL005, REL014, REL015, REL016]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility of two related reroutings. First, in the later window the mid-process segment in which A19 or A20 had run between A26/A27 and A28 in roughly half of the earlier traces no longer appears: A26 passes almost always to A27 and A27 almost always to A28 in immediate succession, while A19 is not observed at all and A20 in about 1% of traces. Second, A08, previously rare, now executes in about 28% of traces in a new position between A43 and A44, typically immediately after A43. [OCC002, OCC003, DIR004, DIR005, LAG003, LAG005, OCC001, DIR006, REL006, REL007, LAG006]
+
+This goes beyond a frequency shift: 38 items qualify against roughly 0.63 expected for an unchanged process, and the placement claims rest on direct relational, lag and successor evidence rather than on occurrence counts alone, with magnitudes that sampling variation cannot plausibly produce (A19 falling from 91 to 0 of 200 traces). [DIR004, DIR005, LAG003, LAG005, LAG006, REL006, REL007, OCC002]
+
+Limitations remain: the two windows are finite samples, so a shift in the mix of process variants between them (for example, the later window drawing more cases of a variant that never uses A19/A20 and uses A08 more often) could produce the same pattern without any modification to a shared model; zero participation only shows that A19 was not observed in the later window; and the before-window picture of A08's timing rests on very few observations (about 4 for the A43-to-A08 lag). [OCC002, LAG006]

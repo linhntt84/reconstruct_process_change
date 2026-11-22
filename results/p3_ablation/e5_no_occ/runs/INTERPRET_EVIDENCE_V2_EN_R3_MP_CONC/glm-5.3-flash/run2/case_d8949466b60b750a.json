@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "a3e6b3d647668efaeb4779387579639440c94990b7f2cdd65f47858dbe918caf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:26:10.264893+00:00",
+  "finished_at_utc": "2026-11-15T05:27:01.889453+00:00",
+  "latency_seconds": 51.62,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7348,
+    "prompt_tokens": 15234,
+    "total_tokens": 22582,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6306,
+      "text_tokens": 1042
+    },
+    "cost": 0.0059591
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21668,
+  "text": "### Observed differences\n\n- Routing out of A26 changed sharply. In the earlier window, about 51 in 100 of A26's outgoing transitions went to A27, with the rest going mainly to A38 (about 18 in 100), A33 (about 16 in 100) and A32 (about 14 in 100). In the later window, about 97 in 100 go to A27, with only residual edges of roughly 0.5 in 100 each remaining. [DIR001]\n- Participation changed in opposite directions. A27 appeared in only about half of the traces before (A28 occurred without A27 in about 48 in 100 traces) but in virtually all traces after (co-occurrence with A28 about 99.5 in 100, with A27 before A28 in about 96 in 100). Conversely, A32, A33 and A38 each appeared in about 48–49 in 100 traces before and in only about 1 in 200 traces after. [REL001, REL005, POS002, POS003, POS004]\n- Before, in the roughly half of traces without A27, the activities A32, A33 and A38 occurred together in varying orders: each pair co-occurred in about 48–49 in 100 traces, with both orders in similar shares (about 23–26 in 100 each), i.e. no fixed sequence among them. After, these pairs are observed together in essentially no trace (\"neither\" in about 99.5 in 100). [REL012, REL013, REL014]\n- The distance from A26 to A28 collapsed from bimodal to uniform: before, A28 followed A26 two steps later in about 50 in 100 traces and four steps later in about 46 in 100; after, the gap is two steps in about 97 in 100 traces. A27 led directly to A28 in both windows (about 97 in 100 before, all observed cases after). [LAG001, LAG004]\n- A28 occurred in every trace in both windows; its mean relative position moved slightly earlier (about 0.55 to 0.53). [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative branch in which A32, A33 and A38 were executed between A26 and A28 was removed or bypassed. Before, roughly half of the cases ran A26 → A27 → A28, while the other half passed through A32, A33 and A38 in varying order before reaching A28; in the later window virtually all cases take A26 → A27 → A28. A27 thus changed from optional (present in about half of the cases) to present in nearly every case, while A32, A33 and A38 are each observed in only about 1 in 200 cases. [REL001, REL005, REL012, DIR001, POS002, POS003, POS004, LAG001]\n\nThe screening produced 31 qualifying items against roughly 0.4 expected without a change, so chance sampling cannot account for the set as a whole. The signs are direct and mutually consistent across participation, relational, routing and distance indicators, and because A32, A33 and A38 are nearly absent in the later window, this is a removal or bypass of a branch rather than a re-weighting of two persisting paths. [DIR003, DIR004, POS002, POS003, POS004]\n\nA competing explanation the evidence cannot rule out is that the branch through A32, A33 and A38 still exists but is now taken in fewer than about 1 in 200 cases — one later trace still contains all three activities — and the evidence cannot show whether these activities were removed or replaced by other activities. [POS002, LAG003]\n\nOther differences: A26 gained several residual outgoing edges in the later window (to A08, A13, A17, A24, A25 and A28, each about 0.5 in 100), and A27 gained small edges to A09, A14 and A15; the later-window routing profiles for A32, A33 and A38 rest on a single observation each and are not interpretable. [DIR001, DIR002, DIR003, DIR004]",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

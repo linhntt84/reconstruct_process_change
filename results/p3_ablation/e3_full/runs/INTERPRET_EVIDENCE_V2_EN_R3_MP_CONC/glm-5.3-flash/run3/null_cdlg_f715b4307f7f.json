@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_f715b4307f7f.json",
+  "evidence_sha256": "2cdb49893624d3fab219f04abf216aff7b3195a3608bdbf433601ba8c203af4e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T04:12:55.904625+00:00",
+  "finished_at_utc": "2026-11-16T04:16:23.746955+00:00",
+  "latency_seconds": 207.84,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26908,
+    "prompt_tokens": 128264,
+    "total_tokens": 155172,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24614,
+      "text_tokens": 2294
+    },
+    "cost": 0.0326936
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 77066,
+  "text": "### Observed differences\n\n- The sharpest difference concerns the alternative activities A06 and A12, which never occur in the same trace in either window, so every case contains exactly one of them. In the earlier window A12 ran in about 55 in 100 traces and A06 in about 45 in 100; in the later window this reversed to about 43 in 100 for A12 and about 57 in 100 for A06. Both keep their positions late in the trace (mean normalized position about 0.94–0.97 in both windows) and neither repeats, so this is a change in how often each path is taken, not in placement or repetition. [OCC005, OCC011, POS006, POS012, REL066]\n- The rerouting is visible directly in outgoing transitions: A03 occurs in every trace in both windows, and its transitions to A12 fell from about 57 in 100 to about 44 in 100 while its transitions to A06 rose from about 43 to about 56 in 100 (based on 148 and 159 outgoing transitions). A07's transitions to A12 also fell, from about 7 to about 3 in 100, while its transitions to A03 rose from about 36 to about 46 in 100. [DIR003, DIR006, POS003]\n- Pairwise relations move consistently with this shift: A03–A06 co-occurrence rose from about 45 to about 57 in 100 traces (with A03 before A06 up from about 32 to about 45 in 100), while A03–A12 co-occurrence fell from about 56 to about 43 in 100, and A12 without A02 fell from about 39 to about 26 in 100. The same direction appears for A06 with A04, A05, A07, A08, A09, A10, A11, A13, A14 and A15, and for A12 with A01, A02, A04, A05, A07, A08, A09, A10, A11, A13, A14 and A15. [REL030, REL036, REL024, REL041, REL047, REL051, REL057, REL061, REL064, REL065, REL068, REL069, REL081, REL092, REL096, REL101, REL102]\n- A secondary participation pattern: A01 appears in more traces (about 62 → 67 in 100; mean occurrences per trace about 0.9 → 1.0) and its median event position moved to the start of the trace (about 0.29 → 0.0), while A10 (about 41 → 37 in 100), A13 (about 43 → 36 in 100), A14 (about 34 → 30 in 100) and A15 (about 18 → 15 in 100) each appear in fewer traces, and A01 increasingly occurs without them (A01–A10 co-occurrence about 22 → 16 in 100). [OCC001, POS001, OCC009, OCC012, OCC013, OCC014, REL009, REL012, REL013, REL014]\n- Remaining differences are small and scattered: a few outgoing-transition profiles shifted modestly (A02 away from A05 and A14 toward A04 and A11; A05 away from A04 toward A02, A09 and A11; A09 away from A05 toward A01, A11 and A14, the last based on only about 43 vs 33 transitions), and the pairwise gap distributions show no coherent direction, with many items resting on fewer than about 20 observed pairs. [DIR002, DIR004, DIR005, DIR008, LAG001, LAG011, LAG012, LAG019]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the choice between the two existing alternative paths through A06 and A12 shifted toward A06: A12 ran in about 55 in 100 cases before and about 43 in 100 after, while A06 rose from about 45 to about 57 in 100, with the two activities never sharing a case in either window. The shift is observed directly at the branch point A03, whose outgoing transitions moved from A12 to A06 (about 57/43 to about 44/56 in 100), and the same direction appears in A07's transitions to A12 and in the pairwise relations of A06 and A12 with the rest of the process. Because both activities remain frequent in both windows, keep their positions and do not repeat, this reads as the same two paths being taken with different frequencies rather than activities being added, removed, moved or repeated. [DIR003, DIR006, OCC005, OCC011, POS006, POS012, REL030, REL036, REL066]\n\nLimitations: the occurrence, position and relation items describing this shift reflect the same underlying trace behaviour and are not independent confirmations, and this evidence file provides no screening baseline against which the number of qualifying items could be compared. The main competing explanation — ordinary sampling variation between two 200-case windows — is hard to reconcile with the size of the core differences (about 12–13 points on participation and routing shares, differences exceeded by fewer than about 2–3 in 100 random re-splits), but it cannot be excluded for the smaller secondary shifts. [OCC005, OCC011, DIR003, REL066]\n\nOther differences: A01 occurs in more cases (about 62 → 67 in 100) and its median position moved to the trace start, while A10, A13, A14 and A15 each occur in fewer cases and A01 increasingly appears without them; the outgoing-transition profiles of A02, A05 and A09 also shifted modestly. These are not part of the main hypothesis and, being smaller and partly based on few observations, could also reflect sampling variation. [OCC001, POS001, OCC009, OCC012, OCC013, OCC014, REL009, REL012, REL013, REL014, DIR002, DIR005, DIR008]",
+  "case_id": "null_cdlg_f715b4307f7f",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

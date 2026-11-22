@@ -1,0 +1,18 @@
+### Observed differences
+
+- Three activities that never appeared in the earlier window occur regularly in the later one: A19 in about 37 in 100 traces (74 of 200), A25 in about 34 in 100 (68 of 200) and A20 in about 29 in 100 (57 of 200), each occurring at most once per trace; the three shares together cover nearly every trace. [OCC001, OCC002, OCC003]
+- In the later window, each of the three leads almost invariably to A26: about 96 in 100 of A19's observed outgoing transitions go to A26, about 98 in 100 of A20's and about 97 in 100 of A25's. In the earlier window these activities had no observed occurrences and hence no observed outgoing transitions. [DIR001, DIR002, DIR003, OCC001, OCC002, OCC003]
+- A41's routing changed: in the earlier window about 93 in 100 of its outgoing transitions went to A26; in the later window only about 1 in 100 does, while about 92 in 100 go to the three new activities (roughly 34, 31 and 27 in 100 to A19, A25 and A20 respectively). [DIR004]
+- The distance from A41 to A26 changed accordingly: in the earlier window A26 followed A41 within one event in about 94 in 100 traces; in the later window this holds for about 1 in 100, and A26 instead follows two events later in about 90 in 100. [LAG002]
+- The new activities sit at roughly 0.35–0.36 of the trace position, immediately before A26, whose mean position moved slightly later (about 0.37 to 0.39); A31 also shifted slightly later (about 0.69 to 0.71), consistent with one extra event appearing earlier in the trace. [POS001, POS002, POS003, POS004, POS005]
+- Separately, the spacing between A31 and A35 shifted: the two were adjacent in about 55 in 100 traces in the earlier window versus about 37 in 100 in the later one, and two events apart in about 42 versus about 62 in 100. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Fourteen control-flow items qualified, roughly 28 times the 0.5 expected if nothing had changed, so chance sampling cannot account for the set as a whole, and every item's difference exceeds those seen in about 995 of 1000 random re-splits. The evidence supports a structural hypothesis: in the later window, a stage of three alternative activities — A19, A20 and A25 — is executed between A41 and A26. Previously A41 was typically followed immediately by A26; now A41 leads to one of the three in roughly equal shares, and each of the three leads almost invariably to A26, so A26 follows A41 two events later instead of immediately. The appearance of the three activities from zero participation, the redirection of A41's outgoing transitions, the near-invariant edges from each new activity to A26, the shift of the A41→A26 distance from one to two events, and the new activities' positions just before A26's slightly later position all describe the same insertion consistently. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, POS001, POS002, POS003, POS004]
+
+Limitations: the evidence cannot show how the choice among A19, A20 and A25 is made; their mutual exclusivity is inferred from the three participation shares summing to nearly every trace rather than observed directly; and a rare direct A41→A26 transition (about 1 in 100 of A41's outgoing transitions) may persist. [OCC001, OCC002, OCC003, DIR004, LAG002]
+
+Other differences: the A31→A35 spacing shifted from mostly adjacent to mostly one event apart; this is not explained by the insertion, which lies earlier in the trace, and the evidence does not identify what now separates the two activities in the traces where the gap grew. [LAG001]

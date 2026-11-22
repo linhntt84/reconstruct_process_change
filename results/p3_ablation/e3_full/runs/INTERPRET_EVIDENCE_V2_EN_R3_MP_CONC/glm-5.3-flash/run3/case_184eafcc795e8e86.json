@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_184eafcc795e8e86.json",
+  "evidence_sha256": "241611c17d7e0cc5c4b5438a16672c435177d4a7bcc21bf17a95154d759f5eba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:52:30.825627+00:00",
+  "finished_at_utc": "2026-11-16T03:54:23.897516+00:00",
+  "latency_seconds": 113.07,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11632,
+    "prompt_tokens": 58338,
+    "total_tokens": 69970,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10340,
+      "text_tokens": 1292
+    },
+    "cost": 0.0145667
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35170,
+  "text": "### Observed differences\n\n- Two activities that never ran in the earlier window run in every case of the later window: A01 and A02 were absent from all 200 earlier traces but each occurs exactly once in every one of the 200 later traces. [OCC001, OCC002]\n- A01 is inserted between the A06/A13 stage and A04: in the later window A01 always leads to A04 and sits at about three-quarters of the trace, whereas in the earlier window A06 and A13 passed directly to A04 in about 50 of 100 of their outgoing transitions; in the later window that share moved to A01 (about 48–52 in 100), while their transitions to each other continue as before. [DIR001, DIR004, DIR007, POS001]\n- A02 is added as a new final step: in the earlier window A12 ended every trace (position 1.0, no outgoing transitions observed); in the later window A12 always leads to A02, and A02 is always the last event of the trace. [DIR006, POS002, POS012]\n- The relational patterns match this placement: in the later window A01 co-occurs with every other activity, always after A06 and A13 and before A12, precedes A04 in about 49 of 100 traces (interleaved with A04's repetitions in the rest), and precedes A02 in all traces; before, these pairs were one-sided (only the other activity present) or the two never met. [REL001, REL003, REL005, REL011, REL012, REL023]\n- Distances between established activities shift by about one step downstream of the insertion: the direct A06→A04 and A13→A04 links at distance 1 (about 20 in 100 of those pairs) disappear and reappear at distances 2–3; A09→A11, A09→A12 and A14→A04 move from distance 4 to 5; A06→A11/A12 and A13→A11/A12 shift from distances 2–3 to 3–4. [LAG014, LAG022, LAG024, LAG025, LAG033, LAG036, LAG015, LAG016, LAG034, LAG035]\n- The remaining activities are essentially unchanged in how often they run (A03 about 4.1 → 4.2 occurrences per trace, A04 about 2.1 in both windows, A07/A10 about 2.05 → 2.20), and their fractional positions drift slightly earlier (e.g., A04 median 0.89 → 0.83, A13 mean 0.72 → 0.65), consistent with traces simply becoming two events longer. [OCC003, OCC004, OCC006, OCC009, POS004, POS006, POS013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the process executes two additional activities in every case: A01 is inserted between the A06/A13 stage and A04 — A06 and A13 now hand over to A01 in about half of their outgoing transitions where they previously went straight to A04, and A01 always leads to A04 — and A02 is appended as the new final step after A12, which was previously the last activity. This is shown directly (participation 0 of 200 → 200 of 200 for both activities), relationally (the new edges A06→A01, A13→A01, A01→A04 and A12→A02 are observed directly), and consistently (all downstream activity pairs shift by about one step in distance, as a single insertion predicts). Limitations: the activity codes are anonymous, so the evidence cannot distinguish genuinely new activities from renamed existing ones, and the many agreeing items largely describe one underlying trace change rather than independent confirmations; the roughly half-and-half exit from the A06/A13 pair to A01 versus back into the pair cannot be pinned down as a routing choice or deterministic alternation from this evidence. [OCC001, OCC002, DIR001, DIR004, DIR006, DIR007, LAG014]\n\nOther differences: a few small, isolated shifts appear outside this hypothesis — the share of traces in which A07 precedes A04 falls from about 14 to 7 in 100, A10→A07 at distance 2 rises from about 23 to 26 in 100, and A11's self-repetition distance of 2 shrinks from about 26 to 20 in 100 (based on fewer than 55 observations per window); each is a single modest item that sampling variability alone could produce. [REL038, LAG028, LAG031]",
+  "case_id": "case_184eafcc795e8e86",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

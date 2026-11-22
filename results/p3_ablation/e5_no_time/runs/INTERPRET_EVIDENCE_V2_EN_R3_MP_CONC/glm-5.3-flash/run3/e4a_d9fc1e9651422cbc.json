@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_d9fc1e9651422cbc.json",
+  "evidence_sha256": "e6d1ca1784603221f83f3c2f2a7a5d373bf26f3c153bdb95dde22b514f31b115",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:46:25.425492+00:00",
+  "finished_at_utc": "2026-11-15T12:47:50.084724+00:00",
+  "latency_seconds": 84.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12100,
+    "prompt_tokens": 31727,
+    "total_tokens": 43827,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10574,
+      "text_tokens": 1526
+    },
+    "cost": 0.01080905
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36173,
+  "text": "### Observed differences\n\n- In the earlier window, A22 and each of A31, A32, A37, A38 and A39 ran in every one of the 200 traces, exactly once per trace. In the later window, A22 appears in about 46 in 100 traces and each of the five others in about 55 in 100 traces. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- A20's successor changed completely: before, its outgoing transitions went to the five activities A31/A32/A37/A38/A39 (roughly 17–24 in 100 each); in the later window, about 995 in 1000 of A20's outgoing transitions lead straight to A23, so cases reach A23 without the five activities in between. [DIR001]\n- A21's successor changed: before, A21 always led to A22; in the later window it leads to A22 in about 46 in 100 of its outgoing transitions and to one of the five activities in about 54 in 100. [DIR002]\n- The five activities' exit changed: before, each could be followed by A23 (about 17–26 in 100 of outgoing transitions); in the later window A23 no longer appears among their successors and A26 does (about 14–25 in 100). [DIR003, DIR004, DIR005, DIR006, DIR007]\n- Ordering reversed: before, the five activities always ran before A21 and before A23; in the later window, in the about 55 in 100 traces where they co-occur with A21 or A23, A21 and A23 come first in essentially all cases. [REL008, REL009, REL010, REL011, REL012, REL020, REL021, REL022, REL023, REL024]\n- A22 and the five activities became alternatives: before they always co-occurred; in the later window they co-occur in only about 1 in 200 traces, with about 45 in 100 traces containing A22 without them and about 55 in 100 containing them without A22. A22's co-occurrence with A21, A23 and A26 likewise fell from every trace to about 46 in 100. [REL015, REL016, REL017, REL018, REL019, REL001, REL007, REL013, REL014]\n- The five activities are skipped together: for every pair among them, about 45 in 100 later traces contain neither, whereas before they always co-occurred; their mutual order remains unfixed in both windows. [REL030, REL031, REL032, REL033, REL034, REL035, REL036, REL037, REL038, REL039]\n- Event positions shifted consistently: the five activities moved later (mean about 0.40 to about 0.57–0.59), while A23 and A21 moved earlier (about 0.48 to 0.38 and 0.62 to 0.53); these are positions within the trace, not clock times. [POS002, POS004, POS006, POS007, POS008, POS009, POS010]\n- The lag items point the same way, but each rests on a single after-window observation, so they add little weight. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the five activities A31, A32, A37, A38, A39 became an optional branch instead of a mandatory segment: A20 now leads almost always directly to A23, so the five are no longer executed between A20 and A23; when the five do run (about 55 in 100 traces, previously all), they start after A21 rather than before it and flow to A26 instead of A23. A22, previously executed in every trace after A21, now appears in about 46 in 100 traces and acts as an alternative to the five: a trace contains either A22 or the group, essentially never both. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL008, REL015, REL020, REL025]\n\nThe hypothesis is shown directly by the successor changes at A20, A21 and the five activities, and corroborated by the participation drops, the order reversals and the consistent position shifts; with 72 qualifying items against fewer than 1 expected if nothing had changed, chance is implausible as an explanation of the overall pattern. [DIR001, DIR002, DIR003, OCC001, OCC002, REL015, REL020, POS004, POS006]\n\nLimitations: the lag evidence rests on one after-window observation per pair, positions are event positions rather than clock times, and the evidence cannot rule out that the two windows draw different mixes of case types rather than a modified process — although the near-disappearance of the old A20-to-group transitions in the later window argues against a simple mixture of old and new cases. [LAG001, POS001, DIR001]\n\nOther differences: A20's mean event position moved slightly later (about 0.32 to 0.35) and A26's slightly earlier (about 0.67 to 0.65), while A23 and A26 remain present in every trace in both windows. [POS001, POS004, POS005]",
+  "case_id": "e4a_d9fc1e9651422cbc",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

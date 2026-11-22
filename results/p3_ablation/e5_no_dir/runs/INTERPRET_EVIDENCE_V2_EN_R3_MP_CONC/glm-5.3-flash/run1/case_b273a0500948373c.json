@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_b273a0500948373c.json",
+  "evidence_sha256": "a08d73ea6d5218807d76d6ea254283c5d3da4ed02c090744dbfcf2b762d51eba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:49:08.150001+00:00",
+  "finished_at_utc": "2026-11-14T11:50:04.586777+00:00",
+  "latency_seconds": 56.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7818,
+    "prompt_tokens": 15361,
+    "total_tokens": 23179,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6983,
+      "text_tokens": 835
+    },
+    "cost": 0.006213150000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 26105,
+  "text": "### Observed differences\n\n- The three activities A16, A17 and A18 each ran in about 19 in 100 traces in the earlier window and in about 79 in 100 in the later window; in both windows they always occur together in the same traces, never one without the others [OCC001, OCC002, OCC003, REL007, REL008, REL013].\n- The three activities A19, A20 and A21 moved in the opposite direction: about 82 in 100 traces earlier, about 21 in 100 later, and they too always appear together as a group [OCC004, OCC005, OCC006, REL022, REL023, REL025].\n- The two groups are alternatives in both windows: a trace contains one group or the other, never both, before and after [REL009, REL014, REL018].\n- A15 and A25 occur in every trace in both windows, and their relations to the branches are unchanged: A15 always precedes whichever group executes, and A25 follows the group or interleaves with it, never precedes it [REL001, REL004, REL012, REL024].\n- Ordering within each group stays unfixed in both windows: for example, in the later window A16 precedes A17 in about 42 in 100 of their shared traces and A17 precedes A16 in about 38 in 100; the A19-group shows the same mixed order before and after [REL007, REL013, REL022, REL025].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the frequencies of two existing alternative paths between A15 and A25 shifted. In the earlier window, about 82 in 100 traces executed the branch containing A19, A20 and A21 (the three always together, in no fixed order) between A15 and A25, while about 19 in 100 executed the branch with A16, A17 and A18; in the later window the shares are roughly reversed, at about 21 in 100 versus about 79 in 100. The relations around the branches are stable — A15 precedes the branch in every case, A25 follows or interleaves, the groups never mix, and within-group order remains unfixed — so this is a change in how often existing paths are taken, not a replacement, bypass or reordering. All 33 qualifying items come from the control-flow family, where about 0.4 items would be expected by chance across the 82 tested units, and the participation and relational indicators agree in direction and magnitude on every affected activity and pair [OCC001, OCC004, REL001, REL004, REL007, REL009, REL012, REL022].\n\nBecause the less frequent branch is still observed in a substantial share of traces in both windows (about 19 in 100 and about 21 in 100), the evidence fits a share shift between alternatives. A competing explanation the evidence cannot rule out is a changed mix of cases reaching this choice point (for instance two case types whose proportions changed) rather than a changed routing decision at this point; the evidence covers control flow only [OCC004, REL018, REL022].\n\nOther differences: none beyond the branch-share shift; the changes in how often each group co-occurs with A25 follow from the same shift in branch frequencies [REL012, REL024, REL027].",
+  "case_id": "case_b273a0500948373c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

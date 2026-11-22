@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_6919c4b2550dc2eb.json",
+  "evidence_sha256": "4fdb992dbd7b1e4d66cf5a106ae227257ede8fce967125feeeba1fbbaf27a87c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:10:43.516523+00:00",
+  "finished_at_utc": "2026-11-16T01:12:24.892095+00:00",
+  "latency_seconds": 101.38,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13020,
+    "prompt_tokens": 17409,
+    "total_tokens": 30429,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11734,
+      "text_tokens": 1286
+    },
+    "cost": 0.00912135
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41920,
+  "text": "### Observed differences\n\n- In the earlier window, A01 and A05 were not observed in any of the 200 traces; in the later window both occur in all 200 traces, exactly once per case and never repeated. [OCC001, OCC002]\n- In the later window, A01 takes place in the middle of the case (median position about 0.6 of the trace): A02, A03 and A04 each precede A01 in about 78, 87 and 69 of 100 cases respectively, A01 precedes A06 in every case, and about 80 in 100 of A01's outgoing transitions lead to A06, with the rest leading back to A02 (about 10), A03 (about 8) or A04 (about 3). A03 and A04, which never led to A01 before, now lead to A01 in about 45 and 52 in 100 of their outgoing transitions. [POS001, REL001, REL002, REL003, REL005, DIR001, DIR003, DIR004]\n- In the later window, A05 takes place at the end of the case (final position in at least about 75 of 100 cases): A06 precedes A05 in every case, about 84 in 100 of A06's outgoing transitions now lead to A05, and A02, A03 and A04 precede A05 in 87–98 of 100 cases. In roughly 29 of 200 cases A05 is not the last event and leads back to A04 (about 59), A02 (about 31) or A03 (about 10 in 100 of its outgoing transitions). [POS005, REL014, REL007, REL010, REL012, DIR006, DIR005]\n- A06's role changed: in the earlier window it was usually the final event (outgoing transitions in only about 59 of 200 traces, median position 1.0, successors mostly A02 at about 53, A04 at about 29 and A03 at about 19 in 100); in the later window it always has a successor, overwhelmingly A05, and its median position moved earlier to about 0.8. [DIR006, POS006]\n- Distances between the early activities and A06 grew, consistent with A01 now lying between them: A04 is followed by A06 within one step in about 74 of 100 cases before versus about 7 of 100 after (now typically 2–3 steps apart), and A02 to A06 spans typically 2–3 steps before versus most often 4 steps after. [LAG008, LAG003]\n- Smaller shifts: A03 precedes A04 in about 78 of 100 cases before versus about 67 after, A02 now occasionally leads to A01 (about 7 in 100 of its outgoing transitions) or A05 (about 3), and A04's typical position moved earlier (mean about 0.68 to 0.47). [REL009, DIR002, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, every case additionally executes A01 once, after the A02/A03/A04 block and before A06, and A05 once at the end, after A06; in the earlier window neither activity was observed at all. The support is direct and consistent: participation for both activities went from 0 to 200 of 200 traces with exactly one occurrence each; transitions that were not observed before (A03 to A01, A04 to A01, A01 to A06, A06 to A05) are now the dominant outgoing transitions of those activities; every relation involving A01 or A05 changes from \"only one of the pair\" or \"neither\" to full co-occurrence with a stable order; and the wider gaps between the early activities and A06 match A01's new place. Most items show differences larger than in about 199 of 200 random re-splits, and the many agreeing relation, lag and position items largely describe this one underlying change rather than independent confirmations. Limitations: the evidence provides no screening expectation to compare against, so the judgement rests on directness and consistency; \"not observed before\" strictly means only that, so a shift in the mix of process variants (a variant containing A01 and A05 that was absent from the earlier sample) cannot be ruled out; and positions are event positions, not clock times, so the placement statements concern order only. [OCC001, OCC002, DIR001, DIR003, DIR004, DIR006, REL001, REL002, REL003, REL004, REL005, REL007, REL010, REL012, REL014, POS001, POS005, LAG003, LAG008]\n\nOther differences: the ordering between A03 and A04 shifted somewhat (A03 first in about 78 of 100 cases before versus 67 after), and A02 gained small new transitions to A01 and A05; both accompany the main change but are not its core. [REL009, DIR002]",
+  "case_id": "case_6919c4b2550dc2eb",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

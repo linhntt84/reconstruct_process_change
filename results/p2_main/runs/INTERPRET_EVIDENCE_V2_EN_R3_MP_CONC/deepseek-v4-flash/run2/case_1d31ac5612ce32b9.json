@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "659dc72efd3ac03178a25c7f0823a34e56a533f4eb0c0a5d800ff4ffb5fc2e7c",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:14:18.703492+00:00",
+  "finished_at_utc": "2026-11-15T01:14:35.497955+00:00",
+  "latency_seconds": 16.79,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3034,
+    "prompt_tokens": 5968,
+    "total_tokens": 9002,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2500
+    },
+    "cost": 0.0016128240000000001
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 8080,
+  "text": "### Observed differences\n\n- In the later window, A02 occurs on average 2.11 times per trace instead of exactly once, and about half of traces (49.5%) contain more than one A02. [OCC001]\n- A02's next activity changed: before it always went to A04; after, about 53% go to A04 and 47% go to A03. [DIR001]\n- A04's next activity changed: before it always went to A03; after it always goes to A02. [DIR002]\n- A04 appears in only about half of traces (49.5%) instead of all traces. [POS002, REL002, REL003]\n- The order between A02 and A03 changed: before A02 always preceded A03; after, about half the traces have A02 before A03 and half have them interleaved or repeated. [REL001]\n- The distance between A02 and A03 changed from always 2 steps to a mix (about 40% adjacent, 11% three steps, 5% five steps). [LAG001]\n- A02 and A04 co-occur in about half the traces instead of all, and when they co-occur they are interleaved or repeated rather than A02 before A04. [REL002, LAG002]\n- A04 and A03 co-occur in about half the traces; when they do, A04 before A03 in about 22% and interleaved/repeated in 28%, instead of always A04 before A03 adjacent. [REL003, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change from a fixed linear sequence A02→A04→A03 (each activity once) to a structure where A02 is repeated, A04 becomes optional, and A02 can branch to A03 or A04, with A04 looping back to A02. This is directly supported by the increase in A02 occurrences and recurrence, the new outgoing edge A02→A03, the change of A04's outgoing from A03 to A02, the drop in A04 participation, and the loss of fixed ordering between A02 and A03 and between A02 and A04. The evidence is consistent across occurrence, routing, and ordering indicators. A competing explanation that cannot be fully ruled out is that the exact control-flow pattern (e.g., whether A04 is skipped or repeated in a loop) is not uniquely determined, but the main structural change is clear.\n\nOther differences: None beyond the above.",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

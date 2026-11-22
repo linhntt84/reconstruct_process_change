@@ -1,0 +1,17 @@
+### Observed differences
+
+- Out of A26, the direct continuation mix shifted in the later window: A31 fell from about 31 to about 17 in 100 observed outgoing transitions, while A30 rose from about 21 to about 27 and A32 from about 22 to about 30; A33 stayed flat at about 27 in 100. [DIR001]
+- The successors of A30 and A31 reversed. Before, A30 was followed by A27 in about 60 in 100 of its observed outgoing transitions and by A31 in about 40; in the later window A31 follows A30 in about 62 in 100 and A27 in about 38. A31 shows the mirror image: followed by A30 in about 60 in 100 before, by A27 in about 62 in 100 after. [DIR002, DIR003]
+- Position gaps flipped in exactly the matching direction: A30 now typically follows A26 one step later (about 62 in 100 pair occurrences, previously about 40) and A31 two steps later (about 62, previously about 40); likewise A27 now typically follows A31 one step later and A30 two steps later, the reverse of before. All observed gaps are one or two steps. [LAG001, LAG002, LAG003, LAG004]
+- The A30/A31 sequence also ran somewhat less often: about 87 observed outgoing transitions from A30 in the later window versus about 103 before, and direct continuations from A26 into A30 or A31 together fell from about 52 to about 44 in 100. [DIR001, DIR002]
+- Every item shows the same mirrored magnitude (roughly a 60/40 split before versus roughly 38/62 after), and each difference is larger than all but about 1 in 200 random re-splits of the pooled traces. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, A30 and A31 typically execute in the opposite order between A26 and A27: the more common routing before was A26 → A31 → A30 → A27 (about 60 in 100 of the observed cases containing this sequence), whereas in the later window it is A26 → A30 → A31 → A27 (about 62 in 100), changing which of the two is A27's main predecessor. This is shown directly by the reversed successor shares of A30 and A31 together with the matching reversals in the position gaps from A26 and to A27, all moving in mutually consistent directions. [DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]
+
+The pattern is unlikely to be chance overall: seven items qualified where screening expects roughly 0.33 without a change, and every item's difference exceeds all but about 1 in 200 random re-splits. The items nevertheless overlap heavily and largely describe the same traces, so they should be read as one coherent behavioural shift rather than independent confirmations. [DIR001, DIR002, DIR003, LAG001, LAG002, LAG003, LAG004]
+
+Limitations: both orderings occur in both windows, so what changed is which routing is more frequent, and a difference in the sampled mix of two pre-existing variants between the two 200-trace windows cannot be fully ruled out, even though plain sampling noise is an unlikely explanation for a flip of this size and consistency. The rise of A32 as a direct successor of A26 (about 22 to 30 in 100) and the slightly lower use of the A30/A31 sequence are observed, but no evidence covers A32's or A33's own context, so it cannot be determined whether they belong to the same reordering or are a separate redistribution. [DIR001]

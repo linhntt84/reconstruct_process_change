@@ -1,0 +1,18 @@
+### Observed differences
+
+- The two groups of activities exchanged their typical place in the case. In the later window, A15, A17 and A18 appear at about 38% of the case length (mean relative position about 0.38), down from about 64%, while A14, A16 and A19 appear at about 67%, up from about 34%. [POS001, POS002, POS003, POS004, POS005, POS006]
+- A14, A16 and A19 each occur in roughly 30–40 in 100 cases and their shares together cover all cases, consistent with exactly one of them running per case; A15, A17, A18, A20 and A24 occur in every case in both windows. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+- Successors reversed: in the earlier window A14, A16 and A19 were each always followed by A20, and A15, A17 and A18 exited to A25 in about 30–38 in 100 of their outgoing transitions and never directly to A20; in the later window A14, A16 and A19 are each always followed by A25, and A15, A17 and A18 exit to A20 in about 28–37 in 100 and never to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- The entry points into the two groups swapped: A24 now leads to A14, A16 or A19 (about 29–39 in 100 each) where it previously led to A15, A17 or A18, and A35 now leads to A15, A17 or A18 where it previously led to A14, A16 or A19. [DIR007, DIR008]
+- Pairwise order flipped throughout: A20 and A24 preceded A15, A17 and A18 in all 200 earlier cases and follow them in all 200 later cases; A14, A16 and A19, which came before A15/A17/A18, A20 and A24 whenever they occurred, now come after them. [REL001, REL006, REL008, REL009, REL010, REL015, REL016, REL018, REL019, REL020]
+- The step distance from A24 to A25 shrank from 4 to 2, and from A35 to A20 grew from 2 to 4; A20 and A24 also sit about 0.07 of the case length later than before. [LAG001, LAG002, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two segments of the flow exchanged their order: the segment entered from A35, containing one of A14, A16 or A19, and the segment entered from A24, containing A15, A17 and A18, swapped places around A20 and A24. In the later window A15, A17 and A18 run between A35 and A20, and one of A14, A16, A19 runs between A24 and A25; in the earlier window the arrangement was the reverse. [DIR001, DIR002, DIR007, DIR008, LAG001, LAG002]
+
+The reversal is observed directly rather than inferred from marginal frequencies: all 21 pairwise-order comparisons reverse, including complete reversals present in every one of the 200 traces in both windows, and the successor rewiring, the opposite position shifts and the distance changes all match the same exchange, including the slight later shift of A20 and A24 expected when the segment before them grows from one activity to three. The volume of qualifying items (39, against roughly 0.46 expected if nothing had changed) also cannot be explained by chance as a whole. [REL008, REL009, REL015, REL016, REL018, REL019, DIR001, DIR003, DIR006, POS007, POS008, LAG001, LAG002]
+
+A competing explanation the evidence cannot rule out is that both orders already existed as process variants and only their frequencies shifted between the two windows, rather than a single variant having been modified; with 200 traces per window this cannot be decided. Smaller shifts, such as the routing shares inside the A15/A17/A18 segment (A15 to A17 at about 40 in 100 earlier versus 31 in 100 later) and the choice among A14, A16 and A19, may equally reflect sampling variation. [DIR002, DIR004, DIR005, POS001, POS003, POS006]

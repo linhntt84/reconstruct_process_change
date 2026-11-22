@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, activities A19, A20 and A25 were not observed in any of the 200 traces. In the later window, A19 appears in about 29 in 100 traces, A20 in about 41 in 100, and A25 in about 31 in 100. [OCC001, OCC002, OCC003]
+- In the later window these three activities are mutually exclusive alternatives: they practically never occur in the same trace (co-occurrence in at most about 0.5 in 100 traces), and their shares sum to essentially every trace, so each case now executes exactly one of them. [REL001, REL002, REL006]
+- Before, the sequence A27 → A28 → A29 dominated: about 97 in 100 of A27's observed outgoing transitions went to A28, and about 98 in 100 of A28's went to A29. In the later window these shares fell to about 43 in 100 and about 57 in 100 respectively, with the remainder leading to the new activities (about 52 in 100 of A27's transitions now go to A19/A20/A25, and about 41 in 100 of A28's). [DIR004, DIR005]
+- The new activities themselves lead mainly to A28 and A29 (for example A19: about 53 in 100 of its outgoing transitions to A28, about 47 in 100 to A29). [DIR001, DIR002, DIR003]
+- Relationally, each new activity always follows A27 and precedes A29 (in essentially 100 in 100 of the traces where both occur). Relative to A28 there is no fixed order: for example A19 comes before A28 in about 15 in 100 traces and after it in about 13–14 in 100, so the new step is inserted either directly after A27 or directly before A29. [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011]
+- The new activities sit around mid-trace (mean position about 0.52 of the trace); A27 shifted slightly earlier (mean about 0.48 to 0.46) and A29 slightly later (about 0.55 to 0.57), consistent with one extra step lengthening each trace. [POS001, POS002, POS003, POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a new step was inserted into the existing A27 → A28 → A29 sequence: in the later window, every case executes exactly one of three mutually exclusive activities — A19 (about 29 in 100 cases), A20 (about 41 in 100) or A25 (about 31 in 100) — placed between A27 and A29, either directly after A27 or directly before A29 in roughly equal shares. The support is direct and consistent: the activities appear from zero participation, their successor profiles emerge from empty ones, A27's and A28's outgoing transitions redistribute accordingly, and the relational items pin each new activity after A27 and before A29. The number of qualifying items (25, all control flow) is far above the roughly 0.55 expected for an unchanged process, so the pattern as a whole is not what random re-splits typically produce. A competing explanation the evidence cannot fully rule out is that A19, A20 and A25 existed before at a rate too low to appear in 200 traces and merely surfaced in the later sample; the evidence also does not show what selects between the three alternatives or the two insertion points.
+
+Other differences: none beyond the above; the slight position shifts of A27 (earlier) and A29 (later) are consistent with the same insertion rather than a separate change. [POS004, POS005]

@@ -1,0 +1,16 @@
+### Observed differences
+
+- **Timing between A33 and A34.** In the earlier window, the elapsed time from the completion of A33 to the completion of A34 was about 1.0 hours (median about 1.0, middle half roughly 0.9–1.1 hours); in the later window it was about 0.5 hours (middle half roughly 0.44–0.55). The interval roughly halved at every quartile and its spread narrowed, and the pair was measured in all 200 traces of both windows; a difference this size arose in fewer than 1 in 2,000 random re-splits. [TWAIT001]
+- **Routing after A22.** Earlier, about 53 in 100 of A22's outgoing transitions went to A25, about 29 to A23 and about 18 to A21; in the later window, about 58 in 100 went to A21, about 29 still to A23, and only about 13 to A25. A22 itself was observed in fewer cases later (49 vs 31 outgoing transitions), so the later shares rest on a smaller sample. [DIR002]
+- **Distance between A22 and A25.** Where A22 is followed by A25, the two events were immediately adjacent in about 53 in 100 of the earlier observations; in the later window only about 13 in 100 were adjacent, and about 87 in 100 sat two or three event positions apart. The pair still occurs (31 later traces), so A25 did not disappear from after A22. [LAG001]
+- **Routing after A16.** A16's outgoing transitions shifted from A18 toward A17: A17 rose from about 27 to 42 in 100, A18 fell from about 38 to 23 in 100, and A20 stayed at about 35 in 100 (151 vs 169 transitions). [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing between A33 and A34 as the main finding: in the later window the elapsed time between their completions appears to be about half of what it was earlier, consistently across the median and quartiles, in all 200 traces of both windows, and with a difference that arises in fewer than 1 in 2,000 random re-splits; the time family produced 1 evidence item where about 0.005 were expected without change, so this item is unlikely under a stable process. The evidence cannot decompose the elapsed time, so it cannot show whether the completions moved closer because less happened in between, because work was completed faster, or because of different scheduling; nor can it link this timing change to the routing differences below. [TWAIT001]
+
+Other differences:
+- Rerouting after A22: the direct transition to A25 fell from about 53 to about 13 in 100 of A22's outgoing transitions while the transition to A21 rose from about 18 to about 58 in 100 (A23 steady at about 29); where A22 is still followed by A25, the pair now sits two or three positions apart in about 87 in 100 of cases instead of immediately adjacent. The control-flow family produced 3 items against about 0.3 expected without change, but this cluster rests on 49 vs 31 outgoing transitions, A22 itself was observed in fewer cases later, and the two items describe one underlying relation rather than two independent confirmations, so a sampling contribution to the shift cannot be ruled out. [DIR002, LAG001]
+- Redistribution after A16: A16's outgoing transitions moved from A18 (about 38 down to 23 in 100) toward A17 (about 27 up to 42 in 100), with A20 steady at about 35 in 100, based on 151 vs 169 transitions. [DIR001]

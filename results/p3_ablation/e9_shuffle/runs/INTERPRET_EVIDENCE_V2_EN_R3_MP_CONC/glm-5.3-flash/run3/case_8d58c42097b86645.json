@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_8d58c42097b86645.json",
+  "evidence_sha256": "a9e461841d6e88ba0c92c1f7cef74df7a23e6674703f6bf65004630e3888674c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:59:28.783276+00:00",
+  "finished_at_utc": "2026-11-15T10:01:00.114232+00:00",
+  "latency_seconds": 91.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12945,
+    "prompt_tokens": 4940,
+    "total_tokens": 17885,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11964,
+      "text_tokens": 981
+    },
+    "cost": 0.007213499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44685,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in the earlier window (0 of 200 traces) but appears in about 21 in 100 traces in the later window (42 of 200), averaging about 0.26 occurrences per trace and occurring more than once in about 3 in 100 traces; when present it sits around the middle of the trace (median relative position about 0.5). [OCC001, POS001]\n- In the later window, all observed outgoing transitions of A01 (51) lead to A10; earlier A01 had no observed outgoing transitions because the activity itself was not observed. [DIR001]\n- A08's successors changed: earlier, about 55 in 100 of its outgoing transitions went to A10 and about 45 in 100 to A09; in the later window, about 55 in 100 go to A01 and about 45 in 100 to A09, with no direct A08→A10 transitions observed. [DIR003]\n- The distance from A08 to A10 shifted by one position: earlier the pair was usually adjacent (a 1-step gap in roughly three-quarters of observed cases, most of the rest 3 or 5 steps), while in the later window the odd gaps disappear and a 2-step gap dominates (roughly three-quarters, the rest 4 steps). [LAG001]\n- The A01–A08 and A01–A10 pairs changed from never co-occurring to co-occurring in about 21 in 100 traces: earlier, A08 and A10 each appeared in about 21 in 100 traces without A01; in the later window A01 co-occurs with A08 in about 21 in 100 traces (A08 before A01 in about 10, interleaved or repeated in about 12) and with A10 in about 21 in 100 (A01 before A10 in about 18). [REL001, REL002]\n- Separately, routing around A03, A12 and A13 changed: earlier A12 always led to A03 (16 transitions) and A03 led to A13 in about two-thirds of its transitions and to A12 in about one-third (47 transitions); in the later window A12 always leads to A13 (17 transitions) and A03 always leads to A13 (20 transitions), with A03 observed less often overall. [DIR002, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 executes between A08 and A10: the segment that previously ran directly from A08 to A10, in about 21 in 100 traces, now runs from A08 through A01 to A10, while the share of traces containing that segment stayed about the same (about 21 in 100 in both windows). The signs are direct and mutually consistent: A01 appears only in the later window at the same participation level as the segment; all of its observed transitions lead to A10; the successor share of A08 that previously went to A10 now goes to A01; and the A08→A10 distance shifted from one step to two, which is what one intervening activity produces. Seven of the nine qualifying items (against roughly 0.13 expected by chance if nothing had changed) describe this one coherent difference. [POS001, OCC001, DIR001, DIR003, LAG001, REL001, REL002]\n\nLimitations: zero participation in the earlier window shows only that A01 was not observed then, so \"newly added\" and \"previously too rare to observe\" cannot be distinguished; about 12 in 100 later traces show A01 and A08 interleaved or repeated rather than in a fixed A08-then-A01 order, which the evidence does not resolve; and the evidence cannot show what triggers or precedes the segment. The main competing explanation — a rare variant that happened to surface only in the later sample of 200 traces — is made unlikely by the coordinated successor and distance changes but cannot be excluded outright. [POS001, OCC001, LAG001, REL001]\n\nOther differences: the rerouting around A03, A12 and A13 (A12 now proceeds to A13 instead of back to A03, and A03 always proceeds to A13) is not part of the main hypothesis; the A12 change rests on few observations (about 16–17 transitions), so it is only tentatively characterised. [DIR002, DIR004]",
+  "case_id": "case_8d58c42097b86645",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

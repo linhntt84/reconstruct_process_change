@@ -1,0 +1,14 @@
+### Observed differences
+
+- In the later window, the outgoing transitions of A31 are redistributed: about 62 in 100 now go to A32 and about 38 to A28, whereas before, about 64 in 100 went to A28 and about 36 to A32; each profile rests on roughly 90 observed outgoing transitions per window. [DIR001]
+- A32 shows the mirror image: its main successor changed from A31 (about 64 in 100 before) to A28 (about 62 in 100 in the later window), again on roughly 90 outgoing transitions per window. [DIR002]
+- The step gaps between activity pairs moved in a coordinated way: A31 now typically follows A27 after one step (about 62 in 100 pair occurrences, up from about 36) and sits two steps before A28 (a gap of 1 down from about 64 to about 38 in 100), while A32 now typically follows A27 by two steps (up from about 36 to about 62) and precedes A28 by one step (up from about 36 to about 62); each pair occurs in about 90 traces per window. [LAG001, LAG002, LAG003, LAG004]
+- All six items shift by about 26 percentage points in their dominant component, and each difference is larger than those seen in about 199 of 200 random re-splits of the pooled windows. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A31 and A32 exchanged their typical positions in the sequence between A27 and A28: in the earlier window the dominant ordering was A27 → A32 → A31 → A28 (about 64 in 100 of the roughly 90 traces containing the block), while in the later window A27 → A31 → A32 → A28 dominated (about 62 in 100). This is an order hypothesis backed by direct relational evidence — the main successor of A31 changed from A28 to A32 and that of A32 from A31 to A28, and all four step-gap distributions moved exactly as an exchange of the two activities would produce; the six qualifying items are about twenty times the roughly 0.31 expected by chance among the 63 tested units, and every item's difference exceeds about 99.5% of random re-splits. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]
+
+The main competing explanation the evidence cannot fully rule out is sampling: both orderings occur in both windows, so the change is a reversal of which of two existing variants dominates rather than the appearance of a new path, and a swing of about 26 percentage points could in principle reflect variant-frequency differences between two 200-trace samples. The six items also likely describe one underlying trace behaviour, so they are not independent confirmations, and the gap evidence uses event positions, establishing order rather than clock timing. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004]

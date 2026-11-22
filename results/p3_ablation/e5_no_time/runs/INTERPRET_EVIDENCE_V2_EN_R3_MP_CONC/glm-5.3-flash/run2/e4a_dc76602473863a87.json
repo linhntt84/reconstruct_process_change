@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_time/evidence/e4a_dc76602473863a87.json",
+  "evidence_sha256": "cb619a7d1d8b1b1c87a4506eba90dabcb62832264fc3c101223f48fd3e568f74",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:20:27.667358+00:00",
+  "finished_at_utc": "2026-11-15T07:21:28.163492+00:00",
+  "latency_seconds": 60.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8540,
+    "prompt_tokens": 10409,
+    "total_tokens": 18949,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7679,
+      "text_tokens": 861
+    },
+    "cost": 0.005831350000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 28697,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained exactly one of three mutually exclusive activities between A36 and A21: A14 in about 35 in 100 traces, A15 in about 30, and A20 in about 35; the three never occurred together in one trace [OCC001, OCC002, OCC003, REL001, REL002, REL005].\n- A36 always preceded this step and A21 always followed it: A36 came before A14, A15 or A20 whenever they ran, those activities came before A21, and A36 was exactly two positions before A21 in all 200 earlier traces [REL004, REL007, REL009, REL003, REL006, REL008, LAG001].\n- In the later window, A14, A15 and A20 appear in none of the 200 traces, down from 60–70 of 200 before [OCC001, OCC002, OCC003].\n- In the later window, A36 leads directly to A21: all of A36's observed outgoing transitions go to A21, whereas before they split about 35 to A20, 30 to A15 and 35 to A14; the A36→A21 distance is now one position in all 200 later traces [DIR005, LAG001].\n- A21 and A36 still occur in every trace in both windows; A21's mean relative position moved slightly earlier (about 0.39 to 0.37) and A36's slightly later (about 0.32 to 0.33), consistent with one intermediate position disappearing [POS004, POS005].\n- Separately, the outgoing transitions of A19 shifted toward A26 (about 41 to 60 in 100 observed transitions), while A16 fell from about 31 to 16 and A17 from about 28 to 23; A19 occurs in about half of the traces in both windows (97 vs 111 of 200) [DIR003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the three-way alternative block A14/A15/A20 between A36 and A21 is no longer executed: in the earlier window each trace ran exactly one of the three between A36 and A21 (shares of roughly 35/30/35 in 100), while in the later window none of the 200 traces contains any of them and A36 is immediately followed by A21 in every trace [OCC001, OCC002, OCC003, DIR005, LAG001, REL001, REL002, REL005]. Supporting signs: 23 control-flow items qualified against roughly 0.37 expected for an unchanged process, so chance sampling cannot account for the pattern as a whole; the change is shown directly by A36's successor profile and the A36→A21 distance; and the occurrence, direction, position and relation indicators all describe the same structural difference rather than independent phenomena [DIR005, LAG001, OCC001, OCC002, OCC003].\n\nLimitations: zero participation strictly means only that the activities were not observed in the later window, so the evidence cannot distinguish a removed block from one that became optional and was simply never taken in these 200 traces, nor rule out that the intermediate step was replaced by an activity outside the screened units [OCC001, OCC002, OCC003].\n\nOther differences: the routing shares out of A19 changed, with more transitions leading to A26 and fewer to A16 and A17, all of which remain observed in both windows; the evidence shows no connection between this redistribution and the A36/A21 change [DIR003].",
+  "case_id": "e4a_dc76602473863a87",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

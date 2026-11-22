@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_d40432232c7ec125.json",
+  "evidence_sha256": "894fb0a8049ba242854905cfd65cc1d739a391f6393066d9816355a164e18b8d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:14:15.640307+00:00",
+  "finished_at_utc": "2026-11-15T05:17:18.801302+00:00",
+  "latency_seconds": 183.16,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 27209,
+    "prompt_tokens": 46015,
+    "total_tokens": 73224,
+    "completion_tokens_details": {
+      "reasoning_tokens": 25384,
+      "text_tokens": 1825
+    },
+    "cost": 0.02050675
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 85357,
+  "text": "### Observed differences\n\n- In the later window, A08 appeared in about 29 of 100 traces, down from about 64 of 100 (mean occurrences per trace 0.32 vs 0.68), while A04, A06 and A10 each roughly tripled their presence, to about 21, 24 and 19 of 100 traces from about 7, 7 and 9. [OCC001, OCC002, OCC003, OCC004]\n\n- The relative order of two groups of activities reversed. In the earlier window, three activities that each ran in roughly 30–38 of 100 traces (A19, A21, A24) sat at mean event position about 0.36–0.37, ahead of A25 (about 0.39) and A29 (about 0.58), with A20, A22 and A23 — present in every trace — last at about 0.64–0.65. In the later window, A20, A22 and A23 came first (about 0.38–0.39), A25 and A29 followed (about 0.45 and 0.64), and A19, A21 and A24 came last (about 0.67). [POS002, POS003, POS004, POS005, POS006, POS007, POS009]\n\n- All 21 tested activity pairs spanning the two groups flipped their ordering direction, each measured on all 200 traces in both windows; for example, A29 preceded A20 in about 98 of 100 traces before and in none after, while A20 preceded A29 in about 99.5 of 100 after. These items describe one underlying reversal rather than independent confirmations. [REL016, REL020, REL023, REL024, REL030, REL031, REL034, REL036]\n\n- Handovers moved with the blocks: A19, A21 and A24 each flowed to A25 in about 93–97 of their observed outgoing transitions before and to A30 in about 92–97 after; A20, A22 and A23 each flowed to A30 in about 29–37 of 100 before and to A25 in about 28–37 after; A29 flowed into A20, A22, A23 before and into A24, A21, A19 after; and A40 fed A19, A21, A24 before (about 93 of 100) but A20, A22, A23 after (about 83 of 100). [DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013]\n\n- Step distances agree with the reversal: the gap from A29 to A30 shrank from mostly 4 steps (about 94 of 100) to mostly 2 steps (about 94 of 100), and the gap from A40 to A25 grew from mostly 2 steps to mostly 4, each based on roughly 200 traces per window. [LAG026, LAG029]\n\n- A08 also sat later within its traces in the later window (mean event position about 0.26 vs 0.41) and its dominant handover to A16 fell from about 93 to 31 of its outgoing transitions. [POS001, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that two blocks of activities reversed their order in the sequence. In the earlier window a case typically ran from A40 into one of A19, A21 or A24 — three activities that together account for about one appearance per trace — then through A25 and A29, then through A20, A22 and A23 towards A30; in the later window the order was A40, then A20, A22 and A23, then A25 and A29, then one of A19, A21 or A24 before A30. Participation of these six activities itself did not change; what changed is where they run and whom they hand over to. [REL023, REL024, DIR006, DIR011, DIR012, DIR013, LAG026, LAG029]\n\nThe support is direct and consistent: 94 evidence items qualified where about 1 would be expected for an unchanged process; every cross-group order relation reversed on all 200 traces per window; the six activities' mean positions shifted by roughly 0.26–0.31 of the trace in opposite directions; and the successor and step-distance changes match the same picture. Reversals affecting about 97–99 of 100 traces within each window lie far beyond what random re-splits of these samples produce, so sampling noise is an implausible explanation for the reversal itself. [REL016, POS003, POS005, POS006, DIR007, LAG026]\n\nLimitations: the evidence shows two samples of behaviour, not the underlying model, so it cannot separate a modification of the process from a shift in the mix of execution variants between the windows — if variants with different block orders exist, a change in their frequencies would look the same. The A08 decrease and the A04, A06 and A10 increases are real frequency differences, but no relational evidence shows how they connect to the reordering or to each other, so they may constitute a separate change. In addition, many lag items rest on only 1–3 observations in one window and were not relied on, and the agreeing items largely reflect the same single reversal rather than independent confirmations. [OCC001, OCC002, OCC003, OCC004, LAG002, LAG011]",
+  "case_id": "case_d40432232c7ec125",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

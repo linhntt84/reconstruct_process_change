@@ -1,0 +1,23 @@
+### Observed differences
+
+- Two activities are not observed at all in the later window: A03, which previously appeared in about 29 in 100 traces (about 1.2 occurrences per trace on average), and A11, previously in about 20 in 100 traces, were each observed in none of the 200 later traces. They also stopped co-occurring with the other loop activities: A03 co-occurred with A06, A12 or A19 in about 29 in 100 traces before and never after, and A11 co-occurred with them in about 20 in 100 before and never after. [OCC003, OCC009, POS001, POS003, REL001, REL002, REL003, REL004, REL005, REL008, REL009]
+
+- Before, A03 and A11 formed a tight cycle: about 44 in 100 of A03's observed outgoing transitions went to A11, and about 97 in 100 of A11's went back to A03; A06 fed this cycle (about 86 in 100 of its outgoing transitions went to A03), and A03 exited to A19 (about 28 in 100) or A12 (about 22 in 100). In the later window, neither A03 nor A11 has any observed outgoing transitions. [DIR003, DIR006, DIR005]
+
+- In the later window, A06 leads directly to A19 (about 58 in 100 of its outgoing transitions) and A12 (about 37 in 100) instead of to A03; A02 likewise lost its edge to A03 (about 9 in 100 of its outgoing transitions before) and now leads to A04 (about 57 in 100) and A06 (about 39 in 100). [DIR005, DIR002]
+
+- The remaining loop activities A06, A12 and A19 occur less often: each appeared in about 29 in 100 traces before versus about 22 in 100 after, mean occurrences fell from about 0.6 to about 0.4 per trace, and repetition support halved (about 18 in 100 to about 10 in 100 of traces). [OCC005, OCC010, OCC016]
+
+- Distances between these activities shortened: A06→A12 and A06→A19 pairs within five steps now sit mostly at lags 1–2 (about 4 in 10 of observed pairs) where they previously sat at lags 2–5, and self-repetitions moved to shorter lags (A06→A06 from mostly lag 5 to mostly lag 4; A12→A12 and A19→A19 similarly, though each rests on fewer than about 25 observations). A12→A19 and A19→A12 shifted slightly the other way, towards longer lags. [LAG002, LAG003, LAG001, LAG005, LAG009, LAG006, LAG008]
+
+- A06, A12 and A19 also appear earlier within traces by event position (e.g. A12's mean position fell from about 0.33 to about 0.23 of trace length); this is a positional shift consistent with the segment's disappearance, not evidence of clock-time rescheduling. [POS002, POS004, POS005]
+
+- All other observed activities are essentially stable: participation of A01, A02, A04, A10, A14 and A17 is unchanged at about 49–52 in 100 traces, and remaining movements (A07 slightly down, A09/A18 slightly up) are small. [OCC001, OCC002, OCC004, OCC006, OCC007, OCC008, OCC011, OCC012, OCC013, OCC014, OCC015, DIR001, DIR004, DIR007, DIR008, DIR009, DIR010]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment consisting of A03 and A11 — a tight cycle (A03→A11 in about 44 in 100 of A03's outgoing transitions, A11→A03 in about 97 in 100) entered from A06 and exiting to A12 and A19 — was no longer executed in the later window: both activities fell from 57 and 39 of 200 traces to zero, A06 now flows directly to A19 (about 58 in 100) or A12 (about 37 in 100), A02 no longer leads to A03, and the remaining A06/A12/A19 loop repeats about half as often at shorter distances. The disappearance is shown directly by the occurrence, position and direction indicators, and the rerouting is observed in the outgoing-transition profiles, so the hypothesis does not rest on an unobserved relation. Limitations: zero participation strictly means only that A03 and A11 were not observed in the later window, so the evidence cannot distinguish a segment removed from the process from one that became optional and was simply not executed; and no screening baseline was provided, so the usual comparison against the number of items expected by chance could not be made. The main competing explanation — that A03 and A11 are rare variants missed by chance sampling — is quantitatively implausible for activities present in about 29 in 100 and 20 in 100 of 200 earlier traces, but finite samples cannot exclude it with certainty. [OCC003, OCC009, DIR003, DIR006, DIR005, DIR002, OCC005, OCC010, OCC016, LAG002]
+
+Other differences: A02 repeats less often (mean about 1.1 to about 0.9 occurrences per trace, participation unchanged at about 52 in 100), consistent with its lost edge to A03 but not independently confirmed as part of the same change; A07 shows a slight decrease and A09/A18 a slight increase, within the range finite samples typically produce. [OCC002, DIR002, OCC006, OCC007, OCC015]

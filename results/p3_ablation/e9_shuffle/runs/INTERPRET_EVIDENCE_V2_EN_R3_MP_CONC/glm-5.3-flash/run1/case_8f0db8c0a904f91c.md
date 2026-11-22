@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window the sequence A41 → A19 → A25 → A20 → A26 ran in essentially every trace: A19, A20, A25, A41 and A26 each appeared in 100% of the 200 earlier traces, with A19 before A25 in 98.5% of co-occurrences and A25 before A20 in 99.5% [OCC004, OCC005, OCC006, REL009, REL014].
+- In the later window, A19, A20 and A25 each appear in only about 53% of traces, and the three are jointly absent in about 47% of traces, while A41, A26, A46 and A47 still appear in every trace [OCC004, OCC005, OCC006, REL008, REL009, POS002, POS003, POS004].
+- A41's routing split accordingly: before, about 96% of its observed outgoing transitions led to A19 and none observed led to A26; in the later window about 51% lead to A19 and about 44% lead directly to A26. The event distance from A41 to A26 shifted from almost always four steps (93 in 100) to a mix of one step (44 in 100) and four steps (49 in 100) [DIR005, LAG002].
+- When the segment does run in the later window, its internal order is unchanged: A41 before A19, A19 before A25, A25 before A20 and A20 before A26 in essentially all co-occurrences, and A25 still leads to A20 (98%) and A20 to A26 (96%) [REL011, REL009, REL014, REL015, DIR003, DIR004].
+- A02 changed separately: its participation fell from 29% to 8.5% of traces (58 to 17 traces), its median event position moved from about 0.97 to about 0.47, A46 now leads to A47 in about 96% of its outgoing transitions (before 75%, with 25% leading to A02), and A02's own outgoing transitions, previously dominated by A47 (85%), are now spread over many targets [OCC001, POS001, DIR006, DIR001]. These later A02 profiles rest on only 17 traces.
+- Minor shifts: A04 and A06 participation rose from about 4–5% to about 12% [OCC002, OCC003], and A08's outgoing transitions changed completely, though on only 4 versus 15 observed transitions [DIR002].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment A19 → A25 → A20, which executed between A41 and A26, is now executed in only about half of the cases and skipped in the other half, with A41 passing directly to A26. Participation of A19, A20 and A25 dropped from 100% to about 53% with joint absence in about 47% of later traces, A41 now leads directly to A26 in about 44% of its outgoing transitions, and the A41-to-A26 distance shows both one-step (direct) and four-step (via the segment) cases [OCC004, OCC005, OCC006, REL008, REL009, DIR005, LAG002].
+
+The reading is consistent: the segment's internal order is preserved whenever it runs, A41, A26, A46 and A47 remain in every trace, and the share of A41 transitions going directly to A26 matches the share of traces without the segment, which fits a skip rather than a reordering [REL009, REL014, REL015, POS002, POS003, POS004]. With 41 qualifying items against roughly 0.72 expected if nothing had changed, sampling noise cannot explain the volume of differences as a whole [screening]. Limitations: the transition shares are over outgoing transitions rather than cases, and the evidence cannot show whether the segment is skipped as a per-case choice or whether the windows reflect a different mix of case types — a competing explanation it cannot rule out [DIR005].
+
+Other differences:
+- A02 nearly disappeared (29% to 8.5% participation) and, in the few traces where it occurs, moved from the end of the trace (median position about 0.97) to mid-trace (about 0.47) [OCC001, POS001].
+- A02 also lost its place between A46 and A47: A46-to-A02 fell from about 25% to under 1% of A46's outgoing transitions while A46-to-A47 became almost always adjacent, and A02-to-A47 fell from about 85% to 6% of A02's outgoing transitions; the later profiles rest on 17 traces (5 for the A02–A47 distance), so they are weak [DIR006, LAG003, DIR001, LAG001].
+- Small participation increases for A04 (4.5% to 12%) and A06 (4% to 12.5%), and a thinly supported complete change in A08's successors [OCC002, OCC003, DIR002].

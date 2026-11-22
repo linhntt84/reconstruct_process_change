@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_b5adc570e3cff1cc.json",
+  "evidence_sha256": "262848b8557e2902a227cbb5f75cb6b698eb4b8922146e885964a81b27fe69bd",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:49:40.502875+00:00",
+  "finished_at_utc": "2026-11-14T11:51:08.161532+00:00",
+  "latency_seconds": 87.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11937,
+    "prompt_tokens": 9295,
+    "total_tokens": 21232,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10899,
+      "text_tokens": 1038
+    },
+    "cost": 0.0073627499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40038,
+  "text": "### Observed differences\n\n- **The order between the optional trio A14/A15/A20 and the pair A21/A22 reversed completely.** In the earlier window, each of A14, A15 and A20 ran in roughly a third of cases (31–38 in 100), and in every case where one of them co-occurred with A21 or A22, A21/A22 came first (reverse order in 31–38 of 100 traces, forward order in 0). In the later window this is fully flipped: the trio member comes first in every co-occurring case (32–35 in 100), with no mixed orders in either window. [REL001, REL002, REL003, REL004, REL005, REL006]\n\n- **The trio moved earlier in the case while A21/A22/A23 stayed roughly in place.** The mean relative position of A14, A15 and A20 moved from about 0.60 of the trace to about 0.32, while their trace share stayed around a third (e.g., A14: 38%→34% of traces). A21, A22 and A23 occur in all traces in both windows and shifted only slightly later (A21 mean 0.33→0.35, A22 0.56→0.59, A23 0.61→0.62). [POS001, POS002, POS003, POS004, POS005, POS006]\n\n- **Spacing around A22 and A23 tightened.** A23 now always immediately follows A22 (gap of 1 step in 100% of traces, versus about 48 before, with about 52 at distance 2), and A27 now always immediately follows A23 (100% versus about 52 before). [LAG001, LAG003]\n\n- **A10 and A11 repeat less.** Both still appear in every trace in both windows, but mean occurrences per trace fell from about 1.9 to about 1.6, and the share of traces in which they repeat fell from about 47 in 100 to about 38 in 100. [OCC001, OCC002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the optional activities A14, A15 and A20 — each executed in roughly a third of cases, always alongside A21/A22 — were relocated: in the earlier window they ran after A21 and A22 (around 60% of the trace length), in the later window they run before A21 (around 32% of the trace length), while A21, A22 and A23 kept their approximate positions. The order reversal is shown directly by the relation indicators for all six trio–pair combinations, completely and without mixed orders; the position indicators corroborate it (the trio moved about 0.28 of the trace earlier, the pair only 0.01–0.03 later); and the lag indicators are consistent with the trio leaving the middle of the case, since the A22→A23 and A23→A27 distances became uniformly minimal. With 18 qualifying items against fewer than 1 (0.23) expected by chance in the control-flow family, this pattern is far beyond what re-splitting an unchanged process produces. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG003]\n\nLimitations: the position and lag indicators use event positions, so the evidence establishes a change in execution order within cases, not in clock time; the six relation and three position items plausibly reflect one underlying relocation rather than independent confirmations; and the evidence does not reveal the trio's exact neighbours, so the precise insertion point and whether the three moved as one block cannot be established. A competing explanation the evidence cannot fully rule out is that always-present activities also shifted, contributing to the observed spacing changes. [LAG002, LAG004]\n\nOther differences: A10 and A11 still run in every case but repeat less often (mean about 1.9→1.6 occurrences per trace; repetition in about 47%→38% of traces) [OCC001, OCC002]. The A22→A27 distance shortened from always 3 steps to always 2, and the A40→A21 distance lengthened from always 1 step to always 2 — changes among always-present activities that the trio relocation alone does not explain [LAG002, LAG004].",
+  "case_id": "case_b5adc570e3cff1cc",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

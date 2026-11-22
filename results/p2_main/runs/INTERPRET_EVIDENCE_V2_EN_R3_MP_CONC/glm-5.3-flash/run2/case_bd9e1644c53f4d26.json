@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_bd9e1644c53f4d26.json",
+  "evidence_sha256": "a916faf34d6c06b55b20f340ad4ac3e283970e715cf0030abac9f69824507e6a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:27:09.391689+00:00",
+  "finished_at_utc": "2026-11-15T01:27:57.320800+00:00",
+  "latency_seconds": 47.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6877,
+    "prompt_tokens": 7582,
+    "total_tokens": 14459,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5989,
+      "text_tokens": 888
+    },
+    "cost": 0.0045758
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22181,
+  "text": "### Observed differences\n\n- Activity A02 was not observed in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200, mean 1.0 occurrence per trace, never repeated within a trace) [OCC001].\n- In the later window A02 sits in the early-to-middle part of the trace: median position about one third of the trace, typically between roughly one sixth and one half [POS001].\n- New routing into and out of A02 appeared: A01, A03 and A06 now lead to A02 in about 24%, 24% and 18% of their observed outgoing transitions respectively (previously 0%), with shares to their former successors reduced (e.g., A01 to A04 from about 36 in 100 to about 19 in 100); A02 itself leads mostly to A04 (about 26 in 100), A06 (about 25 in 100), and A03 and A01 (about 19 in 100 each) [DIR001, DIR002, DIR003, DIR004].\n- Before, A01 appeared without A02, and A03, A04 and A06 each appeared without A02; in the later window A02 co-occurs with each of A01, A03, A04 and A06 in every trace, in both orders in similar proportions (A02 precedes A04 in about 69 of 100 traces and follows it in about 32; with A01, A03 and A06 the splits are roughly 55/45, 55/45 and 50/50), i.e. no fixed order between A02 and these activities [REL001, REL002, REL003, REL004].\n- Distances between A01/A03/A06 and A04 shifted to larger gaps: A01–A04 at distance 1 fell from about 47 in 100 to about 26 in 100 while distance 4 rose from none to about 23 in 100, with similar smaller shifts for A03–A04 and A06–A04 [LAG001, LAG002, LAG003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 was introduced as a new, mandatory step executed exactly once per case in the later window, placed in the early-to-middle portion of traces and interleaved among the existing activities A01, A03, A04 and A06 without a fixed order relative to them: A01, A03 and A06 now hand over to A02 in roughly a fifth to a quarter of their outgoing transitions, and A02 passes on mainly to A04, A06, A03 and A01. This is supported directly (participation 0 of 200 traces versus 200 of 200; co-occurrence with each key activity 0% versus 100%) and consistently: 13 control-flow items qualified against about 0.14 expected if nothing had changed, and all of them describe one coherent picture, with the larger A01/A03/A06-to-A04 distances fitting A02 being placed between them [OCC001, POS001, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003].\n\nLimitations: zero participation in the earlier window only means A02 was not observed there, so a pre-existing but extremely rare A02 cannot be fully excluded; POS and LAG use event positions rather than clock time, so no statement about timing in time is possible; and the DIR, REL and LAG items largely reflect the same underlying behaviour rather than independent confirmations [OCC001, POS001, LAG001]. A competing explanation the evidence cannot rule out is that A02 already existed before at a frequency too low to appear in 200 traces; even then, its rise to every trace would itself be a change, but the \"added\" versus \"promoted from near-zero\" distinction remains open [OCC001].",
+  "case_id": "case_bd9e1644c53f4d26",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

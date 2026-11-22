@@ -1,0 +1,23 @@
+### Observed differences
+
+- The relative order of two groups of activities was reversed around the stable pair A25/A29. In the earlier window, A20, A22 and A23 came before A25 and A29 (A20 preceded A25 in about 98 in 100 traces, A23 preceded A29 in all traces), and A25/A29 in turn came before A19, A21 and A24 (A25 preceded A24 in every trace containing both, about 32 in 100 cases). In the later window this is inverted: A25 preceded A20 in 100 in 100 traces and A29 preceded A23 in about 98 in 100, while A19, A21 and A24 now come first (A19 preceded A20 in about 44 in 100 co-occurrences versus essentially never before; A21 preceded A22 in about 29 in 100 versus about 0.5 in 100 before). Throughout, A25/A29 still co-occurred with A20/A22/A23 in every trace, so the group stayed together and only its internal order flipped. [REL010, REL015, REL017, REL019, REL024, REL025, REL027, REL028, REL029, REL030]
+
+- Successors were rewired consistently with this reversal. A19, A21 and A24 passed to A30 in about 95–99 in 100 of their outgoing transitions before, and now pass to A25 in about 95–100 in 100; A20, A22 and A23, which previously passed to A25 in about 30–39 in 100 transitions, now pass to A30 in about 32–34 in 100; A29's outgoing transitions moved from A21/A24/A19 (roughly 31–38 in 100 each) to A22/A23/A20 (roughly 30–33 in 100 each). [DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+
+- A02 became a regular early step and A40 was rewired onto it. A02 appeared in 8 in 100 traces before (16 of 200) versus 34 in 100 after (68 of 200); its outgoing transitions, previously scattered, now go mainly to A19 (about 37 in 100), A24 (27) and A21 (24). A40, observed in nearly every trace in both windows, previously fed A20/A22/A23 and now feeds A02 (about 31 in 100 transitions), which in turn precedes A19/A21/A24. [OCC001, DIR001, DIR009, REL009]
+
+- Event-position distances moved with the reorder: A29 reached A30 within about 2 positions before (97 in 100) versus about 4 positions after (94 in 100); A40 reached A25 within 4–5 positions before versus 2–3 after; A40 → A02 and A02 → A25 now occur at distances of about 1 and 2 positions. [LAG001, LAG004, LAG005, LAG007]
+
+- A41 repeats more often: about 1.5 occurrences per trace before versus about 1.8 after, with recurrence in about 33 versus 40 in 100 traces; it was present in all traces in both windows. [OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the execution order of a whole segment was rearranged, with the blocks A19–A21–A24 and A20–A22–A23 exchanging places around the stable pair A25–A29, and A02 emerging as a frequent step between A40 and the A19–A21–A24 block. In the earlier window the segment ran A20/A22/A23 → A25/A29 → A19/A21/A24 → A30, with A40 feeding A20/A22/A23 and A02 only rarely observed; in the later window it runs A40 → A02 → A19/A21/A24 → A25/A29 → A20/A22/A23 → A30, with the hand-over to A30 moved from the A19/A21/A24 block to the A20/A22/A23 block. [REL017, REL024, REL028, REL029, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, OCC001, LAG004]
+
+The support is direct and consistent: near-complete order reversals across many activity pairs, rewired near-deterministic successors backed by substantial transition counts (roughly 57–203 outgoing transitions per source activity), and position-distance shifts that match the new sequence. Screening also qualifies 49 control-flow items where about 0.7 would be expected without any change, so the ensemble is not what an unchanged process typically produces; note, however, that the many pair-level items largely reflect this one underlying reordering rather than independent confirmations. [REL017, DIR002, DIR004, LAG004, screening]
+
+An important competing explanation remains: with finite windows, the evidence cannot fully rule out that the two windows sample different mixes of pre-existing execution variants (for example a variant that was rare in one window dominating the other) rather than a modified flow. The near-deterministic flips in both directions make a pure sampling difference unlikely, but all order and distance evidence is position-based rather than clock-based. [REL017, DIR002]
+
+Other differences: A41 now recurs more often within traces (about 1.5 → 1.8 occurrences per trace; recurrence in about 33 → 40 in 100 traces), which is not part of the reordering above. [OCC002]

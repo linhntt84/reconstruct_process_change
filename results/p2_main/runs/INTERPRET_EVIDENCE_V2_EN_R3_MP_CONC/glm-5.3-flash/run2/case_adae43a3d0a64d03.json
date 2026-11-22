@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "9950072958eddd1cd3d45d992dd8a823f174ad45e8b1749460f566f1539ecfa6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:39:46.819490+00:00",
+  "finished_at_utc": "2026-11-15T01:40:51.276623+00:00",
+  "latency_seconds": 64.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9379,
+    "prompt_tokens": 8382,
+    "total_tokens": 17761,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8474,
+      "text_tokens": 905
+    },
+    "cost": 0.0059467999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29813,
+  "text": "### Observed differences\n\n- In the earlier window, A05 occurred exactly once in every trace (200 of 200) at a fixed event position (mean 0.5, no spread); in the later window it was not observed at all (0 of 200). [OCC002, POS002]\n- A01 shows the mirror image: never observed in the earlier window (0 of 200), it occurs exactly once in every trace of the later window (200 of 200), at the same fixed event position A05 previously held. [OCC001, POS001]\n- A01 also took over A05's direct relations. Before, A05 was followed by A03 after every occurrence and always preceded by A06; in the later window, A01 is followed by A03 in 100% of traces and preceded by A06 in 100% of traces. [DIR001, DIR003, REL002, REL004, REL007, REL008]\n- The optional predecessors carried over with similar shares: before, A02 preceded A05 in about 47% of traces and A07 in about 53% (never both together); in the later window, A02 precedes A01 in about 50% of traces and A07 in about 50%, again never together. [REL001, REL005, REL006, REL009]\n- Upstream routing is nearly unchanged: A02 now leads to A01 in about 75% of its outgoing transitions (previously to A05, about 72%) and to A06 in about 25% (previously about 28%); A07 leads to A01 in about 66% (previously to A05, about 71%) and to A06 in about 34% (previously about 29%); A06's split over its three successors stays within a few percentage points. [DIR002, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window, A01 executes in exactly the role A05 had in the earlier window: the per-trace pattern A06 → (A02 or A07) → A05 → A03, with A05 in all 200 earlier traces, appears as A06 → (A02 or A07) → A01 → A03, with A01 in all 200 later traces. The support is direct and consistent: participation flips between 0% and 100% on 200-trace samples, the event position is identical, A01's only observed successor is A03 (as A05's was), A06 always precedes A01 (as it preceded A05), and A02/A07 each precede it in about half of the traces, matching the earlier 47%/53% split, while upstream routing shares move only a few percentage points. Chance is also implausible as a whole: 18 control-flow items qualified where roughly 0.13 would be expected if nothing had changed, and every item's difference exceeds about 99.5 in 100 random re-splits of the pooled traces. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR005, REL001, REL002, REL004, REL005]\n\nThe evidence cannot distinguish a genuine substitution of behaviour from a relabelling of the same activity: A01 and A05 never appear in the same window (before, A05 only; after, A01 only), so a renaming would look identical in this data. The few-percentage-point shifts in branch shares could also be ordinary sampling variation between two finite windows. [REL003, DIR002, DIR005]\n\nOther differences: none beyond the change from A05 to A01, apart from minor shifts — A02 appears in about 50% of later traces versus about 47% earlier, A07 in about 50% versus about 53%, and A06's outgoing shares move by a few percentage points; these are small and consistent with sampling noise. [DIR004, REL001, REL005]",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

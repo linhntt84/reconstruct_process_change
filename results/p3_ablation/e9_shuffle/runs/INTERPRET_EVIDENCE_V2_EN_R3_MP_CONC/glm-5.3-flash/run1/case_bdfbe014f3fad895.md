@@ -1,0 +1,22 @@
+### Observed differences
+
+- In the earlier window, A27 ran exactly once in every trace (200 of 200); in the later window it runs in only about 52 in 100 traces (103 of 200), still at most once per trace. [OCC003]
+- Before, about 95 in 100 of A26's observed outgoing transitions went to A27; in the later window about half do (51 in 100), with the rest going to A32, A33 and A38 (about 15–18 in 100 each). [DIR006]
+- Three activities not observed in the earlier window now each run in about half of the traces — A32 in 50, A33 in about 50 and A38 in 49 out of 100 — clustered around the middle of the trace (median position about 0.5). [OCC004, OCC005, OCC006, POS003, POS004, POS005]
+- A26 precedes each of the three in about 48–50 in 100 traces. [REL018, REL019, REL020]
+- Each of the three precedes A28 in about 49 in 100 traces, and their outgoing transitions go mainly to one another and to A28. [REL025, DIR007, DIR008, DIR009]
+- The three co-occur in about 49 in 100 traces and appear in both orders in similar shares (for example A32 before A33 in about 23 in 100 and A33 before A32 in about 26 in 100), so they have no fixed internal order. [REL028, REL029, REL030]
+- The A26-to-A28 distance was 2 steps in about 90 in 100 traces before; in the later window it is 2 steps in about 50 and 4 steps in about 46 in 100. [LAG003]
+- A27 almost never co-occurs with any of the three (at most about 2 in 100 traces), so the two behaviours behave as alternatives. [REL022, REL023, REL024]
+- A04 became more frequent and earlier: participation rose from about 19 to 60 in 100 traces and its mean position moved from about 0.54 to 0.21 of the trace. [OCC001, POS001]
+- A14 now leads to A04 in about 54 in 100 of its outgoing transitions (about 4 before), A04 leads mainly to A15 (about 87 in 100, versus about 20 before), A04 follows A14 within one step in about 96 in 100 of the observed pairs, and the A14-to-A15 distance shifted from mostly 1 step to often 2. [DIR004, DIR001, LAG001, LAG002]
+- A06 became rare, appearing in about 4 in 100 traces versus about 19 before. [OCC002]
+- A10's outgoing transition mix changed substantially, but this rests on only about 28 and 22 observed transitions in the two windows. [DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the step after A26 splits into two alternatives: in about half of the cases A27 still runs between A26 and A28 as before, while in the other half a block of three activities — A32, A33 and A38 — runs in its place, in no fixed internal order, before A28. This is shown directly: A26 now leads to A27 in about half of its outgoing transitions and to the three new activities in the other half; the three appear together in about 49 in 100 traces in both orders, follow A26 and precede A28; the A26-to-A28 distance grew from 2 to 4 steps in about 46 in 100 traces; and A27 co-occurs with each of the three in at most about 2 in 100 traces. The screening produced 55 qualifying items where fewer than 1 would be expected without a change, and the items behind this hypothesis agree across occurrence, direction, relation, position and lag indicators, each resting on roughly 100 traces. Limitations: non-occurrence in the earlier window shows only that the three activities were not exercised there, not that they were absent from the process, and the evidence cannot rule out that the later window simply contains a different mix of case types rather than a modified process. [OCC003, OCC004, OCC005, OCC006, DIR006, REL018, REL019, REL020, REL025, REL028, REL029, REL030, LAG003, REL022, REL023, REL024, POS003, POS004, POS005, DIR007, DIR008, DIR009]
+
+Other differences: A04 is now often inserted between A14 and A15 — it occurs in about 60 in 100 traces (about 19 before), sits early in the trace, receives most of A14's outgoing transitions and leads mainly to A15, with the A14-to-A15 distance shifting from mostly 1 to often 2 steps [OCC001, POS001, DIR004, DIR001, LAG001, LAG002]. A06 nearly disappeared, from about 19 to 4 in 100 traces [OCC002]. A10 shows a large redistribution of its outgoing transitions, but with only about 28 and 22 observed transitions this is weak evidence [DIR003].

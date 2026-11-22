@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_9f4a4aad6df1262d.json",
+  "evidence_sha256": "d287481c5c77dc0d49d8a96fbe3214d6aaa19504875e8f49acf79a8dffbd02b8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:08:02.853526+00:00",
+  "finished_at_utc": "2026-11-14T11:09:05.878211+00:00",
+  "latency_seconds": 63.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10010,
+    "prompt_tokens": 21674,
+    "total_tokens": 31684,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8944,
+      "text_tokens": 1066
+    },
+    "cost": 0.008256099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32142,
+  "text": "### Observed differences\n\n- Participation did not change: A20, A22, A23, A24, A25 and A26 still occur together in 100 of 100 traces in both windows. What changed is their order. Before, A20, A22 and A23 each preceded A24, A25 and A26 in about 98–99 of 100 traces; in the later window that strict order is gone — A24 now precedes A23 in about 84 of 100 cases (before: about 1–2), A24 precedes A20 in about 73, A26 precedes A23 in about 68, several pairs (e.g. A20–A26, A23–A25, A22–A24) are near even splits, and A22 still usually precedes A26 (about 77 in 100). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n\n- Routing out of these activities was highly concentrated before and is spread in the later window. Before, each had essentially one successor (A23→A24 in 100 of 100 transitions; A20→A23, A24→A26 and A26→A25 in about 99; A22→A20 in about 99.5; A25→A32 in about 93; A31→A22 in 100). In the later window, A23 goes to A32 in about 49 of 100 transitions (a target not observed before) and to A24, A25 or A26 in about 15–17 each; A24 goes to A22 in about 23; A22 goes to A24 in about 27; A31 goes to A24 in about 47. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- Event positions moved consistently with the order shift: in the later window A20, A22 and A23 sit later in the trace (mean relative position up by roughly 0.03–0.06) while A24, A25 and A26 sit earlier (down by roughly 0.02–0.06). [POS001, POS002, POS003, POS004, POS005, POS006]\n\n- Pairwise distances changed in the same direction: A23→A32 pairs went from mostly four steps apart to about 49 in 100 only one step apart, and A20→A25 went from always four steps apart to spread over one to four. A few distance items rest on very few observations in one window (for example A24→A20 within five steps in only 1 before-window trace versus 148 after) and are weak on their own, though they point the same way. [LAG003, LAG005, LAG013, LAG014, LAG015, LAG019, LAG021]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the sequencing between the two activity groups changed: the block A24–A25–A26, which previously ran after A20–A22–A23 in nearly every case, now frequently runs before it or interleaved with it, and the hand-offs among the six activities became much more varied, including a new frequent A23→A32 transition. The support is direct and consistent: all eight tested activity pairs show the same order shift, the successor profiles show new edges pointing in the opposite direction, and the positional shifts agree; 49 items qualified where only about 0.66 would be expected for an unchanged process, and each item's difference exceeds all but about 1 in 200 random re-splits. [REL001, REL006, DIR003, DIR007, POS003, POS004]\n\nLimitations: the routing, position and distance items largely re-describe the same underlying order shift shown by the relation items, so they are not independent confirmations; and with 200 traces per window the evidence cannot distinguish a modified single flow from a shift in the mix of variants (for example, a rare reversed-order variant already present before becoming dominant), nor reconstruct the full new control flow beyond the six activities observed. [REL001, DIR001, POS001, LAG014]",
+  "case_id": "case_9f4a4aad6df1262d",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

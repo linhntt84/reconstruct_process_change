@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_883cace1f3f74890.json",
+  "evidence_sha256": "82564bd8f761e2c10ffa09415d97fd6940ff3f9bc9ebc86dc46a6f30be0c3c5a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:03:15.061355+00:00",
+  "finished_at_utc": "2026-11-15T05:04:49.823600+00:00",
+  "latency_seconds": 94.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13673,
+    "prompt_tokens": 13407,
+    "total_tokens": 27080,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12398,
+      "text_tokens": 1275
+    },
+    "cost": 0.00884755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45017,
+  "text": "### Observed differences\n\n- In the later window, three activities that were absent from the earlier sample now run in essentially every trace, as a mutually exclusive choice: A20 in about 41 in 100 traces (82 of 200), A25 in about 30 in 100 (60 of 200) and A19 in about 30 in 100 (59 of 200); their shares sum to about 100 in 100 and they co-occur in essentially no traces, so exactly one of the three executes per trace. [OCC002, OCC003, OCC004, REL001, REL002, REL006]\n- The chosen activity sits near the middle of the trace (mean relative position about 0.51 for all three). [POS001, POS002, POS003]\n- It is placed inside the existing A27–A28–A29 sequence: A27 precedes the chosen activity in almost all co-occurrences (about 29–40 in 100 traces depending on the activity), the chosen activity precedes A29 in almost all of its co-occurrences (about 30–39 in 100), while its order relative to A28 is mixed (roughly 13–23 in 100 each way). [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011]\n- Routing shifted accordingly: A27's outgoing transitions went from about 99 in 100 pointing to A28 to about 44 in 100 to A28 plus about 55 in 100 to A19/A20/A25; A28's went from about 99 in 100 to A29 to about 55 in 100 to A29 plus about 43 in 100 to A19/A20/A25; the new activities themselves send about 53–56 in 100 of their transitions to A28 and about 42–46 in 100 to A29. [DIR004, DIR005, DIR001, DIR002, DIR003]\n- Distances moved as expected if one extra step appeared in this segment: the A27→A29 gap grew from 2 steps (about 99 in 100 cases) to 3 steps (about 97 in 100); the immediate A27→A28 succession fell from about 99 in 100 to about 44 in 100 (one event in between in about 55 in 100); the immediate A28→A29 succession fell from about 99 in 100 to about 56 in 100 (one event in between in about 43 in 100). [LAG002, LAG001, LAG003]\n- Smaller shifts: A10's participation rose from about 5 in 100 to about 13 in 100 traces (10 to 27 of 200), with its repetition disappearing; A27's mean position moved slightly earlier (0.48 to 0.46) and A29's slightly later (0.55 to 0.57). [OCC001, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, an exclusive three-way choice among A19, A20 and A25 executes in essentially every trace and is placed inside the A27–A29 segment — in about 55 in 100 traces between A27 and A28, and in about 43 in 100 between A28 and A29. The support is direct and consistent: relational items show A27 before and A29 after the chosen activity in nearly all co-occurrences; successor profiles show new transitions from A27 and A28 into A19/A20/A25 and from them onward to A28 and A29; and the lag shifts (A27→A29 moving from 2 to 3 steps, with both former immediate successions losing roughly half their share) match the presence of one extra step in this segment. [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nThe volume of qualifying items (29 against roughly 0.54 expected when nothing changes) far exceeds what chance screening would produce, although many items describe the same underlying trace behaviour rather than independent confirmations. Limitations: zero participation in the earlier window shows only that A19, A20 and A25 were not observed there, and the evidence cannot rule out that the process always allowed this behaviour while a previously rare variant containing it simply became frequent — with 200 traces per window, variant frequencies can shift substantially without any structural change; the data also cannot distinguish a single choice point from three alternative variants, and the near-zero co-occurrence behind the exclusivity claim rests on small counts. [OCC002, OCC003, OCC004, REL001, REL002, REL006]",
+  "case_id": "case_883cace1f3f74890",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

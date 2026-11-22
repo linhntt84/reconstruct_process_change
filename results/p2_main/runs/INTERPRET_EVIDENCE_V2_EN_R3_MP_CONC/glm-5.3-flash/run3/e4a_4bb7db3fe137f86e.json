@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_4bb7db3fe137f86e.json",
+  "evidence_sha256": "9529aecd8e2cd76b7ea120ceb44fc69b76f640187f714cca2eca3e77fb95a23e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:35:27.355589+00:00",
+  "finished_at_utc": "2026-11-15T03:36:41.863578+00:00",
+  "latency_seconds": 74.51,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10981,
+    "prompt_tokens": 3244,
+    "total_tokens": 14225,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10226,
+      "text_tokens": 755
+    },
+    "cost": 0.0059771
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43157,
+  "text": "### Observed differences\n\n- **Timing between A01 and A03:** the elapsed time between consecutive completion events of A01 and A03 roughly doubled. In the earlier window the mean was about 0.87 hours (median about 0.86, middle half about 0.77–0.96 hours) across 42 such consecutive pairs; in the later window the mean was about 1.78 hours (median about 1.83, middle half about 1.61–1.94 hours) across 26 pairs. The number of consecutive A01→A03 pairs also fell from 42 to 26, and the difference is larger than in about 999.5 of 1,000 random re-splits. [TWAIT001]\n- **Routing out of A06:** in the earlier window, of about 90 observed outgoing transitions from A06, roughly half (about 52 in 100) went to A08, about 26 in 100 to A09 and about 22 in 100 to A07; in the later window (about 96 transitions), A08's share fell to about 26 in 100, while A07's rose to about 42 in 100 and A09's to about 32 in 100. [DIR001]\n- **Spacing of A07 after A06:** among traces where A07 follows A06 within five steps (47 before, 51 after), immediate succession (one step) rose from about 43 in 100 in the earlier window to about 78 in 100 in the later window, while succession two steps later fell from about 57 to about 22 in 100. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a change in timing between A01 and A03: in the later window, the elapsed time from the completion of A01 to the next completion of A03 is about twice as long as before (mean about 1.8 hours versus about 0.9 hours), with the whole distribution shifted up by roughly 0.8–1.0 hours and consecutive A01→A03 pairs becoming rarer (26 versus 42). The shift is consistent across the mean, median and both quartiles, the difference exceeds about 999.5 of 1,000 random re-splits, and the time family produced 1 qualifying item against roughly 0.01 expected without change — a many-fold excess that chance does not plausibly explain. [TWAIT001]\n\nLimitations: this indicator measures elapsed time between consecutive completion events, not pure waiting or processing time, and the later window rests on only 26 pairs. An important competing explanation the evidence cannot rule out is that events now intervene between the A01 and A03 completions and lengthen the measured gap; by itself, however, that would not explain why the surviving consecutive pairs are about twice as long as before. [TWAIT001]\n\nOther differences: the outgoing transitions of A06 shifted (A08 down from about 52 to about 26 in 100; A07 up from about 22 to about 42 in 100), and A07 now follows A06 immediately in about 78 of 100 within-five-step successions, up from about 43. The control-flow family produced 2 items where about 0.3 were expected without change — a count an unchanged process typically produces — so these observations do not establish a structural change on their own, and they may reflect one shared behaviour rather than two independent changes. [DIR001, LAG001]",
+  "case_id": "e4a_4bb7db3fe137f86e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

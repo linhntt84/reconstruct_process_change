@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_bdfbe014f3fad895.json",
+  "evidence_sha256": "af023557ab71a46a1a99d6662b3ecec290227fb8128e0f9ff943333ca4df61b1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:00:35.990005+00:00",
+  "finished_at_utc": "2026-11-15T08:03:32.739073+00:00",
+  "latency_seconds": 176.75,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25466,
+    "prompt_tokens": 71104,
+    "total_tokens": 96570,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23063,
+      "text_tokens": 2403
+    },
+    "cost": 0.0233986
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 78999,
+  "text": "### Observed differences\n\n- In the earlier window every trace contained A27, about 95 in 100 of A26's outgoing transitions led to A27, and A27 led to A28 in about 95 in 100 of its transitions; in the later window A27 appears in only about 52% of traces (103 of 200), while A26 and A28 still appear in every trace. [OCC025, OCC026, OCC028, DIR026, DIR027]\n- Three activities not observed at all in the earlier window — A32, A33 and A38 — each appear in about half of the later traces (98–100 of 200, mean ~0.5 occurrences per trace), around the middle event position (~0.51). [OCC031, OCC032, OCC037, POS007, POS008, POS009]\n- In the later window, about 51 in 100 of A26's outgoing transitions still go to A27, while the remaining half go to the new activities (about 15–18 in 100 each). [DIR026]\n- The new activities form one alternative route to A28: each pair of them co-occurs in about 49 of 100 later traces, in both orders (no fixed order among them), and each leads mainly to the other two and to A28 (e.g., A38 → A28 in about 43 of 100 of its transitions). A27 shares a trace with any of them in only about 1–3 of 100 later cases, so the old and new routes are alternatives, not additions. [DIR032, DIR033, DIR038, REL028, REL029, REL030, REL034, REL035, REL036]\n- The new activities run between A26 and A28: A14 and A26 precede them in about 48–50 of 100 later traces and they precede A28 in about 48 of 100; the distance from A26 to A28 stretched from 2 steps in about 91% of earlier cases to 4 steps in about 46% of later cases, while A26 → A27 → A28 remain directly consecutive (lag 1 in about 98–99 of 100) wherever A27 runs. [REL013, REL014, REL015, REL024, REL025, REL026, REL031, REL032, REL033, LAG010, LAG011, LAG014]\n- A04 turned from a rare, mid-to-late activity into a common early one: trace participation rose from 19% to 60% (38 → 120 of 200; mean occurrences 0.20 → 0.63) and its mean relative event position fell from about 0.54 to about 0.21. [OCC004, POS001]\n- A04 now sits between A14 and A15: about 54 in 100 of A14's outgoing transitions go to A04 (previously about 4), A04 leads to A15 in about 87 of 100 of its transitions (previously spread over many successors), A14 is immediately followed by A04 in about 96 of 100 cases (previously about 57), and A14 → A15 shifted from lag 1 (about 46%) towards lag 2 (about 31%). [DIR014, DIR004, LAG005, LAG006]\n- Smaller shifts: A06 was observed in about 20% of traces earlier and about 4% later (39 → 8 of 200), A02 fell from 16% to 8% (32 → 16) and A08 from about 16% to 8% (31 → 15); A03, A11, A12 and A13 each rose about 5 points to roughly 49–50%; A15 and A16 repeat slightly more often (recurrence support 36% → about 41%). [OCC006, OCC002, OCC008, OCC003, OCC011, OCC012, OCC013, OCC015, OCC016]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the segment between A26 and A28 is executed in two alternative ways: the previously mandatory A27 step (A26 → A27 → A28) is kept in about half of the cases, while in the other half a new group of activities — A32, A33 and A38, unobserved in the earlier window — runs between A26 and A28 in varying order. The support is direct and consistent: A26 now routes about half of its transitions to the new activities; A27 and each new activity almost never share a trace (about 1–3 in 100), marking them as alternatives; the new activities co-occur with each other (about 49 in 100) and precede A28; and the A26→A28 distance stretched from 2 to 4 steps in about 46% of cases, as expected if the group is inserted on the new route. A27 became optional rather than disappearing — it still follows A26 directly and leads to A28 wherever it occurs — and A26 and A28 remain in every trace in both windows, with the new activities occurring inside the same traces as the mandatory backbone. [OCC025, OCC026, OCC028, OCC031, OCC032, OCC037, DIR026, DIR027, REL011, REL017, REL022, REL027, REL028, REL029, REL030, REL031, REL032, REL033, LAG010, LAG011, LAG014]\n\nOther differences: A04 became a common early step between A14 and A15 (participation 19% → 60% of traces, mean relative position about 0.54 → 0.21, A14 immediately followed by A04 in about 96 of 100 cases, A04 leading to A15 in about 87 of 100 of its transitions); this second structural change is not tied to the route split, since A04 still occurs both with A27 (about 30 in 100 later traces) and without it (about 49 in 100). In addition, A06, A02 and A08 were each observed in fewer traces, A03/A11/A12/A13 each rose about 5 points, and A15/A16 repeat slightly more often. [OCC004, POS001, DIR014, DIR004, LAG005, LAG006, REL004, OCC006, OCC002, OCC008, OCC003, OCC011, OCC012, OCC013, OCC015, OCC016]\n\nAn important competing explanation the evidence cannot rule out is what selects the route (or the A04 step) in a given case — the indicators show the behavioural difference but not its trigger. The key magnitudes (three activities from 0 to about 50% participation, A27 from 100% to about 52%) are far outside what random re-splits of an unchanged process typically produce (empirical strengths about 0.995 on these items), and the evidence set includes no chance-expectation baseline to check against; the exact split is also only what these two finite samples show. [OCC026, OCC031, OCC032, OCC037, LAG011]",
+  "case_id": "case_bdfbe014f3fad895",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

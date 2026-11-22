@@ -1,0 +1,14 @@
+### Observed differences
+
+- Occurrence levels stayed close between the windows. In the later window A01 was still present in every trace but ran about 6.5 times per trace instead of about 6.9; A13 ran about 3.2 instead of about 3.5 times, and A07 about 1.5 instead of about 1.7. In the later window A09 ran about 2.1 times per trace (up from about 1.9) and appeared in about 57 in 100 traces instead of about 50; A03 appeared in about 67 in 100 traces (up from 63) and A12 in about 38 in 100 (up from 34) [OCC001, OCC002, OCC006, OCC008, OCC011, OCC012].
+
+- These occurrence differences are not unusual for random re-splits of the pooled data: the A01 difference was matched or exceeded in about 54 in 100 random re-splits and the A09 difference in about 53 in 100, while A05, A06, A08, A10, A15, A17 and A18 kept essentially the same participation (roughly 44–84 in 100 traces, each shifting by only a few cases) [OCC001, OCC004, OCC005, OCC007, OCC008, OCC009, OCC014, OCC016, OCC017].
+
+- Routing was mostly stable, with two clearer shifts. In the later window, about 50 in 100 of A18's outgoing transitions went to A01, down from about 61 in 100, while transitions to A14 rose from about 15 to about 21 in 100 and to A08 from about 5 to about 11 in 100; this is the most unusual routing difference (exceeded in only about 9 in 100 random re-splits) and rests on about 110 and 107 outgoing transitions [DIR018]. A15's exits also moved: transitions to A05 fell from about 33 to about 15 in 100, while transitions to A17 rose from about 3 to about 12 in 100 and transitions to A11 appeared at about 8 in 100, but this rests on only about 39 and 26 outgoing transitions [DIR015].
+
+- Smaller routing shifts include A04 sending about 7 in 100 of its transitions to A09 in the later window (about 3 in 100 before, with about 84 in 100 still going to A01) [DIR004], and A11 sending somewhat more of its transitions to A01 and A02 and fewer to A13 [DIR011]. The remaining routing profiles were nearly identical between the windows, with differences matched or exceeded in about half or more of random re-splits [DIR001, DIR002, DIR003, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR012, DIR013, DIR014, DIR016, DIR017].
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. The two most unusual routing shifts, at A18 and A15, point to different parts of the process and rest on modest numbers of outgoing transitions, while every other difference is of a size that random re-splits of these two 200-trace windows routinely produce [DIR015, DIR018, OCC001, OCC008].

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_6980dd0b98c5301b.json",
+  "evidence_sha256": "e1ed513363d4d8c0519ea8cdb1c4268bf0fbc302fd36c30b86c3b648653e9b24",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:13:08.166164+00:00",
+  "finished_at_utc": "2026-11-16T02:14:42.982224+00:00",
+  "latency_seconds": 94.82,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14278,
+    "prompt_tokens": 7863,
+    "total_tokens": 22141,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13183,
+      "text_tokens": 1095
+    },
+    "cost": 0.00831845
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46217,
+  "text": "### Observed differences\n\n- The closing sequence of a case reversed its order. In the earlier window, all 200 traces ran A06, then A07, then A01 in the last position; in the later window, all 200 traces run A01, then A06, then A07 in the last position. [REL001, REL002, POS001, POS002, POS003]\n- Direct successors changed accordingly: A08 was directly followed by A06 before and is now directly followed by A01; A01, which had no observed outgoing transition before, now leads to A06 in every trace; A07, which previously led to A01, now has no observed outgoing transition. [DIR001, DIR002, DIR003]\n- Event positions moved by exactly the implied amounts: A01 shifted two positions earlier (mean position from 1.0 to about 0.71), while A06 (about 0.71 to 0.86) and A07 (about 0.86 to 1.0) each shifted one position later; each activity sits at one fixed position in all 200 traces of both windows. [POS001, POS002, POS003]\n- All ten measured activity pairs show the matching lag change, for example A08→A01 shortened from 3 steps to 1, A08→A06 lengthened from 1 to 2, A03→A01 from 4 to 2, and A04→A06 from 4 to 5. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n- Nothing else moved: the relative order and spacing of A04, A05, A03 and A08 ahead of the closing block are the same in both windows, and participation is unchanged. [LAG002, LAG004, LAG006, LAG009, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the order of the closing sequence changed between the windows: in the earlier window cases ended A06 → A07 → A01, while in the later window they end A01 → A06 → A07. A01 moved from the final position of the case to directly after A08 and ahead of A06; A06 and A07 each moved one position later, and A07 is now the final activity. [REL001, REL002, DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\nThe change is shown directly and consistently: both activity relations flip from 100% one order to 100% the other, the successor changes at A08, A01 and A07 agree, and all ten lag shifts match the same reordering; every one of the seventeen items rests on all 200 traces per window and its difference exceeds about 995 of 1,000 random re-splits. Participation is unchanged — each involved activity appears in all 200 traces of both windows at a fixed position — so this is a reordering of mandatory steps, not activities becoming optional, repeated or replaced. [REL001, REL002, DIR001, DIR002, DIR003, POS001, POS002, POS003, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]\n\nLimitations: the evidence cannot distinguish whether A01 moved earlier or the A06/A07 pair moved later, since both describe the same observed reversal; coverage is limited to lags of up to five steps and the tested activity pairs, and positions are event positions rather than clock times. [POS001, POS002, POS003, LAG001, LAG008]\n\nOther differences: none — all seventeen items are accounted for by the same reordering of the closing sequence. [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010]",
+  "case_id": "case_6980dd0b98c5301b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_830b26ab4a8f28e2.json",
+  "evidence_sha256": "b769b4b6435914d0a44a32866c501e9b1e7a706d811aa48c5476dd8b5062e7ae",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:40:45.302853+00:00",
+  "finished_at_utc": "2026-11-15T08:42:05.129743+00:00",
+  "latency_seconds": 79.83,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11420,
+    "prompt_tokens": 28217,
+    "total_tokens": 39637,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10068,
+      "text_tokens": 1352
+    },
+    "cost": 0.00994255
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36199,
+  "text": "### Observed differences\n\n- Activity A01 disappeared from the observed behaviour: in the earlier window it ran in all 200 of 200 traces, about 3.5 times per trace, recurring in roughly 74 in 100 of those traces; in the later window it appears in 0 of 200 traces with no occurrences at all. [OCC001]\n- Its connections vanished with it: before, A01 had about 700 observed outgoing transitions, split mainly to A10 (about 35 in 100), A09 (about 33) and A08 (about 28); after, no outgoing transitions from A01 are observed and its position within traces is no longer observed at all. [DIR001, POS001]\n- The relational picture confirms this: before, A01 co-occurred with A08, A09 and A10 in every trace, and with A03 and A05 in the roughly 47 and 65 in 100 traces where those run; after, co-occurrence with A01 is zero — A08, A09 and A10 still run in all traces, A03 in about 46 in 100 and A05 in about 67 in 100, always without A01. [REL001, REL002, REL003, REL004, REL005]\n- The flows that used to pass through A01 were rerouted: before, about 88 in 100 of A03's observed outgoing transitions and about 85 in 100 of A05's went to A01; after, none do — A03 now sends about 42 in 100 to A10, 39 to A09 and 19 to A08, and A05 sends about 41 to A09, 38 to A10 and 21 to A08. The small direct edges from A09, A10, A11 and A13 to A01 also disappeared. [DIR002, DIR003, DIR006, DIR007, DIR008, DIR010]\n- Consistently, A03/A05 and A09/A10 now sit much closer together in traces: the share of pairs one event apart rose from about 3 in 100 to about 20 (A03–A09), 23 (A03–A10), 13 (A05–A09) and 12 (A05–A10). [LAG002, LAG003, LAG005, LAG006]\n- Repetition increased for several remaining activities while their participation stayed stable: A08 rose from about 6.9 to 8.3 occurrences per trace, A09, A10, A12 and A13 each from about 3.5 to 4.1, A11 from about 3.4 to 4.2, and A05 from about 1.7 to 2.2. [OCC003, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010]\n- Behaviour not involving A01 was essentially stable: A06's outgoing split barely moved, A03's participation stayed near 47 in 100 traces, and the relations among A03, A05, A08, A09 and A10 changed only marginally. [DIR004, OCC002, REL006, REL007, REL010, REL013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 is no longer executed: it ran in every trace of the earlier window (about 3.5 times per trace, followed mainly by A09, A10 and A08) and in no trace of the later window, with the paths that ran through it now leading from A03 and A05 directly to A08, A09 and A10. This rests on direct occurrence evidence over all 200 traces in each window (200 vs 0 supporting traces) and is consistently corroborated by the directional, positional and five relational indicators, all with empirical strength near 0.995 — well beyond what random re-splits of a stable process produce; these items describe one underlying difference rather than independent confirmations, but they agree across indicator types. The main limitation is that zero participation strictly means only \"not observed\": the evidence cannot distinguish a removed activity from one that is still modelled but never triggered, and the rerouting is documented only for the outgoing transitions of A03 and A05. [OCC001, DIR001, DIR002, DIR003, POS001, REL003, REL004, REL005]\n\nOther differences: repetition increased for A05, A08, A09, A10, A11, A12 and A13 without their trace participation changing much, and several pair-distance distributions shifted (A03/A05 vs A08/A09/A10 closer together; A08 vs A09/A10 farther apart), some based on modest support of roughly 22–68 traces in a window; these may be downstream effects of the same rerouting, but the evidence does not establish that link. [OCC003, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, LAG001, LAG004, LAG010, LAG012, LAG015, LAG016, LAG021]\n\nA competing explanation the evidence cannot rule out is that A01 remains part of the process behind a condition that did not fire in the later sample; given its earlier participation of 100 in 100 traces this is unlikely, but occurrence indicators alone cannot exclude it. [OCC001]",
+  "case_id": "case_830b26ab4a8f28e2",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

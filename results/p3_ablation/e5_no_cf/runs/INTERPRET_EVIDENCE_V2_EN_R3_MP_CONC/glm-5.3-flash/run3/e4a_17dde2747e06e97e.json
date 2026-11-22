@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_17dde2747e06e97e.json",
+  "evidence_sha256": "36507d6f82494bf49ecad47b3847f4698990341913254ce883e8b1ec10bbd938",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:51:54.570108+00:00",
+  "finished_at_utc": "2026-11-15T12:52:46.421025+00:00",
+  "latency_seconds": 51.85,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7374,
+    "prompt_tokens": 2970,
+    "total_tokens": 10344,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6758,
+      "text_tokens": 616
+    },
+    "cost": 0.0041325
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29277,
+  "text": "### Observed differences\n\n- In the later window, the elapsed time between the consecutive completions of A23 and A24 is about half an hour (median ≈ 0.5 h) against about one hour before (median ≈ 1.0 h) — a drop of roughly 0.5 hours, about half. The interval also became steadier (spread ≈ 0.08 h vs ≈ 0.18 h), and the pair was observed in 200 of 200 traces in both windows. [TWAIT001]\n- In the later window, the elapsed time between the consecutive completions of A36 and A14 is about two hours (median ≈ 2.0 h) against about one hour before (median ≈ 1.0 h) — roughly doubled, with somewhat more spread (≈ 0.28 h vs ≈ 0.17 h). [TWAIT002]\n- The consecutive pair A36 → A14 appears in far fewer traces in the later window: about 53 in 100 (106 of 200) against essentially all traces before (200 of 200). [TWAIT002]\n- Both timing differences are larger than all but about 1 in 2000 random re-splits of the pooled data, and two qualifying time items were found where roughly 0.01 would be expected if nothing had changed. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing: in the later window, the elapsed time between consecutive completions shortened for A23 → A24 (from about 1.0 hour to about 0.5 hour) and lengthened for A36 → A14 (from about 1.0 hour to about 2.0 hours). Supporting signs: both items measure this timing directly, rest on many observations (200 of 200 traces for A23 → A24 in both windows; 200 versus 106 traces for A36 → A14), each shows a coherent shift across mean, median and quartiles, and both differences exceed about 1995 of 2000 random re-splits, with two qualifying items against roughly 0.01 expected by chance. Limitations: the indicator is elapsed time between consecutive completion events, not pure waiting or service time, so the evidence cannot show whether the intervals changed because of the activities themselves or because of what happens between them. An important competing explanation the evidence cannot rule out is that the longer A36 → A14 interval accompanies a reordering rather than a pure lengthening, since that pair also became less frequent as a consecutive pair; no relational or positional evidence is available to decide this. [TWAIT001, TWAIT002]\n\nOther differences: the consecutive pair A36 → A14 was observed in about 53 in 100 later-window traces (106 of 200) against essentially all traces before (200 of 200); with only timing evidence, it cannot be established whether this reflects a reordering of completions or a change in how often A14 follows A36. [TWAIT002]",
+  "case_id": "e4a_17dde2747e06e97e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

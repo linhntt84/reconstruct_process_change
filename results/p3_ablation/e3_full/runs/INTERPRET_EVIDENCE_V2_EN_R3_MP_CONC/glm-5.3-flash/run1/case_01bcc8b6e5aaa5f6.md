@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A02 disappeared from the execution. In the earlier window every one of the 200 traces contained A02 exactly once (participation 100%, mean one occurrence per trace), typically as the opening event (median position 0); in the later window A02 appears in 0 of 200 traces. [OCC001, POS002]
+- Before, A02 co-occurred with A01 and with each of A03–A07 in 100% of traces and almost always ran first (before A03 in about 89 in 100 traces, before A07 in about 99 in 100). In the later window those six activities still occur in essentially every trace, but never together with A02 — each of these pair profiles is now "partner only" in 100% of traces. [REL001, REL004, REL005, REL006, REL007, REL008]
+- Before, A02's outgoing transitions led mainly to A03 (about 48%) and A04 (about 42%), with small shares to A06, A05 and A07; in the later window no outgoing transition from A02 is observed (seen in 199 traces before, 0 after). Transitions into A02 also vanished: about 5% of A01's outgoing transitions, about 7% of A04's, about 4% of A05's and about 3.5% of A03's went to A02 before, none after. [DIR002, DIR001, DIR004, DIR005, DIR003]
+- The surviving activities each sit slightly earlier in the trace: mean position fell for A03 (0.27→0.18), A04 (0.29→0.15, median 0.33→0.0, so A04 now often opens the trace), A05 (0.54→0.49), A06 (0.58→0.48) and A07 (0.78→0.73), while A01 remains last (mean 0.98→0.96). This is a shift in event positions consistent with the loss of a leading activity, not evidence of a clock-time change. [POS003, POS004, POS005, POS006, POS007, POS001]
+- Minor: A03 and A04 still co-occur in all traces with no fixed order in both windows, but the mix tilted from A03 first in about 53 in 100 traces to about 44 in 100; a few step-distance distributions shifted slightly (e.g., A03→A07 at a 5-step gap in about 8 in 100 traces before, none after). [REL009, LAG006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that in the later window the process runs without A02: an activity that was executed exactly once at the start of every case in the earlier window is no longer executed, or has become too rare to appear. The change involves A02 together with A01 and A03–A07, which previously always followed it and now run without it. The support is direct — participation falls from 200 of 200 traces to 0 of 200, a difference that essentially no random re-split of the pooled data reproduces [OCC001] — and consistent across relation profiles [REL001, REL004, REL005, REL006, REL007, REL008], the disappearance of A02's outgoing edges [DIR002], and the one-step-forward shift of every remaining activity's position [POS003, POS004, POS005, POS006, POS007]. These items describe one underlying difference rather than independent confirmations, but their agreement across occurrence, edge, position and relation indicators makes sampling noise an unlikely explanation.
+
+Limitation: zero participation only shows that A02 was not observed in the later sample; the evidence cannot distinguish complete removal from a drastic reduction below detection in 200 traces, and it says nothing about the cause.
+
+Other differences: the A03/A04 ordering mix tilted slightly (A03 before A04 in about 53% of traces before vs about 44% after, still without a fixed order overall) [REL009], and small shifts in step distances such as A03→A07 no longer showing a 5-step gap [LAG006]; both are minor and partly a by-product of traces losing their leading event.

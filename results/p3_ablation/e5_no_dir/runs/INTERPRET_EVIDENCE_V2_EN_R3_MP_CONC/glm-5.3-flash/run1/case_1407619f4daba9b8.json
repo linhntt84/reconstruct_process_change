@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_1407619f4daba9b8.json",
+  "evidence_sha256": "3ab02984d8f1364e50300be8caaf0ecfeb5340308e5e4d14076eb16c3ec9e3f5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:48:00.491030+00:00",
+  "finished_at_utc": "2026-11-14T11:49:24.691193+00:00",
+  "latency_seconds": 84.2,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11278,
+    "prompt_tokens": 17196,
+    "total_tokens": 28474,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9986,
+      "text_tokens": 1292
+    },
+    "cost": 0.0082184
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34248,
+  "text": "### Observed differences\n\n- Four activities became mandatory. A22 ran in about 54 in 100 traces before and in all 200 traces afterwards (exactly once per trace in both windows); A31, A32 and A37 each ran in about 46 in 100 traces before and in about 199 in 200 traces after. Before, A22 and the group A31/A32/A37 were strict alternatives that never shared a trace; in the later window they co-occurred in about 995 in 1000 traces. [OCC001, OCC002, OCC003, OCC004, REL011, REL012, REL013]\n\n- The group A31/A32/A37 changed its place in the sequence. Before, it ran after A21 and after A23 (in every co-occurrence, about 46 in 100 traces, A21 and A23 came first); in the later window the group ran before A21 and before A23 in about 995 in 1000 traces. Its mean relative position moved from about 0.59 to about 0.40 of the trace. [REL006, REL007, REL008, REL014, REL015, REL016, POS006, POS007, POS008]\n\n- The gap from A20 to A23 grew: before, A23 followed A20 immediately (one position apart in all 200 traces); in the later window it was four positions apart in about 995 in 1000 traces, matching the three group activities now sitting between them. [LAG001, REL002, REL003, REL004]\n\n- The tail of the process became fixed: A26 now follows A21 exactly two positions later in every trace (with A22 in between), whereas before this held in about 54 in 100 traces and the gap was four positions in the rest, when the A31-group occupied that segment. [LAG002, REL005, REL010]\n\n- The internal order of the group did not change: A31, A32 and A37 appear in both orders in near-equal shares in both windows (each direction roughly 0.21–0.26 before and 0.47–0.52 after), so there is no fixed order among them in either window. [REL020, REL021, REL022]\n\n- Combining the relations: before, traces looked like A20 → A23 → A21 → (A22 in about 54 in 100 cases, or the A31/A32/A37 group in about 46 in 100) → A26; in the later window essentially every trace looks like A20 → (A31/A32/A37 in any order) → A23 → A21 → A22 → A26. [REL001, REL009, REL017, REL018, REL019, LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural reordering together with a participation change: the activity group A31, A32 and A37, which before was executed in about 46 in 100 cases as an alternative to A22 in the segment between A21 and A26, appears in the later window in essentially every case immediately after A20 and before A23, while A22 also became mandatory in its previous place between A21 and A26. The order relations flip directly (the group moved from after A21 and A23 to before them), the A20→A23 distance grows from one to four positions as the group is inserted, the group's mean relative position shifts from about 0.59 to about 0.40, and participation rises from about 46–54 in 100 to (near) 100 in 100 traces [OCC001, OCC002, OCC003, OCC004, REL006, REL014, REL011, LAG001, POS006, LAG002].\n\nChance is an unlikely explanation for the ensemble: 36 control-flow items qualified where about 0.35 would be expected without a change (roughly a hundredfold excess), and every item's difference exceeds about 995 in 1000 random re-splits of the pooled traces. The pattern is also internally consistent across occurrence, positional, relational and lag indicators. Two limitations remain: many items describe the same underlying move (each pair involving the group is scored separately), so they are not independent confirmations; and with two windows of 200 traces each, a pre-existing rare \"group-first\" variant that happened to be absent from the earlier window cannot be fully excluded — though the later pattern (A22 co-occurring with the group, group before A23) occurred in 0 of 200 before-traces, making pure sampling variation an unlikely sole explanation [REL011, REL012, REL013, OCC001].\n\nOther differences: A20's mean relative position moved slightly earlier (about 0.36 to 0.34) and A26's slightly later (about 0.63 to 0.66); both shifts are small and consistent with the same restructuring rather than separate changes. [POS001, POS005]",
+  "case_id": "case_1407619f4daba9b8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

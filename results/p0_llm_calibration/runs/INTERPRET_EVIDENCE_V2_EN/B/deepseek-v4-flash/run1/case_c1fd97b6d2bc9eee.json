@@ -1,0 +1,74 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p0_llm_calibration/evidence/B/case_c1fd97b6d2bc9eee.json",
+  "evidence_sha256": "29ec655a8cb59c9add91b16b483686034ae03e40468645ab15915c30f9f7a160",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": false
+  },
+  "started_at_utc": "2026-11-11T13:42:31.302096+00:00",
+  "finished_at_utc": "2026-11-11T13:42:59.828938+00:00",
+  "latency_seconds": 28.53,
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1366,
+    "prompt_tokens": 5705,
+    "total_tokens": 7071,
+    "completion_tokens_details": {
+      "reasoning_tokens": 888
+    }
+  },
+  "response_model": "deepseek-v4-flash",
+  "transport": "curl",
+  "text": "### Observed differences\n\n- In the later window, activity A14 appears in about 0.5 in 100 traces instead of 55 in 100, and A15 in about 1 in 100 instead of 45 in 100. [OCC001, OCC002]\n- The outgoing transitions of A35 shifted from A14 (55%) and A15 (45%) before to A20 (about 98.5%) after. [DIR001]\n- A14 and A15 no longer co-occur with A20 or A35; in the later window A20 appears alone in about 99 in 100 traces, whereas before A14/A15 preceded A20 or followed A35. [REL002, REL003, REL004, REL005]\n- The gap between A35 and A20 changed from 2 steps in all cases before to 1 step in about 98.5% of cases after. [LAG001]\n- A20's position shifted slightly earlier in the trace (mean from about 0.39 to 0.37 of trace length). [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the activity following A35 changed from A14 or A15 to A20, with A14 and A15 almost disappearing from the later window. The successor distribution of A35, the co-occurrence relations, and the lag between A35 and A20 all point in the same direction: A20 now directly follows A35 in nearly all cases, whereas before A14 or A15 appeared between them. [DIR001, REL002, REL003, REL004, REL005, LAG001] The number of qualifying items (11) far exceeds the 0.31 expected by chance, so the overall pattern is not a chance artifact. [screening] A competing explanation—that the drop in A14/A15 reflects sampling variation in variant frequencies—is unlikely given that these activities were present in 110 and 90 of 200 traces before, not rare variants. [OCC001, OCC002] A limitation is that the later window contains only 1–2 traces with A14/A15, so their behaviour after the change cannot be characterised beyond their near-absence. [OCC001, OCC002, POS001]",
+  "raw_response": {
+    "id": "chatcmpl-8ed9a00a64fbedbe",
+    "created": 1794404551,
+    "model": "deepseek-v4-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "vllm-0.28.0-tp2-ep-b3976021",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "### Observed differences\n\n- In the later window, activity A14 appears in about 0.5 in 100 traces instead of 55 in 100, and A15 in about 1 in 100 instead of 45 in 100. [OCC001, OCC002]\n- The outgoing transitions of A35 shifted from A14 (55%) and A15 (45%) before to A20 (about 98.5%) after. [DIR001]\n- A14 and A15 no longer co-occur with A20 or A35; in the later window A20 appears alone in about 99 in 100 traces, whereas before A14/A15 preceded A20 or followed A35. [REL002, REL003, REL004, REL005]\n- The gap between A35 and A20 changed from 2 steps in all cases before to 1 step in about 98.5% of cases after. [LAG001]\n- A20's position shifted slightly earlier in the trace (mean from about 0.39 to 0.37 of trace length). [POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the activity following A35 changed from A14 or A15 to A20, with A14 and A15 almost disappearing from the later window. The successor distribution of A35, the co-occurrence relations, and the lag between A35 and A20 all point in the same direction: A20 now directly follows A35 in nearly all cases, whereas before A14 or A15 appeared between them. [DIR001, REL002, REL003, REL004, REL005, LAG001] The number of qualifying items (11) far exceeds the 0.31 expected by chance, so the overall pattern is not a chance artifact. [screening] A competing explanation—that the drop in A14/A15 reflects sampling variation in variant frequencies—is unlikely given that these activities were present in 110 and 90 of 200 traces before, not rare variants. [OCC001, OCC002] A limitation is that the later window contains only 1–2 traces with A14/A15, so their behaviour after the change cannot be characterised beyond their near-absence. [OCC001, OCC002, POS001]",
+          "role": "assistant",
+          "reasoning_content": "The evidence: 11 items, screening expected 0.31 without change. That's many times larger (11 vs 0.31), so we can't dismiss as chance. Need to judge.\n\nMain story: Activities A14 and A15 were present in about 55% and 45% of traces before, and almost absent after (0.5% and 1%). A20 appears as successor of A35 in after window (DIR001: A35's outgoing transitions before went to A14 55%, A15 45%; after to A20 98.5%). So A35 now leads to A20 instead of A14/A15. REL items show A14/A15 no longer co-occur with A20 or A35; instead A20 alone appears. LAG001: A35 to A20 lag before was 2 steps (100%), after 1 step (98.5%). So A20 now immediately follows A35.\n\nSo hypothesis: A14 and A15 were replaced by A20 as the activity following A35. That's a structural change: the branch after A35 changed from A14/A15 to A20.\n\nSupport: many items, all consistent. Direct evidence: DIR001 shows successor redistribution; REL002-005 show co-occurrence dropped; LAG001 shows lag changed from 2 to 1. POS001 and POS002 show position shifts but those are weak (A14 support after only 1 trace). OCC001/OCC002 show participation drop.\n\nCompeting explanation: sampling differences in variant frequencies? But the change is large and consistent across many indicators. However, we should note that A14/A15 disappearing could be a rare variant? No, they were in 55% and 45% of 200 traces before, so 110 and 90 traces. After only 1 and 2 traces. That's a big drop, not a rare variant.\n\nBut wait: the hypothesis is about a structural change. The evidence supports that A20 replaced A14/A15 as the successor of A35. That's a routing change. Direct evidence: DIR001 (successor shares), REL (co-occurrence), LAG (lag). So supported hypothesis.\n\nHowever, need to be careful: the instruction says \"Do not speculate about causes... change pattern names\". We can state: in the later window, A35's outgoing transitions go to A20 instead of A14/A15, and A14/A15 are almost absent. That supports a hypothesis that the branch after A35 changed.\n\nSupport level: Supported hypothesis. Because count of items (11) far exceeds expected (0.31), and evidence is direct and consistent.\n\nLet me write.\n\nObserved differences:\n- A14 participation dropped from 55% to 0.5% of traces; A15 from 45% to 1%. [OCC001, OCC002]\n- A35's outgoing transitions: before 55% to A14, 45% to A15; after 98.5% to A20. [DIR001]\n- A14/A15 no longer co-occur with A20 or A35; in the later window A20 appears alone in ~99% of traces. [REL002-005]\n- A35 to A20 lag: before 2 steps in all cases, after 1 step in 98.5%. [LAG001]\n- A20 position shifted slightly earlier (mean from 0.389 to 0.372 of trace length). [POS002]\n\nInference: Supported hypothesis. The evidence supports that the activity following A35 changed from A14/A15 to A20, with A14 and A15 almost disappearing. Limitation: sampling differences in variant frequencies could in principle produce such a shift, but the size and consistency across many indicators make that unlikely; also the after-window support for A14/A15 is only 1-2 traces, so their exact behaviour after is uncertain.\n\nActually, need to mention competing explanation: the disappearance of A14/A15 could be a sampling artifact if they were rare, but they were common before (110 and 90 traces), so not a rare variant. Still, mention that the after-window has almost no A14/A15 traces, so we cannot characterise their new position.\n\nLet me write concisely.",
+          "provider_specific_fields": {
+            "refusal": null,
+            "reasoning": "The evidence: 11 items, screening expected 0.31 without change. That's many times larger (11 vs 0.31), so we can't dismiss as chance. Need to judge.\n\nMain story: Activities A14 and A15 were present in about 55% and 45% of traces before, and almost absent after (0.5% and 1%). A20 appears as successor of A35 in after window (DIR001: A35's outgoing transitions before went to A14 55%, A15 45%; after to A20 98.5%). So A35 now leads to A20 instead of A14/A15. REL items show A14/A15 no longer co-occur with A20 or A35; instead A20 alone appears. LAG001: A35 to A20 lag before was 2 steps (100%), after 1 step (98.5%). So A20 now immediately follows A35.\n\nSo hypothesis: A14 and A15 were replaced by A20 as the activity following A35. That's a structural change: the branch after A35 changed from A14/A15 to A20.\n\nSupport: many items, all consistent. Direct evidence: DIR001 shows successor redistribution; REL002-005 show co-occurrence dropped; LAG001 shows lag changed from 2 to 1. POS001 and POS002 show position shifts but those are weak (A14 support after only 1 trace). OCC001/OCC002 show participation drop.\n\nCompeting explanation: sampling differences in variant frequencies? But the change is large and consistent across many indicators. However, we should note that A14/A15 disappearing could be a rare variant? No, they were in 55% and 45% of 200 traces before, so 110 and 90 traces. After only 1 and 2 traces. That's a big drop, not a rare variant.\n\nBut wait: the hypothesis is about a structural change. The evidence supports that A20 replaced A14/A15 as the successor of A35. That's a routing change. Direct evidence: DIR001 (successor shares), REL (co-occurrence), LAG (lag). So supported hypothesis.\n\nHowever, need to be careful: the instruction says \"Do not speculate about causes... change pattern names\". We can state: in the later window, A35's outgoing transitions go to A20 instead of A14/A15, and A14/A15 are almost absent. That supports a hypothesis that the branch after A35 changed.\n\nSupport level: Supported hypothesis. Because count of items (11) far exceeds expected (0.31), and evidence is direct and consistent.\n\nLet me write.\n\nObserved differences:\n- A14 participation dropped from 55% to 0.5% of traces; A15 from 45% to 1%. [OCC001, OCC002]\n- A35's outgoing transitions: before 55% to A14, 45% to A15; after 98.5% to A20. [DIR001]\n- A14/A15 no longer co-occur with A20 or A35; in the later window A20 appears alone in ~99% of traces. [REL002-005]\n- A35 to A20 lag: before 2 steps in all cases, after 1 step in 98.5%. [LAG001]\n- A20 position shifted slightly earlier (mean from 0.389 to 0.372 of trace length). [POS002]\n\nInference: Supported hypothesis. The evidence supports that the activity following A35 changed from A14/A15 to A20, with A14 and A15 almost disappearing. Limitation: sampling differences in variant frequencies could in principle produce such a shift, but the size and consistency across many indicators make that unlikely; also the after-window support for A14/A15 is only 1-2 traces, so their exact behaviour after is uncertain.\n\nActually, need to mention competing explanation: the disappearance of A14/A15 could be a sampling artifact if they were rare, but they were common before (110 and 90 traces), so not a rare variant. Still, mention that the after-window has almost no A14/A15 traces, so we cannot characterise their new position.\n\nLet me write concisely."
+          }
+        },
+        "provider_specific_fields": {
+          "routed_experts": null,
+          "token_ids": null,
+          "stop_reason": null
+        }
+      }
+    ],
+    "usage": {
+      "completion_tokens": 1366,
+      "prompt_tokens": 5705,
+      "total_tokens": 7071,
+      "completion_tokens_details": {
+        "reasoning_tokens": 888
+      }
+    }
+  },
+  "case_id": "case_c1fd97b6d2bc9eee",
+  "kind": "drift",
+  "config": "B",
+  "run_index": 1,
+  "support_level": "supported hypothesis"
+}

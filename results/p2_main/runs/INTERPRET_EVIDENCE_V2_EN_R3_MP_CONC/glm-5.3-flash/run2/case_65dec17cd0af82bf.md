@@ -1,0 +1,21 @@
+### Observed differences
+
+- A02 was not observed in the earlier window; in the later window it appears in about 57 in 100 traces and is the final event in every one of those occurrences. [OCC002, POS002]
+- A16 and A19 previously closed traces: before, A16 (in 20 of 100 traces) and A19 (in 29 of 100) always occupied the last position and showed no outgoing transitions. In the later window they occur slightly earlier (mean position about 0.85), and every observed outgoing transition of both now goes to A02. [POS007, POS008, DIR006, DIR008]
+- A09 previously ran early (mean position 0.26), appeared in 37 of 100 traces, was often repeated (1.07 occurrences per trace), and led to A13 (about 48% of its outgoing transitions) or A14 (about 52%). In the later window it runs later (position 0.59), is rarer (20 of 100 traces, 0.38 occurrences) and sends about half of its outgoing transitions to A02 and half to A13. [OCC003, POS003, DIR004]
+- A01 is new to the later window: it appears in 15 of 100 traces around position 0.7, all of its observed outgoing transitions go to A16, and it runs before A16 in 15 of 100 traces. A10 and A17, which previously fed A16, now send about 42% and 50% of their outgoing transitions to A01 instead. [OCC001, POS001, DIR001, REL002, DIR005, DIR007]
+- A02 now co-occurs with many activities that previously ran without it — for example with A14 in 39 of 100 later traces, A03 in 35 and A07 in 28 — typically after them (A14 precedes A02 in 26 of 100 traces). [REL003, REL004, REL008]
+- Other rerouting and dissolved pairings: A07 now leads to A14 (about 51%) where it previously led to A09 (about 49%); A03 gained A09 as a successor (19%) while A08 fell from 19% to under 4%. Co-occurrence of A09–A14 fell from 37 to about 13 in 100 traces, A09–A19 from 22 to 0, and A13–A14 from 23 to 4. [DIR003, DIR002, REL011, REL012, REL013]
+- Step distances between several activity pairs shifted — for example A03→A13 and A03→A14 gaps moved from 3–5 steps to 2–4, while A07→A13 gaps moved from 2–4 to 3–5 — each based on only about 6–26 observations. [LAG001, LAG002, LAG004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the closing stage of the process was restructured around a new final step. In the later window, A02 ends about 57 in 100 traces, always as the last event, and is reached from A09 (about half of its outgoing transitions) and from A16 and A19 (all of their observed outgoing transitions); A16 and A19, which previously ended traces themselves, now sit one step earlier, and A09 no longer continues to A14. In addition, A01 now sits between A10/A17 and A16: A10 and A17 often lead to A01, which leads on to A16 and then to A02. [OCC002, POS002, DIR004, DIR006, DIR008, POS007, POS008, OCC001, DIR001, DIR005, DIR007, REL001, REL002]
+
+The hypothesis is shown directly by successor, positional and relational evidence rather than by frequencies alone, the activities involved are observed in substantial numbers in the later window (A02 in 113 traces, A19 in 44, A16 and A01 in 30 each), and the 42 qualifying items are roughly 95 times the 0.44 expected without a change, so the pattern as a whole is not what random re-splits of unchanged behaviour produce. [DIR004, DIR006, DIR008, POS002, OCC002, OCC001]
+
+Limitations: zero participation in the earlier window shows only that A01 and A02 were not observed there, and DIR shares are over outgoing transitions rather than cases; the evidence also cannot rule out that the two windows draw different mixtures of case variants rather than reflecting one modified process. [OCC001, OCC002, DIR006, DIR008]
+
+Other differences: A09 and A13 declined in use and repetition and moved later (A13 from 23 to about 9 of 100 traces, mean position 0.28 to 0.54), A14 and A10 moved earlier (mean positions 0.39 to 0.20 and 0.72 to 0.46), A03 gained A09 as a successor while A08 nearly disappeared from its successors, and the former pairings A09–A14, A09–A19 and A13–A14 largely stopped occurring together; pairwise step distances also shifted, though on small samples. [OCC003, OCC004, POS003, POS004, POS005, POS006, DIR002, REL011, REL012, REL013, LAG001, LAG004]

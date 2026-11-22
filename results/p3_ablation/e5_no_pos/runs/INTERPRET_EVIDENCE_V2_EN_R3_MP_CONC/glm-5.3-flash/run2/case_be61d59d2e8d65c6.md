@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 each ran in a substantial share of cases — about 33%, 29% and 40% of the 200 traces (65, 57 and 81 traces) — and they were mutually exclusive (pairwise co-occurrence about 0.5%), so at least one of the three ran in roughly 99 in 100 earlier traces. In the later window, each appears in only about 1 in 200 traces. [OCC001, OCC002, OCC003, REL001, REL002, REL006]
+- The three were inserted between A27/A28 and A29: each co-occurred with A27, A28 and A29 in about 29–40% of traces, essentially always after A27 and before A29 (A19 before A29 in about 32% of all traces, A25 in about 40%), on either side of A28. In the later window these co-occurrences drop to about 0.5% with no consistent order. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]
+- Routing concentrated around the remaining core: A27's outgoing transitions led to A28 in about 52% of cases before versus about 98% in the later window (earlier the rest went mainly to A25, A19 and A20), and A28's transitions led to A29 in about 43% before versus about 97% after (earlier the rest went mainly to the same three). [DIR005, DIR006]
+- Event distances shrank by one step: A27→A28 within one step rose from about 52% to about 98%, A28→A29 within one step from about 43% to about 96%, and A27→A29 moved from mostly 3 steps (about 90%) to mostly 2 steps (about 96%). [LAG001, LAG002, LAG004]
+- The later outgoing profiles of A19, A20 and A25 themselves (single transitions to A38, A37 and A31) and the A28→A25 distance rest on one observed trace each and carry little weight. [DIR002, DIR003, DIR004, LAG003]
+- Separately, A10's outgoing transitions became more dispersed: earlier about 20% went to A15, 17% each to A47 and A16 and 14% to A45; later they spread over more than twenty successors, the largest shares being about 17% to A26 and 15% to A45 (35 versus 53 observed transitions). [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Main hypothesis: the block of three mutually alternative activities A19, A20 and A25, which in the earlier window was executed in virtually every case — exactly one of the three inserted between A27/A28 and A29, before or after A28 — appears no longer to be executed in the later window, so cases proceed directly from A27 to A28 to A29. The participation of all three collapsed from 65/57/81 to 1 of 200 traces [OCC001, OCC002, OCC003]; their co-occurrence with A27, A28 and A29 and their placement between A27 and A29 disappeared [REL003, REL005, REL010, REL012]; A27 and A28 now lead almost exclusively to A28 and A29 [DIR005, DIR006]; and the A27→A29 distance shortened by exactly one step [LAG001, LAG002, LAG004].
+
+The screening comparison supports this reading rather than a chance artefact: 25 control-flow items qualified against roughly 0.53 expected for an unchanged process, and every item's difference exceeded those of essentially all 200 random re-splits [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003, LAG004].
+
+Limitation: near-zero participation shows only that the three activities were not executed in the later sample; the evidence cannot distinguish a removal of the block from a later sample that simply does not exercise it, and the lone remaining occurrences of A19, A20 and A25 (routing to A38, A37 and A31) rest on a single trace each. [OCC001, OCC002, OCC003, DIR002, DIR003, DIR004]
+
+Other differences: A10's outgoing transition mix became more dispersed (main targets earlier: A15 about 20%, A47 and A16 about 17% each, A45 about 14%; later spread over many successors, largest about 17% to A26 and 15% to A45); the evidence does not connect this to the disappearance of the A19/A20/A25 block, and it rests on moderate transition counts. [DIR001]

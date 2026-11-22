@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_a2913df8d9dd482b.json",
+  "evidence_sha256": "d07931fc5ba2e334a2523086066cd278af9131a9de0f795ad3c466d51bcb0e45",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:40:45.923118+00:00",
+  "finished_at_utc": "2026-11-15T14:45:16.337372+00:00",
+  "latency_seconds": 270.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 37037,
+    "prompt_tokens": 47238,
+    "total_tokens": 84275,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34375,
+      "text_tokens": 2662
+    },
+    "cost": 0.025604199999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 108510,
+  "text": "### Observed differences\n\n- The preferred traversal direction through the A05–A07–A09 group (which sits between the entry from A01 and the always-executed A14) differs between the windows. In the earlier window, traces containing both A05 and A07 ran A07 first in about 27 in 100 cases and A05 first in about 22; in the later window, A05 came first in about 34 in 100 and A07 first in about 18, while the share of traces containing both stayed at about 50 in 100. [REL001]\n- The handovers around this group moved consistently. In the later window, about 45% of the continuations observed out of A01 went to A05 (about 28% before), while those to A09 and A07 fell to about 26% and 25% (from 37% and 32%); out of A05, continuations to A07 rose to about 44% (from 27%) and those to A14 fell to about 21% (from 37%); out of A07, continuations to A05 fell to about 18% (from 39%) while those to A09 and A14 rose to about 39% each; out of A09, continuations to A07 fell to about 27% (from 38%) and those to A14 rose to about 38% (from 28%). The modal successors thus chained A01→A09→A07→A05→A14 before, and A01→A05→A07→A09/A14 in the later window. [DIR001, DIR005, DIR007, DIR009]\n- Adjacent-pair counts agree: A05→A07 pairs within five steps rose from 44 to 68 (immediately adjacent in about 6–7 of 10 pairs in both windows), while A07→A05 pairs fell from 55 to 35, with the immediately adjacent share dropping from about 7 in 10 to about 5 in 10. Event positions point the same way: A05 tended to sit slightly earlier and A07 slightly later in the later window. [LAG001, LAG002, POS001, POS002]\n- Participation itself was stable: each of A05, A07 and A09 appeared in about 50 in 100 traces in both windows and A14 in all traces, so this is a rerouting of existing paths, not activities appearing, disappearing or running more often overall. [OCC005, OCC007, OCC009, OCC014]\n- At A42 the branch choice reversed: continuations to A43 rose from about 44% to 52% of A42's outgoing transitions while those to A44 fell from about 52% to 44%; accordingly A43 ran in about 70 in 100 traces (about 60 before), and A44 and A45 in about 59 in 100 (about 69 before). [OCC038, OCC039, OCC040, DIR042]\n- At A31, continuations shifted toward A35 (about 19% to 26%) and away from A37 and A38 (about 27% to 22% and 26% to 23%); A35 and A36 each ran in about 54–55 in 100 traces (about 45–46 before) while A37 and A38 fell to about 47 in 100 (from about 55–57). [OCC031, OCC032, OCC033, OCC034, DIR031, DIR035, DIR036]\n- Within the A22–A25 group, which contributed about two of its four activities per trace in both windows, A22 ran in about 54 in 100 traces (about 44 before) while A23 fell to about 47 in 100 (from about 57); out of A22, exits to A31 rose from about 43% to 51% and continuations to A24 fell from about 31% to 17%. [OCC020, OCC021, OCC022, OCC023, DIR022, DIR025]\n- Two smaller shifts: the A15–A16 repetition became less frequent (traces containing a repeat fell from about 43 in 100 to about 35–37, with both activities still in every trace), and A04 ran in about 17 in 100 traces (about 12–13 before), with the continuations A44→A04 and A04→A45 observed only in the later window, on small numbers. [OCC015, OCC016, OCC004, DIR004, DIR044]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the preferred traversal direction through the A05–A07–A09 group reversed: traces now tend to run A01→A05→A07 and then leave the group to A14 (directly or via A09), whereas before they tended to pass through A09 and A07 first and reach A05 last before continuing to A14. The order change between A05 and A07 is shown directly at trace level (A05 first in about 44% of co-occurring traces before versus about 65% in the later window, with co-occurrence stable), matches the adjacency and lag counts, and agrees with the successor-share changes at A01, A05, A07 and A09; these differences are larger than random re-splits of a stable process typically produce (empirical strengths roughly 0.8–1.0). Because every involved activity kept a stable participation share, the competing explanation that activities were added, removed or changed how often they run is ruled out; the remaining limitation is that the two windows are finite samples of 200 traces each, so a chance order shift cannot be fully excluded, and the evidence cannot show how far beyond these handovers the rerouting extends. [REL001, LAG001, LAG002, DIR001, DIR005, DIR007, DIR009, OCC005, OCC007, OCC009, OCC014]\n\nOther differences: the branch-share reversals at A42 (more traces via A43, fewer via the A44–A45 route), at A31 (more via A35/A36, fewer via A37/A38) and within the A22–A25 group (more via A22, fewer via A23), together with the reduced A15–A16 repetition and the modest rise of A04 with an A44→A04→A45 detour seen only in the later window, are further differences in the later window; they are not part of the main hypothesis, and the evidence does not indicate whether they are connected to it. [OCC038, OCC039, OCC040, DIR042, OCC031, OCC032, OCC033, OCC034, DIR031, OCC020, OCC021, DIR022, OCC015, OCC016, OCC004, DIR044]",
+  "case_id": "null_a2913df8d9dd482b",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

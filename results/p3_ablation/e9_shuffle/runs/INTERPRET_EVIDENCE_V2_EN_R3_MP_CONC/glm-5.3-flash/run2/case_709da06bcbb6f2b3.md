@@ -1,0 +1,20 @@
+### Observed differences
+
+- A01 appears only in the later window: it is absent from all 200 earlier traces but runs in about 119 of 200 traces (roughly 60 in 100) afterwards, at most once per case (mean about 0.6 occurrences per trace, no repeats). It takes an early position: median around 0.17 of the trace length, with at least a quarter of its occurrences as the case's first event. [OCC001, POS001]
+- New hand-offs form around A01. Before, A10 passed mainly to A03 (about 55 in 100 of its outgoing transitions) and A03 mainly back to A10 (about 45 in 100), always immediately adjacent. In the later window, A10 passes to A01 in about 40 in 100 of its outgoing transitions and A03 to A01 in about 34 in 100, while A01 passes on to A03 (about 32 in 100), A10 (about 27), A04 (about 23) and A07 (about 18). [DIR001, DIR002, DIR003, LAG003, LAG004]
+- A01 now always travels with A03 and A10: before, A03 and A10 each ran in about 56 in 100 traces and never with A01; afterwards the three co-occur in about 60 in 100 traces. A01 runs before A03/A10 in about 26 in 100 of all traces and after them in about 34 in 100, so there is no fixed order between A01 and A03/A10. [REL001, REL004]
+- A04 and A07 now occur only with A01 and after it: before, A04 (about 28 in 100 traces) and A07 (about 28 in 100) ran without A01; afterwards they co-occur with A01 (about 31 and 28 in 100 respectively) and never appear without it, always after it. [REL002, REL003]
+- Distances from the A03/A10 region to A04/A07 grew: A03→A04 was 1–2 steps apart before (about 51%/49%); afterwards a 3-step gap appears in about 38 in 100 cases, and similarly for A10→A04 (about 38) and A03→A07 (about 41). The previously always-adjacent A03→A10 and A10→A03 pairs now show a one-event gap in about 29–36 in 100 cases. [LAG001, LAG002, LAG005, LAG003, LAG004]
+- Downstream activities occur later by event position: A10's mean position rose from about 0.08 to 0.16, A04's from about 0.22 to 0.31 (median 0.22 to 0.33), and A07's from about 0.57 to 0.67 (median 0.5 to 0.75). [POS004, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a new step, A01, was added to the flow around the A03/A10 segment: in the later window A01 executes in about 60 in 100 cases (it was not observed at all before), receives hand-offs from A10 and A03, and passes control on to A03, A10, A04 and A07. As a result, A04 and A07 — previously executed in about 28 in 100 cases without A01 — now occur only after A01 and typically one step further from A03/A10, and A10, A04 and A07 run at later positions in the case. [OCC001, DIR001, DIR002, DIR003, REL002, REL003, LAG001, POS002, POS003]
+
+The hypothesis is shown directly and consistently: participation goes from none to about 60 in 100, new transitions into and out of A01 appear, the A03/A10→A04/A07 step distances grow by about one step, and the co-occurrence of A04/A07 flips from "without A01" to "only after A01". With 17 qualifying control-flow items against roughly 0.19 expected if nothing had changed, the ensemble cannot be explained by random re-splits of stable behaviour. [screening, DIR001, LAG001, LAG002, REL002]
+
+Limitations: the earlier window only shows that A01 was not observed, so an extremely rare pre-existing variant that later became frequent cannot be excluded outright; and A01 has no fixed slot relative to A03 and A10 (both orders occur, about 26 vs 34 in 100), so its exact placement within that segment remains undetermined. Several items also describe the same underlying trace behaviour (REL001 and REL004 are near-identical), so they are not independent confirmations. [REL001, REL004]
+
+Other differences: A03 and A10's participation rose slightly (about 56 to 60 in 100 traces) and A04's from about 28.5 to 31.5 in 100; these small shifts could equally be sampling variation between the two 200-trace windows. [REL001, REL004, REL002]

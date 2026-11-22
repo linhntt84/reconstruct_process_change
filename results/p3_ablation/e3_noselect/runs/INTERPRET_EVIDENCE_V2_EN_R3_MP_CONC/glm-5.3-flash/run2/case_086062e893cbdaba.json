@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_086062e893cbdaba.json",
+  "evidence_sha256": "fc00c43bbb989e245084b22df69504fb325891a7d96ad2d4445fc5e7e8221f6b",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:44:15.191570+00:00",
+  "finished_at_utc": "2026-11-15T08:45:33.242492+00:00",
+  "latency_seconds": 78.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11477,
+    "prompt_tokens": 17234,
+    "total_tokens": 28711,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10142,
+      "text_tokens": 1335
+    },
+    "cost": 0.0083236
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35563,
+  "text": "### Observed differences\n\n- Activity A01 appears only in the later window: it is not observed in any of the 200 earlier traces, but occurs in about 46 in 100 later traces (92 of 200), at about 0.96 occurrences per trace overall — roughly two occurrences in each trace that contains it — and sits around 40% of the way through the trace (median position 0.375). [OCC001, POS001]\n- The routing around A01 changed directly. In the earlier window all observed outgoing transitions of A05 went to A10, and those of A06 all went to A05; in the later window about 47 in 100 of A05's outgoing transitions and about 48 in 100 of A06's go to A01 instead. A03, which previously led only to A11 (about 49 in 100) and A05 (about 51 in 100), now also leads to A01 (about 35 in 100), and A11 now leads to A01 in about 24 in 100 of its outgoing transitions. A01 itself leads to A05 (about 53 in 100) and A10 (about 47 in 100). [DIR001, DIR003, DIR005, DIR006, DIR007]\n- Pairs involving A01 changed from never occurring together to co-occurring often: (A01, A05) and (A01, A10) co-occur in about 46 in 100 later traces (0 before), (A01, A06) in about 33 in 100 and (A01, A03) in about 28 in 100, with A01 preceding A05/A10 in roughly 10–21 in 100 traces and both orders or repeats in about 19–26 in 100. [REL001, REL002, REL003, REL004]\n- Distances between established activities stretched by about one step: A05→A10 was adjacent in about 56 in 100 cases and is now often two steps apart; A06→A05 moved from lag 1 (about 76 in 100) to lags 1–2; A06→A10 from lag 2 (about 76 in 100) to lag 3 (about 61 in 100); A03→A10 from lags 2–3 to lags 3–4; A05→A06 from lag 4 (about 76 in 100) to lags 4–5. [LAG005, LAG006, LAG007, LAG002, LAG004, LAG001]\n- All other observed activities are essentially stable: A02 occurs in every trace in both windows (about 1.9–2.0 times per trace), and A03, A05, A06, A07, A08, A09, A10 and A11 shift by only a few percentage points in participation, with the routing shares out of A02 and A04 nearly identical across the windows. [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, DIR002, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added to the process and now sits on existing paths between the other activities: in the later window A01 receives edges from A03, A05, A06 and A11 and leads to A05 and A10, running in about 46 in 100 traces, usually about twice per trace that contains it, around the middle of the trace. This rests on direct relational evidence — the successor profiles of A05 and A06 split from a single successor to roughly half via A01, co-occurrence with A01 rises from zero to 28–46 in 100, and pairwise distances between A03, A05, A06, A10 and A11 stretch by about one position — and every strongly flagged item involves A01, describing one coherent structural addition rather than scattered shifts. [OCC001, DIR001, DIR003, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG004, LAG005, LAG006, LAG007, POS001]\n\nLimitations: no screening baseline (items expected without change) was provided, so the against-chance comparison could not be made numerically; the earlier window shows only that A01 was not observed there, not that it was absent; and the exact placement — which predecessors route through A01 in which cases, and why A01 both follows and precedes A05 — cannot be determined from these profiles. A competing explanation the evidence cannot rule out is that A01 existed before as a rare path that happened to be sampled only in the later window, although its presence in 92 of 200 later traces makes pure sampling coincidence unlikely. [OCC001, DIR001, DIR005]\n\nOther differences: participation in A03, A05, A09 and A10 each dropped slightly (about 5–7 in 100 traces, e.g., A05/A09/A10 from about 53 to 46 in 100) and A05 and A10 now occur slightly later within their traces; these small shifts may follow from A01's addition or be sampling noise. [OCC003, OCC004, OCC008, OCC009, OCC010, POS003, POS005]",
+  "case_id": "case_086062e893cbdaba",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

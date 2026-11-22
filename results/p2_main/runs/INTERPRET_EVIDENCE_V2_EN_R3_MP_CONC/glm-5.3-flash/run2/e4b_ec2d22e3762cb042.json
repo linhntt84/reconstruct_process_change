@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4b_ec2d22e3762cb042.json",
+  "evidence_sha256": "b22e857cc136208db7238d3878039a63775695d6d2ef77ec458aa5bcfe954190",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:10:06.186697+00:00",
+  "finished_at_utc": "2026-11-15T02:12:26.827557+00:00",
+  "latency_seconds": 140.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20142,
+    "prompt_tokens": 5732,
+    "total_tokens": 25874,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19210,
+      "text_tokens": 932
+    },
+    "cost": 0.010930799999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 75235,
+  "text": "### Observed differences\n\n- On A01, assignment shares were redistributed between resource codes. In the earlier window, executions were spread thinly (largest single code about 6 in 100, pooled remainder about 47 in 100); in the later window, codes including User_60 (about 6 to 10 in 100) and User_48 (below about 4 to about 7 in 100) handled more, while codes such as User_42 (about 6 in 100 before) fell below about 4 in 100. [ASSIGN001]\n- A22 moved in the same direction: User_60 rose from below about 5 in 100 to about 12 in 100, while User_42 fell from about 7 in 100 to below about 4 in 100; A22 itself appeared in about 57 in 100 traces before and about 46 in 100 after. [ASSIGN003]\n- A07 was also redistributed, but between a largely different set of codes: the leading code before (about 15 in 100) fell to about 6 in 100, two codes at about 10 in 100 each dropped out of the main shares, and a code previously at about 6 in 100 rose to about 13 in 100 alongside a code not prominent before at about 12 in 100. [ASSIGN002]\n- The elapsed time between the consecutive completions of A04 and A01 increased across the whole distribution: median about 20 hours before versus about 66 hours in the later window, mean about 26 versus about 73 hours, and even the lower quartile rose from near 0 to about 17 hours; the pair occurred in all 200 traces of each window. [TWAIT001]\n- Around A12, the observed outgoing transitions shifted: A12 leading back to itself rose from about 49 to 75 in 100 transitions, transitions to A13 fell from about 24 to 5 in 100, and transitions to A17, A20 and A22 were no longer observed; this rests on only about 40 outgoing transitions per window. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the allocation of work to resources was redistributed: on A01 and A22, a group of codes including User_60 and User_48 handled a clearly larger share in the later window, while a group including User_42 handled less, and A07 shows the same kind of redistribution between a largely different set of codes. Supporting signs: the resource family produced three items where the screening expects essentially zero (about 0.005) without a change, the same codes moved in the same direction on both A01 and A22, each difference was larger than about 999 in 1000 random re-splits, and A01 appeared in every trace in both windows. Limitations: the codes are anonymous, so a change in assignment behaviour cannot be separated from a change in which resources were available or used, and for A22 the share of traces containing it also fell (about 57 to 46 in 100), so the case mix behind the shares changed as well. [ASSIGN001, ASSIGN002, ASSIGN003]\n\nOther differences: The A04-to-A01 completion interval roughly tripled at the median (about 20 to 66 hours) with the entire distribution shifted upward — a timing change in its own right, but it rests on a single time item (about 0.02 expected by chance), so this evidence cannot confirm it on its own. The redistribution of A12's outgoing transitions is based on about 40 transitions per window and matches what an unchanged process produces at these thresholds (one control-flow item versus about 0.17 expected), so it does not by itself indicate a structural change. [TWAIT001, DIR001]",
+  "case_id": "e4b_ec2d22e3762cb042",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

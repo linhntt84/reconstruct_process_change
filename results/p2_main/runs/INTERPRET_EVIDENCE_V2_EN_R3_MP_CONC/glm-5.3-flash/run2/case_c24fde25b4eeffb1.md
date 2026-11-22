@@ -1,0 +1,19 @@
+### Observed differences
+
+- **Repetition of a five-activity group stopped.** In the earlier window, A25, A26, A31, A32 and A33 each occurred about 3.6 times per trace and were repeated within a trace in about 70 in 100 cases; in the later window each occurs about once per trace (mean 1.02) and repetition appears in only about 1 in 100 cases. Every trace still contains all five activities in both windows (participation 100%). [OCC001, OCC002, OCC003, OCC004, OCC005]
+
+- **The feedback out of A33 largely disappeared.** Earlier, about 72 in 100 of A33's outgoing transitions led back to A25 and about 28 in 100 led to A20; in the later window, about 98 in 100 lead to A20 and only about 2 in 100 to A25 (713 vs 204 outgoing transitions observed). [DIR001]
+
+- **Ordering changed from interleaved/repeated to a mostly fixed sequence.** Earlier, each pair among the five activities was interleaved or repeated in about 70 in 100 traces; later, co-occurrence is still 100% but interleaving drops to about 1 in 100. A25 now precedes A26, A31, A32 and A33 in about 99 in 100 traces (earlier about 30 in 100), and A26, A31 and A32 each precede A33 in about 99 in 100. Among A26, A31 and A32 both orders occur in roughly equal shares (about 50/50), so no fixed order binds them. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010]
+
+- **Gaps between the middle activities collapsed.** Ordered pairs such as A26→A31, A31→A32 and A32→A26 now fall within 1–2 steps in about 95 in 100 observed cases (distance 1 alone about 60–68 in 100), whereas earlier the gaps spread over five or more steps with no dominant small distance. Reverse-order pairs (e.g. A31 before A25, A33 before A26) are nearly gone, seen in only 2 traces each — too few to characterise. [LAG001, LAG002, LAG004, LAG005, LAG007, LAG008, LAG003, LAG006, LAG009, LAG010, LAG011]
+
+- **Positions tightened rather than shifted.** The spread of event positions for each of the five activities fell from about 0.15 to about 0.05–0.06 while mean positions stayed roughly in place (about 0.38–0.51), consistent with one occurrence at a stable spot instead of several occurrences at varying spots; these are event positions, not clock times. [POS001, POS002, POS003, POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the repeated cycle through A25, A26, A31, A32 and A33 gave way to a single pass through the same activities. Earlier, all five recurred (about 3.6 occurrences per trace each, repetition in about 70 in 100 traces) in strongly interleaved order, with A33 returning to A25 in about 72 in 100 of its outgoing transitions; in the later window each occurs exactly once, A25 first and A33 last (each relation in about 99 in 100 traces), A26, A31 and A32 in no fixed order between them and within 1–2 steps of one another, and A33 proceeds to A20 in about 98 in 100 of its outgoing transitions. The screening context supports this reading: 32 items qualified where about 0.49 would be expected if nothing had changed, and each item's difference exceeds about 99.5 in 100 random re-splits of the pooled data. [OCC001, DIR001, REL001, LAG001, POS001]
+
+Limitations: all evidence concerns this one activity cluster (A20 appears only as a successor of A33), so nothing can be said about the rest of the process. About 2 in 100 of A33's transitions still return to A25, so the feedback is rare but not shown to be removed. An important competing explanation remains: a single-pass pattern already existed in a minority (about 30 in 100) of earlier traces, so the later window may reflect this pre-existing behaviour becoming dominant rather than a newly introduced structure — the two aggregate windows cannot distinguish these. The many items also describe facets of one underlying behaviour, not independent confirmations. [DIR001, OCC001]

@@ -1,0 +1,20 @@
+### Observed differences
+
+- Three activities disappear from the later window: A14, A15 and A20 each ran in about 32, 28 and 40 in 100 traces before (64, 56 and 80 of 200 traces) and in none of the 200 traces after. [OCC013, OCC014, OCC019]
+- In the earlier window these three were mutually exclusive alternatives — they never co-occurred and their shares sum to one, so exactly one of them executed in every trace; in the later window no trace contains any of them. [REL001, REL002, REL006]
+- This block sat between A22/A23 and A24. Before, A22 led to A23 in about 55 in 100 of its outgoing transitions and to A20, A14 or A15 in the rest; A23 led to A24 in about 46 in 100 cases and to A14, A20 or A15 otherwise. In the later window A22 always continues directly with A23, and A23 always with A24. [DIR017, DIR018]
+- The removed activities themselves led mostly to A24 and A23 (for example A14 to A24 in about 58 in 100 of its outgoing edges); none of these transitions are observed in the later window. [DIR010, DIR011, DIR016]
+- Distances tightened accordingly: A22→A23 and A23→A24 now always occur at distance 1 (before: distance 1 in about 55 and 46 in 100 cases, distance 2 otherwise), and A24 now follows A22 two positions later in every trace instead of three. [LAG001, LAG002, LAG003]
+- Consistent with the shorter segment, A22 now occurs slightly later within traces (mean relative position about 0.46 vs 0.47) and A24 slightly earlier (about 0.57 vs 0.55), while A23 is essentially unchanged; these are event positions, not clock times. [POS004, POS005, POS006]
+- Separately, A10 and A11 still occur in every trace but repeat less: mean occurrences per trace fell from about 1.43 to 1.31 and the share of traces with repeats from about 31 to 24 in 100; A11's outgoing share also moved from A10 and A12 toward A13 and A35. [OCC009, OCC010, DIR009]
+- A few small routing shifts appear elsewhere, e.g. A32 and A33 now continue more often to A27 (about 47 vs 58 in 100) and less often to each other, and A26 continues somewhat more often to A33; these differences are small. [DIR023, DIR024, DIR020, DIR025]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative block of A14, A15 and A20 — exactly one of which executed in every earlier trace, between A22/A23 and A24 — is no longer executed in the later window, so that A22, A23 and A24 now form a fixed, immediate sequence A22→A23→A24. The change is shown directly and consistently across occurrence, direction, position, relation and lag indicators: participation drops to zero out of 200 traces, the three activities' transitions vanish, A22 and A23 lose all branches except the direct continuation, the A22→A24 distance shortens from three to two, and A22 and A24 shift slightly toward each other; all of these items show the maximum empirical strength of about 0.995 against random re-splits. [OCC013, OCC014, OCC019, DIR017, DIR018, LAG001, LAG002, LAG003, REL010, POS004, POS006]
+
+Limitations: zero participation strictly shows only that A14, A15 and A20 were not observed in the later window, so a choice that existed but was never taken in these 200 traces cannot be distinguished from a removal; several items describe the same underlying difference and are not independent confirmations; and no screening baseline is present to compare the number of qualifying items with a chance expectation. [OCC013, OCC014, OCC019]
+
+Other differences: A10 and A11 repeat less often per trace in the later window (mean about 1.43 vs 1.31 occurrences; repeats in about 31 vs 24 in 100 traces), with A11's continuations shifting toward A13 and A35 — a separate, weaker observation about repetition, not part of the main hypothesis. [OCC009, OCC010, DIR009] Minor routing-share changes around A26, A32, A33, A34 and A35 are within the range where sampling differences are plausible. [DIR020, DIR023, DIR024, DIR025, OCC024, OCC025]

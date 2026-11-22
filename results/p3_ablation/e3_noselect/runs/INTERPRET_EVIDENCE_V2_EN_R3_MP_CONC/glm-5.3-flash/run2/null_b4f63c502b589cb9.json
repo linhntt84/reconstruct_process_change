@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_b4f63c502b589cb9.json",
+  "evidence_sha256": "b0fa6d92243f19f045aee08e15c800d067af88bb94555ab6cba236ef4937deba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:11:01.217691+00:00",
+  "finished_at_utc": "2026-11-15T09:13:14.039751+00:00",
+  "latency_seconds": 132.82,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19926,
+    "prompt_tokens": 42102,
+    "total_tokens": 62028,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18097,
+      "text_tokens": 1829
+    },
+    "cost": 0.0162783
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61594,
+  "text": "### Observed differences\n\n- The clearest difference concerns how often A15 and A16 repeat. In the earlier window both activities ran in every trace, about 1.8 times per trace on average, and appeared more than once in about 44 in 100 traces; in the later window they still ran in every trace but only about 1.6 times per trace, repeating in about 36 in 100 traces. Both differences are unusual for random re-splits of unchanged data (empirical strength about 0.93). [OCC014, OCC015]\n- The routing around these two activities matches fewer loop passes: the share of A15's outgoing transitions going to A16 fell from about 66 to 61 in 100, and A16's share returning to A15 fell from about 45 to 37 in 100, while A15's exits to A08 rose from about 34 to 39 in 100. In absolute terms the two loop-back transitions lost roughly 50 and 45 occurrences while the exits stayed flat, and the feed into A15 (A14→A15, about 97 in 100 of A14's outgoing transitions) was essentially unchanged. [DIR015, DIR016, DIR014]\n- The segment A43–A44 ran more often: each appeared in about 60 in 100 traces before and about 62 in 100 after, mean occurrences rose from about 0.76 to about 0.89, and repetition within their traces rose from about 13 to 19 in 100 (strength about 0.91 for both). A41, which leads into A43, also repeated more often (about 1.6 to 1.7 times per trace; repetition in about 37 to 43 in 100 traces), with its outgoing share shifting slightly toward A43 (about 46 to 49 in 100). [OCC037, OCC038, OCC035, DIR041]\n- Routing shares inside the A20/A22/A23 loop were redistributed, with all three activities present in essentially every trace in both windows: from A20, transitions to A22 rose from about 27 to 39 in 100 while those to A23 fell from about 39 to 30; from A22, transitions to A23 rose from about 23 to 35 while those to A20 fell from about 40 to 29; from A23, transitions to A30 rose from about 30 to 37 in 100; from A29, transitions to A20 rose from about 27 to 37. Each profile rests on about 200 outgoing transitions, with empirical strengths between about 0.72 and 0.98. [DIR020, DIR022, DIR023, DIR029]\n- A24 appeared in more traces in the later window (about 36 vs 31 in 100) while A19 appeared in fewer (about 31 vs 35 in 100); the matching shift in A40's outgoing shares is weak (strength about 0.16). [OCC021, OCC017, DIR040]\n- A few routing profiles show large raw dissimilarity (A02, A04, A06, A10, A46), but each rests on only about 5–17 observed outgoing transitions per window, and A10's participation rise (about 5 to 8.5 in 100 traces) rests on 10 versus 17 traces; these carry little weight. [DIR002, DIR004, DIR006, DIR010, DIR046, OCC009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the repetition loop between A15 and A16 was executed fewer times per trace. Both activities still ran in every trace in both windows, so participation did not change; what changed is repetition: average occurrences per trace fell from about 1.8 to about 1.6 for both, the share of traces repeating them fell from about 44 to 36 in 100, and the loop-back transitions A15→A16 and A16→A15 became less frequent while exits from the loop kept their absolute counts and the entry A14→A15 stayed stable. The occurrence components show this directly with high empirical strength on full 200-of-200 support, and the routing changes at A15 and A16 show the same behaviour from a second angle. [OCC014, OCC015, DIR015, DIR016, DIR014]\n\nLimitations: the four items summarise the same traces and are therefore not independent confirmations, and the evidence file contains no screening baseline, so the number of qualifying items cannot be compared with a chance expectation; an unusually chance-heavy concentration of multi-iteration traces in the earlier window cannot be fully excluded, though it would have to be substantial given the size and consistency of the differences. The evidence also shows only that fewer repetitions occurred on average, not how the repetition rule changed for individual traces. [OCC014, OCC015, DIR015, DIR016]\n\nOther differences: the A41–A43–A44 segment was executed and repeated more often in the later window [OCC035, OCC037, OCC038, DIR041]; routing shares among the alternatives A20, A22 and A23, and the entry from A29 into that group, were redistributed [DIR020, DIR022, DIR023, DIR029]; and A24 became somewhat more frequent while A19 became somewhat less frequent [OCC017, OCC021]. None of these is part of the main hypothesis above.",
+  "case_id": "null_b4f63c502b589cb9",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "5061cc3d62a1fbafc67a81b2d208f6c3e3aa5e99fd716af4b5a7f641059b4530",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:53:50.661622+00:00",
+  "finished_at_utc": "2026-11-15T05:55:31.801610+00:00",
+  "latency_seconds": 101.14,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12826,
+    "prompt_tokens": 24589,
+    "total_tokens": 37415,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11272,
+      "text_tokens": 1554
+    },
+    "cost": 0.010101349999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40471,
+  "text": "### Observed differences\n\n- In the earlier window, all eight activities involved (A30, A31, A33, A35, A36, A37, A38, A39) ran in essentially every case (participation 100 in 100). In the later window, A30 and A31 still run in every case, while A33, A35 and A36 each appear in only about 47 in 100 cases and A37, A38 and A39 in about 55–57 in 100. Mean occurrences per trace fell in step (about 1.0 to about 0.5) with recurrence negligible in both windows, so these activities are being skipped, not repeated less. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002, REL001, REL007]\n\n- The trios move as blocks. A33, A35 and A36 co-occurred in 100 in 100 cases before; in the later window they co-occur in about 46 in 100 and are jointly absent in about 53 in 100. A37, A38 and A39 co-occurred in 100 in 100 before; afterwards they co-occur in about 55 in 100 and are jointly absent in about 44 in 100. [REL013, REL014, REL018, REL025, REL026, REL027]\n\n- The two trios became almost mutually exclusive. Before, every pairing of one of A33/A35/A36 with one of A37/A38/A39 co-occurred in 100 in 100 cases, with the middle activity earlier in about 98–100 in 100. In the later window these cross-trio pairs co-occur in only about 2–4 in 100 cases; instead one trio runs alone (about 44 in 100) or the other alone (about 53 in 100). [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024]\n\n- Ordering is preserved wherever activities still co-occur: A30 still precedes A33/A35/A36, A31 still follows A37/A38/A39 and A33/A35/A36, and the internal order within each trio remains unfixed (both orders in similar proportions) in both windows. In the rare later cases running both trios (about 3 in 100), the middle-before-late order still predominates, but that sample is tiny. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL018, REL015, REL025]\n\n- Step distances shrank exactly where a skipped trio would have sat: the gap from A30 to A37/A38/A39 and from A33/A35/A36 to A31 was almost always 4–5 steps before and is mostly 1–3 steps in the later window; cross-trio pairs are now rarely seen within five steps at all (later-window samples of only 4–5 observations). [LAG001, LAG002, LAG003, LAG004, LAG007, LAG010, LAG005, LAG006, LAG008, LAG009, LAG011, LAG012]\n\n- Relative event positions shifted consistently with shorter cases: A33/A35/A36 moved later (mean about 0.68 to about 0.73), A37/A38/A39 slightly earlier (about 0.77 to about 0.74), A30 later (0.62 to 0.67) and A31 earlier (0.82 to 0.80). These are position, not clock-time, changes. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block A33–A35–A36 and the block A37–A38–A39, previously executed in sequence in every case (A30 → middle trio → late trio → A31), became almost mutually exclusive alternatives in the later window: roughly 47 in 100 cases execute the middle trio and skip the late trio, roughly 53–56 in 100 execute the late trio and skip the middle trio, and only about 3 in 100 still execute both, with A30 and A31 continuing to frame whichever branch runs. This rests on direct relational evidence — cross-trio co-occurrence collapsing from 100 to about 3 in 100 while within-trio co-occurrence survives alongside a large \"jointly absent\" share — corroborated by the participation halving of exactly these six activities, the preserved ordering where activities still meet, and the shortened step gaps where the skipped trio would have sat. The screening result (53 qualifying control-flow items against roughly 0.55 expected for an unchanged process) makes a chance origin of the pattern as a whole implausible. Because the trios were never alternatives before (they always co-occurred), this is a structural change — one trio became skippable so the other is bypassed — not a shift of shares between pre-existing paths. [REL013, REL015, REL019, REL022, REL025, OCC001, OCC004, LAG001, LAG004]\n\nLimitations: the evidence cannot show what determines which branch a case takes, nor whether the residual both-trios cases are a stable low-frequency path or sampling noise; the later-window distributions for cross-trio step distances rest on only 4–5 observations. [REL015, LAG005, LAG009, LAG012]\n\nOther differences: the only further signals are small increases in the spread of relative positions for A31, A33 and A35, and negligible recurrence fluctuations (at most about 1–2 in 100), which do not point to a separate behaviour change. [POS002, POS003, POS004, POS005, OCC001, OCC003]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

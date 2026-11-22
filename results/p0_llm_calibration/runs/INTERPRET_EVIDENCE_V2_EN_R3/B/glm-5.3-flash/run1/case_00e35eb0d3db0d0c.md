@@ -1,0 +1,15 @@
+### Observed differences
+
+- Both A25 and A26 still appear in every trace in both windows, but in the later window each occurs about 1.6 times per trace on average instead of exactly once, and in about 37 in 100 traces an occurrence now repeats within the same trace (earlier: no trace had a repeat). [OCC001, OCC002]
+- The behaviour directly after A26 changed: in the earlier window all 200 observed outgoing transitions of A26 went to A20; in the later window about 64 in 100 go to A20 and about 36 in 100 go back to A25 (312 transitions observed). [DIR002]
+- The relationship between A25 and A26 changed accordingly: the two still always occur together in the same trace, but strict A25-before-A26 execution fell from essentially all traces (200 in 200) to about 64 in 100, while interleaved or repeated execution of the pair appeared in about 37 in 100 traces. [REL001]
+- The spacing between the pair widened: before, A26 immediately followed A25 in effectively every case; in the later window a one-event gap covers about 37 in 100 of the measured pairs, with about 5 in 100 at a gap of three events and about 1 in 100 at a gap of five. [LAG001]
+- Separately, the routing out of A01 shifted: A01→A04 fell from about 42 in 100 to about 20 in 100 of A01's outgoing transitions, while A01→A05 rose from about 24 to about 45 in 100; A01→A03 stayed near 34 in 100 (based on 97 and 88 outgoing transitions). [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the A25 → A26 sequence became repeatable in the later window: A26, which previously always passed on to A20, now returns to A25 in about 36 in 100 of its outgoing transitions, so the A25–A26 pair recurs in roughly 37 in 100 traces (mean occurrences for both activities rise from 1.0 to about 1.6 per trace), and their previously strict, adjacent order gives way to interleaved or repeated execution with wider gaps. Supporting signs: the new A26→A25 transition is observed directly rather than inferred; participation of both activities remains universal in both windows, so this is repetition of an always-present segment rather than activities appearing or disappearing; the occurrence, relation and gap changes all describe the same behaviour consistently; and six qualifying items against roughly 0.29 expected without change (about twenty times the chance expectation, each difference larger than in about 995 of 1,000 random re-splits) makes a chance explanation of the set as a whole implausible. Limitations: the six items describe overlapping aspects of the same traces, so they are not independent confirmations; the evidence cannot show what triggers the repetition, and it cannot rule out that the A26→A25 edge already existed but was almost never taken, since it was not observed among 200 earlier transitions. [OCC001, OCC002, DIR002, REL001, LAG001]
+
+Other differences: the redistribution of A01's outcomes from A04 towards A05, with A03 unchanged [DIR001]; the evidence cannot show whether this routing shift is connected to the A25/A26 repetition.

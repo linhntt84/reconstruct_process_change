@@ -1,0 +1,23 @@
+### Observed differences
+
+- **Participation dropped for four activities.** In the earlier window A25, A26, A27, A28, A36, A37, A42 and A31 each ran in essentially every trace (100 in 100). In the later window A27 runs in about 54 in 100 traces and A36, A37 and A42 in about 47–48 in 100, while A25, A26, A28 and A31 still run in all traces [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS004, POS005].
+
+- **A27 and the group A36/A37/A42 became alternatives.** Earlier, A27 co-occurred with each of A36, A37 and A42 in about 98–100 in 100 traces. In the later window they co-occur in at most about 1 in 100 traces: about 53 in 100 contain A27 without the group, and about 46–47 in 100 contain all three group members together without A27 [REL011, REL012, REL013, REL020, REL021, REL022].
+
+- **The group moved from before A28 and A26 to after them.** Earlier, A36, A37 and A42 each preceded A28 in about 99 in 100 traces and preceded A26 in about 99–100 in 100. In the later window A28 precedes each group member in about 46–47 in 100 of their joint traces and A26 precedes each in about 45–46 in 100; in the remaining traces the group is simply absent [REL014, REL015, REL016, REL006, REL007, REL008].
+
+- **A25 now feeds A28 directly.** Earlier, A25's outgoing transitions split roughly equally to A42, A36 and A37 (about 30–34 in 100 each), and A28 followed A25 four steps later in about 91 in 100 traces. In the later window about 97 in 100 of A25's outgoing transitions go to A28, at a distance of one step in about 98 in 100 traces [DIR001, LAG001].
+
+- **The group now leads to A31, and A26 routes into the two branches.** Earlier, A36, A37 and A42 each led to A28 in about 30–35 in 100 of their outgoing transitions; in the later window that link remains in no more than about 1 in 100, and each leads to A31 in about 26–35 in 100 instead. A26 now leads to A27 in about 52 in 100 of its outgoing transitions and to A36, A37 or A42 in about 13–16 in 100 each [DIR003, DIR004, DIR005, DIR002].
+
+- **Positions and distances shifted accordingly.** The group's mean relative position moved from about 0.40 to about 0.57, A28's from about 0.46 to about 0.39 and A26's from about 0.60 to about 0.54; the A26→A31 distance, previously two steps in about 98 in 100 traces, is now two steps in about 53 in 100 and four steps in about 43 in 100, matching the two alternative routes to A31 [POS006, POS007, POS008, POS004, POS002, LAG005].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the mid-process segment was restructured, involving A25, A26, A27, A28 and the group A36/A37/A42, with A31 remaining final. In the earlier window every trace ran A25, then the group A36/A37/A42 in varying internal order, then A28, A26, A27 and A31. In the later window A25 is followed directly by A28, and the group now runs after A26, where it is mutually exclusive with A27: about 53 in 100 traces take the A27 route and about 47 in 100 run the group, with A31 last on both routes [REL011, REL012, REL013, REL020, REL021, REL022, DIR001, LAG001, LAG005].
+
+The change is shown directly by relational evidence — the reversed order between A28/A26 and each group member [REL006, REL007, REL008, REL014, REL015, REL016], the near-zero co-occurrence of A27 with each group member [REL011, REL012, REL013], and the successor changes at A25, A26, A36, A37 and A42 [DIR001, DIR002, DIR003, DIR004, DIR005] — and it is consistent with the participation drops [OCC001, OCC002, OCC003, OCC004] and the position and distance shifts [POS004, POS006, POS007, POS008, LAG001, LAG005]. Forty-eight control-flow items qualified against roughly 0.7 expected if nothing had changed, so chance sampling cannot account for the pattern as a whole [OCC001, REL011, REL014, DIR001, LAG001, POS006]. Limitations: the many agreeing items largely describe one trace-level restructuring rather than independent confirmations; the evidence cannot rule out that A28's earlier placement and the group's relocation and optionalisation were two separate modifications rather than one, nor can it show what determines whether a trace takes the A27 route or the group route; positions are event positions, not clock times, and several lag items rest on only 1–2 observations, though none of them carries the hypothesis [LAG002, LAG003, LAG006, LAG007, LAG008, LAG009].
+
+Other differences: A25's mean position drifted slightly later (about 0.34 to 0.37) and A31's slightly earlier (about 0.65 to 0.63) [POS001, POS005]; a few new but rare outgoing transitions appeared at A26, A36 and A42, each at well under 2 in 100 [DIR002, DIR003, DIR005].

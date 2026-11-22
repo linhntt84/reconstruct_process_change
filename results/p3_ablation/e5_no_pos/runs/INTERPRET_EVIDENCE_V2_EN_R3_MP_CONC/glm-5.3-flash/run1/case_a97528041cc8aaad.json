@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_a97528041cc8aaad.json",
+  "evidence_sha256": "50d5da245f3eeff0fde14d0b2ae2cfa015e03faa00c404a041e2e50a722a3dd4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:35:08.988887+00:00",
+  "finished_at_utc": "2026-11-14T12:37:41.695443+00:00",
+  "latency_seconds": 152.71,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24363,
+    "prompt_tokens": 38034,
+    "total_tokens": 62397,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22528,
+      "text_tokens": 1835
+    },
+    "cost": 0.0178866
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 72360,
+  "text": "### Observed differences\n\n- In the later window, A02 takes part in about 65 in 100 traces, up from about 15 in 100 in the earlier window (mean occurrences per trace rose from about 0.17 to 0.69). [OCC001]\n- In the later window, A02 typically sits between A14 and A15: A14 now leads to A02 in about 60% of its outgoing transitions (about 1% before, when about 84% went straight to A15), about 87% of A02's outgoing transitions go to A15 (earlier they were spread over many activities, the largest being A46 at about 21%), and A02 follows A14 within one step in about 98% of their joint appearances. [DIR001, DIR004, LAG005, LAG001, REL001, REL002]\n- A02 now co-occurs with A20, A22, A23, A25, A29, A30, A40, A45 and A46 in about 65 in 100 traces (about 15 before) and runs before each of them in about 57–60% of traces (about 5–14% before). [REL004, REL006, REL007, REL009, REL010, REL012, REL013, REL014]\n- The order of a mid-process segment reversed. Earlier, A20, A22 and A23 ran before A25 and A29 in about 98–99% of traces, which in turn ran before A19, A21 and A24 (about 30–38% pairwise, e.g. A20 before A21 in 37%); in the later window this is mirrored — A19 precedes A20/A22/A23/A25/A29 in about 42% of traces (about 0% before), A21 and A24 now precede A20/A22/A23 (about 26–28% pairwise), and A25/A29 precede A20/A22/A23 in about 97–98%. [REL015, REL020, REL022, REL024, REL028, REL029, REL032, REL034]\n- Successors moved with the reversal: A19, A21 and A24 led mainly to A30 (about 95–97%) and now lead mainly to A25 (about 96–98%); A20, A22 and A23 led to A25 (about 30–38%) and now lead to A30 (about 31–33%); A40 led mainly to A20/A22/A23 (about 25–33% each) and now leads mainly to A19 (about 40%), A21 (about 29%) and A24 (about 27%). [DIR005, DIR006, DIR007, DIR008, DIR009, DIR010, DIR011, DIR012]\n- Event positions shifted accordingly: A40 now reaches A19/A21/A24, and these reach A25, within one step (essentially unobserved before); A24's immediate step to A30 (about 97% before) and the quick follow-up of A25 by A22/A23 (in nearly all traces before) have largely disappeared; A29 now reaches A22 within 1–3 steps in nearly all traces (before essentially unobserved); and the gap from A29 to A30 grew from about 2 to about 4 positions. [LAG013, LAG014, LAG015, LAG016, LAG017, LAG018, LAG019, LAG021, LAG022, LAG024]\n- A06 and A10 became rarer: A06 appears in about 5 in 100 traces (about 22 before) and A10 in about 6 (about 17 before). [OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the execution order of two blocks of activities is reversed: earlier the flow ran from A40 through A20, A22 and A23, then A25 and A29, then A19, A21 and A24 into A30, whereas in the later window A40 leads through A19, A21 and A24, then A25 and A29, then A20, A22 and A23 into A30. The change is shown directly by 21 activity-pair relations that all flip in the same direction with similar magnitudes, by successor profiles of A19/A21/A24 and A20/A22/A23 that move in the mirrored direction, and by consistent position shifts; every activity involved appears in a substantial share of traces in both windows, so this is a reordering of existing behaviour rather than activities appearing or disappearing. Screening produced 78 qualifying items where fewer than 1 would be expected without a change, so sampling noise cannot account for the pattern as a whole, but the many agreeing items describe one underlying reordering rather than independent confirmations. A competing explanation the evidence cannot rule out is a changed mix of complete process variants, in which one ordering replaced the other, rather than re-sequencing within the same cases. [REL015, REL020, REL022, REL024, REL029, REL032, DIR005, DIR006, DIR007, DIR010, DIR012, LAG017, LAG021]\n\nOther differences: A02, rare in the earlier window (about 15 in 100 traces), is now common (about 65) and typically executed between A14 and A15, which previously led directly to A15; A06 and A10 now appear in fewer traces (about 5 and about 6 in 100, down from about 22 and about 17). These changes are not part of the main hypothesis. [OCC001, OCC002, OCC003, DIR001, DIR004, LAG005, REL001, REL002]",
+  "case_id": "case_a97528041cc8aaad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

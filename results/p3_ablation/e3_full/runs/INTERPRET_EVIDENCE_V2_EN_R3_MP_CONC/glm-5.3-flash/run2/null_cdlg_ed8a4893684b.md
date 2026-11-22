@@ -1,0 +1,15 @@
+### Observed differences
+
+- A group of activities became slightly less frequent: in the earlier window A11, A14 and A16 each appeared in about 52 of 100 traces, A15 in about 42, A09 in about 37 and A13 in about 32; in the later window these shares are about 47, 47, 47, 37, 34 and 29 respectively. [OCC005, OCC006, OCC008, OCC009, OCC010, POS013]
+- The activities that appeared in every trace before (A01, A02, A03, A06, A08, A10) still appeared in every trace after; A01 and A08, which occur roughly twice per trace, did so slightly less often (A01 about 2.1 down to 2.0 occurrences per trace, A08 about 2.0 down to 1.9, with A08 recurring in about 52 versus 47 of 100 traces). [OCC001, OCC004, POS001, POS002, POS003, POS006, POS008, POS010]
+- Co-occurrence within and around the declining group fell by about 3–7 in 100 traces (for example A01 with A11 from about 53 to 47, A01 with A14 from 52 to 47, A08 with A09 from 37 to 34, A11 with A14 from 52 to 47, A14 with A15 from 41 to 37), while the share of traces containing neither activity rose similarly (about 48 to 53 in 100 for A11 with A14). [REL008, REL010, REL013, REL081, REL104, REL114, REL116]
+- Ordering barely moved: A03 preceded A06 in about 83 of 100 traces before and 86 after, A02 preceded A12 in about 97 of 100 in both windows, and A13 was still followed by A11 in nearly every such trace. [REL022, REL029, DIR013]
+- Gap and position distributions shifted only mildly and in different directions: A09 followed A02 within one step in about 10 of 100 such pairs before versus about 23 after, A08 followed A09 at two steps in about 32 versus 15 of 100, the median position of A08 moved slightly earlier (about 0.78 to 0.72 of the trace) and A09's slightly later. [LAG024, LAG108, POS008, POS009]
+- The largest routing-profile change is in A12's outgoing mix: transitions to A07 fell from about 26 to 3 of 100 observed outgoing transitions, while those to A01 and A09 rose to about 21 each; this profile rests on only 23 and 29 observed transitions. [DIR012]
+- All of these differences are small: the occurrence items' empirical strengths reach only about 0.5, and the few items with the highest strengths rest on modest observation counts (strength 0.99 for A02→A09 on 49 and 43 pairs; 0.95 for A12→A07 on 8 and 9 pairs). [OCC005, OCC006, OCC008, OCC009, OCC010, LAG024, LAG145]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The one recurring pattern — A09, A11, A13, A14, A15 and A16 each appearing in about 3–6 fewer of every 100 traces, with matching co-occurrence drops — is consistent in direction, but its size lies within the range that random re-splits of unchanged data produce (occurrence strengths at or below about 0.5), so sampling variation remains a complete explanation. [OCC005, OCC006, OCC008, OCC009, OCC010, POS013, REL010, REL104]

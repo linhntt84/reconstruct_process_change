@@ -1,0 +1,20 @@
+
+
+### Observed differences
+
+- In the later window, A05 occurred in about 50 in 100 traces instead of all traces, with mean occurrences falling from about 4.2 to 2.2 per trace; A08 occurred in about 34 in 100 traces instead of about 68 in 100, with mean occurrences falling from about 2.2 to 1.1 per trace. In the same later window, A10 occurred in all traces instead of about 47 in 100, with mean occurrences rising from about 1.9 to 4.1 per trace; A16 occurred in about 68 in 100 traces instead of about 30 in 100, with mean occurrences rising from about 0.9 to 2.1 per trace. [OCC001, OCC002, OCC003, OCC004]
+- In the earlier window, A10 was observed only in traces that also contained A05, in about 47 in 100 traces; in the later window, A05 was observed only in traces that also contained A10, in about 50 in 100 traces, while A10 was observed in all traces. [REL004, OCC001, OCC003]
+- In the later window, A16 occurred only with A10 in about 68 in 100 traces, compared with about 30 in 100 traces in the earlier window; A08 occurred only with A05 in about 34 in 100 traces, compared with about 68 in 100 traces in the earlier window. [REL025, REL002, OCC002, OCC004]
+- In the later window, A06 led to A10 in all observed outgoing transitions instead of A05; A11 and A15 shifted from A05 toward A10; A14 led mainly to A05 instead of A10; A05 led to A17 instead of A09; and A10 led to A09 instead of A17. [DIR002, DIR004, DIR006, DIR005, DIR001, DIR003]
+- In the later window, A05 and A08 appear earlier in traces, with mean position about one-third instead of about two-thirds; A10 and A16 appear later, with mean position about two-thirds instead of about one-third. [POS001, POS002, POS003, POS004]
+- In the later window, A14 is followed by A05 and A08 more closely, with A14 followed by A05 within one step in about 13 in 100 observed pairs instead of about 0 and A14 followed by A08 within two steps in about 29 in 100 instead of about 0; A14 is followed by A10 and A16 less closely, with A14 followed by A10 within three steps in about 50 in 100 instead of about 21 in 100 and A14 followed by A16 within four steps in all observed pairs instead of about 43 in 100. [LAG005, LAG006, LAG007, LAG008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+- The evidence supports the possibility that, in the later window, A10 became the central activity observed in all traces, while A05 became an earlier optional activity observed only in traces that also contained A10; A16 became more common and was observed only in traces that also contained A10, and A08 became less common and was observed only in traces that also contained A05. [OCC001, OCC002, OCC003, OCC004, REL004, REL025, REL002, POS001, POS002, POS003, POS004]
+- Supporting signs are the inversion of A05/A10 participation and co-occurrence, the increased participation and later position of A10/A16, the decreased participation and earlier position of A05/A08, the successor changes from A06, A11 and A15 toward A10 and from A14 toward A05, and the closer placement of A14 to A05/A08 and farther placement of A14 to A10/A16. [REL004, OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, POS004, DIR002, DIR004, DIR005, DIR006, LAG005, LAG006, LAG007, LAG008]
+- Limitation: the indicators overlap, so they are not independent confirmations, and the windows are finite samples. [OCC001, OCC003, REL004, DIR002]
+- A competing explanation the evidence cannot rule out is that the later window contains a different mix of cases, with A10-bearing cases becoming more common and A05-only cases less common. [REL004, OCC001, OCC003]
+- Other differences: in the later window, A06 led to A10 instead of A05, A11 and A15 shifted from A05 toward A10, A14 led mainly to A05 instead of A10, A05 led to A17 instead of A09, A10 led to A09 instead of A17, and A10 co-occurred with A09, A11, A14 and A15 in all traces while A05 co-occurred with those activities in about 50 in 100 traces instead of all traces. [DIR002, DIR004, DIR005, DIR006, DIR001, DIR003, REL020, REL022, REL023, REL024, REL003, REL005, REL006, REL007]

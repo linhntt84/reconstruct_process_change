@@ -1,0 +1,54 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e8_labels/evidence/e4b_cffb2b0888eb4ece.json",
+  "evidence_sha256": "eef2bb4da3d59005e8b135519333c1e5b0eab485dee04638a1ffa38397152fb0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:54:14.411679+00:00",
+  "finished_at_utc": "2026-11-15T12:55:24.603858+00:00",
+  "latency_seconds": 70.19,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9694,
+    "prompt_tokens": 3481,
+    "total_tokens": 13175,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8999,
+      "text_tokens": 695
+    },
+    "cost": 0.00536915
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 39772,
+  "text": "### Observed differences\n\n- **A16 moved from shared to single-resource handling.** In the earlier window, A16 assignments were spread across about 17 resources, with the largest shares around 18 in 100 each (User_116, User_117) and the remainder lower; in the later window, every A16 assignment went to a single resource, User_8 (top-resource share 1.0 versus 0.18; distinct resources 1 versus 17; concentration index about 1.0 versus 0.13). The activity itself was equally present in both windows (about 76 in 100 traces before, 75 in 100 after), so its prevalence did not change — only its allocation did. [ASSIGN001, CONC001]\n\n- **Longer elapsed time between A09 and W_Handle completions.** For consecutive completion pairs with W_Handle leading, the median elapsed time rose from about 1.3 hours in the earlier window (22 pairs) to about 16 hours in the later window (26 pairs); the mean rose from about 2.2 to about 15.6 hours, the upper quartile from about 2.4 to about 22.3 hours, and the spread widened markedly (standard deviation about 2.7 versus 12 hours). All three evidence items show differences larger than in all but about 1 in 2000 random re-splits of the pooled data. [TWAIT001, ASSIGN001, CONC001]\n\n- **No structural difference detected.** No control-flow indicator qualified (0 items against about 0.19 expected by chance), so the observed differences are confined to timing and resource allocation. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the A16 step is handled entirely by a single resource, User_8, whereas in the earlier window it was distributed across a pool of about 17 resources with no resource above about 18 in 100 assignments. The signs are direct (assignment shares and a concentration index measured on the same activity agree), the activity's prevalence is stable across windows, and the resource family produced 2 qualifying items where about 0.005 would be expected without a change. Note that the two resource items describe one underlying reallocation, so they corroborate rather than independently confirm it. Limitations: the resource codes are anonymous, so nothing can be said about roles or teams, and only A16 was flagged, leaving other activities' allocation unevidenced; the change is in allocation, not structure. A competing explanation the evidence cannot rule out is a period effect within the later sample — a stretch of time in which only User_8 happened to handle returns — since each window is a single sample of 200 traces. [ASSIGN001, CONC001, screening]\n\nOther differences: the elapsed time between consecutive completions of A09 and W_Handle lengthened (median about 1.3 hours to about 16 hours), a change in timing that is a hypothesis in its own right and requires no structural counterpart; it rests on a modest sample (22 versus 26 pairs), though the shift is consistent across the quartiles. No structural counterpart was observed (control flow: 0 items against about 0.19 expected), and the evidence cannot show whether this timing change is connected to the A16 reallocation. [TWAIT001, screening]",
+  "case_id": "e4b_cffb2b0888eb4ece",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis",
+  "text_original": "### Observed differences\n\n- **O_Returned moved from shared to single-resource handling.** In the earlier window, O_Returned assignments were spread across about 17 resources, with the largest shares around 18 in 100 each (User_116, User_117) and the remainder lower; in the later window, every O_Returned assignment went to a single resource, User_8 (top-resource share 1.0 versus 0.18; distinct resources 1 versus 17; concentration index about 1.0 versus 0.13). The activity itself was equally present in both windows (about 76 in 100 traces before, 75 in 100 after), so its prevalence did not change — only its allocation did. [ASSIGN001, CONC001]\n\n- **Longer elapsed time between A_Submitted and W_Handle completions.** For consecutive completion pairs with W_Handle leading, the median elapsed time rose from about 1.3 hours in the earlier window (22 pairs) to about 16 hours in the later window (26 pairs); the mean rose from about 2.2 to about 15.6 hours, the upper quartile from about 2.4 to about 22.3 hours, and the spread widened markedly (standard deviation about 2.7 versus 12 hours). All three evidence items show differences larger than in all but about 1 in 2000 random re-splits of the pooled data. [TWAIT001, ASSIGN001, CONC001]\n\n- **No structural difference detected.** No control-flow indicator qualified (0 items against about 0.19 expected by chance), so the observed differences are confined to timing and resource allocation. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the O_Returned step is handled entirely by a single resource, User_8, whereas in the earlier window it was distributed across a pool of about 17 resources with no resource above about 18 in 100 assignments. The signs are direct (assignment shares and a concentration index measured on the same activity agree), the activity's prevalence is stable across windows, and the resource family produced 2 qualifying items where about 0.005 would be expected without a change. Note that the two resource items describe one underlying reallocation, so they corroborate rather than independently confirm it. Limitations: the resource codes are anonymous, so nothing can be said about roles or teams, and only O_Returned was flagged, leaving other activities' allocation unevidenced; the change is in allocation, not structure. A competing explanation the evidence cannot rule out is a period effect within the later sample — a stretch of time in which only User_8 happened to handle returns — since each window is a single sample of 200 traces. [ASSIGN001, CONC001, screening]\n\nOther differences: the elapsed time between consecutive completions of A_Submitted and W_Handle lengthened (median about 1.3 hours to about 16 hours), a change in timing that is a hypothesis in its own right and requires no structural counterpart; it rests on a modest sample (22 versus 26 pairs), though the shift is consistent across the quartiles. No structural counterpart was observed (control flow: 0 items against about 0.19 expected), and the evidence cannot show whether this timing change is connected to the O_Returned reallocation. [TWAIT001, screening]",
+  "label_replacements": {
+    "A_Submitted": 2,
+    "O_Returned": 6
+  },
+  "label_leftovers": []
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "43b53c812f26b9379c63f4eabfab2ba5ff7a624963ae25ed9846c981bf250b8f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:21:14.368254+00:00",
+  "finished_at_utc": "2026-11-14T11:22:33.613614+00:00",
+  "latency_seconds": 79.24,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11316,
+    "prompt_tokens": 10676,
+    "total_tokens": 21992,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10256,
+      "text_tokens": 1060
+    },
+    "cost": 0.0072594
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38345,
+  "text": "### Observed differences\n\n- In the earlier window every case ran the same fragment: A21 was always followed by A22, A22 always by A23, and A23 came exactly two event positions after A21. In the later window A21 still leads to A22 in about 51 in 100 of its observed outgoing transitions, while the remaining ~49 in 100 lead directly to A27, A28 or A33 (about 15, 18 and 17 in 100 respectively). [DIR001, REL001, LAG001]\n- A27, A28 and A33 were not observed at all in the earlier window (0 of 200 traces) but each appears in about 49 in 100 later traces, placed around the middle of the case (mean relative position about 0.49). [POS001, POS002, POS003]\n- In the later window the three new activities run together in the same ~49 in 100 cases, with no fixed order among themselves: for each pair both orders occur in similar shares (for example A27 before A28 in about 23 in 100 cases and A28 before A27 in about 27 in 100), and each member hands over either to another member or directly to A23 (about 27–44 in 100 of its observed outgoing transitions). [REL012, REL013, REL014, DIR002, DIR003, DIR004]\n- A22 and the new group are strict alternatives in the later window: A22 never co-occurs with A27, A28 or A33, and in about 49 in 100 later traces the group runs while A22 does not. [REL006, REL007, REL008]\n- A23 still occurs in every later case and keeps its position at the end of the fragment: when the group runs it precedes A23 in about 49 in 100 traces, A23 still follows A22 on the old path, and the event distance from A21 to A23 stretches from 2 to 4 positions in exactly the group's share of cases. [REL005, REL009, REL010, REL011, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, about half of the cases skip A22 and instead run a group of three activities — A27, A28 and A33 — between A21 and A23, while the other half keep the original A21 → A22 → A23 sequence; within the group the three activities run in no fixed order. This is shown directly by the relational evidence: A21 precedes each group member in about 49 in 100 later traces, each group member precedes A23 in about 49 in 100, A22 co-occurs with none of them, and the group members co-occur with each other in both orders for every pair. The positional and distance evidence agrees (mid-trace positions near 0.49; the A21-to-A23 distance stretching from 2 to 4 positions), and the outgoing edges of A21 and of each group member match a hand-over chain that ends in A23. [DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL009, REL010, REL011, REL012, REL013, REL014, POS001, POS002, POS003, LAG001]\n\nScreening qualified 22 control-flow items where an unchanged process would produce about 0.24, and each item's difference exceeds about 995 in 1000 random re-splits of the pooled data, so sampling noise cannot explain the pattern as a whole; all qualified items describe this one coherent difference rather than scattered effects. [DIR001, POS001, REL001, LAG001]\n\nLimitations: the evidence cannot distinguish whether the group replaced A22 one-for-one or was added while A22 was skipped, since the two look identical here, and only the tested units were screened, so nothing can be said about activities outside this fragment. An important competing explanation that remains is that this behaviour existed before as a rare variant that happened not to appear in the earlier 200 traces; the 0-versus-49-in-100 contrast makes plain sampling noise unlikely, but the windows are finite samples. [REL001, REL006, POS001]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

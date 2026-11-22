@@ -1,0 +1,43 @@
+{
+  "status": "success",
+  "model": "qwen3.8-27b-uncensored",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_12c7095ae915a89f.json",
+  "evidence_sha256": "d8a15b5bf5f575ef3cd0e60e3ff75866b9cd281ff2144450912a3fbcf88c0ce6",
+  "request_settings": {
+    "model": "qwen3.8-27b-uncensored",
+    "temperature": 0,
+    "top_p": 0.9,
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:36:16.662898+00:00",
+  "finished_at_utc": "2026-11-14T10:43:54.648115+00:00",
+  "latency_seconds": 457.98,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15819,
+    "prompt_tokens": 6547,
+    "total_tokens": 22366,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14513
+    }
+  },
+  "response_model": "qwen3.8-27b-uncensored",
+  "reasoning_chars": 45166,
+  "text": "\n\n### Observed differences\n\n- In the earlier window, A02 and A04 co-occurred in every trace and A02 preceded A04 in every trace; in the later window, they still co-occurred in every trace, but A02 preceded A04 in about 54 in 100 traces and A04 preceded A02 in about 46 in 100 traces [REL001]\n- A01's observed outgoing transitions shifted from a dominant A02 successor (about 87 in 100) to a split between A02 (about 50 in 100) and A04 (about 43 in 100), with A03 rising from about 4 in 100 to about 8 in 100 [DIR001]\n- A02's observed outgoing transitions shifted from almost always A04 (about 94 in 100) to a split between A04 (about 50 in 100) and A03 (about 44 in 100) [DIR002]\n- A04's observed outgoing transitions shifted from almost always A03 (about 96 in 100) to a split between A03 (about 49 in 100) and A02 (about 41 in 100) [DIR003]\n- Trace positions moved in the same direction: A02's mean position increased from about 17 in 100 to 27 in 100 and its 75th percentile from 20 in 100 to 40 in 100, while A04's mean position decreased from about 39 in 100 to 28 in 100 and its median from 40 in 100 to 20 in 100 [POS001, POS002]\n- Step distances from A01 became less fixed: A01 to A02 was one step in all earlier observations but one step in about 57 in 100 and two steps in about 43 in 100 later observations; A01 to A04 was mostly two steps (about 94 in 100) in earlier observations but one step in about 49 in 100 and two steps in about 51 in 100 later observations [LAG001, LAG002]\n- Step distances to A03 also became less fixed: A02 to A03 shifted from about 90 in 100 two-step and 10 in 100 three-step to about 44 in 100 one-step, 47 in 100 two-step, and 10 in 100 three-step; A04 to A03 shifted from about 96 in 100 one-step and 4 in 100 two-step to about 49 in 100 one-step, 43 in 100 two-step, and 8 in 100 three-step [LAG003, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\n- The main hypothesis is that the earlier fixed order between A02 and A04 was relaxed, so that in the later window A02 and A04 are executed in either order in roughly half of traces, while both still occur in every trace and A03 follows the pair [REL001, DIR001, DIR002, DIR003, POS001, POS002, LAG001, LAG002, LAG003, LAG004]\n- The direct sign is the relational change: A02 before A04 fell from all traces to about 54 in 100, A04 before A02 rose from none to about 46 in 100, and co-occurrence remained in every trace [REL001]\n- The successor, position, and step-distance evidence is consistent with that order change: A01 now leads to A02 and A04 in comparable shares, A02 and A04 now lead to each other and to A03 in mixed shares, A02's position is later, A04's position is earlier, and distances to A03 are less fixed [DIR001, DIR002, DIR003, POS001, POS002, LAG001, LAG002, LAG003, LAG004]\n- The ten control-flow items are far more than the 0.1 expected by chance, and they agree on the same A02/A04 ordering difference rather than isolated rare variants [screening, REL001, DIR001, DIR002, DIR003, POS001, POS002, LAG001, LAG002, LAG003, LAG004]\n- A limitation is that the evidence is control-flow only, so it does not show why the order changed or whether timing or resource allocation changed [screening]\n- An important competing explanation that the evidence cannot rule out is that the later window reflects a mixture of two path variants that were rare or absent in the earlier sample, rather than a newly introduced ordering rule [REL001, DIR001, DIR002, DIR003, screening]\n\nOther differences:\n\n- A01's rare successors A05 and A06 were present in small shares before (about 1 to 2 in 100) and became rarer or unobserved after, but they are not part of the main A02/A04 ordering hypothesis [DIR001]",
+  "case_id": "case_12c7095ae915a89f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "GLM_API_KEY",
+  "support_level": "supported hypothesis"
+}

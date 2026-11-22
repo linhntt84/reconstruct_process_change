@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/null_32726ef4a7dcbe52.json",
+  "evidence_sha256": "f91e04cd9206ce9ea322275547161adcb6b7a15aed1ba76da9c89f0898dea46e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:15:45.861454+00:00",
+  "finished_at_utc": "2026-11-15T05:16:54.889832+00:00",
+  "latency_seconds": 69.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9999,
+    "prompt_tokens": 4734,
+    "total_tokens": 14733,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9132,
+      "text_tokens": 867
+    },
+    "cost": 0.0057096
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 34081,
+  "text": "### Observed differences\n\n- Out of activity A36, the successor mix flipped: in the later window about 62 in 100 of its outgoing transitions go to A37 and about 38 to A33, whereas before about 59 went to A33 and about 34 to A37; rare targets seen before (A08 about 2 in 100, A19/A23/A39/A47 about 1 in 100 each) are no longer observed. [DIR001]\n- Out of A37 the mix flipped in mirror image: about 58 in 100 transitions now go to A33 and about 37 to A36, versus about 34 to A33 and 62 to A36 before; a few new rare targets (A04, A10, A15, A40, A45, about 1 in 100 each) appear. [DIR002]\n- A36 now typically immediately follows A32 (one-step gap in about 62 in 100 cases, before about 34, when a two-step gap was most common at about 66), while A37 now typically follows A32 two steps later (about 62 in 100, before one step in about 63). [LAG002, LAG003]\n- The ordered pair A36 then A37 appears in 56 of 200 traces in the later window versus 33 before, and is now always immediately consecutive (lag 1 in all cases, before about 94 in 100). [LAG004]\n- A07 appears in more traces (about 54 in 100 versus 43 in 100) and slightly later within traces by event position (mean relative position about 0.07 versus 0.05, with roughly double the spread); A14 correspondingly follows A07 within one step in about 46 in 100 cases (before about 28, when a three-step gap was most common at about 42). [POS001, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A36 and A37 exchanged their typical order: in the later window the segment runs roughly A32 → A36 → A37 and then continues to A33, whereas before it ran roughly A32 → A37 → A36 → A33. [DIR001, DIR002, LAG002, LAG003, LAG004]\n\nThe pattern is direct and internally consistent: the successor shares of A36 and A37 moved in mirror image, the distances from A32 to the two activities exchanged (A36 from typically two steps to one, A37 from one to two), and the ordered pair A36→A37 became both more frequent and uniformly immediate; each item is unusual for random re-splits of the pooled data (empirical strength about 0.995) and rests on roughly 90 observations each (the A36→A37 pair on 33 and 56 traces), and seven qualifying items far exceed the fewer than one expected by chance in an unchanged process. [DIR001, DIR002, LAG002, LAG003, LAG004, POS001, LAG001]\n\nLimitations: the windows are finite samples of 200 traces each, so a shift in the mix of pre-existing variants (both orders already present, drawn in different proportions per window) could produce a similar picture and cannot be ruled out; the rare successor targets appearing or disappearing at about 1 in 100 are consistent with such sampling variation. [DIR002, LAG004] The A07/A14 difference — higher participation and a tighter A07→A14 gap — is a separate behavioural change this hypothesis does not cover, and with only two items it may likewise reflect variant-frequency sampling rather than a distinct structural change. [POS001, LAG001]",
+  "case_id": "null_32726ef4a7dcbe52",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

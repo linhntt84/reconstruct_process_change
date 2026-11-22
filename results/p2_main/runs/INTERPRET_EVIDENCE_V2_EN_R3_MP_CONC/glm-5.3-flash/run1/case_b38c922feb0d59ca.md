@@ -1,0 +1,18 @@
+### Observed differences
+
+- Before, A20, A21, A22 and A25 ran before A26–A30 in nearly every trace (about 97–100 in 100). In the later window this fixed order dissolved or reversed: A26 now runs before A20, A21 and A22 in about 72–74 in 100 traces and before A25 in about 92–93 in 100, while A28, A29 and A30 stand in mixed order with A20–A22 (roughly 50 vs 43–47 in 100) and still usually after A24 (about 77–78 in 100, down from about 99–100). Both activities of every pair still occur together in all traces in both windows. [REL001, REL002, REL005, REL009, REL013, REL014, REL017, REL019]
+- The two groups shifted in opposite directions within the trace (by event position, not clock time): A26–A30 occur earlier (A26 mean about 0.63 → 0.55; A28 about 0.69 → 0.62) and A20–A25 later (A25 about 0.61 → 0.70; A20 about 0.56 → 0.62). [POS001, POS005, POS006, POS008]
+- Transitions moved the same way: A25's dominant successor switched from A26 (about 99 in 100 of its outgoing transitions before, about 6 in 100 after) to A36 (about 39 in 100 after, previously near 0) plus new edges to A27–A30; A20, A21 and A22 gained direct transitions into A26–A30 (for A20 together about 40 in 100 of its outgoing, unobserved before); A26 and A27 now also lead back into A20–A25 (about 18 and 42 in 100 of their outgoing respectively). [DIR001, DIR002, DIR003, DIR005, DIR006, DIR007]
+- Step distances changed accordingly: A20/A21/A22 → A25 gaps lengthened (before always within 1–3 steps, after about 32 in 100 at 4–5 steps); the ordered pair A25 then A36 within five steps rose from about 1 to about 187 of 200 traces, while A25 then A26 fell from about 200 to about 14 of 200 traces. [LAG003, LAG010, LAG017, LAG027, LAG032]
+- At the boundary, A35 now leads to A26 in about 46 in 100 cases (before always to A24), and A24's order with A26 became unfixed (A24 first in about 98 in 100 before, about 53 vs 46 after). [DIR011, LAG026, LAG034, REL013]
+- All activities involved occur in essentially every trace in both windows (about 200 of 200), so these differences reflect reordering, not activities appearing or disappearing. [DIR001, DIR005, POS001, REL001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the ordering constraint between two groups of activities was given up in the later window: previously the process ran through A20, A21, A22 and A25 first and reached A26–A30 afterwards, whereas now A26–A30 execute before or interleaved with A20–A25 — A26 mostly before A20–A22 and almost always before A25, A28–A30 in mixed order with A20–A22 and mostly before A25. This is a change in ordering constraints (fixed order became reversed or unfixed), shown directly by the relational items and consistently echoed by the opposite position shifts, the new cross-group transitions and the changed step distances; with 102 qualifying control-flow items against roughly 1 expected by chance, the pattern as a whole is unlikely to be a sampling artefact. [REL001, REL005, REL009, REL017, REL019, POS005, POS006, DIR001, DIR005, LAG032]
+
+Limitations: for A28–A30 versus A20–A22 the later order is roughly 50/50 rather than strictly reversed, so the evidence cannot distinguish a repositioning of the whole block from the two groups becoming concurrent and interleaved, and some traces may still follow the old order; positions are event positions, so no claim about clock timing is made. [REL002, REL007, POS001]
+
+Other differences: a few single-trace edges (e.g., A20→A14, A21→A48, A22→A02) appear or disappear between the windows, but each rests on about 1 in 200 traces and carries no weight. [DIR001, DIR002, DIR003]

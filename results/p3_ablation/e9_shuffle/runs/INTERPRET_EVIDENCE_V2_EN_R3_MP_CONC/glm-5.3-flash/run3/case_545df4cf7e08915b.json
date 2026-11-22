@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_545df4cf7e08915b.json",
+  "evidence_sha256": "94c27c44f7a70b56a1cf01595e998c4f6503527ab2c100d70e18e71514700dfb",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:51:32.856167+00:00",
+  "finished_at_utc": "2026-11-15T09:53:07.445571+00:00",
+  "latency_seconds": 94.59,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13537,
+    "prompt_tokens": 23555,
+    "total_tokens": 37092,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12126,
+      "text_tokens": 1411
+    },
+    "cost": 0.01030175
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43437,
+  "text": "### Observed differences\n\n- The starkest change is between A01 and A08. In the earlier window A01 appeared in about 48 in 100 traces (roughly one occurrence per trace) at a mid-trace position; in the later window it is not observed in any of the 200 traces. A08 shows the mirror image: absent earlier, it appears in about 48 in 100 traces (about 1.1 occurrences per trace) at almost the same mid-trace position. [OCC001, OCC002, POS001, POS002]\n- The handover is visible in the edges. Earlier, A01's outgoing transitions went to A09 (about 51 in 100), A10 (about 24) and A16 (about 24); later, A01 shows no outgoing transitions and A08's go to the same targets (A09 about 56 in 100, A10 about 25, A16 about 19). A17, which earlier sent all of its transitions to A01, now sends all of them to A08, and A03's transitions to A01 (about 21 in 100) were replaced by transitions to A08 (about 26 in 100). [DIR001, DIR005, DIR008, DIR003]\n- A15 and A11 effectively exchanged their placement. Earlier, A15 appeared in about 32 in 100 traces at a mid-trace position and was always followed by A03, while A11 appeared in about 52 in 100 traces always as the final activity with no observed outgoing transitions. Later, A15 appears in about 52 in 100 traces, always in the last position with no observed outgoing transitions, while A11 appears in about 29 in 100 traces at a mid-trace position, followed by A03. [POS004, POS003, DIR007, DIR006]\n- Rerouting matches this exchange: A05's outgoing transitions shifted from A11 (about 52 in 100) to A15 (about 52 in 100), and A18's transitions to A15 (about 21 in 100) were replaced by transitions to A11 (about 26 in 100). A03 now reaches A15 about two steps later in about 61 in 100 of the observed pairs (previously mostly three steps) and reaches A11 about three steps later in about 77 in 100 (previously mostly two). [DIR004, DIR009, LAG002, LAG001]\n- Co-occurrence follows the same pattern: A05 with A15 rose from about 17 in 100 traces to about 52 (usually A05 before A15), and A03 with A15 from about 32 to about 52, while A05 with A11 fell from about 52 to about 16 and A03 with A11 from about 52 to about 29. In the later window A08 and A15 are strict alternatives (each in about half of the traces, never together), whereas earlier A01 and A15 still co-occurred in about 16 in 100 traces. [REL016, REL013, REL015, REL012, REL020, REL007]\n- Smaller shifts: A02's outgoing mix changed slightly (its small share to A01 disappeared, with A04 and A05 each gaining a few points), and A03's transitions to A04 fell from about 51 to about 42 in 100 while about 26 in 100 now go to A08. [DIR002, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A08 took over the role previously played by A01 at the same point in the process. Earlier, A01 ran in about 48 in 100 traces, was reached from A17 (exclusively) and from A03 (about 21 in 100 of A03's outgoing transitions), and led to A09, A10 or A16; in the later window A01 is not observed in any trace, while A08 runs in about 48 in 100 traces at the same position, receives the transitions that previously went to A01, and leads to the same successors. The occurrence and position profiles swap almost exactly, the successor profiles match, and both predecessors reroute directly; the pair (A01, A08) also flips from \"A01 without A08\" in about 48 in 100 earlier traces to \"A08 without A01\" in about 48 in 100 later traces. The volume of qualifying evidence (53 items against roughly 0.5 expected without a change, for example [OCC001, DIR001, DIR005, DIR008, REL003]) cannot be explained by sampling fluctuation. Limitations: this shows a behavioural substitution of roles, not that A08 is the same activity renamed, and zero participation means only that A01 was not observed; several items describe the same traces and are not independent confirmations. A competing explanation the evidence cannot fully rule out is that A01 was dropped and A08 inserted as a genuinely new activity at a similar position, which is behaviourally indistinguishable from a rename here.\n\nOther differences: A11 and A15 exchanged their placement in the closing section — earlier A11 closed about 52 in 100 traces (always last, no observed outgoing) while A15 sat mid-trace always followed by A03; later A15 closes about 52 in 100 traces (always last, no observed outgoing) while A11 sits mid-trace and is followed by A03, with A05 now flowing to A15 instead of A11 and A18 to A11 instead of A15. This rerouting is directly observed in successor changes and position distributions, so it is a further structural change rather than a path-frequency shift. Minor redistributions remain in the outgoing shares of A02 and A03. [POS003, POS004, DIR004, DIR006, DIR007, DIR009, LAG001, LAG002, DIR002, DIR003]",
+  "case_id": "case_545df4cf7e08915b",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

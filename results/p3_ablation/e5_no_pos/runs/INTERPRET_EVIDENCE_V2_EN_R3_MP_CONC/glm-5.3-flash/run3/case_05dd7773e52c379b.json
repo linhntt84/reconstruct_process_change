@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_05dd7773e52c379b.json",
+  "evidence_sha256": "e117f6141c95beeda27c9d4600c1f4e66e536e16fba8ef31f45998b924fb6f1d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:31:28.520180+00:00",
+  "finished_at_utc": "2026-11-15T11:33:12.531281+00:00",
+  "latency_seconds": 104.01,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13666,
+    "prompt_tokens": 19758,
+    "total_tokens": 33424,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12431,
+      "text_tokens": 1235
+    },
+    "cost": 0.009796699999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44422,
+  "text": "### Observed differences\n\n- In the earlier window, the six activities A28, A30, A31, A32, A33 and A34 were each optional and split into two mutually exclusive blocks: A28, A30 and A31 always occurred together (in about 49 in 100 traces) and A32, A33 and A34 always occurred together (about 52 in 100), while no trace contained activities from both blocks (co-occurrence 0 in 100). Within each block the execution order varied from case to case. [REL013, REL014, REL015, REL018, REL025, REL026, REL027]\n- In the later window, all six activities appear in about 99 in 100 traces, up from roughly half, and still at most once per case. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n- The blocks are now combined in the same cases: a first-block and a second-block activity co-occur in about 98 in 100 traces, where before they never did, and the first-block activity comes first in essentially all of these cases; the order within each block remains unfixed. A25 now precedes each of the six, and A26 follows each of them, in about 99 in 100 traces; before, these relations held only within the roughly half of traces containing the respective block. [REL015, REL016, REL017, REL019, REL020, REL021, REL022, REL023, REL024, REL001, REL007]\n- Routing moved accordingly: A25's outgoing flow, previously spread almost evenly over all six activities (about 15–19% each), now goes about 99 in 100 to A28, A30 and A31 (roughly a third each), with A32 and A34 below 1 in 100 and A33 no longer observed. The direct handovers from A28, A30 and A31 to A26 have nearly vanished (about 0.5 in 100 from A28, unobserved from A30 and A31), while roughly a third of each of their outgoing transitions now enters the second block (about 8–13% to each of A32, A33 and A34). [DIR001, DIR002, DIR003, DIR004]\n- Event distances match this: the gap from A25 to A32, A33 or A34 moved from 1–3 positions (roughly evenly spread) to 4–5 positions, and the gap from A28, A30 or A31 to A26 likewise moved from 1–3 to 4–5 positions. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the two three-activity blocks between A25 and A26 changed from alternative branches — each case executed either the A28/A30/A31 block or the A32/A33/A34 block — into sequential stages executed in the same case: A25 first, then A28, A30 and A31 in varying order, then A32, A33 and A34 in varying order, and finally A26. [OCC001, REL015, REL019, REL022, DIR001, DIR002, LAG001]\n\nThe change is shown directly by the relation indicators (cross-block co-occurrence rising from 0 to about 98 in 100 with a fixed first-block-before-second-block order), and the participation, routing and distance indicators all agree with it; the number of qualifying items (43 against roughly 0.55 expected for an unchanged process) also rules out chance sampling as an explanation for the evidence as a whole. [REL015, REL019, REL022, OCC001, DIR001, LAG001]\n\nLimitations: the outgoing transitions of A32, A33 and A34 were not flagged, so the final handover from the second block to A26 is inferred from order and distance relations rather than observed edges; and about 1–2 in 100 later-window cases still do not show the combined pattern, so a small residual single-block behaviour cannot be excluded. [REL010, REL011, REL012, LAG004, LAG005, LAG006, REL015]",
+  "case_id": "case_05dd7773e52c379b",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

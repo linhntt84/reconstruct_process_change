@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_a11f433f322e9aad.json",
+  "evidence_sha256": "4809f8d9736c2a4d9d9d049f529c0fb29ba0fef14326725cad0a3ab136308087",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:48:22.792041+00:00",
+  "finished_at_utc": "2026-11-15T07:49:52.665023+00:00",
+  "latency_seconds": 89.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12988,
+    "prompt_tokens": 50219,
+    "total_tokens": 63207,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11542,
+      "text_tokens": 1446
+    },
+    "cost": 0.01402685
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41383,
+  "text": "### Observed differences\n\n- In the earlier window, A27 ran in every one of the 200 traces; in the later window it ran in only about half of them (about 102 of 200, 51%). [OCC027]\n- Three activities that never appeared earlier — A32, A33 and A38 — each run in about half of the later traces (about 98–99 of 200, roughly 49%). [OCC030, OCC031, OCC036]\n- Earlier, the segment between A26 and A28 was fixed: A26 was followed directly by A27 in about 98% of its outgoing transitions, A27 was followed directly by A28 in about 99% of its outgoing transitions, and A26 and A28 were two event positions apart in about 98 in 100 traces. A26 and A28 themselves occurred in every trace in both windows. [DIR026, DIR027, LAG003, OCC026, OCC028]\n- In the later window, about half of A26's outgoing transitions still go to A27 (about 50 in 100), while the rest go to A32 (about 15%), A33 (about 17%) or A38 (about 16%). [DIR026]\n- The three new activities sit between A26 and A28: A26 precedes each of them and each precedes A28 in about 49 in 100 traces. Among themselves they appear in both orders in similar shares (for example, A32 before A33 in about 23 in 100 traces and A33 before A32 in about 27 in 100), and each of the three can be the last one directly before A28 (about 28%, 27% and 43% of their outgoing transitions), so they run with no fixed order. [REL003, REL004, REL005, REL010, REL011, REL012, REL013, REL014, REL015, DIR032, DIR033, DIR038]\n- A27 and each of the new activities almost never occur in the same trace (co-occurrence in at most about 1 in 200 traces), so the single-activity path and the three-activity path are alternatives, not stacked on each other. [REL007, REL008, REL009]\n- Consistent with the two paths, the distance from A26 to A28, previously two events in about 98 in 100 traces, is now two events in about 50 in 100 traces and four events in about 48 in 100; A26's mean relative event position also moved slightly earlier (about 0.46 to 0.44) and A28's slightly later (about 0.53 to 0.55). [LAG003, POS001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nIn the later window the process carries an alternative segment between A26 and A28: in roughly half of the executions A27 is skipped and the three activities A32, A33 and A38 run in its place between A26 and A28 in varying order, while the other half still take the original A26 → A27 → A28 sequence; earlier, A27 always ran between A26 and A28 and A32, A33 and A38 were not observed at all. This is a possibility supported by the evidence, not a confirmed modification. The participation changes are large (100% to 51% for A27; 0% to about 49% for each new activity) and each key item is unusual for random re-splits (empirical strength about 0.995, i.e., larger than in about 995 of 1000 reference splits); the relational, directional and lag indicators all show the same structure directly, and the near-perfect mutual exclusivity between A27 and the new activities indicates the two segments are alternatives. Limitations: the evidence cannot show whether the choice between the two paths is made per case at random or driven by case characteristics, control-flow evidence alone cannot establish that the trio is newly added rather than simply not exercised earlier, and no screening expectation was provided to check the chance baseline numerically. [OCC027, OCC030, OCC031, OCC036, REL001, REL003, REL006, REL007, REL010, DIR026, DIR032, LAG003]\n\nOther differences: several moderate shifts in routing shares and participation appear elsewhere but rest on single indicators and are within the range sampling can produce: after A23, the share of transitions going to A30 rose from about 43% to about 57%, and after A22 the share going to A23 rose from about 18% to about 31%; participation of A22 rose from about 55% to about 60% while A21 fell from about 45% to about 40%. Rare activities (for example A02, A04, A06 and A08) show reshuffled outgoing transitions, but those profiles rest on only about 2 to 24 observations per window and are weak. [DIR023, DIR022, OCC022, OCC021, DIR002, DIR004, DIR006, DIR008]",
+  "case_id": "case_a11f433f322e9aad",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

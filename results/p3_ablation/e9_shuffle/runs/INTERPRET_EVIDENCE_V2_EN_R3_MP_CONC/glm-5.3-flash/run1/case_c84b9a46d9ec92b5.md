@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 each ran in roughly a third of the traces (about 37, 31 and 35 in 100 traces respectively) and acted as alternatives: any two of them co-occurred in at most about 1 in 100 traces. In the later window they are essentially unobserved — A20 and A25 in 0 of 200 traces, A19 in 1 of 200. [OCC001, OCC002, OCC003, REL001, REL003, REL008]
+- Earlier, A41's outgoing transitions led to A25 (about 32 in 100), A19 (about 29) and A20 (about 26), and each of those three in turn led to A26 in about 94–97 in 100 of its outgoing transitions. In the later window, A41 leads directly to A26 in about 86 in 100 of its outgoing transitions, with the three former targets no longer observed as successors. [DIR005, DIR001, DIR002, DIR004]
+- The A41–A26 distance shrank: earlier, A26 followed A41 about two event positions later in about 85 in 100 cases; in the later window it follows one position later in about 86 in 100 cases. [LAG001]
+- Co-occurrence of each of A19, A20 and A25 with A41, A26, A31 and A24 dropped from roughly 17–37 in 100 traces to about 0, and the ordered sequences through them (A41 before A19/A20/A25, and A19/A20/A25 before A26/A31) disappeared. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, REL002, REL007, REL012]
+- Minor position shifts: A26's mean relative position moved slightly earlier (about 0.39 to 0.37 of the trace) and A41's slightly later (about 0.32 to 0.33). [POS004, POS005]
+- A21's outgoing transitions redistributed: the share to A24 rose from about 14 to 35 in 100, the share to A31 fell from about 54 to 38 in 100, A23 slipped from about 29 to 25, and small new edges (about 1 in 100 each) to A16, A02 and A35 appeared. [DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the block of alternative activities A19, A20 and A25 sitting between A41 and A26 is bypassed: A41, which previously continued to exactly one of these three activities — each of which then led on to A26 — now connects almost directly to A26, while the three activities themselves are no longer executed (0–1 of 200 traces, versus roughly 62–73 of 200 before). This is shown directly by the redirection of A41's outgoing transitions, the collapse of the three activities' participation, the shortening of the A41→A26 gap from two event positions to one, and the disappearance of all their co-occurrences with A41, A26 and A31. Screening qualified 29 control-flow items where fewer than one would be expected without a change, so the set of differences is far beyond what an unchanged process typically produces, and every item's difference exceeds that seen in about 995 of 1000 random re-splits. [DIR005, OCC001, OCC002, OCC003, LAG001, REL004, REL009, REL013]
+
+Limitations: zero participation only means the activities were not observed, so the evidence cannot distinguish complete removal from the three activities becoming skipped in every observed case; and the single later trace containing A19 routes it to A12 rather than A26, which rests on one observation. The many agreeing items describe one underlying difference and are therefore not independent confirmations. [OCC001, DIR001]
+
+Other differences: A21's routing shifted towards A24 and away from A31 (with small new successors A16, A02 and A35); both successors remain well observed in both windows and A21 itself appears in 114 versus 101 traces, so this looks like a separate rerouting at A21 that the bypass hypothesis above does not explain. [DIR003]

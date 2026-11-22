@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_3fa037fae97b6ac6.json",
+  "evidence_sha256": "64be7f27ba52bee1c200aad2ca5c8f8d72c03f58c69fd16da1facc9637fcffce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:14:15.633573+00:00",
+  "finished_at_utc": "2026-11-14T14:15:58.063047+00:00",
+  "latency_seconds": 102.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16112,
+    "prompt_tokens": 24609,
+    "total_tokens": 40721,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14779,
+      "text_tokens": 1333
+    },
+    "cost": 0.011747349999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 48475,
+  "text": "### Observed differences\n\n- Activity A01 is the standout difference: it appears in none of the 200 earlier traces but in all 200 later traces, exactly once per trace (mean 1.0 occurrence), and it sits early in each trace (median relative position 0.20, mean 0.25). [OCC001, POS001]\n- In the later window, A01 is wired into the flow on both sides. A02 now sends about 32 in 100 of its observed outgoing transitions to A01 (none before), A12 about 30 in 100, and A06 about 26 in 100; A01's outgoing transitions go mainly to A02 (30%), A12 (27%), A04 (14%), A05 (11%), A03 (9%) and A06 (7%). [DIR001, DIR002, DIR006, DIR012]\n- Pairs that never shared a trace now do so routinely: A01 co-occurs with A02, A04, A05 and A12 in 100 in 100 later traces (0 before), and with A06 in 59 in 100 (A01 alone in the remaining 41). A01 always precedes A04 and A05, while with A02 (about 50/50) and A12 (46/54) both orders occur. [REL001, REL002, REL003, REL004, REL005]\n- Activities after the new insertion point now appear at later positions in the trace: A05's mean relative position rises from 0.63 to 0.73, A04's from 0.63 to 0.70, A02's from 0.21 to 0.26 and A12's from 0.20 to 0.24. Step gaps stretch accordingly: immediate A02→A12 succession falls from 82 to 53 in 100, A06→A04 gaps of 4–5 steps rise from 31 to 65 in 100, and A06→A05 gaps of 5 steps appear in 37 in 100 cases (none before). [POS002, POS003, POS004, POS006, LAG004, LAG010, LAG011]\n- Participation shifted elsewhere: A06 is executed in about 59 in 100 later traces versus about 48 in 100 before, while A03, A08 and A10 each fall from about 52 to 41 in 100 (A03 also repeats less, mean 1.1 to 0.8 occurrences per trace), and A07, A09 and A11 decline by smaller margins (e.g. A09 from about 28 to 20 in 100). [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new activity, A01, was inserted into the process: in the later window it runs exactly once in every case, early in the trace, is reached from A02, A12 and A06, and leads mainly back to A02 and A12 and onward to A04 and A05, both of which it always precedes. This is shown directly and consistently across occurrence, direction, position and relation indicators, each backed by all 200 later traces, and the appearance itself (0 of 200 traces before versus 200 of 200 after) cannot be explained as a rare variant surfacing by chance. The evidence cannot pin down a single insertion point — A01 alternates order with A02 and A12, so it may occupy different positions in different cases — nor can it distinguish a genuinely new activity from one that already existed but was never executed in the earlier window. [OCC001, DIR001, DIR002, DIR006, DIR012, POS001, REL001, REL002, REL003, REL004, REL005]\n\nOther differences: the share of traces taking A06 rose (about 48 to 59 in 100) while A03, A08 and A10 — and to a lesser degree A07, A09 and A11 — are executed less often (about 52 to 41 in 100 for the first three), a pattern consistent with the alternative branch being taken less often; the evidence cannot show whether this follows from A01's insertion or is an independent shift in how often existing paths are taken, and shifts of this size can also arise between finite samples. A10's outgoing mix also appears to change completely, but only 6 versus 2 outgoing transitions were observed, too few to interpret. [OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008, DIR010]",
+  "case_id": "case_3fa037fae97b6ac6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

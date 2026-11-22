@@ -1,0 +1,23 @@
+### Observed differences
+
+- Before, A25, A26, A27, A28, A31, A36, A37 and A42 each appeared in essentially every trace (participation 100 in 100, about 200 of 200 traces). In the later window, A25, A26, A28 and A31 still appear in all traces, while A27 appears in about 54 in 100 traces and A36, A37 and A42 in about 47–48 in 100 each; none of them repeats within a trace in either window. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS004, POS005]
+
+- A27 and the block A36/A37/A42 became mutually exclusive. Before, A27 co-occurred with each of A36, A37 and A42 in 100 in 100 traces; in the later window they share a trace in at most about 1 in 100 cases, with A27 occurring without the block in about 53 in 100 traces and the block without A27 in about 47 in 100. A36, A37 and A42 still occur together when they occur at all (about 47 in 100), in a mixed internal order as before. [REL011, REL012, REL013, REL020, REL021, REL022]
+
+- The block changed its place. Before, A36/A37/A42 ran before A28 and before A26 (A36 before A28 in about 995 in 1000 traces; A36 before A26 in 1000 in 1000). In the later window this order is reversed (A28 before A36 in about 46 in 100, A26 before A36 in about 45 in 100 traces), and the block now runs after A26 and before A31. [REL006, REL014, REL015, REL016, REL017, REL018, REL019]
+
+- Successors changed accordingly. A25 led to A42, A36 and A37 in roughly equal thirds before (about 34, 32 and 30 in 100 of its outgoing transitions) and now leads to A28 in about 97 in 100. A26 led to A27 in 99 in 100 before and now leads to A27 in about 52 in 100 and to A36/A37/A42 in about 13–16 in 100 each. The block's exit moved from A28 (about 31–35 in 100 from each of A36, A37, A42) to A31 (about 26–35 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]
+
+- Distances and positions match this picture. The A25→A28 gap fell from 4–5 steps in essentially all traces to 1 step in about 98 in 100; A36/A37/A42 followed by A28 within five steps, seen in about 200 of 200 traces before, is now nearly unobserved (1–2 traces); the A26→A31 gap split from a uniform 2 steps into 2 steps in about 53 in 100 and 4–5 steps in about 47 in 100; and A37 followed by A31 within five steps rose from 1 in 200 traces to about 93 in 200. The trio's mean position moved from about 0.40 to about 0.57 of the trace, A28's from 0.46 to 0.39 and A26's from 0.60 to 0.54. [LAG001, LAG005, LAG006, LAG007, LAG008, LAG009, POS002, POS004, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a restructuring of the segment around A26–A31, involving A25, A26, A27, A28, A31, A36, A37 and A42. In the later window, a trace runs A25 → A28 → A26 and then takes one of two mutually exclusive branches: A27 alone (about 53 in 100 traces) or the block A36+A37+A42 in mixed internal order (about 47 in 100), with both branches followed by A31. Before, every trace executed A25 → the block → A28 → A26 → A27 → A31 in a fixed order, so the block effectively moved from before A28/A26 to after A26, became an alternative to A27, and A25 gained a direct transition to A28. [REL005, REL006, REL010, REL011, REL012, REL013, REL014, REL017, DIR001, DIR002, DIR003, LAG001, LAG005, LAG008]
+
+The supporting signs are direct and consistent: the participation drops of A27 and the trio are complementary to their near-zero co-occurrence; the successor changes at A25, A26 and the block are observed relationally rather than inferred from positions alone; and the gap distributions (A25→A28 at one step, A26→A31 split between 2 and 4 steps) quantitatively match the new arrangement. With 48 qualifying items against roughly 0.73 expected if nothing had changed, the findings as a set are far beyond what a stable process produces by chance. [OCC001, OCC002, OCC003, OCC004, REL011, REL012, REL013, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG005, LAG008]
+
+Limitation: the windows are finite samples, so the evidence cannot fully rule out that the later window merely reveals a mixture of pre-existing variants in which the skip-branch was too rare (under about 0.5 in 100 traces) to appear in the 200 before-traces; the indicators also use event positions, so the "movement" rests on observed order relations, not clock time. [REL011, REL012, REL013]
+
+Other differences: A25's mean position shifted slightly later (about 0.34 to 0.37) with somewhat more spread, and a few low-frequency successors (about 1–2 in 100 of outgoing transitions, e.g. A13, A35, A07, A45) appeared at A26, A36, A37 and A42; these are minor and not part of the main hypothesis. [POS001, DIR002, DIR003, DIR004, DIR005]

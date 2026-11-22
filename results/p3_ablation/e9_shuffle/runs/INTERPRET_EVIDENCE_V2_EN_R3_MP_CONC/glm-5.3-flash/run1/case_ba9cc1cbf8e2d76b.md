@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A25 were not observed at all (0 of 200 traces each); in the later window each runs in a substantial share of cases — A20 in about 41 in 100 traces, A25 in about 31 in 100 and A19 in about 29 in 100 — always exactly once per trace, around the middle of the case (mean relative position about 0.51–0.52). [OCC001, OCC002, OCC003, POS001, POS002, POS003]
+- These three activities are mutually exclusive: their participation shares sum to roughly all later-window traces, and any pair of them co-occurs in at most about 1 in 200 later-window traces, so a typical later-window case contains exactly one of them. [REL001, REL002, REL006]
+- In the earlier window the segment ran as a direct chain: A27 led to A28 in about 97 in 100 of its outgoing transitions, A28 led to A29 in about 98 in 100, and A27 reached A29 two steps later in about 96 in 100 cases. [DIR004, DIR005, LAG002]
+- In the later window this chain is interrupted: A27 now leads to A28 in only about 43 in 100 transitions and to one of the new activities in about 52 in 100 (A20 about 22, A25 about 16, A19 about 14); A28 leads to A29 in about 57 in 100 and to a new activity in about 41 in 100; and each new activity leads on to A28 (about 53–56 in 100) or to A29 (about 41–47 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005]
+- The new step sits between A27 and A29: A27 precedes it in about 29–41 in 100 traces (matching its participation) and it precedes A29 in about 30–40 in 100. Relative to A28 it appears in both orders — before A28 in about 13–23 in 100 traces and after A28 in about 13–18 in 100 — so it is placed sometimes between A27 and A28 and sometimes between A28 and A29. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]
+- Step distances widened accordingly: A27→A28 went from adjacent (lag 1 in about 98 in 100) to often one step apart (lag 2 in about 52 in 100); A28→A29 from lag 1 in about 98 in 100 to lag 2 in about 41 in 100; and A27→A29 from lag 2 in about 96 in 100 to lag 3 in about 92 in 100. [LAG001, LAG002, LAG003]
+- Minor shifts: A27's relative position moved slightly earlier (median about 0.48 to 0.46) and A29's slightly later (about 0.56 to 0.57), consistent with an activity inserted between them. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, a new optional step was inserted into the former A27 → A28 → A29 sequence and is executed exactly once per case as a mutually exclusive choice among three activities — A20 in about 4 of 10 cases, A25 in about 3 of 10 and A19 in about 3 of 10 — placed between A27 and A29, somewhat more often directly after A27 (before A28) than directly after A28 (before A29), whereas previously the flow passed from A27 through A28 to A29 without any such step. [OCC001, OCC002, OCC003, DIR004, DIR005, REL001, REL006, REL007, REL009, LAG001, LAG002, LAG003]
+
+Supporting signs: 28 items qualified against fewer than 1 expected by chance for an unchanged process (control-flow family), so the pattern as a whole is far beyond what random re-splits produce; the occurrence, direction, relation and lag items all describe one coherent insertion of the same three activities; and each new activity is observed in 58–82 later-window traces, so this is not a rare variant surfacing in one window only. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, LAG001, LAG002, LAG003, REL001, REL002, REL006]
+
+Limitations: zero participation in the earlier window shows only that A19, A20 and A25 were not observed then, so a pre-existing very rare branch that grew sharply cannot be fully ruled out; the evidence also cannot indicate what determines which of the three activities is chosen, and positions are measured in event steps rather than clock time. [OCC001, OCC002, OCC003]
+
+Other differences: none beyond the small position shifts of A27 and A29 noted above, which are consistent with the insertion itself rather than independent changes. [POS004, POS005]

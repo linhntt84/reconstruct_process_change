@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_dfdaac706f50a2ea.json",
+  "evidence_sha256": "b3ea2fe2600ef7df5a355e92af5eade76e6c6514235af4b43e3818506a496937",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:13:53.476186+00:00",
+  "finished_at_utc": "2026-11-15T13:18:19.506631+00:00",
+  "latency_seconds": 266.03,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 37144,
+    "prompt_tokens": 66677,
+    "total_tokens": 103821,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34392,
+      "text_tokens": 2752
+    },
+    "cost": 0.028573549999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 108690,
+  "text": "### Observed differences\n\n- Four activities that every trace contained in the earlier window now appear in only about half of the traces: A27 in about 54 in 100 cases (107 of 200, previously 200 of 200) and A36, A37 and A42 in about 47–48 in 100 (94–95 of 200, previously 200 of 200). [OCC025, OCC032, OCC033, OCC037]\n- A27 and the group A36/A37/A42 changed from always executing together to being almost mutually exclusive: their co-occurrence fell from 100 in 100 traces to about 1 in 100. In the later window, roughly 53 in 100 traces contain A27 without the group, and about 47 in 100 contain the whole group — its three members still always occur together, in mixed internal order — without A27. [REL016, REL017, REL018, REL025, REL026, REL027]\n- The group also changed its place: before, A36/A37/A42 ran before A26 and before A28 in about 98–100 in 100 traces; in the later window they run after A26 and A28 in essentially all cases where both sides occur, and their typical position in the trace moved from about 0.40 to about 0.58 of the trace length (event positions), while A26 and A28 moved earlier (about 0.60 to 0.54 and 0.45 to 0.39). [REL011, REL012, REL013, REL019, REL020, REL021, POS002, POS004, POS006, POS007, POS008]\n- Direct successors changed accordingly: of A25's observed outgoing transitions, about 99 in 100 previously went into the group, whereas in the later window about 98 in 100 go directly to A28, and the typical A25-to-A28 distance fell from 4 steps to 1. A26, which previously led to A27 in about 97 in 100 of its outgoing transitions, now leads to A27 in about 52 in 100 and into the group in about 47 in 100. The group's exits shifted from A28 (about 32–33 in 100 each, the rest staying within the group) to A31 (about 28–36 in 100 each). [DIR025, DIR026, DIR036, DIR037, DIR042, LAG001]\n- Distances reflect the same restructuring: A26-to-A31 was a steady 2 steps before and is now 2 steps in about 51 in 100 traces (via A27) and 4 steps in about 46 in 100 (via the group); A26 followed by A36 within five steps rose from 1 to 93 of 200 traces, while A25 followed by A36 within five steps fell from 200 to 1. [LAG006, LAG007, LAG002]\n- The surrounding anchors are unchanged: A25, A26, A28 and A31 still occur in every trace in both windows, and A27 keeps its local order (A26 before A27, A27 before A31, each at distance 1) in both windows. [POS001, POS002, POS004, POS005, LAG005, LAG010, REL008, REL015]\n- Smaller movements elsewhere: several activities running in roughly half the cases shifted by 2–9 percentage points in both directions (for example A01 56%→47%, A03 45%→54%, A13 46%→54%, A48 58%→63%), some routing shares within optional fragments moved (for example, of A03's outgoing transitions, those to A11 rose from about 28% to 41% while those to A12 fell from about 39% to 24%), and rarely taken activities (A02, A04, A06, A08, A51, with only about 3–20 observed outgoing transitions per window) show quite different routing; given the moderate strengths and few observations, these are not clearly separable from sampling variation. [OCC001, OCC003, OCC012, OCC042, DIR003, DIR013, DIR002, DIR004, DIR006, DIR008, DIR051]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block A36/A37/A42 became an optional, repositioned alternative to A27. In the later window, about 53 in 100 cases run A27 — as before, after A26 and before A31 — and skip the block entirely, while about 47 in 100 run the block (its three members still always together, in mixed internal order) after A26 and immediately before A31, and skip A27; the two now co-occur in only about 1 in 100 traces, whereas before every trace contained both. The block also no longer sits between A25 and A28: A25 now leads directly to A28, the block is entered from A26, and it exits to A31. [OCC025, OCC032, OCC033, OCC037, REL016, REL017, REL018, REL025, DIR025, DIR026, DIR036, DIR042]\n\nThe participation drop is measured directly on 200 versus about 94–107 traces per activity and exceeds every random re-split reference; the change from always-together to alternatives and the reversal of the block's order relative to A26/A28 are shown directly by the relation indicator rather than inferred from positions alone; and the successor changes at A25, A26 and the block members together with the lag changes (A25-to-A28 now immediate, A26-to-A31 now bimodal at 2 and 4 steps) are all consistent with one underlying restructuring rather than unrelated shifts. [OCC025, REL011, REL019, DIR025, DIR026, LAG001, LAG006, POS006]\n\nA competing explanation the evidence cannot rule out is a changed mix of two pre-existing process variants between the windows rather than a modification of one process, since the skipping behaviour was never observed in the earlier window (0 of 200 traces) and could in principle have existed unsampled; moreover, the many relation, lag and position items largely mirror this single restructuring and should not be read as independent confirmations. [REL016, LAG001]\n\nOther differences: the small participation shifts among roughly half-participating activities (A01, A03, A05, A07, A09, A11, A12, A13, A21, A48, A49) and the changed routing on rarely taken activities (A02, A04, A06, A08, A51) are not part of this hypothesis; their sizes and moderate empirical strengths are compatible with sampling variation between two 200-trace windows. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC010, OCC011, OCC012, OCC020, OCC042, OCC043, DIR002, DIR004, DIR006, DIR008, DIR051]",
+  "case_id": "case_dfdaac706f50a2ea",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

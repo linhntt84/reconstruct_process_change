@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_c970eeadeab7c20e.json",
+  "evidence_sha256": "c7e8a5f8fb0086d9bd3a9762e4543481e55e3599fe3136e320010ae548ff7c85",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:15:23.198023+00:00",
+  "finished_at_utc": "2026-11-15T01:15:35.780961+00:00",
+  "latency_seconds": 12.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1838,
+    "prompt_tokens": 5370,
+    "total_tokens": 7208,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1279
+    },
+    "cost": 0.001212164
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 4655,
+  "text": "### Observed differences\n\n- Activity A06 disappears entirely: it occurred in 100% of traces before (mean 1.0 per trace) and in 0% of traces after. [OCC001, POS003]\n- A03, which previously had outgoing transitions only to A06, has no outgoing transitions after; A06, which previously had outgoing transitions only to A03, is absent. [DIR001, DIR003]\n- A03 and A06 always co-occurred before, with mixed order (A03 before A06 in 53%, A06 before A03 in 47%); after, A03 occurs alone. [REL001]\n- A04 and A06 always co-occurred before (A04 before A06 in 44%, interleaved/repeated in 56%); after, A04 occurs alone. [REL002]\n- A03's position shifts to always last: mean relative position from 0.94 to 1.0. [POS001]\n- A04's position shifts later: mean relative position from 0.59 to 0.65. [POS002]\n- The gap between A04 and A03 narrows: before, A04 was followed by A03 within 1 step in 53% and within 2 steps in 47%; after, always within 1 step. [LAG001]\n- A04's outgoing transitions redistribute: before it went to A02 (52%), A03 (26%), A06 (23%); after it goes to A03 (50%) and A02 (50%), with no A06. [DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that activity A06 was removed from the process. In the earlier window, A06 was executed in every trace and was tightly coupled with A03 and A04; in the later window it is completely absent, and the remaining activities adjust accordingly: A03 becomes the terminal activity (always last, no outgoing transitions), A04 moves later, and A04–A03 become immediately adjacent. The change is consistent across occurrence, transition, position, and relation indicators, and the number of qualifying items (10) far exceeds the 0.09 expected by chance for control-flow indicators. A competing explanation that A06 merely became rare rather than absent is not supported, because it is not observed in any of the 200 later traces and all related relations vanish.\n\nOther differences: A04's outgoing transition shares shift from a three-way split to a two-way split (A02 and A03), and the A04–A03 lag becomes fixed at 1 step. These are consistent with the removal of A06 and do not indicate an independent change.",
+  "case_id": "case_c970eeadeab7c20e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

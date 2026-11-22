@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_e7d6bd13ef21f012.json",
+  "evidence_sha256": "31e5a501c5e6c4916a230a5d571109aac9086f1f2620a895ada44413f219a97d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:52:51.491347+00:00",
+  "finished_at_utc": "2026-11-15T13:54:06.359140+00:00",
+  "latency_seconds": 74.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9775,
+    "prompt_tokens": 10534,
+    "total_tokens": 20309,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8669,
+      "text_tokens": 1106
+    },
+    "cost": 0.0064675999999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32297,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces followed the same chain: A02 led to A04 (100% of A02's outgoing transitions), A04 led to A05 (100% of A04's outgoing transitions), then A05 and A06 followed in fixed order, with A06 last at relative position 1.0. A01 and A03 were not observed in any trace. [OCC001, OCC002, DIR001, DIR003, POS003, POS004, POS005, REL007, REL011]\n- In the later window, A04 no longer occurs at all (0 of 200 traces, versus 200 of 200 before), while A03 and A01 each occur exactly once in every trace (200 of 200, versus 0 of 200 before). [OCC001, OCC002, OCC003]\n- A02's outgoing transitions switched from 100% to A04 to 100% to A03, and A03 now leads to A05 in all cases; the earlier A04 → A05 edge is no longer observed. [DIR001, DIR002, DIR003]\n- A06, which previously had no observed outgoing transitions (it ended the trace), now leads to A01 in 100% of its outgoing transitions, and A01 is always the final event (relative position 1.0). [DIR004, POS001, POS005, REL005]\n- A05 and A06 still occur in every trace in both windows, but their relative positions moved earlier: A05 from about 0.67 to 0.50 and A06 from 1.0 to 0.75, matching one extra step appended after them. [POS004, POS005]\n- Pairwise relations confirm the new order: A03 now co-occurs with A02, A05 and A06 in all traces in the fixed order A02 → A03 → A05/A06, and A01 co-occurs with A02, A05 and A06 always after them; previously these pairs appeared as \"one activity only\" or \"neither\". A04's earlier co-occurrences with A02, A05 and A06 are gone. [REL001, REL002, REL004, REL005, REL006, REL009, REL010, REL011, REL012]\n- Taken together, the behaviour is consistent with four-activity traces (A02, A04, A05, A06) before and five-activity traces (A02, A03, A05, A06, A01) after. [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in the control flow involving A02, A03, A04, A05, A06 and A01: traces that ran A02 → A04 → A05 → A06 in the earlier window run A02 → A03 → A05 → A06 → A01 in the later window. A04 was no longer executed at all, A03 took over its place between A02 and A05, and A01 was added as a new final step after A06. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL006, REL009, REL011]\n\nThe hypothesis is shown directly by the successor changes (A02's edge switched from A04 to A03, A03 → A05 appeared, A04 → A05 disappeared, A06 → A01 appeared) and is consistent across every occurrence, position and relation item, with no contradicting evidence; the participation swings from 0 to 200 of 200 traces (and back for A04) are of a size essentially never produced by random re-splits (empirical strength about 0.995 for all items). [DIR001, DIR002, DIR003, DIR004, OCC001, OCC002, OCC003, POS001, POS002, POS003, REL007]\n\nLimitations: no chance-expectation baseline was provided, so the judgement rests on the directness and consistency of the items; the full-sequence reading is an interpretation that fits, but is not directly recorded by, the indicators; \"not observed\" means absent from these 200-trace samples; and the evidence covers control flow only, so nothing can be said about timing or resources. The evidence also cannot rule out that the two windows sample different process variants or populations rather than a single process that changed. [OCC003, DIR003, POS005]",
+  "case_id": "case_e7d6bd13ef21f012",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

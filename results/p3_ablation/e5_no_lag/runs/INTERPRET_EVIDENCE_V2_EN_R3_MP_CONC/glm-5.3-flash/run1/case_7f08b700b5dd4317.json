@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7f08b700b5dd4317.json",
+  "evidence_sha256": "f035fbc283850d9681b2cc63a1d11920467802e3a0fe7cd88b745c1eaa4137b6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:13:50.677333+00:00",
+  "finished_at_utc": "2026-11-14T13:15:40.678186+00:00",
+  "latency_seconds": 110.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18207,
+    "prompt_tokens": 21447,
+    "total_tokens": 39654,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16507,
+      "text_tokens": 1700
+    },
+    "cost": 0.01232055
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56887,
+  "text": "### Observed differences\n\n- **Participation dropped for six activities.** Before, A33, A35, A36, A37, A38 and A39 each ran in every case (100 in 100, about once per case, never repeated). In the later window each appears in only about 47–57 in 100 cases (A33/A35/A36 about 47; A37/A38/A39 about 56), still once per case, while A30 and A31 continue to appear in every case in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002]\n\n- **The six activities became two mutually exclusive groups.** Before, A33/A35/A36 always occurred together, A37/A38/A39 always occurred together, and every case contained both groups (each cross-group pair co-occurred in 100 in 100 cases, e.g. A33 with A37). In the later window the first group runs in about 47 in 100 cases and is absent in about 53, the second group runs in about 56 and is absent in about 43, and both groups meet in the same case in only about 3 in 100 — down from 100 in 100. [REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027]\n\n- **Routing around the groups changed.** Before, A30 led only into the first group (about 34, 36 and 28 in 100 of its outgoing transitions to A33, A35 and A36), and the first group led on into the second (about 30–37 in 100 per source activity, e.g. A33→A37 about 9). In the later window A30 leads to all six activities (about 12–19 in 100 each), the first group now flows directly to A31 (A33→A31 about 32, A35→A31 about 34, A36→A31 about 26 in 100; none of these edges was observed before), and first-group→second-group transitions have nearly vanished (about 1–2 in 100 per source). [DIR001, DIR002, DIR003, DIR004]\n\n- **Ordering constraints are unchanged where activities still meet.** A30 still precedes each of the six in every case containing them, each group still executes in mixed order (A33 before A35 in roughly half of joint occurrences in both windows; likewise A37/A38), and the executing group still precedes A31. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL025, REL026, REL027]\n\n- **Event positions shifted only mildly** (positions in the trace, not clock time): A30 now sits slightly later (mean 0.62 → 0.67 of trace length) and A31 slightly earlier (0.82 → 0.80); A39 moved earlier (0.77 → 0.73) and A33/A35/A36 later (about 0.68 → 0.74), consistent with the second group now starting after fewer preceding activities. [POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block A33/A35/A36 became skippable after A30. Before, every case ran A30 → A33/A35/A36 (mixed order) → A37/A38/A39 (mixed order) → A31. In the later window, about 53 in 100 cases skip the first block: A30 leads directly into A37/A38/A39, which then flow to A31, while in the remaining cases the first block runs and now connects to A31 instead of into the second block. This is a structural change, not merely a shift in how often existing paths are taken, because A30 now reaches A37/A38/A39 directly and A33/A35/A36 reach A31 directly — transitions unobserved in the earlier window — while the edges from the first into the second group have disappeared. [DIR001, DIR002, DIR003, DIR004, REL013, REL015, REL025, OCC001, OCC004]\n\nSupporting signs: the relation items show the exclusivity directly (cross-group co-occurrence falling from 100 to about 3 in 100, each group now all-or-nothing per case), the direction items show the new and vanished edges, and the occurrence items show the matching participation drop of all six activities; 43 items qualified against roughly 0.6 expected if nothing had changed, so chance cannot account for the set as a whole. The earlier window showed the exclusive pattern nowhere in 200 cases (no case with A37 but without A33), making a merely rare pre-existing path unlikely. The position shifts describe the same underlying trace behaviour and are not independent confirmations. [REL015, REL022, REL025, DIR001, DIR002, OCC001, OCC006]\n\nLimitation: the evidence cannot rule out that the two windows sample a different mix of case types (for example two pre-existing variants in changed proportions) rather than one modified process, and the branch split of about 47 vs 53 in 100 cases is estimated from single finite samples. [OCC001, OCC004]\n\nOther differences: a few rare outgoing transitions of about 1 in 100 or less appear only in the later window (for example A30→A45, A30→A46, A33→A08); they are too infrequent to interpret. [DIR001, DIR002]",
+  "case_id": "case_7f08b700b5dd4317",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

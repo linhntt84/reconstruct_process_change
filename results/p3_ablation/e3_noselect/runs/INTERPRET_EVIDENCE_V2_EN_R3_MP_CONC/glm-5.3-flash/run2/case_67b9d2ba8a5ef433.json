@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_67b9d2ba8a5ef433.json",
+  "evidence_sha256": "ec4f30bbac88b8956d41c028c7510e3c81a114855cbb738beb0be11a8b101888",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:31:28.549594+00:00",
+  "finished_at_utc": "2026-11-15T08:32:23.156334+00:00",
+  "latency_seconds": 54.61,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8018,
+    "prompt_tokens": 6759,
+    "total_tokens": 14777,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7080,
+      "text_tokens": 938
+    },
+    "cost": 0.00502285
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24590,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200), always at the same relative position about 83% of the way through the case. [OCC001, POS001]\n- In the earlier window, A05 and A07 both occurred in every case without a fixed order between them (A05 first in about 52 in 100 cases), and A03 followed them directly: A05 led to A03 in about 48 in 100 of its outgoing transitions and to A07 in about 52; A07 led to A03 in about 52 and to A05 in about 48. [REL004, DIR003, DIR004]\n- In the later window, the direct transitions from A05 and A07 into A03 are gone: A05 now leads to A01 in about 47 in 100 of its outgoing transitions (A07 in about 53), and A07 leads to A01 in about 53 (A05 in about 47), while A01's only observed outgoing transition goes to A03. [DIR003, DIR004, DIR001]\n- The relationship of A01 to the other activities flipped from never co-occurring to always co-occurring in a fixed order: before, A03 always appeared without A01; after, A01 and A03 co-occur in every case with A01 first, and A05 as well as A07 always precede A01. [REL001, REL002, REL003]\n- The distance from A05 and A07 to A03 grew by one step: before, A03 followed A05 at 1 step in about 48 in 100 cases and at 2 steps otherwise; after, it follows at 2 steps in about 47 and at 3 steps in about 53, with the same pattern for A07. [LAG001, LAG002]\n- A05 and A07 shifted slightly earlier in relative position (mean about 0.70 to about 0.58), consistent with an extra event now following them. [POS002, POS003]\n- Two behaviours stayed stable: A04's split between A05 and A07 (about 52/48 to about 53/47) and the unfixed mutual order of A05 and A07 (about 52/48 to about 53/47); both differences are small and unremarkable for an unchanged process. [DIR002, REL004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 was added as a new step, executed once per case between the A05/A07 stage and A03: in the earlier window cases ran A04, then A05 and A07 in either order, then A03 directly, whereas in the later window A01 runs after both A05 and A07 and before A03, so A03 is reached only through A01. [OCC001, DIR001, DIR003, DIR004, REL001, REL002, REL003, LAG001, LAG002, POS001]\n\nThe support is direct and consistent: the placement is shown relationally (A01 went from never co-occurring with A03, A05 and A07 to always co-occurring, positioned after A05/A07 and before A03), structurally (the A05→A03 and A07→A03 transitions were replaced by transitions into A01, and A01 always leads to A03), and by the exactly one-step increase in distance from A05/A07 to A03. Behaviours that this hypothesis predicts should stay stable did stay stable, namely A04's routing and the order-free A05/A07 pair. [POS002, POS003, REL004, DIR002]\n\nLimitations: all items describe one underlying difference, so they are not independent confirmations; zero participation in the earlier window only shows A01 was not observed there, so an extremely rare pre-existing occurrence of A01 cannot be ruled out; and each window is a finite sample of 200 traces. [OCC001]",
+  "case_id": "case_67b9d2ba8a5ef433",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

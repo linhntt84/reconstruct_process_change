@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "69730ee1df5dc594295b59417be96c5664e698844d449556f4515f3c596390f1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:41:23.663108+00:00",
+  "finished_at_utc": "2026-11-15T04:42:57.620694+00:00",
+  "latency_seconds": 93.96,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13604,
+    "prompt_tokens": 8382,
+    "total_tokens": 21986,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12491,
+      "text_tokens": 1113
+    },
+    "cost": 0.008059299999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46058,
+  "text": "### Observed differences\n\n- The once-per-trace \"middle\" activity changed: in the earlier window every trace contained A05 exactly once (200 of 200 traces, about 1 occurrence per trace), placed about halfway through the trace; in the later window A05 was not observed in any trace (0 of 200). [OCC002, POS002]\n- A01 shows the mirror image: it was not observed earlier (0 of 200 traces), while in the later window it occurs exactly once in every trace (200 of 200), again about halfway through the trace with no spread in position. [OCC001, POS001]\n- The link to A03 moved with it: earlier, A05 was followed by A03 in all of its observed outgoing transitions; in the later window A01 is followed by A03 in all of its outgoing transitions, and A03 now co-occurs with A01 (A01 first) in every trace instead of with A05 (A05 first). [DIR003, DIR001, REL002, REL007]\n- Incoming edges were rewired from A05 to A01: A02's outgoing transitions led to A05 in about 72 in 100 cases earlier and to A01 in about 75 in 100 later (its share to A06 stayed roughly a quarter); A07 led to A05 in about 71 in 100 earlier and to A01 in about 66 in 100 later; A06's share to A05 (about 29 in 100) is now a share to A01 of nearly the same size (about 30 in 100). [DIR002, DIR005, DIR004]\n- A06 is unchanged in participation: it occurs in every trace in both windows and always runs before the middle activity (A05 earlier, A01 later); its other outgoing shares shifted only slightly (to A02 about 34 vs 38 in 100, to A07 about 38 vs 33 in 100). [DIR004, REL004, REL008]\n- Relations with A05 flipped from \"always together\" to \"never together\": earlier, A05 co-occurred with A03 and with A06 (both preceding it) in every trace; later, A03 and A06 occur in traces without A05, and A01 occurs in every trace without A05. [REL007, REL008, REL003]\n- The surrounding optional activities kept similar participation: A02 ran in about 47 in 100 traces earlier and about 50 in 100 later (always before the middle activity); A07 ran in about 53 in 100 earlier and about 50 in 100 later. [REL001, REL005, REL006, REL009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A01 took over the structural role previously filled by A05: the mandatory, once-per-trace activity running between the A02/A06/A07 block and A03 changed from A05 to A01. In the earlier window A05 ran in every trace at the middle position and always led to A03, fed by A02, A06 and A07; in the later window A05 is unobserved, A01 runs in every trace at the same position, always leads to A03, and receives the corresponding transitions from A02 (about 75 in 100), A06 (about 30 in 100) and A07 (about 66 in 100). The support is direct — participation, positional and edge-level indicators all show the same substitution — and consistent across all 18 flagged items, a volume far above the roughly 0.13 items expected by chance for an unchanged process, so random re-splits of the two 200-trace windows cannot explain the pattern as a whole. The main limitation is that the activity codes are anonymous: the evidence shows that the occupant of this structural slot changed, but cannot establish whether A01 is a reconfigured or renamed successor of A05 or a genuinely different activity inserted into the same slot. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nOther differences: A02's participation edged up from about 47 to about 50 in 100 traces and A07's slipped from about 53 to about 50 in 100 alongside the substitution; the evidence does not establish whether these small shifts are part of the same change or sampling variation between the two windows. [REL001, REL005, REL006, REL009]",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

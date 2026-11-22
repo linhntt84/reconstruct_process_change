@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_ca2ce64391868894.json",
+  "evidence_sha256": "ea9d90be68942690a400886c4ba7c0dd76963f080c4cbf129abbc219e4a177cf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:13:30.001721+00:00",
+  "finished_at_utc": "2026-11-14T14:14:57.264631+00:00",
+  "latency_seconds": 87.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14007,
+    "prompt_tokens": 22763,
+    "total_tokens": 36770,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12775,
+      "text_tokens": 1232
+    },
+    "cost": 0.01041795
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43053,
+  "text": "### Observed differences\n\n- In the earlier window, A01 and A02 each occurred exactly once in all 200 traces — A01 always as the final event of the trace, A02 shortly before the end (mean relative position about 0.8) — and A03 occurred in all traces, about 2.1 times per trace, repeating within the trace in about 56 in 100 cases. In the later window, none of these three activities was observed in any trace. [OCC001, OCC002, OCC003, POS001, POS002, POS003]\n- A04 shows the reverse pattern: unobserved in the earlier window, it occurs exactly once in every later trace and is always the last event — the position A01 used to occupy. [OCC004, POS004]\n- The wiring around this block changed: before, every observed outgoing transition of A05 went to A02 and every observed outgoing transition of A08 went to A03, while A03 split its outgoing transitions between A06 (about 53 in 100) and A07 (about 47 in 100). In the later window, A05 leads directly to A04 in all observed transitions, and A08 leads to A06 (about 46 in 100) or A07 (about 54 in 100). [DIR001, DIR002, DIR003, DIR004]\n- The repetition cycle became one step shorter: gaps such as A06→A07 and A08→A05 moved from three event positions to two, A06→A05 from four to three, and the A06/A08 self-repeats from three to two; A08 is now followed by A07 after a single position, where A03 previously sat in between. [LAG001, LAG002, LAG003, LAG005, LAG007, LAG008]\n- Downstream of the cycle, A06 and A08 now appear in about 50 in 100 traces (about 56 in 100 before) with about 0.9 occurrences per trace (about 1.1 before), and A07's mean relative position moved earlier, from about 0.48 to about 0.30. A04 co-occurs with A05 and with A07 in every later trace, always after them. [OCC005, OCC006, POS006, POS007, POS008, REL019, REL021]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, cases run a restructured variant of the same flow: the cycle A03 → A06 → A08 → A03 and the closing sequence A05 → A02 → A01 are replaced by a shortened cycle A06 → A08 → (A06 or A07) followed by A07 → A05 → A04, so that A01, A02 and A03 are no longer executed and the new activity A04 always terminates the case. The signs are direct and mutually consistent: participation flipped from 100% to 0% for A01, A02 and A03 and from 0% to 100% for A04 at exactly A01's former final position; the only two observed successor changes (out of A05 and out of A08) tie A04 into the flow where A02 and A03 used to sit; and every lag inside the cycle shortened by exactly one step, which is what removing A03 from the cycle predicts. Each of these differences is larger than in about 199 of 200 random re-splits of the pooled traces. Two limitations remain: zero participation shows only that A01–A03 were not observed in the later sample, not that they were removed from the process definition, and the evidence cannot determine whether the replaced ending and the shortened cycle were one modification or two coordinated ones. [OCC001, OCC002, OCC003, OCC004, POS001, POS004, DIR002, DIR003, DIR004, LAG001, LAG003, LAG007, REL019, REL021]\n\nOther differences: the pairs among A05, A06, A07 and A08 shifted by only about 5 percentage points in co-occurrence and order shares (for example A05–A06 co-occurrence from about 56 to about 50 in 100 traces), differences about as large as those produced by random re-splits (strength about 0.49); they are consistent with the slightly lower participation of A06 and A08 rather than an independent change. [REL023, REL024, REL025, REL026, REL027]",
+  "case_id": "case_ca2ce64391868894",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

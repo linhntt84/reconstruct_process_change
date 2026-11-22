@@ -1,0 +1,21 @@
+### Observed differences
+
+- The branch taken after A15 flipped: earlier, about 85 in 100 of A15's observed outgoing transitions led to A19 and about 15 to A24; in the later window, about 82 in 100 lead to A24 and only about 18 to A19 [DIR001].
+- Participation swapped between two activity blocks: A16, A17, A18, A19 and A20 each appeared in about 85 in 100 traces earlier but in only about 18 in 100 later (mean occurrences per trace 0.85 → 0.18, no repeats in either window), while A21–A25 each rose from about 16 in 100 traces to about 82 in 100 (0.16 → 0.82) [OCC001–OCC010].
+- Relations with A15 moved in step: A15 co-occurred with A16–A20 in about 85 in 100 traces earlier versus about 18 in 100 later, and with A21–A25 in about 16 in 100 earlier versus about 82 in 100 later, with A15 preceding the block activities in both windows [REL001–REL010].
+- The two blocks are strict alternatives in both windows: earlier, about 85 in 100 traces contained A16–A20 without any of A21–A25; later, about 82 in 100 contained A21–A25 without any of A16–A20, and the blocks never occur together. Within whichever block runs, its activities still co-occur (A16–A20 together in about 18 in 100 later traces; A21–A25 together in about 82 in 100) [REL011, REL015, REL051, REL056, REL063].
+- A29 occurs in all traces in both windows but changed company: it co-occurred with A16–A20 in about 85 in 100 traces earlier, and with A21–A25 in about 82 in 100 later [REL020, REL055].
+- Elapsed time between consecutive completion events into A13 grew: on A11→A13 the median rose from about 0.9 to about 1.8 hours (mean 0.92 → 1.85 h, 50 → 45 observations); on A12→A13 from about 0.12 to about 0.29 hours (mean 0.16 → 0.40 h), with the number of such transitions up from 41 to 62 [TWAIT001, TWAIT002].
+- Smaller shifts rest on fewer observations: A22's outgoing shares redistributed (A21 from about 58% to about 31% of its outgoing transitions, A25 from about 13% to about 33%; 31 vs 164 transitions), and the position gaps A18→A16 and A18→A17 shifted between lag 1 and lag 2 (only 17 paired traces after) [DIR002, LAG001, LAG002].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the alternative branch executed after A15 flipped: earlier, cases ran the block A16–A20 (entered mainly via A15→A19, with A29 alongside) in about 85 in 100 traces and the block A21–A25 in about 15; in the later window the block A21–A25 (entered via A15→A24, with A29 alongside) runs in about 82 in 100 cases while A16–A20 run in only about 18. The blocks were and remain mutually exclusive, so this reads as a reversal of which branch is taken, not a reordering within one path [DIR001, OCC001–OCC010, REL001–REL010, REL015, REL051, REL055].
+
+Supporting signs: the control-flow family produced 79 qualifying items where about 0.84 would be expected from random re-splits of an unchanged process, so chance cannot account for the set as a whole; participation, successor and relation indicators show the same flip directly and consistently, with large supports (169 vs 36 traces for A16–A20, 31 vs 164 for A21–A25, 200 vs 200 for the relations). Many items describe the same underlying flip and are not independent confirmations [OCC001, OCC006, DIR001, REL001, REL015, REL051].
+
+An important competing explanation remains: the evidence cannot distinguish a changed routing decision after A15 from a shift in the mix of two pre-existing trace variants that differ exactly in this branch, and it covers only A15, A16–A25 and A29, so nothing can be said about the rest of the process [DIR001, OCC001, OCC006].
+
+Other differences: a consistent timing change on the transitions A11→A13 and A12→A13 — elapsed times between consecutive completions roughly doubled and rose about two-and-a-half-fold respectively, with more A12→A13 transitions observed; the time family yielded 2 items against about 0.006 expected by chance, making this a timing hypothesis in its own right, though it involves activities not covered by the structural items [TWAIT001, TWAIT002]. The minor redistribution of A22's outgoing shares and the shifts in A18→A16/A17 position spacing are too thinly supported to attach to the main hypothesis [DIR002, LAG001, LAG002].

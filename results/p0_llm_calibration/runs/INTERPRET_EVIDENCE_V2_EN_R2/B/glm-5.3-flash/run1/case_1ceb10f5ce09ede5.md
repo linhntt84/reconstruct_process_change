@@ -1,0 +1,20 @@
+### Observed differences
+
+- Two groups of activities swapped how often they run. In the earlier window, A20, A21, A22 and A23 each appeared in about 79 of 100 traces (157 of 200), while A16, A17, A18 and A19 each appeared in about 22 of 100 (43 of 200). In the later window, A16–A19 each appeared in about 77 of 100 traces (154 of 200) and A20–A23 in about 23 of 100 (46 of 200). [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, OCC008]
+- The routing at A15, which appears in every trace, shifted accordingly: earlier, about 79 of its observed outgoing transitions went to A23 and about 21 to A19; in the later window, about 77 went to A19 and about 23 to A23. [DIR001]
+- The two groups act as alternatives that never run together: for cross-group pairs such as A16 with A20, every trace contains one side but not the other; earlier about 79 of 100 traces had A20 without A16, later about 77 of 100 had A16 without A20. [REL012, REL019, REL025, REL030]
+- Ordering within the branches is unchanged between the windows: A15 precedes all eight branch activities; A19 precedes A16, A17 and A18; A23 precedes A20, A21 and A22; A16/A17/A18 and A20/A21/A22 each occur in both orders in similar shares, so they have no fixed order among themselves. Only the shares with which the two branches run changed. [REL001, REL005, REL011, REL018, REL024, REL037, REL040, REL042, REL009, REL017, REL035, REL039]
+- A27 appears in every trace in both windows and co-occurs with whichever branch executes; its co-occurrence share simply followed the branch shares (with A16: about 22 of 100 earlier versus about 77 later; with A20: about 79 earlier versus about 23 later). [REL016, REL038]
+- All 44 evidence items show the same difference size (0.555 on the share scale), and each difference exceeds about 99.5% of random re-splits of the pooled traces. [OCC001, DIR001, REL001, REL035]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a shift in how often two existing alternative paths after A15 are taken. In the earlier window, the path entering A23 and covering A20, A21 and A22 was taken in about 79 of 100 traces, while the path entering A19 and covering A16, A17 and A18 was taken in about 22 of 100; in the later window the shares reversed to about 77 and 23. The activities, their order within each path, and the mutual exclusivity between the paths are the same in both windows, so this is a change in the frequencies with which existing paths are chosen, not a replacement of one path by another or a reordering of activities. [DIR001, OCC001, OCC005, REL001, REL005, REL012]
+
+Supporting signs: the routing change is observed directly at A15; the participation changes of the two groups mirror each other and match the routing shares; the relational items confirm the paths never run together and that within-path order is stable; and 44 qualifying items is many times the roughly 0.67 expected if nothing had changed, so chance sampling cannot explain the set as a whole. Note, however, that many items describe the same trace behaviour (the eight occurrence items and the relation items overlap heavily), so they are consistent rather than independent confirmations. [DIR001, OCC001, OCC005, REL012, REL035]
+
+Limitations: the shares are estimated from two samples of 200 traces each; the evidence cannot distinguish a change in the routing itself from a shift in the mix of cases reaching this choice point, which would look identical in these indicators, and it offers no explanation of why the shares moved. [DIR001, OCC001, OCC005]
+
+Other differences: the changed relations of A27 with the branch activities (co-occurrence with A16 rising from about 22 to about 77 of 100, and with A20 falling from about 79 to about 23) mirror the same branch-share shift rather than an independent change. [REL016, REL038]

@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_119be22bafaf14b3.json",
+  "evidence_sha256": "f82a4b82b107366b6de8876403838135a01d40773f3776a5b07a7d4569ff70a8",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:25:04.488530+00:00",
+  "finished_at_utc": "2026-11-15T01:25:21.612703+00:00",
+  "latency_seconds": 17.12,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3274,
+    "prompt_tokens": 4788,
+    "total_tokens": 8062,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2677
+    },
+    "cost": 0.0015190240000000001
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 8792,
+  "text": "### Observed differences\n\n- In the later window, after activity A26, the share of transitions to A31 dropped from about 31% to about 17%, while transitions to A30 rose from about 21% to 27% and to A32 from 22% to 30%. [DIR001]\n- After A30, the share going to A31 rose from about 40% to 62%, while the share to A27 fell from about 60% to 38%. [DIR002]\n- After A31, the share going to A27 rose from about 40% to 62%, while the share to A30 fell from about 60% to 38%. [DIR003]\n- The distance (in event positions) between A26 and A30 decreased (more often 1 step apart), while between A26 and A31 increased (more often 2 steps apart); similarly, A30 and A27 became farther apart, and A31 and A27 became closer. [LAG001, LAG002, LAG003, LAG004]\n- The elapsed time between A01 and A03 increased from a mean of about 0.86 hours to about 1.69 hours (median from 0.84 to 1.75). [TWAIT001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe main hypothesis is that the ordering between activities A30 and A31 reversed. In the earlier window, A31 typically preceded A30 (A31→A30 was more common than A30→A31), and the typical path from A26 went A26→A31→A30→A27. In the later window, A30 typically precedes A31 (A30→A31 more common), and the typical path is A26→A30→A31→A27. This is supported directly by the successor changes (DIR002, DIR003) and by the lag changes (LAG001–LAG004), which show A26–A30 and A31–A27 becoming closer while A26–A31 and A30–A27 become farther. The control-flow evidence is far more numerous than expected by chance (7 items vs. 0.31 expected), so it is unlikely to be a sampling artefact.\n\nOther differences: The elapsed time between A01 and A03 increased substantially (about doubled). This is a separate timing change, not part of the ordering hypothesis. The timing evidence is also much stronger than chance (1 item vs. 0.008 expected), but it involves a different pair of activities and does not interact with the control-flow change.\n\nA competing explanation that cannot be fully ruled out is that the observed shift in A30/A31 ordering is a consequence of a broader rerouting that also affects A32 and A33, but the evidence does not directly show how those activities fit into the new path.",
+  "case_id": "e4a_119be22bafaf14b3",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

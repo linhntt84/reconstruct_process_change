@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_abf3fabffcbfa123.json",
+  "evidence_sha256": "04f56ecc73dcad223671f54a12bbcbadfc8922e9ea998c9848d609a3f9e4e1ae",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:13:52.096308+00:00",
+  "finished_at_utc": "2026-11-15T12:15:27.120103+00:00",
+  "latency_seconds": 95.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12257,
+    "prompt_tokens": 16542,
+    "total_tokens": 28799,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10958,
+      "text_tokens": 1299
+    },
+    "cost": 0.008609799999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38323,
+  "text": "### Observed differences\n\n- Three activities — A32, A33 and A38 — each ran in about half of the earlier executions (roughly 97–98 of 200 traces, mean ≈0.49 occurrences per trace); in the later window each appears in only about 1 in 200 traces. [OCC005, OCC006, OCC007, POS004, POS005, POS006]\n- A27 moved from optional to near-mandatory: earlier it appeared in about 52 in 100 traces (mean ≈0.52 occurrences per trace); in the later window it appears in about 995 in 1000 traces, almost always exactly once (mean ≈1.0). [OCC004]\n- Routing out of A26 (present in essentially every trace in both windows) collapsed onto A27: A27 took about 50% of A26's outgoing transitions earlier versus about 98% in the later window, while A32, A33 and A38 together fell from about 48% to about 0.5%. [DIR006]\n- The distance from A26 to A28 consolidated: earlier A28 followed A26 two positions later in about 49% of traces and four positions later in about 46%; in the later window about 95% follow at distance two and almost none at distance four. [LAG003]\n- A04 became much rarer and, when it occurs, sits later in the trace: participation fell from about 68% to about 22% of traces (mean occurrences 0.71 → 0.24), and its mean relative position rose from about 0.21 to about 0.40, with the upper quartile jumping from about 0.19 to 0.70. [OCC002, POS001]\n- A14 (present in every trace in both windows) now leads mostly to A15 instead of A04: A04's share of A14's outgoing transitions fell from about 64% to about 10% while A15's rose from about 36% to about 82%; immediate A14→A04 succession fell from about 99% to about 72% of observed pairs, while immediate A14→A15 rose from about 19% to about 47%. [DIR004, LAG001, LAG002]\n- A02 and A08 occur in more traces in the later window (A02 about 5% → 15%; A08 about 5% → 21%) with substantially reshuffled outgoing transitions; these profiles rest on few observations (about 8–10 outgoing transitions earlier). [OCC001, OCC003, DIR001, DIR003]\n- A15's dominant transition to A16 is essentially unchanged (about 98% → 92% of its outgoing transitions), as are the positions of A14 and A28. [DIR005, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative branch after A26 — the activities A32, A33 and A38, each of which ran in about half of the earlier executions — was removed or bypassed, with execution consolidating onto A27, which became a mandatory once-per-trace step; as a result, A28 now follows A26 at a fixed short distance (two positions in about 95% of later traces versus a 49%/46% split between distances two and four earlier). Because the three branch activities are nearly absent in the later window, this reads as activities being dropped or a block being bypassed, not as a re-weighting between surviving paths. The change is shown directly and consistently by occurrence, routing, position and gap indicators; the A26 routing profile rests on about 200 traces per window, and the screening produced 32 qualifying items against roughly 0.64 expected if nothing had changed, so the pattern as a whole is not what random re-splits produce. Limitations: the later-window profiles of A32, A33 and A38 each rest on a single trace, so their post-change routing is unobservable, and zero participation only means the activities were not observed — an extremely rare continuation cannot be ruled out; several items (the three occurrence, three position and several gap items) describe the same underlying traces and are not independent confirmations. [OCC004, OCC005, OCC006, OCC007, DIR006, POS004, POS005, POS006, LAG003]\n\nOther differences: A14 now leads directly to A15 in most executions, and A04 participates far less often (about 68% → 22% of traces), sitting later in the trace when it does occur; A04's own outgoing transitions also spread (its A15 share fell from about 90% to about 48%). [OCC002, DIR002, DIR004, LAG001, LAG002, POS001] A02 and A08 participate more often with reshuffled successors, though on few observations. [OCC001, OCC003, DIR001, DIR003] A competing explanation the evidence cannot fully exclude is that A32, A33 and A38 still occur but were simply not sampled in the later window; the data only show they were observed in about 1 in 200 traces rather than not at all.",
+  "case_id": "case_abf3fabffcbfa123",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

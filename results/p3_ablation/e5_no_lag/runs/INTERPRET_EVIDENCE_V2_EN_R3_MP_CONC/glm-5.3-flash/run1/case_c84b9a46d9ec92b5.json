@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_c84b9a46d9ec92b5.json",
+  "evidence_sha256": "b1132633829bf938bbf80df95b1086657696c3f160bcff7b1f2b8b7a9b8df8a1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:16:43.609870+00:00",
+  "finished_at_utc": "2026-11-14T13:17:55.416593+00:00",
+  "latency_seconds": 71.81,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11884,
+    "prompt_tokens": 14159,
+    "total_tokens": 26043,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10628,
+      "text_tokens": 1256
+    },
+    "cost": 0.00806585
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38277,
+  "text": "### Observed differences\n\n- Three activities nearly vanish in the later window. A19 appears in about 37 in 100 traces before (73 of 200) but in only 1 of 200 after; A20 appears in about 31 in 100 (62 of 200) before and in none after; A25 appears in about 35 in 100 (70 of 200) before and in none after. [OCC001, OCC002, OCC003]\n- Before the change, these three were largely alternatives to one another: each pair co-occurred in only about 1 in 100 traces, while each appeared alone in roughly 30–36 in 100. In the later window, traces containing any of them are almost unobserved. [REL001, REL003, REL008]\n- The flow into the three activities changed at A41. Before, about 86 in 100 of A41's outgoing transitions led to one of A19 (about 29 in 100), A25 (about 32 in 100) or A20 (about 26 in 100); in the later window, about 86 in 100 of A41's outgoing transitions lead directly to A26. [DIR005]\n- The flow out of the three activities previously ran almost always to A26 (about 95–97 in 100 of their outgoing transitions). In the later window, A20 and A25 have no observed outgoing transitions (the activities were not observed), and A19's single occurrence is followed by A12. [DIR001, DIR002, DIR004]\n- A26, A31 and A41 still occur in essentially every trace in both windows. Before, A19, A20 or A25 co-occurred with them in about 31–37 in 100 traces (typically A41 first, then the activity, then A26 or A31); in the later window such co-occurrence is at most about 1 in 200. A24, which previously followed one of the three in roughly 16–17 in 100 traces, now occurs almost only without them. [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, REL002, REL007, REL012]\n- Routing at A21 shifted: of A21's outgoing transitions, the share to A24 rose from about 14 in 100 to about 35 in 100, while the share to A31 fell from about 54 in 100 to about 38 in 100 (A21 observed in 114 vs 101 traces). [DIR003]\n- Minor: A26's mean relative position moved slightly earlier (about 0.39 to 0.37) and A41's slightly later (about 0.32 to 0.33); these are event positions, not clock times. [POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window the branch in which A41 was followed by one of the three alternatives A19, A20 or A25 — each of which led almost invariably to A26 — is no longer executed: A41 now leads directly to A26 in about 86 in 100 of its outgoing transitions, while A19, A20 and A25 fell from roughly 31–37 in 100 traces each to at most 1 in 200. [OCC001, OCC002, OCC003, DIR005, DIR001, DIR002, DIR004]\n\nSupporting signs: the occurrence collapse rests on 62–73 traces per activity in the earlier window, so it is not a rare-variant artefact; A41's redirection is observed in essentially all traces in both windows; A26, A31 and A41 persist in every trace while their co-occurrence with the three activities collapsed; and the screening produced 28 qualifying items against roughly 0.55 expected for an unchanged process, so the pattern as a whole is far beyond what random sampling typically produces. [DIR005, REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015]\n\nLimitations: zero participation only means the activities were not observed — the evidence cannot rule out that A19, A20 and A25 still execute in a residue below about 1 in 200 traces rather than having been removed outright, and A19's after-profile rests on a single trace. Several items describe the same underlying disappearance, so they are not independent confirmations. [OCC002, OCC003, DIR001]\n\nOther differences: the shift in A21's routing shares (A24 up, A31 down) is a change in how often existing paths from A21 are taken and is not explained by the disappearance of A19, A20 and A25. [DIR003] The small relative-position shifts of A26 and A41 are consistent with the shorter flow between them but, being position-based, do not by themselves establish a move in clock time. [POS004, POS005]",
+  "case_id": "case_c84b9a46d9ec92b5",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

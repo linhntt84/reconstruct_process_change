@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "38c0cb648c63b567a7d9d25c3617bd223482c933578836010941b3ed9aed2b01",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:00:38.713934+00:00",
+  "finished_at_utc": "2026-11-15T07:01:49.404227+00:00",
+  "latency_seconds": 70.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10357,
+    "prompt_tokens": 8305,
+    "total_tokens": 18662,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9326,
+      "text_tokens": 1031
+    },
+    "cost": 0.006424249999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32835,
+  "text": "### Observed differences\n\n- The execution order between two groups of activities flipped. In the earlier window, A30, A31 and A36 always ran before A21 and before A22 (in 200 of 200 traces); in the later window, A21 and A22 each ran before A30, A31 and A36 in about 99 in 100 traces. All six activities still occur together in every trace in both windows, so none of them appeared, disappeared or became optional. [REL001, REL002, REL003, REL004, REL005, REL006]\n\n- The wiring around the A30/A31/A36 group changed at all three boundaries. In the earlier window, A20's outgoing transitions spread over A30 (about 40 in 100), A31 (about 33) and A36 (about 28); in the later window, about 99 in 100 go to A22. A21 earlier always led to A25; in the later window it leads to A30 (about 36 in 100), A31 (about 33) and A36 (about 30), with A25 almost never taken. Each of A30, A31 and A36 earlier led on to A22 in roughly 28–38 in 100 of its transitions; in the later window A22 is no longer observed as their successor and A25 appears there instead (about 30–36 in 100). The transitions among A30, A31 and A36 themselves stayed broadly similar. [DIR001, DIR002, DIR003, DIR004, DIR005]\n\n- Event positions moved consistently with this: A21 and A22 now appear earlier in the trace (mean relative position about 0.62 to about 0.53 for A21, and about 0.47 to about 0.38 for A22), while A30, A31 and A36 appear later (about 0.41 to about 0.59 each). [POS001, POS002, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of three activities A30, A31 and A36 and the A22–A21 part of the flow exchanged their order: in the earlier window a trace ran A20 → (A30/A31/A36 in varying internal order) → A22 → … → A21 → A25, while in the later window it runs A20 → A22 → … → A21 → (A30/A31/A36) → A25. A20 now enters A22 directly, A21 now opens the block, and the block now exits to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006]\n\nThe order change is shown directly and almost without exception for every activity pair between the two groups, moving from an exclusive block-first order to an exclusive pair-first order; the successor changes at the block's entry and exit match the same rewiring, and the position shifts point the same way. Since every involved activity still occurs in all traces in both windows and the internal shares within the block are broadly stable, this is a reordering of existing activities rather than activities being added, removed or skipped. Sixteen control-flow items qualified in screening, against roughly 0.35 expected for an unchanged process, so the ensemble cannot be explained by random sampling between the windows. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005]\n\nLimitations: positions are measured by event order rather than clock time, and the evidence cannot tell whether the block moved later, the A22–A21 segment moved earlier, or both — only that their order exchanged; changes involving activities not covered by this evidence would also not be visible here. [POS001, POS002, POS003, POS004, POS005]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

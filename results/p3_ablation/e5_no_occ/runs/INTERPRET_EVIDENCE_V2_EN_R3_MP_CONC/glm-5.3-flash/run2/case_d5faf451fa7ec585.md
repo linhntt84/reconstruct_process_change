@@ -1,0 +1,15 @@
+### Observed differences
+
+- In the earlier window, every case contained exactly one of three alternative activities: A14 in about 32 in 100 cases, A15 in about 28 in 100 and A20 in about 40 in 100; the three never occurred in the same case. In the later window, none of the three appears in any of the 200 traces — for example, the share of cases containing neither A14 nor A15 rises from 40 in 100 to 100 in 100. [POS001, POS002, POS003, REL001, REL002, REL006]
+- Before, the transitions out of A22 were split across four successors (about 55 in 100 led to A23, 21 to A20, 13 to A14 and 11 to A15); in the later window, A22 leads to A23 in every observed case. [DIR004]
+- Before, A23 was followed by A24 in about 46 in 100 of its outgoing transitions and by one of A14/A15/A20 in about 54 in 100; in the later window, A23 leads to A24 in every observed case. [DIR005]
+- Before, A22 and A23 were directly consecutive in about 55 in 100 cases (one activity sat between them otherwise), and A23 and A24 were directly consecutive in about 46 in 100; in the later window both pairs are directly consecutive in all cases, and the distance from A22 to A24 shortens from three event positions to two. [LAG001, LAG002, LAG003]
+- A22, A23 and A24 still occur in every trace in both windows; their relative positions shift only slightly (A22's median from about 0.46 to 0.48, A24's from about 0.58 to 0.56), consistent with the traces becoming shorter rather than with a relocation in clock time. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the alternative block consisting of A14, A15 and A20 — which previously ran exactly once per case, between A22 and A24 and in either order relative to A23 — is no longer executed in the later window, leaving A22 → A23 → A24 as a fixed, back-to-back sequence. Before, A22 was followed by A23 in about 55 in 100 cases and otherwise by one of the three alternatives, which could precede or follow A23 (both orders occurred) before the case reached A24; after, none of the three alternatives appears in any trace, A22 and A23 each have only a single observed successor, and all observed distances collapse to one step. Because the three activities are entirely absent in the later window, this is a removal or skipping of a branch, not a shift in how often existing paths are taken. The screening produced 25 qualifying control-flow items where roughly 0.24 would be expected if nothing had changed, so the set of differences is far too large to attribute to random sampling, and the routing, co-occurrence and distance indicators all point to the same structural difference. [DIR004, DIR005, LAG001, LAG003, REL001, POS001]
+
+Limitations: the many items largely reflect one underlying difference rather than independent confirmations, and the evidence cannot distinguish the alternatives being removed from the process, becoming optional options that were simply not triggered in this sample, or being replaced by activities outside the analysed units — zero participation only means the activities were not observed. [POS001, POS002, POS003, REL001, REL002, REL006]

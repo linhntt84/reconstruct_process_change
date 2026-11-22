@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_f09c9f3e04c59712.json",
+  "evidence_sha256": "315e65f9f5ed08c1a1ccaa3fb376c9d4c04f7ebf5e5e3d59d14438ebba515000",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:37:41.169698+00:00",
+  "finished_at_utc": "2026-11-15T11:41:18.246839+00:00",
+  "latency_seconds": 217.08,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29607,
+    "prompt_tokens": 14206,
+    "total_tokens": 43813,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27854,
+      "text_tokens": 1753
+    },
+    "cost": 0.016934400000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 95466,
+  "text": "### Observed differences\n\n- In the earlier window, traces ran in the order A35 → the three activities A15, A17 and A18 (all three present in every trace, in varying order) → A20 → A24 → one of A14/A16/A19 → A25. All observed outgoing transitions of A35 went to the trio (about 29 in 100 to A15, 39 to A17, 33 to A18), the trio's transitions led among themselves or exited to A20 (about 31–39 in 100), A24's transitions went only to A14, A16 or A19 (about 31, 38 and 32 in 100), and every observed outgoing transition of A14, A16 and A19 went to A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- In the later window, the two groups sit on opposite sides of the A20–A24 span: A35 now leads to one of A14/A16/A19 (about 44 in 100 to A14, 29 to A16, 28 to A19), each of which leads on to A20; A24 now leads to one of A15/A17/A18 (about 32–35 in 100 each), and the trio's transitions now exit to A25 (about 33 in 100 each) instead of to A20. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n- Every one of the 21 observed cross-pairs — each of A14/A16/A19 against each of A15/A17/A18, A20 and A24, and each of A15/A17/A18 against A20 and A24 — reversed its fixed relative order. For example, A15 preceded A20 in 100% of earlier traces and follows it in 100% of later traces; A24 preceded A14 in the 31% of earlier traces containing A14, while A14 precedes A24 in the 43.5% of later traces containing it; A17 preceded A19 in about 32 in 100 earlier traces and now follows it in about 28 in 100. [REL001–REL021]\n- Event distances agree with this exchange: A25 followed A24 two event positions later in all 200 earlier traces (one activity in between) and four positions later in the later window (three in between), while A20 followed A35 four positions earlier-window and two positions later-window. [LAG001, LAG002]\n- The composition of the single-activity step also shifted: A14 took part in about 31 in 100 earlier traces and about 44 in 100 later traces, while A16 fell from about 38 to 29 in 100 and A19 from about 32 to 28 in 100; the three shares still sum to one step per trace. [OCC001, DIR003, DIR006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening tested 83 control-flow units and 32 items qualified, against roughly 0.41 expected if nothing had changed — a volume far beyond what an unchanged process produces — and every item's difference was larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, DIR001–DIR008, REL001–REL021, LAG001–LAG002]\n\nThe evidence supports the possibility that the three-activity group A15–A17–A18 and the single-activity step (one of A14, A16, A19) exchanged their positions on either side of the A20–A24 span: earlier the group ran between A35 and A20 and the step between A24 and A25, whereas in the later window the step runs between A35 and A20 and the group between A24 and A25, now feeding A25. The signs are direct and mutually consistent: all 21 cross-pairs flipped from one fixed order to the other (for example A15 before A20 in 100% of earlier traces, after it in 100% of later traces), the successor profiles inverted (A14/A16/A19 now lead to A20 rather than A25; the trio exits to A25 rather than A20; A24's successors changed from the step to the group and A35's from the group to the step), and the position gaps moved from 2/4 to 4/2 as the swap predicts. Because the trio, A20 and A24 occur in all traces in both windows and A14/A16/A19 in about 28–44 in 100, this is a reordering of activities that were present throughout, not activities appearing or disappearing. [REL001–REL021, DIR001–DIR008, LAG001, LAG002, OCC001]\n\nThe evidence cannot show the order between A20 and A24 themselves, since no relational item covers that pair, so their relative placement is inferred indirectly; nor can it rule out that the internal visiting order of the A15–A17–A18 group changed as well, since no relational item covers pairs inside the group and its internal transition shares shifted somewhat (which with 200 traces per window may be sampling variation). [DIR002, DIR004, DIR005]\n\nOther differences: within the single-activity step the choice moved toward A14 (about 31 → 44 in 100 traces, with A16 and A19 declining to about 29 and 28 in 100), and transition shares inside the trio shifted modestly (for example A15 → A17 from about 25% to 38%, and A18 → A15 from about 33% to 39% of observed outgoing transitions); these are frequency shifts on top of the relocation and may partly reflect sampling variation. [OCC001, DIR003, DIR006, DIR008, DIR002, DIR004, DIR005]",
+  "case_id": "case_f09c9f3e04c59712",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

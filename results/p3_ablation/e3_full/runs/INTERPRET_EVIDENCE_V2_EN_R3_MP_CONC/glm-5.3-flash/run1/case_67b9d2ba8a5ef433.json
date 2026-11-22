@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_67b9d2ba8a5ef433.json",
+  "evidence_sha256": "1870b502959f738efb00c549a29a812da9aba0c7c4ad7f906dbbd871890eb32a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:13:30.519720+00:00",
+  "finished_at_utc": "2026-11-16T01:15:04.541136+00:00",
+  "latency_seconds": 94.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11831,
+    "prompt_tokens": 11515,
+    "total_tokens": 23346,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10614,
+      "text_tokens": 1217
+    },
+    "cost": 0.007642749999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 35018,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in the earlier window (0 of 200 traces); in the later window it occurs in all 200 traces, exactly once per case, with no repetitions. [OCC001]\n- In the later window, A01 always sits at the same late position in the trace (normalised position about 0.83, with no variation across cases); it had no observed position earlier because it never occurred. [POS001]\n- In the later window, every observed outgoing transition of A01 goes to A03; earlier, A01 had no observed outgoing transitions. [DIR001]\n- Earlier, A02, A03, A04, A05, A06 and A07 each occurred without A01 in 100% of traces; in the later window each co-occurs with A01 in 100% of traces, with A02, A04, A05, A06 and A07 running before A01, and A01 running before A03. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Routing into A03 was redirected: earlier, A05's outgoing transitions went to A07 (about 52%) or A03 (about 48%), and A07's went to A03 (about 52%) or A05 (about 48%); in the later window A05 leads to A07 (about 53%) or A01 (about 47%), and A07 leads to A01 (about 53%) or A05 (about 47%). [DIR003, DIR004]\n- Measured distances to A03 each grew by one step: A04→A03 from 3 to 4, A06→A03 from 4 to 5, A05→A03 from 1–2 to 2–3, and A07→A03 from 1–2 to 2–3. [LAG003, LAG007, LAG006, LAG010]\n- The normalised positions of A04, A05, A06 and A07 each shift slightly earlier (by about 0.03–0.12), consistent with traces now containing one more event while these activities keep their step order. [POS002, POS003, POS004, POS005]\n- The rest of the control flow is stable: A04 still splits to A05/A07 at about 52/48, the A05–A07 pair still occurs in both orders at about 52/48, and the other measured lags shift by only about one percentage point with low empirical strength (about 0.07), i.e. within what random re-splits of unchanged data produce. [DIR002, REL007, LAG001, LAG002, LAG004, LAG005, LAG008, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new step, A01, was added to the sequence between the A05/A07 block and A03. In the earlier window a case ran A02, A06 and A04 early, then A05 and A07 in either order, with A03 following the pair; in the later window A01 runs once after that block and immediately before A03. The supporting signs are direct and consistent: A01 goes from 0 to 200 of 200 traces at a fixed late position and with a single fixed successor (A01→A03 in 100% of its transitions); A02, A04, A05, A06 and A07 all precede A01 in 100% of later traces; the outgoing transitions of A05 and A07 that previously reached A03 now reach A01; and every measured distance to A03 increases by exactly one step while distances among the other activities stay unchanged. Note that these many items largely re-describe one underlying trace-level difference rather than confirming it independently. [OCC001, POS001, DIR001, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, LAG003, LAG006, LAG007, LAG010]\n\nLimitations: positions and lags are measured in event positions, not clock time, so the hypothesis concerns sequence placement only, not timing; and because activity identifiers are anonymous codes, the evidence cannot fully rule out that A01 corresponds to a re-labelled existing step, although no other activity disappeared from the traces. [POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005, REL006]\n\nOther differences: only small fluctuations of about one percentage point in A04's routing split and in the A05–A07 ordering and lags, whose low empirical strength (about 0.07) is consistent with sampling variation rather than change. [DIR002, REL007, LAG001, LAG002, LAG004, LAG005, LAG008, LAG009]",
+  "case_id": "case_67b9d2ba8a5ef433",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

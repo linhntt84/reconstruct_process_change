@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "fc69cd7129090acc5f7f4fb2183ab7a95bd71374b325077f1dc086abdd35b7f6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:19:59.696440+00:00",
+  "finished_at_utc": "2026-11-15T10:21:52.136956+00:00",
+  "latency_seconds": 112.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16080,
+    "prompt_tokens": 11636,
+    "total_tokens": 27716,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14742,
+      "text_tokens": 1338
+    },
+    "cost": 0.0097854
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 50347,
+  "text": "### Observed differences\n\n- In the earlier window the segment runs A22 → A23 → A24 back-to-back: A22's outgoing transitions go to A23 in all 200 traces, A23's go to A24 in all 200, and the A22→A23 and A23→A24 step distances are always 1. [DIR004, DIR005, LAG001, LAG003]\n- In the later window, three activities that were not observed before appear: A15 in about 41 in 100 traces, A14 in about 29 in 100 and A20 in about 30 in 100. Each occurs at most once per trace (mean occurrences equal trace participation, with no repeats). [OCC001, OCC002, OCC003]\n- The three never occur together: no later trace contains two of them, and their shares sum to about 995 in 1000, so almost every later trace contains exactly one of them. [REL001, REL002, REL006]\n- Routing around them changed: A22 now leads to A23 in only about 44 in 100 of its outgoing transitions (previously all), and to A15, A20 or A14 in about 24, 17 and 16; A23 now leads to A24 in about 57 in 100 (previously all) and to A15, A14 or A20 in about 18, 14 and 12. Each new activity leads to A23 in about 53–58 in 100 of its outgoing transitions and to A24 in about 42–47. [DIR004, DIR005, DIR001, DIR002, DIR003]\n- Each new activity is always preceded by A22 and always followed by A24 (the same holds for A15 and A20), while relative to A23 both orders occur (A14 before A23 in about 16 in 100 traces, A23 before A14 in about 14, with similar splits for A15 and A20). [REL003, REL004, REL005, REL007, REL009, REL010, REL012]\n- Step distances shifted accordingly: A22→A23, previously always 1 step apart, is now 1 step in about 44 in 100 traces and 2 steps in about 56; A22→A24 is now always 3 steps (previously 2); A23→A24 is 1 step in about 57 and 2 steps in about 44. The new activities sit near the middle of the trace (mean relative position about 0.51), and A22's mean position shifts slightly earlier (about 0.48 to 0.46). [LAG001, LAG002, LAG003, POS001, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, an extra step is executed inside the A22 → A23 → A24 segment in almost every trace: exactly one of three mutually exclusive activities — A15 (about 41 in 100 traces), A14 (about 29) or A20 (about 30) — appears either directly after A22, before A23 (about 56 in 100 of the traces with an extra step), or between A23 and A24 (about 44 in 100), while A22, A23 and A24 themselves keep their roles and appear in essentially all traces in both windows. [OCC001, OCC002, OCC003, REL001, REL002, REL006, LAG001, LAG003, DIR004, DIR005]\n\nSupporting signs: the number of qualifying items (27) is many times the roughly 0.4 expected for an unchanged process, so the pattern as a whole is not what random re-splits produce. The indicators also agree on one specific placement rather than merely on \"more activity\": each new activity always follows A22 and always precedes A24, splits around A23 in both directions, A22's and A23's successor profiles move from a single target to about 44 and 57 in 100, and the A22→A24 distance grows from always 2 steps to always 3. Support bases are large (58–200 observations per item) and every item's difference exceeds about 199 of 200 reference comparisons. [DIR004, DIR005, REL003, REL005, LAG001, LAG002, LAG003, OCC002]\n\nLimitations: the evidence cannot rule out that A14, A15 and A20 already existed as a rarely executed path that the 200 earlier traces did not contain — a variant present at only about 1 in 100 cases could go unobserved — so the change may be a sharp rise in an existing rare variant rather than a newly added one, even though a behaviour covering about 995 in 1000 later traces is hard to explain as a sampling difference alone. The evidence also concerns executed behaviour only and cannot show whether the underlying process definition itself was modified. [OCC001, OCC002, OCC003, LAG002]",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

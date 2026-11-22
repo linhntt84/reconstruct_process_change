@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_76bd72de6b5bbb58.json",
+  "evidence_sha256": "8c4ace0748b1462e2b923d2f6df98f7f340c4d3cfd8a25816880e256bbcdc9e0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:27:33.862316+00:00",
+  "finished_at_utc": "2026-11-16T01:31:12.440014+00:00",
+  "latency_seconds": 218.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 30456,
+    "prompt_tokens": 100761,
+    "total_tokens": 131217,
+    "completion_tokens_details": {
+      "reasoning_tokens": 28433,
+      "text_tokens": 2023
+    },
+    "cost": 0.03034215
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 88718,
+  "text": "### Observed differences\n\n- In the later window, A01 appears for the first time: it was not observed in any of the 200 earlier traces, but occurs in about 50 in 100 later traces (99 of 200), with about two executions per trace that contains it and repeats within the same trace in about 28 in 100 traces; it sits around 40% into the trace (median relative position about 0.38, in event order). [OCC001, POS001]\n- In the earlier window, A03 showed almost exactly this profile — present in about 45 in 100 traces (90 of 200), about two executions per containing trace, repeats in about 25 in 100 traces, median relative position about 0.39 — while in the later window it is not observed at all (0 of 200). [OCC003, POS003]\n- The direct edges moved with it: before, A09's outgoing transitions led mainly to A03 (about 52 in 100) and A11 (about 32 in 100); after, they lead mainly to A01 (about 55 in 100) and A11 (about 28 in 100). A11 routed about 22 in 100 of its outgoing transitions to A03 before and about 18 in 100 to A01 after, and A02, A05, A07, A10, A12 and A14 each lost A03 and gained A01 among their successors (e.g., A02: A03 about 6 in 100 before, A01 about 17 in 100 after). [DIR006, DIR008, DIR002, DIR004, DIR005, DIR007, DIR010]\n- A01's outgoing profile in the later window (A11 about 46 in 100, then A12, A09 and A10 at 15–16 in 100) closely matches A03's outgoing profile in the earlier window (A11 about 45 in 100, then A10, A09 and A12 at 14–18 in 100). [DIR001, DIR003]\n- A01 and A03 never occur in the same trace in either window (before, A03 appeared without A01 in 45 in 100 traces; after, A01 appears without A03 in 50 in 100), and A01's co-occurrence and ordering pattern with the other activities mirrors A03's earlier one (with A09: co-occurrence 45 vs 50 in 100, A09-first in about 16 vs 17; with A11: 45 vs 50; with A05: 38 vs 44; with A10: 33 vs 35). [REL002, REL033, REL008, REL035, REL010, REL029, REL004, REL034, REL009]\n- Several other activities shifted moderately in how often they run: A05 rose from about 64 to 75 in 100 traces, A06 from 49 to 56, A12 and A15 from 28 to 35, A13 and A14 from about 19 to 22, while A07 fell from about 43 to 36 and A08 from 29 to 22. [OCC005, OCC006, OCC012, OCC015, OCC013, OCC014, OCC007, OCC008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 has taken over the position in the flow that A03 occupied in the earlier window, with A03 no longer executed. A09 now routes about 55 in 100 of its outgoing transitions to A01 where it previously routed about 52 in 100 to A03; A01's successors (mainly A11, then A12, A09 and A10) reproduce A03's earlier successors (mainly A11, then A10, A09 and A12); A01 runs at A03's frequency (about 50 vs 45 in 100 traces, about two executions per containing trace), at A03's position in the trace (mean relative position about 0.41 vs 0.42) and in A03's co-occurrence and ordering pattern with the other activities, while the two never share a trace in either window. This consistent picture across occurrence, direction, position and relation indicators points to A01 taking over A03's role in the flow rather than an added parallel branch or a mere shift in how often existing paths are taken. [DIR006, DIR001, DIR003, OCC001, OCC003, POS001, POS003, REL002, REL008, REL010, REL033, REL035]\n\nThe core items are mutually consistent, each of their differences exceeds essentially all 200 random re-splits (empirical strength about 0.995), and they rest on 90–203 observations, so chance sampling or a rare one-window variant is an unlikely account. What remains open: zero participation strictly means only that A03 was not observed in the later window and A01 not in the earlier one, so occurrences below the resolution of a 200-trace sample cannot be excluded, and the evidence cannot establish that the two activities are functionally equivalent. An important competing explanation the evidence cannot rule out is that A01 is a newly inserted activity and A03 was removed independently, with their similar profiles arising because both sit at the same spot in the flow; the near-identical successor, position and co-occurrence profiles make a simple exchange the more economical reading, but this remains a possibility rather than a confirmed modification. [OCC001, OCC003, DIR001, DIR003, DIR006, POS001, POS003, REL002]\n\nOther differences: A02's occurrences now fall at the very start of traces (median relative position about 0.26 before vs 0 after), while A07's and A13's occur later (medians from 0 to about 0.4); and many activity pairs show small redistributions of their gaps, for example A15 to A04 almost always 2 steps apart in the later window (9 of 10 observations vs about 6 of 10 earlier) and A10 to A02 immediately consecutive in only about 4 of 10 later observations (vs about 6 of 7 earlier) — individually small and mostly based on fewer than 30 observations, so they may be secondary effects of the exchange or sampling variation. [POS002, POS005, POS010, LAG077, LAG029, LAG012]",
+  "case_id": "case_76bd72de6b5bbb58",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,12 @@
+### Observed differences
+
+- In the later window, the elapsed time between the consecutive completions of A26 and A30 roughly doubled: the median rose from about 0.9 hours to about 1.8 hours (mean about 0.9 → 1.8 hours), based on 38 observed pairs in the earlier window and 54 in the later one; fewer than 1 in 1000 random re-splits produced a difference this large. [TWAIT001]
+- The elapsed time between consecutive completions of A31 and A30 also grew in the later window, from a median of about 0.2 hours to about 0.3 hours (mean about 0.2 → 0.4 hours), with the spread widening (standard deviation about 0.17 → 0.31 hours), based on 53 vs 54 pairs; again fewer than 1 in 1000 random re-splits reached this difference. [TWAIT002]
+- Both shifts are increases and both end at A30; the A26→A30 pair also occurred more often as consecutive completions (38 vs 54 pairs in windows of 200 traces each). [TWAIT001, TWAIT002]
+- No structural difference reached the thresholds: the control-flow family produced no qualifying items among 54 tested units (about 0.27 expected by chance), while the time family produced 2 items where about 0.009 would be expected if nothing had changed. [TWAIT001, TWAIT002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in timing around A30: in the later window, the elapsed time between consecutive completion events increased on both observed transitions into A30 — from A26 (median about 0.9 → 1.8 hours) and from A31 (median about 0.2 → 0.3 hours). Supporting signs: two time items qualified where roughly 0.009 would be expected by chance in that family, both shifts point in the same direction, each exceeds about 999 of 1000 random re-splits, and the samples behind them are moderate (38–54 pairs per window). Since no control-flow item qualified, this stands as a timing change without a detected structural counterpart, which the timing evidence can support on its own. Limitations: T_WAIT measures elapsed time between consecutive completions, so the extra time cannot be localised to A30 itself rather than to the preceding activities or work in between, and both items share A30, so they may reflect one underlying difference rather than two independent confirmations. A competing explanation the evidence cannot rule out is that the longer elapsed times arise from changed behaviour elsewhere in the traces rather than from a delay specific to these transitions. [TWAIT001, TWAIT002]

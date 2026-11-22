@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_ff14d234ecc98f96.json",
+  "evidence_sha256": "5e16ec45bb03ffa65789217439271f5d888ce7fe224a611566ea83eab5d9f633",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:34:51.254226+00:00",
+  "finished_at_utc": "2026-11-14T11:36:53.831036+00:00",
+  "latency_seconds": 122.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16878,
+    "prompt_tokens": 29387,
+    "total_tokens": 46265,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15167,
+      "text_tokens": 1711
+    },
+    "cost": 0.01284705
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52762,
+  "text": "### Observed differences\n\n- In the earlier window, A26, A27 and A28 were mandatory middle steps: each appeared in all 200 traces, the three always executed in the same trace (co-occurrence 100 in 100) in varying order, A44 preceded them in about 98–99 in 100 traces, and they preceded A29 in about 99–100 in 100. In the later window they are nearly unobserved: A26 and A28 appear in about 1 in 100 traces (2 of 200) and A27 in fewer than 1 in 100 (1 of 200). [REL031, REL032, REL033, REL035, REL036, REL038, REL034, REL037, REL039, DIR004, DIR005, DIR006, POS004, POS005, POS006]\n\n- In the later window, three previously unobserved activities take over this middle slot: A19 occurs in about 31 in 100 traces, A20 in about 34 and A21 in about 37 (earlier: 0, 0 and 1 of 200), each roughly a third of the way into the trace, and they are mutually exclusive — any pair of them co-occurs in at most about 1 in 100 traces, so almost every later case contains exactly one of them. [POS001, POS002, POS003, REL013, REL014, REL020, DIR001, DIR002, DIR003]\n\n- A44 and A29 still occur in every trace in both windows, but what sits between them changed: A44's outgoing transitions, which earlier went to A26 (about 33 in 100), A28 (32) and A27 (28), now go to A21 (about 36 in 100), A20 (30) and A19 (27); each alternative precedes A29 in about 31–37 in 100 traces and leads almost only to A29 (about 97 in 100 of its observed outgoing transitions), while A44 precedes each alternative in about 30–37 in 100 traces. [DIR007, DIR001, DIR002, DIR003, REL018, REL019, REL024, REL025, REL029, REL030]\n\n- The number of events between A44 and A29 shrank accordingly: the gap was 4 steps in about 93 in 100 earlier traces (5 steps in most of the rest) and is 2 steps in about 92 in 100 later traces; consistently, A29's mean position moved slightly earlier (0.43 to 0.40 of the trace) and A44's slightly later (0.31 to 0.33). [LAG010, POS007, POS008]\n\n- A11 and A12 now link to this middle segment less often: earlier each appeared in about 47 in 100 traces and preceded the A26/A27/A28 block in about 45–47 in 100; later each appears in about 56 in 100 traces but precedes one of A19/A20/A21 in only about 17–20 in 100, otherwise occurring without any middle activity. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A44 and A29 was restructured: in the earlier window every case executed the three activities A26, A27 and A28 there (in no fixed order among them), while in the later window exactly one of the three alternative activities A19, A20 or A21 executes in that position in almost every case, with A44 before it and A29 after it. This rests on direct relational evidence: A44's successor profile moved from the trio to the alternatives while A44 itself remained in about all traces in both windows; the trio's co-occurrence fell from 100 in 100 to about 0; the alternatives sit between A44 and A29 in both directions and are mutually exclusive; and the A44-to-A29 distance shortened from 4–5 steps to 2, matching three steps becoming one. The screening context also fits: 64 control-flow items qualified against roughly 0.55 expected for an unchanged process, far too many to attribute to chance as a whole. Limitations: the old trio still occurs in about 1 in 100 later traces, so it became rare rather than disappearing; the evidence cannot show whether A19, A20 and A21 are new steps or renamed replacements; and the many agreeing relation items largely restate one underlying difference rather than confirming it independently. A competing explanation the evidence cannot fully exclude is that two different variants of an otherwise unchanged process simply dominate the two windows; the near-absence of each behaviour in the opposite window (0 of 200 traces versus nearly all) makes this unlikely but cannot rule it out completely. [DIR007, DIR001, DIR002, DIR003, REL013, REL014, REL018, REL019, REL020, REL024, REL025, REL029, REL030, REL031, REL033, REL036, REL038, LAG010, POS001, POS002, POS003, POS004, POS005, POS006]\n\nOther differences: A11 and A12 occur somewhat more often in the later window (about 56 in 100 traces versus about 47) while their precedence link to the middle segment weakened (from about 45–47 in 100 traces to about 17–20); the remaining gap items for the old trio qualify on only one later trace each and add no independent weight. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]",
+  "case_id": "case_ff14d234ecc98f96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

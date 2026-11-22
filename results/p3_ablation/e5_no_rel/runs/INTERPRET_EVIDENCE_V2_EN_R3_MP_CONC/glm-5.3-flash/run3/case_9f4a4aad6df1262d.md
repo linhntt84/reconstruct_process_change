@@ -1,0 +1,25 @@
+### Observed differences
+
+- In the earlier window, the six activities A20, A22, A23, A24, A25 and A26 formed a fixed chain, entered from A31 via A22 and leaving to A32 after A25: A20 sent about 99 in 100 of its outgoing transitions to A23, A23 always continued to A24, A24 went to A26 in about 99 in 100, A26 to A25 in about 99 in 100, A25 to A32 in about 93 in 100, and A31 always entered at A22. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- In the later window, each of these activities splits its outgoing transitions across several targets: A20 → A23 in about 67 in 100 transitions plus about 10–11 in 100 each to A24, A25 and A26; A22 → A20 (56%), A24 (27%), A26 (11%), A25 (6%); A23 → A32 (49%), A26 (17%), A25 (16%), A24 (15%); A24 → A26 (60%), A22 (23%), A20 (11%); A25 → A32 (43%), A20 (20%), A23 (20%), A22 (12%); A26 → A25 (67%), A20 (13%), A22 (12%), A23 (9%); and A31 now enters at A22 in about 52 of 100 cases and directly at A24 in about 47 of 100. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]
+
+- Transitions running backwards through the block are new: before, the ordered pairs A24→A20, A24→A22, A25→A20 and A26→A20 occurred within five steps in only about 1 of 200 traces each; in the later window they occur in about 148, 94, 64 and 101 of 200 traces respectively. [LAG014, LAG015, LAG019, LAG021]
+
+- Pairs that previously kept one fixed gap now occur at several gaps and in both directions: A20 before A24 was always two positions apart (200 of 200 traces) and is now immediate in about 41 of 100 of only 52 such traces, while A24 before A20 appears in about 148 traces; A22 before A24 was always three positions apart and is now immediate in about half of 106 traces, with A24 before A22 in about 94 traces; A24 before A25 spread from always gap 2 to gaps 2–5. [LAG002, LAG008, LAG014, LAG015, LAG016]
+
+- The exit to A32 moved: before, it followed A25 one step later in about 94 of 100 traces and A23 reached A32 only four to five steps later; now A23 leads directly to A32 in about 49 of 100 traces, A25→A32 fell to about 43 in 100 of A25's outgoing transitions, and the gap from A20 to A32 spread from almost always 5 steps to 2–5 steps. [LAG005, LAG013, LAG018, LAG020, DIR003, DIR005]
+
+- Typical positions shifted accordingly: A20, A22 and A23 now occur later in the trace (mean relative position about 0.59→0.63, 0.56→0.59 and 0.62→0.68), while A24, A25 and A26 occur earlier (about 0.65→0.59, 0.70→0.68 and 0.67→0.64). All six activities still occur in essentially every trace in both windows, so participation itself did not change — only the routing between them did. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, the fixed single pass through A20, A22, A23, A24, A25 and A26 gave way to flexible routing in which these activities follow one another in varying orders and apparently repeat within a case: forward shortcuts (A20→A24/A25/A26, A22→A24/A26, A23→A25/A26) and back-edges (A24→A20/A22, A25→A20/A22/A23, A26→A20/A22/A23) now carry roughly 10–25 in 100 of the source's outgoing transitions each, entry from A31 goes directly to A24 in about half the cases, and the block is left to A32 from A23 (about 49 in 100) as well as from A25 (about 43 in 100). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG014, LAG015, LAG019, LAG021]
+
+Supporting signs: the change is shown directly by successor redistributions at all seven source activities, each backed by about 200 outgoing transitions per window, and by ordered-pair relations that were virtually absent before (about 1 of 200 traces) and now occur in 64–148 of 200 traces; the position shifts of all six activities agree with this reordering, and every item's difference exceeded those seen in about 99.5 of 100 random re-splits. Screening qualified 41 control-flow items where about 0.62 would be expected if nothing had changed — roughly 66 times the chance expectation — so the pattern as a whole is not what random re-splits of an unchanged process produce. [DIR001, DIR007, POS001, POS006, LAG001, LAG028]
+
+Limitations: LAG and POS are based on event positions, so the evidence shows reordering and new transitions but cannot count repetitions per case or establish the exact loop structure; whether the back-edges reflect genuine repetition or simply a loss of fixed order between the six activities cannot be decided with these indicators. The items also describe overlapping traces, so they are not independent confirmations. [LAG001, LAG016, POS001]
+
+Other differences: a tail of rare new transitions (each about 0.5–1.5 in 100 of a source's outgoing transitions, e.g. A20→A12/A30, A23→A10/A19/A37/A42/A06, A25→A02/A04/A27/A48) appears only in the later window; at these sizes they are compatible with sampling noise and are not part of the main hypothesis. [DIR001, DIR003, DIR005]

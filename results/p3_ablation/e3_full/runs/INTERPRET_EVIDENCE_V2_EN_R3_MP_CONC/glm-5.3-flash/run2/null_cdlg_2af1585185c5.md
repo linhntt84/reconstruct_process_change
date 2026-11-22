@@ -1,0 +1,13 @@
+### Observed differences
+
+- Traces containing A01 fell from 115 of 200 (about 58 in 100) to 101 of 200 (about 51 in 100), while traces containing A02, A03, A04 and A12 — four activities that always occur together — rose from 85 of 200 (about 43 in 100) to 99 of 200 (about 50 in 100); the two shares sum to exactly 100 in 100 in both windows, consistent with two mutually exclusive path alternatives. [OCC001, OCC002, OCC003, OCC004, OCC012, REL001, REL027]
+- Activities nested inside the jointly occurring group shifted slightly in participation: in the later window A06 appears in about 28 in 100 traces (up from about 23), A11 in about 34 in 100 (up from 28), and A08 in about 22 in 100 (up from 20), while the cluster A05/A07/A09/A10 stayed at about 23 in 100; A06 and A08 never occur in the same trace in either window. [OCC005, OCC006, OCC008, OCC011, REL036]
+- Repetition rose modestly: A04's mean occurrences per trace went from about 1.6 to about 2.1 (recurrence in about 34% vs 38% of traces), and A11's from about 0.8 to about 1.0 (recurrence about 15% vs 22%). [OCC004, OCC011]
+- Within the A05/A07/A09/A10 cluster, outgoing transition shares moved by roughly 8–11 percentage points: after A05, continuations to A10 rose from about 43% to 54% while those to A07 fell from about 49% to 41%; after A07, continuations to A09 rose from about 45% to 53%; after A10, those to A07 rose from about 41% to 50%. [DIR003, DIR004, DIR006]
+- Remaining flagged differences are small: after A09 the share continuing to A04 rose from about 95% to 99%, and A11's rare edge to A02 (about 2–3 transitions) is no longer observed; relative event positions barely moved (A12's median position is identical in both windows); the flagged gap redistributions are slight, several resting on only 1–4 observations (e.g., A11→A02 on 3 vs 1, A05→A06 on 2 vs 3). [DIR005, DIR007, POS002, POS010, LAG040, LAG056, LAG024, LAG021]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The largest coherent difference — a shift of about 7 in 100 cases from traces containing A01 to traces containing the jointly occurring group A02/A03/A04/A12 — is within the range that random re-splits of the pooled data produce (empirical strength about 0.8, so roughly 19 in 100 random splits show a difference at least this large), and the remaining flagged items are largely facets of that same shift or small gap changes resting on very few observations, so a stable process whose variant mix wobbles between the two samples cannot be ruled out [OCC001, OCC002, OCC004, DIR007, LAG056].

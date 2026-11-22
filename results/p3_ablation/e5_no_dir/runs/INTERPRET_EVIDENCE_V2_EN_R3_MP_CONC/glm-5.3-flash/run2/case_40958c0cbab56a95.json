@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_40958c0cbab56a95.json",
+  "evidence_sha256": "c297b6ede8b19decf257fb793afb52eb2994ff671a5021ca0400f8cffbd88943",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:07:25.737933+00:00",
+  "finished_at_utc": "2026-11-15T06:09:23.730908+00:00",
+  "latency_seconds": 117.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17380,
+    "prompt_tokens": 33724,
+    "total_tokens": 51104,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15787,
+      "text_tokens": 1593
+    },
+    "cost": 0.0137486
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56091,
+  "text": "### Observed differences\n\n- In the earlier window, A26, A27 and A28 were mandatory and inseparable: each appeared in all 200 traces (about one occurrence per trace), always together as a group, in varying internal order. In the later window, each was observed in only about 1.5 in 100 traces (3 of 200). [OCC005, OCC006, OCC007, REL036, REL037, REL042]\n- A19, A20 and A21 show the mirror image. Earlier they were seen in only about 1–2 in 100 traces (2–4 of 200); in the later window they appear in about 30, 33 and 38 in 100 traces respectively (60, 65 and 75 of 200). Their shares sum to about 100 in 100 and they practically never share a trace, so the later window contains essentially exactly one of the three per trace. [OCC002, OCC003, OCC004, REL013, REL014, REL021]\n- The new activities fill the segment the old block occupied. Earlier, the block always ran after A44 (about 97–99 in 100 traces) and before A29 (about 97–99 in 100); in the later window, each of A19, A20 and A21, whenever present, runs after A44 and before A29 (about 30–38 in 100 traces each, essentially always in that order), and after A11/A12 where they co-occur (about 16–21 in 100). [REL038, REL039, REL043, REL044, REL047, REL048, REL018, REL019, REL025, REL026, REL032, REL033, REL001, REL003, REL007, REL009]\n- The event gap from A44 to A29 contracted accordingly: earlier, about 78 in 100 traces had a gap of 4 positions (22 in 100 a gap of 5); later, about 79 in 100 have a gap of 2 and 19 in 100 a gap of 3 — consistent with three activities between them being replaced by at most one. [LAG009]\n- Where observed, the new activities sit at a relative trace position (median about 0.36) close to where the old block used to sit (mean about 0.37–0.38). [POS001, POS002, POS003, POS004, POS005, POS006]\n- Smaller shifts: A10 participation rose from about 13.5 to about 22.5 in 100 traces (27 to 45 of 200); A11 and A12 became more frequent (about 46–47 to about 56–58 in 100); A46 now runs without the old block in about 68 in 100 traces, and A20/A21 precede it in about 13–19 in 100, which was not observed earlier. [OCC001, REL004, REL010, REL028, REL035, REL041]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the mandatory three-activity block A26, A27, A28 — always executed together between A44 and A29 in the earlier window — was replaced in the later window by a single step drawn from three mutually exclusive alternatives, A19, A20 and A21 (about 30/33/38 in 100 traces each, one per trace), placed in the same segment: after A44 and after A11/A12 where present, and before A29. Screening flagged 74 control-flow items against about 0.64 expected without change, so chance cannot account for the pattern as a whole. The support is direct and consistent: the participation flip rests on large samples on both sides (200 vs 3 traces for each block activity; 2–4 vs 60–75 for each alternative), the new ordering relations are observed directly rather than inferred from positions alone, and the A44→A29 gap contracts from 4–5 to 2–3 event positions, matching the replacement of three activities by at most one. [OCC005, OCC006, OCC007, OCC002, OCC003, OCC004, REL018, REL019, REL032, REL033, REL036, LAG009]\n\nLimitations: the earlier-window behaviour of A19/A20/A21 rests on only 2–4 traces, so their pre-change role is weakly characterised; near-zero participation means non-observation rather than proven removal, so A26–A28 may still occur rarely; and the evidence cannot distinguish a modification of one process from a shift in the mix of two case variants (an old variant disappearing while a new one enters the sample), which would look identical here. [OCC002, OCC003, OCC004, OCC005]\n\nOther differences: A10 is executed more often (about 13.5 → 22.5 in 100 traces) [OCC001]; A11 and A12 participation increased (about 46–47 → 56–58 in 100) [REL004, REL010]; A46 now occurs without the old block in about 68 in 100 traces and A20/A21 precede it in about 13–19 in 100, unobserved earlier [REL028, REL035, REL041]; A29 and A44, present throughout, shifted slightly in relative position (A29 somewhat earlier, A44 somewhat later) [POS007, POS008].",
+  "case_id": "case_40958c0cbab56a95",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

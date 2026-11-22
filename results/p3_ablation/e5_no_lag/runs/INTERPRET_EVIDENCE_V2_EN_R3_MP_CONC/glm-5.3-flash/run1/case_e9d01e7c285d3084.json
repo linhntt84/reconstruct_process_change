@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_e9d01e7c285d3084.json",
+  "evidence_sha256": "02a758239a99053aecdf0022bde9c0adc81fff3acafb38ec203031008a28775f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:14:32.441547+00:00",
+  "finished_at_utc": "2026-11-14T13:15:06.501964+00:00",
+  "latency_seconds": 34.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5479,
+    "prompt_tokens": 7285,
+    "total_tokens": 12764,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4536,
+      "text_tokens": 943
+    },
+    "cost": 0.00383225
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 17951,
+  "text": "### Observed differences\n\n- In the earlier window, A30, A31 and A36 each occurred about once per trace (means 1.00–1.02) and essentially never repeated (repeats in at most about 2 in 100 traces). In the later window, each occurs about 3.5 times per trace, with repetitions in about 68 in 100 traces; every trace still contains each activity. [OCC001, OCC002, OCC003]\n- The successors of A36 changed: before, about 97 in 100 of its outgoing transitions led to A25; in the later window, about 70 in 100 lead back to A30 and about 28 in 100 to A25. Observed outgoing transitions rose from about 200 to about 700, matching the higher occurrence rate. [DIR001]\n- A14, A30 and A36 still co-occur in every trace in both windows, but their fixed order dissolved: before, A14 preceded A30 in about 100 in 100 traces and A30 preceded A36 in about 98 in 100; in the later window only about 32 in 100 keep each fixed order, while about 68 in 100 show interleaved or repeated orderings. [REL003, REL004, REL005]\n- A05 co-occurs with A30 and with A36 in about half of traces in both windows; the fixed A05-first order fell from about 53–54 in 100 to about 16 in 100, replaced mostly by interleaved-or-repeated orderings (about 35 in 100). [REL001, REL002]\n- Event positions: A30 and A36 now sit slightly later on average and much more variably (position spread up from about 0.07 to about 0.12); A14 sits slightly earlier and also more variably. These are positions within the trace, not clock times. [POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window A30, A31 and A36 — previously executed exactly once per trace in a fixed sequence (A14 before A30 before A36, with A36 typically followed by A25) — became repeated: each now runs about 3.5 times per trace, with repetitions in about two-thirds of traces, and A36 leads back to A30 in about 70 in 100 of its executions while the transition to A25 remains as the exit in about 28 in 100. Supporting signs: the direct occurrence and recurrence counts for all three activities [OCC001, OCC002, OCC003]; the new dominant A36-to-A30 transition [DIR001]; and the breakdown of the previously near-absolute orders A14→A30, A14→A36 and A30→A36 into interleaved-or-repeated patterns in about 68 in 100 traces, which is what repetitions after a single A14 would produce [REL003, REL004, REL005]. All twelve qualifying items are control-flow items, against roughly 0.48 expected by chance alone, and each difference is larger than in about 995 of 1000 random re-splits of the pooled data, so the volume and size of the differences far exceed what a stable process typically produces.\n\nLimitations and competing explanations: the interleaved-or-repeated category does not by itself separate interleaving from repetition — the repetition claim rests on the occurrence counts, and a mode where the three activities are re-executed in varying orders rather than as one repeating block cannot be ruled out. A31's repetition is supported only by its occurrence counts, with no relational or successor evidence, so its placement relative to the A30–A36 repetition is unknown; nor can the evidence show whether A14 itself repeats, as its occurrence count is not reported. [OCC002, DIR001, REL003, POS001]\n\nOther differences: A14's mean event position moved slightly earlier (about 0.136 to about 0.115) with increased spread, and A05's fixed ordering before A30 and A36 weakened in the roughly half of traces where they co-occur; both are consistent with the repetition above rather than independent changes. [POS001, REL001, REL002]",
+  "case_id": "case_e9d01e7c285d3084",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

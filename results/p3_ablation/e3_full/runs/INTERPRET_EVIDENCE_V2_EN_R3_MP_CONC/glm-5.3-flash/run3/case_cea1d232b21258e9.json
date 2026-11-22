@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_cea1d232b21258e9.json",
+  "evidence_sha256": "032f3f015bc8142e72a19a29853e61974a4fe55da1d05aaa167d44a844760aea",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:48:05.037143+00:00",
+  "finished_at_utc": "2026-11-16T03:51:33.053909+00:00",
+  "latency_seconds": 208.02,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 25102,
+    "prompt_tokens": 111311,
+    "total_tokens": 136413,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23193,
+      "text_tokens": 1909
+    },
+    "cost": 0.02924765
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 80193,
+  "text": "### Observed differences\n\n- A02 is no longer observed. In the earlier window it ran in about 48 in 100 cases (97 of 200), roughly once per case, was repeated in about 24 in 100 cases, and about 200 of its outgoing transitions across ten different successors were observed; in the later window it appears in none of the 200 cases and none of its outgoing transitions were observed. [OCC002, DIR002, POS002]\n- A03 and A14 became much rarer. Earlier, each ran in about 48–49 in 100 cases (97 cases, about 0.9 occurrences per case); later, in about 18–19 in 100 cases (37 cases, about 0.4 occurrences per case). They still appear together in every case that contains either of them (about 18 in 100 later cases), and both now sit later in the trace (mean relative position: A03 about 0.37 → 0.51; A14 about 0.49 → 0.61). [OCC003, OCC014, POS003, POS014, REL038]\n- A10 became far more frequent and more repeated. Earlier it ran in about 24 in 100 cases (48 cases, about 0.5 occurrences per case, repeats in about 13 in 100); later in about 46 in 100 cases (92 cases, about 0.9 occurrences per case, repeats in about 22 in 100), and typically earlier in the trace (mean relative position about 0.52 → 0.36). [OCC010, POS010, LAG055]\n- Transitions around these activities were rewired. A14 now leads about 76 in 100 times to A13 (about 9 in 100 before, when A07 led with about 33). A08 now leads about 69 in 100 times to A03 instead of A10 (about 8 in 100 now versus about 81 before). A06, A09, A11 and A15 now lead mostly to A10 where they previously led mostly to A03 (for example A15: about 63 in 100 to A10 now versus about 60 in 100 to A03 before). A10 itself now leads mostly to A07 (about 33 in 100) and A11 (about 25 in 100) instead of A02 and A13 (about 37 in 100 each before). A03 still leads overwhelmingly to A14 in both windows, but its edges to A02 and A13 are gone. [DIR003, DIR006, DIR008, DIR009, DIR010, DIR011, DIR013, DIR014]\n- A10 now shares cases with far more activities: with A05, A07, A09 and A13 in about 44–46 in 100 cases (previously about 23–24), with A11 in about 22 in 100 (previously 8), and with A15 in about 18 in 100 (previously 5). [REL055, REL072, REL085, REL091, REL093, REL095]\n- A08 also became rarer (about 24 → 18–19 in 100 cases; about 0.5 → 0.4 occurrences per case), while the remaining activities (A01, A04, A05, A06, A07, A09, A11, A12, A15) kept essentially the same participation, within a few percentage points of their earlier values. [OCC008, OCC001, OCC004, OCC005, OCC006, OCC007, OCC009, OCC011, OCC012, OCC015]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, cases no longer pass through A02 at all, the A03–A14 sequence is executed in far fewer cases (about 18–19 in 100, down from about 48–49), and A10 — now often repeated — is executed in about twice as many cases (about 46 in 100, up from 24) and earlier in the trace, with the surrounding transitions rewired: A14 is followed mostly by A13, A08 by A03, A06/A09/A11/A15 mostly by A10, and A10 mostly by A07 and A11. Because A02 is absent from the later window and A03/A14 participation fell by roughly 30 percentage points, this is a replacement of paths rather than a reweighting of shares between existing alternatives. [OCC002, OCC003, OCC010, OCC014, DIR006, DIR008, DIR009, DIR010, DIR011, DIR013, DIR014, POS010, REL038]\n\nSupporting signs: the disappearance of A02 is measured directly (0 of 200 cases after versus 97 of 200 before, with an empty outgoing profile after about 200 observed outgoing transitions before), and the same activities show consistent changes across the occurrence, direction, position and relation indicators — corroborating, though not independent, since they draw on the same traces. The rerouting is read from successor distributions rather than inferred from positions alone. [OCC002, DIR002, DIR013, POS002]\n\nLimitations: zero participation establishes only that A02 was not observed in the later window, so removal and extreme rarity cannot be distinguished; and the items show A10's rise occurring alongside the A02/A03 decline without establishing that one replaced the other. An important competing explanation the evidence cannot rule out is a shift in the case mix between the windows (the later sample may simply contain no cases of the kind that used to run through A02) rather than a modification of the process itself; no screening expectation was supplied, so the judgement rests on the directness and consistency of the items rather than on a chance-level item count. [OCC002, DIR002]\n\nOther differences: A13 occurs about 0.8 times per case in the later window versus about 1.0 before, at unchanged participation of about 46–48 in 100 cases [OCC013]; A06, A07 and A11 tend to occur slightly earlier in the trace [POS006, POS007, POS011]; and a few step-gap distributions shifted mildly, for example A01–A04 gaps moving from mostly one to mostly two steps apart [LAG001].",
+  "case_id": "case_cea1d232b21258e9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

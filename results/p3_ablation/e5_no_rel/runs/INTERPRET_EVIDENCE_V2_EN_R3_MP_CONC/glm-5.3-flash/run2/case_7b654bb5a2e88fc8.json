@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_7b654bb5a2e88fc8.json",
+  "evidence_sha256": "655664885320d57d665f7d1f39ead6329f9cee33a13bfbb943abbc684680d750",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:36:54.068658+00:00",
+  "finished_at_utc": "2026-11-15T06:38:47.626363+00:00",
+  "latency_seconds": 113.56,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16537,
+    "prompt_tokens": 7711,
+    "total_tokens": 24248,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15259,
+      "text_tokens": 1278
+    },
+    "cost": 0.00942515
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51581,
+  "text": "### Observed differences\n\n- Around A40 and A21: in the earlier window, A40 (present in every trace) was immediately followed by A14 in about 38 in 100 traces, by A15 in about 31 in 100 and by A20 in about 31 in 100, and each of these three was in turn always followed directly by A21, so A40 and A21 were always two event positions apart. In the later window, A40 is followed directly by A21 in every trace, and A14, A15 and A20 no longer precede A21. [DIR001, DIR002, DIR003, DIR006, LAG004]\n- Around A22, A23 and A27: in the earlier window these three formed a consecutive chain in every trace (A22 followed by A23 and A23 by A27, one step each; A22 to A27 always two steps). In the later window, exactly one extra activity sits between A22 and A27 in every trace: A22 is followed directly by A23 in about 52 in 100 traces and by A14, A15 or A20 in about 48 in 100; A23 is followed directly by A27 in about 48 in 100 and by one of the three in about 52 in 100; A22 and A27 are now always three positions apart. [DIR004, DIR005, LAG001, LAG002, LAG003]\n- The three activities themselves still occur in roughly 3 in 10 traces each (A14 about 31, A15 about 33, A20 about 37 in 100, versus about 38, 31 and 32 before), but their mean position moved from about 0.31–0.33 to about 0.59–0.60 of the trace. When placed after A22 they are followed by A23 (A14 about 52 in 100, A15 about 54 in 100); when placed after A23 they are followed by A27 (A20 about 61 in 100). [DIR001, DIR002, DIR003, POS001, POS002, POS003]\n- A21, A22 and A23 each occur slightly earlier in the later window, their mean position dropping by about 0.02–0.03 (roughly one event position), consistent with one activity having been removed from immediately before A21. [POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the activities A14, A15 and A20 changed place: in the earlier window exactly one of them executed per trace in the slot between A40 and A21 (A40 → one of the three → A21), whereas in the later window that slot is gone — A40 flows directly into A21 — and the three activities instead appear one per trace in the late segment, inserted either between A22 and A23 or between A23 and A27, so that the formerly consecutive chain A22 → A23 → A27 now always carries one additional activity. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003]\n\nThe change is shown directly and consistently: the successor profiles changed exactly at the two affected boundaries (A40 now always to A21; A14/A15/A20 from always A21 to A23 or A27; A22 and A23 now also leading to the three), the pair distances moved accordingly (A40–A21 from two steps to one; A22–A27 from two to three with A23 still in between), and the three activities' positions shifted from about a third to about three fifths of the trace while their participation stayed at about one occurrence per trace. All 16 qualifying items describe this one coherent restructuring, and 16 items is many times the 0.36 expected by chance among the 73 tested control-flow units, so the pattern as a whole is not what an unchanged process typically produces. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006]\n\nLimitations: the evidence cannot distinguish a genuine relocation of the same block from the early placement being discontinued while the late insertion began separately; with about 60–76 traces behind each of the three activities, the exact splits (for example 52 against 48) carry sampling error; and the data do not show what determines which of the three activities appears or at which of the two insertion points. [POS001, POS002, POS003]\n\nOther differences: the share of traces containing A14 fell modestly (about 38 to about 31 in 100) and the share containing A20 rose (about 32 to about 37 in 100); given the sample sizes, this may be sampling variation rather than a participation change. [POS001, POS003]",
+  "case_id": "case_7b654bb5a2e88fc8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

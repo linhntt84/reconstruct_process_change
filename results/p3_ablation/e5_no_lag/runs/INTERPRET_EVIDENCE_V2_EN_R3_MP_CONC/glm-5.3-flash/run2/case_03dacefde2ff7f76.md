@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, the outgoing transitions of A19, A20 and A25 went almost exclusively to A26 (about 89–98 in 100 for each); in the later window they go to A28 and A32 instead, which together receive about 94–97 in 100 of these transitions (for A25: about 58 in 100 to A32 and 38 in 100 to A28). [DIR001, DIR002, DIR003]
+- In the earlier window, A45 spread its outgoing transitions across A19 (about 31 in 100), A20 (about 26) and A25 (about 28); in the later window, about 89 in 100 of its outgoing transitions go to A26. [DIR006]
+- In the earlier window, A27 passed to A28 in about 98 in 100 of its transitions and A28 passed to A32 in about 94 in 100; in the later window, A27 leads to A28 in only about half of its transitions and to A19, A20 or A25 in about 48 in 100, and A28 leads to A32 in about 48 in 100 and to A19, A20 or A25 in about 51 in 100. [DIR004, DIR005]
+- The order between the group {A19, A20, A25} and A26/A27 reversed: earlier, A19, A20 and A25 each ran before A26 and before A27 in virtually every trace where both occurred (for example A19 before A26 in 37 in 100 traces, the reverse never); in the later window, A26 and A27 run before them whenever they co-occur (about 31–36 in 100 traces), with the earlier order essentially gone. [REL001, REL002, REL004, REL005, REL006, REL007]
+- Relative to A28, a fixed order became a mixed one: earlier, A19/A20/A25 always preceded A28 (about 32–37 in 100 traces, reverse never observed); in the later window, both orders occur in similar shares (about 15–16 vs 15–22 in 100). [REL003, REL008]
+- A19, A20 and A25 now appear later in the trace: their mean relative position moved from about 0.31–0.34 to about 0.58–0.59, while A26 and A27 shifted slightly earlier (mean 0.35 to 0.32, and 0.58 to 0.55). Participation barely changed: A26 and A27 still occur in all traces, and A19/A20/A25 each occur in about 31–38 in 100 traces in both windows. [POS001, POS002, POS003, POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the group of alternative activities A19, A20 and A25 moved from a position before the segment A26 → A27 → A28 to a position after A26 and A27. In the earlier window the group followed A45 and passed control almost entirely to A26, running before A26, A27 and A28; in the later window A45 feeds A26 directly, A26 and A27 precede the group, the group's transitions go to A28 and A32, and A27 and A28 themselves lead into the group in about half of their outgoing transitions. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL004, REL005, REL006, REL007]
+
+Supporting signs: the order reversal is shown directly by the relation indicators and is consistent across all six pairs involving A26 and A27; the successor changes in the routing profiles match it; the position indicators show the group moving about a quarter of the trace later while participation shares stay stable, which rules out the activities appearing or disappearing; and 19 control-flow items qualified against fewer than 1 expected for an unchanged process, so the set of differences is unlikely to be a sampling artefact. [REL001, REL002, REL004, REL005, REL006, REL007, DIR001, DIR002, DIR003, DIR006, POS001, POS002, POS003]
+
+Limitations: relative to A28 the order is now mixed rather than fixed, so the group's exact placement around A28 is ambiguous — it runs before A28 in some cases and after it in others. The window-level evidence also cannot distinguish a genuine relocation of the group from a replacement of whole trace variants between the windows, and the DIR, POS and REL items likely reflect one underlying reordering rather than independent confirmations. [REL003, REL008]
+
+Other differences: the shares of traces containing the three alternatives shifted mildly (A19 from about 38 to about 31 in 100 traces, A25 from about 32 to about 38 in 100), which could reflect a small change in how often each alternative is chosen or simply sampling variation between the windows. [POS001, POS002, POS003]

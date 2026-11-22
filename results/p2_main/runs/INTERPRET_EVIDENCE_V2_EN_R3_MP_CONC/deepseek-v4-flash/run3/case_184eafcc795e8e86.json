@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_184eafcc795e8e86.json",
+  "evidence_sha256": "fb53ed2539d1d4a38468f45d9c10a00672c2481210937c4f743942d329ba497c",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:47:33.371931+00:00",
+  "finished_at_utc": "2026-11-15T02:47:53.851951+00:00",
+  "latency_seconds": 20.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3608,
+    "prompt_tokens": 11455,
+    "total_tokens": 15063,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2919
+    },
+    "cost": 0.002501914
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 10234,
+  "text": "### Observed differences\n\n- In the earlier window, activities A01 and A02 were absent from all 200 traces; in the later window they appear in all 200 traces, each exactly once per trace. [OCC001, OCC002]\n- In the earlier window, A01 had no observed outgoing transitions; in the later window A01 always leads to A04. [DIR001]\n- In the earlier window, A12 had no observed outgoing transitions; in the later window A12 always leads to A02. [DIR003]\n- The successors of A06 changed: before, about half went to A13 and half to A04; after, about half go to A01 and half to A13, with no A04. [DIR002]\n- The successors of A13 changed: before, about half went to A04 and half to A06; after, about half go to A06 and half to A01, with no A04. [DIR004]\n- In the earlier window, A01 and A02 did not co-occur with any other activity; in the later window they co-occur with all other activities, with A01 before A02, A01 before A04 in about half the traces (interleaved in the rest), A06 and A13 before A01, and A12 before A02. [REL001–REL009]\n- The relative positions of A04, A06, A13, and A12 shifted slightly earlier (mean position decreased by about 0.04–0.08), while A01 appears around 73% of the trace length and A02 at the end (position 1.0). [POS001–POS006]\n- The gap between A06 and A04, and between A13 and A04, increased: before, about 20% of traces had them one step apart; after, none did, with the distribution shifted to 2–5 steps. [LAG001, LAG003] Similarly, the gap between A06 and A12, and A13 and A12, no longer has 2-step gaps, shifting to 3–5 steps. [LAG002, LAG004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in which two new activities, A01 and A02, were added to the process. A01 is inserted between A06/A13 and A04, and A02 is added as a final step after A12. This is directly shown by the appearance of A01 and A02 in every trace, the new outgoing edges A01→A04 and A12→A02, the redirection of A06 and A13 from A04 to A01, and the co-occurrence and ordering relations. The number of qualifying evidence items (25) far exceeds the 0.19 expected by chance, so the change is not a sampling artifact. A competing explanation that A01 and A02 existed before but were never observed is unlikely given they appear in all 200 later traces, but cannot be fully excluded.\n\nOther differences: The positions of A04, A06, A13, and A12 shifted slightly earlier, and the lag distributions between A06/A13 and A04/A12 increased, consistent with the insertion of A01 and A02. These are part of the same structural change.",
+  "case_id": "case_184eafcc795e8e86",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

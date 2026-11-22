@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_51e14a7831df43cc.json",
+  "evidence_sha256": "aae39aa73b897e0644f2d933b6cfa5aff88501fe0853cb397fbae872828c408f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:24:36.231993+00:00",
+  "finished_at_utc": "2026-11-14T14:26:26.641681+00:00",
+  "latency_seconds": 110.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18716,
+    "prompt_tokens": 40785,
+    "total_tokens": 59501,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16938,
+      "text_tokens": 1778
+    },
+    "cost": 0.015475749999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54316,
+  "text": "### Observed differences\n\n- A09 was executed in every one of the 200 earlier-window traces, about twice per trace; in the later window it appears in only about 97 of 200 traces (roughly 49 in 100), exactly once each and never repeated. [OCC007]\n- A16 moved the opposite way: earlier it ran in about 100 of 200 traces (about 50 in 100), once per trace; in the later window it runs in every trace, about 1.9 times per trace, with repeats in about 44 in 100 traces. [OCC013]\n- Their successors exchanged almost exactly: earlier, A04 and A10 always led to A09; in the later window they always lead to A16. A09 earlier sent its flow to A06 (about 50 in 100), A05 (about 25) and A14 (about 24); in the later window A16 shows nearly the same split (A06 about 54, A05 about 24, A14 about 22), while A09 now sends to A10 (about 35), A04 (about 29), A01 (about 25) and A13 (about 11) — the targets A16 had earlier. [DIR004, DIR006, DIR007, DIR011]\n- Predecessors exchanged as well: earlier, A01, A13 and A18 routed about 20, 23 and 7 in 100 of their outgoing flow to A16; in the later window they route to A09 instead (about 18, 27 and 4 in 100). [DIR001, DIR009, DIR012]\n- Relative position shifted accordingly: A09's median position moved from about 0.86 to about 0.47 of the trace length, while A16's moved from about 0.40 to about 0.86. [POS004, POS008]\n- Pairwise distances mirrored the exchange: A01→A09 gaps earlier at 2–4 steps now sit at 1–2, while A01→A16 gaps earlier at 1–2 now sit at 2–4; A09→A06 was always 1 step earlier and is now 3–5 steps, while A16→A06 was 3–5 steps and is now always 1; A09→A04 and A09→A10 moved from about 5 steps to 1–3, while A16→A04 and A16→A10 moved from 1–3 to about 5 steps. [LAG004, LAG008, LAG011, LAG013, LAG014, LAG026, LAG028, LAG029]\n- Co-occurrence flipped: A01, A06 and A13 each co-occurred with A09 in all 200 earlier traces and with A16 in only about half; in the later window each co-occurs with A16 in all 200 traces and with A09 in about 97. When both ran, A16 typically came before A09 earlier; in the later window A09 typically comes before A16. [REL003, REL007, REL021, REL024, REL026, REL028, REL033]\n- Away from this exchange, several activities repeat less in the later window: A12 fell from about 2.3 to 1.7 executions per trace (with its routing shifting from A07, 57 to 50 in 100, toward A08, 20 to 25 in 100), A07 fell from about 1.3 to 0.9 executions with participation down from 36 to 29 in 100, A05 kept its participation (about 39 in 100) but repeated less (mean 1.24 to 0.89), and A14 fell from 1.08 to 0.82 executions. [OCC010, DIR008, OCC005, OCC004, OCC011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A09 and A16 exchanged their places in the flow. In the earlier window, A09 was the mandatory, roughly twice-per-trace activity that followed A04 and A10 and preceded A05, A14 and A06, while A16 was an optional single activity fed by A01, A13 and A18 and leading on to A04, A10, A01 and A13; in the later window these roles are reversed — A16 is the mandatory, repeated activity feeding A05, A14 and A06, and A09 is the optional, single activity sitting between A01/A13/A18 and A04/A10/A01/A13. [OCC007, OCC013, DIR001, DIR004, DIR006, DIR007, DIR009, DIR011, DIR012]\n\nThe support is direct and consistent: the exchange is visible in relational and positional evidence, not only in frequencies — successor and predecessor sets swapped almost exactly, lag distributions are mirror images, median positions moved in opposite directions, and co-occurrence with A01, A06 and A13 flipped from always-A09 to always-A16. The largest of these differences arise in fewer than about 1 in 100 random re-splits of the pooled data. [DIR006, DIR011, LAG013, LAG028, POS004, POS008, REL003, REL007, REL021, REL024, REL026, REL033]\n\nLimitations: most items describe one and the same trace-level difference, so they are not independent confirmations, and this evidence set includes no screening baseline against which to compare the item count. An important competing explanation that cannot be fully ruled out is that A09 becoming optional and A16 becoming mandatory are two coinciding participation and routing changes rather than a single exchange — although the mirrored predecessor, successor and lag patterns favour a single exchange. [OCC007, OCC013, DIR004, DIR007]\n\nOther differences: the milder repetition decreases at A12, A07, A05 and A14, and A12's small routing shift from A07 toward A08, are not explained by the A09/A16 exchange; they may be a separate, weaker change or sampling variation between the two 200-trace windows. [OCC010, DIR008, OCC005, OCC004, OCC011]",
+  "case_id": "case_51e14a7831df43cc",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

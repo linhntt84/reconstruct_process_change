@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_470e646749fcf1ee.json",
+  "evidence_sha256": "e520b2c6616591be82e338d9df96fdd92bdd6cbb0c31d7d63f44641230375dc4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:22:14.869062+00:00",
+  "finished_at_utc": "2026-11-16T01:25:16.631885+00:00",
+  "latency_seconds": 181.76,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24603,
+    "prompt_tokens": 76208,
+    "total_tokens": 100811,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22601,
+      "text_tokens": 2002
+    },
+    "cost": 0.0237327
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 73198,
+  "text": "### Observed differences\n\n- In the later window, A01 is no longer observed in any of the 200 traces; in the earlier window it ran in about 20 in 100 traces (mean about 0.27 occurrences per trace) and was always followed by A04. A14, whose outgoing transitions previously all went to A01, now all go directly to A04 (45 transitions), and the A14-to-A04 event distance shrank from mostly two steps to mostly one. [OCC001, POS001, DIR001, DIR011, LAG048]\n\n- A02, A12 and A13, unobserved in the earlier window, now run in about 48, 26 and 48 in 100 traces respectively. A03, still the first activity in every trace, now sends about 46 in 100 of its outgoing transitions to A02 (previously not observed) and almost none directly to A04 (down from about 46 in 100 to about 1 in 100), while its transitions to A08 stay at about 52 in 100. A02 leads to A12 (about 54 in 100) and A13 (about 45 in 100), A12 leads back to A02 (about 99 in 100), and A13 leads to A04 (about 99 in 100), so A04 is now reached from A03 through this route rather than directly. [OCC002, OCC010, OCC011, DIR002, DIR003, DIR009, DIR010, POS002, POS003, POS012, POS013, REL014, REL023, REL024, REL035]\n\n- A09, unobserved earlier, now runs in about 26 in 100 traces: A08's outgoing transitions moved from A10 (about 55 in 100) plus a self-loop (about 43 in 100) to A10 (about 55 in 100) plus A09 (about 45 in 100), and all 86 observed outgoing transitions of A09 return to A08, so consecutive A08 executions now sit two events apart instead of one. [OCC007, DIR006, DIR007, POS009, REL071, LAG032]\n\n- Activities downstream of the changed region sit later in the trace: mean positions rose for A04 (about 0.58 to 0.71), A05 (0.54 to 0.65), A07 (0.50 to 0.62), A10 (0.42 to 0.49), A11 (0.59 to 0.66) and A14 (0.58 to 0.70), and event distances from A03 concentrated at larger lags (A03→A04 from a spread over lags 1–5 to lags 3 and 5; A03→A06 at lag 4 in about 92 in 100 later observations versus about 42 in 100 before). [POS004, POS005, POS007, POS010, POS011, POS014, LAG001, LAG003]\n\n- Participation in some optional activities fell: A05 from about 33 to 30 in 100 traces and A11 from about 25 to 16 in 100, and A04 repeats somewhat less often (mean about 2.1 versus 1.9 occurrences per trace); the small decreases for A07 and A14 (about 20 to 18 in 100) are within the range of random window-to-window variation. [OCC003, OCC004, OCC009, OCC005, OCC012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the routing between existing activities changed in three connected ways: from the start activity A03, work now often runs through the previously unobserved A02 — usually twice, with A12 executed in between — and then through A13 into A04, taking over the role of the earlier direct A03→A04 transition; the repetition of A08 now passes through the previously unobserved A09 before returning to A08 and continuing to A10; and A01 no longer runs, with A14 now followed directly by A04. [OCC001, OCC002, OCC007, OCC010, OCC011, DIR002, DIR003, DIR006, DIR007, DIR009, DIR010, DIR011, LAG032, LAG048]\n\nThe successor profiles of A03, A08 and A14 changed directly and rest on nearly all traces in both windows (A03: about 199 versus 200 outgoing transitions; A14: 53 versus 45), the new activities appear in tens of traces with mutually consistent incoming and outgoing edges, and the relational and distance items corroborate the same picture: A13 co-occurs with A03 in about 48 in 100 traces and always follows it, A02 never co-occurs with A08 or A10 (the two routes out of A03 behave as strict alternatives), and downstream activities sit at later positions and larger lags, consistent with the longer routes. [DIR003, DIR007, DIR010, REL019, REL035, LAG001, LAG003, POS004]\n\nLimitations: positions and lags measure event order rather than clock time, so the downstream shifts are consistent with, but do not independently establish, the rerouting; several items describe the same underlying differences (the many relation items involving A01 all reflect its disappearance) and are not independent confirmations. An important competing explanation the evidence cannot rule out is that the routes through A02, A12, A13 and A09 existed earlier at rates too low to surface in 200 traces and simply rose in frequency, and that A01 only fell below observability — zero participation means only that an activity was not observed in that window. [OCC001, OCC002, OCC007, POS004]\n\nOther differences: beyond this hypothesis, A05 and A11 take part in fewer traces (about 33 to 30 and 25 to 16 in 100) and A04 repeats slightly less often (mean about 2.1 versus 1.9 per trace); the evidence cannot tell whether these are consequences of the rerouting or separate differences. [OCC003, OCC004, OCC009]",
+  "case_id": "case_470e646749fcf1ee",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

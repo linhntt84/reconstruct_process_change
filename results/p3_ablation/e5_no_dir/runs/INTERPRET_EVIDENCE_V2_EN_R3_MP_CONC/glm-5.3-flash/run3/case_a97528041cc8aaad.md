@@ -1,0 +1,21 @@
+### Observed differences
+
+- The clearest difference is a reversal of execution order between two groups of activities. In the earlier window, A20, A22 and A23 ran before A25 and A29 in about 98–99 of every 100 traces; in the later window this is reversed, with A25 and A29 running before A20, A22 and A23 in about 97–98 of every 100 traces. [REL022, REL023, REL029, REL030, REL032, REL033]
+- A21 and A24 switched the same way: earlier, A20, A22 and A23 preceded A21 in about 37 of 100 traces and A24 in about 30–32 of 100; later, A21 and A24 precede them in about 27–28 of 100. [REL020, REL021, REL024, REL025, REL028, REL031, REL034, REL035]
+- A19 also moved from after to before these activities: it previously followed A20, A22, A23, A25 and A29 (about 31 of 100 traces) and now precedes them (about 42 of 100). [REL015, REL016, REL017, REL018, REL019]
+- Relative positions moved consistently with the reversal: A20, A22 and A23 shifted from about 40% to about 64–65% of the trace, while A19, A21 and A24 moved from about 67–69% to about 36–38%, A25 from about 46% to 39%, and A29 from about 65% to 58%. [POS002, POS003, POS004, POS005, POS006, POS007, POS008, POS009]
+- A02 became far more frequent and moved towards the front: it appeared in about 15 of 100 traces before versus about 65 of 100 after (mean occurrences per trace about 0.17 versus 0.69), its median relative position fell from about 0.41 to about 0.16, it now precedes A20, A22, A23, A25 and A29 in about 57–60 of 100 traces (previously mixed), and it typically sits directly after A14. [OCC001, POS001, REL004, REL006, REL009, REL001, LAG005]
+- A06 and A10 became rarer: participation fell from about 22 to 5 of 100 traces (A06) and from about 17 to 6 of 100 (A10). [OCC002, OCC003]
+- Distances between always-present activities also changed: the gap from A29 to A30 grew from about 2 to about 4 event positions, and the gap from A40 to A25 shrank from about 4 to about 2; most other qualifying distance items echo this reshuffling but rest on fewer than about 10 observations in one window. [LAG019, LAG025, LAG002, LAG012, LAG015, LAG017]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that two groups of activities swapped their order of execution: A20, A22 and A23, which in the earlier window ran before A19, A21, A24, A25 and A29, run after them in the later window. The relational evidence shows this directly and consistently — A20 preceded A25 in about 99 of 100 traces before, while A25 precedes A20 in about 97 of 100 after, and every pair between the two groups shows the same flip, with each profile resting on all 200 traces in both windows. [REL022, REL023, REL029, REL030, REL032, REL033, REL020, REL021, REL024, REL025, REL028, REL031, REL034, REL035, REL015, REL016, REL017, REL018, REL019]
+
+The positional shifts corroborate the reversal in direction and magnitude, and the screening produced 73 qualifying control-flow items against fewer than 1 expected if nothing had changed, so the overall pattern is far beyond what random re-splits of an unchanged process produce. [POS003, POS005, POS006, POS002, POS004, POS007, REL032]
+
+Limitations: the indicators use event positions rather than clock time, so "earlier/later" refers to sequence position; the many pair reversals describe one underlying difference rather than independent confirmations; and the evidence cannot show whether the reversal stems from a single modified flow or from a different mix of execution patterns between the windows.
+
+Other differences: A02 now participates in about 65 of 100 traces (previously about 15), sits near the start of the trace and precedes A20, A22, A23, A25 and A29 in about 57–60 of 100 traces; this participation and placement change is not established as part of the reorder. [OCC001, POS001, REL004, REL009] A06 and A10 participation fell to about 5 and 6 of 100 traces respectively. [OCC002, OCC003] The A29→A30 gap widened from about 2 to about 4 positions and the A40→A25 gap narrowed from about 4 to about 2. [LAG019, LAG025]

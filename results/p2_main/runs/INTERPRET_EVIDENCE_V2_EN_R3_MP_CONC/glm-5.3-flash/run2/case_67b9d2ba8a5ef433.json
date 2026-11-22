@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_67b9d2ba8a5ef433.json",
+  "evidence_sha256": "876728c50287184cd22805757d84cdd1c28a0c2af7dd559770a74e50d52401b2",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:37:49.583419+00:00",
+  "finished_at_utc": "2026-11-15T01:38:38.674501+00:00",
+  "latency_seconds": 49.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7070,
+    "prompt_tokens": 6152,
+    "total_tokens": 13222,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6264,
+      "text_tokens": 806
+    },
+    "cost": 0.0044578
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23862,
+  "text": "### Observed differences\n\n- Activity A01 did not appear in the earlier window (0 of 200 traces) but is executed exactly once in every case in the later window (200 of 200 traces, mean 1.0 occurrence per trace), at a median event position of about 0.83, i.e. roughly 83% of the way through the trace. [OCC001, POS001]\n- In the earlier window, A05 and A07 each passed on to A03 in roughly half of their observed outgoing transitions (A05: to A07 about 52 in 100 and to A03 about 48 in 100; A07: to A03 about 52 in 100 and to A05 about 48 in 100). In the later window, those transitions to A03 are replaced by transitions to A01 (A05: to A01 about 47 in 100 and to A07 about 53 in 100; A07: to A01 about 53 in 100 and to A05 about 47 in 100). [DIR002, DIR003]\n- In the later window, A01's only observed outgoing transition leads to A03 (100 in 100), and A01 precedes A03 in every case; in the earlier window, A03 always occurred without A01. [DIR001, REL001]\n- A05 and A07 now co-occur with A01 and precede it in 100 in 100 later-window cases, whereas they never co-occurred with A01 in the earlier window. [REL002, REL003]\n- The step distance from A05 and A07 to A03 grew by about one step: A05 reached A03 within 1–2 steps before versus 2–3 steps after, and A07 within 1–2 steps before versus 2–3 steps after. [LAG001, LAG002]\n- A05 and A07 now sit slightly earlier relative to trace length (mean event position about 0.70 before versus about 0.58 after). [POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 now executes once in every case between the A05/A07 stage and A03: cases that previously moved from A05 or A07 directly on to A03 now reach A03 through A01, which is in turn always followed by A03. The placement is shown directly by the outgoing-transition profiles of A05 and A07 and by the relation items (A01 before A03 always; A05 and A07 before A01 always), and the one-step increase in the A05/A07-to-A03 distances is consistent with A01 sitting in between. Twelve evidence items qualified against an expectation of about 0.06 items without change, far beyond what an unchanged process typically produces, and each difference is larger than in about 995 of 1000 random re-splits of the pooled traces. Limitations: zero participation in the earlier window strictly means only that A01 was not observed there, so the evidence cannot distinguish a genuinely new activity from an optional one that simply never occurred before; and the routing into A01 (about 47 and 53 in 100 from A05 and A07 respectively) is observed only as outgoing-transition shares, so the exact path through the A05–A07 loop into A01 is inferred rather than traced case by case. [OCC001, DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002]\n\nOther differences: none beyond the above; the small shifts in the A05–A07 shares (about 1 in 100) are minor and consistent with the same structure. [DIR002, DIR003]",
+  "case_id": "case_67b9d2ba8a5ef433",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

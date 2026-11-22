@@ -1,0 +1,14 @@
+### Observed differences
+
+- In the earlier window, exactly one of three activities — A14, A15 or A20 — was executed in every case: A14 in about 35 in 100 cases, A15 in about 30 in 100, A20 in about 35 in 100, and the three never occurred together. In the later window, none of the three appears in any of the 200 cases [OCC001, OCC002, OCC003, REL001, REL003, REL008].
+- Before, each of the three sat between A36 and the subsequent activities: A36 preceded it, and it preceded both A21 and A26 in every case where it ran; the distance from A36 to A21 was exactly two steps in all earlier cases. In the later window, A36 immediately precedes A21 (one step apart in all cases), while A21, A26 and A36 still run in every case [REL004, REL005, REL006, REL009, REL010, REL011, REL013, REL014, REL015, LAG001].
+- The mean position of A21 moved slightly earlier (from about 0.39 to about 0.37 of the trace) and that of A36 slightly later (from about 0.32 to about 0.33), consistent with traces becoming one step shorter; the three disappearing activities had sat at about 0.35 of the trace [POS001, POS002, POS003, POS004, POS005].
+- A19 appeared in about 49 in 100 earlier cases, always together with and after one of the three alternatives; it appears in about 56 in 100 later cases, no longer alongside any of them [REL002, REL007, REL012].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative step between A36 and A21 was dropped from execution: earlier, every case ran exactly one of A14, A15 or A20 (roughly a third of cases each) between A36 and A21, whereas in the later window none of the three runs and A36 leads directly to A21 in every case [OCC001, OCC002, OCC003, LAG001, REL004, REL013]. This is not a shift of shares between surviving paths: the three activities are wholly absent later, and the direct A36-to-A21 succession together with the small position shifts of A36 and A21 indicates the intermediate step is bypassed [LAG001, POS004, POS005]. The 24 qualifying items far exceed the fewer than one expected by chance among 53 tested units, and the same difference recurs consistently across occurrence, relation, position and lag indicators, making sampling noise an unlikely explanation for the pattern as a whole [OCC001, LAG001, REL004]. Limitation: zero participation only shows the activities were not observed in the later window, so a replacement of the three by differently coded activities cannot be ruled out [OCC001, OCC002, OCC003].
+
+Other differences: A19's participation rose from about 97 to about 111 of 200 cases, and it no longer follows one of the removed alternatives; whether this is a consequence of the removal or an independent change cannot be decided from this evidence [REL002, REL007, REL012].

@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A26, A27 and A28 were executed in every case (present in 200 of 200 traces, about once per trace); in the later window they appear in only about 1 in 100 traces (1–2 of 200). [OCC004, OCC005, OCC006]
+- In the earlier window, A19 and A20 were not observed and A21 appeared in a single trace; in the later window each of A19, A20 and A21 runs once per case in about 31–37% of traces (62, 67 and 74 of 200), clustered around 36% of the trace position. [OCC001, OCC002, OCC003, POS001, POS002, POS003]
+- A44's successors changed: before, roughly 33, 28 and 32 in 100 of its outgoing transitions went to A26, A27 and A28; in the later window, about 36, 30 and 27 in 100 go to A21, A20 and A19. [DIR007]
+- In the later window, about 97 in 100 of the observed outgoing transitions of each of A19, A20 and A21 lead to A29; A29 itself is present in every case in both windows. [DIR001, DIR002, DIR003, POS007]
+- The earlier window shows the old block sitting between A44 and A29: A26, A27 and A28 followed one another at lags of 1–3 steps and each led mostly to A29 (e.g. A27 to A29 in about 37 in 100 of its transitions), and A29 followed A44 about 4–5 steps later (93% at lag 4). [DIR004, DIR005, DIR006, LAG001, LAG003, LAG006, LAG010]
+- In the later window the A44-to-A29 distance contracts to 2 steps in about 92 of 100 cases (7.5% at lag 3), and A29's mean position moves slightly earlier, from about 0.43 to 0.40 of the trace. [LAG010, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A44 and A29 was restructured: the former block of A26, A27 and A28, which executed in every earlier case in varying order before A29, was removed, and a shorter step was inserted in which one of the newly appearing activities A19, A20 or A21 runs between A44 and A29, each in roughly a third of later cases and almost always followed directly by A29. The signals are direct and mutually consistent: participation flipped from 100% to about 1% for the old activities and from 0% to 31–37% for the new ones, A44's successor set switched from the old to the new activities, the new activities' transitions point to A29, and the A44-to-A29 distance shrank from 4–5 steps to about 2, as expected if three activities were replaced by one. The volume of qualifying evidence (31 control-flow items against roughly 0.6 expected without change) also makes sampling variation alone implausible. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR007, LAG010]
+
+Limitations: the evidence contains no direct relation items between A19, A20 and A21, so it cannot establish whether they are mutually exclusive alternatives (one per case) or partly co-occur; the later-window routing around A26, A27 and A28 rests on only 1–2 traces. [DIR001, DIR002, DIR003, OCC004, OCC005, OCC006] An important competing explanation the evidence cannot fully exclude is that the later window mixes two variants in which the old three-activity path survives in a small remainder of cases rather than being removed entirely. [OCC004, OCC005, OCC006]
+
+Other differences: A44's own mean position shifted slightly later (about 0.31 to 0.33 of the trace), and each new activity shows one or two rare side-transitions (about 1–2 in 100) besides its dominant edge to A29; neither alters the main hypothesis. [POS008, DIR001, DIR002, DIR003]

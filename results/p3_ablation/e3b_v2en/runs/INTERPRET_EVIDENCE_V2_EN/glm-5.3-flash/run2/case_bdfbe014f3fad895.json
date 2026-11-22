@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_bdfbe014f3fad895.json",
+  "evidence_sha256": "084f9a6d01752eeff6f6d69b7b2aa58ff66a1652bd79bf393e86282896cc3e7f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:08:24.552762+00:00",
+  "finished_at_utc": "2026-11-15T05:09:42.959172+00:00",
+  "latency_seconds": 78.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11239,
+    "prompt_tokens": 27684,
+    "total_tokens": 38923,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9957,
+      "text_tokens": 1282
+    },
+    "cost": 0.009772099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33646,
+  "text": "### Observed differences\n\n- In the later window, A04 appears in about 60 in 100 traces (about 19 in 100 before) and occurs much earlier in the case: its median relative position moves from about 0.55 to about 0.17 of the trace length. [OCC001, POS001]\n- The routing around A04 changed: A14 now sends about 54 in 100 of its outgoing transitions to A04 (about 4 in 100 before, when about 87 in 100 went directly to A15, a share that drops to about 44 in 100), A04 immediately follows A14 at a gap of one event in about 96 in 100 observed pairs, and A04's own outgoing transitions concentrate on A15 (about 87 in 100, versus about 20 spread over many targets before). [DIR004, LAG001, LAG002, DIR001]\n- Three activities not observed in the earlier window — A32, A33 and A38 — each now appear in about 50 in 100 traces around the middle of the case; they co-occur in about 49 in 100 traces in varying order, and each sends most of its outgoing transitions to the other two and to A28. [OCC004, OCC005, OCC006, POS003, POS004, POS005, REL028, REL029, REL030, DIR007, DIR008, DIR009]\n- A27 drops from every trace to about 51 in 100, and A26 now routes only about 51 in 100 of its outgoing transitions to A27 (about 95 in 100 before), with most of the rest going to A32, A33 or A38 (about 15–18 in 100 each); A27 and the three new activities almost never co-occur (about 1 in 100 traces or fewer). [OCC003, DIR006, REL022, REL023, REL024]\n- A28 now occurs without A27 in about 49 in 100 traces (never before) and is typically preceded by A32, A33 or A38 (about 48 in 100 of the relevant pairs); the event distance from A26 to A28 splits from almost always two events (about 90 in 100 pairs) to roughly half two and half four events, consistent with extra steps inserted before A28. [REL021, REL025, REL026, REL027, LAG003]\n- A06 nearly disappears, from about 20 in 100 traces to about 4 in 100; only 8 later traces contain it, so this decline is weakly supported. [OCC002, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the process contains two rerouted segments. First, an A04 step appears to be inserted between A14 and A15: A14 → A04 now carries about half of A14's outgoing flow, A04 follows A14 immediately in nearly all observed pairs, A04 leads to A15 in about 87 in 100 of its outgoing transitions, and A04 now runs before A26 and A28 in about 55 in 100 of the relevant traces. Second, the former A26 → A27 → A28 segment appears to have an alternative branch built on the previously unobserved activities A32, A33 and A38: in about half of the later traces A27 is absent while the trio runs in varying order and leads into A28, and A27 and the trio almost never share a trace, consistent with two alternative paths. A06 is nearly no longer executed. The qualifying items (55, against roughly 0.7 expected for an unchanged process) and the participation shifts (three activities from 0 to about 100 of 200 traces; A27 from 200 to about 103 traces) are far beyond what random re-splits of stable behaviour produce. [OCC001, OCC003, OCC004, DIR001, DIR004, DIR006, LAG001, LAG003, REL021, REL022, REL025]\n\nLimitations remain: many items describe the same underlying rerouting and are not independent confirmations; the evidence cannot show what determines whether a case takes the A27 path or the new-activities path, and a shift in the mix of process variants (the later window containing many more cases of a variant that already existed) cannot be fully excluded — although the complete absence of A32, A33 and A38 from 200 before-traces makes pure sampling variation unlikely for that branch. The A06 decline rests on only 8 later traces. [OCC002, OCC004, OCC005, OCC006, REL022]",
+  "case_id": "case_bdfbe014f3fad895",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

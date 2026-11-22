@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_03dacefde2ff7f76.json",
+  "evidence_sha256": "e4f55bc2d9ab189dfe45d7a8550c8fce83c872d72ede2e970398b174579a58f8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:20:14.470317+00:00",
+  "finished_at_utc": "2026-11-15T04:22:44.162738+00:00",
+  "latency_seconds": 149.69,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21313,
+    "prompt_tokens": 14246,
+    "total_tokens": 35559,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19646,
+      "text_tokens": 1667
+    },
+    "cost": 0.0127934
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 70177,
+  "text": "### Observed differences\n\n- Three alternative activities — A19, A20 and A25, together accounting for about one occurrence per case in both windows — ran in the first third of the case in the earlier window (mean event position about 0.31–0.34); in the later window they run in the last third (mean position about 0.58–0.59), while their individual shares stayed similar (about 31–38 in 100 traces each). [POS001, POS002, POS003]\n- The block's entry and exit were rewired. Before, A45 led into the block (about 85 in 100 of A45's outgoing transitions went to A19, A20 or A25), and each block activity led almost exclusively to A26 (about 89–98 in 100). In the later window, A45 leads directly to A26 in about 89 in 100 of its outgoing transitions, with the A45→A26 distance shrinking from mostly two steps to one step (about 89 in 100 cases), and the old edges A45→block and block→A26 are no longer observed. [DIR006, DIR001, DIR002, DIR003, LAG008, LAG003]\n- The block now sits around A28, between A27 and A32. Before, A27 led to A28 in about 98 in 100 outgoing transitions and A28 led to A32 in about 94 in 100; in the later window A27 leads to one of A19/A20/A25 in about 48 in 100 (A28 still about 51 in 100), and A28 leads to one of them in about 51 in 100 (A32 about 48 in 100). One step now separates A27 from A28 in about 49 in 100 cases (before about 2 in 100) and A28 from A32 in about 51 in 100 (before about 4 in 100), and the A27→A32 distance grew from two steps to three in about 97 in 100 cases. [DIR004, DIR005, LAG004, LAG007, LAG005]\n- Order relations with A26 and A27 reversed: before, A19, A20 and A25 each ran before A26 and before A27 in nearly all traces where both occurred (about 30–38 in 100 traces per pair); in the later window they run after A26 and after A27 in similar shares. Against A28 the order is now mixed (block first in about 15 in 100 traces, A28 first in about 15–22 in 100). [REL001, REL004, REL006, REL002, REL005, REL007, REL003, REL008]\n- New close sequences appeared that were previously almost absent: A20 immediately followed by A28 (36 traces after vs 1 before), A28 immediately followed by A20 (30 vs 1), and A20 reaching A32 within one to two steps (66 traces after vs 1 before); the former one-step adjacency A25→A26 (63 traces before) is essentially gone (1 trace after). [LAG001, LAG006, LAG002, LAG003]\n- Participation barely moved: A26 and A27 occur in every trace in both windows, A32 follows within five steps of A27 in essentially all traces, A45 and A28 occur in nearly all traces, and each block activity in about 30–38 in 100. [POS004, POS005, LAG005, DIR005, DIR006, POS001, POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the one-of-three choice block formed by A19, A20 and A25 was relocated from early to late in the case sequence: in the earlier window the case ran one of the three between A45 and A26, about a third of the way through, while in the later window the chosen activity runs after A27, inserted either immediately before or immediately after A28 and before A32, about 59 in 100 of the way through. [POS001, POS002, POS003, DIR004, DIR005, LAG004, LAG007]\n\nThis hypothesis is supported directly and consistently: the position shift is observed for all three activities and is large (about 0.27–0.29 of the case length); the rewiring shows on both sides of the block (A45 now feeds A26 directly, the block exits to A28/A32 instead of A26, and A27/A28 route into the block in about half of their outgoing transitions); the order relations with A26 and A27 reversed for all three activities; and participation of every involved activity stayed substantial in both windows, ruling out the block having been added or removed rather than relocated. With 27 qualifying items against roughly 1 expected by chance among the 126 tested units, and every item's difference exceeding about 199 of 200 random re-splits, the set of differences as a whole cannot be explained by sampling. [POS001, POS002, POS003, DIR006, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL004, REL005, REL006, REL007]\n\nA competing explanation the evidence cannot rule out: the items cover only the listed pairs and successors, so it remains unclear whether the activities occupying the stretch between A26 and A27 (about a quarter of the case) also changed placement, or whether the block swapped with part of that segment rather than simply being reinserted around A28; the exact insertion rule (before vs after A28, in roughly equal shares) also cannot be pinned down. [REL003, REL008, LAG004, LAG007]\n\nOther differences: A26 and A27 each shifted slightly earlier in the sequence (mean event position about 0.35 to 0.32 and 0.58 to 0.55), and the choice among the three alternatives shifted modestly (A19 from about 38 to 31 in 100 traces, A25 from about 32 to 38 in 100, A20 roughly unchanged) — a shift small enough that sampling variation between the two 200-trace windows cannot be excluded. [POS004, POS005, POS001, POS002, POS003]",
+  "case_id": "case_03dacefde2ff7f76",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_cf/evidence/e4a_17dde2747e06e97e.json",
+  "evidence_sha256": "36507d6f82494bf49ecad47b3847f4698990341913254ce883e8b1ec10bbd938",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:26:29.951787+00:00",
+  "finished_at_utc": "2026-11-15T07:27:11.924899+00:00",
+  "latency_seconds": 41.97,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6026,
+    "prompt_tokens": 2970,
+    "total_tokens": 8996,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5402,
+      "text_tokens": 624
+    },
+    "cost": 0.0034585
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 23280,
+  "text": "### Observed differences\n\n- The elapsed time between consecutive completions of A23 and A24 roughly halved: in the earlier window the median was about 1.0 hours (middle half of cases roughly 0.88–1.09 hours), in the later window about 0.50 hours (roughly 0.45–0.55 hours), and the spread narrowed (standard deviation about 0.18 to 0.08 hours). The pair was observed in 200 of 200 traces in both windows. [TWAIT001]\n- The elapsed time between consecutive completions of A36 and A14 roughly doubled: median about 1.0 hours in the earlier window versus about 2.0 hours in the later window, with the middle half moving from roughly 0.91–1.14 hours to roughly 1.91–2.16 hours and the spread widening (standard deviation about 0.17 to 0.28 hours). [TWAIT002]\n- This A36-to-A14 elapsed-time measurement was observed in 200 of 200 earlier-window traces but only about 106 of 200 (roughly 53 in 100) later-window traces, so the pair occurred as consecutive completions about half as often. [TWAIT002]\n- Both timing differences are larger than in about 9995 of 10000 random re-splits of the pooled data, and the screening produced 2 qualifying time items where about 0.01 would be expected if nothing had changed. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a change in timing: the elapsed time between consecutive completions fell from about 1.0 to about 0.5 hours for the A23-to-A24 pair and rose from about 1.0 to about 2.0 hours for the A36-to-A14 pair. Supporting signs: both items measure exactly these elapsed times, the whole distributions shifted with all quartiles moving together, each difference exceeds about 9995 of 10000 random re-splits, the A23–A24 pair appears in every trace of both windows, and two qualifying items against roughly 0.01 expected by chance is far beyond what an unchanged process typically produces. The main limitation is that T_WAIT is elapsed time between consecutive completion events, not pure waiting or service time; an important competing explanation the evidence cannot rule out is that the shifts arise from what happens between the two completions (for example intervening events) rather than from the pairs' own timing, and no structural or relational items are available to check this. [TWAIT001, TWAIT002]\n\nOther differences: the A36-to-A14 consecutive pair appeared in about 106 of 200 later-window traces versus 200 of 200 earlier, a drop of roughly 47 in 100 cases; this could mean one of the two activities occurs less often or that another event now intervenes between them, but the evidence cannot distinguish these possibilities. [TWAIT002]",
+  "case_id": "e4a_17dde2747e06e97e",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

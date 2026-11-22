@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_be61d59d2e8d65c6.json",
+  "evidence_sha256": "249c22f604989e5e8b94ee8ab47bd978b00f28d3c9c43acce110b0bba5678d22",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:15:41.730110+00:00",
+  "finished_at_utc": "2026-11-14T13:16:43.607877+00:00",
+  "latency_seconds": 61.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9955,
+    "prompt_tokens": 14417,
+    "total_tokens": 24372,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8854,
+      "text_tokens": 1101
+    },
+    "cost": 0.007140049999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31755,
+  "text": "### Observed differences\n\n- The clearest change is in participation: A19, A20 and A25 each ran in roughly a third to two fifths of cases before (about 33, 29 and 40 in 100 traces respectively), but in only 1 of 200 traces each in the later window. None of the three ever repeated within a trace in either window. [OCC001, OCC002, OCC003]\n- Before, these three activities sat inside the span between A27 and A29: each co-occurred with A27 in every trace where it appeared and always ran after it, each preceded A29 in essentially all of its appearances, and their order relative to A28 was mixed (for example, A19 ran before A28 in about 13 in 100 of its appearances and after A28 in about 19 in 100). The three rarely ran in the same trace (co-occurrence about 0.5 in 100), so they acted as alternatives within that span. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n- In the later window the flow bypasses that span: about 98 in 100 of A27's outgoing transitions now go to A28 (previously about 52 in 100, with about 44 in 100 going to A19, A20 or A25), and about 97 in 100 of A28's outgoing transitions now go to A29 (previously about 43 in 100, with about 52 in 100 going to A19, A20 or A25). [DIR005, DIR006]\n- The rare later appearances of A19, A20 and A25 each rest on a single trace, so their apparent new successors (A38, A37, A31) are too weak to interpret. [DIR002, DIR003, DIR004]\n- Separately, A10's successor mix was redistributed (cosine dissimilarity 0.44 on its own scale): before, A15 took about 20 in 100 of its outgoing transitions, with A47, A16 and A45 at about 17, 17 and 14; afterwards the share is spread over many targets, led by A26 (about 17) and A45 (about 15), with A15 and A47 down to about 6 each. [DIR001]\n- Minor: the mean relative position of A27 rose slightly (0.46 to 0.48) and that of A29 fell slightly (0.57 to 0.55); a position shift alone does not show that an activity was moved. [POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the set of alternative activities A19, A20 and A25, which previously ran between A27/A28 and A29 in roughly 30–40% of cases, is effectively no longer executed, so that traces now proceed directly from A27 through A28 to A29. [OCC001, OCC002, OCC003, DIR005, DIR006]\n\nThe support is direct and consistent: the participation drop is observed for all three activities, the bypass is visible in the successor profiles of A27 and A28, each backed by essentially all traces in both windows, and the relational items confirm the block previously sat after A27 and before A29. With 26 qualifying items against roughly 0.5 expected if nothing had changed, the pattern as a whole is unlikely to be a sampling artefact. The main limitation is that the evidence cannot distinguish a complete removal from execution in a residual share of about 1 in 200 traces, and the behaviour around those rare occurrences cannot be established from single-trace profiles. [REL003, REL005, REL010, REL012, DIR002, DIR003, DIR004]\n\nOther differences: A10's outgoing routing was redistributed across many more targets, a change the evidence shows but does not tie to the disappearance of the block [DIR001]; A27 and A29 shifted slightly in relative position [POS004, POS005].",
+  "case_id": "case_be61d59d2e8d65c6",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

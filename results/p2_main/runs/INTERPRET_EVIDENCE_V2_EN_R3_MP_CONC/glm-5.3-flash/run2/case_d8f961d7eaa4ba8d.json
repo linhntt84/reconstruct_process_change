@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_d8f961d7eaa4ba8d.json",
+  "evidence_sha256": "b0b1ee22c6cdf1dcd89357f571ee9b6b44923b570fe9a74f1bb3fc40fd0b9589",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:01:12.389803+00:00",
+  "finished_at_utc": "2026-11-15T01:03:04.795605+00:00",
+  "latency_seconds": 112.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16278,
+    "prompt_tokens": 55451,
+    "total_tokens": 71729,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14412,
+      "text_tokens": 1866
+    },
+    "cost": 0.01645665
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 46872,
+  "text": "### Observed differences\n\n- The five activities A30, A31, A36, A37 and A38 ran about 3.6 times per trace in the earlier window (repeating within about 70 in 100 traces) but exactly once per trace in the later window (mean about 1.0, recurrence almost zero); they appear in every trace in both windows. [OCC006, OCC007, OCC008, OCC009, OCC010]\n- In the earlier window these five activities were interleaved or repeated around one another in about 70 in 100 traces without a stable order; in the later window interleaving nearly disappeared (about 2 in 100 traces): A30 precedes A31/A36/A37/A38 in about 98 in 100 traces, A31, A36 and A37 each precede A38 in about 98 in 100 traces, and pairs among A31, A36 and A37 now occur in both orders in similar proportions instead of interleaved. [REL033, REL036, REL040, REL041, REL042, REL046, REL047, REL051]\n- A10 went from a marginal step (about 21 in 100 traces, at widely varying event positions) to a regular one (about 72 in 100 traces, typically around a third into the trace with little spread). It now co-occurs with A14 and A15 in about 72 in 100 traces (before about 21 in 100) and precedes A30–A38 and A46/A47 in about 65 in 100 traces (before about 3–19 in 100). [OCC005, POS001, REL001, REL002, REL005, REL009, REL011, REL012]\n- A new local chain formed around A10: A41 now leads to A10 in about 70 in 100 of its outgoing transitions (before mostly A19, about 44 in 100, and A20, about 33 in 100), A41 precedes A10 in about 64 in 100 traces (before about 11 in 100), usually at a gap of one event; A10 in turn is followed mostly by A19 or A20 (together about 88 in 100 of its outgoing transitions, before about 11 in 100), usually immediately. [DIR007, DIR004, REL010, LAG023, LAG001, LAG002]\n- A38's exit changed: in the earlier window the next activity after A38 was A30 in about 70 in 100 cases; in the later window it is A25 in about 98 in 100 cases. [DIR006]\n- A14 and A15 now precede the A30–A38 block in a fixed order: A14 before each of them in about 97–99 in 100 traces (before about 30 in 100, otherwise interleaved) and A15 in about 63 in 100 (before about 18 in 100); A14's outgoing transitions go almost exclusively to A15 (about 97 in 100). A41 likewise now precedes A30–A38 in about 98 in 100 traces (before about 30 in 100). [REL013, REL017, REL018, REL022, DIR005, REL037, REL048]\n- The event positions of A30–A38 became much more consistent (spread about 0.15 down to about 0.06) at roughly unchanged mean positions; A19 and A20 now appear later (mean position about 0.28–0.30 up to about 0.37 of the trace), and the gap from A41 to A19/A20 shifted from mostly one event to mostly two. [POS006, POS007, POS008, POS009, POS010, POS004, POS005, LAG024, LAG025]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the control flow around the middle block was restructured. In the earlier window, A30, A31, A36, A37 and A38 formed a repeating, interleaved loop (about 3.6 runs per trace, interleaved in about 70 in 100 traces) that A14 and A15 accompanied without a fixed order, A10 appeared only in about 21 in 100 traces, and A38 typically returned to A30. In the later window, the block runs exactly once per trace in a fixed sequence (A30 first, then A31/A36/A37 in either order, then A38, which now exits to A25), A14 and A15 precede the block in a stable order, and A10 has become a regular step fed by A41 and typically followed by A19 or A20 before the block. [OCC005, OCC006, OCC007, OCC008, OCC009, OCC010, DIR004, DIR006, DIR007, REL005, REL010, REL013, REL018, REL033, REL037, REL042, LAG001, LAG023]\n\nThe ordering claims rest on direct relational, successor and gap evidence for activity pairs that co-occur in all traces in both windows, so they are not rare-variant artefacts; the repetition and participation changes rest on all 200 traces per window; and 116 items qualified against about 1.16 expected if nothing had changed, which chance cannot explain as a whole — though many items describe the same underlying restructuring and are not independent confirmations. [REL013, OCC006, OCC005]\n\nLimitations: control-flow evidence alone cannot distinguish a modification of one process from a shift in the mix of two pre-existing variants (for example a previously rare single-pass variant dominating the later window), and the rerouting detail for A02, A04 and A06 rests on only about 9–20 observations in the later window. [DIR001, DIR002, DIR003]\n\nOther differences: A02, A04, A06 and A08 became rare, dropping from about 23–31 in 100 traces to about 5–11 in 100, with changed but weakly supported outgoing profiles; A44 and A46 now lead almost exclusively to A45 and A47 respectively, and A46 is followed by A47 at a gap of one event in about 995 in 1000 cases (before about 835 in 1000). [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR008, DIR009, LAG028]",
+  "case_id": "case_d8f961d7eaa4ba8d",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

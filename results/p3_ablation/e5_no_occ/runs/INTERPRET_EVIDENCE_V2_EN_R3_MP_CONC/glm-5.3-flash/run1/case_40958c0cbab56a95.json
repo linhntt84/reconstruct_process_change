@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_40958c0cbab56a95.json",
+  "evidence_sha256": "81e71e55b6e491fdda90927f0ddadcfd20d873eccf2f921d5530fc3a8217633a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:44:09.599020+00:00",
+  "finished_at_utc": "2026-11-14T11:46:16.264290+00:00",
+  "latency_seconds": 126.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17710,
+    "prompt_tokens": 35674,
+    "total_tokens": 53384,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16042,
+      "text_tokens": 1668
+    },
+    "cost": 0.0142061
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54707,
+  "text": "### Observed differences\n\n- **A three-activity block is nearly gone in the later window.** Earlier, A26, A27 and A28 each appeared in all 200 traces and always in the same trace together, in mixed order among themselves; in the later window each appears in only about 3 of 200 traces (about 1.5 in 100). [POS004, POS005, POS006, REL036, REL037, REL042]\n- **Three previously rare activities became common and mutually exclusive.** A19, A20 and A21 each appeared in only about 1–2 of 100 traces earlier; in the later window each appears in about 30–38 of 100 traces (60–76 of 200) while almost never sharing a trace with one another (co-occurrence about 0–0.5 in 100), so they now behave as alternatives. [POS001, POS002, POS003, REL013, REL014, REL021]\n- **Routing was rewired around this swap.** A44, present in every trace in both windows, sent about 82 of 100 of its observed outgoing transitions to A26/A27/A28 earlier and now sends about 79 of 100 to A19/A20/A21 (about 25–27 each); the newcomers in turn send about 95 of 100 of their outgoing transitions to A29. [DIR007, DIR001, DIR002, DIR003]\n- **Relations flipped accordingly.** Earlier, A44 preceded the trio and the trio preceded A29 and A45 in about 98–99 of 100 traces; in the later window A44 precedes A19/A20/A21 in about 30–37 of 100 traces, and A29 and A45 co-occur with them in about 30–37 of 100 traces. [REL018, REL019, REL025, REL026, REL032, REL033, REL020, REL027, REL034, REL038, REL043, REL047]\n- **The gap between A44 and A29 narrowed.** By event position, A29 followed A44 earlier mostly 4–5 positions later (about 78 in 100 at distance 4) and now mostly 2–3 positions later (about 79 in 100 at distance 2); A29's mean position moved slightly earlier (0.44 to 0.40 of the trace) and A44's slightly later (0.31 to 0.33), with both still in every trace. [LAG009, POS007, POS008]\n- **Upstream shift.** A11 and A12, which earlier preceded the A26/A27/A28 trio in about 46 of 100 traces, now precede A19/A20/A21 in about 16–21 of 100 traces, and their own presence rose from about 46–47 to about 56–58 of 100 traces. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A44 and A29 was restructured: the always co-executed trio A26/A27/A28, which ran after A44 and before A29 and A45 in essentially every earlier trace, is in the later window observed in only about 1.5 of 100 traces, and in its place one of the mutually exclusive alternatives A19, A20 or A21 (each in about 30–38 of 100 traces) runs between A44 and A29 — A44 now routes about 79 of 100 of its outgoing transitions to them, they route about 95 of 100 of theirs to A29, and the A44-to-A29 distance contracts from about 4–5 event positions to about 2–3. This is a hypothesis about activities being removed and others inserted, not a shift in the frequencies of existing paths, since each side was nearly unobserved in one window. The change is shown directly by the successor redistribution at A44 (about 200 outgoing transitions behind it in each window) and by the relational flips, consistently across indicators that largely reflect the same traces; 74 control-flow items qualified where fewer than 1 (0.65) would be expected without a change, so the body of evidence is far beyond what random re-splits produce. [DIR007, DIR001, POS004, POS001, REL018, REL019, REL038, LAG009]\n\nLimitations: the earlier routing of A19/A20/A21 rests on only 2–4 traces, so their pre-change behaviour is weakly characterised; the trio is still observed in about 1.5 of 100 later traces, so it became nearly unobserved rather than provably deleted. An important competing explanation the evidence cannot fully rule out is that the trio's disappearance and the newcomers' emergence are two independent changes rather than one replacement — although A44's redirect and the shortened A44-to-A29 distance link them, it cannot be shown that A19/A20/A21 fulfil the same function the trio had. [DIR001, DIR002, DIR003, POS004, LAG009]\n\nOther differences: A11 and A12 now appear in about 56–58 of 100 traces (up from about 46–47) and precede A19/A20/A21 in about 16–21 of 100 traces, where earlier they preceded the old trio in about 46 of 100; A46, present in a majority of traces in both windows, now co-occurs with A20/A21 in about 22–27 of 100 traces, where earlier it essentially never did. [REL001, REL002, REL003, REL007, REL008, REL009, REL010, REL011, REL012, REL028, REL035]",
+  "case_id": "case_40958c0cbab56a95",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

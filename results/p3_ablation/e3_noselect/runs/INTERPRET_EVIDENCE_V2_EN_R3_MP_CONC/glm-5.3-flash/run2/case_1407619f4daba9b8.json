@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_1407619f4daba9b8.json",
+  "evidence_sha256": "1675a8c165b869abdb29efe35446fb1911eb9c97a23bd1b5e2fae6da1963c338",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:39:04.633883+00:00",
+  "finished_at_utc": "2026-11-15T07:41:35.851768+00:00",
+  "latency_seconds": 151.22,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21275,
+    "prompt_tokens": 37238,
+    "total_tokens": 58513,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19270,
+      "text_tokens": 2005
+    },
+    "cost": 0.0162232
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64067,
+  "text": "### Observed differences\n\n- Four activities became mandatory. In the earlier window, A22 appeared in about 54 in 100 traces and A31, A32 and A37 in about 46 in 100 each; in the later window, each of the four appears in essentially every trace (199–200 of 200). [OCC019, OCC020, OCC021, OCC026]\n\n- The routing after A20 changed completely. Earlier, A20's only observed successor was A23, immediately (one step away in 100 in 100 traces); in the later window, A20 leads to A31, A32 or A37 (about 36, 32 and 32 in 100 of its outgoing transitions), leads directly to A23 in under 1 in 100, and A23 now follows four steps after A20 in 99.5 in 100 traces. [DIR014, LAG001]\n\n- The routing after A21 collapsed to a single path. Earlier, A21 led to A22 in about 54 in 100 of its outgoing transitions and to A31/A32/A37 in the remaining 46; in the later window, A21 leads to A22 in 100 in 100, and the distance from A21 to A26 is always two steps (earlier it was two steps in about 54 in 100 traces and four steps in the rest). [DIR015, LAG002]\n\n- A22 and the group A31/A32/A37 changed from alternatives to companions. Earlier they never occurred in the same trace (A22 alone in about 54 in 100 traces, the group alone in about 46); in the later window they co-occur in 99.5 in 100 traces, with the group executed before A22. Within the group, each pair now occurs in both orders in roughly equal shares, so no fixed internal order is visible. [REL011, REL012, REL013, REL020, REL021, REL022]\n\n- The group's surroundings reversed. Earlier, A21 preceded the group and A23 preceded the group (in the traces where they met); in the later window, the group precedes A21, A23 and A26 in 99.5 in 100 traces each, and A23 precedes A22 in every trace. The group's exits also changed: earlier its activities led to A26 in about 29–36 in 100 of outgoing transitions and never to A23; in the later window they lead to A23 in about 31–37 in 100 and no longer to A26. [REL006, REL009, REL014, REL017, DIR018, DIR019, DIR024]\n\n- Event positions moved consistently: the group's mean position moved from about 0.59 to 0.40 of the trace, A23's from 0.39 to 0.46, A22's from 0.59 to 0.63 and A21's from 0.54 to 0.60. [POS002, POS003, POS004, POS006, POS007, POS008]\n\n- Away from this cluster, the branch choice after A40 flipped: A14 rose from about 46 to 53 in 100 traces and A15 fell from 54 to 47. [OCC013, OCC014, DIR026]\n\n- Smaller redistributions appear around A16–A19: A18's outgoing share to A27 rose from about 39 to 58 in 100, A16's and A17's outgoing shifted towards A18, and participation moved slightly from A16 (56 to 49 in 100) to A17 (44 to 51 in 100). [DIR010, DIR011, DIR012, OCC015, OCC016, OCC017]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural re-routing of the middle segment as the main hypothesis, involving A20, A21, A22, A23, A26 and the group A31/A32/A37. In the earlier window, every trace ran A20 → A23 directly, and after A21 the flow split into two alternatives: A21 → A22 → A26 in about 54 in 100 traces, or A21 → A31/A32/A37 (no fixed order) → A26 in the remaining 46. In the later window, these two alternatives appear as two sequential mandatory segments: the group A31/A32/A37 runs in every trace between A20 and A23, and A22 runs in every trace between A21 and A26, i.e. A20 → A31/A32/A37 → A23 → … → A21 → A22 → A26. This is shown directly by the successor profiles of A20 and A21, by relations reversing from mutual exclusivity to universal co-occurrence with reversed order, by the A20→A23 distance moving from one to four steps, and by participation rising from about half of traces to all traces, with the position distributions shifting consistently; the key items rest on 92–200 traces per window and show near-maximal empirical strength. [OCC019, OCC020, OCC021, OCC026, DIR014, DIR015, DIR018, DIR019, DIR024, REL006, REL011, REL014, LAG001, LAG002, POS006]\n\nLimitations: the evidence cannot distinguish one reconfiguration from two coordinated modifications (placing the group after A20 and making A22 mandatory), it shows no fixed order inside the group, and a rare direct A20 → A23 transition persists in the later window (under 1 in 100 of A20's outgoing transitions). [REL020, REL021, REL022, DIR014]\n\nOther differences:\n- The A14/A15 flip after A40 is a separate branch-share change of moderate strength. [OCC013, OCC014, DIR026]\n- The A16–A19/A27 redistribution is directionally consistent across A16, A17 and A18 but involves modest share changes. [DIR010, DIR011, DIR012]\n- Remaining small shifts (for example A12's participation rising from about 22 to 29 in 100, and minor redistributions in the A01–A09 and A41–A44 clusters) have low to moderate strength and are consistent with sampling variation between two 200-trace windows. [OCC011, DIR001, DIR003, OCC031, DIR029]",
+  "case_id": "case_1407619f4daba9b8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

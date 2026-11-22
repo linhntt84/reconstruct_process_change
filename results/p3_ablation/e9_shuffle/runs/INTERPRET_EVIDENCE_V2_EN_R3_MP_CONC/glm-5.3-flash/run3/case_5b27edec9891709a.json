@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_5b27edec9891709a.json",
+  "evidence_sha256": "c93ae7e3812ded3c4984656c6e4413b4b4f3b00ba39a4e498f2d993da3c7f4c8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:25:05.175677+00:00",
+  "finished_at_utc": "2026-11-15T09:27:29.521910+00:00",
+  "latency_seconds": 144.35,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20699,
+    "prompt_tokens": 20849,
+    "total_tokens": 41548,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18852,
+      "text_tokens": 1847
+    },
+    "cost": 0.01347685
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 64849,
+  "text": "### Observed differences\n\n- Before, every one of the 200 traces contained all of A20, A21, A22, A23, A26, A31, A32 and A37. In the later window, A31, A32 and A37 each appear in only about 47 in 100 traces and A22 in about 54 in 100, while A20, A21, A23 and A26 still appear in all traces. [OCC001, OCC002, OCC003, OCC004]\n- A31, A32 and A37 still run together whenever they run: each pair co-occurred in 100% of earlier traces and co-occurs in about 47 in 100 later traces, with both members absent in about 53 in 100. [REL020, REL021, REL022]\n- The group and A22 became mutually exclusive. Before, each of A31, A32 and A37 ran before A22 in every trace; in the later window A22 co-occurs with each of them in only about 1 in 200 traces, appearing without them in about 53 in 100 while they appear without A22 in about 46–47 in 100. [REL011, REL012, REL013]\n- The group moved later in the flow. Before, each of A31, A32 and A37 preceded both A23 and A21 in 100% of traces; in the later window A23 and A21 each precede them in about 46–47 in 100 traces (essentially every trace where the group runs), and the group's mean event position moved from about 0.40 to about 0.58 of the trace. [REL006, REL007, REL008, REL014, REL015, REL016, POS006, POS007, POS008]\n- Direct successors changed. A20, previously split across A37, A31 and A32 (about 35, 34 and 31 in 100 of its outgoing transitions), now leads almost always directly to A23 (about 995 in 1000). A21, previously always followed by A22, is now followed by A22 in about 54 in 100 and by A31/A32/A37 in about 46 in 100. The group members lost A23 as a successor and gained A26 (about 29–36 in 100 of their outgoing transitions). [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Event distances changed accordingly: A20 to A23 went from 4 steps apart in all traces to adjacent in about 995 in 1000, and A21 to A26 went from always 2 steps apart to 2 steps in about 54 in 100 and 4 steps in about 46 in 100 of later traces. [LAG001, LAG005]\n- A23 and A21 moved to earlier typical positions (mean about 0.45 to 0.39 and 0.60 to 0.54), and A22 slightly earlier (about 0.63 to 0.59). [POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural change centred on A31, A32 and A37 together with A22: the three-activity group, which previously executed in every case between A20 and A23, now forms an optional branch placed after A23 and A21, running in about 47 in 100 cases and mutually exclusive with A22. In the later window a case runs either A20 → A23 → A21 → A31/A32/A37 → A26 (about 47 in 100 cases) or A20 → A23 → A21 → A22 → A26 (about 53 in 100 cases), whereas before, every case ran A20 → A31/A32/A37 → A23 → A21 → A22 → A26. The support is direct and consistent: participation fell from 100% to about 47% for the group and 54% for A22, co-occurrence between the group and A22 collapsed from 100% to about 0.5%, the order between the group and A23/A21 reversed, successors changed at A20, A21 and the group members, and the event-distance shifts match; 47 control-flow items qualified where roughly 0.5 would be expected by chance, and each item's difference exceeded about 995 of 1000 random re-splits, so the pattern as a whole is not what an unchanged process typically produces — though the items largely reflect this one trace-level difference rather than independent phenomena. [OCC001, OCC002, OCC003, OCC004, REL011, REL012, REL013, REL006, REL014, DIR001, DIR002, DIR003, LAG001, LAG005, screening]\n\nLimitations: the evidence cannot show what determines which branch a case takes, positions and distances are measured in event order rather than clock time, and several qualified lag items rest on a single later-window observation and were not used here. A competing explanation that cannot be fully excluded is that the later window mixes two variants of which one was previously rare; the earlier window, however, contained both the group and A22 in 200 of 200 traces, making a large pre-existing alternative share implausible. [LAG002, LAG003, LAG004, LAG006, LAG007, LAG008, OCC001, OCC002, OCC003, OCC004]\n\nOther differences: the internal order among A31, A32 and A37 remained unfixed in both windows (both orders in similar shares), and A20's and A26's typical positions shifted only slightly (about 0.34 to 0.36 and 0.66 to 0.63). [REL020, REL021, REL022, POS001, POS005]",
+  "case_id": "case_5b27edec9891709a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

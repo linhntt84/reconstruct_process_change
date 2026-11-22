@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_d3c92cf5dad9ec3e.json",
+  "evidence_sha256": "36efc06b5de2333aff12ad3b11336ae4dc56070425ccb312873b768162e4eb05",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:10:10.600251+00:00",
+  "finished_at_utc": "2026-11-14T11:12:02.472384+00:00",
+  "latency_seconds": 111.87,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18537,
+    "prompt_tokens": 21638,
+    "total_tokens": 40175,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17054,
+      "text_tokens": 1483
+    },
+    "cost": 0.0125142
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 54602,
+  "text": "### Observed differences\n\n- Two groups of activities swapped where they sit in the case. In the later window, A20, A22 and A23 run much earlier (mean relative position about 0.38 of the trace, previously about 0.63), while A19, A21 and A24 run much later (about 0.66–0.68, previously about 0.34–0.36); A25 and A29 shifted only slightly later (A25 about 0.38 to 0.45, A29 about 0.57 to 0.64). [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n- Pairwise order reversed between the groups. Previously A20, A22 and A23 came after A29 in about 99 in 100 cases; in the later window they precede A29 and precede A25 in about 98–99 in 100 cases. A19, A21 and A24 previously preceded A25 and A29 (in the roughly 30–40 in 100 cases where they appear) and now follow them, and each of A20, A22 and A23 now also precedes A21 and A24. [REL001, REL006, REL008, REL009, REL010, REL014, REL015, REL018, REL019, REL020, REL021]\n\n- Handovers changed accordingly. A19, A21 and A24 now lead to A30 in about 95–98 in 100 of their outgoing transitions, where previously they led to A25 in about 97–98 in 100; A20, A22 and A23 now exit to A25 in about 27–37 in 100, where previously they exited to A30 in about 29–37 in 100. A29's outgoing transitions moved from A20/A22/A23 to A24/A19/A21, and A40's moved from A21/A24/A19 to A22/A20/A23. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]\n\n- Distances match the same move: A29 reaches A30 within 2 steps in about 98 in 100 later cases (previously 4 steps in about 93 in 100), and A40 reaches A25 within 4 steps in about 92 in 100 (previously 2 steps in about 95 in 100). Other lag shifts (for example A21–A25, A23–A25, A40–A20) rest on only 1–2 observations in one window and carry little weight alone. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009]\n\n- Participation hardly moved: A20, A22, A23, A25, A29 and A40 occur in nearly all traces in both windows, and A19, A21 and A24 in about 30–40 in 100 traces in both windows, so the difference concerns placement and handovers rather than how often activities run. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008, REL008, LAG009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the block A20–A22–A23 and the block A19–A21–A24 exchanged their places in the later window: A20, A22 and A23, which previously ran after A29 and handed over to A30, now run early between A40 and A25, while A19, A21 and A24, which previously ran between A40 and A25, now run after A29 and hand over to A30. The support is direct and consistent: the order reversals are observed relationally for many pairs, all six position distributions shift in the predicted direction, the successor changes at A25, A30, A29 and A40 line up with the same exchange, and the two well-supported distance items behave exactly as that exchange predicts. With 46 qualifying items against roughly 0.7 expected without any change, the pattern as a whole is far larger than random re-splits of stable behaviour produce. [REL008, REL015, REL018, POS001, POS002, DIR001, DIR002, DIR007, DIR008, LAG005, LAG009]\n\nLimitations: the items overlap heavily — the five relations of A19 and the position shifts within each group largely restate one underlying move, so the judgement rests on the coherence of the pattern rather than on item count. Several lag items rest on only 1–2 observations in one window and could be rare variants. The evidence also cannot fully pin down the anchoring, since A30 and A40 have no position profiles, so an alternative reading in which the exit points A25/A30 changed which block precedes them cannot be entirely excluded; and small shifts in how often A19, A21 and A24 appear — for example A21 from about 35 to about 30 in 100 traces — may reflect sampling differences in variant frequencies between the two 200-trace windows rather than a participation change. [LAG002, LAG006, POS001, POS003, POS006]",
+  "case_id": "case_d3c92cf5dad9ec3e",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_a2c2383be86332d2.json",
+  "evidence_sha256": "49d0f7f093662f9f801d787e222aa61540a095fc14e42de502eac76a3029c7f1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:49:06.438445+00:00",
+  "finished_at_utc": "2026-11-15T01:51:31.865567+00:00",
+  "latency_seconds": 145.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20307,
+    "prompt_tokens": 15028,
+    "total_tokens": 35335,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18902,
+      "text_tokens": 1405
+    },
+    "cost": 0.012407699999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 63293,
+  "text": "### Observed differences\n\n- **A07 is no longer executed.** In the earlier window A07 ran in every one of the 200 traces, about twice per trace, and its roughly 416 outgoing transitions split about 52 in 100 to A05 and 48 in 100 to A06; in the later window A07 is not observed in a single trace, and activities that previously always co-occurred with it (A03, A06, A08) now run without it in all traces. [OCC003, POS003, REL008, REL010, REL011]\n- **A08 now makes the branch decision A07 used to make.** Earlier, all of A08's outgoing transitions led to A07; in the later window A08 leads directly to A05 (about 52 in 100) or A06 (about 48 in 100) — almost exactly the same split previously handled by A07. A08 itself still occurs about as often as before (416 outgoing transitions in both windows). [DIR002, DIR003]\n- **Distances between the remaining activities shortened by about one step.** A08→A05/A06 moved from lag 2 to lag 1, A03→A05/A06 from 3 to 2, and repeated-pair distances (A03→A03, A05→A05, A05→A06, A08→A08, A02→A05/A06) from 4 to 3 — consistent with one activity having been cut out of a repeating cycle. [LAG001, LAG005, LAG006, LAG008, LAG009, LAG012, LAG013, LAG014]\n- **A new entry activity appears.** A01, never observed earlier, occurs in about 35 in 100 later traces, always at the first position and always followed by A03. [OCC001, POS001, DIR001]\n- **A02 has become less frequent.** A02 appeared in about 48 in 100 traces earlier and about 28 in 100 later; A01 and A02 never occur in the same trace in either window. [OCC002, REL001, REL007]\n- **Minor shifts.** A03 and A08 now sit slightly later within traces (median relative position about 0.25→0.33 and 0.5→0.67), and A05's participation rose slightly (about 50→55 in 100), while A06 still appears in every trace. [POS002, POS004, REL003, REL004, REL009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A07 dropped out of the flow (was removed or became unreachable) and that its branch decision moved up to A08: earlier, A08 always led to A07, which then routed about 52/48 to A05 or A06 roughly twice per trace; in the later window A07 is unobserved in 200 traces, A08 connects directly to A05 and A06 with the same split, and every measured distance across the remaining cycle shortened by about one step, as expected when one activity leaves a repeating sequence. The rewiring is observed directly in A08's successor profile, A07's disappearance is total (200 of 200 traces earlier versus none later) rather than a sampling fluctuation, A05 and A06 participation is essentially unchanged, and the screening volume (35 qualifying items against roughly 0.19 expected without a change, each difference larger than in about 99.5 of 100 random re-splits) cannot be explained by chance. Limitations: many of the REL and LAG items restate the same non-occurrence and are not independent confirmations, and control-flow evidence alone cannot distinguish A07 being deleted from it merely becoming unreachable; zero participation strictly means only \"not observed in this sample\". A competing explanation the evidence cannot rule out is a change in recording or an unobserved variant (for example, A07 events no longer being logged in the later window). [OCC003, DIR002, DIR003, POS003, LAG009, LAG012, REL008]\n\nOther differences: A01 appears as a new first activity leading to A03 in about 35 in 100 later traces, while A02's participation fell from about 48 to 28 in 100 and the two never co-occur — consistent with a changed or added optional entry step, though the evidence does not show A02's successors. A03 and A08 also occur slightly later within traces than before. [OCC001, OCC002, POS001, POS002, POS004, REL001]",
+  "case_id": "case_a2c2383be86332d2",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

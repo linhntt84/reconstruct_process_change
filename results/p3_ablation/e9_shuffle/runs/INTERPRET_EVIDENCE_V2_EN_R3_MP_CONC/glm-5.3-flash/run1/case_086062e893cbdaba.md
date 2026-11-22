@@ -1,0 +1,18 @@
+### Observed differences
+
+- A01 was not observed in any of the 200 earlier traces; in the later window it appears in about 46 in 100 traces, occurs more than once in about 26 in 100 traces, and sits at an early-to-middle position (median event position about 0.38 of the trace). [OCC001, POS001]
+- In the later window, four activities newly route to A01: about 47 in 100 of A05's observed outgoing transitions go to A01 (before, all of them went to A10); about 48 in 100 of A06's (before, all went to A05); about 35 in 100 of A03's (its share to A05 fell from about 51 to 16 in 100); and about 24 in 100 of A11's (its share to A05 fell from about 49 to 25 in 100). [DIR002, DIR003, DIR004, DIR005]
+- A01's own observed outgoing transitions split between A05 (about 53 in 100) and A10 (about 47 in 100); before, A01 had no observed outgoing transitions. [DIR001]
+- Pairs that never shared a trace before now usually do: A01 with A05 in about 46 in 100 traces (before 0), A01 with A10 about 46, A01 with A06 about 33, A01 with A03 about 28; in the later window A05, A10, A06 and A03 were not observed in any trace without A01, and their order relative to A01 is mixed (for A01/A05: A01 first about 11 in 100, A05 first about 10, interleaved or repeated about 26). [REL001, REL002, REL003, REL004]
+- Event-step distances between previously adjacent activities widened by about one step: A06→A05, almost always adjacent before (about 76 in 100 at distance 1), now splits between distance 1 (about 34) and distance 2 (about 27), and A06→A10 moved from distance 2 (about 76) to distance 3 (about 61); A05→A10, A03→A10, A03→A05 and A05→A06 show the same one-step widening. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006]
+- Minor: A10's median position moved slightly later (about 0.43 to 0.50) and its trace participation dipped from about 53 to 46 in 100. [POS002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 was introduced into the process and inserted between existing activities in the fragment formed by A03, A05, A06, A10 and A11: in the later window A05, A06, A03 and A11 each send a substantial share of their transitions to A01, A01 in turn leads to A05 or A10, and previously adjacent pairs are typically one step further apart, consistent with A01 sitting between them. The screening context supports this reading — 18 qualifying items against fewer than 1 expected for an unchanged process — and the appearance of A01 from zero participation, the new edges in both directions, and the widened gaps are all observed directly rather than inferred. The placement is not one fixed slot: A01 occurs before, after and interleaved with A05 and A10 and repeats in about 26 in 100 traces, so it is better described as woven into the fragment at several points than moved to a single position. [OCC001, POS001, DIR001, DIR002, DIR003, DIR004, DIR005, REL002, REL004, LAG005, LAG006]
+
+Limitations: the many items largely describe one underlying rewiring rather than independent confirmations; zero participation before only shows A01 was not observed earlier, so a previously unobserved optional activity that became active cannot be ruled out; and with 200 traces per window, rare exceptions to A01 now always co-occurring with A05, A10, A06 or A03 could be missed. [OCC001, REL001, REL002, REL003, REL004]
+
+Other differences: the small dips in participation of A05, A10, A06 and A03 (each about 5–7 fewer traces in 100) and A10's slight position shift are not part of the insertion itself and are within what sampling differences between two 200-trace windows can produce. [POS002, REL001, REL002, REL003, REL004]

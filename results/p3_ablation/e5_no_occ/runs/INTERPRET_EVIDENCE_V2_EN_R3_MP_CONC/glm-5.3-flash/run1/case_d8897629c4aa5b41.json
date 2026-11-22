@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_d8897629c4aa5b41.json",
+  "evidence_sha256": "cb9b4230d71a5d5427fafe09247f59748e7038488eea382cbf7db10d48694899",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:23:25.692359+00:00",
+  "finished_at_utc": "2026-11-14T11:24:58.216427+00:00",
+  "latency_seconds": 92.52,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13442,
+    "prompt_tokens": 11249,
+    "total_tokens": 24691,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12123,
+      "text_tokens": 1319
+    },
+    "cost": 0.00840835
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43685,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces contained the fixed three-step sequence A22 → A23 → A24 around the middle of the case: A22 was always followed directly by A23, A23 always directly by A24, and A24 followed A22 exactly two positions later [DIR004, DIR005, LAG001, LAG002, LAG003].\n- In the later window this sequence is one step longer: A24 follows A22 three positions later in about 199 of 200 traces, A22 reaches A23 directly in only about 44 in 100 traces (before: all), and A23 reaches A24 directly in about 57 in 100 (before: all) [LAG001, LAG002, LAG003, DIR004, DIR005].\n- Three activities not observed in any earlier trace — A14, A15 and A20 — now run in about 29, 41 and 30 in 100 later traces respectively, always near the middle of the trace (mean position about 0.51) [POS001, POS002, POS003].\n- The three behave as alternatives, not companions: in the later window A14 with A15, A14 with A20 and A15 with A20 never co-occur in a trace (co-occurrence 0 for all three pairs), so each case contains at most one of them; earlier, neither activity of any of these pairs appeared at all [REL001, REL002, REL006].\n- Each new activity always sits between A22 and A24: it co-occurs with A22 in exactly its support share and always after A22, and with A24 in the same share and always before A24; against A23 the order is mixed (for example, A14 runs before A23 in about 16 in 100 traces and after it in about 14 in 100) [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012].\n- Outgoing routing changed accordingly: of A22's observed outgoing transitions, about 44 in 100 still go to A23 while about 24 go to A15, 17 to A20 and 16 to A14; of A23's, about 57 still go to A24 while about 18 go to A15, 14 to A14 and 13 to A20; each new activity leads to A23 or A24 in roughly equal shares [DIR001, DIR002, DIR003, DIR004, DIR005].\n- A22's mean event position moved slightly earlier, from about 0.48 to about 0.46 of the trace [POS004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new step was inserted into the previously fixed sequence A22 → A23 → A24: in the later window, nearly every case executes exactly one of the three alternative activities A14, A15 or A20 inside this segment, either directly between A22 and A23 or directly between A23 and A24, whereas none of the three was observed in the earlier window [DIR004, DIR005, POS001, POS002, POS003, LAG002].\n\nThe hypothesis is shown directly and consistently: the new activities appear from zero to 29–41% of traces at a stable mid-trace position [POS001, POS002, POS003]; relational evidence shows each always co-occurs with A22 and A24, never with each other, and in mixed order against A23 [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]; directional evidence shows the corresponding new edges out of A22 and A23 and out of each new activity [DIR001, DIR002, DIR003, DIR004, DIR005]; and the A22-to-A24 distance grows from two to three steps in about 199 of 200 traces [LAG001, LAG002, LAG003]. The pieces agree quantitatively: insertions before A23 (about 56 in 100 traces) plus insertions after A23 (about 44 in 100) match the roughly 199 of 200 traces with a three-step A22-to-A24 distance [DIR004, DIR005, LAG002]. The volume of qualifying evidence, 24 items against roughly 0.26 expected for an unchanged process in the control-flow family, cannot be explained by chance sampling [DIR001, POS001, REL001, LAG001].\n\nThe main competing explanation the evidence cannot rule out is that A14, A15 or A20 already occurred rarely before and were missed by the 200-trace earlier sample; their presence in 58–82 of 200 later traces makes a stable rare variant unlikely, but not impossible [POS001, POS002, POS003]. The evidence also cannot show whether the choice among the three activities, or between the two insertion points, follows case characteristics or is random [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012].",
+  "case_id": "case_d8897629c4aa5b41",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

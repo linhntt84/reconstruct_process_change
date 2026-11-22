@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_759dc5348bdecf5d.json",
+  "evidence_sha256": "ceb8e3a022860d81e011d29a86f31780a26834cb8414184a8d007a316783aaf1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:36:00.973271+00:00",
+  "finished_at_utc": "2026-11-16T01:40:35.435030+00:00",
+  "latency_seconds": 274.46,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 35116,
+    "prompt_tokens": 113801,
+    "total_tokens": 148917,
+    "completion_tokens_details": {
+      "reasoning_tokens": 32770,
+      "text_tokens": 2346
+    },
+    "cost": 0.034628149999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 108371,
+  "text": "### Observed differences\n\n- Two activities are no longer observed at all. In the earlier window A03 ran in about 29 in 100 traces (57 of 200; mean 1.16 occurrences per trace) and A11 in about 20 in 100 (39 of 200); in the later window both have zero occurrences, zero trace participation and empty position profiles. [OCC003, OCC009, POS003, POS010]\n- The routing around them changed. Before, about 86 in 100 of A06's observed outgoing transitions led to A03, A11 led back to A03 in about 97 in 100 of its transitions, and A03 exited to A11 (about 44 in 100), A19 (about 28) and A12 (about 22). In the later window A06 leads directly to A19 (about 58 in 100) and A12 (about 37 in 100), and A03 and A11 show no observed outgoing transitions. [DIR003, DIR005, DIR006]\n- The branch that carried them still runs, but less often and without them: A06, A12 and A19 always occurred together, in about 29 in 100 traces before versus about 22 in 100 after (57 → 43 traces); before, A03 was present in every one of those traces (A11 in about two thirds of them), whereas afterwards neither ever co-occurs with them. [OCC005, OCC010, OCC016, REL030, REL036, REL043, REL070, REL071, REL078, REL131]\n- Event distances in this region shortened, as expected if an intermediate segment disappeared: A06→A19 now most often 1 step instead of 2, A06→A04 typically 4 instead of 5, A06→A02 typically 3 instead of 4, A06→A12 and A02→A12/A02→A19 about one step closer, and the self-repeats A12→A12 and A19→A19 from lags 4–5 to 3–4. [LAG021, LAG022, LAG024, LAG026, LAG010, LAG013, LAG043, LAG074]\n- Several activities now occur at earlier positions within traces: A02 (mean position 0.20 → 0.13), A04 (0.51 → 0.43), A09 (0.51 → 0.45), A12 (0.33 → 0.23), A13 (0.53 → 0.44), A18 (0.55 → 0.49) and A19 (0.32 → 0.22). [POS002, POS004, POS008, POS011, POS012, POS016, POS017]\n- A02 still appears in about 52 in 100 traces but repeats less (mean 1.12 → 0.905 occurrences per trace); its direct transition to A03, previously about 9 in 100 of its outgoing transitions, is no longer observed, and its share towards A04 rose from about 46 to 57 in 100. [OCC002, DIR002]\n- Remaining differences are small: routing splits at A01 (A07/A08), A14 (A09/A10) and A17 (A15/A16) moved by a few percentage points, and several position means shifted by only 0.01–0.03. [DIR001, DIR008, DIR009, POS001, POS006, POS007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A11 → A03 segment was removed from the process, so that A06 now continues directly to A19 and A12. In the earlier window, A06 fed into A03 in about 86 in 100 of its outgoing transitions, A11 looped back into A03, and A03 exited to A11, A19 or A12; A03, A06, A12 and A19 always occurred together in about 29 in 100 traces, with A11 in about two thirds of those traces. In the later window, A03 and A11 are not observed in any of the 200 traces (against 57 and 39 before), A06 connects straight to A19 (about 58 in 100) and A12 (about 37 in 100), and the remaining A06/A12/A19 branch runs in about 22 in 100 traces. The signs are direct and consistent: the participations fall from 57 and 39 traces to zero (differences larger than in about 995 of 1000 random re-splits), the successor change at A06 is observed directly rather than inferred from positions, co-occurrence with A03/A11 collapses to zero in every examined pair while A06/A12/A19 stay together, and the shortened event distances (for example A06→A04 from typically 5 to 4 steps) are what removing an intermediate segment predicts. [OCC003, OCC009, DIR003, DIR005, DIR006, OCC005, REL030, REL036, REL043, REL070, LAG022, LAG026]\n\nLimitations: zero participation only shows that A03 and A11 were not observed, so a renaming into other activity codes cannot be excluded from this evidence, although no activity appears in their place; the evidence set contains no screening baseline, so the judgement rests on directness and consistency rather than a chance-expectation count; and the moderate drop in how often the branch runs (about 29 → 22 in 100 traces, larger than in about 935 of 1000 random re-splits) accompanies the structural change but is the weakest part of the picture. [OCC003, OCC009, OCC005]\n\nOther differences: A02 lost its direct transition into the removed segment and now routes relatively more to A04 (about 46 → 57 in 100 of its outgoing transitions); it also repeats less (mean 1.12 → 0.905 occurrences per trace) and appears earlier in traces, all consistent with the same restructuring but not specific to it. A04, A09, A13 and A18 likewise appear at earlier positions (about 0.06–0.09 earlier on average). The routing shifts at A01, A14 and A17 amount to a few percentage points and may be sampling variation. [OCC002, DIR002, POS002, POS004, POS008, POS012, POS016, DIR001, DIR008, DIR009]",
+  "case_id": "case_759dc5348bdecf5d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

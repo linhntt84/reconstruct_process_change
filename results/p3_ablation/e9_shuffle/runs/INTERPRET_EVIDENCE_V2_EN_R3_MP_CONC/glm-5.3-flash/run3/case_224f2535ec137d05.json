@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_224f2535ec137d05.json",
+  "evidence_sha256": "1af06a172d68cf64d426a8e98130305b255a6d7b6f3e97c3088cbc24c1acd2fa",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:53:50.287632+00:00",
+  "finished_at_utc": "2026-11-15T09:54:21.713440+00:00",
+  "latency_seconds": 31.43,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4440,
+    "prompt_tokens": 3652,
+    "total_tokens": 8092,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3845,
+      "text_tokens": 595
+    },
+    "cost": 0.0027678
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 16208,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in any of the 200 earlier traces; in the later window it occurs exactly once in every trace (participation 0% → 100%, mean 1 occurrence per trace) [OCC001].\n- In the later window, A01 sits at the final position of the trace in all cases (mean normalized position 1.0, no spread) [POS001].\n- The relationship between A01 and A16 changed from complete separation to complete co-occurrence: earlier, A16 appeared without A01 in 100% of traces; later, both occur together in 100% of traces, with A16 before A01 in every single one [REL001].\n- In the later window, every observed outgoing transition of A16 leads directly to A01; in the earlier window no outgoing transitions of A16 were observed at all, consistent with A16 then being the final activity (position 1.0 in all traces) [DIR001, POS002].\n- As a consequence of A01 now following it, A16's position moved from last in every earlier trace (median 1.0) to slightly earlier in the later window (median about 0.94, with small variation) [POS002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added as a new final step executed directly after A16: in the earlier window traces effectively ended with A16 and never contained A01, while in the later window every trace contains A16 immediately followed by A01, with A01 executed exactly once at the end. The signs are direct and mutually consistent: A01's participation rose from 0 to 200 of 200 traces, it occupies the last position throughout, A16 precedes it in every later trace (co-occurrence 0% → 100%), and all of A16's observed outgoing transitions now lead to A01, with A16 shifting from last to just before last [OCC001, POS001, REL001, DIR001, POS002]. Five qualified items against roughly 0.12 expected by chance for the 25 tested control-flow units is far beyond what an unchanged process typically produces, so the pattern as a whole is not explainable by sampling noise [OCC001, POS001, POS002, REL001, DIR001].\n\nLimitations: all five items describe one and the same underlying trace difference, so they are not independent confirmations of each other, and the positional indicators use event positions rather than clock times [POS001, POS002]. An important competing explanation the evidence cannot fully exclude is that A01 already existed before at a rate too low to appear in 200 traces, since zero participation strictly means only \"not observed\"; given its presence in every later trace, however, a newly added or newly mandatory final step after A16 is the direct reading [OCC001].",
+  "case_id": "case_224f2535ec137d05",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

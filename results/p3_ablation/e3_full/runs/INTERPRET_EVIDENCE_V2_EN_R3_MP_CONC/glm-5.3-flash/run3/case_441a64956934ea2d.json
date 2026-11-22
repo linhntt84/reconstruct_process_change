@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_441a64956934ea2d.json",
+  "evidence_sha256": "3d0f9729c5ca82168d443e7192fd0387c9689c241cdae5c319700c6e0dab9cce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:22:30.635198+00:00",
+  "finished_at_utc": "2026-11-16T03:25:28.033520+00:00",
+  "latency_seconds": 177.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26853,
+    "prompt_tokens": 119825,
+    "total_tokens": 146678,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24467,
+      "text_tokens": 2386
+    },
+    "cost": 0.03140025
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 78846,
+  "text": "### Observed differences\n\n- The two most striking changes are mirror images. A01 became much rarer: earlier it appeared in about 66 of 100 traces with about 2.2 occurrences per trace (recurrence support 0.45), in the later window in only about 28 of 100 traces with about 0.6 occurrences per trace (recurrence support 0.18). A13 shows the opposite: earlier about 23 of 100 traces with 0.4 occurrences per trace and no within-trace repetition, in the later window about 61 of 100 traces with about 2.1 occurrences per trace and a recurrence support of about 0.44. [OCC001, OCC013]\n- The two activities also exchanged their successor profiles. Earlier, A01's outgoing transitions went to A08 (about 48%), A15 (about 26%) and A07 (about 26%), while A13 always led to A06; in the later window A01 always leads to A06, and A13 leads to A08 (about 45%), A15 (about 28%) or A07 (about 28%). [DIR001, DIR010]\n- Incoming edges were re-routed the same way. Earlier, about 24% of A02's and 27% of A04's outgoing transitions, and about half of A07's and A15's, went to A01; in the later window these go to A13 instead and A01 no longer receives from them. A06 earlier led to A13 in about 47% of its outgoing transitions (otherwise A14); in the later window it leads to A01 in about 54% (otherwise A14). [DIR002, DIR003, DIR006, DIR011, DIR005]\n- Relative positions swapped: A01's mean position moved from about 0.42 to about 0.77 of the trace, A13's from about 0.77 to about 0.35. [POS001, POS013]\n- Co-occurrence relations transferred from A01 to A13: A08 co-occurred with A01 in about 66 of 100 traces earlier (practically never apart) and with A13 in about 61 of 100 traces later (again never apart); A07 and A15 moved from co-occurring with A01 (about 43 of 100) to co-occurring with A13 (about 38–39 of 100); A14, earlier always together with A13, is in the later window always together with A01. [REL007, REL089, REL006, REL081, REL014, REL116, REL115, REL013]\n- Distances moved accordingly: A07→A01 and A15→A01, earlier seen in about 86 of 200 traces mainly 1–2 steps apart, appear in the later window in only about 15 traces at 4–5 steps, while A07→A13 and A15→A13 rose from about 11 traces (4–5 steps) to about 77 traces (mainly 1–2 steps); A02→A01 and A04→A01 fell from about 68 to 11 traces while the corresponding A13 pairs rose from about 19 to 58; A01's self-repetition fell from about 88 to 35 traces and A13's rose from about 24 to 86. [LAG051, LAG110, LAG058, LAG117, LAG004, LAG020, LAG016, LAG032, LAG001, LAG108]\n- Smaller shifts elsewhere: A05, A09 and A12 repeat less often per trace in the later window (mean occurrences down by roughly 0.3–0.5 at roughly unchanged participation), A02 and A04 occur slightly less often (about 1.1 to 0.9 per trace), and A06 slightly more often (about 0.9 to 1.1). [OCC002, OCC004, OCC005, OCC006, OCC009, OCC012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 and A13 exchanged their places in the process flow. In the earlier window A01 was the frequent, early activity — reached from A02, A04, A07 and A15 and followed by A15, A08 or A07, in about 66 of 100 traces — while A13 was a rare, late activity (about 23 of 100 traces) that always led back to A06; in the later window A13 occupies A01's former role with the same predecessors, the same successors and a similar frequency (about 61 of 100 traces, mean position about 0.35), and A01 occupies A13's former role, entered from and always leading back to A06 (about 28 of 100 traces, mean position about 0.77). [OCC001, OCC013, DIR001, DIR010, DIR002, DIR003, DIR005, DIR006, DIR011, POS001, POS013]\n\nThe hypothesis is shown directly by relational and positional evidence, not only by frequencies: the successor profiles of A01 and A13 are exchanged almost exactly between the windows, the position distributions swap, and the co-occurrence and distance profiles of the surrounding activities transfer from the A01 pairs to the corresponding A13 pairs. More than sixty of the roughly 280 evidence items reach the maximum empirical strength (about 0.995, meaning an unchanged pair of windows shows a difference this large in only about 1 of 200 random re-splits), and they agree across the occurrence, direction, position, relation and lag families, which random re-splits of an unchanged process do not produce in such numbers. [DIR001, DIR010, POS001, POS013, REL007, REL089, LAG051, LAG058]\n\nLimitations: each window holds 200 traces, so small residual mismatches (for example A01's later position distribution being slightly more spread out than A13's earlier one) may be sampling noise. The recorded behaviour also cannot distinguish a genuine re-routing of both activities from an equivalent relabelling of A01 and A13, or from a one-sided replacement in which A13 took over A01's role while A01 was moved into A13's old position; these look identical in the log. [OCC001, OCC013, POS001, POS013]\n\nOther differences: A05, A09 and A12 repeat less often within traces in the later window (mean occurrences per trace down by roughly 0.3–0.5 at roughly unchanged participation), A02 and A04 occur slightly less often, and A06 slightly more often; these shifts are small next to the A01/A13 exchange and are not part of the main hypothesis. [OCC002, OCC004, OCC005, OCC006, OCC009, OCC012]",
+  "case_id": "case_441a64956934ea2d",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

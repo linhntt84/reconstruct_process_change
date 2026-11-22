@@ -1,0 +1,21 @@
+### Observed differences
+
+- **Order between two groups of activities became fixed.** In the earlier window, A15, A16, A17, A19 and A20 on the one hand, and A21, A22, A23, A24 and A25 on the other, occurred together in every trace but in mixed order: A15 preceded A21 in only about 23 in 100 traces (A21 first in about 77), A20 preceded A21 in only about 2–3 in 100, while A19 preceded A23 in about 80 in 100. In the later window, all 22 tested pairs across the two groups have the first-group activity before the second-group activity in 100% of traces. [REL001, REL009, REL015, REL018]
+
+- **Positions and pairwise distances moved consistently with this.** A15, A16, A17, A19 and A20 now sit earlier in the trace (A20's mean relative position fell from about 0.71 to 0.61) and A21–A25 later (A21 rose from about 0.53 to 0.63), so A20 and A21 exchanged sides of the trace midpoint. Within-group pairs became adjacent — A15→A16 went from distances spread over 1–5 steps to about 69% at 1 step and 31% at 2 — while cross-group pairs stretched: A15→A21 lost its ~57% share at 1 step and now lies 2–4 steps out, and A19→A21 and A20→A22 are now always 5 steps apart. [POS005, POS006, LAG001, LAG004, LAG026, LAG027]
+
+- **Routing became deterministic at the connection points.** Earlier, about half of A20's outgoing transitions went to A31 and most of the rest to A21–A25; in the later window all go to A21. A22 earlier sent about half its transitions to A31 and the rest to A15/A16/A17/A19/A20; now all go to A31. A30 earlier split about 54/46 between A21 and A19; now all go to A19. A15, A16, A17 and A21, A23, A24, A25 each narrowed from about eight observed successors spanning both groups to three successors within their own group. [DIR001, DIR004, DIR006, DIR010]
+
+- **Elapsed times into A38 roughly doubled.** The elapsed time between consecutive completions of A31 and A38 rose from a mean of about 0.9 hours (61 observations) to about 1.8 hours (41); between A37 and A38 it rose from about 0.19 hours (51) to about 0.36 hours (64). [TWAIT001, TWAIT002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in the ordering constraints between two blocks of activities: in the later window, the block A15, A16, A17, A19, A20 (entered through A30, which now always leads to A19) always executes before the block A21, A22, A23, A24, A25, which exits through A22 to A31; in the earlier window the two blocks were interleaved in mixed order within traces. Within each block, activities now run back-to-back (1–2 steps apart), and the handovers became deterministic: A20 is always followed by A21, A22 always by A31, and A30 always by A19. [REL001, REL018, DIR004, DIR006, DIR010, LAG027]
+
+The hypothesis is shown directly and consistently: every tested pair co-occurs in 100% of traces in both windows, so participation is unchanged and only the order constraint moved; the order flipped from mixed splits (roughly 20–25% vs 75–98% in the earlier window) to a single order in all 200 later traces, beyond what sampling variation in a 200-trace window produces; POS, LAG and the DIR successor changes agree, though they largely describe the same underlying reordering rather than independent confirmations; and 93 control-flow items qualified against roughly 0.7 expected without change. [REL001, REL018, POS005, LAG004, DIR001]
+
+Limitations: the evidence cannot rule out that the earlier window mixed two process variants (one running the A21–A25 block first, one running it second) and the later window contains only one of them, so a shift in the variant mix remains a competing explanation. Also, DIR profiles show only observed transitions, so vanished edges are "no longer observed" rather than proven removed. [DIR001, REL001]
+
+Other differences: a timing change stands on its own — the elapsed times between consecutive completions into A38 about doubled (A31→A38 from about 0.9 to 1.8 hours; A37→A38 from about 0.19 to 0.36 hours), with 2 time items against roughly 0.007 expected by chance; whether this connects to the reordering (for example, A31 now being reached only at the end via A22) cannot be established from this evidence. [TWAIT001, TWAIT002]

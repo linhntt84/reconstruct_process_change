@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_c6241d9baa4f3bd9.json",
+  "evidence_sha256": "a1a50fad046c6848629028c519b7e60f55b913824b6de0519b95a9877e0dd496",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:07:05.570888+00:00",
+  "finished_at_utc": "2026-11-15T10:08:09.242386+00:00",
+  "latency_seconds": 63.67,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9050,
+    "prompt_tokens": 5056,
+    "total_tokens": 14106,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8330,
+      "text_tokens": 720
+    },
+    "cost": 0.0052834
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31351,
+  "text": "### Observed differences\n\n- Activity A07 was executed in about 53 in 100 traces in the earlier window (about once per trace where present, roughly 62% of the way through the trace); in the later window it appears in none of the 200 traces. [OCC001, POS002]\n- The outgoing transitions of A03 shifted: earlier, of about 240 observed transitions, roughly 56 in 100 went to A05, 39 in 100 to A07 and only 5 in 100 to A06; in the later window, of about 200 transitions, roughly 49 in 100 go to A05 and 52 in 100 to A06, with no transition to A07 observed. [DIR001]\n- A07's own outgoing transitions, which earlier went overwhelmingly to A06 (about 92 in 100, with small shares to A10 and A09), are no longer observed. [DIR002]\n- A03 and A07 co-occurred in about 53 in 100 traces earlier (A03 before A07 in about 24, interleaved in about 29) but never occur in the same trace later, with A03 appearing alone in about 52 in 100; the same holds for A06 and A07 (co-occurrence about 53 in 100 down to zero, A06 alone about 52 in 100). Participation of A03 and A06 themselves is stable at about 52–53 in 100 traces in both windows. [REL001, REL002, POS001]\n- The distance from A03 to A06 changed: earlier the pair was typically two events apart (about 23 in 100 traces) or four (about 20 in 100); later it is directly consecutive in about 19 in 100 traces (about 3 in 100 before), otherwise three or five events apart. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window A07 is no longer executed and the route that previously ran A03 → A07 → A06 now goes from A03 to A06 without A07: A07's participation drops from about 53 in 100 traces to zero together with its outgoing transitions, while A03's transitions to A06 rise from about 5 in 100 to about 52 in 100, and the A03–A06 distance shifts from typically two events — consistent with A07 lying between them — to direct succession, with A03 and A06 otherwise occurring just as often as before. [OCC001, POS002, DIR002, DIR001, LAG001, REL001, REL002] Eight control-flow items qualified against roughly 0.1 expected if nothing had changed, so chance is not a plausible explanation for the pattern as a whole, although most items describe the same underlying difference rather than independent confirmations. [DIR001, REL001, POS002, DIR002, OCC001, LAG001, POS001, REL002] An important competing explanation the evidence cannot rule out is that A07 still exists in the process but was simply not executed in any of the 200 later traces; zero participation only means the activity was not observed. [OCC001]\n\nOther differences: A03 occurs slightly later within traces than before (mean relative position about 0.43 versus 0.48) with unchanged participation. [POS001]",
+  "case_id": "case_c6241d9baa4f3bd9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_8d58c42097b86645.json",
+  "evidence_sha256": "01623556e1fa38b0e161bc2c7d7cc6e95739549c7964b4c9a84ad138bffce7f2",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:11:41.420320+00:00",
+  "finished_at_utc": "2026-11-15T01:12:02.932880+00:00",
+  "latency_seconds": 21.51,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 3837,
+    "prompt_tokens": 4912,
+    "total_tokens": 8749,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3240
+    },
+    "cost": 0.001686524
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 11250,
+  "text": "### Observed differences\n\n- Activity A01 is absent in the earlier window and appears in the later window in about 21% of traces (42 of 200), with a mean of 0.255 occurrences per trace and a median position around the middle of the trace. [OCC001, POS001]\n- In the later window, A01 always leads to A10 (100% of its outgoing transitions). [DIR001]\n- A08's outgoing transitions: before, about 55% went to A10 and 45% to A09; after, about 55% go to A01 and 45% to A09. So A08 now leads to A01 instead of A10. [DIR003]\n- A01 and A08: before, A08 occurred alone in 21% of traces; after, they co-occur in 21% of traces, with A08 before A01 in about 9.5% and interleaved/repeated in 11.5%. [REL001]\n- A01 and A10: before, A10 occurred alone in 21% of traces; after, they co-occur in 21%, with A01 before A10 in 18% and interleaved in 3%. [REL002]\n- The distance between A08 and A10 increased: before, they were 1 step apart in 40.5% of cases and 3 steps in 11.6%; after, they are 2 steps apart in 42.4% and 4 steps in 13.6%. [LAG001]\n- A03's outgoing transitions: before, about 66% went to A13 and 34% to A12; after, 100% go to A13. [DIR002]\n- A12's outgoing transitions: before, 100% went to A03; after, 100% go to A13. [DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe process changed by introducing a new activity A01 that is inserted between A08 and A10 in a subset of traces, so that the path A08→A10 is replaced by A08→A01→A10. This is supported by the appearance of A01, the shift in A08's successor from A10 to A01, A01's successor to A10, and the increased lag between A08 and A10. The change affects about 21% of traces.\n\nOther differences: The routing around A03 and A12 changed: A03 no longer goes to A12, and A12 no longer goes to A03; both now go to A13, eliminating the A03–A12 loop.\n\nLimitations: The evidence cannot rule out that A01 existed before but was not observed, though its absence in 200 prior traces makes that unlikely. Also, the change is partial (21% of traces).",
+  "case_id": "case_8d58c42097b86645",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

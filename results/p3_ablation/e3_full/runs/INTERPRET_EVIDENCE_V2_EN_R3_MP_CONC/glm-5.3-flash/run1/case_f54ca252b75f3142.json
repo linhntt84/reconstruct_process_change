@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f54ca252b75f3142.json",
+  "evidence_sha256": "c412ae5ffcb4c286e21d5fd1bc93e464476d87a439a85df6ce691cc482e255ba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:19:30.785911+00:00",
+  "finished_at_utc": "2026-11-16T01:22:23.089606+00:00",
+  "latency_seconds": 172.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21215,
+    "prompt_tokens": 15012,
+    "total_tokens": 36227,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19556,
+      "text_tokens": 1659
+    },
+    "cost": 0.0128593
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 69341,
+  "text": "### Observed differences\n\n- **A01 is no longer observed.** In the earlier window it appeared exactly once in all 200 traces, near the start (median position 0), and it acted as the router: of its observed outgoing transitions, about 46% went to A03, about 34% to A04, about 16% to A02, and a few percent to A05/A06. In the later window it appears in 0 of 200 traces and no outgoing transitions from it are observed. [OCC001, POS001, DIR001]\n- **A04 is also no longer observed.** Earlier it appeared in about 51 in 100 traces, leading mainly to A02 (about 70%) and A06 (about 19%); in the later window it appears in 0 of 200 traces, with no observed outgoing transitions. [OCC004, DIR004, POS004]\n- **In the later window, each case consists of exactly two steps.** About 47 in 100 cases run A02 followed immediately by A06, and about 53 in 100 run A03 followed immediately by A05; these two transitions account for all observed outgoing transitions of A02 and A03, and both pairs occur at distance 1 in every case where they appear. [DIR002, DIR003, LAG001, LAG002, REL009, REL011]\n- **In the earlier window the same two routes existed but sat inside a longer, branched flow.** A02 reached A06 directly in about 79 of 100 of its outgoing transitions (the rest went to A04 or back to A01, so the pair was at distance 2–3 in about 21 of 100 cases), A03 reached A05 directly in about 95 of 100, and A05/A06 could still hand on (A06 to A04 or A01, A05 back to A01 — observed on only 14 and 6 outgoing transitions, so weak). [DIR002, DIR003, DIR005, DIR006, LAG001, LAG002]\n- **Relations around A01 and A04 collapsed.** Earlier, A01 co-occurred with each of A02–A06 in roughly half of all traces, almost always before them; in the later window it co-occurs with none of them. A04 earlier co-occurred with A02 and with A06 in about half of the traces (in mixed order, most often A04 first) and never co-occurs with anything later. [REL001, REL002, REL003, REL004, REL005, REL007, REL010, REL013, REL014]\n- **Positions of the surviving activities:** A02 and A03, previously around the middle of the trace (medians roughly 0.5–0.7), now occupy the first position (mean 0), while A05 and A06 remain in the final position (about 1.0) in both windows. [POS002, POS003, POS005, POS006]\n- **The choice between the two routes barely moved:** A02 vs A03 was about 51/49 earlier and about 46.5/53.5 later — a gap of about 4–5 in 100 cases that random re-splits produce routinely (strength about 0.53). [OCC002, OCC003, REL006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a structural change in which the opening activity A01 and the A04 step are no longer executed. Earlier, every case began with A01, which routed about 46% of cases into an A03→A05 route and about 34% into a route where A04, A02 and A06 followed one another (A02 always before A06, A04 usually first), with occasional hand-backs to A01; in the later window, A01 and A04 are unobserved (0 of 200 traces each), cases begin directly with A02 (about 47 in 100) or A03 (about 53 in 100) — still strict alternatives, with their split essentially unchanged — and each case ends after one direct step, A02→A06 or A03→A05, from which no further transitions are observed. The internal order of each route is unchanged; what disappeared is the A01 prefix and the A04 step. [OCC001, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, REL006, REL009, REL011]\n\nThe supporting signs are direct and consistent: the disappearances rest on full support (A01: 200 of 200 earlier traces vs 0 of 200; A04: 102 vs 0), a difference that random re-splits of the pooled traces essentially never produce (strength about 0.995), and the participation, relational, successor and positional items all describe the same restructuring rather than a shift in how often existing paths are taken. [OCC001, OCC004, REL003, DIR002, POS002]\n\nThe evidence cannot rule out a change in recording scope rather than in the process: if the later window captured only the last two events of each case, A01, A04 and the hand-back edges would vanish in exactly this pattern; strictly, zero participation shows only that A01 and A04 were not observed after the change point. [OCC001, OCC004, DIR005, DIR006]\n\nOther differences: the participation of the four surviving activities shifted by about 4–5 in 100 cases (A02 and A06 down from about 51 to about 46–47; A03 and A05 up from about 49 to about 53–54) while A02/A03, A02/A05, A03/A06 and A05/A06 remained strict alternatives in both windows; these shifts are small and consistent with ordinary sampling variation between two 200-trace windows. [OCC002, OCC003, OCC005, OCC006, REL006, REL008, REL012, REL015]",
+  "case_id": "case_f54ca252b75f3142",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

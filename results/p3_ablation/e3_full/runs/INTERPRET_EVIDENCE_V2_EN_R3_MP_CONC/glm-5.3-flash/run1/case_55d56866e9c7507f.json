@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_55d56866e9c7507f.json",
+  "evidence_sha256": "5eebb6884fbe7e86acb030f7da19005ec183b09410a40acc426794a9c24fd4c0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:15:04.543089+00:00",
+  "finished_at_utc": "2026-11-16T01:17:42.387237+00:00",
+  "latency_seconds": 157.84,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19823,
+    "prompt_tokens": 61600,
+    "total_tokens": 81423,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18113,
+      "text_tokens": 1710
+    },
+    "cost": 0.019151500000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 61381,
+  "text": "### Observed differences\n\n- In the later window, A09 and A11 run in far more cases: A09 appears in about 44 of 100 traces (about 30 of 100 earlier) and A11 in about 57 of 100 (about 29 of 100 earlier). [OCC006, OCC008]\n- The two activities never occur together in either window, but traces containing neither drop from about 42 in 100 to none: in the later window every trace contains exactly one of A09 or A11, whereas earlier about 58 in 100 did. [REL053, OCC006, OCC008]\n- Both activities are executed earlier in the case: A09's mean event position falls from about 0.97 to about 0.75 and A11's from about 0.96 to about 0.74; after A01 they now follow within about 2–3 events instead of 4–5, and A01 always precedes them when they co-occur in both windows. [POS009, POS011, LAG008, LAG010, REL007, REL009]\n- Flow into them changed: transitions from A06 to A09/A11 rise from about 10 in 100 of A06's outgoing transitions to about 54 in 100, and the gap from A06 shortens from typically 3–4 events to 1–2. [DIR006, LAG038, LAG040]\n- Flow out of them changed: earlier A09 and A11 led almost only back to A02 and A06; in the later window their outgoing transitions spread across A04, A05, A07, A08, A10 and A03 (this rests on 7 and 10 outgoing transitions earlier versus 53 and 68 later). [DIR009, DIR011]\n- A08 no longer routes through them: its transitions to A09/A11 fall from about 63 in 100 to about 29 in 100, while those to A02/A06 rise from about 24 to about 56 in 100; A08 also sits later (upper-quartile position 0.8 → 1.0) and its observed outgoing transitions fall from 117 to 70 while its participation only falls from about 58 to 54 in 100 traces, so it more often ends the trace. [DIR008, POS008, OCC005]\n- A05's outgoing transitions shift from mainly A01 (about 67 in 100) to mainly A09/A11 (about 77 in 100); this rests on few observations (9 earlier, 26 later). [DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A09 and A11 form an every-case, mutually exclusive step performed much earlier in each trace and rewired into the flow: A06 (and, on a thinner sample, A05) now frequently lead into them within one or two events, they in turn lead into A04, A05, A07, A08 and A10 instead of primarily returning to A02 and A06, and A08 now proceeds directly to A02/A06 instead of through A09/A11. The signs are direct and consistent across all five indicator families: participation roughly doubles for A11 (about 29 → 57 in 100) and rises for A09 (about 30 → 44), traces with neither activity disappear (about 42 in 100 → 0), positions and lags shift in the same direction, and the routing items involved are among the largest differences in the set, with differences exceeding roughly 99 of 100 random re-splits of the same data. [OCC006, OCC008, REL053, POS009, POS011, LAG008, LAG010, DIR006, LAG038, LAG040, DIR009, DIR011, DIR008]\n\nLimitations: several routing details rest on few observations (A05 with 9 versus 26 outgoing transitions; A09/A11 with 7 and 10 earlier), items describing the same traces are not independent confirmations, and no screening baseline is included, so the against-chance comparison rests on the per-item reference comparisons. The evidence also cannot distinguish a rewiring of the existing flow from a shifted case mix in which the earlier optional pattern persists only at very low rates (below about 2 in 100 cases) or has disappeared entirely. [DIR005, DIR009, DIR011]\n\nOther differences: A04 participates more often (about 18 vs 25 in 100 traces) and now sometimes occurs together with A09/A11 and receives transitions from A04's predecessors that did not exist before [OCC002, REL031, REL033, DIR004]; A02 occurs slightly less often and slightly later (about 58 vs 54 in 100 traces; mean position about 0.53 → 0.57) [OCC001, POS002]; A03's outgoing transitions shift toward A01, A09 and A11, and its distances to A07, A09, A10 and A11 typically lengthen [DIR003, LAG022, LAG024, LAG025, LAG026]; A10 gains transitions to A11 and A01, sends fewer transitions to A07, and typically follows A07 at a longer distance [DIR010, LAG055].",
+  "case_id": "case_55d56866e9c7507f",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

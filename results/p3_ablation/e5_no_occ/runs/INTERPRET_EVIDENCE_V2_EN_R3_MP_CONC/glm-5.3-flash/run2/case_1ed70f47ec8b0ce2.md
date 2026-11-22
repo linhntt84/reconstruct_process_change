@@ -1,0 +1,23 @@
+### Observed differences
+
+- **Participation is stable.** A15, A17 and A18 occur in every case in both windows, while A14, A16 and A19 each occur in roughly 3 in 10 cases (A14 about 30% before and 33% after, A16 about 35% before and 29% after, A19 about 36% before and 39% after); the three shares together cover essentially every case in both windows. No activity was added, removed or made optional. [POS001, POS002, POS003, POS004, POS005, POS006, REL008]
+
+- **The two groups swapped their typical position in the case.** Earlier, A14, A16 and A19 sat at about one-third of the case (mean relative position 0.34–0.35) and A15, A17, A18 at about two-thirds (0.64); in the later window A14, A16 and A19 sit at about two-thirds (0.67–0.68) and A15, A17, A18 at about one-third (0.38). A20 (0.38→0.44) and A24 (0.57→0.64) moved modestly later. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+- **Every observed pair across the two groups reversed its execution order.** Earlier, A14/A16/A19 always preceded A15/A17/A18 when they co-occurred (A14 before A15 in all 30-in-100 such cases, never after), and A20 and A24 ran after the single alternative and before the trio (A20 before A15 and A24 before A15 in every case). In the later window all 21 pair relations are reversed (A15 before A14 in 33 in 100; A15 before A20 and A15 before A24 in every case), while co-occurrence levels barely move. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021]
+
+- **Direct successors were rewired at the group boundaries.** Earlier, A14, A16 and A19 led only to A20 (100% of their outgoing edges) and the trio members led to one another or to A25 (about 30–37% of edges); in the later window A14, A16 and A19 lead only to A25 (100%) and the trio members lead to one another or to A20 (about 28–37%). A24's outgoing edges moved from A15/A18/A17 (about 37/33/30%) to A19/A16/A14 (about 39/29/33%), and A35's from A16/A14/A19 (about 35/30/36%) to A17/A15/A18 (about 36/33/31%). The trio's internal order remained unfixed in both windows. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008]
+
+- **Step distances match the swap.** A24→A25 narrowed from 4 steps to 2, and A35→A20 widened from 2 steps to 4, consistent with three intervening trio activities replacing one intervening alternative, and vice versa. [LAG001, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that two blocks of activities exchanged their place in the sequence: the block in which one of the alternatives A14, A16 or A19 executes ran between A35 and A20 before and runs between A24 and A25 in the later window, while the always-executed trio A15/A17/A18 ran between A24 and A25 before and runs between A35 and A20 in the later window. [REL001, REL008, DIR001, DIR002, DIR007, DIR008, LAG001, LAG002]
+
+The reordering is shown directly by relational, positional and successor evidence rather than inferred from frequencies alone: all cross-group pairs reverse order at stable co-occurrence levels, the position distributions mirror each other, the successor rewiring sits exactly at the block boundaries, and the gap changes match the number of intervening activities. Participation shares are unchanged, which rules out the activities becoming optional, repeated or replaced, and 39 qualifying items against roughly 0.34 expected without change (all control-flow) is far beyond what an unchanged process produces. [REL001, REL006, REL008, REL015, POS001, POS002, DIR001, DIR002, DIR007, LAG001, LAG002]
+
+Limitations: POS is based on event positions rather than clock time, so the placement claim rests on the relational items; the evidence cannot distinguish a genuine swap of the two blocks from an equivalent rewiring of A35's and A24's successors that produces the same order, and it covers only the tested units, so changes to unobserved activities between A20 and A24 cannot be ruled out. The reading of A14/A16/A19 as one-per-case alternatives rests on their shares summing to about 100%, since no direct pair relation among the three was reported. [POS001, POS003, POS006, DIR007]
+
+Other differences: none independent of the swap; the small later shifts of A20 and A24 (mean relative position about 0.38→0.44 and 0.57→0.64) are consistent with two additional trio events now preceding them. [POS007, POS008]

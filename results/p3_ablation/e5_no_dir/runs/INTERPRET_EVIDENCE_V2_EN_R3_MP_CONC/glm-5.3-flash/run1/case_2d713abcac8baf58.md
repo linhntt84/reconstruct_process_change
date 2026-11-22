@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A19, A20 and A21 each ran in roughly a third of cases (about 35%, 30% and 36% of traces respectively) but hardly ever together — co-occurrence between any two of them was about 0.5% or less, so exactly one of the three executed per case. In the later window all three have nearly disappeared: A19 appears in about 1% of traces (2 of 200) and A20 and A21 in about 0.5% (1 of 200 each). [OCC001, OCC002, OCC003, REL001, REL002, REL008]
+- In the earlier window the chosen alternative sat between A44 and A29: A44 came before A19, A20 or A21 (co-occurrence about 35%, 30% and 36%, always with A44 first), and the chosen activity came before A29 (for example, A19 preceded A29 in about 35% of traces). [REL006, REL007, REL012, REL013, REL017, REL018]
+- A26, A27 and A28 were not observed at all in the earlier window; in the later window each appears in every trace (200 of 200), about once per trace, with almost no repetition. [OCC004, OCC005, OCC006]
+- In the later window A26, A27 and A28 always co-occur and have no fixed order among themselves: A26 precedes A27 in about 51% of traces and A27 precedes A26 in about 49%, with similar near-even splits for the other pairs. [REL019, REL020, REL023]
+- The new block occupies the same segment: A44 precedes each of A26, A27 and A28 in about 99% of traces, and each of them precedes A29 in about 98–99% of traces. [REL021, REL022, REL024, REL025, REL026, REL027]
+- The distance from A44 to A29 grew from mostly 2 steps (about 84% of traces before, 3 steps in about 16%) to mostly 4 steps (about 82%) or 5 steps (about 18%) after; A29 itself still occurs in every trace in both windows, with its average position moving slightly later, from about 0.40 to about 0.44 of the trace. [LAG001, POS007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+One reading directly supported by the evidence is that the segment between A44 and A29 was restructured: in the earlier window exactly one of the three alternative activities A19, A20 or A21 executed there (each in roughly 30–36% of cases, mutually exclusive), whereas in the later window those three are nearly unobserved and the three activities A26, A27 and A28 execute in every case in that same segment, once each and in no fixed order among themselves, after A44 and before A29. [OCC001, OCC004, REL006, REL019, REL021, LAG001]
+
+The screening context supports this reading: 41 evidence items qualified against about 0.4 expected if nothing had changed (control-flow family), roughly a hundred times the chance expectation, so the pattern as a whole is not what an unchanged process typically produces. Participation, pairwise order and the A44→A29 step gap all move in mutually consistent directions, and the gap growth from about 2 to about 4–5 steps matches three activities being inserted between A44 and A29. [OCC004, REL019, LAG001]
+
+Limitations: the many relation items restate one underlying trace-level change and are not independent confirmations; positions and gaps are event indices, not clock times; and A19, A20 and A21 still occur in 1–2 traces, so formal removal versus a drop to near-zero frequency cannot be distinguished. A competing explanation the evidence cannot rule out is that the two windows capture different mixes of pre-existing trace variants rather than a modified process, since all indicators are aggregate over the windows. [OCC001, OCC002, OCC003, POS001, POS002, POS003]

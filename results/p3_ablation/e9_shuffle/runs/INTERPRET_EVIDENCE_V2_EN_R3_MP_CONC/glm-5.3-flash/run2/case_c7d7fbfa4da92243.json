@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_c7d7fbfa4da92243.json",
+  "evidence_sha256": "c92be598498ea8f94aa5afa8aacbcb21c45999f04880199dc32c982c12849a4c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:28:47.703492+00:00",
+  "finished_at_utc": "2026-11-15T04:29:45.222218+00:00",
+  "latency_seconds": 57.52,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8417,
+    "prompt_tokens": 5623,
+    "total_tokens": 14040,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7609,
+      "text_tokens": 808
+    },
+    "cost": 0.0050519499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27560,
+  "text": "### Observed differences\n\n- Activity A10 was observed in about 44 in 100 traces in the earlier window (88 of 200) but in none of the 200 later traces; its mean occurrences per trace fell from 0.44 to 0. [OCC001, POS001]\n- Earlier, A10 sat between A04 and A12: A04 and A10 co-occurred in about 44 in 100 traces, usually with A04 first (about 32 in 100 traces versus about 13 in 100 the other way round), and about 82 of 100 of A10's observed outgoing transitions led to A12. [REL001, REL002, DIR003]\n- Later, A10 has disappeared from these relations: A04 appears without A10 in about 58 in 100 traces and A12 without A10 in about 58 in 100, with no co-occurrence of A10 with either, and A10 shows no outgoing transitions at all. [REL001, REL002, DIR003]\n- A04's outgoing flow rerouted: transitions from A04 to A10, about 55 of 100 of its observed outgoing transitions earlier, vanished, while transitions from A04 to A12 rose from about 10 of 100 to about 73 of 100. [DIR002]\n- A12 now follows A04 almost immediately: the A04-to-A12 distance is one step in about 75 of 100 cases (about 11 of 100 earlier), whereas distances of two or more steps, about 89 of 100 earlier, fell to about 25 of 100. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A12 is now reached directly from A04, so that A10 is no longer executed between them: in the earlier window A10 occurred in about 44 in 100 traces, was typically reached from A04 and typically followed by A12, with the A04-to-A12 distance typically two steps; in the later window A10 is not observed at all, A04 sends about 73 of 100 of its observed outgoing transitions straight to A12, and A12 follows A04 within one step in about 75 of 100 cases. [OCC001, REL001, REL002, DIR002, DIR003, LAG001]\n\nThis hypothesis is shown directly by relational, directional and lag evidence rather than by occurrence counts alone, and it is consistent across indicators: nine control-flow items qualified against roughly 0.15 expected for an unchanged process, each difference exceeds about 199 of 200 random re-splits, and the items behind the main hypothesis rest on roughly 70 to 115 observations per window where the behaviour is present. [OCC001, DIR002, DIR003, LAG001, REL001, REL002]\n\nLimitations: zero participation in the later window shows only that A10 was not observed there, so a very rare continued execution of A10 cannot be ruled out; moreover, most items describe the same underlying rerouting, so they are not independent confirmations of it. [OCC001, DIR002, LAG001]\n\nOther differences: A03 and A11 also redirected their flow — A03 moved from A10 and A02 to A04 and A12 (about 50 of 100 each), and A11 moved from A02 and A10 mainly to A04 (about 78 of 100), leaving A02 without their transitions in the later window — which is consistent with the same rerouting but rests on only 5 to 10 outgoing transitions per window. [DIR001, DIR004]",
+  "case_id": "case_c7d7fbfa4da92243",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

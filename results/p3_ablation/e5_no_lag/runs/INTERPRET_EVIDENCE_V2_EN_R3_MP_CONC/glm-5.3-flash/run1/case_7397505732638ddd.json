@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "0c03fe732a2bc1f1a7b72611f409a2b4f52c5a1e4f0687d5b85c5abc3db0ebff",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:03:36.931077+00:00",
+  "finished_at_utc": "2026-11-14T13:05:53.733422+00:00",
+  "latency_seconds": 136.8,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22421,
+    "prompt_tokens": 10149,
+    "total_tokens": 32570,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21136,
+      "text_tokens": 1285
+    },
+    "cost": 0.01273285
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 73054,
+  "text": "### Observed differences\n\n- In the earlier window the traced activities formed one fixed chain, A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27: each source sent 100 in 100 of its observed outgoing transitions to a single successor, and each of the eight pairs spanning the two groups {A15, A17, A18} and {A19, A20, A21} had the first group first in 100 in 100 traces, with every pair co-occurring in all traces [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].\n- In the later window the within-group edges remain the most common but are no longer exclusive: A17 → A15 in about 56 in 100 of A17's outgoing transitions, A15 → A18 in about 68 in 100, A19 → A21 in about 61 in 100 and A21 → A20 in about 67 in 100 [DIR001, DIR002, DIR004, DIR006].\n- The chain boundary is redrawn: A18, previously always followed by A19, now leads directly to A27 in about 52 in 100 of its outgoing transitions (A19 only about 15 in 100); A20, previously always followed by A27, now leads to A15, A17 or A18 in about 52 in 100 (A27 about 49 in 100); and A26 now starts with A19 in about 47 in 100 of its outgoing transitions (before: always A17) [DIR003, DIR005, DIR007].\n- The fixed order between the two groups gave way to mixed orders: A19 now precedes A18 in about 85 in 100 traces (before 0) and A15 in about 74 in 100 (before 0); A21 precedes A18 in about 68 in 100 (before 0); A15/A21 (about 50/50), A18/A20 (about 52/48) and A17/A19 (about 53/47) now occur in both orders, while A17 still precedes A21 in about 77 in 100 and A15 precedes A20 in about 68 in 100. Co-occurrence stays at 100 in 100 traces for every pair in both windows [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008].\n- Event positions shifted accordingly: A15, A17 and A18 occur later in the trace (mean relative position about 0.59 → 0.64, 0.56 → 0.59 and 0.62 → 0.68), while A19, A20 and A21 occur earlier (about 0.65 → 0.59, 0.71 → 0.68 and 0.68 → 0.64) [POS001, POS002, POS003, POS004, POS005, POS006].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe 21 qualifying items are roughly 60 times the about 0.35 expected for an unchanged process (all in the control-flow family), and every item's difference exceeded about 199 of 200 random re-splits, so the ensemble is not what an unchanged process typically produces. The evidence supports the hypothesis that the strict sequencing between the two activity groups was reversed or loosened: the group A19 → A21 → A20, which previously always ran after A17 → A15 → A18, now runs before it in a large share of traces (A19 before A18 in about 85 in 100, before A15 in about 74 in 100; A21 before A18 in about 68 in 100), A26 now starts with A19 in about half of its outgoing transitions, and A18 can be followed directly by A27, which previously closed the trace only after A20 — together consistent with roughly half of the executions running the second group first. This is a reordering, not a participation change: all six activities still occur together in essentially every trace in both windows, and each group's internal order remains the dominant pattern. The relational items show the order change directly, the directional items place the redistribution exactly at the group boundary, and the positional items shift in the matching direction [REL001, REL003, REL006, REL008, DIR003, DIR005, DIR007, POS003, POS004].\n\nThe evidence cannot establish a single new sequence: the later-window pair shares (some majority-reversed, others near even) do not fit one clean swapped variant, so the later window likely mixes several orders, and whether these are a few new variants or a generally loosened ordering cannot be decided from these aggregates; directional shares are taken over outgoing transitions rather than cases, so per-case sequence frequencies cannot be derived. Position results alone would not demonstrate movement, but here the relational and directional items corroborate them [REL004, REL005, REL007, DIR002, POS001].\n\nOther differences: none — all 21 items concern the same seven activities and the same group boundary, so they most likely reflect one underlying difference rather than independent changes; the agreeing indicator families should not be read as independent confirmations [DIR001, POS001, REL001].",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

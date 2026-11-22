@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_3c73eabdaef64df5.json",
+  "evidence_sha256": "25f8d6ad119332911033e313e9f9150ae4b892f59194b7aadedbf01821202c04",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:31:40.255132+00:00",
+  "finished_at_utc": "2026-11-16T01:33:44.650641+00:00",
+  "latency_seconds": 124.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16461,
+    "prompt_tokens": 14709,
+    "total_tokens": 31170,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14886,
+      "text_tokens": 1575
+    },
+    "cost": 0.01043685
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 52458,
+  "text": "### Observed differences\n\n- In the earlier window, all 200 traces showed the same short sequence: A02, then A04, then A07. A04 immediately preceded A07 (one step apart in 100% of cases), A07 was the final event, and A01, A03, A05 and A06 appeared in no trace at all (0 of 200). [OCC001, OCC002, OCC003, OCC004, LAG001, LAG002, POS003, POS006, REL007]\n- In the later window, all 200 traces show a seven-step sequence, A02 → A04 → A03 → A05 → A06 → A07 → A01, with each activity occurring exactly once and always in that order. [DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, POS006, LAG001, LAG002]\n- The four added activities (A01, A03, A05, A06) now take part in 200 of 200 traces, exactly once each, with no repetitions; earlier they took part in 0 of 200. [OCC001, OCC002, OCC003, OCC004]\n- The redirection is visible directly on transitions: A04 led to A07 in all earlier cases but leads to A03 in all later cases; A07, which had no observed successor earlier, now leads to A01 in all cases; and the edges A03→A05, A05→A06 and A06→A07 each carry all of the outgoing flow. [DIR001, DIR002, DIR003, DIR004, DIR005]\n- Step distances grew accordingly: A04 to A07 went from 1 to 4 steps, and A02 to A07 from 2 to 5 steps. [LAG001, LAG002]\n- Positions shifted consistently: A04 moved from about half-way through the trace to about one-sixth in, A07 from the final position to about five-sixths, with A03, A05 and A06 occupying the middle positions and A01 at the end. [POS001, POS002, POS003, POS004, POS005, POS006]\n- Earlier, A01/A03/A05/A06 never co-occurred with the other activities; later, all 18 observed activity pairs co-occur in 100% of traces, each in a single fixed order. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018]\n- Every item's difference is larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, DIR002, POS003, REL010, LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural addition to the control flow: in the later window, the sequence A03 → A05 → A06 runs between A04 and A07, and A01 runs as a new final step after A07, so a case executes A02 → A04 → A03 → A05 → A06 → A07 → A01 where it previously executed only A02 → A04 → A07. The redirection is observed directly on transitions (A04 now followed by A03 rather than A07; A07 now followed by A01), the four added activities move from 0 of 200 to 200 of 200 traces with exactly one occurrence each, and all pairwise relations and step distances match one fixed chain in 100% of later traces. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL007, REL010, REL013, LAG001, LAG002] Because the added activities were entirely absent earlier, this is not a shift in how often existing alternatives are taken but a set of steps becoming part of every case. The evidence covers only activities A01–A07 and expresses order in event steps rather than clock time, so it cannot show whether A03, A05 and A06 are genuinely new activities or existing ones that were simply not exercised in the earlier window; the exclusion of sampling variation rests on the complete unanimity of both 200-trace samples (0 of 200 versus 200 of 200) together with differences larger than in about 199 of 200 reference re-splits. [OCC001, OCC002, OCC003, OCC004, POS003, LAG001] An important competing explanation the evidence cannot rule out is that the two windows capture two different variants of a mixed process rather than a before/after change, although a variant appearing in 0 of 200 and then 200 of 200 traces is difficult to reconcile with a stable mixture. [OCC001, OCC002, OCC003, OCC004]\n\nOther differences: none — all 30 evidence items describe this single chain extension, and no separate behavioural differences appear. [OCC001, OCC002, OCC003, OCC004, DIR001, DIR002, DIR003, DIR004, DIR005, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, LAG001, LAG002]",
+  "case_id": "case_3c73eabdaef64df5",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

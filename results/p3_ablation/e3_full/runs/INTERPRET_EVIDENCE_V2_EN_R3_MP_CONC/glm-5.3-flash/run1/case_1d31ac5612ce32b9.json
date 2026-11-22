@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "ac13c6af389623a79340048daf7d33c793d74bb8ed7e0c68282c0437acf25580",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:15:24.539366+00:00",
+  "finished_at_utc": "2026-11-16T01:21:19.815686+00:00",
+  "latency_seconds": 355.28,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 44296,
+    "prompt_tokens": 10578,
+    "total_tokens": 54874,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42272,
+      "text_tokens": 2024
+    },
+    "cost": 0.023734699999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 126231,
+  "text": "### Observed differences\n\n- In the earlier window, every trace ran one fixed chain — A01, A05, A02, A04, A03 — with each activity exactly once: A02 and A04 each occurred once in all 200 traces with no repeats, A02 was always followed by A04, and A04 was always followed by A03 [OCC001, OCC002, DIR001, DIR002].\n- In the later window, A02 repeats: it occurs about 2.1 times per trace on average (previously 1.0) and in about 50 in 100 traces it occurs at least twice, while still appearing in every trace [OCC001].\n- A04 became optional: it appears in only about 50 in 100 later traces (previously all), at about 1.1 occurrences per trace overall, and repeats in about 28 in 100 traces; when it does run, it occurs about 2.2 times per trace on average [OCC002, DIR002].\n- The routing out of A02 changed: before, all of A02's outgoing transitions went to A04; in the later window, about 53 in 100 go to A04 and about 47 in 100 go directly to A03 [DIR001].\n- The routing out of A04 changed: before, A04 always led to A03; in the later window, every observed A04 transition leads back to A02 [DIR002].\n- The relations mirror this. A01, A05 and A03 still co-occur with A02 in every trace, but the previously fixed orders (A01 before A02, A05 before A02, A02 before A03) now hold in only about 50 in 100 traces, with the other half showing repeated or interleaved order [REL001, REL003, REL005]. Every pair involving A04 dropped from universal co-occurrence to about 50 in 100 traces, and in about 50 in 100 traces only the partner activity (A01, A02, A03 or A05) occurs [REL002, REL004, REL006, REL007].\n- Positions and lags spread out consistently with inserted repetitions: A02's relative position was fixed at 0.5 and now varies (standard deviation about 0.21, median about 0.67); A04 appears in half as many traces at a more variable position; lags that were single values became mixtures — A02 to A03 was always 1 step apart and is now 1 step in only about 40 in 100 of the observed pairs (3 and 5 steps also appear), and A01 to A03 moved from always 4 steps to 3 steps in about 70 in 100 and 5 steps in about 30 in 100 [POS001, POS002, LAG002, LAG004, LAG006, LAG008].\n- All 23 evidence items show differences larger than in about 995 of 1,000 random re-splits of the pooled traces [OCC001, OCC002, DIR001, DIR002, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, REL007, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, executions repeat the A02–A04 cycle before finishing: A02 leads either to A04 (about 53 in 100 of its outgoing transitions) or directly to A03 (about 47 in 100), A04 always returns to A02 rather than leading on to A03, and the cycle repeats until A02 closes directly into A03; in about half the traces the cycle does not run at all and A04 is skipped. A02 changed from a single mandatory step to a repeated one (about 2.1 occurrences per trace, repeats in about 50 in 100 traces), and A04 changed from mandatory to optional and repeatable (present in about 50 in 100 traces, repeating in about 28 in 100), while A01, A05 and A03 remain universal anchors in the same overall order. Because A04 is wholly absent from about half of the later traces and A02's repetition count changed, this is a change in repetition and participation together with a direct successor change, not merely a shift in how often two existing paths are taken.\n\nSupporting signs: the successor changes at A02 and A04 are observed directly [DIR001, DIR002]; the occurrence and recurrence changes are observed directly [OCC001, OCC002]; the relation, position and lag items all agree in direction and magnitude with repetitions being inserted between A02 and A04 [REL001, REL002, REL003, REL004, REL005, REL006, REL007, POS001, POS002, LAG002, LAG004, LAG006, LAG008]. The earlier window shows no repetition at all (0 of 200 traces), which makes a rare-variant sampling explanation unlikely.\n\nLimitations: many items describe the same traces — the relation, lag and position items on A02/A04 overlap and are not independent confirmations; POS and LAG use event positions, not clock time; and no screening baseline was provided, so the number of qualifying items could not be compared with a chance expectation — the judgement rests on the directness and consistency of the successor and occurrence evidence. An important competing explanation the evidence cannot rule out is that the two windows sample two pre-existing behaviours in shifted proportions rather than a modified process.\n\nOther differences: A05 itself shows no participation or order change; it only gains a small spread in relative position (standard deviation from 0 to about 0.10, mean position roughly unchanged at 0.24), consistent with traces simply becoming longer when the cycle runs [POS003, REL005].",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "969457b3705107a8fa9fbb678fd1ca34e7d15a7c59d44b232e23373289b502bc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T07:03:06.497741+00:00",
+  "finished_at_utc": "2026-11-15T07:03:49.489416+00:00",
+  "latency_seconds": 42.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6162,
+    "prompt_tokens": 12903,
+    "total_tokens": 19065,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5209,
+      "text_tokens": 953
+    },
+    "cost": 0.00501645
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 18840,
+  "text": "### Observed differences\n\n- In the earlier window, A27 was executed in about 52 in 100 cases (roughly once per case); in the later window it was executed in about 199 in 200 cases, still about once per case. [OCC001]\n- A32, A33 and A38 each appeared in about 48–49 in 100 cases in the earlier window; in the later window each was observed in only 1 of 200 cases. [OCC002, OCC003, OCC004]\n- In the earlier window, the outgoing transitions of A26 split between A27 (about 51%) and the trio A38, A33, A32 (about 18%, 16% and 14%); in the later window, about 97 in 100 of A26's observed outgoing transitions lead to A27. [DIR001]\n- In the earlier window, A27 and each of A32, A33, A38 were mutually exclusive alternatives (co-occurrence near zero, each side occurring alone in about half the cases); in the later window A27 occurs while the other three do not. [REL006, REL007, REL008]\n- In the earlier window, A32, A33 and A38 typically occurred together (pairwise co-occurrence about 48–49 in 100 cases) in no fixed order between them, positioned between A26 and A28; in the later window these co-occurrences have disappeared. [REL002, REL003, REL004, REL009, REL010, REL011, REL012, REL013, REL014]\n- A27 and A28 co-occurred in about 52 in 100 earlier cases (A27 first, with A28 alone in the rest); in the later window they co-occur in about 995 in 1000 cases, with A27 before A28 in about 97 in 100. [REL005, REL001]\n- A28's mean relative event position shifted slightly earlier, from about 0.55 to about 0.53 of the trace; this is a small shift and does not by itself show the activity was moved. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the branch formed by A32, A33 and A38 — previously executed between A26 and A28 in roughly half of the cases, with the three activities run together in varying order — was dropped or effectively ceased to be executed, so that in the later window virtually every case runs A26 → A27 → A28. A27 changed from an optional step (about 52 in 100 cases) to one executed in nearly every case, while A32, A33 and A38 changed from about 48–49 in 100 cases to not being observed (1 in 200 each). [OCC001, OCC002, OCC003, OCC004, DIR001, REL005, REL006, REL007, REL008, REL012, REL013, REL014]\n\nThe screening produced 26 qualifying control-flow items where about 0.54 would be expected by chance alone, and the items are direct and mutually consistent: participation (OCC), routing out of A26 (DIR001) and the relational profiles (REL) all show the same replacement of the A32/A33/A38 route by the A27 route, rather than scattered unrelated differences. [DIR001, REL001, REL005, OCC001, OCC002]\n\nAn important competing explanation remains: the evidence cannot distinguish complete removal of the branch from a drastic reduction to a rare path, since zero participation only means the activities were not observed, and the little after-window behaviour recorded for A32 and A38 rests on a single trace each. [OCC002, OCC003, OCC004, DIR003, DIR004]\n\nOther differences: A27's own outgoing profile is essentially unchanged, still leading to A28 in about 97–99 in 100 of its observed outgoing transitions in both windows. [DIR002]",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

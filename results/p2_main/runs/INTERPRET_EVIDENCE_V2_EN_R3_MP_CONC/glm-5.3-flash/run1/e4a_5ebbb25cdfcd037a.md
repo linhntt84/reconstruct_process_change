@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A14 and A15 each ran in every trace, always together and always with A14 first. In the later window each appears in about 53 in 100 traces, and in about 48 in 100 traces neither appears; when they do run, their order is unchanged [OCC001, OCC002, REL001].
+- In the earlier window, every observed outgoing transition of A38 went to A14. In the later window, about 48 in 100 of A38's transitions go directly to A23, and A23 follows A38 immediately (one event apart) in about 48 in 100 traces, whereas before the gap from A38 to A23 was always 4–5 events [DIR001, LAG001].
+- A23 and A38 still occur in every trace, but in the later window they run without A14 (and without A15) in about 48 in 100 traces; earlier they always co-occurred with A14 [REL005, REL006, REL010, REL011].
+- The alternative middle block shrank in the same proportion: A20 and A21 dropped from about 51 in 100 traces to about 29 (still always together), and A22 from about 50 to about 24 (still never together with A20/A21); in the roughly 48 in 100 traces without A14, none of A20/A21/A22 runs [OCC003, OCC004, OCC005, REL012, REL013, REL016].
+- Average event positions shifted slightly: A23 moved earlier (mean about 0.44 to 0.41 of the trace) and A38 later (about 0.30 to 0.32), consistent with a mixture of full and shortened traces; these are event ranks, not clock times [POS001, POS002].
+- Elapsed time between consecutive completion events fell for A28→A34 (median about 0.89h to 0.46h) and for A35→A34 (about 0.16h to 0.08h), while A38→A14 rose by about 1 hour (median about 2.0h to 3.0h) in the traces containing both [TWAIT001, TWAIT002, TWAIT003].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a bypass: in the later window, about 48 in 100 cases take a shortened route in which A38 is followed immediately by A23, skipping A14, A15 and the alternative middle block (A20 together with A21, or A22), while the remaining ~52 in 100 cases still execute the full earlier sequence A38 → A14 → A15 → (A20+A21 or A22) → A23. The direct A38→A23 transition and the one-step A38→A23 gap appear only in the later window, at exactly the share (~48 in 100) at which A14, A15 and the block disappear, and the rules of the retained path (A14 before A15, A20+A21 jointly and exclusive to A22, everything before A23) are unchanged [DIR001, LAG001, REL005, REL006, OCC001, OCC002, OCC003, OCC004, OCC005, REL012, REL013].
+
+The control-flow family produced 29 qualifying items where about 0.45 would be expected by chance in an unchanged process, so sampling variation cannot explain the pattern as a whole. The main limitation is that the indicators aggregate 200 traces per window: they cannot strictly prove that the cases missing A14/A15 are the same cases in which A23 directly follows A38, and cannot rule out that the participation drop and the new edge are two separate changes with coincidentally matching shares [DIR001, LAG001, REL001, OCC001].
+
+Other differences: Timing moved independently of the shortcut. The elapsed time from A38 to A14 grew by about 1 hour (median about 2.0h to 3.0h) in the traces that still contain both — a timing change the bypass does not explain — and elapsed times between consecutive completions also dropped for A28→A34 and A35→A34; note these intervals measure elapsed time between consecutive completion events, not pure waiting or service time. The time family produced 3 items against about 0.01 expected by chance [TWAIT001, TWAIT002, TWAIT003].

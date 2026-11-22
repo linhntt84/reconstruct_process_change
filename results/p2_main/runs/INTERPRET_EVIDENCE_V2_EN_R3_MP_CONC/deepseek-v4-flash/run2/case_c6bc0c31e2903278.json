@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_c6bc0c31e2903278.json",
+  "evidence_sha256": "11abefd28032b2bd3160df56569e97c6592ba63043bb08c42323a77e4e731138",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:17:40.183080+00:00",
+  "finished_at_utc": "2026-11-15T01:18:05.074172+00:00",
+  "latency_seconds": 24.89,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4826,
+    "prompt_tokens": 21099,
+    "total_tokens": 25925,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4237
+    },
+    "cost": 0.004120634
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 12069,
+  "text": "### Observed differences\n\n- Activity A01 disappears: it was present in about 32% of traces before and is absent after. [OCC001, POS001, REL001, REL003, REL006]\n- Activities A08 and A09 appear: A08 in about 48% of traces after (none before), typically near the end; A09 in about 18% of traces after (none before), typically early. [OCC004, OCC005, POS003, POS004, REL004, REL018, REL021, REL022, REL023, REL005, REL011, REL015, REL024, REL025]\n- A03 and A10 drop from being present in every trace to about 50% of traces. [OCC002, OCC006]\n- A04 increases from about 37% to 52% of traces; A12 increases from about 15% to 48%. [OCC003, OCC007]\n- Routing changes: A06 now goes to A09 in all its outgoing transitions (previously to A07, A10, A03); A08 and A12 appear as successors of A03, A10, A07, and A09; A03 and A10 no longer lead to A01. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n- Ordering shifts: A07 and A10 become adjacent (lag 1) in all cases; A06 and A07 become separated by one step; A06 and A10 become separated by three steps. [LAG002, LAG003, LAG005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a hypothesis that the process was modified to replace activity A01 with activities A08 and A09, and to make A03 and A10 optional. In the earlier window, A01 was executed in about a third of cases, always after A03, A07, or A10; in the later window A01 is absent, while A08 and A09 appear in new positions and the routing from A06, A03, A10, and A07 now leads to A08 and A12 instead of A01. A03 and A10, previously mandatory, are now each present in only half of the cases. The large number of qualifying evidence items (49 vs. 0.32 expected by chance) and the consistency across occurrence, routing, and ordering indicators make a chance explanation unlikely.\n\nOther differences: A04 and A12 increase in participation, and the lag between A06 and A07/A10 changes, consistent with the new routing. A competing explanation that cannot be fully ruled out is a shift in case mix or a new variant that happens to use the new activities, but the direct routing and ordering evidence makes a structural change the most plausible interpretation.",
+  "case_id": "case_c6bc0c31e2903278",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

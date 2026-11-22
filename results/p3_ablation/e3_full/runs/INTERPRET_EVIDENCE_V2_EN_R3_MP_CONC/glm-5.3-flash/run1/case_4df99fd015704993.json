@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_4df99fd015704993.json",
+  "evidence_sha256": "0887ec8d68f31256072a2427c4d6a6e956b7a03d68dcdc2a1b6adf9c728ac69a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T00:51:27.946968+00:00",
+  "finished_at_utc": "2026-11-16T00:55:43.530945+00:00",
+  "latency_seconds": 255.58,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 29123,
+    "prompt_tokens": 70610,
+    "total_tokens": 99733,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27550,
+      "text_tokens": 1573
+    },
+    "cost": 0.025153000000000002
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 97399,
+  "text": "### Observed differences\n\n- A02 appears only in the later window: it was not observed at all earlier (0 of 200 traces), and in the later window it runs in 78 of 200 traces (about 39 in 100), exactly once per trace in which it occurs, around the middle of the trace. [OCC001, OCC002, POS001]\n- In the later window the exit of the A03 branch is rerouted through A02. Earlier, A03's outgoing transitions went to A12 (about 51 in 100) and directly to A13 (about 49 in 100); later they go to A02 (about 54 in 100) and A12 (about 46 in 100), with none of about 144 observed outgoing transitions of A03 going to A13. A02's observed transitions all lead to A13, A02 always precedes A13 when both run, and the gap from A03 to A13 moved from typically one step to typically two steps, while the distance from A12 to A13 stayed typically three steps. [DIR001, DIR002, REL011, LAG003, LAG052]\n- A14 is not observed in the later window (0 of 200 traces) after running in 51 of 200 traces (about 26 in 100) earlier, where A12 always led to A14 and A14 always led to A03. In the later window A12 leads directly back to A03, the A12→A03 gap shortened from typically two steps to one, and the repeat gaps of A03 and of A12 shortened from typically three steps to two — the loop is one step shorter. [OCC014, POS012, DIR010, DIR011, LAG050, LAG001, LAG051]\n- Both branches run in a smaller share of traces in the later window: the A03 branch (A03 with A13) fell from about 50 in 100 traces to about 39 in 100, the A04-centred cluster (A04, A05, A07, A09, A10, A11) from about 50 in 100 to about 34 in 100, A08 from 34 to 24, A06 from 20 to 16, and A12 from about 26 to 19 in 100. Repetition within a containing trace is roughly unchanged (A04 about four occurrences per containing trace in both windows). [OCC003, OCC013, OCC012, OCC004, OCC005, OCC007, OCC009, OCC010, OCC011, OCC008, OCC006]\n- Earlier, every trace contained A03 or A04, which never run together; in the later window 145 of 200 traces contained one of them, so about 27 in 100 later traces contain none of the branch activities A02–A14. Routing inside the A04 cluster is essentially unchanged (A04 still splits about evenly between A08 and A09; A10 still leads almost always to A07). [REL013, DIR003, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A03 branch was restructured: A02 was inserted between A03 and A13, and A14 was dropped from the loop back to A03. Earlier, the branch either exited from A03 directly to A13 or looped A03 → A12 → A14 → A03; in the later window the loop runs A03 → A12 → A03 and the exit runs A03 → A02 → A13. This rests on direct relational and positional evidence — the successor of A03 changed from A13 to A02, the successor of A12 changed from A14 to A03, A02 always precedes A13, and three step-gap measures consistently shorten the loop by exactly one step; because A02 sits on the exit path while A14 sat on the loop path, this is an insertion plus a removal rather than a swap of the two activities. [DIR001, DIR002, DIR010, DIR011, REL011, LAG003, LAG050, LAG001, LAG051, OCC001, OCC014]\n\nLimitations: both windows are 200-trace samples and no chance baseline for the number of flagged items is included, so the judgement rests on the size and coherence of the differences rather than on a screening comparison; a competing explanation the evidence cannot rule out is a shift in the mix of case types between the windows, which could produce the same appearance of added and removed activities. [OCC001, OCC014, REL013]\n\nOther differences: in the later window about 27 in 100 traces contain none of the branch activities A02–A14 (earlier: none), suggesting the middle section is skipped or bypassed in some cases, but the evidence does not show what those traces contain instead or how that bypass is reached. Several small step-gap redistributions inside the A04–A11 cluster point in different directions and do not form a coherent pattern. [REL013, REL002, LAG007, LAG010, LAG022]",
+  "case_id": "case_4df99fd015704993",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

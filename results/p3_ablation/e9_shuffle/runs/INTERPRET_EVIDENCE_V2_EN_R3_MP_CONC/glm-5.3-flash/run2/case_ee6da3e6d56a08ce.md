@@ -1,0 +1,21 @@
+### Observed differences
+
+- A02 was not observed at all in the earlier window (0 of 200 traces). In the later window it occurs in about 58 in 100 traces, averages about 2.4 occurrences per trace, and sits around the middle of the trace (median relative position about 0.60). [OCC001, POS001]
+- Before, the observed outgoing transitions of A15 were split between A07 (about 52 in 100), A08 (about 25 in 100) and A12 (about 23 in 100). In the later window, essentially all of A15's roughly 474 observed outgoing transitions go to A02. [DIR002]
+- In the later window, A02's outgoing transitions go to A07 (about 52 in 100), A08 (about 27 in 100) and A12 (about 21 in 100) — almost exactly the split A15 had before — and A02's total occurrence count (about 474) matches the number of A15 outgoing transitions. [DIR001, DIR002, OCC001]
+- A02 and A15 never co-occurred before (A15 alone in about 50 in 100 traces); afterwards both occur in about 58 in 100 traces, with A15 before A02 in about 15 in 100 and interleaved or repeated in about 43 in 100, and neither is ever seen without the other. [REL004]
+- Pairs that never co-occurred before now do so regularly: A02 with A07 in about 39 in 100 traces, with A08 in about 42 in 100, and with A12 in about 35 in 100. [REL001, REL002, REL003]
+- Event distances shifted by one step downstream of A15: A15→A07, A15→A08 and A15→A12 moved from mostly 1 step to mostly 2 steps; A07→A07, A07→A08 and A07→A12 moved from 4 to 5 steps; and A15→A15 moved from 4 to 5 steps. [LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG008]
+- Participation of the other activities stayed roughly similar (A15 about 50→58 in 100 traces, A07 about 35→39, A08 about 37→42, A12 about 33→35), so no activity was displaced. [REL004, REL001, REL002, REL003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A02 was inserted into the flow directly after A15, between A15 and its former successors A07, A08 and A12. Before, A15 handed work directly to A07, A08 or A12 and A02 never appeared; in the later window A15 leads only to A02, A02 appears in about 58 in 100 traces (about 2.4 times per trace, around the middle of the trace), and it hands work on to A07, A08 and A12 in nearly the same proportions A15 used to. The one-step increase in distances from A15 to each successor and among the downstream activities, together with A02's constant co-occurrence with A15, fits a single insertion point that shifts all later events one position. [DIR002, DIR001, OCC001, POS001, REL004, LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG008]
+
+This is far beyond what chance would produce: sixteen control-flow items qualified where about 0.2 would be expected in an unchanged process, and every item's difference exceeds that seen in about 99.5 of 100 random re-splits of the pooled data. [DIR001, DIR002, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, OCC001, POS001, REL001, REL002, REL003, REL004]
+
+Limitations: the evidence cannot show whether A02 is a genuinely new activity or one that was simply not executed or not sampled in the earlier window — zero participation only means it was not observed. Positions and lags are event ranks, not clock times, so no timing claim is made, and some lag items rest on few observations (for example A07→A12 on 8 before and 13 after traces). An important competing explanation that cannot be ruled out is that A02 was a rare, previously unsampled path that became frequent, rather than a structural addition; behaviourally the two windows look the same either way. [OCC001, LAG003]
+
+Other differences: the return distance A07→A15 shifted differently from the insertion pattern — its 5-step share fell from about 24 in 100 to about 9 in 100 while the 3-step share rose from about 31 to about 45 in 100, a modest change that does not follow the one-step shift seen elsewhere. [LAG004]

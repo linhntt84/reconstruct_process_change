@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_ca91098f5a58bd6f.json",
+  "evidence_sha256": "13c151e57ee4fd12337f65a9de5dd0fc573287f331c00fece709704c9ffc5110",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:45:00.041234+00:00",
+  "finished_at_utc": "2026-11-15T10:45:46.452216+00:00",
+  "latency_seconds": 46.41,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6821,
+    "prompt_tokens": 11816,
+    "total_tokens": 18637,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5951,
+      "text_tokens": 870
+    },
+    "cost": 0.0051829
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 21266,
+  "text": "### Observed differences\n\n- In the earlier window, every trace contained A36 and A21 with exactly one intermediate activity between them: A36's observed outgoing transitions split almost evenly among A20 (about 35 in 100), A14 (about 35 in 100) and A15 (about 30 in 100), and each of these three led only on to A21; A36 sat two steps before A21 in essentially all traces. [DIR001, DIR002, DIR003, DIR004, LAG001]\n- The three intermediates were mutually exclusive alternatives: in the earlier window exactly one of each pair (A14/A15, A14/A20, A15/A20) occurred per trace, never both. [REL001, REL003, REL008]\n- In the later window, A14, A15 and A20 are not observed at all (participation drops from about 35, 30 and 35 in 100 traces to 0 in 200 traces), A36's only observed outgoing transition is to A21, and A36 immediately precedes A21 (one step apart) in all later traces, where it was previously two steps away. [POS001, POS002, POS003, DIR004, LAG001]\n- A21 and A36 still occur in every trace in both windows; A21's mean relative position moved slightly earlier (about 0.39 to 0.37 of the trace) and A36's slightly later (about 0.32 to 0.33), consistent with the intermediate step being gone. [POS004, POS005]\n- A19 appears in about 49 in 100 traces earlier and about 56 in 100 later; A26 is present throughout in both windows. [REL002, REL007, REL012, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of three mutually exclusive activities A14, A15 and A20, which previously always executed between A36 and A21, was no longer executed in the later window, so that A36 now leads directly to A21. This rests on direct and mutually consistent signs: A36's successor profile changed from three alternatives (A20, A14, A15) to only A21; the A36–A21 distance shortened from two steps to one in essentially all traces; the participation of A14, A15 and A20 fell from about 30–35 in 100 traces to zero; and their pairwise relations changed from \"exactly one occurs\" to \"neither occurs\" in all traces, while the earlier ordering A36 before the intermediate before A21 is confirmed by the relation items. With 25 qualifying control-flow items against roughly 0.27 expected for an unchanged process, chance sampling is not a plausible explanation for the pattern as a whole. The main limitation is that zero participation only shows these activities were not observed in this sample of 200 later traces; the evidence cannot distinguish removal from the process versus the activities still existing but not being exercised. [DIR001, DIR002, DIR003, DIR004, LAG001, POS001, POS002, POS003, REL001, REL003, REL008, REL004, REL009, REL013, REL006, REL011, REL015]\n\nOther differences: A19's presence rose from about 49 to about 56 in 100 traces, a small shift that sampling variation in a finite window could still produce; the slight positional shifts of A21 and A36 are consistent with the main hypothesis rather than independent changes. [REL002, REL007, REL012, POS004, POS005]",
+  "case_id": "case_ca91098f5a58bd6f",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

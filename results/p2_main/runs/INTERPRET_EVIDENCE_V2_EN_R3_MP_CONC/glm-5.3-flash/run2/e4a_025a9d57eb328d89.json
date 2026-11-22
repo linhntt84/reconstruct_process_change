@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_025a9d57eb328d89.json",
+  "evidence_sha256": "16233b6a36a3f372af5c0929e63025a4ad1e22b2a4533e7a866e5c63bc3c3ea6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:53:15.747363+00:00",
+  "finished_at_utc": "2026-11-15T01:54:16.237927+00:00",
+  "latency_seconds": 60.49,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9101,
+    "prompt_tokens": 4956,
+    "total_tokens": 14057,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8175,
+      "text_tokens": 926
+    },
+    "cost": 0.0052939
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32500,
+  "text": "### Observed differences\n\n- **Timing into A23:** In the earlier window, the elapsed time between consecutive completions of A16 and A23, A17 and A23, A18 and A23, and A19 and A23 each clustered around 1.0–1.1 hours (medians about 1.0–1.1 h, standard deviations about 0.12–0.18 h). In the later window, all four elapsed times roughly doubled to medians of about 2.0–2.1 hours with wider spread (standard deviations about 0.28–0.32 h); for example, A17→A23 rose from a mean of 1.05 h to 2.11 h, and A19→A23 from 1.07 h to 1.99 h. Each difference is larger than in all but about 1 of 2,000 random re-splits of the pooled data. The pairs remain consecutive at similar rates (between about 40 and 60 traces in both windows, e.g. 58 → 51 for A16→A23 and 52 → 59 for A17→A23). [TWAIT001, TWAIT002, TWAIT003, TWAIT004]\n- **A39 and A40 are executed more often:** in the earlier window each appeared in about 60 in 100 traces with a mean of 0.74 occurrences per trace; in the later window, about 70 in 100 traces with a mean of 0.96. Repeated occurrences within a trace also became more common (recurrence support from about 12 in 100 to about 19 in 100). Both activities show identical figures in both windows, so this likely reflects one shared behaviour rather than two independent changes. [OCC001, OCC002]\n- **Routing after A05 shifted:** in the earlier window, A05's observed outgoing transitions led to A09 in about 40 of 100 cases, to A04 in about 37, and to A03 in about 23; in the later window, A03 receives about 45 of 100, while A09 falls to about 27 and A04 to about 28. All three successors remain well observed in both windows. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing centred on A23: in the later window, the elapsed time between the completion of A16, A17, A18 or A19 and the subsequent completion of A23 is about twice as long as before, moving from roughly 1 hour to roughly 2 hours. Supporting signs: four pair-level measurements all show the same roughly one-hour shift with similar spread; the time family produced 4 qualifying items where only about 0.01 would be expected if nothing had changed, so chance cannot account for them as a whole; each difference exceeds about 1,999 of 2,000 random re-splits; and the pairs remain consecutive at similar rates (41–58 traces before, 44–59 after), arguing against the shift being an artefact of the pairs breaking apart. Limitations: T_WAIT measures elapsed time between consecutive completion events, not pure waiting or service time, and the evidence cannot show whether the extra hour accrues before A23's completion or within it, nor whether A23 moved later relative to its predecessors or the predecessors' completions moved earlier relative to A23; the four items all share A23 and may reflect a single underlying shift rather than four independent confirmations. [TWAIT001, TWAIT002, TWAIT003, TWAIT004]\n\nOther differences: A39 and A40 are executed in a larger share of traces (about 60 in 100 → 70 in 100) and repeat more often within traces (about 12 in 100 → 19 in 100), and A05's routing shifted toward A03 (about 23 in 100 → 45 in 100 of its outgoing transitions) at the expense of A09 and A04. These control-flow items also exceed what chance would produce (3 items versus about 0.3 expected), but they involve activities disjoint from the timing hypothesis and describe two separate behaviours, so they are not treated as confirmation of it. [OCC001, OCC002, DIR001]",
+  "case_id": "e4a_025a9d57eb328d89",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

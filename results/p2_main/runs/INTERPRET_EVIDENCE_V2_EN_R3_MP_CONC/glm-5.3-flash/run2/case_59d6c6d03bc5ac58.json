@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_59d6c6d03bc5ac58.json",
+  "evidence_sha256": "0e7ef67f354c8958d5e47e3785a006be663ac9f56a8231a230831eddfe296b3f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:47:00.778882+00:00",
+  "finished_at_utc": "2026-11-15T01:49:06.436122+00:00",
+  "latency_seconds": 125.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17869,
+    "prompt_tokens": 7110,
+    "total_tokens": 24979,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16746,
+      "text_tokens": 1123
+    },
+    "cost": 0.010001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 59820,
+  "text": "### Observed differences\n\n- **The paths into A02 changed.** In the earlier window, A02 ran in all 200 traces and was always directly preceded by A01 (about 101 in 200 traces) or A04 (about 99 in 200). In the later window, A02 still runs in all traces, but it now stands at the first position in about 108 of 200 traces and is directly preceded by A05 in the remaining about 92 of 200. [DIR001, DIR002, DIR003, POS002, REL001, REL004]\n- **A01 disappeared.** Earlier it ran in about 101 of 200 traces (about 50 in 100), always as the first event and always leading directly to A02; in the later window it is not observed at all (0 of 200). [OCC001, POS001, DIR001]\n- **A05 appeared between A04 and A02.** Earlier A05 was not observed (0 of 200); in the later window it runs in about 92 of 200 traces (about 46 in 100), always directly preceded by A04 and followed directly by A02, at a constant relative position about three-quarters into the trace. [OCC002, POS004, DIR002, DIR003, REL004, REL005]\n- **A04 was rerouted, not reduced.** Its participation stayed at about half of traces (99 of 200 earlier, 92 of 200 later), but all of its observed outgoing transitions switched from A02 to A05, and the distance from A04 to A02 grew from one step in all 99 earlier cases to two steps in all 92 later cases; its relative position moved from about two-thirds to about one-half of the trace. [DIR002, LAG001, POS003, REL005]\n- **Pairwise relations flipped.** Earlier, A01 and A04 were strict alternatives (never in the same trace, each in about half), and A04 and A05 never co-occurred; in the later window, A04 co-occurs with A05 in about 46 of 100 traces (always A04 first), and A05 precedes A02 in the same traces. [REL002, REL003, REL004, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the routing into A02 was restructured. In the earlier window, every trace reached A02 directly from A01 (about half of traces) or from A04 (the other half); in the later window, A01 is no longer observed, the A04 branch reads A04 → A05 → A02 with the newly observed A05 in about 46 of 100 traces, and the traces that previously began with A01 now begin with A02 itself. The hypothesis rests on direct relational evidence — A04's successor switched entirely from A02 to A05, A05's successor is entirely A02, and the A04→A02 distance moved from one to two steps in every observed case — plus consistent occurrence counts (A01: about 101 of 200 traces earlier versus 0 later; A05: 0 earlier versus about 92 of 200 later). Screening qualified 15 control-flow items against roughly 0.09 expected for the 18 tested units if nothing had changed, so the item set as a whole is far beyond what an unchanged process typically produces. Because A01 and A05 are each absent from one entire window, this is a removal and an addition around A02, not a shift of shares between pre-existing paths. [OCC001, OCC002, DIR001, DIR002, DIR003, LAG001, REL001, REL004, REL005, POS002]\n\nThe main limitation is that zero participation shows only that A01 was not observed in the later 200-trace sample, so a residual, very rare execution of A01 (and likewise of A05 in the earlier window) cannot be excluded; the qualifying items also overlap heavily, describing the same traces from different angles, so they form one coherent signal rather than independent confirmations. [OCC001, OCC002]\n\nOther differences: none — all 15 qualifying items concern A01, A02, A04 or A05 and describe the reconfiguration above; A02's participation was unchanged (all 200 traces in both windows), and its position change follows from A01's disappearance. [OCC001, OCC002, DIR001, DIR002, DIR003, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, REL005, LAG001]",
+  "case_id": "case_59d6c6d03bc5ac58",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

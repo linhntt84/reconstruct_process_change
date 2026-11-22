@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A03 appeared in about 29 of 100 traces (57 of 200) and repeated heavily — about four occurrences per trace in which it appeared, with repeats in about 25 of 100 traces — while A11 appeared in about 20 of 100 traces (about three occurrences each). In the later window, neither activity is observed at all (0 of 200 traces). [OCC001, OCC002]
+- A06's outgoing flow changed completely: earlier, about 86 of 100 of A06's outgoing transitions went to A03 and about 7 to A11, with only small shares to A12 and A19 (about 2 each); later, A06 leads to A19 (about 58 of 100) and A12 (about 37 of 100), with no observed transitions to A03 or A11, and its observed outgoing transitions fell from 121 to 78. [DIR002]
+- A03's own outgoing flow, which earlier went mostly to A11 (about 44 of 100) and to A19/A12 (about 28 and 22), and A11's flow back to A03 (about 97 of 100), are no longer observed. [DIR001, DIR003]
+- A12 and A19 now occur earlier in the trace (mean position about 0.33 to 0.23 for A12, about 0.32 to 0.22 for A19) and in somewhat fewer traces (about 29 of 100 earlier vs about 21 of 100 later). [POS003, POS004]
+- A06 reaches A12 and A19 much sooner: A06→A19 within one step rose from about 2 of 100 to about 24 of 100 observed pairs, and A06→A12 within one or two steps rose from about 18 to about 40 of 100. [LAG002, LAG003]
+- Gaps between repeated executions tightened: A12→A12 shifted from mostly five steps apart (about 54 of 100) to mostly three or four (about 42 of 100), A19→A19 from mostly five (about 50) to mostly three or four (about 49), and A06→A06 from mostly five (about 66) to mostly four (about 52). [LAG001, LAG004, LAG005]
+- A03 no longer co-occurs with A06, A12 or A19: these pairs co-occurred in about 29 of 100 traces earlier (A03–A11 in about 20), mostly interleaved or repeated; later, co-occurrence is zero and A06/A12/A19 appear without A03. [REL001, REL002, REL003, REL004]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the repeated A03–A11 segment is no longer executed, so that A06 now proceeds directly to A12 or A19. Earlier, A06 typically entered a cycle in which A03 and A11 alternated (A03 → A11 in about 44 of 100 of its outgoing transitions, A11 → A03 in about 97 of 100, A03 recurring in about 25 of 100 traces) before exiting towards A12 or A19; in the later window A03 and A11 are unobserved, A06's flow goes straight to A19 (about 58 of 100) and A12 (about 37 of 100), A12 and A19 occur earlier and sooner after A06, and the spacing of their repetitions shortened. [OCC001, OCC002, DIR001, DIR002, DIR003, POS003, POS004, LAG002, LAG003, LAG004, LAG005]
+
+The support is direct and consistent rather than a matter of item count: participation of A03 and A11 drops to zero, A06's successor profile redistributes away from them, the relational items show A03's co-occurrences collapsing while A12/A19 appear alone, and the lag items show exactly the shortened distances a direct A06→A12/A19 route implies. Eighteen control-flow items qualified against roughly 0.22 expected if nothing had changed, far beyond what chance would produce. [OCC001, OCC002, DIR001, DIR002, DIR003, POS001, POS002, POS003, POS004, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005]
+
+An important competing explanation remains: zero participation only means A03 and A11 were not observed in the later 200 traces, so the evidence cannot distinguish complete removal from these activities becoming too rare to sample; likewise, the A06→A12/A19 links already existed at low shares (about 2 of 100) earlier, so they may have become dominant rather than new. [OCC001, OCC002, DIR002]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_d287b7650f82f24a.json",
+  "evidence_sha256": "b3f808edf7b28a14fb05fd899719c39f7b959860d15b2311fed56d97fb57f454",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:55:57.412807+00:00",
+  "finished_at_utc": "2026-11-15T01:56:53.407384+00:00",
+  "latency_seconds": 55.99,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7811,
+    "prompt_tokens": 3026,
+    "total_tokens": 10837,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7195,
+      "text_tokens": 616
+    },
+    "cost": 0.0043594
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30911,
+  "text": "### Observed differences\n\n- In the later window, the elapsed time between the consecutive completions of A38 and A41 is roughly half of what it was: the mean fell from about 1.0 hour to about 0.5 hour (median about 0.98 to about 0.50 hours), and the middle half of the gaps narrowed from roughly 0.87–1.13 hours to roughly 0.44–0.56 hours. [TWAIT001]\n- The same shift appears for A40 followed by A41: the mean fell from about 0.97 hour to about 0.51 hour (median about 0.96 to about 0.51 hours), with the spread halving (standard deviation about 0.16 to about 0.08 hours). [TWAIT002]\n- Both differences are unusually large for random re-splits of the same traces: in about 1999 of 2000 reference comparisons the difference was smaller, for each of the two pairs. [TWAIT001, TWAIT002]\n- Both behaviours are well observed in both windows: about 97 gap observations before and 113 after for A38→A41, and about 103 before and 87 after for A40→A41, in windows of 200 traces each, so the timing comparison does not rest on rare behaviour. [TWAIT001, TWAIT002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change in timing around activity A41: in the later window, the elapsed time between consecutive completion events on the paths into A41 — both from A38 and from A40 — dropped from about one hour to about half an hour, a reduction of roughly 0.47–0.51 hours that appears in both pairs with the same direction and similar size, and the whole distribution moved (quartiles and spread all roughly halved) rather than only a few extreme gaps. [TWAIT001, TWAIT002] The screening comparison backs this up: the time family produced 2 qualifying items where about 0.01 were expected by chance across 21 tested units, far above what an unchanged process typically yields, while the control-flow family produced no items among 52 units against about 0.26 expected — and a consistent timing change does not need a structural counterpart. [screening]\n\nLimitations: both items share A41, so they may reflect one underlying difference rather than two independent confirmations, and the evidence cannot show whether the reduction lies with A41 itself, with its predecessors A38 and A40, or in the interval between the events. The indicator measures elapsed time between consecutive completion events, so the drop could reflect waiting, service, or scheduling and batching; the evidence cannot distinguish these.\n\nOther differences: the number of observed gaps shifted modestly in opposite directions — A41 immediately following A38 rose from about 97 to 113 observations, while following A40 fell from about 103 to 87; with no control-flow item passing screening, these small shifts are consistent with sampling variation between finite windows. [TWAIT001, TWAIT002]",
+  "case_id": "e4a_d287b7650f82f24a",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

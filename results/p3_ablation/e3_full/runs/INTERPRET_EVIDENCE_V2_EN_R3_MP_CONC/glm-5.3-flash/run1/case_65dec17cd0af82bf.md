@@ -1,0 +1,21 @@
+### Observed differences
+
+- Two activities that never appeared in the earlier window occur in the later one: A02 in 113 of 200 traces (about 57 in 100), always as the final event of the traces that contain it, and A01 in 30 of 200 (15 in 100), around two-thirds of the way through. [OCC001, OCC002, POS001, POS002]
+
+- A02 is reached through new or redirected transitions: all observed outgoing transitions of A19 (44) and of A16 (30) now go to A02, and about half of A09's outgoing transitions go to A02, a target A09 never fed before (its previous half-share to A14 has disappeared). A01's transitions all go to A16, and A10 and A17 — which previously led mainly to A16 or A15 — now also lead to A01, forming a new A01 → A16 → A02 chain; A16 and A19, which previously ended traces, now sit just before A02. [DIR001, DIR006, DIR007, DIR011, DIR012, DIR014, POS015, POS018]
+
+- The old tail around A07, A09, A14 and A13 was rebuilt: A07 now leads to A14 in about half of its outgoing transitions (before, that share went to A09), A14 moved to an earlier position (mean 0.39 → 0.20 of trace length) at roughly unchanged participation (37–39 in 100 traces), A09 became rarer (37 → 20 in 100 traces; mean occurrences per trace 1.07 → 0.38) and moved later (mean position 0.26 → 0.59), and A13 fell from 23 to 9 in 100 traces, moved later (0.28 → 0.54) and now co-occurs with A14 in only 4 of 100 traces (previously 23). [DIR004, DIR009, OCC009, OCC013, POS008, POS012, POS013, REL163, LAG027, LAG030]
+
+- A02 never occurs together with A04, A06 or A12: earlier, these three appeared jointly in 51 of 200 traces while 49 in 100 traces contained neither them nor A02; in the later window the block appears in 43–44 of 100 and A02 fills the remaining traces. [OCC004, OCC006, OCC012, REL021, REL023, REL029]
+
+- Smaller shifts accompany these changes: A03 occurs slightly more often (30 → 35 in 100 traces) and now leads to A09 in about 19% of its outgoing transitions (previously never); several low-frequency activities declined by a few percentage points (A15 14 → 8, A17 15 → 10, A19 29 → 22, A20 29 → 22, A10 14 → 11 per 100 traces); and many pairwise lag distributions shifted, for example A07 → A14 became immediate while A07 → A09 became more distant. [OCC003, OCC010, OCC015, OCC017, OCC019, OCC020, DIR002, LAG027, LAG030]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the process executes a new closing segment: the previously unobserved activity A02 now terminates about 57 in 100 traces, fed by new or redirected transitions from A19, from A09, and through a new A01 → A16 lead-in that A10 and A17 also join, while A16 and A19 — which previously ended traces — now sit immediately before A02. As part of the same rerouting, A07 now leads directly to A14 (which moved to an earlier position), A09 became rarer and later and feeds A02 instead of A14, A13 declined sharply, and A02 occurs exactly in the traces without the A04/A06/A12 block, whose joint presence fell from about 51 to about 43–44 in 100. [OCC001, OCC002, OCC009, OCC013, DIR001, DIR004, DIR006, DIR007, DIR011, DIR012, DIR014, POS002, POS008, POS013, REL021, REL163, LAG030]
+
+The support is direct and consistent: the new edges are observed in the direction profiles, A02's position is constant at the trace end, and the co-occurrence, position and lag items point the same way. Limitations remain: many agreeing items describe the same appearance of A02 rather than independent confirmations; "absent before" strictly means only "not observed in the 200 earlier traces"; position and lag reflect event order, not clock time; and the evidence cannot rule out that the earlier window simply sampled a period in which this A02 variant was not executed. [OCC002, DIR006, DIR011, DIR014, POS002, LAG030]
+
+Other differences: A03 now sometimes leads to A09 and occurs slightly more often (30 → 35 in 100 traces), and several low-frequency activities declined modestly (A15, A17, A19, A20, A10); these fit the same rerouting but the evidence does not tie each of them to it individually. [OCC003, OCC010, OCC015, OCC017, OCC019, OCC020, DIR002]

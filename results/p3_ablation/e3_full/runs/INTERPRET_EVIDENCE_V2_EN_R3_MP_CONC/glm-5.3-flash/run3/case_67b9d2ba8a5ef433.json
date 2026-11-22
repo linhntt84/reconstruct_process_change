@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_67b9d2ba8a5ef433.json",
+  "evidence_sha256": "1870b502959f738efb00c549a29a812da9aba0c7c4ad7f906dbbd871890eb32a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:33:49.000567+00:00",
+  "finished_at_utc": "2026-11-16T03:34:48.370039+00:00",
+  "latency_seconds": 59.37,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8093,
+    "prompt_tokens": 11515,
+    "total_tokens": 19608,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6860,
+      "text_tokens": 1233
+    },
+    "cost": 0.005773749999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22922,
+  "text": "### Observed differences\n\n- Activity A01 was absent from the earlier window (0 of 200 traces) and occurred exactly once in every trace of the later window (200 of 200 traces, mean 1.0 occurrence per trace). [OCC001]\n- In the later window A01 always sits at the second-to-last event position (relative position about 0.83), between the A05/A07 stage and A03; in the earlier window it had no position at all. [POS001]\n- Routing into A03 changed: earlier, A05 led to A07 in about 52 of 100 outgoing transitions and to A03 in about 48, and A07 led to A03 in about 52 and to A05 in about 48; later, A05 leads to A07 in about 53 and to A01 in about 47, and A07 leads to A01 in about 53 and to A05 in about 47 — the direct transitions from A05 and A07 to A03 are no longer observed, and A01's only observed outgoing transition is to A03 (100%). [DIR001, DIR003, DIR004]\n- Relations with A01 flipped from \"never together\" to \"always together\": earlier, A02, A03, A04, A05, A06 and A07 each occurred without A01 in 100 of 100 traces; later, each co-occurs with A01 in 100 of 100 traces, with A02, A04, A05, A06 and A07 always before A01 and A01 always before A03. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Step distances to A03 each grew by exactly one: A04→A03 from 3 to 4 steps, A05→A03 from 1–2 to 2–3, A06→A03 from 4 to 5, and A07→A03 from 1–2 to 2–3. [LAG003, LAG006, LAG007, LAG010]\n- Distances that do not cross this part of the process stayed the same within about one percentage point (for example A02→A05 at 3–4 steps, A04→A05 at 1–2, A05→A07 at 3–4). [LAG001, LAG002, LAG004, LAG005, LAG008, LAG009]\n- The relative positions of A04, A05, A06 and A07 shifted slightly earlier (for example A04 from 0.40 to 0.33 and A05's mean from about 0.70 to about 0.58), which is the pattern expected when every trace simply gains one event; the A05/A07 pair remains unordered (about 53 vs 47 in both windows) and A04's split between A05 and A07 is essentially unchanged (about 53/47 vs 52/48). [POS002, POS003, POS004, POS005, REL007, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: a new step A01 was inserted into every case between the A05/A07 stage and A03 — earlier, cases moved from A05 or A07 directly to A03; in the later window they move from A05 or A07 to A01 and then from A01 to A03, so A03 is now reached only through A01. The support is direct and consistent across indicator families: A01 appears in 0 of 200 traces before and 200 of 200 after [OCC001]; its sole observed successor is A03 [DIR001]; the A05→A03 and A07→A03 transitions disappear in favour of A05→A01 and A07→A01 [DIR003, DIR004]; A01 co-occurs with every other activity, always after the A02/A04/A05/A06/A07 block and always before A03 [REL001, REL002, REL003, REL004, REL005, REL006]; and every activity-to-A03 distance grows by exactly one step while distances upstream of the insertion point stay the same [LAG003, LAG006, LAG007, LAG010, LAG001, LAG002, LAG004, LAG005, LAG008, LAG009]. Limitations: these items describe one underlying trace-level difference rather than independent confirmations; the directional profiles cover only outgoing transitions, so other possible predecessors of A03 or A01 cannot be checked; and zero participation before strictly means only that A01 was not observed in that window, although 0 of 200 versus 200 of 200 makes an unchanged process unlikely. A competing explanation the evidence cannot fully rule out is that A01 already existed in the process but was never executed earlier, with the rerouting of A05 and A07 away from A03 being the actual structural change; the two readings differ only in A01's prior status, which the earlier window cannot resolve.\n\nOther differences: none beyond sampling-level wiggles of about one percentage point in branch shares and small lag shifts. [DIR002, REL007, LAG001, LAG002, LAG004, LAG005, LAG008, LAG009]",
+  "case_id": "case_67b9d2ba8a5ef433",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,20 @@
+### Observed differences
+
+- The dominant difference is the near-disappearance of three activities. In the earlier window A19 ran in 65 of 200 traces (about 33 in 100), A20 in 57 (about 29 in 100) and A25 in 81 (about 40 in 100); in the later window each appears in only 1 of 200 traces. [OCC001, OCC002, OCC003]
+- In the earlier window these three were mutually exclusive alternatives that together covered virtually every trace (any pair of them co-occurred in only about 1 in 200 traces). Each of them always ran after A27 and almost always before A29, and each always co-occurred with A28, in both orders relative to it. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012]
+- In the later window the direct chain dominates: A28 receives about 98 in 100 of A27's outgoing transitions (before about 52 in 100, with A19, A20 and A25 together receiving about 44 in 100), and A29 receives about 97 in 100 of A28's outgoing transitions (before about 43 in 100, with A19, A20 and A25 together about 52 in 100). [DIR005, DIR006]
+- Succession also tightened: A28 now follows A27 within one event position in about 98 in 100 traces (before 52 in 100, with about 45 in 100 at distance two); A29 follows A28 within one position in about 96 in 100 (before 43 in 100); and the gap from A27 to A29 shrank from typically three positions (90 in 100) to two (96 in 100). [LAG001, LAG002, LAG004]
+- A27, A28 and A29 themselves occur in essentially every trace in both windows; their average positions shifted only slightly (A27 a little later, about 0.46 to 0.48 of the trace; A29 a little earlier, about 0.57 to 0.55). [POS004, POS005]
+- Separately, the outgoing transitions of A10 were redistributed: A15 fell from about 20 in 100 to 6 and A47 from 17 to 6, A21 and A30 are no longer observed, while A26 (about 17 in 100) and A41 (about 9 in 100) newly appear; this rests on 35 versus 53 observed outgoing transitions. [DIR001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the alternative activities A19, A20 and A25 were dropped from the flow between A27 and A29. In the earlier window virtually every trace executed exactly one of the three, after A27 and before A29 (around A28); in the later window each is observed in only 1 of 200 traces, and traces instead proceed directly A27 → A28 → A29, with A28 immediately after A27 and A29 immediately after A28. Because the three activities are nearly absent in the later window while A27, A28 and A29 continue in every trace, this is a participation change — a step that was always executed became essentially unobserved — not a re-weighting among surviving paths. [OCC001, OCC002, OCC003, DIR005, DIR006, LAG001, LAG002, LAG004, POS004, POS005]
+
+Chance is an unlikely explanation for the evidence as a whole: 30 control-flow items qualified where about 0.56 would be expected without a change, and the participation drops rest on 65, 57 and 81 traces before versus 1 trace after — far beyond what sampling variation produces for activities of this frequency. [OCC001, OCC002, OCC003]
+
+Limitations: the evidence cannot distinguish a complete removal of A19, A20 and A25 from a reduction to a residual frequency below the sample's resolution, and their few later occurrences route to different successors (A38, A37, A31), which might indicate a residual or relocated role; those successor profiles rest on a single observation each and are too weak to interpret. The items also overlap heavily — the same traces drive the occurrence, relation and lag figures — so they corroborate one underlying difference rather than independently confirming it. [DIR002, DIR003, DIR004]
+
+Other differences: the redistribution of A10's outgoing transitions toward A26 and A41 and away from A15, A16, A47, A21 and A30 is not explained by the main hypothesis and rests on moderate support (35 versus 53 outgoing transitions). [DIR001]

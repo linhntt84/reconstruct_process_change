@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, A32, A33 and A38 each ran in just under half of the traces (about 48–49 in 100) and each preceded A28 in about 48 in 100 traces, forming a detour between A26 and A28; in the later window each appears in only 1 of 200 traces and no longer co-occurs with A14, A15, A26, A27, A28 or each other. [OCC030, OCC031, OCC036, REL030, REL031, REL032, REL033, REL034, REL035]
+
+- A27, which earlier followed A26 in about half of the cases (A26 led to A27 in about 50 in 100 of its outgoing transitions, otherwise to one of A32/A33/A38), now runs in 199 of 200 traces, and A26 leads to A27 in about 98 in 100 of its outgoing transitions; A26 and A28 themselves occur in every trace in both windows. [OCC024, OCC025, OCC026, DIR026, REL021, REL026]
+
+- The distance from A26 to A28 collapsed: earlier, A28 followed A26 two steps later in about 49 in 100 cases and four steps later in about 46 in 100 (the three-activity detour); in the later window it follows two steps later in about 95 in 100 cases, and A28 now runs with A27 before it in essentially every trace (co-occurrence 51.5 → 99.5 in 100). [LAG013, REL026]
+
+- A04 was largely bypassed: it ran in 68 in 100 traces earlier versus about 22 in 100 later; A14's outgoing transitions went to A04 in about 63 in 100 earlier versus about 10 in 100 later, and to A15 in about 36 versus 82 in 100; A04 also sits later in the trace (mean relative position 0.21 → 0.40). [OCC003, DIR014, POS001, REL001, LAG006, LAG008]
+
+- Several low-frequency activities occur in more traces: A02 from 5 to 15 in 100, A06 from 7–8 to 15, A08 from 5 to about 21, A10 from 8–9 to 14; the successor sets of A02 and A08 changed markedly (A08 went from eight equally used successors to a much wider set), though these profiles rest on only 8–40 outgoing transitions per window. [OCC002, OCC005, OCC007, OCC009, DIR002, DIR006, DIR008]
+
+- Smaller shifts: the mandatory activities A25, A28 and A30 now repeat in about 2 in 100 traces (no repeats earlier); A39 occurs in fewer traces (26 → 19 in 100) and A40 repeats less (recurrence 25 → 20 in 100). [OCC023, OCC026, OCC028, OCC037, OCC038]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a structural rerouting between A26 and A28: the side branch A32 → A33 → A38, which earlier followed A26 in just under half of the cases before reaching A28, is no longer executed (each fell from about 48–49 to under 1 in 100 traces), while A27 — previously one of two alternatives after A26 — is now a near-mandatory step executed directly after A26 and before A28 in virtually every case. Occurrence, successor, relation and lag indicators all agree: A26's outgoing transitions now go almost exclusively to A27, A28 is almost always preceded by A27, and the A26→A28 distance collapsed from a 2-vs-4-step split to almost always 2 steps. Differences of this size (for example 97 of 200 traces down to 1) do not arise when the pooled traces are re-split at random. Limitations: the later-window successor profiles of A32, A33 and A38 rest on a single trace each, so the internal order of the removed branch is known only from the earlier window, and the evidence cannot rule out that the two windows sampled different mixes of process variants rather than a modified process. [OCC025, OCC030, OCC031, OCC036, DIR026, REL021, REL026, LAG013]
+
+Other differences: A14's flow was rerouted as well — earlier A14 led to A04 in about 63 in 100 of its outgoing transitions (A04 then led to A15 in 90 in 100), while later A14 leads directly to A15 in about 82 in 100 and A04's participation fell from 68 to about 22 in 100 with its position shifted later in the trace; this second rerouting has direct relational support of the same strength but is reported separately from the main hypothesis. [OCC003, DIR004, DIR014, POS001, REL001, LAG006, LAG008] In addition, A02, A06, A08 and A10 appear in more traces with changed successors (resting on only 8–40 outgoing transitions per window, so weaker), A25, A28 and A30 gained slight repetition, and A39/A40 occur somewhat less often. [OCC002, OCC005, OCC007, OCC009, DIR002, DIR006, DIR008, OCC023, OCC026, OCC028, OCC037, OCC038]

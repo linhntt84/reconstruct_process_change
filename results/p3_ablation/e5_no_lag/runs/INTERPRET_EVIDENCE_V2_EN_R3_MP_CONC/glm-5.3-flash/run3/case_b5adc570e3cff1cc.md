@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the later window, the activities A14, A15 and A20 run much earlier in the case: their mean position moved from about 0.60 of the trace length in the earlier window to about 0.32, while their participation stayed roughly stable (A14 in about 38 of 100 traces before vs 34 after; A15 about 32 vs 35; A20 about 31 vs 32). [POS001, POS002, POS003]
+- The order between these three activities and A21/A22 reversed. In the earlier window, A21 preceded A14, A15 and A20 in every trace where they occurred together (38, 32 and 31 in 100 traces respectively), and A22 did the same; in the later window, each of the three preceded A21 and A22 in all such traces (about 31–35 in 100). [REL001, REL002, REL003, REL004, REL005, REL006]
+- The routing around these activities was rewired on both sides. Before, A14, A15 and A20 led about half the time to A23 and half to A27; in the later window each leads only to A21. A40, which previously always led to A21, now leads to A14, A15 or A20 (roughly a third of its outgoing transitions each). A22 and A23, which previously passed control to A14/A15/A20 in about half of their outgoing transitions, now lead only to A23 and only to A27, respectively. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- A21, A22 and A23 occur in every trace in both windows and shifted only slightly later (mean position up by about 0.02–0.03), consistent with the other three activities now running ahead of them. [POS004, POS005, POS006]
+- A10 and A11 still occur in every trace but repeat less often: about 1.9 occurrences per trace before vs about 1.6 after, with traces containing repeats falling from about 47 in 100 to about 38 in 100. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the optional activities A14, A15 and A20 — present in about a third of traces in both windows — are now executed early in the case, entered from A40 and leading into A21, whereas in the earlier window they ran late, after A21 and A22, were entered from A22 or A23 and led on to A23 or A27; in short, this group appears to have been relocated from the late stage to the early stage of the process. [POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+The support is direct and consistent: all six relational items show the same order reversal, all three positional items show the same early placement, and the successor changes match on both the entry side (A40) and the exit side (to A21), while participation is unchanged — fitting a move rather than activities appearing or disappearing. With 20 qualifying items against roughly 0.37 expected if nothing had changed, chance sampling cannot account for the evidence as a whole. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+Limitations: positions are event positions, not clock times, so "earlier" means earlier in the event sequence; and the window-level evidence cannot distinguish a true relocation of the same optional activities from a late-placement variant being replaced by an early-placement variant (for example, through a different mix of cases), nor does it show the internal order among A14, A15 and A20. [POS001, POS002, POS003, DIR006]
+
+Other differences: A10 and A11 repeat less often per trace (about 1.9 → 1.6 occurrences; traces with repeats about 47% → 38%) while still occurring in every trace — a change in repetition rather than part of the relocation hypothesis; their identical values suggest they may reflect one underlying behaviour rather than two independent changes. [OCC001, OCC002]

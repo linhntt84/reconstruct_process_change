@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_26fbfd91521bf953.json",
+  "evidence_sha256": "dd8b0a0c283ddc37506fe3c97967bcde44c3b10147e83a4fe18cb7145d1ab0c6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:53:11.505796+00:00",
+  "finished_at_utc": "2026-11-15T01:54:01.631338+00:00",
+  "latency_seconds": 50.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7256,
+    "prompt_tokens": 3373,
+    "total_tokens": 10629,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6446,
+      "text_tokens": 810
+    },
+    "cost": 0.00413395
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27259,
+  "text": "### Observed differences\n\n- Gaps ending at A13 lengthened sharply. In the earlier window, the elapsed time between consecutive completions of A11 and A13 averaged about 0.93 hours (median about 0.94; middle half between about 0.84 and 1.00 hours). In the later window it averaged about 1.84 hours (median about 1.82; middle half between about 1.64 and 2.04) — roughly double at every quartile, not just in the tail. The pair was observed 63 times earlier and 50 times later. [TWAIT001]\n- The same pattern holds for A12 to A13, smaller in absolute size: the average gap rose from about 0.17 hours (roughly 10 minutes) to about 0.32 hours (roughly 19 minutes), with the median up from about 0.13 to about 0.24 hours; 56 instances earlier versus 41 later. [TWAIT002]\n- Routing out of A22 shifted: in the earlier window, of A22's observed outgoing transitions, about 53 in 100 went to A25, about 29 to A23 and about 18 to A21; in the later window, about 58 in 100 went to A21, about 29 still went to A23, and only about 13 went to A25. This rests on 49 outgoing transitions earlier and 31 later. [DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nMain hypothesis: a change in timing — in the later window, the elapsed time between consecutive completion events leading into A13 roughly doubled, both on the A11→A13 gap (about 0.9 to about 1.8 hours on average) and on the A12→A13 gap (about 0.17 to about 0.32 hours). Supporting signs: both time items move in the same direction by about a factor of two across the whole distribution, each difference exceeds all but about 1 in 2000 random re-splits of the pooled data, and the time family produced 2 qualifying items where about 0.006 would be expected if nothing had changed — a count far above the chance expectation, so together they are unlikely to be a sampling artefact. [TWAIT001, TWAIT002]\n\nLimitations: both pairs end at A13, so the evidence localises the slowdown to the gaps ending at A13 but cannot show whether the added time sits after A11 or A12, within A13, or in between; TWAIT measures elapsed time between consecutive completions and mixes waiting and processing, so the nature of the added time is unknown. The number of observed pairs also fell (63 to 50, and 56 to 41), so a compositional shift — for example fast instances becoming rarer — cannot be fully excluded, although the lower and upper quartiles rose in step with the median, which points to a broad shift rather than a tail effect. [TWAIT001, TWAIT002]\n\nOther differences: the routing shares out of A22 moved from A25 towards A21 (A25 about 53% to about 13% of observed outgoing transitions; A21 about 18% to about 58%; A23 stable at about 29%). This is the single control-flow item, where about 0.27 would be expected by chance, so on its own it is also what an unchanged process typically produces; it is not added to the main hypothesis, and it involves activities disjoint from the timing change. [DIR001]\n\nAn important competing explanation the evidence cannot rule out: the two timing items share A13 and may reflect one underlying difference rather than two independent ones, and the A22 routing shift could be a chance fluctuation in a finite sample. [DIR001, TWAIT001, TWAIT002]",
+  "case_id": "e4a_26fbfd91521bf953",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

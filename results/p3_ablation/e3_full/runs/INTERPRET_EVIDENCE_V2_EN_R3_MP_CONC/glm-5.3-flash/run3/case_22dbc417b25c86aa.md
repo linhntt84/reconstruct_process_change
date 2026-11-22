@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the earlier window, activity A06 ran exactly once in every case (200 of 200 traces, mean 1.0 occurrence per trace). In the later window, A06 is not observed in any case (0 of 200). [OCC001, POS005]
+- Control out of A05 changed completely: earlier, all outgoing transitions of A05 went to A06, and all outgoing transitions of A06 went to A01; in the later window, all outgoing transitions of A05 go directly to A01, and A06 has no observed outgoing transitions. [DIR001, DIR002]
+- A06's relationships with its neighbours disappeared: earlier, A05 and A06 co-occurred in every case with A05 first, and A06 preceded A07 in every case; in the later window, A05 occurs without A06 in every case, and A07 occurs without A06 in every case. [REL005, REL006]
+- The remaining activities keep their mutual order but each sits one event-position earlier: A01's mean position moved from 0.50 to 0.40, A03's from 0.67 to 0.60 and A04's from 0.83 to 0.80, while A05's normalized position moved slightly later (0.17 to 0.20) because traces are one event shorter; all of these activities still occur in every case in both windows. [POS001, POS002, POS003, POS004]
+- Every measured distance between surviving activity pairs shortened by exactly one step: A05→A01 from 2 to 1, A02→A01 from 3 to 2, A05→A03 from 3 to 2, A02→A03 from 4 to 3, A05→A04 from 4 to 3, A02→A04 from 5 to 4, and A05→A07 from 5 to 4. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence directly and consistently supports the hypothesis that the A06 step, which previously always ran between A05 and A01, is no longer executed in the later window, with A05 now leading directly to A01. Earlier, every case followed the pattern A02 → A05 → A06 → A01 → A03 → A04 → A07: A06 appeared once in all 200 cases, A05 always passed to A06, and A06 always passed to A01. In the later window, A06 is unobserved in all 200 cases, A05 passes directly to A01, and A02, A05, A01, A03, A04 and A07 keep their mutual order with every downstream pair exactly one step closer together — the pattern expected if a single activity were dropped from every trace. [OCC001, DIR001, DIR002, REL005, REL006, POS001, LAG004, LAG007]
+
+Supporting signs: the participation drop from 200 of 200 to 0 of 200 cases, the direct successor change at A05, and the position and lag shifts that are all exactly one step, which fits a single-event removal rather than a reordering or a shift in path frequencies. Each item's difference exceeds about 199 of 200 random re-splits of the pooled data, and the many agreeing items largely reflect this one underlying difference rather than independent confirmations. [OCC001, DIR001, LAG001, LAG007]
+
+Limitations: the evidence shows only that A06 was not observed in the later window; it cannot distinguish whether the activity was removed from the flow altogether or is merely skipped in every observed case. A competing explanation the evidence cannot rule out is that A06 still occurs but has become rare (for example, running in only a few percent of cases), which could yield 0 of 200 observations by chance, although this is implausible given its earlier 200 of 200 participation. [OCC001, POS005]

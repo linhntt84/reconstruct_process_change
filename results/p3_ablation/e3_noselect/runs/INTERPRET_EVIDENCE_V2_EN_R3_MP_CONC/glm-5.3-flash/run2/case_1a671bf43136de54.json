@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_1a671bf43136de54.json",
+  "evidence_sha256": "93aaa7f564ce8555e4719f0676241af0e5b1279819de98627bc015ee71ac28e0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:15:58.499460+00:00",
+  "finished_at_utc": "2026-11-15T08:17:01.954491+00:00",
+  "latency_seconds": 63.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9572,
+    "prompt_tokens": 16373,
+    "total_tokens": 25945,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8498,
+      "text_tokens": 1074
+    },
+    "cost": 0.0072419500000000005
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31216,
+  "text": "### Observed differences\n\n- Activity A01 is the clearest difference: in the earlier window it was not observed at all (0 of 200 traces), while in the later window it appears in about 15 in 100 traces (31 of 200), roughly 0.29 times per trace on average, and repeats within a trace in about 8 in 100 traces. [OCC001]\n- In the later window A01 sits about two-thirds of the way through the trace (median position about 0.70 of the trace length); no position data existed for it earlier. [POS001]\n- In the later window A01's outgoing transitions split between A09 (about 54 in 100) and A10 (about 46 in 100); earlier it had no observed successors. [DIR001]\n- A08 shows a new outgoing transition to A01 in the later window (about 8 in 100 of A08's outgoing transitions, a volume consistent with most A01 executions directly following A08); this edge was absent earlier, while A08's other successors keep similar shares (A15 about 50 in 100, A11 about 24 in 100). [DIR005]\n- A01 previously never co-occurred with A08, A09 or A10; in the later window it co-occurs with A08 in about 15 in 100 traces, with A09 in about 13 in 100 and with A10 in about 15 in 100, mostly as interleaved or repeated execution rather than one fixed order. [REL001, REL002, REL003]\n- Several activities occur less often in the later window: A07 in about 10 in 100 traces versus about 18 in 100 earlier; A12 about 0.32 occurrences per trace versus 0.49; A13 0.18 versus 0.28; A14 0.11 versus 0.23; and A08 repeats less often (about 3.4 occurrences per trace versus 4.0) while its trace participation stays around 23 in 100. [OCC007, OCC012, OCC013, OCC014, OCC008]\n- Remaining differences are small: A02 and A04 each appear in about 54 in 100 traces versus 47 in 100 earlier, A06 in about 16 versus 12, and the routing shares at A02, A04, A05, A12, A13 and A14 are nearly unchanged between the windows. [OCC002, OCC004, OCC006, DIR002, DIR003, DIR004, DIR006, DIR007, DIR008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 is executed as an additional step in a subset of cases: it was not observed in the earlier window (0 of 200 traces) and appears in about 15 in 100 traces afterwards, placed around two-thirds into the trace, typically directly after A08 and followed by A09 or A10. The occurrence, position, successor and relation items all describe this one underlying difference rather than serving as independent confirmations of it. [OCC001, POS001, DIR001, DIR005, REL001, REL002, REL003]\n\nOther differences: A07, A12, A13 and A14 occur less often in the later window, and A08 repeats fewer times per trace (about 3.4 versus 4.0), while A02, A04 and A06 occur slightly more often; the evidence does not link these shifts to A01's appearance. [OCC007, OCC012, OCC013, OCC014, OCC008, OCC002, OCC004, OCC006]\n\nLimitations: zero participation in the earlier window only shows that A01 was not observed there, so the evidence cannot distinguish a newly added activity from one that was previously too rare to appear in the sample; the concurrent decreases listed above are not accounted for by this hypothesis. The main competing explanation is a rare variant surfacing only in the later sample, but 31 occurrences against 0 in two equal-sized windows makes pure sampling an unlikely account. [OCC001]",
+  "case_id": "case_1a671bf43136de54",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

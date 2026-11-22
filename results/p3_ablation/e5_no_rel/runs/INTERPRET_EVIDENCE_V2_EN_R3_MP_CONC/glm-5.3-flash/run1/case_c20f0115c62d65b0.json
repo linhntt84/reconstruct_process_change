@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_c20f0115c62d65b0.json",
+  "evidence_sha256": "77c6b069a08534eae3ab1f7720c28b630e5b3d51081eb73b1b452ae0d5503de7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:47:12.418843+00:00",
+  "finished_at_utc": "2026-11-14T12:48:32.985119+00:00",
+  "latency_seconds": 80.57,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11861,
+    "prompt_tokens": 8116,
+    "total_tokens": 19977,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10853,
+      "text_tokens": 1008
+    },
+    "cost": 0.0071479000000000004
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 38777,
+  "text": "### Observed differences\n\n- The activities A19, A20 and A25 lose almost all participation. Before, each ran in a substantial share of cases — about 32, 28 and 40 in 100 cases respectively (64, 56 and 80 of 200 traces); in the later window each appears in only 1 of 200 cases (about 0.5 in 100). None of the three ever repeats within a trace in either window. [OCC001, OCC002, OCC003]\n- Before, almost every case executed exactly one of these three (their participation shares sum to about one execution per case), and it sat in one of two slots: A27's outgoing transitions led to A28 in about 53 in 100 cases and to one of A19/A20/A25 in about 44 in 100, while A28's outgoing transitions led to A29 in about 45 in 100 and to one of the three in about 54 in 100. [OCC001, OCC002, OCC003, DIR004, DIR005]\n- In the later window the flow bypasses this block: about 97 in 100 of A27's outgoing transitions go directly to A28, and about 99 in 100 of A28's go directly to A29. [DIR004, DIR005]\n- Distances collapse accordingly. Before, A29 came three steps after A27 in about 94 in 100 cases, with A28 one or two steps after A27 (about 54 vs 44 in 100) and A29 one or two steps after A28 (about 45 vs 53 in 100). In the later window, A27→A28 and A28→A29 are one step apart in about 98 in 100 cases each, and A27→A29 two steps apart in about 97 in 100. [LAG001, LAG002, LAG003]\n- Before, each of A19, A20 and A25 was followed by either A29 (roughly half of its outgoing transitions) or A28, consistent with sitting in either slot; their later-window outgoing profiles each rest on a single trace and are not reliable routing evidence. [DIR001, DIR002, DIR003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the block of activities A19, A20 and A25 — of which exactly one was executed in almost every case before, inserted either between A27 and A28 or between A28 and A29 — is bypassed in the later window: cases now proceed directly from A27 to A28 and on to A29, and the three activities are effectively no longer executed (about 0.5 in 100 cases each, down from 28–40 in 100). This is a removal/bypass of a group of activities rather than a re-weighting among paths that all remain in use, since the activities involved are nearly unobserved in the later window. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nScreening qualified 15 items where roughly 0.49 would be expected if nothing had changed, so the set of differences is far larger than an unchanged process typically produces; note, however, that the participation, routing and distance items largely describe the same underlying trace behaviour and are not independent confirmations of it. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nLimitations: the evidence cannot distinguish whether A19, A20 and A25 were removed from the process or merely not chosen in any of the 200 later cases — zero participation only means they were not observed — and their later-window outgoing transitions and positions each rest on a single occurrence, so apparent new successors cannot be interpreted. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, POS001, POS002, POS003]\n\nOther differences: A29, which occurs in every case in both windows, sits slightly earlier in the trace in the later window (mean relative position about 0.56 vs 0.55), a small shift consistent with the preceding block disappearing. [POS004]",
+  "case_id": "case_c20f0115c62d65b0",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- Both A15 and A16 occurred more often and repeated more often. In the earlier window each occurred about 1.45 times per trace and appeared more than once in about 30 in 100 traces; in the later window each occurred about 1.8 times per trace and repeated in about 44 in 100 traces. Both activities were present in every trace in both windows, so this is increased repetition, not appearance or disappearance. [OCC001, OCC002]
+- A16's outgoing transitions shifted from A42 toward A15. Earlier, about 37 in 100 of A16's observed outgoing transitions went to A42 and about 30 in 100 to A15; in the later window, about 44 in 100 went to A15 and about 26 in 100 to A42, while the shares going to A18 (about 14–15 in 100) and A17 (about 14–17 in 100) barely moved. The number of observed outgoing transitions of A16 also rose from 291 to 361, in line with A16 occurring more often. [DIR001]
+- Immediate succession from A15 to A16 became less common. One-step A15→A16 succession fell from about 43 to about 28 per 100 traces (roughly a one-third drop), while gaps of 2–5 steps stayed rare and almost unchanged, so the pairs did not simply move one step further apart. [LAG001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the back-and-forth between A15 and A16 changed in both strength and direction. In the earlier window the two typically alternated: A15 was followed immediately by A16 in about 43 in 100 traces, A16 led back to A15 in about 30 in 100 of its outgoing transitions, and each activity occurred about 1.45 times per trace. In the later window A16 returns to A15 far more often (about 44 in 100 of its outgoing transitions, mainly at the expense of A42), both activities repeat in about 44 in 100 traces (up from about 30) and occur about 1.8 times per trace, while the direct A15→A16 succession weakened to about 28 in 100 traces. [OCC001, OCC002, DIR001, LAG001]
+
+Supporting signs: four items qualified against roughly 0.5 expected by chance for the 95 tested units — many times the chance expectation — and all four measure A15/A16 behaviour directly (occurrence, outgoing routing, pair distance) and agree in direction; each difference was larger than in about 995 of 1,000 random re-splits of the two windows; participation stayed at 100% in both windows, ruling out the activities becoming optional or disappearing; and every activity involved in the routing shift (A15, A42, A18, A17) was observed with a substantial share in both windows. [OCC001, OCC002, DIR001, LAG001]
+
+Limitations: the four items very likely describe one underlying difference in the A15/A16 relationship rather than independent confirmations, and A15's own outgoing transitions were not profiled, so what A15 does after A16 returns to it — and through which paths A16's extra repetitions arise — cannot be confirmed. An important competing explanation the evidence cannot rule out is that the change affects only a subset of traces rather than all executions equally. [OCC001, OCC002, DIR001, LAG001]
+
+Other differences: a few rare outgoing transitions of A16 (each well under 1 in 100) appeared or disappeared between the windows, which is consistent with sampling noise on rare edges. [DIR001]

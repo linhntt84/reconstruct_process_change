@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_7fb21bf7d5cb52ee.json",
+  "evidence_sha256": "65137114028065b04f3f98ffb2662fb29e95204935d5a25515d0f756ec35217f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T05:12:06.479358+00:00",
+  "finished_at_utc": "2026-11-15T05:13:18.762892+00:00",
+  "latency_seconds": 72.28,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10565,
+    "prompt_tokens": 36190,
+    "total_tokens": 46755,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9412,
+      "text_tokens": 1153
+    },
+    "cost": 0.010711
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32096,
+  "text": "### Observed differences\n\n- In the later window, A10 appears in about 70 in 100 traces, up from about 19 in 100, and its mean occurrences per trace rose from about 0.2 to about 0.8; its typical position moved much earlier in the trace (median relative position about 0.15 versus about 0.34). [OCC003, POS001]\n- Routing around A10 changed accordingly: A14 now sends about 66 in 100 of its observed outgoing transitions to A10 (about 1 in 100 before) while A14 to A15 fell from about 86 in 100 to about 33 in 100, and A10 now sends about 85 in 100 of its outgoing transitions to A15 (about 5 in 100 before). [DIR003, DIR002]\n- The new arrangement is visible in adjacency and relations: A14 is followed by A10 within one step in about 98 in 100 of the later cases of that pair (about 18 in 100 before), A10 precedes A15 within one step in about 52 in 100 of later cases (about 22 in 100 before, then on only 3 observations), and A10 co-occurs with A15 in about 70 in 100 traces with A10 first in about 38 in 100 (about 0.5 in 100 before); A15's position also shifted slightly later. [LAG002, LAG001, REL002, POS002]\n- In the cluster A20, A22, A23, A24, A25, A26 the previously fixed order partially reversed: A24 now precedes A23 in about 85 in 100 traces (about 2 in 100 before) and precedes A20 in about 74 in 100 (about 0 in 100 before), A26 precedes A23 in about 67 in 100 (about 3 in 100 before), and A23's dominant transition to A24 fell from about 98 in 100 to about 15 in 100 while A23 to A32 rose to about 47 in 100. [REL020, REL015, REL022, DIR006]\n- Fixed step distances in this cluster loosened: A22 reached A20 at exactly one step in essentially all before-window cases but at one to four steps afterwards, and A20 to A25 moved from always four steps apart to a spread over one to four. [LAG009, LAG006]\n- Participation fell for A08 (about 4 in 100 traces, from about 20) and A04 (about 11 in 100, from about 21); A08's remaining outgoing transitions also changed destination mix, but that later profile rests on only 8 observations. [OCC002, OCC001, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a flow restructuring in which A10, previously a rare and late activity, now typically executes between A14 and A15: before, A14 passed mainly to A15 and A10 was marginal, whereas in the later window A14 passes mainly to A10, A10 passes almost exclusively to A15, and these adjacencies hold in most qualifying traces. A second directly supported change is a partial reversal of the fixed sequence among A20, A22, A23, A24, A25 and A26, with A24 (and often A26) now preceding A20 and A23 and single fixed gaps giving way to mixed distances; participation in A08 and A04 also dropped sharply. [OCC003, DIR003, DIR002, LAG002, REL020, REL015, DIR006, OCC002]\n\nSupporting signs: 77 qualifying items against roughly 1 expected if nothing had changed across 202 tested units, and the placement and order conclusions rest on relational and positional evidence (successor shares, before/after relations, step distances) rather than on marginal frequencies alone, with occurrence, routing, position, relation and lag indicators pointing the same way for A10. Limitations: each window is a 200-trace sample, so a shift in the mix of existing variants — for example a variant containing an early A10 between A14 and A15 becoming more frequent without any structural change — could produce similar patterns; the A08 routing change rests on very few later observations; and many items describe the same underlying traces, so agreeing indicators are not independent confirmations. [OCC003, LAG002, DIR001]",
+  "case_id": "case_7fb21bf7d5cb52ee",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

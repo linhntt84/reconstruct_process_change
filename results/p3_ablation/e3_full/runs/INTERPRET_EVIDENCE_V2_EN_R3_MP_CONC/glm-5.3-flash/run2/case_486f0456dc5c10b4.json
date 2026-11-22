@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_486f0456dc5c10b4.json",
+  "evidence_sha256": "993e5d98151d04482b7c8e6bac9c3b4c2fefe7fda157cf885f6be8f218b39215",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:23:39.418312+00:00",
+  "finished_at_utc": "2026-11-16T02:25:04.185443+00:00",
+  "latency_seconds": 84.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12863,
+    "prompt_tokens": 9786,
+    "total_tokens": 22649,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11863,
+      "text_tokens": 1000
+    },
+    "cost": 0.007899399999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40040,
+  "text": "### Observed differences\n\n- Activity A01 was not observed at all in the earlier window (0 of 200 traces, mean 0 occurrences per trace); in the later window it is executed exactly once in every one of the 200 traces. [OCC001]\n- The routing out of A07 changed completely: in the earlier window every observed outgoing transition of A07 went to A04, while in the later window all of them go to A01, and A01's only observed outgoing transition goes to A04. [DIR001, DIR002]\n- In the earlier window A01 never occurred together with any of A02, A03, A04, A05, A06 or A07 (0 of 200 traces per pair); in the later window A01 co-occurs with each of them in 200 of 200 traces, always after A02, A05 and A07 and always before A03, A04 and A06. [REL001, REL002, REL003, REL004, REL005, REL006]\n- The positional gap between every measured pair of the pre-existing activities grew by exactly one step while their relative order stayed the same — for example A07 to A04 from 1 to 2 steps, A02 to A06 from 4 to 5, and A05 to A03 from 4 to 5. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008]\n- Mean event positions shifted as expected for one step appearing in the middle of the sequence: A07 from 0.40 to 0.33, A04 from 0.60 to 0.67, A06 from 0.80 to 0.83, A05 from 0.20 to 0.17, with A01 fixed at 0.50 in the later window (event positions, not clock time). [POS001, POS002, POS003, POS004, POS005]\n- Every item's difference is larger than in about 199 of 200 random re-splits of the pooled traces (empirical strength about 0.995), and the directional and relational items each rest on 200 traces per window. [OCC001, DIR002, POS002, REL003, LAG007]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window a step A01 is executed exactly once per case, positioned between A07 and A04: A07, which previously led directly to A04 in every trace, now always leads to A01, which in turn always leads to A04, while the order of the remaining activities (A02, A05, A07 before it; A04, A06, A03 after it) is unchanged. This is shown directly by the successor change at A07 and A01's outgoing edge, by A01's participation rising from 0 to 200 of 200 traces, and consistently corroborated by the relational evidence (fixed co-occurrence order with all six other activities), by every measured pre-existing pair's gap growing by exactly one step, and by the position shifts. [OCC001, DIR001, DIR002, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, POS001]\n\nLimitations: the two windows are finite 200-trace samples, and the many agreeing items largely mirror one and the same trace-level change rather than independent confirmations; zero participation in the earlier window strictly means only that A01 was not observed there, so a rare earlier occurrence of A01 elsewhere cannot be excluded — although the direct A07-to-A04 transition, present in all 200 earlier traces, is clearly gone in the later window. [OCC001, DIR002, LAG007]\n\nOther differences: none — the small position shifts of A04, A05, A06 and A07 (about 0.03–0.07 in normalized position) follow from the same new step rather than being independent changes. [POS002, POS003, POS004, POS005]",
+  "case_id": "case_486f0456dc5c10b4",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A02 was not observed at all in the earlier window (0 of 200 traces); in the later window it runs about 2.4 times per trace, appears in about 58 in 100 traces, and recurs within traces (recurrence support about 43 in 100, up from 0) [OCC001]. When present, it sits around the middle of the trace (median relative position about 0.6) [POS001].
+- The outgoing transitions of A15 changed completely: earlier they went to A07 (about 52 in 100), A08 (about 25) and A12 (about 23); in the later window every observed transition from A15 goes to A02 [DIR002].
+- In the later window, A02's observed outgoing transitions go to A07 (about 52 in 100), A08 (about 27) and A12 (about 21); A02 had no observed outgoing transitions earlier [DIR001].
+- Earlier, A02 never co-occurred with A07, A08, A12 or A15, which appeared without it in roughly 33–50 in 100 traces; in the later window A02 co-occurs with each of them in about 35–58 in 100 traces, largely interleaved or repeated with them (about 30–43 in 100) [REL001, REL002, REL003, REL004].
+- Pair distances shifted by about one step where the new activity now sits: A15 to A07/A08/A12 moved from lag 1 to lag 2 [LAG005, LAG006, LAG007]; A07 to A07/A08/A12 moved from lag 4 to lag 5 [LAG001, LAG002, LAG003]; A15 to A15 moved from lags 4–5 to lag 5 (about 65 in 100 of observed pairs) [LAG008]. A07 to A15 stayed centred at lag 3, with its share rising from about 31 to about 45 in 100 observed pairs [LAG004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new, repeating step (A02) was added between A15 and its former successors: in the later window A15 leads exclusively to A02, and A02 leads on to A07 (about half of its outgoing transitions), A08 (about a quarter) and A12 (about a fifth), replacing the direct A15-to-A07/A08/A12 transitions seen earlier. A02, unobserved in the earlier window, now appears in about 58 in 100 traces at roughly 2.4 occurrences per trace and typically interleaves or repeats alongside A07, A08 and A12 [DIR002, DIR001, OCC001, REL001, REL002, REL003, REL004].
+
+The placement reading is direct and consistent: the successor change is observed in both directions (A15 to A02, and A02 to A07/A08/A12), the one-step lag shifts occur exactly on pairs whose connection now crosses A02, while A07-to-A15 remains centred at lag 3 — matching a single added step rather than a general reordering — and A02's mid-trace position fits this placement. Screening qualified 16 items where about 0.2 would be expected if nothing had changed, so the differences as a whole are unlikely for an unchanged process. Limitations: each window has 200 traces, some lag items rest on few observations (for example 8 and 13 observed pairs for A07 to A12), and the items largely describe one underlying trace behaviour rather than independent confirmations [DIR002, DIR001, LAG005, LAG006, LAG007, LAG001, LAG002, LAG003, LAG004, POS001, OCC001, REL001, REL002, REL003, REL004].
+
+A competing explanation the evidence cannot rule out is that A02 already existed earlier but was not sampled: zero participation only means it was not observed in the earlier window, although its absence from all 200 earlier traces makes a previously rare or new activity the more plausible reading than a pure rerouting [OCC001].

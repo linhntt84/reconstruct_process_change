@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, the three activities A21, A22 and A23 ran in every trace (200 of 200), with no fixed order among themselves; in the later window each appears in only about 1 in 200 traces. [DIR004, DIR005, DIR006, POS004, POS005, POS006, REL025, REL026, REL031]
+- A14, A15 and A16 were not observed at all in the earlier window; in the later window they occur in about 30%, 33% and 37% of traces respectively (60, 65 and 74 of 200), and the three never occur together — exactly one of them runs in nearly every later trace. [DIR001, DIR002, DIR003, POS001, POS002, POS003, REL001, REL002, REL010]
+- A39 occurs in all traces in both windows, but its successors changed: earlier it was followed by A21, A22 or A23 in roughly equal shares (about 31–35 in 100 outgoing transitions each); later it is followed by A16, A15 or A14 (about 37, 33 and 30 in 100). [DIR007]
+- The new activities occupy the old segment: A39 precedes A14/A15/A16 in about 30–37% of later traces, and A14/A15/A16 precede A24 in every trace where they occur. [REL006, REL007, REL014, REL015, REL021, REL022]
+- The distance from A39 to A24 shrank from 4 positions in essentially all earlier traces to 2 positions in about 99 in 100 later traces, and A24's mean position moved slightly earlier (about 0.43 to 0.39 of the trace) — consistent with three activities in that segment being replaced by one. [LAG010, POS007]
+- A40's position is essentially unchanged (mean about 0.85 to 0.84 of the trace). [POS009]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the segment between A39 and A24 was restructured: the block of three activities A21, A22 and A23, which previously executed in every trace between A39 and A24 in varying order, was replaced by a single activity, with A14, A15 and A16 acting as mutually exclusive alternatives running after A39 and before A24 in about 30%, 33% and 37% of later traces respectively. [DIR007, REL001, REL006, REL007, REL010, REL021, REL022, LAG010]
+
+This rests on direct and mutually consistent relational and positional evidence: 65 control-flow items qualified, against fewer than 1 expected by chance if nothing had changed; A39's outgoing transitions moved from the old trio to the new one; the new activities never co-occur with each other, always follow A39 and always precede A24; and the A39-to-A24 distance shortened from 4 to 2 steps, matching the replacement of three activities by one. The agreeing items largely reflect the same underlying trace behaviour, so they should be read as one coherent picture rather than independent confirmations. [DIR007, REL002, REL014, POS001, POS002, POS003, LAG010]
+
+Limitations: the old block is not strictly eliminated — it still occurs in about 1 in 200 later traces — and the evidence cannot rule out that A14/A15/A16 are relabelled counterparts of A21/A22/A23 rather than genuinely different activities, since both occupy the same slot between A39 and A24. [DIR004, DIR005, DIR006, POS004, POS005, POS006]
+
+Other differences: A41 appeared in about 59 in 100 earlier traces and about 69 in 100 later traces, and in the later window it co-occurs with the new activities in roughly 21–26% of traces, usually after them; A39's own position shifted slightly later (mean about 0.31 to 0.33 of the trace). [REL009, REL017, REL024, REL030, POS008]

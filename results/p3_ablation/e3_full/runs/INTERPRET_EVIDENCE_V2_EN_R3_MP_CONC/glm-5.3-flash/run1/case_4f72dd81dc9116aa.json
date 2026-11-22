@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_4f72dd81dc9116aa.json",
+  "evidence_sha256": "4954bed4717a8ba49b30e635dec0fea3c7e1c0151b3c0c96592b3fc9ddae76ec",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:16:29.217054+00:00",
+  "finished_at_utc": "2026-11-16T01:21:51.269314+00:00",
+  "latency_seconds": 322.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 45160,
+    "prompt_tokens": 105141,
+    "total_tokens": 150301,
+    "completion_tokens_details": {
+      "reasoning_tokens": 41953,
+      "text_tokens": 3207
+    },
+    "cost": 0.03835115
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 128880,
+  "text": "### Observed differences\n\n- The dominant change is an exchange between A05 and A10. Earlier, A05 ran in every trace with about 4.2 occurrences per case (repeats in about 77 in 100 traces) while A10 ran in about 47 in 100 traces with about 1.9 occurrences (repeats about 34 in 100); in the later window A10 runs in every trace with about 4.1 occurrences (repeats about 75 in 100) and A05 in about 50 in 100 traces with about 2.2 (repeats about 40 in 100). [OCC004, OCC008]\n- Their typical placement swapped accordingly: A05's mean event position moved from about two-thirds to about one-third of the way through the trace, A10's from about one-third to about two-thirds. [POS004, POS009]\n- A second, coupled exchange involves A08 and A16: A08 fell from about 68 in 100 traces (about 2.2 occurrences) to about 34 in 100 (about 1.1), while A16 rose from about 30 in 100 traces (about 0.9 occurrences) to about 68 in 100 (about 2.1); A08's mean position moved from about two-thirds to about one-third of the trace, A16's from about one-third to about two-thirds. [OCC006, OCC012, POS007, POS015]\n- Incoming edges were rewired to match: A06 led only to A05 earlier and leads only to A10 later; A11 and A15 each sent about half their flow to A05 earlier and now send about half to A10; A14 sent about 51 in 100 of its outgoing transitions to A10 earlier and now sends about 53 in 100 to A05. [DIR004, DIR008, DIR010, DIR011]\n- Outgoing edges rewire consistently, with branch shares staying about 50/50: after the mandatory, repeated position the follow-up changed from A08 (about 52 in 100) or A09 (about 48) to A16 (about 52) or A09 (about 48), and after the optional position from A16 (about 46) or A17 (about 54) to A17 (about 52) or A08 (about 48); A09 and A17 kept their own participation and positions and only changed which activity precedes them. [DIR003, DIR007, OCC007, OCC013, POS008, POS016]\n- Co-occurrence with the always-present activities flipped in the same direction: A05 co-occurred with A01 in 100 in 100 traces earlier versus about 50 in 100 later, A10 about 47 versus 100 in 100; A01–A08 fell from about 68 to 34 in 100 while A01–A16 rose from about 30 to 68 in 100; A05–A07 fell from always to about half and A07–A10 rose from about half to always. [REL004, REL009, REL007, REL015, REL057, REL081]\n- Step distances swapped between the pairs as well: A01 reached A05 almost always four steps later earlier and reaches A10 at that distance later, while the earlier two-/four-step A01→A10 distances now appear for A01→A05; the same mirror image holds for A14→A08/A16 (four steps versus two/four) and A13→A05/A10 (five steps versus three/five). [LAG003, LAG005, LAG056, LAG060, LAG048, LAG049]\n- Outside these four activities the process is broadly stable: A01, A04, A07, A09, A11, A13, A14 and A15 keep full participation and near-identical positions, and A02, A03 and A12 remain optional in about half the traces with unchanged mutual relations. [OCC001, OCC007, OCC010, POS001, POS008, POS013, REL017, REL040]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A10 and A05 have exchanged their places in the process and A16 and A08 have exchanged theirs. Earlier, A05 was mandatory and repeated about four times per case around two-thirds into the trace, reached from A06, A11 and A15 and followed by A08 or A09, while A10 was optional (about 47 in 100 traces, about two occurrences, around one-third in), reached from A14 and followed by A16 or A17; in the later window A10 carries the first role and A05 the second, with A16 and A08 likewise swapping the follow-up roles while A09 and A17 stay in place. [OCC004, OCC008, OCC006, OCC012, DIR003, DIR004, DIR007, DIR010]\n\nThe hypothesis rests on direct relational evidence: the predecessor and successor sets of the affected positions are rewired exactly as an exchange predicts, with branch shares essentially preserved. The two exchanges must be read together, since the successor sets of the two positions (A08/A09 becoming A16/A09, and A16/A17 becoming A17/A08) fit only if both pairs moved. Occurrence, repeat, position, co-occurrence and step-distance indicators all change in the same direction, and about 90 of the roughly 250 evidence items, spread across all five indicator families, reach the strongest empirical strength in this evidence (about 0.995, i.e., larger than the differences in about 199 of every 200 random re-splits); these items overlap heavily and reflect the same trace behaviour, so they amount to one consistent signal rather than independent confirmations. [DIR003, DIR004, DIR007, DIR008, DIR010, DIR011, POS004, REL004, LAG003]\n\nAn important competing explanation cannot be ruled out: an exchange of behaviour between the two pairs could also stem from a change in how these four activities were recorded or mapped in the event data rather than from a genuine re-routing of the control flow — the evidence establishes who runs where and how often, not the mechanism. The exchange is also not a perfect one-to-one relabelling of every pairwise relation (for example, A08 still occurs only in traces that also contain A05, before and after), so some finer sub-structure may have changed as well. [REL058]\n\nOther differences: A11's mean event position drifted slightly later (about 0.48 to 0.49 of the trace) and A14 and A17 average slightly more occurrences per case (about 2.0 to 2.2 and 1.0 to 1.2); A01's outgoing split between A13 and A14 flipped marginally (about 51/49 to 49/51), and a few activity pairs show small redistributions of step distance (for example A04→A11 towards larger gaps, A04→A15 towards smaller ones). These movements are small relative to the exchange above. [POS010, OCC011, OCC013, DIR001, LAG016, LAG019]",
+  "case_id": "case_4f72dd81dc9116aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

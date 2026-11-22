@@ -1,0 +1,20 @@
+### Observed differences
+
+- A block of three activities — A14, A15 and A20 — ran at a stable rate but in a different place. Each appeared in roughly 3–4 in 10 traces in both windows (A14 in about 38 in 100 traces earlier and 34 in 100 later; A15 and A20 about 3 in 10 in both). Their typical position within a trace was about 60% of the event positions in the earlier window and about 32% in the later window. [POS001, POS002, POS003]
+- Their order relative to A21 and A22 reversed. Earlier, in the roughly 3–4 in 10 traces where the block co-occurred with A21 or A22, A21/A22 always came first; in the later window, the block always came before A21 and A22 in such traces. [REL001, REL002, REL003, REL004, REL005, REL006]
+- The connections around the block changed on both sides. Earlier, A22's observed outgoing transitions split between A23 (about 48 in 100) and the block (about 52 in 100), A23's split between A27 (about 53 in 100) and the block (about 47 in 100), and A14, A15 and A20 exited about evenly to A23 and A27. In the later window, all observed exits of A22 went to A23, all observed exits of A23 went to A27, and all observed exits of A14, A15 and A20 went to A21. [DIR001, DIR002, DIR003, DIR004, DIR005]
+- A40 changed its successor: earlier all of its observed outgoing transitions went to A21; later they went to A15, A14 or A20 in roughly equal thirds. [DIR006]
+- A21, A22 and A23 themselves stayed in place: all ran in every trace in both windows, with only slight position shifts later (about 0.01–0.03 on the normalized position scale). [POS004, POS005, POS006]
+- A10 and A11 still ran in every trace, but repeated less: about 1.9 occurrences per trace earlier versus about 1.6 later, with repeats in about 47 in 100 traces earlier versus about 38 in 100 later. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the block of activities A14, A15 and A20 moved from a late stage to an early stage of the process: earlier it was entered from A22 or A23, ran after A21 and A22, and exited to A23 or A27; in the later window it is entered from A40, runs before A21 and A22, and exits to A21. The block's frequency stayed essentially unchanged (about 3–4 in 10 traces per activity in both windows), so this reads as a relocation of the block rather than an activity becoming more or less common. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+Supporting signs: the order flip is shown directly by the relational items; the position distributions shifted wholesale (means about 0.60 to about 0.32) while participation stayed stable; the successor changes on every side of the block are consistent with a single move; and A21/A22/A23 barely moved, which fits the block moving past them rather than swapping with them. With 20 qualifying items against roughly 0.37 expected by chance for the 75 tested control-flow units, the pattern as a whole is unlikely under an unchanged process. [REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005, POS006, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+Limitations: positions are event positions rather than clock times, so the placement claim rests on the order and successor evidence; and the evidence cannot fully rule out that the late executions seen earlier and the early executions seen later belong to different process variants whose mix flipped, although the tight single-position distributions in each window make that less likely. [POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006]
+
+Other differences: A10 and A11 became less repetitive — they still appear in every trace, but mean occurrences per trace fell from about 1.9 to about 1.6 and the share of traces containing repeats fell from about 47 in 100 to about 38 in 100; the evidence does not connect this repetition change to the relocation of the A14/A15/A20 block. [OCC001, OCC002]

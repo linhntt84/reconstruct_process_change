@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_69d699ed5a04f79e.json",
+  "evidence_sha256": "10d2e3dad1deafe6a6c36bf8ad6c72520d8a1a24e1d22ccf55c5b844b31d7974",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:36:43.105902+00:00",
+  "finished_at_utc": "2026-11-14T14:38:01.336824+00:00",
+  "latency_seconds": 78.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12131,
+    "prompt_tokens": 9199,
+    "total_tokens": 21330,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11165,
+      "text_tokens": 966
+    },
+    "cost": 0.00744535
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41559,
+  "text": "### Observed differences\n\n- A05 disappeared from execution: in the earlier window it ran in about 46 in 100 cases (93 of 200 traces), always mid-trace and passing control back to A04 in about 99 in 100 of its observed outgoing transitions; in the later window it was not observed in any of the 200 traces. [OCC003, DIR004, POS003]\n- A04's repetition path changed accordingly: in the earlier window, about 46 in 100 of A04's outgoing transitions went to A05 (which returned to A04) and about 52 in 100 went to A06; in the later window the A05 share is gone and about 49 in 100 of A04's outgoing transitions lead directly back to A04 itself, with A06 steady at about 50 in 100. [DIR003]\n- Repeated executions of A04 moved closer together: earlier, two A04 occurrences in one case were typically two positions apart (one activity in between, matching the A05 detour); later they are frequently directly consecutive. This rests on roughly 90–100 repeated-execution cases per window. [LAG001]\n- Behaviour that stayed stable: A04 still occurs in every case (about 1.9 occurrences per trace in both windows), routing shares at A02 and A03 moved only by 1–3 percentage points, and the relative order of A04 and A07 is essentially unchanged — differences of the size random re-splits of these windows produce. [OCC002, DIR001, DIR002, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the A05 step was removed from the process (or is no longer executed), with its repetition role taken over by direct repetition of A04. A05 fell from about 46 in 100 cases to 0 of 200; A04's outgoing traffic to A05 (about 46 in 100) re-emerged as self-transitions to A04 (about 49 in 100) while A06 held at about half; and repeated A04s are now adjacent rather than separated by A05. These signs agree across occurrence, direction, position, relation and gap indicators, and each qualifying item shows a difference larger than almost all of 200 random re-splits (strength about 0.995). Limitations: zero participation strictly means only that A05 was not observed in the later window, and no screening baseline was provided to compare the item count against a chance expectation; an all-or-nothing participation flip makes pure sampling noise implausible but not formally excluded. [OCC003, DIR003, DIR004, POS003, LAG001, REL004, REL006]\n\nOther differences: A new closing activity A01 appeared — absent in the earlier window, it now occurs exactly once in every trace, always at the final position and always preceded by A07 (A07 leads to A01 in all of its observed outgoing transitions), so A07 is no longer the last event, its mean relative position moving from the end of the trace to about 0.8. Secondary shifts consistent with the shorter loop and the appended final step are a slightly earlier relative position for A04 (median about 0.5 to 0.4) and a modestly changed typical distance between A04 and A07. [OCC001, POS001, DIR005, REL003, POS004, POS002, LAG002]",
+  "case_id": "case_69d699ed5a04f79e",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

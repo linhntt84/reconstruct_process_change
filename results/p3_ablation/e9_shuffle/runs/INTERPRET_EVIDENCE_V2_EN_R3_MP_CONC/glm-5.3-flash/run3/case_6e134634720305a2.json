@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_6e134634720305a2.json",
+  "evidence_sha256": "b9ea1583ef65f01796bdec1c9cd0e92189dd3394f02e5411ce8f4afbe9301f47",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T09:42:21.185846+00:00",
+  "finished_at_utc": "2026-11-15T09:43:14.787911+00:00",
+  "latency_seconds": 53.6,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7919,
+    "prompt_tokens": 7220,
+    "total_tokens": 15139,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7018,
+      "text_tokens": 901
+    },
+    "cost": 0.0050425
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27123,
+  "text": "### Observed differences\n\n- Repetition largely stopped for A30, A31 and A36: in the earlier window each of these activities occurred about 3.5 times per trace and appeared more than once in about 75 in 100 traces; in the later window each occurs about 1 time per trace and recurrence is nearly gone (about 1–2 in 100 traces). All three still appear in every trace in both windows. [OCC001, OCC002, OCC003]\n- The flow leaving A36 was redirected: earlier, about 70 in 100 of A36's observed outgoing transitions went to A30 and about 28 in 100 to A25; in the later window, about 92 in 100 go to A25 and only about 4 in 100 to A30. [DIR002]\n- The relationship between A30 and A36 changed from interleaved/repeated to a fixed order: earlier the two co-occurred in all traces but were interleaved or repeated in about 76 in 100 traces (A30 first in about 25 in 100); in the later window A30 comes before A36 in about 98 in 100 traces, with interleaving or repetition in about 2 in 100. [REL001]\n- A36 now follows A30 within two steps in about 89 in 100 cases, against about 12 in 100 earlier. [LAG001]\n- The surroundings are otherwise stable: A30 still leads almost exclusively to A31 (about 99 in 100 of its outgoing transitions earlier, about 97 in 100 later), and the average positions of A30 and A36 within the trace barely move, though their position spread narrows (standard deviation about 0.12 to about 0.07 on the position scale). [DIR001, POS001, POS002]\n- Two further lag items point the same way (short A36→A30 returns and A36 self-repetitions largely disappear), but they rest on only 1 and 2 observations in the later window, so these proportions are too weak to interpret. [LAG002, LAG003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the repetitive cycle through A30, A31 and A36 stopped: these activities changed from being executed about three to four times per trace, with the flow returning from A36 to A30, to being executed once per trace in a fixed order in which A30 precedes A36 about two steps later, and the flow leaving A36 now proceeds to A25 instead of back to A30. [OCC001, OCC002, OCC003, DIR002, REL001, LAG001]\n\nThe signs are direct and mutually consistent: occurrence data show the repetition collapsing while participation stays at 100 in 100 traces, the routing data show the back-edge from A36 to A30 being replaced by A36 to A25, and the relational data show the pair moving from interleaved/repeated to a fixed A30-before-A36 order. Eleven control-flow items qualified against fewer than 1 expected if nothing had changed, so chance alone cannot account for the set, and each difference is larger than in about 995 of 1,000 random re-splits of the pooled traces. [OCC001, DIR002, REL001, LAG001]\n\nLimitations: several items describe the same underlying trace behaviour and are not independent confirmations; the A31→A36 edge itself is not directly observed, so A31's exact place in the new sequence is inferred from the two-step lag together with the stable A30→A31 routing; and the evidence cannot fully rule out that the later window samples a different mix of pre-existing trace variants rather than a modified process, although the near-total recurrence collapse across 200 traces with unchanged full participation makes pure sampling variation unlikely. [OCC001, OCC003, LAG001, DIR001]\n\nOther differences: none beyond the above; the narrowing position spread of A30 and A36 and the essentially unchanged A30→A31 routing fit the same loop removal rather than separate changes. [POS001, POS002, DIR001]",
+  "case_id": "case_6e134634720305a2",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_06559d41d04a7207.json",
+  "evidence_sha256": "9bade690878c72f3e1156a51f3a9c3c5364887c8220acb9647b641e729320f23",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:24:50.954115+00:00",
+  "finished_at_utc": "2026-11-15T13:28:01.186001+00:00",
+  "latency_seconds": 190.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26424,
+    "prompt_tokens": 75546,
+    "total_tokens": 101970,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23949,
+      "text_tokens": 2475
+    },
+    "cost": 0.024543899999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 79995,
+  "text": "### Observed differences\n\n- In the earlier window, almost every case ran exactly one of three mutually exclusive activities: A19 in about 70 of 200 cases, A20 in about 60 and A21 in about 71, while any two of them appeared together in at most about 1 of 200 cases. [OCC019, OCC020, OCC021, REL011, REL012, REL020]\n- That block sat between A44 and A29: A44's outgoing transitions led to A10 in about 23 of 100 cases and to one of A19, A20 or A21 in about 75 of 100; A44 preceded the chosen activity in every co-occurrence, the chosen activity always preceded A29 (A21 immediately, one event apart in about 99 of 100), and the distance from A44 to A29 was two events in about 75 of 100 earlier cases. [DIR043, REL017, REL025, REL032, REL016, REL024, REL031, LAG005, LAG009]\n- In the later window, A19, A20 and A21 each remain in only about 1 of 200 cases, while A26 and A27 (not observed at all before) and A28 (1 of 200 before) now occur once in every one of the 200 cases. [OCC019, OCC020, OCC021, OCC024, OCC025, OCC026]\n- A26, A27 and A28 are executed together in every later case with no fixed order between any pair: A26 precedes A27 in about 50 of 100 cases and A27 precedes A26 in about 49 of 100, with the same near-even splits for the other two pairs. [REL035, REL036, REL041]\n- The new trio occupies the old block's slot: A44 now leads to A26, A27 and A28 in about 32, 30 and 31 of its outgoing transitions per 100 (A10 down to about 3), each of the three leads roughly equally often to the other two and to A29, A44 precedes A26 in about 995 of 1000 cases, A26 precedes A29 in about 99 of 100 co-occurrences, and the A44-to-A29 distance grew from two events to four (four events in about 90 of 100 later cases). A44 and A29 themselves still run in every case in both windows; the new activities sit about 38% of the way through the case, with A28 moving from near the end (about 97%) to that position and A29's mean position shifting slightly later (about 0.40 to 0.44). [DIR043, DIR025, DIR026, DIR027, REL037, REL038, REL050, LAG009, POS005, POS006, POS007, POS008, POS009]\n- A10 dropped from about 51 to 22 of 200 cases; earlier it followed A44 directly (one event apart in about 97 of 100 co-occurrences) and led into A19/A20/A21, whereas in the later window its outgoing transitions are scattered, it co-occurs with the new trio in about 11 of 100 cases and, when it occurs, it sits later and more variably (mean relative position about 0.40 to 0.48). [OCC010, LAG007, DIR010, REL004, POS001]\n- Two secondary shifts: after A34, cases moved from the A38/A39 branch to the A40/A41 branch (A38 and A39 each in about 55 of 100 cases before versus 45 after; A40 and A41 each about 46 versus 55), and A46 is skipped more often (present in about 69 of 100 cases before versus 58 after, so A29 runs without A46 in about 42 of 100 later cases versus 31 earlier). [OCC034, OCC035, OCC036, OCC037, DIR033, OCC042, REL052]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the segment between A44 and A29 was restructured from a choice among alternatives into a jointly executed set: earlier, almost every case ran exactly one of A19, A20 or A21 there, reached directly from A44 or through the optional A10; later, A19, A20 and A21 have essentially vanished while A26, A27 and A28 each run once in every case in no fixed order, in the same slot between A44 and A29, and the A10 detour has largely disappeared (about 51 to 22 of 200 cases). [REL011, REL013, REL035, REL037, REL038, DIR043, DIR025, OCC019, OCC024, OCC010, LAG009]\n\nThe support is direct and consistent: the relational items flip from \"old activity alone or neither\" to \"new activity alone in about 199 of 200 cases\" and from \"never together\" to \"always together\" for the new trio; the occurrence changes (0 of 200 to 200 of 200, and about 70 of 200 to 1 of 200) are far beyond what re-splitting a stable process produces, each key item exceeding about 199 of 200 random re-splits; and the successor, position and lag evidence independently places the new trio between A44 and A29. The items are not independent confirmations, as many re-describe the same traces, and no screening baseline is provided to compare item counts against chance expectations. [REL013, REL021, REL028, REL035, OCC024, OCC019, DIR043, POS007, LAG009]\n\nThe main competing explanation the evidence cannot rule out is that the two windows draw on different process variants or populations rather than one modified process; it also cannot show whether A26, A27 and A28 are genuinely new activities or the old steps under new labels, although the shift from \"exactly one of three\" to \"all three in every case\" is a behavioural difference under either reading. [OCC024, OCC019, REL035]\n\nOther differences: the branch after A34 shifted towards A40/A41 at the expense of A38/A39; A46 is skipped more often; A02, A04, A06 and A08 roughly doubled from small shares (for example A08 from about 7 to 21 of 200 cases) with substantially changed outgoing profiles, but these rest on about 7 to 9 earlier versus about 20 later traces and are weak; A14 now repeats in about 2 of 100 later cases; A42, A47 and A48 increased modestly. [OCC034, OCC035, OCC036, OCC037, DIR033, OCC042, REL052, OCC002, OCC004, OCC006, OCC008, DIR004, DIR006, DIR008, OCC014, OCC038, OCC043, OCC044]",
+  "case_id": "case_06559d41d04a7207",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

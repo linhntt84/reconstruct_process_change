@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_5b36cba94e5ad4ee.json",
+  "evidence_sha256": "a67bfd3a331776d2f7c86511e0e11e45aa214967fe3ee1e0e7979721979dccce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:04:23.870617+00:00",
+  "finished_at_utc": "2026-11-15T02:06:32.170116+00:00",
+  "latency_seconds": 128.3,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18501,
+    "prompt_tokens": 42040,
+    "total_tokens": 60541,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17095,
+      "text_tokens": 1406
+    },
+    "cost": 0.015556500000000001
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 60481,
+  "text": "### Observed differences\n\n- In the earlier window, the early activities (A15, A16, A17, A19, A20) and the late activities (A21, A22, A23, A24, A25) were executed without a fixed relative order: pairs appeared in both orders in similar shares — A15 preceded A23 in about 58 of 100 traces and followed it in 42, A16 preceded A25 in 51 of 100, A20 preceded A22 in 50 of 100. In the later window, every one of these pairs occurs in a single order, with the early activities always first, in all 200 traces; co-occurrence itself stayed at 100 in 100 traces in both windows [REL002, REL008, REL019, REL020].\n- The clearest reversal concerns A21: in the earlier window A21 preceded A20 in about 97 of 100 traces, and A15, A16 and A17 preceded A21 in only about 23 of 100; in the later window A20 and the early activities always precede A21 [REL001, REL005, REL009, REL018].\n- Outgoing transitions collapsed onto fewer successors in the later window: A20 now leads only to A21 (before, about 51 in 100 of its transitions went to A31, 18 to A22, 13 to A25); A22 now leads only to A31 (before about 50 in 100 to A31, the rest to A15–A20); A30 now leads only to A19 (before split about 54/46 between A21 and A19); A15 now leads only to A16, A17 and A20 (about 36, 32 and 32 in 100) instead of eight targets [DIR001, DIR004, DIR006, DIR010].\n- Distances between consecutive activities tightened: A19 then A21, previously spread over distances 1–4, now always occurs at distance 5; A20 then A22, previously mostly at distances 1–2 (about 73 in 100), now always at 5; A22 then A31 and A30 then A19 now always occur at distance 1 (before about 52 and 49 in 100); A15 then A23 now sits mostly at distances 4–5 (about 81 in 100) after being spread over 1–5 [LAG005, LAG026, LAG027, LAG035, LAG051].\n- Event positions shifted accordingly: A15, A16, A17 and A20 now appear earlier in the trace (A20 mean relative position from about 0.71 to 0.61), while A21, A23, A24 and A25 appear later (A21 from about 0.53 to 0.63, A25 from about 0.62 to 0.69) [POS001, POS005, POS006, POS008, POS010].\n- The elapsed time between consecutive completion events roughly doubled in two relations: for A31→A38 the median rose from about 0.9 to about 1.8 hours (61 vs 41 observed pairs), and for A37→A38 from about 0.15 to about 0.34 hours (51 vs 64 pairs) [TWAIT001, TWAIT002].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the ordering constraints between A15, A16, A17, A19, A20, A21, A22, A23, A24 and A25 changed: in the earlier window these activities were executed without a fixed relative order (A21 almost always preceded A20, and pairs like A15–A23 or A16–A25 appeared in both orders), while in the later window they follow one fixed sequence in which A15, A16 and A17 precede A20, A20 always precedes A21, and A31 now always follows A22 at the end (before, A31 followed A20 or A22 variably). The change is shown directly by relational evidence: all these pairs still co-occur in 100 of 100 traces in both windows, so participation did not change — only the order did — and the successor, distance and position items agree with this direction. The screening found 93 control-flow items where about 0.7 would be expected if nothing had changed, so the pattern as a whole cannot be a sampling artefact, although the many items largely describe one underlying reordering rather than independent changes. The evidence cannot show what enforces the new fixed order, and the position-based indicators (POS, LAG) say nothing about movement in clock time [REL001, REL018, REL020, DIR004, DIR006, LAG026, LAG027, LAG035].\n\nOther differences: The elapsed time between consecutive completion events changed consistently — for A31→A38 the median roughly doubled (about 0.9 to 1.8 hours) and for A37→A38 it also roughly doubled (about 0.15 to 0.34 hours); two time items qualified where fewer than 0.01 would be expected without a change, and each difference exceeds about 1999 of 2000 random re-splits. This is a timing change in its own right; it could be a side effect of the reordering above (A31 now always comes last) or an independent timing change, and the evidence cannot separate the two [TWAIT001, TWAIT002].",
+  "case_id": "e4a_5b36cba94e5ad4ee",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

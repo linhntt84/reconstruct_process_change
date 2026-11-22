@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_b20f46551a8092b8.json",
+  "evidence_sha256": "06d86478d28e6d37ea4344fd8cc053fa0bb27e0238fa471dc3a52bf495607e21",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:52:38.539771+00:00",
+  "finished_at_utc": "2026-11-14T14:56:51.181173+00:00",
+  "latency_seconds": 252.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 41455,
+    "prompt_tokens": 44826,
+    "total_tokens": 86281,
+    "completion_tokens_details": {
+      "reasoning_tokens": 38929,
+      "text_tokens": 2526
+    },
+    "cost": 0.0274514
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 132028,
+  "text": "### Observed differences\n\n- The largest difference between the windows is in how often two alternative branches run. In the earlier window, the branch built around A01, A05, A07 and A09 ran in about 49 in 100 traces and the branch built around A03, A11, A12 and A13 in about 51 in 100; in the later window this is about 59 in 100 versus about 42 in 100. The four activities of each branch occur together (their participation rates match almost exactly), the two branches' shares still add up to about one branch execution per trace, both branches still lead on to A14 (which occurs in every trace, essentially once), and repetition stayed near zero for all eight activities throughout. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, OCC014, DIR005, DIR009, DIR011, DIR012, DIR013]\n\n- Within the first branch, the handover to A14 moved: earlier, A09 was the typical predecessor of A14 (42 in 100 of A09's outgoing transitions went to A14, against 23 in 100 from A05); in the later window A05 took that role (38 in 100 from A05, 24 in 100 from A09). [DIR005, DIR009]\n\n- In the region leading to A32, A35 and A36 exchanged their usual order: earlier, A36 typically led to A35 (58 in 100 of A36's outgoing transitions) and A35 to A32 (59 in 100); in the later window, A35 typically led to A36 (62 in 100) and A36 to A32 (59 in 100). Both activities also occur less often, in about 44 in 100 traces versus about 52 before. [DIR035, DIR036, OCC032, OCC033]\n\n- The neighbouring pair A37 and A38 exchanged order in the same way: earlier, A38 typically led to A37 (53 in 100) and A37 to A32 (54 in 100); in the later window, A37 typically led to A38 (53 in 100) and A38 to A32 (52 in 100). Both occur more often (about 57 in 100 traces versus about 49), and A31, which feeds this region, now leads more often to A35 (20 → 26 in 100) and A37 (21 → 30) and less often to A36 (29 → 16). [DIR037, DIR038, OCC034, OCC035, DIR031]\n\n- The connection between A39 and A40 weakened: after A40, flow continues to A41 in 77 in 100 cases (previously 61) and to A39 in 23 (previously 34); A39 itself now appears in about 14 in 100 traces (previously 19) and no longer leads exclusively to A40 (100 → 91 in 100), while A40 repeats in fewer traces (19 → 12 in 100). [DIR040, DIR039, OCC036, OCC037]\n\n- Smaller participation shifts elsewhere: A10 rose from about 12 to 19 in 100 traces (with a little repetition appearing) and A19 from 30 to 37, while A06 fell from 18 to 12, A22 from 49 to 44, A25 from 41 to 35 and A33 from 52 to 44. [OCC010, OCC019, OCC006, OCC022, OCC025, OCC033]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that an existing choice between two alternative branches shifted in frequency: in the later window the branch containing A01, A05, A07 and A09 is executed in about 59 in 100 traces (previously about 49), while the alternative branch containing A03, A11, A12 and A13 is executed in about 42 in 100 (previously about 51). The support is direct and consistent: all eight activities are observed in a substantial share of traces in both windows, the branches' shares remain complementary at about one execution per trace and both still converge on A14, the four increases and four decreases mirror each other in size (about 9–10 points in 100), and each difference is larger than about 90–95 in 100 of the random re-split references, with roughly 80–120 traces behind each activity per window. This matches a change in how often existing paths are taken, not a replacement of one path by another. The evidence cannot show which point in the process governs the choice or why it moved, and it cannot fully rule out that the two windows simply captured a different mix of cases; as no expected-by-chance item count is provided, the judgement rests on the directness and coordination of the pattern rather than on a chance-expectation comparison. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, OCC014, DIR005, DIR009, DIR011, DIR012, DIR013]\n\nOther differences:\n\n- A35 and A36 exchanged their usual order in front of A32 (earlier A36 → A35 → A32; later A35 → A36 → A32) and occur less often (about 52 → 44 in 100 traces). [DIR035, DIR036, OCC032, OCC033]\n- A37 and A38 exchanged order in the same region (earlier A38 → A37 → A32; later A37 → A38 → A32) and occur more often (about 49 → 57 in 100 traces), with A31 routing away from A36 toward A35 and A37. [DIR037, DIR038, DIR031, OCC034, OCC035]\n- The exit from the growing branch to A14 moved from A09 to A05. [DIR005, DIR009]\n- The A39–A40 connection weakened: A40 now continues to A41 in about 77 in 100 cases, A39 is rarer and no longer leads only to A40, and A40 repeats less. [DIR039, DIR040, OCC036, OCC037]\n- Smaller participation shifts (A10 and A19 up; A06, A22, A25 and A33 down) and a redistribution of outgoing shares within the A21–A24 cluster (after A24, transitions to A31 fell from 52 to 38 in 100 while those to A22 rose from 18 to 27). [OCC010, OCC019, OCC006, OCC022, OCC025, OCC033, DIR021, DIR022, DIR024, DIR030]",
+  "case_id": "null_b20f46551a8092b8",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

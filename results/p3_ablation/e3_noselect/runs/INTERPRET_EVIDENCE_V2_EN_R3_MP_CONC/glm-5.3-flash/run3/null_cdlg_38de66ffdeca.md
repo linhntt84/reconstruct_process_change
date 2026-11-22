@@ -1,0 +1,17 @@
+### Observed differences
+
+- In the later window, activities in the A05–A09 chain are repeated more often per case. A05 rose from about 1.9 to about 2.3 occurrences per trace (participation about 63 to 67 in 100 traces); A09 rose from about 1.9 to about 2.4 occurrences per trace while its participation stayed near 38–40 in 100, meaning cases containing it repeat it more; A11 and A12 rose from roughly 0.9–1.0 to about 1.2–1.3 occurrences per trace with participation essentially flat. These differences exceed about 66–87 in 100 random re-splits of the pooled data. [OCC004, OCC008, OCC010, OCC011]
+- Activities in the A01 block with A07 and A15 are repeated less often. A01 fell from about 2.5 to about 2.2 occurrences per trace (participation 72 to 66 in 100), and A07 and A15 each fell from about 1.4 to about 1.1 occurrences per trace (participation 50 to 43 in 100), with differences larger than about 79–83 in 100 random re-splits. [OCC001, OCC006, OCC013]
+- A10 shows a smaller rise, from about 1.0 to about 1.1 occurrences per trace (participation 63 to 67 in 100). [OCC009]
+- One routing share moved clearly: in the earlier window about 19 in 100 of A10's outgoing transitions went to A02, in the later window about 32 in 100, with the shares to A04 and A06 each dropping several points; this is the largest directional difference and exceeds about 97 in 100 random re-splits. [DIR009]
+- Other routing profiles are essentially stable: A05's split between A09 and A10 stays near 50/50, A09's split between A11 and A12 stays near 50/50, and A06's split between A13 and A14 does not move. [DIR004, DIR008, DIR005]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests a change in how often parts of the process repeat within a case: in the later window the chain A05 → A09 → A11/A12 (together with A10) is executed more times per case, while the block around A01 with A07 and A15 is executed fewer times. The signs supporting this are that mean occurrences per trace moved consistently for all these activities while trace participation changed little, pointing at repetition rather than activities appearing or disappearing; the sizes fit together (A09's rise of about +0.5 per trace matches the combined rise of A11 and A12, and A05's rise aligns with the rises of A09 and A10); and the occurrence differences are unusual for random re-splits (66–87 in 100). [OCC004, OCC008, OCC010, OCC011, OCC009, OCC001, OCC006, OCC013]
+
+What is missing: no screening baseline (items expected without change) is provided, so the number of qualifying items cannot be compared against what a stable process would produce; the routing profiles at A05, A09 and A01 barely move, so the hypothesis rests on occurrence counts alone; and the units are correlated — A07 and A15, and A02 and A04, show identical profiles — so a sampling fluctuation in an unchanged process remains a competing explanation the evidence cannot fully rule out. [DIR004, DIR008, DIR001, OCC006, OCC013, OCC002, OCC003]
+
+Other differences: A10's outgoing transitions shifted toward A02 (about 19 to 32 in 100) and A08's mix shifted away from A02 (about 28 to 21 in 100, only moderately unusual at 54 in 100); A02's and A04's participation dipped from about 56 to 49 in 100 traces, but this is well within random-split variation (19 in 100). These routing redistributions are not part of the repetition hypothesis above. [DIR009, DIR007, OCC002, OCC003]

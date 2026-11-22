@@ -1,0 +1,19 @@
+### Observed differences
+
+- **A14 → A20 completion gap:** In the earlier window, the elapsed time from the completion of A14 to the completion of A20 when the two events are consecutive averaged about 1.0 hours (median about 1.0 h; the middle half of gaps lay between roughly 0.9 and 1.1 h). In the later window it averaged about 0.5 hours (median about 0.49 h; middle half between roughly 0.42 and 0.55 h) — a drop of about 0.53 hours, roughly half the earlier duration, with the spread also halving (about 0.16 h to 0.08 h). The gap was observed 89 times before and 93 times after, and a difference this large appeared in only about 1 of 2000 random re-splits of the pooled data. [TWAIT001]
+
+- **A15 → A20 completion gap:** The same pattern: about 1.0 hours on average before (median about 0.99 h) versus about 0.5 hours after (median about 0.51 h), a drop of about 0.49 hours; observed 111 times before and 107 times after, again with only about 1 of 2000 re-splits producing a difference this size. [TWAIT002]
+
+- Both changes run in the same direction with similar size, and both gaps end at A20. How often these consecutive pairs occur hardly moved (89→93 and 111→107 gap observations in windows of 200 traces each), so the difference lies in the duration of the gaps, not in how often they arise. [TWAIT001, TWAIT002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility of a change in timing: in the later window, the elapsed time between consecutive completion events fell from about one hour to about half an hour both for A14 → A20 and for A15 → A20, and the gap distributions became tighter, with their spread roughly halved. [TWAIT001, TWAIT002]
+
+Supporting signs: both items measure these gaps directly and are well backed (about 90 and about 110 observations per window); they agree in direction and magnitude (drops of about 0.53 and 0.49 hours); each difference exceeds all but about 1 of 2000 random re-splits; and 2 qualifying items against roughly 0.03 expected by chance among 52 tested units is far beyond what an unchanged process typically produces. [TWAIT001, TWAIT002]
+
+Limitations: both gaps end at A20, so the two items may reflect one underlying timing change rather than two independent ones. TWAIT measures elapsed time between consecutive completion events, not pure waiting or service time, so a reordering or structural change that altered which events are consecutive, or what happens between A14/A15 and A20, could produce the same shortening; the evidence contains only timing items, so such an alternative cannot be ruled out. [TWAIT001, TWAIT002]
+
+Other differences: none — the frequency of the two consecutive pairs stayed similar, and no participation, ordering or resource evidence is present to characterise further. [TWAIT001, TWAIT002]

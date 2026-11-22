@@ -1,0 +1,18 @@
+### Observed differences
+
+- After A02, the preferred next activity flipped: before, about 56 in 100 of A02's observed outgoing transitions led to A04 and about 44 in 100 to A03; in the later window, about 53 in 100 lead to A03 and about 47 in 100 to A04. This difference is larger than in about 94 in 100 of the random re-split references [DIR001].
+- A04 was executed in fewer traces: it appeared in about 56 in 100 traces before and about 47 in 100 in the later window (112 vs 94 of 200 traces), with no repetitions in either window [OCC002].
+- A03, A06, A07 and A10 each appeared in about 44 in 100 traces before and about 53 in 100 in the later window, with identical support counts (88 vs 106 of 200 traces each), so these four moved in lockstep [OCC001, OCC004, OCC005, OCC007].
+- A05 and A09 also appeared somewhat more often: A05 in about 27 vs 29 in 100 traces, A09 in about 23 vs 29 in 100 traces [OCC003, OCC006].
+- A03 and A06 also occur more often per trace (means about 0.96 to 1.21 and 0.95 to 1.17 occurrences per trace) [OCC001, OCC004].
+- The outgoing-transition mixes of A03, A06, A07 and A09 changed only marginally; those differences are no larger than typical random re-splits (empirical strengths about 0.07 to 0.37) [DIR002, DIR003, DIR004, DIR005].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the existing choice at A02 is resolved differently: the route via A03 is taken more often (about 53 in 100 observed transitions out of A02, up from about 44 in 100) and the route via A04 less often (about 47 in 100, down from about 56 in 100). Both routes remained in substantial use in both windows, so this is a shift in how often existing paths are taken, not a replacement of one path by another. The participation changes match this in mirror image: A04 appears in about 9 fewer of 100 traces, while A03, A06, A07 and A10 each appear in about 9 more of 100 traces with identical support counts, consistent with roughly the same 18 of 200 cases per window switching from the A04 route to the A03 route; A05 and A09, which lie on the A03 side, move in the same direction [DIR001, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007]. The change is observed directly at the decision point itself, and the core differences are individually unusual for random re-splits (empirical strengths about 0.82 to 0.94) [DIR001, OCC001, OCC002, OCC004, OCC005, OCC007].
+
+The evidence contains no screening baseline, so the number of items expected under no change cannot be checked, and the routing shift is modest (about 9 in 100 shares on 200 traces per window), so chance cannot be excluded for DIR001 alone; what argues against chance is the mirror-image, lockstep movement of five activities, which independent sampling would be unlikely to produce together. The evidence cannot show what drove the shift or whether it persists [DIR001, OCC001, OCC002, OCC004, OCC005, OCC007].
+
+Other differences: A05 repeats more often within the traces that contain it — mean occurrences per trace rose from about 0.52 to 0.68 while participation rose only from about 27 to 29 in 100 traces, i.e. roughly 1.9 to 2.3 occurrences per participating trace — which is not fully explained by more cases entering the A03 route [OCC003]. A03 and A06 show small increases in recurrence support (about 0.27 to 0.29 and 0.23 to 0.29), which may simply follow from more traces taking the A03 route [OCC001, OCC004].

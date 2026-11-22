@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_bdfbe014f3fad895.json",
+  "evidence_sha256": "084f9a6d01752eeff6f6d69b7b2aa58ff66a1652bd79bf393e86282896cc3e7f",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T11:10:53.205509+00:00",
+  "finished_at_utc": "2026-11-14T11:12:25.513521+00:00",
+  "latency_seconds": 92.31,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14910,
+    "prompt_tokens": 27684,
+    "total_tokens": 42594,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13327,
+      "text_tokens": 1583
+    },
+    "cost": 0.0116076
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45741,
+  "text": "### Observed differences\n\n- In the later window, three activities that never appeared in the earlier window now run in about half of the cases: A32 in 50 of 100 traces, A33 in about 50 of 100 and A38 in about 49 of 100 (participation 0 → 0.50, 0.495 and 0.49). [OCC004, OCC005, OCC006]\n- These three behave as one block: each pair co-occurs in about 49 of 100 later traces — essentially whenever one appears, all three do — their internal order varies (each pairwise direction in roughly 21–27 of 100 traces), and they sit near the middle of the trace (median relative position about 0.50). [REL028, REL029, REL030, POS003, POS004, POS005]\n- The block is placed between A26 and A28. After A26, outgoing transitions now split about evenly between A27 (about 51 in 100) and the three block activities (about 49 in 100 combined); each block activity precedes A28 in about 48 of 100 traces and also leads to the other two block activities; and the distance from A26 to A28 stretched from two steps in about 90 of 100 observed pairs to two steps in about 50 and four steps in about 46. [DIR006, DIR007, DIR008, DIR009, REL018, REL019, REL020, REL025, REL026, REL027, LAG003]\n- A27, previously present in every trace and directly after A26 in about 98–99 of 100 cases, now appears in only about 52 of 100 traces and almost never together with the block (about 1 in 100 or fewer): later cases typically contain either A27 (about 50 of 100) or the block (about 48–49 of 100), not both. [OCC003, REL017, REL021, REL022, REL023, REL024]\n- A04 became far more frequent and earlier: participation rose from 19 to 60 of 100 traces and its mean relative position fell from about 0.54 to about 0.21. A14 now routes to A04 in about 54 of 100 of its outgoing transitions (before: about 87 to A15, none to A04), A04 immediately follows A14 in about 96 of 100 observed pairs (before about 57, on only 14 pairs), and A04's outgoing now goes to A15 in about 87 of 100 (before spread over many targets, none above about 20). [OCC001, POS001, DIR004, LAG001, DIR001]\n- A06 nearly disappeared, from about 20 to 4 of 100 traces (39 → 8 traces); its later routing profile rests on only about 8 outgoing-transition observations, so it is weakly characterised. [OCC002, DIR002]\n- The remaining qualifying items are behaviourally negligible: routing at A15, A44 and A46 changed by a cosine dissimilarity of 0.003 or less, and A28's position shifted by only about 0.03. [DIR005, DIR010, DIR011, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the later window executes a block of three activities — A32, A33 and A38 together, in varying order, in about half of the cases — positioned between A26 and A28 and running in cases where A27 does not, A27's presence having halved; separately, A04 is now executed in most cases immediately after A14 and before A15. The relational evidence is direct: A26 precedes each block activity in about 48–50 of 100 later traces, each block activity precedes A28 in about 48 of 100, the A26→A28 distance widened accordingly, and A27 co-occurs with the block in about 1 of 100 traces or fewer. Participation, routing, positional and lag indicators all point the same way; every item's difference exceeds all but about 5 in 1,000 random re-splits; the item count (55, against about 0.73 expected without change) is far beyond what an unchanged process produces; and a block absent from all 200 earlier traces but present in about 100 of 200 later ones cannot plausibly be a sampling artefact. [OCC003, OCC004, OCC005, OCC006, DIR004, DIR006, DIR007, DIR008, DIR009, POS003, POS004, POS005, LAG001, LAG003, REL018, REL019, REL020, REL022, REL023, REL024, REL025, REL026, REL027]\n\nLimitations remain: zero participation in the earlier window shows only that the block was not observed there, so a very rare path that later became frequent cannot be distinguished from a genuinely added one; the near-mutual exclusivity of A27 and the block fits both a new alternative path and a shift in the mix of case variants, which these aggregate indicators cannot separate; the block's internal order varies, so no single fixed sequence is established; and A06's decline rests on only about 8 later observations. Many items describe the same underlying traces and are not independent confirmations. [OCC004, DIR002, REL022, REL028, REL029, REL030]",
+  "case_id": "case_bdfbe014f3fad895",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

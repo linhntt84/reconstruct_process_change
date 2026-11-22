@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_f9c5c033408715af.json",
+  "evidence_sha256": "581bd423cb96e805aa0f2ea32c9c57052cca8a615b223df566905b4a45b75305",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:44:54.066262+00:00",
+  "finished_at_utc": "2026-11-16T02:48:02.301110+00:00",
+  "latency_seconds": 188.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28008,
+    "prompt_tokens": 72854,
+    "total_tokens": 100862,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26074,
+      "text_tokens": 1934
+    },
+    "cost": 0.0249321
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 83857,
+  "text": "### Observed differences\n\n- A07 disappears from execution: it runs in about 23 in 100 traces in the earlier window (46 of 200) and in none of the 200 traces in the later window; its position support and every co-occurrence with other activities drop to zero at the same time, and all items touching A07 sit at empirical strength about 0.995. [OCC006, POS007, REL006, REL017, REL027, REL036, REL044, REL051, REL058, REL059, REL060, REL061, REL062, REL063]\n- The sequence legs around A07 vanish with it: A01 and A10 previously passed to A07 in about 9% and 13% of their outgoing transitions (covering roughly 9 in 10 A07 executions), and A07 previously led to A03 in about half of its outgoing transitions and to A13 in about 3 in 10; in the later window none of these transitions are observed. [DIR001, DIR006, DIR009]\n- Where A01 and A10 previously reached A07, they now pass directly to A03 and A13 more often and more closely: A01→A03 rises from about 2% to about 9% of A01's outgoing transitions and A10→A03 from about 2% to about 8%; A01→A03 pairs within two steps rise from about 25% to about 44%, and A01→A13 within two steps from about 13% to about 33%. [DIR001, DIR009, LAG002, LAG011, LAG048, LAG056]\n- The branch slot itself persists: about 25 in 100 traces in the later window contain neither the A02/A09 pair nor A04/A08 — essentially the same share (about 23 in 100) that the A07 traces occupied before — but now without A07. [REL014, OCC006]\n- The two remaining alternative bundles shift in frequency: A02 and A09 (which always occur together) run in about 23 in 100 traces before versus about 29 in 100 after, while A04 and A08 (always together, and the only context in which A06, A11 and A12 appear) fall from about 55 to about 46 in 100; the two bundles never share a trace in either window. [OCC001, OCC003, OCC007, OCC008, REL014, REL019, REL035, REL037, REL038]\n- Smaller shifts: A03 and A13 remain strict alternatives covering every trace, with the split moving about five points toward A03 (about 50%→56%) and away from A13 (about 50%→44%); A01 and A10 still occur in both orders without a fixed order, but the majority flipped from A01-first (54 in 100 traces) to A10-first (53 in 100), with A01's mean event position slightly later and A10's slightly earlier, while their direct adjacency stays near 93%. [OCC002, OCC011, REL009, REL033, POS001, POS010, LAG008, LAG046]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A07 is no longer executed in the later window. In the earlier window it ran in about 23 in 100 cases, almost always immediately after A01 or A10 and usually followed by A03 or A13; in the later window it has no occurrences, no incoming transitions from A01/A10 and no outgoing ones, while A01 and A10 pass straight to A03 or A13 several times more often and at shorter distances, and the quarter of cases that formed the A07 branch persist without any of its activities. This rests on direct, mutually consistent occurrence, position, direction and relation evidence, with every A07 item at about the 99.5th percentile of random re-splits; an activity present in 46 of 200 traces appearing in 0 of 200 cannot be explained by sampling variation. Limitations: zero participation strictly means only \"not observed\", the case-level rerouting is inferred from aggregate transition and lag shifts rather than traced case by case, and a few successor details (for example A03's own outgoing transitions) rest on fewer than five observations. An important competing explanation the evidence cannot rule out is that A07 events were recorded under a different label or not logged in the later window rather than genuinely dropped from the process. [OCC006, DIR001, DIR006, DIR009, POS007, REL006, REL014, REL060, LAG002, LAG011, LAG048, LAG056]\n\nOther differences: the frequency split between the two remaining alternative bundles moved — A02/A09 up from about 23% to about 29% of traces and A04/A08 (carrying A05, A06, A11, A12) down from about 55% to about 46% — with both bundles still substantial in both windows, consistent with existing paths being taken with different frequencies, though sampling differences cannot be fully excluded (empirical strengths about 0.68–0.91). Separately, the strict A03-versus-A13 alternative shifted about five points toward A03, and the A01/A10 order mix flipped its majority from A01-first to A10-first. [OCC001, OCC002, OCC003, OCC007, OCC008, OCC011, REL009, REL014, REL019, REL033, REL037, REL038]",
+  "case_id": "case_f9c5c033408715af",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, all 200 cases shared one shape: A25 was followed by the trio A28/A30/A31 (internal order varying from case to case), then by the trio A32/A33/A34 (again in varying order), then A26. Each of these eight activities appeared exactly once in every case, and the first trio always ran before the second. [OCC001, REL001, REL007, REL013, REL015, REL025]
+- In the later window, A25 and A26 still appear in every case, but A28, A30 and A31 each appear in only about 47 in 100 cases, and A32, A33 and A34 in about 56 in 100, each at most once per case. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+- The two trios became almost mutually exclusive: cross-trio pairs such as A28–A32 or A30–A34, which co-occurred in every earlier case, now share a case in only about 2 in 100. About 45 in 100 later cases contain only the A28/A30/A31 trio, about 54 in 100 only the A32/A33/A34 trio, and the members of each trio still always run together whenever their trio runs. [REL015, REL017, REL020, REL022, REL024, REL014, REL025]
+- The boundaries are preserved: A25 still precedes and A26 still follows whichever trio runs, and the order inside each trio remains unfixed, with both orders in similar shares in both windows. [REL001, REL004, REL007, REL010, REL013, REL018, REL025]
+- New direct transitions appear: about 54 in 100 of A25's observed outgoing transitions now lead straight to A32, A33 or A34 (earlier all went to trio-one members only), and A28, A30 and A31 now lead directly to A26 in roughly 26–36 in 100 of their transitions. [DIR001, DIR002, DIR003, DIR004]
+- Event-position gaps shrank accordingly: the distance from A25 to A32/A33/A34 and from A28/A30/A31 to A26 was 4–5 positions in the earlier window and is 1–3 positions in the later one. [LAG001, LAG002, LAG003, LAG004, LAG008, LAG011]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis of a structural routing change between A25 and A26: the trio A28/A30/A31 and the trio A32/A33/A34, which every case executed in sequence earlier (first trio before the second), now behave as largely exclusive alternatives — in the later window about 45 in 100 cases run only the first trio, about 54 in 100 only the second, and about 2 in 100 run both — while A25 keeps its position before and A26 after whichever trio runs. [REL015, REL020, REL024, REL014, REL025, REL001, REL007]
+
+The change is shown directly by the relational items (cross-trio co-occurrence collapsing from every case to about 2 in 100, within-trio co-occurrence preserved) and is corroborated by the participation drops, the new direct transitions out of A25 and into A26, and the shortened position gaps. Screening qualified 58 control-flow items where about 0.63 would be expected by chance in an unchanged process, so the ensemble is far beyond what sampling noise produces. [REL015, REL014, DIR001, DIR002, LAG001, LAG011, screening]
+
+Limitations: the evidence cannot show what determines which trio a case takes, and it cannot distinguish a single process with new either/or routing from a later window that mixes two case populations, each with its own fixed flow; the about 2 in 100 cases containing both trios could also be a rare third variant. The items describing participation, relations, directions and gaps overlap heavily and are not independent confirmations. [REL020, LAG005]
+
+Other differences: average event positions shifted slightly in the later window (A25 from about 0.62 to 0.67, A26 from about 0.83 to 0.81, surviving middle activities by similar small amounts), which is consistent with cases simply containing fewer middle activities rather than an independent repositioning; and the later-window lag profiles for cross-trio pairs rest on only about 4 cases each and are too weak to interpret. [POS001, POS002, POS003, POS004, LAG005, LAG007, LAG010]

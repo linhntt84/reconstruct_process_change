@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_f6435d789438.json",
+  "evidence_sha256": "0b2cc961e9c0a8ffe166729e69ce98a932114ff1f77a95eba265fcf99e76cce7",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:58:39.295924+00:00",
+  "finished_at_utc": "2026-11-16T02:02:38.232841+00:00",
+  "latency_seconds": 238.94,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 34180,
+    "prompt_tokens": 56397,
+    "total_tokens": 90577,
+    "completion_tokens_details": {
+      "reasoning_tokens": 31993,
+      "text_tokens": 2187
+    },
+    "cost": 0.02554955
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 99896,
+  "text": "### Observed differences\n\n- In the later window, the pair A02/A11 — which always occurs together and always alongside A01 — appeared in about 40 in 100 traces, up from about 30 in 100, with mean occurrences per trace rising from about 0.43 to 0.59. [OCC002, OCC010, REL001, REL010, REL019]\n- A05 moved the opposite way: about 28 in 100 traces versus about 39 before, with mean occurrences per trace down from about 0.62 to 0.40, so it also repeated less often within the traces that kept it. [OCC004]\n- Outgoing transitions from A01 were redistributed: the share leading to A05 fell from about 30% to 20%, while the shares leading to A02 and to A11 each rose by roughly 4–5 percentage points to about 15%; the share to A03 stayed near 36–38%. [DIR001]\n- Relations mirror this: A02/A11 co-occurred with A04 in about 40 in 100 traces versus 30 (A04 without A02 down from 20 to 12 in 100), while A05 co-occurred less with A01, A03, A04 and A08–A10 (A04&A05 from 39 to 28 in 100; A04 without A05 up from 11 to 24). Traces with A02/A11 but no A05 rose from about 11 to 24 in 100, and traces with A05 but no A02/A11 fell from about 20 to 12 in 100. [REL012, REL016, REL004, REL021, REL028, REL037, REL013]\n- The A04/A08/A09/A10 group, whose members always occur together, stayed at about 50–52 in 100 traces in both windows, and its internal routing barely moved (A04 led to A09 in about 46% versus 49% of its outgoing transitions). [OCC003, OCC007, OCC008, OCC009, REL050, DIR004]\n- Event distances around the group shifted: A01 to A04/A09/A10 became typically one event further apart (A01→A09 at lag 4: about 29%→20%; at lag 5: about 19%→32%), while A10→A04 became more often immediate (lag 1: about 53%→62%); these are event-position distances, not clock times. [LAG003, LAG006, LAG007, LAG042]\n- A06 and A07 individually kept roughly a 50/50 split (about 47 versus 53 in 100 in the later window), but their association with the A04-group flipped: group traces co-occurred with A06 in 28.5 versus 21 in 100 and with A07 in 21.5 versus 30.5 in 100. [OCC005, OCC006, REL029, REL030, REL046]\n- Activity positions within traces barely moved (the largest shift is A07's mean relative position, about 0.91 to 0.94), so there is no sign that activities changed their place in the sequence. [POS007, POS003, POS010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, case flow was redistributed between the two routes from A01 into the A04/A08/A09/A10 group: the route through A02 and A11 was taken more often (about 30→40 in 100 traces), while the route through A05 was taken less often (about 39→28 in 100), with the group itself unchanged at about 50 in 100 traces. A01's outgoing traffic to A05 fell from about 30% to 20% while its shares to A02 and A11 grew to about 15% each, and both routes still lead into the same group (A02/A11 and A05 both continue to A04/A10 in both windows), so every activity and transition involved was substantially observed throughout — the pattern expected when existing paths are taken with different frequencies, not when a path is added or removed. [OCC002, OCC004, OCC010, DIR001, DIR002, DIR005, REL012, REL028]\n\nSupporting signs: occurrence/participation, routing shares and co-occurrence all move in the same direction by matching magnitudes, and the key items rank above roughly 95 in 100 reference comparisons; within the group's traces, entry via A02/A11 without A05 rose from about 22% to 46% while entry via A05 without A02/A11 fell from about 40% to 23%. [OCC002, OCC004, DIR001, REL012, REL013, REL028]\n\nLimitations: the two windows are single 200-trace samples, empirical strength is not the probability of a change, and several items restate one underlying behaviour (A02 with A11, and A04 with A08/A09/A10), so the breadth of agreement overstates the number of independent observations; no screening baseline is included, so the expected share of chance findings cannot be checked directly. [OCC002, OCC010, OCC003, OCC007, REL019, REL050]\n\nAn important competing explanation the evidence cannot rule out is ordinary sampling variability between the windows; it could produce individual items of this strength, though it does not easily explain the same-direction movement across occurrence, routing and relation indicators at once.\n\nOther differences: A11's exits shifted from A04 to A10 (about 32%→24% versus 15%→25% of A11's outgoing transitions) [DIR007]. The association between the A04-group and the closing activities flipped, with group traces co-occurring less with A06 and more with A07 despite both keeping roughly a 50/50 split [REL029, REL030, REL042, REL043, REL044, REL046, REL047, REL048, OCC005, OCC006]. The event-distance shifts described above are consistent with this rerouting but are position-based and do not by themselves show that activities were moved [LAG003, LAG006, LAG007, LAG042].",
+  "case_id": "null_cdlg_f6435d789438",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

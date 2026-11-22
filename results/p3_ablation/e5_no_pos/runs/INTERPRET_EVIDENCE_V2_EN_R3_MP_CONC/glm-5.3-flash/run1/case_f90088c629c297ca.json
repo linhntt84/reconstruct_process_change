@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_f90088c629c297ca.json",
+  "evidence_sha256": "07a9da6191604da4fcdd233f1d8ff0c0f7cbd191f21a795375f169a3b1f9e258",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:16:31.463064+00:00",
+  "finished_at_utc": "2026-11-14T12:17:17.939908+00:00",
+  "latency_seconds": 46.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 6638,
+    "prompt_tokens": 7895,
+    "total_tokens": 14533,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5616,
+      "text_tokens": 1022
+    },
+    "cost": 0.00450325
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20581,
+  "text": "### Observed differences\n\n- Three activities that never appeared in the earlier window — A14, A15 and A20 (0 of 200 traces each) — appear in the later window in about 37, 29 and 34 in 100 traces respectively (74, 57 and 67 of 200), each at most once per trace. [OCC001, OCC002, OCC003]\n- These three activities are mutually exclusive alternatives in the later window: the pairs A14/A15, A14/A20 and A15/A20 never occur in the same trace, whereas in the earlier window neither member of any of these pairs appeared at all. [REL001, REL002, REL005]\n- In the earlier window, every observed outgoing transition of A36 went to A21. In the later window, A36's outgoing transitions go to A14 in about 37 in 100 cases, to A20 in about 34, to A15 in about 29, and directly to A21 in only about 1 in 100. [DIR004]\n- In the later window, A14, A15 and A20 each have a single observed outgoing transition, leading to A21 in all cases. [DIR001, DIR002, DIR003]\n- The pairwise relations match this sequence: A36 precedes each of A14, A15 and A20 whenever they co-occur, and each of them precedes A21 in every co-occurrence; in the earlier window only A36 and A21 were present in these pairs. [REL003, REL004, REL006, REL007, REL008, REL009]\n- Accordingly, the distance between A36 and A21 moved from one event position apart (all traces) in the earlier window to two positions apart in about 99 in 100 traces in the later window. [LAG001]\n- A36 and A21 themselves still occur in every trace in both windows, so their participation is unchanged. [DIR004, REL003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a three-way exclusive choice between A14, A15 and A20 was inserted between A36 and A21. In the earlier window, traces passed directly from A36 to A21; in the later window, about 99 in 100 traces pass through exactly one of A14 (about 37 in 100), A20 (about 34 in 100) or A15 (about 29 in 100) between them, with the direct A36→A21 succession surviving in only about 1 in 100 traces. [DIR004, DIR001, DIR002, DIR003, LAG001, OCC001, OCC002, OCC003]\n\nThe screening context supports this reading: 17 items qualified against an expectation of 0.34 items by chance for the 69 tested control-flow units, roughly fifty times the chance expectation, so the set of items is not what an unchanged process typically produces. The hypothesis is also shown directly rather than inferred from marginal frequencies: the redirection of A36's outgoing transitions, the successor relation from each inserted activity to A21, the pairwise ordering A36 before the inserted activity before A21, and the one-to-two position shift of A21 after A36 all point to the same insertion. [DIR004, DIR001, DIR002, DIR003, REL003, REL004, REL006, REL007, REL008, REL009, LAG001]\n\nA competing explanation the evidence cannot rule out: zero participation in the earlier window means only that A14, A15 and A20 were not observed then, so a pre-existing but previously unexercised path that later came into use would look identical to a newly added fragment. The evidence also cannot show whether the choice among the three activities is free or driven by case characteristics. [OCC001, OCC002, OCC003]\n\nOther differences: none — the remaining items restate the same co-occurrence and ordering relations between A36, A21 and the three inserted activities, and agreeing items here reflect one underlying difference rather than independent confirmations. [REL001, REL002, REL005, REL003, REL004, REL006, REL007, REL008, REL009]",
+  "case_id": "case_f90088c629c297ca",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

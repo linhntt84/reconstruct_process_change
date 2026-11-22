@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_bc761aefe120e7d4.json",
+  "evidence_sha256": "8f8e22a2b05b58f9f0cc1981ddb8cd55def8fff53c7b83633412e4f1afafe2f5",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T06:43:01.928069+00:00",
+  "finished_at_utc": "2026-11-15T06:44:05.924468+00:00",
+  "latency_seconds": 64.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9184,
+    "prompt_tokens": 7706,
+    "total_tokens": 16890,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8218,
+      "text_tokens": 966
+    },
+    "cost": 0.005747899999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 31324,
+  "text": "### Observed differences\n\n- The repetition of the cycle A30 → A31 → A36 collapsed. In the earlier window each of A30, A31 and A36 occurred about 3.4–3.5 times per trace, and about 75 in 100 traces contained repeated occurrences of each; in the later window each occurs about 1.05 times per trace and only about 1–2 in 100 traces contain a repeat. Every trace still contains all three activities in both windows (participation 100 in 100). [OCC001, OCC002, OCC003]\n- The branch taken after A36 flipped. Earlier, of A36's observed outgoing transitions (about 690 across 200 traces), roughly 70 in 100 returned to A30 and about 29 in 100 went to A25; in the later window, of about 210 transitions, roughly 93 in 100 go to A25 and only about 4 in 100 return to A30. [DIR003]\n- The chain itself is intact in both windows: A30 leads to A31 in about 98 in 100 of its outgoing transitions earlier and about 97 in 100 later, and A31 leads to A36 in about 99 in 100 earlier and 98 in 100 later. [DIR001, DIR002]\n- Loop-back pairs nearly disappeared: A36 followed by A30 within five steps appears in about 150 of 200 earlier traces but in only 1 of 200 later traces; the self-pairs A30→A30 and A36→A36 fall from about 150 of 200 traces to 1–2 of 200. [LAG001, LAG003, LAG004]\n- Positions of A30 and A36 barely moved (mean relative position about 0.44 → 0.42 for A30 and about 0.49 → 0.49 for A36), but their spread roughly halved (standard deviation about 0.12 → 0.06–0.07), and the A30→A36 pair is now concentrated at a two-event distance (about 90% of the pair's lag mass versus about 12% earlier) — consistent with shorter traces rather than a relocation. [POS001, POS002, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the cycle A30 → A31 → A36 stopped repeating: in the earlier window traces typically passed through A30, A31 and A36 three to four times, with A36 returning to A30 in about 70 in 100 of its outgoing transitions, whereas in the later window the cycle typically runs once and A36 exits to A25 in about 93 in 100 of its outgoing transitions. The repetition drop is direct and large (mean occurrences 3.45 → 1.05 with participation unchanged), the routing flip at A36 is observed directly, the A30→A31 and A31→A36 edges persist in both windows, and the loop-back pairs fall from about 150 to about 1–2 of 200 traces. The 12 qualifying items far exceed the roughly 0.5 expected by chance among the 92 tested control-flow units, and each item's difference exceeds about 995 in 1,000 random re-splits of the pooled data, so the ensemble is not what an unchanged process typically produces. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, LAG001, LAG003, LAG004]\n\nLimitations: the later-window profiles for the self-pairs rest on only 1–2 observations and are weak on their own, and the POS and LAG002 items, while agreeing with the hypothesis, reflect the same trace behaviour and are not independent confirmations. A competing explanation the evidence cannot rule out is a shift in the mix of case variants between the windows — for example, the later window containing mostly cases that never repeat the cycle — which would produce the same pattern without any change in the routing itself. [LAG001, LAG003, LAG004, POS001, POS002, LAG002]",
+  "case_id": "case_bc761aefe120e7d4",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

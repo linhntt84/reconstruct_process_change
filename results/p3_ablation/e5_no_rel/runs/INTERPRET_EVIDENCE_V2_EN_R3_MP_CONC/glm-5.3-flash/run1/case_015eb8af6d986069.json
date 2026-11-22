@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_015eb8af6d986069.json",
+  "evidence_sha256": "f0b255536a06e924bd9fa550151fe822e7fa660648f57340fe6aef4da2264607",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:55:14.980940+00:00",
+  "finished_at_utc": "2026-11-14T12:57:09.379067+00:00",
+  "latency_seconds": 114.4,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 19687,
+    "prompt_tokens": 30994,
+    "total_tokens": 50681,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17719,
+      "text_tokens": 1968
+    },
+    "cost": 0.0144926
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56887,
+  "text": "### Observed differences\n\n- The block of activities A22, A20, A23, A24, A26 and A25 (entered from A31, exiting to A32) was executed in varying orders and at varying distances in the earlier window: after A20, about 62 in 100 outgoing transitions went to A23 with the rest split over A24, A25 and A26; A24 preceded A20 within five steps in about 150 traces; A31 split roughly 50/50 between going to A24 and to A22. In the later window each of these activities has essentially one successor: A31→A22 (about 99 in 100), A22→A20 (about 98), A20→A23 (about 99), A23→A24 (about 98), A24→A26 (about 99), A26→A25 (about 99) and A25→A32 (about 90). [DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013, LAG019]\n- Distances within this block became fixed in the later window: pairs that were spread over one to five steps before now sit at one distance in nearly every trace — A20→A23 one step apart in about 99 in 100 later cases (before about 62), A20→A24 two steps (before split between one and two), A20→A32 five steps (before spread over two to five), A31→A20 two steps (before spread over two to five). [LAG006, LAG007, LAG010, LAG031]\n- Reverse orders that were frequent before have practically disappeared: A24 before A20 (about 150 traces before, 1 after), A24 before A23 (about 175 before, 1 after), A25 before A23 (about 105 before, 1 after), A26 before A23 (about 140 before, 1 after), A25 before A22 (about 25 before, 3 after) and A26 before A22 (about 45 before, 1 after). [LAG019, LAG020, LAG024, LAG025, LAG027, LAG028]\n- Positions moved consistently with this reordering: A20, A22 and A23 now occur slightly earlier in the trace (mean relative position about 0.64→0.59, 0.60→0.57 and 0.69→0.62), while A24 and A26 occur slightly later (about 0.60→0.65 and 0.64→0.67); all six activities still occur in every trace in both windows. [POS002, POS003, POS004, POS005, POS006]\n- A08 occurs in about 29 in 100 later traces versus about 72 in 100 before. Before, about 90 in 100 of A08's outgoing transitions went to A16, usually within one step (about 99 in 100); later only about 39 in 100 go to A16, with A48 (about 16 in 100) and A15 (about 15 in 100) appearing, and the A08→A16 pair is spread over one to five steps. A15 now leads directly to A16 in about 87 in 100 of its outgoing transitions (before about 58) and to A08 in about 7 (before about 42); when A08 occurs it sits later and more variably in the trace (mean position about 0.24→0.41). [OCC001, DIR003, DIR006, LAG001, LAG004, POS001]\n- A10 occurs in about 22 in 100 later traces versus about 8 in 100 before, with its outgoing transitions shifting towards A48 and A16; this rests on only about 14 outgoing observations before versus 49 after and is weakly supported. [OCC002, DIR004]\n- Two dominant edges loosened slightly: A14→A15 fell from about 98 to 82 in 100 of A14's outgoing transitions, and A47→A48 within one step from about 99 to 80 in 100. [DIR005, DIR015, LAG038]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nScreening produced 61 qualifying control-flow items against roughly 1 expected if nothing had changed, so the volume of differences cannot be explained as chance sampling, and the individual patterns below are far too deterministic to be rare-variant noise. [screening]\n\nMain hypothesis: the evidence supports the possibility that, in the later window, the activities A22, A20, A23, A24, A26 and A25 — entered from A31 and exiting to A32 — are executed in one fixed sequence, A31 → A22 → A20 → A23 → A24 → A26 → A25 → A32, whereas in the earlier window the same activities followed one another in varying orders and at varying distances. This is a change in ordering constraints rather than in participation, since all six activities appear in every trace in both windows. The support is direct and consistent: successor profiles that were split across several targets became single-successor (about 90–99 in 100), lag distributions collapsed from spreads over one to five steps to a single fixed distance in about 99 in 100 later traces, reverse-order pairs fell from dozens or hundreds of traces to about one, and the position shifts (A20/A22/A23 earlier, A24/A26 later) match the new chain. [DIR007, DIR008, DIR009, DIR010, DIR011, DIR012, DIR013, LAG006, LAG007, LAG010, LAG011, LAG012, LAG013, LAG019, LAG020, LAG021, LAG022, LAG029, POS002, POS003, POS004, POS005, POS006]\n\nLimitation: the evidence shows unambiguously that the later window has a single fixed chain where the earlier one did not, but it cannot determine whether the earlier variation was free ordering or several alternative fixed routes, and behaviour beyond five-step lags is invisible; the hypothesis is therefore stated as a possibility, not a confirmed modification. [LAG006, LAG010, LAG019]\n\nOther differences: A08 became rare (about 72→29 in 100 traces) and appears to be bypassed on the A15→A16 route, with A15 leading directly to A16 in about 87 in 100 of its outgoing transitions and A08, when it occurs, sitting later in the trace; A10 participation rose (about 8→22 in 100) with a weakly supported redistribution of its successors; A14→A15 and A47→A48 loosened slightly. These are separate from the main hypothesis. [OCC001, DIR003, DIR006, LAG001, POS001, OCC002, DIR004, DIR005, DIR015, LAG038]",
+  "case_id": "case_015eb8af6d986069",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

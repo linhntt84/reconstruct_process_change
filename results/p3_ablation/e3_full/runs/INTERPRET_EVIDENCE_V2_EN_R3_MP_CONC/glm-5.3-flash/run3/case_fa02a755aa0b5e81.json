@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_fa02a755aa0b5e81.json",
+  "evidence_sha256": "630eb532caf0c2f4cb9146713c4bc5cc0da537e78342b39105d4eb2dfac35042",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:56:40.930124+00:00",
+  "finished_at_utc": "2026-11-16T04:01:36.851055+00:00",
+  "latency_seconds": 295.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 35673,
+    "prompt_tokens": 46828,
+    "total_tokens": 82501,
+    "completion_tokens_details": {
+      "reasoning_tokens": 33612,
+      "text_tokens": 2061
+    },
+    "cost": 0.0248607
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 110474,
+  "text": "### Observed differences\n\n- **The order of the segment around A01 inverted.** In the earlier window, A01 always passed flow directly to A05 (54 of 54 observed outgoing transitions), A11 and A12 always ran before A01 (in all 54 traces containing both), and A01 never preceded A06. In the later window, A01 always passes flow to A06 (43 of 43 transitions), A01 runs before A11 and A12 in every trace containing both (43 of 43), and A11/A12 pass flow to each other and then to A05 (about 70 in 100 of their transitions go to A05, versus none before); the gap from A01 to A05 grew from 1 step (all 54 observed pairs) to 4 steps (all 22 observed pairs). [DIR001, DIR007, DIR008, REL004, REL008, REL009, LAG001, LAG021, LAG022]\n- **Positions shifted accordingly.** A01 moved from a mean position about 0.82 of the way through the trace to the first position (mean 0), while A06 (0.22 → 0.35), A12 (0.52 → 0.67) and A11 (0.55 → 0.75) moved later; A10 now reaches A05 one step sooner (gap 5 in all 30 earlier pairs, gap 4 in all 21 later pairs). [POS001, POS004, POS008, POS009, LAG016]\n- **A02 is no longer observed.** It appeared in about 26 in 100 traces before (53 of 200) and in none of the 200 later traces; its outgoing transitions (mainly to A07, about 42 in 100) are gone, and every activity pair containing A02 changed from regular co-occurrence to the partner appearing alone. [OCC002, DIR002, POS002, REL011, REL012, REL014, REL016, REL019]\n- **Routing among A02's former neighbours shifted.** A07 now leads mainly to A03 (about 48 in 100 of its transitions) and A13 (29 in 100), where before it led to A02 (34), A03 (21), A05 (19) and A08 (19); A08 now leads mainly to A05 (62 in 100, was 30) instead of A13 (was 56); A13 now leads mainly to A08 (62 in 100, was 37) instead of A05 (was 52); A03 leads to A05 in about 85 in 100 of its transitions (was 65), now always at gap 1. A07 now sits at the very start of traces (median position 0, was 0.25). [DIR003, DIR005, DIR006, DIR009, POS005, LAG002, LAG009, LAG012, LAG013]\n- **Participation fell in both segments.** A01, A06, A11 and A12 each appear in about 21 in 100 later traces (43 of 200) versus 27 in 100 before (54); A05 fell from about 53 to 45 in 100 (107 → 91), A10 from 15 to 10.5 in 100, and A08 and A13 from about 13.5 to 10.5 in 100; A06 also repeats somewhat less often (recurrence in 10.5 in 100 traces, was 15 in 100). [OCC001, OCC005, OCC006, OCC010, OCC011, OCC012, OCC013]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence directly and consistently supports one structural hypothesis about ordering: in the earlier window the group A06/A11/A12 ran before A01, and A01 immediately preceded A05; in the later window A01 comes first, hands flow to A06, and the group A06/A11/A12 then runs and flows into A05, so A01 reaches A05 four positions later instead of immediately. The signs are direct and exception-free: A01's successor switched completely (54 of 54 transitions to A05 earlier, 43 of 43 to A06 later), the order between A01 and A11/A12 reversed in every co-occurring trace, A11 and A12 now send about 70 in 100 of their transitions to A05 instead of to A01, and the A01→A05 gap grew from 1 step to 4 steps, with A10 — which sits between A06 and the group — also moving one step closer to A05; the positional shifts agree with this rerouting. [DIR001, DIR007, DIR008, REL004, REL008, REL009, LAG001, LAG016, LAG021, LAG022, POS001, POS004, POS008, POS009]\n\nLimitations: positions are event positions, not clock time, so only the relative order is established; the segment also appears in fewer traces later (54 vs 43 of 200), a difference of a size that random re-splits of an unchanged process still produce reasonably often, and the evidence cannot tell whether the rerouting and this frequency decline are one change or two. The competing explanation that the two windows simply draw different mixes of process variants cannot be ruled out with finite samples, although it cannot account for a complete order reversal (never in 54 earlier co-occurring traces, always in 43 later ones). [OCC001, OCC011, DIR001, REL008]\n\nOther differences:\n- A02, which never occurred in the same trace as A01 in either window (the two ran as alternatives), is no longer observed at all (53 of 200 traces earlier, none later). [OCC002, REL001]\n- Routing among A02's former neighbours changed as described above, with A07 now appearing at the start of traces and A03, A07, A08 and A13 passing flow mainly among themselves and to A05 via A08. [DIR003, DIR005, DIR006, DIR009, POS005]\n- Participation declined broadly: A01, A06, A11 and A12 from 27 to about 21.5 in 100 traces each, A05 from 53.5 to 45.5 in 100, A10 from 15 to 10.5 in 100, A08 and A13 from about 13.5 to 10.5 in 100, with A06 repeating less often. [OCC001, OCC005, OCC006, OCC010, OCC011, OCC012, OCC013]",
+  "case_id": "case_fa02a755aa0b5e81",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

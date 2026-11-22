@@ -1,0 +1,19 @@
+### Observed differences
+
+- A19 and A20 were rare in the earlier window — present in about 2 in 100 traces (A19) and about 1 in 100 (A20) — and are common in the later window, at about 37 in 100 and about 42 in 100 traces; mean occurrences per trace rose in step (A19 from about 0.02 to 0.38, A20 from about 0.01 to 0.42). [OCC001, OCC002]
+- In the later window, A19's outgoing transitions go almost exclusively to A25 (about 96 in 100), and A20's likewise (about 95 in 100 to A25). In the earlier window the few observed outgoing transitions were spread over other successors (A19 split roughly evenly over A26, A23, A25 and A45; A20 split 50/50 between A37 and A14), but those earlier shares rest on only 4 and 2 observations. [DIR001, DIR002]
+- A40 now routes differently: before, about 85 in 100 of its outgoing transitions went to A25; in the later window only about 17 in 100 do, while about 31 in 100 go to A19 and about 32 in 100 go to A20. [DIR006]
+- The A40-to-A25 distance grew: before, A25 followed A40 one step later in about 86 in 100 observed pairs; in the later window a two-step gap dominates (about 67 in 100, one-step about 18 in 100). [LAG004]
+- Ordering evidence agrees: A40 precedes A19 in about 37 in 100 later traces and A20 in about 42 in 100, while A19 and A20 each precede A25 (about 35 and 41 in 100 respectively); A19 and A20 rarely occur in the same trace (about 1 in 100), so a trace typically contains one or the other. [REL007, REL013, REL002, REL008, REL001]
+- Both activities now sit at a fairly consistent relative position within traces (A19 mean about 0.38, A20 about 0.37, with much smaller spread than before); position shifts alone do not establish movement, but they fit the routing picture. [POS001, POS002]
+- Smaller redistributions appear around A30, A34 and A35 (A30→A35 up from about 22 to 37 in 100; A34→A31 up from about 45 to 64 in 100; A35→A34 up from about 45 to 60 in 100; the A30→A34 and A35→A31 gaps shifted toward two steps). [DIR003, DIR004, DIR005, LAG001, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, A19 and A20 are executed far more often and typically take a place between A40 and A25: A40 now frequently leads to A19 or A20 instead of directly to A25, A19 and A20 in turn lead almost always to A25, and the A40-to-A25 gap shifted from mostly one step to mostly two steps. Since A19 and A20 rarely share a trace, individual cases tend to include one or the other. [DIR006, DIR001, DIR002, LAG004, REL007, REL013, REL002, REL008, REL001]
+
+The supporting signs are direct and consistent: the participation increases are large (about 2 to 37 in 100 traces for A19, about 1 to 42 for A20), every reported difference exceeds about 199 of 200 random re-splits of the pooled data, and the routing, ordering and lag items are relational evidence pointing in the same direction rather than a frequency change alone. [OCC001, OCC002, DIR006, LAG004]
+
+The evidence cannot rule out that the two windows draw on different mixtures of process variants — a variant containing A19/A20 may have existed before but been under-sampled, and the earlier routing profiles of A19 and A20 rest on only 4 and 2 observations, so the evidence shows where they go in the later window but not that their routing itself changed. The co-occurrence results with A25, A30, A31, A34 and A35 largely restate A19/A20's new presence rather than adding independent confirmation, and the smaller shifts around A30, A34 and A35 could be downstream consequences of the same behaviour or separate changes, which this evidence does not distinguish. [DIR001, DIR002, OCC001, OCC002, REL002, REL003, REL004, REL005, REL006, REL008, REL009, REL010, REL011, REL012, DIR003, DIR004, DIR005]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_f06f89677b98cdca.json",
+  "evidence_sha256": "a8c1655e3968a002c96aa6a04c3590ca95bc70853c791efa1057dc161f3a4d0d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:49:21.030875+00:00",
+  "finished_at_utc": "2026-11-15T04:50:36.285930+00:00",
+  "latency_seconds": 75.25,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 11229,
+    "prompt_tokens": 6689,
+    "total_tokens": 17918,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10211,
+      "text_tokens": 1018
+    },
+    "cost": 0.00661785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 36897,
+  "text": "### Observed differences\n\n- Activity A01 was not observed in any of the 200 earlier traces. In the later window it occurs exactly once in about 48 in 100 traces (mean about 0.48 occurrences per trace, never repeated), and typically late in the trace, at a median position about 85% of the way through by event order. [OCC001, POS001]\n- In the earlier window A18 and A01 never shared a trace: A18 appeared without A01 in about 40 in 100 of the traces containing either activity. In the later window they co-occur in about 48 in 100 traces, every co-occurrence has A18 before A01, and A18 never appears without A01. [REL001]\n- A18's handovers changed accordingly: before, its outgoing transitions spread over many activities (A10 about 19 in 100, A06 and A12 about 13 each, none to A01); in the later window about 65 in 100 of A18's outgoing transitions go to A01. [DIR004]\n- A01's own outgoing transitions, observed only in the later window (about 60 transitions), again spread over many activities — A10 about 17 in 100, A07 about 15, A12 about 14, A16 and A17 about 12 each — closely resembling the set of activities A18 led to in the earlier window. [DIR001, DIR004]\n\nOther differences:\n\n- From A09, the share of outgoing transitions to A02 rose from about 38 to about 65 in 100, the transition to A07 (about 17 in 100 before) was no longer observed, and the share to A04 fell from about 24 to about 14. [DIR002]\n- From A14, the share to A08 fell from about 63 to about 24 in 100, a transition to A15 appeared at about 19 in 100, and the share to A06 rose to about 21. [DIR003]\n- A02 now repeats: mean occurrences per trace rose from about 0.5 to about 1.0, with repeats in about 26 in 100 traces (none before), while participation stayed similar (about 48 vs 54 in 100). [OCC002]\n- A08 repeats less: mean occurrences per trace fell from about 0.9 to about 0.5, with repeats in about 20 in 100 traces before and none after, at stable participation of about 47 in 100. [OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 was added to the process as a step executed after A18: in the later window A01 runs once in roughly half of the traces, always after A18, A18 routes to A01 in about two thirds of its outgoing transitions, and A01 then hands over to a broad set of activities similar to those A18 previously led to directly. [OCC001, REL001, DIR004, DIR001, POS001] The order relation is shown directly (co-occurrence with a fixed A18-before-A01 order, plus the successor change at A18), and the nine qualifying items compare with only about 0.2 expected by chance among the 40 tested units, so the evidence set as a whole is unlikely without a change. [DIR001, POS001, DIR002, DIR004, DIR003, OCC001, REL001, OCC002, OCC003]\n\nA competing explanation the evidence cannot fully rule out is that A01 existed as a very rare variant before and merely surfaced in the later sample, since zero participation only means the activity was not observed in the earlier 200 traces. [OCC001]\n\nOther differences: routing shifts at A09 (more to A02, less to A04, A07 no longer observed) and at A14 (less to A08, a new transition to A15, more to A06), A02 becoming repeated in about a quarter of its traces, and A08 stopping its repeats; the evidence cannot establish whether these belong to the same change as the A01 addition or are independent differences. [DIR002, DIR003, OCC002, OCC003]",
+  "case_id": "case_f06f89677b98cdca",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

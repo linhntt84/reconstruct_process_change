@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_75265db7bdf56c30.json",
+  "evidence_sha256": "f0f6f3012918ab9653a381e3bf927fa27c2c106e58d420acadf9b46f9da70fd1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T13:55:42.543063+00:00",
+  "finished_at_utc": "2026-11-15T13:56:38.785354+00:00",
+  "latency_seconds": 56.24,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7357,
+    "prompt_tokens": 9562,
+    "total_tokens": 16919,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6538,
+      "text_tokens": 819
+    },
+    "cost": 0.0051128
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 25981,
+  "text": "### Observed differences\n\n- In the earlier window, activity A01 is not observed at all (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200) and always at the final position of the trace [OCC001, POS001].\n- In the earlier window, A03 closes every trace: it occurs in all 200 traces, always at the last position, with no observed outgoing transitions. In the later window, A03 still occurs in all traces but sits at about 0.86 of the trace length, and every observed outgoing transition of A03 now leads to A01 [POS002, DIR002].\n- The relationship between the two activities changes completely: earlier, 100% of traces contain A03 without A01; later, 100% contain both, always with A03 executed before A01 [REL001].\n- Smaller shifts appear elsewhere: A11 occurs in about 24% of traces before and about 30% after, A06 in about 26% before and about 21% after, and the outgoing-transition profiles of A04–A11 show only small redistributions (cosine dissimilarity up to about 0.04, empirical strength 0.14–0.71) [OCC004, OCC006, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a concluding activity, A01, was appended at the end of the process directly after A03. In the earlier window traces ended with A03; in the later window every trace contains A01 exactly once, A03 always precedes it, A03's only observed successor is A01, and A03 consequently moved from the last position to roughly the second-to-last position [OCC001, DIR002, POS001, POS002, REL001].\n\nThe supporting signs are the directness and consistency of the change: occurrence, direction, position and relation indicators all describe the same trace-level difference, each with an empirical strength of about 0.995, meaning a difference this large arises in fewer than about 1 in 100 random re-splits of the pooled traces; the shift is complete (0 of 200 traces to 200 of 200) rather than a gradual change in path frequencies, and the relational and positional items show the new ordering directly rather than inferring it from marginal frequencies [OCC001, DIR002, POS001, POS002, REL001]. An important competing explanation the evidence cannot rule out is that A01 is a relabelled existing activity rather than a genuinely new step, since the data show the behavioural difference but not what the activity represents [OCC001, REL001]. The evidence also includes no screening baseline, so the judgement rests on directness and consistency rather than a comparison against chance expectations [OCC001, DIR002, POS001, POS002, REL001].\n\nOther differences: participation in A11 rose (about 24% to 30% of traces) and in A06 fell (about 26% to 21%), and the outgoing-transition profiles of A04–A11 show small redistributions; these are modest, not clearly linked to the appended final step, and cannot be separated from sampling variation [OCC004, OCC006, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, DIR010].",
+  "case_id": "case_75265db7bdf56c30",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_8f0db8c0a904f91c.json",
+  "evidence_sha256": "8dc01d7521049ac3b960a2c0e9cfb21d02b0bd5e25f1c39e4043181c37b255fa",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:10:51.551194+00:00",
+  "finished_at_utc": "2026-11-14T13:11:57.530546+00:00",
+  "latency_seconds": 65.98,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10530,
+    "prompt_tokens": 19044,
+    "total_tokens": 29574,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9336,
+      "text_tokens": 1194
+    },
+    "cost": 0.0081216
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33348,
+  "text": "### Observed differences\n\n- Before, A19, A20 and A25 were executed in every trace (participation 100 in 100, about one occurrence per trace). In the later window each of the three appears in only about 53 in 100 traces [OCC004, OCC005, OCC006].\n- The three change as one group: before, each pair among them co-occurred in every trace; in the later window each pair co-occurs in about 53 in 100 traces, and neither member of the pair appears at all in about 47 in 100 traces — the group is either executed together or skipped together [REL008, REL009, REL014, REL019].\n- The group's internal order and its links to neighbours are preserved: A19 still precedes A20 and A25 in essentially all traces where they co-occur, A25 still leads to A20 in about 98 in 100 of its outgoing transitions, and A20 still leads to A26 in about 96 in 100 [REL008, REL009, REL014, DIR003, DIR004].\n- A41's outgoing transitions changed: before it led to A19 in about 96 in 100 transitions; in the later window it leads to A19 in about 50 in 100 and directly to A26 in about 44 in 100, matching the cases where the group is skipped [DIR005].\n- A26, A41, A46 and A47 continue to appear in every trace in both windows [POS002, POS003, POS004, DIR005, DIR006].\n- A02 became rarer: it appeared in about 29 in 100 traces before and about 9 in 100 after; when present, it sits earlier in the trace (mean relative position about 0.90 vs about 0.51) and its outgoing transitions shifted from mostly A47 (about 85 in 100) to a spread over many activities; A46 now leads to A02 in under 1 in 100 of its transitions, down from about 25 in 100. Only 17 after-window traces contain A02, so these details rest on few observations [OCC001, POS001, DIR001, DIR006].\n- A04 and A06 became slightly more common, from about 5 to about 12 in 100 traces and from about 4 to about 13 in 100 traces respectively, on small counts (9→24 and 8→25 traces) [OCC002, OCC003].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the activity group A19, A25, A20 became optional: previously executed in every case in the fixed sequence A41 → A19 → A25 → A20 → A26, in the later window it is executed in only about half of the cases and skipped in the rest, while A41 and A26 remain in every case and A41 now connects directly to A26 when the group is skipped [OCC004, OCC005, OCC006, REL008, REL014, REL015, DIR005].\n\nSupporting signs: the participation drop is large and consistent across all three activities (100 to about 53 in 100), the group is skipped as a unit (pairwise co-occurrence falls to exactly the group's participation, with \"neither\" rising to about 47 in 100), the internal order and the A25→A20 and A20→A26 links are preserved, and the screening produced 38 qualifying control-flow items where fewer than 1 would be expected without a change, so the pattern as a whole is unlikely under random re-splitting [OCC004, OCC005, OCC006, REL008, REL009, REL014, REL019, DIR003, DIR004].\n\nLimitations: the indicators show window-level behaviour, so the evidence cannot show what determines whether a case skips the group — for example a routing choice tied to case attributes versus a mix of case types — and the changes around A02 rest on few after-window observations [OCC001, POS001, DIR001].\n\nOther differences: A02 appears in far fewer traces (about 29 to about 9 in 100) and, when present, occurs earlier and is rarely reached from A46 anymore; A04 and A06 appear slightly more often (about 5 to 12 and about 4 to 13 in 100 traces) [OCC001, POS001, DIR001, DIR006, OCC002, OCC003].",
+  "case_id": "case_8f0db8c0a904f91c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

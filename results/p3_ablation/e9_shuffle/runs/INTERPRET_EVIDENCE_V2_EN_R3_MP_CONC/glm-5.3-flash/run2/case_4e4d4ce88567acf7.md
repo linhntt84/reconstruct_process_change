@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A01 was not observed at all (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200, mean 1.0 occurrence per trace) and sits near the end of the case, with a mean relative position of about 0.94 and a median at the final position. [OCC001, POS001]
+- Relations with A01 flipped completely: earlier, A05, A06 and A08 always appeared without A01; in the later window each co-occurs with A01 in essentially every trace, with A08 before A01 in all 200 traces, A05 before A01 in about 87 in 100 traces, and A06 before A01 in about 75 in 100. [REL001, REL002, REL003]
+- A08's outgoing transitions were redirected: earlier, among 75 observed transitions, about 51 in 100 went to A05, about 24 to A02 and about 20 to A06; in the later window about 82 in 100 go to A01, while A05, A06, A02 and A04 each account for roughly 7 in 100 or fewer. [DIR002]
+- In the later window, among the 53 observed outgoing transitions of A01, about 45 in 100 lead to A05 and about 45 in 100 to A06, with A02 and A04 rare. [DIR001]
+- Existing activities occupy earlier relative positions in the later window: the mean fell from about 0.52 to 0.44 for A05, from about 0.74 to 0.66 for A06, and from about 0.87 to 0.77 for A08; A08, previously usually the last event (median 1.0), now usually is not (median about 0.86). [POS002, POS003, POS004]
+- Gaps after A08 lengthened: for A08→A05 the share at distance 1 fell from about 66 in 100 to about 33 in 100 while distances 3 and 4 appeared; for A08→A06 the typical distance moved from 2 (about 52 in 100) to 3 (about 46 in 100), with distances 4 and 5 appearing. [LAG001, LAG002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 was added to the process and is now executed exactly once in every case, after A08 and usually after A05 and A06, near the end of the trace. In the earlier window A01 never appeared and traces typically ended at A08; in the later window A08 hands over to A01 in about 82 in 100 of its observed outgoing transitions, and A01 is usually the final event. [OCC001, POS001, REL001, REL002, REL003, DIR001, DIR002]
+
+The support is direct and consistent: participation went from 0 of 200 to 200 of 200 traces, all three relation pairs flipped from "appears alone" to full co-occurrence with A01 following, and the earlier positions of A05, A06 and A08 together with the longer gaps after A08 fit the same picture. Screening qualified 12 items where about 0.1 would be expected without a change, and every item's difference is larger than in about 199 of 200 random re-splits of the pooled data. [OCC001, REL001, REL002, REL003, DIR002, POS002, POS003, POS004, LAG001, LAG002, screening]
+
+Limitations: the twelve items largely express one underlying difference rather than independent confirmations, and A01's placement is not fully pinned down — A05 (about 14 in 100 traces) or A06 (about 25 in 100) sometimes follows A01 rather than preceding it, and the relation indicator records order anywhere in the trace rather than immediate succession. A competing explanation the evidence cannot rule out is that the whole end-of-trace block was restructured (with A05 and A06 sometimes following A01) rather than A01 simply being appended after A08; the before-shares for A08's routing also rest on only 75 observed transitions. [REL001, REL002, DIR001, DIR002]

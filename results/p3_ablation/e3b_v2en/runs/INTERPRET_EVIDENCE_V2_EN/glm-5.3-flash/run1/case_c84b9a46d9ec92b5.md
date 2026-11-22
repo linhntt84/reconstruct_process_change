@@ -1,0 +1,15 @@
+### Observed differences
+
+- Before, A19, A20 and A25 each ran in roughly a third of the traces (about 73, 62 and 70 of 200 traces) and were mutually exclusive alternatives — pairwise co-occurrence of about 1 in 100 traces or less — so nearly every trace contained exactly one of the three. In the later window they are almost entirely absent: A19 appears in 1 of 200 traces, A20 and A25 in none. [OCC001, OCC002, OCC003, REL001, REL003, REL008]
+- Before, about 87% of A41's outgoing transitions led to one of these three (A19 about 29%, A25 about 32%, A20 about 26%), and about 95–97% of each of the three led on to A26. In the later window, about 86% of A41's outgoing transitions lead directly to A26, an edge not observed at all before; the later profiles for A19/A20/A25 rest on 1 and 0 observations. [DIR005, DIR001, DIR002, DIR004]
+- The A41→A26 distance shrank accordingly: before, A26 followed A41 two event positions later in about 85 in 100 traces (three positions in about 15); in the later window it immediately follows in about 86 in 100. [LAG001]
+- A41 and A26 still occur in every trace in both windows. A26 now appears without any of the three activities in essentially all traces, whereas before one of them preceded A26 in about 30–37 in 100 traces; A26's mean event position moved slightly earlier (about 0.39 to 0.37 of trace length) and A41's slightly later (about 0.32 to 0.33). [POS004, POS005, REL004, REL009, REL013]
+- A secondary, not clearly connected redistribution: A21's outgoing mix shifted, with A24 rising from about 14% to about 35% of A21's outgoing transitions while A31 fell from about 54% to about 38% (about 114 vs 101 outgoing transitions observed). [DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+A structural reading supported by the evidence is that the alternative step between A41 and A26 — executed before as exactly one of A19, A20 or A25 in nearly every trace — is no longer executed in the later window, with A41 now connecting directly to A26. This rests on direct relational and successor evidence, not merely on frequencies: A41's routing flipped from about 87% into the trio to about 86% into A26, the A41→A26 distance shortened from mostly two positions to one, and the trio's participation fell from about 62–73 of 200 traces to 0–1. The volume of qualifying items (29, against roughly 0.57 expected for an unchanged process) is far beyond what random re-splitting produces as a whole, and each of the key differences is larger than in about 995 of 1,000 reference comparisons. [OCC001, OCC002, OCC003, DIR005, LAG001, REL004]
+
+Limitations: zero participation in the later window means the trio was not observed there, not that it cannot occur — A19 still appears once, so a persisting very-low-rate branch cannot be excluded, although the earlier support of 62–73 traces makes a pure sampling-fluctuation explanation unlikely. The many relation items largely restate one underlying change rather than confirming it independently, and the evidence does not explain the separate shift of A21's outgoing mix toward A24. [OCC001, DIR003, REL001]

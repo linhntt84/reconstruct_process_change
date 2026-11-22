@@ -1,0 +1,18 @@
+### Observed differences
+
+- Participation is essentially unchanged: A03 appears in every trace (about twice per trace) in both windows, and A04, A05 and A07 each occur in about half of the traces before and after — for example A04 in about 51 in 100 cases in both windows — with no activity becoming noticeably more or less frequent. [OCC001, OCC002, OCC003, OCC004]
+- In the later window, A04 tends to sit earlier in the case: its median event position moves from about halfway to about one-third into the trace, and its upper quartile from about three-quarters to about half, while its participation stays at about 51 in 100 cases. [POS004]
+- The relational indicators around A04 shift in the same direction: among cases where A04 follows A01 within five steps, the share at one or two steps rises from about 56 to about 68 in 100; the immediate A04→A06 share falls from about 22 to 14 in 100 while two-to-three-step gaps grow; A04 precedes A03 in about 18 in 100 cases versus about 13 before; and A04's outgoing transitions shift toward A01 (about 20→26 in 100) and away from A06 (about 16→10 in 100). [LAG003, LAG021, REL011, DIR004]
+- Routing out of the other activities is broadly stable; the largest change is at A06, whose outgoing transitions to A07 rise from about 27 to 43 in 100, but this rests on only about 20 outgoing transitions per window and is therefore weak. [DIR006]
+- Several lag distributions between other activity pairs redistribute without a common direction — for example A05→A03, A07→A05 and A02→A05 shift mass across one-to-five-step gaps, with empirical strengths up to about 0.87 — and A07's own position drifts slightly later (upper quartile from about 0.67 to 0.75 of the trace). [LAG023, LAG031, LAG010, POS007]
+- The coarse order structure is stable: A01 and A02 still co-occur in all cases with an even order split in both windows, A04 and A07 remain strict alternatives that never co-occur, and A02 still precedes A06 in about 98 in 100 cases. [REL001, REL017, REL009]
+
+### Inference
+
+Support level: Weak hypothesis
+
+The evidence suggests that in the later window A04 is executed earlier within each case relative to the other activities, while its participation (about 51 in 100 cases) and its occurrence rate stay the same. The supporting signs are direct and mutually consistent: A04's position distribution moves earlier; gaps from the early activities A01 and A02 to A04 shorten; gaps from A04 to the late activity A06 lengthen and A04's outgoing transitions shift toward A01 and away from A06; and A04 precedes A03 and A01 somewhat more often than before. [POS004, LAG003, LAG009, LAG021, DIR004, REL011, REL003]
+
+What is missing: the evidence contains no screening summary, so the number of qualifying items cannot be compared with the number an unchanged process would produce; with roughly 70 indicators tested on two 200-trace windows, a cluster of this size can still arise from sampling variation. The magnitudes are modest, and the small position shifts of A01 and A02 themselves (A01 slightly later, A02 slightly earlier) could contribute to the shorter A01/A02→A04 gaps, while several equally strong lag shifts at pairs not involving A04 point in mixed directions and are compatible with noise. [POS001, POS002, LAG023, LAG031, LAG010]
+
+Other differences: A07 appears slightly later in the later window and is more often reached directly from A06 (about 27→43 in 100 of A06's outgoing transitions, based on about 20 observations per window), alongside the scattered lag redistributions among A03, A05 and A07 pairs noted above. [POS007, DIR006, LAG029, LAG023, LAG031]

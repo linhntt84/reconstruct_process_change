@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_178c7ce208cb2c93.json",
+  "evidence_sha256": "da2f8924f19b60d0551dd342c116978ab1708d9f45c0f9490310bce656690ae8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:31:57.012664+00:00",
+  "finished_at_utc": "2026-11-15T04:33:06.947257+00:00",
+  "latency_seconds": 69.93,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10300,
+    "prompt_tokens": 5770,
+    "total_tokens": 16070,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9192,
+      "text_tokens": 1108
+    },
+    "cost": 0.006015499999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30803,
+  "text": "### Observed differences\n\n- Activity A01 was not executed at all in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200) and never repeats. [OCC001]\n- In the earlier window, the block formed by A02 and A04 connected straight to A03: of A02's observed outgoing steps, about 78 in 100 went directly to A03 and the rest to A04; of A04's outgoing steps, about 78 in 100 went to A02 and the rest directly to A03. [DIR002, DIR003]\n- In the later window, both of those direct steps into A03 are gone: about 76 in 100 of A02's outgoing steps now go to A01 (the rest still to A04), and about 24 in 100 of A04's outgoing steps now go to A01 (the rest still to A02). A01's only observed successor is A03, in every case. [DIR002, DIR003, DIR001]\n- A01 and A03 now always occur together with A01 first (200 of 200 later traces), whereas before, A03 always appeared without A01. The same holds for the pairs A01–A02 and A01–A04: no co-occurrence before, always co-occurring in the later window with A02 before A01 and A04 before A01. [REL002, REL001, REL003]\n- The step distance from the A02/A04 block to A03 grew by exactly one: A02-to-A03 went from lag 1 (about 78 in 100) to lag 2 (76 in 100), and A04-to-A03 from lag 2 (about 78 in 100) to lag 3 (76 in 100). [LAG001, LAG002]\n- A01 occupies one fixed relative position in the later window, about two-thirds of the way through each trace (normalised position 0.67 in all 200 traces). [POS001]\n- A02's relative position moved slightly earlier (median normalised position from 0.50 to 0.33), consistent with every trace gaining one event; A02 still occurs in every trace in both windows. [POS002]\n- The choice between the two orders barely moved: the A04-first order was taken in about 78 in 100 traces before and about 76 in 100 after, with the A02-first order taking the remainder. [DIR002, DIR003, LAG001, LAG002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 became a mandatory step executed exactly once per case, inserted immediately before A03. In the earlier window, traces ran A04 → A02 → A03 (about 78 in 100) or A02 → A04 → A03 (about 22 in 100); in the later window, every trace runs A04 → A02 → A01 → A03 (about 76 in 100) or A02 → A04 → A01 → A03 (about 24 in 100). [OCC001, DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002]\n\nThe placement is shown directly, not inferred indirectly: both former predecessors of A03 (A02 and A04) now lead to A01, A01's only successor is A03, the three pairs involving A01 co-occur in every later trace in a fixed order, and the distances from A02 and from A04 to A03 each grew by exactly one step — the signature of one activity inserted between them and A03. A01's uniform once-per-trace occurrence at one fixed position fits a mandatory step rather than an optional or repeated one. [DIR001, DIR002, DIR003, REL001, REL002, REL003, LAG001, LAG002, POS001, OCC001]\n\nThe volume of evidence also far exceeds what an unchanged process produces: 11 control-flow items qualified where about 0.06 would be expected by chance for the 12 units tested. [screening]\n\nLimitations: zero participation in the earlier window means only that A01 was not observed in those 200 traces, so a competing explanation — that A01 existed before but was too rare to appear in the sample — cannot be fully ruled out, although its perfectly regular appearance afterwards fits a newly mandatory step. The two windows are finite samples, and the evidence says nothing about why the step was introduced. [OCC001]\n\nOther differences: none beyond the insertion itself. A02's earlier relative position (median 0.50 to 0.33) is a by-product of traces gaining one event, and the split between the two orders stayed at about 78/22 versus 76/24, so no change in routing frequencies was detected. [POS002, DIR002, DIR003]",
+  "case_id": "case_178c7ce208cb2c93",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

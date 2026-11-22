@@ -1,0 +1,13 @@
+### Observed differences
+
+- Activity frequencies shifted only slightly and in different directions: A02 occurs in about 72 in 100 traces before versus 68 in 100 after (mean occurrences per trace 1.1 vs 1.0), A08 rises from about 61 to 65 in 100 and A13 from about 51 to 54, while A14 falls from about 49 to 46 and A10 from about 53 to 49; every activity is still observed in both windows, and none of these shifts stands out against random re-splits (empirical strengths roughly 0.2–0.76). [OCC001, OCC004, OCC006, OCC008, OCC009]
+- The clearest routing shift is at A05: of its outgoing transitions, about 44 in 100 went to A03 before versus 53 in 100 after, while A12 fell from about 56 to 47 in 100 (strength about 0.89, the highest of the direction items), with the same successor set observed in both windows; other routing movements are 1–8 percentage points, e.g. A11 sends about 15 in 100 of its transitions to A08 after versus about 8 in 100 before. [DIR001, DIR006]
+- Event positions barely move: the largest changes are median positions a few hundredths of the trace length (A09 about 0.79 to 0.73, A06 about 0.71 to 0.77, A14 about 0.33 to 0.40), each based on roughly 65–100 traces per window. [POS005, POS008, POS013]
+- Pairwise relations keep their character: no pair switches between rarely and usually co-occurring (A13 and A14 still never appear in the same trace), one-sided orders stay one-sided, and co-occurrence movements just echo the small participation shifts, e.g. A08 and A13 together in about 30 in 100 traces before versus 38 in 100 after. [REL087, REL112, REL114]
+- About a dozen activity pairs show shifts in their event-position gaps with high empirical strength, but they disagree in direction: A11→A08 became more often immediate (gap-1 share about 17% before vs 29% after) while A13→A08 became less immediate (about 84% vs 67%); A14→A03 gaps lengthened (gap-3 share about 82% vs 64%) while A11→A03 gaps shortened (gap-4 about 78% vs 69%); several of these rest on modest counts (A13→A12: 24 vs 21 pairs; A14→A03: 34 vs 22). [LAG035, LAG048, LAG050, LAG052, LAG032]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The flagged differences are small, scattered across unrelated activities and pairs, and partly contradictory — A08 is reached more immediately after A11 but less immediately after A13 — and even the two strongest items (lag shifts with strength about 0.96) are isolated; with no screening baseline provided, the number of qualifying items cannot be compared with a chance expectation, so ordinary sampling variation between the two 200-trace windows remains a full explanation. [LAG035, LAG048, OCC001, DIR001, POS008]

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_cb094c7321bbcbe9.json",
+  "evidence_sha256": "e0ee07d22b1acf7a4c30fd19e8b4c772b4e49395e16562ca1178f3760fbae6e8",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T02:15:41.529439+00:00",
+  "finished_at_utc": "2026-11-16T02:18:30.793551+00:00",
+  "latency_seconds": 169.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7654,
+    "prompt_tokens": 6285,
+    "total_tokens": 13939,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6889,
+      "text_tokens": 765
+    },
+    "cost": 0.00476975
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27497,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained A04 exactly once, always at the final position of the trace; in the later window, none of the 200 traces contains A04 (participation 100% → 0%, mean occurrences per trace 1.0 → 0.0). [OCC001, POS003]\n- Earlier, the only observed outgoing transition of A02 led to A04, in all 200 traces; in the later window A02 shows no outgoing transitions at all and sits at the final trace position, so traces now close with A02. [DIR001, POS001]\n- The remaining activities keep their relative order but each lies slightly later within the trace: A06 from position 0.20 to 0.25, A05 from 0.40 to 0.50, A03 from 0.60 to 0.75, and A02 from 0.80 to 1.00 — a pattern consistent with every trace simply being one event shorter, not with any reordering. [POS001, POS002, POS004, POS005]\n- Every activity pair involving A04 changed from always co-occurring in a fixed order to not co-occurring at all: A01, A02 and A03 always preceded A04 in the earlier window and now appear without it, and A05 and A06, which also always ran before A04, now likewise appear without it. [REL001, REL002, REL003, REL004, REL005]\n- Each of these differences is larger than in about 199 out of 200 random re-splits of the pooled data. [OCC001, DIR001, POS001, POS002, POS003, POS004, POS005, REL001, REL002, REL003, REL004, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the closing activity A04 is no longer executed: in the earlier window traces ran A01, A06, A05, A03 and A02 in a fixed order and finished with A04, while in the later window traces contain the same activities in the same order but end after A02. The change is shown directly and consistently — A04 falls from participation in all 200 traces to none, the single A02→A04 transition disappears as A02 becomes the final activity, and all five of A04's relations switch from fixed-order co-occurrence to non-co-occurrence, while the small position shifts of the surviving activities match a one-event-shorter trace rather than an independent reordering. [OCC001, POS003, DIR001, POS001, REL001, REL002, REL003, REL004, REL005, POS002, POS004, POS005]\n\nLimitations: no screening baseline was provided, so the number of qualifying items cannot be compared against a chance expectation; and zero participation strictly means only that A04 was not observed, so the evidence cannot distinguish a removal of A04 from it being systematically skipped, renamed, or recorded under a different code. The main competing explanation — that the later window happens to contain only traces of a variant without A04 — cannot be ruled out, although a pure sampling effect is implausible when an activity present in 200 of 200 earlier traces appears in 0 of 200 later traces. [OCC001, POS003]",
+  "case_id": "case_cb094c7321bbcbe9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

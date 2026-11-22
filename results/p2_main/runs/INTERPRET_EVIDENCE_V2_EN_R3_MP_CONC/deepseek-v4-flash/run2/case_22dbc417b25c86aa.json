@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_22dbc417b25c86aa.json",
+  "evidence_sha256": "5441e0c796fc733c473ac30f47902555d96691f6f3bc04ce729064446cf19f88",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:21:35.616221+00:00",
+  "finished_at_utc": "2026-11-15T01:21:46.751763+00:00",
+  "latency_seconds": 11.14,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1825,
+    "prompt_tokens": 5052,
+    "total_tokens": 6877,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1299
+    },
+    "cost": 0.0011660680000000001
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 4536,
+  "text": "### Observed differences\n\n- In the later window, activity A06 no longer appears in any trace: its trace participation dropped from 100% (200 of 200 traces) to 0% (0 of 200 traces), and its mean occurrences per trace fell from 1.0 to 0.0. [OCC001, POS003]\n- The outgoing transition of A05 changed completely: before, all observed transitions from A05 went to A06; after, all went to A01. [DIR001]\n- The outgoing transition of A06 to A01, which was present in all traces before, is no longer observed because A06 is absent. [DIR002]\n- The co-occurrence of A06 with A01 and with A05 disappeared: before, A06 and A01 always appeared together (with A06 before A01), and A05 and A06 always appeared together (with A05 before A06); after, A01 and A05 each appear alone. [REL001, REL002]\n- The positional relationship between A05 and A01 changed: the lag between them shifted from 2 steps to 1 step, meaning they are now adjacent instead of having one activity in between. [LAG001]\n- Positions of A01 and A05 shifted slightly: A01 moved earlier (mean relative position from 0.5 to 0.4) and A05 moved later (from about 0.17 to 0.2), consistent with a shorter sequence. [POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the process changed from a three-activity sequence A05 → A06 → A01 to a two-activity sequence A05 → A01, with activity A06 removed. This is directly shown by the complete disappearance of A06, the change of A05's successor from A06 to A01, the disappearance of A06's successor A01, the loss of co-occurrence between A06 and the other two activities, and the reduction of the lag between A05 and A01 from 2 to 1. The number of qualifying evidence items (9) far exceeds the 0.04 expected by chance, and all items are consistent with a single structural change. A competing explanation that A06 still exists but was simply not sampled in the later window is very unlikely given that 200 traces were observed and every indicator points to its absence.\n\nOther differences: None beyond the removal of A06 and the resulting direct connection between A05 and A01.",
+  "case_id": "case_22dbc417b25c86aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,12 @@
+### Observed differences
+
+- Activity A01 is absent from the earlier window (0 of 200 traces) but appears exactly once in every trace of the later window (200 of 200 traces, mean 1.0 occurrence per trace, no repetitions) [OCC001].
+- In the earlier window, A05 was directly followed by A06: all observed outgoing transitions of A05 went to A06, and A06 followed A05 one step later in 100% of traces. In the later window, A05's outgoing transitions all go to A01, A01's outgoing transitions all go to A06, and A06 follows A05 two steps later in 100% of traces [DIR001, DIR002, LAG001].
+- In the earlier window, A05 and A06 each occurred without A01 in 100% of traces; in the later window, A01 co-occurs with A05 in 100% of traces with A05 executed first, and with A06 in 100% of traces with A01 executed first [REL001, REL002].
+- By event position, A01 sits at mean position 0.6 in the later window, between A05 (mean 0.4, down from 0.5) and A06 (mean 0.8, up from 0.75) [POS001, POS002, POS003].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 was inserted into the flow between A05 and A06: in the earlier window every trace ran from A05 directly to A06, while in the later window every trace runs A05 → A01 → A06, with A01 executed exactly once per trace. This rests on direct relational evidence — the successor of A05 changed from A06 to A01, A01's successor is A06, the A05-to-A06 step distance grew from one to two, and the order relations place A01 between the two activities — and these signs are mutually consistent and appear in all 200 traces of each window [OCC001, DIR001, DIR002, REL001, REL002, LAG001]. Nine control-flow items qualified in total, where fewer than one (about 0.04) would be expected if nothing had changed, so the set as a whole is far beyond what random re-splits of a stable process produce [OCC001, DIR001, DIR002, POS001, POS002, POS003, REL001, REL002, LAG001]. Limitations: the two windows are finite samples, and the evidence covers only the immediate relations of these activities, so any further restructuring elsewhere would not be visible; positions are event positions, not clock times. A competing explanation the evidence cannot rule out is that A01 is not a genuinely new activity but an existing one relabelled or rerouted into this position, since the activity codes are anonymous and A01 was never observed in the earlier window [OCC001, DIR001].

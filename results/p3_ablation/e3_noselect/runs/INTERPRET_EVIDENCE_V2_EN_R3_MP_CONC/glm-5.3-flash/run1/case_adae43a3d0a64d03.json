@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_adae43a3d0a64d03.json",
+  "evidence_sha256": "a838c1906b6c57ee28cfa4e1a72cb11898e06f285a5454f3fc15b0e67c9cdb2e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:25:24.790480+00:00",
+  "finished_at_utc": "2026-11-14T14:26:46.562201+00:00",
+  "latency_seconds": 81.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13372,
+    "prompt_tokens": 13298,
+    "total_tokens": 26670,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12275,
+      "text_tokens": 1097
+    },
+    "cost": 0.0086807
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 40521,
+  "text": "### Observed differences\n\n- Activity A05 disappeared: it ran in every one of the 200 earlier traces (once per trace, always at normalized position 0.5) and in no trace at all in the later window [OCC003, POS003, DIR003].\n- Activity A01 appeared: it was not observed in any earlier trace, but in the later window it occurs in every trace, exactly once, always at normalized position 0.5 — the same position A05 previously occupied, with no spread in either window [OCC001, POS001, POS003].\n- The hand-over to A03 changed source: in the earlier window A05 was always followed by A03; in the later window A01 is always followed by A03 [DIR003, DIR001, REL002, REL010].\n- Predecessors were redirected from A05 to A01: A02's outgoing transitions led to A05 in about 72 in 100 cases before and to A01 in about 75 in 100 after (its A06 share stayed at roughly a quarter); A07 switched from A05 (about 71 in 100) to A01 (about 66 in 100); A06 switched from A05 (about 29 in 100) to A01 (about 30 in 100) [DIR002, DIR005, DIR004].\n- The relations mirror each other: before, A05 always co-occurred with A03 (A05 first) and with A06 (A06 first); in the later window A01 always co-occurs with A03 (A01 first) and A06 (A06 first), and A02/A07 each co-occur with A01 exactly when they occur, immediately before it — the same pattern they had with A05 [REL010, REL012, REL002, REL004, REL007, REL013, REL001, REL005].\n- Distances to A03 are preserved: A06 reaches A03 within five steps in all traces in both windows, with a two-step gap in about 29 in 100 cases before and 30 in 100 after (three-step gap about 71 vs 70); the A02→A03 and A07→A03 gap profiles likewise barely move [LAG002, LAG001, LAG003].\n- The rest of the control flow is essentially stable: A02 appears in about 47 vs 50 in 100 traces, A07 in about 53 vs 50, A02 and A07 never occur in the same trace in either window, and A06's participation and position are unchanged [OCC002, OCC004, REL009, POS004].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that A05 was replaced by A01 at the same point in the flow — the step between the A02/A06/A07 branching and A03. In the earlier window every trace passed through A05 immediately before A03; in the later window every trace passes through A01 at that same position with the same successor, while A02, A06 and A07 now lead to A01 in nearly the same proportions in which they previously led to A05, and A05 is no longer observed at all. The many qualifying items are not independent confirmations — they all describe this one underlying difference — while every remaining item shows only small fluctuations of the kind random re-splits of two 200-trace windows produce. An important competing explanation the evidence cannot rule out is a relabelling of the same step (A05 renamed to A01), which would look identical in the log; strictly, A01's zero participation earlier only means it was not observed in that window [OCC001, OCC003, POS001, POS003, DIR001, DIR002, DIR004, DIR005, REL002, REL004, LAG002].\n\nOther differences: A02's participation rose from about 47 to 50 in 100 traces and A07's fell from about 53 to 50; the A07→A03 gap shifted slightly from two steps (about 71 in 100) toward three steps (about 66 in 100); A06–A07 ordering shares and A07's mean position moved by a few points. All of these have low empirical strength (roughly 0.06–0.50) and are consistent with sampling variation between the two windows [OCC002, OCC004, LAG003, REL014, POS005].",
+  "case_id": "case_adae43a3d0a64d03",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "7f09d7586565cfb171d5dfb5d29bfb34680ad17c9382a9d38b7abffb11a89502",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:41:08.268881+00:00",
+  "finished_at_utc": "2026-11-14T12:43:33.503731+00:00",
+  "latency_seconds": 145.23,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20557,
+    "prompt_tokens": 15292,
+    "total_tokens": 35849,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19241,
+      "text_tokens": 1316
+    },
+    "cost": 0.0125723
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 68258,
+  "text": "### Observed differences\n\n- In the earlier window, sequencing was rigid: each observed source activity had exactly one successor, accounting for 100% of its observed outgoing transitions, forming the fixed chain A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. [DIR001-DIR007]\n- In the later window, every one of these sources has two to four observed successors, with the original successor still the most frequent: A15 → A18 in about 68% of its outgoing transitions (A19, A20, A21 about 11% each); A17 → A15 in about 56% (A19 27%, A21 11%, A20 6%); A18 → A27 in about 52% (A21 17%, A20 17%, A19 15%); A19 → A21 in about 61% (A17 24%, A15 11%, A18 5%); A20 → A27 in about 49% (A15 20%, A18 20%, A17 12%); A21 → A20 in about 67% (A15 13%, A17 12%, A18 9%); A26 → A17 in about 53% and A26 → A19 in about 47%. [DIR001-DIR007]\n- Pairs that previously appeared in only one order now appear in both: A17 is followed by A19 in about 27% of its outgoing transitions while A19 is followed by A17 in about 24% of its; A15 with A19, A18 with A20, and A21 with A15/A17/A18 likewise now point at each other, which was never observed earlier. Such two-way pairs are no longer executed in a fixed order. [DIR001, DIR002, DIR004, DIR005, DIR006]\n- Fixed step distances dissolved into ranges: A15 → A18, always adjacent before, is now 1 step apart in about 68 in 100 cases and 2-4 steps apart otherwise; A18 → A27, always 4 steps before, is now immediate in about 52 in 100; A26 → A19, always 4 steps before, is now immediate in about 47 in 100. [LAG001, LAG013, LAG023]\n- Relative positions converged toward the middle of the trace: A15, A17 and A18 now occur slightly later (mean relative position about 0.59 to 0.64, 0.56 to 0.59, 0.62 to 0.68), while A19, A20 and A21 occur slightly earlier (about 0.65 to 0.59, 0.71 to 0.68, 0.68 to 0.64). [POS001-POS006]\n- Participation is unchanged: every activity covered by the evidence occurs in all 200 traces of both windows, so the difference concerns sequencing, not presence. [DIR001-DIR007, POS001-POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the strict sequencing among A15, A17, A18, A19, A20 and A21 is loosened: activities that previously always ran in the fixed order A17 → A15 → A18 → A19 → A21 → A20 (entered from A26, closed before A27) can now follow one another in varying orders, with the original order still the most frequent and reversed orders — such as A19 followed by A17, or A20 followed by A18 — occurring regularly. The entry to and exit from this group also diversified: A26 now leads directly to A19 in about 47 in 100 of its outgoing transitions (before always A17), and A18 now leads directly to A27 in about 52 in 100 (before always A19), so A27's immediate predecessor is now A18 or A20 in roughly equal shares. [DIR001-DIR007, LAG013, LAG023]\n\nThis hypothesis is direct and consistent: successor profiles went from a single transition at 100% to two to four successors, one-way relations became two-way, constant step distances spread into ranges, and relative positions moved toward each other — all faces of the same restructuring rather than independent anomalies. Screening qualified 37 control-flow items where roughly 0.43 would be expected without a change, and each item's difference exceeds about 199 of 200 random re-splits, so chance sampling of a stable process cannot explain the pattern as a whole. [DIR001-DIR007, LAG001-LAG024, POS001-POS006]\n\nAn important competing explanation remains: the evidence cannot distinguish whether the order now varies from case to case or whether the later window combines a small number of fixed variants (the original chain plus reordered ones), since both produce these profiles; it is also possible that only part of the executions follow the new orders, as the original order still dominates each source's transitions. [DIR001-DIR007]\n\nOther differences: none beyond this restructuring passed the screening thresholds; in particular, none of the activities covered by the evidence appeared or disappeared, and no participation shift was observed. [DIR001-DIR007, POS001-POS006]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,16 @@
+### Observed differences
+
+- In the earlier window, exactly one of the three alternative activities A14, A15 and A20 ran in each case (about 38, 32 and 31 in 100 cases respectively), positioned after both A21 and A22 and before A27; in the later window the one-of-three choice persists with similar shares (about 34, 35 and 32 in 100), but the chosen activity now runs before A21 and A22, directly after A40. [DIR006, LAG004, REL001, REL002, REL003, REL004, REL005, REL006]
+- Before, A40 always led to A21, while A14, A15 and A20 split their outgoing transitions roughly half between A23 and A27; in the later window A40 leads only to A14, A15 or A20 (about 34, 35 and 32 in 100 of its transitions), and each of the three leads only to A21. [DIR001, DIR002, DIR003, DIR006]
+- Before, the segment between A22 and A27 contained A23 and the chosen alternative in either order: A22 led to A23 in about 48 of 100 transitions and to one of the alternatives in the remainder, and A23 led to A27 in about 53 of 100, so the A22-to-A27 distance was always three events; in the later window A22 leads only to A23 and A23 only to A27, each at a distance of one event (A22-to-A27 distance two). A22 and A23 occur in every trace in both windows. [DIR004, DIR005, LAG001, LAG002, LAG003]
+- A10 and A11 occur in every trace in both windows but repeat less often in the later window: mean occurrences per trace fell from about 1.9 to about 1.6, and the share of traces containing repetitions fell from about 47 to about 38 in 100. [OCC001, OCC002]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the alternative activities A14, A15 and A20 — exactly one of which executes per case, in roughly equal shares — changed their placement: before, they ran between A22 and A27, interleaved with A23 in either order, while A21 directly followed A40; in the later window they run between A40 and A21, and A22, A23 and A27 form a fixed, adjacent sequence. The signs are direct and consistent: the successor profiles of A40, A14, A15, A20, A22 and A23 were completely replaced, the relative order of the alternatives versus A21 and A22 reversed in all six activity pairs, and the positional gaps moved accordingly (A40-to-A21 from one to two events, A22-to-A27 from three to two). All 18 qualifying items are control-flow items against roughly 0.35 expected for an unchanged process, and every item ranks at the top of its 200 reference comparisons (strength about 0.995), so chance cannot account for the pattern as a whole. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, LAG001, LAG002, LAG003, LAG004, REL001, REL002, REL003, REL004, REL005, REL006]
+
+Limitations: the evidence uses event positions rather than clock time, and it cannot distinguish the alternatives moving earlier from the sequence A21–A22–A23 moving later; likewise, removing the alternatives from one segment and reinserting them in another would produce the same signature as a move. [REL001, REL002, REL003, REL004, REL005, REL006]
+
+Other differences: A10 and A11 repeat less often in the later window (mean occurrences per trace down from about 1.9 to about 1.6; traces with repetitions down from about 47 to 38 in 100); no relational evidence shows where these two activities sit in the sequence, so they cannot be tied to the placement hypothesis. [OCC001, OCC002]

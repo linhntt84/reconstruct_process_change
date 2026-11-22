@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_b5adc570e3cff1cc.json",
+  "evidence_sha256": "a076f2a1050398763847abda669caaf8c073eb1cb1a881de79d0373331c458ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:42:45.252527+00:00",
+  "finished_at_utc": "2026-11-15T10:45:10.512107+00:00",
+  "latency_seconds": 145.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21002,
+    "prompt_tokens": 10364,
+    "total_tokens": 31366,
+    "completion_tokens_details": {
+      "reasoning_tokens": 19646,
+      "text_tokens": 1356
+    },
+    "cost": 0.0120556
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 62774,
+  "text": "### Observed differences\n\n- The three activities A14, A15 and A20 — which together account for about one occurrence per case (appearing in about 38, 32 and 31 in 100 traces before, and about 34, 35 and 32 in 100 after) — moved from late to early in the trace: their mean relative position fell from about 0.60 of the trace length to about 0.32, while their participation stayed essentially unchanged. [POS001, POS002, POS003]\n- The start of the trace was rewired. Before, A40 was followed by A21 on every observed outgoing transition and the two were adjacent in every case; in the later window A40 is followed by A14, A15 or A20 (roughly one third each), each of these is followed by A21 on every observed transition, and A40 reaches A21 two steps later instead of one. [DIR006, DIR001, DIR002, DIR003, LAG004]\n- The order between the three activities and A21/A22 reversed completely: before, A21 and A22 came first in every case where they co-occurred with A14, A15 or A20 (about 38, 32 and 31 in 100 cases); after, each of the three comes first in every such case (about 34, 35 and 32 in 100). [REL001, REL002, REL003, REL004, REL005, REL006]\n- The late section changed from a two-way arrangement into a fixed chain. Before, the branch step sat between A22 and A27 in one of two arrangements — A22, branch step, A23, A27 in about 52 in 100 cases, or A22, A23, branch step, A27 in about 48 in 100, with the branch step itself leading to A23 or A27 in roughly equal shares and A27 always three steps after A22. After, A22 is followed by A23 and A23 by A27 on every observed transition, both pairs are always adjacent, and A27 comes two steps after A22. [DIR004, DIR005, DIR001, DIR002, DIR003, LAG001, LAG002, LAG003]\n- A21, A22 and A23 kept their participation (every case) and their relative order, each shifting only slightly later (mean relative position up by about 0.01–0.03), consistent with one activity having been inserted earlier in the trace. [POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the per-case branch step — exactly one of A14, A15 or A20 runs in each case — was relocated from the late section to the early section of the process: before, the flow ran A40 → A21 → … → A22 → (branch step before or after A23) → A27; in the later window it runs A40 → branch step → A21 → … → A22 → A23 → A27. Because the step's participation is essentially unchanged (about one of the three per case in both windows), the difference lies in placement, not in how often the step runs. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, REL001, REL002, REL003, REL004, REL005, REL006, LAG001, LAG002, LAG003, LAG004]\n\nThe screening qualified 22 control-flow items where about 0.25 would be expected without any change, so the set as a whole is not what a stable process produces, and every item's difference exceeds about 995 in 1,000 random re-splits. The relocation is shown directly rather than inferred: all six activity-pair relations reverse in every co-occurrence, the successor changes at A40, A22, A23 and the branch activities match it, and the step-distance changes (A40→A21 and A22→A27) shift by exactly the one step the move predicts. A21's own position barely moved (about 0.33 to 0.35), which argues against a simple swap between A21 and the branch step. [REL001, REL002, REL003, REL004, REL005, REL006, DIR004, DIR005, DIR006, POS004, LAG002, LAG004]\n\nLimitations: the evidence cannot distinguish a literal move of the branch step from removing it between A22 and A27 and adding an equivalent step between A40 and A21, since the two are behaviourally identical in this data; the reconstruction of the earlier two-way arrangement rests on transition shares and step distances, so minor details (such as whether the branch step could repeat within a case) remain unresolved. POS and LAG use event positions rather than clock time, so no claim about timing is made. [DIR001, DIR002, DIR003, LAG001, LAG003, POS001]",
+  "case_id": "case_b5adc570e3cff1cc",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

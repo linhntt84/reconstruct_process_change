@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_07ad492269fbb28d.json",
+  "evidence_sha256": "058538e6fd1362b7f3677f1c3b9c815eb346c9552b1b9a69ba84be10bc9abb70",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:37:54.716084+00:00",
+  "finished_at_utc": "2026-11-14T14:41:08.051400+00:00",
+  "latency_seconds": 193.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 31204,
+    "prompt_tokens": 51026,
+    "total_tokens": 82230,
+    "completion_tokens_details": {
+      "reasoning_tokens": 28819,
+      "text_tokens": 2385
+    },
+    "cost": 0.023255899999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 98442,
+  "text": "### Observed differences\n\n- Context for the main finding: in both windows A36, A37 and A42 form a tightly connected trio — each sends about 95–98 of every 100 outgoing transitions to one of the other two or to A28 — and all three run in essentially every case (A36 and A42 in 100 of 100 traces; about 200 outgoing transitions observed per activity per window) [POS001, POS002, DIR036, DIR037, DIR042].\n- In the later window, traffic within this trio shifted toward the directed sequence A36 → A37 → A42 → A36: A36 sent about 37 of 100 transitions to A37 (previously 28) and only about 25 directly to A42 (previously 38); A37 sent about 38 of 100 to A42 (previously 29) and about 27 to A36 (previously 36); A42 sent about 36 of 100 to A36 (previously 29) and about 30 to A37 (previously 36). Shares to A28 stayed at about 31–35 of 100, and these shifts exceed those in about 80–97 of 100 random re-splits of the pooled data [DIR036, DIR037, DIR042].\n- At pair level this shows up consistently: A36 and A42 still co-occur in every case and still appear in both orders, but A42 now comes first in about 53 of 100 cases (previously 46); when A36 precedes A42 the two are now usually two steps apart (46 of 100, previously 28, on roughly 100 observed pairs per window) rather than adjacent (54, previously 72); when A42 precedes A36 they are now usually adjacent (68 of 100, previously 60) [REL001, LAG001, LAG002].\n- A15 and A16 still appear in every case but repeat less: mean occurrences per case fell from about 1.67 to 1.54 (A15) and from about 1.68 to 1.53 (A16), and A16's transitions to A15 fell from about 39 to 34 of 100 [OCC014, OCC015, DIR016].\n- A01's dominant successor flipped: transitions to A09 fell from about 41 to 29 of 100 outgoing transitions while transitions to A07 rose from about 28 to 41; A01 itself runs slightly more often (56 vs 51 of 100 cases) [OCC001, DIR001].\n- A08 takes part in more cases (about 24 of 100, previously 19) and now sends about 29 of 100 of its transitions to A49, up from about 7 [OCC008, DIR008].\n- Participation rose for A21 (56 vs 47 of 100 cases), A10 (25 vs 18), A06 (21 vs 18), A17 (26 vs 22) and A19 (50 vs 45), and fell for A03 (46 vs 51), A11 (46 vs 51), A12 (45 vs 50), A20 (52 vs 56) and A22 (46 vs 54) [OCC020, OCC010, OCC006, OCC016, OCC018, OCC003, OCC011, OCC012, OCC019, OCC021].\n- A44 takes part in fewer cases (48 vs 55 of 100) with fewer occurrences per case (0.84 vs 0.98); A43 now routes about 88 of 100 transitions to A44 instead of 99, with small new edges to A06 and A10; A48 sends about 10 of 100 transitions to A08 instead of 2 [OCC037, DIR043, DIR048].\n- A05 and A09 rerouted moderately (A05→A09 up to about 36 of 100 from 26; A09→A14 up to 32 from 25, with A09→A07 down to 29 from 39), and A51's outgoing mix changed markedly, but that rests on only four observed outgoing transitions in the earlier window versus twenty in the later one and is weakly grounded [DIR005, DIR009, DIR051].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the existing paths between A36, A37 and A42 are taken with different frequencies: the directed round A36 → A37 → A42, closing with A42 → A36, gained share on all three of its edges (by about 6–13 of 100 transitions each), while the direct A36 → A42 step and the reverse edges A37 → A36 and A42 → A37 lost share, with each activity's transitions to A28 roughly stable. All three activities and all six transitions between them are well observed in both windows, so this is a redistribution between existing alternatives rather than paths appearing, disappearing or bypassing a group of activities. The rerouting is shown directly by the successor shares and is quantititatively consistent at pair level — fewer direct A36→A42 steps go with such pairs usually two steps apart, and more direct A42→A36 steps go with such pairs usually adjacent — while the two activities still co-occur in every case and in both orders. These indicators partly describe the same trace behaviour, so they corroborate one underlying rerouting rather than several independent changes [DIR036, DIR037, DIR042, LAG001, LAG002, REL001, POS001, POS002]. The evidence cannot show what drives the share shift — in particular, it cannot distinguish a uniform change in path choice from a subset of cases entering or traversing the trio differently — and it provides no screening baseline, so the smaller shifts in particular could still reflect sampling differences between two windows of 200 cases each [DIR036, DIR037, DIR042, LAG001, LAG002].\n\nOther differences:\n\n- A15 and A16 still run in every case but repeat less often (means about 1.67 → 1.54 and 1.68 → 1.53 occurrences per case) [OCC014, OCC015].\n- A01's dominant successor flipped from A09 (41 → 29 of 100 outgoing transitions) to A07 (28 → 41) [DIR001].\n- A08 runs in more cases (24 vs 19 of 100) and routes far more of its transitions to A49 (29 vs 7 of 100) [OCC008, DIR008].\n- Participation rose for A21, A10, A06, A17 and A19 (by about 4–9 of 100 cases) and fell for A03, A11, A12, A20 and A22 (by about 4–8) [OCC020, OCC010, OCC006, OCC016, OCC018, OCC003, OCC011, OCC012, OCC019, OCC021].\n- A44 participates less (48 vs 55 of 100 cases; 0.84 vs 0.98 occurrences per case), A43 now sends 88 instead of 99 of 100 transitions to A44 (with small new edges to A06 and A10), and A48 sends 10 instead of 2 of 100 transitions to A08 [OCC037, DIR043, DIR048].\n- A05 and A09 rerouted moderately toward each other and toward A14, and A51's outgoing mix changed markedly on very few earlier observations (4 outgoing transitions before vs 20 after) [DIR005, DIR009, DIR051].",
+  "case_id": "null_07ad492269fbb28d",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

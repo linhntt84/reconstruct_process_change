@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_ba9cc1cbf8e2d76b.json",
+  "evidence_sha256": "9e20e7fda29d025b34189365124cf42c1e36f686edf0ef5b6a472e06b58aa538",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:34:05.180080+00:00",
+  "finished_at_utc": "2026-11-15T02:35:42.677301+00:00",
+  "latency_seconds": 97.5,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13647,
+    "prompt_tokens": 13953,
+    "total_tokens": 27600,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12361,
+      "text_tokens": 1286
+    },
+    "cost": 0.00891645
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 43459,
+  "text": "### Observed differences\n\n- Three activities that were entirely absent from the earlier window — A19, A20 and A25 — appear in the later window in about 29, 41 and 30 in 100 traces respectively (58, 82 and 61 of 200 traces). Each occurs at most once per trace, two of them practically never share a trace, and one of the three runs in about 99 in 100 later traces. [OCC001, OCC002, OCC003, REL001, REL002, REL006]\n\n- In the earlier window, flow passed directly from A27 to A28 (about 97 in 100 of A27's outgoing transitions) and from A28 to A29 (about 98 in 100). In the later window, only about 43 in 100 of A27's outgoing transitions go to A28, while about 52 in 100 go to one of the new activities (A20 about 22, A25 about 16, A19 about 14); A28 now sends about 41 in 100 of its outgoing transitions to the new activities, with about 57 in 100 still going to A29. [DIR004, DIR005]\n\n- Each new activity leads on to A28 in roughly half of its outgoing transitions and to A29 in most of the rest (A19 about 47 vs 53 in 100; A20 about 56 vs 43; A25 about 54 vs 41). [DIR001, DIR002, DIR003]\n\n- The new activities sit mid-trace (mean position about 0.52) and are placed between A27 and A29: A27 precedes them in essentially every co-occurrence and they precede A29 in essentially every co-occurrence, while their order against A28 is mixed (for example, A19 before A28 in about 15 in 100 traces and after it in about 14). [REL003, REL005, REL007, REL009, REL010, REL012, REL004, REL008, REL011, POS001, POS002, POS003]\n\n- The segment stretches by one event: A28 follows A27 two positions later in about 52 in 100 later cases (earlier immediately in about 97 in 100), A29 follows A27 three positions later in about 92 in 100 (earlier two, about 96 in 100), and A29 follows A28 two positions later in about 41 in 100 (earlier immediately, about 98 in 100). A27's mean position shifts slightly earlier (about 0.48 to 0.46) and A29's slightly later (about 0.55 to 0.57). [LAG001, LAG002, LAG003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new step was inserted into the existing A27 → A28 → A29 sequence in the later window. The step executes as one of three mutually exclusive activities — A19, A20 or A25 — and is placed either between A27 and A28 or between A28 and A29: A27 now routes to one of the three in about half of its outgoing transitions (previously almost exclusively to A28), each of the three continues on to A28 or A29, A27 essentially always precedes and A29 essentially always follows it, and A28 and A29 are each pushed one position later in the sequence. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, DIR005, REL003, REL005, REL007, REL009, REL010, REL012, LAG001, LAG002, LAG003]\n\nThe screening context supports treating these differences as more than sampling noise: 28 control-flow items qualified against fewer than 1 expected by chance for the 113 tested units, and every item's difference exceeded 199 of 200 random re-splits. The change is shown directly and consistently rather than through one unusual indicator: participation rises from 0 of 200 traces to 58–82 of 200 per activity, new direct successions appear on both sides of the inserted step, the ordering constraints hold in every co-occurrence, and the lag distributions of A28 and A29 shift by exactly one position. [OCC001, OCC002, OCC003, DIR004, DIR005, LAG001, LAG002, LAG003]\n\nAn important competing explanation remains: the evidence cannot distinguish one inserted step with three variants from three separate new steps that routing keeps mutually exclusive, and it cannot rule out further changes in units that did not reach the screening thresholds. Positions are event positions, so no claim about clock-time duration is made. [REL001, REL002, REL006]\n\nOther differences: a small share of the new activities' outgoing transitions go to other targets (A20 to A18, and A25 to A27, A32 and A44, each about 1–2 in 100). [DIR002, DIR003]",
+  "case_id": "case_ba9cc1cbf8e2d76b",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

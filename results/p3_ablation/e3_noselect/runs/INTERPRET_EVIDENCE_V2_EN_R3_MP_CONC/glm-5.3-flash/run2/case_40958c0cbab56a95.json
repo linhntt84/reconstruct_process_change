@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_40958c0cbab56a95.json",
+  "evidence_sha256": "8587f4bcdf6285bba5e21fae8aedb97b44e0914b2409c05541374b0b58a61c39",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:11:52.799714+00:00",
+  "finished_at_utc": "2026-11-15T08:14:59.683585+00:00",
+  "latency_seconds": 186.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 24481,
+    "prompt_tokens": 92198,
+    "total_tokens": 116679,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22034,
+      "text_tokens": 2447
+    },
+    "cost": 0.026070199999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 72647,
+  "text": "### Observed differences\n\n- In the earlier window, A26, A27 and A28 each ran in every trace (200 of 200, about once per trace) and always together, typically in varying order (each pair appears in both orders in similar shares); in the later window each appears in only about 1.5% of traces (3 of 200) and the three practically never co-occur. [OCC025, OCC026, OCC027, REL046, REL047, REL052]\n- A19, A20 and A21 were rare earlier (about 1–2 in 100 traces) and appear in the later window in about 30, 33 and 38 of 100 traces respectively; they never occur in the same trace, so together they cover essentially every later case — each later trace contains exactly one of the three. [OCC018, OCC019, OCC020, REL022, REL023, REL031]\n- A44's outgoing transitions shifted: earlier, about 82% went to A26, A27 or A28 (roughly 28%, 25% and 28%); in the later window about 79% go to A19, A20 or A21 (roughly 25–27% each). [DIR044]\n- In the later window, about 95% of the outgoing transitions of each of A19, A20 and A21 lead to A29; their earlier routing profiles rest on only 2–4 traces and are weakly observed. [DIR019, DIR020, DIR021]\n- Ordering flipped accordingly: earlier, A44 preceded each of A26, A27 and A28, and each of them preceded A29, in at least about 97 of 100 traces; in the later window A44 precedes A19, A20 or A21 (about 30, 31 and 37 of 100 traces, always in that order when both occur), and each of A19, A20 and A21 precedes A29 in essentially every trace containing both. [REL049, REL054, REL058, REL048, REL053, REL057, REL028, REL036, REL043, REL027, REL035, REL042]\n- The A44-to-A29 distance shortened: earlier, A29 followed A44 mostly 4–5 positions later (about 79% at distance 4); in the later window mostly 2–3 positions later (about 79% at distance 2). [LAG014]\n- Event positions (not clock time) agree: A26, A27 and A28 sat around a median relative position of about 0.37 earlier and are now almost unobserved, while A19, A20 and A21 sit around a median of about 0.36; A29's mean position moved slightly earlier (about 0.44 to 0.40) and A44's slightly later (about 0.31 to 0.33). [POS006, POS007, POS008, POS003, POS004, POS005, POS009, POS010]\n- Outside this segment, A45 and A46 run and repeat more in the later window (A45 about 1.6 to 1.8 occurrences per trace with recurrence support up from about 0.38 to 0.49; A46 participation up from about 59 to 70 in 100 traces and recurrence from about 0.12 to 0.21). [OCC043, OCC044, LAG015, LAG018]\n- Participation also shifted earlier in the process: A01, A05, A07 and A09 each appear in about 9–10 fewer of 100 traces (from about 54 to about 44), while A03, A11, A12 and A13 each appear in about 10 more (from about 47 to about 56–58), and A10 rises from about 13 to about 22 in 100 traces. [OCC001, OCC004, OCC006, OCC008, OCC002, OCC010, OCC011, OCC012, OCC009]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the segment between A44 and A29 was executed differently in the later window: earlier, every case ran all three of A26, A27 and A28 there, in no fixed order among themselves, with A29 following; in the later window that group is no longer observed (3 of 200 traces each), and each case instead runs exactly one of three alternative activities — A19, A20 or A21, in roughly 30, 33 and 38 of 100 cases — placed after A44 and before A29, with A44 routing directly to the chosen activity (about 25–27% of its outgoing transitions each) and that activity leading to A29 in about 95% of its outgoing transitions. Because A26, A27 and A28 are nearly unobserved afterwards, this behaves as a replacement of one always-executed activity group by a per-case choice among three activities, not a re-weighting of paths present in both windows; the typical A44-to-A29 distance shortened from 4–5 to 2–3 positions, consistent with three activities giving way to one. [OCC018, OCC019, OCC020, OCC025, OCC026, OCC027, DIR044, DIR019, DIR020, DIR021, REL022, REL023, REL031, REL027, REL028, REL035, REL036, REL042, REL043, LAG014]\n\nThe support is direct and consistent across occurrence, direction, relation, lag and position indicators, and the magnitudes (participation moving from 200 of 200 traces to 3 of 200, and from 2–4 to 60–75 of 200) are far beyond what comparing two finite samples of 200 traces typically produces. An important competing explanation the evidence cannot rule out is that A19, A20 and A21 are rare pre-existing activities rather than newly introduced ones, since their earlier behaviour rests on only 2–4 traces each; the evidence also cannot show whether the three alternatives cover the same work as the group that is no longer observed. [OCC025, OCC026, OCC027, OCC018, OCC019, OCC020, DIR019, DIR020, DIR021]\n\nOther differences: A45 and A46 are executed and repeated more often in the later window; participation shifted in the earlier part of the process (A01, A05, A07 and A09 down about 9–10 in 100 traces, A03, A11, A12 and A13 up about 10, A10 up from about 13 to 22), and A29's mean event position moved slightly earlier while A44's moved slightly later. These differences are not part of the main hypothesis, and the smaller participation shifts could partly reflect sampling variation between the two windows. [OCC043, OCC044, LAG015, LAG018, OCC001, OCC004, OCC006, OCC008, OCC002, OCC010, OCC011, OCC012, OCC009, POS009, POS010]",
+  "case_id": "case_40958c0cbab56a95",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

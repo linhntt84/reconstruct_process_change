@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_7b13ca4049a2d623.json",
+  "evidence_sha256": "4e47b046485dc928b5fad4f3a44f24ddca2eb26f9468e1568c3732a4d9db4ef0",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:51:03.344431+00:00",
+  "finished_at_utc": "2026-11-16T03:52:30.822845+00:00",
+  "latency_seconds": 87.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10080,
+    "prompt_tokens": 9458,
+    "total_tokens": 19538,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9276,
+      "text_tokens": 804
+    },
+    "cost": 0.0064586999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30157,
+  "text": "### Observed differences\n\n- Activity A02 was not observed at all in the earlier window (0 of 200 traces) but appears in every trace of the later window (200 of 200), exactly once per trace and always at the same relative position, about two-thirds along the trace. [OCC001, POS002]\n- The direct flow into A01 changed: in the earlier window A06 was always followed by A01, while in the later window A06 is always followed by A02, and A02 is always followed by A01. [DIR001, DIR002]\n- In the earlier window A02 never co-occurred with any other activity; in the later window it co-occurs with all of them in every trace, always after A03, A05, A06 and A07 and always before A01 and A04. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Step distances from A03, A05, A06 and A07 to A01 and to A04 each grew by exactly one step (for example A03 to A01 moved from 4 to 5 steps), and relative positions shifted slightly (A06 from 0.60 to 0.50, A01 from 0.80 to 0.83) — the pattern expected when traces grow by one event while the earlier activities keep their order. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, POS001, POS003, POS004, POS005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that a new step, A02, now always executes between A06 and A01. In the earlier window, traces ran A03, A05, A07, A06, A01, A04, with A06 followed directly by A01 and no A02 anywhere; in the later window, A06 always leads to A02 and A02 always leads to A01, A02 occurs exactly once in every trace at a fixed position, and every step distance to A01 and A04 increases by exactly one while the order of all other activities is unchanged. This rests on direct successor, co-occurrence and distance observations rather than on frequency shifts alone, and it is consistent across all 21 evidence items. [OCC001, DIR001, DIR002, REL001, REL002, REL003, REL004, REL005, REL006, POS002, LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007]\n\nOther differences: none beyond the positional and lag shifts above, which follow from the same one-event lengthening of the trace. [POS001, POS003, POS004, POS005]\n\nCompeting explanation: zero participation in the earlier window strictly shows only that A02 was not observed there, and no chance-expectation baseline was provided with the evidence, so a variant that surfaces only in the later window cannot be excluded with complete certainty — although presence in all 200 later traces with deterministic routing makes pure sampling variation implausible. [OCC001, DIR001, DIR002]",
+  "case_id": "case_7b13ca4049a2d623",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

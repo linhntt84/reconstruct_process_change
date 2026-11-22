@@ -1,0 +1,22 @@
+### Observed differences
+
+- The dominant difference is a near-swap between two groups of activities. In the earlier window, A21, A22 and A23 each ran in about 75 in 100 traces (roughly 150 of 200), while A24, A25 and A26 each ran in about 25–26 in 100 (roughly 51–52 of 200). In the later window the shares are reversed: A21–A23 each appear in about 25 in 100 traces (49–51 of 200) and A24–A26 in about 75–77 in 100 (151–153 of 200). [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]
+- The two groups act as mutually exclusive alternatives in both windows: cross-group pairs such as A21 with A24, or A22 with A25, occur together in at most about 2 in 100 traces in either window, while within-group co-occurrence simply tracks the group's frequency (A21 with A22: about 75 in 100 earlier vs about 25 in 100 later; A24 with A25: about 25 in 100 earlier vs about 75 in 100 later). [REL025, REL027, REL035, REL042, REL049, REL055]
+- The surrounding skeleton is stable: A19, A20, A29, A30, A34 and A35 appear in every trace in both windows, and A19/A20 still precede whichever group is active (A19 before A21 in about 74 in 100 traces earlier; A19 before A24 in about 75 in 100 later). [REL013, REL016, REL030, REL051]
+- A06 became both more frequent and later-placed: it ran in about 17 in 100 traces before versus about 53 in 100 after; its mean relative position (by event order) moved from about 0.57 to about 0.90; its order relative to A19 changed from mixed (each order in roughly 8–9 in 100 traces) to A19 before A06 in about 47 in 100 traces; and A35 now follows A06 within one step in about 97 in 100 of their joint appearances, where before the gap spread over one to five steps. [OCC002, POS001, REL001, REL012, LAG001]
+- Smaller shifts: A02 fell from about 17 to about 8 in 100 traces and A08 from about 14 to about 5 in 100; the gap from A34 to A35 stretched from one step in about 90 in 100 traces to two steps in about 51 in 100. [OCC001, OCC003, LAG013]
+
+### Inference
+
+Support level: Supported hypothesis
+
+Main hypothesis: the two windows differ in how often two existing, mutually exclusive paths are taken. In the earlier window roughly 75 in 100 cases ran through the path containing A21, A22 and A23 and about 25 in 100 through the path with A24, A25 and A26; in the later window these shares are reversed, with about 25 in 100 taking A21–A23 and about 75–77 in 100 taking A24–A26. [OCC004, OCC005, OCC006, OCC007, OCC008, OCC009]
+
+The shift is direct and internally consistent: all six activities move by about 50 percentage points in mirror-image directions, within-group co-occurrence rises or falls exactly with the group's share, cross-group co-occurrence stays near zero in both windows, and relations to the stable skeleton (A19/A20 before the active group; A29, A34, A35 still present throughout) are preserved — so every activity and both paths were observed in a substantial share of traces in both windows and only the shares between the alternatives changed. The volume of qualifying evidence (87 items against roughly 1 expected for an unchanged process) also rules out sampling variation as an overall explanation. [OCC004, OCC009, REL013, REL016, REL025, REL027, REL049, REL055]
+
+Limitation: the evidence cannot distinguish a flipped routing decision within one process from a changed mix of two case types in which each type follows one of the two blocks, and with no outgoing-transition evidence the point where the paths diverge is not directly observed. [REL027, REL035]
+
+Other differences:
+- A06 became far more frequent and moved towards the end of the case (about 17 → 53 in 100 traces; mean relative position about 0.57 → 0.90), now with a fixed order — A19 before it and A35 within one step after it — where previously its order to A19 was mixed and its gap to A35 varied; it also now typically travels with the A24–A26 path rather than A21–A23, but whether this belongs to the same change is not established. [OCC002, POS001, REL001, REL003, REL006, REL012, LAG001]
+- A02 and A08 became rarer (about 17 → 8 and about 14 → 5 in 100 traces); no relational evidence covers them. [OCC001, OCC003]
+- The gap from A34 to A35 stretched from one step (about 90 in 100 traces) to two steps (about 51 in 100), coinciding with A06's more frequent late position. [LAG013]

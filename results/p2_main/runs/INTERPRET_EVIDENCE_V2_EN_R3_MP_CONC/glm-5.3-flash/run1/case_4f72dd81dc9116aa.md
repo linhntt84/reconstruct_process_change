@@ -1,0 +1,20 @@
+### Observed differences
+
+- A05 ran in every case in the earlier window — about 4 times per case, typically around two-thirds of the way through the case — while in the later window it runs in only about 50 in 100 cases, about twice per case, and around one-third of the way through. [OCC001, POS001]
+- A10 moved the opposite way: earlier it ran in about 47 in 100 cases (about twice per case, around one-third through); in the later window it runs in every case, about 4 times per case, around two-thirds through. [OCC003, POS003]
+- A08 and A16 exchanged roles in the same way: A08 fell from about 68 in 100 cases (late position) to about 34 in 100 (early position), while A16 rose from about 30 in 100 (early) to about 68 in 100 (late). [OCC002, OCC004, POS002, POS004]
+- The dependency between A05 and A10 flipped: earlier, A10 occurred only in cases that also ran A05 (never on its own); in the later window, A05 occurs only in cases that also run A10. The same reversal appears against A09, A11, A14 and A15: earlier these always co-ran with A05 and only partly with A10 or A16; now they always co-run with A10, A16 co-runs with them in about 68 in 100 cases, and A08 in about 34 in 100. [REL003, REL004, REL005, REL013, REL015, REL020, REL022, REL027]
+- Outgoing routing was rewired to match: A06 led to A05 in virtually all its transitions before and to A10 after; A11 and A15 shifted their main outgoing edge from A05 to A10; A14 shifted from A10 to A05; and A05 and A10 exchanged successors (A05 now leads to A17 instead of A09, A10 leads to A09 instead of A17). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- Pairwise distances moved consistently with this rewiring: A14 was followed by A08 about four positions later in almost all earlier cases but about two positions later in most later cases, and A14 is now followed by A16 almost always four positions later where the earlier distance was mixed. [LAG006, LAG008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the control flow was restructured so that A05 and A10 exchanged their roles — A10 taking over the near-mandatory, late, high-recurrence role (every case, about 4 executions per case, around two-thirds through) that A05 held before, and A05 taking over the earlier, optional role (about 50 in 100 cases, about 2 executions, around one-third through) that A10 held before — with A16 and A08 exchanging roles in the same way (A16 now about 68 in 100 cases in the late role, A08 about 34 in 100 in the early one). [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS003, POS004]
+
+The exchange is shown directly and consistently: the containment between A05 and A10 reversed, the co-occurrence profiles of A08 and A16 against A09, A11, A14 and A15 swapped, and every qualifying routing change fits the same rewiring; each item's difference exceeded about 995 in 1000 random re-splits, and 55 items qualified against roughly 0.5 expected if nothing had changed, so sampling variation cannot account for the pattern as a whole. [REL004, REL013, REL020, REL022, REL027, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+An important competing explanation remains: the trace evidence cannot distinguish a genuine exchange of the two activities between positions from a simultaneous double replacement (A05 substituted by A10 in one position and A10 by A05 in the other, likewise A08 and A16); positions and lags are measured in event order rather than clock time, and the lag-based support rests on smaller counts. [LAG006, LAG008, POS001, POS003]
+
+Other differences: A06, whose routing target changed from A05 to A10, now also appears in cases without A05 (about 23 in 100, versus essentially always together before) — a consequence of the rerouting rather than a separate change. [REL001, DIR002]

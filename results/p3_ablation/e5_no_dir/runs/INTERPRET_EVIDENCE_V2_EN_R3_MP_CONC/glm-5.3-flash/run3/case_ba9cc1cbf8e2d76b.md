@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, none of the 200 traces contains A19, A20 or A25; in the later window they appear in about 29, 41 and 31 in 100 traces respectively (58, 82 and 61 of 200), almost always exactly once per trace. [OCC001, OCC002, OCC003]
+- In the later window these three activities behave as mutually exclusive alternatives: A19 and A20 never occur in the same trace, each co-occurs with A25 in only about 1 in 200 traces, and about 99 in 100 later traces contain exactly one of the three. [REL001, REL002, REL006, OCC001, OCC002, OCC003]
+- The new step is placed between A27 and A29: in essentially every trace where one of the three co-occurs with A27 it runs after A27, and in nearly every trace where it co-occurs with A29 it runs before A29. [REL003, REL007, REL010, REL005, REL009, REL012]
+- Against A28 there is no fixed order: among traces where the new step and A28 both occur, it runs before A28 in roughly half and after it in roughly half (for example A20 precedes A28 in about 23 in 100 traces overall and follows it in about 18 in 100). [REL004, REL008, REL011]
+- The distances between the surrounding activities widened: A27–A28 were adjacent in about 98 in 100 earlier traces but in about 43 in 100 later traces (two steps apart in about 52 in 100); A28–A29 were adjacent in about 98 in 100 earlier versus about 56 in 100 later (two steps apart in about 41 in 100); the A27–A29 span grew from two to three steps in about 92 in 100 later traces. [LAG001, LAG002, LAG003]
+- A27 now occurs slightly earlier within traces (mean relative position about 0.48 versus 0.46) and A29 slightly later (about 0.55 versus 0.57), while both remain present in every trace in both windows; the new activities sit between them, around the middle of the trace (median position about 0.52). [POS004, POS005, POS001, POS002, POS003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that, in the later window, cases execute a new step inside the former A27 → A28 → A29 span: one of three mutually exclusive alternatives — A19 (about 29 in 100 cases), A20 (about 41 in 100) or A25 (about 31 in 100) — runs after A27 and before A29, with no fixed position relative to A28, whereas in the earlier window none of the three was observed and A27, A28 and A29 ran consecutively in almost every trace. Screening qualified 23 control-flow items where an unchanged process would typically produce about 0.33, so this ensemble of differences is far too large to attribute to random resampling of a stable process. [OCC001, OCC002, OCC003, REL001, REL003, REL005, REL008, LAG001, LAG002, LAG003]
+
+The hypothesis is direct and consistent across indicator families: participation rises from zero, the relational items show both the exclusive three-way split and the fixed order around A27 and A29, the gap items widen exactly where the new step sits (about 52 in 100 traces with it between A27 and A28 and about 41 in 100 between A28 and A29, matching the mixed order against A28), and the small opposite position shifts of A27 and A29 fit the same insertion. [LAG001, LAG003, REL004, REL008, REL011, POS004, POS005]
+
+Limitations: zero participation in the earlier window only shows the activities were not observed there, so the evidence cannot distinguish a genuinely added step from a pre-existing but previously unexecuted alternative that is now frequently taken; the positional indicators use event positions rather than clock time, and the varying order against A28 means there is no single fixed insertion slot. [OCC001, OCC002, OCC003, REL004, REL008, REL011]

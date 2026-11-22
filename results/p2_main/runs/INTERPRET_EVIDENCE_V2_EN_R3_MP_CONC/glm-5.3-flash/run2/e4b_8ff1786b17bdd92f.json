@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4b_8ff1786b17bdd92f.json",
+  "evidence_sha256": "f135851a4a30cda7c8527624407ba3930937f21bab56ddda64421b1ed5168084",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:14:41.713005+00:00",
+  "finished_at_utc": "2026-11-15T02:16:07.129625+00:00",
+  "latency_seconds": 85.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 12311,
+    "prompt_tokens": 4490,
+    "total_tokens": 16801,
+    "completion_tokens_details": {
+      "reasoning_tokens": 11509,
+      "text_tokens": 802
+    },
+    "cost": 0.006829
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49160,
+  "text": "### Observed differences\n\n- In the later window, activity A13 is assigned to a single resource. In the earlier window, its roughly 270 assignment events were spread thinly over 46 distinct resources, with the most used resource (User_49) handling only about 7 in 100 events (concentration index about 0.03); in the later window, all roughly 277 events were handled by one resource, User_134 (top share 100%, concentration index 1.0). [ASSIGN001, CONC001]\n- In the later window, A22's allocation is remixed but still dispersed. Earlier, its roughly 120 assignment events had a top resource (User_49) at about 10 in 100, with about half of events scattered across a long tail of others; later, the top resource (User_61) holds about 8 in 100, \"other\" resources about 43 in 100, and several resources that previously handled little or none of A22 now carry about 4–7 in 100 each. [ASSIGN002]\n- In the later window, the elapsed time between consecutive completion events of A04 and A01 is longer: the median rises from about 25 to about 42 hours, the mean from about 27 to about 46 hours and the 75th percentile from about 38 to about 66 hours, while the lower quartile stays at a few minutes in both windows. The overall distribution shift is about 21 hours, observed in all 200 traces of each window. [TWAIT001]\n- No control-flow behaviour qualifies as changed: 0 of 38 tested control-flow units produced an item (about 0.19 expected by chance), so participation, routing and ordering show no qualifying difference; the qualifying items concern only timing and resources. [TWAIT001, ASSIGN001, ASSIGN002, CONC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a reallocation of work between resources as the main hypothesis, involving A13 and A22. A13 moved from being executed by dozens of resources with no dominant one to being executed exclusively by User_134, and A22 moved from one dispersed allocation to a different dispersed allocation. Supporting signs: the A13 change is measured directly by assignment shares and concentration and is consistent across two indicators (46 → 1 distinct resources, top share about 7 in 100 → 100%, over roughly 270 events per window, which sampling noise cannot plausibly produce); A22 is a second, separate allocation change; every item's difference exceeds all but about 1 in 2,000 random re-splits of the pooled data; and screening produced 3 resource items against roughly 0.006 expected without change and 1 time item against roughly 0.014 expected — many times the chance expectations — while control flow produced none, so chance alone cannot explain the item set. Limitations: ASSIGN001 and CONC001 describe the same underlying behaviour and are not independent confirmations, the resource codes are anonymous so only reallocation between anonymous codes is shown, and this remains a possibility supported by the evidence rather than a confirmed modification. A competing explanation the evidence cannot rule out is that the A22 remix reflects routine rotation of resources between the two windows rather than a targeted reallocation. [ASSIGN001, ASSIGN002, CONC001]\n\nOther differences: The elapsed time between consecutive completions of A04 and A01 increased by about 21 hours (median about 25 → about 42 hours). This is a timing change that stands as a hypothesis in its own right and is not part of the allocation hypothesis; the evidence cannot show whether it is connected to the reallocation. [TWAIT001]",
+  "case_id": "e4b_8ff1786b17bdd92f",
+  "set": "e4b",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

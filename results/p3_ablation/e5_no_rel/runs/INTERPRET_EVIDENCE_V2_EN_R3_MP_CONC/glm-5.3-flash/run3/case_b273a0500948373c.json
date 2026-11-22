@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_b273a0500948373c.json",
+  "evidence_sha256": "0bbedf1ec3310cde3648d62f9eb167d329ecdd081a3273d595241975a215738d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T12:00:34.496500+00:00",
+  "finished_at_utc": "2026-11-15T12:01:39.538337+00:00",
+  "latency_seconds": 65.04,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8863,
+    "prompt_tokens": 4084,
+    "total_tokens": 12947,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8157,
+      "text_tokens": 706
+    },
+    "cost": 0.005044099999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32773,
+  "text": "### Observed differences\n\n- In the later window, A16, A17 and A18 each ran in about 79 in 100 traces, up from about 19 in 100 in the earlier window; when present they occur exactly once per trace, with no repetitions in either window. [OCC001, OCC002, OCC003]\n- In the later window, A19, A20 and A21 each ran in only about 21 in 100 traces, down from about 82 in 100 earlier, likewise without repetitions. [OCC004, OCC005, OCC006]\n- The branch choice out of A15 flipped: earlier, about 82 in 100 of A15's observed outgoing transitions went to A19, A20 or A21 (roughly 24–29 in 100 each) and only about 18 in 100 to A16, A17 or A18; in the later window about 79 in 100 went to A16, A17 or A18 (roughly 21–29 in 100 each) and about 21 in 100 to A19, A20 or A21. [DIR001]\n- The participation shifts and the routing shift match almost exactly: in each window, each activity's share of traces equals its group's share of A15's outgoing transitions (about 82/18 earlier, about 21/79 later). [OCC001, OCC004, DIR001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the choice between two alternative branches after A15 flipped between the windows: in the earlier window A15 led predominantly to the branch containing A19, A20 and A21 (about 82 in 100 of its outgoing transitions, against about 18 in 100 for the branch containing A16, A17 and A18), while in the later window about 79 in 100 of its outgoing transitions led to A16, A17 and A18 and only about 21 in 100 to A19, A20 and A21. Both branches are observed in both windows and no activity repeats, so this reads as a change in how often existing alternative paths are taken, not as activities being added, removed or bypassed. [DIR001, OCC001, OCC004]\n\nThe redistribution is shown directly in A15's successor shares, which are observed in all 200 traces of each window, and the six participation changes mirror it almost exactly, activity by activity; seven items qualified in screening against 0.38 expected if nothing had changed, many times the chance expectation, and each item's difference exceeds about 199 of 200 random re-splits of the pooled data. [DIR001, OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]\n\nLimitations: the evidence covers only A15's immediate successors, so the internal ordering and coherence of each branch cannot be confirmed, and any single item of this kind can still arise in an unchanged process — the case rests on the joint mirrored pattern. A competing explanation the evidence cannot rule out is a change in the mix of cases upstream of A15 that shifts the branch shares without a modification at the branch point itself. [DIR001]",
+  "case_id": "case_b273a0500948373c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

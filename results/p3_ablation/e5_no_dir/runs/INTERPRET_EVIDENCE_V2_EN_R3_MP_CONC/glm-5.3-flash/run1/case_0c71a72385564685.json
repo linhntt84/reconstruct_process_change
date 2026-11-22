@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_dir/evidence/case_0c71a72385564685.json",
+  "evidence_sha256": "b4a8a94fde743dd4b79f127fb9588710f1a33132700362cf3fe1635454727112",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:06:20.508525+00:00",
+  "finished_at_utc": "2026-11-14T12:07:19.393816+00:00",
+  "latency_seconds": 58.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8531,
+    "prompt_tokens": 8997,
+    "total_tokens": 17528,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7520,
+      "text_tokens": 1011
+    },
+    "cost": 0.00561505
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27200,
+  "text": "### Observed differences\n\n- A19, A20 and A25 were essentially absent in the earlier window (observed in 0, 1 and 0 of 200 traces) and appear regularly in the later window: A19 in about 76 of 200 traces (38%), A25 in about 69 (35%) and A20 in about 59 (30%), each occurring at most once per trace. [OCC001, OCC002, OCC003]\n- The three activities are mutually exclusive in the later window: A19 and A20 share traces in about 1 in 100 cases, A19 and A25 in about 1.5 in 100, and A20 and A25 in about 0.5 in 100, so roughly 99 in 100 later traces contain exactly one of the three. [REL001, REL002, REL005]\n- Each of the three now runs between A41 and A26: A41 precedes A19, A20 and A25 in about 38, 28 and 33 of 100 traces respectively, and A19, A20 and A25 precede A26 in about 38, 29 and 33 of 100 traces. Earlier, A41 and A26 were both present in every trace, but never together with any of the three. [REL003, REL004, REL006, REL007, REL008, REL009]\n- The distance between A41 and A26 widened by about one step: earlier A26 followed A41 one step later in about 83 of 100 cases (two steps in 17); in the later window it follows two steps later in about 83 of 100 cases (three steps in 14). [LAG001]\n- The new activities sit at about 35–37% of the trace length, just before A26, whose relative position moved slightly later (mean about 0.37 to 0.40); A41 and A26 themselves occur in every trace in both windows. [POS001, POS002, POS003, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that a new mutually exclusive step of three previously unobserved activities was added between A41 and A26: in the later window almost every case executes exactly one of A19 (about 38 in 100 cases), A25 (about 35) or A20 (about 30) after A41 and before A26, whereas earlier these activities were not observed and A26 followed A41 directly in about 83 of 100 cases. [OCC001, OCC002, OCC003, REL003, REL004, REL006, REL007, REL008, REL009, LAG001]\n\nThe signs are direct and mutually consistent: participation rises from zero to 59–76 traces per activity, the ordering with both neighbours holds in nearly every shared trace, the three activities practically never run together, the A41→A26 distance shifts by exactly one step while both neighbours remain universal, and the new activities appear at a stable relative position just before A26. With 17 qualifying items against roughly 0.28 expected if nothing had changed, the pattern as a whole is unlikely to be a sampling artefact. [OCC001, OCC002, OCC003, POS001, POS002, POS003, POS004, REL001, REL002, REL005, LAG001]\n\nLimitations: the evidence contains no direct-successor data, so the immediate edges from A41 to the new activities and from them to A26 are inferred from within-five-step ordering together with the one-step lag shift rather than observed directly. Also, about 17 in 100 earlier cases already showed a two-step A41→A26 gap, so the added step may have replaced some unobserved intermediate behaviour in a minority of cases, and what determines which of the three alternatives runs cannot be determined from this evidence. [LAG001, REL003, REL004, REL006, REL007, REL008, REL009]",
+  "case_id": "case_0c71a72385564685",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

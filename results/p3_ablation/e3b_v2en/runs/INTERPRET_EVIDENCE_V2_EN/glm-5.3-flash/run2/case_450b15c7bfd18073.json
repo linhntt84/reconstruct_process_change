@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_450b15c7bfd18073.json",
+  "evidence_sha256": "8c70b213b22640f4f74bd1e20a35db79eff0964bc2f0e54fbe51bcbdfffe53c6",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:54:28.048227+00:00",
+  "finished_at_utc": "2026-11-15T04:55:24.165844+00:00",
+  "latency_seconds": 56.12,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7812,
+    "prompt_tokens": 11344,
+    "total_tokens": 19156,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6815,
+      "text_tokens": 997
+    },
+    "cost": 0.0056076
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 24714,
+  "text": "### Observed differences\n\n- Activity A22 ran in every before-window trace (200 of 200, once per trace); in the later window it appears in only about 51 in 100 traces (102 of 200). [OCC001]\n- Three activities that were not observed in the before window — A27, A28 and A33 — each appear in about 49 in 100 later traces (98 of 200), once per trace, clustered around the middle of the trace (median relative position about 0.48–0.50). [OCC002, OCC003, OCC004, POS001, POS002, POS003]\n- Routing out of A21 changed: before, every observed outgoing transition led to A22; in the later window about 51 in 100 lead to A22, with the rest split almost evenly to A28 (about 18 in 100), A33 (about 17 in 100) and A27 (about 15 in 100). [DIR001]\n- In the later window, A22 and each of the new activities never occur in the same trace (co-occurrence 0; each side appears alone in roughly half the traces), whereas before, A21 and A22 co-occurred in all traces. [REL001, REL006, REL007, REL008]\n- In the later window, A21 precedes each of A27/A28/A33 in about 49 in 100 traces, and each of A27/A28/A33 precedes A23 in about 49 in 100 traces; A23 also occurs without A22 in about 49 in 100 traces. [REL002, REL003, REL004, REL005, REL009, REL010, REL011]\n- The three new activities co-occur pairwise in about 49 in 100 traces with no fixed internal order (each direction of a pair about 22–27 in 100), and each has outgoing transitions to the other two and to A23 in shares of roughly 26–44 in 100. [REL012, REL013, REL014, DIR002, DIR003, DIR004]\n- The step distance from A21 to A23 was always 2 before; in the later window it is 2 in about 51 in 100 traces and 4 in about 49 in 100. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, roughly half of the executions skip A22 between A21 and A23 and instead run a block of three previously unobserved activities — A27, A28 and A33 — between them, in varying internal order, before continuing to A23. The shares line up across indicator families: A22's participation drop (about 51 in 100) mirrors the new activities' participation (about 49 in 100 each) and A21's rerouted transitions; the new activities are strictly mutually exclusive with A22; the relations place them after A21 and before A23; and the A21→A23 step distance stretches from 2 to 4 in exactly the share of traces where the block appears. The 26 qualifying items far exceed the roughly 0.4 expected for an unchanged process, and every item's difference is larger than in about 995 of 1000 random re-splits of the pooled data. [OCC001, OCC002, OCC003, OCC004, DIR001, REL006, REL007, REL008, REL009, REL010, REL011, LAG001]\n\nLimitations remain: the before window contains no occurrence of A27, A28 or A33, so a pre-existing but very rare variant that 200 before-traces failed to sample cannot be fully excluded, even though a jump from undetectable to about half of executions is hard to explain by sampling alone. The evidence also does not pin down one fixed sequence within the new block (pairwise orders are nearly balanced), and the precise 49/51 split carries the sampling uncertainty of two 200-trace windows. [OCC002, OCC003, OCC004, REL012, REL013, REL014]",
+  "case_id": "case_450b15c7bfd18073",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

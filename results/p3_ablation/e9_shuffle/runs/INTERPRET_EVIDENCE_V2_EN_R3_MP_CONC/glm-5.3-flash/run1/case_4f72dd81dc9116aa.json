@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_4f72dd81dc9116aa.json",
+  "evidence_sha256": "a8193ca44e8e5a6df233cdc5834714e329cd5b2c909c9ec0dfac76e1790538aa",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T10:55:33.574734+00:00",
+  "finished_at_utc": "2026-11-14T10:57:23.521509+00:00",
+  "latency_seconds": 109.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 18964,
+    "prompt_tokens": 24788,
+    "total_tokens": 43752,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17158,
+      "text_tokens": 1806
+    },
+    "cost": 0.013200199999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 56809,
+  "text": "### Observed differences\n\n- The two hub activities exchanged their overall footprint. Before, A05 ran in every trace, about 4 times per trace, at a mean relative position of about 0.67 of the trace, while A10 ran in about 47 in 100 traces, about twice per trace, around position 0.32. In the later window, A10 runs in every trace, about 4 times per trace, around position 0.67, while A05 runs in about 50 in 100 traces, about twice per trace, around position 0.33. [OCC001, OCC003, POS001, POS003]\n- The satellite activities moved with their hubs: A08 fell from about 68 in 100 traces (position ~0.66, ~2.2 occurrences per trace) to about 34 in 100 (position ~0.34, ~1.1 occurrences), while A16 rose from about 30 in 100 traces (position ~0.33, ~0.9 occurrences) to about 68 in 100 (position ~0.67, ~2.1 occurrences). [OCC002, OCC004, POS002, POS004]\n- The containment between the two hubs reversed. Before, A10 occurred only in traces that also contained A05 (co-occurrence in about 47 in 100 traces; A10 without A05 never observed); in the later window, A05 occurs only in traces that also contain A10 (co-occurrence about 50 in 100; A05 without A10 never observed). [REL004]\n- A09, A11, A14 and A15 appear in every trace in both windows, but their anchor changed: before, each co-occurred with A05 in 100% of traces; in the later window, each co-occurs with A10 in 100% of traces. A09 in particular changed from an alternative to A10 (A09 without A10 in about 54 in 100 traces before) to always executed together with it. [REL003, REL005, REL006, REL007, REL020, REL022, REL023, REL024]\n- A17 changed blocks: before it appeared exactly when A10 appeared (co-occurrence about 47 in 100 traces); in the later window it appears exactly when A05 appears (about 50 in 100). [REL026, REL009]\n- Successor relations re-wired accordingly: A06 now leads to A10 in 100% of its outgoing transitions (before 100% to A05); A11 and A15 now lead mainly to A10 (about 54 and 46 in 100, before mainly A05); A14 now leads mainly to A05 (about 53 in 100, before about 51 to A10); A05 now leads to A17 or A08 (before A08 or A09); A10 now leads to A16 or A09 (before A17 or A16). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n- Pairwise step distances moved consistently with this re-wiring: A14→A05 gaps shortened (mostly 3–5 steps before, about 1 step after) while A14→A10 gaps lengthened (about 1 step before, 3–5 after); A17→A05 shortened and A17→A10 and A14→A16 lengthened. [LAG005, LAG007, LAG008, LAG010, LAG011]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a specific possibility: the two activity blocks headed by A05 and A10 exchanged their roles in the process. Before, the A05 block (A05 with A08 and A09) was mandatory, ran late in each trace (relative position about 0.67) with A05 repeated about four times, while the A10 block (A10 with A16 and A17) was optional (about 47 in 100 traces), ran early (about 0.32) with A10 repeated about twice. In the later window these roles are reversed: the A10 block (now with A16 and A09) is mandatory, late and repeated about four times, while the A05 block (now with A17 and A08) is optional (about 50 in 100 traces), early and repeated about twice. The always-present activities A09, A11, A14 and A15 stayed mandatory but re-anchored from A05 to A10, with A06, A11 and A15 now feeding into A10 and A14 feeding into A05. [OCC001, OCC003, POS001, POS003, REL004, REL020, REL022, REL023, REL024, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n\nSupporting signs: 55 control-flow items qualified against fewer than 1 expected by chance if nothing had changed, so the set of differences is far beyond what an unchanged process produces, and every item's difference exceeds about 995 in 1000 random re-splits. Occurrence, position, relation, direction and lag evidence all describe the same reversal, including the exact containment flip between A05 and A10 and the 100% co-occurrence re-anchoring of A09, A11, A14 and A15. [OCC001, OCC003, POS001, POS003, REL004, REL020, DIR002]\n\nLimitations: positions are event positions within traces, not clock times, so \"early\" and \"late\" refer to relative placement only; the many relation items reuse the same traces and therefore corroborate rather than independently confirm one another; and the evidence cannot distinguish one coordinated re-arrangement from two mirrored changes (A05 becoming optional and early while A10 becomes mandatory and late) that happen to align. [POS001, POS003, REL003, REL020, OCC001, OCC003]\n\nOther differences: none that fall outside this reading; the remaining qualified items (small self-repetition gap changes for A05, A08, A10 and A16, and co-occurrence shifts among the satellites, e.g. A06 with A16 or A08 with A09) are consistent with the same block exchange. [LAG001, LAG003, LAG004, LAG009, REL012, REL013]",
+  "case_id": "case_4f72dd81dc9116aa",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

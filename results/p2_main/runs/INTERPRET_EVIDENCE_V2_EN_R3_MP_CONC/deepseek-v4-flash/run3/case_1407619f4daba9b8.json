@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_1407619f4daba9b8.json",
+  "evidence_sha256": "afacfc2e054686e0cb4011525083fbba964c01b82f8e10573e513c52c2f96245",
+  "request_settings": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:58:42.938676+00:00",
+  "finished_at_utc": "2026-11-15T01:59:09.672699+00:00",
+  "latency_seconds": 26.73,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4263,
+    "prompt_tokens": 18601,
+    "total_tokens": 22864,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3522
+    },
+    "cost": 0.0036350180000000003
+  },
+  "response_model": "deepseek-v4-flash",
+  "reasoning_chars": 10779,
+  "text": "### Observed differences\n\n- In the earlier window, A22 appeared in about 54% of traces, and A31, A32, A37 each in about 46%; in the later window, all four appear in essentially every trace (A22 in 100%, the others in 99.5%). [OCC001, OCC002, OCC003, OCC004]\n- A20's outgoing transitions: before, all went to A23; after, about 32–36% each to A31, A32, A37, and almost none to A23. [DIR001]\n- A21's outgoing transitions: before, 54% to A22 and the rest split among A31/A32/A37; after, all go to A22. [DIR002]\n- A31, A32, A37 no longer lead to A26; instead they lead to A23 (and among themselves). [DIR003, DIR004, DIR005]\n- Positions: A31, A32, A37 moved from around 0.59 of the trace to around 0.40; A23 moved from 0.39 to 0.46; A21 and A22 moved later. [POS006, POS007, POS008, POS004, POS002, POS003]\n- Relational: A20 now always precedes A22, A31, A32, A37 (before it preceded them only when they occurred). [REL001-REL004]\n- A21 now always precedes A22, but A31/A32/A37 now precede A21 (before A21 preceded them). [REL005, REL006-REL008]\n- A23 now always precedes A22, and A31/A32/A37 now precede A23 (before A23 preceded them). [REL009, REL014-REL016]\n- A31, A32, A37 now co-occur with each other in ~99.5% of traces, whereas before they co-occurred in 46% and were absent together in 54%. [REL020-REL022]\n- The gap between A20 and A23 changed from 1 step to 4 steps. [LAG001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a change from a process with two alternative branches to a single sequential path that includes all the previously alternative activities. In the earlier window, traces either contained A22 (with A23 before it) or contained A31/A32/A37 (with A20 before them); A21 branched to either A22 or one of A31/A32/A37. In the later window, A22, A31, A32, and A37 are all executed in nearly every trace, with A20 leading to A31/A32/A37, A21 leading to A22, and A23 appearing later (four steps after A20). The order among A31, A32, and A37 remains mixed, but they now always co-occur. The large number of qualifying items (41 vs 0.49 expected by chance) and the consistency across occurrence, direction, position, relation, and lag indicators make a chance explanation unlikely. A competing explanation that cannot be fully ruled out is that the later window simply reflects a different variant of the process that was already possible but rare; however, the magnitude and coherence of the changes make this less plausible.\n\nOther differences: A26's position shifted slightly later, and its relation to A31/A32/A37 changed from being after them to being after them (already noted). No time or resource changes were observed.",
+  "case_id": "case_1407619f4daba9b8",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

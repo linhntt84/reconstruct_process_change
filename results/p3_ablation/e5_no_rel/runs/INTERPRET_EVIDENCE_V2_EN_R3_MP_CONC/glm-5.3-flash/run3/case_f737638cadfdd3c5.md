@@ -1,0 +1,16 @@
+### Observed differences
+
+- Three activities that never occurred in the earlier window appear in the later one: A19 in about 37 in 100 traces, A25 in about 34, and A20 in about 29, each occurring at most once per trace (mean occurrences equal participation; no repetitions) [OCC001, OCC002, OCC003].
+- In the later window, each of the three leads almost exclusively to A26: roughly 96 in 100 observed outgoing transitions of A19 go to A26, about 98 of A20's and about 97 of A25's, with only tiny residual shares to other activities [DIR001, DIR002, DIR003].
+- A41's routing changed fundamentally. Earlier, about 93 in 100 of A41's observed outgoing transitions went directly to A26; later, about 92 in 100 go to one of the new activities (roughly 34 to A19, 31 to A25, 27 to A20), and only about 1 in 100 still goes directly to A26 [DIR004].
+- The distance from A41 to A26 grew accordingly: earlier the pair was one step apart in about 94 in 100 cases; later it is two steps apart in about 90 in 100, and three steps in about 9 [LAG002].
+- The new activities sit about a third of the way into the trace (median relative position around 0.35), and A26 itself now occurs slightly later (median about 0.36 before vs about 0.38 after) [POS001, POS002, POS003, POS004].
+- Other differences: A31 occurs slightly later in the trace (mean relative position about 0.69 vs 0.71), and the A31-to-A35 gap shifted from mostly one step (about 55 in 100) to mostly two steps (about 62 in 100) [POS005, LAG001].
+
+### Inference
+
+Support level: Supported hypothesis
+
+In the later window, a block of three alternative activities — A19, A20 and A25 — is executed between A41 and A26. Where a case previously went from A41 almost directly to A26, it now runs A41, then exactly one of A19/A20/A25 (chosen in roughly equal shares of about a third each), and then A26; A26 is consequently reached two steps after A41 instead of one and sits slightly later in the trace. This is supported directly and consistently: the three activities appear from zero participation, their outgoing flow points almost solely to A26, A41's outgoing flow moved from A26 to the block, and the A41→A26 step distance shifted from one to two — agreeing across occurrence, direction, lag and position indicators, with 14 qualifying items against roughly 0.5 expected by chance without a change [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, LAG002, POS001, POS002, POS003, POS004].
+
+Limitations: the evidence shows the sequence at the level of observed transitions but cannot fully rule out that the block runs in parallel with A26 rather than strictly before it, and it does not directly observe that A19, A20 and A25 are mutually exclusive within one trace — their shares summing to about one per trace (roughly 995 in 1000 combined) and each occurring at most once make this likely but not proven. The small residual transitions out of A41 (to A04, A08 and others) persist in both windows and are not explained by this hypothesis [DIR004].

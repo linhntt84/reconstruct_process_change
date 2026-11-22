@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_b20f46551a8092b8.json",
+  "evidence_sha256": "06d86478d28e6d37ea4344fd8cc053fa0bb27e0238fa471dc3a52bf495607e21",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T14:36:42.761773+00:00",
+  "finished_at_utc": "2026-11-15T14:40:45.921394+00:00",
+  "latency_seconds": 243.16,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 33258,
+    "prompt_tokens": 44826,
+    "total_tokens": 78084,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30863,
+      "text_tokens": 2395
+    },
+    "cost": 0.023352899999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 106041,
+  "text": "### Observed differences\n\n- The most visible difference is a shift between two alternative route groups. In the earlier window, A01, A05, A07 and A09 each ran in about 49–50 in 100 traces, and the alternative group A03, A11, A12 and A13 in about 51 in 100; in the later window the first group runs in about 58–59 in 100 traces while the second falls to about 42 in 100. The two sides' shares still add up to about one per trace, so an about even split became roughly 58/42. [OCC001, OCC005, OCC007, OCC009, OCC003, OCC011, OCC012, OCC013]\n- The exit from these groups into the always-present A14 also moved: A09 sent about 42% of its outgoing transitions to A14 in the earlier window but only about 24% in the later one, while A05's continuations to A14 rose from about 23% to 38%; in the second group, A13's continuations to A14 rose from about 32% to 42%. [DIR009, DIR005, DIR013, OCC014]\n- A second parallel shift concerns A35/A36 versus A37/A38: A35 and A36 fell from about 51–52 to about 44 in 100 traces, while A37 and A38 rose from about 49 to about 56–57. The typical continuations inside these pairs reversed: earlier A35 usually went on to A32 (about 59%) and A36 usually returned to A35 (about 58%); in the later window A35 usually continues to A36 (about 62%) and A36 usually exits to A32 (about 59%), A37→A38 and A38→A32 rose to about 53% and 52% from about 43% each, and A31 now feeds A36 in about 16% of its outgoing transitions instead of about 29%. [OCC032, OCC033, OCC034, OCC035, DIR031, DIR035, DIR036, DIR037, DIR038]\n- A21 rose from about 51 to 56 in 100 traces while A22 fell from about 49 to 44; after A24, continuations to A31 fell from about 52% to 38% and continuations to A22 rose from about 18% to 27%. [OCC021, OCC022, DIR024]\n- Around A39–A41: A40 now continues to A41 in about 77% of its outgoing transitions (previously about 61%) and to A39 in about 23% (previously 34%); A39, which previously always continued to A40, does so in about 91% of cases in the later window; A39 appears in fewer traces (about 14 vs 19 in 100) and repeats less (mean 0.18 vs 0.28 occurrences per trace), and A40 also repeats in fewer traces (about 12% vs 19%) despite slightly higher participation. [DIR039, DIR040, OCC036, OCC037]\n- Smaller shifts: A10 rose from about 12 to 19 in 100 traces (mean 0.12 to 0.23 occurrences per trace, so it also repeats in a few traces), A19 rose from about 30 to 37, A06 fell from about 18 to 12 and A25 from about 41 to 35. [OCC010, OCC019, OCC006, OCC025]\n- Elsewhere behaviour is stable: always-present activities such as A14, A15, A16 and A42 keep 100% participation in both windows, and A15/A16/A42 still occur about 1.4 times per trace; the completely changed outgoing profile seen for A47 rests on only 6 and 5 observed outgoing transitions and cannot be interpreted. [OCC014, OCC015, OCC016, OCC038, DIR047]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that existing alternative paths are taken with different frequencies in the later window. The main instance involves the two alternative route groups A01/A05/A07/A09 and A03/A11/A12/A13, both of which continue into the always-present A14: their take-up split moved from roughly even (each side in about half of the traces) to about 58–59 vs 42 in 100 traces in favour of the first group, and within the first group the onward transition to A14 is now taken more often from A05 (about 23%→38% of its outgoing transitions) and less often from A09 (about 42%→24%). This qualifies as a shift between existing alternatives because every involved activity is observed in about 42–59% of traces in both windows and only the shares between them move; the occurrence items carry empirical strengths of about 0.90–0.99 (fewer than about 1 in 10 random re-splits produce differences this large), and the routing items show the changed continuations directly. [OCC001, OCC005, OCC007, OCC009, OCC003, OCC011, OCC012, OCC013, DIR005, DIR009, DIR011, OCC014]\n\nOther differences:\n- Parallel branch shifts of the same kind elsewhere: A37/A38 up and A35/A36 down with reversed internal continuations and changed entries from A31; A21 up and A22 down with A24 routing on to A31 less often. [OCC032, OCC033, OCC034, OCC035, OCC021, OCC022, DIR031, DIR035, DIR036, DIR024]\n- Rerouting around A39–A41 with less repetition of A39 and A40, plus moderate rises of A10 and A19 and falls of A06 and A25. [DIR039, DIR040, OCC036, OCC037, OCC010, OCC019, OCC006, OCC025]\n\nLimitations: the evidence set contains no screening baseline, so the expected number of chance findings cannot be compared formally, and the evidence cannot show whether one shared decision moved or several branch points changed independently. An important competing explanation is that the two windows contain different case mixes that use the existing branches in different proportions rather than a changed routing behaviour; the consistent, mirror-image shifts across three separate branch pairs make pure sampling noise unlikely, but the evidence cannot separate these explanations. [OCC001, OCC003, OCC005, OCC007, OCC009, OCC011, OCC012, OCC013, OCC021, OCC022, OCC032, OCC033, OCC034, OCC035]",
+  "case_id": "null_b20f46551a8092b8",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

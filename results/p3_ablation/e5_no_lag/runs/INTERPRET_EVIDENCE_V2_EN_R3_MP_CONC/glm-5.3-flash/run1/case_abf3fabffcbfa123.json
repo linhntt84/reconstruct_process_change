@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_abf3fabffcbfa123.json",
+  "evidence_sha256": "bb27b19a55e052207e472615bcae04f46712b5a160d59c8b054d4774cf84376d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:13:04.162182+00:00",
+  "finished_at_utc": "2026-11-14T13:14:34.821323+00:00",
+  "latency_seconds": 90.66,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14741,
+    "prompt_tokens": 25793,
+    "total_tokens": 40534,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12972,
+      "text_tokens": 1769
+    },
+    "cost": 0.01123945
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 45677,
+  "text": "### Observed differences\n\n- The most prominent difference concerns two alternative routes. In the earlier window, A32, A33 and A38 each ran in about 48–49 in 100 traces and typically together (pairwise co-occurrence about 48–49 in 100), while A27 ran in about 52 in 100 traces and almost never together with any of the three (co-occurrence at most 0.5 in 100). In the later window, A32, A33 and A38 each appear in only about 1 in 200 traces, while A27 runs in 199 in 200 traces, about once per trace. [OCC004, OCC005, OCC006, OCC007, REL022, REL023, REL024, REL028, REL029, REL030]\n- A27 also gained fixed neighbours. Before, it co-occurred with A14, A15 and A26 in only about 52 in 100 traces; in the later window it co-occurs with each of them in about 995 in 1000 traces, typically after A26 (985 in 1000) and A14 (975 in 1000) and before A28 (965 in 1000, whereas A28 previously ran without A27 in about 49 in 100 traces). A26 now routes about 98 in 100 of its observed outgoing transitions to A27, versus about 50 in 100 before, when the remainder went to A32, A33 and A38. [REL009, REL013, REL017, REL021, DIR006]\n- The dropped branch previously fed into A28: A32, A33 and A38 each preceded A28 in about 48 in 100 earlier traces; in the later window A27 has taken over that role. [REL025, REL026, REL027, REL021]\n- A04 became optional: it ran in 68 in 100 earlier traces but only about 22 in 100 later ones. A14, present in all traces in both windows, now sends about 82 in 100 of its outgoing transitions directly to A15 (before about 36) and only about 10 in 100 to A04 (before about 63); accordingly, A14 occurs without A04 in about 79 in 100 later traces, versus 32 in 100 before. [OCC002, DIR004, REL001]\n- Two low-frequency activities became more common: A08 rose from about 5 to about 21 in 100 traces, and A02 from about 5 to about 15 in 100. [OCC003, OCC001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the alternative branch formed by A32, A33 and A38 — previously executed in about half of the cases as a mutually exclusive alternative to A27 and running before A28 — was skipped in almost all later executions, while A27 became a near-mandatory step executed after A26 (and after A14) and before A28. This is shown directly by participation counts on both sides (A27 about 103 → 199 of 200 traces; A32, A33, A38 about 97–98 → 1 of 200), by the before-window mutual exclusivity versus the after-window co-occurrence and ordering of A27 with A14, A15, A26 and A28, and by A26's routing shifting from a roughly 50/50 split to about 98 in 100 towards A27. An important competing explanation the evidence cannot rule out is that the branch was drastically reduced rather than removed entirely: A32, A33 and A38 were still each observed in one later trace, and zero participation only means \"not observed\". [OCC004, OCC005, OCC006, OCC007, REL009, REL013, REL017, REL021, REL022, REL023, REL024, REL025, REL026, REL027, DIR006]\n\nThe volume of flagged differences far exceeds what an unchanged process typically produces: 52 control-flow items qualified against roughly 0.65 expected by chance for the 131 tested units; the qualified items are those cited throughout this answer, though many relation items re-express the same underlying participation change and are not independent confirmations. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, OCC007, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, DIR008, DIR009, POS001, POS002, POS003, POS004, POS005, POS006, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, REL013, REL014, REL015, REL016, REL017, REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL028, REL029, REL030]\n\nOther differences: A04 became optional and is now usually bypassed — A14 proceeds directly to A15 in about 82 in 100 of its outgoing transitions (before about 36) instead of through A04 (about 10 versus 63 in 100 before), with A04's participation falling from 68 to about 22 in 100 traces; in addition, A02 and A08 became more frequent (about 5 → 15 and 5 → 21 in 100 traces), though these rest on modest counts (10 → 30 and 10 → 41 traces). Whether the A04 bypass belongs to the same restructuring as the branch replacement cannot be determined from this evidence. [OCC002, DIR004, REL001, OCC001, OCC003]",
+  "case_id": "case_abf3fabffcbfa123",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/null_cdlg_0d5456a31099.json",
+  "evidence_sha256": "11e0ec559b16cf63a9ab64439978b727ed91a2262e80a8d8ad49bc61b2502648",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:38:14.426340+00:00",
+  "finished_at_utc": "2026-11-16T01:42:00.938602+00:00",
+  "latency_seconds": 226.51,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 28752,
+    "prompt_tokens": 35680,
+    "total_tokens": 64432,
+    "completion_tokens_details": {
+      "reasoning_tokens": 26833,
+      "text_tokens": 1919
+    },
+    "cost": 0.019728
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 88560,
+  "text": "### Observed differences\n\n- The two windows share the same basic shape: traces containing A01 (about 56 in 100) never contain A02 (about 44 in 100), A06 and A10 occur only in A01 traces and never together, and A03, A05, A07, A08, A09 occur only in A02 traces, with A04 appearing only alongside A02. [REL001, REL005, REL009, REL010, REL011, REL039]\n\n- A02 and A04 were executed and repeated more often in the later window. A02 averaged about 1.0 executions per trace versus about 0.77 before, repeating within a trace in about 27 in 100 traces versus about 20, while its participation stayed flat (about 46 vs 44 in 100). A04 appeared in about 27 in 100 traces versus about 20 (54 vs 39 of 200 traces), averaged about 0.55 versus 0.33 executions per trace, and repeated within a trace in about 14 vs 8 in 100 traces. [OCC002, OCC004, REL003, REL011]\n\n- Routing out of A02 shifted towards A04: about 54 in 100 of A02's outgoing transitions went directly to A04 in the later window versus about 43 before, while transitions to A05 fell from about 28 to about 19 in 100 (A09 roughly stable at 27–29). A02 produced 201 outgoing transitions versus 154 before although its trace participation rose only from 88 to 92 traces, so the extra transitions come from repeated A02 executions. [DIR002, OCC002]\n\n- The activities downstream of A02 appear later and farther away in the later window: A05, A09, A08 and A03 sit at later relative positions (for example A05's mean relative position about 0.48 vs 0.42, A08's median about 0.71 vs 0.60), and step distances grew — A02→A05 pairs shifted from one-to-two-step gaps towards four-to-five-step gaps, A02→A08 from three-step towards five-step gaps, and A04→A05 from two-step towards three-to-five-step gaps. [POS003, POS005, POS007, POS008, LAG003, LAG004, LAG008, LAG011, LAG014]\n\n- Repetition gaps themselves stretched: two-step A02–A02 pairs became less common relative to longer gaps, and the same holds for A04–A04 pairs (the latter based on only 15 and 28 supporting traces, so weak). [LAG001, LAG007]\n\n- In the A01 branch, the split of A01's outgoing transitions between A06 and A10 stayed essentially unchanged (about 48/52 in both windows), but A10 became slightly rarer (about 26 vs 30 in 100 traces) and almost all of its occurrences now sit at the very end of the trace (lower quartile of relative position moved from 0 to 1.0); the order \"A10 before A01\" halved to about 4 in 100 traces. [DIR001, OCC010, POS001, POS009, REL009]\n\n- The relative order of A05 and A09 tilted: A09 before A05 rose to about 27 in 100 traces (was about 23) while A05 before A09 fell to about 19 (was about 22); from A09 the next activity is now A05 in about 59 in 100 of its outgoing transitions (was about 51), and from A05 the majority successor is now A08 (about 59 vs 51 in 100). [REL034, DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, the repetition loop between A02 and A04 is executed more often in traces that contain A02: A02 recurs within traces more frequently (about 27 vs 20 in 100 traces) and A04 participates in about 27 vs 20 in 100 traces with about 0.55 versus 0.33 executions per trace, A02's immediate successor is more often A04 (about 54 vs 43 in 100 of its outgoing transitions) and less often A05 (about 19 vs 28), and the extra executions push the downstream activities A05, A09, A08, A03 and A07 to later relative positions with longer step distances from A02 and A04. [OCC002, OCC004, DIR002, POS003, POS005, POS007, POS008, LAG003, LAG004, LAG008, REL003, REL011]\n\nSupporting signs: the hypothesis rests on direct measurements of occurrence, recurrence and routing shares rather than on position alone; all five indicator families (occurrence, direction, position, relation, lag) move in the directions this behaviour predicts; and the core items rank above about 85–99 in 100 random re-splits of the pooled data. Limitations: the effect is modest (about 15 extra traces out of 200 containing A04), many items describe the same underlying trace behaviour and are not independent confirmations, and the evidence set carries no screening baseline, so an unlucky sampling difference cannot be excluded outright — though a coordinated shift across occurrence, routing, position, relation and lag families is unlikely to arise from sampling variation alone. The evidence also cannot show whether the extra repetitions take the form of A02→A04→A02 cycles or longer runs of A04. [OCC002, OCC004, DIR002, POS005, LAG001, LAG003, LAG007]\n\nOther differences: a tentative tilt in the relative order of A05 and A09 towards \"A09 first\" (about 27 vs 23 in 100 traces, with A09→A05 now the majority transition out of A09) — its relational item reaches only about 33 in 100 reference comparisons, so sampling variation is not ruled out; and in the A01 traces, A10 became slightly rarer and end-loaded with A10-before-A01 halving, also based on moderate strengths and small counts. [REL034, DIR003, DIR004, OCC010, POS001, POS009, REL009]",
+  "case_id": "null_cdlg_0d5456a31099",
+  "set": "null_cdlg",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

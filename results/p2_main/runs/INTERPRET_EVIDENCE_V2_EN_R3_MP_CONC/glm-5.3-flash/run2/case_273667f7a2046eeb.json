@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_273667f7a2046eeb.json",
+  "evidence_sha256": "ec5277156c7162b6b6f65d173076ff4d6457fa49f93fec6a8793f921dfb8cd92",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:58:45.484908+00:00",
+  "finished_at_utc": "2026-11-15T01:00:51.344198+00:00",
+  "latency_seconds": 125.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 16983,
+    "prompt_tokens": 46367,
+    "total_tokens": 63350,
+    "completion_tokens_details": {
+      "reasoning_tokens": 15213,
+      "text_tokens": 1770
+    },
+    "cost": 0.01544655
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53584,
+  "text": "### Observed differences\n\n- In the earlier window, the activities A21, A22, A23, A24 and A25 were rare, each appearing in about 19 in 100 traces (37–41 of 200) and essentially never repeated within a trace; in the later window each appears in about 77 in 100 traces (153–155 of 200). [OCC001, OCC002, OCC003, OCC004, OCC005]\n- The activities A26, A27, A28, A29 and A30 moved the opposite way: from about 82 in 100 traces earlier (163–164 of 200) to about 24 in 100 later (47–51 of 200). [OCC006, OCC007, OCC008, OCC009, OCC010]\n- A20's outgoing transitions flipped: earlier, about 81 in 100 led to A29 and 18 to A24; later, about 75 in 100 lead to A24 and 23 to A29. [DIR001]\n- The two groups of five behave as mutually exclusive alternatives in both windows. For example, A21 and A26 practically never share a trace: earlier A26 ran without A21 in about 82 in 100 traces (A21 without A26 in 18); later A21 runs without A26 in about 77 in 100 (A26 without A21 in 23), with near-zero co-occurrence throughout. [REL035, REL044, REL052, REL059, REL065]\n- The now-dominant group keeps a fixed internal order: A24 precedes A21, A22 and A23 (about 75–76 in 100 of the traces containing them), those three precede A25 (about 76 in 100), while A21, A22 and A23 appear in both orders in similar proportions; the same order is already visible earlier on the group's rare appearances. [REL031, REL033, REL034, REL041, REL042, REL043, REL050, REL051, REL058]\n- The earlier-dominant group ran with A29 first (before A26–A28 in about 80 in 100 of its traces), A26–A28 in no fixed order, then A30 (about 79 in 100); this order still holds later on the roughly 24 in 100 traces where the group runs. [REL073, REL074, REL077, REL078, REL080, REL081, REL083]\n- A14, A20 and A34 occur in every trace in both windows. Earlier the A26–A30 group typically ran after A14 and A20 (about 79–81 in 100) and alongside A34; later the A21–A25 group does (A14 and A20 before it in about 75–76 in 100; A34 present in about 77 in 100). A05's company flipped accordingly: with A26–A30 about 38 in 100 traces earlier versus 10 later, with A21–A25 about 12 versus 34. [REL011, REL016, REL021, REL026, REL040, REL075, REL001, REL006]\n- Smaller shifts: positional gaps (in event positions, not clock time) between block activities and A20 or A34 redistributed slightly (e.g., A20→A22 gaps moved from mostly 3–4 steps to 2–4), A29's position distribution widened a little as it became rarer, and A25's successors remain dominated by A34 in both windows. [LAG001, LAG002, LAG003, POS001, DIR002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that two alternative paths exchanged how often they are taken. Earlier, about 82 in 100 traces ran the block A20 → A29 → A26/A27/A28 → A30 (activities A26–A30) and about 19 in 100 ran A20 → A24 → A21/A22/A23 → A25 (activities A21–A25); in the later window the proportions are roughly reversed, with the A21–A25 block in about 77 in 100 traces — typically after A14 and alongside A34 — and the A26–A30 block in about 24 in 100. [OCC001, OCC006, DIR001, REL011, REL016, REL021, REL026, REL040, REL075]\n\nThis reads as a change in how often existing alternative paths are taken rather than activities being added, removed or reordered: both blocks are observed in substantial shares in both windows (at least about 19 in 100), the blocks are mutually exclusive before and after, and each block's internal order is unchanged. The volume of qualifying evidence also far exceeds what an unchanged process would produce — 103 control-flow items against about 1.15 expected by chance. [REL035, REL044, REL058, REL073]\n\nAn important competing explanation the evidence cannot rule out: a single decision point whose branch shares flipped and two independent changes to each block's occurrence conditions would look the same here; the evidence locates the change in the frequencies and stable structures of the two blocks, but not in the control point that selects between them. [DIR001, REL035]\n\nOther differences:\n- A34 now interleaves with or is repeated around the A21–A25 block in about 40 in 100 traces, up from about 5 in 100 — a relational change beyond the share flip itself. [REL040, REL049, REL057, REL064, REL070]\n- Positional gaps between block activities and A20 or A34 shifted by a few tenths of a step (e.g., A20→A22 from mostly 3–4 steps to 2–4; A22→A34 slightly longer), and A29's position spread widened as its participation fell. [LAG001, LAG002, LAG003, LAG004, LAG005, POS001]",
+  "case_id": "case_273667f7a2046eeb",
+  "set": "ostovar5",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

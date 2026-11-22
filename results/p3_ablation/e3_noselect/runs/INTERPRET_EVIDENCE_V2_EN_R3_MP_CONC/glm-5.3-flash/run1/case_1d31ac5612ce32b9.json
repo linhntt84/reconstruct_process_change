@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_1d31ac5612ce32b9.json",
+  "evidence_sha256": "95e5540325571ab047a39fea130f1022acca89fc8854d372069145e80ddbc0ad",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:24:16.132933+00:00",
+  "finished_at_utc": "2026-11-14T14:25:51.132829+00:00",
+  "latency_seconds": 95.0,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14398,
+    "prompt_tokens": 6257,
+    "total_tokens": 20655,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13441,
+      "text_tokens": 957
+    },
+    "cost": 0.00813755
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 49205,
+  "text": "### Observed differences\n\n- In the earlier window, every trace ran the same fixed chain A02 → A04 → A03, each activity exactly once: A02 was always followed by A04, A04 always by A03, A02 sat two steps before A03, and the trace positions of A02 and A04 showed no variation at all. [DIR001, DIR002, LAG001, LAG002, LAG003, POS001, POS002]\n- In the later window, A02 still appears in every trace but about 2.1 times per trace on average, with more than one occurrence in about 50 in 100 traces (before: essentially never). [OCC001]\n- A02's outgoing transitions, previously all aimed at A04, now split: about 53 in 100 go to A04 and about 47 in 100 lead directly to A03, a successor that was not observed before. [DIR001]\n- A04 dropped from a single occurrence in every trace to presence in only about 50 in 100 traces (99 of 200), and its successor changed completely: it now always leads back to A02 instead of on to A03. [OCC002, DIR002]\n- The fixed precedence relations dissolved: about 51 in 100 later traces contain A02 and A03 without any A04 (before: none), a clean A02-before-A03 order remains in only about 51 in 100 traces (interleaved or repeated in the rest), and A04 precedes A03 in only about 22 in 100 traces (before: all). [REL001, REL002, REL003]\n- Distances and positions shifted accordingly: A02→A03 is now most often immediate (gap of 1 step in about 40 in 100 after-cases, versus always 2 before) with longer detours at 3 and 5 steps; A04→A03 moved from always immediate to 2 steps (about 46 in 100) or 4 steps (about 18 in 100); A02's relative position became later and more spread out (median 0.5 → 0.67), A04's earlier (mean 0.75 → 0.56). [LAG001, LAG002, LAG003, POS001, POS002]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which the fixed chain A02 → A04 → A03 gave way to a repeating pattern around A02: A02 is now executed several times per trace in about half of the cases, after each A02 the flow either proceeds directly to A03 (about 47 in 100 of A02's outgoing transitions) or via A04, which now returns to A02 instead of continuing to A03. As part of the same change, A04 is skipped in about half of the traces and never occurs without A02, while A03 still appears in every trace together with A02, though no longer strictly after a single A02. [OCC001, OCC002, DIR001, DIR002, REL002, REL003]\n\nThe change is shown directly by the routing and relation indicators rather than inferred from marginals, it is consistent across all five indicator families (occurrence, direction, position, relation, distance), and ten of the eleven items exceed 995 of 1,000 random re-splits in difference size; A04's drop from universal to half participation, whose own occurrence item is the weakest (strength about 0.64), is corroborated at the 0.995 level by the relation and position items. [REL001, REL003, POS002, LAG003]\n\nLimitations: the items are not independent — the occurrence, position and distance items largely describe the same traces as the relation items — and the evidence contains no chance-expectation baseline, so the judgement rests on the size and coherence of the differences. The evidence also cannot pin down where the repetitions sit relative to A03: the interleaved A02/A03 patterns in about half of the later traces are consistent with A02 repeating before A03, after it, or both. [REL001, OCC001]",
+  "case_id": "case_1d31ac5612ce32b9",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

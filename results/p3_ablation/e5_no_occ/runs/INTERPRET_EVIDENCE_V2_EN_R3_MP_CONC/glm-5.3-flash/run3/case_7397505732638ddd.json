@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_occ/evidence/case_7397505732638ddd.json",
+  "evidence_sha256": "9d8755348e910761dc49cf7438e26e417b6353e58fd7dda0662a3bd3c7638937",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:44:08.065354+00:00",
+  "finished_at_utc": "2026-11-15T10:45:17.111941+00:00",
+  "latency_seconds": 69.05,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9886,
+    "prompt_tokens": 18668,
+    "total_tokens": 28554,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8565,
+      "text_tokens": 1321
+    },
+    "cost": 0.0077431999999999996
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30313,
+  "text": "### Observed differences\n\n- In the earlier window, the traced activities formed one fixed chain: A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27, where each source activity had exactly one observed successor carrying all (100 in 100) of its outgoing transitions. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n- In the later window, every one of A15, A17, A18, A19, A20 and A21 leads to several different activities. A15 still goes to A18 in about 68 in 100 of its outgoing transitions (before: all of them) but also to A19, A20 and A21 (about 11 in 100 each); A18 now leads most often to A27 (about 52 in 100) rather than to A19; A26 leads to A17 in about 53 in 100 cases and directly to A19 in about 47 in 100 (before: A17 only). [DIR001, DIR003, DIR007]\n- Pairwise order changed from fixed to mixed. Before, each of the eight monitored pairs (A15–A19, A15–A20, A15–A21, A17–A19, A17–A21, A18–A19, A18–A20, A18–A21) occurred in exactly one order in all 200 traces. In the later window both orders occur: A18 precedes A19 in only about 15 in 100 cases (A19 first in about 85), A15 precedes A19 in about 26 in 100 and A15 precedes A21 in about 50 in 100, while A17 still precedes A21 in about 77 in 100. Every pair still co-occurs in all traces, so participation did not change — only the order did. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]\n- Distances between consecutive activities spread out. Before, each ordered pair sat at a single fixed distance (for example A15→A18 always 1 step, A15→A20 always 4 steps, A26→A21 always 5 steps). In the later window the same pairs occur at varying distances: A15→A18 is 1 step apart in about 68 in 100 cases and up to 4 steps in the rest; A26→A19, previously always 4 steps apart, is now 1 step apart in about 47 in 100 cases. For some pairs the ordered pair within five steps became much rarer (A15 then A19 within five steps: 200 of 200 traces before, 52 of 200 after), consistent with the reversed order. [LAG001, LAG002, LAG003, LAG005, LAG013, LAG023, LAG024]\n- Relative positions shifted slightly, in line with the reordering: A15, A17 and A18 now occur somewhat later in the trace (mean relative position A15 about 0.59 → 0.64, A18 about 0.62 → 0.68), while A19, A20 and A21 occur somewhat earlier (A19 about 0.65 → 0.59). [POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis of a change in ordering constraints among A17, A15, A18, A19, A21 and A20: in the earlier window they always executed in the fixed sequence A17 → A15 → A18 → A19 → A21 → A20 between A26 at the start and A27 at the end, whereas in the later window the same activities still appear in every case but in varying orders and at varying distances from one another. A26 still precedes the block (leading to A17 or directly to A19), and A27 still follows it, with A15, A18, A20 and A21 each preceding A27 within five steps in all 200 later traces. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG005, LAG013, LAG017, LAG019, LAG023]\n\nThe screening produced 45 qualifying items against roughly 0.35 expected if nothing had changed, so chance alone cannot account for the set; all eight relation pairs move in the same direction (single fixed order → both orders), and the successor, distance and position items corroborate the same behaviour, with each profile resting on all 200 traces per window. Note that these items describe overlapping traces rather than independent confirmations, but the pattern is direct and consistent. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, LAG001, LAG006, LAG013, POS001, POS003, POS004]\n\nLimitations: the pairwise evidence cannot show which complete orderings are now possible — an important competing explanation is that cases now follow a small set of alternative fixed sequences rather than a freely ordered block, and the two cannot be distinguished here. The position shifts are based on event positions, not clock time, so they corroborate the reordering but do not independently locate any activity. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, POS001, POS002, POS003, POS004, POS005, POS006]",
+  "case_id": "case_7397505732638ddd",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

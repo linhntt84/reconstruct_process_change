@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_01bcc8b6e5aaa5f6.json",
+  "evidence_sha256": "11471a0290064f5362740a52242d84f43988718b0fc7677d6aff48709cef2ec4",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:39:18.628875+00:00",
+  "finished_at_utc": "2026-11-15T01:39:58.276486+00:00",
+  "latency_seconds": 39.65,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5415,
+    "prompt_tokens": 4693,
+    "total_tokens": 10108,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4703,
+      "text_tokens": 712
+    },
+    "cost": 0.00341145
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 19499,
+  "text": "### Observed differences\n\n- In the earlier window, A02 occurred exactly once in every trace (participation 100%, mean 1.0 per trace) and always at or near the start of the case (median position 0). In the later window, A02 was not observed at all — 0 of 200 traces, versus 200 of 200 before. [OCC001, POS001]\n- In the earlier window, A02's outgoing transitions went mostly to A03 (about 48 in 100) and A04 (about 42 in 100), with small shares to A06 (about 5), A05 (about 4) and A07 (about 1). In the later window no outgoing transitions of A02 were observed, because A02 itself no longer occurs. [DIR001]\n- A02 and A03 went from always occurring together — A02 first in about 89 of 100 cases, A03 first in about 11 — to never occurring together: in the later window A03 appears without A02 in every trace. [REL001]\n- The same holds for A02 and A04: always together before (A02 first in about 88 of 100), never together afterwards, with A04 appearing alone in every later trace. [REL002]\n- A03 and A04 still occur in every trace, but at earlier positions in the sequence: A03's mean position fell from about 0.27 to about 0.18, and A04's from about 0.29 to about 0.15, with A04's median position dropping from about 0.33 to 0 — it is now often the first event of the case. [POS002, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that in the later window A02 was no longer executed: it ran once in every earlier case and in none of the 200 later cases, and the activities that used to follow it — A03 and A04 — now begin the case directly, with A04 frequently taking the first position. The participation drop is observed directly with full support in both windows [OCC001], and the relational items show the same change directly: both pairs moved from always co-occurring, with A02 first, to never co-occurring [REL001, REL002]. A02's outgoing edges to A03 and A04 vanished together with the activity [DIR001], and the earlier positions of A03 and A04 are consistent with the former first step being gone [POS002, POS003]. Seven control-flow items qualified where roughly 0.07 would be expected if nothing had changed — far beyond what an unchanged process typically produces [OCC001, DIR001, POS001, POS002, POS003, REL001, REL002].\n\nLimitations: zero participation only means A02 was not observed in the later window, so complete removal cannot be distinguished from A02 becoming rare or optional and going unsampled; a competing explanation the evidence cannot rule out is that the mix of case variants shifted away from traces containing A02. The qualifying items also largely reflect one underlying behaviour, so they are not independent confirmations.\n\nOther differences: none beyond the above; the earlier positioning of A03 and A04 [POS002, POS003] is a knock-on effect of A02's disappearance rather than a separate change.",
+  "case_id": "case_01bcc8b6e5aaa5f6",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

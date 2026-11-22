@@ -1,0 +1,20 @@
+### Observed differences
+
+- In the earlier window, A20, A22, A23, A24, A25 and A26 each occurred in essentially every trace (about 200 of 200 in both windows) and their transitions formed a fixed chain: about 995 in 1000 observed outgoing transitions of A22 went to A20, about 99 in 100 of A20's went to A23, all of A23's went to A24, about 99 in 100 of A24's went to A26, about 99 in 100 of A26's went to A25, and about 93 in 100 of A25's went to A32 — together a fixed sequence A22 → A20 → A23 → A24 → A26 → A25. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+- In the later window this chain is loosened: A23 now sends only about 15 in 100 of its transitions to A24 while about 49 in 100 go directly to A32; A25 sends about 42 in 100 to A32 (down from 93) with the rest spread over A20 (20), A23 (20) and A22 (12); and A20, A22, A24 and A26 each gained transitions to several other members of the group (for example A24 to A22 about 23 in 100 and A26 to A20 about 13 in 100). [DIR003, DIR005, DIR004, DIR006, DIR001, DIR002]
+- The order between the two groups reversed or mixed: earlier, A20 preceded A24 in 98 of 100 traces, A23 preceded A24 in 99 of 100 and A23 preceded A25 in 99 of 100; later, A24 precedes A20 in 73 of 100, A24 precedes A23 in 84 of 100 and A25 precedes A23 in 52 of 100, while several pairs are near-even (A22 before A24 in 53 of 100, A23 before A25 in 48 of 100). [REL001, REL006, REL007, REL004]
+- All eight activity pairs still co-occur in 100 of 100 traces in both windows, and interleaving or repetition stays at about 1–2 in 100, so participation did not change — only the order between the activities did. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008]
+- Event positions moved consistently with the reorder: A24's mean position moved earlier (0.65 to 0.59 of the trace) and A26's and A25's slightly earlier, while A20's, A22's and A23's moved later (A23 from 0.62 to 0.68); these are positions in the trace, not clock times. [POS004, POS006, POS005, POS001, POS002, POS003]
+- A31's routing changed separately: before, all of its observed outgoing transitions went to A22; later, about 52 in 100 go to A22 and about 47 in 100 to A24. [DIR007]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the ordering constraints among A20, A22, A23, A24, A25 and A26 were relaxed: the previously fixed sequence A22 → A20 → A23 → A24 → A26 → A25 became a largely unordered block in which A24, A25 and A26 frequently execute before A20, A22 and A23, transitions now run in both directions between the two groups, and A23 can be followed directly by A32, which was not observed earlier. [REL001, REL003, REL004, REL006, REL007, REL008, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]
+
+The support is direct and consistent: all eight order relations shifted in the same direction by 23–84 in 100 traces, the transition profiles show the corresponding new edges with about 200 observed transitions per source activity in each window, every item's difference exceeds about 995 in 1000 random re-splits, and 21 qualifying items against roughly 0.5 expected for an unchanged process is far beyond what chance would produce. [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006]
+
+Limitations: the evidence cannot distinguish whether the six activities became truly concurrent from being re-sequenced case by case under some rule; positions are event positions rather than clock times, so no timing claim is possible; and the smallest new edges (about 0.5 in 100 of transitions) could be sampling noise, though the main edges rest on about 200 observations each. [DIR001, DIR003, POS001]
+
+Other differences: the routing change at A31, which now leads to A24 in about 47 in 100 of its outgoing transitions where it previously always led to A22, fits entering the reordered block at a different point but is a separate routing change and is not part of the main hypothesis. [DIR007]

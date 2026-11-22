@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_d8949466b60b750a.json",
+  "evidence_sha256": "9540dedc5aeca72f4590f16fc7ae31efed362804a7bd21271cd3cb4e89149bbf",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T00:33:40.743177+00:00",
+  "finished_at_utc": "2026-11-15T00:35:18.825583+00:00",
+  "latency_seconds": 98.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13847,
+    "prompt_tokens": 16411,
+    "total_tokens": 30258,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12692,
+      "text_tokens": 1155
+    },
+    "cost": 0.00938515
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44841,
+  "text": "### Observed differences\n\n- In the earlier window, cases came in two variants: about 52 in 100 cases ran A27 between A26 and A28, while the remaining about 48 in 100 ran A32, A33 and A38 together in that span, in varying internal order; A27 and the trio essentially never shared a case (co-occurrence at most about 0.5 in 100). [REL001, REL005, REL006, REL007, REL008, REL012, REL013, REL014, DIR003, DIR004]\n- In the later window, A27 runs in about 199 of 200 cases, up from about 103 of 200, and about once per case on average (mean occurrences 0.52 → 1.01). [OCC001]\n- In the later window, A32, A33 and A38 each appear in only 1 of 200 cases, down from about 48–49 in 100 each, and their pairwise co-occurrence collapses from about 48.5 in 100 cases to nearly zero. [OCC002, OCC003, OCC004, REL012, REL013, REL014]\n- A26's outgoing transitions shift from about 51 in 100 leading to A27 and about 48 in 100 leading into the trio (A38 about 18, A33 about 16, A32 about 14) to about 97 in 100 leading directly to A27. [DIR001]\n- The distance from A26 to A28 concentrates: before, 2 steps in about 50 of 100 cases and 4 steps in about 47; in the later window, 2 steps in about 97 of 100. A27 immediately precedes A28 in both windows (about 97 in 100 before, all after). [LAG001, LAG004, DIR002]\n- A26 and A28 still appear in every case in both windows, so the difference is confined to the middle of the case. [REL001, REL002, POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the branch in which A32, A33 and A38 are executed together between A26 and A28 is (nearly) no longer taken: in the later window almost every case runs A26 → A27 → A28, whereas before about half of the cases inserted that three-activity block in varying order. The screening produced 35 qualifying control-flow items against 0.6 expected without change, so the ensemble is far beyond what a stable process produces, and the change is shown directly and consistently on participation (A27 up from about 52 to about 199 of 200 cases; A32/A33/A38 down to 1 of 200 each), on routing (A26 → A27 in about 97 of 100 transitions, up from about 51) and on relations (A26–A27 co-occurrence up from about 52 to about 99.5 in 100; the trio's co-occurrence collapsing to near zero). [OCC001, OCC002, OCC003, OCC004, DIR001, REL001, REL002, REL003, REL004, REL012, REL013, REL014, LAG001]\n\nLimitations: the trio was still observed in one later case, so the evidence cannot distinguish a fully removed branch from one that is now taken extremely rarely, and the block's internal order after the change rests on that single case; the competing explanation — that two 200-case windows merely sampled almost no trio-variant cases from an unchanged process — is made implausible by the screening result and the consistency across indicators but cannot be excluded with certainty. The A27 → A28 step itself is unchanged. [DIR002, LAG004, OCC002]\n\nOther differences: A28's relative position moved slightly earlier (mean about 0.55 to about 0.53), which matches the average case becoming shorter rather than an independent change. [POS001]",
+  "case_id": "case_d8949466b60b750a",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

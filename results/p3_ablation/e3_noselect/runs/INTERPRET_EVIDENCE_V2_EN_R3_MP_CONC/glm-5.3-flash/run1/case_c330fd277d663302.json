@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_c330fd277d663302.json",
+  "evidence_sha256": "d8d9ff9ab5e85dd1a4986f61724106300d576e16a5f4fa011cdb219473e580ed",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:35:16.016077+00:00",
+  "finished_at_utc": "2026-11-14T14:36:12.347307+00:00",
+  "latency_seconds": 56.33,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8860,
+    "prompt_tokens": 4591,
+    "total_tokens": 13451,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8166,
+      "text_tokens": 694
+    },
+    "cost": 0.00511865
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 32546,
+  "text": "### Observed differences\n\n- In the earlier window, activity A03 was executed exactly once in every trace (participation 100 in 100 cases, mean 1.0 occurrence per trace, always at the final trace position); in the later window, A03 was not observed in any of the 200 traces. [OCC001, POS002]\n- In the earlier window, every observed outgoing transition of A02 led to A03; in the later window, no outgoing transitions from A02 were observed at all, and A02 now falls at the last position of traces (mean event position 1.0 versus 0.8 before, still present in 100 in 100 traces). [DIR002, POS001]\n- The relationship between A02 and A03 changed from always co-occurring with A02 first (100 in 100 traces) to A02 appearing without A03 (co-occurrence 0, A02-only 100 in 100 traces). [REL001]\n- Routing among the remaining activities stayed essentially the same: A01 still leads mainly to A04 (about 72 in 100 transitions before, 73 after) and to A05 (23 → 25), A04 mainly to A05 (77 → 76), A05 to A06 (98 → 99) and A06 to A02 (97 → 98); all shifts are at most about 1.5 points with low empirical strength (0.18–0.52), in line with sampling noise. [DIR001, DIR003, DIR004, DIR005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A03, previously a mandatory final step executed once per case directly after A02, is no longer executed, so that traces which previously ended with the sequence A02 → A03 now end at A02, which still runs in every case and now occupies the final trace position. The signs are direct and mutually consistent: A03's participation fell from all 200 traces to none (a difference larger than in about 995 of 1000 random re-splits), the A02→A03 transition disappeared, the pair relation flipped from always co-occurring to A02-only, and A02's position moved to the trace end. [OCC001, DIR002, REL001, POS001, POS002]\n\nLimitations: zero participation only shows that A03 was not observed in the later window, so a residual execution rate too low to surface in 200 traces (below roughly 1–2 in 100 cases) cannot be excluded; the five items largely describe one underlying difference rather than independent confirmations, and no screening baseline was provided to compare the item count against chance expectations. An important competing explanation the evidence cannot rule out is that A03 still executes very rarely rather than having been dropped entirely. [OCC001, POS002]\n\nOther differences: the small redistributions in the outgoing transitions of A01, A04, A05 and A06 (each at most about 1.5 percentage points, with low empirical strength) are not part of this hypothesis and show no clear behavioural change. [DIR001, DIR003, DIR004, DIR005]",
+  "case_id": "case_c330fd277d663302",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

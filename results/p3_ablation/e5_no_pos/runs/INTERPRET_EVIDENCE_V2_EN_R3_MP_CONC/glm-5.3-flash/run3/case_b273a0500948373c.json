@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_pos/evidence/case_b273a0500948373c.json",
+  "evidence_sha256": "414c79ed63bfed0ee0f5463e586d5638cfa56d556fc3efe090f1ee66579ff7ae",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T11:32:42.299063+00:00",
+  "finished_at_utc": "2026-11-15T11:33:49.589478+00:00",
+  "latency_seconds": 67.29,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9302,
+    "prompt_tokens": 15752,
+    "total_tokens": 25054,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8266,
+      "text_tokens": 1036
+    },
+    "cost": 0.0070138
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 29913,
+  "text": "### Observed differences\n\n- Both windows contain 200 traces. A15 and A25 appear in essentially every trace in both windows, and each of the six activities A16–A21 occurs at most once per trace (no repetition in either window) [DIR001, OCC001, OCC004, REL012].\n- A16, A17 and A18 each ran in about 19 in 100 traces in the earlier window and in about 79 in 100 traces in the later window (37 vs 158 traces) [OCC001, OCC002, OCC003].\n- A19, A20 and A21 each ran in about 82 in 100 traces in the earlier window and in about 21 in 100 in the later window (163 vs 42 traces) [OCC004, OCC005, OCC006].\n- The two groups of three are mutually exclusive in both windows — cross-group pairs such as A16/A19 or A17/A21 never co-occur — while co-occurrence within the groups flipped: A16–A18 now run together in about 79 in 100 traces (previously about 19 in 100), and A19–A21 now run together in about 21 in 100 (previously about 82 in 100) [REL009, REL014, REL018, REL007, REL013, REL022, REL023, REL025].\n- Out of A15, the flow redistributed in the same direction: transitions to A19, A20 and A21 fell from about 29%, 24% and 29% to about 7%, 8% and 6% of A15's outgoing transitions, while transitions to A16, A17 and A18 rose from about 7%, 9% and 3% to about 29%, 22% and 29% [DIR001].\n- Ordering relations are stable: A15 precedes the branch activities in every trace where they occur in both windows, A16–A18 keep a mixed, roughly even order among themselves, and they run before or interleaved with A25 in broadly similar proportions in both windows [REL001, REL002, REL003, REL007, REL013, REL012].\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a flip in how often two existing alternative paths are taken. Before, in about 82 in 100 cases the flow after A15 ran the group A19–A21, which executed together in mixed order and before or interleaved with A25, while the group A16–A18 was taken in about 19 in 100 cases; in the later window this reversed, with A16–A18 taken in about 79 in 100 cases and A19–A21 in about 21 in 100 [OCC001, OCC004, DIR001, REL009, REL022, REL024].\n\nThe shift is direct and consistent across participation, the transition shares out of A15, and the co-occurrence relations, with mirrored magnitudes (about a 60-point change on each scale); both branches are exercised substantially in both windows (roughly one in five versus four in five), repetition is absent throughout, and all order relations to A15 and A25 are preserved, which fits a change in the shares between existing alternatives rather than paths being added, removed or replaced [OCC001, OCC004, DIR001, REL001, REL004, REL012]. The volume of qualifying evidence also far exceeds what an unchanged process typically produces: 34 control-flow items qualified where about 0.48 would be expected by chance, and each item's difference exceeds about 99.5 in 100 random re-splits [OCC001, DIR001, REL009]. A competing explanation the evidence cannot rule out is a temporary swing in the mix of cases reaching A15 that could reverse again, since only one before/after pair is observed [OCC001, OCC004].\n\nOther differences: among the traces where A16–A18 and A25 both run, the share of interleaved (rather than strictly A-before-A25) executions rose modestly, from about a third to about two fifths of such traces [REL012, REL017, REL021].",
+  "case_id": "case_b273a0500948373c",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

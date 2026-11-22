@@ -1,0 +1,21 @@
+### Observed differences
+
+- In the earlier window, six activities — A28, A30, A31, A32, A33 and A34 — each ran exactly once in every case (participation 100 in 100 cases, one occurrence per case). In the later window, A28, A30 and A31 each run in about 46 in 100 cases and A32, A33 and A34 in about 56 in 100, still once per case when present. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006]
+
+- A25's routing widened: earlier its observed outgoing transitions went only to A28 (about 34%), A30 (about 37%) and A31 (about 30%); in the later window they spread over all six of these activities, including direct edges to A32, A33 and A34 (each about 14–20%) that were not observed earlier. [DIR001]
+
+- The segment now exits early to A26: earlier, no outgoing edge from A28, A30 or A31 to A26 was observed, while in the later window about 26–35% of each trio member's observed outgoing transitions go directly to A26; at the same time the trio's edges into A32, A33 and A34, previously about 8–14% each, shrank to about 1% each, and the trio-to-A32/A33/A34 pairs, which co-occurred within five steps in all 200 earlier cases, now co-occur in only about 4 cases. [DIR002, DIR003, DIR004, LAG005, LAG006, LAG007, LAG009, LAG010, LAG012, LAG013]
+
+- Distances collapsed accordingly: A25 to A32/A33/A34, and A28/A30/A31 to A26, lay 4–5 event positions apart in essentially all earlier co-occurrences; in the later window they lie 1–3 positions apart in about 96–99 in 100 of the observed co-occurrences. [LAG001, LAG002, LAG003, LAG004, LAG008, LAG011]
+
+- Relative positions converged: A25 now occurs slightly later within cases (mean relative position about 0.62, up from 0.62 to about 0.67), A26 slightly earlier (about 0.81, down from 0.83), and the six segment activities cluster around position 0.74 (trio members later than their earlier 0.68, A32–A34 earlier than their earlier 0.77). [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the six-activity segment between A25 and A26 — A28, A30, A31, A32, A33 and A34, formerly executed once in every case — is now executed only partially and is partly bypassed: in the later window each of these activities runs in only about half of the cases, A25 enters the segment directly at any of its activities (including A32, A33 and A34, previously reachable only through A28, A30 or A31), and A28, A30 and A31 hand over directly to A26 instead of continuing into A32, A33 and A34. The participation drop from every case to about 46–56 in 100, the new direct edges at A25 and at the trio, and the shortening of the A25→A32/A33/A34 and trio→A26 distances from 4–5 to 1–3 positions all show this directly and consistently. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, DIR002, DIR003, DIR004, LAG001, LAG004, LAG008, LAG011]
+
+The number of flagged items far exceeds what an unchanged process produces: 31 control-flow items qualified against roughly 0.5 expected by chance, and every item's difference is larger than in about 99.5 in 100 random re-splits of the pooled data. The position shifts of A25 and A26 and the convergence of the six activities around relative position 0.74 fit the same shortening of the segment, but they largely reflect the same underlying trace behaviour as the items above rather than independent confirmations. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]
+
+Limitations: the evidence cannot show whether a later-window case skips the segment as a whole or runs a varying subset of it — the two participation levels (about 46 vs 56 in 100) suggest two alternative shorter passes, one through the trio and one through A32/A33/A34, but the per-case composition is not directly observed, and the co-occurrence items bearing on this rest on only about 4 later-window observations each. An important competing explanation is that the later window mixes two case variants (the former full pass alongside a shorter one), which would produce the same marginal picture; DIR shares are also computed over outgoing transitions, not over cases. [LAG005, LAG006, LAG007, LAG009, LAG010, LAG012, LAG013]

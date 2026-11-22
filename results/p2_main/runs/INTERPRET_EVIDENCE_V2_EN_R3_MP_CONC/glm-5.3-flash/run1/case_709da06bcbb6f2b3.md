@@ -1,0 +1,18 @@
+### Observed differences
+
+- Activity A01 is the clearest difference: in the earlier window it does not appear in any of the 200 traces, while in the later window it runs in about 60 in 100 traces (119 of 200), exactly once per trace, and early in the case — its median event position is about one-sixth into the trace. [OCC001, POS001]
+- A01 is also wired into the flow. In the earlier window no transitions to or from it were observed; in the later window A03 sends about 34% and A10 about 39% of their observed outgoing transitions to A01, while A01 leads to A03 (about 32%), A10 (about 27%), A04 (about 23%) and A07 (about 18%). [DIR001, DIR002, DIR003]
+- Ordering changed accordingly. A01 now co-occurs with A03 and with A10 in about 60 in 100 traces, in both orders (A03 before A01 in about 34 of 100, A01 before A03 in about 26 of 100, and similarly for A10), whereas it co-occurs with A04 and with A07 in about 30 in 100 traces and always precedes them. [REL001, REL002, REL003, REL004]
+- Distances between the established activities grew by roughly one step: A03→A04 and A10→A04 moved from gaps of 1–2 steps to 2–3 steps (a gap of 3 now in about 38 of 100 cases), A03→A07 similarly (gap of 3 in about 41 of 100), and the previously always-adjacent A03→A10 and A10→A03 pairs now show a gap of 2 in about 29–36 of 100 cases. [LAG001, LAG002, LAG003, LAG004, LAG005]
+- A04, A07 and A10 occur at somewhat later event positions in the later window (A04 mean about 0.22→0.31; A07 about 0.57→0.67; A10 about 0.08→0.16), while their participation is essentially unchanged (A04 about 29→32 in 100 traces; A07 about 28 in 100 in both windows; A10 about 56→60 in 100). [POS002, POS003, POS004]
+- The direct transitions from A03 and A10 towards the downstream activities lost share: A03→A07 fell from about 29% to 12% and A03→A04 from about 26% to 15% of A03's outgoing transitions, and A10→A03 fell from about 55% to 29% of A10's. [DIR002, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that a new activity, A01, was introduced as an early step embedded in the A03–A10 stage. In the earlier window A01 appeared in none of 200 traces; in the later window it runs once in about 119 of 200 traces near the start of the case, A03 and A10 gained it as a successor, and it leads back to A03 and A10 as well as onward to A04 and A07, which it always precedes. The step distance from the A03/A10 stage to A04/A07 grew by about one step and the previously strict A03–A10 adjacency loosened, both of which are what one would expect if A01 now often sits on the route between them. [OCC001, POS001, DIR001, DIR002, DIR003, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005]
+
+The set of 17 qualifying items is many times larger than the roughly 0.19 expected if nothing had changed, so chance cannot account for it as a whole, and each item's difference exceeds about 995 of 1000 random re-splits of the pooled data. The appearance, the new edges, the ordering relations and the widened gaps are mutually consistent; note, however, that the occurrence, position and relation items largely describe the same A01-containing traces, so they are not independent confirmations. [OCC001, POS001, DIR001, DIR002, DIR003, REL001, REL002, REL003, REL004, LAG001, LAG002, LAG003, LAG004, LAG005]
+
+An important competing explanation remains: the later window may contain a different mix of cases — for example a new case variant that includes A01 — rather than a modification of the same process. Also, "absent" in the earlier window strictly means only that A01 was not observed there, although 0 versus about 119 of 200 traces makes a pure sampling fluctuation unlikely. [OCC001, POS001]

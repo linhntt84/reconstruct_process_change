@@ -1,0 +1,19 @@
+### Observed differences
+
+- Resource allocation across the offer-handling activities changed wholesale. In the earlier window, assignments for A01, A03, A13, A14, A17 and A22 were led by one consistent group of resources, with User_105 the single largest in six of the seven profiles (about 10–16 in 100 of assignments). In the later window the same profiles are led by a mostly different group, with User_72 first or second in all six (about 7–13 in 100); only two resources hold a comparable share in both windows. Each profile differs more than in fewer than 1 in 1,000 random re-splits of the pooled traces. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN006, ASSIGN007]
+- The redistribution is directional rather than activity-specific: the same set of resources gains share in every one of these six profiles and the same complementary set loses share, with individual shifts of roughly 3–16 in 100 per resource. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN006, ASSIGN007]
+- A16 changed from widely shared to single-handler. Earlier it was spread over about 20 distinct resources, the most frequent holding about 21 in 100; later one resource, User_17, holds all of it (concentration index about 0.09 to 1.0), whereas before it was not among the most frequent handlers. [ASSIGN005, CONC001]
+- The elapsed time between consecutive completions of A07 and A13 shortened: median about 20 hours before (6 intervals; mean about 16.5 hours) versus about 1.7 hours after (17 intervals; mean about 3.5 hours), and such consecutive pairs were observed more often (6 versus 17 intervals). Both counts are small. [TWAIT001]
+- No control-flow indicator qualified (0 of 35 tested units, against roughly 0.17 expected by chance), so no change in ordering, path usage or repetition was detected at the configured thresholds. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in resource allocation as a real possibility: assignment work on the main offer-handling activities (A01, A03, A13/A14, A17, A22) moved from a group of resources led by User_105 to a largely different group led by User_72, and A16, previously shared across about 20 resources, became handled exclusively by User_17. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+The resource family produced 8 qualifying items from 10 tested units, against roughly 0.005 expected if nothing had changed — a count chance cannot plausibly explain; the profiles agree in direction, and the concentration item shows the A16 change directly (about 20 distinct resources down to 1). Since no control-flow item qualified, the difference is confined to who performs the work, not to the structure or ordering of activities. [screening, ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN006, ASSIGN007, CONC001]
+
+Limitations: the resource codes are anonymous, so the evidence cannot distinguish a change in the allocation rule from a change in staffing or in how the assigning resource is recorded; and the seven assignment profiles together with the concentration item partly reflect the same underlying reassignment, so they are not independent confirmations. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+Other differences: the elapsed time between A07 and A13 completions shortened markedly (median about 20 hours to about 1.7 hours), but this rests on only 6 versus 17 intervals and is the single time item against roughly 0.014 expected by chance, so it does not by itself establish a timing change. [TWAIT001, screening]

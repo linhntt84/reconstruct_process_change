@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_90aa759003888373.json",
+  "evidence_sha256": "9938569540ed765829504b10776c70f9b55fa2a93ce5a8466cc1ea3f5bfc4d20",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:58:35.651409+00:00",
+  "finished_at_utc": "2026-11-15T04:59:32.533884+00:00",
+  "latency_seconds": 56.88,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 8039,
+    "prompt_tokens": 7196,
+    "total_tokens": 15235,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7133,
+      "text_tokens": 906
+    },
+    "cost": 0.0050989
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 27686,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained A14, A15 and A20 exactly once each; in the later window, each of these three activities appears in only about 53 in 100 traces (mean occurrences per trace also about 0.53, with no repetition in either window). [OCC001, OCC002, OCC003]\n- A36 itself remains present throughout, but its outgoing flow is redistributed: before, all of A36's observed outgoing transitions led to A14, whereas in the later window about 53 in 100 lead to A14 and about 47 in 100 lead directly to A21. [DIR001]\n- The spacing between A36 and A21 changes accordingly: before, A21 always followed A36 four event positions later; in the later window about 47 in 100 such pairs are only one position apart, while about 53 in 100 remain four positions apart. [LAG001]\n- Pairwise relations mirror the same split: block pairs such as A14–A15, A14–A20 and A15–A20 co-occur in about 53 in 100 later traces (versus all traces before), with about 47 in 100 later traces containing neither of them; pairs of a block activity with A36 or A21 show about 47 in 100 later traces in which only A36, or only A21, is present. Where the block still runs, the observed order is unchanged (A36 before A14, A14 before A20, A20 before A15, and each block activity before A21). [REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n- A21's mean relative position shifts slightly earlier (about 0.43 to about 0.40 of the trace, with somewhat more spread); since this indicator uses event positions, it is consistent with the other items but not, on its own, evidence that the activity was moved. [POS001]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, roughly 47 in 100 cases take a path in which A36 is followed immediately by A21, skipping the block A14 → A20 → A15, while the remaining roughly 53 in 100 cases still run the original sequence with the same internal order as before. The routing change is observed directly in A36's successor profile, and the new one-step A36–A21 distance is observed directly; the participation, co-occurrence and spacing indicators all shift by the same ~47% share, which fits one underlying skip behaviour rather than unrelated shifts, and A21's slightly earlier position is consistent with it. [DIR001, LAG001, OCC001, OCC002, OCC003, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\nFifteen qualifying items against roughly 0.35 expected without change is far beyond what an unchanged process typically produces, and every item's difference exceeds about 995 of 1000 random re-splits of the pooled data; however, the items are not independent, since the occurrence, relation and position results largely describe the same trace split. The main competing explanation the evidence cannot rule out is a sampling difference in variant frequencies: the skip path could have existed before at a frequency too low to appear in 200 before-traces (under roughly 1 in 200) and merely become frequent later, and the exact 47/53 split carries sampling uncertainty, so a newly introduced path cannot be distinguished from a rising rare variant. [OCC001, OCC002, OCC003, DIR001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, LAG001]",
+  "case_id": "case_90aa759003888373",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

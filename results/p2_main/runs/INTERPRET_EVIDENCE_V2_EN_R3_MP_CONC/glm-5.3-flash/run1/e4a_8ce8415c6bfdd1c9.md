@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, every one of the 200 traces contained the chain A21 → A22 → A23: A22 appeared in all traces with exactly one occurrence, A21's only observed successor was A22 (100% of its outgoing transitions), and A22 always preceded A23. In the later window, A22 appears in about 57 in 100 traces (113 of 200) and its mean occurrences per trace fell from 1.0 to about 0.57. [OCC001, DIR001, REL001, REL007]
+- Five activities that were not observed at all earlier (0 of 200 traces) — A27, A28, A33, A34 and A35 — each appear in about 44 in 100 later traces (87 of 200), once per trace that contains them. [OCC002, OCC003, OCC004, OCC005, OCC006]
+- A21's outgoing flow was redistributed: from going entirely to A22 to about 56% still going to A22, with roughly 7–11% going to each of the five new activities. [DIR001]
+- The new activities sit between A21 and A23: A21 precedes each of them in about 44 in 100 traces, each of them precedes A23 in about 44 in 100 traces, and their observed outgoing transitions lead to A23 and to the other new activities. [REL002, REL003, REL004, REL005, REL006, REL013, REL014, REL015, REL016, REL017, DIR002, DIR003, DIR004, DIR005, DIR006]
+- The five new activities co-occur in about 44 in 100 traces (whenever one runs, all five do) and appear in both orders in similar proportions (about 2 in 10 each way for typical pairs), so they run without a fixed order among themselves; they never co-occur with A22. [REL018, REL019, REL020, REL021, REL022, REL023, REL024, REL025, REL026, REL027, REL008, REL009, REL010, REL011, REL012]
+- A21's median relative position moved slightly earlier (0.48 to about 0.46), consistent with traces containing the new activities simply being longer, not with A21 itself being moved. [POS001]
+- The elapsed time between consecutive completion events of A39 and A41 roughly doubled, from a mean of about 1.0 hour to about 2.0 hours (median about 1.03 to 1.98 hours; 157 vs 173 observations). [TWAIT001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, about 44 in 100 cases no longer execute A22 between A21 and A23 and instead run a five-activity block — A27, A28, A33, A34 and A35, each executed once and in no fixed order among themselves — after which the flow continues to A23, while the original A21 → A22 → A23 sequence continues in the remaining about 56 in 100 cases; in effect, A22 became skippable and the new block acts as its alternative. Supporting signs: the participation flip (A22 from all 200 traces to 113; the new activities from 0 to 87 each), the redirection of A21's outgoing transitions, and direct relational evidence placing the new activities after A21 and before A23 while keeping them strictly mutually exclusive with A22. The control-flow family produced 45 qualifying items where about 0.49 would be expected without any change, so this ensemble cannot be explained by random re-splits of an unchanged process; the items are highly consistent, though many describe the same traces and are not independent confirmations. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, DIR001, REL001, REL002, REL007, REL008, REL013, REL018]
+
+What the evidence cannot rule out is that this path already existed before at a low rate that the 200 before-traces did not sample — zero participation only means the activities were not observed — and it cannot show what determines which cases take which path. [OCC002, OCC003, OCC004, OCC005, OCC006]
+
+Other differences: The elapsed time between consecutive completions of A39 and A41 roughly doubled (mean about 1.0 to about 2.0 hours). This is the only qualifying time item, where about 0.01 would be expected by chance in that family, and a single item is what an unchanged process typically produces at that screening strictness, so the evidence does not establish a timing change on its own. [TWAIT001]

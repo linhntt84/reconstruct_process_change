@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "prompts/INTERPRET_EVIDENCE_V2_EN.md",
+  "prompt_sha256": "88e4f8dd430b96cc4d0edaba68d5d4f6b9d40537e729fbc6b122106677ddd978",
+  "sent_prompt_sha256": "ac1b4e4d592693f196051a2f50f0702c4130eb16f7564c3ae69393e3a95ab5e4",
+  "evidence_path": "results/p3_ablation/e3b_v2en/evidence/case_6b0dfa22c43816cb.json",
+  "evidence_sha256": "38b527fc4ca6c3f21f7cbc9d256ab179399f159745cc26a98e1b10805a08a42e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T10:34:39.620589+00:00",
+  "finished_at_utc": "2026-11-15T10:36:15.710521+00:00",
+  "latency_seconds": 96.09,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 14047,
+    "prompt_tokens": 24829,
+    "total_tokens": 38876,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12434,
+      "text_tokens": 1613
+    },
+    "cost": 0.01074785
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 42277,
+  "text": "### Observed differences\n\n- Activity A02 becomes much rarer and earlier: it appears in about 75 in 100 traces in the earlier window but only about 21 in 100 in the later window, and its median position moves from near the end of the trace (about 0.97 of the trace) to about the middle (about 0.45). Correspondingly, the other flagged activities now run without A02 in about 79 in 100 traces, whereas before A02 almost always co-occurred with them, after them. [OCC001, POS001, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009]\n\n- The late chain A49 → A02 → A50 is largely replaced by A49 → A50: before, about 72 in 100 of A49's outgoing transitions went to A02 (about 26 in 100 directly to A50), and A02 was followed by A50 within one step in about 99 in 100 of those cases (later window based on only 14 cases); in the later window about 83 in 100 of A49's transitions go directly to A50 within one step, while A02 receives about 3 in 100. [DIR011, DIR001, LAG001, LAG009]\n\n- The order of a six-activity block reverses: before, A35, A36 and A41 each ran before A26 and before A27 in about 97–99+ in 100 traces; in the later window A26 and A27 each run before A35, A36 and A41 in about 97–98 in 100 traces, while all six activities still co-occur in every trace. [REL010, REL011, REL012, REL013, REL014, REL015]\n\n- Routing around this block changed consistently: A25 now sends about 96 in 100 of its outgoing transitions to A27 (previously split across A35, A36 and A41 at roughly 38/31/27 in 100), with A27 immediately after A25 (gap of one step in about 97 in 100 cases, previously a gap of four); A26 now fans out to A35, A36 and A41 (about 35/32/31 in 100) instead of going almost exclusively to A30 (about 98 in 100, immediately adjacent — A30 now follows A26 at a gap of about four steps in about 91 in 100 cases); and A35, A36 and A41 now each send about 30–34 in 100 of their transitions to A30, whereas before they each sent about 28–36 in 100 to A27, a target now almost unused. [DIR005, DIR006, DIR007, DIR008, DIR009, LAG002, LAG005]\n\n- Positions agree with this: A35, A36 and A41 shift later (mean relative position from about 0.40 to about 0.58), while A26 and A27 shift slightly earlier (about 0.60 to 0.53 and about 0.46 to 0.39). [POS002, POS003, POS004, POS005, POS006]\n\n- A06 and A10 participate in roughly three times as many traces (about 7 to 19 in 100, and about 9 to 22 in 100). By contrast, the A14 → A15 → A16 succession is essentially stable (about 98 in 100 of A14's transitions to A15 before versus about 90 after; about 98 of A15's to A16 before versus about 93 after). [OCC002, OCC003, DIR003, DIR004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the block A35–A36–A41 executes after A26 and A27 rather than before them, with the connections rewired accordingly: A25 leads directly into A27, A26 opens into the block, and the block closes into A30 (previously A25 opened into the block, the block closed into A27, and A26 passed straight to A30). It also supports a second, separate change in the tail, where A49 usually connects directly to A50 and A02 — previously the intermediate step in about three quarters of traces — mostly drops out and, when present, sits much earlier and routes elsewhere; A06 and A10 are additionally executed about three times as often. These conclusions rest on relational order evidence, transition shares and adjacency gaps that all point the same way, each backed by roughly 200 traces per window. [REL010, REL011, REL012, REL013, REL014, REL015, DIR005, DIR006, DIR007, DIR008, DIR009, LAG002, LAG005, DIR011, LAG009, OCC001, POS001, OCC002, OCC003]\n\nThe 45 qualifying items are many times the roughly 0.83 expected by chance when 166 units are screened, so the pattern as a whole is not what an unchanged process typically produces. However, many items restate the same underlying traces — the six pair-order items and the five routing items largely reflect one block rearrangement — so they are not independent confirmations. An important competing explanation the evidence cannot rule out is a shift in the mix of process variants between the two 200-trace samples (for example, a variant without A02, or with a different block order, becoming more frequent) rather than a modification of one shared model; the near-deterministic order reversal (from about 99 in 100 to about 1–2 in 100) and the large participation drop make pure sampling noise implausible, but the evidence cannot separate a variant-mix shift from a structural change. A few adjacency items (A25→A36, A25→A41, A36→A27) rest on only 2–4 observations in one window and were not relied upon. [REL010, REL013, DIR005, DIR006, OCC001, LAG003, LAG004, LAG007]",
+  "case_id": "case_6b0dfa22c43816cb",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,12 @@
+### Observed differences
+
+- A04 and A05 together cover every trace in both windows (their participation shares sum to 100 in 100, and neither ever repeats within a trace), but the split between them reverses: in the earlier window A04 runs in about 54 in 100 traces and A05 in about 47 in 100 (107 versus 93 of 200 traces), while in the later window A04 runs in about 46 in 100 and A05 in about 54 in 100 (92 versus 108). [OCC003, OCC004]
+- A11 is executed more often in the later window, in about 31 in 100 traces versus about 22 in 100 before (61 versus 43 traces); consistently, of A03's outgoing transitions the share leading to A11 rose from about 22 in 100 to about 26 in 100 while the share to A07 fell from about 26 in 100 to about 21 in 100, and A03 itself appears somewhat more often (about 47 in 100 traces before, about 54 in 100 after). [OCC008, DIR003, OCC002]
+- A09 and A12, which show identical profiles, occur less often in the later window: each appears in about 48 in 100 traces versus about 41 in 100 before, with about 0.9 occurrences per trace versus about 1.0; at the same time A02's outgoing transitions moved from an even split between A09 and A10 to about 53 in 100 towards A10. [OCC007, OCC009, DIR002]
+- A04's own routing changed: about 36 in 100 of its outgoing transitions led to A08 in the earlier window versus about 23 in 100 in the later one, while transitions to A01 rose from about 27 in 100 to about 36 in 100; this is the largest routing difference in the evidence. [DIR004]
+- A02 is present in every trace in both windows and repeats slightly less often (about 2.0 versus about 1.9 occurrences per trace); all other routing profiles differ only marginally between the windows. [OCC001, DIR001, DIR005, DIR006, DIR007, DIR008]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. The largest shifts — the reversed A04/A05 split, A11's higher participation and the decline of A09 and A12 — have empirical strengths of only about 0.8 to 0.9, a level that random re-splits of an unchanged process reach regularly when seventeen indicators are tested, and the evidence contains no relational or positional items that could distinguish these shifts from sampling variation. [OCC003, OCC004, OCC008, OCC007, OCC009]

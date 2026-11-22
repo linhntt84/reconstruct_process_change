@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_dfdaac706f50a2ea.json",
+  "evidence_sha256": "5dc9143b842fc4bedc5724afa64c540bcf9ba66c552372da9fa029050e835381",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:07:33.644796+00:00",
+  "finished_at_utc": "2026-11-15T04:10:01.564873+00:00",
+  "latency_seconds": 147.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 22344,
+    "prompt_tokens": 23500,
+    "total_tokens": 45844,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20331,
+      "text_tokens": 2013
+    },
+    "cost": 0.014697
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 62828,
+  "text": "### Observed differences\n\n- **Participation dropped for exactly four activities.** In the earlier window, A25, A26, A27, A28, A31, A36, A37 and A42 each ran in essentially every trace (about 100 in 100, roughly once per trace). In the later window, A25, A26, A28 and A31 still run in every trace, while A27 runs in about 54 in 100 traces and A36, A37 and A42 in about 47–48 in 100. [OCC001, OCC002, OCC003, OCC004, POS001, POS002, POS004, POS005]\n\n- **A27 and the group A36/A37/A42 became either/or.** Earlier, A27 co-occurred with A36, A37 and A42 in 100 in 100 traces; in the later window they share a trace in only about 1 in 100 cases — about 52–53 in 100 traces show A27 without the group, about 46–47 in 100 show the group without A27, and essentially none show neither. [REL011, REL012, REL013]\n\n- **The group moved from before A28/A26 to after them.** Earlier, A36, A37 and A42 each preceded A28 in about 99–100 in 100 co-occurring traces and preceded A26 in about 98–99 in 100; in the later window, A28 and A26 precede the group in virtually all traces where both appear (about 46–47 in 100 of all traces). The group's internal order stays mixed (both directions in near-equal shares) in both windows. [REL006, REL007, REL008, REL014, REL015, REL016, REL020, REL021, REL022]\n\n- **A25 now feeds A28 directly.** Earlier, A25's outgoing transitions went to A42, A36 and A37 (about 31–35 in 100 each) and A28 followed A25 only after about four steps (about 94 in 100); in the later window, A25 leads to A28 in about 99 in 100 cases, immediately (lag 1 in about 99 in 100). [DIR001, LAG001]\n\n- **Routing at A26 and into A31 changed accordingly.** Earlier, A26 led to A27 in about 98 in 100 of its outgoing transitions; in the later window, it leads to A27 in about 53 in 100 and to A36/A37/A42 in about 14–17 in 100 each. The group members, which earlier led partly to A28 (about 31–33 in 100) and partly to one another, now lead to one another and to A31 (about 28–36 in 100) and no longer to A28; A31 follows both A27 and the group in all traces where they co-occur. [DIR002, DIR003, DIR004, DIR005, REL005, REL010, REL017, REL018, REL019]\n\n- **Distances and positions match the new layout.** The A26→A31 distance, earlier almost always 2 steps (about 97 in 100), is now split between 2 steps (about 51 in 100) and 4 steps (about 46 in 100) — matching the A27 branch and the group branch respectively; the group's median position moved from about 0.39–0.40 to about 0.58–0.59 of the trace, A28's from about 0.45 to 0.39, and A26's from about 0.61 to 0.55. [LAG005, POS002, POS004, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility of a structural reordering of the segment from A25 to A31. In the earlier window, every trace executed A25, then the group A36/A37/A42 (in varying internal order), then A28, A26, A27 and A31, each once. In the later window, A25 is followed immediately by A28, with A26 next, after which each trace takes exactly one of two branches: about 53 in 100 execute A27 followed by A31, and about 47 in 100 execute A36, A37 and A42 (in varying order) followed by A31. A27 and the A36/A37/A42 group thus changed from being executed together in every trace to being mutually exclusive alternatives that almost never co-occur. [REL011, REL012, REL013, REL014, REL015, REL016, DIR001, DIR002, LAG001, LAG005, OCC001, OCC002, OCC003, OCC004]\n\nThe hypothesis is shown directly and consistently: relational items capture the co-occurrence collapse and the order flips outright, successor profiles show A25→A28 becoming the near-universal edge and the group now feeding A31 instead of A28, and the participation losses hit exactly the four activities that became branch contents while A25, A26, A28 and A31 remain in every trace. The near-zero \"neither\" share rules out the activities having become independently optional, and the bimodal A26→A31 distance reproduces the 53/47 branch split. Screening produced 50 qualifying items where roughly 0.7 would be expected without a change, and every item's difference exceeds those seen in about 995 of 1,000 random re-splits, so chance sampling cannot account for the evidence as a whole. [REL011, REL012, REL013, REL019, DIR001, DIR003, DIR004, DIR005, OCC001, OCC002, OCC003, OCC004, LAG005]\n\nLimitations: many items describe the same underlying trace behaviour and are not independent confirmations; several LAG items rest on a single observation and were not relied on; and the evidence cannot show whether the exclusive split is a newly inserted decision point or a mixture of two coexisting process variants in the later window. [LAG002, LAG003, LAG009, LAG010, LAG011]\n\nOther differences: small shifts in typical position for A25 (median about 0.33 to 0.35) and A31 (about 0.66 to 0.64), consistent with the restructuring above but not part of the hypothesis. [POS001, POS005]",
+  "case_id": "case_dfdaac706f50a2ea",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

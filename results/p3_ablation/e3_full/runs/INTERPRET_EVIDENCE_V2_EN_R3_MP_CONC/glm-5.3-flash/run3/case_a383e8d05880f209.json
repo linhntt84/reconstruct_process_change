@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_a383e8d05880f209.json",
+  "evidence_sha256": "8831005849a6c733814345d74cc2d9a223f76539b33e1da7521f7d605c233c7e",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:34:30.491929+00:00",
+  "finished_at_utc": "2026-11-16T03:37:12.977117+00:00",
+  "latency_seconds": 162.48,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 23505,
+    "prompt_tokens": 25657,
+    "total_tokens": 49162,
+    "completion_tokens_details": {
+      "reasoning_tokens": 21789,
+      "text_tokens": 1716
+    },
+    "cost": 0.015601049999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 70292,
+  "text": "### Observed differences\n\n- A01 shifted from an early to a late position in the traces: its mean relative position rose from about 0.26 (median about 0.17) in the earlier window to about 0.65 (median about 0.67) in the later window, with a somewhat tighter spread. [POS001]\n- The order between A01 and every other activity reversed. Earlier, A01 ran before A05 in about 80 in 100 traces, before A06 in about 91, before A07 in about 68, and split roughly evenly with A02 (55 vs 45) and A04 (49 vs 51); in the later window A02 preceded A01 in about 81 in 100 traces, A04 in all 200, A05 in about 63 and A07 in all 200, while A01 and A06 became roughly balanced (about 52 vs 48). All these pairs still co-occurred in every trace in both windows. [REL001, REL002, REL003, REL004, REL005]\n- Within-five-steps proximity flipped direction the same way: A07→A01 rose from 65 to 200 of 200 traces (about two thirds at distance 1), A04→A01 from about 103 to all 200 but never adjacent (distance-1 share fell from about 31 in 100 to 0), A02→A01 from 91 to 162, A05→A01 from 39 to 126 and A06→A01 from 18 to 97; conversely, A01→A02 fell from 109 to 38, A01→A05 from 161 to 74 and A01→A06 from 182 to 103. [LAG001, LAG003, LAG004, LAG005, LAG011, LAG017, LAG023, LAG028]\n- Successor mixes shifted accordingly: A01's outgoing share to A03 rose from about 7 in 100 to about 47 and to A02 fell from about 29 to about 12, while its transitions to A04 and A07 were no longer observed; A07's outgoing share to A01 rose from about 17 to about 67 in 100 and its transitions to A03 (about 27 in 100) were no longer observed; A04's transitions to A01 (about 16 in 100) were no longer observed while A04→A07 rose from about 54 to about 70 in 100. [DIR001, DIR003, DIR006]\n- A01 reached A03 within five steps in 143 of 200 traces earlier (mostly at distance 4–5) and in all 200 later (about 47 in 100 at distance 1); A07's immediate transitions to A03 disappeared (about 27 in 100 to 0, now at distance 2 or more). [LAG002, LAG030]\n- The other activities each shifted slightly earlier: mean relative positions A02 about 0.31→0.23, A04 0.23→0.18, A05 0.47→0.38, A06 0.72→0.65, A07 0.52→0.42. [POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nA specific hypothesis supported by the evidence is that A01 moved from an early stage to a late stage of the process: earlier it executed near the start, typically before A05, A06 and A07 and about evenly split with A02 and A04; in the later window A02, A04, A05 and A07 execute before A01 — A07 typically immediately before it — and A01 now leads mainly into A03. The change is shown directly by the order reversals in all five pairs involving A01, by A01's large position shift while the other activities moved only slightly, by the flipped direction of within-five-steps proximity, and by the successor redistributions at A01, A07 and A04. Participation itself did not change — every activity appeared in every trace and each pair co-occurred in 100 in 100 traces in both windows — and because the order relations themselves flipped rather than only path shares, a pure change in how often existing paths are taken does not fit. Note that these items largely describe one underlying behaviour and are not independent confirmations. [REL001, REL002, REL003, REL004, REL005, POS001, LAG002, LAG011, LAG016, LAG028, LAG030, DIR001, DIR003, DIR006]\n\nThe evidence cannot fully distinguish a relocation of A01 itself from an equivalent reordering that placed the other activities ahead of it, although A01's much larger position shift favours the former; positions are event orders rather than clock times, A01's order relative to A06 remains about balanced in the later window, and DIR shares are computed over outgoing transitions rather than cases. [POS001, POS002, POS003, POS004, POS005, POS006, REL004, LAG003]\n\nOther differences: pairs and lags not involving A01 changed only slightly — order shares moved by at most about 7 in 100 traces with low empirical strength (A02/A04, A02/A05, A04/A05, A05/A07, A06/A07) — and A02's outgoing mix shifted toward A05 (about 27 to 40 in 100) and away from A01 (about 26 to 11 in 100), with A02→A05 more often immediate; these are consistent with, but not needed for, the relocation of A01. [REL006, REL007, REL010, REL012, REL013, DIR002, LAG008]",
+  "case_id": "case_a383e8d05880f209",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

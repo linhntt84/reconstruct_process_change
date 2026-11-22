@@ -1,0 +1,19 @@
+### Observed differences
+
+- Activity A01 was not observed in any of the 200 earlier traces; in the later window it appears in all 200 traces, once per trace on average, at an early position (median about one-fifth into the trace). [OCC001, POS001]
+- In the earlier window A01 had no observed outgoing transitions; in the later window its transitions go mainly to A02 (about 30 in 100) and A12 (about 27 in 100), with smaller shares to A04, A05, A03 and A06. [DIR001]
+- A02, A06 and A12 now route a large share of their outgoing transitions to A01 — about 32, 26 and 30 in 100 respectively — whereas earlier none of their transitions went to A01; their other successors lost corresponding share (for example A02 to A12 fell from about 40 to 25 in 100). [DIR002, DIR003, DIR004]
+- Pairs involving A01 flipped from never co-occurring to near-universal co-occurrence: with A04 and with A05, traces went from containing only the partner to always containing both, with A01 first in every case; with A02 and with A12 the two now always co-occur but in both orders in similar proportions (about 50/50 and 46/54), so there is no fixed order between them; A06, which earlier occurred in about 48 of 100 traces always without A01, now occurs only alongside it (co-occurrence about 59 in 100, again in both orders). [REL001, REL002, REL003, REL004, REL005]
+- Later activities shifted downstream: A05's mean position moved from about 0.63 to 0.73 of the trace length and A12's from about 0.20 to 0.24; step distances grew for many pairs — A02–A12 was one step apart in about 82 of 100 observations earlier versus about 53 in 100 later, and A06–A05 is now five steps apart in about 37 of 100 observations (never earlier). [POS002, POS003, LAG003, LAG006, LAG008]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that A01 became part of essentially every execution in the later window — an activity added to the process, or a previously unobserved one that became mandatory — placed early in the flow: it receives transitions from A02, A06 and A12 and passes flow on mainly to A02, A12, A04 and A05, always before A04 and A05 but in no fixed order relative to A02, A12 and A06. Its appearance is accompanied by a consistent downstream displacement, with A05 and A12 occurring later in the trace and many previously adjacent pairs spaced further apart. [OCC001, DIR001, DIR002, DIR003, DIR004, REL002, REL003, POS002, LAG003]
+
+The participation change is direct and far beyond sampling variation (0 of 200 versus 200 of 200 traces, once per trace), the new edges on both sides of A01 are observed directly in the routing profiles, and the 23 qualifying items are about 100 times the number expected for an unchanged process (0.23, all control-flow), with each item's difference exceeding about 995 of 1000 random re-splits. The positional and distance shifts fit A01 sitting between the earlier and later activities rather than pointing to an unrelated difference. [OCC001, DIR002, DIR003, DIR004, POS002, LAG005]
+
+Limitations: zero participation in the earlier window only shows that A01 was not observed then, so a genuinely new activity cannot be distinguished from a rare optional one that became mandatory; A01's placement varies, since it has no fixed order with A02, A12 or A06; and position and distance are measured in event positions, not clock time. Several items describing A01 reflect the same underlying behaviour and are not independent confirmations. A competing explanation the evidence cannot fully rule out is that the later positions and larger step distances are a separate reordering change independent of A01's appearance, although they fit a single change more simply. [OCC001, POS001, LAG003]
+
+Other differences: A06 itself appears somewhat more often, in about 48 of 100 earlier traces versus about 55 of 100 later ones; this modest rise could also be window-to-window sampling variation. [DIR003, REL004]

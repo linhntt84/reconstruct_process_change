@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, three activities formed a one-of-three choice that executed in every case: A14 appeared in about 32 in 100 traces (64 of 200), A15 in about 28 (56) and A20 in about 40 (80); no trace contained more than one of them, and the three shares together cover all 200 traces. Each occurred around the middle of the trace (mean relative position about 0.51). [OCC001, OCC002, OCC003, REL001, REL002, REL006, POS001, POS002, POS003]
+- In the later window, none of the three was observed at all: participation and mean occurrences per trace are zero for A14, A15 and A20 (0 of 200 traces each). [OCC001, OCC002, OCC003]
+- The routing that fed and drained the block disappeared. Before, about 45 in 100 of A22's observed outgoing transitions went to A14, A15 or A20 (about 55 went to A23), and about 54 in 100 of A23's outgoing transitions went to the block (about 46 to A24); the block activities in turn led to A23 or A24 (for example A14 to A24 in about 58 in 100 and to A23 in about 42 of its outgoing transitions). In the later window, A22 leads only to A23 and A23 only to A24, and the block activities show no outgoing transitions at all. [DIR004, DIR005, DIR001, DIR002, DIR003]
+- Relations collapsed accordingly: before, each block activity co-occurred with A22, A23 and A24 in every trace in which it appeared (A22 always before it, it always before A24, with A23 on either side); in the later window every such pair shows only the A22/A23/A24 activity present, in 100 in 100 cases. [REL003, REL004, REL005, REL007, REL008, REL009, REL010, REL011, REL012]
+- A22 and A24, present in every trace in both windows, shifted slightly in event position: A22's mean relative position moved from about 0.46 to about 0.47, A24's from about 0.57 to about 0.55. [POS004, POS005]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the one-of-three alternative block formed by A14, A15 and A20 is no longer executed in the later window. Before, exactly one of these three activities ran in every case, inserted between A22 and A24 — before A23 in about 45 in 100 cases and after A23 in about 55 in 100. In the later window, none of the three appears in any of the 200 traces, and every observed case runs directly from A22 to A23 to A24. [OCC001, OCC002, OCC003, DIR004, DIR005, REL005, REL012]
+
+The signs are direct and consistent: participation of all three activities fell from 28–40 in 100 cases to 0 of 200; the transitions from A22 and A23 into the block vanished, leaving each with a single observed successor; all nine block-to-core relations went from universal co-occurrence to universal absence; and the small event-position shifts of A22 and A24 fit the removal of the block between them. The 25 qualifying items against about 0.37 expected by chance for the 75 tested control-flow units is a count many times larger than an unchanged process would produce, and each item's difference exceeds those of essentially all reference comparisons; a drop from 56–80 traces per activity to zero is not a rare-variant sampling effect. [DIR004, DIR005, POS004, POS005, REL010]
+
+Limitations: zero participation strictly means only that the activities were not observed in the later window, so the evidence cannot rule out that the block was renamed or replaced by activities outside the observed set rather than removed. The occurrence, direction, position and relation items also largely describe the same traces, so they corroborate one underlying difference rather than confirming it independently. [OCC001, OCC002, OCC003]
+
+Other differences: only the minor event-position shifts of A22 and A24 noted above, which are consistent with the removed middle block rather than independent changes. [POS004, POS005]

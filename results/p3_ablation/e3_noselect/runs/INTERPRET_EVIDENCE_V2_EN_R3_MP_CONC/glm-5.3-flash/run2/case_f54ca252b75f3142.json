@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_f54ca252b75f3142.json",
+  "evidence_sha256": "fb3033477bc3b9198bd2ad3f8b1511d1905223b8420c06c6a3b40015f78166ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:35:19.655180+00:00",
+  "finished_at_utc": "2026-11-15T08:36:57.718094+00:00",
+  "latency_seconds": 98.06,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13787,
+    "prompt_tokens": 9568,
+    "total_tokens": 23355,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12731,
+      "text_tokens": 1056
+    },
+    "cost": 0.0083287
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 44410,
+  "text": "### Observed differences\n\n- A01 is no longer executed. Earlier it occurred exactly once in every trace (200 of 200) and was almost always the first event (median position 0); in the later window it occurs in 0 of 200 traces. The difference exceeds about 199 of 200 random re-splits of the pooled data. [OCC001, POS001]\n- A04 is also gone. Earlier it ran in about 51 in 100 traces, always alongside A02 (co-occurring in every A02 trace, more often before A02 — about 37 in 100 traces — than after it, about 15 in 100); in the later window it occurs in 0 of 200 traces. [OCC004, REL005, POS004]\n- The remaining activities move to the front. A02 and A03, previously placed around the middle of the trace (median relative position about 0.67 and 0.5), now sit at position 0 in every trace that contains them. [POS002, POS003]\n- Their routing simplifies to a single successor each. Earlier, about 79 in 100 outgoing transitions of A02 went to A06 (the rest to A04 or A01) and about 95 in 100 of A03's transitions went to A05 (the rest to A01); in the later window all observed outgoing transitions of A02 go to A06 (93 of 93) and all of A03 go to A05 (107 of 107). [DIR002, DIR003]\n- A01's outgoing profile (about 46% of 191 transitions to A03, 34% to A04, 16% to A02, small shares to A05/A06) and A04's (about 70% to A02) have vanished, and the few exits from A05 and A06 back into A01 or A04 (6 and 14 transitions) are gone, leaving both activities terminal. [DIR001, DIR004, DIR005, DIR006]\n- The choice between A02 and A03 is essentially unchanged: they never occur in the same trace in either window, and their shares shift only from about 51/49 to about 47/53 — within the range random re-splits produce (strength about 0.53). [REL004, OCC002, OCC003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, A01 and A04 are no longer executed: the activity that previously opened every trace (A01) and the A04 step that ran with A02 in about half of all traces are skipped or removed, so traces now begin directly with A02 (about 47 in 100) or A03 (about 54 in 100) and proceed as A02 → A06 or A03 → A05. The signs are direct and consistent across all four control-flow indicator families: participation of A01 and A04 falls from 200/200 and about 102/200 to 0/200 while the other activities keep similar supports; the position distributions of A02 and A03 collapse to the first position; the outgoing profiles of A01 and A04 disappear; and the former side-exits from A02/A03 and from A05/A06 into A01/A04 disappear, each source keeping exactly one successor. [OCC001, OCC004, POS001, POS002, POS003, POS004, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, REL001, REL002, REL003, REL005, REL006]\n\nLimitations: zero participation only means the activities were not observed in the later window, so the evidence cannot distinguish a removal of A01 and A04 from a routing change that always bypasses them; and no screening baseline is included, so the chance expectation cannot be checked formally — although a fall from 100% to 0% participation between 200-trace windows is not a plausible sampling fluctuation for a stable process. [OCC001, OCC004]\n\nOther differences: the split between the two remaining branches moved slightly (A02 from about 51 to 47 in 100 traces, A03 from about 49 to 54), a difference within the variation random re-splits produce, so the branch choice itself shows no clear change. [OCC002, OCC003, REL004]",
+  "case_id": "case_f54ca252b75f3142",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

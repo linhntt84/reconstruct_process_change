@@ -1,0 +1,19 @@
+### Observed differences
+
+- A14, A15, A26 and A28 appear in essentially every trace in both windows (support shares of 1.0), so the differences below concern what runs between these activities, not their presence or absence. [REL002, REL003, REL009, POS003]
+- In the earlier window, A32, A33 and A38 always occurred together as a block in about 48–49 in 100 traces, entered from A26 and exiting to A28; in the later window each of the three appears in only 1 of 200 traces (support shares about 0.49 falling to about 0.005). [DIR006, DIR007, DIR008, DIR009, POS004, POS005, POS006, REL028]
+- Routing out of A26 shifted from roughly 50 in 100 outgoing transitions to A27 and 48 in 100 into the A32/A33/A38 block, to about 98 in 100 to A27 in the later window. [DIR006]
+- A27 changed from an alternative to that block — present in about 52 in 100 traces and never together with it — to near-universal, at about 995 in 1000 traces, placed before A28 in about 97 in 100 of the later cases. [REL009, REL017, REL021, REL022]
+- The A26→A28 distance collapsed: earlier it split roughly evenly between a 2-step gap (about 49 in 100) and a 4-step gap (about 46 in 100); in the later window about 95 in 100 pairs are 2 steps apart. [LAG003]
+- A04 became rare: from about 68 in 100 traces earlier to about 22 in 100 later (43 of 200), and later within the trace (mean relative position about 0.21 to 0.40). A14 now leads directly to A15 in about 82 in 100 of its outgoing transitions (earlier about 36, when about 63 went to A04), and immediate A14→A15 succession rose from about 19 in 100 to about 47 in 100. [REL001, DIR004, POS001, LAG001, LAG002]
+- The rare activities A02 and A08 show almost completely reshaped successor mixes, but on very few observations (10→30 and 8→40 outgoing transitions), so these proportions are weak. [DIR001, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the alternative branch after A26 — the jointly executed block of A32, A33 and A38 that earlier sat between A26 and A28 in roughly half of the cases — is essentially no longer executed, so that virtually all cases now follow A26 → A27 → A28, with A27 changing from an optional alternative (about 52 in 100 cases) to effectively mandatory (about 995 in 1000). The change is shown directly in A26's outgoing transitions (about 50% to A27 and 48% to the block before, versus about 98% to A27 after), in the block's participation collapsing from about 48–49 in 100 traces to 1 in 200, in A27's corresponding rise, and in the A26→A28 gap shrinking to two steps; with 55 qualifying items against roughly 0.6 expected if nothing had changed, the pattern as a whole cannot be explained by sampling. A limitation is that the block was still observed once in the later window, so the evidence shows it became nearly never executed rather than that it was removed, and the two-window design cannot rule out that the windows capture a different mix of cases rather than a modified process. [DIR006, DIR007, DIR008, DIR009, POS004, POS005, POS006, REL017, REL021, REL022, REL028, REL029, REL030, LAG003]
+
+Other differences:
+- A04 became optional: from about 68 in 100 traces (typically running between A14 and A15/A26) to about 22 in 100, positioned later in the trace, with A14 usually continuing straight to A15; this participation change is separate from the branch change above. [REL001, REL002, REL003, REL005, DIR004, POS001, LAG001, LAG002]
+- The rare activities A02 and A08 show almost entirely different successor profiles, but with only 10→30 and 8→40 observed outgoing transitions these rest on weak proportions. [DIR001, DIR003]

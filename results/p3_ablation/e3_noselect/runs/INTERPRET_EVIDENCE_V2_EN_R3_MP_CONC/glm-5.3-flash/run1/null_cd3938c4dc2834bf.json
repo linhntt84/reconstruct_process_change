@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/null_cd3938c4dc2834bf.json",
+  "evidence_sha256": "c505187357233aad3638f9386a297a3196aa2c86dfb5ed703dec39d5ec913930",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:46:06.597275+00:00",
+  "finished_at_utc": "2026-11-14T14:49:23.706584+00:00",
+  "latency_seconds": 197.11,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 32814,
+    "prompt_tokens": 17921,
+    "total_tokens": 50735,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30829,
+      "text_tokens": 1985
+    },
+    "cost": 0.019095149999999998
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 103810,
+  "text": "### Observed differences\n\n- Occurrence shares barely moved: the largest shifts are about 5 traces in 100 (A35 up from about 57 to 62, A02/A06/A07/A08 up from about 48 to 52, A01/A03/A04/A05 down from about 52 to 48, A13 down from about 24 to 21), and no monitored activity appeared or disappeared. [OCC001, OCC002, OCC012, OCC024]\n- The clearest differences are in directly-follows shares. Between A18 and A19, the preferred order of A25 and A26 reversed: in the earlier window A18 led most often to A26 (about 53 of 100 outgoing transitions), A26 led most often to A25 (about 53) and A25 led most often to A19 (about 53), whereas in the later window A18 led most often to A25 (about 57), A25 led most often to A26 (about 57) and A26 led most often to A19 (about 57). Each of the three successor profiles is larger than about 90 in 100 random re-splits. [DIR014, DIR017, DIR018]\n- In front of A23, A15 and A17 exchanged their order: earlier, A15 led most often straight to A23 (about 58 of 100) and A17 frequently preceded A15 (about 29 of 100 A17 transitions went to A15); later, A15 led most often to A17 (about 37) and A17 led most often to A23 (about 60). A22's successor shares moved the same way (to A15 up from about 20 to 26, to A17 down from about 26 to 21). [DIR011, DIR013, DIR015]\n- After A01 and after A02, two three-activity groups changed their typical traversal order (shares of each source's outgoing transitions). Earlier the strongest links ran A01→A04 (41%), A04→A03 (40%), A03→A09 (40%) and A02→A06 (40%), A06→A08 (36%), A08→A07 (42%); later they run A01→A05 (42%), A05→A03 (42%), A03→A04 (38%), A04→A09 (39%) and A02→A07 (39%), A07→A06 (37%), A06→A08 (38%), A08→A09 (36%), with empirical strengths of about 0.72–0.89. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR007, DIR008]\n- All other routing differences are small: near-even successor splits (A23's four successors, A27–A30, A32/A33) moved by 3 percentage points or less, and the A34–A38 region shows only mild shifts (A37's transitions to A34 up from about 21 to 27 of 100; A36 and A37 down about 2–3 traces in 100). [DIR016, DIR019, DIR020, DIR021, DIR022, DIR023, DIR024, DIR025, DIR026, OCC025, OCC026]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that, in the later window, several short activity sequences are traversed in a different typical order while each activity's participation stayed essentially unchanged. The clearest instance involves A25 and A26 between A18 and A19: earlier the dominant chain was A18→A26→A25→A19, later it is A18→A25→A26→A19 — a coordinated flip of about 10 percentage points across three successor profiles, each larger than about 90 in 100 random re-splits, while the transition counts of A18, A25 and A26 stayed at about 200 per window, so the flip is not explained by the activities running more or less often. The same kind of change appears in three further segments: A15 and A17 exchanged their order in front of A23 (earlier A17→A15→A23 dominated, later A15→A17→A23), and the groups A03/A04/A05 after A01 and A06/A07/A08 after A02 shifted their typical order, each backed by several agreeing successor profiles with strengths of roughly 0.72–0.94. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR007, DIR008, DIR011, DIR013, DIR014, DIR015, DIR017, DIR018, OCC001, OCC002]\n\nLimitations: the successor shares show the balance between possible orders, not a fixed sequence — both orders still occur in both windows, so the change is a shift in which order dominates rather than a wholesale replacement of one path by another, and this evidence cannot distinguish a modified ordering constraint from a shift in the mix of pre-existing trace variants. For the groups after A01 and A02, whose members each appear in only about half of the traces, a small change in how often optional activities are executed could also contribute to the shifted shares. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR007, DIR008]\n\nOther differences: A10 and A11 repeated slightly more often (mean occurrences per trace 1.41 to 1.46; traces containing a repeat up from about 30 to 35 in 100), and in the A34–A38 region A35 participated somewhat more often (about 57 to 62 in 100 traces) while A37 led to A34 more often (about 21 to 27 of 100 transitions); these shifts are mild, only moderately unusual for random re-splits, and do not form as coherent a pattern as the ordering changes. [DIR024, DIR026, OCC009, OCC010, OCC023, OCC024]",
+  "case_id": "null_cd3938c4dc2834bf",
+  "set": "null_ostovar3",
+  "kind": "null",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

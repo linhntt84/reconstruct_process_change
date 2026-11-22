@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_a2c2383be86332d2.json",
+  "evidence_sha256": "49d0f7f093662f9f801d787e222aa61540a095fc14e42de502eac76a3029c7f1",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T03:33:17.115208+00:00",
+  "finished_at_utc": "2026-11-15T03:35:07.883614+00:00",
+  "latency_seconds": 110.77,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 15220,
+    "prompt_tokens": 15028,
+    "total_tokens": 30248,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14042,
+      "text_tokens": 1178
+    },
+    "cost": 0.0098642
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 51036,
+  "text": "### Observed differences\n\n- A07 disappeared: in the earlier window it ran in every one of the 200 traces (about 2 occurrences per trace, repeated in about half of the cases); in the later window it appears in none of the 200 traces. [OCC003, POS003]\n- A08's routing changed: earlier, all of A08's outgoing transitions (416) led to A07; in the later window they lead directly to A05 (about 52 in 100) and A06 (about 48 in 100) — the same split A07 previously had — while A08's outgoing volume stayed at 416 in both windows. [DIR002, DIR003]\n- All recorded relations of A07 collapsed: A03, A06 and A08 co-occurred with A07 in every earlier trace but never later; A05 co-occurred with A07 in about 50 in 100 earlier traces and A02 in about 48 in 100, both zero later. [REL007, REL008, REL009, REL010, REL011]\n- A01 is new: unobserved earlier, later present in about 35 in 100 traces (69 of 200), always as the first event of the trace and always followed by A03; whenever A01 and A06 co-occur, A01 comes first. [OCC001, POS001, DIR001, REL002, REL004]\n- A02 became less common: from about 48 in 100 traces earlier to about 28 in 100 later. [OCC002, REL007]\n- Smaller shifts consistent with A07's disappearance: A03's median normalized position moved from 0.25 to 0.33 and A08's from 0.50 to 0.67; distances between surviving pairs shrank by about one step (A02→A05 and A05→A06 from 4 to 3 steps; A08→A06 from 2 to mostly 1 step). [POS002, POS004, LAG001, LAG009, LAG013]\n- Participation of A03, A05, A06 and A08 was essentially stable (A05 about 50 vs 55 in 100; the others present in all traces in both windows). [REL003, REL004, REL009, POS002, POS004]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A07 was dropped from execution and its step spliced out: A08, which previously always led into A07 — from which flow continued to A05 in about 52 in 100 of its outgoing transitions and to A06 in about 48 in 100 — now leads directly to A05 and A06 with the same split, and A07 no longer occurs in any of the 200 later traces. The successor change at A08 is observed directly, A07's disappearance shows consistently across occurrence, position and relation indicators, and A05/A06/A08 volumes stayed stable, so this is not a shift of shares between existing paths; screening qualified 35 control-flow items against about 0.19 expected without change, so chance cannot account for the set as a whole, although many items describe the same underlying difference and are not independent confirmations. A limitation: the evidence shows only that A07 was not executed in the later sample; it cannot distinguish A07 no longer being part of the process from A07 still existing but simply not being triggered. [OCC003, DIR002, DIR003, POS003, REL008, REL010, REL011]\n\nOther differences: A01 appears as a new first activity, always followed by A03, in about 35 in 100 later traces — it was unobserved earlier, so a very rare prior presence cannot be excluded; A02's participation fell from about 48 to about 28 in 100 traces; A03's and A08's later positions and the shorter inter-activity distances are consistent with by-products of A07's removal rather than independent moves of these activities. [OCC001, POS001, DIR001, REL002, OCC002, POS002, POS004, LAG001, LAG009, LAG013]",
+  "case_id": "case_a2c2383be86332d2",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

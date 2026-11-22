@@ -1,0 +1,18 @@
+### Observed differences
+
+- In the earlier window, A07, A15, A16 and A17 were not observed in any of the 200 traces; in the later window they appear in about 48, 39, 70 and 33 in 100 traces respectively [OCC002, OCC004, OCC005, OCC006].
+- In the later window the new activities have clear outgoing transitions: A07 leads to A18, A15 to A10, A17 to A09, and A16 splits about evenly between A03 and A02; none of these transitions were observed earlier [DIR002, DIR006, DIR007, DIR008].
+- Transitions from established activities changed: in the earlier window A10 led to A03, to itself and to A02, while in the later window it leads almost only to A15 and A16 (about half each); A08 led to A05 in about half of its outgoing transitions and now leads to A07 in about half; A18 led only to A02 and now leads to A14 and A17; A12 now leads to A05 about half the time instead of A18; A05 now leads to A02 in about half of its transitions instead of A09 and A14 [DIR004, DIR003, DIR009, DIR005, DIR001].
+- Pairs involving the new activities moved from never occurring together to frequent co-occurrence: A03 with A16 went from A03 alone in all traces to together in about 70 in 100 traces (A16 first in about 47 in 100); A10 with A16 to together in about 70 in 100; A02 with A07 to together in about 48 in 100, mostly interleaved or repeated [REL007, REL029, REL001].
+- Repetition of established activities changed: A05 occurs about twice as often per trace (about 1.9 to 4.0) while appearing in fewer traces (about 48 to 39 in 100); A18 occurs about half as often per trace (about 1.8 to 0.9) while appearing in slightly more traces (about 40 to 48 in 100); A13 occurs about twice as often (about 1.0 to 2.1) [OCC001, OCC007, OCC003].
+- Positions within the trace shifted: A05 now appears earlier (mean relative position about 0.63 to 0.46) and A18 later (about 0.42 to 0.64); typical gaps between consecutive activities also changed, for example A08 to A18 moved from lag 4 to lag 2 [POS002, POS007, LAG011].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that a group of activities not observed in the earlier window — A07, A15, A16 and A17 — is executed in the later window and integrated between established activities: A10 now runs into A15 and A16, which lead on to A03 and A02; A08 runs into A07, which leads to A18; A17 leads to A09; and the former direct links A10→A03/A02, A08→A05, A18→A02 and A12→A18 are largely gone. This rests on direct participation, transition and co-occurrence changes rather than a single indicator, and 92 evidence items qualified where about 0.6 would be expected if nothing had changed, so the pattern as a whole is far beyond what random re-splits of a stable process produce [OCC002, OCC004, OCC005, OCC006, DIR002, DIR003, DIR004, DIR006, DIR007, DIR008, DIR009, REL001, REL007, REL029].
+
+Limitations: zero participation in the earlier window only shows the activities were not observed then, so the evidence cannot distinguish genuinely new activities from ones previously so rare (under about 1 in 200 traces) that they never appeared in the earlier sample; many items describe overlapping behaviour of the same traces and are not independent confirmations; and the exact insertion points are inferred from successor and co-occurrence changes, not observed directly [OCC002, OCC004, OCC005, OCC006].
+
+Other differences: A05 repeats about twice as often per trace while appearing in fewer traces and earlier in the trace, A18 repeats about half as often and appears later, and A13 occurs about twice as often [OCC001, OCC007, OCC003, POS002, POS007].

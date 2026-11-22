@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_51e14a7831df43cc.json",
+  "evidence_sha256": "1efa346b9dcb04f626c5250defda92359d62256b73d5de3942ff52385d3e65dc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:38:48.835977+00:00",
+  "finished_at_utc": "2026-11-15T01:40:18.253197+00:00",
+  "latency_seconds": 89.42,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 13647,
+    "prompt_tokens": 17755,
+    "total_tokens": 31402,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12333,
+      "text_tokens": 1314
+    },
+    "cost": 0.009486749999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 41608,
+  "text": "### Observed differences\n\n- Activity A09 dropped from mandatory to optional: earlier it ran in every one of the 200 traces, about twice per trace on average, with repeats in about 48 in 100 traces; in the later window it runs in about 49 in 100 traces, exactly once each, with no repeats. [OCC001]\n- Activity A16 moved the opposite way: earlier it ran in about 50 in 100 traces, once each; in the later window it runs in every trace, about 1.9 times per trace on average, with repeats in about 44 in 100 traces. [OCC002]\n- The two activities also swapped their typical positions within the trace (event positions, not clock time): A09's mean relative position fell from about 0.68 to about 0.45, while A16's rose from about 0.39 to about 0.70. [POS001, POS002]\n- Predecessors swapped: A04 and A10 led exclusively to A09 earlier and exclusively to A16 in the later window, while A01 and A13, which earlier sent about 20–23% of their outgoing transitions to A16, now send about 18–27% to A09. [DIR001, DIR002, DIR004, DIR005]\n- Successor sets swapped: A09's outgoing transitions moved from A06 (about 50 in 100), A05 (about 25) and A14 (about 24) to A10 (about 35), A04 (about 29), A01 (about 25) and A13 (about 11); A16's moved from A10 (about 33), A04 (about 30), A01 (about 21) and A13 (about 16) to A06 (about 54), A05 (about 24) and A14 (about 22). [DIR003, DIR006]\n- Co-occurrence flipped: A01, A06 and A13 each co-occurred with A09 in every earlier trace but with A16 in only about half; in the later window each co-occurs with A16 in every trace and with A09 in about half. A09 and A16 themselves co-occur in about half the traces in both windows, with A16 typically first earlier (about 26 in 100) and A09 first later (about 29 in 100). [REL001, REL002, REL007, REL008, REL010, REL012, REL014]\n- Pairwise distances flipped the same way: A09 followed by A06 within five steps was always at distance 1 earlier and now sits at distances 3–5 and occurs far less often, while A16 followed by A06 shows the reverse (distances 3–5 earlier, always 1 later); the pairs of A09 and A16 with A01, A04, A05, A10, A13 and A14 show matching reversals. [LAG001, LAG002, LAG003, LAG004, LAG005, LAG006, LAG007, LAG008, LAG009, LAG010, LAG011, LAG012, LAG013, LAG014]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A09 and A16 exchanged places in the process. In the later window, A16 has taken over the role A09 held earlier — mandatory, repeated in about 44 in 100 traces, positioned late (mean about 0.70) and followed by A05, A06 and A14 — while A09 has taken over A16's former role — optional, run in about 49 in 100 traces, positioned earlier (mean about 0.45), reached from A01 and A13 and followed by A01, A04, A10 and A13. [OCC001, OCC002, POS001, POS002, DIR001, DIR002, DIR003, DIR004, DIR005, DIR006]\n\nThe hypothesis is direct and consistent: 39 control-flow items qualified where roughly 0.4 would be expected for an unchanged process, and every indicator family shows the same exchange, with A09's later predecessor and successor sets matching A16's earlier ones and vice versa. [OCC001, OCC002, DIR002, DIR003, DIR006, REL001, REL002, REL007, REL008, REL010, REL014, LAG005, LAG012]\n\nThe evidence describes observed traces rather than the underlying model, so it cannot separate a genuine exchange of the two activities' positions from another restructuring that produces the same trace pattern (for example, the two activities exchanging labels); POS and LAG rest on event positions, so no statement about clock-time timing is possible. [POS001, POS002, LAG005, LAG012]\n\nOther differences: beyond the exchange, only the remaining outgoing shares of A01 and A13 shift slightly (each within about 0.08 on their transition shares), and no other activity shows a participation or routing change at the configured thresholds. [DIR001, DIR005]",
+  "case_id": "case_51e14a7831df43cc",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

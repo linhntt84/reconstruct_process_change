@@ -1,0 +1,17 @@
+### Observed differences
+
+- Resource assignment was redistributed across the offer-handling activities (A01, A03, A13, A14, A17). In the earlier window the work was spread thinly: the busiest resource handled about 8–9 in 100 assignments, and roughly half of all assignments went to a long tail of resources used only occasionally. In the later window a largely different set of resources carried the work: User_61 was the busiest with about 9–11 in 100, a few others handled roughly 5–9 in 100 each, and the long-tail share fell to about 40 in 100. The assignment-profile dissimilarity is 0.41–0.51 on a 0–1 scale, a gap that arises in about 1 of 2000 random re-splits of the pooled data. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005]
+- A22 shows the same kind of shift, more strongly: before, one resource led with about 10 in 100 completions and no other exceeded about 8 in 100; in the later window, User_61 handled about 14 in 100 and one other resource about 13 in 100 (dissimilarity 0.76; about 92 vs 114 traces). [ASSIGN006]
+- A24 changed most sharply. In the earlier window, validation was spread over 21 distinct resources, with the top one (User_68) handling about 22 in 100 (concentration index about 0.09). In the later window, every observed validation went to a single resource, User_107 — top share 1.0, concentration index 1.0 (about 95 vs 83 traces). [ASSIGN007, CONC001]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports a change in resource allocation as a possibility: work was reallocated to a largely different set of resources, and validation in particular became fully concentrated on one resource. Specifically, the offer-handling activities (A01, A03, A13, A14, A17) and A22 moved from a flat, broad assignment pattern to one led by User_61 (about 9–14 in 100 depending on the activity), and A24 went from being shared across about 21 resources (led by User_68 at about 22 in 100) to being handled exclusively by User_107. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+Supporting signs: in the resources family, 8 items qualified where about 0.005 would be expected by chance if nothing had changed — a count chance cannot plausibly explain — while the control-flow and time families produced no items (0 against 0.17 and 0.015 expected), so the difference is confined to allocation. The two indicator types agree directly on the validation finding: the assignment profile and the concentration index both show single-resource handling in the later window. All item differences exceed those seen in about 1999 of 2000 random re-splits. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]
+
+Limitations: the seven assignment items likely reflect one underlying reallocation rather than independent confirmations, and the resource codes are anonymous, so no roles, people or teams can be inferred. An important competing explanation the evidence cannot rule out is a difference in the case mix or volumes between the windows contributing to the share shifts — although the complete concentration of validation on one resource across about 83 traces is difficult to attribute to sampling alone. [ASSIGN007, CONC001]
+
+Other differences: none reached the configured thresholds — no control-flow or timing evidence qualified, so all qualifying items concern resource allocation. [ASSIGN001, ASSIGN002, ASSIGN003, ASSIGN004, ASSIGN005, ASSIGN006, ASSIGN007, CONC001]

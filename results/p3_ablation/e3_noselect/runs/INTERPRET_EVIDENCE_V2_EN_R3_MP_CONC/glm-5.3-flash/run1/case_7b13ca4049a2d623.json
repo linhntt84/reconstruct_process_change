@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_7b13ca4049a2d623.json",
+  "evidence_sha256": "a2666b5f70e514ec921785a36bd507a9ad9557f33e06d02c28e08bdcdd26c30d",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T14:32:40.430204+00:00",
+  "finished_at_utc": "2026-11-14T14:33:13.350922+00:00",
+  "latency_seconds": 32.92,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 4946,
+    "prompt_tokens": 4961,
+    "total_tokens": 9907,
+    "completion_tokens_details": {
+      "reasoning_tokens": 4353,
+      "text_tokens": 593
+    },
+    "cost": 0.00321715
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 17226,
+  "text": "### Observed differences\n\n- Activity A02 was not observed in the earlier window (0 of 200 traces); in the later window it occurs exactly once in every trace (200 of 200), at roughly two-thirds of the case's event positions. [OCC001, POS002]\n- In the later window, all of A06's observed outgoing transitions lead to A02, whereas earlier they all led to A01; A02's own transitions in the later window all lead to A01. [DIR001, DIR002]\n- A01 and A02 moved from being alternatives to being executed together: earlier A01 appeared in every trace without A02, later both appear in every trace, always with A02 before A01. The same holds for A06 and A02: earlier A06 appeared without A02, later always together, with A06 first. [REL001, REL002]\n- The gap from A06 to A01 widened: earlier A01 followed A06 one step later in every trace; in the later window it follows two steps later in every trace. [LAG001]\n- Mean event positions shifted slightly: A06 from 0.60 to 0.50 and A01 from 0.80 to 0.83, consistent with one extra step appearing between them (these are event positions, not clock times). [POS001, POS003]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A02 was inserted as a new, mandatory step between A06 and A01: the earlier direct succession A06 → A01 appears in the later window as A06 → A02 → A01, with A02 running once in every case. This rests on direct relational evidence — A06's outgoing flow switched entirely from A01 to A02 while A02's flow goes entirely to A01, the pairs (A06, A02) and (A02, A01) always co-occur in a fixed order in the later window, and the A06-to-A01 distance grew from one to two steps — together with A02 appearing in all 200 later traces after being absent from all 200 earlier ones. The small position shifts of A06 and A01 are consistent with this insertion. Limitations: zero participation in the earlier window only shows A02 was not observed there, so a previously unobserved, extremely rare path that is now always taken cannot be distinguished from a genuinely added activity; and all items describe the same trace-level difference, so they corroborate one change rather than nine independent ones. A competing explanation the evidence cannot rule out is a broader restructuring of this segment, since no behaviour outside the A06–A02–A01 sequence is visible. [OCC001, DIR001, DIR002, REL001, REL002, LAG001, POS001, POS002, POS003]",
+  "case_id": "case_7b13ca4049a2d623",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

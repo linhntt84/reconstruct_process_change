@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/case_cd91a6f086c09854.json",
+  "evidence_sha256": "d95a3a43d16f0073ee7734958aa4d9737c55571e1100a68b3629e3552781d69a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T02:19:51.265727+00:00",
+  "finished_at_utc": "2026-11-15T02:21:06.396270+00:00",
+  "latency_seconds": 75.13,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10748,
+    "prompt_tokens": 10309,
+    "total_tokens": 21057,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9545,
+      "text_tokens": 1203
+    },
+    "cost": 0.00692035
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 33550,
+  "text": "### Observed differences\n\n- In the earlier window, A20's outgoing transitions split almost evenly across A30 (about 40 in 100), A31 (about 33) and A36 (about 28); in the later window, about 99 in 100 go directly to A22, and the edges to the other three are practically gone. [DIR001]\n- In the earlier window, A21 always passed on to A25; in the later window its outgoing transitions split across A30 (about 36 in 100), A31 (about 33) and A36 (about 30), with a direct edge to A25 almost never taken (about 1 in 100). [DIR002]\n- The three activities A30, A31 and A36 changed their common exit: earlier, each passed to A22 in roughly 29–38 in 100 of its outgoing transitions; in the later window they pass to A25 at similar rates (about 30–36 in 100) and virtually never to A22, while the shares between the three themselves stayed broadly similar. [DIR003, DIR004, DIR005]\n- The order relative to A21 and A22 flipped completely: earlier, A30, A31 and A36 ran before A21 and before A22 in 100 in 100 traces; in the later window, A21 and A22 run before them in about 99 in 100, while co-occurrence remains at 100 in 100 in both windows. [REL001, REL002, REL003, REL004, REL005, REL006]\n- Event positions moved consistently: A30, A31 and A36 shifted later (mean relative position about 0.41 to about 0.59), while A21 (about 0.62 to 0.53) and A22 (about 0.47 to 0.38) shifted earlier. [POS001, POS002, POS003, POS004, POS005]\n- Distances changed in the same direction: A20 and A22 went from typically four steps apart to immediately consecutive (99 in 100 at distance 1), and A21 and A25 went from consecutive to typically four steps apart. [LAG001, LAG004]\n- The former adjacencies A20–A31, A20–A36, A31–A22 and A36–A22, seen within five steps with mixed gaps of 1–3 in the earlier window, each appear in only 2 of 200 later traces; these items rest on very few observations. [LAG002, LAG003, LAG005, LAG006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that the group of activities A30, A31 and A36 now sits between A21 and A25, whereas in the earlier window it sat between A20 and A22: earlier, A20 fed into the group and the group led on to A22, while A21 later ran directly to A25; in the later window, A20 runs directly to A22, A21 feeds into the group, and the group leads to A25. The group's internal routing among A30, A31 and A36 is largely preserved; mainly its entry and exit points changed. [DIR001, DIR002, DIR003, DIR004, DIR005, REL001, REL002, REL003, REL004, REL005, REL006, POS001, POS002, POS003, POS004, POS005, LAG001, LAG004]\n\nSupporting signs: the successor profiles at both attachment points changed directly and in opposite directions [DIR001, DIR002]; the group's exit edge flipped from A22 to A25 at roughly unchanged rates [DIR003, DIR004, DIR005]; the order relative to A21 and A22 reversed almost completely while co-occurrence stayed at 100 in 100, so the group still runs in every trace and was neither removed nor made optional [REL001, REL002, REL003, REL004, REL005, REL006]; and both distance changes match the insertion or removal of a three-activity block exactly [LAG001, LAG004]. Screening qualified 22 items against about 0.42 expected if nothing had changed, so the ensemble is far beyond what random re-splits of an unchanged process produce. [screening]\n\nLimitations: the evidence cannot distinguish a literal move of the group from two separate rewirings — dropping it from after A20 and inserting an equivalent group between A21 and A25 — which would look identical here; position indicators use event positions rather than clock time, so the placement claim rests on the relational and successor evidence; and four corroborating gap items rest on only 2 of 200 later-window observations each. [LAG002, LAG003, LAG005, LAG006]",
+  "case_id": "case_cd91a6f086c09854",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_rel/evidence/case_5128c7bc9bcdf516.json",
+  "evidence_sha256": "ee1900d514d25e0f6663e19092fb1bc43960c28ac58a452631f12d41eeda0719",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T12:41:04.718050+00:00",
+  "finished_at_utc": "2026-11-14T12:43:36.156769+00:00",
+  "latency_seconds": 151.44,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 21880,
+    "prompt_tokens": 17269,
+    "total_tokens": 39149,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20366,
+      "text_tokens": 1514
+    },
+    "cost": 0.01353035
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 65307,
+  "text": "### Observed differences\n\n- In the earlier window, every source activity split its outgoing transitions across several targets: from A15 about 62 in 100 transitions went to A18 with the rest going to A19, A20 or A21 (roughly 12–14 in 100 each); from A18 about 53 in 100 went straight to A27; from A26 transitions split evenly between A19 and A17. In the later window, each source has a single successor — A26→A17, A17→A15, A15→A18, A18→A19, A19→A21, A21→A20, A20→A27 — each carrying over 99 in 100 transitions. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007]\n\n- Step gaps between activity pairs were spread out before (A15 to A27 occurred at 2–5 steps in shares of roughly 20–31 in 100; A17 to A20 over all five gaps) and are fixed in the later window at one gap each, consistent with the chain A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27. For example, A15 to A27 now sits at 5 steps in about 100 in 100 traces, and A18 to A27 moved from 1 step (53 in 100) to 4 steps (about 100 in 100). [LAG001, LAG003, LAG005, LAG009, LAG013, LAG017, LAG020, LAG022, LAG025]\n\n- Pairs running against this chain were common before and have practically disappeared: within five steps, A19 before A15 fell from about 75 in 100 traces to a single trace, A20 before A18 from about 53 in 100 to 1, A21 before A18 from about 70 in 100 to 1, and A19 before A18 from about 88 in 100 to 1. Conversely, chain pairs became near-universal: A15 before A19 rose from about 26 in 100 traces to essentially all, always at a gap of 2. [LAG002, LAG014, LAG015, LAG019, LAG021]\n\n- Before, several pairs occurred in both directions in similar shares (A17→A19 in about 25 in 100 of A17's outgoing transitions versus A19→A17 in about 28 in 100 of A19's; likewise A15/A21 and A18/A20); in the later window each pair follows the chain direction only. Typical relative positions shifted accordingly: A18 earlier (mean relative position about 0.68 to 0.62) and A19 later (about 0.59 to 0.65), with A15 and A17 slightly earlier and A20 and A21 slightly later; all shifts are small (about 0.02–0.07). [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, POS001, POS002, POS003, POS004, POS005, POS006]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the ordering constraints between A15, A17, A18, A19, A20 and A21 changed from a variable, partly two-way order to one fixed sequence: earlier, these activities followed one another in both directions at varying gaps, A26 entered about equally often into A19 or A17, and A27 could follow A18 or A20; in the later window essentially every case runs A26 → A17 → A15 → A18 → A19 → A21 → A20 → A27, each link at a fixed gap and each former alternative successor reduced to about 1 in 200 transitions. [DIR001, DIR002, DIR003, DIR004, DIR005, DIR006, DIR007, LAG006, LAG013, LAG016, LAG017, LAG020, LAG022, LAG025, LAG027]\n\nThe judgement rests on directness and consistency rather than item count: successor distributions and step-gap distributions show the ordering change directly, all flagged control-flow items agree, and 42 qualifying items against roughly 0.43 expected by chance among 87 tested units is far beyond what an unchanged process produces. The fixed sequence reuses links that already dominated before (about 55–66 in 100), so this is a tightening of ordering constraints, not the emergence of a new path. [DIR001, DIR003, DIR004, DIR005, DIR006, LAG001, LAG006, LAG017, LAG020, LAG022, screening]\n\nLimitations: five later-window gap profiles rest on a single observation (A19→A15, A19→A18, A20→A18, A21→A18, A26→A20), so those specific profiles are weak, though the hypothesis does not depend on them. An important competing explanation the evidence cannot rule out is that the earlier window mixed several fixed variants rather than one flexible behaviour, of which only one survives; either way, the observed ordering behaviour changed as described. [LAG014, LAG015, LAG019, LAG021, LAG028]",
+  "case_id": "case_5128c7bc9bcdf516",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

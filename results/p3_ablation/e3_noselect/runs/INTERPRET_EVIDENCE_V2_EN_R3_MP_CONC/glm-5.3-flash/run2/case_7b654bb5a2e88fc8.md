@@ -1,0 +1,30 @@
+### Observed differences
+
+- Before, A40 was always followed by one of three mutually exclusive activities — A14 (about 38 in 100 of its outgoing transitions), A15 (about 31) or A20 (about 31) — and each of the three always led on to A21, so A40 reached A21 in two steps. In the later window, A40 leads directly to A21 in every case, and A14, A15 and A20 no longer precede A21. [DIR029, DIR010, DIR011, DIR016, LAG004]
+
+- The order between this alternative block and the A21–A22–A23 stretch flipped: before, the chosen alternative always ran before A21 and A22 and before A23; in the later window, A21 and A22 always run before the alternative, and relative to A23 both orders occur (for A14, about 16 in 100 cases before A23 and 15 after). The alternative still runs after A40 and before A27 in both windows. [REL003, REL004, REL005, REL006, REL009, REL014, REL016, REL017]
+
+- In the later window, A22 and A23 route about half of their outgoing flow into the alternative block: A22 led to A23 in all cases before and does so in about 52 in 100 now (most of the rest goes to A14, A15 or A20), and A23 led to A27 in all cases before and does so in about 48 in 100 now. The three alternatives, which previously led only to A21, now lead to A23 or A27 (about 52/48 for A14, 54/46 for A15, 39/61 for A20). [DIR018, DIR019, DIR010, DIR011, DIR016]
+
+- Distances and positions moved accordingly: A40 now reaches A21 in one step instead of two, A27 comes exactly three steps after A22 instead of two, and A22→A23 and A23→A27 are two steps apart in roughly half of the cases where they were always one step apart. A14, A15 and A20 now execute around 60% into the case (median event position about 0.60) instead of around 30%, while A21, A22 and A23 moved only slightly earlier. [LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006]
+
+- The choice within the block shifted somewhat: A14 takes part in about 31 in 100 traces (previously 38; 76 vs 61 traces), A20 in about 37 (previously 31) and A15 in about 32 (previously 31); the three still never occur in the same trace, so exactly one of them runs per case in both windows. [OCC013, OCC014, OCC019, REL001, REL002, REL008]
+
+- Two smaller differences elsewhere: after A27, A18 now takes part in about 54 in 100 traces (previously 44) and A19 in about 46 (previously 56), with A27's outgoing flow shifting from A16 toward A18. [OCC017, OCC018, DIR020]
+
+- In the repeating A41–A45 cycle, A42 returns to A41 in about 48 in 100 of its outgoing transitions (previously 39) instead of leaving to A45, and A41 repeats more often (mean about 1.9 vs 1.7 occurrences per trace). [DIR031, OCC026, OCC027]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that the block of three alternative activities A14, A15 and A20 — exactly one of which executes in each case, both before and after — was relocated to a later point in the process. In the earlier window it sat between A40 and A21, ahead of the later A22–A23–A27 stretch; in the later window A40 connects directly to A21 and the chosen alternative executes after A21 and A22, on either side of A23, leading on to A23 or A27, with A22 and A23 each sending about half of their outgoing flow through the block; the choice within the block also shifted somewhat away from A14 toward A20. [DIR029, DIR010, DIR011, DIR016, DIR018, DIR019, REL003, REL004, REL005, REL009, REL014, LAG004, OCC013, OCC019, REL001, REL002, REL008]
+
+The change is shown directly by relational and positional evidence: complete successor replacement for A14, A15, A20 and A40; order flips with A21 and A22 in every co-occurrence; distance changes (A40→A21 from two steps to one, A22→A27 from two to three); and a position shift of about 0.27–0.29 for the block while A21/A22/A23 moved only about 0.02–0.03 and A40's position and A21's outgoing split toward A32/A33 stayed essentially unchanged. The flips are complete rather than partial (A14 led to A21 in 76 of 76 observed outgoing transitions before and in none of 61 after), far beyond what random re-splits of the two windows produce (reference strength about 0.99 on the key items). The DIR, REL, LAG and POS items all describe this one underlying change, so they corroborate a single relocation rather than several independent differences. [DIR010, DIR011, DIR016, DIR029, DIR017, REL003, REL004, REL009, REL014, LAG001, LAG002, LAG003, LAG004, POS001, POS002, POS003, POS004, POS005, POS006, POS008]
+
+Limitations: the evidence shows order, distance and position relations, not the underlying modification itself; it cannot fully rule out the mirror-image reading that the A21–A22–A23 stretch moved in front of the block rather than the block moving behind it, although the block's much larger position shift makes the relocation reading more plausible, and the exact new routing shares (about 52/48) carry the sampling uncertainty of two 200-trace windows. [POS001, POS002, POS003, POS004, POS005, POS006]
+
+Other differences:
+- After A27, A18 gained and A19 lost participation (about 44→54 and 56→46 in 100 traces), with A27's outgoing flow shifting from A16 toward A18; the evidence does not tie this to the relocation. [OCC017, OCC018, DIR020]
+- In the A41–A45 cycle, A42 now returns to A41 more often (about 39→48 in 100 of its outgoing transitions) instead of leaving to A45, and A41 repeats more often (mean about 1.9 vs 1.7 per trace). [DIR031, OCC026, OCC027]
+- A28's outgoing flow shifted from A37 toward A34 and A36, with A34/A35 participation up slightly (about 48→52 in 100) and A36/A37 down (about 52→48). [DIR021, OCC020, OCC021, OCC022, OCC023]

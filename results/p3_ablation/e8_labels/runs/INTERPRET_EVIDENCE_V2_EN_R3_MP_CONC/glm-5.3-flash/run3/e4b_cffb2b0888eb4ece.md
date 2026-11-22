@@ -1,0 +1,15 @@
+### Observed differences
+
+- **A16 moved from shared to single-resource handling.** In the earlier window, A16 assignments were spread across about 17 resources, with the largest shares around 18 in 100 each (User_116, User_117) and the remainder lower; in the later window, every A16 assignment went to a single resource, User_8 (top-resource share 1.0 versus 0.18; distinct resources 1 versus 17; concentration index about 1.0 versus 0.13). The activity itself was equally present in both windows (about 76 in 100 traces before, 75 in 100 after), so its prevalence did not change — only its allocation did. [ASSIGN001, CONC001]
+
+- **Longer elapsed time between A09 and W_Handle completions.** For consecutive completion pairs with W_Handle leading, the median elapsed time rose from about 1.3 hours in the earlier window (22 pairs) to about 16 hours in the later window (26 pairs); the mean rose from about 2.2 to about 15.6 hours, the upper quartile from about 2.4 to about 22.3 hours, and the spread widened markedly (standard deviation about 2.7 versus 12 hours). All three evidence items show differences larger than in all but about 1 in 2000 random re-splits of the pooled data. [TWAIT001, ASSIGN001, CONC001]
+
+- **No structural difference detected.** No control-flow indicator qualified (0 items against about 0.19 expected by chance), so the observed differences are confined to timing and resource allocation. [screening]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that, in the later window, the A16 step is handled entirely by a single resource, User_8, whereas in the earlier window it was distributed across a pool of about 17 resources with no resource above about 18 in 100 assignments. The signs are direct (assignment shares and a concentration index measured on the same activity agree), the activity's prevalence is stable across windows, and the resource family produced 2 qualifying items where about 0.005 would be expected without a change. Note that the two resource items describe one underlying reallocation, so they corroborate rather than independently confirm it. Limitations: the resource codes are anonymous, so nothing can be said about roles or teams, and only A16 was flagged, leaving other activities' allocation unevidenced; the change is in allocation, not structure. A competing explanation the evidence cannot rule out is a period effect within the later sample — a stretch of time in which only User_8 happened to handle returns — since each window is a single sample of 200 traces. [ASSIGN001, CONC001, screening]
+
+Other differences: the elapsed time between consecutive completions of A09 and W_Handle lengthened (median about 1.3 hours to about 16 hours), a change in timing that is a hypothesis in its own right and requires no structural counterpart; it rests on a modest sample (22 versus 26 pairs), though the shift is consistent across the quartiles. No structural counterpart was observed (control flow: 0 items against about 0.19 expected), and the evidence cannot show whether this timing change is connected to the A16 reallocation. [TWAIT001, screening]

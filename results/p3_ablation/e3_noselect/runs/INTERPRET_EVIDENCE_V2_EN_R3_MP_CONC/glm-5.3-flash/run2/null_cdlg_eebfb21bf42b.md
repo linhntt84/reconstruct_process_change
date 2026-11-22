@@ -1,0 +1,12 @@
+### Observed differences
+
+- Activity participation stayed near half of the traces in both windows: in the earlier window A05 appeared in about 52 of 100 traces and in the later window about 50; A06 went from about 48 to 51, A07 from 50 to 54, A08 from 51 to 46, and A10 from 48 to 51. These shifts of 2–5 in 100 traces are exceeded in roughly 40 to 70 of 100 random re-splits of the pooled data, so they lie within ordinary sampling variation. [OCC001, OCC002, OCC003, OCC004, OCC005]
+- No activity changed repetition behaviour: recurrence support was zero for all five activities in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005]
+- The largest single difference concerns the outgoing transitions of A02: the share leading to A05 fell from about 17 in 100 observed transitions in the earlier window to about 8 in 100 in the later window, while shares to A07 (about 20 to 25) and A08 (about 21 to 26) rose. This difference is larger than in about 92 of 100 random re-splits, so it stands out, but it is a size a stable process still reaches occasionally. [DIR002]
+- Other routing redistributions are small: from A05, the share to A08 fell from about 22 to 12 in 100 transitions (about a third of random re-splits exceed this); from A08, the shares to A04 and A05 rose by roughly 6–8 points; from A01, the near-even split between A02 and A04 moved from about 50/50 to 47/53. [DIR001, DIR004, DIR007]
+- The outgoing profiles of A04 and A10 barely differ between the windows; their differences are smaller than in roughly 80 to 95 of 100 random re-splits. [DIR003, DIR008]
+
+### Inference
+
+Support level: Insufficient evidence
+The evidence is insufficient to infer a change in the process. All differences are small redistributions among activities that occur at similar rates in both windows, with no appearance, disappearance or repetition change, and only one item (the shift in A02's outgoing transitions away from A05) is unusual for random splits — a size an unchanged process still produces from time to time, and the remaining items are well within the range of random re-splits. [DIR002, OCC001, OCC002, OCC003, OCC004, OCC005]

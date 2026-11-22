@@ -1,0 +1,17 @@
+### Observed differences
+
+- Activity A05 disappeared: it ran in every one of the 200 earlier traces (once per trace, always at normalized position 0.5) and in no trace at all in the later window [OCC003, POS003, DIR003].
+- Activity A01 appeared: it was not observed in any earlier trace, but in the later window it occurs in every trace, exactly once, always at normalized position 0.5 — the same position A05 previously occupied, with no spread in either window [OCC001, POS001, POS003].
+- The hand-over to A03 changed source: in the earlier window A05 was always followed by A03; in the later window A01 is always followed by A03 [DIR003, DIR001, REL002, REL010].
+- Predecessors were redirected from A05 to A01: A02's outgoing transitions led to A05 in about 72 in 100 cases before and to A01 in about 75 in 100 after (its A06 share stayed at roughly a quarter); A07 switched from A05 (about 71 in 100) to A01 (about 66 in 100); A06 switched from A05 (about 29 in 100) to A01 (about 30 in 100) [DIR002, DIR005, DIR004].
+- The relations mirror each other: before, A05 always co-occurred with A03 (A05 first) and with A06 (A06 first); in the later window A01 always co-occurs with A03 (A01 first) and A06 (A06 first), and A02/A07 each co-occur with A01 exactly when they occur, immediately before it — the same pattern they had with A05 [REL010, REL012, REL002, REL004, REL007, REL013, REL001, REL005].
+- Distances to A03 are preserved: A06 reaches A03 within five steps in all traces in both windows, with a two-step gap in about 29 in 100 cases before and 30 in 100 after (three-step gap about 71 vs 70); the A02→A03 and A07→A03 gap profiles likewise barely move [LAG002, LAG001, LAG003].
+- The rest of the control flow is essentially stable: A02 appears in about 47 vs 50 in 100 traces, A07 in about 53 vs 50, A02 and A07 never occur in the same trace in either window, and A06's participation and position are unchanged [OCC002, OCC004, REL009, POS004].
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the possibility that A05 was replaced by A01 at the same point in the flow — the step between the A02/A06/A07 branching and A03. In the earlier window every trace passed through A05 immediately before A03; in the later window every trace passes through A01 at that same position with the same successor, while A02, A06 and A07 now lead to A01 in nearly the same proportions in which they previously led to A05, and A05 is no longer observed at all. The many qualifying items are not independent confirmations — they all describe this one underlying difference — while every remaining item shows only small fluctuations of the kind random re-splits of two 200-trace windows produce. An important competing explanation the evidence cannot rule out is a relabelling of the same step (A05 renamed to A01), which would look identical in the log; strictly, A01's zero participation earlier only means it was not observed in that window [OCC001, OCC003, POS001, POS003, DIR001, DIR002, DIR004, DIR005, REL002, REL004, LAG002].
+
+Other differences: A02's participation rose from about 47 to 50 in 100 traces and A07's fell from about 53 to 50; the A07→A03 gap shifted slightly from two steps (about 71 in 100) toward three steps (about 66 in 100); A06–A07 ordering shares and A07's mean position moved by a few points. All of these have low empirical strength (roughly 0.06–0.50) and are consistent with sampling variation between the two windows [OCC002, OCC004, LAG003, REL014, POS005].

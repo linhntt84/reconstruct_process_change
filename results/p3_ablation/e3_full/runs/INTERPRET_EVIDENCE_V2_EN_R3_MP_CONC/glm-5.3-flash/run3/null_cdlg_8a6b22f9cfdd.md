@@ -1,0 +1,14 @@
+### Observed differences
+
+- Activity participation shifted by a few percentage points in both directions. A03 appeared in about 51 of 100 traces in the earlier window but about 43 of 100 in the later window (102 vs 86 of 200 traces), never repeating in either window; A01 rose from about 16 to 21 of 100 traces (mean occurrences per trace 0.44 to 0.66), A14 from about 16 to 21, A13 from about 9 to 13, A09 from 25 to about 31 and A10 from 25 to about 32, while A11 slipped from 20 to 17 of 100 traces [OCC001, OCC002, OCC006, OCC007, OCC008, OCC010, OCC011].
+- A01 was executed more often — 88 outgoing transitions in the earlier window versus 132 in the later one — but its successor mix barely moved, splitting between A14 (about 52% before, 50% after) and A13 (about 48% before, 49% after) [DIR001].
+- Pair-level shares largely mirror these marginal shifts: every measured pair involving A03 shows the same 8-point drop in the share of traces containing A03 without its partner, and A11 — which in both windows always co-occurred with A09 — overlapped with A01 in about 55% of its traces before versus about 40% after [REL010, REL024, REL031, REL075].
+- A08's outgoing transitions moved from an even split between A11 and A01 (about 49% each) to about two-thirds towards A01 and one-third towards A11 [DIR004].
+- Positions and lags: A02 and A07, present in every trace in both windows, sat at later median positions in the later window (A02 from about one-third to three-fifths of the trace, A07 from two-thirds to four-fifths); successions from A14 to A09 became more direct (about 53% to 70% within one step), A14 to A07 concentrated at a three-step distance (about two-thirds to 88%), and A14's follow-ups shifted towards A09 over A08 (about 44% to 54%) [POS002, POS005, DIR008, LAG063, LAG065].
+- The remaining differences are small and scattered: most pair-level indicators move by only a few percentage points of trace shares, and several of the larger step-lag shifts rest on fewer than about 20 observations [LAG013, LAG028, LAG043].
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. All differences stay within the range random re-splits of a stable process produce — only about 12 of the roughly 190 indicators look more unusual than 90% of random re-splits, which is no more than testing this many activities and activity pairs typically yields when nothing has changed — and no activity or edge appears or disappears in either window, so sampling variation between the two 200-trace windows remains a full explanation [LAG028, LAG065, OCC002, REL031].

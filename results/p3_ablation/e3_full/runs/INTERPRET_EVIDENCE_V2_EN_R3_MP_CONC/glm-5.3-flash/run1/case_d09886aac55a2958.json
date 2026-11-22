@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_d09886aac55a2958.json",
+  "evidence_sha256": "19627a724cd71e231645f41a93739e75bf200b67ae69672a7a691f18b4c1a70c",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T01:11:51.379521+00:00",
+  "finished_at_utc": "2026-11-16T01:14:10.326973+00:00",
+  "latency_seconds": 138.95,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 17634,
+    "prompt_tokens": 135400,
+    "total_tokens": 153034,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16171,
+      "text_tokens": 1463
+    },
+    "cost": 0.029126999999999997
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 53374,
+  "text": "### Observed differences\n\n- Activity A01 was absent from all 200 earlier traces; in the later window it appears in about 101 of 200 traces (roughly half), with about two occurrences per trace that contains it, and it sits early in the case (mean relative position about 0.38, median about 0.32). [OCC001, POS001]\n- In the later window A01 has a full edge profile where it previously had none: of A01's outgoing transitions roughly 35 in 100 go to A05, 19 to A03, 15 to A06 and 14 to A15; A01 is also now a frequent successor of A09 (about 36 in 100 of A09's outgoing transitions), A08 (about 28), A06 (about 22), A15 (about 16) and A12 (about 11). [DIR001, DIR005, DIR006, DIR007, DIR008, DIR011, DIR013]\n- Earlier, A01 never co-occurred with any of A02–A16; in the later window it co-occurs with each of them in roughly 20–50 of 100 traces (A04 about 50, A09 about 46, A02 about 42), often in interleaved or repeated order. [REL001, REL003, REL008, REL015]\n- Several direct successions disappeared: A08→A03, A09→A03, A08→A10, A09→A10, A08→A16 and A09→A16 were directly adjacent (lag 1) in roughly 20–50 of 100 observed instances before, whereas in the later window these adjacencies no longer occur and the pairs appear mostly 3–5 steps apart; at the same time A08 and A09 now often lead to A01, and A01 leads to A03, A10 and A16. [LAG055, LAG060, LAG064, LAG065, LAG070, LAG074, DIR001, DIR007, DIR008]\n- More broadly, many pairs that used to be 1–2 steps apart now appear 3–5 steps apart (for example A02→A03, A08→A12, A09→A12, A11→A03, A14→A03). [LAG001, LAG061, LAG071, LAG089, LAG114]\n- Beyond the A01 pattern: A03 now sends more of its outgoing transitions to A02 (about 6→17 in 100) and A12 (about 1→17) and fewer to A05 (about 44→27); A16 now routes mostly to A02 (about 9→43 in 100) instead of A05 (about 34→10); and A02, A10 and A16 occur at somewhat later positions than before (A10 mean relative position about 0.38→0.53). [DIR003, DIR014, POS002, POS010, POS016]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that A01 entered the executed process in the later window and now runs between A08/A09 and their former successors: it occurred in none of the 200 earlier traces but in about half of the later ones, early in each case, typically after A08 or A09 (also after A06, A12 or A15) and followed mostly by A05, A03, A06 and A15; with this, the direct successions A08→A03, A08→A10, A08→A16, A09→A03, A09→A10 and A09→A16 vanished and now span several steps. [OCC001, DIR001, POS001, DIR007, DIR008, LAG055, LAG065, LAG074]\n\nThe signs are direct and consistent rather than merely numerous: participation moves from 0 to about 101 of 200 traces, a complete incoming/outgoing edge profile appears only in the later window, co-occurrence with all fifteen other activities rises from zero, and the lag-1 adjacencies from A08/A09 to A03/A10/A16 vanish exactly while A08/A09→A01 and A01→A03/A10/A16 appear — occurrence, direction, position, relation and lag indicators all describe the same underlying difference. [OCC001, DIR001, POS001, REL003, DIR007, DIR008, LAG060, LAG074]\n\nLimitations: the anonymous codes cannot show whether A01 is a genuinely new activity or an optional path that simply was not exercised in the earlier window; the exact steps now lying between A08/A09 and A03/A10/A16 (lags of 3–5) are not fully resolved; and, as finite samples, the windows cannot fully exclude a rare-path explanation, although roughly half participation with a coherent relational pattern makes that implausible. [OCC001, LAG055, LAG074]\n\nOther differences: the routing shifts at A03 (towards A02 and A12, away from A05) and at A16 (towards A02, away from A05), and the later positions of A02, A10 and A16, are observed but are not explained by the A01 change alone. [DIR003, DIR014, POS002, POS010, POS016]",
+  "case_id": "case_d09886aac55a2958",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

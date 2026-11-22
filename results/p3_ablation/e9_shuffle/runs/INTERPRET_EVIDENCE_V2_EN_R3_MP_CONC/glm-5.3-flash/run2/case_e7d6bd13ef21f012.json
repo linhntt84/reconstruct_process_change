@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e9_shuffle/evidence/case_e7d6bd13ef21f012.json",
+  "evidence_sha256": "efa1eb628722c41b65c52c2064a249829abc0fdea2b10912b853e67914ff94ce",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T04:35:21.136415+00:00",
+  "finished_at_utc": "2026-11-15T04:36:27.998593+00:00",
+  "latency_seconds": 66.86,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 9636,
+    "prompt_tokens": 10605,
+    "total_tokens": 20241,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8477,
+      "text_tokens": 1159
+    },
+    "cost": 0.00640875
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 30614,
+  "text": "### Observed differences\n\n- In the earlier window, every one of the 200 traces contained A02, A04, A05 and A06 and ran them in the fixed chain A02 → A04 → A05 → A06 (mean event positions about 0, 0.33, 0.67 and 1.0), with A06 as the final step and no observed successor; A01 and A03 appeared in no trace. [OCC003, DIR001, DIR003, DIR004, POS003, POS004, POS005, REL007, REL011, REL012]\n- In the later window, every trace contained A01, A02, A03, A05 and A06 and ran the fixed chain A02 → A03 → A05 → A06 → A01 (mean event positions about 0, 0.25, 0.5, 0.75 and 1.0), with A01 as the new final step; A04 appeared in no trace. [OCC001, OCC002, DIR001, DIR002, DIR004, POS001, POS002, POS004, POS005, REL006, REL009, REL010, REL004, REL005]\n- Participation flipped completely: A04 fell from all 200 traces (once per trace) to none, while A01 and A03 rose from none to all 200 traces, each occurring exactly once per trace. [OCC003, OCC001, OCC002]\n- Successors were rewired: A02 now always leads to A03 instead of A04, A03 always leads to A05, the former A04 → A05 edge is no longer observed, and A06 — previously terminal — now always leads to A01. [DIR001, DIR002, DIR003, DIR004]\n- Pairs involving A04 changed from always co-occurring in a fixed order to only one of the two occurring, while pairs involving A01 or A03 changed from only-one-occurring (or neither) to always co-occurring in one fixed order (A02 before A03, A03 before A05 and A06, and A05 and A06 before A01). [REL007, REL008, REL011, REL012, REL003, REL001, REL002, REL006, REL009, REL010, REL004, REL005]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the process structure changed so that A04 was removed and A03 took over its place between A02 and A05, while A01 was added as a new final activity after A06: in the earlier window all 200 traces ran A02 → A04 → A05 → A06, and in the later window all 200 traces ran A02 → A03 → A05 → A06 → A01. The hypothesis is shown directly by the all-or-nothing participation flips, the successor rewiring out of A02, A03, A04 and A06, and pairwise and positional profiles that agree with it in every item; with 24 qualifying control-flow items against roughly 0.12 expected if nothing had changed, chance sampling across the two windows cannot explain the pattern as a whole. [OCC001, OCC002, OCC003, DIR001, DIR002, DIR003, DIR004, REL001, REL002, REL003, REL004, REL005, REL006, REL007, REL008, REL009, REL010, REL011, REL012, POS001, POS002, POS003, POS004, POS005]\n\nThis is not a shift in how often existing paths are taken: A04 is entirely absent from the later window and A01 and A03 from the earlier one, so the hypothesis is one of removal and addition rather than re-routing between existing alternatives. A competing explanation the evidence cannot rule out is that the two windows capture two pre-existing variants that happen to be completely separated in time rather than a modification of one process — with participation at 200 of 200 versus 0 of 200, any such variant split would have to be complete. The evidence is control-flow only, so it says nothing about timing or resources. [OCC001, OCC002, OCC003]\n\nOther differences: none beyond the main hypothesis; the position shifts of A05 (mean about 0.67 to 0.5) and A06 (1.0 to 0.75) follow from the same removal of A04 and addition of A01 rather than being independent changes. [POS004, POS005]",
+  "case_id": "case_e7d6bd13ef21f012",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

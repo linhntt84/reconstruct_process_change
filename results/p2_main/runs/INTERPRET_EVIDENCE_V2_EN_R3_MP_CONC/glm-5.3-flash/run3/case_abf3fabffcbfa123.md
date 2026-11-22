@@ -1,0 +1,19 @@
+### Observed differences
+
+- In the earlier window, A32, A33 and A38 each ran in about 48–49 of 100 traces, and the three always ran together (each pair co-occurs in about 48.5 of 100 traces); in the later window each appears in only about 1 of 200 traces and the three never appear together. [OCC005, OCC006, OCC007, REL028, REL029, REL030]
+- Before, cases split after A26 between two branches: about 51 in 100 traces ran A27 followed by A28, and about 48 in 100 ran the A32/A33/A38 group followed by A28; A27 and A32/A33/A38 were never (or almost never) in the same trace. In the later window, A27 is present in about 995 of 1000 traces while A32, A33 and A38 each appear in about 5 of 1000. [REL021, REL022, REL023, REL024, REL025]
+- A27 became near-mandatory and firmly placed: A26 now leads to A27 in about 98 of 100 of its outgoing transitions (before about 50, shared with A33, A38 and A32), A27 precedes A28 in about 96.5 of 100 traces (before about 51), and A28 follows A26 within two steps in about 95 of 100 traces (before split between two steps, about 49, and four steps, about 46). [DIR006, REL017, REL021, LAG003]
+- A04 is now mostly skipped: it ran in about 68 of 100 traces before and in about 21.5 of 100 later, and when it runs it sits later in the trace (mean relative position about 0.21 before, 0.40 after). A14, present in every trace in both windows, now continues to A15 in about 82 of 100 of its outgoing transitions (before about 36, while about 63 went to A04); A14 and A04 share only about 21.5 of 100 traces, against about 68 before. [OCC002, POS001, DIR004, REL001]
+- Two rare activities occur more often: A02 in about 15 of 100 traces (before 5) and A08 in about 20 (before 5), with almost completely changed successor profiles; these rest on only about 10–40 observed transitions per window. [OCC001, OCC003, DIR001, DIR003]
+
+### Inference
+
+Support level: Supported hypothesis
+
+The evidence supports the hypothesis that the branch formed by A32, A33 and A38 — executed together in about half of the earlier cases as an alternative to A27 after A26 — is no longer executed, so that in the later window virtually every case runs the segment A26 → A27 → A28; in addition, A04, which previously followed A14 in about two-thirds of cases, is now skipped in most cases, with A14 continuing mainly to A15. [OCC002, OCC004, OCC005, OCC006, OCC007, DIR004, DIR006, REL001, REL017, REL021, REL022]
+
+Supporting signs: the participation changes are large and directly measured (A27 about 52 → 99.5 of 100 traces, A32/A33/A38 about 49 → 0.5, A04 about 68 → 21.5); the relational items rest on all 200 traces in both windows and show the new sequencing directly (A26 before A27 in about 98.5 of 100 traces, A27 before A28 in about 96.5, A14–A04 co-occurrence down to about 21.5 of 100); and 62 qualifying items against roughly 0.8 expected when nothing has changed cannot be explained by sampling variation as a whole. [OCC002, OCC004, OCC005, REL001, REL017, REL021]
+
+Limitations: the near-absence of A32, A33 and A38 in the later window rests on a single observation each, so the evidence shows they were not observed rather than that they were formally removed; and it cannot be ruled out that the two windows draw on different mixes of cases rather than one modified behaviour. [OCC005, OCC006, OCC007]
+
+Other differences: A02 and A08 became more frequent (about 5 → 15 and 5 → 20 of 100 traces) with substantially redistributed successors, but this rests on few observations; A14 and A28 also occur marginally later within traces. [OCC001, OCC003, DIR001, DIR003, POS002, POS003]

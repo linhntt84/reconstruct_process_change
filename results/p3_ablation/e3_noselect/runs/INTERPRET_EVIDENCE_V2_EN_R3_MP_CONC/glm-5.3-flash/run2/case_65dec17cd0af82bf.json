@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_noselect/evidence/case_65dec17cd0af82bf.json",
+  "evidence_sha256": "a4dcbe9e77e1b0cbe38be9addd74c05ea6896fa78ec8e307581d24ec156777ba",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T08:25:20.766283+00:00",
+  "finished_at_utc": "2026-11-15T08:28:25.925420+00:00",
+  "latency_seconds": 185.16,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 26083,
+    "prompt_tokens": 49095,
+    "total_tokens": 75178,
+    "completion_tokens_details": {
+      "reasoning_tokens": 24210,
+      "text_tokens": 1873
+    },
+    "cost": 0.02040575
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 80738,
+  "text": "### Observed differences\n\n- **A new final activity appears.** In the earlier window no trace contains A02; in the later window about 57 in 100 traces (113 of 200) contain it, always exactly once and always as the last event of the trace. This difference is larger than in about 199 of 200 random re-splits of the pooled data. [OCC002, POS002]\n\n- **The former endings now lead into A02.** Earlier, A16 (in 20 of 100 traces) and A19 (in 29 of 100) were the last event whenever they occurred (relative position 1.0 in every case); in the later window they sit at about 0.85 of the trace and are always followed by A02 — A16→A02 in all 30 A16-cases and A19→A02 in all 44 A19-cases. A09, which earlier ended in A13 or A14, now leads to A02 in about half of its outgoing transitions (roughly 39 cases); the three entries together add up to about 113 cases, matching A02's participation. [POS009, POS010, DIR011, DIR014, DIR006, OCC002]\n\n- **A new activity A01 sits before A16.** A01 is not observed earlier; in the later window it occurs once in each of 15 in 100 traces, always directly followed by A16, and A16 never appears without A01 (and A01 always precedes A02 when both occur). A10 and A17, which earlier led to A16 in about 52 and 31 in 100 of their outgoing transitions, now lead to A01 instead (about 42 and 50 in 100), and the A10→A16 distance moved from typically one step to two or more. [OCC001, DIR001, REL008, REL001, DIR007, DIR012, LAG020]\n\n- **The route through A09 shrank and was rewired.** A09 falls from about 37 to about 20 in 100 traces and from about 1.1 to 0.4 occurrences per trace, and it now occurs later (mean relative position about 0.26 → 0.59). A07 now leads directly to A14 (about half of A07's outgoing transitions) instead of to A09, with the A07→A14 pair now often adjacent where it previously was two or more steps apart; A09 is now reached from A03 and A14, and A09–A14 co-occurrence fell from about 37 to about 13 in 100 traces while A14 appearing without A09 rose from 0 to about 27 in 100. [OCC009, POS005, DIR004, DIR002, DIR009, LAG014, REL033]\n\n- **A13 became rare and detached.** It drops from 23 to about 8 in 100 traces, occurs later (mean position about 0.28 → 0.54), and no longer co-occurs with A16 or A19 (from about 11 and 13 in 100 to zero) and much less with A09 (23 → 8–9 in 100). [OCC013, POS007, REL032, REL041, REL042]\n\n- **Smaller shifts.** A03 is somewhat more frequent (about 30 → 35 in 100 traces) and now sometimes directly followed by A09; A14 occurs earlier (mean position about 0.39 → 0.20); the mid-process activities A04, A06 and A12 each appear in about 44 in 100 traces versus about 51 in 100 earlier. [OCC003, DIR002, POS008, OCC004, OCC006, OCC012]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the possibility that the closing part of the process was restructured in the later window: a new activity A02 now terminates about 57 in 100 cases, always as the final event, entered from the former end activities A16 and A19 and from the A09 route, and a new activity A01 now sits between A10/A17 and A16, so cases that previously ran A10/A17→A16 now run A01→A16→A02 in about 15 in 100 cases. [OCC001, OCC002, DIR001, DIR011, DIR014, DIR006, DIR007, DIR012]\n\nThe support is direct and consistent: the new edges are observed as successor changes with all-or-nothing shares (A01→A16 in 30 of 30 cases, A16→A02 in 30 of 30, A19→A02 in 44 of 44, A09→A02 in about half of A09's transitions, together matching A02's 113 cases); the terminal position moves from A16 and A19 (position 1.0 in every earlier case containing them) to A02 (position 1.0 in every later case); relation data show A01 and A16 moving from never co-occurring to always co-occurring with A01 first; and pair distances shift by about one step exactly where an activity now sits between two others. Limitations: the evidence includes no chance-expectation baseline, so the volume of flagged items cannot be checked against what an unchanged process would produce; the A09 entry into A02 rests on about 39 cases; the earlier window's lack of A01 and A02 shows only that they were not observed there, so a rare pre-existing variant that later became frequent cannot be ruled out; and several items re-express the same rerouting rather than confirming it independently. [DIR001, DIR011, DIR014, DIR006, POS002, POS009, POS010, REL008, LAG020, OCC002]\n\nOther differences: The branch through A09 and A13 declined in its own right — A09 appears in about 37 → 20 in 100 traces with fewer repetitions and a later position, A13 in about 23 → 8 in 100 and detached from A16, A19 and mostly A09, and A07 now bypasses A09 to reach A14 directly; whether this decline belongs to the same restructuring or is an independent shift in how often existing routes are used cannot be decided from this evidence. A03 is slightly more frequent and now sometimes precedes A09, and A04, A06 and A12 each appear in about 44 versus about 51 in 100 traces. [OCC009, OCC013, POS005, POS007, DIR004, REL032, REL033, OCC003, DIR002, OCC004, OCC006, OCC012]",
+  "case_id": "case_65dec17cd0af82bf",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

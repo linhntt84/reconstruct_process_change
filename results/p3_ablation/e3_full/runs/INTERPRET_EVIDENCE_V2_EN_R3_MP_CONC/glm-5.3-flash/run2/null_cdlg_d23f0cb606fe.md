@@ -1,0 +1,13 @@
+### Observed differences
+
+- In the later window, A13 takes part in more cases: it appears in about 34 in 100 traces versus about 26 in 100 earlier (51 → 69 of 200 traces), and its occurrences per trace rise from 0.93 to 1.18. [OCC011, POS013]
+- The partner group A05/A14/A15 — the three always occur together — also runs slightly more often and is repeated more in the later window: about 43 in 100 traces versus about 40 in 100, with A05 and A15 at about 2.3 occurrences per trace versus 1.9 before and A14 at 1.13 versus 0.96; A13, which occurs only inside this group's traces, rises from about 65 in 100 of them to about 80 in 100. [OCC004, OCC012, OCC013, REL060, REL061, REL062, REL115]
+- The relational shifts mirror that same pattern: A13's co-occurrence with other activities rises by 0.08–0.10 (with A02 from 0.15 to 0.245; with A01, A06, A03, A09 and A16 from 0.255 to 0.345) while the share of traces containing only the partner falls by a matching amount; no activity pair switches between being alternatives and being executed together. [REL012, REL026, REL038, REL070, REL094, REL114]
+- Routing and placement barely move: the profiled sources keep the same successors (largest shift: A01 → A06, from about 52 in 100 to 46 in 100 of A01's outgoing transitions), mean event positions change by at most about 0.03 (e.g., A14 0.49 → 0.52, A08 0.65 → 0.62), and all sixteen activities are observed in both windows, A03, A09 and A16 in every trace. [DIR001, DIR002, DIR008, POS003, POS007, POS008, POS009, POS014, POS016]
+- Spacings between related activities shift only slightly; the largest moves (A02 → A03 pairs, and A02 repeating itself) shift lag shares by 0.15–0.20 — e.g., A02 → A03 moving from three steps apart (about 80 in 100 such pairs to 61 in 100) toward five steps apart (about 20 in 100 to 39 in 100) — but each rests on only about 20–40 observed pairs per window, and all other lag shifts stay under 0.05. [LAG004, LAG010, LAG011, LAG085]
+
+### Inference
+
+Support level: Insufficient evidence
+
+The evidence is insufficient to infer a change in the process. The one sizeable pattern — A13 rising from about 26 to about 34 in 100 traces while its constant partners A05, A14 and A15 are repeated more — is carried by occurrence measures whose differences about a third of random no-change re-splits equal or exceed, and the many agreeing relational items all restate that single shift rather than providing independent confirmation of a change.

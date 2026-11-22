@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e5_no_lag/evidence/case_8d5be58751968c96.json",
+  "evidence_sha256": "1e8717bd4ac861660dfda94d8e1af48071bfe3b4b162b3b4c60e02b245220b2a",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-14T13:07:25.906999+00:00",
+  "finished_at_utc": "2026-11-14T13:09:27.167320+00:00",
+  "latency_seconds": 121.26,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 20042,
+    "prompt_tokens": 22053,
+    "total_tokens": 42095,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18180,
+      "text_tokens": 1862
+    },
+    "cost": 0.013328949999999999
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 62520,
+  "text": "### Observed differences\n\n- Before, the six activities A33, A35, A36, A37, A38 and A39 each ran in every trace (participation 100%, about one occurrence per trace, essentially no repetitions). In the later window, each appears in only about 47–57 in 100 traces (A33, A35 and A36 about 47 in 100; A37, A38 and A39 about 56–57 in 100), still about once per trace when present. A30 and A31 continue to appear in every trace in both windows. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, POS001, POS002]\n\n- The six activities now behave as two sub-blocks that are executed instead of each other. Before, every trace ran both — {A33, A35, A36} followed by {A37, A38, A39}: cross-pairs such as A33–A37 co-occurred in 100% of traces, always with the first group before the second. In the later window, cross-group pairs co-occur in only about 2–3 in 100 traces; in about 44 in 100 traces only the first group runs, in about 53 in 100 only the second, in about 2–3 in 100 both, and in virtually none neither. Within each group the members still appear together or not at all (first group together in about 47 in 100 traces, second in about 55–56 in 100). [REL013, REL015, REL017, REL018, REL019, REL022, REL025, REL027]\n\n- Ordering among the activities that do run is unchanged: A30 still precedes the block and A31 still follows it (A30 precedes A33 in about 46 of the 47 in 100 traces where both run, and A33 precedes A31 just as consistently); the order within each group remains mixed, and in the few traces running both groups the first still mostly precedes the second. [REL001, REL002, REL007, REL013, REL015, REL025]\n\n- The successor profiles show the bypass directly. Before, A30 led only to A33, A35 and A36 (about 34, 36 and 29 in 100 of its outgoing transitions), and A33, A35 and A36 led on into A37–A39 (for A33, about 36 in 100 to A36 and about 10–12 in 100 to each of A37–A39), with no observed transitions from A33/A35/A36 to A31. In the later window, about 53 in 100 of A30's outgoing transitions go straight to A37/A38/A39, and A33, A35 and A36 each lead directly to A31 in about 33, 34 and 24 in 100 of their outgoing transitions. [DIR001, DIR002, DIR003, DIR004]\n\n- Relative event positions shifted consistently with a shorter middle segment: A30's mean position moved from about 0.62 to 0.67 of the trace and A31's from about 0.82 to 0.80; first-group members sit relatively later (about 0.68 to 0.73) and second-group members relatively earlier (about 0.76–0.77 to 0.74). These are position shifts, not clock-time shifts. [POS001, POS002, POS003, POS004, POS005, POS006, POS007, POS008]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports the hypothesis that, in the later window, the two consecutive sub-blocks between A30 and A31 — {A33, A35, A36} and {A37, A38, A39} — are executed as largely exclusive alternatives rather than always together: about 44 in 100 traces run only the first sub-block and then pass straight to A31, about 53 in 100 run only the second sub-block directly after A30, about 2–3 in 100 run both, and essentially none run neither, whereas before, every trace ran both sub-blocks in full between A30 and A31. The support is direct and consistent: participation of all six activities fell from 100% to about 47–57 in 100 while A30 and A31 stayed at 100%; the relation profiles show near-perfect mutual exclusivity between the groups and joint presence within them, with internal orders unchanged; and the direction profiles show the new direct transitions (A33/A35/A36 to A31, A30 to A37/A38/A39) that realise the bypass and were unobserved before. Because the bypass edges are new and the six activities went from mandatory to present in only about half of traces, this is a change in participation (part of the process became skippable), not merely a shift of shares between existing alternatives. The volume of qualifying evidence (45 items against fewer than 1 expected by chance among 126 tested units) means chance sampling cannot account for the pattern as a whole; the position shifts are consistent with, but follow from, the shorter segment rather than independently confirming it. [OCC001, OCC002, OCC003, OCC004, OCC005, OCC006, REL015, REL017, REL019, REL022, REL025, DIR001, DIR002, DIR003, DIR004, POS001, POS002]\n\nLimitations: the exact split between the two sub-blocks (about 45/55) is an estimate from 200 traces per window; the roughly 2–3 in 100 traces running both sub-blocks and the rare one-off new transitions may be sampling noise; and the evidence cannot show what determines which sub-block a trace runs — for example, whether the choice follows case characteristics or is effectively arbitrary. [REL015, DIR001, DIR002]\n\nOther differences: a few new transitions occur at rates of only about 1–2 in 100 of the source activity's outgoing transitions (from A30 to A02, A03 and A06; from A33, A35 and A36 to A10, A26, A07, A28, A11, A21 and A27), too rare to characterise; A30's earlier rare transition to A26 (about 0.5 in 100) is no longer observed. [DIR001, DIR002, DIR003, DIR004]",
+  "case_id": "case_8d5be58751968c96",
+  "set": "ostovar3",
+  "kind": "drift",
+  "run_index": 1,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p2_main/evidence/e4a_fdbcea21a69dfa2c.json",
+  "evidence_sha256": "259044359f12b331f0d33fea9f606072a2657e41da0bc2ecefc9cbe705ea4adc",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-15T01:58:10.094107+00:00",
+  "finished_at_utc": "2026-11-15T01:58:50.730008+00:00",
+  "latency_seconds": 40.64,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 5692,
+    "prompt_tokens": 3533,
+    "total_tokens": 9225,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5047,
+      "text_tokens": 645
+    },
+    "cost": 0.0033759499999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 20315,
+  "text": "### Observed differences\n\n- The elapsed time from the completion of A15 to the next completion, A16, shortened: the median was about 6 minutes in the earlier window (39 occurrences) versus about 2 minutes in the later window (42 occurrences), with the mean falling from about 0.11 to about 0.04 hours. [TWAIT001]\n- The same pattern for A19 → A16: mean about 7 minutes before (39 occurrences) versus about 3 minutes after (46 occurrences); median about 7 versus about 2 minutes. [TWAIT002]\n- The largest shift is A28 → A16: mean about 48 minutes before versus about 24 minutes after — roughly halved (median about 49 versus about 26 minutes). [TWAIT003]\n- All three differences point the same way and are unusually large: a difference of this size or larger appeared in only about 1 in 2,000 random re-splits of the pooled traces for each item. Each transition pair occurs in roughly 15–25 out of 100 traces in both windows, so the estimates rest on moderate sample sizes. [TWAIT001, TWAIT002, TWAIT003]\n- No control-flow difference qualified: 0 of 55 tested units, in line with the roughly 0.27 items expected by chance, so no structural or ordering change was detected at the configured thresholds. [screening]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a timing change: in the later window, A16 completes sooner after the completion of its predecessors A15, A19 and A28 than in the earlier window. The short gaps (about 6–7 minutes after A15 or A19) shrank to about 2–3 minutes, and the long gap after A28 (about 48 minutes) was roughly halved. All three transitions into A16 show the same direction, each difference exceeds virtually all random re-splits, and the time family produced 3 qualifying items against roughly 0.014 expected without change — many times the chance expectation — while control flow produced none. [TWAIT001, TWAIT002, TWAIT003, screening]\n\nLimitations: T_WAIT measures elapsed time between consecutive completion events, so the evidence cannot distinguish whether A16 started earlier, was executed faster, or whether idle time between the predecessor's completion and A16 shrank. Because all three pairs share A16, the change may be local to A16 rather than process-wide, and each pair covers only about one in five traces, leaving the rest of the process unobserved for timing. [TWAIT001, TWAIT002, TWAIT003]\n\nOther differences: the A28 → A16 pair occurred in fewer traces in the later window (about 16 in 100 versus about 20 in 100), a small participation change that did not qualify as a control-flow difference. [TWAIT003, screening]",
+  "case_id": "e4a_fdbcea21a69dfa2c",
+  "set": "e4a",
+  "kind": "drift",
+  "run_index": 2,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}

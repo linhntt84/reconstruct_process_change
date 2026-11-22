@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "model": "glm-5.3-flash",
+  "endpoint": "https://<openai-compatible-gateway>/v1/chat/completions",
+  "prompt_path": "e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md",
+  "prompt_sha256": "0127c3c6b7b0fede3d116e044a62f3f0419a841f4e8844ae3ea4880b74ccd7c3",
+  "sent_prompt_sha256": "0d9347628d085ab1d5a5eee6d00d128ebae849ae4209ab28d7965688bab069a9",
+  "evidence_path": "results/p3_ablation/e3_full/evidence/case_7535c771ea572495.json",
+  "evidence_sha256": "653886ee7571aea7b98ddc99978753da93c7d23e14e2afd8d2ed1905bfb9d479",
+  "request_settings": {
+    "model": "glm-5.3-flash",
+    "temperature": 0,
+    "top_p": 0.9,
+    "thinking": {
+      "type": "enabled"
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "started_at_utc": "2026-11-16T03:27:25.849335+00:00",
+  "finished_at_utc": "2026-11-16T03:28:21.303052+00:00",
+  "latency_seconds": 55.45,
+  "transport": "curl-stream",
+  "attempt_errors": [],
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 7458,
+    "prompt_tokens": 18900,
+    "total_tokens": 26358,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6453,
+      "text_tokens": 1005
+    },
+    "cost": 0.0065639999999999995
+  },
+  "response_model": "glm-5.3-flash",
+  "reasoning_chars": 22855,
+  "text": "### Observed differences\n\n- In the earlier window, A01 and A03 each occurred exactly once in every trace: A01 was always followed by A03, and A03 always sat in the final position of the trace. In the later window, neither activity appears in any trace — participation fell from 100 in 100 cases to 0 in 100. [OCC001, OCC003, DIR001, POS003, REL002]\n- A05 and A07 show the mirror image: they were not observed at all earlier, and in the later window each occurs exactly once in every trace, with A07 in the final position A03 used to occupy. [OCC005, OCC006, POS005, POS007]\n- The wiring around A06 changed completely. Earlier, A06 was always followed by A01; in the later window it is always followed by A07, and A05's only observed successor is A06. A06's median position moved from about a third of the trace (0.33) to about two-thirds (0.67). [DIR003, DIR004, REL019, REL021, POS006]\n- A02's handover changed: earlier, its observed outgoing transitions split between A06 (about 53 in 100) and A04 (about 47 in 100); in the later window they split between A04 (about 50 in 100) and A05 (about 50 in 100). The distance from A02 to A06 grew from mostly one step to mostly two, consistent with A05 now lying between them. [DIR002, LAG003, REL009, REL011]\n- A02 and A04 are otherwise stable: A02 occurs in every trace in both windows (mean about 1.9 vs 2.0 occurrences per trace), and A04 appears in about 48–49 in 100 traces in both windows with similar repetition. [OCC002, OCC004, REL008, REL010]\n\n### Inference\n\nSupport level: Supported hypothesis\n\nThe evidence supports a structural change in which the closing segment of the process was replaced. In the earlier window every trace ended A06 → A01 → A03, with A03 last; in the later window A01 and A03 are no longer observed, and traces instead run A02 → (in about half the cases via A04) → A05 → A06 → A07, with A07 in the final position. The supporting signs are direct and consistent across indicator families: the successor of A06 switched entirely from A01 to A07; A05 always leads to A06; every co-occurrence relation involving A01 or A03 flipped from always-together to never-together, while those involving A05 or A07 flipped the reverse way; and A06's later position plus the longer A02→A06 and A04→A06 distances match a step inserted before A06. [DIR003, DIR004, REL002, REL005, REL019, REL020, REL021, POS006, POS007, LAG003, LAG006]\n\nLimitations: zero participation only means A01 and A03 were not observed in the later window, and the evidence cannot distinguish whether they were removed while A05 and A07 were added as new steps, or whether the same steps were renamed. No screening baseline was provided, so the item count cannot be compared against a chance expectation; however, the all-or-nothing participation swings across 200-trace windows (empirical strength about 0.995 on the key items) make sampling noise an implausible competing explanation. [OCC001, OCC003, OCC005, OCC006]\n\nOther differences: A02's mean occurrences per trace rose slightly (about 1.88 to 2.01) and A04's repetition support rose (0.22 to 0.29); the self-lags of A02 and A04 and the A02–A04 lag shifted mildly toward longer gaps. These are minor and partly consequences of the restructuring rather than independent changes. [OCC002, OCC004, LAG001, LAG002, LAG005]",
+  "case_id": "case_7535c771ea572495",
+  "set": "cdlg",
+  "kind": "drift",
+  "run_index": 3,
+  "spec_version": "2.0",
+  "key_env": "",
+  "support_level": "supported hypothesis"
+}
