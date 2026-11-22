@@ -1,7 +1,7 @@
 # E1 — ProDrift 2.5 baseline (Ostovar and CDLG)
 
 Non-LLM state-of-the-art baseline: ProDrift 2.5 (Ostovar et al.), event-based detection +
-fragment-based characterization, unmodified. Procedure and fairness decisions: Section V-E of the paper.
+fragment-based characterization, unmodified.
 
 ## Requirements
 - Java 8+ (tested with OpenJDK 17.0.17).
