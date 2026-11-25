@@ -17,7 +17,7 @@ a blind extractor and scored deterministically against references.
 | Time and resource extension (TWAIT, resource-allocation families) | [`e4_multiperspective/code/`](e4_multiperspective/code/) |
 | Interpretation prompt used for every reported run | [`e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md`](e4_multiperspective/code/prompts/INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC.md) (earlier versions and diffs in the same folder and in [`prompts/`](prompts/)) |
 | LLM request settings | [`configs/llm_generation.json`](configs/llm_generation.json) |
-| Extraction rubrics (standalone) | [`prompts/EXTRACTION_RUBRIC_V2_EN.md`](prompts/EXTRACTION_RUBRIC_V2_EN.md), [`experiments/p2_main/EXTRACTION_RUBRIC_CDLG_ROLES_EN.md`](experiments/p2_main/EXTRACTION_RUBRIC_CDLG_ROLES_EN.md), [`e4_multiperspective/code/EXTRACTION_RUBRIC_E4_R5_EN.md`](e4_multiperspective/code/EXTRACTION_RUBRIC_E4_R5_EN.md), vocabulary-free variant [`results/p4_grading/e10_vocab_free/rubric_e10.md`](results/p4_grading/e10_vocab_free/rubric_e10.md) |
+| Extraction rubrics (standalone) | as sent to the extractor, with the pattern list filled in: [`prompts/EXTRACTION_RUBRIC_R5_RENDERED_EN.md`](prompts/EXTRACTION_RUBRIC_R5_RENDERED_EN.md) (rendered by `experiments/p4_grading/render_rubrics.py`; SHA-256 equals `rubric_sha256` in every extraction record); templates [`prompts/EXTRACTION_RUBRIC_V2_EN.md`](prompts/EXTRACTION_RUBRIC_V2_EN.md), [`experiments/p2_main/EXTRACTION_RUBRIC_CDLG_ROLES_EN.md`](experiments/p2_main/EXTRACTION_RUBRIC_CDLG_ROLES_EN.md), [`e4_multiperspective/code/EXTRACTION_RUBRIC_E4_R5_EN.md`](e4_multiperspective/code/EXTRACTION_RUBRIC_E4_R5_EN.md), vocabulary-free variant [`results/p4_grading/e10_vocab_free/rubric_e10.md`](results/p4_grading/e10_vocab_free/rubric_e10.md) |
 | References | [`data/references/`](data/references/) (see [`data/README.md`](data/README.md)); time/resource references in `e4_multiperspective/results/*/cases.csv` |
 | Evidence sent to the LLMs | `results/p2_main/evidence/<case_id>.json` (+ `audit/` with label maps and intermediate statistics) |
 | Explanations (full API records) | `results/p2_main/runs/<prompt>/<model>/run<k>/<case_id>.{json,md}` |
@@ -74,6 +74,8 @@ python experiments/p5_stats/run_stability.py
 python experiments/p5_stats/llm_step_analyses.py    # token usage, retries, dates per run
 python experiments/p5_stats/plot_results_v2.py      # Figs. 2-6 -> results/p5_stats/figures/
 python experiments/p5_stats/localization_table.py   # localization and qualified-evidence table
+python experiments/p5_stats/noise_contrast.py       # 0% vs 5% noise, paired by base log
+python experiments/p5_stats/v1_deepseek_traces.py   # DeepSeek reasoning traces of the submitted version
 ```
 
 Scores can be recomputed from the archived extractions:

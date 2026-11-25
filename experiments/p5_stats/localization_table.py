@@ -7,6 +7,7 @@ Per evaluation set and noise level, over the drift cases of results/p2_main/case
   Cover.  share of the required reference activities that occur as a unit of at least one qualified item in E*, mean
   |E*|    number of qualified evidence items, median
   Prompt  median prompt tokens of the GLM explanations (run 1)
+  O(A*)   object score obtained by taking A* itself as the predicted set (Ostovar only; score_p2.object_score), mean
 Required references: Ostovar as score_p2.ostovar_references (required, without the optional activities);
 CDLG: added | deleted | moved of the version-1 references, restricted to observed activities (cases with no
 observed reference activity are excluded, n = 99).
@@ -25,7 +26,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT / "experiments" / "p2_main"))
 sys.path.insert(0, str(ROOT / "experiments" / "p0_llm_calibration"))
-from score_p2 import cdlg_references, ostovar_references  # noqa: E402
+from score_p2 import cdlg_references, object_score, ostovar_references  # noqa: E402
 
 P2 = ROOT / "results" / "p2_main"
 RUN = P2 / "runs" / "INTERPRET_EVIDENCE_V2_EN_R3_MP_CONC" / "glm-5.3-flash" / "run1"
@@ -61,6 +62,10 @@ def main():
             if not required:
                 continue
             region = set(audit["localized_activities"])
+            o_scope = None
+            if case["set"] != "cdlg":
+                optional = {lm[a] for a in ost[cid][2] if a in lm}
+                o_scope = object_score(region, required, optional)
             evidence = json.loads((P2 / "evidence" / f"{cid}.json").read_text())["evidence"]
             covered = set().union(*(units(e) for e in evidence)) if evidence else set()
             record = json.loads((RUN / f"{cid}.json").read_text())
@@ -70,6 +75,7 @@ def main():
                 "coverage": len(required & covered) / len(required),
                 "e_size": len(evidence),
                 "prompt": record["usage"]["prompt_tokens"],
+                "o_scope": o_scope,
             })
     rows = []
     for (s, noise), cases in sorted(groups.items(), key=lambda x: (list(SETS).index(x[0][0]), x[0][1])):
@@ -78,7 +84,8 @@ def main():
                      "recall": round(mean(c["recall"] for c in cases), 3),
                      "coverage": round(mean(c["coverage"] for c in cases), 3),
                      "median_e_size": median(c["e_size"] for c in cases),
-                     "median_prompt_tokens": median(c["prompt"] for c in cases)})
+                     "median_prompt_tokens": median(c["prompt"] for c in cases),
+                     "o_scope": None if cases[0]["o_scope"] is None else round(mean(c["o_scope"] for c in cases), 3)})
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / "localization_table.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
@@ -91,5 +98,16 @@ def main():
     print("\n".join(md))
 
 
+
+def o_scope_by_size():
+    """Mean O(A*) per fragment size over all noise levels (reported in Section VII-C)."""
+    rows = list(csv.DictReader((OUT / "localization_table.csv").open(encoding="utf-8")))
+    for s in ("Ostovar 3", "Ostovar 5"):
+        sel = [r for r in rows if r["set"] == s]
+        total = sum(float(r["o_scope"]) * int(r["n"]) for r in sel) / sum(int(r["n"]) for r in sel)
+        print(f"{s}: mean O(A*) = {total:.3f}")
+
+
 if __name__ == "__main__":
     main()
+    o_scope_by_size()
